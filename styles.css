@@ -551,14 +551,14 @@ body {
         order: 2;
     }
     
-    .copyright-footer {
-        order: 3;
-    }
-    
     .social-section {
-        order: 999;
+        order: 3;
         margin-top: 0;
         margin-bottom: 40px;
+    }
+    
+    .copyright-footer {
+        order: 999;
     }
     .top-header {
         top: 15px;

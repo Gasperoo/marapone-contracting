@@ -23,9 +23,8 @@ const socialLinks = {
 
 // Initialize social media links
 document.addEventListener('DOMContentLoaded', function() {
-    // Check login state from localStorage (if available)
-    // Uncomment the line below if you're using localStorage to track login state
-    // isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    // Check login state from localStorage
+    isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     
     // Initialize account dropdown
     initAccountDropdown();

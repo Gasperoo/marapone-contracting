@@ -537,6 +537,29 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Reorder social section to bottom on mobile */
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .logo-section {
+        order: 1;
+    }
+    
+    .content-section {
+        order: 2;
+    }
+    
+    .copyright-footer {
+        order: 3;
+    }
+    
+    .social-section {
+        order: 999;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
     .top-header {
         top: 15px;
         right: 15px;
@@ -711,6 +734,7 @@ body {
     }
     
     .logo {
+
         width: 90%;
         max-width: 450px;
         min-width: 280px;

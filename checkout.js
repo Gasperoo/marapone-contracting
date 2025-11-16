@@ -465,8 +465,8 @@ function validateBillingForm() {
     const billingProvince = document.getElementById('billing-province');
     const billingPostal = document.getElementById('billing-postal');
     
-    if (!billingEmail || !billingEmail.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(billingEmail.value)) {
-        alert('Please enter a valid email address.');
+    if (!billingEmail || !billingEmail.value.trim() || billingEmail.value.trim().length < 2) {
+        alert('Please enter the name on card.');
         billingEmail?.focus();
         return false;
     }

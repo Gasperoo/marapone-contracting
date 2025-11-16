@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Marapone Contracting Inc.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header with Cart and Account Icons -->
+    <header class="top-header">
+        <div class="header-icons">
+            <div class="cart-dropdown-container">
+                <button class="icon-button" id="cart-icon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+                <div class="cart-dropdown" id="cart-dropdown">
+                    <a href="index.html" class="dropdown-item" id="view-cart-item">View cart</a>
+                    <a href="checkout.html" class="dropdown-item" id="checkout-item">Checkout now</a>
+                </div>
+            </div>
+            <div class="account-dropdown-container">
+                <button class="icon-button" id="account-icon" aria-label="Account">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="account-dropdown" id="account-dropdown">
+                    <a href="#" class="dropdown-item" id="login-item">Log in</a>
+                    <a href="#" class="dropdown-item" id="logout-item" style="display: none;">Log out</a>
+                    <a href="#" class="dropdown-item" id="manage-account-item">Manage account</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container checkout-container">
+        <div class="checkout-wrapper">
+            <!-- Checkout Header -->
+            <div class="checkout-header">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <h1 class="checkout-title">Checkout</h1>
+            </div>
+
+            <div class="checkout-content">
+                <!-- Order Summary -->
+                <div class="checkout-section order-summary-section">
+                    <h2 class="section-heading">Order Summary</h2>
+                    <div class="order-items" id="order-items">
+                        <!-- Order items will be dynamically inserted here -->
+                    </div>
+                    <div class="order-summary-footer">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="order-subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (HST 13%):</span>
+                            <span id="order-tax">$0.00</span>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <span>Total:</span>
+                            <span id="order-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="checkout-section payment-section">
+                    <h2 class="section-heading">Payment Information</h2>
+                    
+                    <!-- Payment Method Selection -->
+                    <div class="payment-methods">
+                        <h3 class="payment-methods-title">Select Payment Method</h3>
+                        <div class="payment-method-grid">
+                            <label class="payment-method-option">
+                                <input type="radio" name="payment-method" value="credit" checked>
+                                <div class="payment-method-card">
+                                    <i class="fab fa-cc-visa"></i>
+                                    <span>Credit Card</span>
+                                </div>
+                            </label>
+                            <label class="payment-method-option">
+                                <input type="radio" name="payment-method" value="visa-debit">
+                                <div class="payment-method-card">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Visa Debit</span>
+                                </div>
+                            </label>
+                            <label class="payment-method-option">
+                                <input type="radio" name="payment-method" value="mastercard">
+                                <div class="payment-method-card">
+                                    <i class="fab fa-cc-mastercard"></i>
+                                    <span>Mastercard</span>
+                                </div>
+                            </label>
+                            <label class="payment-method-option">
+                                <input type="radio" name="payment-method" value="paypal">
+                                <div class="payment-method-card">
+                                    <i class="fab fa-paypal"></i>
+                                    <span>PayPal</span>
+                                </div>
+                            </label>
+                            <label class="payment-method-option">
+                                <input type="radio" name="payment-method" value="bitcoin">
+                                <div class="payment-method-card">
+                                    <i class="fab fa-bitcoin"></i>
+                                    <span>Bitcoin</span>
+                                </div>
+                            </label>
+                            <label class="payment-method-option">
+                                <input type="radio" name="payment-method" value="ethereum">
+                                <div class="payment-method-card">
+                                    <i class="fab fa-ethereum"></i>
+                                    <span>Ethereum</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Credit Card Form (shown by default) -->
+                    <div class="payment-form" id="credit-card-form">
+                        <div class="form-group">
+                            <label for="card-name">Cardholder Name</label>
+                            <input type="text" id="card-name" name="card-name" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry">Expiry Date</label>
+                                <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvv">CVV</label>
+                                <input type="text" id="card-cvv" name="card-cvv" placeholder="123" maxlength="4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PayPal Form -->
+                    <div class="payment-form" id="paypal-form" style="display: none;">
+                        <div class="form-group">
+                            <label for="paypal-email">PayPal Email</label>
+                            <input type="email" id="paypal-email" name="paypal-email" placeholder="your.email@example.com">
+                        </div>
+                        <p class="payment-info">You will be redirected to PayPal to complete your payment.</p>
+                    </div>
+
+                    <!-- Cryptocurrency Forms -->
+                    <div class="payment-form" id="crypto-form" style="display: none;">
+                        <div class="form-group">
+                            <label id="crypto-address-label">Wallet Address</label>
+                            <input type="text" id="crypto-address" name="crypto-address" placeholder="Enter your wallet address">
+                        </div>
+                        <div class="crypto-info">
+                            <p class="payment-info">
+                                <i class="fas fa-info-circle"></i>
+                                <span id="crypto-info-text">Send the exact amount to the address provided after order confirmation.</span>
+                            </p>
+                            <div class="crypto-amount" id="crypto-amount-display" style="display: none;">
+                                <strong>Amount to Send:</strong>
+                                <span id="crypto-amount-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Information -->
+                    <div class="billing-section" id="billing-section">
+                        <h3 class="billing-title">Billing Information</h3>
+                        <div class="form-group">
+                            <label for="billing-email">Email Address</label>
+                            <input type="email" id="billing-email" name="billing-email" placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="billing-address">Street Address</label>
+                            <input type="text" id="billing-address" name="billing-address" placeholder="123 Main Street">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="billing-city">City</label>
+                                <input type="text" id="billing-city" name="billing-city" placeholder="Toronto">
+                            </div>
+                            <div class="form-group">
+                                <label for="billing-province">Province</label>
+                                <input type="text" id="billing-province" name="billing-province" placeholder="ON">
+                            </div>
+                            <div class="form-group">
+                                <label for="billing-postal">Postal Code</label>
+                                <input type="text" id="billing-postal" name="billing-postal" placeholder="M5H 2N2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="checkout-button" id="submit-payment">
+                        <i class="fas fa-lock"></i>
+                        Complete Payment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>
+

@@ -490,7 +490,7 @@ function validateBillingForm() {
     }
     
     if (!billingPostal || !billingPostal.value.trim()) {
-        alert('Please enter your postal code.');
+        alert('Please enter your postal code/zip code.');
         billingPostal?.focus();
         return false;
     }

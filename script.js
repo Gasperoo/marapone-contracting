@@ -1,6 +1,5 @@
 // Login state management
-let isLoggedIn = false; // Change this to check localStorage or session storage for actual login state
-// Example: let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true' || false;
 
 
 // Cart management
@@ -107,9 +106,8 @@ function initAccountDropdown() {
     if (loginItem) {
         loginItem.addEventListener('click', function(e) {
             e.preventDefault();
-            // Add your login logic here
-            console.log('Login clicked');
-            // Example: window.location.href = '/login';
+            // Navigate to login page
+            window.location.href = 'login.html';
             accountDropdown.classList.remove('show');
         });
     }
@@ -118,11 +116,13 @@ function initAccountDropdown() {
     if (logoutItem) {
         logoutItem.addEventListener('click', function(e) {
             e.preventDefault();
-            // Add your logout logic here
+            // Clear login state
             isLoggedIn = false;
-            // localStorage.setItem('isLoggedIn', 'false');
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userData');
             updateAccountDropdown();
-            console.log('Logged out');
+            alert('You have been logged out successfully.');
             accountDropdown.classList.remove('show');
         });
     }

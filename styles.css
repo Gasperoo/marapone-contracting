@@ -1128,3 +1128,177 @@ body {
     }
 }
 
+/* Login/Sign Up Page Styles */
+.login-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.login-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.login-header {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.login-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin: 20px 0 0 0;
+    letter-spacing: 2px;
+}
+
+.login-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.auth-section {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.auth-section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.auth-form {
+    width: 100%;
+}
+
+.auth-form .form-group {
+    margin-bottom: 25px;
+}
+
+.auth-form .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-white);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.auth-form .form-group input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.auth-form .form-group input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(77, 166, 255, 0.1);
+}
+
+.auth-form .form-group input::placeholder {
+    color: var(--text-grey);
+    opacity: 0.6;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    color: var(--text-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    box-shadow: 0 5px 20px rgba(77, 166, 255, 0.3);
+}
+
+.login-button {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-dark) 100%);
+}
+
+.signup-button {
+    background: linear-gradient(135deg, #4da6ff 0%, #2d7acc 100%);
+}
+
+.auth-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(77, 166, 255, 0.5);
+}
+
+.auth-button:active {
+    transform: translateY(-1px);
+}
+
+.auth-button i {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design for Login Page */
+@media (max-width: 968px) {
+    .login-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px 15px;
+    }
+    
+    .login-title {
+        font-size: 2rem;
+    }
+    
+    .auth-section {
+        padding: 30px 20px;
+    }
+    
+    .auth-section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-title {
+        font-size: 1.8rem;
+    }
+    
+    .auth-section {
+        padding: 25px 15px;
+    }
+    
+    .auth-section-title {
+        font-size: 1.3rem;
+    }
+    
+    .auth-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
+

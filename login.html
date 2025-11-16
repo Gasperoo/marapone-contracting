@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up - Marapone Contracting Inc.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header with Cart and Account Icons -->
+    <header class="top-header">
+        <div class="header-icons">
+            <div class="cart-dropdown-container">
+                <button class="icon-button" id="cart-icon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+                <div class="cart-dropdown" id="cart-dropdown">
+                    <a href="index.html" class="dropdown-item" id="view-cart-item">View cart</a>
+                    <a href="checkout.html" class="dropdown-item" id="checkout-item">Checkout now</a>
+                </div>
+            </div>
+            <div class="account-dropdown-container">
+                <button class="icon-button" id="account-icon" aria-label="Account">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="account-dropdown" id="account-dropdown">
+                    <a href="login.html" class="dropdown-item" id="login-item">Log in</a>
+                    <a href="#" class="dropdown-item" id="logout-item" style="display: none;">Log out</a>
+                    <a href="#" class="dropdown-item" id="manage-account-item">Manage account</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container login-container">
+        <div class="login-wrapper">
+            <!-- Back Link -->
+            <div class="login-header">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <h1 class="login-title">Account</h1>
+            </div>
+
+            <div class="login-content">
+                <!-- Login Section -->
+                <div class="auth-section login-section">
+                    <h2 class="auth-section-title">Login</h2>
+                    <form class="auth-form" id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" name="login-email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="login-password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="auth-button login-button">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Sign Up Section -->
+                <div class="auth-section signup-section">
+                    <h2 class="auth-section-title">Sign Up</h2>
+                    <form class="auth-form" id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" name="signup-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-username">Username</label>
+                            <input type="text" id="signup-username" name="signup-username" placeholder="johndoe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email Address</label>
+                            <input type="email" id="signup-email" name="signup-email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" name="signup-password" placeholder="Create a password" required>
+                        </div>
+                        <button type="submit" class="auth-button signup-button">
+                            <i class="fas fa-user-plus"></i>
+                            Sign Up
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
+

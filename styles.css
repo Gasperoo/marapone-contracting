@@ -566,8 +566,9 @@ body {
     }
     
         .logo {
-        width: 450px;
-        max-width: 85%;
+            width: 90%;
+        max-width: 500px;
+        min-width: 300px;
     }
     
     .social-section {
@@ -710,8 +711,9 @@ body {
     }
     
     .logo {
-        width: 350px;
-        max-width: 80%;
+        width: 90%;
+        max-width: 450px;
+        min-width: 280px;
     }
     
     .logo-container {

@@ -570,10 +570,29 @@ body {
         max-width: 85%;
     }
     
+    .social-section {
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+    
+    .social-title {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+    }
+    
+    .social-icons {
+        gap: 8px;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
     .social-link {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+        border-width: 1px;
     }
     
     .section-title {
@@ -609,6 +628,27 @@ body {
     
     .header-icons {
         gap: 10px;
+    }
+    
+    .social-section {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+    
+    .social-title {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .social-icons {
+        gap: 6px;
+        flex-wrap: nowrap;
+    }
+    
+    .social-link {
+        width: 30px;
+        height: 30px;
+        font-size: 0.75rem;
     }
     
     .account-dropdown {

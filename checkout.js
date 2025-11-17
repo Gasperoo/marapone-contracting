@@ -223,37 +223,28 @@ function initPaymentMethods() {
     
     // Add event listeners to all payment method options
     paymentMethods.forEach(method => {
-        // Use change event for immediate response
+        // Use change event - this fires when radio is actually selected
         method.addEventListener('change', function(e) {
             e.stopPropagation();
-            setTimeout(() => {
-                handlePaymentMethodChange(this.value);
-            }, 10);
-        });
-        
-        // Also listen to click for immediate feedback
-        method.addEventListener('click', function(e) {
-            e.stopPropagation();
-            // Use setTimeout to ensure radio is checked first
-            setTimeout(() => {
-                handlePaymentMethodChange(this.value);
-            }, 10);
+            handlePaymentMethodChange(this.value);
         });
     });
     
-    // Also add click listeners to the label cards for better UX
+    // Add click listeners to the label cards for better UX
     const paymentMethodOptions = document.querySelectorAll('.payment-method-option');
     paymentMethodOptions.forEach(option => {
         option.addEventListener('click', function(e) {
-            e.stopPropagation();
             // Find the radio input within this label
             const radio = this.querySelector('input[type="radio"]');
-            if (radio) {
+            if (radio && !radio.checked) {
+                // Check the radio and trigger change event
                 radio.checked = true;
-                // Use setTimeout to ensure radio state is updated
-                setTimeout(() => {
-                    handlePaymentMethodChange(radio.value);
-                }, 10);
+                // Trigger change event to ensure handler is called
+                const changeEvent = new Event('change', { bubbles: true });
+                radio.dispatchEvent(changeEvent);
+            } else if (radio && radio.checked) {
+                // If already checked, still call handler to ensure form shows
+                handlePaymentMethodChange(radio.value);
             }
         });
     });

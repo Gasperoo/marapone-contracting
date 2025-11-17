@@ -1096,6 +1096,144 @@ body {
     margin-right: 10px;
 }
 
+/* Bitcoin QR Code Display */
+.bitcoin-qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: transparent;
+    border: none;
+}
+
+.bitcoin-qr-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.bitcoin-qr-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-white);
+    margin: 0;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+.bitcoin-qr-code-wrapper {
+    margin: 30px 0;
+    padding: 20px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bitcoin-qr-code {
+    max-width: 100%;
+    height: auto;
+    width: 400px;
+    max-width: 90%;
+    filter: invert(1) brightness(1);
+    background: transparent;
+}
+
+.bitcoin-address-wrapper {
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.bitcoin-address-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.bitcoin-address-text {
+    font-size: 0.85rem;
+    color: var(--text-white);
+    font-family: 'Courier New', monospace;
+    word-break: break-all;
+    line-height: 1.6;
+    padding: 10px;
+    background: transparent;
+    border: none;
+}
+
+/* Ethereum QR Code Display */
+.ethereum-qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: transparent;
+    border: none;
+}
+
+.ethereum-qr-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ethereum-qr-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-white);
+    margin: 0;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+.ethereum-qr-code-wrapper {
+    margin: 30px 0;
+    padding: 20px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ethereum-qr-code {
+    max-width: 100%;
+    height: auto;
+    width: 400px;
+    max-width: 90%;
+    filter: invert(1) brightness(1);
+    background: transparent;
+}
+
+.ethereum-address-wrapper {
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.ethereum-address-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.ethereum-address-text {
+    font-size: 0.85rem;
+    color: var(--text-white);
+    font-family: 'Courier New', monospace;
+    word-break: break-all;
+    line-height: 1.6;
+    padding: 10px;
+    background: transparent;
+    border: none;
+}
+
 /* Checkout Button */
 .checkout-button {
     width: 100%;

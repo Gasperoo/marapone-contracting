@@ -150,20 +150,34 @@
                         <p class="payment-info">You will be redirected to PayPal to complete your payment.</p>
                     </div>
 
-                    <!-- Cryptocurrency Forms -->
-                    <div class="payment-form" id="crypto-form" style="display: none;">
-                        <div class="form-group">
-                            <label id="crypto-address-label">Wallet Address</label>
-                            <input type="text" id="crypto-address" name="crypto-address" placeholder="Enter your wallet address">
+                    <!-- Bitcoin QR Code Display -->
+                    <div class="payment-form" id="bitcoin-qr-form" style="display: none;">
+                        <div class="bitcoin-qr-container">
+                            <div class="bitcoin-qr-header">
+                                <h3 class="bitcoin-qr-title">Bitcoin (BTC) on<br>Bitcoin network</h3>
+                            </div>
+                            <div class="bitcoin-qr-code-wrapper">
+                                <img src="bitcoin-qr.png" alt="Bitcoin QR Code" class="bitcoin-qr-code" id="bitcoin-qr-image">
+                            </div>
+                            <div class="bitcoin-address-wrapper">
+                                <label class="bitcoin-address-label">Address</label>
+                                <div class="bitcoin-address-text" id="bitcoin-address-display">bc1qv0euaqk8j99wqqlljgm20mm555py6lsxsc5435</div>
+                            </div>
                         </div>
-                        <div class="crypto-info">
-                            <p class="payment-info">
-                                <i class="fas fa-info-circle"></i>
-                                <span id="crypto-info-text">Send the exact amount to the address provided after order confirmation.</span>
-                            </p>
-                            <div class="crypto-amount" id="crypto-amount-display" style="display: none;">
-                                <strong>Amount to Send:</strong>
-                                <span id="crypto-amount-value"></span>
+                    </div>
+
+                    <!-- Ethereum QR Code Display -->
+                    <div class="payment-form" id="ethereum-qr-form" style="display: none;">
+                        <div class="ethereum-qr-container">
+                            <div class="ethereum-qr-header">
+                                <h3 class="ethereum-qr-title">Ethereum (ETH) on<br>Ethereum network</h3>
+                            </div>
+                            <div class="ethereum-qr-code-wrapper">
+                                <img src="ethereum-qr.png" alt="Ethereum QR Code" class="ethereum-qr-code" id="ethereum-qr-image">
+                            </div>
+                            <div class="ethereum-address-wrapper">
+                                <label class="ethereum-address-label">Address</label>
+                                <div class="ethereum-address-text" id="ethereum-address-display">0x95Fb609104BE7BD7467546Fd7CEb4A34b4b1752F</div>
                             </div>
                         </div>
                     </div>

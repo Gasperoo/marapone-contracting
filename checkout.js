@@ -83,11 +83,8 @@ function initPaymentMethods() {
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
     const creditCardForm = document.getElementById('credit-card-form');
     const paypalForm = document.getElementById('paypal-form');
-    const cryptoForm = document.getElementById('crypto-form');
-    const cryptoAddressLabel = document.getElementById('crypto-address-label');
-    const cryptoInfoText = document.getElementById('crypto-info-text');
-    const cryptoAmountDisplay = document.getElementById('crypto-amount-display');
-    const cryptoAmountValue = document.getElementById('crypto-amount-value');
+    const bitcoinQrForm = document.getElementById('bitcoin-qr-form');
+    const ethereumQrForm = document.getElementById('ethereum-qr-form');
     const billingSection = document.getElementById('billing-section');
     
     // Function to handle payment method change
@@ -116,18 +113,13 @@ function initPaymentMethods() {
                 field.value = '';
             });
         }
-        if (cryptoForm) {
-            cryptoForm.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important;';
-            cryptoForm.setAttribute('data-hidden', 'true');
-            const cryptoFields = cryptoForm.querySelectorAll('input');
-            cryptoFields.forEach(field => {
-                field.removeAttribute('required');
-                field.disabled = true;
-                field.value = '';
-            });
+        if (bitcoinQrForm) {
+            bitcoinQrForm.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important;';
+            bitcoinQrForm.setAttribute('data-hidden', 'true');
         }
-        if (cryptoAmountDisplay) {
-            cryptoAmountDisplay.style.cssText = 'display: none !important;';
+        if (ethereumQrForm) {
+            ethereumQrForm.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important;';
+            ethereumQrForm.setAttribute('data-hidden', 'true');
         }
         
         // Hide billing section by default, will show for non-crypto methods
@@ -185,41 +177,39 @@ function initPaymentMethods() {
                     field.setAttribute('required', 'required');
                 });
             }
-        } else if (value === 'bitcoin' || value === 'ethereum') {
-            // For crypto, make sure credit card form is completely hidden
+        } else if (value === 'bitcoin') {
+            // For Bitcoin, show only QR code
             if (creditCardForm) {
                 creditCardForm.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important;';
                 creditCardForm.setAttribute('data-hidden', 'true');
             }
             
-            // Keep billing section hidden for crypto
+            // Keep billing section hidden for Bitcoin
             if (billingSection) {
                 billingSection.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: none !important;';
                 billingSection.setAttribute('data-hidden', 'true');
             }
             
-            if (cryptoForm) {
-                cryptoForm.removeAttribute('data-hidden');
-                cryptoForm.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important; margin-bottom: 30px !important;';
-                const cryptoFields = cryptoForm.querySelectorAll('input');
-                cryptoFields.forEach(field => {
-                    field.disabled = false;
-                    field.setAttribute('required', 'required');
-                });
+            if (bitcoinQrForm) {
+                bitcoinQrForm.removeAttribute('data-hidden');
+                bitcoinQrForm.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important; margin-bottom: 30px !important;';
             }
-            if (cryptoAmountDisplay) {
-                cryptoAmountDisplay.style.cssText = 'display: block !important;';
+        } else if (value === 'ethereum') {
+            // For Ethereum, show only QR code
+            if (creditCardForm) {
+                creditCardForm.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important;';
+                creditCardForm.setAttribute('data-hidden', 'true');
             }
             
-            // Update crypto-specific labels and info
-            if (value === 'bitcoin') {
-                if (cryptoAddressLabel) cryptoAddressLabel.textContent = 'Bitcoin Wallet Address';
-                if (cryptoInfoText) cryptoInfoText.textContent = 'Send the exact amount in BTC to the address provided after order confirmation.';
-                updateCryptoAmount('BTC');
-            } else if (value === 'ethereum') {
-                if (cryptoAddressLabel) cryptoAddressLabel.textContent = 'Ethereum Wallet Address';
-                if (cryptoInfoText) cryptoInfoText.textContent = 'Send the exact amount in ETH to the address provided after order confirmation.';
-                updateCryptoAmount('ETH');
+            // Keep billing section hidden for Ethereum
+            if (billingSection) {
+                billingSection.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: none !important;';
+                billingSection.setAttribute('data-hidden', 'true');
+            }
+            
+            if (ethereumQrForm) {
+                ethereumQrForm.removeAttribute('data-hidden');
+                ethereumQrForm.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important; margin-bottom: 30px !important;';
             }
         }
     }
@@ -334,8 +324,8 @@ function initFormValidation() {
                 isValid = validateBillingForm();
             }
         } else if (paymentMethod === 'bitcoin' || paymentMethod === 'ethereum') {
-            // For crypto, only validate crypto form, no billing required
-            isValid = validateCryptoForm();
+            // Bitcoin and Ethereum don't need validation - just QR code display
+            isValid = true;
         }
         
         if (isValid) {

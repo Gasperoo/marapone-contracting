@@ -108,10 +108,106 @@
                     <p>With a proven track record of helping businesses across various sectors, we combine analytical rigor with practical insights. Our consultants work closely with your team to ensure knowledge transfer and sustainable implementation of recommended strategies.</p>
                 </div>
             </div>
+
+            <div class="booking-section">
+                <button class="book-now-button" id="book-now-btn">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="booking-modal" id="booking-modal">
+        <div class="booking-modal-content">
+            <div class="booking-modal-header">
+                <h2>Book a Consulting Appointment</h2>
+                <button class="close-booking-modal" id="close-booking-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="booking-steps">
+                <!-- Step 1: Date Selection -->
+                <div class="booking-step active" id="step-date">
+                    <h3>Select a Date</h3>
+                    <div class="calendar-navigation">
+                        <button class="calendar-nav-btn" id="prev-month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="calendar-month-year" id="calendar-month-year"></span>
+                        <button class="calendar-nav-btn" id="next-month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-container" id="calendar-container"></div>
+                </div>
+
+                <!-- Step 2: Appointment Type -->
+                <div class="booking-step" id="step-type">
+                    <h3>Select Appointment Type</h3>
+                    <div class="appointment-types">
+                        <button class="appointment-type-btn" data-type="call">
+                            <i class="fas fa-phone"></i>
+                            <span>Book a Call</span>
+                        </button>
+                        <button class="appointment-type-btn" data-type="video">
+                            <i class="fas fa-video"></i>
+                            <span>Book Video Call</span>
+                        </button>
+                        <button class="appointment-type-btn" data-type="in-person">
+                            <i class="fas fa-handshake"></i>
+                            <span>Book In-Person Meeting</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Duration -->
+                <div class="booking-step" id="step-duration">
+                    <h3>Select Duration</h3>
+                    <div class="duration-options">
+                        <button class="duration-btn" data-duration="30">
+                            <span>30 Minutes</span>
+                        </button>
+                        <button class="duration-btn" data-duration="60">
+                            <span>1 Hour</span>
+                        </button>
+                    </div>
+                    <div class="pricing-display" id="pricing-display"></div>
+                </div>
+
+                <!-- Step 4: Time Selection -->
+                <div class="booking-step" id="step-time">
+                    <h3>Select a Time</h3>
+                    <div class="selected-date-display" id="selected-date-display"></div>
+                    <div class="time-slots" id="time-slots"></div>
+                </div>
+
+                <!-- Step 5: Confirmation -->
+                <div class="booking-step" id="step-confirm">
+                    <h3>Confirm Your Appointment</h3>
+                    <div class="booking-summary" id="booking-summary"></div>
+                    <button class="confirm-booking-btn" id="confirm-booking-btn">
+                        <i class="fas fa-check"></i>
+                        Confirm Booking
+                    </button>
+                </div>
+            </div>
+
+            <div class="booking-navigation">
+                <button class="booking-nav-btn" id="prev-step" style="display: none;">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="booking-nav-btn" id="next-step" style="display: none;">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script src="booking.js"></script>
 </body>
 </html>
 

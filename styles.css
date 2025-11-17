@@ -2188,13 +2188,43 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 
+    /* Calendar - Keep same styling as desktop */
     .calendar-container {
-        gap: 5px;
+        gap: 2px;
+        padding: 12px;
+    }
+
+    .calendar-day-header {
+        padding: 10px 6px;
+        font-size: 0.85rem;
     }
 
     .calendar-day {
-        font-size: 0.85rem;
-        padding: 8px;
+        font-size: 0.9rem;
+        min-height: 35px;
+    }
+
+    .calendar-month-year {
+        font-size: 1.3rem;
+    }
+
+    /* Booking section mobile */
+    .booking-section-wrapper {
+        padding: 40px 15px;
+    }
+
+    .booking-section {
+        max-width: 100%;
+    }
+
+    .booking-intro {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .book-now-button {
+        padding: 15px 40px;
+        font-size: 1.1rem;
     }
 }
 

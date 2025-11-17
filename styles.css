@@ -840,9 +840,23 @@ body {
         font-size: 0.85rem;
     }
     
-    .cart-item-total {
-        font-size: 0.95rem;
-    }
+.cart-item-total {
+    font-size: 0.95rem;
+}
+
+.cart-item-booking-details {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--text-grey);
+}
+
+.booking-date {
+    margin-bottom: 4px;
+}
+
+.booking-time {
+    color: var(--accent-blue);
+}
     
     .cart-summary {
         padding: 12px 15px;

@@ -333,10 +333,78 @@ document.addEventListener('DOMContentLoaded', function() {
     if (confirmBookingBtn) {
         confirmBookingBtn.addEventListener('click', function() {
             if (selectedDate && selectedType && selectedDuration && selectedTime) {
-                alert('Booking confirmed! We will send you a confirmation email shortly.');
+                addBookingToCart();
                 closeModal();
             }
         });
+    }
+
+    // Add booking to cart
+    function addBookingToCart() {
+        if (!selectedDate || !selectedType || !selectedDuration || !selectedTime) return;
+
+        const dateStr = selectedDate.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        const timeStr = formatTime(selectedTime.hour, selectedTime.minute);
+        const typeLabels = {
+            'call': 'Phone Call',
+            'video': 'Video Call',
+            'in-person': 'In-Person Meeting'
+        };
+        const price = pricing[selectedDuration][selectedType];
+
+        // Create booking item for cart
+        const bookingItem = {
+            id: 'booking-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+            name: `Consulting Appointment - ${typeLabels[selectedType]}`,
+            price: price,
+            quantity: 1,
+            type: 'booking',
+            bookingDetails: {
+                date: selectedDate.toISOString(),
+                dateDisplay: dateStr,
+                time: timeStr,
+                timeHour: selectedTime.hour,
+                timeMinute: selectedTime.minute,
+                appointmentType: selectedType,
+                appointmentTypeLabel: typeLabels[selectedType],
+                duration: parseInt(selectedDuration)
+            }
+        };
+
+        // Ensure window.cart exists
+        if (typeof window.cart === 'undefined') {
+            window.cart = [];
+        }
+        
+        // Load cart from localStorage if needed
+        if (window.cart.length === 0) {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                window.cart = JSON.parse(savedCart);
+            }
+        }
+        
+        // Add to cart using the global addToCart function if available
+        if (typeof addToCart === 'function') {
+            addToCart(bookingItem);
+        } else {
+            // Fallback: directly add to window.cart
+            window.cart.push(bookingItem);
+            localStorage.setItem('cart', JSON.stringify(window.cart));
+            
+            // Update cart display if function exists
+            if (typeof updateCartDisplay === 'function') {
+                updateCartDisplay();
+            }
+        }
+
+        // Show success message
+        alert(`Booking added to cart!\n\n${typeLabels[selectedType]} - ${dateStr} at ${timeStr}\nPrice: $${price}\n\nYou can proceed to checkout from your cart.`);
     }
 
     // Initialize

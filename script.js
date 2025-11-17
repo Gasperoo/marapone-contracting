@@ -274,14 +274,31 @@ function updateCartDisplay() {
         const itemTotal = item.price * item.quantity;
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <div class="cart-item-info">
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
-                <div class="cart-item-quantity">Qty: ${item.quantity}</div>
-            </div>
-            <div class="cart-item-total">$${itemTotal.toFixed(2)}</div>
-        `;
+        
+        // Check if this is a booking item
+        if (item.type === 'booking' && item.bookingDetails) {
+            const bookingDetails = item.bookingDetails;
+            cartItem.innerHTML = `
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-booking-details">
+                        <div class="booking-date">${bookingDetails.dateDisplay}</div>
+                        <div class="booking-time">${bookingDetails.time} (${bookingDetails.duration} min)</div>
+                    </div>
+                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                </div>
+                <div class="cart-item-total">$${itemTotal.toFixed(2)}</div>
+            `;
+        } else {
+            cartItem.innerHTML = `
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
+                    <div class="cart-item-quantity">Qty: ${item.quantity}</div>
+                </div>
+                <div class="cart-item-total">$${itemTotal.toFixed(2)}</div>
+            `;
+        }
         cartItemsList.appendChild(cartItem);
     });
     

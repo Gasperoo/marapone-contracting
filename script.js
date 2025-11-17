@@ -8,8 +8,8 @@ const TAX_RATE = 0.13; // 13% HST for Ontario
 if (typeof window.cart === 'undefined') {
     window.cart = []; // Cart items array
 }
-// Create local reference for convenience
-const cart = window.cart;
+// Create local reference for convenience (use let so it can be reassigned)
+let cart = window.cart;
 // Example cart structure: [{ id: 1, name: 'Item Name', price: 99.99, quantity: 2 }, ...]
 // You can load cart from localStorage: cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load cart from localStorage if available
     window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart || [];
-    // Update local reference
+    // Update local reference to point to window.cart
     cart = window.cart;
     
     // For testing: Add sample items to cart (remove this in production)

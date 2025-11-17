@@ -21,8 +21,33 @@
                     <i class="fas fa-shopping-cart"></i>
                 </button>
                 <div class="cart-dropdown" id="cart-dropdown">
-                    <a href="index.html" class="dropdown-item" id="view-cart-item">View cart</a>
-                    <a href="checkout.html" class="dropdown-item" id="checkout-item">Checkout now</a>
+                    <a href="#" class="dropdown-item" id="view-cart-item">View cart</a>
+                    <a href="#" class="dropdown-item" id="checkout-item">Checkout now</a>
+                </div>
+                <div class="cart-details" id="cart-details">
+                    <div class="cart-details-header">
+                        <h3>Your Cart</h3>
+                        <button class="close-cart-details" id="close-cart-details" aria-label="Close cart">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="cart-items-list" id="cart-items-list">
+                        <!-- Cart items will be dynamically inserted here -->
+                    </div>
+                    <div class="cart-summary">
+                        <div class="cart-summary-row">
+                            <span>Subtotal:</span>
+                            <span id="cart-subtotal">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span>Tax (HST 13%):</span>
+                            <span id="cart-tax">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row cart-total">
+                            <span>Total:</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="account-dropdown-container">

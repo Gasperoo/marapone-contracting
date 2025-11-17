@@ -248,11 +248,9 @@ function initPaymentMethods() {
         });
     });
     
-    // Initialize with the currently selected payment method
-    const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
-    if (selectedMethod) {
-        handlePaymentMethodChange(selectedMethod.value);
-    }
+    // Initially hide all forms - user must select payment method first
+    // Don't auto-show based on default selection
+    // Only show when user explicitly selects a payment method
 }
 
 // Update crypto amount display

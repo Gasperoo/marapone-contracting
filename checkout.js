@@ -12,6 +12,7 @@ if (typeof cart === 'undefined') {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Checkout page DOMContentLoaded fired');
     // Initialize checkout page
     initCheckoutPage();
     initPaymentMethods();
@@ -87,12 +88,15 @@ function displayOrderSummary() {
 
 // Initialize payment method selection
 function initPaymentMethods() {
+    console.log('initPaymentMethods called');
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+    console.log('Found payment methods:', paymentMethods.length);
     const creditCardForm = document.getElementById('credit-card-form');
     const paypalForm = document.getElementById('paypal-form');
     const bitcoinQrForm = document.getElementById('bitcoin-qr-form');
     const ethereumQrForm = document.getElementById('ethereum-qr-form');
     const billingSection = document.getElementById('billing-section');
+    console.log('Forms found - creditCard:', creditCardForm, 'bitcoin:', bitcoinQrForm, 'ethereum:', ethereumQrForm);
     
     // Function to handle payment method change
     function handlePaymentMethodChange(value) {
@@ -225,9 +229,12 @@ function initPaymentMethods() {
     }
     
     // Add event listeners to all payment method options
+    console.log('Adding event listeners to payment methods');
     paymentMethods.forEach(method => {
+        console.log('Adding listener to:', method.value);
         // Use change event - this fires when radio is actually selected
         method.addEventListener('change', function(e) {
+            console.log('Change event fired for:', this.value);
             e.stopPropagation();
             handlePaymentMethodChange(this.value);
         });
@@ -235,11 +242,14 @@ function initPaymentMethods() {
     
     // Add click listeners to the label cards for better UX
     const paymentMethodOptions = document.querySelectorAll('.payment-method-option');
+    console.log('Found payment method options (labels):', paymentMethodOptions.length);
     paymentMethodOptions.forEach(option => {
         option.addEventListener('click', function(e) {
+            console.log('Label clicked');
             // Find the radio input within this label
             const radio = this.querySelector('input[type="radio"]');
             if (radio) {
+                console.log('Radio found, value:', radio.value);
                 // Always check the radio first
                 radio.checked = true;
                 // Immediately call handler - don't wait for change event
@@ -247,6 +257,8 @@ function initPaymentMethods() {
                 // Also trigger change event for consistency
                 const changeEvent = new Event('change', { bubbles: true });
                 radio.dispatchEvent(changeEvent);
+            } else {
+                console.log('No radio found in label');
             }
         });
     });

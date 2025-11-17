@@ -326,6 +326,57 @@ function addToCart(item) {
     updateCartDisplay();
 }
 
+// Mailing list form functionality
+function initMailingListForm() {
+    const mailingListForm = document.getElementById('mailing-list-form');
+    const submitButton = mailingListForm?.querySelector('button[type="submit"]');
+    const emailInput = document.getElementById('mailing-list-email');
+    
+    if (!mailingListForm) return;
+    
+    mailingListForm.addEventListener('submit', function(e) {
+        const email = emailInput?.value.trim();
+        
+        // Validate email
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            e.preventDefault();
+            alert('Please enter a valid email address.');
+            if (emailInput) emailInput.focus();
+            return false;
+        }
+        
+        // Disable submit button
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+        }
+        
+        // Set the redirect URL to show success message
+        const nextInput = mailingListForm.querySelector('input[name="_next"]');
+        if (nextInput) {
+            const currentUrl = window.location.href.split('?')[0];
+            nextInput.value = currentUrl + '?subscribed=true';
+        }
+        
+        // Allow form to submit - FormSubmit will handle sending to info@marapone.com
+        return true;
+    });
+    
+    // Check for success parameter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('subscribed') === 'true') {
+        alert('Thank you for subscribing to our mailing list!\n\nYou will receive updates and special offers at ' + (emailInput?.value || 'your email address') + '.');
+        // Clean up URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+        // Reset form
+        mailingListForm.reset();
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
+        }
+    }
+}
+
 // Add animation on scroll
 const observerOptions = {
     threshold: 0.1,
@@ -340,14 +391,14 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-    // Observe elements for animation
-    document.addEventListener('DOMContentLoaded', function() {
-        const animatedElements = document.querySelectorAll('.content-section');
-        animatedElements.forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Initialize mailing list form
-        initMailingListForm();
+// Observe elements for animation
+document.addEventListener('DOMContentLoaded', function() {
+    const animatedElements = document.querySelectorAll('.content-section');
+    animatedElements.forEach(el => {
+        observer.observe(el);
     });
+    
+    // Initialize mailing list form
+    initMailingListForm();
+});
 

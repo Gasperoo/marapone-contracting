@@ -75,6 +75,11 @@ function initCheckoutPage() {
     }
 }
 
+// Helper function to get cart from global scope
+function getCart() {
+    return typeof cart !== 'undefined' ? cart : (window.cart || []);
+}
+
 // Display order summary
 function displayOrderSummary() {
     const orderItems = document.getElementById('order-items');
@@ -85,12 +90,12 @@ function displayOrderSummary() {
     if (!orderItems) return;
     
     // Get cart from global scope
-    const currentCart = typeof cart !== 'undefined' ? cart : (window.cart || []);
+    const cartItems = getCart();
     
     // Clear existing items
     orderItems.innerHTML = '';
     
-    if (currentCart.length === 0) {
+    if (cartItems.length === 0) {
         orderItems.innerHTML = '<div class="empty-cart-message">Your cart is empty. <a href="index.html">Continue shopping</a></div>';
         if (orderSubtotal) orderSubtotal.textContent = '$0.00';
         if (orderTax) orderTax.textContent = '$0.00';
@@ -100,8 +105,7 @@ function displayOrderSummary() {
     
     // Calculate totals
     let subtotal = 0;
-    const currentCart = typeof cart !== 'undefined' ? cart : (window.cart || []);
-    currentCart.forEach(item => {
+    cartItems.forEach(item => {
         subtotal += item.price * item.quantity;
     });
     
@@ -109,7 +113,7 @@ function displayOrderSummary() {
     const total = subtotal + tax;
     
     // Display cart items
-    cart.forEach(item => {
+    cartItems.forEach(item => {
         const itemTotal = item.price * item.quantity;
         const orderItem = document.createElement('div');
         orderItem.className = 'order-item';
@@ -350,8 +354,8 @@ function initFormValidation() {
     submitButton.addEventListener('click', function(e) {
         e.preventDefault();
         
-        const currentCart = typeof cart !== 'undefined' ? cart : (window.cart || []);
-        if (currentCart.length === 0) {
+        const cartItems = getCart();
+        if (cartItems.length === 0) {
             alert('Your cart is empty. Please add items before checkout.');
             return;
         }

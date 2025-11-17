@@ -340,11 +340,14 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe elements for animation
-document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.content-section');
-    animatedElements.forEach(el => {
-        observer.observe(el);
+    // Observe elements for animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.content-section');
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Initialize mailing list form
+        initMailingListForm();
     });
-});
 

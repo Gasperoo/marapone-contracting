@@ -641,6 +641,100 @@ body {
     color: var(--text-grey-light);
 }
 
+/* Mailing List Section */
+.mailing-list-section {
+    margin-top: 80px;
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mailing-list-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.mailing-list-description {
+    font-size: 1rem;
+    color: var(--text-grey);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.mailing-list-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.mailing-list-input-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.mailing-list-input-group input[type="email"] {
+    flex: 1;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-white);
+    font-size: 1rem;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.mailing-list-input-group input[type="email"]:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(77, 166, 255, 0.1);
+}
+
+.mailing-list-input-group input[type="email"]::placeholder {
+    color: var(--text-grey);
+    opacity: 0.6;
+}
+
+.mailing-list-submit-btn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-dark) 100%);
+    border: none;
+    border-radius: 10px;
+    color: var(--text-white);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    box-shadow: 0 5px 20px rgba(77, 166, 255, 0.3);
+}
+
+.mailing-list-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(77, 166, 255, 0.5);
+}
+
+.mailing-list-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.mailing-list-submit-btn i {
+    font-size: 0.9rem;
+}
+
 /* Copyright Footer */
 .copyright-footer {
     margin-top: 120px;
@@ -673,8 +767,36 @@ body {
         order: 2;
     }
     
-    .social-section {
+    .mailing-list-section {
         order: 3;
+        margin-top: 60px;
+        padding: 40px 15px;
+    }
+    
+    .mailing-list-title {
+        font-size: 1.5rem;
+    }
+    
+    .mailing-list-description {
+        font-size: 0.9rem;
+    }
+    
+    .mailing-list-input-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .mailing-list-input-group input[type="email"] {
+        width: 100%;
+    }
+    
+    .mailing-list-submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .social-section {
+        order: 4;
         margin-top: 0;
         margin-bottom: 40px;
     }

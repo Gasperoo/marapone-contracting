@@ -219,14 +219,18 @@ function initPaymentMethods() {
         // Use change event for immediate response
         method.addEventListener('change', function(e) {
             e.stopPropagation();
-            handlePaymentMethodChange(this.value);
+            setTimeout(() => {
+                handlePaymentMethodChange(this.value);
+            }, 10);
         });
         
         // Also listen to click for immediate feedback
         method.addEventListener('click', function(e) {
             e.stopPropagation();
-            // Immediately call handler
-            handlePaymentMethodChange(this.value);
+            // Use setTimeout to ensure radio is checked first
+            setTimeout(() => {
+                handlePaymentMethodChange(this.value);
+            }, 10);
         });
     });
     
@@ -239,11 +243,10 @@ function initPaymentMethods() {
             const radio = this.querySelector('input[type="radio"]');
             if (radio) {
                 radio.checked = true;
-                // Immediately call handler
-                handlePaymentMethodChange(radio.value);
-                // Also trigger change event
-                const changeEvent = new Event('change', { bubbles: true });
-                radio.dispatchEvent(changeEvent);
+                // Use setTimeout to ensure radio state is updated
+                setTimeout(() => {
+                    handlePaymentMethodChange(radio.value);
+                }, 10);
             }
         });
     });

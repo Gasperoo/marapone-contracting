@@ -2,64 +2,47 @@
 // TAX_RATE is already declared in script.js, so we don't redeclare it here
 // If script.js isn't loaded, we'll use the value directly: 0.13
 
-console.log('checkout.js script loaded');
-
 // Don't declare cart here - it's already declared in script.js
 // Just ensure it's loaded from localStorage if script.js hasn't done it yet
-// We'll access cart through the global scope without declaring it
-// Wait for script.js to load first, then update cart from localStorage
 // Update cart from localStorage (cart is managed by script.js via window.cart)
 setTimeout(function() {
     try {
         // Always use window.cart to avoid conflicts
         if (window.cart) {
             window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart;
-            console.log('Cart loaded from localStorage, length:', window.cart.length);
         } else {
             // Fallback: create window.cart if script.js didn't load
             window.cart = JSON.parse(localStorage.getItem('cart')) || [];
-            console.log('Cart created on window, length:', window.cart.length);
         }
     } catch (e) {
-        console.error('Error loading cart:', e);
+        // Silently handle errors
     }
 }, 0);
 
 // Try both DOMContentLoaded and immediate execution
 function initializeCheckout() {
-    console.log('initializeCheckout called');
-    console.log('Document ready state:', document.readyState);
-    
     // Initialize checkout page
     if (typeof initCheckoutPage === 'function') {
         initCheckoutPage();
-    } else {
-        console.error('initCheckoutPage function not found');
     }
     
     // Initialize payment methods
     if (typeof initPaymentMethods === 'function') {
         initPaymentMethods();
-    } else {
-        console.error('initPaymentMethods function not found');
     }
     
     // Initialize form validation
     if (typeof initFormValidation === 'function') {
         initFormValidation();
-    } else {
-        console.error('initFormValidation function not found');
     }
 }
 
 // Run immediately if DOM is already loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Checkout page DOMContentLoaded fired');
         initializeCheckout();
     });
 } else {
-    console.log('DOM already loaded, initializing immediately');
     initializeCheckout();
 }
 
@@ -141,22 +124,15 @@ function displayOrderSummary() {
 
 // Initialize payment method selection
 function initPaymentMethods() {
-    console.log('initPaymentMethods called');
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
-    console.log('Found payment methods:', paymentMethods.length);
     const creditCardForm = document.getElementById('credit-card-form');
     const paypalForm = document.getElementById('paypal-form');
     const bitcoinQrForm = document.getElementById('bitcoin-qr-form');
     const ethereumQrForm = document.getElementById('ethereum-qr-form');
     const billingSection = document.getElementById('billing-section');
-    console.log('Forms found - creditCard:', creditCardForm, 'bitcoin:', bitcoinQrForm, 'ethereum:', ethereumQrForm);
     
     // Function to handle payment method change
     function handlePaymentMethodChange(value) {
-        console.log('Payment method changed to:', value); // Debug log
-        console.log('Credit card form element:', creditCardForm);
-        console.log('Bitcoin QR form element:', bitcoinQrForm);
-        console.log('Ethereum QR form element:', ethereumQrForm);
         
         // Force immediate hide of all forms first using !important via style
         if (creditCardForm) {
@@ -282,12 +258,9 @@ function initPaymentMethods() {
     }
     
     // Add event listeners to all payment method options
-    console.log('Adding event listeners to payment methods');
     paymentMethods.forEach(method => {
-        console.log('Adding listener to:', method.value);
         // Use change event - this fires when radio is actually selected
         method.addEventListener('change', function(e) {
-            console.log('Change event fired for:', this.value);
             e.stopPropagation();
             handlePaymentMethodChange(this.value);
         });
@@ -295,14 +268,11 @@ function initPaymentMethods() {
     
     // Add click listeners to the label cards for better UX
     const paymentMethodOptions = document.querySelectorAll('.payment-method-option');
-    console.log('Found payment method options (labels):', paymentMethodOptions.length);
     paymentMethodOptions.forEach(option => {
         option.addEventListener('click', function(e) {
-            console.log('Label clicked');
             // Find the radio input within this label
             const radio = this.querySelector('input[type="radio"]');
             if (radio) {
-                console.log('Radio found, value:', radio.value);
                 // Always check the radio first
                 radio.checked = true;
                 // Immediately call handler - don't wait for change event
@@ -310,8 +280,6 @@ function initPaymentMethods() {
                 // Also trigger change event for consistency
                 const changeEvent = new Event('change', { bubbles: true });
                 radio.dispatchEvent(changeEvent);
-            } else {
-                console.log('No radio found in label');
             }
         });
     });

@@ -1192,11 +1192,12 @@ body {
     height: auto;
     width: 400px;
     max-width: 90%;
+    /* Invert to white, then use blend mode to remove black background */
     filter: invert(1) brightness(1);
     background: transparent;
-    mix-blend-mode: screen;
-    /* Remove black background - keep only QR code and text */
-    image-rendering: -webkit-optimize-contrast;
+    mix-blend-mode: lighten;
+    /* Alternative: use difference blend mode for better black removal */
+    isolation: isolate;
 }
 
 .bitcoin-address-wrapper {
@@ -1265,11 +1266,12 @@ body {
     height: auto;
     width: 400px;
     max-width: 90%;
+    /* Invert to white, then use blend mode to remove black background */
     filter: invert(1) brightness(1);
     background: transparent;
-    mix-blend-mode: screen;
-    /* Remove black background - keep only QR code and text */
-    image-rendering: -webkit-optimize-contrast;
+    mix-blend-mode: lighten;
+    /* Alternative: use difference blend mode for better black removal */
+    isolation: isolate;
 }
 
 .ethereum-address-wrapper {

@@ -573,6 +573,70 @@ body {
     color: var(--text-grey-light);
 }
 
+/* Why Choose Marapone Section */
+.why-choose-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.why-choose-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.why-choose-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 15px 40px rgba(77, 166, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.why-choose-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-dark) 100%);
+    border-radius: 50%;
+    font-size: 2rem;
+    color: var(--text-white);
+    box-shadow: 0 5px 20px rgba(77, 166, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.why-choose-item:hover .why-choose-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 30px rgba(77, 166, 255, 0.5);
+}
+
+.why-choose-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-white);
+    letter-spacing: 1px;
+}
+
+.why-choose-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-grey-light);
+}
+
 /* Copyright Footer */
 .copyright-footer {
     margin-top: 120px;

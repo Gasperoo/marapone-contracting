@@ -2,7 +2,13 @@
 const TAX_RATE = 0.13; // 13% HST for Ontario
 
 // Load cart from localStorage or use empty array
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+// Check if cart is already declared (from script.js) to avoid duplicate variable error
+if (typeof cart === 'undefined') {
+    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+} else {
+    // Update cart from localStorage if it exists
+    cart = JSON.parse(localStorage.getItem('cart')) || cart;
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize checkout page

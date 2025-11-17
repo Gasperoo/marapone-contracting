@@ -4,24 +4,21 @@
 
 console.log('checkout.js script loaded');
 
-// Load cart from localStorage or use empty array
-// Check if cart is already declared (from script.js) to avoid duplicate variable error
-// Use window.cart to access the global cart variable
-if (typeof window.cart === 'undefined' && typeof cart === 'undefined') {
+// Don't declare cart here - it's already declared in script.js
+// Just ensure it's loaded from localStorage if script.js hasn't done it yet
+// Access cart via window or the global scope
+if (typeof cart === 'undefined') {
+    // If cart doesn't exist (script.js didn't load), create it on window
     window.cart = JSON.parse(localStorage.getItem('cart')) || [];
-} else if (typeof cart !== 'undefined') {
-    // Cart already exists from script.js, just update from localStorage
-    window.cart = cart;
-    window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart;
 } else {
-    // Use existing window.cart
-    window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart;
+    // Cart exists from script.js, update from localStorage
+    cart = JSON.parse(localStorage.getItem('cart')) || cart;
 }
 
-// Create local reference to avoid typing window.cart everywhere
-const cart = window.cart;
+// Use the cart variable (either from script.js or window)
+const currentCart = typeof cart !== 'undefined' ? cart : window.cart;
 
-console.log('Cart loaded, length:', cart.length);
+console.log('Cart loaded, length:', currentCart ? currentCart.length : 0);
 
 // Try both DOMContentLoaded and immediate execution
 function initializeCheckout() {
@@ -87,10 +84,13 @@ function displayOrderSummary() {
     
     if (!orderItems) return;
     
+    // Get cart from global scope
+    const currentCart = typeof cart !== 'undefined' ? cart : (window.cart || []);
+    
     // Clear existing items
     orderItems.innerHTML = '';
     
-    if (cart.length === 0) {
+    if (currentCart.length === 0) {
         orderItems.innerHTML = '<div class="empty-cart-message">Your cart is empty. <a href="index.html">Continue shopping</a></div>';
         if (orderSubtotal) orderSubtotal.textContent = '$0.00';
         if (orderTax) orderTax.textContent = '$0.00';
@@ -100,7 +100,8 @@ function displayOrderSummary() {
     
     // Calculate totals
     let subtotal = 0;
-    cart.forEach(item => {
+    const currentCart = typeof cart !== 'undefined' ? cart : (window.cart || []);
+    currentCart.forEach(item => {
         subtotal += item.price * item.quantity;
     });
     
@@ -349,7 +350,8 @@ function initFormValidation() {
     submitButton.addEventListener('click', function(e) {
         e.preventDefault();
         
-        if (cart.length === 0) {
+        const currentCart = typeof cart !== 'undefined' ? cart : (window.cart || []);
+        if (currentCart.length === 0) {
             alert('Your cart is empty. Please add items before checkout.');
             return;
         }
@@ -557,8 +559,12 @@ function processPayment(paymentMethod) {
         // In production, this would make an API call to your payment processor
         alert(`Payment processed successfully using ${paymentMethod.toUpperCase()}!\n\nThank you for your order.`);
         
-        // Clear cart
-        cart = [];
+        // Clear cart (use the cart from script.js)
+        if (typeof cart !== 'undefined') {
+            cart.length = 0;
+        } else if (window.cart) {
+            window.cart.length = 0;
+        }
         localStorage.removeItem('cart');
         
         // Redirect to success page or home

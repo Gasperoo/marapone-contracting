@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const daysInPrevMonth = new Date(year, month, 0).getDate();
         const today = new Date();
         const minDate = new Date(2025, 10, 1);
         const maxDate = new Date(2026, 10, 30);
@@ -110,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         calendarContainer.innerHTML = '';
 
         // Day headers
-        const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const dayHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
         dayHeaders.forEach(day => {
             const dayHeader = document.createElement('div');
             dayHeader.className = 'calendar-day-header';
@@ -118,19 +119,26 @@ document.addEventListener('DOMContentLoaded', function() {
             calendarContainer.appendChild(dayHeader);
         });
 
-        // Empty cells for days before month starts
-        for (let i = 0; i < firstDay; i++) {
-            const emptyCell = document.createElement('div');
-            emptyCell.className = 'calendar-day empty';
-            calendarContainer.appendChild(emptyCell);
+        // Previous month's trailing dates
+        for (let i = firstDay - 1; i >= 0; i--) {
+            const day = daysInPrevMonth - i;
+            const prevMonthCell = document.createElement('div');
+            prevMonthCell.className = 'calendar-day prev-month';
+            prevMonthCell.textContent = day;
+            calendarContainer.appendChild(prevMonthCell);
         }
 
-        // Days of the month
+        // Days of the current month
         for (let day = 1; day <= daysInMonth; day++) {
             const date = new Date(year, month, day);
             const dayCell = document.createElement('div');
             dayCell.className = 'calendar-day';
             dayCell.textContent = day;
+
+            // Check if date is today
+            if (date.toDateString() === today.toDateString()) {
+                dayCell.classList.add('today');
+            }
 
             // Disable dates outside range or in the past
             if (date < minDate || date > maxDate || (date < today && date.toDateString() !== today.toDateString())) {
@@ -149,6 +157,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             calendarContainer.appendChild(dayCell);
+        }
+
+        // Next month's leading dates
+        const totalCells = 42; // 6 rows × 7 days
+        const cellsUsed = firstDay + daysInMonth;
+        const remainingCells = totalCells - cellsUsed;
+        
+        for (let day = 1; day <= remainingCells && day <= 6; day++) {
+            const nextMonthCell = document.createElement('div');
+            nextMonthCell.className = 'calendar-day next-month';
+            nextMonthCell.textContent = day;
+            calendarContainer.appendChild(nextMonthCell);
         }
     }
 

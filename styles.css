@@ -1703,11 +1703,25 @@ body {
 }
 
 /* Booking Section */
+.booking-section-wrapper {
+    width: 100%;
+    margin-top: 80px;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .booking-section {
     text-align: center;
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.booking-intro {
+    font-size: 1.1rem;
+    color: var(--text-grey);
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
 
 .book-now-button {
@@ -1831,24 +1845,36 @@ body {
 }
 
 .calendar-month-year {
-    color: var(--text-white);
-    font-size: 1.2rem;
-    font-weight: 600;
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(77, 166, 255, 0.3);
 }
 
 .calendar-container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
+    gap: 2px;
     margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    backdrop-filter: blur(10px);
 }
 
 .calendar-day-header {
     text-align: center;
-    color: var(--text-grey);
-    font-weight: 600;
-    padding: 10px;
+    color: var(--text-white);
+    font-weight: 700;
+    padding: 12px 8px;
     font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 5px;
 }
 
 .calendar-day {
@@ -1856,36 +1882,61 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    border-radius: 6px;
     color: var(--text-white);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    min-height: 40px;
 }
 
-.calendar-day:hover:not(.disabled):not(.empty) {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--accent-blue);
+.calendar-day:hover:not(.disabled):not(.prev-month):not(.next-month) {
+    background: rgba(77, 166, 255, 0.15);
+    border-color: rgba(77, 166, 255, 0.3);
+    transform: scale(1.05);
 }
 
 .calendar-day.selected {
-    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-dark) 100%);
+    background: var(--accent-blue);
     border-color: var(--accent-blue);
     color: var(--text-white);
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(77, 166, 255, 0.5);
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.calendar-day.today {
+    border: 2px solid var(--accent-blue);
     font-weight: 600;
 }
 
-.calendar-day.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
+.calendar-day.today.selected {
+    border-color: var(--accent-blue);
 }
 
-.calendar-day.empty {
-    background: transparent;
-    border: none;
+.calendar-day.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.calendar-day.prev-month,
+.calendar-day.next-month {
+    color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.01);
     cursor: default;
+    opacity: 0.5;
+}
+
+.calendar-day.prev-month:hover,
+.calendar-day.next-month:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.01);
 }
 
 /* Appointment Types */

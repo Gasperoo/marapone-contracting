@@ -2,6 +2,8 @@
 // TAX_RATE is already declared in script.js, so we don't redeclare it here
 // If script.js isn't loaded, we'll use the value directly: 0.13
 
+console.log('checkout.js script loaded');
+
 // Load cart from localStorage or use empty array
 // Check if cart is already declared (from script.js) to avoid duplicate variable error
 if (typeof cart === 'undefined') {
@@ -11,13 +13,45 @@ if (typeof cart === 'undefined') {
     cart = JSON.parse(localStorage.getItem('cart')) || cart;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Checkout page DOMContentLoaded fired');
+console.log('Cart loaded, length:', cart.length);
+
+// Try both DOMContentLoaded and immediate execution
+function initializeCheckout() {
+    console.log('initializeCheckout called');
+    console.log('Document ready state:', document.readyState);
+    
     // Initialize checkout page
-    initCheckoutPage();
-    initPaymentMethods();
-    initFormValidation();
-});
+    if (typeof initCheckoutPage === 'function') {
+        initCheckoutPage();
+    } else {
+        console.error('initCheckoutPage function not found');
+    }
+    
+    // Initialize payment methods
+    if (typeof initPaymentMethods === 'function') {
+        initPaymentMethods();
+    } else {
+        console.error('initPaymentMethods function not found');
+    }
+    
+    // Initialize form validation
+    if (typeof initFormValidation === 'function') {
+        initFormValidation();
+    } else {
+        console.error('initFormValidation function not found');
+    }
+}
+
+// Run immediately if DOM is already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Checkout page DOMContentLoaded fired');
+        initializeCheckout();
+    });
+} else {
+    console.log('DOM already loaded, initializing immediately');
+    initializeCheckout();
+}
 
 // Initialize checkout page
 function initCheckoutPage() {

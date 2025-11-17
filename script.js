@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initCartDropdown();
     
     // Load cart from localStorage if available
-    cart = JSON.parse(localStorage.getItem('cart')) || [];
+    window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart || [];
+    // Update local reference
+    cart = window.cart;
     
     // For testing: Add sample items to cart (remove this in production)
     // Uncomment the lines below to test with sample data

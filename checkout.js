@@ -8,14 +8,15 @@ console.log('checkout.js script loaded');
 // Just ensure it's loaded from localStorage if script.js hasn't done it yet
 // We'll access cart through the global scope without declaring it
 // Wait for script.js to load first, then update cart from localStorage
+// Update cart from localStorage (cart is managed by script.js via window.cart)
 setTimeout(function() {
     try {
-        // Access cart from global scope (declared in script.js)
-        if (typeof cart !== 'undefined') {
-            cart = JSON.parse(localStorage.getItem('cart')) || cart;
-            console.log('Cart loaded from script.js, length:', cart.length);
+        // Always use window.cart to avoid conflicts
+        if (window.cart) {
+            window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart;
+            console.log('Cart loaded from localStorage, length:', window.cart.length);
         } else {
-            // Fallback: use window.cart if script.js didn't load
+            // Fallback: create window.cart if script.js didn't load
             window.cart = JSON.parse(localStorage.getItem('cart')) || [];
             console.log('Cart created on window, length:', window.cart.length);
         }
@@ -80,8 +81,9 @@ function initCheckoutPage() {
 }
 
 // Helper function to get cart from global scope
+// Always use window.cart to avoid any variable conflicts
 function getCart() {
-    return typeof cart !== 'undefined' ? cart : (window.cart || []);
+    return window.cart || [];
 }
 
 // Display order summary
@@ -567,10 +569,8 @@ function processPayment(paymentMethod) {
         // In production, this would make an API call to your payment processor
         alert(`Payment processed successfully using ${paymentMethod.toUpperCase()}!\n\nThank you for your order.`);
         
-        // Clear cart (use the cart from script.js)
-        if (typeof cart !== 'undefined') {
-            cart.length = 0;
-        } else if (window.cart) {
+        // Clear cart (always use window.cart)
+        if (window.cart) {
             window.cart.length = 0;
         }
         localStorage.removeItem('cart');

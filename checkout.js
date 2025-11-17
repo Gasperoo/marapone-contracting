@@ -1,8 +1,6 @@
 // Checkout page functionality
-// Check if TAX_RATE is already declared (from script.js) to avoid duplicate variable error
-if (typeof TAX_RATE === 'undefined') {
-    const TAX_RATE = 0.13; // 13% HST for Ontario
-}
+// TAX_RATE is already declared in script.js, so we don't redeclare it here
+// If script.js isn't loaded, we'll use the value directly: 0.13
 
 // Load cart from localStorage or use empty array
 // Check if cart is already declared (from script.js) to avoid duplicate variable error

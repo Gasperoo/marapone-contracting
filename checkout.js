@@ -97,6 +97,9 @@ function initPaymentMethods() {
     // Function to handle payment method change
     function handlePaymentMethodChange(value) {
         console.log('Payment method changed to:', value); // Debug log
+        console.log('Credit card form element:', creditCardForm);
+        console.log('Bitcoin QR form element:', bitcoinQrForm);
+        console.log('Ethereum QR form element:', ethereumQrForm);
         
         // Force immediate hide of all forms first using !important via style
         if (creditCardForm) {
@@ -236,15 +239,14 @@ function initPaymentMethods() {
         option.addEventListener('click', function(e) {
             // Find the radio input within this label
             const radio = this.querySelector('input[type="radio"]');
-            if (radio && !radio.checked) {
-                // Check the radio and trigger change event
+            if (radio) {
+                // Always check the radio first
                 radio.checked = true;
-                // Trigger change event to ensure handler is called
+                // Immediately call handler - don't wait for change event
+                handlePaymentMethodChange(radio.value);
+                // Also trigger change event for consistency
                 const changeEvent = new Event('change', { bubbles: true });
                 radio.dispatchEvent(changeEvent);
-            } else if (radio && radio.checked) {
-                // If already checked, still call handler to ensure form shows
-                handlePaymentMethodChange(radio.value);
             }
         });
     });

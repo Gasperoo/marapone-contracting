@@ -6,12 +6,20 @@ console.log('checkout.js script loaded');
 
 // Load cart from localStorage or use empty array
 // Check if cart is already declared (from script.js) to avoid duplicate variable error
-if (typeof cart === 'undefined') {
-    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+// Use window.cart to access the global cart variable
+if (typeof window.cart === 'undefined' && typeof cart === 'undefined') {
+    window.cart = JSON.parse(localStorage.getItem('cart')) || [];
+} else if (typeof cart !== 'undefined') {
+    // Cart already exists from script.js, just update from localStorage
+    window.cart = cart;
+    window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart;
 } else {
-    // Update cart from localStorage if it exists
-    cart = JSON.parse(localStorage.getItem('cart')) || cart;
+    // Use existing window.cart
+    window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart;
 }
+
+// Create local reference to avoid typing window.cart everywhere
+const cart = window.cart;
 
 console.log('Cart loaded, length:', cart.length);
 

@@ -4,7 +4,12 @@ let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true' || false;
 
 // Cart management
 const TAX_RATE = 0.13; // 13% HST for Ontario
-let cart = []; // Cart items array
+// Use window.cart to make it globally accessible to other scripts
+if (typeof window.cart === 'undefined') {
+    window.cart = []; // Cart items array
+}
+// Create local reference for convenience
+const cart = window.cart;
 // Example cart structure: [{ id: 1, name: 'Item Name', price: 99.99, quantity: 2 }, ...]
 // You can load cart from localStorage: cart = JSON.parse(localStorage.getItem('cart')) || [];
 

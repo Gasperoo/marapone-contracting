@@ -484,7 +484,7 @@ function validateBillingForm() {
     }
     
     if (!billingProvince || !billingProvince.value.trim()) {
-        alert('Please enter your province.');
+        alert('Please enter your province/state.');
         billingProvince?.focus();
         return false;
     }

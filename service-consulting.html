@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulting Services - Marapone Contracting Inc.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="top-header">
+        <div class="header-left">
+            <a href="index.html" class="icon-button home-logo-button" aria-label="Home">
+                <img src="logo.png" alt="Marapone Contracting Inc." class="home-logo-icon">
+            </a>
+        </div>
+        <div class="header-icons">
+            <a href="contact.html" class="icon-button" aria-label="Contact Us">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="products.html" class="icon-button" aria-label="Products">
+                <i class="fas fa-box"></i>
+            </a>
+            <div class="cart-dropdown-container">
+                <button class="icon-button" id="cart-icon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+                <div class="cart-dropdown" id="cart-dropdown">
+                    <a href="#" class="dropdown-item" id="view-cart-item">View cart</a>
+                    <a href="#" class="dropdown-item" id="checkout-item">Checkout now</a>
+                </div>
+                <div class="cart-details" id="cart-details">
+                    <div class="cart-details-header">
+                        <h3>Your Cart</h3>
+                        <button class="close-cart-details" id="close-cart-details" aria-label="Close cart">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="cart-items-list" id="cart-items-list"></div>
+                    <div class="cart-summary">
+                        <div class="cart-summary-row">
+                            <span>Subtotal:</span>
+                            <span id="cart-subtotal">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span>Tax (HST 13%):</span>
+                            <span id="cart-tax">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row cart-total">
+                            <span>Total:</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="account-dropdown-container">
+                <button class="icon-button" id="account-icon" aria-label="Account">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="account-dropdown" id="account-dropdown">
+                    <a href="#" class="dropdown-item" id="login-item">Log in</a>
+                    <a href="#" class="dropdown-item" id="logout-item" style="display: none;">Log out</a>
+                    <a href="#" class="dropdown-item" id="manage-account-item">Manage account</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container service-detail-container">
+        <div class="service-detail-wrapper">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Services
+            </a>
+            
+            <div class="service-detail-header">
+                <div class="service-detail-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h1 class="service-detail-title">Consulting Services</h1>
+            </div>
+
+            <div class="service-detail-content">
+                <div class="service-detail-image">
+                    <i class="fas fa-chart-line service-image-icon"></i>
+                </div>
+
+                <div class="service-detail-text">
+                    <h2>Expert Business Consulting</h2>
+                    <p>At Marapone Contracting, we provide comprehensive business consulting services designed to help your organization make informed decisions, optimize operations, and achieve sustainable growth. Our team of experienced consultants brings decades of combined expertise across various industries.</p>
+
+                    <h3>What We Offer</h3>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Strategic planning and business analysis</li>
+                        <li><i class="fas fa-check-circle"></i> Market research and competitive analysis</li>
+                        <li><i class="fas fa-check-circle"></i> Financial planning and budgeting consultation</li>
+                        <li><i class="fas fa-check-circle"></i> Operational efficiency optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Risk assessment and management strategies</li>
+                        <li><i class="fas fa-check-circle"></i> Technology integration and digital transformation</li>
+                        <li><i class="fas fa-check-circle"></i> Change management and organizational development</li>
+                        <li><i class="fas fa-check-circle"></i> Performance metrics and KPI development</li>
+                    </ul>
+
+                    <h3>Our Approach</h3>
+                    <p>We believe in a collaborative approach to consulting. Our process begins with a thorough understanding of your business, challenges, and goals. We then develop customized solutions that align with your vision and deliver measurable results.</p>
+
+                    <h3>Why Choose Us</h3>
+                    <p>With a proven track record of helping businesses across various sectors, we combine analytical rigor with practical insights. Our consultants work closely with your team to ensure knowledge transfer and sustainable implementation of recommended strategies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

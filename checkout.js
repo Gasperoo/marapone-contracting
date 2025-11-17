@@ -6,19 +6,23 @@ console.log('checkout.js script loaded');
 
 // Don't declare cart here - it's already declared in script.js
 // Just ensure it's loaded from localStorage if script.js hasn't done it yet
-// Access cart via window or the global scope
-if (typeof cart === 'undefined') {
-    // If cart doesn't exist (script.js didn't load), create it on window
-    window.cart = JSON.parse(localStorage.getItem('cart')) || [];
-} else {
-    // Cart exists from script.js, update from localStorage
-    cart = JSON.parse(localStorage.getItem('cart')) || cart;
-}
-
-// Use the cart variable (either from script.js or window)
-const currentCart = typeof cart !== 'undefined' ? cart : window.cart;
-
-console.log('Cart loaded, length:', currentCart ? currentCart.length : 0);
+// We'll access cart through the global scope without declaring it
+// Wait for script.js to load first, then update cart from localStorage
+setTimeout(function() {
+    try {
+        // Access cart from global scope (declared in script.js)
+        if (typeof cart !== 'undefined') {
+            cart = JSON.parse(localStorage.getItem('cart')) || cart;
+            console.log('Cart loaded from script.js, length:', cart.length);
+        } else {
+            // Fallback: use window.cart if script.js didn't load
+            window.cart = JSON.parse(localStorage.getItem('cart')) || [];
+            console.log('Cart created on window, length:', window.cart.length);
+        }
+    } catch (e) {
+        console.error('Error loading cart:', e);
+    }
+}, 0);
 
 // Try both DOMContentLoaded and immediate execution
 function initializeCheckout() {

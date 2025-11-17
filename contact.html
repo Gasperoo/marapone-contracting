@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Marapone Contracting Inc.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header with Cart and Account Icons -->
+    <header class="top-header">
+        <div class="header-left">
+            <a href="index.html" class="icon-button home-logo-button" aria-label="Home">
+                <img src="logo.png" alt="Marapone Contracting Inc." class="home-logo-icon">
+            </a>
+        </div>
+        <div class="header-icons">
+            <a href="contact.html" class="icon-button" aria-label="Contact Us">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="products.html" class="icon-button" aria-label="Products">
+                <i class="fas fa-box"></i>
+            </a>
+            <div class="cart-dropdown-container">
+                <button class="icon-button" id="cart-icon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+                <div class="cart-dropdown" id="cart-dropdown">
+                    <a href="#" class="dropdown-item" id="view-cart-item">View cart</a>
+                    <a href="#" class="dropdown-item" id="checkout-item">Checkout now</a>
+                </div>
+                <div class="cart-details" id="cart-details">
+                    <div class="cart-details-header">
+                        <h3>Your Cart</h3>
+                        <button class="close-cart-details" id="close-cart-details" aria-label="Close cart">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="cart-items-list" id="cart-items-list">
+                        <!-- Cart items will be dynamically inserted here -->
+                    </div>
+                    <div class="cart-summary">
+                        <div class="cart-summary-row">
+                            <span>Subtotal:</span>
+                            <span id="cart-subtotal">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span>Tax (HST 13%):</span>
+                            <span id="cart-tax">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row cart-total">
+                            <span>Total:</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="account-dropdown-container">
+                <button class="icon-button" id="account-icon" aria-label="Account">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="account-dropdown" id="account-dropdown">
+                    <a href="#" class="dropdown-item" id="login-item">Log in</a>
+                    <a href="#" class="dropdown-item" id="logout-item" style="display: none;">Log out</a>
+                    <a href="#" class="dropdown-item" id="manage-account-item">Manage account</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container contact-container">
+        <div class="contact-wrapper">
+            <!-- Contact Header -->
+            <div class="contact-header">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <h1 class="contact-title">Contact Us</h1>
+            </div>
+
+            <div class="contact-content">
+                <p class="contact-intro">Have a question or want to get in touch? Fill out the form below and we'll get back to you as soon as possible.</p>
+                
+                <!-- Contact Form -->
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Name *</label>
+                        <input type="text" id="contact-name" name="contact-name" placeholder="Your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-email">Email *</label>
+                        <input type="email" id="contact-email" name="contact-email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-message">Message *</label>
+                        <textarea id="contact-message" name="contact-message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="contact-submit-button">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>
+

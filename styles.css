@@ -1801,6 +1801,111 @@ body {
     max-width: 1200px;
 }
 
+/* Products Welcome Popup */
+.products-welcome-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.products-welcome-popup-content {
+    background: rgba(10, 14, 26, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    min-width: 400px;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.products-welcome-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.products-welcome-popup-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.close-products-popup {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-white);
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    opacity: 1;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.close-products-popup:hover {
+    color: var(--accent-blue);
+    transform: scale(1.15);
+    background: rgba(77, 166, 255, 0.2);
+    border-color: var(--accent-blue);
+    opacity: 1;
+}
+
+.close-products-popup i {
+    display: block !important;
+    line-height: 1;
+}
+
+.products-welcome-popup-body {
+    padding: 25px;
+    color: var(--text-white);
+    line-height: 1.6;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.products-welcome-popup-body p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-grey-light);
+}
+
 /* Product Category Section */
 .product-category-section {
     margin-bottom: 50px;

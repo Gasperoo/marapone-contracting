@@ -189,9 +189,47 @@ document.addEventListener('DOMContentLoaded', function() {
         window.cart = JSON.parse(savedCart);
     }
     
+    // Initialize welcome popup
+    initWelcomePopup();
+    
     // Render products
     renderProducts();
 });
+
+// Initialize welcome popup
+function initWelcomePopup() {
+    const welcomePopup = document.getElementById('products-welcome-popup');
+    const closePopupBtn = document.getElementById('close-products-popup');
+    
+    if (!welcomePopup || !closePopupBtn) return;
+    
+    // Check if user has seen the popup before
+    const hasSeenPopup = sessionStorage.getItem('products-welcome-seen');
+    
+    if (!hasSeenPopup) {
+        // Show popup after a short delay
+        setTimeout(function() {
+            welcomePopup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }, 500);
+    }
+    
+    // Close button
+    closePopupBtn.addEventListener('click', function() {
+        welcomePopup.style.display = 'none';
+        document.body.style.overflow = '';
+        sessionStorage.setItem('products-welcome-seen', 'true');
+    });
+    
+    // Close when clicking outside
+    welcomePopup.addEventListener('click', function(e) {
+        if (e.target === welcomePopup) {
+            welcomePopup.style.display = 'none';
+            document.body.style.overflow = '';
+            sessionStorage.setItem('products-welcome-seen', 'true');
+        }
+    });
+}
 
 // Render all products by category
 function renderProducts() {

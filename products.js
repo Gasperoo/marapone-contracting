@@ -8,33 +8,38 @@ const productsData = {
                 id: 'dp-001',
                 name: 'Import/Export Starter Kit',
                 description: 'Everything you need to start importing or exporting profitably in 2025. Includes: 150-page country-specific guide (choose your market at checkout), HS code lookup tool + tariff calculator, 50+ editable customs documents & contracts, verified supplier shortlist (updated monthly). Instant download after payment. Price: $297',
-                price: 297
+                price: 297,
+                icon: 'fa-box-open'
             },
             {
                 id: 'dp-002',
                 name: 'Landed Cost Calculator Pro',
                 description: 'Never overpay on freight or duties again. Excel + Google Sheets tool that instantly calculates your true landed cost for any shipping route. Works with sea, air, rail, and express. One-time purchase. Price: $99',
-                price: 99
+                price: 99,
+                icon: 'fa-calculator'
             },
             {
                 id: 'dp-003',
                 name: 'AI Product Description Writer',
                 description: 'Generate 100% original, SEO-optimized listings in seconds. Works for Amazon, Shopify, Etsy, Walmart, eBay. Cancel anytime. Monthly subscription. Price: $79/month',
                 price: 79,
-                recurring: 'monthly'
+                recurring: 'monthly',
+                icon: 'fa-robot'
             },
             {
                 id: 'dp-004',
                 name: 'Done-For-You Amazon / Etsy Listing Pack',
                 description: '7–15 fully optimized listings delivered in 5 business days. Includes keyword research, competitor-proof titles, bullet points, A+ Content (Amazon), and backend search terms. Price: From $449',
                 price: 449,
-                note: 'From'
+                note: 'From',
+                icon: 'fa-list-alt'
             },
             {
                 id: 'dp-005',
                 name: 'E-commerce Launch Checklist & Templates',
                 description: 'The exact 90-day roadmap we use with 7-figure stores + plug-and-play Shopify theme + email sequence templates. Price: $97',
-                price: 97
+                price: 97,
+                icon: 'fa-clipboard-check'
             }
         ]
     },
@@ -46,72 +51,83 @@ const productsData = {
                 id: 'sp-001',
                 name: '60-Minute Export Readiness Audit',
                 description: 'We review your product, pricing, and target markets live on Zoom and give you a step-by-step export plan + instant savings opportunities. Price: $295',
-                price: 295
+                price: 295,
+                icon: 'fa-search-dollar'
             },
             {
                 id: 'sp-002',
                 name: 'Freight Rate Audit – Guaranteed Savings',
                 description: 'Send us your last 10 invoices. We\'ll find 10–30% savings or the audit is free. Price: $450',
-                price: 450
+                price: 450,
+                icon: 'fa-file-invoice-dollar'
             },
             {
                 id: 'sp-003',
                 name: 'China Virtual Sourcing Trip',
                 description: '5 days. 10 vetted factories. Video calls. Samples shipped to you. Price negotiations handled. Zero travel required. Price: $1,950',
-                price: 1950
+                price: 1950,
+                icon: 'fa-globe-asia'
             },
             {
                 id: 'sp-004',
                 name: 'AI Quick-Win Automation',
                 description: 'Pick one: lead qualification bot, dynamic pricing engine, inventory forecasting, customer support chatbot, or custom idea. Built and handed over in 10 days. Price: $3,500',
-                price: 3500
+                price: 3500,
+                icon: 'fa-magic'
             },
             {
                 id: 'sp-005',
                 name: 'Google + Meta Ads Launch Package',
                 description: 'Full campaign setup and 7 days of management included. We get you profitable fast or we keep optimizing for free until you are. Price: $1,500 + your ad spend',
                 price: 1500,
-                note: '+ your ad spend'
+                note: '+ your ad spend',
+                icon: 'fa-bullhorn'
             },
             {
                 id: 'sp-006',
                 name: 'Amazon FBA Full Launch',
                 description: 'Product validation → China sourcing → freight → listings → PPC → review strategy. We take you from zero to first sale. Price: From $9,500',
                 price: 9500,
-                note: 'From'
+                note: 'From',
+                icon: 'fa-rocket'
             },
             {
                 id: 'sp-007',
                 name: 'Custom Shopify or WooCommerce Store - Starter',
                 description: 'Built in 14–21 days. Mobile-perfect, conversion-optimized, ready to scale. Starter package. Price: $3,500',
-                price: 3500
+                price: 3500,
+                icon: 'fa-store'
             },
             {
                 id: 'sp-008',
                 name: 'Custom Shopify or WooCommerce Store - Pro',
                 description: 'Built in 14–21 days. Mobile-perfect, conversion-optimized, ready to scale. Pro package. Price: $8,500',
-                price: 8500
+                price: 8500,
+                icon: 'fa-store'
             },
             {
                 id: 'sp-009',
                 name: 'Custom Shopify or WooCommerce Store - Enterprise',
                 description: 'Built in 14–21 days. Mobile-perfect, conversion-optimized, ready to scale. Enterprise package. Price: $15,000+',
                 price: 15000,
-                note: '+'
+                note: '+',
+                icon: 'fa-store'
             },
             {
                 id: 'sp-010',
                 name: 'White-Label Logistics Dashboard',
                 description: 'Give your clients a beautiful, branded portal to track every shipment in real time. Makes you look like a big player overnight. Monthly subscription. Price: $499/month',
                 price: 499,
-                recurring: 'monthly'
+                recurring: 'monthly',
+                icon: 'fa-tachometer-alt'
             },
             {
                 id: 'sp-011',
                 name: 'Lead Machine – Booked Sales Calls',
                 description: 'We fill your calendar with 10–20 pre-qualified calls every month using LinkedIn + cold email + paid ads. Price: $5,000 setup + 20% of revenue',
                 price: 5000,
-                note: '+ 20% of revenue'
+                note: '+ 20% of revenue',
+                icon: 'fa-phone-volume'
             }
         ]
     },
@@ -123,25 +139,29 @@ const productsData = {
                 id: 'fd-001',
                 name: '2025 Global Tariffs & Duties Cheat Sheet',
                 description: 'Free PDF download with essential tariff and duty information for international trade. Price: FREE',
-                price: 0
+                price: 0,
+                icon: 'fa-file-pdf'
             },
             {
                 id: 'fd-002',
                 name: 'Top 20 Reliable Chinese Factories That Accept Small Orders',
                 description: 'Free verified list of Chinese factories that work with small order quantities. Price: FREE',
-                price: 0
+                price: 0,
+                icon: 'fa-industry'
             },
             {
                 id: 'fd-003',
                 name: '100 Proven E-commerce Product Ideas for 2025',
                 description: 'Free curated list of proven e-commerce product ideas for 2025. Price: FREE',
-                price: 0
+                price: 0,
+                icon: 'fa-lightbulb'
             },
             {
                 id: 'fd-004',
                 name: 'Full Supplier Database with MOQs, Pricing History, and Direct Contacts',
                 description: 'Upgrade to the full supplier database with MOQs, pricing history, and direct contacts. Price: $197',
-                price: 197
+                price: 197,
+                icon: 'fa-database'
             }
         ]
     }
@@ -221,8 +241,13 @@ function createProductCard(product) {
                         (product.note ? `${product.note} $${product.price.toFixed(2)}` : 
                         `$${product.price.toFixed(2)}${product.recurring ? '/' + product.recurring : ''}`);
     
+    const productIcon = product.icon || 'fa-box';
+    
     card.innerHTML = `
         <div class="product-card-content">
+            <div class="product-icon">
+                <i class="fas ${productIcon}"></i>
+            </div>
             <h3 class="product-card-title">${product.name}</h3>
             <p class="product-card-description">${product.description}</p>
             <div class="product-card-footer">

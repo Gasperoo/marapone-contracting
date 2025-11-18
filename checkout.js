@@ -200,6 +200,9 @@ function initPaymentMethods() {
                     field.setAttribute('required', 'required');
                 });
             }
+            // Show submit button for card payments
+            showSubmitButton();
+            resetSubmitButton();
         } else if (value === 'paypal') {
             if (paypalForm) {
                 paypalForm.removeAttribute('data-hidden');
@@ -210,16 +213,20 @@ function initPaymentMethods() {
                     field.setAttribute('required', 'required');
                 });
             }
-            // Show billing section for PayPal
+            // Hide billing section for PayPal - no billing info needed
             if (billingSection) {
-                billingSection.removeAttribute('data-hidden');
-                billingSection.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important; margin-top: 30px !important; padding-top: 30px !important; border-top: 1px solid rgba(255, 255, 255, 0.1) !important;';
+                billingSection.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: none !important;';
+                billingSection.setAttribute('data-hidden', 'true');
                 const billingFields = billingSection.querySelectorAll('input');
                 billingFields.forEach(field => {
-                    field.disabled = false;
-                    field.setAttribute('required', 'required');
+                    field.removeAttribute('required');
+                    field.disabled = true;
+                    field.value = '';
                 });
             }
+            // Show and update submit button to PayPal button
+            showSubmitButton();
+            updatePayPalButton();
         } else if (value === 'bitcoin') {
             // For Bitcoin, show only QR code
             if (creditCardForm) {
@@ -237,6 +244,8 @@ function initPaymentMethods() {
                 bitcoinQrForm.removeAttribute('data-hidden');
                 bitcoinQrForm.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important; margin-bottom: 30px !important;';
             }
+            // Hide submit button for Bitcoin
+            hideSubmitButton();
         } else if (value === 'ethereum') {
             // For Ethereum, show only QR code
             if (creditCardForm) {
@@ -254,6 +263,46 @@ function initPaymentMethods() {
                 ethereumQrForm.removeAttribute('data-hidden');
                 ethereumQrForm.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important; margin-bottom: 30px !important;';
             }
+            // Hide submit button for Ethereum
+            hideSubmitButton();
+        }
+    }
+    
+    // Function to update submit button to PayPal button
+    function updatePayPalButton() {
+        const submitButton = document.getElementById('submit-payment');
+        if (submitButton) {
+            submitButton.className = 'checkout-button paypal-button';
+            submitButton.innerHTML = '<i class="fab fa-paypal"></i> Complete Payment with PayPal';
+            submitButton.setAttribute('data-paypal', 'true');
+        }
+    }
+    
+    // Function to reset submit button to default
+    function resetSubmitButton() {
+        const submitButton = document.getElementById('submit-payment');
+        if (submitButton) {
+            submitButton.className = 'checkout-button';
+            submitButton.innerHTML = '<i class="fas fa-lock"></i> Complete Payment';
+            submitButton.removeAttribute('data-paypal');
+            // Show the button
+            submitButton.style.display = 'flex';
+        }
+    }
+    
+    // Function to hide submit button (for crypto payments)
+    function hideSubmitButton() {
+        const submitButton = document.getElementById('submit-payment');
+        if (submitButton) {
+            submitButton.style.display = 'none';
+        }
+    }
+    
+    // Function to show submit button
+    function showSubmitButton() {
+        const submitButton = document.getElementById('submit-payment');
+        if (submitButton) {
+            submitButton.style.display = 'flex';
         }
     }
     
@@ -354,17 +403,21 @@ function initFormValidation() {
             }
         } else if (paymentMethod === 'paypal') {
             isValid = validatePayPalForm();
-            // Validate billing information for PayPal
-            if (isValid) {
-                isValid = validateBillingForm();
-            }
+            // No billing information validation needed for PayPal
         } else if (paymentMethod === 'bitcoin' || paymentMethod === 'ethereum') {
             // Bitcoin and Ethereum don't need validation - just QR code display
             isValid = true;
         }
         
         if (isValid) {
-            processPayment(paymentMethod);
+            // Check if PayPal button is active
+            const submitButton = document.getElementById('submit-payment');
+            if (submitButton && submitButton.getAttribute('data-paypal') === 'true') {
+                // Redirect to PayPal
+                redirectToPayPal();
+            } else {
+                processPayment(paymentMethod);
+            }
         }
     });
     
@@ -521,6 +574,45 @@ function validateBillingForm() {
     }
     
     return true;
+}
+
+// Redirect to PayPal
+function redirectToPayPal() {
+    const cartItems = getCart();
+    if (cartItems.length === 0) {
+        alert('Your cart is empty. Please add items before checkout.');
+        return;
+    }
+    
+    // Calculate total
+    let subtotal = 0;
+    cartItems.forEach(item => {
+        subtotal += item.price * item.quantity;
+    });
+    const tax = subtotal * TAX_RATE;
+    const total = subtotal + tax;
+    
+    // Get PayPal email if provided
+    const paypalEmail = document.getElementById('paypal-email');
+    const email = paypalEmail && paypalEmail.value ? paypalEmail.value : '';
+    
+    // Store order info in sessionStorage for when user returns
+    sessionStorage.setItem('pendingOrder', JSON.stringify({
+        items: cartItems,
+        subtotal: subtotal,
+        tax: tax,
+        total: total,
+        paymentMethod: 'paypal'
+    }));
+    
+    // Redirect to PayPal login page
+    // Note: In production, you should integrate PayPal's actual payment API
+    // (PayPal SDK, PayPal Buttons, or PayPal REST API) for secure payment processing
+    // This redirects to PayPal's login page where users can complete the transaction
+    const paypalUrl = 'https://www.paypal.com/signin';
+    
+    // Redirect to PayPal
+    window.location.href = paypalUrl;
 }
 
 // Process payment

@@ -169,49 +169,41 @@ function initCartDropdown() {
     const cartIcon = document.getElementById('cart-icon');
     const cartDropdown = document.getElementById('cart-dropdown');
     const cartDetails = document.getElementById('cart-details');
-    const viewCartItem = document.getElementById('view-cart-item');
-    const checkoutItem = document.getElementById('checkout-item');
     const closeCartDetails = document.getElementById('close-cart-details');
+    const checkoutNowBtn = document.getElementById('checkout-now-btn');
     
-    if (!cartIcon || !cartDropdown) return;
+    if (!cartIcon) return;
     
-    // Toggle cart dropdown on cart icon click
+    // Show cart details directly on cart icon click (no dropdown menu)
     cartIcon.addEventListener('click', function(e) {
         e.stopPropagation();
         // Close account dropdown if open
         const accountDropdown = document.getElementById('account-dropdown');
         if (accountDropdown) accountDropdown.classList.remove('show');
         
-        // Close cart details if open
-        if (cartDetails) cartDetails.classList.remove('show');
+        // Hide dropdown menu if it exists
+        if (cartDropdown) cartDropdown.classList.remove('show');
         
-        // Toggle cart dropdown
-        cartDropdown.classList.toggle('show');
-    });
-    
-    // Close dropdown and cart details when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!cartIcon.contains(e.target) && !cartDropdown.contains(e.target) && 
-            (!cartDetails || !cartDetails.contains(e.target))) {
-            cartDropdown.classList.remove('show');
-            if (cartDetails) cartDetails.classList.remove('show');
+        // Show cart details directly
+        if (cartDetails) {
+            updateCartDisplay();
+            cartDetails.classList.add('show');
         }
     });
     
-    // Handle "View cart" click
-    if (viewCartItem) {
-        viewCartItem.addEventListener('click', function(e) {
-            e.preventDefault();
-            cartDropdown.classList.remove('show');
-            showCartDetails();
-        });
-    }
+    // Close cart details when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!cartIcon.contains(e.target) && 
+            (!cartDetails || !cartDetails.contains(e.target))) {
+            if (cartDetails) cartDetails.classList.remove('show');
+            if (cartDropdown) cartDropdown.classList.remove('show');
+        }
+    });
     
-    // Handle "Checkout now" click
-    if (checkoutItem) {
-        checkoutItem.addEventListener('click', function(e) {
+    // Handle "Checkout now" button in cart details
+    if (checkoutNowBtn) {
+        checkoutNowBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            cartDropdown.classList.remove('show');
             // Save cart to localStorage before navigating
             localStorage.setItem('cart', JSON.stringify(cart));
             // Navigate to checkout page

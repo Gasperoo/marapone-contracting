@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Don't initialize if we're on the consulting page (it has its own booking system)
     if (window.location.pathname.includes('service-consulting.html')) return;
     
+    // Don't initialize on checkout page
+    if (window.location.pathname.includes('checkout.html')) return;
+    
     // Work on both main page (index.html) and products page
     const isMainPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
     const isProductsPage = window.location.pathname.includes('products.html');

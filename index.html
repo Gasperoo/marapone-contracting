@@ -26,9 +26,8 @@
                 <button class="icon-button" id="cart-icon" aria-label="Shopping Cart">
                     <i class="fas fa-shopping-cart"></i>
                 </button>
-                <div class="cart-dropdown" id="cart-dropdown">
-                    <a href="#" class="dropdown-item" id="view-cart-item">View cart</a>
-                    <a href="#" class="dropdown-item" id="checkout-item">Checkout now</a>
+                <div class="cart-dropdown" id="cart-dropdown" style="display: none;">
+                    <!-- Dropdown menu removed - cart details shown directly -->
                 </div>
                 <div class="cart-details" id="cart-details">
                     <div class="cart-details-header">
@@ -54,6 +53,10 @@
                             <span id="cart-total">$0.00</span>
                         </div>
                     </div>
+                    <button class="cart-checkout-btn" id="checkout-now-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        Checkout Now
+                    </button>
                 </div>
             </div>
             <div class="account-dropdown-container">

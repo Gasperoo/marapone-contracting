@@ -373,6 +373,39 @@ body {
     font-size: 1.2rem;
 }
 
+.cart-checkout-btn {
+    width: 100%;
+    padding: 15px 20px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-dark) 100%);
+    border: none;
+    border-radius: 8px;
+    color: var(--text-white);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(77, 166, 255, 0.3);
+}
+
+.cart-checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(77, 166, 255, 0.5);
+    background: linear-gradient(135deg, var(--accent-blue-dark) 0%, var(--accent-blue) 100%);
+}
+
+.cart-checkout-btn:active {
+    transform: translateY(0);
+}
+
+.cart-checkout-btn i {
+    font-size: 1.1rem;
+}
+
 .empty-cart-message {
     padding: 40px 20px;
     text-align: center;
@@ -1150,13 +1183,20 @@ body {
 /* Checkout Page Styles */
 .checkout-container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .checkout-wrapper {
     max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .checkout-header {
@@ -2958,6 +2998,22 @@ body {
     font-size: 1.2rem;
 }
 
+/* PayPal Button Styling */
+.checkout-button.paypal-button {
+    background: linear-gradient(135deg, #0070ba 0%, #003087 100%);
+    box-shadow: 0 5px 20px rgba(0, 112, 186, 0.3);
+}
+
+.checkout-button.paypal-button:hover {
+    background: linear-gradient(135deg, #005ea6 0%, #002d6e 100%);
+    box-shadow: 0 8px 30px rgba(0, 112, 186, 0.5);
+}
+
+.checkout-button.paypal-button i {
+    color: #ffc439;
+    font-size: 1.3rem;
+}
+
 /* Responsive Design for Checkout */
 @media (max-width: 968px) {
     .checkout-content {
@@ -2976,6 +3032,12 @@ body {
 @media (max-width: 768px) {
     .checkout-container {
         padding: 20px 15px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .checkout-wrapper {
+        width: 100%;
     }
     
     .checkout-title {

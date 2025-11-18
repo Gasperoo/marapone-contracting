@@ -15,8 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextStepBtn = document.getElementById('next-step');
     const bookingModalTitle = document.getElementById('booking-modal-title');
 
-    // Only initialize if modal exists and button exists (skip on consulting page where paid booking exists)
+    // Only initialize if modal exists and button exists
     if (!bookingModal || !bookFreeCallBtn) return;
+    
+    // ONLY work on the products page - exit if not on products page
+    if (!window.location.pathname.includes('products.html')) return;
     
     // Don't initialize if we're on the consulting page (it has its own booking system)
     if (window.location.pathname.includes('service-consulting.html')) return;

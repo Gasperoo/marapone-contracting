@@ -288,11 +288,11 @@
             <h3 class="footer-cta-title">Ready to grow faster?</h3>
             <p class="footer-cta-text">Pick the package that fits your stage and let's get to work.</p>
             <div class="footer-cta-buttons">
-                <a href="service-consulting.html" class="footer-cta-btn primary">
+                <button class="footer-cta-btn primary" id="book-free-call-btn">
                     <i class="fas fa-calendar-check"></i>
                     Book a free 15-minute strategy call
                     <span class="footer-cta-note">*First time only</span>
-                </a>
+                </button>
                 <a href="contact.html" class="footer-cta-btn secondary">
                     <i class="fas fa-envelope"></i>
                     Email us: general@marapone.com
@@ -306,7 +306,63 @@
         </footer>
     </div>
 
+    <!-- Booking Modal for Free Strategy Call -->
+    <div class="booking-modal" id="booking-modal">
+        <div class="booking-modal-content">
+            <div class="booking-modal-header">
+                <h2 id="booking-modal-title">Book a Free 15-Minute Strategy Call</h2>
+                <button class="close-booking-modal" id="close-booking-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="booking-steps">
+                <!-- Step 1: Date Selection -->
+                <div class="booking-step active" id="step-date">
+                    <h3>Select a Date</h3>
+                    <div class="calendar-navigation">
+                        <button class="calendar-nav-btn" id="prev-month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="calendar-month-year" id="calendar-month-year"></span>
+                        <button class="calendar-nav-btn" id="next-month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-container" id="calendar-container"></div>
+                </div>
+
+                <!-- Step 2: Time Selection -->
+                <div class="booking-step" id="step-time">
+                    <h3>Select a Time</h3>
+                    <div class="selected-date-display" id="selected-date-display"></div>
+                    <div class="time-slots" id="time-slots"></div>
+                </div>
+
+                <!-- Step 3: Confirmation -->
+                <div class="booking-step" id="step-confirm">
+                    <h3>Confirm Your Appointment</h3>
+                    <div class="booking-summary" id="booking-summary"></div>
+                    <button class="confirm-booking-btn" id="confirm-booking-btn">
+                        <i class="fas fa-check"></i>
+                        Confirm Booking
+                    </button>
+                </div>
+            </div>
+
+            <div class="booking-navigation">
+                <button class="booking-nav-btn" id="prev-step" style="display: none;">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="booking-nav-btn" id="next-step" style="display: none;">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="booking.js"></script>
 </body>
 </html>
 

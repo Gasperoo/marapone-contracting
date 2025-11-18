@@ -26,9 +26,35 @@
                 <button class="icon-button" id="cart-icon" aria-label="Shopping Cart">
                     <i class="fas fa-shopping-cart"></i>
                 </button>
-                <div class="cart-dropdown" id="cart-dropdown">
-                    <a href="index.html" class="dropdown-item" id="view-cart-item">View cart</a>
-                    <a href="checkout.html" class="dropdown-item" id="checkout-item">Checkout now</a>
+                <div class="cart-dropdown" id="cart-dropdown" style="display: none;">
+                    <!-- Dropdown menu removed - cart details shown directly -->
+                </div>
+                <div class="cart-details" id="cart-details">
+                    <div class="cart-details-header">
+                        <h3>Your Cart</h3>
+                        <button class="close-cart-details" id="close-cart-details" aria-label="Close cart">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="cart-items-list" id="cart-items-list"></div>
+                    <div class="cart-summary">
+                        <div class="cart-summary-row">
+                            <span>Subtotal:</span>
+                            <span id="cart-subtotal">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span>Tax (HST 13%):</span>
+                            <span id="cart-tax">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row cart-total">
+                            <span>Total:</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                    </div>
+                    <button class="cart-checkout-btn" id="checkout-now-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        Checkout Now
+                    </button>
                 </div>
             </div>
             <div class="account-dropdown-container">
@@ -36,7 +62,7 @@
                     <i class="fas fa-user"></i>
                 </button>
                 <div class="account-dropdown" id="account-dropdown">
-                    <a href="login.html" class="dropdown-item" id="login-item">Log in</a>
+                    <a href="#" class="dropdown-item" id="login-item">Log in</a>
                     <a href="#" class="dropdown-item" id="logout-item" style="display: none;">Log out</a>
                     <a href="#" class="dropdown-item" id="manage-account-item">Manage account</a>
                 </div>

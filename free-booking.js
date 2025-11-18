@@ -18,11 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Only initialize if modal exists and button exists
     if (!bookingModal || !bookFreeCallBtn) return;
     
-    // ONLY work on the products page - exit if not on products page
-    if (!window.location.pathname.includes('products.html')) return;
-    
     // Don't initialize if we're on the consulting page (it has its own booking system)
     if (window.location.pathname.includes('service-consulting.html')) return;
+    
+    // Work on both main page (index.html) and products page
+    const isMainPage = window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
+    const isProductsPage = window.location.pathname.includes('products.html');
+    
+    if (!isMainPage && !isProductsPage) return;
 
     // Booking state
     let currentDate = new Date(2025, 10, 1); // November 2025

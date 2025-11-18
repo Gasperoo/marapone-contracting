@@ -2770,41 +2770,134 @@ body {
 }
 
 @media (max-width: 768px) {
+    .booking-modal {
+        padding: 10px;
+    }
+
     .booking-modal-content {
-        max-width: 95%;
-        max-height: 95vh;
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 15px;
+        margin: 0;
     }
 
-    .appointment-types {
-        grid-template-columns: 1fr;
+    .booking-modal-header {
+        padding: 20px 15px;
     }
 
-    .duration-options {
-        flex-direction: column;
+    .booking-modal-header h2 {
+        font-size: 1.4rem;
     }
 
-    .time-slots {
-        grid-template-columns: repeat(3, 1fr);
+    .close-booking-modal {
+        font-size: 1.3rem;
+        padding: 5px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
-    /* Calendar - Keep same styling as desktop */
-    .calendar-container {
-        gap: 2px;
-        padding: 12px;
+    .booking-steps {
+        padding: 20px 15px;
     }
 
-    .calendar-day-header {
-        padding: 10px 6px;
-        font-size: 0.85rem;
+    .booking-step h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
     }
 
-    .calendar-day {
+    /* Calendar - Exact same structure as desktop, just scaled */
+    .calendar-navigation {
+        margin-bottom: 15px;
+    }
+
+    .calendar-nav-btn {
+        padding: 8px 12px;
         font-size: 0.9rem;
-        min-height: 35px;
     }
 
     .calendar-month-year {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .calendar-container {
+        gap: 2px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .calendar-day-header {
+        padding: 8px 4px;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+    }
+
+    .calendar-day {
+        font-size: 0.85rem;
+        min-height: 32px;
+        aspect-ratio: 1;
+    }
+
+    /* Time slots - same grid structure, just smaller */
+    .selected-date-display {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+
+    .time-slots {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+        padding: 10px;
+        max-height: 350px;
+    }
+
+    .time-slot-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* Booking summary */
+    .booking-summary {
+        padding: 20px 15px;
+    }
+
+    .summary-item {
+        padding: 12px 0;
+    }
+
+    .summary-label,
+    .summary-value {
+        font-size: 1rem;
+    }
+
+    .summary-total .summary-value {
         font-size: 1.3rem;
+    }
+
+    .confirm-booking-btn {
+        padding: 15px 25px;
+        font-size: 1.1rem;
+    }
+
+    /* Booking navigation */
+    .booking-navigation {
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .booking-nav-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        flex: 1;
+        min-width: 120px;
     }
 
     /* Booking section mobile */

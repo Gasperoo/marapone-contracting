@@ -1567,12 +1567,9 @@ body {
     height: auto;
     width: 400px;
     max-width: 90%;
-    /* Invert to white, then use blend mode to remove black background */
-    filter: invert(1) brightness(1);
+    /* Invert colors: black becomes white for dark background */
+    filter: invert(1);
     background: transparent;
-    mix-blend-mode: lighten;
-    /* Alternative: use difference blend mode for better black removal */
-    isolation: isolate;
 }
 
 .bitcoin-address-wrapper {
@@ -1641,12 +1638,9 @@ body {
     height: auto;
     width: 400px;
     max-width: 90%;
-    /* Invert to white, then use blend mode to remove black background */
-    filter: invert(1) brightness(1);
+    /* Invert colors: black becomes white for dark background */
+    filter: invert(1);
     background: transparent;
-    mix-blend-mode: lighten;
-    /* Alternative: use difference blend mode for better black removal */
-    isolation: isolate;
 }
 
 .ethereum-address-wrapper {
@@ -3090,6 +3084,22 @@ body {
     .payment-method-card span {
         font-size: 0.85rem;
     }
+    
+    .bitcoin-qr-code,
+    .ethereum-qr-code {
+        width: 350px;
+        max-width: 90%;
+    }
+    
+    .bitcoin-qr-container,
+    .ethereum-qr-container {
+        padding: 35px 20px;
+    }
+    
+    .bitcoin-qr-title,
+    .ethereum-qr-title {
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -3128,6 +3138,28 @@ body {
     .checkout-button {
         padding: 12px 20px;
         font-size: 1rem;
+    }
+    
+    .bitcoin-qr-code,
+    .ethereum-qr-code {
+        width: 300px;
+        max-width: 85%;
+    }
+    
+    .bitcoin-qr-container,
+    .ethereum-qr-container {
+        padding: 30px 15px;
+    }
+    
+    .bitcoin-qr-title,
+    .ethereum-qr-title {
+        font-size: 1rem;
+    }
+    
+    .bitcoin-qr-code-wrapper,
+    .ethereum-qr-code-wrapper {
+        margin: 20px 0;
+        padding: 15px;
     }
 }
 

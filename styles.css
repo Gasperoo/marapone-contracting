@@ -3101,6 +3101,26 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .payment-method-card {
+        padding: 12px;
+    }
+    
+    .payment-method-card i {
+        font-size: 1.3rem;
+    }
+    
+    .payment-method-icons {
+        gap: 8px;
+    }
+    
+    .payment-method-icons i {
+        font-size: 1.3rem;
+    }
+    
+    .payment-method-card span {
+        font-size: 0.8rem;
+    }
+    
     .section-heading {
         font-size: 1.3rem;
     }

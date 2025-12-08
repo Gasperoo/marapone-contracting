@@ -1368,6 +1368,19 @@ body {
     transition: all 0.3s ease;
 }
 
+.payment-method-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.payment-method-icons i {
+    font-size: 2rem;
+    color: var(--text-grey);
+    transition: all 0.3s ease;
+}
+
 .payment-method-card span {
     font-size: 0.9rem;
     font-weight: 500;
@@ -1381,6 +1394,11 @@ body {
 }
 
 .payment-method-option input[type="radio"]:checked + .payment-method-card i {
+    color: var(--accent-blue);
+    transform: scale(1.1);
+}
+
+.payment-method-option input[type="radio"]:checked + .payment-method-card .payment-method-icons i {
     color: var(--accent-blue);
     transform: scale(1.1);
 }
@@ -3058,6 +3076,14 @@ body {
     }
     
     .payment-method-card i {
+        font-size: 1.5rem;
+    }
+    
+    .payment-method-icons {
+        gap: 10px;
+    }
+    
+    .payment-method-icons i {
         font-size: 1.5rem;
     }
     

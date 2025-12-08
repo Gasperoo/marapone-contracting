@@ -179,7 +179,7 @@ function initPaymentMethods() {
         }
         
         // Show appropriate form based on selection
-        if (value === 'credit' || value === 'visa-debit' || value === 'mastercard') {
+        if (value === 'credit' || value === 'visa-debit') {
             if (creditCardForm) {
                 creditCardForm.removeAttribute('data-hidden');
                 creditCardForm.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important; margin-bottom: 30px !important;';
@@ -395,7 +395,7 @@ function initFormValidation() {
         // Validate based on payment method
         let isValid = false;
         
-        if (paymentMethod === 'credit' || paymentMethod === 'visa-debit' || paymentMethod === 'mastercard') {
+        if (paymentMethod === 'credit' || paymentMethod === 'visa-debit') {
             isValid = validateCreditCardForm();
             // Validate billing information for card payments
             if (isValid) {

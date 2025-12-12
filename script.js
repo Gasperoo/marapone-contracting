@@ -453,12 +453,17 @@ function sendMailingListNotification(email) {
     // Submit form using fetch (non-blocking, fire and forget)
     fetch(adminForm.action, {
         method: 'POST',
-        body: new FormData(adminForm),
-        mode: 'no-cors'
-    }).then(() => {
+        body: new FormData(adminForm)
+    }).then(response => {
         console.log('Admin notification sent successfully');
     }).catch(err => {
         console.error('Error sending admin notification:', err);
+        // Fallback: try submitting the form directly
+        try {
+            adminForm.submit();
+        } catch (e) {
+            console.error('Form submission also failed:', e);
+        }
     });
     
     // Clean up form after submission
@@ -538,12 +543,17 @@ The Marapone Contracting Inc. Team`;
     // Submit form using fetch (non-blocking, fire and forget)
     fetch(userForm.action, {
         method: 'POST',
-        body: new FormData(userForm),
-        mode: 'no-cors'
-    }).then(() => {
+        body: new FormData(userForm)
+    }).then(response => {
         console.log('User confirmation email sent successfully');
     }).catch(err => {
         console.error('Error sending user confirmation email:', err);
+        // Fallback: try submitting the form directly
+        try {
+            userForm.submit();
+        } catch (e) {
+            console.error('Form submission also failed:', e);
+        }
     });
     
     // Clean up form after submission

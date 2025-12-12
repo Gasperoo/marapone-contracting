@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Account - Marapone Contracting Inc.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header with Cart and Account Icons -->
+    <header class="top-header">
+        <div class="header-left">
+            <a href="index.html" class="icon-button home-logo-button" aria-label="Home">
+                <img src="logo.png" alt="Marapone Contracting Inc." class="home-logo-icon">
+            </a>
+        </div>
+        <div class="header-icons">
+            <a href="contact.html" class="icon-button" aria-label="Contact Us">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="products.html" class="icon-button" aria-label="Products">
+                <i class="fas fa-box"></i>
+            </a>
+            <div class="cart-dropdown-container">
+                <button class="icon-button" id="cart-icon" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+                <div class="cart-dropdown" id="cart-dropdown" style="display: none;">
+                    <!-- Dropdown menu removed - cart details shown directly -->
+                </div>
+                <div class="cart-details" id="cart-details">
+                    <div class="cart-details-header">
+                        <h3>Your Cart</h3>
+                        <button class="close-cart-details" id="close-cart-details" aria-label="Close cart">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="cart-items-list" id="cart-items-list"></div>
+                    <div class="cart-summary">
+                        <div class="cart-summary-row">
+                            <span>Subtotal:</span>
+                            <span id="cart-subtotal">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span>Tax (HST 13%):</span>
+                            <span id="cart-tax">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row cart-total">
+                            <span>Total:</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                    </div>
+                    <button class="cart-checkout-btn" id="checkout-now-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        Checkout Now
+                    </button>
+                </div>
+            </div>
+            <div class="account-dropdown-container">
+                <button class="icon-button" id="account-icon" aria-label="Account">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="account-dropdown" id="account-dropdown">
+                    <a href="#" class="dropdown-item" id="login-item">Log in</a>
+                    <a href="#" class="dropdown-item" id="logout-item" style="display: none;">Log out</a>
+                    <a href="#" class="dropdown-item" id="manage-account-item">Manage account</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container manage-account-container">
+        <div class="manage-account-wrapper">
+            <!-- Back Link -->
+            <div class="manage-account-header">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <h1 class="manage-account-title">Manage Account</h1>
+            </div>
+
+            <div class="manage-account-content">
+                <!-- Personal Information Section -->
+                <div class="account-section">
+                    <h2 class="account-section-title">
+                        <i class="fas fa-user"></i>
+                        Personal Information
+                    </h2>
+                    <form class="account-form" id="personal-info-form">
+                        <div class="form-group">
+                            <label for="account-name">Full Name</label>
+                            <input type="text" id="account-name" name="account-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="account-phone">Phone Number</label>
+                            <input type="tel" id="account-phone" name="account-phone" placeholder="(555) 123-4567">
+                        </div>
+                        <button type="submit" class="account-button">
+                            <i class="fas fa-save"></i>
+                            Update Information
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Email Section -->
+                <div class="account-section">
+                    <h2 class="account-section-title">
+                        <i class="fas fa-envelope"></i>
+                        Email Address
+                    </h2>
+                    <form class="account-form" id="email-form">
+                        <div class="form-group">
+                            <label for="current-email">Current Email</label>
+                            <input type="email" id="current-email" name="current-email" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-email">New Email Address</label>
+                            <input type="email" id="new-email" name="new-email" placeholder="new.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-password">Confirm with Password</label>
+                            <input type="password" id="email-password" name="email-password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="account-button">
+                            <i class="fas fa-envelope"></i>
+                            Update Email
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Password Section -->
+                <div class="account-section">
+                    <h2 class="account-section-title">
+                        <i class="fas fa-lock"></i>
+                        Change Password
+                    </h2>
+                    <form class="account-form" id="password-form">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" name="current-password" placeholder="Enter current password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" name="new-password" placeholder="Enter new password (min 6 characters)" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password" required>
+                        </div>
+                        <button type="submit" class="account-button">
+                            <i class="fas fa-key"></i>
+                            Update Password
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Saved Payment Methods Section -->
+                <div class="account-section">
+                    <h2 class="account-section-title">
+                        <i class="fas fa-credit-card"></i>
+                        Saved Payment Methods
+                    </h2>
+                    <div class="payment-methods-list" id="payment-methods-list">
+                        <!-- Payment methods will be dynamically inserted here -->
+                        <p class="no-payment-methods">No saved payment methods yet.</p>
+                    </div>
+                    <button type="button" class="account-button add-payment-btn" id="add-payment-btn">
+                        <i class="fas fa-plus"></i>
+                        Add Payment Method
+                    </button>
+                </div>
+
+                <!-- Add Payment Method Modal -->
+                <div class="payment-modal" id="payment-modal">
+                    <div class="payment-modal-content">
+                        <div class="payment-modal-header">
+                            <h3>Add Payment Method</h3>
+                            <button class="close-payment-modal" id="close-payment-modal" aria-label="Close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <form class="payment-form" id="add-payment-form">
+                            <div class="form-group">
+                                <label for="payment-type">Payment Type</label>
+                                <select id="payment-type" name="payment-type" required>
+                                    <option value="">Select payment type</option>
+                                    <option value="credit-card">Credit Card</option>
+                                    <option value="debit-card">Debit Card</option>
+                                    <option value="paypal">PayPal</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="card-number-group">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="form-group" id="card-name-group">
+                                <label for="card-name">Cardholder Name</label>
+                                <input type="text" id="card-name" name="card-name" placeholder="John Doe">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group" id="card-expiry-group">
+                                    <label for="card-expiry">Expiry Date</label>
+                                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group" id="card-cvv-group">
+                                    <label for="card-cvv">CVV</label>
+                                    <input type="text" id="card-cvv" name="card-cvv" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="form-group" id="paypal-email-group" style="display: none;">
+                                <label for="paypal-email">PayPal Email</label>
+                                <input type="email" id="paypal-email" name="paypal-email" placeholder="your.email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="default-payment" name="default-payment">
+                                    Set as default payment method
+                                </label>
+                            </div>
+                            <button type="submit" class="account-button">
+                                <i class="fas fa-save"></i>
+                                Save Payment Method
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Footer -->
+    <footer class="copyright-footer">
+        <p>&copy; 2025 Marapone Contracting Inc.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="manage-account.js"></script>
+</body>
+</html>

@@ -172,9 +172,8 @@ function initAccountDropdown() {
         manageAccountItem.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            // Add your manage account logic here
-            console.log('Manage account clicked');
-            // Example: window.location.href = '/account';
+            // Navigate to manage account page
+            window.location.href = 'manage-account.html';
             accountDropdown.classList.remove('show');
         });
     }
@@ -184,13 +183,16 @@ function initAccountDropdown() {
 function updateAccountDropdown() {
     const loginItem = document.getElementById('login-item');
     const logoutItem = document.getElementById('logout-item');
+    const manageAccountItem = document.getElementById('manage-account-item');
     
     if (isLoggedIn) {
         if (loginItem) loginItem.style.display = 'none';
         if (logoutItem) logoutItem.style.display = 'block';
+        if (manageAccountItem) manageAccountItem.style.display = 'block';
     } else {
         if (loginItem) loginItem.style.display = 'block';
         if (logoutItem) logoutItem.style.display = 'none';
+        if (manageAccountItem) manageAccountItem.style.display = 'none';
     }
 }
 

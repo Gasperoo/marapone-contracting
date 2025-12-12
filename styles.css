@@ -3693,3 +3693,495 @@ body:has(.service-detail-container) .copyright-footer {
     }
 }
 
+/* Manage Account Page Styles */
+.manage-account-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 100px 20px 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+}
+
+.container.manage-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-account-wrapper {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.manage-account-header {
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.manage-account-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin: 20px 0 0 0;
+    letter-spacing: 2px;
+}
+
+.manage-account-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.account-section {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.account-section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.account-section-title i {
+    color: var(--accent-blue);
+    font-size: 1.6rem;
+}
+
+.account-form {
+    width: 100%;
+}
+
+.account-form .form-group {
+    margin-bottom: 25px;
+}
+
+.account-form .form-group input[readonly] {
+    background: rgba(255, 255, 255, 0.02);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.account-button {
+    width: 100%;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    color: var(--text-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-dark) 100%);
+    box-shadow: 0 5px 20px rgba(77, 166, 255, 0.3);
+}
+
+.account-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(77, 166, 255, 0.5);
+}
+
+.account-button:active {
+    transform: translateY(-1px);
+}
+
+.account-button i {
+    font-size: 1.2rem;
+}
+
+.add-payment-btn {
+    margin-top: 20px;
+}
+
+/* Payment Methods List */
+.payment-methods-list {
+    margin-bottom: 20px;
+}
+
+.no-payment-methods {
+    color: var(--text-grey);
+    text-align: center;
+    padding: 30px;
+    font-style: italic;
+}
+
+.payment-method-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.payment-method-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-blue);
+}
+
+.payment-method-card.default-payment {
+    border-color: var(--accent-blue);
+    background: rgba(77, 166, 255, 0.1);
+}
+
+.payment-method-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.payment-method-icon {
+    font-size: 2rem;
+    color: var(--accent-blue);
+}
+
+.payment-method-details h4 {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+}
+
+.payment-method-details p {
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.default-badge {
+    background: var(--accent-blue);
+    color: var(--text-white);
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.payment-method-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.payment-action-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.set-default-btn {
+    background: rgba(77, 166, 255, 0.2);
+    border: 1px solid var(--accent-blue);
+}
+
+.set-default-btn:hover:not(:disabled) {
+    background: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+.set-default-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.delete-btn {
+    background: rgba(255, 77, 77, 0.2);
+    border: 1px solid rgba(255, 77, 77, 0.5);
+    padding: 8px 12px;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 77, 77, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Payment Modal */
+.payment-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.payment-modal-content {
+    background: rgba(20, 20, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.payment-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payment-modal-header h3 {
+    color: var(--text-white);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.close-payment-modal {
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.close-payment-modal:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-blue);
+}
+
+.payment-form select {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-white);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.payment-form select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(77, 166, 255, 0.1);
+}
+
+.payment-form select option {
+    background: rgba(20, 20, 30, 0.95);
+    color: var(--text-white);
+}
+
+.payment-form .form-group label input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/* Responsive Design for Manage Account Page */
+@media (max-width: 768px) {
+    body:has(.manage-account-container) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    body:has(.manage-account-container) .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .manage-account-container {
+        padding: 80px 15px 40px 15px;
+        min-height: calc(100vh - 150px);
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .manage-account-wrapper {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .manage-account-header {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .manage-account-content {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .manage-account-title {
+        font-size: 2rem;
+    }
+    
+    .account-section {
+        padding: 30px 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .account-section-title {
+        font-size: 1.5rem;
+    }
+    
+    .payment-method-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .payment-method-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .payment-modal-content {
+        padding: 30px 20px;
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    body:has(.manage-account-container) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 0;
+    }
+    
+    body:has(.manage-account-container) .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    
+    .manage-account-container {
+        padding: 70px 10px 30px 10px;
+        min-height: calc(100vh - 120px);
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .manage-account-wrapper {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .manage-account-header {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .manage-account-content {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .manage-account-title {
+        font-size: 1.8rem;
+    }
+    
+    .account-section {
+        padding: 25px 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .account-section-title {
+        font-size: 1.3rem;
+    }
+    
+    .account-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .payment-method-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .payment-modal-content {
+        padding: 25px 15px;
+        width: 98%;
+    }
+}
+

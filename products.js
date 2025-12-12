@@ -307,6 +307,13 @@ function createProductCard(product) {
             e.stopPropagation();
             addProductToCart(product);
         });
+    } else {
+        // For free products, make the entire card clickable to add to cart
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            addProductToCart(product);
+        });
     }
     
     return card;

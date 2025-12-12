@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPersonalInfoForm();
     initEmailForm();
     initPasswordForm();
+    initShippingAddressForm();
     initPaymentMethods();
 });
 
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function loadUserData() {
     const userData = JSON.parse(localStorage.getItem('userData')) || {};
     const userEmail = localStorage.getItem('userEmail') || '';
+    const shippingAddress = JSON.parse(localStorage.getItem('shippingAddress')) || {};
     
     // Populate personal information
     const accountName = document.getElementById('account-name');
@@ -51,6 +53,26 @@ function loadUserData() {
     
     if (currentEmail) {
         currentEmail.value = userEmail || '';
+    }
+    
+    // Populate shipping address
+    if (document.getElementById('shipping-street')) {
+        document.getElementById('shipping-street').value = shippingAddress.street || '';
+    }
+    if (document.getElementById('shipping-unit')) {
+        document.getElementById('shipping-unit').value = shippingAddress.unit || '';
+    }
+    if (document.getElementById('shipping-city')) {
+        document.getElementById('shipping-city').value = shippingAddress.city || '';
+    }
+    if (document.getElementById('shipping-province')) {
+        document.getElementById('shipping-province').value = shippingAddress.province || '';
+    }
+    if (document.getElementById('shipping-postal')) {
+        document.getElementById('shipping-postal').value = shippingAddress.postal || '';
+    }
+    if (document.getElementById('shipping-country')) {
+        document.getElementById('shipping-country').value = shippingAddress.country || '';
     }
 }
 
@@ -137,6 +159,64 @@ function initEmailForm() {
         // Clear form
         form.reset();
         document.getElementById('current-email').value = newEmail;
+    });
+}
+
+// Initialize shipping address form
+function initShippingAddressForm() {
+    const form = document.getElementById('shipping-address-form');
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const street = document.getElementById('shipping-street')?.value.trim();
+        const unit = document.getElementById('shipping-unit')?.value.trim();
+        const city = document.getElementById('shipping-city')?.value.trim();
+        const province = document.getElementById('shipping-province')?.value.trim();
+        const postal = document.getElementById('shipping-postal')?.value.trim();
+        const country = document.getElementById('shipping-country')?.value.trim();
+        
+        // Basic validation
+        if (!street) {
+            alert('Please enter a street address.');
+            return;
+        }
+        
+        if (!city) {
+            alert('Please enter a city.');
+            return;
+        }
+        
+        if (!province) {
+            alert('Please enter a province/state.');
+            return;
+        }
+        
+        if (!postal) {
+            alert('Please enter a postal/ZIP code.');
+            return;
+        }
+        
+        if (!country) {
+            alert('Please enter a country.');
+            return;
+        }
+        
+        // Save shipping address
+        const shippingAddress = {
+            street: street,
+            unit: unit || '',
+            city: city,
+            province: province,
+            postal: postal,
+            country: country,
+            updatedAt: new Date().toISOString()
+        };
+        
+        localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
+        
+        alert('Shipping address saved successfully!');
     });
 }
 

@@ -49,6 +49,33 @@ body:has(.service-detail-container) .container {
     text-align: left;
 }
 
+/* Override body flex for manage account page - center content */
+body:has(.manage-account-container) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+}
+
+body:has(.manage-account-container) .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+/* Fallback for browsers without :has() support */
+.container.manage-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Fallback for browsers without :has() support */
 .container.service-detail-container {
     width: 100%;
@@ -3705,12 +3732,6 @@ body:has(.service-detail-container) .copyright-footer {
     min-height: calc(100vh - 200px);
 }
 
-.container.manage-account-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .manage-account-wrapper {
     max-width: 1000px;
     width: 100%;
@@ -4083,6 +4104,10 @@ body:has(.service-detail-container) .copyright-footer {
     
     .account-section-title {
         font-size: 1.5rem;
+    }
+    
+    .account-form .form-row {
+        grid-template-columns: 1fr;
     }
     
     .payment-method-card {

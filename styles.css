@@ -3412,6 +3412,13 @@ body:has(.service-detail-container) .copyright-footer {
     min-height: calc(100vh - 200px);
 }
 
+/* Fallback for browsers without :has() support */
+.container.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-wrapper {
     max-width: 1000px;
     width: 100%;
@@ -3550,24 +3557,53 @@ body:has(.service-detail-container) .copyright-footer {
 }
 
 @media (max-width: 768px) {
+    body:has(.login-container) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    body:has(.login-container) .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
     .login-container {
         padding: 80px 15px 40px 15px;
         min-height: calc(100vh - 150px);
         align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
     .login-wrapper {
         width: 100%;
         max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
     .login-header {
         text-align: center;
+        width: 100%;
     }
     
     .login-content {
         width: 100%;
         max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     .login-title {
@@ -3576,6 +3612,8 @@ body:has(.service-detail-container) .copyright-footer {
     
     .auth-section {
         padding: 30px 20px;
+        width: 100%;
+        max-width: 100%;
     }
     
     .auth-section-title {
@@ -3584,24 +3622,55 @@ body:has(.service-detail-container) .copyright-footer {
 }
 
 @media (max-width: 480px) {
+    body:has(.login-container) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 0;
+    }
+    
+    body:has(.login-container) .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    
     .login-container {
         padding: 70px 10px 30px 10px;
         min-height: calc(100vh - 120px);
         align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
     .login-wrapper {
         width: 100%;
         max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
     .login-header {
         text-align: center;
+        width: 100%;
     }
     
     .login-content {
         width: 100%;
         max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     .login-title {
@@ -3610,6 +3679,8 @@ body:has(.service-detail-container) .copyright-footer {
     
     .auth-section {
         padding: 25px 15px;
+        width: 100%;
+        max-width: 100%;
     }
     
     .auth-section-title {

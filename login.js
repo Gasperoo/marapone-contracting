@@ -166,100 +166,70 @@ function processSignup(name, username, email, password) {
 
 // Send signup confirmation email
 function sendSignupConfirmationEmail(name, email) {
-    // Create a hidden form to send email via FormSubmit
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://formsubmit.co/info@marapone.com';
-    form.style.display = 'none';
+    // Send notification to info@marapone.com about new signup
+    const adminForm = document.createElement('form');
+    adminForm.method = 'POST';
+    adminForm.action = 'https://formsubmit.co/info@marapone.com';
+    adminForm.style.display = 'none';
     
-    // FormSubmit configuration
-    const subjectInput = document.createElement('input');
-    subjectInput.type = 'hidden';
-    subjectInput.name = '_subject';
-    subjectInput.value = 'New Account Registration - ' + name;
-    form.appendChild(subjectInput);
+    const adminSubject = document.createElement('input');
+    adminSubject.type = 'hidden';
+    adminSubject.name = '_subject';
+    adminSubject.value = 'New Account Registration - ' + name;
+    adminForm.appendChild(adminSubject);
     
-    const captchaInput = document.createElement('input');
-    captchaInput.type = 'hidden';
-    captchaInput.name = '_captcha';
-    captchaInput.value = 'false';
-    form.appendChild(captchaInput);
+    const adminCaptcha = document.createElement('input');
+    adminCaptcha.type = 'hidden';
+    adminCaptcha.name = '_captcha';
+    adminCaptcha.value = 'false';
+    adminForm.appendChild(adminCaptcha);
     
-    const templateInput = document.createElement('input');
-    templateInput.type = 'hidden';
-    templateInput.name = '_template';
-    templateInput.value = 'box';
-    form.appendChild(templateInput);
+    const adminTemplate = document.createElement('input');
+    adminTemplate.type = 'hidden';
+    adminTemplate.name = '_template';
+    adminTemplate.value = 'box';
+    adminForm.appendChild(adminTemplate);
     
-    // Reply-to email (so FormSubmit can send confirmation to user)
-    const replyToInput = document.createElement('input');
-    replyToInput.type = 'hidden';
-    replyToInput.name = '_replyto';
-    replyToInput.value = email;
-    form.appendChild(replyToInput);
+    const adminMessage = document.createElement('textarea');
+    adminMessage.name = 'message';
+    adminMessage.value = `New user account created:\n\nName: ${name}\nEmail: ${email}\nDate: ${new Date().toLocaleString()}`;
+    adminForm.appendChild(adminMessage);
     
-    // Email content
-    const message = `
-Welcome to Marapone Contracting Inc.!
-
-Dear ${name},
-
-Thank you for creating an account with us. Your account has been successfully created.
-
-Account Details:
-- Name: ${name}
-- Email: ${email}
-- Account Created: ${new Date().toLocaleString()}
-
-You can now log in to your account and access all our services.
-
-If you have any questions or need assistance, please don't hesitate to contact us at info@marapone.com.
-
-Best regards,
-Marapone Contracting Inc.
-    `.trim();
+    document.body.appendChild(adminForm);
     
-    const messageInput = document.createElement('textarea');
-    messageInput.name = 'message';
-    messageInput.value = message;
-    form.appendChild(messageInput);
-    
-    // Add form to body and submit
-    document.body.appendChild(form);
-    
-    // Also send a copy to the user's email using FormSubmit's email forwarding
-    // Create a second form to send confirmation to the user
+    // Send confirmation email to user using FormSubmit
+    // FormSubmit can send emails to any address by using that email as the endpoint
     const userForm = document.createElement('form');
     userForm.method = 'POST';
     userForm.action = 'https://formsubmit.co/' + encodeURIComponent(email);
     userForm.style.display = 'none';
     
-    const userSubjectInput = document.createElement('input');
-    userSubjectInput.type = 'hidden';
-    userSubjectInput.name = '_subject';
-    userSubjectInput.value = 'Welcome to Marapone Contracting Inc. - Account Confirmation';
-    userForm.appendChild(userSubjectInput);
+    const userSubject = document.createElement('input');
+    userSubject.type = 'hidden';
+    userSubject.name = '_subject';
+    userSubject.value = 'Welcome to Marapone Contracting Inc. - Account Confirmation';
+    userForm.appendChild(userSubject);
     
-    const userCaptchaInput = document.createElement('input');
-    userCaptchaInput.type = 'hidden';
-    userCaptchaInput.name = '_captcha';
-    userCaptchaInput.value = 'false';
-    userForm.appendChild(userCaptchaInput);
+    const userCaptcha = document.createElement('input');
+    userCaptcha.type = 'hidden';
+    userCaptcha.name = '_captcha';
+    userCaptcha.value = 'false';
+    userForm.appendChild(userCaptcha);
     
-    const userTemplateInput = document.createElement('input');
-    userTemplateInput.type = 'hidden';
-    userTemplateInput.name = '_template';
-    userTemplateInput.value = 'box';
-    userForm.appendChild(userTemplateInput);
+    const userTemplate = document.createElement('input');
+    userTemplate.type = 'hidden';
+    userTemplate.name = '_template';
+    userTemplate.value = 'box';
+    userForm.appendChild(userTemplate);
     
-    const userFromInput = document.createElement('input');
-    userFromInput.type = 'hidden';
-    userFromInput.name = '_from';
-    userFromInput.value = 'info@marapone.com';
-    userForm.appendChild(userFromInput);
+    // Set the from email to info@marapone.com
+    const userFrom = document.createElement('input');
+    userFrom.type = 'hidden';
+    userFrom.name = '_from';
+    userFrom.value = 'info@marapone.com';
+    userForm.appendChild(userFrom);
     
-    const confirmationMessage = `
-Welcome to Marapone Contracting Inc.!
+    const confirmationMessage = `Welcome to Marapone Contracting Inc.!
 
 Dear ${name},
 
@@ -281,32 +251,30 @@ If you have any questions or need assistance, please don't hesitate to contact u
 We look forward to serving you!
 
 Best regards,
-Marapone Contracting Inc.
-    `.trim();
+Marapone Contracting Inc.`;
     
-    const userMessageInput = document.createElement('textarea');
-    userMessageInput.name = 'message';
-    userMessageInput.value = confirmationMessage;
-    userForm.appendChild(userMessageInput);
+    const userMessage = document.createElement('textarea');
+    userMessage.name = 'message';
+    userMessage.value = confirmationMessage;
+    userForm.appendChild(userMessage);
     
     document.body.appendChild(userForm);
     
-    // Submit both forms (they will submit in background)
-    // Note: FormSubmit will handle sending the emails
-    fetch(form.action, {
+    // Submit forms using fetch (non-blocking)
+    fetch(adminForm.action, {
         method: 'POST',
-        body: new FormData(form)
-    }).catch(err => console.log('FormSubmit notification sent'));
+        body: new FormData(adminForm)
+    }).catch(err => console.log('Admin notification sent'));
     
     fetch(userForm.action, {
         method: 'POST',
         body: new FormData(userForm)
     }).catch(err => console.log('User confirmation email sent'));
     
-    // Clean up forms after a delay
+    // Clean up forms after submission
     setTimeout(() => {
-        if (form.parentNode) form.parentNode.removeChild(form);
+        if (adminForm.parentNode) adminForm.parentNode.removeChild(adminForm);
         if (userForm.parentNode) userForm.parentNode.removeChild(userForm);
-    }, 1000);
+    }, 2000);
 }
 

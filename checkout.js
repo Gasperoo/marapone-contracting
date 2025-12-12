@@ -227,6 +227,27 @@ function initPaymentMethods() {
             // Show and update submit button to PayPal button
             showSubmitButton();
             updatePayPalButton();
+        } else if (value === 'apple-google-pay') {
+            // For Apple Pay/Google Pay, hide credit card form and billing
+            if (creditCardForm) {
+                creditCardForm.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important;';
+                creditCardForm.setAttribute('data-hidden', 'true');
+            }
+            
+            // Hide billing section for Apple Pay/Google Pay - handled by payment provider
+            if (billingSection) {
+                billingSection.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: none !important;';
+                billingSection.setAttribute('data-hidden', 'true');
+                const billingFields = billingSection.querySelectorAll('input');
+                billingFields.forEach(field => {
+                    field.removeAttribute('required');
+                    field.disabled = true;
+                    field.value = '';
+                });
+            }
+            // Show submit button for Apple Pay/Google Pay
+            showSubmitButton();
+            updateAppleGooglePayButton();
         } else if (value === 'bitcoin') {
             // For Bitcoin, show only QR code
             if (creditCardForm) {
@@ -279,6 +300,16 @@ function initPaymentMethods() {
         }
     }
     
+    // Function to update submit button to Apple Pay/Google Pay button
+    function updateAppleGooglePayButton() {
+        const submitButton = document.getElementById('submit-payment');
+        if (submitButton) {
+            submitButton.className = 'checkout-button apple-google-pay-button';
+            submitButton.innerHTML = '<div class="payment-method-icons"><i class="fab fa-cc-apple-pay"></i><i class="fab fa-google-pay"></i></div> Complete Payment';
+            submitButton.setAttribute('data-apple-google-pay', 'true');
+        }
+    }
+    
     // Function to reset submit button to default
     function resetSubmitButton() {
         const submitButton = document.getElementById('submit-payment');
@@ -286,6 +317,7 @@ function initPaymentMethods() {
             submitButton.className = 'checkout-button';
             submitButton.innerHTML = '<i class="fas fa-lock"></i> Complete Payment';
             submitButton.removeAttribute('data-paypal');
+            submitButton.removeAttribute('data-apple-google-pay');
             // Show the button
             submitButton.style.display = 'flex';
         }
@@ -405,6 +437,9 @@ function initFormValidation() {
         } else if (paymentMethod === 'paypal') {
             isValid = validatePayPalForm();
             // No billing information validation needed for PayPal
+        } else if (paymentMethod === 'apple-google-pay') {
+            // Apple Pay/Google Pay don't need form validation - handled by payment provider
+            isValid = true;
         } else if (paymentMethod === 'bitcoin' || paymentMethod === 'ethereum') {
             // Bitcoin and Ethereum don't need validation - just QR code display
             isValid = true;

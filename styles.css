@@ -3124,6 +3124,29 @@ body:has(.service-detail-container) .copyright-footer {
     font-size: 1.3rem;
 }
 
+/* Apple Pay / Google Pay Button Styling */
+.checkout-button.apple-google-pay-button {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.checkout-button.apple-google-pay-button:hover {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.checkout-button.apple-google-pay-button .payment-method-icons {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.checkout-button.apple-google-pay-button .payment-method-icons i {
+    font-size: 1.3rem;
+    color: var(--text-white);
+}
+
 /* Responsive Design for Checkout */
 @media (max-width: 968px) {
     .checkout-content {
@@ -3236,6 +3259,14 @@ body:has(.service-detail-container) .copyright-footer {
     .checkout-button {
         padding: 12px 20px;
         font-size: 1rem;
+    }
+    
+    .checkout-button.apple-google-pay-button .payment-method-icons {
+        gap: 8px;
+    }
+    
+    .checkout-button.apple-google-pay-button .payment-method-icons i {
+        font-size: 1.1rem;
     }
     
     .bitcoin-qr-code,

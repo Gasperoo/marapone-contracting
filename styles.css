@@ -3301,29 +3301,54 @@ body:has(.service-detail-container) .copyright-footer {
     .payment-method-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
+        justify-items: center;
+    }
+    
+    .payment-method-option {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
     }
     
     .payment-method-card {
         padding: 15px;
         min-height: 100px;
         height: 100px;
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
     
     .payment-method-card i {
         font-size: 1.5rem;
+        margin: 0 auto;
     }
     
     .payment-method-icons {
         gap: 10px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
     
     .payment-method-icons i {
         font-size: 1.5rem;
+        margin: 0;
     }
     
     .payment-method-card span {
         font-size: 0.85rem;
         white-space: nowrap;
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+    
+    .payment-methods-title {
+        text-align: center;
     }
     
     .bitcoin-qr-code,
@@ -3350,29 +3375,54 @@ body:has(.service-detail-container) .copyright-footer {
     
     .payment-method-grid {
         grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    
+    .payment-method-option {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
     }
     
     .payment-method-card {
         padding: 12px;
         min-height: 90px;
         height: 90px;
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
     
     .payment-method-card i {
         font-size: 1.3rem;
+        margin: 0 auto;
     }
     
     .payment-method-icons {
         gap: 8px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
     
     .payment-method-icons i {
         font-size: 1.3rem;
+        margin: 0;
     }
     
     .payment-method-card span {
         font-size: 0.8rem;
         white-space: nowrap;
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+    
+    .payment-methods-title {
+        text-align: center;
     }
     
     .section-heading {

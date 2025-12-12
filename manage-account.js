@@ -41,6 +41,7 @@ function loadUserData() {
     // Populate personal information
     const accountName = document.getElementById('account-name');
     const accountPhone = document.getElementById('account-phone');
+    const phoneCountryCode = document.getElementById('phone-country-code');
     const currentEmail = document.getElementById('current-email');
     
     if (accountName) {
@@ -48,7 +49,27 @@ function loadUserData() {
     }
     
     if (accountPhone) {
-        accountPhone.value = userData.phone || '';
+        // Split phone number if it includes country code
+        const phoneData = userData.phone || '';
+        if (phoneData.startsWith('+')) {
+            const parts = phoneData.split(' ');
+            if (parts.length > 1) {
+                const code = parts[0];
+                const number = parts.slice(1).join(' ');
+                if (phoneCountryCode) {
+                    phoneCountryCode.value = code;
+                }
+                accountPhone.value = number;
+            } else {
+                accountPhone.value = phoneData;
+            }
+        } else {
+            accountPhone.value = phoneData;
+        }
+    }
+    
+    if (phoneCountryCode && userData.phoneCountryCode) {
+        phoneCountryCode.value = userData.phoneCountryCode;
     }
     
     if (currentEmail) {
@@ -95,8 +116,11 @@ function initPersonalInfoForm() {
         // Update user data
         const userData = JSON.parse(localStorage.getItem('userData')) || {};
         userData.name = name;
+        const phoneCountryCode = document.getElementById('phone-country-code')?.value || '+1';
         if (phone) {
-            userData.phone = phone;
+            // Store phone with country code
+            userData.phone = phoneCountryCode + ' ' + phone;
+            userData.phoneCountryCode = phoneCountryCode;
         }
         userData.updatedAt = new Date().toISOString();
         

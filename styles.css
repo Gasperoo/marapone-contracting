@@ -3808,6 +3808,52 @@ body:has(.service-detail-container) .copyright-footer {
     opacity: 0.7;
 }
 
+/* Phone Input with Country Code */
+.phone-input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    width: 100%;
+}
+
+.phone-country-code {
+    flex: 0 0 auto;
+    min-width: 160px;
+    max-width: 200px;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-white);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 35px;
+}
+
+.phone-country-code:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(77, 166, 255, 0.1);
+}
+
+.phone-country-code option {
+    background: rgba(20, 20, 30, 0.95);
+    color: var(--text-white);
+    padding: 10px;
+}
+
+.phone-number-input {
+    flex: 1;
+    min-width: 0;
+}
+
 .account-button {
     width: 100%;
     padding: 15px 30px;
@@ -4113,6 +4159,17 @@ body:has(.service-detail-container) .copyright-footer {
     
     .account-form .form-row {
         grid-template-columns: 1fr;
+    }
+    
+    .phone-input-wrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .phone-country-code {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
     }
     
     .payment-method-card {

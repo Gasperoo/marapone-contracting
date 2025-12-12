@@ -939,7 +939,7 @@ body:has(.manage-account-container) .container {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     width: 100%;
     text-align: center;
-    background: rgba(0, 0, 0, 0.2);
+    background: transparent;
 }
 
 body:has(.service-detail-container) .copyright-footer {

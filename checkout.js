@@ -51,6 +51,34 @@ function initCheckoutPage() {
     // Display order summary
     displayOrderSummary();
     
+    // Check if order is free and update UI accordingly
+    const cartItems = getCart();
+    let orderTotal = 0;
+    cartItems.forEach(item => {
+        orderTotal += item.price * item.quantity;
+    });
+    const tax = orderTotal * (typeof TAX_RATE !== 'undefined' ? TAX_RATE : 0.13);
+    const finalTotal = orderTotal + tax;
+    
+    if (finalTotal === 0) {
+        // Hide payment method selection for free orders
+        const paymentSection = document.querySelector('.payment-section');
+        if (paymentSection) {
+            const paymentMethodsTitle = paymentSection.querySelector('h2.section-heading');
+            if (paymentMethodsTitle && paymentMethodsTitle.textContent.includes('Payment')) {
+                paymentSection.style.display = 'none';
+            }
+        }
+        
+        // Show submit button for free orders
+        const submitButton = document.getElementById('submit-payment');
+        if (submitButton) {
+            submitButton.style.display = 'flex';
+            submitButton.innerHTML = '<i class="fas fa-check"></i> Complete Free Order';
+            submitButton.className = 'checkout-button free-order-button';
+        }
+    }
+    
     // Initialize account dropdown if on checkout page
     if (typeof initAccountDropdown === 'function') {
         initAccountDropdown();
@@ -104,22 +132,37 @@ function displayOrderSummary() {
     // Display cart items
     cartItems.forEach(item => {
         const itemTotal = item.price * item.quantity;
+        const priceDisplay = item.price === 0 ? 'FREE' : `$${item.price.toFixed(2)}`;
+        const totalDisplay = itemTotal === 0 ? 'FREE' : `$${itemTotal.toFixed(2)}`;
         const orderItem = document.createElement('div');
         orderItem.className = 'order-item';
         orderItem.innerHTML = `
             <div class="order-item-info">
                 <div class="order-item-name">${item.name}</div>
-                <div class="order-item-details">$${item.price.toFixed(2)} × ${item.quantity}</div>
+                <div class="order-item-details">${priceDisplay} × ${item.quantity}</div>
             </div>
-            <div class="order-item-price">$${itemTotal.toFixed(2)}</div>
+            <div class="order-item-price">${totalDisplay}</div>
         `;
         orderItems.appendChild(orderItem);
     });
     
     // Update summary
-    if (orderSubtotal) orderSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-    if (orderTax) orderTax.textContent = `$${tax.toFixed(2)}`;
-    if (orderTotal) orderTotal.textContent = `$${total.toFixed(2)}`;
+    if (orderSubtotal) orderSubtotal.textContent = subtotal === 0 ? 'FREE' : `$${subtotal.toFixed(2)}`;
+    if (orderTax) orderTax.textContent = tax === 0 ? 'FREE' : `$${tax.toFixed(2)}`;
+    if (orderTotal) orderTotal.textContent = total === 0 ? 'FREE' : `$${total.toFixed(2)}`;
+    
+    // For free orders, show a message that payment is not required
+    if (total === 0 && orderItems) {
+        const freeOrderNote = document.createElement('div');
+        freeOrderNote.className = 'free-order-note';
+        freeOrderNote.style.cssText = 'text-align: center; padding: 15px; margin-top: 20px; background: rgba(77, 166, 255, 0.1); border: 1px solid rgba(77, 166, 255, 0.3); border-radius: 8px; color: var(--accent-blue); font-weight: 500;';
+        freeOrderNote.textContent = 'This is a free order. No payment required.';
+        // Check if note already exists
+        const existingNote = orderItems.querySelector('.free-order-note');
+        if (!existingNote) {
+            orderItems.appendChild(freeOrderNote);
+        }
+    }
 }
 
 // Initialize payment method selection
@@ -754,8 +797,13 @@ function processPayment(paymentMethod) {
     
     // Simulate payment processing
     setTimeout(() => {
-        // In production, this would make an API call to your payment processor
-        alert(`Payment processed successfully using ${paymentMethod.toUpperCase()}!\n\nThank you for your order.`);
+        // For free orders
+        if (paymentMethod === 'free') {
+            alert('Order completed successfully!\n\nYour free items have been added to your account. Thank you for your order!');
+        } else {
+            // In production, this would make an API call to your payment processor
+            alert(`Payment processed successfully using ${paymentMethod.toUpperCase()}!\n\nThank you for your order.`);
+        }
         
         // Clear cart (always use window.cart)
         if (window.cart) {

@@ -1014,15 +1014,15 @@ body:has(.service-detail-container) .copyright-footer {
         justify-content: center;
     }
     
-    .social-section {
+    .footer-cta-section {
         order: 4;
-        margin-top: 0;
-        margin-bottom: 40px;
+        margin-top: 40px;
     }
     
-    .footer-cta-section {
+    .social-section {
         order: 5;
         margin-top: 40px;
+        margin-bottom: 40px;
     }
     
     .copyright-footer {

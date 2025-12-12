@@ -239,6 +239,7 @@ function initPaymentMethods() {
                 billingSection.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: none !important;';
                 billingSection.setAttribute('data-hidden', 'true');
             }
+
             
             if (bitcoinQrForm) {
                 bitcoinQrForm.removeAttribute('data-hidden');

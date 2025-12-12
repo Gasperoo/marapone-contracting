@@ -32,6 +32,32 @@ body {
     position: relative;
 }
 
+/* Override body flex for service pages */
+body:has(.service-detail-container) {
+    display: block;
+    padding: 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+body:has(.service-detail-container) .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    display: block;
+    text-align: left;
+}
+
+/* Fallback for browsers without :has() support */
+.container.service-detail-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
 .container {
     max-width: 1200px;
     width: 100%;
@@ -871,10 +897,31 @@ body {
 
 /* Copyright Footer */
 .copyright-footer {
-    margin-top: 60px;
+    margin-top: auto;
     padding: 30px 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+body:has(.service-detail-container) .copyright-footer {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    clear: both;
+    display: block;
+}
+
+/* Fallback for browsers without :has() support */
+.container.service-detail-container + .copyright-footer {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    clear: both;
+    display: block;
 }
 
 .copyright-footer p {
@@ -883,6 +930,7 @@ body {
     opacity: 0.6;
     letter-spacing: 1px;
     font-weight: 300;
+    text-align: center;
 }
 
 /* Responsive Design */
@@ -2118,12 +2166,16 @@ body {
 }
 
 /* Service Detail Pages */
+/* Service page specific body layout - consolidated with body rule above */
+
 .service-detail-container {
     padding-top: 100px;
     padding-bottom: 60px;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
 }
 
 .service-detail-wrapper {
@@ -2131,6 +2183,7 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 40px 20px;
+    text-align: left;
 }
 
 .service-detail-header {
@@ -2256,13 +2309,27 @@ body {
 }
 
 @media (max-width: 768px) {
+    body:has(.service-detail-container) {
+        padding: 0;
+    }
+    
+    body:has(.service-detail-container) .container {
+        padding: 0;
+    }
+    
     .service-detail-container {
         padding-top: 80px;
         padding-bottom: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .service-detail-wrapper {
         padding: 30px 15px;
+        width: 100%;
+        max-width: 100%;
     }
     
     .service-detail-title {
@@ -2279,6 +2346,7 @@ body {
         grid-template-columns: 1fr;
         gap: 30px;
         margin-top: 30px;
+        width: 100%;
     }
     
     .service-detail-image {
@@ -2296,6 +2364,21 @@ body {
     
     .service-detail-text h3 {
         font-size: 1.3rem;
+    }
+    
+    body:has(.service-detail-container) .copyright-footer {
+        padding: 20px 15px;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+    
+    /* Fallback for browsers without :has() support */
+    .container.service-detail-container + .copyright-footer {
+        padding: 20px 15px;
+        text-align: center;
+        display: block;
+        width: 100%;
     }
     
     /* Products page mobile */
@@ -3181,18 +3264,28 @@ body {
 /* Login/Sign Up Page Styles */
 .login-container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 100px 20px 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
 }
 
 .login-wrapper {
     max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login-header {
     margin-bottom: 40px;
-    text-align: left;
+    text-align: center;
+    width: 100%;
 }
 
 .login-title {
@@ -3208,6 +3301,8 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin-top: 30px;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .auth-section {
@@ -3317,7 +3412,23 @@ body {
 
 @media (max-width: 768px) {
     .login-container {
-        padding: 20px 15px;
+        padding: 80px 15px 40px 15px;
+        min-height: calc(100vh - 150px);
+        align-items: center;
+    }
+    
+    .login-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .login-header {
+        text-align: center;
+    }
+    
+    .login-content {
+        width: 100%;
+        max-width: 100%;
     }
     
     .login-title {
@@ -3334,6 +3445,26 @@ body {
 }
 
 @media (max-width: 480px) {
+    .login-container {
+        padding: 70px 10px 30px 10px;
+        min-height: calc(100vh - 120px);
+        align-items: center;
+    }
+    
+    .login-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .login-header {
+        text-align: center;
+    }
+    
+    .login-content {
+        width: 100%;
+        max-width: 100%;
+    }
+    
     .login-title {
         font-size: 1.8rem;
     }

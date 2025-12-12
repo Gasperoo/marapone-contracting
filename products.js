@@ -48,6 +48,13 @@ const productsData = {
         icon: 'fa-handshake',
         products: [
             {
+                id: 'sp-000',
+                name: 'Full Supplier Database with MOQs, Pricing History, and Direct Contacts',
+                description: 'Upgrade to the full supplier database with MOQs, pricing history, and direct contacts.',
+                price: 197,
+                icon: 'fa-database'
+            },
+            {
                 id: 'sp-001',
                 name: '60-Minute Export Readiness Audit',
                 description: 'We review your product, pricing, and target markets live on Zoom and give you a step-by-step export plan + instant savings opportunities.',
@@ -155,13 +162,6 @@ const productsData = {
                 description: 'Free curated list of proven e-commerce product ideas for 2025.',
                 price: 0,
                 icon: 'fa-lightbulb'
-            },
-            {
-                id: 'fd-004',
-                name: 'Full Supplier Database with MOQs, Pricing History, and Direct Contacts',
-                description: 'Upgrade to the full supplier database with MOQs, pricing history, and direct contacts.',
-                price: 197,
-                icon: 'fa-database'
             }
         ]
     }

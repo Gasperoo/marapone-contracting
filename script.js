@@ -90,7 +90,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Account dropdown functionality
+// Account dropdown functionality - use a flag to prevent duplicate initialization
+let accountDropdownInitialized = false;
+
 function initAccountDropdown() {
     const accountIcon = document.getElementById('account-icon');
     const accountDropdown = document.getElementById('account-dropdown');
@@ -100,23 +102,49 @@ function initAccountDropdown() {
     
     if (!accountIcon || !accountDropdown) return;
     
+    // Prevent duplicate initialization
+    if (accountDropdownInitialized && accountIcon.dataset.initialized === 'true') {
+        return;
+    }
+    
+    // Mark as initialized
+    accountIcon.dataset.initialized = 'true';
+    accountDropdownInitialized = true;
+    
+    // Ensure button is clickable and has proper attributes
+    accountIcon.style.cursor = 'pointer';
+    accountIcon.style.pointerEvents = 'auto';
+    accountIcon.setAttribute('type', 'button');
+    accountIcon.setAttribute('tabindex', '0');
+    
     // Toggle dropdown on account icon click
     accountIcon.addEventListener('click', function(e) {
+        e.preventDefault();
         e.stopPropagation();
         accountDropdown.classList.toggle('show');
     });
     
+    // Also support keyboard (Enter/Space)
+    accountIcon.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            accountDropdown.classList.toggle('show');
+        }
+    });
+    
     // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
+    const closeDropdownHandler = function(e) {
         if (!accountIcon.contains(e.target) && !accountDropdown.contains(e.target)) {
             accountDropdown.classList.remove('show');
         }
-    });
+    };
+    document.addEventListener('click', closeDropdownHandler);
     
     // Handle login item click
     if (loginItem) {
         loginItem.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             // Navigate to login page
             window.location.href = 'login.html';
             accountDropdown.classList.remove('show');
@@ -127,6 +155,7 @@ function initAccountDropdown() {
     if (logoutItem) {
         logoutItem.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             // Clear login state
             isLoggedIn = false;
             localStorage.removeItem('isLoggedIn');
@@ -142,6 +171,7 @@ function initAccountDropdown() {
     if (manageAccountItem) {
         manageAccountItem.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             // Add your manage account logic here
             console.log('Manage account clicked');
             // Example: window.location.href = '/account';

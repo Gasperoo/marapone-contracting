@@ -2120,10 +2120,15 @@ body {
 /* Service Detail Pages */
 .service-detail-container {
     padding-top: 100px;
+    padding-bottom: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .service-detail-wrapper {
     max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -2251,6 +2256,15 @@ body {
 }
 
 @media (max-width: 768px) {
+    .service-detail-container {
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+    
+    .service-detail-wrapper {
+        padding: 30px 15px;
+    }
+    
     .service-detail-title {
         font-size: 2.5rem;
     }
@@ -2264,6 +2278,7 @@ body {
     .service-detail-content {
         grid-template-columns: 1fr;
         gap: 30px;
+        margin-top: 30px;
     }
     
     .service-detail-image {

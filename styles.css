@@ -1445,6 +1445,8 @@ body:has(.service-detail-container) .copyright-footer {
     border-radius: 10px;
     transition: all 0.3s ease;
     color: var(--text-white);
+    min-height: 120px;
+    height: 120px;
 }
 
 .payment-method-card i {
@@ -1469,6 +1471,9 @@ body:has(.service-detail-container) .copyright-footer {
 .payment-method-card span {
     font-size: 0.9rem;
     font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.2;
 }
 
 .payment-method-option input[type="radio"]:checked + .payment-method-card {
@@ -3300,6 +3305,8 @@ body:has(.service-detail-container) .copyright-footer {
     
     .payment-method-card {
         padding: 15px;
+        min-height: 100px;
+        height: 100px;
     }
     
     .payment-method-card i {
@@ -3316,6 +3323,7 @@ body:has(.service-detail-container) .copyright-footer {
     
     .payment-method-card span {
         font-size: 0.85rem;
+        white-space: nowrap;
     }
     
     .bitcoin-qr-code,
@@ -3346,6 +3354,8 @@ body:has(.service-detail-container) .copyright-footer {
     
     .payment-method-card {
         padding: 12px;
+        min-height: 90px;
+        height: 90px;
     }
     
     .payment-method-card i {
@@ -3362,6 +3372,7 @@ body:has(.service-detail-container) .copyright-footer {
     
     .payment-method-card span {
         font-size: 0.8rem;
+        white-space: nowrap;
     }
     
     .section-heading {

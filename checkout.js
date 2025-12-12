@@ -130,19 +130,21 @@ function displayOrderSummary() {
     const total = subtotal + tax;
     
     // Display cart items
-    cartItems.forEach((item, index) => {
+    cartItems.forEach((item) => {
         const itemTotal = item.price * item.quantity;
         const priceDisplay = item.price === 0 ? 'FREE' : `$${item.price.toFixed(2)}`;
         const totalDisplay = itemTotal === 0 ? 'FREE' : `$${itemTotal.toFixed(2)}`;
         const orderItem = document.createElement('div');
         orderItem.className = 'order-item';
+        // Use item ID if available, otherwise use a combination of name and price as identifier
+        const itemId = item.id || `${item.name}-${item.price}`;
         orderItem.innerHTML = `
             <div class="order-item-info">
                 <div class="order-item-name">${item.name}</div>
                 <div class="order-item-details">${priceDisplay} × ${item.quantity}</div>
             </div>
             <div class="order-item-price">${totalDisplay}</div>
-            <button class="order-item-remove" data-item-index="${index}" aria-label="Remove item">
+            <button class="order-item-remove" data-item-id="${itemId}" aria-label="Remove item">
                 <i class="fas fa-times"></i>
             </button>
         `;
@@ -153,8 +155,8 @@ function displayOrderSummary() {
     const removeButtons = orderItems.querySelectorAll('.order-item-remove');
     removeButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const itemIndex = parseInt(this.getAttribute('data-item-index'));
-            removeItemFromCart(itemIndex);
+            const itemId = this.getAttribute('data-item-id');
+            removeItemFromCart(itemId);
         });
     });
     
@@ -178,8 +180,14 @@ function displayOrderSummary() {
 }
 
 // Remove item from cart
-function removeItemFromCart(itemIndex) {
+function removeItemFromCart(itemId) {
     const cartItems = getCart();
+    
+    // Find item by ID (or by name+price combination if no ID)
+    const itemIndex = cartItems.findIndex(item => {
+        const currentItemId = item.id || `${item.name}-${item.price}`;
+        return currentItemId === itemId;
+    });
     
     if (itemIndex >= 0 && itemIndex < cartItems.length) {
         const removedItem = cartItems[itemIndex];

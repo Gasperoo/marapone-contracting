@@ -128,7 +128,7 @@ function initPersonalInfoForm() {
         
         alert('Personal information updated successfully!');
         
-        // Reload data to reflect changes
+        // Reload data to reflect changes and keep information visible
         loadUserData();
     });
 }
@@ -176,13 +176,19 @@ function initEmailForm() {
         alert('Email address updated successfully! A confirmation email has been sent to your new email address.');
         
         // Update the current email display
-        if (document.getElementById('current-email')) {
-            document.getElementById('current-email').value = newEmail;
+        const currentEmailField = document.getElementById('current-email');
+        if (currentEmailField) {
+            currentEmailField.value = newEmail;
         }
         
-        // Clear form
-        form.reset();
-        document.getElementById('current-email').value = newEmail;
+        // Clear only the new email and password fields, keep current email visible
+        const newEmailField = document.getElementById('new-email');
+        const passwordField = document.getElementById('email-password');
+        if (newEmailField) newEmailField.value = '';
+        if (passwordField) passwordField.value = '';
+        
+        // Reload user data to ensure everything is in sync
+        loadUserData();
     });
 }
 
@@ -241,6 +247,9 @@ function initShippingAddressForm() {
         localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
         
         alert('Shipping address saved successfully!');
+        
+        // Reload shipping address data to keep it visible
+        loadUserData();
     });
 }
 

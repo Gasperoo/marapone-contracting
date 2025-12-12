@@ -359,11 +359,12 @@ function initMailingListForm() {
     if (!mailingListForm) return;
     
     mailingListForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+        
         const email = emailInput?.value.trim();
         
         // Validate email
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            e.preventDefault();
             alert('Please enter a valid email address.');
             if (emailInput) emailInput.focus();
             return false;
@@ -375,18 +376,25 @@ function initMailingListForm() {
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
         }
         
-        // Set the redirect URL to show success message
-        const nextInput = mailingListForm.querySelector('input[name="_next"]');
-        if (nextInput) {
-            const currentUrl = window.location.href.split('?')[0];
-            nextInput.value = currentUrl + '?subscribed=true';
-        }
+        // Send notification to info@marapone.com (non-blocking)
+        sendMailingListNotification(email);
         
-        // Send confirmation email to subscriber
+        // Send confirmation email to subscriber (non-blocking)
         sendMailingListConfirmationEmail(email);
         
-        // Allow form to submit - FormSubmit will handle sending to info@marapone.com
-        return true;
+        // Show success message immediately
+        setTimeout(() => {
+            alert('Thank you for subscribing to our mailing list!\n\nA confirmation email has been sent to ' + email + '.');
+            
+            // Reset form
+            mailingListForm.reset();
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
+            }
+        }, 500); // Small delay to show the spinner briefly
+        
+        return false;
     });
     
     // Check for success parameter in URL
@@ -402,6 +410,51 @@ function initMailingListForm() {
             submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
         }
     }
+}
+
+// Send mailing list notification to info@marapone.com
+function sendMailingListNotification(email) {
+    // Create a form to notify info@marapone.com about new subscription
+    const adminForm = document.createElement('form');
+    adminForm.method = 'POST';
+    adminForm.action = 'https://formsubmit.co/info@marapone.com';
+    adminForm.style.display = 'none';
+    
+    const adminSubject = document.createElement('input');
+    adminSubject.type = 'hidden';
+    adminSubject.name = '_subject';
+    adminSubject.value = 'New Mailing List Subscription';
+    adminForm.appendChild(adminSubject);
+    
+    const adminCaptcha = document.createElement('input');
+    adminCaptcha.type = 'hidden';
+    adminCaptcha.name = '_captcha';
+    adminCaptcha.value = 'false';
+    adminForm.appendChild(adminCaptcha);
+    
+    const adminTemplate = document.createElement('input');
+    adminTemplate.type = 'hidden';
+    adminTemplate.name = '_template';
+    adminTemplate.value = 'box';
+    adminForm.appendChild(adminTemplate);
+    
+    const adminMessage = document.createElement('textarea');
+    adminMessage.name = 'message';
+    adminMessage.value = `New mailing list subscription:\n\nEmail: ${email}\nDate: ${new Date().toLocaleString()}`;
+    adminForm.appendChild(adminMessage);
+    
+    document.body.appendChild(adminForm);
+    
+    // Submit form using fetch (non-blocking, fire and forget)
+    fetch(adminForm.action, {
+        method: 'POST',
+        body: new FormData(adminForm)
+    }).catch(err => console.log('Admin notification sent'));
+    
+    // Clean up form after submission
+    setTimeout(() => {
+        if (adminForm.parentNode) adminForm.parentNode.removeChild(adminForm);
+    }, 1000);
 }
 
 // Send mailing list confirmation email
@@ -465,7 +518,7 @@ The Marapone Contracting Inc. Team`;
     
     document.body.appendChild(userForm);
     
-    // Submit form using fetch (non-blocking)
+    // Submit form using fetch (non-blocking, fire and forget)
     fetch(userForm.action, {
         method: 'POST',
         body: new FormData(userForm)
@@ -474,7 +527,7 @@ The Marapone Contracting Inc. Team`;
     // Clean up form after submission
     setTimeout(() => {
         if (userForm.parentNode) userForm.parentNode.removeChild(userForm);
-    }, 2000);
+    }, 1000);
 }
 
 // Add animation on scroll

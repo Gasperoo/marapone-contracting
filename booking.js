@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextStepBtn = document.getElementById('next-step');
 
     // Booking state
-    let currentDate = new Date(2025, 10, 1); // November 2025
+    let currentDate = new Date(); // Today's date
     let selectedDate = null;
     let selectedType = null;
     let selectedDuration = null;
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         bookNowBtn.addEventListener('click', function() {
             bookingModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            currentDate = new Date(2025, 10, 1);
+            currentDate = new Date(); // Always show today's date when calendar opens
             renderCalendar();
         });
     }
@@ -77,8 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prevMonthBtn) {
         prevMonthBtn.addEventListener('click', function() {
             currentDate.setMonth(currentDate.getMonth() - 1);
-            if (currentDate < new Date(2025, 10, 1)) {
-                currentDate = new Date(2025, 10, 1);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (currentDate < today) {
+                currentDate = new Date(today);
             }
             renderCalendar();
         });
@@ -87,8 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (nextMonthBtn) {
         nextMonthBtn.addEventListener('click', function() {
             currentDate.setMonth(currentDate.getMonth() + 1);
-            if (currentDate > new Date(2026, 10, 30)) {
-                currentDate = new Date(2026, 10, 30);
+            const maxDate = new Date();
+            maxDate.setFullYear(maxDate.getFullYear() + 1);
+            maxDate.setMonth(10, 30);
+            if (currentDate > maxDate) {
+                currentDate = new Date(maxDate);
             }
             renderCalendar();
         });

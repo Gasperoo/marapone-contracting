@@ -382,6 +382,9 @@ function initMailingListForm() {
             nextInput.value = currentUrl + '?subscribed=true';
         }
         
+        // Send confirmation email to subscriber
+        sendMailingListConfirmationEmail(email);
+        
         // Allow form to submit - FormSubmit will handle sending to info@marapone.com
         return true;
     });
@@ -399,6 +402,79 @@ function initMailingListForm() {
             submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
         }
     }
+}
+
+// Send mailing list confirmation email
+function sendMailingListConfirmationEmail(email) {
+    // Create a form to send confirmation email to subscriber using FormSubmit
+    const userForm = document.createElement('form');
+    userForm.method = 'POST';
+    userForm.action = 'https://formsubmit.co/' + encodeURIComponent(email);
+    userForm.style.display = 'none';
+    
+    const userSubject = document.createElement('input');
+    userSubject.type = 'hidden';
+    userSubject.name = '_subject';
+    userSubject.value = 'Welcome to Marapone Contracting Inc. Mailing List';
+    userForm.appendChild(userSubject);
+    
+    const userCaptcha = document.createElement('input');
+    userCaptcha.type = 'hidden';
+    userCaptcha.name = '_captcha';
+    userCaptcha.value = 'false';
+    userForm.appendChild(userCaptcha);
+    
+    const userTemplate = document.createElement('input');
+    userTemplate.type = 'hidden';
+    userTemplate.name = '_template';
+    userTemplate.value = 'box';
+    userForm.appendChild(userTemplate);
+    
+    // Set the from email to info@marapone.com
+    const userFrom = document.createElement('input');
+    userFrom.type = 'hidden';
+    userFrom.name = '_from';
+    userFrom.value = 'info@marapone.com';
+    userForm.appendChild(userFrom);
+    
+    const confirmationMessage = `Thank you for subscribing to our mailing list!
+
+Dear Subscriber,
+
+We're excited to have you join the Marapone Contracting Inc. community! You've successfully subscribed to our mailing list and will now receive:
+
+• Latest news and updates about our services
+• Exclusive offers and special promotions
+• Industry insights and helpful tips
+• New product announcements
+• And much more!
+
+We promise to keep you informed with valuable content and will never spam your inbox. You can unsubscribe at any time if you no longer wish to receive our updates.
+
+If you have any questions or need assistance, please don't hesitate to contact us at info@marapone.com.
+
+Thank you for your interest in Marapone Contracting Inc.!
+
+Best regards,
+The Marapone Contracting Inc. Team`;
+    
+    const userMessage = document.createElement('textarea');
+    userMessage.name = 'message';
+    userMessage.value = confirmationMessage;
+    userForm.appendChild(userMessage);
+    
+    document.body.appendChild(userForm);
+    
+    // Submit form using fetch (non-blocking)
+    fetch(userForm.action, {
+        method: 'POST',
+        body: new FormData(userForm)
+    }).catch(err => console.log('Mailing list confirmation email sent'));
+    
+    // Clean up form after submission
+    setTimeout(() => {
+        if (userForm.parentNode) userForm.parentNode.removeChild(userForm);
+    }, 2000);
 }
 
 // Add animation on scroll

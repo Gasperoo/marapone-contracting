@@ -1462,6 +1462,81 @@ body:has(.service-detail-container) .copyright-footer {
     transition: all 0.3s ease;
 }
 
+/* Apple Pay / Google Pay Form */
+.apple-google-pay-container {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.apple-google-pay-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 15px;
+}
+
+.apple-google-pay-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.apple-pay-button,
+.google-pay-button {
+    width: 100%;
+    padding: 18px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-white);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.apple-pay-button {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+}
+
+.apple-pay-button:hover {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.google-pay-button {
+    background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+}
+
+.google-pay-button:hover {
+    background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(26, 115, 232, 0.4);
+}
+
+.apple-pay-button i,
+.google-pay-button i {
+    font-size: 1.5rem;
+}
+
+.apple-pay-button:active,
+.google-pay-button:active {
+    transform: translateY(-1px);
+}
+
 .payment-form[style*="display: none"] {
     display: none !important;
     visibility: hidden !important;
@@ -3267,6 +3342,29 @@ body:has(.service-detail-container) .copyright-footer {
     
     .checkout-button.apple-google-pay-button .payment-method-icons i {
         font-size: 1.1rem;
+    }
+    
+    .apple-google-pay-container {
+        padding: 20px 15px;
+    }
+    
+    .apple-google-pay-title {
+        font-size: 1.3rem;
+    }
+    
+    .apple-google-pay-buttons {
+        max-width: 100%;
+    }
+    
+    .apple-pay-button,
+    .google-pay-button {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+    
+    .apple-pay-button i,
+    .google-pay-button i {
+        font-size: 1.3rem;
     }
     
     .bitcoin-qr-code,

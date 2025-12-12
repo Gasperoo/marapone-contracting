@@ -127,6 +127,7 @@ function initPaymentMethods() {
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
     const creditCardForm = document.getElementById('credit-card-form');
     const paypalForm = document.getElementById('paypal-form');
+    const appleGooglePayForm = document.getElementById('apple-google-pay-form');
     const bitcoinQrForm = document.getElementById('bitcoin-qr-form');
     const ethereumQrForm = document.getElementById('ethereum-qr-form');
     const billingSection = document.getElementById('billing-section');
@@ -155,6 +156,10 @@ function initPaymentMethods() {
                 field.disabled = true;
                 field.value = '';
             });
+        }
+        if (appleGooglePayForm) {
+            appleGooglePayForm.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important;';
+            appleGooglePayForm.setAttribute('data-hidden', 'true');
         }
         if (bitcoinQrForm) {
             bitcoinQrForm.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important;';
@@ -245,9 +250,15 @@ function initPaymentMethods() {
                     field.value = '';
                 });
             }
-            // Show submit button for Apple Pay/Google Pay
-            showSubmitButton();
-            updateAppleGooglePayButton();
+            
+            // Show Apple Pay/Google Pay form
+            if (appleGooglePayForm) {
+                appleGooglePayForm.removeAttribute('data-hidden');
+                appleGooglePayForm.style.cssText = 'display: block !important; visibility: visible !important; opacity: 1 !important; height: auto !important; overflow: visible !important; margin-bottom: 30px !important;';
+            }
+            
+            // Hide submit button - users will click Apple Pay or Google Pay buttons instead
+            hideSubmitButton();
         } else if (value === 'bitcoin') {
             // For Bitcoin, show only QR code
             if (creditCardForm) {
@@ -347,6 +358,9 @@ function initPaymentMethods() {
             handlePaymentMethodChange(this.value);
         });
     });
+    
+    // Initialize Apple Pay and Google Pay button handlers
+    initAppleGooglePayButtons();
     
     // Add click listeners to the label cards for better UX
     const paymentMethodOptions = document.querySelectorAll('.payment-method-option');
@@ -610,6 +624,94 @@ function validateBillingForm() {
     }
     
     return true;
+}
+
+// Initialize Apple Pay and Google Pay buttons
+function initAppleGooglePayButtons() {
+    const applePayBtn = document.getElementById('apple-pay-btn');
+    const googlePayBtn = document.getElementById('google-pay-btn');
+    
+    if (applePayBtn) {
+        applePayBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            redirectToApplePay();
+        });
+    }
+    
+    if (googlePayBtn) {
+        googlePayBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            redirectToGooglePay();
+        });
+    }
+}
+
+// Redirect to Apple Pay
+function redirectToApplePay() {
+    const cartItems = getCart();
+    if (cartItems.length === 0) {
+        alert('Your cart is empty. Please add items before checkout.');
+        return;
+    }
+    
+    // Calculate total
+    let subtotal = 0;
+    cartItems.forEach(item => {
+        subtotal += item.price * item.quantity;
+    });
+    const tax = subtotal * TAX_RATE;
+    const total = subtotal + tax;
+    
+    // Store order info in sessionStorage for when user returns
+    sessionStorage.setItem('pendingOrder', JSON.stringify({
+        items: cartItems,
+        subtotal: subtotal,
+        tax: tax,
+        total: total,
+        paymentMethod: 'apple-pay'
+    }));
+    
+    // Redirect to Apple Pay
+    // Note: In production, you should integrate Apple Pay's actual payment API
+    // This redirects to Apple Pay where users can complete the transaction
+    const applePayUrl = 'https://apple.com/apple-pay';
+    
+    // Redirect to Apple Pay
+    window.location.href = applePayUrl;
+}
+
+// Redirect to Google Pay
+function redirectToGooglePay() {
+    const cartItems = getCart();
+    if (cartItems.length === 0) {
+        alert('Your cart is empty. Please add items before checkout.');
+        return;
+    }
+    
+    // Calculate total
+    let subtotal = 0;
+    cartItems.forEach(item => {
+        subtotal += item.price * item.quantity;
+    });
+    const tax = subtotal * TAX_RATE;
+    const total = subtotal + tax;
+    
+    // Store order info in sessionStorage for when user returns
+    sessionStorage.setItem('pendingOrder', JSON.stringify({
+        items: cartItems,
+        subtotal: subtotal,
+        tax: tax,
+        total: total,
+        paymentMethod: 'google-pay'
+    }));
+    
+    // Redirect to Google Pay
+    // Note: In production, you should integrate Google Pay's actual payment API
+    // This redirects to Google Pay where users can complete the transaction
+    const googlePayUrl = 'https://pay.google.com';
+    
+    // Redirect to Google Pay
+    window.location.href = googlePayUrl;
 }
 
 // Redirect to PayPal

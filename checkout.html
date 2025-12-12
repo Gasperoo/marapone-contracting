@@ -195,6 +195,24 @@
                         <p class="payment-info">You will be redirected to PayPal to complete your payment.</p>
                     </div>
 
+                    <!-- Apple Pay / Google Pay Form -->
+                    <div class="payment-form" id="apple-google-pay-form" style="display: none;">
+                        <div class="apple-google-pay-container">
+                            <h3 class="apple-google-pay-title">Choose Your Payment Method</h3>
+                            <p class="payment-info">Select either Apple Pay or Google Pay to complete your payment.</p>
+                            <div class="apple-google-pay-buttons">
+                                <button type="button" class="apple-pay-button" id="apple-pay-btn">
+                                    <i class="fab fa-cc-apple-pay"></i>
+                                    <span>Pay with Apple Pay</span>
+                                </button>
+                                <button type="button" class="google-pay-button" id="google-pay-btn">
+                                    <i class="fab fa-google-pay"></i>
+                                    <span>Pay with Google Pay</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Bitcoin QR Code Display -->
                     <div class="payment-form" id="bitcoin-qr-form" style="display: none;">
                         <div class="bitcoin-qr-container">

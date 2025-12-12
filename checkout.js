@@ -463,6 +463,20 @@ function initFormValidation() {
             return;
         }
         
+        // Calculate order total to check if it's free
+        let orderTotal = 0;
+        cartItems.forEach(item => {
+            orderTotal += item.price * item.quantity;
+        });
+        const tax = orderTotal * (typeof TAX_RATE !== 'undefined' ? TAX_RATE : 0.13);
+        const finalTotal = orderTotal + tax;
+        
+        // For free orders (total = $0.00), skip payment method selection
+        if (finalTotal === 0) {
+            processPayment('free');
+            return;
+        }
+        
         // Get selected payment method
         const selectedMethod = document.querySelector('input[name="payment-method"]:checked');
         if (!selectedMethod) {

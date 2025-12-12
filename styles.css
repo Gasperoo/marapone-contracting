@@ -1437,6 +1437,7 @@ body:has(.service-detail-container) .copyright-footer {
     align-items: center;
     padding: 15px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
 }
 
 .order-item:last-child {
@@ -1464,6 +1465,34 @@ body:has(.service-detail-container) .copyright-footer {
     font-size: 1rem;
     color: var(--accent-blue);
     font-weight: 600;
+    margin-right: 10px;
+}
+
+.order-item-remove {
+    background: rgba(255, 77, 77, 0.2);
+    border: 1px solid rgba(255, 77, 77, 0.5);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-white);
+    padding: 0;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.order-item-remove:hover {
+    background: rgba(255, 77, 77, 0.4);
+    border-color: rgba(255, 77, 77, 0.8);
+    transform: scale(1.1);
+}
+
+.order-item-remove i {
+    font-size: 0.85rem;
 }
 
 .order-summary-footer {

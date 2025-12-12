@@ -130,7 +130,7 @@ function displayOrderSummary() {
     const total = subtotal + tax;
     
     // Display cart items
-    cartItems.forEach(item => {
+    cartItems.forEach((item, index) => {
         const itemTotal = item.price * item.quantity;
         const priceDisplay = item.price === 0 ? 'FREE' : `$${item.price.toFixed(2)}`;
         const totalDisplay = itemTotal === 0 ? 'FREE' : `$${itemTotal.toFixed(2)}`;
@@ -142,8 +142,20 @@ function displayOrderSummary() {
                 <div class="order-item-details">${priceDisplay} × ${item.quantity}</div>
             </div>
             <div class="order-item-price">${totalDisplay}</div>
+            <button class="order-item-remove" data-item-index="${index}" aria-label="Remove item">
+                <i class="fas fa-times"></i>
+            </button>
         `;
         orderItems.appendChild(orderItem);
+    });
+    
+    // Add event listeners for remove buttons
+    const removeButtons = orderItems.querySelectorAll('.order-item-remove');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemIndex = parseInt(this.getAttribute('data-item-index'));
+            removeItemFromCart(itemIndex);
+        });
     });
     
     // Update summary
@@ -162,6 +174,77 @@ function displayOrderSummary() {
         if (!existingNote) {
             orderItems.appendChild(freeOrderNote);
         }
+    }
+}
+
+// Remove item from cart
+function removeItemFromCart(itemIndex) {
+    const cartItems = getCart();
+    
+    if (itemIndex >= 0 && itemIndex < cartItems.length) {
+        const removedItem = cartItems[itemIndex];
+        
+        // Remove item from cart
+        cartItems.splice(itemIndex, 1);
+        
+        // Update global cart
+        if (window.cart) {
+            window.cart = cartItems;
+        }
+        
+        // Save to localStorage
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        
+        // Update cart display in dropdown if function exists
+        if (typeof updateCartDisplay === 'function') {
+            updateCartDisplay();
+        }
+        
+        // Refresh order summary
+        displayOrderSummary();
+        
+        // Update checkout page UI for free orders
+        const orderTotal = document.getElementById('order-total');
+        if (orderTotal) {
+            let newSubtotal = 0;
+            cartItems.forEach(item => {
+                newSubtotal += item.price * item.quantity;
+            });
+            const newTax = newSubtotal * (typeof TAX_RATE !== 'undefined' ? TAX_RATE : 0.13);
+            const newTotal = newSubtotal + newTax;
+            
+            if (newTotal === 0) {
+                // Hide payment section for free orders
+                const paymentSection = document.querySelector('.payment-section');
+                if (paymentSection) {
+                    paymentSection.style.display = 'none';
+                }
+                
+                // Show submit button for free orders
+                const submitButton = document.getElementById('submit-payment');
+                if (submitButton) {
+                    submitButton.style.display = 'flex';
+                    submitButton.innerHTML = '<i class="fas fa-check"></i> Complete Free Order';
+                    submitButton.className = 'checkout-button free-order-button';
+                }
+            } else {
+                // Show payment section for paid orders
+                const paymentSection = document.querySelector('.payment-section');
+                if (paymentSection) {
+                    paymentSection.style.display = 'block';
+                }
+                
+                // Reset submit button
+                const submitButton = document.getElementById('submit-payment');
+                if (submitButton) {
+                    submitButton.className = 'checkout-button';
+                    submitButton.innerHTML = '<i class="fas fa-lock"></i> Complete Payment';
+                }
+            }
+        }
+        
+        // Show confirmation message
+        alert(`${removedItem.name} has been removed from your cart.`);
     }
 }
 

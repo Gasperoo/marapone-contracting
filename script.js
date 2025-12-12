@@ -376,23 +376,21 @@ function initMailingListForm() {
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
         }
         
-        // Send notification to info@marapone.com (non-blocking)
+        // Send notification to info@marapone.com (non-blocking, fire and forget)
         sendMailingListNotification(email);
         
-        // Send confirmation email to subscriber (non-blocking)
+        // Send confirmation email to subscriber (non-blocking, fire and forget)
         sendMailingListConfirmationEmail(email);
         
-        // Show success message immediately
-        setTimeout(() => {
-            alert('Thank you for subscribing to our mailing list!\n\nA confirmation email has been sent to ' + email + '.');
-            
-            // Reset form
-            mailingListForm.reset();
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
-            }
-        }, 500); // Small delay to show the spinner briefly
+        // Show success message immediately (don't wait for email sends)
+        alert('Thank you for subscribing to our mailing list!\n\nA confirmation email has been sent to ' + email + '.');
+        
+        // Reset form
+        mailingListForm.reset();
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
+        }
         
         return false;
     });

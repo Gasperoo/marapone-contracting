@@ -3730,6 +3730,7 @@ body:has(.service-detail-container) .copyright-footer {
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 200px);
+    text-align: center;
 }
 
 .manage-account-wrapper {
@@ -3739,6 +3740,7 @@ body:has(.service-detail-container) .copyright-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .manage-account-header {
@@ -3762,6 +3764,7 @@ body:has(.service-detail-container) .copyright-footer {
     margin-top: 30px;
     width: 100%;
     max-width: 1000px;
+    align-items: center;
 }
 
 .account-section {
@@ -3770,6 +3773,8 @@ body:has(.service-detail-container) .copyright-footer {
     border-radius: 15px;
     padding: 40px;
     backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 100%;
 }
 
 .account-section-title {

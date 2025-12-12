@@ -1097,12 +1097,37 @@ body:has(.service-detail-container) .copyright-footer {
     }
     
     .services-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .service-card {
-        padding: 30px 20px;
+        padding: 25px 15px;
+    }
+    
+    .service-title {
+        font-size: 1.2rem;
+    }
+    
+    .service-description {
+        font-size: 0.9rem;
+    }
+    
+    .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .why-choose-item {
+        padding: 25px 15px;
+    }
+    
+    .why-choose-title {
+        font-size: 1.2rem;
+    }
+    
+    .why-choose-text {
+        font-size: 0.9rem;
     }
 }
 
@@ -1245,6 +1270,15 @@ body:has(.service-detail-container) .copyright-footer {
         font-size: 1rem;
     }
     
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .service-card {
+        padding: 20px 12px;
+    }
+    
     .service-icon {
         width: 60px;
         height: 60px;
@@ -1252,7 +1286,34 @@ body:has(.service-detail-container) .copyright-footer {
     }
     
     .service-title {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+    }
+    
+    .service-description {
+        font-size: 0.85rem;
+    }
+    
+    .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .why-choose-item {
+        padding: 20px 12px;
+    }
+    
+    .why-choose-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .why-choose-title {
+        font-size: 1.1rem;
+    }
+    
+    .why-choose-text {
+        font-size: 0.85rem;
     }
     
     .copyright-footer {

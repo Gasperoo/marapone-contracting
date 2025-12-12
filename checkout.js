@@ -311,16 +311,6 @@ function initPaymentMethods() {
         }
     }
     
-    // Function to update submit button to Apple Pay/Google Pay button
-    function updateAppleGooglePayButton() {
-        const submitButton = document.getElementById('submit-payment');
-        if (submitButton) {
-            submitButton.className = 'checkout-button apple-google-pay-button';
-            submitButton.innerHTML = '<div class="payment-method-icons"><i class="fab fa-cc-apple-pay"></i><i class="fab fa-google-pay"></i></div> Complete Payment';
-            submitButton.setAttribute('data-apple-google-pay', 'true');
-        }
-    }
-    
     // Function to reset submit button to default
     function resetSubmitButton() {
         const submitButton = document.getElementById('submit-payment');

@@ -436,6 +436,13 @@ function sendMailingListNotification(email) {
     adminTemplate.value = 'box';
     adminForm.appendChild(adminTemplate);
     
+    // Prevent redirect
+    const adminNext = document.createElement('input');
+    adminNext.type = 'hidden';
+    adminNext.name = '_next';
+    adminNext.value = window.location.href;
+    adminForm.appendChild(adminNext);
+    
     const adminMessage = document.createElement('textarea');
     adminMessage.name = 'message';
     adminMessage.value = `New mailing list subscription:\n\nEmail: ${email}\nDate: ${new Date().toLocaleString()}`;
@@ -446,13 +453,18 @@ function sendMailingListNotification(email) {
     // Submit form using fetch (non-blocking, fire and forget)
     fetch(adminForm.action, {
         method: 'POST',
-        body: new FormData(adminForm)
-    }).catch(err => console.log('Admin notification sent'));
+        body: new FormData(adminForm),
+        mode: 'no-cors'
+    }).then(() => {
+        console.log('Admin notification sent successfully');
+    }).catch(err => {
+        console.error('Error sending admin notification:', err);
+    });
     
     // Clean up form after submission
     setTimeout(() => {
         if (adminForm.parentNode) adminForm.parentNode.removeChild(adminForm);
-    }, 1000);
+    }, 2000);
 }
 
 // Send mailing list confirmation email
@@ -480,6 +492,13 @@ function sendMailingListConfirmationEmail(email) {
     userTemplate.name = '_template';
     userTemplate.value = 'box';
     userForm.appendChild(userTemplate);
+    
+    // Prevent redirect
+    const userNext = document.createElement('input');
+    userNext.type = 'hidden';
+    userNext.name = '_next';
+    userNext.value = window.location.href;
+    userForm.appendChild(userNext);
     
     // Set the from email to info@marapone.com
     const userFrom = document.createElement('input');
@@ -519,8 +538,13 @@ The Marapone Contracting Inc. Team`;
     // Submit form using fetch (non-blocking, fire and forget)
     fetch(userForm.action, {
         method: 'POST',
-        body: new FormData(userForm)
-    }).catch(err => console.log('Mailing list confirmation email sent'));
+        body: new FormData(userForm),
+        mode: 'no-cors'
+    }).then(() => {
+        console.log('User confirmation email sent successfully');
+    }).catch(err => {
+        console.error('Error sending user confirmation email:', err);
+    });
     
     // Clean up form after submission
     setTimeout(() => {

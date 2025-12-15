@@ -1329,6 +1329,28 @@ body:has(.service-detail-container) .copyright-footer {
         justify-content: center;
     }
     
+    .products-title {
+        font-size: 1.8rem;
+        margin: 10px 0;
+    }
+    
+    .products-header {
+        margin-bottom: 25px;
+    }
+    
+    .contact-title {
+        font-size: 1.8rem;
+        margin: 10px 0;
+    }
+    
+    .contact-header {
+        margin-bottom: 25px;
+    }
+    
+    .checkout-header {
+        margin-bottom: 25px;
+    }
+    
     .cart-dropdown {
         min-width: 150px;
         font-size: 0.9rem;

@@ -80,8 +80,8 @@ function createPartnerCard(partner) {
     const card = document.createElement('div');
     card.className = 'partner-card';
     
-    // Determine if logo needs inversion (for dark logos on dark background)
-    const needsInversion = partner.logoUrl && (
+    // Determine if logo is already white (doesn't need inversion)
+    const isWhiteLogo = partner.logoUrl && (
         partner.logoUrl.includes('white') || 
         partner.logoUrl.includes('xchange-logo-white')
     );
@@ -90,7 +90,7 @@ function createPartnerCard(partner) {
         <div class="partner-card-content">
             <a href="${partner.url}" target="_blank" rel="noopener noreferrer" class="partner-link">
                 <div class="partner-logo-container">
-                    <img src="${partner.logoUrl}" alt="${partner.name} Logo" class="partner-logo" ${needsInversion ? '' : 'data-invert="true"'} onerror="this.onerror=null; this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="${partner.logoUrl}" alt="${partner.name} Logo" class="partner-logo" ${isWhiteLogo ? '' : 'data-invert="true"'} onerror="this.onerror=null; this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="partner-icon-fallback" style="display: none;">
                         <i class="fas fa-handshake"></i>
                     </div>

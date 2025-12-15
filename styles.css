@@ -1495,6 +1495,16 @@ body:has(.service-detail-container) .copyright-footer {
         height: 80px;
         padding: 12px;
         margin-bottom: 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .partner-logo {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
     }
     
     .partner-icon-fallback {
@@ -2377,8 +2387,11 @@ body:has(.service-detail-container) .copyright-footer {
     flex-direction: column;
     align-items: center;
     height: 100%;
-    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    -webkit-tap-highlight-color: rgba(77, 166, 255, 0.2);
     cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .partner-logo-container {
@@ -3184,12 +3197,28 @@ body:has(.service-detail-container) .copyright-footer {
     
     .partner-card:active {
         transform: translateY(-2px);
+        border-color: var(--accent-blue);
+    }
+    
+    .partner-card:active .partner-logo-container {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--accent-blue);
     }
     
     .partner-logo-container {
         height: 100px;
         padding: 15px;
         margin-bottom: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .partner-logo {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
     }
     
     .partner-icon-fallback {
@@ -3209,6 +3238,14 @@ body:has(.service-detail-container) .copyright-footer {
     .partner-visit-link {
         font-size: 0.9rem;
         padding-top: 15px;
+        min-height: 44px; /* Better touch target for mobile */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .partner-link {
+        -webkit-tap-highlight-color: rgba(77, 166, 255, 0.2);
     }
     
     .partners-hero {

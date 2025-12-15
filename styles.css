@@ -1501,6 +1501,25 @@ body:has(.service-detail-container) .copyright-footer {
         font-size: 0.85rem;
     }
     
+    .partner-visit-link {
+        font-size: 0.85rem;
+        padding-top: 15px;
+        gap: 6px;
+    }
+    
+    .partner-visit-link i {
+        font-size: 0.8rem;
+    }
+    
+    .partners-hero {
+        padding: 25px 10px;
+        margin-bottom: 30px;
+    }
+    
+    .partners-wrapper {
+        padding: 80px 15px 40px 15px;
+    }
+    
     .checkout-header {
         margin-bottom: 25px;
     }
@@ -3157,6 +3176,16 @@ body:has(.service-detail-container) .copyright-footer {
     
     .partner-card-description {
         font-size: 0.9rem;
+    }
+    
+    .partner-visit-link {
+        font-size: 0.9rem;
+        padding-top: 15px;
+    }
+    
+    .partners-hero {
+        padding: 30px 15px;
+        margin-bottom: 40px;
     }
     
     .products-header {

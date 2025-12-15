@@ -3070,6 +3070,48 @@ body:has(.service-detail-container) .copyright-footer {
         margin: 15px 0;
     }
     
+    /* Partners page mobile */
+    .partners-title {
+        font-size: 2rem;
+        margin: 15px 0;
+    }
+    
+    .partners-header {
+        margin-bottom: 30px;
+    }
+    
+    .partners-hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .partners-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .partners-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .partner-card {
+        padding: 30px 20px;
+    }
+    
+    .partner-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .partner-card-title {
+        font-size: 1.3rem;
+    }
+    
+    .partner-card-description {
+        font-size: 0.9rem;
+    }
+    
     .products-header {
         margin-bottom: 30px;
     }

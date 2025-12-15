@@ -21,7 +21,7 @@ const partnersData = [
     {
         name: 'Container xChange',
         url: 'https://www.container-xchange.com',
-        icon: 'fa-box',
+        icon: 'fa-shipping-fast',
         description: 'Container trading and leasing platform'
     }
 ];

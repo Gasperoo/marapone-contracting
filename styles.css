@@ -1482,7 +1482,12 @@ body:has(.service-detail-container) .copyright-footer {
         font-size: 0.95rem;
     }
     
-    .partner-icon {
+    .partner-logo-container {
+        height: 80px;
+        padding: 12px;
+    }
+    
+    .partner-icon-fallback {
         width: 70px;
         height: 70px;
         font-size: 1.8rem;
@@ -2335,10 +2340,38 @@ body:has(.service-detail-container) .copyright-footer {
     height: 100%;
 }
 
-.partner-icon {
+.partner-logo-container {
+    width: 100%;
+    height: 120px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.partner-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
+}
+
+.partner-card:hover .partner-logo {
+    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(77, 166, 255, 0.5));
+    transform: scale(1.05);
+}
+
+.partner-icon-fallback {
     width: 100px;
     height: 100px;
-    margin: 0 auto 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2347,12 +2380,12 @@ body:has(.service-detail-container) .copyright-footer {
     font-size: 2.5rem;
     color: var(--text-white);
     box-shadow: 0 5px 20px rgba(77, 166, 255, 0.3);
-    transition: all 0.3s ease;
 }
 
-.partner-card:hover .partner-icon {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 8px 30px rgba(77, 166, 255, 0.5);
+.partner-card:hover .partner-logo-container {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-blue);
+    box-shadow: 0 5px 20px rgba(77, 166, 255, 0.2);
 }
 
 .partner-card-title {
@@ -3097,11 +3130,16 @@ body:has(.service-detail-container) .copyright-footer {
         padding: 30px 20px;
     }
     
-    .partner-icon {
+    .partner-logo-container {
+        height: 100px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .partner-icon-fallback {
         width: 80px;
         height: 80px;
         font-size: 2rem;
-        margin-bottom: 20px;
     }
     
     .partner-card-title {

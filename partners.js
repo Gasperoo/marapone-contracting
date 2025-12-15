@@ -3,25 +3,25 @@ const partnersData = [
     {
         name: 'SeaRates',
         url: 'https://www.searates.com',
-        icon: 'fa-ship',
+        logoUrl: 'https://www.searates.com/images/logo.png',
         description: 'Global shipping rates and freight quotes'
     },
     {
         name: 'AirRates',
         url: 'https://www.airrates.com',
-        icon: 'fa-plane',
+        logoUrl: 'https://www.airrates.com/images/logo.png',
         description: 'Air freight rates and logistics solutions'
     },
     {
         name: 'Freightos',
         url: 'https://www.freightos.com',
-        icon: 'fa-boxes',
+        logoUrl: 'https://www.freightos.com/wp-content/themes/freightos/assets/images/logo.svg',
         description: 'Digital freight marketplace and booking platform'
     },
     {
         name: 'Container xChange',
         url: 'https://www.container-xchange.com',
-        icon: 'fa-shipping-fast',
+        logoUrl: 'https://www.container-xchange.com/wp-content/uploads/2021/06/xchange-logo-white.svg',
         description: 'Container trading and leasing platform'
     }
 ];
@@ -83,8 +83,11 @@ function createPartnerCard(partner) {
     card.innerHTML = `
         <div class="partner-card-content">
             <a href="${partner.url}" target="_blank" rel="noopener noreferrer" class="partner-link">
-                <div class="partner-icon">
-                    <i class="fas ${partner.icon}"></i>
+                <div class="partner-logo-container">
+                    <img src="${partner.logoUrl}" alt="${partner.name} Logo" class="partner-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="partner-icon-fallback" style="display: none;">
+                        <i class="fas fa-handshake"></i>
+                    </div>
                 </div>
                 <h3 class="partner-card-title">${partner.name}</h3>
                 <p class="partner-card-description">${partner.description}</p>

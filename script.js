@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize products dropdown
     initProductsDropdown();
     
+    // Initialize contact dropdown
+    initContactDropdown();
+    
     // Load cart from localStorage if available
     window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart || [];
     // Update local reference to point to window.cart
@@ -168,12 +171,17 @@ function initAccountDropdown() {
         const productsDropdown = document.getElementById('products-dropdown');
         const isClickingProducts = productsIcon && (productsIcon.contains(e.target) || (productsDropdown && productsDropdown.contains(e.target)));
         
+        // Don't close if clicking on contact icon or dropdown
+        const contactIcon = document.getElementById('contact-icon');
+        const contactDropdown = document.getElementById('contact-dropdown');
+        const isClickingContact = contactIcon && (contactIcon.contains(e.target) || (contactDropdown && contactDropdown.contains(e.target)));
+        
         // Don't close if clicking on cart icon or details
         const cartIcon = document.getElementById('cart-icon');
         const cartDetails = document.getElementById('cart-details');
         const isClickingCart = cartIcon && (cartIcon.contains(e.target) || (cartDetails && cartDetails.contains(e.target)));
         
-        if (!accountIcon.contains(e.target) && !accountDropdown.contains(e.target) && !isClickingProducts && !isClickingCart) {
+        if (!accountIcon.contains(e.target) && !accountDropdown.contains(e.target) && !isClickingProducts && !isClickingContact && !isClickingCart) {
             accountDropdown.classList.remove('show');
         }
     };
@@ -257,6 +265,13 @@ function initCartDropdown() {
         if (productsDropdown) {
             productsDropdown.classList.remove('show');
             productsDropdown.style.display = 'none';
+        }
+        
+        // Close contact dropdown if open
+        const contactDropdown = document.getElementById('contact-dropdown');
+        if (contactDropdown) {
+            contactDropdown.classList.remove('show');
+            contactDropdown.style.display = 'none';
         }
         
         // Hide dropdown menu if it exists
@@ -644,6 +659,13 @@ function initProductsDropdown() {
         const accountDropdown = document.getElementById('account-dropdown');
         if (accountDropdown) accountDropdown.classList.remove('show');
         
+        // Close contact dropdown if open
+        const contactDropdown = document.getElementById('contact-dropdown');
+        if (contactDropdown) {
+            contactDropdown.classList.remove('show');
+            contactDropdown.style.display = 'none';
+        }
+        
         // Close cart details if open
         const cartDetails = document.getElementById('cart-details');
         if (cartDetails) cartDetails.classList.remove('show');
@@ -673,12 +695,17 @@ function initProductsDropdown() {
         const accountDropdown = document.getElementById('account-dropdown');
         const isClickingAccount = accountIcon && (accountIcon.contains(e.target) || (accountDropdown && accountDropdown.contains(e.target)));
         
+        // Don't close if clicking on contact icon or dropdown
+        const contactIcon = document.getElementById('contact-icon');
+        const contactDropdown = document.getElementById('contact-dropdown');
+        const isClickingContact = contactIcon && (contactIcon.contains(e.target) || (contactDropdown && contactDropdown.contains(e.target)));
+        
         // Don't close if clicking on cart icon or details
         const cartIcon = document.getElementById('cart-icon');
         const cartDetails = document.getElementById('cart-details');
         const isClickingCart = cartIcon && (cartIcon.contains(e.target) || (cartDetails && cartDetails.contains(e.target)));
         
-        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target) && !isClickingAccount && !isClickingCart) {
+        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target) && !isClickingAccount && !isClickingContact && !isClickingCart) {
             productsDropdown.classList.remove('show');
             productsDropdown.style.display = 'none';
         }
@@ -692,12 +719,17 @@ function initProductsDropdown() {
         const accountDropdown = document.getElementById('account-dropdown');
         const isTappingAccount = accountIcon && (accountIcon.contains(e.target) || (accountDropdown && accountDropdown.contains(e.target)));
         
+        // Don't close if tapping on contact icon or dropdown
+        const contactIcon = document.getElementById('contact-icon');
+        const contactDropdown = document.getElementById('contact-dropdown');
+        const isTappingContact = contactIcon && (contactIcon.contains(e.target) || (contactDropdown && contactDropdown.contains(e.target)));
+        
         // Don't close if tapping on cart icon or details
         const cartIcon = document.getElementById('cart-icon');
         const cartDetails = document.getElementById('cart-details');
         const isTappingCart = cartIcon && (cartIcon.contains(e.target) || (cartDetails && cartDetails.contains(e.target)));
         
-        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target) && !isTappingAccount && !isTappingCart) {
+        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target) && !isTappingAccount && !isTappingContact && !isTappingCart) {
             productsDropdown.classList.remove('show');
             productsDropdown.style.display = 'none';
         }
@@ -711,6 +743,131 @@ function initProductsDropdown() {
             setTimeout(() => {
                 productsDropdown.classList.remove('show');
                 productsDropdown.style.display = 'none';
+            }, 100);
+        });
+    });
+}
+
+// Contact dropdown functionality
+let contactDropdownInitialized = false;
+
+function initContactDropdown() {
+    const contactIcon = document.getElementById('contact-icon');
+    const contactDropdown = document.getElementById('contact-dropdown');
+    
+    if (!contactIcon || !contactDropdown) return;
+    
+    // Prevent duplicate initialization
+    if (contactDropdownInitialized && contactIcon.dataset.initialized === 'true') {
+        return;
+    }
+    
+    // Ensure dropdown starts hidden
+    contactDropdown.classList.remove('show');
+    contactDropdown.style.display = 'none';
+    
+    contactDropdownInitialized = true;
+    contactIcon.dataset.initialized = 'true';
+    
+    // Set up icon properties
+    contactIcon.style.cursor = 'pointer';
+    contactIcon.style.pointerEvents = 'auto';
+    contactIcon.setAttribute('type', 'button');
+    contactIcon.setAttribute('tabindex', '0');
+    
+    // Toggle dropdown on contact icon click
+    contactIcon.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close account dropdown if open
+        const accountDropdown = document.getElementById('account-dropdown');
+        if (accountDropdown) accountDropdown.classList.remove('show');
+        
+        // Close products dropdown if open
+        const productsDropdown = document.getElementById('products-dropdown');
+        if (productsDropdown) {
+            productsDropdown.classList.remove('show');
+            productsDropdown.style.display = 'none';
+        }
+        
+        // Close cart details if open
+        const cartDetails = document.getElementById('cart-details');
+        if (cartDetails) cartDetails.classList.remove('show');
+        
+        // Toggle dropdown visibility
+        if (contactDropdown.classList.contains('show')) {
+            contactDropdown.classList.remove('show');
+            contactDropdown.style.display = 'none';
+        } else {
+            contactDropdown.classList.add('show');
+            contactDropdown.style.display = 'block';
+        }
+    });
+    
+    // Also support keyboard (Enter/Space)
+    contactIcon.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            contactIcon.click();
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    const closeDropdownHandler = function(e) {
+        // Don't close if clicking on account icon or dropdown
+        const accountIcon = document.getElementById('account-icon');
+        const accountDropdown = document.getElementById('account-dropdown');
+        const isClickingAccount = accountIcon && (accountIcon.contains(e.target) || (accountDropdown && accountDropdown.contains(e.target)));
+        
+        // Don't close if clicking on products icon or dropdown
+        const productsIcon = document.getElementById('products-icon');
+        const productsDropdown = document.getElementById('products-dropdown');
+        const isClickingProducts = productsIcon && (productsIcon.contains(e.target) || (productsDropdown && productsDropdown.contains(e.target)));
+        
+        // Don't close if clicking on cart icon or details
+        const cartIcon = document.getElementById('cart-icon');
+        const cartDetails = document.getElementById('cart-details');
+        const isClickingCart = cartIcon && (cartIcon.contains(e.target) || (cartDetails && cartDetails.contains(e.target)));
+        
+        if (!contactIcon.contains(e.target) && !contactDropdown.contains(e.target) && !isClickingAccount && !isClickingProducts && !isClickingCart) {
+            contactDropdown.classList.remove('show');
+            contactDropdown.style.display = 'none';
+        }
+    };
+    document.addEventListener('click', closeDropdownHandler);
+    
+    // Close dropdown on mobile when tapping outside (touch events)
+    document.addEventListener('touchstart', function(e) {
+        // Don't close if tapping on account icon or dropdown
+        const accountIcon = document.getElementById('account-icon');
+        const accountDropdown = document.getElementById('account-dropdown');
+        const isTappingAccount = accountIcon && (accountIcon.contains(e.target) || (accountDropdown && accountDropdown.contains(e.target)));
+        
+        // Don't close if tapping on products icon or dropdown
+        const productsIcon = document.getElementById('products-icon');
+        const productsDropdown = document.getElementById('products-dropdown');
+        const isTappingProducts = productsIcon && (productsIcon.contains(e.target) || (productsDropdown && productsDropdown.contains(e.target)));
+        
+        // Don't close if tapping on cart icon or details
+        const cartIcon = document.getElementById('cart-icon');
+        const cartDetails = document.getElementById('cart-details');
+        const isTappingCart = cartIcon && (cartIcon.contains(e.target) || (cartDetails && cartDetails.contains(e.target)));
+        
+        if (!contactIcon.contains(e.target) && !contactDropdown.contains(e.target) && !isTappingAccount && !isTappingProducts && !isTappingCart) {
+            contactDropdown.classList.remove('show');
+            contactDropdown.style.display = 'none';
+        }
+    });
+    
+    // Ensure dropdown items are clickable on mobile
+    const dropdownItems = contactDropdown.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Small delay to ensure navigation happens
+            setTimeout(() => {
+                contactDropdown.classList.remove('show');
+                contactDropdown.style.display = 'none';
             }, 100);
         });
     });

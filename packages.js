@@ -110,6 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
         initProductsDropdown();
     }
     
+    // Initialize contact dropdown
+    if (typeof initContactDropdown === 'function') {
+        initContactDropdown();
+    }
+    
     // Initialize cart dropdown
     if (typeof initCartDropdown === 'function') {
         initCartDropdown();

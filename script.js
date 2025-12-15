@@ -124,6 +124,19 @@ function initAccountDropdown() {
     accountIcon.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
+        
+        // Close products dropdown if open
+        const productsDropdown = document.getElementById('products-dropdown');
+        if (productsDropdown) {
+            productsDropdown.classList.remove('show');
+            productsDropdown.style.display = 'none';
+        }
+        
+        // Close cart details if open
+        const cartDetails = document.getElementById('cart-details');
+        if (cartDetails) cartDetails.classList.remove('show');
+        
+        // Toggle account dropdown
         accountDropdown.classList.toggle('show');
     });
     
@@ -131,13 +144,36 @@ function initAccountDropdown() {
     accountIcon.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
+            
+            // Close products dropdown if open
+            const productsDropdown = document.getElementById('products-dropdown');
+            if (productsDropdown) {
+                productsDropdown.classList.remove('show');
+                productsDropdown.style.display = 'none';
+            }
+            
+            // Close cart details if open
+            const cartDetails = document.getElementById('cart-details');
+            if (cartDetails) cartDetails.classList.remove('show');
+            
+            // Toggle account dropdown
             accountDropdown.classList.toggle('show');
         }
     });
     
     // Close dropdown when clicking outside
     const closeDropdownHandler = function(e) {
-        if (!accountIcon.contains(e.target) && !accountDropdown.contains(e.target)) {
+        // Don't close if clicking on products icon or dropdown
+        const productsIcon = document.getElementById('products-icon');
+        const productsDropdown = document.getElementById('products-dropdown');
+        const isClickingProducts = productsIcon && (productsIcon.contains(e.target) || (productsDropdown && productsDropdown.contains(e.target)));
+        
+        // Don't close if clicking on cart icon or details
+        const cartIcon = document.getElementById('cart-icon');
+        const cartDetails = document.getElementById('cart-details');
+        const isClickingCart = cartIcon && (cartIcon.contains(e.target) || (cartDetails && cartDetails.contains(e.target)));
+        
+        if (!accountIcon.contains(e.target) && !accountDropdown.contains(e.target) && !isClickingProducts && !isClickingCart) {
             accountDropdown.classList.remove('show');
         }
     };
@@ -215,6 +251,13 @@ function initCartDropdown() {
         // Close account dropdown if open
         const accountDropdown = document.getElementById('account-dropdown');
         if (accountDropdown) accountDropdown.classList.remove('show');
+        
+        // Close products dropdown if open
+        const productsDropdown = document.getElementById('products-dropdown');
+        if (productsDropdown) {
+            productsDropdown.classList.remove('show');
+            productsDropdown.style.display = 'none';
+        }
         
         // Hide dropdown menu if it exists
         if (cartDropdown) cartDropdown.classList.remove('show');
@@ -625,7 +668,17 @@ function initProductsDropdown() {
     
     // Close dropdown when clicking outside
     const closeDropdownHandler = function(e) {
-        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target)) {
+        // Don't close if clicking on account icon or dropdown
+        const accountIcon = document.getElementById('account-icon');
+        const accountDropdown = document.getElementById('account-dropdown');
+        const isClickingAccount = accountIcon && (accountIcon.contains(e.target) || (accountDropdown && accountDropdown.contains(e.target)));
+        
+        // Don't close if clicking on cart icon or details
+        const cartIcon = document.getElementById('cart-icon');
+        const cartDetails = document.getElementById('cart-details');
+        const isClickingCart = cartIcon && (cartIcon.contains(e.target) || (cartDetails && cartDetails.contains(e.target)));
+        
+        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target) && !isClickingAccount && !isClickingCart) {
             productsDropdown.classList.remove('show');
             productsDropdown.style.display = 'none';
         }
@@ -634,7 +687,17 @@ function initProductsDropdown() {
     
     // Close dropdown on mobile when tapping outside (touch events)
     document.addEventListener('touchstart', function(e) {
-        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target)) {
+        // Don't close if tapping on account icon or dropdown
+        const accountIcon = document.getElementById('account-icon');
+        const accountDropdown = document.getElementById('account-dropdown');
+        const isTappingAccount = accountIcon && (accountIcon.contains(e.target) || (accountDropdown && accountDropdown.contains(e.target)));
+        
+        // Don't close if tapping on cart icon or details
+        const cartIcon = document.getElementById('cart-icon');
+        const cartDetails = document.getElementById('cart-details');
+        const isTappingCart = cartIcon && (cartIcon.contains(e.target) || (cartDetails && cartDetails.contains(e.target)));
+        
+        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target) && !isTappingAccount && !isTappingCart) {
             productsDropdown.classList.remove('show');
             productsDropdown.style.display = 'none';
         }

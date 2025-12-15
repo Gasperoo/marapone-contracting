@@ -3,25 +3,25 @@ const partnersData = [
     {
         name: 'SeaRates',
         url: 'https://www.searates.com',
-        logoUrl: 'https://www.searates.com/static/images/searates-logo.svg',
+        logoUrl: 'https://logo.clearbit.com/searates.com',
         description: 'Global shipping rates and freight quotes'
     },
     {
         name: 'AirRates',
         url: 'https://www.airrates.com',
-        logoUrl: 'https://www.airrates.com/images/logo.png',
+        logoUrl: 'https://logo.clearbit.com/airrates.com',
         description: 'Air freight rates and logistics solutions'
     },
     {
         name: 'Freightos',
         url: 'https://www.freightos.com',
-        logoUrl: 'https://www.freightos.com/wp-content/themes/freightos/assets/images/logo.svg',
+        logoUrl: 'https://logo.clearbit.com/freightos.com',
         description: 'Digital freight marketplace and booking platform'
     },
     {
         name: 'Container xChange',
         url: 'https://www.container-xchange.com',
-        logoUrl: 'https://www.container-xchange.com/wp-content/uploads/2021/06/xchange-logo-white.svg',
+        logoUrl: 'https://logo.clearbit.com/container-xchange.com',
         description: 'Container trading and leasing platform'
     }
 ];
@@ -80,17 +80,15 @@ function createPartnerCard(partner) {
     const card = document.createElement('div');
     card.className = 'partner-card';
     
-    // Determine if logo is already white (doesn't need inversion)
-    const isWhiteLogo = partner.logoUrl && (
-        partner.logoUrl.includes('white') || 
-        partner.logoUrl.includes('xchange-logo-white')
-    );
+    // Use Clearbit logo API - logos are typically dark, so we'll invert them
+    // Container xChange might need special handling if logo is white
+    const needsInversion = !partner.logoUrl.includes('xchange') || partner.logoUrl.includes('white');
     
     card.innerHTML = `
         <div class="partner-card-content">
             <a href="${partner.url}" target="_blank" rel="noopener noreferrer" class="partner-link">
                 <div class="partner-logo-container">
-                    <img src="${partner.logoUrl}" alt="${partner.name} Logo" class="partner-logo" ${isWhiteLogo ? '' : 'data-invert="true"'} onerror="this.onerror=null; this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="${partner.logoUrl}" alt="${partner.name} Logo" class="partner-logo" data-invert="true" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="partner-icon-fallback" style="display: none;">
                         <i class="fas fa-handshake"></i>
                     </div>

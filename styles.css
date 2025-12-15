@@ -2360,13 +2360,22 @@ body:has(.service-detail-container) .copyright-footer {
     width: auto;
     height: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1);
     transition: all 0.3s ease;
+    /* Keep original logo colors - remove filter for colored logos */
+}
+
+/* Only apply white filter if logo needs to be inverted for dark background */
+.partner-logo[data-invert="true"] {
+    filter: brightness(0) invert(1);
 }
 
 .partner-card:hover .partner-logo {
-    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(77, 166, 255, 0.5));
     transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(77, 166, 255, 0.5));
+}
+
+.partner-card:hover .partner-logo[data-invert="true"] {
+    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(77, 166, 255, 0.5));
 }
 
 .partner-icon-fallback {

@@ -1687,6 +1687,30 @@ body:has(.service-detail-container) .copyright-footer {
         font-size: 0.85rem;
     }
     
+    .product-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .product-card {
+        padding: 20px 12px;
+    }
+    
+    .product-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .product-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .product-card-description {
+        font-size: 0.85rem;
+    }
+    
     .copyright-footer {
         margin-top: 80px;
         padding: 20px 15px;
@@ -3281,12 +3305,12 @@ body:has(.service-detail-container) .copyright-footer {
     }
     
     .product-category-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .product-card {
-        padding: 25px 20px;
+        padding: 25px 15px;
     }
     
     .product-icon {

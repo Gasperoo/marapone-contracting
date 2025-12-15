@@ -1118,6 +1118,16 @@ body:has(.service-detail-container) .copyright-footer {
     .container {
         display: flex;
         flex-direction: column;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    /* Ensure products/packages pages are centered with even margins */
+    .container:has(.products-wrapper) {
+        padding: 0;
+        margin: 0 auto;
     }
     
     .logo-section {
@@ -1452,8 +1462,25 @@ body:has(.service-detail-container) .copyright-footer {
         margin: 10px 0;
     }
     
+    .products-wrapper {
+        padding: 80px 15px 40px 15px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .products-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    
     .products-header {
         margin-bottom: 25px;
+        text-align: center;
+        width: 100%;
     }
     
     .contact-title {
@@ -3304,8 +3331,25 @@ body:has(.service-detail-container) .copyright-footer {
         margin-bottom: 40px;
     }
     
+    .products-wrapper {
+        padding: 80px 15px 40px 15px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .products-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    
     .products-header {
         margin-bottom: 30px;
+        text-align: center;
+        width: 100%;
     }
     
     .contact-title {

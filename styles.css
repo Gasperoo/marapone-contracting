@@ -250,6 +250,75 @@ body:has(.manage-account-container) .container {
     border-radius: 0 0 10px 10px;
 }
 
+/* Products Dropdown Container */
+.products-dropdown-container {
+    position: relative;
+    z-index: 1001;
+}
+
+#products-icon {
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 1002;
+}
+
+.products-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: rgba(10, 14, 26, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    min-width: 180px;
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.products-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.products-dropdown .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.products-dropdown .dropdown-item i {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.products-dropdown .dropdown-item:hover {
+    background: rgba(77, 166, 255, 0.2);
+    color: var(--accent-blue);
+}
+
+.products-dropdown .dropdown-item:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.products-dropdown .dropdown-item:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
 /* Cart Dropdown Container */
 .cart-dropdown-container {
     position: relative;
@@ -1047,6 +1116,10 @@ body:has(.service-detail-container) .copyright-footer {
         min-width: 160px;
     }
     
+    .products-dropdown {
+        min-width: 160px;
+    }
+    
     .cart-dropdown {
         min-width: 160px;
     }
@@ -1207,6 +1280,11 @@ body:has(.service-detail-container) .copyright-footer {
     }
     
     .account-dropdown {
+        min-width: 150px;
+        font-size: 0.9rem;
+    }
+    
+    .products-dropdown {
         min-width: 150px;
         font-size: 0.9rem;
     }

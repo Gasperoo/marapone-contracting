@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize cart dropdown
     initCartDropdown();
     
+    // Initialize products dropdown
+    initProductsDropdown();
+    
     // Load cart from localStorage if available
     window.cart = JSON.parse(localStorage.getItem('cart')) || window.cart || [];
     // Update local reference to point to window.cart
@@ -560,6 +563,62 @@ The Marapone Contracting Inc. Team`;
     setTimeout(() => {
         if (userForm.parentNode) userForm.parentNode.removeChild(userForm);
     }, 1000);
+}
+
+// Products dropdown functionality
+let productsDropdownInitialized = false;
+
+function initProductsDropdown() {
+    const productsIcon = document.getElementById('products-icon');
+    const productsDropdown = document.getElementById('products-dropdown');
+    
+    if (!productsIcon || !productsDropdown) return;
+    
+    // Prevent duplicate initialization
+    if (productsDropdownInitialized && productsIcon.dataset.initialized === 'true') {
+        return;
+    }
+    
+    productsDropdownInitialized = true;
+    productsIcon.dataset.initialized = 'true';
+    
+    // Set up icon properties
+    productsIcon.style.cursor = 'pointer';
+    productsIcon.style.pointerEvents = 'auto';
+    productsIcon.setAttribute('type', 'button');
+    productsIcon.setAttribute('tabindex', '0');
+    
+    // Toggle dropdown on products icon click
+    productsIcon.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close account dropdown if open
+        const accountDropdown = document.getElementById('account-dropdown');
+        if (accountDropdown) accountDropdown.classList.remove('show');
+        
+        // Close cart details if open
+        const cartDetails = document.getElementById('cart-details');
+        if (cartDetails) cartDetails.classList.remove('show');
+        
+        productsDropdown.classList.toggle('show');
+    });
+    
+    // Also support keyboard (Enter/Space)
+    productsIcon.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            productsIcon.click();
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    const closeDropdownHandler = function(e) {
+        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target)) {
+            productsDropdown.classList.remove('show');
+        }
+    };
+    document.addEventListener('click', closeDropdownHandler);
 }
 
 // Add animation on scroll

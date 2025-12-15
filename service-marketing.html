@@ -19,9 +19,19 @@
             <a href="contact.html" class="icon-button" aria-label="Contact Us">
                 <i class="fas fa-envelope"></i>
             </a>
-            <a href="products.html" class="icon-button" aria-label="Products">
-                <i class="fas fa-box"></i>
-            </a>
+            <div class="products-dropdown-container">
+                <button class="icon-button" id="products-icon" aria-label="Products" type="button">
+                    <i class="fas fa-box"></i>
+                </button>
+                <div class="products-dropdown" id="products-dropdown">
+                    <a href="products.html" class="dropdown-item" id="products-item">
+                        <i class="fas fa-box"></i> Products
+                    </a>
+                    <a href="packages.html" class="dropdown-item" id="packages-item">
+                        <i class="fas fa-handshake"></i> Packages
+                    </a>
+                </div>
+            </div>
             <div class="cart-dropdown-container">
                 <button class="icon-button" id="cart-icon" aria-label="Shopping Cart">
                     <i class="fas fa-shopping-cart"></i>

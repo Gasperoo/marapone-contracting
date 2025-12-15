@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Marapone Contracting Inc.</title>
+    <title>Packages - Marapone Contracting Inc.</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -82,47 +82,42 @@
         </div>
     </header>
 
-    <div class="container contact-container">
-        <div class="contact-wrapper">
-            <!-- Contact Header -->
-            <div class="contact-header">
+    <!-- Packages Welcome Popup -->
+    <div class="products-welcome-popup" id="products-welcome-popup">
+        <div class="products-welcome-popup-content">
+            <div class="products-welcome-popup-header">
+                <h3>Welcome to Our Service Packages</h3>
+                <button class="close-products-popup" id="close-products-popup" aria-label="Close popup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="products-welcome-popup-body">
+                <p>Browse our selection of fixed-price service packages designed to help you grow your business. Add packages to your cart and proceed to checkout when ready.</p>
+                <p style="margin-top: 15px; color: var(--accent-blue); font-weight: 600;">All packages are designed to deliver measurable results.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="products-wrapper">
+            <!-- Packages Header -->
+            <div class="products-header">
                 <a href="index.html" class="back-link">
                     <i class="fas fa-arrow-left"></i> Back to Home
                 </a>
-                <h1 class="contact-title">Contact Us</h1>
+                <h1 class="products-title">Service Packages</h1>
             </div>
 
-            <div class="contact-content">
-                <p class="contact-intro">Have a question or want to get in touch? Fill out the form below and we'll get back to you as soon as possible.</p>
+            <div class="products-content">
+                <div class="products-hero">
+                    <h2 class="products-hero-title">Fixed-Price Service Packages</h2>
+                    <p class="products-hero-subtitle">Professional services with clear pricing and guaranteed results. From audits to full launches, we've got you covered.</p>
+                </div>
                 
-                <!-- Contact Form -->
-                <form class="contact-form" id="contact-form" action="https://formsubmit.co/general@marapone.com" method="POST">
-                    <!-- FormSubmit configuration -->
-                    <input type="hidden" name="_subject" value="Contact Form Submission from Marapone Website">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="">
-                    <input type="hidden" name="_template" value="box">
-                    
-                    <div class="form-group">
-                        <label for="contact-name">Name *</label>
-                        <input type="text" id="contact-name" name="name" placeholder="Your full name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contact-email">Email *</label>
-                        <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contact-message">Message *</label>
-                        <textarea id="contact-message" name="message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="contact-submit-button">
-                        <i class="fas fa-paper-plane"></i>
-                        Send Message
-                    </button>
-                </form>
+                <!-- Packages will be displayed here -->
+                <div class="products-grid" id="products-grid">
+                    <!-- Packages will be dynamically inserted here -->
+                </div>
             </div>
         </div>
 
@@ -132,8 +127,63 @@
         </footer>
     </div>
 
+    <!-- Booking Modal for Free Strategy Call -->
+    <div class="booking-modal" id="booking-modal">
+        <div class="booking-modal-content">
+            <div class="booking-modal-header">
+                <h2 id="booking-modal-title">Book a Free 15-Minute Strategy Call</h2>
+                <button class="close-booking-modal" id="close-booking-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="booking-steps">
+                <!-- Step 1: Date Selection -->
+                <div class="booking-step active" id="step-date">
+                    <h3>Select a Date</h3>
+                    <div class="calendar-navigation">
+                        <button class="calendar-nav-btn" id="prev-month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="calendar-month-year" id="calendar-month-year"></span>
+                        <button class="calendar-nav-btn" id="next-month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-container" id="calendar-container"></div>
+                </div>
+
+                <!-- Step 2: Time Selection -->
+                <div class="booking-step" id="step-time">
+                    <h3>Select a Time</h3>
+                    <div class="selected-date-display" id="selected-date-display"></div>
+                    <div class="time-slots" id="time-slots"></div>
+                </div>
+
+                <!-- Step 3: Confirmation -->
+                <div class="booking-step" id="step-confirm">
+                    <h3>Confirm Your Appointment</h3>
+                    <div class="booking-summary" id="booking-summary"></div>
+                    <button class="confirm-booking-btn" id="confirm-booking-btn">
+                        <i class="fas fa-check"></i>
+                        Confirm Booking
+                    </button>
+                </div>
+            </div>
+
+            <div class="booking-navigation">
+                <button class="booking-nav-btn" id="prev-step" style="display: none;">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="booking-nav-btn" id="next-step" style="display: none;">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-    <script src="contact.js"></script>
+    <script src="packages.js"></script>
+    <script src="free-booking.js"></script>
 </body>
 </html>
-

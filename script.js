@@ -619,6 +619,24 @@ function initProductsDropdown() {
         }
     };
     document.addEventListener('click', closeDropdownHandler);
+    
+    // Close dropdown on mobile when tapping outside (touch events)
+    document.addEventListener('touchstart', function(e) {
+        if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target)) {
+            productsDropdown.classList.remove('show');
+        }
+    });
+    
+    // Ensure dropdown items are clickable on mobile
+    const dropdownItems = productsDropdown.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Small delay to ensure navigation happens
+            setTimeout(() => {
+                productsDropdown.classList.remove('show');
+            }, 100);
+        });
+    });
 }
 
 // Add animation on scroll

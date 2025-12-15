@@ -3,25 +3,25 @@ const partnersData = [
     {
         name: 'SeaRates',
         url: 'https://www.searates.com',
-        logoUrl: 'https://cdn.brandfetch.io/searates.com/logo',
+        logoUrl: 'https://img.logo.dev/searates.com?size=256',
         description: 'Global shipping rates and freight quotes'
     },
     {
         name: 'AirRates',
         url: 'https://www.airrates.com',
-        logoUrl: 'https://cdn.brandfetch.io/airrates.com/logo',
+        logoUrl: 'https://img.logo.dev/airrates.com?size=256',
         description: 'Air freight rates and logistics solutions'
     },
     {
         name: 'Freightos',
         url: 'https://www.freightos.com',
-        logoUrl: 'https://cdn.brandfetch.io/freightos.com/logo',
+        logoUrl: 'https://img.logo.dev/freightos.com?size=256',
         description: 'Digital freight marketplace and booking platform'
     },
     {
         name: 'Container xChange',
         url: 'https://www.container-xchange.com',
-        logoUrl: 'https://cdn.brandfetch.io/container-xchange.com/logo',
+        logoUrl: 'https://img.logo.dev/container-xchange.com?size=256',
         description: 'Container trading and leasing platform'
     }
 ];

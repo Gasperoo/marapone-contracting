@@ -273,6 +273,7 @@ body:has(.manage-account-container) .container {
     padding: 8px 0;
     opacity: 0;
     visibility: hidden;
+    display: none; /* Ensure it's hidden by default */
     transform: translateY(-10px);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
@@ -284,6 +285,7 @@ body:has(.manage-account-container) .container {
 .products-dropdown.show {
     opacity: 1;
     visibility: visible;
+    display: block; /* Show when active */
     transform: translateY(0);
     pointer-events: auto;
 }

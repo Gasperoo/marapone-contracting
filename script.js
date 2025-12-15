@@ -579,6 +579,10 @@ function initProductsDropdown() {
         return;
     }
     
+    // Ensure dropdown starts hidden
+    productsDropdown.classList.remove('show');
+    productsDropdown.style.display = 'none';
+    
     productsDropdownInitialized = true;
     productsIcon.dataset.initialized = 'true';
     
@@ -601,7 +605,14 @@ function initProductsDropdown() {
         const cartDetails = document.getElementById('cart-details');
         if (cartDetails) cartDetails.classList.remove('show');
         
-        productsDropdown.classList.toggle('show');
+        // Toggle dropdown visibility
+        if (productsDropdown.classList.contains('show')) {
+            productsDropdown.classList.remove('show');
+            productsDropdown.style.display = 'none';
+        } else {
+            productsDropdown.classList.add('show');
+            productsDropdown.style.display = 'block';
+        }
     });
     
     // Also support keyboard (Enter/Space)
@@ -616,6 +627,7 @@ function initProductsDropdown() {
     const closeDropdownHandler = function(e) {
         if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target)) {
             productsDropdown.classList.remove('show');
+            productsDropdown.style.display = 'none';
         }
     };
     document.addEventListener('click', closeDropdownHandler);
@@ -624,6 +636,7 @@ function initProductsDropdown() {
     document.addEventListener('touchstart', function(e) {
         if (!productsIcon.contains(e.target) && !productsDropdown.contains(e.target)) {
             productsDropdown.classList.remove('show');
+            productsDropdown.style.display = 'none';
         }
     });
     
@@ -634,6 +647,7 @@ function initProductsDropdown() {
             // Small delay to ensure navigation happens
             setTimeout(() => {
                 productsDropdown.classList.remove('show');
+                productsDropdown.style.display = 'none';
             }, 100);
         });
     });

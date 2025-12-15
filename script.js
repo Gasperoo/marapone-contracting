@@ -135,6 +135,13 @@ function initAccountDropdown() {
             productsDropdown.style.display = 'none';
         }
         
+        // Close contact dropdown if open
+        const contactDropdown = document.getElementById('contact-dropdown');
+        if (contactDropdown) {
+            contactDropdown.classList.remove('show');
+            contactDropdown.style.display = 'none';
+        }
+        
         // Close cart details if open
         const cartDetails = document.getElementById('cart-details');
         if (cartDetails) cartDetails.classList.remove('show');
@@ -153,6 +160,13 @@ function initAccountDropdown() {
             if (productsDropdown) {
                 productsDropdown.classList.remove('show');
                 productsDropdown.style.display = 'none';
+            }
+            
+            // Close contact dropdown if open
+            const contactDropdown = document.getElementById('contact-dropdown');
+            if (contactDropdown) {
+                contactDropdown.classList.remove('show');
+                contactDropdown.style.display = 'none';
             }
             
             // Close cart details if open

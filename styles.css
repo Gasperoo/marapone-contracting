@@ -1507,6 +1507,15 @@ body:has(.service-detail-container) .copyright-footer {
         object-fit: contain;
     }
     
+    /* Ensure SeaRates and AirRates logos are same size on mobile */
+    .partner-logo-container img[src*="searates"],
+    .partner-logo-container img[src*="airrates"] {
+        height: 35px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+    }
+    
     .partner-icon-fallback {
         width: 70px;
         height: 70px;
@@ -2442,6 +2451,15 @@ body:has(.service-detail-container) .copyright-footer {
     /* Keep original logo colors - remove filter for colored logos */
 }
 
+/* Ensure all partner logos are displayed at consistent size */
+.partner-logo-container img[src*="searates"],
+.partner-logo-container img[src*="airrates"] {
+    height: 45px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 /* Only apply white filter if logo needs to be inverted for dark background */
 .partner-logo[data-invert="true"] {
     filter: brightness(0) invert(1);
@@ -3242,6 +3260,15 @@ body:has(.service-detail-container) .copyright-footer {
         max-height: 100%;
         width: auto;
         height: auto;
+        object-fit: contain;
+    }
+    
+    /* Ensure SeaRates and AirRates logos are same size on tablet */
+    .partner-logo-container img[src*="searates"],
+    .partner-logo-container img[src*="airrates"] {
+        height: 40px;
+        width: auto;
+        max-width: 100%;
         object-fit: contain;
     }
     

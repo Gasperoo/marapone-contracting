@@ -2737,6 +2737,24 @@ body:has(.service-detail-container) .copyright-footer {
     /* Products page mobile */
     .products-title {
         font-size: 2rem;
+        margin: 15px 0;
+    }
+    
+    .products-header {
+        margin-bottom: 30px;
+    }
+    
+    .contact-title {
+        font-size: 2rem;
+        margin: 15px 0;
+    }
+    
+    .contact-header {
+        margin-bottom: 30px;
+    }
+    
+    .checkout-header {
+        margin-bottom: 30px;
     }
     
     .product-category-title {

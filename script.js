@@ -22,8 +22,7 @@ const socialLinks = {
     facebook: '#',  // Replace with your Facebook URL
     telegram: '#', // Replace with your Telegram URL
     whatsapp: '#', // Replace with your WhatsApp URL (format: https://wa.me/1234567890)
-    youtube: '#',  // Replace with your YouTube URL
-    discord: '#'   // Replace with your Discord server invite URL
+    youtube: '#'   // Replace with your YouTube URL
 };
 
 // Initialize social media links

@@ -626,21 +626,6 @@ body:has(.manage-account-container) .container {
     min-height: calc(100vh - 40px);
     padding: 40px;
     margin-bottom: 0;
-    position: relative;
-    overflow: hidden;
-}
-
-.logo-background-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    object-fit: cover;
 }
 
 .logo-container {
@@ -649,8 +634,6 @@ body:has(.manage-account-container) .container {
     align-items: center;
     width: 100%;
     padding: 0;
-    position: relative;
-    z-index: 1;
 }
 
 .logo {
@@ -1145,12 +1128,6 @@ body:has(.service-detail-container) .copyright-footer {
     
     .logo-section {
         order: 1;
-        padding: 20px;
-    }
-    
-    .logo-background-video {
-        width: 100%;
-        height: 100%;
     }
     
     .content-section {

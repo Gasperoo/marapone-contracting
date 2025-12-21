@@ -1530,13 +1530,16 @@ body:has(.service-detail-container) .copyright-footer {
         object-fit: contain;
     }
     
-    /* Ensure SeaRates and AirRates logos are same size on mobile */
+    /* Ensure SeaRates, AirRates, and FedEx logos are same size on mobile */
     .partner-logo-container img[src*="searates"],
-    .partner-logo-container img[src*="airrates"] {
+    .partner-logo-container img[src*="airrates"],
+    .partner-logo-container img[src*="fedex"] {
         height: 35px;
         width: auto;
         max-width: 100%;
         object-fit: contain;
+        display: block;
+        margin: 0 auto;
     }
     
     .partner-icon-fallback {
@@ -2476,11 +2479,14 @@ body:has(.service-detail-container) .copyright-footer {
 
 /* Ensure all partner logos are displayed at consistent size */
 .partner-logo-container img[src*="searates"],
-.partner-logo-container img[src*="airrates"] {
+.partner-logo-container img[src*="airrates"],
+.partner-logo-container img[src*="fedex"] {
     height: 45px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Only apply white filter if logo needs to be inverted for dark background */
@@ -3286,13 +3292,16 @@ body:has(.service-detail-container) .copyright-footer {
         object-fit: contain;
     }
     
-    /* Ensure SeaRates and AirRates logos are same size on tablet */
+    /* Ensure SeaRates, AirRates, and FedEx logos are same size on tablet */
     .partner-logo-container img[src*="searates"],
-    .partner-logo-container img[src*="airrates"] {
+    .partner-logo-container img[src*="airrates"],
+    .partner-logo-container img[src*="fedex"] {
         height: 40px;
         width: auto;
         max-width: 100%;
         object-fit: contain;
+        display: block;
+        margin: 0 auto;
     }
     
     .partner-icon-fallback {

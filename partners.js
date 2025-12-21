@@ -23,6 +23,12 @@ const partnersData = [
         url: 'https://www.container-xchange.com',
         logoUrl: 'container-xchange-logo.svg',
         description: 'Container trading and leasing platform'
+    },
+    {
+        name: 'FedEx',
+        url: 'https://www.fedex.com/en-ca/home.html',
+        logoUrl: 'fedex-logo.svg',
+        description: 'Express shipping and logistics services'
     }
 ];
 
@@ -81,8 +87,8 @@ function createPartnerCard(partner) {
     card.className = 'partner-card';
     
     // Determine if logo is white (doesn't need inversion)
-    // SeaRates and Container xChange have white logos, others are dark
-    const isWhiteLogo = partner.logoUrl.includes('white') || partner.logoUrl.includes('xchange');
+    // SeaRates, Container xChange, and FedEx have white/light logos, others are dark
+    const isWhiteLogo = partner.logoUrl.includes('white') || partner.logoUrl.includes('xchange') || partner.logoUrl.includes('fedex');
     
     card.innerHTML = `
         <div class="partner-card-content">

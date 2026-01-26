@@ -34,6 +34,8 @@ class LiquidEther {
         this.ext = null;
         this.width = 0;
         this.height = 0;
+        this.textureWidth = 0;
+        this.textureHeight = 0;
         this.pointers = [];
         this.splatStack = [];
         this.autoDemoTime = 0;
@@ -255,7 +257,9 @@ class LiquidEther {
             void main() {
                 vec2 p = vUv - point.xy;
                 p.x *= aspectRatio;
-                vec3 splat = exp(-dot(p, p) / radius) * color;
+                float dist = dot(p, p);
+                float r = radius * radius;
+                vec3 splat = exp(-dist / r) * color;
                 vec3 base = texture2D(uTarget, vUv).xyz;
                 gl_FragColor = vec4(base + splat, 1.0);
             }
@@ -628,6 +632,10 @@ class LiquidEther {
             this.divergence = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
             this.curl = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
             this.pressure = this.createDoubleFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
+            
+            // Update texture dimensions after creating framebuffers
+            this.textureWidth = this.velocity.width;
+            this.textureHeight = this.velocity.height;
         } catch (error) {
             console.error('LiquidEther: Error creating framebuffers:', error);
             throw error;
@@ -636,56 +644,90 @@ class LiquidEther {
 
     setupInteraction() {
         const updatePointer = (x, y, prevX, prevY) => {
+            if (!this.velocity) return;
+            
             const rect = this.container.getBoundingClientRect();
-            const pixelRatio = window.devicePixelRatio || 1;
             const texX = (x - rect.left) / rect.width;
             const texY = 1.0 - (y - rect.top) / rect.height;
             const prevTexX = (prevX - rect.left) / rect.width;
             const prevTexY = 1.0 - (prevY - rect.top) / rect.height;
             
-            const dx = (texX - prevTexX) * this.width;
-            const dy = (texY - prevTexY) * this.height;
+            // Calculate velocity delta in texture space (normalized 0-1)
+            const deltaX = texX - prevTexX;
+            const deltaY = texY - prevTexY;
             
-            if (Math.abs(dx) > 0.001 || Math.abs(dy) > 0.001) {
-                this.splat(texX, texY, dx * this.options.mouseForce * 0.01, dy * this.options.mouseForce * 0.01);
+            // Scale to simulation space and apply force
+            // mouseForce acts as a multiplier for the velocity
+            const velocityX = deltaX * this.velocity.width * this.options.mouseForce;
+            const velocityY = deltaY * this.velocity.height * this.options.mouseForce;
+            
+            // Only splat if there's meaningful movement
+            if (Math.abs(velocityX) > 1.0 || Math.abs(velocityY) > 1.0) {
+                this.splat(texX, texY, velocityX, velocityY);
             }
         };
 
         let mouseX = 0, mouseY = 0, prevMouseX = 0, prevMouseY = 0;
-        let mouseDown = false;
+        let isMouseOver = false;
+        let hasMoved = false;
 
-        this.container.addEventListener('mousedown', (e) => {
-            mouseDown = true;
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            prevMouseX = mouseX;
-            prevMouseY = mouseY;
-        });
-
+        // Track mouse position for hover interaction (like reactbits.dev)
+        // Works on mousemove without requiring mousedown
         this.container.addEventListener('mousemove', (e) => {
-            if (mouseDown) {
-                prevMouseX = mouseX;
-                prevMouseY = mouseY;
+            if (!isMouseOver) {
+                isMouseOver = true;
                 mouseX = e.clientX;
                 mouseY = e.clientY;
+                prevMouseX = mouseX;
+                prevMouseY = mouseY;
+                hasMoved = false;
+                return;
+            }
+            
+            if (!hasMoved) {
+                hasMoved = true;
+                prevMouseX = mouseX;
+                prevMouseY = mouseY;
+            } else {
+                prevMouseX = mouseX;
+                prevMouseY = mouseY;
+            }
+            
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            if (hasMoved) {
                 updatePointer(mouseX, mouseY, prevMouseX, prevMouseY);
             }
         });
 
-        this.container.addEventListener('mouseup', () => {
-            mouseDown = false;
+        this.container.addEventListener('mouseenter', (e) => {
+            isMouseOver = true;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            prevMouseX = mouseX;
+            prevMouseY = mouseY;
+            hasMoved = false;
         });
 
         this.container.addEventListener('mouseleave', () => {
-            mouseDown = false;
+            isMouseOver = false;
+            hasMoved = false;
+            prevMouseX = 0;
+            prevMouseY = 0;
+            mouseX = 0;
+            mouseY = 0;
         });
 
+        // Touch support
+        let touchStartX = 0, touchStartY = 0;
         this.container.addEventListener('touchstart', (e) => {
             e.preventDefault();
             if (e.touches.length > 0) {
-                mouseDown = true;
-                mouseX = e.touches[0].clientX;
-                mouseY = e.touches[0].clientY;
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                mouseX = touchStartX;
+                mouseY = touchStartY;
                 prevMouseX = mouseX;
                 prevMouseY = mouseY;
             }
@@ -693,7 +735,7 @@ class LiquidEther {
 
         this.container.addEventListener('touchmove', (e) => {
             e.preventDefault();
-            if (mouseDown && e.touches.length > 0) {
+            if (e.touches.length > 0) {
                 prevMouseX = mouseX;
                 prevMouseY = mouseY;
                 mouseX = e.touches[0].clientX;
@@ -703,7 +745,8 @@ class LiquidEther {
         }, { passive: false });
 
         this.container.addEventListener('touchend', () => {
-            mouseDown = false;
+            prevMouseX = 0;
+            prevMouseY = 0;
         });
     }
 
@@ -717,6 +760,8 @@ class LiquidEther {
     }
 
     splat(x, y, dx, dy) {
+        if (!this.velocity || !this.dye) return;
+        
         const colors = [
             this.hexToRgb(this.options.color0),
             this.hexToRgb(this.options.color1),
@@ -726,18 +771,30 @@ class LiquidEther {
         
         const gl = this.gl;
         const program = this.programs.splat;
+        if (!program || !program.program) return;
+        
         gl.useProgram(program.program);
         
+        // Calculate radius in normalized texture coordinates
+        // cursorSize is in pixels, convert to normalized (0-1) range
+        const baseRadius = this.options.cursorSize / 100.0; // Normalize to 0-1
+        
+        // Apply velocity splat
         gl.uniform1i(program.uniforms.uTarget, this.velocity.read.attach(0));
-        gl.uniform1f(program.uniforms.aspectRatio, this.canvas.width / this.canvas.height);
+        gl.uniform1f(program.uniforms.aspectRatio, this.velocity.width / this.velocity.height);
         gl.uniform2f(program.uniforms.point, x, y);
         gl.uniform3f(program.uniforms.color, dx, dy, 0.0);
-        gl.uniform1f(program.uniforms.radius, this.options.cursorSize / 100.0);
+        // Radius squared for the shader (shader uses radius^2 in exp calculation)
+        gl.uniform1f(program.uniforms.radius, baseRadius);
         this.blit(this.velocity.write);
         this.velocity.swap();
 
+        // Apply dye splat
         gl.uniform1i(program.uniforms.uTarget, this.dye.read.attach(0));
+        gl.uniform1f(program.uniforms.aspectRatio, this.dye.width / this.dye.height);
+        gl.uniform2f(program.uniforms.point, x, y);
         gl.uniform3f(program.uniforms.color, color[0] * 10.0, color[1] * 10.0, color[2] * 10.0);
+        gl.uniform1f(program.uniforms.radius, baseRadius);
         this.blit(this.dye.write);
         this.dye.swap();
     }
@@ -759,7 +816,8 @@ class LiquidEther {
         gl.uniform2f(program.uniforms.texelSize, this.velocity.texelSizeX, this.velocity.texelSizeY);
         gl.uniform1i(program.uniforms.uVelocity, this.velocity.read.attach(0));
         gl.uniform1i(program.uniforms.uCurl, this.curl.attach(1));
-        gl.uniform1f(program.uniforms.curl, this.options.viscous);
+        // Convert viscous value to curl strength (viscous is 0-100, curl should be 0-50)
+        gl.uniform1f(program.uniforms.curl, this.options.viscous * 0.5);
         gl.uniform1f(program.uniforms.dt, dt);
         this.blit(this.velocity.write);
         this.velocity.swap();
@@ -844,17 +902,22 @@ class LiquidEther {
             this.initFramebuffers();
         }
 
-        // Auto demo
-        if (this.autoDemoActive && this.options.autoDemo) {
+        // Auto demo - runs continuously when enabled
+        if (this.autoDemoActive && this.options.autoDemo && this.velocity) {
             this.autoDemoTime += dt * this.options.autoSpeed;
             const intensity = this.options.autoIntensity;
             const x = 0.5 + Math.sin(this.autoDemoTime) * 0.3;
             const y = 0.5 + Math.cos(this.autoDemoTime * 0.7) * 0.3;
-            const prevX = 0.5 + Math.sin(this.autoDemoTime - dt) * 0.3;
-            const prevY = 0.5 + Math.cos((this.autoDemoTime - dt) * 0.7) * 0.3;
-            const dx = (x - prevX) * this.width * intensity;
-            const dy = (y - prevY) * this.height * intensity;
-            this.splat(x, y, dx, dy);
+            const prevX = 0.5 + Math.sin(this.autoDemoTime - dt * this.options.autoSpeed) * 0.3;
+            const prevY = 0.5 + Math.cos((this.autoDemoTime - dt * this.options.autoSpeed) * 0.7) * 0.3;
+            
+            // Calculate velocity in simulation space with intensity multiplier
+            const deltaX = (x - prevX) * this.velocity.width;
+            const deltaY = (y - prevY) * this.velocity.height;
+            const velocityX = deltaX * intensity * this.options.mouseForce;
+            const velocityY = deltaY * intensity * this.options.mouseForce;
+            
+            this.splat(x, y, velocityX, velocityY);
         }
 
         this.step(dt);

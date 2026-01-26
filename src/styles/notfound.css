@@ -1,0 +1,122 @@
+/* 404 Page Styles */
+
+.notfound-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: #0a0e1a;
+  color: #ffffff;
+}
+
+.notfound-code {
+  font-size: clamp(4rem, 15vw, 6rem);
+  margin-bottom: 1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #4da6ff 0%, #5227FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.notfound-title {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+.notfound-text {
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+  font-size: clamp(1rem, 3vw, 1.1rem);
+  max-width: 500px;
+  padding: 0 1rem;
+}
+
+.notfound-button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: #4da6ff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 1rem;
+  min-width: 120px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.notfound-button:hover {
+  background-color: #3d8fdd;
+  transform: translateY(-2px);
+}
+
+.notfound-button:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .notfound-container {
+    padding: 1.5rem;
+  }
+
+  .notfound-code {
+    margin-bottom: 0.75rem;
+  }
+
+  .notfound-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .notfound-text {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .notfound-button {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .notfound-container {
+    padding: 1rem;
+  }
+
+  .notfound-code {
+    margin-bottom: 0.5rem;
+  }
+
+  .notfound-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .notfound-text {
+    margin-bottom: 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .notfound-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .notfound-button:hover {
+    transform: none;
+  }
+
+  .notfound-button:active {
+    background-color: #3d8fdd;
+    transform: scale(0.98);
+  }
+}

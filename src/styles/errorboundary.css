@@ -1,0 +1,100 @@
+/* Error Boundary Styles */
+
+.error-boundary-container {
+  padding: 2rem;
+  text-align: center;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a0e1a;
+}
+
+.error-boundary-title {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+.error-boundary-text {
+  margin-bottom: 2rem;
+  color: #999;
+  font-size: clamp(0.95rem, 3vw, 1rem);
+  max-width: 500px;
+  padding: 0 1rem;
+}
+
+.error-boundary-button {
+  padding: 0.75rem 2rem;
+  background-color: #4da6ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+  min-width: 120px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.error-boundary-button:hover {
+  background-color: #3d8fdd;
+  transform: translateY(-2px);
+}
+
+.error-boundary-button:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .error-boundary-container {
+    padding: 1.5rem;
+  }
+
+  .error-boundary-text {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .error-boundary-button {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-boundary-container {
+    padding: 1rem;
+  }
+
+  .error-boundary-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .error-boundary-text {
+    margin-bottom: 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .error-boundary-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .error-boundary-button:hover {
+    transform: none;
+  }
+
+  .error-boundary-button:active {
+    background-color: #3d8fdd;
+    transform: scale(0.98);
+  }
+}

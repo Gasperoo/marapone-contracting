@@ -18,8 +18,6 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-push-with-token.sh
-
 # Dependencies
 node_modules/
 bun.lock
@@ -32,7 +30,3 @@ dist/
 .env
 .env.local
 .env.*.local
-
-# Example files (optional - can be removed if not needed)
-liquid-ether-example.html
-liquid-ether-example-cdn.html

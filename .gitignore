@@ -19,3 +19,11 @@ Thumbs.db
 npm-debug.log*
 
 push-with-token.sh
+
+# Dependencies
+node_modules/
+bun.lock
+
+# Example files (optional - can be removed if not needed)
+liquid-ether-example.html
+liquid-ether-example-cdn.html

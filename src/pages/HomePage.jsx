@@ -1,19 +1,19 @@
 import React from 'react';
-import LiquidEtherBackground from '../components/LiquidEtherBackground';
+import LiquidEther from '../components/LiquidEther';
 import '../styles/homepage.css';
 
 /**
  * Home Page Component
  * Features:
- * - Full-screen LiquidEther background
+ * - Full-screen Three.js-based LiquidEther background
  * - Responsive design
  * - Optimized performance
  */
 export default function HomePage() {
   return (
     <div className="homepage-container">
-      {/* Full-screen LiquidEther Background */}
-      <LiquidEtherBackground />
+      {/* Full-screen Three.js LiquidEther Background */}
+      <LiquidEther />
 
       {/* Main Content - Overlay on top of background */}
       <div className="homepage-content">

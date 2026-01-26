@@ -24,6 +24,15 @@ push-with-token.sh
 node_modules/
 bun.lock
 
+# React build
+dist/
+.vite/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
 # Example files (optional - can be removed if not needed)
 liquid-ether-example.html
 liquid-ether-example-cdn.html

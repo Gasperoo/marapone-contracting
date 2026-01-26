@@ -382,12 +382,22 @@
     <script src="free-booking.js"></script>
     
     <!-- LiquidEther WebGL Fluid Simulation -->
-    <script src="LiquidEther-cdn.js"></script>
+    <script src="LiquidEther-cdn.js" onerror="console.error('Failed to load LiquidEther-cdn.js');"></script>
     <script>
         // Initialize LiquidEther background animation
         document.addEventListener('DOMContentLoaded', function() {
-            const container = document.getElementById('liquid-ether-container');
-            if (container && typeof LiquidEther !== 'undefined') {
+            try {
+                const container = document.getElementById('liquid-ether-container');
+                if (!container) {
+                    console.warn('LiquidEther: Container element not found');
+                    return;
+                }
+                
+                if (typeof LiquidEther === 'undefined') {
+                    console.error('LiquidEther: Script not loaded. Check if LiquidEther-cdn.js is accessible.');
+                    return;
+                }
+                
                 const liquidEther = new LiquidEther(container, {
                     colors: ['#5227FF', '#FF9FFC', '#B19EEF'],
                     mouseForce: 20,
@@ -408,6 +418,11 @@
                     color1: "#FF9FFC",
                     color2: "#B19EEF"
                 });
+                
+                // Store reference for debugging
+                window.liquidEther = liquidEther;
+            } catch (error) {
+                console.error('LiquidEther: Initialization failed:', error);
             }
         });
     </script>

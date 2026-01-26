@@ -56,6 +56,11 @@ class LiquidEther {
     }
 
     init() {
+        if (!this.container) {
+            console.error('LiquidEther: Container element not found');
+            return;
+        }
+
         this.canvas = document.createElement('canvas');
         this.canvas.style.width = '100%';
         this.canvas.style.height = '100%';
@@ -63,28 +68,50 @@ class LiquidEther {
         this.container.appendChild(this.canvas);
 
         const { gl, ext } = this.getWebGLContext(this.canvas);
-        if (!gl || !ext) {
-            console.error('WebGL not supported');
+        if (!gl || !ext || !ext.formatRGBA) {
+            console.error('LiquidEther: WebGL not supported or formats not available');
+            if (this.canvas && this.container) {
+                this.container.removeChild(this.canvas);
+            }
             return;
         }
 
         this.gl = gl;
         this.ext = ext;
 
-        this.width = this.container.offsetWidth;
-        this.height = this.container.offsetHeight;
-        this.resizeCanvas();
+        // Wait for container to have dimensions
+        const initWithDelay = () => {
+            this.width = this.container.offsetWidth;
+            this.height = this.container.offsetHeight;
+            
+            // If container has no dimensions, try again
+            if (this.width === 0 || this.height === 0) {
+                requestAnimationFrame(initWithDelay);
+                return;
+            }
+            
+            this.resizeCanvas();
 
-        this.initShaders();
-        this.initFramebuffers();
-        this.setupInteraction();
+            try {
+                this.initShaders();
+                this.initFramebuffers();
+                this.setupInteraction();
+                
+                if (this.options.autoDemo) {
+                    this.startAutoDemo();
+                }
+
+                window.addEventListener('resize', () => this.handleResize());
+                this.update();
+            } catch (error) {
+                console.error('LiquidEther: Initialization error:', error);
+                if (this.canvas && this.container) {
+                    this.container.removeChild(this.canvas);
+                }
+            }
+        };
         
-        if (this.options.autoDemo) {
-            this.startAutoDemo();
-        }
-
-        window.addEventListener('resize', () => this.handleResize());
-        this.update();
+        initWithDelay();
     }
 
     getWebGLContext(canvas) {
@@ -544,6 +571,11 @@ class LiquidEther {
     }
 
     initFramebuffers() {
+        if (!this.ext.formatRGBA || !this.ext.formatRG || !this.ext.formatR) {
+            console.error('LiquidEther: Required texture formats not supported');
+            return;
+        }
+
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
         // Calculate base resolutions that scale with screen size
@@ -590,11 +622,16 @@ class LiquidEther {
 
         this.gl.disable(this.gl.BLEND);
 
-        this.dye = this.createDoubleFBO(dyeRes.width, dyeRes.height, rgba.internalFormat, rgba.format, texType, filtering);
-        this.velocity = this.createDoubleFBO(simRes.width, simRes.height, rg.internalFormat, rg.format, texType, filtering);
-        this.divergence = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
-        this.curl = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
-        this.pressure = this.createDoubleFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
+        try {
+            this.dye = this.createDoubleFBO(dyeRes.width, dyeRes.height, rgba.internalFormat, rgba.format, texType, filtering);
+            this.velocity = this.createDoubleFBO(simRes.width, simRes.height, rg.internalFormat, rg.format, texType, filtering);
+            this.divergence = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
+            this.curl = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
+            this.pressure = this.createDoubleFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
+        } catch (error) {
+            console.error('LiquidEther: Error creating framebuffers:', error);
+            throw error;
+        }
     }
 
     setupInteraction() {

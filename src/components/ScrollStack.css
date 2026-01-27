@@ -13,6 +13,13 @@
   /* Windows Chrome performance optimizations */
   contain: layout style paint;
   content-visibility: auto;
+  /* Hide scrollbar while keeping functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scroll-stack-scroller::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .scroll-stack-inner {

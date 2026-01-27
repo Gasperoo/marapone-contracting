@@ -235,7 +235,7 @@
 
 .payment-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
@@ -249,8 +249,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   color: white;
+  min-height: 120px;
 }
 
 .payment-method-btn:hover {
@@ -266,7 +268,12 @@
 }
 
 .payment-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .payment-name {
@@ -284,6 +291,8 @@
   border-radius: 15px;
   padding: 2rem;
   animation: fadeIn 0.3s ease;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 @keyframes fadeIn {
@@ -414,6 +423,8 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 15px;
   padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .checkout-summary h3 {
@@ -432,10 +443,6 @@
   .cart-summary {
     position: static;
   }
-
-  .payment-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
 }
 
 @media (max-width: 768px) {
@@ -451,10 +458,6 @@
   .item-controls {
     width: 100%;
     justify-content: space-between;
-  }
-
-  .payment-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .form-row {
@@ -475,12 +478,19 @@
     font-size: 1.1rem;
   }
 
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+
   .payment-method-btn {
     padding: 1rem 0.75rem;
+    min-height: 100px;
   }
 
   .payment-icon {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
   }
 
   .payment-name {

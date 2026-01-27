@@ -118,6 +118,14 @@ export default function HomePage() {
               <h2>Business Development/Management</h2>
               <p>Strategic business development to identify opportunities and drive organizational excellence.</p>
             </ScrollStackItem>
+            
+            <ScrollStackItem itemClassName="card-7">
+              <a href="/contact" className="scroll-stack-card-link">
+                <div className="scroll-stack-card-icon">✉️</div>
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team to discuss your project and discover how we can help.</p>
+              </a>
+            </ScrollStackItem>
           </ScrollStack>
         </div>
       </div>

@@ -10,7 +10,8 @@ export default function Layout({ children }) {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Products', href: '/products' },
-    { label: 'Cart', href: '/cart' }
+    { label: 'Cart', href: '/cart' },
+    { label: 'Contact', href: '/contact' }
   ];
 
   // Determine active index based on current route
@@ -20,6 +21,7 @@ export default function Layout({ children }) {
     if (path === '/about') return 1;
     if (path === '/products') return 2;
     if (path === '/cart') return 3;
+    if (path === '/contact') return 4;
     return 0;
   };
 

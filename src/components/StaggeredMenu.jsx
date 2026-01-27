@@ -1,4 +1,5 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import './StaggeredMenu.css';
 
@@ -20,6 +21,7 @@ export const StaggeredMenu = ({
   onMenuOpen,
   onMenuClose
 }) => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
   const panelRef = useRef(null);
@@ -409,8 +411,8 @@ export const StaggeredMenu = ({
                       closeMenu();
                       // Use a small delay to allow close animation to start
                       setTimeout(() => {
-                        window.location.href = it.link;
-                      }, 100);
+                        navigate(it.link);
+                      }, 150);
                     }}
                   >
                     <span className="sm-panel-itemLabel">{it.label}</span>

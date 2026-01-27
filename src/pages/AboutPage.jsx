@@ -16,22 +16,22 @@ export default function AboutPage() {
     {
       name: 'Claude AI',
       url: 'https://claude.ai',
-      logo: 'https://www.anthropic.com/images/icons/claude-logo.svg'
+      logo: 'https://www-cdn.anthropic.com/images/4zrzovbb/website/9ad98d612086fe52b3042f9183414669b4d2a3da-2560x1280.png'
     },
     {
       name: 'Searates',
       url: 'https://www.searates.com',
-      logo: 'https://www.searates.com/design/images/logo.svg'
-    },
-    {
-      name: 'Airrates',
-      url: 'https://www.airrates.com',
-      logo: 'https://www.airrates.com/images/logo.svg'
+      logo: 'https://www.searates.com/design/images/logo-new.svg'
     },
     {
       name: 'Freightos',
       url: 'https://www.freightos.com',
-      logo: 'https://www.freightos.com/wp-content/themes/freightos/images/freightos-logo.svg'
+      logo: 'https://www.freightos.com/wp-content/uploads/2023/01/freightos-logo-white.svg'
+    },
+    {
+      name: 'Airrates',
+      url: 'https://www.airrates.com',
+      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50"%3E%3Ctext x="10" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white"%3EAirrates%3C/text%3E%3C/svg%3E'
     }
   ];
 
@@ -39,13 +39,13 @@ export default function AboutPage() {
     {
       color: '#060010',
       title: 'Global Expertise',
-      description: 'Operating across multiple continents with a proven track record in AI, consulting, logistics, and business development.',
+      description: 'Multi-continent operations with proven success in AI, consulting, and logistics.',
       label: 'Our Reach'
     },
     {
       color: '#060010',
       title: 'Innovation First',
-      description: 'Leveraging cutting-edge technology and forward-thinking strategies to deliver transformative solutions.',
+      description: 'Cutting-edge technology and forward-thinking strategies for transformative results.',
       label: 'Our Approach'
     },
     {
@@ -59,19 +59,19 @@ export default function AboutPage() {
     {
       color: '#060010',
       title: 'Client-Centric',
-      description: 'Building lasting partnerships through transparent communication, tailored solutions, and unwavering commitment to your success.',
+      description: 'Building lasting partnerships through transparent communication and tailored solutions.',
       label: 'Our Promise'
     },
     {
       color: '#060010',
       title: 'Industry Leaders',
-      description: 'Team of certified professionals with expertise spanning AI, logistics, marketing, and strategic management.',
+      description: 'Certified professionals with expertise in AI, logistics, marketing, and management.',
       label: 'Our Team'
     },
     {
       color: '#060010',
       title: 'End-to-End Solutions',
-      description: 'Comprehensive services from initial consultation to implementation, ensuring seamless execution and sustainable growth.',
+      description: 'Comprehensive services from consultation to implementation for sustainable growth.',
       label: 'Full Service'
     }
   ];

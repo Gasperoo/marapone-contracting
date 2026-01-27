@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LiquidEther from '../components/LiquidEther';
 import SpotlightCard from '../components/SpotlightCard';
 import AnimatedList from '../components/AnimatedList';
+import Toast from '../components/Toast';
 import { getOptimizedSettings } from '../utils/detectWindows';
 import '../styles/page.css';
 import '../styles/products.css';
@@ -14,6 +15,7 @@ export default function ProductsPage() {
 
   const settings = getOptimizedSettings(isMobile);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [toastMessage, setToastMessage] = useState(null);
 
   // Product details with 10 items each including prices (in USD)
   const productDetails = {
@@ -127,6 +129,9 @@ export default function ProductsPage() {
     
     // Trigger storage event for other components to detect cart update
     window.dispatchEvent(new Event('cartUpdated'));
+    
+    // Show toast notification
+    setToastMessage(`"${item.name}" added to cart`);
   };
 
   return (
@@ -251,6 +256,15 @@ export default function ProductsPage() {
           </div>
         )}
       </div>
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <Toast 
+          message={toastMessage} 
+          onClose={() => setToastMessage(null)}
+          duration={3000}
+        />
+      )}
     </div>
   );
 }

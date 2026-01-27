@@ -120,11 +120,11 @@ export default function HomePage() {
             </ScrollStackItem>
             
             <ScrollStackItem itemClassName="card-7">
-              <a href="/contact" className="scroll-stack-card-link">
+              <div className="scroll-stack-card-content" onClick={() => window.location.href = '/contact'} style={{ cursor: 'pointer' }}>
                 <div className="scroll-stack-card-icon">✉️</div>
                 <h2>Contact Us</h2>
                 <p>Get in touch with our team to discuss your project and discover how we can help.</p>
-              </a>
+              </div>
             </ScrollStackItem>
           </ScrollStack>
         </div>

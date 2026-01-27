@@ -57,24 +57,6 @@ export default function HomePage() {
             Your trusted partner in contracting excellence.
           </p>
         </div>
-
-        {/* About Section */}
-        <section className="about-section">
-          <h2 className="about-title">About Us</h2>
-          <div className="about-content">
-            <p>
-              Marapone Contracting Inc. is a trusted leader in the contracting industry,
-              delivering exceptional results with precision and professionalism. With years
-              of experience and a commitment to excellence, we bring your vision to life
-              through quality craftsmanship and reliable service.
-            </p>
-            <p>
-              Our team combines expertise with innovation, ensuring every project meets
-              the highest standards. We take pride in building lasting relationships
-              with our clients and delivering solutions that exceed expectations.
-            </p>
-          </div>
-        </section>
       </div>
     </div>
   );

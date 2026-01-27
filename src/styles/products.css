@@ -1,0 +1,66 @@
+/* Products Page Styles */
+
+.products-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  justify-items: center;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.products-grid > * {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-content {
+    padding: 1.5rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 500px;
+  }
+
+  .products-grid > * {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-content {
+    padding: 1rem;
+  }
+
+  .products-grid {
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+}

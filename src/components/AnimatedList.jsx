@@ -40,6 +40,7 @@ const AnimatedList = ({
     'Item 15'
   ],
   onItemSelect,
+  onAddToCart,
   showGradients = true,
   enableArrowNavigation = true,
   className = '',
@@ -65,6 +66,16 @@ const AnimatedList = ({
       }
     },
     [onItemSelect]
+  );
+
+  const handleAddToCartClick = useCallback(
+    (e, item) => {
+      e.stopPropagation();
+      if (onAddToCart) {
+        onAddToCart(item);
+      }
+    },
+    [onAddToCart]
   );
 
   const handleScroll = useCallback(e => {
@@ -133,7 +144,23 @@ const AnimatedList = ({
             onClick={() => handleItemClick(item, index)}
           >
             <div className={`item ${selectedIndex === index ? 'selected' : ''} ${itemClassName}`}>
-              <p className="item-text">{item}</p>
+              <div className="item-content">
+                <div className="item-info">
+                  <p className="item-text">{typeof item === 'string' ? item : item.name}</p>
+                  {typeof item === 'object' && item.price && (
+                    <p className="item-price">${item.price.toLocaleString()}</p>
+                  )}
+                </div>
+                {onAddToCart && typeof item === 'object' && (
+                  <button
+                    className="add-to-cart-btn"
+                    onClick={(e) => handleAddToCartClick(e, item)}
+                    aria-label={`Add ${item.name} to cart`}
+                  >
+                    🛒
+                  </button>
+                )}
+              </div>
             </div>
           </AnimatedItem>
         ))}

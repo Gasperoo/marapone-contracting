@@ -15,79 +15,79 @@ export default function ProductsPage() {
   const settings = getOptimizedSettings(isMobile);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Product details with 10 items each
+  // Product details with 10 items each including prices (in USD)
   const productDetails = {
     'AI Solutions': [
-      'Machine Learning Model Development',
-      'Natural Language Processing (NLP)',
-      'Computer Vision Systems',
-      'Predictive Analytics',
-      'AI Strategy Consulting',
-      'Custom AI Integration',
-      'Automated Decision Systems',
-      'Deep Learning Solutions',
-      'AI Performance Optimization',
-      'Ongoing AI Support & Training'
+      { name: 'Machine Learning Model Development', price: 15000 },
+      { name: 'Natural Language Processing (NLP)', price: 12500 },
+      { name: 'Computer Vision Systems', price: 18000 },
+      { name: 'Predictive Analytics', price: 10000 },
+      { name: 'AI Strategy Consulting', price: 8500 },
+      { name: 'Custom AI Integration', price: 14000 },
+      { name: 'Automated Decision Systems', price: 16500 },
+      { name: 'Deep Learning Solutions', price: 20000 },
+      { name: 'AI Performance Optimization', price: 9500 },
+      { name: 'Ongoing AI Support & Training', price: 7500 }
     ],
     'Consulting': [
-      'Business Strategy Development',
-      'Operational Efficiency Analysis',
-      'Market Research & Insights',
-      'Process Optimization',
-      'Change Management',
-      'Risk Assessment & Mitigation',
-      'Financial Planning & Analysis',
-      'Technology Consulting',
-      'Executive Coaching',
-      'Long-term Strategic Planning'
+      { name: 'Business Strategy Development', price: 8500 },
+      { name: 'Operational Efficiency Analysis', price: 7000 },
+      { name: 'Market Research & Insights', price: 6500 },
+      { name: 'Process Optimization', price: 7500 },
+      { name: 'Change Management', price: 9000 },
+      { name: 'Risk Assessment & Mitigation', price: 8000 },
+      { name: 'Financial Planning & Analysis', price: 9500 },
+      { name: 'Technology Consulting', price: 10000 },
+      { name: 'Executive Coaching', price: 12000 },
+      { name: 'Long-term Strategic Planning', price: 11000 }
     ],
     'Import/Export & Logistics': [
-      'International Shipping Coordination',
-      'Customs Clearance Services',
-      'Supply Chain Optimization',
-      'Freight Forwarding',
-      'Warehouse Management',
-      'Documentation & Compliance',
-      'Route Planning & Optimization',
-      'Inventory Management',
-      'Last-Mile Delivery Solutions',
-      'Logistics Analytics & Reporting'
+      { name: 'International Shipping Coordination', price: 5500 },
+      { name: 'Customs Clearance Services', price: 3500 },
+      { name: 'Supply Chain Optimization', price: 8500 },
+      { name: 'Freight Forwarding', price: 4500 },
+      { name: 'Warehouse Management', price: 6000 },
+      { name: 'Documentation & Compliance', price: 3000 },
+      { name: 'Route Planning & Optimization', price: 5000 },
+      { name: 'Inventory Management', price: 5500 },
+      { name: 'Last-Mile Delivery Solutions', price: 4000 },
+      { name: 'Logistics Analytics & Reporting', price: 6500 }
     ],
     'Marketing Solutions': [
-      'Digital Marketing Strategy',
-      'Social Media Management',
-      'Content Creation & Marketing',
-      'SEO & SEM Optimization',
-      'Brand Development',
-      'Email Marketing Campaigns',
-      'Performance Analytics',
-      'Influencer Partnerships',
-      'Conversion Rate Optimization',
-      'Marketing Automation'
+      { name: 'Digital Marketing Strategy', price: 7500 },
+      { name: 'Social Media Management', price: 4500 },
+      { name: 'Content Creation & Marketing', price: 5500 },
+      { name: 'SEO & SEM Optimization', price: 6000 },
+      { name: 'Brand Development', price: 9500 },
+      { name: 'Email Marketing Campaigns', price: 3500 },
+      { name: 'Performance Analytics', price: 5000 },
+      { name: 'Influencer Partnerships', price: 8000 },
+      { name: 'Conversion Rate Optimization', price: 6500 },
+      { name: 'Marketing Automation', price: 7000 }
     ],
     'Project Development & Management': [
-      'Project Planning & Scoping',
-      'Resource Allocation',
-      'Timeline & Milestone Management',
-      'Risk Management',
-      'Stakeholder Communication',
-      'Budget Management',
-      'Quality Assurance',
-      'Team Coordination',
-      'Progress Tracking & Reporting',
-      'Project Closure & Review'
+      { name: 'Project Planning & Scoping', price: 5500 },
+      { name: 'Resource Allocation', price: 4500 },
+      { name: 'Timeline & Milestone Management', price: 5000 },
+      { name: 'Risk Management', price: 6000 },
+      { name: 'Stakeholder Communication', price: 4000 },
+      { name: 'Budget Management', price: 5500 },
+      { name: 'Quality Assurance', price: 6500 },
+      { name: 'Team Coordination', price: 4500 },
+      { name: 'Progress Tracking & Reporting', price: 4000 },
+      { name: 'Project Closure & Review', price: 3500 }
     ],
     'Business Development & Management': [
-      'Strategic Partnership Development',
-      'Market Opportunity Analysis',
-      'Sales Strategy & Execution',
-      'Client Relationship Management',
-      'Business Model Innovation',
-      'Competitive Analysis',
-      'Growth Strategy Planning',
-      'Operational Systems Implementation',
-      'Performance Metrics & KPIs',
-      'Scalability Planning'
+      { name: 'Strategic Partnership Development', price: 10000 },
+      { name: 'Market Opportunity Analysis', price: 7500 },
+      { name: 'Sales Strategy & Execution', price: 8500 },
+      { name: 'Client Relationship Management', price: 6500 },
+      { name: 'Business Model Innovation', price: 11000 },
+      { name: 'Competitive Analysis', price: 6000 },
+      { name: 'Growth Strategy Planning', price: 9500 },
+      { name: 'Operational Systems Implementation', price: 12000 },
+      { name: 'Performance Metrics & KPIs', price: 5500 },
+      { name: 'Scalability Planning', price: 8000 }
     ]
   };
 
@@ -100,6 +100,33 @@ export default function ProductsPage() {
     if (e.target.classList.contains('products-detail-overlay')) {
       setSelectedProduct(null);
     }
+  };
+
+  const handleAddToCart = (item) => {
+    // Get existing cart from localStorage
+    const existingCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    
+    // Check if item already exists in cart
+    const existingItemIndex = existingCart.findIndex(cartItem => cartItem.name === item.name);
+    
+    if (existingItemIndex !== -1) {
+      // Item exists, increment quantity
+      existingCart[existingItemIndex].quantity += 1;
+    } else {
+      // New item, add to cart with quantity 1
+      existingCart.push({
+        name: item.name,
+        price: item.price,
+        quantity: 1,
+        category: selectedProduct
+      });
+    }
+    
+    // Save back to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(existingCart));
+    
+    // Show feedback (optional - you could add a toast notification here)
+    alert(`Added "${item.name}" to cart!`);
   };
 
   return (
@@ -217,7 +244,8 @@ export default function ProductsPage() {
                 showGradients={true}
                 enableArrowNavigation={true}
                 displayScrollbar={false}
-                onItemSelect={(item, index) => console.log(`Selected: ${item}`)}
+                onItemSelect={(item, index) => console.log(`Selected: ${item.name}`)}
+                onAddToCart={handleAddToCart}
               />
             </div>
           </div>

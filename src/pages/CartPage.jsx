@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LiquidEther from '../components/LiquidEther';
 import { getOptimizedSettings } from '../utils/detectWindows';
 import { useCurrency } from '../context/CurrencyContext';
@@ -14,30 +14,24 @@ export default function CartPage() {
   const settings = getOptimizedSettings(isMobile);
   const { formatPrice, convertPrice, currency } = useCurrency();
 
-  // Sample cart items
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: 'AI Solutions Package',
-      description: 'Custom AI implementation and consulting',
-      price: 5000,
-      quantity: 1
-    },
-    {
-      id: 2,
-      name: 'Marketing Solutions',
-      description: 'Complete digital marketing strategy',
-      price: 2500,
-      quantity: 2
-    },
-    {
-      id: 3,
-      name: 'Business Consulting',
-      description: 'Strategic business development',
-      price: 3000,
-      quantity: 1
-    }
-  ]);
+  // Load cart items from localStorage
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const loadCartItems = () => {
+      const savedCart = localStorage.getItem('cartItems');
+      if (savedCart) {
+        setCartItems(JSON.parse(savedCart));
+      }
+    };
+    
+    loadCartItems();
+    
+    // Listen for storage changes (when items are added from other pages)
+    window.addEventListener('storage', loadCartItems);
+    
+    return () => window.removeEventListener('storage', loadCartItems);
+  }, []);
 
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [showCheckout, setShowCheckout] = useState(false);
@@ -76,15 +70,19 @@ export default function CartPage() {
   const tax = subtotal * 0.1; // 10% tax
   const total = subtotal + tax;
 
-  const updateQuantity = (id, newQuantity) => {
+  const updateQuantity = (name, newQuantity) => {
     if (newQuantity < 1) return;
-    setCartItems(cartItems.map(item => 
-      item.id === id ? { ...item, quantity: newQuantity } : item
-    ));
+    const updatedCart = cartItems.map(item => 
+      item.name === name ? { ...item, quantity: newQuantity } : item
+    );
+    setCartItems(updatedCart);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
   };
 
-  const removeItem = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+  const removeItem = (name) => {
+    const updatedCart = cartItems.filter(item => item.name !== name);
+    setCartItems(updatedCart);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
   };
 
   const handleCheckout = () => {
@@ -292,19 +290,19 @@ export default function CartPage() {
                 <p className="empty-cart">Your cart is empty</p>
               ) : (
                 cartItems.map(item => (
-                  <div key={item.id} className="cart-item">
+                  <div key={item.name} className="cart-item">
                     <div className="item-info">
                       <h3>{item.name}</h3>
-                      <p>{item.description}</p>
+                      {item.category && <p>{item.category}</p>}
                     </div>
                     <div className="item-controls">
                       <div className="quantity-control">
-                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
+                        <button onClick={() => updateQuantity(item.name, item.quantity - 1)}>-</button>
                         <span>{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+                        <button onClick={() => updateQuantity(item.name, item.quantity + 1)}>+</button>
                       </div>
                       <div className="item-price">{formatPrice(item.price * item.quantity)}</div>
-                      <button className="remove-btn" onClick={() => removeItem(item.id)}>×</button>
+                      <button className="remove-btn" onClick={() => removeItem(item.name)}>×</button>
                     </div>
                   </div>
                 ))

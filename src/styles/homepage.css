@@ -66,6 +66,23 @@
   opacity: 0.95;
 }
 
+.welcome-subtext {
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  margin: 0;
+  opacity: 0.9;
+  max-width: 900px;
+  line-height: 1.7;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.revealed {
+  color: inherit;
+}
+
+.encrypted {
+  color: rgba(255, 255, 255, 0.3);
+}
+
 .about-section {
   max-width: 900px;
   width: 100%;

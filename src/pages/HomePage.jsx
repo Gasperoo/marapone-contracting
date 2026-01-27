@@ -1,5 +1,6 @@
 import React from 'react';
 import LiquidEther from '../components/LiquidEther';
+import DecryptedText from '../components/DecryptedText';
 import '../styles/homepage.css';
 
 /**
@@ -53,8 +54,28 @@ export default function HomePage() {
             Marapone Contracting Inc.
           </h1>
           <p className="welcome-text">
-            Delivering exceptional results with precision and professionalism.
-            Your trusted partner in contracting excellence.
+            <DecryptedText
+              text="Transforming vision into exceptional results - delivered with precision and professionalism."
+              animateOn="view"
+              revealDirection="start"
+              sequential
+              useOriginalCharsOnly={false}
+              speed={30}
+              className="revealed"
+              encryptedClassName="encrypted"
+            />
+          </p>
+          <p className="welcome-subtext">
+            <DecryptedText
+              text="Your strategic partner of choice in AI-powered solutions, international trade, logistics optimization, business development, marketing, consulting, and project excellence."
+              animateOn="view"
+              revealDirection="start"
+              sequential
+              useOriginalCharsOnly={false}
+              speed={25}
+              className="revealed"
+              encryptedClassName="encrypted"
+            />
           </p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import LiquidEther from '../components/LiquidEther';
 import DecryptedText from '../components/DecryptedText';
+import ScrollStack, { ScrollStackItem } from '../components/ScrollStack';
 import '../styles/homepage.css';
 
 /**
@@ -77,6 +78,47 @@ export default function HomePage() {
               encryptedClassName="encrypted"
             />
           </p>
+        </div>
+
+        {/* Services Scroll Stack */}
+        <div className="services-scroll-section">
+          <ScrollStack>
+            <ScrollStackItem itemClassName="card-1">
+              <div className="scroll-stack-card-icon">💼</div>
+              <h2>Consulting</h2>
+              <p>Strategic consulting services to optimize your business operations and drive sustainable growth.</p>
+            </ScrollStackItem>
+            
+            <ScrollStackItem itemClassName="card-2">
+              <div className="scroll-stack-card-icon">🤖</div>
+              <h2>AI Solutions</h2>
+              <p>Cutting-edge AI-powered solutions to automate processes and unlock new opportunities.</p>
+            </ScrollStackItem>
+            
+            <ScrollStackItem itemClassName="card-3">
+              <div className="scroll-stack-card-icon">🌐</div>
+              <h2>Import/Export & Logistics</h2>
+              <p>Comprehensive international trade and logistics optimization for seamless global operations.</p>
+            </ScrollStackItem>
+            
+            <ScrollStackItem itemClassName="card-4">
+              <div className="scroll-stack-card-icon">📱</div>
+              <h2>Marketing Solutions</h2>
+              <p>Data-driven marketing strategies to amplify your brand and reach your target audience.</p>
+            </ScrollStackItem>
+            
+            <ScrollStackItem itemClassName="card-5">
+              <div className="scroll-stack-card-icon">🚀</div>
+              <h2>Project Development/Management</h2>
+              <p>End-to-end project management ensuring on-time delivery and exceptional results.</p>
+            </ScrollStackItem>
+            
+            <ScrollStackItem itemClassName="card-6">
+              <div className="scroll-stack-card-icon">📊</div>
+              <h2>Business Development/Management</h2>
+              <p>Strategic business development to identify opportunities and drive organizational excellence.</p>
+            </ScrollStackItem>
+          </ScrollStack>
         </div>
       </div>
     </div>

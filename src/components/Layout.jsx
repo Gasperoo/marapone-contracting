@@ -41,12 +41,12 @@ export default function Layout({ children }) {
       <div className="nav-wrapper">
         <GooeyNav
           items={navItems}
-          particleCount={15}
+          particleCount={9}
           particleDistances={[90, 10]}
           particleR={100}
           initialActiveIndex={getActiveIndex()}
           animationTime={600}
-          timeVariance={300}
+          timeVariance={200}
           colors={[1, 2, 3, 1, 2, 3, 1, 4]}
         />
       </div>

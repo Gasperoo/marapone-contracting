@@ -489,7 +489,37 @@ const MagicBento = ({
                 </div>
                 <div className="magic-bento-card__content">
                   <h2 className="magic-bento-card__title">{card.title}</h2>
-                  <p className="magic-bento-card__description">{card.description}</p>
+                  {card.isPartners && card.partners ? (
+                    <div className="partners-grid">
+                      {card.partners.map((partner, idx) => (
+                        <a
+                          key={idx}
+                          href={partner.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="partner-logo-link"
+                          aria-label={`Visit ${partner.name}`}
+                        >
+                          <div className="partner-logo-container">
+                            <img
+                              src={partner.logo}
+                              alt={partner.name}
+                              className="partner-logo"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                e.target.nextSibling.style.display = 'flex';
+                              }}
+                            />
+                            <div className="partner-fallback" style={{ display: 'none' }}>
+                              {partner.name}
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="magic-bento-card__description">{card.description}</p>
+                  )}
                 </div>
               </ParticleCard>
             );

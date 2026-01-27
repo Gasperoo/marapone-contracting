@@ -12,6 +12,29 @@ export default function AboutPage() {
 
   const settings = getOptimizedSettings(isMobile);
 
+  const partners = [
+    {
+      name: 'Claude AI',
+      url: 'https://claude.ai',
+      logo: 'https://www.anthropic.com/images/icons/claude-logo.svg'
+    },
+    {
+      name: 'Searates',
+      url: 'https://www.searates.com',
+      logo: 'https://www.searates.com/design/images/logo.svg'
+    },
+    {
+      name: 'Airrates',
+      url: 'https://www.airrates.com',
+      logo: 'https://www.airrates.com/images/logo.svg'
+    },
+    {
+      name: 'Freightos',
+      url: 'https://www.freightos.com',
+      logo: 'https://www.freightos.com/wp-content/themes/freightos/images/freightos-logo.svg'
+    }
+  ];
+
   const companyData = [
     {
       color: '#060010',
@@ -27,9 +50,11 @@ export default function AboutPage() {
     },
     {
       color: '#060010',
-      title: 'Proven Results',
-      description: 'Decades of combined experience delivering measurable outcomes for Fortune 500 companies and emerging enterprises.',
-      label: 'Track Record'
+      title: 'Trusted Partners',
+      description: 'Collaborating with industry leaders to deliver cutting-edge solutions.',
+      label: 'Our Network',
+      isPartners: true,
+      partners: partners
     },
     {
       color: '#060010',

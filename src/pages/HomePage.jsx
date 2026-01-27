@@ -57,7 +57,7 @@ export default function HomePage() {
           <p className="welcome-text">
             <DecryptedText
               text="Transforming vision into exceptional results - delivered with precision and professionalism."
-              animateOn="view"
+              animateOn="hover"
               revealDirection="start"
               sequential
               useOriginalCharsOnly={false}
@@ -69,7 +69,7 @@ export default function HomePage() {
           <p className="welcome-subtext">
             <DecryptedText
               text="Your strategic partner of choice in AI-powered solutions, international trade, logistics optimization, business development, marketing, consulting, and project excellence."
-              animateOn="view"
+              animateOn="hover"
               revealDirection="start"
               sequential
               useOriginalCharsOnly={false}

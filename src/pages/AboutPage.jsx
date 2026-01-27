@@ -1,5 +1,6 @@
 import React from 'react';
 import LiquidEther from '../components/LiquidEther';
+import { getOptimizedSettings } from '../utils/detectWindows';
 import '../styles/page.css';
 
 export default function AboutPage() {
@@ -7,6 +8,8 @@ export default function AboutPage() {
     /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
     window.innerWidth <= 768
   );
+
+  const settings = getOptimizedSettings(isMobile);
 
   return (
     <div className="page-container">
@@ -16,12 +19,12 @@ export default function AboutPage() {
         cursorSize={isMobile ? 80 : 100}
         isViscous
         viscous={30}
-        iterationsViscous={isMobile ? 24 : 32}
-        iterationsPoisson={isMobile ? 24 : 32}
-        resolution={isMobile ? 0.35 : 0.5}
+        iterationsViscous={settings.iterationsViscous}
+        iterationsPoisson={settings.iterationsPoisson}
+        resolution={settings.resolution}
         isBounce={false}
         autoDemo
-        autoSpeed={isMobile ? 0.4 : 0.5}
+        autoSpeed={settings.autoSpeed}
         autoIntensity={2.2}
         takeoverDuration={0.25}
         autoResumeDelay={3000}

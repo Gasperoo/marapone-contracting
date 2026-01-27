@@ -10,6 +10,9 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   will-change: scroll-position;
+  /* Windows Chrome performance optimizations */
+  contain: layout style paint;
+  content-visibility: auto;
 }
 
 .scroll-stack-inner {
@@ -23,7 +26,7 @@
 
 .scroll-stack-card {
   transform-origin: top center;
-  will-change: transform, filter;
+  will-change: transform;
   backface-visibility: hidden;
   transform-style: preserve-3d;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
@@ -42,6 +45,10 @@
   justify-content: center;
   text-align: center;
   color: white;
+  /* Windows Chrome performance */
+  contain: layout style paint;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .scroll-stack-card.card-1 {

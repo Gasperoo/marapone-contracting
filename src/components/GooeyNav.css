@@ -33,12 +33,16 @@
 
 .gooey-nav-container {
   position: relative;
+  /* Windows Chrome performance */
+  contain: layout style;
+  -webkit-font-smoothing: antialiased;
 }
 
 .gooey-nav-container nav {
   display: flex;
   position: relative;
   transform: translate3d(0, 0, 0.01px);
+  will-change: auto;
 }
 
 .gooey-nav-container nav ul {
@@ -163,12 +167,18 @@
   top: calc(50% - 8px);
   left: calc(50% - 8px);
   animation: particle calc(var(--time)) ease 1 -350ms;
+  /* Windows Chrome performance */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .point {
   background: var(--color);
   opacity: 1;
   animation: point calc(var(--time)) ease 1 -350ms;
+  /* Windows Chrome performance */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 @keyframes particle {

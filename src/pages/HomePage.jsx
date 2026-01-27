@@ -2,6 +2,7 @@ import React from 'react';
 import LiquidEther from '../components/LiquidEther';
 import DecryptedText from '../components/DecryptedText';
 import ScrollStack, { ScrollStackItem } from '../components/ScrollStack';
+import { getOptimizedSettings } from '../utils/detectWindows';
 import '../styles/homepage.css';
 
 /**
@@ -9,7 +10,7 @@ import '../styles/homepage.css';
  * Features:
  * - Full-screen Three.js-based LiquidEther background
  * - Responsive design
- * - Optimized performance
+ * - Optimized performance for Windows Chrome
  */
 export default function HomePage() {
   // Detect mobile devices
@@ -17,6 +18,9 @@ export default function HomePage() {
     /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
     window.innerWidth <= 768
   );
+
+  // Get optimized settings for platform
+  const settings = getOptimizedSettings(isMobile);
 
   return (
     <div className="homepage-container">
@@ -27,12 +31,12 @@ export default function HomePage() {
         cursorSize={isMobile ? 80 : 100}
         isViscous
         viscous={30}
-        iterationsViscous={isMobile ? 24 : 32}
-        iterationsPoisson={isMobile ? 24 : 32}
-        resolution={isMobile ? 0.35 : 0.5}
+        iterationsViscous={settings.iterationsViscous}
+        iterationsPoisson={settings.iterationsPoisson}
+        resolution={settings.resolution}
         isBounce={false}
         autoDemo
-        autoSpeed={isMobile ? 0.4 : 0.5}
+        autoSpeed={settings.autoSpeed}
         autoIntensity={2.2}
         takeoverDuration={0.25}
         autoResumeDelay={3000}

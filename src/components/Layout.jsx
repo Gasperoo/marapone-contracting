@@ -1,5 +1,6 @@
 import React from 'react';
 import StaggeredMenu from './StaggeredMenu';
+import CurrencySwitcher from './CurrencySwitcher';
 
 export default function Layout({ children }) {
   const menuItems = [
@@ -13,6 +14,9 @@ export default function Layout({ children }) {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
+      {/* Currency Switcher - Fixed top left */}
+      <CurrencySwitcher />
+
       {/* StaggeredMenu - Fixed overlay */}
       <StaggeredMenu
         position="right"

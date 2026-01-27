@@ -1,0 +1,157 @@
+.currency-switcher {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 50;
+}
+
+.currency-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 0.625rem 1rem;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.currency-trigger:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(82, 39, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.currency-flag {
+  font-size: 1.25rem;
+}
+
+.currency-code {
+  font-weight: 600;
+}
+
+.currency-arrow {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+}
+
+.currency-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 49;
+}
+
+.currency-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 200px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.currency-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.currency-option:hover {
+  background: rgba(82, 39, 255, 0.2);
+}
+
+.currency-option.selected {
+  background: rgba(82, 39, 255, 0.3);
+}
+
+.currency-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 1;
+}
+
+.currency-option .currency-code {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.currency-name {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.currency-check {
+  color: #5227FF;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .currency-switcher {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .currency-trigger {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .currency-flag {
+    font-size: 1rem;
+  }
+
+  .currency-dropdown {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .currency-switcher {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .currency-trigger {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.8rem;
+  }
+}

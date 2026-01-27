@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LiquidEther from '../components/LiquidEther';
 import { getOptimizedSettings } from '../utils/detectWindows';
+import { useCurrency } from '../context/CurrencyContext';
 import '../styles/page.css';
 import '../styles/cart.css';
 
@@ -11,6 +12,7 @@ export default function CartPage() {
   );
 
   const settings = getOptimizedSettings(isMobile);
+  const { formatPrice, convertPrice, currency } = useCurrency();
 
   // Sample cart items
   const [cartItems, setCartItems] = useState([
@@ -163,7 +165,7 @@ export default function CartPage() {
               />
             </div>
             <button type="submit" className="submit-payment-btn">
-              Pay ${total.toFixed(2)}
+              Pay {formatPrice(total)}
             </button>
           </form>
         );
@@ -231,7 +233,7 @@ export default function CartPage() {
                   ? `${(total / 45000).toFixed(8)} BTC` 
                   : selectedPayment === 'ethereum'
                   ? `${(total / 2500).toFixed(6)} ETH`
-                  : `${total.toFixed(2)} USDT`}
+                  : `${convertPrice(total)} USDT`}
               </p>
               <p className="crypto-note">
                 Send exact amount to: <br/>
@@ -301,7 +303,7 @@ export default function CartPage() {
                         <span>{item.quantity}</span>
                         <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
                       </div>
-                      <div className="item-price">${(item.price * item.quantity).toFixed(2)}</div>
+                      <div className="item-price">{formatPrice(item.price * item.quantity)}</div>
                       <button className="remove-btn" onClick={() => removeItem(item.id)}>×</button>
                     </div>
                   </div>
@@ -314,15 +316,15 @@ export default function CartPage() {
                 <h2>Order Summary</h2>
                 <div className="summary-row">
                   <span>Subtotal:</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>{formatPrice(subtotal)}</span>
                 </div>
                 <div className="summary-row">
                   <span>Tax (10%):</span>
-                  <span>${tax.toFixed(2)}</span>
+                  <span>{formatPrice(tax)}</span>
                 </div>
                 <div className="summary-row total">
                   <span>Total:</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>{formatPrice(total)}</span>
                 </div>
                 <button className="checkout-btn" onClick={handleCheckout}>
                   Proceed to Checkout
@@ -363,15 +365,15 @@ export default function CartPage() {
                 <h3>Order Total</h3>
                 <div className="summary-row">
                   <span>Subtotal:</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>{formatPrice(subtotal)}</span>
                 </div>
                 <div className="summary-row">
                   <span>Tax:</span>
-                  <span>${tax.toFixed(2)}</span>
+                  <span>{formatPrice(tax)}</span>
                 </div>
                 <div className="summary-row total">
                   <span>Total:</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>{formatPrice(total)}</span>
                 </div>
               </div>
             </div>

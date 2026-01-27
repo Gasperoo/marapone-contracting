@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import LiquidEther from '../components/LiquidEther';
+import LogoLoop from '../components/LogoLoop';
 import { getOptimizedSettings } from '../utils/detectWindows';
+import { FaInstagram, FaXTwitter, FaFacebookF, FaWhatsapp, FaLinkedinIn, FaGithub } from 'react-icons/fa6';
 import '../styles/page.css';
 import '../styles/contact.css';
 
@@ -33,6 +35,45 @@ export default function ContactPage() {
     alert('Thank you for contacting us! We will get back to you soon.');
     setFormData({ name: '', email: '', company: '', message: '' });
   };
+
+  const socialLogos = [
+    { 
+      node: <FaInstagram />, 
+      title: "Instagram", 
+      href: "https://instagram.com",
+      ariaLabel: "Follow us on Instagram"
+    },
+    { 
+      node: <FaXTwitter />, 
+      title: "X (Twitter)", 
+      href: "https://twitter.com",
+      ariaLabel: "Follow us on X"
+    },
+    { 
+      node: <FaFacebookF />, 
+      title: "Facebook", 
+      href: "https://facebook.com",
+      ariaLabel: "Follow us on Facebook"
+    },
+    { 
+      node: <FaWhatsapp />, 
+      title: "WhatsApp", 
+      href: "https://wa.me/",
+      ariaLabel: "Message us on WhatsApp"
+    },
+    { 
+      node: <FaLinkedinIn />, 
+      title: "LinkedIn", 
+      href: "https://linkedin.com",
+      ariaLabel: "Connect on LinkedIn"
+    },
+    { 
+      node: <FaGithub />, 
+      title: "GitHub", 
+      href: "https://github.com",
+      ariaLabel: "View our GitHub"
+    }
+  ];
 
   return (
     <div className="page-container">
@@ -114,6 +155,24 @@ export default function ContactPage() {
               Send Message
             </button>
           </form>
+        </div>
+
+        <div className="social-logos-section">
+          <h2 className="social-title">Connect With Us</h2>
+          <div className="logoloop-container">
+            <LogoLoop
+              logos={socialLogos}
+              speed={50}
+              direction="left"
+              logoHeight={48}
+              gap={60}
+              pauseOnHover
+              scaleOnHover
+              fadeOut
+              fadeOutColor="rgba(0, 0, 0, 0)"
+              ariaLabel="Social media links"
+            />
+          </div>
         </div>
       </div>
     </div>

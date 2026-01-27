@@ -108,6 +108,34 @@
   }
 }
 
+/* Social Logos Section */
+.social-logos-section {
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.social-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logoloop-container {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
 @media (max-width: 480px) {
   .contact-form-wrapper {
     padding: 1.5rem 1rem;
@@ -122,5 +150,18 @@
   .form-group textarea {
     padding: 0.7rem 0.8rem;
     font-size: 0.9rem;
+  }
+
+  .social-logos-section {
+    margin-top: 3rem;
+  }
+
+  .social-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .logoloop-container {
+    height: 60px;
   }
 }

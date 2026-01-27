@@ -45,7 +45,8 @@ export default function CartPage() {
     cardNumber: '',
     cardName: '',
     expiryDate: '',
-    cvv: ''
+    cvv: '',
+    postalCode: ''
   });
 
   const [paypalForm, setPaypalForm] = useState({
@@ -148,6 +149,17 @@ export default function CartPage() {
                   required
                 />
               </div>
+            </div>
+            <div className="form-group">
+              <label>Postal Code / Zip Code</label>
+              <input
+                type="text"
+                placeholder="12345 or A1B 2C3"
+                value={cardForm.postalCode}
+                onChange={(e) => setCardForm({...cardForm, postalCode: e.target.value})}
+                maxLength="10"
+                required
+              />
             </div>
             <button type="submit" className="submit-payment-btn">
               Pay ${total.toFixed(2)}

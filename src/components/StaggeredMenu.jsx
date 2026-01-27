@@ -25,6 +25,29 @@ export const StaggeredMenu = ({
   const navigate = useNavigate();
   const { currency, changeCurrency } = useCurrency();
   const [open, setOpen] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
+  
+  // Check cart items on mount and when cart updates
+  React.useEffect(() => {
+    const updateCartCount = () => {
+      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      setCartItemCount(totalItems);
+    };
+
+    // Initial load
+    updateCartCount();
+
+    // Listen for cart updates
+    window.addEventListener('cartUpdated', updateCartCount);
+    window.addEventListener('storage', updateCartCount);
+
+    return () => {
+      window.removeEventListener('cartUpdated', updateCartCount);
+      window.removeEventListener('storage', updateCartCount);
+    };
+  }, []);
+
   const openRef = useRef(false);
   const panelRef = useRef(null);
   const preLayersRef = useRef(null);
@@ -417,7 +440,12 @@ export const StaggeredMenu = ({
                       }, 150);
                     }}
                   >
-                    <span className="sm-panel-itemLabel">{it.label}</span>
+                    <span className="sm-panel-itemLabel">
+                      {it.label}
+                      {it.label === 'Cart' && cartItemCount > 0 && (
+                        <span className="cart-notification-dot" aria-label={`${cartItemCount} items in cart`}></span>
+                      )}
+                    </span>
                   </a>
                 </li>
               ))

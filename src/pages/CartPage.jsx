@@ -77,12 +77,14 @@ export default function CartPage() {
     );
     setCartItems(updatedCart);
     localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event('cartUpdated'));
   };
 
   const removeItem = (name) => {
     const updatedCart = cartItems.filter(item => item.name !== name);
     setCartItems(updatedCart);
     localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event('cartUpdated'));
   };
 
   const handleCheckout = () => {

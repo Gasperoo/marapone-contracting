@@ -125,8 +125,8 @@ export default function ProductsPage() {
     // Save back to localStorage
     localStorage.setItem('cartItems', JSON.stringify(existingCart));
     
-    // Show feedback (optional - you could add a toast notification here)
-    alert(`Added "${item.name}" to cart!`);
+    // Trigger storage event for other components to detect cart update
+    window.dispatchEvent(new Event('cartUpdated'));
   };
 
   return (

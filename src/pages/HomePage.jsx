@@ -10,21 +10,27 @@ import '../styles/homepage.css';
  * - Optimized performance
  */
 export default function HomePage() {
+  // Detect mobile devices
+  const isMobile = typeof window !== 'undefined' && (
+    /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+    window.innerWidth <= 768
+  );
+
   return (
     <div className="homepage-container">
       {/* Full-screen Three.js LiquidEther Background */}
       <LiquidEther
         colors={['#5227FF', '#FF9FFC', '#B19EEF']}
-        mouseForce={24}
-        cursorSize={100}
+        mouseForce={isMobile ? 18 : 24}
+        cursorSize={isMobile ? 80 : 100}
         isViscous
         viscous={30}
-        iterationsViscous={32}
-        iterationsPoisson={32}
-        resolution={0.5}
+        iterationsViscous={isMobile ? 24 : 32}
+        iterationsPoisson={isMobile ? 24 : 32}
+        resolution={isMobile ? 0.35 : 0.5}
         isBounce={false}
         autoDemo
-        autoSpeed={0.5}
+        autoSpeed={isMobile ? 0.4 : 0.5}
         autoIntensity={2.2}
         takeoverDuration={0.25}
         autoResumeDelay={3000}

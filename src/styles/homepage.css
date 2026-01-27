@@ -18,6 +18,8 @@
   justify-content: center;
   padding: 2rem;
   color: #ffffff;
+  /* Prevent flex order issues */
+  flex-wrap: nowrap;
 }
 
 .logo-section {
@@ -91,8 +93,16 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .homepage-container {
+    overflow-x: hidden;
+  }
+
   .homepage-content {
     padding: 1rem;
+    justify-content: flex-start;
+    padding-top: 3rem;
+    /* Ensure correct order on mobile */
+    flex-direction: column;
   }
 
   .about-section {
@@ -106,5 +116,61 @@
 
   .logo-section img {
     max-width: 200px;
+  }
+
+  .welcome-title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  .welcome-text {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
+
+  .about-content {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .homepage-content {
+    padding: 0.75rem;
+    padding-top: 2rem;
+  }
+
+  .logo-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-section img {
+    max-width: 150px;
+  }
+
+  .about-section {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+  .homepage-content {
+    padding: 1rem;
+    justify-content: flex-start;
+    padding-top: 1rem;
+  }
+
+  .logo-section {
+    margin-bottom: 1rem;
+  }
+
+  .logo-section img {
+    max-width: 120px;
+  }
+
+  .about-section {
+    margin-top: 1rem;
+    padding: 1rem;
   }
 }

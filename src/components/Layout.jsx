@@ -38,7 +38,7 @@ export default function Layout({ children }) {
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
       {/* Fixed navigation in top right */}
-      <div className="nav-wrapper">
+      <div className="nav-wrapper" style={{ height: '600px', position: 'relative' }}>
         <GooeyNav
           items={navItems}
           particleCount={9}

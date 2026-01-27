@@ -239,33 +239,43 @@
 @media (max-width: 768px) {
   .nav-wrapper {
     top: 1rem;
-    right: 1rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    width: auto;
+  }
+
+  .gooey-nav-container nav {
+    width: 100%;
   }
 
   .gooey-nav-container nav ul {
-    gap: 1em;
+    gap: 0.5em;
     padding: 0 0.5em;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .gooey-nav-container nav ul li a {
-    padding: 0.5em 0.8em;
-    font-size: 0.9rem;
+    padding: 0.5em 0.7em;
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 480px) {
   .nav-wrapper {
     top: 0.5rem;
-    right: 0.5rem;
+    right: 0.25rem;
+    left: 0.25rem;
   }
 
   .gooey-nav-container nav ul {
-    gap: 0.5em;
+    gap: 0.35em;
     padding: 0 0.25em;
   }
 
   .gooey-nav-container nav ul li a {
-    padding: 0.4em 0.6em;
-    font-size: 0.8rem;
+    padding: 0.4em 0.55em;
+    font-size: 0.75rem;
   }
 }

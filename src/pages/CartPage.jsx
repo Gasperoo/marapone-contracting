@@ -65,7 +65,8 @@ export default function CartPage() {
     { id: 'google', name: 'Google Pay', icon: 'G' },
     { id: 'paypal', name: 'PayPal', icon: '🅿️' },
     { id: 'bitcoin', name: 'Bitcoin', icon: '₿' },
-    { id: 'ethereum', name: 'Ethereum', icon: '⟠' }
+    { id: 'ethereum', name: 'Ethereum', icon: '⟠' },
+    { id: 'usdt', name: 'Tether (USDT)', icon: '₮' }
   ];
 
   // Calculate totals
@@ -206,9 +207,13 @@ export default function CartPage() {
 
       case 'bitcoin':
       case 'ethereum':
+      case 'usdt':
         return (
           <form className="payment-form" onSubmit={handleSubmitPayment}>
-            <h3>{selectedPayment === 'bitcoin' ? 'Bitcoin' : 'Ethereum'} Payment</h3>
+            <h3>
+              {selectedPayment === 'bitcoin' ? 'Bitcoin' : 
+               selectedPayment === 'ethereum' ? 'Ethereum' : 'Tether (USDT)'} Payment
+            </h3>
             <div className="form-group">
               <label>Your Wallet Address</label>
               <input
@@ -224,14 +229,25 @@ export default function CartPage() {
               <p className="crypto-amount">
                 {selectedPayment === 'bitcoin' 
                   ? `${(total / 45000).toFixed(8)} BTC` 
-                  : `${(total / 2500).toFixed(6)} ETH`}
+                  : selectedPayment === 'ethereum'
+                  ? `${(total / 2500).toFixed(6)} ETH`
+                  : `${total.toFixed(2)} USDT`}
               </p>
               <p className="crypto-note">
                 Send exact amount to: <br/>
-                <code>{selectedPayment === 'bitcoin' 
-                  ? 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh' 
-                  : '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'}</code>
+                <code>
+                  {selectedPayment === 'bitcoin' 
+                    ? 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh' 
+                    : selectedPayment === 'ethereum'
+                    ? '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'
+                    : '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'}
+                </code>
               </p>
+              {selectedPayment === 'usdt' && (
+                <p className="crypto-note" style={{ marginTop: '1rem' }}>
+                  <strong>Network:</strong> ERC-20 (Ethereum) or TRC-20 (Tron)
+                </p>
+              )}
             </div>
             <button type="submit" className="submit-payment-btn">
               Confirm Payment

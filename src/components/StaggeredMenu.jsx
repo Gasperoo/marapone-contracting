@@ -1,6 +1,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
+import { useCurrency } from '../context/CurrencyContext';
 import './StaggeredMenu.css';
 
 export const StaggeredMenu = ({
@@ -22,6 +23,7 @@ export const StaggeredMenu = ({
   onMenuClose
 }) => {
   const navigate = useNavigate();
+  const { currency, changeCurrency } = useCurrency();
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
   const panelRef = useRef(null);
@@ -441,6 +443,37 @@ export const StaggeredMenu = ({
               </ul>
             </div>
           )}
+
+          {/* Currency Selector */}
+          <div className="sm-currency" aria-label="Currency selector">
+            <h3 className="sm-currency-title">Currency</h3>
+            <div className="sm-currency-buttons">
+              <button
+                className={`sm-currency-btn ${currency === 'USD' ? 'active' : ''}`}
+                onClick={() => changeCurrency('USD')}
+                aria-label="Switch to US Dollar"
+              >
+                <span className="currency-flag">🇺🇸</span>
+                <span className="currency-code">USD</span>
+              </button>
+              <button
+                className={`sm-currency-btn ${currency === 'CAD' ? 'active' : ''}`}
+                onClick={() => changeCurrency('CAD')}
+                aria-label="Switch to Canadian Dollar"
+              >
+                <span className="currency-flag">🇨🇦</span>
+                <span className="currency-code">CAD</span>
+              </button>
+              <button
+                className={`sm-currency-btn ${currency === 'EUR' ? 'active' : ''}`}
+                onClick={() => changeCurrency('EUR')}
+                aria-label="Switch to Euro"
+              >
+                <span className="currency-flag">🇪🇺</span>
+                <span className="currency-code">EUR</span>
+              </button>
+            </div>
+          </div>
         </div>
       </aside>
     </div>

@@ -64,10 +64,10 @@ export default function AboutPage() {
         
         <div className="card-swap-wrapper">
           <CardSwap
-            width={isMobile ? 320 : 600}
-            height={isMobile ? 450 : 500}
-            cardDistance={isMobile ? 50 : 70}
-            verticalDistance={isMobile ? 60 : 70}
+            width={isMobile ? 350 : 800}
+            height={isMobile ? 500 : 600}
+            cardDistance={isMobile ? 60 : 100}
+            verticalDistance={isMobile ? 70 : 100}
             delay={4000}
             pauseOnHover
             skewAmount={6}

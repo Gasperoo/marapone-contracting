@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 600px;
-  padding: 2rem 0;
+  min-height: 800px;
+  padding: 3rem 0;
   margin-top: 2rem;
 }
 
@@ -35,14 +35,14 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .card-swap-wrapper {
-    min-height: 500px;
-    padding: 1rem 0;
+    min-height: 650px;
+    padding: 2rem 0;
   }
 }
 
 @media (max-width: 480px) {
   .card-swap-wrapper {
-    min-height: 450px;
-    padding: 0.5rem 0;
+    min-height: 600px;
+    padding: 1.5rem 0;
   }
 }

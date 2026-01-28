@@ -62,7 +62,8 @@ export default function CartPage() {
     { id: 'paypal', name: 'PayPal', icon: '🅿️' },
     { id: 'bitcoin', name: 'Bitcoin', icon: '₿' },
     { id: 'ethereum', name: 'Ethereum', icon: '⟠' },
-    { id: 'usdt', name: 'Tether (USDT)', icon: '₮' }
+    { id: 'usdt', name: 'Tether (USDT)', icon: '₮' },
+    { id: 'usdc', name: 'USD Coin (USDC)', icon: '⊙' }
   ];
 
   // Calculate totals
@@ -210,11 +211,13 @@ export default function CartPage() {
       case 'bitcoin':
       case 'ethereum':
       case 'usdt':
+      case 'usdc':
         return (
           <form className="payment-form" onSubmit={handleSubmitPayment}>
             <h3>
               {selectedPayment === 'bitcoin' ? 'Bitcoin' : 
-               selectedPayment === 'ethereum' ? 'Ethereum' : 'Tether (USDT)'} Payment
+               selectedPayment === 'ethereum' ? 'Ethereum' : 
+               selectedPayment === 'usdt' ? 'Tether (USDT)' : 'USD Coin (USDC)'} Payment
             </h3>
             <div className="form-group">
               <label>Your Wallet Address</label>
@@ -233,7 +236,7 @@ export default function CartPage() {
                   ? `${(total / 45000).toFixed(8)} BTC` 
                   : selectedPayment === 'ethereum'
                   ? `${(total / 2500).toFixed(6)} ETH`
-                  : `${convertPrice(total)} USDT`}
+                  : `${convertPrice(total)} ${selectedPayment === 'usdt' ? 'USDT' : 'USDC'}`}
               </p>
               <p className="crypto-note">
                 Send exact amount to: <br/>
@@ -245,9 +248,9 @@ export default function CartPage() {
                     : '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'}
                 </code>
               </p>
-              {selectedPayment === 'usdt' && (
+              {(selectedPayment === 'usdt' || selectedPayment === 'usdc') && (
                 <p className="crypto-note" style={{ marginTop: '1rem' }}>
-                  <strong>Network:</strong> ERC-20 (Ethereum) or TRC-20 (Tron)
+                  <strong>Network:</strong> ERC-20 (Ethereum){selectedPayment === 'usdt' ? ' or TRC-20 (Tron)' : ''}
                 </p>
               )}
             </div>

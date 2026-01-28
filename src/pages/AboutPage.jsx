@@ -16,22 +16,22 @@ export default function AboutPage() {
     {
       name: 'Claude AI',
       url: 'https://claude.ai',
-      logo: 'https://www-cdn.anthropic.com/images/4zrzovbb/website/9ad98d612086fe52b3042f9183414669b4d2a3da-2560x1280.png'
+      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Ctext x="10" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="%23E8DCC5"%3EClaude%3C/text%3E%3C/svg%3E'
     },
     {
       name: 'Searates',
       url: 'https://www.searates.com',
-      logo: 'https://www.searates.com/design/images/logo-new.svg'
+      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Ctext x="10" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="%2300A3E0"%3ESeaRates%3C/text%3E%3C/svg%3E'
     },
     {
       name: 'Freightos',
       url: 'https://www.freightos.com',
-      logo: 'https://www.freightos.com/wp-content/uploads/2023/01/freightos-logo-white.svg'
+      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Ctext x="10" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="%2300D4AA"%3EFreightos%3C/text%3E%3C/svg%3E'
     },
     {
       name: 'Airrates',
       url: 'https://www.airrates.com',
-      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50"%3E%3Ctext x="10" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white"%3EAirrates%3C/text%3E%3C/svg%3E'
+      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Ctext x="10" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="%234A90E2"%3EAirrates%3C/text%3E%3C/svg%3E'
     }
   ];
 

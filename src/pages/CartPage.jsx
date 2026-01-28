@@ -177,7 +177,17 @@ export default function CartPage() {
 
   // Calculate totals
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const tax = subtotal * 0.1; // 10% tax
+  
+  // Calculate tax only on taxable items (exclude consultations/meetings)
+  const taxableSubtotal = cartItems.reduce((sum, item) => {
+    // Consultation meetings are tax-exempt
+    if (item.category === 'Consultation') {
+      return sum;
+    }
+    return sum + (item.price * item.quantity);
+  }, 0);
+  
+  const tax = taxableSubtotal * 0.1; // 10% tax on taxable items only
   const total = subtotal + tax;
 
   const updateQuantity = (name, newQuantity) => {

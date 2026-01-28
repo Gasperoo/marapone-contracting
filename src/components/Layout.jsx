@@ -5,6 +5,7 @@ export default function Layout({ children }) {
   const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
     { label: 'Products', ariaLabel: 'View our products', link: '/products' },
+    { label: 'Packages', ariaLabel: 'View service packages', link: '/packages' },
     { label: 'Cart', ariaLabel: 'View shopping cart', link: '/cart' },
     { label: 'Account', ariaLabel: 'Create an account', link: '/account' },
     { label: 'About', ariaLabel: 'Learn about us', link: '/about' },

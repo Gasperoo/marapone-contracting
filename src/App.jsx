@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
+import PackagesPage from './pages/PackagesPage';
 import CartPage from './pages/CartPage';
 import ContactPage from './pages/ContactPage';
 import AccountPage from './pages/AccountPage';
@@ -21,6 +22,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/products" element={<ProductsPage />} />
+              <Route path="/packages" element={<PackagesPage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/account" element={<AccountPage />} />

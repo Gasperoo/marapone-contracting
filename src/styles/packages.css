@@ -1,0 +1,311 @@
+/* Packages Page Styles */
+.packages-content {
+  position: relative;
+  z-index: 10;
+  padding: 2rem;
+}
+
+/* Tier Overlay */
+.packages-tier-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.packages-tier-content {
+  width: 100%;
+  max-width: 1400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+/* Tier Grid */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tier-card-wrapper {
+  position: relative;
+  cursor: default;
+}
+
+/* Tier Card */
+.tier-card {
+  padding: 2rem;
+  border-radius: 15px;
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tier-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Tier Badges */
+.tier-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.tier-badge.bronze {
+  background: linear-gradient(135deg, #CD7F32, #8B4513);
+  color: white;
+  box-shadow: 0 4px 15px rgba(205, 127, 50, 0.4);
+}
+
+.tier-badge.silver {
+  background: linear-gradient(135deg, #C0C0C0, #808080);
+  color: white;
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.4);
+}
+
+.tier-badge.gold {
+  background: linear-gradient(135deg, #FFD700, #DAA520);
+  color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Popular Badge */
+.popular-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: linear-gradient(135deg, #5227FF, #FF9FFC);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(82, 39, 255, 0.6);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Tier Name */
+.tier-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin: 0.5rem 0;
+}
+
+/* Tier Price */
+.tier-price {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: white;
+  margin: 1rem 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.bronze-tier .tier-price {
+  color: #CD7F32;
+  text-shadow: 0 2px 10px rgba(205, 127, 50, 0.5);
+}
+
+.silver-tier .tier-price {
+  color: #C0C0C0;
+  text-shadow: 0 2px 10px rgba(192, 192, 192, 0.5);
+}
+
+.gold-tier .tier-price {
+  color: #FFD700;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Tier Description */
+.tier-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Tier Features */
+.tier-features {
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.tier-features h4 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.tier-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tier-features li {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tier-features li:last-child {
+  border-bottom: none;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: auto;
+}
+
+.bronze-btn {
+  background: linear-gradient(135deg, #CD7F32, #8B4513);
+  color: white;
+  box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+}
+
+.bronze-btn:hover {
+  background: linear-gradient(135deg, #8B4513, #CD7F32);
+  box-shadow: 0 6px 25px rgba(205, 127, 50, 0.5);
+  transform: translateY(-2px);
+}
+
+.silver-btn {
+  background: linear-gradient(135deg, #C0C0C0, #808080);
+  color: white;
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
+}
+
+.silver-btn:hover {
+  background: linear-gradient(135deg, #808080, #C0C0C0);
+  box-shadow: 0 6px 25px rgba(192, 192, 192, 0.5);
+  transform: translateY(-2px);
+}
+
+.gold-btn {
+  background: linear-gradient(135deg, #FFD700, #DAA520);
+  color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.gold-btn:hover {
+  background: linear-gradient(135deg, #DAA520, #FFD700);
+  box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .tier-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .tier-card {
+    min-height: auto;
+  }
+
+  .packages-tier-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .packages-content {
+    padding: 1rem;
+  }
+
+  .packages-tier-overlay {
+    padding: 1rem;
+  }
+
+  .packages-tier-content {
+    padding: 1rem;
+  }
+
+  .tier-card {
+    padding: 1.5rem;
+  }
+
+  .tier-name {
+    font-size: 1.5rem;
+  }
+
+  .tier-price {
+    font-size: 2rem;
+  }
+
+  .tier-features li {
+    font-size: 0.9rem;
+  }
+
+  .popular-badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tier-grid {
+    gap: 1.5rem;
+  }
+
+  .tier-card {
+    padding: 1.25rem;
+  }
+
+  .tier-name {
+    font-size: 1.3rem;
+  }
+
+  .tier-price {
+    font-size: 1.8rem;
+  }
+
+  .tier-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

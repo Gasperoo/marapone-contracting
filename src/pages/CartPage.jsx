@@ -166,6 +166,27 @@ export default function CartPage() {
     // Here you would integrate with actual payment processors
   };
 
+  const getPaymentButtonText = () => {
+    switch (selectedPayment) {
+      case 'credit':
+      case 'debit':
+        return `Pay ${formatPrice(total)}`;
+      case 'apple':
+        return 'Continue with Apple Pay';
+      case 'google':
+        return 'Continue with Google Pay';
+      case 'paypal':
+        return 'Continue to PayPal';
+      case 'bitcoin':
+      case 'ethereum':
+      case 'usdt':
+      case 'usdc':
+        return 'Confirm Payment';
+      default:
+        return 'Complete Payment';
+    }
+  };
+
   const renderPaymentForm = () => {
     switch (selectedPayment) {
       case 'credit':
@@ -229,9 +250,6 @@ export default function CartPage() {
                 required
               />
             </div>
-            <button type="submit" className="submit-payment-btn">
-              Pay {formatPrice(total)}
-            </button>
           </form>
         );
 
@@ -243,9 +261,6 @@ export default function CartPage() {
             <p className="payment-info">
               You will be redirected to {selectedPayment === 'apple' ? 'Apple Pay' : 'Google Pay'} to complete your purchase.
             </p>
-            <button onClick={handleSubmitPayment} className="submit-payment-btn">
-              Continue with {selectedPayment === 'apple' ? 'Apple Pay' : 'Google Pay'}
-            </button>
           </div>
         );
 
@@ -266,9 +281,6 @@ export default function CartPage() {
             <p className="payment-info">
               You will be redirected to PayPal to complete your purchase.
             </p>
-            <button type="submit" className="submit-payment-btn">
-              Continue to PayPal
-            </button>
           </form>
         );
 
@@ -318,9 +330,6 @@ export default function CartPage() {
                 </p>
               )}
             </div>
-            <button type="submit" className="submit-payment-btn">
-              Confirm Payment
-            </button>
           </form>
         );
 
@@ -471,6 +480,15 @@ export default function CartPage() {
                     <span>{formatPrice(total)}</span>
                   </div>
                 </div>
+
+                {selectedPayment && (
+                  <button 
+                    onClick={handleSubmitPayment} 
+                    className="submit-payment-btn"
+                  >
+                    {getPaymentButtonText()}
+                  </button>
+                )}
               </div>
             </div>
           </div>

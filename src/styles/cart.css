@@ -544,6 +544,12 @@
   gap: 0.75rem;
 }
 
+/* Submit button in checkout summary */
+.checkout-summary .submit-payment-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
 /* Mobile Responsive */
 @media (max-width: 1024px) {
   .cart-container {

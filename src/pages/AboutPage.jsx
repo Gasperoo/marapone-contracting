@@ -1,8 +1,9 @@
 import React from 'react';
 import LiquidEther from '../components/LiquidEther';
-import MagicBento from '../components/MagicBento';
+import CardSwap, { Card } from '../components/CardSwap';
 import { getOptimizedSettings } from '../utils/detectWindows';
 import '../styles/page.css';
+import '../styles/about.css';
 
 export default function AboutPage() {
   const isMobile = typeof window !== 'undefined' && (
@@ -35,47 +36,6 @@ export default function AboutPage() {
     }
   ];
 
-  const companyData = [
-    {
-      color: '#060010',
-      title: 'Global Expertise',
-      description: 'Multi-continent operations with proven success in AI, consulting, and logistics.',
-      label: 'Our Reach'
-    },
-    {
-      color: '#060010',
-      title: 'Innovation First',
-      description: 'Cutting-edge technology and forward-thinking strategies for transformative results.',
-      label: 'Our Approach'
-    },
-    {
-      color: '#060010',
-      title: 'Trusted Partners',
-      description: 'Collaborating with industry leaders to deliver cutting-edge solutions.',
-      label: 'Our Network',
-      isPartners: true,
-      partners: partners
-    },
-    {
-      color: '#060010',
-      title: 'Client-Centric',
-      description: 'Building lasting partnerships through transparent communication and tailored solutions.',
-      label: 'Our Promise'
-    },
-    {
-      color: '#060010',
-      title: 'Industry Leaders',
-      description: 'Certified professionals with expertise in AI, logistics, marketing, and management.',
-      label: 'Our Team'
-    },
-    {
-      color: '#060010',
-      title: 'End-to-End Solutions',
-      description: 'Comprehensive services from consultation to implementation for sustainable growth.',
-      label: 'Full Service'
-    }
-  ];
-
   return (
     <div className="page-container">
       <LiquidEther
@@ -97,25 +57,75 @@ export default function AboutPage() {
       />
       
       <div className="page-content">
-        <h1 className="page-title">Why Choose Marapone</h1>
+        <h1 className="page-title">About Marapone Contracting</h1>
         <p className="page-subtitle">
-          Transforming businesses through innovation, expertise, and unwavering commitment to excellence.
+          Excellence in AI Solutions, Consulting, and Global Logistics
         </p>
         
-        <MagicBento
-          cardData={companyData}
-          textAutoHide={true}
-          enableStars
-          enableSpotlight
-          enableBorderGlow={true}
-          enableTilt={false}
-          enableMagnetism={false}
-          clickEffect
-          spotlightRadius={400}
-          particleCount={12}
-          glowColor="82, 39, 255"
-          disableAnimations={false}
-        />
+        <div className="card-swap-wrapper">
+          <CardSwap
+            width={isMobile ? 320 : 600}
+            height={isMobile ? 450 : 500}
+            cardDistance={isMobile ? 50 : 70}
+            verticalDistance={isMobile ? 60 : 70}
+            delay={4000}
+            pauseOnHover
+            skewAmount={6}
+            easing="elastic"
+          >
+            {/* Card 1: About Us */}
+            <Card>
+              <h2>About Us</h2>
+              <p>
+                Marapone Contracting is a global leader in delivering transformative solutions across AI, consulting, and international trade. With a presence spanning multiple continents, we combine cutting-edge technology with deep industry expertise to help businesses thrive in an ever-evolving marketplace.
+              </p>
+              <p>
+                Our team of certified professionals brings decades of combined experience in artificial intelligence, logistics optimization, strategic consulting, and business development. We don't just provide services—we build lasting partnerships that drive sustainable growth and innovation.
+              </p>
+              <p>
+                From small startups to Fortune 500 companies, we've helped organizations across industries unlock their full potential through data-driven strategies and innovative solutions.
+              </p>
+            </Card>
+
+            {/* Card 2: Why Choose Us */}
+            <Card>
+              <h2>Why Choose Us</h2>
+              <ul>
+                <li>Global Expertise: Multi-continent operations with proven success in AI, consulting, and logistics</li>
+                <li>Innovation First: Cutting-edge technology and forward-thinking strategies for transformative results</li>
+                <li>Client-Centric: Building lasting partnerships through transparent communication and tailored solutions</li>
+                <li>Industry Leaders: Certified professionals with expertise across all our service areas</li>
+                <li>End-to-End Solutions: Comprehensive services from consultation to implementation</li>
+                <li>Proven Track Record: Trusted by businesses worldwide to deliver measurable results</li>
+              </ul>
+            </Card>
+
+            {/* Card 3: Partners */}
+            <Card>
+              <h2>Our Partners</h2>
+              <p>
+                We collaborate with industry-leading platforms and technologies to deliver cutting-edge solutions for our clients.
+              </p>
+              <div className="partners-grid">
+                {partners.map((partner, index) => (
+                  <a
+                    key={index}
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="partner-link"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <img src={partner.logo} alt={partner.name} />
+                  </a>
+                ))}
+              </div>
+              <p style={{ marginTop: '1.5rem', fontSize: '0.95rem', opacity: 0.8 }}>
+                Through these strategic partnerships, we ensure our clients have access to the most advanced tools and platforms available in the industry.
+              </p>
+            </Card>
+          </CardSwap>
+        </div>
       </div>
     </div>
   );

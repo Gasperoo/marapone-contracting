@@ -1,0 +1,48 @@
+/* About Page Specific Styles */
+.card-swap-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+/* Override card styles for About page */
+.card-swap-wrapper .card {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(82, 39, 255, 0.5) transparent;
+}
+
+.card-swap-wrapper .card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-swap-wrapper .card::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-swap-wrapper .card::-webkit-scrollbar-thumb {
+  background: rgba(82, 39, 255, 0.5);
+  border-radius: 3px;
+}
+
+.card-swap-wrapper .card::-webkit-scrollbar-thumb:hover {
+  background: rgba(82, 39, 255, 0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-swap-wrapper {
+    min-height: 500px;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-swap-wrapper {
+    min-height: 450px;
+    padding: 0.5rem 0;
+  }
+}

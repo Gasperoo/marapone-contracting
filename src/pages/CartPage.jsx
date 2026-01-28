@@ -55,11 +55,55 @@ export default function CartPage() {
   });
 
   const paymentMethods = [
-    { id: 'credit', name: 'Credit Card', icon: '💳' },
-    { id: 'debit', name: 'Debit Card (Visa)', icon: '💳' },
-    { id: 'apple', name: 'Apple Pay', icon: '🍎' },
-    { id: 'google', name: 'Google Pay', icon: 'G' },
-    { id: 'paypal', name: 'PayPal', icon: '🅿️' },
+    { 
+      id: 'credit', 
+      name: 'Credit Card', 
+      iconSvg: (
+        <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '48px', height: '32px' }}>
+          <rect x="2" y="6" width="44" height="20" rx="3" fill="none" stroke="white" strokeWidth="2"/>
+          <line x1="2" y1="12" x2="46" y2="12" stroke="white" strokeWidth="2"/>
+          <rect x="6" y="16" width="12" height="6" rx="1" fill="white"/>
+          <rect x="20" y="16" width="8" height="6" rx="1" fill="white"/>
+        </svg>
+      )
+    },
+    { 
+      id: 'debit', 
+      name: 'Debit Card (Visa)', 
+      iconSvg: (
+        <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '48px', height: '32px' }}>
+          <text x="4" y="22" fontFamily="sans-serif" fontSize="16" fontWeight="bold" fill="white">VISA</text>
+        </svg>
+      )
+    },
+    { 
+      id: 'apple', 
+      name: 'Apple Pay', 
+      iconSvg: (
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
+          <path d="M31.5 11.5c-1.3 1.4-3.4 2.5-5.4 2.3-.3-2.1.7-4.2 1.9-5.5 1.3-1.4 3.5-2.4 5.2-2.5.2 2.2-.6 4.3-1.7 5.7zm1.7 2.7c-2.9-.2-5.4 1.6-6.8 1.6-1.4 0-3.5-1.5-5.8-1.5-3 .1-5.8 1.8-7.3 4.5-3.1 5.4-.8 13.4 2.2 17.8 1.5 2.2 3.3 4.6 5.6 4.5 2.2-.1 3.1-1.4 5.8-1.4 2.6 0 3.5 1.4 5.8 1.4 2.4-.1 4-2.1 5.5-4.3 1.7-2.5 2.4-4.9 2.5-5-.1 0-4.7-1.8-4.8-7.1-.1-4.4 3.6-6.5 3.8-6.7-2.1-3-5.3-3.4-6.5-3.8z" fill="white"/>
+        </svg>
+      )
+    },
+    { 
+      id: 'google', 
+      name: 'Google Pay', 
+      iconSvg: (
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
+          <path d="M24.5 20.5v7.2h10c-.4 2.5-2.9 7.3-10 7.3-6 0-11-5-11-11s5-11 11-11c3.4 0 5.7 1.5 7 2.7l5.7-5.5C34 6.3 29.6 4 24.5 4c-11 0-20 9-20 20s9 20 20 20c11.5 0 19.2-8.1 19.2-19.5 0-1.3-.1-2.3-.3-3.3H24.5z" fill="white"/>
+        </svg>
+      )
+    },
+    { 
+      id: 'paypal', 
+      name: 'PayPal', 
+      iconSvg: (
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
+          <path d="M29.5 10h-10c-.7 0-1.3.5-1.4 1.2l-4 25c-.1.5.3 1 .8 1h4.5c.7 0 1.3-.5 1.4-1.2l1.1-6.8c.1-.7.7-1.2 1.4-1.2h3.2c6.6 0 10.4-3.2 11.4-9.5.4-2.7 0-4.9-1.4-6.4-1.5-1.5-4.1-2.1-7-2.1zm.9 9.4c-.5 3.5-3.2 3.5-5.8 3.5h-1.5l1-6.5c.1-.4.4-.7.8-.7h.7c1.9 0 3.6 0 4.5.9.5.5.7 1.3.3 2.8z" fill="white"/>
+          <path d="M16.5 10h-10c-.7 0-1.3.5-1.4 1.2l-4 25c-.1.5.3 1 .8 1h4.8c.5 0 .9-.3 1-.8l1.1-7c.1-.7.7-1.2 1.4-1.2h3.2c6.6 0 10.4-3.2 11.4-9.5.4-2.7 0-4.9-1.4-6.4-1.5-1.5-4.1-2.1-7-2.1zm.9 9.4c-.5 3.5-3.2 3.5-5.8 3.5h-1.5l1-6.5c.1-.4.4-.7.8-.7h.7c1.9 0 3.6 0 4.5.9.5.5.7 1.3.3 2.8z" fill="white" opacity="0.7"/>
+        </svg>
+      )
+    },
     { id: 'bitcoin', name: 'Bitcoin', icon: '₿' },
     { id: 'ethereum', name: 'Ethereum', icon: '⟠' },
     { id: 'usdt', name: 'Tether (USDT)', icon: '₮' },
@@ -351,7 +395,9 @@ export default function CartPage() {
                       className={`payment-method-btn ${selectedPayment === method.id ? 'selected' : ''}`}
                       onClick={() => handlePaymentSelect(method.id)}
                     >
-                      <span className="payment-icon">{method.icon}</span>
+                      <span className="payment-icon">
+                        {method.iconSvg ? method.iconSvg : method.icon}
+                      </span>
                       <span className="payment-name">{method.name}</span>
                     </button>
                   ))}

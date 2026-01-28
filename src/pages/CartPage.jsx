@@ -217,7 +217,48 @@ export default function CartPage() {
 
   const handleSubmitPayment = (e) => {
     e.preventDefault();
-    alert(`Processing payment via ${selectedPayment}...`);
+    
+    // Save consultation bookings to prevent double-booking
+    const consultationItems = cartItems.filter(item => item.category === 'Consultation');
+    if (consultationItems.length > 0) {
+      const existingBookings = JSON.parse(localStorage.getItem('bookedSlots') || '[]');
+      
+      consultationItems.forEach(item => {
+        if (item.details) {
+          // Parse the date string to get ISO format
+          const dateObj = new Date(item.details.date);
+          const dateStr = dateObj.toISOString().split('T')[0];
+          
+          // Parse time to 24-hour format
+          const time12 = item.details.time;
+          const [time, period] = time12.split(' ');
+          const [hours, minutes] = time.split(':').map(Number);
+          let hours24 = hours;
+          if (period === 'PM' && hours !== 12) hours24 += 12;
+          if (period === 'AM' && hours === 12) hours24 = 0;
+          const time24 = `${hours24.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+          
+          // Add booking
+          existingBookings.push({
+            date: dateStr,
+            time24: time24,
+            time12: time12,
+            duration: parseInt(item.details.duration),
+            bookedAt: new Date().toISOString()
+          });
+        }
+      });
+      
+      localStorage.setItem('bookedSlots', JSON.stringify(existingBookings));
+    }
+    
+    // Clear cart after successful payment
+    setCartItems([]);
+    localStorage.setItem('cartItems', JSON.stringify([]));
+    window.dispatchEvent(new Event('cartUpdated'));
+    
+    alert(`Payment successful! Your order has been confirmed.`);
+    setShowCheckout(false);
     // Here you would integrate with actual payment processors
   };
 

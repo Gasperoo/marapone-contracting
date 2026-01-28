@@ -154,8 +154,8 @@ export default function CartPage() {
       name: 'Tether (USDT)', 
       iconSvg: (
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
-          <circle cx="16" cy="16" r="15" fill="none" stroke="white" strokeWidth="1.5"/>
-          <path d="M18.5 11.5V9h-5v2.5H8v3h2.3c.1 1.7 1.9 3 4.2 3.2v6.8h2.5v-6.8c2.3-.2 4.1-1.5 4.2-3.2H23v-3h-4.5zm-1.25 4.7c-2.4 0-4.4-.7-4.4-1.5s2-.8 4.4-.8 4.4.7 4.4 1.5-2 .8-4.4.8z" fill="white"/>
+          <circle cx="16" cy="16" r="14.5" fill="none" stroke="white" strokeWidth="1.5"/>
+          <path d="M17.2 13.5h-2.4v-2.4h6.9V9.3H10.3v1.8h6.9v2.4h-2.4c-3.5 0-6.3.5-6.3 1.2 0 .5 1.7.9 4.1 1.1v5.9h2.8v-5.9c2.4-.2 4.1-.6 4.1-1.1 0-.7-2.8-1.2-6.3-1.2zm0 1.9c-2.9 0-5.2-.4-5.2-.9s2.3-.9 5.2-.9 5.2.4 5.2.9-2.3.9-5.2.9z" fill="white"/>
         </svg>
       )
     },
@@ -164,8 +164,12 @@ export default function CartPage() {
       name: 'USD Coin (USDC)', 
       iconSvg: (
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
-          <circle cx="16" cy="16" r="15" fill="none" stroke="white" strokeWidth="1.5"/>
-          <path d="M20 12.5c0-1.4-1.1-2.5-2.5-2.5h-3C13.1 10 12 11.1 12 12.5v1.2c0 1 .6 1.8 1.5 2.2l4 1.6c.3.1.5.4.5.7v1.3c0 .4-.3.7-.7.7h-3.6c-.4 0-.7-.3-.7-.7V19h-2v.5c0 1.4 1.1 2.5 2.5 2.5h3c1.4 0 2.5-1.1 2.5-2.5v-1.2c0-1-.6-1.8-1.5-2.2l-4-1.6c-.3-.1-.5-.4-.5-.7v-1.3c0-.4.3-.7.7-.7h3.6c.4 0 .7.3.7.7V13h2v-.5z" fill="white"/>
+          <circle cx="16" cy="16" r="14.5" fill="none" stroke="white" strokeWidth="1.5"/>
+          <path d="M13.5 19.5c0 .8.7 1.5 1.5 1.5h2c.8 0 1.5-.7 1.5-1.5v-.3c0-.6-.3-1.1-.8-1.3l-3.4-1.4c-.5-.2-.8-.7-.8-1.3v-.3c0-.8.7-1.5 1.5-1.5h2c.8 0 1.5.7 1.5 1.5v.2h1.5v-.2c0-1.5-1.2-2.7-2.7-2.9V11h-1.6v1.1c-1.5.2-2.7 1.4-2.7 2.9v.3c0 1.1.6 2 1.5 2.4l3.4 1.4c.2.1.3.3.3.5v.3c0 .3-.2.5-.5.5h-2c-.3 0-.5-.2-.5-.5v-.4h-1.5v.4zm4.8 4.8c-.2.1-.5.1-.7.2-.2 0-.5.1-.7.1-.2 0-.5 0-.7-.1-.2 0-.5-.1-.7-.2" stroke="white" strokeWidth="0.8" fill="none" strokeLinecap="round"/>
+          <path d="M18.3 24.3c2.7-.8 4.7-3.3 4.7-6.3" stroke="white" strokeWidth="0.8" fill="none" strokeLinecap="round"/>
+          <path d="M13.7 7.7c-2.7.8-4.7 3.3-4.7 6.3" stroke="white" strokeWidth="0.8" fill="none" strokeLinecap="round"/>
+          <circle cx="20" cy="12" r="1" fill="white"/>
+          <circle cx="12" cy="20" r="1" fill="white"/>
         </svg>
       )
     }

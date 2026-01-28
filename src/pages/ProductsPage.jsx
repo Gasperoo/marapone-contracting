@@ -258,11 +258,6 @@ export default function ProductsPage() {
                       Book a one-on-one consultation with our experts. Choose between 30-minute 
                       or 1-hour sessions at your convenience. Available Monday to Friday, 8:30 AM - 4:30 PM.
                     </p>
-                    <div className="schedule-pricing">
-                      <span className="price-option">30 min - $150</span>
-                      <span className="price-divider">|</span>
-                      <span className="price-option">1 hour - $250</span>
-                    </div>
                   </div>
                 </div>
               </SpotlightCard>

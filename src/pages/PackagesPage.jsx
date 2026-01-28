@@ -21,7 +21,7 @@ export default function PackagesPage() {
     'AI Solutions': {
       bronze: {
         name: 'AI Starter',
-        price: 4999,
+        price: 3499,
         description: 'Perfect for businesses beginning their AI journey',
         features: [
           'Basic ML model implementation',
@@ -36,7 +36,7 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'AI Professional',
-        price: 12999,
+        price: 9099,
         description: 'Comprehensive AI solutions for growing enterprises',
         features: [
           'Advanced ML/DL implementation',
@@ -53,7 +53,7 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'AI Enterprise',
-        price: 29999,
+        price: 20999,
         description: 'End-to-end AI transformation for industry leaders',
         features: [
           'Full-stack AI solution development',
@@ -74,7 +74,7 @@ export default function PackagesPage() {
     'Consulting': {
       bronze: {
         name: 'Strategy Essentials',
-        price: 2999,
+        price: 2099,
         description: 'Foundational consulting for immediate needs',
         features: [
           'Initial business assessment',
@@ -89,7 +89,7 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'Growth Accelerator',
-        price: 7999,
+        price: 5599,
         description: 'Comprehensive consulting for sustainable growth',
         features: [
           'In-depth strategic analysis',
@@ -106,7 +106,7 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'Enterprise Transformation',
-        price: 19999,
+        price: 13999,
         description: 'Complete business transformation partnership',
         features: [
           'Full enterprise assessment',
@@ -127,7 +127,7 @@ export default function PackagesPage() {
     'Import/Export & Logistics': {
       bronze: {
         name: 'Trade Starter',
-        price: 1999,
+        price: 1399,
         description: 'Essential services for new international traders',
         features: [
           'Customs documentation assistance',
@@ -142,7 +142,7 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'Logistics Pro',
-        price: 5999,
+        price: 4199,
         description: 'Advanced logistics management for regular traders',
         features: [
           'Full customs clearance services',
@@ -159,7 +159,7 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'Global Trade Elite',
-        price: 14999,
+        price: 10499,
         description: 'Premium end-to-end logistics solutions',
         features: [
           'Dedicated logistics manager',
@@ -180,7 +180,7 @@ export default function PackagesPage() {
     'Marketing Solutions': {
       bronze: {
         name: 'Digital Presence',
-        price: 2499,
+        price: 1749,
         description: 'Build your online presence and reach',
         features: [
           'Social media setup & strategy',
@@ -195,7 +195,7 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'Growth Marketing',
-        price: 6999,
+        price: 4899,
         description: 'Comprehensive digital marketing for growth',
         features: [
           'Multi-channel marketing strategy',
@@ -213,7 +213,7 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'Brand Domination',
-        price: 16999,
+        price: 11899,
         description: 'Full-scale marketing transformation',
         features: [
           'Comprehensive brand strategy',
@@ -235,7 +235,7 @@ export default function PackagesPage() {
     'Project Development & Management': {
       bronze: {
         name: 'Project Launch',
-        price: 1799,
+        price: 1259,
         description: 'Essential project management for small initiatives',
         features: [
           'Project planning & scoping',
@@ -250,7 +250,7 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'Project Excellence',
-        price: 4999,
+        price: 3499,
         description: 'Comprehensive PM for complex projects',
         features: [
           'Full project lifecycle management',
@@ -267,7 +267,7 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'Program Management',
-        price: 12999,
+        price: 9099,
         description: 'Enterprise program management excellence',
         features: [
           'Multi-project program oversight',
@@ -288,7 +288,7 @@ export default function PackagesPage() {
     'Business Development & Management': {
       bronze: {
         name: 'Growth Foundations',
-        price: 3499,
+        price: 2449,
         description: 'Build the foundation for business growth',
         features: [
           'Market opportunity analysis',
@@ -303,7 +303,7 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'Scale & Expand',
-        price: 8999,
+        price: 6299,
         description: 'Accelerate growth with strategic partnerships',
         features: [
           'Partnership development program',
@@ -320,7 +320,7 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'Market Leadership',
-        price: 21999,
+        price: 15399,
         description: 'Achieve market dominance and scale',
         features: [
           'Enterprise business strategy',

@@ -59,16 +59,21 @@ export default function CartPage() {
       id: 'credit', 
       name: 'Credit Card', 
       iconSvg: (
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '6px', alignItems: 'center', justifyContent: 'center' }}>
           {/* Visa Logo */}
-          <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg" style={{ width: '42px', height: '14px' }}>
+          <svg viewBox="0 0 48 16" xmlns="http://www.w3.org/2000/svg" style={{ width: '38px', height: '13px' }}>
             <path d="M16.2 2L12.8 14h-3.4l3.4-12h3.4zm8.5 7.8c0-1-.9-1.7-2.8-1.7-1.1 0-2.3.2-3.2.6l-.4.2.4-2.5.2-.1c1-.3 2.3-.6 3.9-.6 3.7 0 5.5 1.6 5.5 4 0 3.1-3 4.7-3 4.7h-3.2s2.1-1.2 2.1-3.4c0-.6-.5-1.2-1.5-1.2h1zm6.3 4c.8 0 1.5-.3 2.1-.9l2 1.5c-1 1.1-2.4 1.6-4.1 1.6-3.2 0-5.4-2-5.4-5s2.2-5.1 5.3-5.1c2.9 0 4.9 2 4.9 4.9 0 .4 0 .8-.1 1.2H28c.3.9 1.2 1.5 2.3 1.5.8 0 1.5-.2 2-.7zm-3.7-4.1h4.5c-.1-.8-.7-1.4-1.7-1.4s-1.8.6-2.8 1.4zM6.8 2l-3 8.5L3.5 9 2.3 3.5C2.1 2.8 1.9 2.4 1.4 2.2 1 2 .3 1.8 0 1.7l.1-.5h5.5c.7 0 1.3.5 1.5 1.2l1.4 7.2L11.4 2H6.8z" fill="white"/>
           </svg>
           {/* Mastercard Logo */}
-          <svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg" style={{ width: '32px', height: '20px' }}>
+          <svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg" style={{ width: '28px', height: '18px' }}>
             <circle cx="10" cy="10" r="8" fill="white" opacity="0.85"/>
             <circle cx="22" cy="10" r="8" fill="white" opacity="0.85"/>
             <path d="M16 4.5 A8 8 0 0 1 16 15.5 A8 8 0 0 0 16 4.5" fill="white"/>
+          </svg>
+          {/* American Express Logo */}
+          <svg viewBox="0 0 40 24" xmlns="http://www.w3.org/2000/svg" style={{ width: '32px', height: '19px' }}>
+            <rect x="1" y="2" width="38" height="20" rx="2" fill="none" stroke="white" strokeWidth="1.5"/>
+            <text x="20" y="15" fontFamily="Arial, sans-serif" fontSize="10" fontWeight="bold" fill="white" textAnchor="middle">AMEX</text>
           </svg>
         </div>
       )

@@ -124,10 +124,51 @@ export default function CartPage() {
         </svg>
       )
     },
-    { id: 'bitcoin', name: 'Bitcoin', icon: '₿' },
-    { id: 'ethereum', name: 'Ethereum', icon: '⟠' },
-    { id: 'usdt', name: 'Tether (USDT)', icon: '₮' },
-    { id: 'usdc', name: 'USD Coin (USDC)', icon: '⊙' }
+    { 
+      id: 'bitcoin', 
+      name: 'Bitcoin', 
+      iconSvg: (
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
+          <circle cx="16" cy="16" r="15" fill="none" stroke="white" strokeWidth="1.5"/>
+          <path d="M23.189 14.02c.314-2.096-1.283-3.223-3.465-3.975l.708-2.84-1.728-.43-.69 2.765c-.454-.114-.92-.22-1.385-.326l.695-2.783L15.596 6l-.708 2.839c-.376-.086-.746-.17-1.104-.26l.002-.009-2.384-.595-.46 1.846s1.283.294 1.256.312c.7.175.826.638.805 1.006l-.806 3.235c.048.012.11.03.18.057l-.183-.045-1.13 4.532c-.086.212-.303.531-.793.41.018.025-1.256-.313-1.256-.313l-.858 1.978 2.25.561c.418.105.828.215 1.231.318l-.715 2.872 1.727.43.708-2.84c.472.127.93.245 1.378.357l-.706 2.828 1.728.43.715-2.866c2.948.558 5.164.333 6.097-2.333.752-2.146-.037-3.385-1.588-4.192 1.13-.26 1.98-1.003 2.207-2.538zm-3.95 5.538c-.533 2.147-4.148.986-5.32.695l.95-3.805c1.172.293 4.929.872 4.37 3.11zm.535-5.569c-.487 1.953-3.495.96-4.47.717l.86-3.45c.975.243 4.118.696 3.61 2.733z" fill="white"/>
+        </svg>
+      )
+    },
+    { 
+      id: 'ethereum', 
+      name: 'Ethereum', 
+      iconSvg: (
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
+          <circle cx="16" cy="16" r="15" fill="none" stroke="white" strokeWidth="1.5"/>
+          <path d="M16 4L15.7 5.1v13.5l.3.3 6.5-3.8L16 4z" fill="white" opacity="0.6"/>
+          <path d="M16 4l-6.5 11.1L16 18.9V4z" fill="white"/>
+          <path d="M16 20.5l-.2.2v5l.2.6 6.5-9.2-6.5 3.4z" fill="white" opacity="0.6"/>
+          <path d="M16 26.3v-5.8l-6.5-3.4L16 26.3z" fill="white"/>
+          <path d="M16 18.9l6.5-3.8L16 11.3v7.6z" fill="white" opacity="0.2"/>
+          <path d="M9.5 15.1l6.5 3.8v-7.6l-6.5 3.8z" fill="white" opacity="0.6"/>
+        </svg>
+      )
+    },
+    { 
+      id: 'usdt', 
+      name: 'Tether (USDT)', 
+      iconSvg: (
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
+          <circle cx="16" cy="16" r="15" fill="none" stroke="white" strokeWidth="1.5"/>
+          <path d="M18.5 11.5V9h-5v2.5H8v3h2.3c.1 1.7 1.9 3 4.2 3.2v6.8h2.5v-6.8c2.3-.2 4.1-1.5 4.2-3.2H23v-3h-4.5zm-1.25 4.7c-2.4 0-4.4-.7-4.4-1.5s2-.8 4.4-.8 4.4.7 4.4 1.5-2 .8-4.4.8z" fill="white"/>
+        </svg>
+      )
+    },
+    { 
+      id: 'usdc', 
+      name: 'USD Coin (USDC)', 
+      iconSvg: (
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '40px', height: '40px' }}>
+          <circle cx="16" cy="16" r="15" fill="none" stroke="white" strokeWidth="1.5"/>
+          <path d="M20 12.5c0-1.4-1.1-2.5-2.5-2.5h-3C13.1 10 12 11.1 12 12.5v1.2c0 1 .6 1.8 1.5 2.2l4 1.6c.3.1.5.4.5.7v1.3c0 .4-.3.7-.7.7h-3.6c-.4 0-.7-.3-.7-.7V19h-2v.5c0 1.4 1.1 2.5 2.5 2.5h3c1.4 0 2.5-1.1 2.5-2.5v-1.2c0-1-.6-1.8-1.5-2.2l-4-1.6c-.3-.1-.5-.4-.5-.7v-1.3c0-.4.3-.7.7-.7h3.6c.4 0 .7.3.7.7V13h2v-.5z" fill="white"/>
+        </svg>
+      )
+    }
   ];
 
   // Calculate totals

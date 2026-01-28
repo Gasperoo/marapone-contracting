@@ -441,8 +441,107 @@
 .checkout-summary h3 {
   color: white;
   font-size: 1.25rem;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.5rem 0;
   font-weight: 700;
+}
+
+/* Checkout Items List */
+.checkout-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.checkout-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(82, 39, 255, 0.3);
+}
+
+.checkout-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.checkout-item-name {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.checkout-item-details {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.checkout-item-category {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.checkout-item-qty {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.checkout-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkout-item-price {
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.checkout-remove-btn {
+  background: rgba(255, 0, 0, 0.15);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  color: white;
+  font-size: 1.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.checkout-remove-btn:hover {
+  background: rgba(255, 0, 0, 0.3);
+  border-color: rgba(255, 0, 0, 0.6);
+  transform: scale(1.1);
+}
+
+/* Checkout Totals */
+.checkout-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 /* Mobile Responsive */
@@ -473,6 +572,16 @@
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .checkout-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .checkout-item-actions {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 

@@ -431,18 +431,45 @@ export default function CartPage() {
               )}
 
               <div className="checkout-summary">
-                <h3>Order Total</h3>
-                <div className="summary-row">
-                  <span>Subtotal:</span>
-                  <span>{formatPrice(subtotal)}</span>
+                <h3>Order Summary</h3>
+                
+                <div className="checkout-items-list">
+                  {cartItems.map(item => (
+                    <div key={item.name} className="checkout-item">
+                      <div className="checkout-item-info">
+                        <div className="checkout-item-name">{item.name}</div>
+                        <div className="checkout-item-details">
+                          {item.category && <span className="checkout-item-category">{item.category}</span>}
+                          <span className="checkout-item-qty">Qty: {item.quantity}</span>
+                        </div>
+                      </div>
+                      <div className="checkout-item-actions">
+                        <span className="checkout-item-price">{formatPrice(item.price * item.quantity)}</span>
+                        <button 
+                          className="checkout-remove-btn" 
+                          onClick={() => removeItem(item.name)}
+                          aria-label="Remove item"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="summary-row">
-                  <span>Tax:</span>
-                  <span>{formatPrice(tax)}</span>
-                </div>
-                <div className="summary-row total">
-                  <span>Total:</span>
-                  <span>{formatPrice(total)}</span>
+
+                <div className="checkout-totals">
+                  <div className="summary-row">
+                    <span>Subtotal:</span>
+                    <span>{formatPrice(subtotal)}</span>
+                  </div>
+                  <div className="summary-row">
+                    <span>Tax (10%):</span>
+                    <span>{formatPrice(tax)}</span>
+                  </div>
+                  <div className="summary-row total">
+                    <span>Total:</span>
+                    <span>{formatPrice(total)}</span>
+                  </div>
                 </div>
               </div>
             </div>

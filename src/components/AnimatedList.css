@@ -95,6 +95,7 @@
   width: 32px;
   height: 32px;
   min-width: 32px;
+  max-width: 32px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -103,6 +104,7 @@
   flex-shrink: 0;
   color: white;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .add-to-cart-btn svg {

@@ -42,7 +42,8 @@ export default function CartPage() {
     cardName: '',
     expiryDate: '',
     cvv: '',
-    postalCode: ''
+    postalCode: '',
+    email: ''
   });
 
   const [paypalForm, setPaypalForm] = useState({
@@ -252,14 +253,30 @@ export default function CartPage() {
       localStorage.setItem('bookedSlots', JSON.stringify(existingBookings));
     }
     
+    // Get email for receipt
+    const receiptEmail = selectedPayment === 'paypal' ? paypalForm.email : cardForm.email;
+    
     // Clear cart after successful payment
     setCartItems([]);
     localStorage.setItem('cartItems', JSON.stringify([]));
     window.dispatchEvent(new Event('cartUpdated'));
     
-    alert(`Payment successful! Your order has been confirmed.`);
+    alert(`Payment successful! Your order has been confirmed.\n\nA receipt has been sent to ${receiptEmail}`);
     setShowCheckout(false);
-    // Here you would integrate with actual payment processors
+    
+    // Reset forms
+    setCardForm({
+      cardNumber: '',
+      cardName: '',
+      expiryDate: '',
+      cvv: '',
+      postalCode: '',
+      email: ''
+    });
+    setPaypalForm({ email: '' });
+    setCryptoForm({ walletAddress: '' });
+    
+    // Here you would integrate with actual payment processors and email service
   };
 
   const getPaymentButtonText = () => {
@@ -346,18 +363,38 @@ export default function CartPage() {
                 required
               />
             </div>
+            <div className="form-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                placeholder="your.email@example.com"
+                value={cardForm.email}
+                onChange={(e) => setCardForm({...cardForm, email: e.target.value})}
+                required
+              />
+            </div>
           </form>
         );
 
       case 'apple':
       case 'google':
         return (
-          <div className="payment-form">
+          <form className="payment-form" onSubmit={handleSubmitPayment}>
             <h3>{selectedPayment === 'apple' ? 'Apple Pay' : 'Google Pay'}</h3>
+            <div className="form-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                placeholder="your.email@example.com"
+                value={cardForm.email}
+                onChange={(e) => setCardForm({...cardForm, email: e.target.value})}
+                required
+              />
+            </div>
             <p className="payment-info">
               You will be redirected to {selectedPayment === 'apple' ? 'Apple Pay' : 'Google Pay'} to complete your purchase.
             </p>
-          </div>
+          </form>
         );
 
       case 'paypal':
@@ -391,6 +428,16 @@ export default function CartPage() {
                selectedPayment === 'ethereum' ? 'Ethereum' : 
                selectedPayment === 'usdt' ? 'Tether (USDT)' : 'USD Coin (USDC)'} Payment
             </h3>
+            <div className="form-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                placeholder="your.email@example.com"
+                value={cardForm.email}
+                onChange={(e) => setCardForm({...cardForm, email: e.target.value})}
+                required
+              />
+            </div>
             <div className="form-group">
               <label>Your Wallet Address</label>
               <input

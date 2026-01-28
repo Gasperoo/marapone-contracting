@@ -442,10 +442,15 @@ export const StaggeredMenu = ({
                   >
                     <span className="sm-panel-itemLabel">
                       {it.label}
-                      {it.label === 'Cart' && cartItemCount > 0 && (
-                        <span className="cart-notification-dot" aria-label={`${cartItemCount} items in cart`}></span>
-                      )}
                     </span>
+                    {it.label === 'Cart' && cartItemCount > 0 && (
+                      <span className="cart-badge-container" aria-label={`${cartItemCount} items in cart`}>
+                        <svg className="cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9 2L7.17 4H3C1.9 4 1 4.9 1 6V18C1 19.1 1.9 20 3 20H21C22.1 20 23 19.1 23 18V6C23 4.9 22.1 4 21 4H16.83L15 2H9ZM12 6.5C14.76 6.5 17 8.74 17 11.5C17 14.26 14.76 16.5 12 16.5C9.24 16.5 7 14.26 7 11.5C7 8.74 9.24 6.5 12 6.5Z" fill="#ff3b3b"/>
+                        </svg>
+                        <span className="cart-count">{cartItemCount}</span>
+                      </span>
+                    )}
                   </a>
                 </li>
               ))

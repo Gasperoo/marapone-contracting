@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LiquidEther from '../components/LiquidEther';
 import SpotlightCard from '../components/SpotlightCard';
 import AnimatedList from '../components/AnimatedList';
+import ScheduleMeeting from '../components/ScheduleMeeting';
 import Toast from '../components/Toast';
 import { getOptimizedSettings } from '../utils/detectWindows';
 import '../styles/page.css';
@@ -16,6 +17,7 @@ export default function ProductsPage() {
   const settings = getOptimizedSettings(isMobile);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
+  const [showScheduleModal, setShowScheduleModal] = useState(false);
 
   // Product details with 10 items each including prices (in USD)
   const productDetails = {
@@ -134,6 +136,14 @@ export default function ProductsPage() {
     setToastMessage(`"${item.name}" added to cart`);
   };
 
+  const handleMeetingAddToCart = (meetingDetails) => {
+    const existingCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    existingCart.push(meetingDetails);
+    localStorage.setItem('cartItems', JSON.stringify(existingCart));
+    window.dispatchEvent(new Event('cartUpdated'));
+    setToastMessage(`"${meetingDetails.name}" added to cart`);
+  };
+
   return (
     <div className="page-container">
       <LiquidEther
@@ -236,6 +246,27 @@ export default function ProductsPage() {
                 </p>
               </SpotlightCard>
             </div>
+
+            {/* Schedule a Meeting Card - Full Width */}
+            <div className="schedule-meeting-card-wrapper" onClick={() => setShowScheduleModal(true)}>
+              <SpotlightCard spotlightColor="rgba(82, 39, 255, 0.3)">
+                <div className="schedule-meeting-card-content">
+                  <span className="spotlight-card-icon schedule-icon">📅</span>
+                  <div className="schedule-text">
+                    <h2>Schedule a Meeting</h2>
+                    <p>
+                      Book a one-on-one consultation with our experts. Choose between 30-minute 
+                      or 1-hour sessions at your convenience. Available Monday to Friday, 8:30 AM - 4:30 PM.
+                    </p>
+                    <div className="schedule-pricing">
+                      <span className="price-option">30 min - $150</span>
+                      <span className="price-divider">|</span>
+                      <span className="price-option">1 hour - $250</span>
+                    </div>
+                  </div>
+                </div>
+              </SpotlightCard>
+            </div>
           </div>
         ) : (
           <div className="products-detail-overlay" onClick={handleBackgroundClick}>
@@ -256,6 +287,14 @@ export default function ProductsPage() {
           </div>
         )}
       </div>
+
+      {/* Schedule Meeting Modal */}
+      {showScheduleModal && (
+        <ScheduleMeeting
+          onClose={() => setShowScheduleModal(false)}
+          onAddToCart={handleMeetingAddToCart}
+        />
+      )}
 
       {/* Toast Notification */}
       {toastMessage && (

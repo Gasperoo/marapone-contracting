@@ -1,0 +1,123 @@
+/* TimeSlot Container */
+.timeslot-container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  color: white;
+  margin-top: 1.5rem;
+}
+
+/* TimeSlot Title */
+.timeslot-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+/* TimeSlot Message */
+.timeslot-message {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  margin: 2rem 0;
+}
+
+/* TimeSlot Grid */
+.timeslot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* TimeSlot Button */
+.timeslot-btn {
+  background: rgba(82, 39, 255, 0.2);
+  border: 1px solid rgba(82, 39, 255, 0.3);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.timeslot-btn:hover {
+  background: rgba(82, 39, 255, 0.4);
+  border-color: rgba(82, 39, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(82, 39, 255, 0.3);
+}
+
+.timeslot-btn.selected {
+  background: rgba(82, 39, 255, 0.8);
+  border-color: rgba(82, 39, 255, 1);
+  box-shadow: 0 4px 15px rgba(82, 39, 255, 0.5);
+  transform: scale(1.05);
+}
+
+/* TimeSlot Info */
+.timeslot-info {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeslot-info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeslot-container {
+    padding: 1rem;
+  }
+
+  .timeslot-title {
+    font-size: 1rem;
+  }
+
+  .timeslot-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .timeslot-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  .timeslot-info {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .timeslot-info p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeslot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeslot-btn {
+    font-size: 0.85rem;
+  }
+}

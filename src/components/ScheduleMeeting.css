@@ -1,0 +1,310 @@
+/* Schedule Meeting Overlay */
+.schedule-meeting-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Schedule Meeting Modal */
+.schedule-meeting-modal {
+  background: rgba(10, 10, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Header */
+.schedule-meeting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  background: rgba(10, 10, 20, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.schedule-meeting-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Modal Content */
+.schedule-meeting-content {
+  padding: 2rem;
+}
+
+/* Schedule Step */
+.schedule-step {
+  margin-bottom: 2rem;
+}
+
+.step-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #5227FF, #FF9FFC);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Duration Options */
+.duration-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+}
+
+.duration-btn {
+  background: rgba(82, 39, 255, 0.2);
+  border: 2px solid rgba(82, 39, 255, 0.3);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.duration-btn:hover {
+  background: rgba(82, 39, 255, 0.4);
+  border-color: rgba(82, 39, 255, 0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(82, 39, 255, 0.3);
+}
+
+.duration-btn.selected {
+  background: rgba(82, 39, 255, 0.8);
+  border-color: rgba(82, 39, 255, 1);
+  box-shadow: 0 8px 25px rgba(82, 39, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.duration-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.duration-price {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #5227FF;
+  text-shadow: 0 0 10px rgba(82, 39, 255, 0.5);
+}
+
+.duration-btn.selected .duration-price {
+  color: white;
+}
+
+/* Schedule Summary */
+.schedule-summary {
+  background: rgba(82, 39, 255, 0.1);
+  border: 1px solid rgba(82, 39, 255, 0.3);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.schedule-summary h3 {
+  color: white;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-row.total {
+  border-bottom: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+  border-top: 2px solid rgba(82, 39, 255, 0.5);
+}
+
+.summary-row span:first-child {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.summary-row span:last-child {
+  font-weight: 600;
+  color: white;
+}
+
+.summary-row.total span {
+  color: #5227FF;
+  text-shadow: 0 0 10px rgba(82, 39, 255, 0.5);
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #5227FF, #FF9FFC);
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(82, 39, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.add-to-cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(82, 39, 255, 0.6);
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .schedule-meeting-modal {
+    max-width: 100%;
+    margin: 0.5rem;
+    max-height: 95vh;
+  }
+
+  .schedule-meeting-header {
+    padding: 1.5rem;
+  }
+
+  .schedule-meeting-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .schedule-meeting-content {
+    padding: 1.5rem;
+  }
+
+  .duration-options {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-row {
+    font-size: 0.95rem;
+  }
+
+  .summary-row.total {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .schedule-meeting-header {
+    padding: 1rem;
+  }
+
+  .schedule-meeting-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .schedule-meeting-content {
+    padding: 1rem;
+  }
+
+  .step-label {
+    font-size: 1rem;
+  }
+
+  .duration-label {
+    font-size: 1rem;
+  }
+
+  .duration-price {
+    font-size: 1.25rem;
+  }
+}

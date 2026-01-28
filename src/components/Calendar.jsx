@@ -37,6 +37,39 @@ export default function Calendar({ onDateSelect, selectedDate }) {
            date1.getFullYear() === date2.getFullYear();
   };
 
+  // Get all booked slots from localStorage
+  const getBookedSlots = () => {
+    return JSON.parse(localStorage.getItem('bookedSlots') || '[]');
+  };
+
+  // Count available time slots for a given date
+  const getAvailableSlotCount = (date) => {
+    if (!date || !isWeekday(date) || isPastDate(date)) return 0;
+    
+    const dateStr = date.toISOString().split('T')[0];
+    const bookings = getBookedSlots();
+    
+    // Total possible slots (8:30am - 4:30pm in 30-min blocks = 16 slots)
+    const totalSlots = 16;
+    
+    // Find bookings for this date
+    const dayBookings = bookings.filter(booking => booking.date === dateStr);
+    
+    // Count blocked slots
+    let blockedSlots = 0;
+    dayBookings.forEach(booking => {
+      // Each booking blocks slots based on duration
+      blockedSlots += booking.duration / 30; // 30 min = 1 slot, 60 min = 2 slots
+    });
+    
+    return totalSlots - blockedSlots;
+  };
+
+  // Check if a date is fully booked
+  const isFullyBooked = (date) => {
+    return getAvailableSlotCount(date) === 0;
+  };
+
   const generateCalendarDays = useMemo(() => {
     const days = [];
     const totalDays = daysInMonth(currentMonth);
@@ -67,7 +100,7 @@ export default function Calendar({ onDateSelect, selectedDate }) {
   };
 
   const handleDateClick = (date) => {
-    if (date && isWeekday(date) && !isPastDate(date)) {
+    if (date && isWeekday(date) && !isPastDate(date) && !isFullyBooked(date)) {
       onDateSelect(date);
     }
   };
@@ -119,7 +152,8 @@ export default function Calendar({ onDateSelect, selectedDate }) {
           const isWeekdayDate = isWeekday(item.date);
           const isPast = isPastDate(item.date);
           const isSelected = isSameDay(item.date, selectedDate);
-          const isAvailable = isWeekdayDate && !isPast;
+          const fullyBooked = isFullyBooked(item.date);
+          const isAvailable = isWeekdayDate && !isPast && !fullyBooked;
 
           return (
             <div

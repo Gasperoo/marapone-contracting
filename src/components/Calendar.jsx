@@ -134,13 +134,13 @@ export default function Calendar({ onDateSelect, selectedDate }) {
       </div>
 
       <div className="calendar-weekdays">
-        <div className="calendar-weekday">Sun</div>
-        <div className="calendar-weekday">Mon</div>
-        <div className="calendar-weekday">Tue</div>
-        <div className="calendar-weekday">Wed</div>
-        <div className="calendar-weekday">Thu</div>
-        <div className="calendar-weekday">Fri</div>
-        <div className="calendar-weekday">Sat</div>
+        <div className="calendar-weekday">S</div>
+        <div className="calendar-weekday">M</div>
+        <div className="calendar-weekday">T</div>
+        <div className="calendar-weekday">W</div>
+        <div className="calendar-weekday">T</div>
+        <div className="calendar-weekday">F</div>
+        <div className="calendar-weekday">S</div>
       </div>
 
       <div className="calendar-days">

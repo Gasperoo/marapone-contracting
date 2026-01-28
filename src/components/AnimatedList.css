@@ -91,9 +91,9 @@
 .add-to-cart-btn {
   background: white;
   border: 2px solid rgba(82, 39, 255, 0.3);
-  border-radius: 10px;
-  width: 50px;
-  height: 50px;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -101,11 +101,12 @@
   justify-content: center;
   flex-shrink: 0;
   color: #5227FF;
+  padding: 0;
 }
 
 .add-to-cart-btn svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 .add-to-cart-btn:hover {
@@ -168,13 +169,13 @@
   }
 
   .add-to-cart-btn {
-    width: 45px;
-    height: 45px;
+    width: 38px;
+    height: 38px;
   }
 
   .add-to-cart-btn svg {
-    width: 22px;
-    height: 22px;
+    width: 19px;
+    height: 19px;
   }
 }
 
@@ -201,12 +202,12 @@
   }
 
   .add-to-cart-btn {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .add-to-cart-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 }

@@ -59,20 +59,24 @@ export default function CartPage() {
       id: 'credit', 
       name: 'Credit Card', 
       iconSvg: (
-        <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '48px', height: '32px' }}>
-          <rect x="2" y="6" width="44" height="20" rx="3" fill="none" stroke="white" strokeWidth="2"/>
-          <line x1="2" y1="12" x2="46" y2="12" stroke="white" strokeWidth="2"/>
-          <rect x="6" y="16" width="12" height="6" rx="1" fill="white"/>
-          <rect x="20" y="16" width="8" height="6" rx="1" fill="white"/>
+        <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '54px', height: '36px' }}>
+          {/* Mastercard logo - two overlapping circles */}
+          <circle cx="14" cy="16" r="11" fill="white" opacity="0.9"/>
+          <circle cx="34" cy="16" r="11" fill="white" opacity="0.7"/>
+          <path d="M24 7.5 A11 11 0 0 1 24 24.5 A11 11 0 0 0 24 7.5 Z" fill="white" opacity="0.8"/>
         </svg>
       )
     },
     { 
       id: 'debit', 
-      name: 'Debit Card (Visa)', 
+      name: 'Debit Card', 
       iconSvg: (
-        <svg viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" style={{ width: '48px', height: '32px' }}>
-          <text x="4" y="22" fontFamily="sans-serif" fontSize="16" fontWeight="bold" fill="white">VISA</text>
+        <svg viewBox="0 0 48 20" xmlns="http://www.w3.org/2000/svg" style={{ width: '52px', height: '22px' }}>
+          {/* Visa logo style */}
+          <path d="M6 4 L10 16 L14 16 L18 4 Z" fill="white"/>
+          <rect x="20" y="4" width="4" height="12" fill="white"/>
+          <path d="M26 4 Q30 4 30 8 Q30 10 28 11 L30 16 L26 16 L24.5 11.5 L26 11.5 Q27 11.5 27 9 Q27 6.5 26 6.5 L24 6.5 L24 16 L20 16 Z" fill="white"/>
+          <path d="M34 4 L38 4 L42 16 L38 16 L37.5 14 L34.5 14 L34 16 L30 16 Z M35.5 11 L36.5 11 L36 7 Z" fill="white"/>
         </svg>
       )
     },

@@ -75,36 +75,58 @@ export default function AboutPage() {
           >
             {/* Card 1: About Us */}
             <Card>
-              <h2>About Us</h2>
+              <h2>🚀 Who We Are</h2>
               <p>
-                Marapone Contracting is a global leader in delivering transformative solutions across AI, consulting, and international trade. With a presence spanning multiple continents, we combine cutting-edge technology with deep industry expertise to help businesses thrive in an ever-evolving marketplace.
+                We're your strategic partner for AI-powered solutions, international trade, and business growth. Think of us as the Swiss Army knife of modern business—versatile, reliable, and always ready to tackle your biggest challenges.
               </p>
               <p>
-                Our team of certified professionals brings decades of combined experience in artificial intelligence, logistics optimization, strategic consulting, and business development. We don't just provide services—we build lasting partnerships that drive sustainable growth and innovation.
+                🌍 Operating across multiple continents, we blend cutting-edge tech with real-world expertise to help businesses not just survive, but thrive. Whether you're a startup with big dreams or an enterprise looking to innovate, we've got your back.
               </p>
               <p>
-                From small startups to Fortune 500 companies, we've helped organizations across industries unlock their full potential through data-driven strategies and innovative solutions.
+                💡 Our secret sauce? We don't just deliver services—we build partnerships that actually move the needle on your growth.
               </p>
             </Card>
 
             {/* Card 2: Why Choose Us */}
             <Card>
-              <h2>Why Choose Us</h2>
-              <ul>
-                <li>Global Expertise: Multi-continent operations with proven success in AI, consulting, and logistics</li>
-                <li>Innovation First: Cutting-edge technology and forward-thinking strategies for transformative results</li>
-                <li>Client-Centric: Building lasting partnerships through transparent communication and tailored solutions</li>
-                <li>Industry Leaders: Certified professionals with expertise across all our service areas</li>
-                <li>End-to-End Solutions: Comprehensive services from consultation to implementation</li>
-                <li>Proven Track Record: Trusted by businesses worldwide to deliver measurable results</li>
-              </ul>
+              <h2>✨ Why Work With Us</h2>
+              <div className="why-choose-grid">
+                <div className="why-item">
+                  <span className="why-emoji">🌐</span>
+                  <div>
+                    <h3>Global Reach</h3>
+                    <p>Multi-continent operations with proven success stories</p>
+                  </div>
+                </div>
+                <div className="why-item">
+                  <span className="why-emoji">⚡</span>
+                  <div>
+                    <h3>Innovation First</h3>
+                    <p>Cutting-edge tech that actually works for your business</p>
+                  </div>
+                </div>
+                <div className="why-item">
+                  <span className="why-emoji">🤝</span>
+                  <div>
+                    <h3>Partnership Focused</h3>
+                    <p>We're in it for the long haul, not just quick wins</p>
+                  </div>
+                </div>
+                <div className="why-item">
+                  <span className="why-emoji">🎯</span>
+                  <div>
+                    <h3>Results Driven</h3>
+                    <p>Measurable outcomes that move your bottom line</p>
+                  </div>
+                </div>
+              </div>
             </Card>
 
             {/* Card 3: Partners */}
             <Card>
-              <h2>Our Partners</h2>
+              <h2>🤝 Trusted Partners</h2>
               <p>
-                We collaborate with industry-leading platforms and technologies to deliver cutting-edge solutions for our clients.
+                We team up with the best in the business to bring you world-class solutions. Click any logo to learn more about our partners!
               </p>
               <div className="partners-grid">
                 {partners.map((partner, index) => (
@@ -120,8 +142,8 @@ export default function AboutPage() {
                   </a>
                 ))}
               </div>
-              <p style={{ marginTop: '1.5rem', fontSize: '0.95rem', opacity: 0.8 }}>
-                Through these strategic partnerships, we ensure our clients have access to the most advanced tools and platforms available in the industry.
+              <p style={{ marginTop: '1.5rem', fontSize: '1rem', opacity: 0.85 }}>
+                🔗 These partnerships mean you get access to cutting-edge tools and platforms without the hassle.
               </p>
             </Card>
           </CardSwap>

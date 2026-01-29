@@ -201,37 +201,37 @@
 }
 
 .bronze-btn {
-  background: linear-gradient(135deg, #CD7F32, #8B4513);
+  background: linear-gradient(135deg, #8B4513, #5D2E0A);
   color: white;
-  box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+  box-shadow: 0 4px 15px rgba(205, 127, 50, 0.4);
 }
 
 .bronze-btn:hover {
-  background: linear-gradient(135deg, #8B4513, #CD7F32);
+  background: linear-gradient(135deg, #5D2E0A, #8B4513);
   box-shadow: 0 6px 25px rgba(205, 127, 50, 0.5);
   transform: translateY(-2px);
 }
 
 .silver-btn {
-  background: linear-gradient(135deg, #C0C0C0, #808080);
+  background: linear-gradient(135deg, #808080, #505050);
   color: white;
-  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.4);
 }
 
 .silver-btn:hover {
-  background: linear-gradient(135deg, #808080, #C0C0C0);
+  background: linear-gradient(135deg, #505050, #808080);
   box-shadow: 0 6px 25px rgba(192, 192, 192, 0.5);
   transform: translateY(-2px);
 }
 
 .gold-btn {
-  background: linear-gradient(135deg, #FFD700, #DAA520);
-  color: #1a1a1a;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  background: linear-gradient(135deg, #B8860B, #8B6914);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
 }
 
 .gold-btn:hover {
-  background: linear-gradient(135deg, #DAA520, #FFD700);
+  background: linear-gradient(135deg, #8B6914, #B8860B);
   box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
   transform: translateY(-2px);
 }

@@ -9,14 +9,14 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(10, 10, 20, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
   padding: 3rem;
   color: white;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
   will-change: transform;
   cursor: pointer;
@@ -78,15 +78,15 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.25rem;
-  background: rgba(82, 39, 255, 0.08);
-  border: 1px solid rgba(82, 39, 255, 0.2);
+  background: rgba(82, 39, 255, 0.25);
+  border: 1px solid rgba(82, 39, 255, 0.4);
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .why-item:hover {
-  background: rgba(82, 39, 255, 0.15);
-  border-color: rgba(82, 39, 255, 0.4);
+  background: rgba(82, 39, 255, 0.35);
+  border-color: rgba(82, 39, 255, 0.6);
   transform: translateX(5px);
 }
 
@@ -123,8 +123,8 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -132,10 +132,10 @@
 }
 
 .partner-link:hover {
-  background: rgba(82, 39, 255, 0.1);
-  border-color: rgba(82, 39, 255, 0.5);
+  background: rgba(82, 39, 255, 0.2);
+  border-color: rgba(82, 39, 255, 0.6);
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(82, 39, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(82, 39, 255, 0.4);
 }
 
 .partner-link svg {

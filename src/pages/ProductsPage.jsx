@@ -68,30 +68,6 @@ export default function ProductsPage() {
       { name: 'Influencer Partnerships', price: 8000 },
       { name: 'Conversion Rate Optimization', price: 6500 },
       { name: 'Marketing Automation', price: 7000 }
-    ],
-    'Project Development & Management': [
-      { name: 'Project Planning & Scoping', price: 5500 },
-      { name: 'Resource Allocation', price: 4500 },
-      { name: 'Timeline & Milestone Management', price: 5000 },
-      { name: 'Risk Management', price: 6000 },
-      { name: 'Stakeholder Communication', price: 4000 },
-      { name: 'Budget Management', price: 5500 },
-      { name: 'Quality Assurance', price: 6500 },
-      { name: 'Team Coordination', price: 4500 },
-      { name: 'Progress Tracking & Reporting', price: 4000 },
-      { name: 'Project Closure & Review', price: 3500 }
-    ],
-    'Business Development & Management': [
-      { name: 'Strategic Partnership Development', price: 10000 },
-      { name: 'Market Opportunity Analysis', price: 7500 },
-      { name: 'Sales Strategy & Execution', price: 8500 },
-      { name: 'Client Relationship Management', price: 6500 },
-      { name: 'Business Model Innovation', price: 11000 },
-      { name: 'Competitive Analysis', price: 6000 },
-      { name: 'Growth Strategy Planning', price: 9500 },
-      { name: 'Operational Systems Implementation', price: 12000 },
-      { name: 'Performance Metrics & KPIs', price: 5500 },
-      { name: 'Scalability Planning', price: 8000 }
     ]
   };
 
@@ -217,32 +193,6 @@ export default function ProductsPage() {
                   From digital campaigns and content creation to SEO, social media management, and 
                   performance analytics, we build comprehensive marketing ecosystems that connect you 
                   with your target audience.
-                </p>
-              </SpotlightCard>
-            </div>
-
-            <div onClick={() => handleCardClick('Project Development & Management')}>
-              <SpotlightCard spotlightColor="rgba(255, 159, 252, 0.3)">
-                <span className="spotlight-card-icon">🏗️</span>
-                <h2>Project Development & Management</h2>
-                <p>
-                  Expert project leadership from conception to completion. We deliver comprehensive 
-                  project management services including planning, resource allocation, risk management, 
-                  timeline coordination, and stakeholder communication to ensure your projects are 
-                  delivered on time, within budget, and exceeding expectations.
-                </p>
-              </SpotlightCard>
-            </div>
-
-            <div onClick={() => handleCardClick('Business Development & Management')}>
-              <SpotlightCard spotlightColor="rgba(177, 158, 239, 0.3)">
-                <span className="spotlight-card-icon">💼</span>
-                <h2>Business Development & Management</h2>
-                <p>
-                  Strategic partnership and growth initiatives to scale your enterprise. Our business 
-                  development services identify new market opportunities, forge strategic alliances, 
-                  optimize operational efficiency, and implement management systems that drive 
-                  sustainable growth and long-term success.
                 </p>
               </SpotlightCard>
             </div>

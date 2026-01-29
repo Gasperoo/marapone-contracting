@@ -68,20 +68,20 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin-top: 3rem;
-  justify-items: center;
+  justify-items: stretch;
   align-items: stretch;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .products-grid > * {
   width: 100%;
-  max-width: 400px;
+  min-width: 0;
 }
 
 /* Schedule Meeting Card - Full Width, Half Height */
@@ -151,7 +151,7 @@
 /* Mobile responsiveness */
 @media (max-width: 1024px) {
   .products-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     max-width: 900px;
   }
@@ -170,7 +170,7 @@
   }
 
   .products-grid > * {
-    max-width: 100%;
+    min-width: 0;
   }
 
   .schedule-meeting-card-content {

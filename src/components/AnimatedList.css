@@ -107,9 +107,13 @@
   box-sizing: border-box;
 }
 
-.add-to-cart-btn svg {
+.add-to-cart-btn svg,
+.add-to-cart-btn .add-to-cart-icon {
   width: 16px;
   height: 16px;
+  font-size: 16px;
+  line-height: 1;
+  display: block;
 }
 
 .add-to-cart-btn:hover {
@@ -177,9 +181,11 @@
     min-width: 30px;
   }
 
-  .add-to-cart-btn svg {
+  .add-to-cart-btn svg,
+  .add-to-cart-btn .add-to-cart-icon {
     width: 15px;
     height: 15px;
+    font-size: 15px;
   }
 }
 
@@ -211,8 +217,10 @@
     min-width: 28px;
   }
 
-  .add-to-cart-btn svg {
+  .add-to-cart-btn svg,
+  .add-to-cart-btn .add-to-cart-icon {
     width: 14px;
     height: 14px;
+    font-size: 14px;
   }
 }

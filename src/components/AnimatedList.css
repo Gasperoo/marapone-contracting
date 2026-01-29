@@ -89,8 +89,8 @@
 }
 
 .add-to-cart-btn {
-  background: rgba(82, 39, 255, 0.2);
-  border: 1px solid rgba(82, 39, 255, 0.4);
+  background: rgba(82, 39, 255, 0.5);
+  border: 1px solid rgba(82, 39, 255, 0.6);
   border-radius: 6px;
   width: 32px;
   height: 32px;

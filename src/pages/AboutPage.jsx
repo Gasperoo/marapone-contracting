@@ -69,7 +69,7 @@ export default function AboutPage() {
             cardDistance={isMobile ? 60 : 100}
             verticalDistance={isMobile ? 70 : 100}
             delay={4000}
-            pauseOnHover
+            pauseOnHover={false}
             skewAmount={6}
             easing="elastic"
           >

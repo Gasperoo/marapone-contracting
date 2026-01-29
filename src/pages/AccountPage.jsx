@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import LiquidEther from '../components/LiquidEther';
 import { getOptimizedSettings } from '../utils/detectWindows';
+import { accountApi } from '../api/account';
 import '../styles/page.css';
 import '../styles/account.css';
 
@@ -13,28 +15,51 @@ export default function AccountPage() {
   const settings = getOptimizedSettings(isMobile);
 
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    terms: false,
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, type, value, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+    setError(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match!');
+      setError('Passwords do not match!');
       return;
     }
-    console.log('Account creation:', formData);
-    alert('Account created successfully!');
-    setFormData({ name: '', email: '', password: '', confirmPassword: '' });
+    if (!formData.terms) {
+      setError('Please agree to the terms and conditions.');
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await accountApi.register({
+        username: formData.username.trim(),
+        email: formData.email.trim(),
+        password: formData.password,
+        terms: formData.terms,
+      });
+      const message = res.message || 'Account created successfully!';
+      setFormData({ username: '', email: '', password: '', confirmPassword: '', terms: false });
+      alert(message);
+    } catch (err) {
+      setError(err.message || err.data?.message || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -56,22 +81,29 @@ export default function AccountPage() {
         autoResumeDelay={3000}
         autoRampDuration={0.6}
       />
-      
+
       <div className="page-content">
         <h1 className="page-title">Create Account</h1>
-        
+
         <div className="account-form-wrapper">
           <form onSubmit={handleSubmit} className="account-form">
+            {error && (
+              <div className="form-error" role="alert">
+                {error}
+              </div>
+            )}
+
             <div className="form-group">
-              <label htmlFor="name">Full Name</label>
+              <label htmlFor="username">Username</label>
               <input
                 type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                id="username"
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
                 required
-                placeholder="Enter your full name"
+                placeholder="Choose a unique username"
+                autoComplete="username"
               />
             </div>
 
@@ -85,6 +117,7 @@ export default function AccountPage() {
                 onChange={handleChange}
                 required
                 placeholder="Enter your email"
+                autoComplete="email"
               />
             </div>
 
@@ -98,7 +131,8 @@ export default function AccountPage() {
                 onChange={handleChange}
                 required
                 placeholder="Create a password"
-                minLength="8"
+                minLength={8}
+                autoComplete="new-password"
               />
             </div>
 
@@ -112,16 +146,29 @@ export default function AccountPage() {
                 onChange={handleChange}
                 required
                 placeholder="Confirm your password"
-                minLength="8"
+                minLength={8}
+                autoComplete="new-password"
               />
             </div>
 
-            <button type="submit" className="submit-btn">
-              Create Account
+            <div className="form-group checkbox-group">
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="terms"
+                  checked={formData.terms}
+                  onChange={handleChange}
+                />
+                I agree to the terms and conditions
+              </label>
+            </div>
+
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {loading ? 'Creating account…' : 'Create Account'}
             </button>
 
             <p className="form-footer">
-              Already have an account? <a href="/login">Sign in</a>
+              Already have an account? <Link to="/login">Sign in</Link>
             </p>
           </form>
         </div>

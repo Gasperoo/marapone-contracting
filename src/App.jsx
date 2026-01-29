@@ -10,6 +10,7 @@ import PackagesPage from './pages/PackagesPage';
 import CartPage from './pages/CartPage';
 import ContactPage from './pages/ContactPage';
 import AccountPage from './pages/AccountPage';
+import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/account" element={<AccountPage />} />
+              <Route path="/login" element={<LoginPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Layout>

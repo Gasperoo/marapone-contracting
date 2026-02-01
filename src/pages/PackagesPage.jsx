@@ -467,9 +467,7 @@ export default function PackagesPage() {
                     <div className="tier-card bronze-tier" style={{ background: getTierGradient('bronze') }}>
                       <div className="tier-badge bronze">Tier 1</div>
                       <h3 className="tier-name">{packageTiers[selectedCategory].bronze.name}</h3>
-                      <div className="tier-price">
-                        {packageTiers[selectedCategory].bronze.pricingLabel}
-                      </div>
+
                       <p className="tier-description">
                         {packageTiers[selectedCategory].bronze.description}
                       </p>
@@ -497,9 +495,7 @@ export default function PackagesPage() {
                       <div className="tier-badge silver">Tier 2</div>
                       <div className="popular-badge">Most Popular</div>
                       <h3 className="tier-name">{packageTiers[selectedCategory].silver.name}</h3>
-                      <div className="tier-price">
-                        {packageTiers[selectedCategory].silver.pricingLabel}
-                      </div>
+
                       <p className="tier-description">
                         {packageTiers[selectedCategory].silver.description}
                       </p>
@@ -526,9 +522,7 @@ export default function PackagesPage() {
                     <div className="tier-card gold-tier" style={{ background: getTierGradient('gold') }}>
                       <div className="tier-badge gold">Tier 3</div>
                       <h3 className="tier-name">{packageTiers[selectedCategory].gold.name}</h3>
-                      <div className="tier-price">
-                        {packageTiers[selectedCategory].gold.pricingLabel}
-                      </div>
+
                       <p className="tier-description">
                         {packageTiers[selectedCategory].gold.description}
                       </p>

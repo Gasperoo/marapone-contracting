@@ -30,7 +30,7 @@
   z-index: 20;
 }
 
-.staggered-menu-header > * {
+.staggered-menu-header>* {
   pointer-events: auto;
 }
 
@@ -339,10 +339,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 0.9;
@@ -354,6 +357,7 @@
     opacity: 0;
     transform: translateX(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -361,12 +365,40 @@
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-3px);
   }
+}
+
+/* Settings Icon Container */
+.settings-icon-container {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease-in-out;
+  transition: transform 0.2s ease;
+}
+
+.settings-icon-container:hover {
+  transform: scale(1.1);
+}
+
+.settings-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.settings-icon-container:hover .settings-icon {
+  transform: rotate(90deg);
 }
 
 .sm-panel-item:hover {
@@ -480,7 +512,7 @@
   .staggered-menu-wrapper[data-open] .sm-logo-img {
     filter: invert(100%);
   }
-  
+
   .sm-panel-item {
     font-size: 2.5rem;
   }

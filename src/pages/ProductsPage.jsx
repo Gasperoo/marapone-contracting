@@ -22,52 +22,52 @@ export default function ProductsPage() {
   // Product details with 10 items each including prices (in USD)
   const productDetails = {
     'AI Solutions': [
-      { name: 'Machine Learning Model Development', price: 15000 },
-      { name: 'Natural Language Processing (NLP)', price: 12500 },
-      { name: 'Computer Vision Systems', price: 18000 },
-      { name: 'Predictive Analytics', price: 10000 },
-      { name: 'AI Strategy Consulting', price: 8500 },
-      { name: 'Custom AI Integration', price: 14000 },
-      { name: 'Automated Decision Systems', price: 16500 },
-      { name: 'Deep Learning Solutions', price: 20000 },
-      { name: 'AI Performance Optimization', price: 9500 },
-      { name: 'Ongoing AI Support & Training', price: 7500 }
+      { name: 'Machine Learning Model Development', price: 12500 },
+      { name: 'Natural Language Processing (NLP)', price: 10000 },
+      { name: 'Computer Vision Systems', price: 15000 },
+      { name: 'Predictive Analysis', price: 8500 },
+      { name: 'AI Strategy Consulting', price: 7500 },
+      { name: 'Custom AI Integration', price: 11000 },
+      { name: 'Automated Decision Systems', price: 13500 },
+      { name: 'Deep Learning Solutions', price: 16500 },
+      { name: 'AI Performance Optimization', price: 8000 },
+      { name: 'Ongoing AI Support and Training', price: 6500 }
     ],
     'Consulting': [
-      { name: 'Business Strategy Development', price: 8500 },
-      { name: 'Operational Efficiency Analysis', price: 7000 },
-      { name: 'Market Research & Insights', price: 6500 },
-      { name: 'Process Optimization', price: 7500 },
-      { name: 'Change Management', price: 9000 },
-      { name: 'Risk Assessment & Mitigation', price: 8000 },
-      { name: 'Financial Planning & Analysis', price: 9500 },
-      { name: 'Technology Consulting', price: 10000 },
-      { name: 'Executive Coaching', price: 12000 },
-      { name: 'Long-term Strategic Planning', price: 11000 }
+      { name: 'Business Strategy Development', price: 7500 },
+      { name: 'Operational Efficiency Analysis', price: 6000 },
+      { name: 'Market Research & Insights', price: 5500 },
+      { name: 'Process Optimization', price: 6500 },
+      { name: 'Change Management', price: 8000 },
+      { name: 'Risk Assessment and Mitigation', price: 7000 },
+      { name: 'Financial Planning and Analysis', price: 8500 },
+      { name: 'Technology Consulting', price: 9000 },
+      { name: 'Executive Coaching', price: 10500 },
+      { name: 'Long Term Strategic Planning', price: 9500 }
     ],
     'Import/Export & Logistics': [
-      { name: 'International Shipping Coordination', price: 5500 },
-      { name: 'Customs Clearance Services', price: 3500 },
-      { name: 'Supply Chain Optimization', price: 8500 },
-      { name: 'Freight Forwarding', price: 4500 },
-      { name: 'Warehouse Management', price: 6000 },
-      { name: 'Documentation & Compliance', price: 3000 },
-      { name: 'Route Planning & Optimization', price: 5000 },
-      { name: 'Inventory Management', price: 5500 },
-      { name: 'Last-Mile Delivery Solutions', price: 4000 },
-      { name: 'Logistics Analytics & Reporting', price: 6500 }
+      { name: 'International Shipping Coordination', price: 4500 },
+      { name: 'Customs Clearance Services', price: 2800 },
+      { name: 'Supply Chain Optimization', price: 7500 },
+      { name: 'Freight Forwarding', price: 3800 },
+      { name: 'Warehouse Management', price: 5200 },
+      { name: 'Documentation and Compliance', price: 2500 },
+      { name: 'Route Planning and Optimization', price: 4200 },
+      { name: 'Inventory Management', price: 4800 },
+      { name: 'Last Mile Delivery Solutions', price: 3500 },
+      { name: 'Logistics Analysis and Reporting', price: 5800 }
     ],
     'Marketing Solutions': [
-      { name: 'Digital Marketing Strategy', price: 7500 },
-      { name: 'Social Media Management', price: 4500 },
-      { name: 'Content Creation & Marketing', price: 5500 },
-      { name: 'SEO & SEM Optimization', price: 6000 },
-      { name: 'Brand Development', price: 9500 },
-      { name: 'Email Marketing Campaigns', price: 3500 },
-      { name: 'Performance Analytics', price: 5000 },
-      { name: 'Influencer Partnerships', price: 8000 },
-      { name: 'Conversion Rate Optimization', price: 6500 },
-      { name: 'Marketing Automation', price: 7000 }
+      { name: 'Digital Marketing Strategy', price: 6500 },
+      { name: 'Social Media Management', price: 3800 },
+      { name: 'Content Creation and Marketing', price: 4800 },
+      { name: 'SEO and SEM Optimization', price: 5200 },
+      { name: 'Brand Development', price: 8500 },
+      { name: 'Email Marketing Campaigns', price: 2900 },
+      { name: 'Performance Analytics', price: 4200 },
+      { name: 'Influencer Partnerships', price: 7000 },
+      { name: 'Conversion Rate Optimization', price: 5800 },
+      { name: 'Marketing Automation', price: 6200 }
     ]
   };
 
@@ -85,10 +85,10 @@ export default function ProductsPage() {
   const handleAddToCart = (item) => {
     // Get existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    
+
     // Check if item already exists in cart
     const existingItemIndex = existingCart.findIndex(cartItem => cartItem.name === item.name);
-    
+
     if (existingItemIndex !== -1) {
       // Item exists, increment quantity
       existingCart[existingItemIndex].quantity += 1;
@@ -101,13 +101,13 @@ export default function ProductsPage() {
         category: selectedProduct
       });
     }
-    
+
     // Save back to localStorage
     localStorage.setItem('cartItems', JSON.stringify(existingCart));
-    
+
     // Trigger storage event for other components to detect cart update
     window.dispatchEvent(new Event('cartUpdated'));
-    
+
     // Show toast notification
     setToastMessage(`"${item.name}" added to cart`);
   };
@@ -139,10 +139,10 @@ export default function ProductsPage() {
         autoResumeDelay={3000}
         autoRampDuration={0.6}
       />
-      
+
       <div className="page-content products-content">
         <h1 className="page-title">Our Solutions</h1>
-        
+
         {!selectedProduct ? (
           <div className="products-grid">
             <div onClick={() => handleCardClick('AI Solutions')}>
@@ -150,9 +150,9 @@ export default function ProductsPage() {
                 <span className="spotlight-card-icon">🤖</span>
                 <h2>AI Solutions</h2>
                 <p>
-                  Harness the power of artificial intelligence to transform your business operations. 
-                  We deliver cutting-edge AI implementations including machine learning models, natural 
-                  language processing, computer vision, and intelligent automation systems tailored to 
+                  Harness the power of artificial intelligence to transform your business operations.
+                  We deliver cutting-edge AI implementations including machine learning models, natural
+                  language processing, computer vision, and intelligent automation systems tailored to
                   your unique challenges and opportunities.
                 </p>
               </SpotlightCard>
@@ -163,9 +163,9 @@ export default function ProductsPage() {
                 <span className="spotlight-card-icon">💡</span>
                 <h2>Consulting</h2>
                 <p>
-                  Strategic guidance from industry experts to navigate complex business challenges. 
-                  Our consulting services provide actionable insights, comprehensive analysis, and 
-                  proven strategies to optimize operations, drive growth, and achieve sustainable 
+                  Strategic guidance from industry experts to navigate complex business challenges.
+                  Our consulting services provide actionable insights, comprehensive analysis, and
+                  proven strategies to optimize operations, drive growth, and achieve sustainable
                   competitive advantages in your market.
                 </p>
               </SpotlightCard>
@@ -176,9 +176,9 @@ export default function ProductsPage() {
                 <span className="spotlight-card-icon">🌍</span>
                 <h2>Import/Export & Logistics</h2>
                 <p>
-                  Seamless global trade solutions with end-to-end logistics management. We handle 
-                  international shipping, customs clearance, supply chain optimization, and freight 
-                  forwarding to ensure your goods move efficiently across borders with full compliance 
+                  Seamless global trade solutions with end-to-end logistics management. We handle
+                  international shipping, customs clearance, supply chain optimization, and freight
+                  forwarding to ensure your goods move efficiently across borders with full compliance
                   and minimal risk.
                 </p>
               </SpotlightCard>
@@ -189,9 +189,9 @@ export default function ProductsPage() {
                 <span className="spotlight-card-icon">📈</span>
                 <h2>Marketing Solutions</h2>
                 <p>
-                  Data-driven marketing strategies that amplify your brand and drive measurable results. 
-                  From digital campaigns and content creation to SEO, social media management, and 
-                  performance analytics, we build comprehensive marketing ecosystems that connect you 
+                  Data-driven marketing strategies that amplify your brand and drive measurable results.
+                  From digital campaigns and content creation to SEO, social media management, and
+                  performance analytics, we build comprehensive marketing ecosystems that connect you
                   with your target audience.
                 </p>
               </SpotlightCard>
@@ -205,7 +205,7 @@ export default function ProductsPage() {
                   <div className="schedule-text">
                     <h2>Schedule a Meeting</h2>
                     <p>
-                      Book a one-on-one consultation with our experts. Choose between 30-minute 
+                      Book a one-on-one consultation with our experts. Choose between 30-minute
                       or 1-hour sessions at your convenience. Available Monday to Friday, 8:30 AM - 4:30 PM.
                     </p>
                   </div>
@@ -243,8 +243,8 @@ export default function ProductsPage() {
 
       {/* Toast Notification */}
       {toastMessage && (
-        <Toast 
-          message={toastMessage} 
+        <Toast
+          message={toastMessage}
           onClose={() => setToastMessage(null)}
           duration={3000}
         />

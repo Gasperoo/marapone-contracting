@@ -192,4 +192,81 @@ router.put('/password', requireAuth, (req, res) => {
   });
 });
 
+// Get user addresses
+router.get('/addresses', requireAuth, (req, res) => {
+  const addresses = store.getUserAddresses(req.userId);
+  res.json({
+    success: true,
+    data: addresses
+  });
+});
+
+// Update user addresses
+router.put('/addresses', requireAuth, (req, res) => {
+  const { billing, shipping } = req.body || {};
+
+  const result = store.updateUserAddresses(req.userId, { billing, shipping });
+  if (result.error) {
+    return res.status(400).json({ success: false, message: generic.error });
+  }
+
+  res.json({
+    success: true,
+    message: 'Addresses updated successfully',
+    data: result.addresses
+  });
+});
+
+// Get user subscriptions
+router.get('/subscriptions', requireAuth, (req, res) => {
+  const status = req.query.status || 'active'; // 'active', 'cancelled', or 'all'
+  const subscriptions = store.getUserSubscriptions(req.userId, status);
+  res.json({
+    success: true,
+    data: subscriptions
+  });
+});
+
+// Create subscription (from cart checkout)
+router.post('/subscriptions', requireAuth, (req, res) => {
+  const subscriptionData = req.body;
+
+  if (!subscriptionData.packageName || !subscriptionData.tier || !subscriptionData.duration || !subscriptionData.price) {
+    return res.status(400).json({
+      success: false,
+      message: 'Missing required subscription data'
+    });
+  }
+
+  const result = store.createSubscription(req.userId, subscriptionData);
+  if (result.error) {
+    return res.status(400).json({ success: false, message: generic.error });
+  }
+
+  res.json({
+    success: true,
+    message: 'Subscription created successfully',
+    data: result.subscription
+  });
+});
+
+// Cancel subscription
+router.post('/subscriptions/:id/cancel', requireAuth, (req, res) => {
+  const subscriptionId = req.params.id;
+
+  const result = store.cancelSubscription(req.userId, subscriptionId);
+  if (result.error === 'subscription_not_found') {
+    return res.status(404).json({ success: false, message: 'Subscription not found' });
+  }
+  if (result.error) {
+    return res.status(400).json({ success: false, message: generic.error });
+  }
+
+  res.json({
+    success: true,
+    message: 'Subscription cancelled successfully',
+    data: result.subscription
+  });
+});
+
 export default router;

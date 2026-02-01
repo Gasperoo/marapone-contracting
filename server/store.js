@@ -119,3 +119,83 @@ export function updateUserPassword(userId, currentPassword, newPassword) {
   user.password = newPassword;
   return { success: true };
 }
+
+// Address management
+const userAddresses = new Map(); // userId -> { billing, shipping }
+
+export function getUserAddresses(userId) {
+  return userAddresses.get(userId) || { billing: null, shipping: null };
+}
+
+export function updateUserAddresses(userId, addresses) {
+  const user = users.get(userId);
+  if (!user) return { error: 'user_not_found' };
+
+  userAddresses.set(userId, {
+    billing: addresses.billing || null,
+    shipping: addresses.shipping || null,
+    updatedAt: new Date().toISOString()
+  });
+
+  return { success: true, addresses: userAddresses.get(userId) };
+}
+
+// Subscription management
+const userSubscriptions = new Map(); // userId -> array of subscriptions
+let nextSubscriptionId = 1;
+
+export function createSubscription(userId, subscriptionData) {
+  const user = users.get(userId);
+  if (!user) return { error: 'user_not_found' };
+
+  const subscription = {
+    id: String(nextSubscriptionId++),
+    userId,
+    packageName: subscriptionData.packageName,
+    tier: subscriptionData.tier,
+    category: subscriptionData.category,
+    duration: subscriptionData.duration,
+    price: subscriptionData.price,
+    features: subscriptionData.features || [],
+    status: 'active',
+    startDate: new Date().toISOString(),
+    nextBillingDate: calculateNextBillingDate(subscriptionData.duration),
+    createdAt: new Date().toISOString()
+  };
+
+  const userSubs = userSubscriptions.get(userId) || [];
+  userSubs.push(subscription);
+  userSubscriptions.set(userId, userSubs);
+
+  return { success: true, subscription };
+}
+
+export function getUserSubscriptions(userId, status = 'active') {
+  const allSubs = userSubscriptions.get(userId) || [];
+  if (status === 'all') return allSubs;
+  return allSubs.filter(sub => sub.status === status);
+}
+
+export function cancelSubscription(userId, subscriptionId) {
+  const userSubs = userSubscriptions.get(userId) || [];
+  const sub = userSubs.find(s => s.id === subscriptionId);
+
+  if (!sub) return { error: 'subscription_not_found' };
+
+  sub.status = 'cancelled';
+  sub.cancelledAt = new Date().toISOString();
+
+  return { success: true, subscription: sub };
+}
+
+function calculateNextBillingDate(duration) {
+  const now = new Date();
+  if (duration === 'Monthly') {
+    now.setMonth(now.getMonth() + 1);
+  } else if (duration === '3 Months') {
+    now.setMonth(now.getMonth() + 3);
+  } else if (duration === '1 Year') {
+    now.setFullYear(now.getFullYear() + 1);
+  }
+  return now.toISOString();
+}

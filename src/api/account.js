@@ -72,6 +72,34 @@ export const accountApi = {
     const data = await request('PUT', '/password', { currentPassword, newPassword });
     return data;
   },
+
+  // Address management
+  async getAddresses() {
+    const data = await request('GET', '/addresses', null);
+    return data.data;
+  },
+
+  async updateAddresses({ billing, shipping }) {
+    const data = await request('PUT', '/addresses', { billing, shipping });
+    return data;
+  },
+
+  // Subscription management
+  async getSubscriptions(status = 'active') {
+    const data = await request('GET', `/subscriptions?status=${status}`, null);
+    return data.data;
+  },
+
+  async createSubscription(subscriptionData) {
+    const data = await request('POST', '/subscriptions', subscriptionData);
+    return data;
+  },
+
+  async cancelSubscription(subscriptionId) {
+    const data = await request('POST', `/subscriptions/${subscriptionId}/cancel`, {});
+    return data;
+  },
 };
+
 
 export default accountApi;

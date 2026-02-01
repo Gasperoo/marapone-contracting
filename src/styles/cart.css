@@ -56,6 +56,16 @@
   font-size: 0.95rem;
 }
 
+.item-info p.item-duration {
+  color: rgba(255, 159, 252, 0.9);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.item-info p.item-duration strong {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .item-controls {
   display: flex;
   align-items: center;
@@ -312,6 +322,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -496,6 +507,11 @@
 
 .checkout-item-category {
   color: rgba(255, 255, 255, 0.6);
+}
+
+.checkout-item-duration {
+  color: rgba(255, 159, 252, 0.9);
+  font-weight: 500;
 }
 
 .checkout-item-qty {

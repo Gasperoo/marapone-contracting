@@ -323,12 +323,14 @@ export default function PackagesPage() {
     // For consulting packages with no pricing
     if (isConsulting) {
       return (
-        <button
-          className={`add-to-cart-btn ${tierClass}-btn`}
-          onClick={() => handleAddToCart(packageData, tier, category, 'Contact for pricing', 0)}
-        >
-          Contact for Pricing
-        </button>
+        <div className="duration-buttons">
+          <button
+            className={`duration-btn ${tierClass}-btn`}
+            onClick={() => window.location.href = '/contact'}
+          >
+            Contact for Pricing
+          </button>
+        </div>
       );
     }
 

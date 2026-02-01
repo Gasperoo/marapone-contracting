@@ -151,40 +151,40 @@ export default function AboutPage() {
             <Card>
               <h2>🎯 What We Offer</h2>
               <p>
-                From AI-powered automation to global logistics, we deliver comprehensive solutions that transform how you do business.
+                Think of us as your business's ultimate upgrade package. We don't just offer services—we deliver complete ecosystems that work together seamlessly.
               </p>
               <div className="why-choose-grid">
                 <div className="why-item">
                   <span className="why-emoji">🤖</span>
                   <div>
-                    <h3>AI Solutions</h3>
-                    <p>Machine learning, NLP, computer vision, and intelligent automation</p>
+                    <h3>AI That Actually Works</h3>
+                    <p>No buzzwords, just real automation that saves time and money</p>
                   </div>
                 </div>
                 <div className="why-item">
                   <span className="why-emoji">💡</span>
                   <div>
-                    <h3>Consulting</h3>
-                    <p>Strategic guidance, operational optimization, and business transformation</p>
+                    <h3>Strategic Thinking</h3>
+                    <p>Consulting that goes beyond PowerPoints to drive real change</p>
                   </div>
                 </div>
                 <div className="why-item">
                   <span className="why-emoji">🌍</span>
                   <div>
-                    <h3>Import/Export & Logistics</h3>
-                    <p>International shipping, customs clearance, and supply chain optimization</p>
+                    <h3>Global Trade Made Easy</h3>
+                    <p>Navigate international logistics without the headaches</p>
                   </div>
                 </div>
                 <div className="why-item">
                   <span className="why-emoji">📈</span>
                   <div>
-                    <h3>Marketing Solutions</h3>
-                    <p>Digital marketing, SEO/SEM, social media, and brand development</p>
+                    <h3>Marketing That Converts</h3>
+                    <p>Data-driven campaigns that turn clicks into customers</p>
                   </div>
                 </div>
               </div>
               <p style={{ marginTop: '1.5rem', fontSize: '1rem', opacity: 0.85 }}>
-                🚀 Ready to explore our full range of services? Check out our Products and Packages pages!
+                💼 The best part? Everything integrates. Your AI talks to your logistics, your marketing feeds your consulting insights. It's business synergy at its finest.
               </p>
             </Card>
           </CardSwap>

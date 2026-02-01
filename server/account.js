@@ -93,4 +93,103 @@ router.post('/logout', (req, res) => {
   res.json({ success: true, message: auth.logout.success });
 });
 
+// Authentication middleware
+function requireAuth(req, res, next) {
+  const token = req.headers.authorization?.replace(/^Bearer\s+/i, '');
+  if (!token) {
+    return res.status(401).json({ success: false, message: 'Authentication required' });
+  }
+  const userId = store.getSession(token);
+  if (!userId) {
+    return res.status(401).json({ success: false, message: 'Invalid or expired token' });
+  }
+  req.userId = userId;
+  next();
+}
+
+// Get current user profile
+router.get('/me', requireAuth, (req, res) => {
+  const user = store.getUserById(req.userId);
+  if (!user) {
+    return res.status(404).json({ success: false, message: 'User not found' });
+  }
+  res.json({
+    success: true,
+    data: { id: user.id, username: user.username, email: user.email }
+  });
+});
+
+// Update user profile (username and/or email)
+router.put('/profile', requireAuth, (req, res) => {
+  const { username, email } = req.body || {};
+
+  if (!username?.trim() && !email?.trim()) {
+    return res.status(400).json({
+      success: false,
+      message: 'At least one field (username or email) is required'
+    });
+  }
+
+  const updates = {};
+  if (username?.trim()) updates.username = username.trim();
+  if (email?.trim()) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      return res.status(400).json({
+        success: false,
+        message: validation.invalidEmail
+      });
+    }
+    updates.email = email.trim();
+  }
+
+  const result = store.updateUserProfile(req.userId, updates);
+  if (result.conflict === 'username') {
+    return res.status(409).json({ success: false, message: 'Username already taken' });
+  }
+  if (result.conflict === 'email') {
+    return res.status(409).json({ success: false, message: 'Email already registered' });
+  }
+  if (!result.user) {
+    return res.status(400).json({ success: false, message: generic.error });
+  }
+
+  res.json({
+    success: true,
+    message: 'Profile updated successfully',
+    data: { id: result.user.id, username: result.user.username, email: result.user.email }
+  });
+});
+
+// Update password
+router.put('/password', requireAuth, (req, res) => {
+  const { currentPassword, newPassword } = req.body || {};
+
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({
+      success: false,
+      message: 'Current password and new password are required'
+    });
+  }
+
+  if (String(newPassword).length < 8) {
+    return res.status(400).json({
+      success: false,
+      message: validation.passwordTooShort
+    });
+  }
+
+  const result = store.updateUserPassword(req.userId, currentPassword, newPassword);
+  if (result.error === 'invalid_password') {
+    return res.status(401).json({ success: false, message: 'Current password is incorrect' });
+  }
+  if (!result.success) {
+    return res.status(400).json({ success: false, message: generic.error });
+  }
+
+  res.json({
+    success: true,
+    message: 'Password updated successfully'
+  });
+});
+
 export default router;

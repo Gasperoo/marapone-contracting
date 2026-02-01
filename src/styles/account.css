@@ -61,6 +61,24 @@
   font-size: 0.95rem;
 }
 
+.form-success {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: rgba(40, 167, 69, 0.15);
+  border: 1px solid rgba(40, 167, 69, 0.4);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+}
+
+.form-section-title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+}
+
+
 .checkbox-group {
   margin-top: 0.5rem;
   margin-bottom: 1rem;

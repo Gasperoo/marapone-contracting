@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LiquidEther from '../components/LiquidEther';
 import { getOptimizedSettings } from '../utils/detectWindows';
-import { accountApi } from '../api/account';
+import { useAuth } from '../context/AuthContext';
 import '../styles/page.css';
 import '../styles/account.css';
 
 export default function AccountPage() {
+  const navigate = useNavigate();
+  const { register } = useAuth();
   const isMobile = typeof window !== 'undefined' && (
     /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
     window.innerWidth <= 768
@@ -46,15 +48,14 @@ export default function AccountPage() {
     }
     setLoading(true);
     try {
-      const res = await accountApi.register({
-        username: formData.username.trim(),
-        email: formData.email.trim(),
-        password: formData.password,
-        terms: formData.terms,
-      });
-      const message = res.message || 'Account created successfully!';
-      setFormData({ username: '', email: '', password: '', confirmPassword: '', terms: false });
-      alert(message);
+      await register(
+        formData.username.trim(),
+        formData.email.trim(),
+        formData.password,
+        formData.terms
+      );
+      // Navigate to home page after successful registration
+      navigate('/', { replace: true });
     } catch (err) {
       setError(err.message || err.data?.message || 'Something went wrong. Please try again.');
     } finally {

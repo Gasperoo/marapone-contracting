@@ -19,7 +19,15 @@ async function request(method, path, body, { token = getToken() } = {}) {
   if (token) opts.headers.Authorization = `Bearer ${token}`;
   if (body && method !== 'GET') opts.body = JSON.stringify(body);
   const res = await fetch(`${API}${path}`, opts);
-  const data = await res.json().catch(() => ({}));
+  let data;
+  const text = await res.text();
+  try {
+    data = JSON.parse(text);
+  } catch (e) {
+    console.error('Failed to parse response JSON:', text);
+    data = {};
+  }
+
   if (!res.ok) {
     const err = new Error(data.message || 'Something went wrong. Please try again.');
     err.status = res.status;
@@ -46,8 +54,23 @@ export const accountApi = {
   },
 
   async logout() {
-    await request('POST', '/logout', {}, {}).catch(() => {});
+    await request('POST', '/logout', {}, {}).catch(() => { });
     setToken(null);
+  },
+
+  async getProfile() {
+    const data = await request('GET', '/me', null);
+    return data.data;
+  },
+
+  async updateProfile({ username, email }) {
+    const data = await request('PUT', '/profile', { username, email });
+    return data.data;
+  },
+
+  async updatePassword({ currentPassword, newPassword }) {
+    const data = await request('PUT', '/password', { currentPassword, newPassword });
+    return data;
   },
 };
 

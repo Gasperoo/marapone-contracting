@@ -1,8 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CurrencyProvider } from './context/CurrencyContext';
+import { AuthProvider } from './context/AuthContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
@@ -11,27 +13,38 @@ import CartPage from './pages/CartPage';
 import ContactPage from './pages/ContactPage';
 import AccountPage from './pages/AccountPage';
 import LoginPage from './pages/LoginPage';
+import SettingsPage from './pages/SettingsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
     <BrowserRouter>
       <ErrorBoundary>
-        <CurrencyProvider>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/packages" element={<PackagesPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/account" element={<AccountPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Layout>
-        </CurrencyProvider>
+        <AuthProvider>
+          <CurrencyProvider>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/packages" element={<PackagesPage />} />
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/account" element={<AccountPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route
+                  path="/settings"
+                  element={
+                    <ProtectedRoute>
+                      <SettingsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </Layout>
+          </CurrencyProvider>
+        </AuthProvider>
       </ErrorBoundary>
     </BrowserRouter>
   );

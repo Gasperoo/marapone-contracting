@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import LiquidEther from '../components/LiquidEther';
 import { getOptimizedSettings } from '../utils/detectWindows';
-import { accountApi } from '../api/account';
+import { useAuth } from '../context/AuthContext';
 import '../styles/page.css';
 import '../styles/account.css';
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useAuth();
   const isMobile = typeof window !== 'undefined' && (
     /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
     window.innerWidth <= 768
@@ -28,11 +30,13 @@ export default function LoginPage() {
     setError(null);
     setLoading(true);
     try {
-      await accountApi.login({
-        usernameOrEmail: formData.usernameOrEmail.trim(),
-        password: formData.password,
-      });
-      navigate('/', { replace: true });
+      await login(
+        formData.usernameOrEmail.trim(),
+        formData.password
+      );
+      // Redirect to previous page or home
+      const from = location.state?.from?.pathname || '/';
+      navigate(from, { replace: true });
     } catch (err) {
       setError(err.message || 'Invalid username/email or password.');
     } finally {

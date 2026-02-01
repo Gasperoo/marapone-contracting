@@ -61,3 +61,61 @@ export function getSession(token) {
 export function destroySession(token) {
   sessions.delete(token);
 }
+
+export function getUserById(userId) {
+  const user = users.get(userId);
+  if (!user) return null;
+  return { id: user.id, username: user.username, email: user.email };
+}
+
+export function updateUserProfile(userId, updates) {
+  const user = users.get(userId);
+  if (!user) return { error: 'user_not_found' };
+
+  // Check for conflicts
+  if (updates.username) {
+    const normalizedUsername = normalizeUsername(updates.username);
+    const existing = byUsername.get(normalizedUsername);
+    if (existing && existing.id !== userId) {
+      return { conflict: 'username' };
+    }
+  }
+
+  if (updates.email) {
+    const normalizedEmail = normalizeEmail(updates.email);
+    const existing = byEmail.get(normalizedEmail);
+    if (existing && existing.id !== userId) {
+      return { conflict: 'email' };
+    }
+  }
+
+  // Remove old mappings
+  if (updates.username && user.username !== normalizeUsername(updates.username)) {
+    byUsername.delete(user.username);
+  }
+  if (updates.email && user.email !== normalizeEmail(updates.email)) {
+    byEmail.delete(user.email);
+  }
+
+  // Update user
+  if (updates.username) user.username = normalizeUsername(updates.username);
+  if (updates.email) user.email = normalizeEmail(updates.email);
+
+  // Add new mappings
+  if (updates.username) byUsername.set(user.username, user);
+  if (updates.email) byEmail.set(user.email, user);
+
+  return { user: { id: user.id, username: user.username, email: user.email } };
+}
+
+export function updateUserPassword(userId, currentPassword, newPassword) {
+  const user = users.get(userId);
+  if (!user) return { error: 'user_not_found' };
+
+  if (user.password !== currentPassword) {
+    return { error: 'invalid_password' };
+  }
+
+  user.password = newPassword;
+  return { success: true };
+}

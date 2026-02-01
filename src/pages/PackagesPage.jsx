@@ -268,13 +268,13 @@ export default function PackagesPage() {
     }
   };
 
-  const handleAddToCart = (packageData, tier, category) => {
+  const handleAddToCart = (packageData, tier, category, duration, price) => {
     const existingCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
 
     const cartItem = {
       name: `${packageData.name} - ${category}`,
-      price: packageData.priceMonthly || 0,
-      pricingLabel: packageData.pricingLabel,
+      price: price,
+      duration: duration,
       quantity: 1,
       category: 'Package',
       tier: tier,
@@ -282,7 +282,7 @@ export default function PackagesPage() {
     };
 
     const existingItemIndex = existingCart.findIndex(
-      item => item.name === cartItem.name
+      item => item.name === cartItem.name && item.duration === duration
     );
 
     if (existingItemIndex !== -1) {
@@ -294,7 +294,7 @@ export default function PackagesPage() {
     localStorage.setItem('cartItems', JSON.stringify(existingCart));
     window.dispatchEvent(new Event('cartUpdated'));
 
-    setToastMessage(`"${cartItem.name}" added to cart`);
+    setToastMessage(`"${cartItem.name} (${duration})" added to cart`);
   };
 
   const getTierColor = (tier) => {
@@ -313,6 +313,74 @@ export default function PackagesPage() {
       case 'gold': return 'linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(218, 165, 32, 0.2))';
       default: return 'linear-gradient(135deg, rgba(82, 39, 255, 0.2), rgba(177, 158, 239, 0.2))';
     }
+  };
+
+  const renderDurationButtons = (packageData, tier, category) => {
+    const isMarketing = category === 'Marketing Solutions';
+    const isConsulting = category === 'Consulting';
+    const tierClass = tier.toLowerCase();
+
+    // For consulting packages with no pricing
+    if (isConsulting) {
+      return (
+        <button
+          className={`add-to-cart-btn ${tierClass}-btn`}
+          onClick={() => handleAddToCart(packageData, tier, category, 'Contact for pricing', 0)}
+        >
+          Contact for Pricing
+        </button>
+      );
+    }
+
+    // For marketing packages (3-month options)
+    if (isMarketing) {
+      return (
+        <div className="duration-buttons">
+          <button
+            className={`duration-btn ${tierClass}-btn`}
+            onClick={() => handleAddToCart(
+              packageData,
+              tier,
+              category,
+              packageData.priceMonthly ? 'Monthly' : '3 Months',
+              packageData.priceMonthly || packageData.priceOneTime
+            )}
+          >
+            {packageData.priceMonthly ? `Monthly - $${packageData.priceMonthly}` : `3 Months - $${packageData.priceOneTime}`}
+          </button>
+          {packageData.priceOneTime && packageData.priceMonthly && (
+            <button
+              className={`duration-btn ${tierClass}-btn`}
+              onClick={() => handleAddToCart(packageData, tier, category, '3 Months', packageData.priceOneTime)}
+            >
+              3 Months - ${packageData.priceOneTime}
+            </button>
+          )}
+        </div>
+      );
+    }
+
+    // For AI Solutions and Logistics (monthly and 1-year options)
+    return (
+      <div className="duration-buttons">
+        {packageData.priceMonthly && (
+          <button
+            className={`duration-btn ${tierClass}-btn`}
+            onClick={() => handleAddToCart(packageData, tier, category, 'Monthly', packageData.priceMonthly)}
+          >
+            Monthly - ${packageData.priceMonthly}
+          </button>
+        )}
+        {packageData.priceOneTime && (
+          <button
+            className={`duration-btn ${tierClass}-btn`}
+            onClick={() => handleAddToCart(packageData, tier, category, '1 Year', packageData.priceOneTime)}
+          >
+            1 Year - ${packageData.priceOneTime}
+          </button>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -413,16 +481,11 @@ export default function PackagesPage() {
                           ))}
                         </ul>
                       </div>
-                      <button
-                        className="add-to-cart-btn bronze-btn"
-                        onClick={() => handleAddToCart(
-                          packageTiers[selectedCategory].bronze,
-                          'Bronze',
-                          selectedCategory
-                        )}
-                      >
-                        Add to Cart
-                      </button>
+                      {renderDurationButtons(
+                        packageTiers[selectedCategory].bronze,
+                        'Bronze',
+                        selectedCategory
+                      )}
                     </div>
                   </SpotlightCard>
                 </div>
@@ -448,16 +511,11 @@ export default function PackagesPage() {
                           ))}
                         </ul>
                       </div>
-                      <button
-                        className="add-to-cart-btn silver-btn"
-                        onClick={() => handleAddToCart(
-                          packageTiers[selectedCategory].silver,
-                          'Silver',
-                          selectedCategory
-                        )}
-                      >
-                        Add to Cart
-                      </button>
+                      {renderDurationButtons(
+                        packageTiers[selectedCategory].silver,
+                        'Silver',
+                        selectedCategory
+                      )}
                     </div>
                   </SpotlightCard>
                 </div>
@@ -482,16 +540,11 @@ export default function PackagesPage() {
                           ))}
                         </ul>
                       </div>
-                      <button
-                        className="add-to-cart-btn gold-btn"
-                        onClick={() => handleAddToCart(
-                          packageTiers[selectedCategory].gold,
-                          'Gold',
-                          selectedCategory
-                        )}
-                      >
-                        Add to Cart
-                      </button>
+                      {renderDurationButtons(
+                        packageTiers[selectedCategory].gold,
+                        'Gold',
+                        selectedCategory
+                      )}
                     </div>
                   </SpotlightCard>
                 </div>

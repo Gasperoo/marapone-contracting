@@ -236,6 +236,33 @@
   transform: translateY(-2px);
 }
 
+/* Duration Buttons Container */
+.duration-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Duration Button */
+.duration-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.duration-btn:active {
+  transform: translateY(0);
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .tier-grid {

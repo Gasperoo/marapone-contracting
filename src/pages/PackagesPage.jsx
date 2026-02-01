@@ -21,7 +21,9 @@ export default function PackagesPage() {
     'AI Solutions': {
       bronze: {
         name: 'AI Starter',
-        price: 3499,
+        priceMonthly: 50,
+        priceOneTime: 500,
+        pricingLabel: '$50/month or $500 one-time (1 year)',
         description: 'Perfect for businesses beginning their AI journey',
         features: [
           'Basic ML model implementation',
@@ -36,7 +38,9 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'AI Professional',
-        price: 9099,
+        priceMonthly: 125,
+        priceOneTime: 1350,
+        pricingLabel: '$125/month or $1,350 one-time (1 year)',
         description: 'Comprehensive AI solutions for growing enterprises',
         features: [
           'Advanced ML/DL implementation',
@@ -53,28 +57,32 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'AI Enterprise',
-        price: 20999,
+        priceMonthly: 299,
+        priceOneTime: 2990,
+        pricingLabel: '$299/month or $2,990 one-time (1 year)',
         description: 'End-to-end AI transformation for industry leaders',
         features: [
-          'Full-stack AI solution development',
-          'Multi-model ensemble systems',
-          'Custom AI architecture design',
-          'Advanced deep learning models',
-          'AutoML implementation',
-          '12 months dedicated support',
-          'Continuous improvement program',
-          'White-glove service',
-          'Executive stakeholder meetings',
-          'Multi-cloud deployment',
-          'Advanced security & compliance',
-          'ROI tracking & reporting'
+          'Everything in AI Professional',
+          'Multi-model ensemble & orchestration (combining ML/DL/NLP/CV/LLMs/agents)',
+          'Enterprise-grade security, compliance & governance (GDPR, HIPAA, SOC 2 support, audit trails, data sovereignty options)',
+          'Scalable production infrastructure (auto-scaling, high-availability setup, multi-region/cloud hybrid deployment)',
+          'Advanced MLOps pipeline (CI/CD for models, automated retraining, drift detection, A/B testing frameworks)',
+          'Custom AI agents or autonomous workflows',
+          'Priority dedicated account manager & senior AI architect access',
+          '12 months premium support with SLA (e.g., <4-hour response for critical issues)',
+          'Quarterly business reviews, ROI/performance audits & strategic AI roadmap consulting',
+          'Unlimited iterations + proactive feature development',
+          'White-label options & co-branded deliverables (if applicable)',
+          'Integration with enterprise systems (ERP, CRM, legacy databases, real-time data streams)'
         ]
       }
     },
     'Consulting': {
       bronze: {
         name: 'Strategy Essentials',
-        price: 2099,
+        priceMonthly: null,
+        priceOneTime: null,
+        pricingLabel: 'Contact for pricing',
         description: 'Foundational consulting for immediate needs',
         features: [
           'Initial business assessment',
@@ -89,7 +97,9 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'Growth Accelerator',
-        price: 5599,
+        priceMonthly: null,
+        priceOneTime: null,
+        pricingLabel: 'Contact for pricing',
         description: 'Comprehensive consulting for sustainable growth',
         features: [
           'In-depth strategic analysis',
@@ -106,7 +116,9 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'Enterprise Transformation',
-        price: 13999,
+        priceMonthly: null,
+        priceOneTime: null,
+        pricingLabel: 'Contact for pricing',
         description: 'Complete business transformation partnership',
         features: [
           'Full enterprise assessment',
@@ -127,7 +139,9 @@ export default function PackagesPage() {
     'Import/Export & Logistics': {
       bronze: {
         name: 'Trade Starter',
-        price: 1399,
+        priceMonthly: 100,
+        priceOneTime: 1000,
+        pricingLabel: '$100/month or $1,000 one-time (1 year)',
         description: 'Essential services for new international traders',
         features: [
           'Customs documentation assistance',
@@ -142,7 +156,9 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'Logistics Pro',
-        price: 4199,
+        priceMonthly: 250,
+        priceOneTime: 2500,
+        pricingLabel: '$250/month or $2,500 one-time (1 year)',
         description: 'Advanced logistics management for regular traders',
         features: [
           'Full customs clearance services',
@@ -159,7 +175,9 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'Global Trade Elite',
-        price: 10499,
+        priceMonthly: 600,
+        priceOneTime: 6500,
+        pricingLabel: '$600/month or $6,500 one-time (1 year)',
         description: 'Premium end-to-end logistics solutions',
         features: [
           'Dedicated logistics manager',
@@ -180,7 +198,9 @@ export default function PackagesPage() {
     'Marketing Solutions': {
       bronze: {
         name: 'Digital Presence',
-        price: 1749,
+        priceMonthly: 50,
+        priceOneTime: 120,
+        pricingLabel: '$50/month or $120 for 3 months',
         description: 'Build your online presence and reach',
         features: [
           'Social media setup & strategy',
@@ -195,7 +215,9 @@ export default function PackagesPage() {
       },
       silver: {
         name: 'Growth Marketing',
-        price: 4899,
+        priceMonthly: 200,
+        priceOneTime: 500,
+        pricingLabel: '$200/month or $500 for 3 months',
         description: 'Comprehensive digital marketing for growth',
         features: [
           'Multi-channel marketing strategy',
@@ -213,7 +235,9 @@ export default function PackagesPage() {
       },
       gold: {
         name: 'Brand Domination',
-        price: 11899,
+        priceMonthly: 1000,
+        priceOneTime: 1750,
+        pricingLabel: '$1,000 for 3 months or $1,750 for 6 months',
         description: 'Full-scale marketing transformation',
         features: [
           'Comprehensive brand strategy',
@@ -246,10 +270,11 @@ export default function PackagesPage() {
 
   const handleAddToCart = (packageData, tier, category) => {
     const existingCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    
+
     const cartItem = {
       name: `${packageData.name} - ${category}`,
-      price: packageData.price,
+      price: packageData.priceMonthly || 0,
+      pricingLabel: packageData.pricingLabel,
       quantity: 1,
       category: 'Package',
       tier: tier,
@@ -259,21 +284,21 @@ export default function PackagesPage() {
     const existingItemIndex = existingCart.findIndex(
       item => item.name === cartItem.name
     );
-    
+
     if (existingItemIndex !== -1) {
       existingCart[existingItemIndex].quantity += 1;
     } else {
       existingCart.push(cartItem);
     }
-    
+
     localStorage.setItem('cartItems', JSON.stringify(existingCart));
     window.dispatchEvent(new Event('cartUpdated'));
-    
+
     setToastMessage(`"${cartItem.name}" added to cart`);
   };
 
   const getTierColor = (tier) => {
-    switch(tier) {
+    switch (tier) {
       case 'bronze': return 'rgba(205, 127, 50, 0.3)';
       case 'silver': return 'rgba(192, 192, 192, 0.3)';
       case 'gold': return 'rgba(255, 215, 0, 0.3)';
@@ -282,7 +307,7 @@ export default function PackagesPage() {
   };
 
   const getTierGradient = (tier) => {
-    switch(tier) {
+    switch (tier) {
       case 'bronze': return 'linear-gradient(135deg, rgba(205, 127, 50, 0.2), rgba(139, 69, 19, 0.2))';
       case 'silver': return 'linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(128, 128, 128, 0.2))';
       case 'gold': return 'linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(218, 165, 32, 0.2))';
@@ -309,10 +334,10 @@ export default function PackagesPage() {
         autoResumeDelay={3000}
         autoRampDuration={0.6}
       />
-      
+
       <div className="page-content packages-content">
         <h1 className="page-title">Service Packages</h1>
-        
+
         {!selectedCategory ? (
           <div className="products-grid">
             <div onClick={() => handleCategoryClick('AI Solutions')}>
@@ -320,7 +345,7 @@ export default function PackagesPage() {
                 <span className="spotlight-card-icon">🤖</span>
                 <h2>AI Solutions</h2>
                 <p>
-                  Choose from our tiered AI packages designed to fit your business needs and budget. 
+                  Choose from our tiered AI packages designed to fit your business needs and budget.
                   From starter implementations to enterprise-grade solutions with full support.
                 </p>
               </SpotlightCard>
@@ -331,7 +356,7 @@ export default function PackagesPage() {
                 <span className="spotlight-card-icon">💡</span>
                 <h2>Consulting</h2>
                 <p>
-                  Strategic consulting packages tailored to your organization's size and objectives. 
+                  Strategic consulting packages tailored to your organization's size and objectives.
                   From essential guidance to full transformation partnerships.
                 </p>
               </SpotlightCard>
@@ -342,7 +367,7 @@ export default function PackagesPage() {
                 <span className="spotlight-card-icon">🌍</span>
                 <h2>Import/Export & Logistics</h2>
                 <p>
-                  International trade and logistics packages for businesses of all sizes. 
+                  International trade and logistics packages for businesses of all sizes.
                   From starter documentation to premium global trade management.
                 </p>
               </SpotlightCard>
@@ -353,7 +378,7 @@ export default function PackagesPage() {
                 <span className="spotlight-card-icon">📈</span>
                 <h2>Marketing Solutions</h2>
                 <p>
-                  Comprehensive marketing packages to build and amplify your brand. 
+                  Comprehensive marketing packages to build and amplify your brand.
                   From digital presence to full-scale brand domination strategies.
                 </p>
               </SpotlightCard>
@@ -366,7 +391,7 @@ export default function PackagesPage() {
                 ← Back to Packages
               </button>
               <h2 className="detail-title">{selectedCategory} Packages</h2>
-              
+
               <div className="tier-grid">
                 {/* Bronze Tier */}
                 <div className="tier-card-wrapper">
@@ -375,7 +400,7 @@ export default function PackagesPage() {
                       <div className="tier-badge bronze">Tier 1</div>
                       <h3 className="tier-name">{packageTiers[selectedCategory].bronze.name}</h3>
                       <div className="tier-price">
-                        ${packageTiers[selectedCategory].bronze.price.toLocaleString()}
+                        {packageTiers[selectedCategory].bronze.pricingLabel}
                       </div>
                       <p className="tier-description">
                         {packageTiers[selectedCategory].bronze.description}
@@ -388,7 +413,7 @@ export default function PackagesPage() {
                           ))}
                         </ul>
                       </div>
-                      <button 
+                      <button
                         className="add-to-cart-btn bronze-btn"
                         onClick={() => handleAddToCart(
                           packageTiers[selectedCategory].bronze,
@@ -410,7 +435,7 @@ export default function PackagesPage() {
                       <div className="popular-badge">Most Popular</div>
                       <h3 className="tier-name">{packageTiers[selectedCategory].silver.name}</h3>
                       <div className="tier-price">
-                        ${packageTiers[selectedCategory].silver.price.toLocaleString()}
+                        {packageTiers[selectedCategory].silver.pricingLabel}
                       </div>
                       <p className="tier-description">
                         {packageTiers[selectedCategory].silver.description}
@@ -423,7 +448,7 @@ export default function PackagesPage() {
                           ))}
                         </ul>
                       </div>
-                      <button 
+                      <button
                         className="add-to-cart-btn silver-btn"
                         onClick={() => handleAddToCart(
                           packageTiers[selectedCategory].silver,
@@ -444,7 +469,7 @@ export default function PackagesPage() {
                       <div className="tier-badge gold">Tier 3</div>
                       <h3 className="tier-name">{packageTiers[selectedCategory].gold.name}</h3>
                       <div className="tier-price">
-                        ${packageTiers[selectedCategory].gold.price.toLocaleString()}
+                        {packageTiers[selectedCategory].gold.pricingLabel}
                       </div>
                       <p className="tier-description">
                         {packageTiers[selectedCategory].gold.description}
@@ -457,7 +482,7 @@ export default function PackagesPage() {
                           ))}
                         </ul>
                       </div>
-                      <button 
+                      <button
                         className="add-to-cart-btn gold-btn"
                         onClick={() => handleAddToCart(
                           packageTiers[selectedCategory].gold,
@@ -477,8 +502,8 @@ export default function PackagesPage() {
       </div>
 
       {toastMessage && (
-        <Toast 
-          message={toastMessage} 
+        <Toast
+          message={toastMessage}
           onClose={() => setToastMessage(null)}
           duration={3000}
         />

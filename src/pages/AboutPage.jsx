@@ -55,13 +55,13 @@ export default function AboutPage() {
         autoResumeDelay={3000}
         autoRampDuration={0.6}
       />
-      
+
       <div className="page-content">
         <h1 className="page-title">About Marapone Contracting</h1>
         <p className="page-subtitle">
           Excellence in AI Solutions, Consulting, and Global Logistics
         </p>
-        
+
         <div className="card-swap-wrapper">
           <CardSwap
             width={isMobile ? 350 : 800}
@@ -144,6 +144,47 @@ export default function AboutPage() {
               </div>
               <p style={{ marginTop: '1.5rem', fontSize: '1rem', opacity: 0.85 }}>
                 🔗 These partnerships mean you get access to cutting-edge tools and platforms without the hassle.
+              </p>
+            </Card>
+
+            {/* Card 4: What We Offer */}
+            <Card>
+              <h2>🎯 What We Offer</h2>
+              <p>
+                From AI-powered automation to global logistics, we deliver comprehensive solutions that transform how you do business.
+              </p>
+              <div className="why-choose-grid">
+                <div className="why-item">
+                  <span className="why-emoji">🤖</span>
+                  <div>
+                    <h3>AI Solutions</h3>
+                    <p>Machine learning, NLP, computer vision, and intelligent automation</p>
+                  </div>
+                </div>
+                <div className="why-item">
+                  <span className="why-emoji">💡</span>
+                  <div>
+                    <h3>Consulting</h3>
+                    <p>Strategic guidance, operational optimization, and business transformation</p>
+                  </div>
+                </div>
+                <div className="why-item">
+                  <span className="why-emoji">🌍</span>
+                  <div>
+                    <h3>Import/Export & Logistics</h3>
+                    <p>International shipping, customs clearance, and supply chain optimization</p>
+                  </div>
+                </div>
+                <div className="why-item">
+                  <span className="why-emoji">📈</span>
+                  <div>
+                    <h3>Marketing Solutions</h3>
+                    <p>Digital marketing, SEO/SEM, social media, and brand development</p>
+                  </div>
+                </div>
+              </div>
+              <p style={{ marginTop: '1.5rem', fontSize: '1rem', opacity: 0.85 }}>
+                🚀 Ready to explore our full range of services? Check out our Products and Packages pages!
               </p>
             </Card>
           </CardSwap>

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LiquidEther from '../components/LiquidEther';
 import { getOptimizedSettings } from '../utils/detectWindows';
 import { useCurrency } from '../context/CurrencyContext';
+import { useAuth } from '../context/AuthContext';
+import { stripeApi } from '../api/account';
 import '../styles/page.css';
 import '../styles/cart.css';
 
@@ -208,8 +211,46 @@ export default function CartPage() {
     window.dispatchEvent(new Event('cartUpdated'));
   };
 
-  const handleCheckout = () => {
-    setShowCheckout(true);
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    // Check if user is authenticated
+    if (!isAuthenticated) {
+      // Redirect to login with return path
+      navigate('/login', { state: { from: { pathname: '/cart' } } });
+      return;
+    }
+
+    setCheckoutLoading(true);
+
+    try {
+      // Determine if this is a subscription or one-time payment
+      const hasSubscription = cartItems.some(item =>
+        item.duration === 'Monthly' || item.duration === '3 Months' || item.duration === '1 Year'
+      );
+
+      const mode = hasSubscription ? 'subscription' : 'payment';
+
+      // Create Stripe checkout session
+      const { sessionId, url } = await stripeApi.createCheckoutSession({
+        cartItems,
+        userId: user.id,
+        userEmail: user.email,
+        mode
+      });
+
+      // Redirect to Stripe Checkout
+      if (url) {
+        window.location.href = url;
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Failed to create checkout session. Please try again.');
+    } finally {
+      setCheckoutLoading(false);
+    }
   };
 
   const handlePaymentSelect = (paymentId) => {
@@ -546,8 +587,8 @@ export default function CartPage() {
                   <span>Total:</span>
                   <span>{formatPrice(total)}</span>
                 </div>
-                <button className="checkout-btn" onClick={handleCheckout}>
-                  Proceed to Checkout
+                <button className="checkout-btn" onClick={handleCheckout} disabled={checkoutLoading}>
+                  {checkoutLoading ? 'Redirecting to Checkout...' : 'Proceed to Checkout'}
                 </button>
               </div>
             )}

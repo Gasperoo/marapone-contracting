@@ -14,6 +14,7 @@ import ContactPage from './pages/ContactPage';
 import AccountPage from './pages/AccountPage';
 import LoginPage from './pages/LoginPage';
 import SettingsPage from './pages/SettingsPage';
+import CheckoutSuccessPage from './pages/CheckoutSuccessPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
+                <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </Layout>

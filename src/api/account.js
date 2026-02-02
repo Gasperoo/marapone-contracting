@@ -1,26 +1,29 @@
-/** Account API client — register, login, logout. Token in localStorage. */
+/** Account API client — now using Supabase Auth tokens */
+
+import { supabase } from '../lib/supabase';
 
 const API = '/api/account';
 
-function getToken() {
-  return typeof window !== 'undefined' ? localStorage.getItem('accountToken') : null;
+async function getToken() {
+  const { data: { session } } = await supabase.auth.getSession();
+  return session?.access_token || null;
 }
 
-function setToken(token) {
-  if (typeof window !== 'undefined' && token) localStorage.setItem('accountToken', token);
-  else if (typeof window !== 'undefined') localStorage.removeItem('accountToken');
-}
+async function request(method, path, body) {
+  const token = await getToken();
 
-async function request(method, path, body, { token = getToken() } = {}) {
   const opts = {
     method,
     headers: { 'Content-Type': 'application/json' },
   };
+
   if (token) opts.headers.Authorization = `Bearer ${token}`;
   if (body && method !== 'GET') opts.body = JSON.stringify(body);
+
   const res = await fetch(`${API}${path}`, opts);
   let data;
   const text = await res.text();
+
   try {
     data = JSON.parse(text);
   } catch (e) {
@@ -34,28 +37,26 @@ async function request(method, path, body, { token = getToken() } = {}) {
     err.data = data;
     throw err;
   }
+
   return data;
 }
 
 export const accountApi = {
   getToken,
-  setToken,
 
+  // Note: register and login are now handled by Supabase Auth in AuthContext
+  // These are kept for compatibility but not used
   async register({ username, email, password, terms }) {
-    const data = await request('POST', '/register', { username, email, password, terms });
-    if (data.data?.token) setToken(data.data.token);
-    return data;
+    throw new Error('Please use Supabase Auth for registration');
   },
 
   async login({ usernameOrEmail, password }) {
-    const data = await request('POST', '/login', { usernameOrEmail, password });
-    if (data.data?.token) setToken(data.data.token);
-    return data;
+    throw new Error('Please use Supabase Auth for login');
   },
 
   async logout() {
-    await request('POST', '/logout', {}, {}).catch(() => { });
-    setToken(null);
+    // Logout is handled by Supabase Auth in AuthContext
+    return { success: true };
   },
 
   async getProfile() {
@@ -68,8 +69,8 @@ export const accountApi = {
     return data.data;
   },
 
-  async updatePassword({ currentPassword, newPassword }) {
-    const data = await request('PUT', '/password', { currentPassword, newPassword });
+  async updatePassword({ newPassword }) {
+    const data = await request('PUT', '/password', { newPassword });
     return data;
   },
 
@@ -90,16 +91,57 @@ export const accountApi = {
     return data.data;
   },
 
-  async createSubscription(subscriptionData) {
-    const data = await request('POST', '/subscriptions', subscriptionData);
-    return data;
-  },
-
   async cancelSubscription(subscriptionId) {
     const data = await request('POST', `/subscriptions/${subscriptionId}/cancel`, {});
     return data;
   },
 };
 
+// Stripe API client
+const STRIPE_API = '/api/stripe';
+
+export const stripeApi = {
+  async createCheckoutSession({ cartItems, userId, userEmail, mode = 'subscription' }) {
+    const token = await getToken();
+
+    const res = await fetch(`${STRIPE_API}/create-checkout-session`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token && { Authorization: `Bearer ${token}` })
+      },
+      body: JSON.stringify({ cartItems, userId, userEmail, mode })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || 'Failed to create checkout session');
+    }
+
+    return data;
+  },
+
+  async createPortalSession(customerId) {
+    const token = await getToken();
+
+    const res = await fetch(`${STRIPE_API}/create-portal-session`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token && { Authorization: `Bearer ${token}` })
+      },
+      body: JSON.stringify({ customerId })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || 'Failed to create portal session');
+    }
+
+    return data;
+  }
+};
 
 export default accountApi;

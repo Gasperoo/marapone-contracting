@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LiquidEther from '../components/LiquidEther';
 import { getOptimizedSettings } from '../utils/detectWindows';
 import { useAuth } from '../context/AuthContext';
-import { accountApi } from '../api/account';
+import { accountApi, stripeApi } from '../api/account';
 import '../styles/page.css';
 import '../styles/account.css';
 
@@ -47,6 +47,7 @@ export default function SettingsPage() {
     const [subscriptions, setSubscriptions] = useState([]);
     const [pastSubscriptions, setPastSubscriptions] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [portalLoading, setPortalLoading] = useState(false);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
@@ -203,6 +204,31 @@ export default function SettingsPage() {
             loadSubscriptions();
         } catch (err) {
             setError(err.message || 'Failed to cancel subscription');
+        }
+    };
+
+    const handleManageBilling = async () => {
+        setPortalLoading(true);
+        setError(null);
+
+        try {
+            // Get the first subscription's customer ID
+            // In a real app, you'd store this in the user profile
+            const firstSub = subscriptions[0];
+            if (!firstSub || !firstSub.stripe_customer_id) {
+                setError('No billing information found. Please contact support.');
+                return;
+            }
+
+            const { url } = await stripeApi.createPortalSession(firstSub.stripe_customer_id);
+            if (url) {
+                window.location.href = url;
+            }
+        } catch (err) {
+            console.error('Portal error:', err);
+            setError('Failed to open billing portal. Please try again.');
+        } finally {
+            setPortalLoading(false);
         }
     };
 
@@ -407,7 +433,23 @@ export default function SettingsPage() {
 
                     {/* Current Subscriptions */}
                     <div className="subscriptions-section" style={{ marginTop: '2rem' }}>
-                        <h2 className="form-section-title">Current Subscriptions</h2>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                            <h2 className="form-section-title" style={{ margin: 0 }}>Current Subscriptions</h2>
+                            {subscriptions.length > 0 && (
+                                <button
+                                    onClick={handleManageBilling}
+                                    disabled={portalLoading}
+                                    className="submit-btn"
+                                    style={{
+                                        padding: '0.5rem 1.5rem',
+                                        fontSize: '0.9rem',
+                                        background: 'linear-gradient(135deg, #5227FF, #B19EEF)',
+                                    }}
+                                >
+                                    {portalLoading ? 'Loading...' : '💳 Manage Billing'}
+                                </button>
+                            )}
+                        </div>
                         {subscriptions.length === 0 ? (
                             <p className="no-subscriptions">You don't have any active subscriptions yet.</p>
                         ) : (

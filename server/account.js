@@ -1,126 +1,79 @@
-/** Account API — register and login. Responses use server/copy.js */
+/** Account API — now using Supabase for authentication and data storage */
 
 import { Router } from 'express';
-import * as store from './store.js';
+import { supabaseAdmin, getUserProfile, updateUserProfile, getUserAddresses, updateUserAddresses, getUserSubscriptions, cancelSubscription } from './supabase.js';
 import { auth, validation, generic } from './copy.js';
 
 const router = Router();
 
-router.post('/register', (req, res) => {
-  const { username, email, password, terms } = req.body || {};
-  if (!username?.trim()) {
-    return res.status(400).json({
-      success: false,
-      message: validation.required('Username'),
-      errors: { username: validation.required('Username') },
-    });
-  }
-  if (!email?.trim()) {
-    return res.status(400).json({
-      success: false,
-      message: validation.required('Email'),
-      errors: { email: validation.required('Email') },
-    });
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-    return res.status(400).json({
-      success: false,
-      message: validation.invalidEmail,
-      errors: { email: validation.invalidEmail },
-    });
-  }
-  if (!password || String(password).length < 8) {
-    return res.status(400).json({
-      success: false,
-      message: validation.passwordTooShort,
-      errors: { password: validation.passwordTooShort },
-    });
-  }
-  if (!terms) {
-    return res.status(400).json({
-      success: false,
-      message: auth.signUp.termsRequired,
-      errors: { terms: auth.signUp.termsRequired },
-    });
+// Authentication middleware - validates Supabase JWT token
+async function requireAuth(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ success: false, message: 'Authentication required' });
   }
 
-  const result = store.createUser({
-    username: username.trim(),
-    email: email.trim(),
-    password: String(password),
-  });
-  if (result.conflict === 'username') {
-    return res.status(409).json({ success: false, message: auth.signUp.usernameTaken });
-  }
-  if (result.conflict === 'email') {
-    return res.status(409).json({ success: false, message: auth.signUp.emailRegistered });
-  }
-  if (!result.user) {
-    return res.status(400).json({ success: false, message: generic.error });
-  }
+  const token = authHeader.replace('Bearer ', '');
 
-  const token = store.createSession(result.user.id);
-  res.status(201).json({
-    success: true,
-    message: auth.signUp.success,
-    data: { user: result.user, token },
+  try {
+    // Verify the JWT token with Supabase
+    const { data: { user }, error } = await supabaseAdmin.auth.getUser(token);
+
+    if (error || !user) {
+      return res.status(401).json({ success: false, message: 'Invalid or expired token' });
+    }
+
+    req.userId = user.id;
+    req.user = user;
+    next();
+  } catch (error) {
+    console.error('Auth error:', error);
+    return res.status(401).json({ success: false, message: 'Authentication failed' });
+  }
+}
+
+// Note: Registration and login are now handled by Supabase Auth on the frontend
+// These endpoints are kept for compatibility but redirect to Supabase
+
+router.post('/register', async (req, res) => {
+  // This is now handled by Supabase Auth on the frontend
+  // Keeping this endpoint for API compatibility
+  return res.status(400).json({
+    success: false,
+    message: 'Please use Supabase Auth for registration'
   });
 });
 
-router.post('/login', (req, res) => {
-  const { usernameOrEmail, password } = req.body || {};
-  if (!usernameOrEmail?.trim() || !password) {
-    return res.status(400).json({
-      success: false,
-      message: auth.login.invalidCredentials,
-    });
-  }
-  const user = store.findUserByLogin(usernameOrEmail.trim(), password);
-  if (!user) {
-    return res.status(401).json({ success: false, message: auth.login.invalidCredentials });
-  }
-  const token = store.createSession(user.id);
-  res.json({
-    success: true,
-    message: auth.login.success,
-    data: { user, token },
+router.post('/login', async (req, res) => {
+  // This is now handled by Supabase Auth on the frontend
+  // Keeping this endpoint for API compatibility
+  return res.status(400).json({
+    success: false,
+    message: 'Please use Supabase Auth for login'
   });
 });
 
-router.post('/logout', (req, res) => {
-  const token = req.headers.authorization?.replace(/^Bearer\s+/i, '') || req.body?.token;
-  if (token) store.destroySession(token);
+router.post('/logout', async (req, res) => {
+  // Logout is handled by Supabase Auth on the frontend
   res.json({ success: true, message: auth.logout.success });
 });
 
-// Authentication middleware
-function requireAuth(req, res, next) {
-  const token = req.headers.authorization?.replace(/^Bearer\s+/i, '');
-  if (!token) {
-    return res.status(401).json({ success: false, message: 'Authentication required' });
-  }
-  const userId = store.getSession(token);
-  if (!userId) {
-    return res.status(401).json({ success: false, message: 'Invalid or expired token' });
-  }
-  req.userId = userId;
-  next();
-}
-
 // Get current user profile
-router.get('/me', requireAuth, (req, res) => {
-  const user = store.getUserById(req.userId);
-  if (!user) {
-    return res.status(404).json({ success: false, message: 'User not found' });
+router.get('/me', requireAuth, async (req, res) => {
+  try {
+    const profile = await getUserProfile(req.userId);
+    res.json({
+      success: true,
+      data: { id: profile.id, username: profile.username, email: profile.email }
+    });
+  } catch (error) {
+    console.error('Error fetching profile:', error);
+    res.status(404).json({ success: false, message: 'User not found' });
   }
-  res.json({
-    success: true,
-    data: { id: user.id, username: user.username, email: user.email }
-  });
 });
 
 // Update user profile (username and/or email)
-router.put('/profile', requireAuth, (req, res) => {
+router.put('/profile', requireAuth, async (req, res) => {
   const { username, email } = req.body || {};
 
   if (!username?.trim() && !email?.trim()) {
@@ -142,131 +95,127 @@ router.put('/profile', requireAuth, (req, res) => {
     updates.email = email.trim();
   }
 
-  const result = store.updateUserProfile(req.userId, updates);
-  if (result.conflict === 'username') {
-    return res.status(409).json({ success: false, message: 'Username already taken' });
-  }
-  if (result.conflict === 'email') {
-    return res.status(409).json({ success: false, message: 'Email already registered' });
-  }
-  if (!result.user) {
-    return res.status(400).json({ success: false, message: generic.error });
-  }
+  try {
+    const profile = await updateUserProfile(req.userId, updates);
+    res.json({
+      success: true,
+      message: 'Profile updated successfully',
+      data: { id: profile.id, username: profile.username, email: profile.email }
+    });
+  } catch (error) {
+    console.error('Error updating profile:', error);
 
-  res.json({
-    success: true,
-    message: 'Profile updated successfully',
-    data: { id: result.user.id, username: result.user.username, email: result.user.email }
-  });
+    // Check for unique constraint violations
+    if (error.code === '23505') {
+      if (error.message.includes('username')) {
+        return res.status(409).json({ success: false, message: 'Username already taken' });
+      }
+      if (error.message.includes('email')) {
+        return res.status(409).json({ success: false, message: 'Email already registered' });
+      }
+    }
+
+    res.status(400).json({ success: false, message: generic.error });
+  }
 });
 
-// Update password
-router.put('/password', requireAuth, (req, res) => {
-  const { currentPassword, newPassword } = req.body || {};
+// Update password - now handled by Supabase Auth
+router.put('/password', requireAuth, async (req, res) => {
+  const { newPassword } = req.body || {};
 
-  if (!currentPassword || !newPassword) {
-    return res.status(400).json({
-      success: false,
-      message: 'Current password and new password are required'
-    });
-  }
-
-  if (String(newPassword).length < 8) {
+  if (!newPassword || String(newPassword).length < 8) {
     return res.status(400).json({
       success: false,
       message: validation.passwordTooShort
     });
   }
 
-  const result = store.updateUserPassword(req.userId, currentPassword, newPassword);
-  if (result.error === 'invalid_password') {
-    return res.status(401).json({ success: false, message: 'Current password is incorrect' });
-  }
-  if (!result.success) {
-    return res.status(400).json({ success: false, message: generic.error });
-  }
+  try {
+    // Update password using Supabase Admin API
+    const { error } = await supabaseAdmin.auth.admin.updateUserById(
+      req.userId,
+      { password: newPassword }
+    );
 
-  res.json({
-    success: true,
-    message: 'Password updated successfully'
-  });
+    if (error) throw error;
+
+    res.json({
+      success: true,
+      message: 'Password updated successfully'
+    });
+  } catch (error) {
+    console.error('Error updating password:', error);
+    res.status(400).json({ success: false, message: generic.error });
+  }
 });
 
 // Get user addresses
-router.get('/addresses', requireAuth, (req, res) => {
-  const addresses = store.getUserAddresses(req.userId);
-  res.json({
-    success: true,
-    data: addresses
-  });
+router.get('/addresses', requireAuth, async (req, res) => {
+  try {
+    const addresses = await getUserAddresses(req.userId);
+    res.json({
+      success: true,
+      data: addresses
+    });
+  } catch (error) {
+    console.error('Error fetching addresses:', error);
+    res.status(400).json({ success: false, message: generic.error });
+  }
 });
 
 // Update user addresses
-router.put('/addresses', requireAuth, (req, res) => {
+router.put('/addresses', requireAuth, async (req, res) => {
   const { billing, shipping } = req.body || {};
 
-  const result = store.updateUserAddresses(req.userId, { billing, shipping });
-  if (result.error) {
-    return res.status(400).json({ success: false, message: generic.error });
+  try {
+    const addresses = await updateUserAddresses(req.userId, { billing, shipping });
+    res.json({
+      success: true,
+      message: 'Addresses updated successfully',
+      data: addresses
+    });
+  } catch (error) {
+    console.error('Error updating addresses:', error);
+    res.status(400).json({ success: false, message: generic.error });
   }
-
-  res.json({
-    success: true,
-    message: 'Addresses updated successfully',
-    data: result.addresses
-  });
 });
 
 // Get user subscriptions
-router.get('/subscriptions', requireAuth, (req, res) => {
-  const status = req.query.status || 'active'; // 'active', 'cancelled', or 'all'
-  const subscriptions = store.getUserSubscriptions(req.userId, status);
-  res.json({
-    success: true,
-    data: subscriptions
-  });
-});
+router.get('/subscriptions', requireAuth, async (req, res) => {
+  const status = req.query.status || 'active';
 
-// Create subscription (from cart checkout)
-router.post('/subscriptions', requireAuth, (req, res) => {
-  const subscriptionData = req.body;
-
-  if (!subscriptionData.packageName || !subscriptionData.tier || !subscriptionData.duration || !subscriptionData.price) {
-    return res.status(400).json({
-      success: false,
-      message: 'Missing required subscription data'
+  try {
+    const subscriptions = await getUserSubscriptions(req.userId, status);
+    res.json({
+      success: true,
+      data: subscriptions
     });
+  } catch (error) {
+    console.error('Error fetching subscriptions:', error);
+    res.status(400).json({ success: false, message: generic.error });
   }
-
-  const result = store.createSubscription(req.userId, subscriptionData);
-  if (result.error) {
-    return res.status(400).json({ success: false, message: generic.error });
-  }
-
-  res.json({
-    success: true,
-    message: 'Subscription created successfully',
-    data: result.subscription
-  });
 });
 
 // Cancel subscription
-router.post('/subscriptions/:id/cancel', requireAuth, (req, res) => {
+router.post('/subscriptions/:id/cancel', requireAuth, async (req, res) => {
   const subscriptionId = req.params.id;
 
-  const result = store.cancelSubscription(req.userId, subscriptionId);
-  if (result.error === 'subscription_not_found') {
-    return res.status(404).json({ success: false, message: 'Subscription not found' });
-  }
-  if (result.error) {
-    return res.status(400).json({ success: false, message: generic.error });
-  }
+  try {
+    const subscription = await cancelSubscription(req.userId, subscriptionId);
+    res.json({
+      success: true,
+      message: 'Subscription cancelled successfully',
+      data: subscription
+    });
+  } catch (error) {
+    console.error('Error cancelling subscription:', error);
 
-  res.json({
-    success: true,
-    message: 'Subscription cancelled successfully',
-    data: result.subscription
-  });
+    if (error.message?.includes('not found')) {
+      return res.status(404).json({ success: false, message: 'Subscription not found' });
+    }
+
+    res.status(400).json({ success: false, message: generic.error });
+  }
 });
 
 export default router;

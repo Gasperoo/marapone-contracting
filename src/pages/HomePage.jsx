@@ -55,7 +55,7 @@ export default function HomePage() {
         {/* Welcome Section */}
         <div className="welcome-section">
           <h1 className="welcome-title">
-            Marapone Contracting Inc.
+            Marapone
           </h1>
           <p className="welcome-text">
             Transforming vision into exceptional results - delivered with precision and professionalism.
@@ -73,37 +73,37 @@ export default function HomePage() {
               <h2>Consulting</h2>
               <p>Strategic consulting services to optimize your business operations and drive sustainable growth.</p>
             </ScrollStackItem>
-            
+
             <ScrollStackItem itemClassName="card-2">
               <div className="scroll-stack-card-icon">🤖</div>
               <h2>AI Solutions</h2>
               <p>Cutting-edge AI-powered solutions to automate processes and unlock new opportunities.</p>
             </ScrollStackItem>
-            
+
             <ScrollStackItem itemClassName="card-3">
               <div className="scroll-stack-card-icon">🌐</div>
               <h2>Import/Export & Logistics</h2>
               <p>Comprehensive international trade and logistics optimization for seamless global operations.</p>
             </ScrollStackItem>
-            
+
             <ScrollStackItem itemClassName="card-4">
               <div className="scroll-stack-card-icon">📱</div>
               <h2>Marketing Solutions</h2>
               <p>Data-driven marketing strategies to amplify your brand and reach your target audience.</p>
             </ScrollStackItem>
-            
+
             <ScrollStackItem itemClassName="card-5">
               <div className="scroll-stack-card-icon">🚀</div>
               <h2>Project Development/Management</h2>
               <p>End-to-end project management ensuring on-time delivery and exceptional results.</p>
             </ScrollStackItem>
-            
+
             <ScrollStackItem itemClassName="card-6">
               <div className="scroll-stack-card-icon">📊</div>
               <h2>Business Development/Management</h2>
               <p>Strategic business development to identify opportunities and drive organizational excellence.</p>
             </ScrollStackItem>
-            
+
             <ScrollStackItem itemClassName="card-7">
               <div className="scroll-stack-card-content" onClick={() => window.location.href = '/contact'} style={{ cursor: 'pointer' }}>
                 <div className="scroll-stack-card-icon">✉️</div>

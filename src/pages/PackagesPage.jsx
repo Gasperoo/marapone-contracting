@@ -25,6 +25,7 @@ export default function PackagesPage() {
         priceOneTime: 500,
         pricingLabel: '$50/month or $500 one-time (1 year)',
         description: 'Perfect for businesses beginning their AI journey',
+        hasTrial: true,
         features: [
           'Basic ML model implementation',
           'Data preprocessing & cleaning',
@@ -143,6 +144,7 @@ export default function PackagesPage() {
         priceOneTime: 1000,
         pricingLabel: '$100/month or $1,000 one-time (1 year)',
         description: 'Essential services for new international traders',
+        hasTrial: true,
         features: [
           'Customs documentation assistance',
           'Basic freight forwarding',
@@ -202,6 +204,7 @@ export default function PackagesPage() {
         priceOneTime: 120,
         pricingLabel: '$50/month or $120 for 3 months',
         description: 'Build your online presence and reach',
+        hasTrial: true,
         features: [
           'Social media setup & strategy',
           'Content calendar (3 months)',
@@ -268,7 +271,7 @@ export default function PackagesPage() {
     }
   };
 
-  const handleAddToCart = (packageData, tier, category, duration, price) => {
+  const handleAddToCart = (packageData, tier, category, duration, price, isTrial = false) => {
     const existingCart = JSON.parse(localStorage.getItem('cartItems') || '[]');
 
     const cartItem = {
@@ -278,7 +281,8 @@ export default function PackagesPage() {
       quantity: 1,
       category: 'Package',
       tier: tier,
-      features: packageData.features
+      features: packageData.features,
+      isTrial: isTrial
     };
 
     const existingItemIndex = existingCart.findIndex(
@@ -319,6 +323,7 @@ export default function PackagesPage() {
     const isMarketing = category === 'Marketing Solutions';
     const isConsulting = category === 'Consulting';
     const tierClass = tier.toLowerCase();
+    const isBronzeWithTrial = tier === 'Bronze' && packageData.hasTrial;
 
     // For consulting packages with no pricing
     if (isConsulting) {
@@ -338,6 +343,14 @@ export default function PackagesPage() {
     if (isMarketing) {
       return (
         <div className="duration-buttons">
+          {isBronzeWithTrial && (
+            <button
+              className="duration-btn trial-btn"
+              onClick={() => handleAddToCart(packageData, tier, category, '14-Day Free Trial', 0, true)}
+            >
+              🎁 14-Day Free Trial
+            </button>
+          )}
           <button
             className={`duration-btn ${tierClass}-btn`}
             onClick={() => handleAddToCart(
@@ -365,6 +378,14 @@ export default function PackagesPage() {
     // For AI Solutions and Logistics (monthly and 1-year options)
     return (
       <div className="duration-buttons">
+        {isBronzeWithTrial && (
+          <button
+            className="duration-btn trial-btn"
+            onClick={() => handleAddToCart(packageData, tier, category, '14-Day Free Trial', 0, true)}
+          >
+            🎁 14-Day Free Trial
+          </button>
+        )}
         {packageData.priceMonthly && (
           <button
             className={`duration-btn ${tierClass}-btn`}
@@ -468,6 +489,9 @@ export default function PackagesPage() {
                   <SpotlightCard spotlightColor={getTierColor('bronze')}>
                     <div className="tier-card bronze-tier" style={{ background: getTierGradient('bronze') }}>
                       <div className="tier-badge bronze">Tier 1</div>
+                      {packageTiers[selectedCategory].bronze.hasTrial && (
+                        <div className="trial-badge">🎁 FREE TRIAL AVAILABLE</div>
+                      )}
                       <h3 className="tier-name">{packageTiers[selectedCategory].bronze.name}</h3>
 
                       <p className="tier-description">

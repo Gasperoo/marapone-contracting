@@ -8,8 +8,9 @@
   padding: 1.5rem;
   color: white;
   max-width: 100%;
-  overflow: visible;
+  overflow: hidden;
   min-height: 450px;
+  box-sizing: border-box;
 }
 
 /* Calendar Header */
@@ -66,6 +67,8 @@
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .calendar-weekday {
@@ -76,6 +79,7 @@
   padding: 0.5rem 0.25rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-sizing: border-box;
 }
 
 /* Calendar Days Grid */
@@ -84,6 +88,7 @@
   grid-template-columns: repeat(7, 1fr);
   gap: 0.5rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .calendar-day {
@@ -98,6 +103,7 @@
   border: 1px solid transparent;
   min-height: 40px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .calendar-day.empty {

@@ -1,6 +1,7 @@
 import React from 'react';
 import LiquidEther from '../components/LiquidEther';
-import CardSwap, { Card } from '../components/CardSwap';
+import CardStack from '../components/CardStack';
+import RuixenAbout from '../components/RuixenAbout';
 import { getOptimizedSettings } from '../utils/detectWindows';
 import '../styles/page.css';
 import '../styles/about.css';
@@ -62,133 +63,50 @@ export default function AboutPage() {
           Excellence in AI Solutions, Consulting, and Global Logistics
         </p>
 
+        {/* CardStack Section */}
         <div className="card-swap-wrapper">
-          <CardSwap
-            width={isMobile ? 350 : 800}
-            height={isMobile ? 500 : 600}
-            cardDistance={isMobile ? 60 : 100}
-            verticalDistance={isMobile ? 70 : 100}
-            delay={4000}
-            pauseOnHover={false}
-            skewAmount={6}
-            easing="elastic"
-          >
-            {/* Card 1: About Us */}
-            <Card>
-              <h2>🚀 Who We Are</h2>
-              <p>
-                We're your strategic partner for AI-powered solutions, international trade, and business growth. Think of us as the Swiss Army knife of modern business—versatile, reliable, and always ready to tackle your biggest challenges.
-              </p>
-              <p>
-                🌍 Operating across multiple continents, we blend cutting-edge tech with real-world expertise to help businesses not just survive, but thrive. Whether you're a startup with big dreams or an enterprise looking to innovate, we've got your back.
-              </p>
-              <p>
-                💡 Our secret sauce? We don't just deliver services—we build partnerships that actually move the needle on your growth.
-              </p>
-            </Card>
-
-            {/* Card 2: Why Choose Us */}
-            <Card>
-              <h2>✨ Why Work With Us</h2>
-              <div className="why-choose-grid">
-                <div className="why-item">
-                  <span className="why-emoji">🌐</span>
-                  <div>
-                    <h3>Global Reach</h3>
-                    <p>Multi-continent operations with proven success stories</p>
-                  </div>
-                </div>
-                <div className="why-item">
-                  <span className="why-emoji">⚡</span>
-                  <div>
-                    <h3>Innovation First</h3>
-                    <p>Cutting-edge tech that actually works for your business</p>
-                  </div>
-                </div>
-                <div className="why-item">
-                  <span className="why-emoji">🤝</span>
-                  <div>
-                    <h3>Partnership Focused</h3>
-                    <p>We're in it for the long haul, not just quick wins</p>
-                  </div>
-                </div>
-                <div className="why-item">
-                  <span className="why-emoji">🎯</span>
-                  <div>
-                    <h3>Results Driven</h3>
-                    <p>Measurable outcomes that move your bottom line</p>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Card 3: Partners */}
-            <Card>
-              <h2>🤝 Trusted Partners</h2>
-              <p>
-                We team up with the best in the business to bring you world-class solutions. Click any logo to learn more about our partners!
-              </p>
-              <div className="partners-grid">
-                {partners.map((partner, index) => (
-                  <a
-                    key={index}
-                    href={partner.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="partner-link"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <img src={partner.logo} alt={partner.name} />
-                  </a>
-                ))}
-              </div>
-              <p style={{ marginTop: '1.5rem', fontSize: '1rem', opacity: 0.85 }}>
-                🔗 These partnerships mean you get access to cutting-edge tools and platforms without the hassle.
-              </p>
-            </Card>
-
-            {/* Card 4: What We Offer */}
-            <Card>
-              <h2>🎯 What We Offer</h2>
-              <p>
-                Think of us as your business's ultimate upgrade package. We don't just offer services—we deliver complete ecosystems that work together seamlessly.
-              </p>
-              <div className="why-choose-grid">
-                <div className="why-item">
-                  <span className="why-emoji">🤖</span>
-                  <div>
-                    <h3>AI That Actually Works</h3>
-                    <p>No buzzwords, just real automation that saves time and money</p>
-                  </div>
-                </div>
-                <div className="why-item">
-                  <span className="why-emoji">💡</span>
-                  <div>
-                    <h3>Strategic Thinking</h3>
-                    <p>Consulting that goes beyond PowerPoints to drive real change</p>
-                  </div>
-                </div>
-                <div className="why-item">
-                  <span className="why-emoji">🌍</span>
-                  <div>
-                    <h3>Global Trade Made Easy</h3>
-                    <p>Navigate international logistics without the headaches</p>
-                  </div>
-                </div>
-                <div className="why-item">
-                  <span className="why-emoji">📈</span>
-                  <div>
-                    <h3>Marketing That Converts</h3>
-                    <p>Data-driven campaigns that turn clicks into customers</p>
-                  </div>
-                </div>
-              </div>
-              <p style={{ marginTop: '1.5rem', fontSize: '1rem', opacity: 0.85 }}>
-                💼 The best part? Everything integrates. Your AI talks to your logistics, your marketing feeds your consulting insights. It's business synergy at its finest.
-              </p>
-            </Card>
-          </CardSwap>
+          <CardStack
+            items={[
+              {
+                id: 1,
+                title: '🚀 Who We Are',
+                description: "We're your strategic partner for AI-powered solutions, international trade, and business growth. Operating across multiple continents, we blend cutting-edge tech with real-world expertise.",
+                imageSrc: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
+              },
+              {
+                id: 2,
+                title: '✨ Why Work With Us',
+                description: 'Global reach with multi-continent operations. Innovation-first approach with cutting-edge tech. Partnership-focused for long-term success. Results-driven with measurable outcomes.',
+                imageSrc: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
+              },
+              {
+                id: 3,
+                title: '🤝 Trusted Partners',
+                description: 'We team up with the best in the business: Claude AI, Searates, Freightos, and Airrates to bring you world-class solutions.',
+                imageSrc: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop',
+                href: 'https://claude.ai',
+              },
+              {
+                id: 4,
+                title: '🎯 What We Offer',
+                description: 'AI that actually works. Strategic consulting beyond PowerPoints. Global trade made easy. Marketing that converts. Everything integrates seamlessly.',
+                imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+              },
+            ]}
+            cardWidth={isMobile ? 350 : 520}
+            cardHeight={isMobile ? 400 : 320}
+            maxVisible={7}
+            overlap={0.48}
+            spreadDeg={48}
+            autoAdvance={true}
+            intervalMs={4000}
+            pauseOnHover={true}
+            loop={true}
+          />
         </div>
+
+        {/* Ruixen About Section */}
+        <RuixenAbout />
       </div>
     </div>
   );

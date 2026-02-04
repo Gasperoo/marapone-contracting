@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StaggeredMenu from './StaggeredMenu';
 import { useAuth } from '../context/AuthContext';
+import { StackedCircularFooter } from './StackedCircularFooter';
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default function Layout({ children }) {
   ];
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* StaggeredMenu - Fixed overlay */}
       <StaggeredMenu
         position="right"
@@ -44,7 +45,12 @@ export default function Layout({ children }) {
       />
 
       {/* Page content */}
-      {children}
+      <div style={{ flex: 1 }}>
+        {children}
+      </div>
+
+      {/* Footer */}
+      <StackedCircularFooter />
     </div>
   );
 }

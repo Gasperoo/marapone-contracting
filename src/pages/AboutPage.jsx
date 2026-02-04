@@ -58,7 +58,7 @@ export default function AboutPage() {
       />
 
       <div className="page-content">
-        <h1 className="page-title">About Marapone Contracting</h1>
+        <h1 className="page-title">About Marapone</h1>
         <p className="page-subtitle">
           Excellence in AI Solutions, Consulting, and Global Logistics
         </p>

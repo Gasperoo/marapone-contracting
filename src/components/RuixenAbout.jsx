@@ -33,7 +33,7 @@ export default function RuixenAbout({
                         </h1>
                         <div className="ruixen-hero-description">
                             <p>
-                                Marapone Contracting is evolving to be more than just services. We support an entire ecosystem —
+                                Marapone is evolving to be more than just services. We support an entire ecosystem —
                                 from AI-powered automation to international trade platforms helping businesses innovate and grow globally.
                             </p>
                             <Link to="/services" className="ruixen-hero-button">
@@ -54,7 +54,7 @@ export default function RuixenAbout({
                     <div className="ruixen-about-header">
                         <h1 className="ruixen-about-title">About Us</h1>
                         <p className="ruixen-about-intro">
-                            Marapone Contracting is a passionate team dedicated to creating innovative solutions
+                            Marapone is a passionate team dedicated to creating innovative solutions
                             that empower businesses to thrive in the digital age through AI, consulting, and global logistics.
                         </p>
                     </div>

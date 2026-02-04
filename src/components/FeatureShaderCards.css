@@ -1,0 +1,166 @@
+.feature-shader-cards-section {
+    padding: 2rem 1rem 5rem 1rem;
+    background: transparent;
+    width: 100%;
+    order: 3;
+    /* Ensure cards come after logo and welcome */
+}
+
+.feature-shader-cards-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.feature-shader-cards-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.feature-shader-cards-title {
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.feature-shader-cards-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 48rem;
+    margin: 0 auto;
+    line-height: 1.8;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.feature-shader-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .feature-shader-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .feature-shader-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.feature-shader-card {
+    position: relative;
+    height: 20rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.feature-shader-card.clickable {
+    cursor: pointer;
+}
+
+.feature-shader-card:hover {
+    transform: translateY(-4px);
+}
+
+.feature-shader-card-background {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.feature-shader-card-content {
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.feature-shader-card-icon {
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.feature-shader-card-icon svg {
+    width: 3rem;
+    height: 3rem;
+}
+
+.feature-shader-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.feature-shader-card-description {
+    line-height: 1.6;
+    flex-grow: 1;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.feature-shader-card-cta {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.feature-shader-card-cta-text {
+    margin-right: 0.5rem;
+}
+
+.feature-shader-card-cta-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .feature-shader-cards-section {
+        padding: 1rem 1rem 3rem 1rem;
+    }
+
+    .feature-shader-cards-title {
+        font-size: 2rem;
+    }
+
+    .feature-shader-cards-subtitle {
+        font-size: 1rem;
+    }
+
+    .feature-shader-card {
+        height: 18rem;
+    }
+
+    .feature-shader-card-content {
+        padding: 1.5rem;
+    }
+
+    .feature-shader-card-icon svg {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .feature-shader-card-title {
+        font-size: 1.25rem;
+    }
+
+    .feature-shader-card-description {
+        font-size: 0.9rem;
+    }
+}

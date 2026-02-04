@@ -150,13 +150,6 @@ export default function FeatureShaderCards() {
     return (
         <section className="feature-shader-cards-section">
             <div className="feature-shader-cards-container">
-                <div className="feature-shader-cards-header">
-                    <h2 className="feature-shader-cards-title">Our Services</h2>
-                    <p className="feature-shader-cards-subtitle">
-                        Comprehensive solutions to transform your business and drive exceptional results
-                    </p>
-                </div>
-
                 <div className="feature-shader-cards-grid">
                     {features.map((feature, index) => {
                         const shaderConfig = getShaderConfig(index);

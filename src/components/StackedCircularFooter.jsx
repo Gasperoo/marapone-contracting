@@ -25,7 +25,7 @@ function StackedCircularFooter() {
                     <nav className="stacked-footer-nav">
                         <Link to="/" className="stacked-footer-link">Home</Link>
                         <Link to="/about" className="stacked-footer-link">About</Link>
-                        <Link to="/services" className="stacked-footer-link">Packages</Link>
+                        <Link to="/packages" className="stacked-footer-link">Packages</Link>
                         <Link to="/products" className="stacked-footer-link">Products</Link>
                         <Link to="/contact" className="stacked-footer-link">Contact</Link>
                     </nav>

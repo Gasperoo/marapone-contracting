@@ -1,11 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import StaggeredMenu from './StaggeredMenu';
 import { useAuth } from '../context/AuthContext';
 import { StackedCircularFooter } from './StackedCircularFooter';
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated, logout } = useAuth();
 
   const handleLogout = async () => {
@@ -50,7 +51,7 @@ export default function Layout({ children }) {
       </div>
 
       {/* Footer */}
-      <StackedCircularFooter />
+      {location.pathname !== '/products' && <StackedCircularFooter />}
     </div>
   );
 }

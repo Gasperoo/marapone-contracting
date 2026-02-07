@@ -14,91 +14,122 @@
 }
 
 .gasper-tool-container {
-    width: 100%;
-    max-width: 1400px;
-    /* matched to container xl/2xl */
-    margin: 0 auto;
-    padding: 2rem;
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding-top: 100px;
-    /* Space for fixed header/menu */
-}
-
-/* Header */
-.gasper-header {
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.gasper-title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.02em;
-}
-
-.gasper-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-}
-
-/* Tabs */
-.gasper-tabs-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    background: var(--glass-bg);
-    padding: 0.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
+    height: 100vh;
+    width: 100%;
+    background: radial-gradient(circle at top left, #1a1a2e, #16213e, #0f3460);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
 }
 
-.gasper-tab-trigger {
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+/* Override standard Card styles within Gasper Tool */
+.gasper-tool-container .bg-card {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(12px);
+}
+
+.gasper-tool-container .text-card-foreground {
+    color: #ffffff !important;
+}
+
+.gasper-tool-container .text-muted-foreground {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Sidebar Styles */
+.gasper-sidebar {
+    width: 260px;
+    height: 100%;
+    background: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    z-index: 50;
+}
+
+.gasper-sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar-header {
+    padding: 24px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 12px;
+    border-bottom: 1px solid var(--glass-border);
 }
 
-.gasper-tab-trigger:hover {
+.brand-logo {
+    box-shadow: 0 0 10px var(--neon-blue);
+    border-radius: 50%;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 20px 12px;
+    overflow-y: auto;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    margin-bottom: 4px;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.nav-item:hover {
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-primary);
 }
 
-.gasper-tab-trigger.active {
-    background: var(--accent-color);
-    color: white;
-    box-shadow: 0 4px 12px rgba(82, 39, 255, 0.3);
+.nav-item.active {
+    background: linear-gradient(90deg, rgba(0, 243, 255, 0.1) 0%, rgba(188, 19, 254, 0.1) 100%);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+    color: var(--neon-blue);
 }
 
-/* Content Area */
-.gasper-content {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2rem;
-    backdrop-filter: blur(20px);
-    box-shadow: var(--glass-shadow);
-    min-height: 600px;
-    position: relative;
-    overflow: hidden;
+.nav-item-icon {
+    min-width: 20px;
 }
+
+.nav-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.gasper-sidebar.collapsed .nav-label {
+    opacity: 0;
+    width: 0;
+    display: none;
+}
+
+/* Main Content Area */
+.gasper-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: transparent;
+    position: relative;
+}
+
+/* Header */
 
 /* Chat Interface */
 .chat-container {
@@ -239,6 +270,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
 /* Badge Styles */
 .gasper-badge {
     display: inline-flex;

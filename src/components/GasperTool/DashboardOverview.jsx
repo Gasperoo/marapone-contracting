@@ -1,0 +1,103 @@
+import React from 'react';
+import { Card } from '../ui/Card';
+import { Activity, ArrowUpRight, Globe, Zap, Ship } from 'lucide-react';
+import { LiveTracker } from './widgets/LiveTracker';
+
+export function DashboardOverview() {
+    return (
+        <div className="space-y-6">
+            {/* Top Stats Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Card className="p-6 glass-panel border-0 bg-white/5">
+                    <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-white/60 font-medium text-sm">Active Shipments</h3>
+                        <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400">
+                            <Ship size={20} />
+                        </div>
+                    </div>
+                    <div className="flex items-end justify-between">
+                        <div className="text-3xl font-bold text-white">12</div>
+                        <div className="flex items-center text-green-400 text-sm font-medium">
+                            <ArrowUpRight size={16} className="mr-1" />
+                            On Track
+                        </div>
+                    </div>
+                </Card>
+
+                <Card className="p-6 glass-panel border-0 bg-white/5">
+                    <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-white/60 font-medium text-sm">Carbon Offset</h3>
+                        <div className="p-2 bg-green-500/20 rounded-lg text-green-400">
+                            <Zap size={20} />
+                        </div>
+                    </div>
+                    <div className="flex items-end justify-between">
+                        <div className="text-3xl font-bold text-white">4.2t</div>
+                        <div className="flex items-center text-green-400 text-sm font-medium">
+                            <ArrowUpRight size={16} className="mr-1" />
+                            +5%
+                        </div>
+                    </div>
+                </Card>
+
+                <Card className="p-6 glass-panel border-0 bg-white/5">
+                    <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-white/60 font-medium text-sm">Global Risk</h3>
+                        <div className="p-2 bg-red-500/20 rounded-lg text-red-400">
+                            <Globe size={20} />
+                        </div>
+                    </div>
+                    <div className="flex items-end justify-between">
+                        <div className="text-3xl font-bold text-white">Low</div>
+                        <div className="text-sm text-white/40">Updated 2m ago</div>
+                    </div>
+                </Card>
+
+                <Card className="p-6 glass-panel border-0 bg-white/5">
+                    <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-white/60 font-medium text-sm">Pending Actions</h3>
+                        <div className="p-2 bg-amber-500/20 rounded-lg text-amber-400">
+                            <Activity size={20} />
+                        </div>
+                    </div>
+                    <div className="flex items-end justify-between">
+                        <div className="text-3xl font-bold text-white">3</div>
+                        <div className="text-sm text-amber-400">Needs Attention</div>
+                    </div>
+                </Card>
+            </div>
+
+            {/* Live Tracker Widget */}
+            <h2 className="text-lg font-semibold text-white/80 mt-8 mb-4">Live Market & Logistics Data</h2>
+            <LiveTracker />
+
+            {/* Placeholder for Map or other big widget */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-80">
+                <Card className="col-span-2 glass-panel border-0 bg-white/5 p-6 flex flex-col justify-center items-center text-white/40 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80')] opacity-10 bg-cover bg-center"></div>
+                    <Globe size={48} className="mb-4 opacity-50" />
+                    <span className="z-10 text-lg font-medium">Global Logistics Map (Coming Soon)</span>
+                </Card>
+                <Card className="glass-panel border-0 bg-white/5 p-6">
+                    <h3 className="font-semibold text-white mb-4">Recent Alerts</h3>
+                    <div className="space-y-4">
+                        <div className="flex gap-3 items-start">
+                            <div className="w-2 h-2 mt-2 rounded-full bg-red-500 shrink-0"></div>
+                            <div>
+                                <p className="text-sm text-white font-medium">Port Congestion Warning</p>
+                                <p className="text-xs text-white/50">Shanghai Port reporting 48h delays.</p>
+                            </div>
+                        </div>
+                        <div className="flex gap-3 items-start">
+                            <div className="w-2 h-2 mt-2 rounded-full bg-amber-500 shrink-0"></div>
+                            <div>
+                                <p className="text-sm text-white font-medium">Rate Hike Alert</p>
+                                <p className="text-xs text-white/50">Trans-Pacific rates up by 5%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </Card>
+            </div>
+        </div>
+    );
+}

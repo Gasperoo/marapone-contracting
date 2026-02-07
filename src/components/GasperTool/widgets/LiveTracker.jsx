@@ -12,7 +12,7 @@ import { Card } from '../../ui/Card'; // Adjusted path: widgets -> GasperTool ->
 //
 // My file: src/components/GasperTool/widgets/LiveTracker.jsx
 // Values: src/components/ui/Card -> ../../ui/Card
-import { Refreshcw, Wind, Droplets, TrendingUp, TrendingDown, ArrowRight } from 'lucide-react';
+import { RefreshCw, Wind, Droplets, TrendingUp, TrendingDown, ArrowRight, CloudRain } from 'lucide-react';
 import { getLiveCurrencyRates, getPortWeather, PORTS } from '../services/liveDataService';
 
 export function LiveTracker() {
@@ -71,7 +71,7 @@ export function LiveTracker() {
                         Live Forex (USD Base)
                     </h3>
                     <button onClick={fetchData} className="p-1 hover:bg-white/10 rounded-full transition-colors">
-                        <Refreshcw size={14} className={`text-white/60 ${loading ? 'animate-spin' : ''}`} />
+                        <RefreshCw size={14} className={`text-white/60 ${loading ? 'animate-spin' : ''}`} />
                     </button>
                 </div>
 
@@ -121,7 +121,7 @@ export function LiveTracker() {
             {/* Port Weather Tracker */}
             <Card className="p-5 glass-panel border-0 bg-white/5 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <CloudRainIcon size={100} />
+                    <CloudRain size={100} />
                 </div>
 
                 <div className="flex justify-between items-center mb-4 relative z-10">

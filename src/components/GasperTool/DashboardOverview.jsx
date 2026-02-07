@@ -2,6 +2,11 @@ import React from 'react';
 import { Card } from '../ui/Card';
 import { Activity, ArrowUpRight, Globe, Zap, Ship } from 'lucide-react';
 import { LiveTracker } from './widgets/LiveTracker';
+import { FlightTracker } from './widgets/FlightWidget';
+import { CommodityTicker } from './widgets/CommodityTicker';
+import { PublicHolidays } from './widgets/PublicHolidays';
+import { VesselTracker } from './widgets/VesselTracker';
+import { RailTracker } from './widgets/RailTracker';
 
 export function DashboardOverview() {
     return (
@@ -70,6 +75,19 @@ export function DashboardOverview() {
             {/* Live Tracker Widget */}
             <h2 className="text-lg font-semibold text-white/80 mt-8 mb-4">Live Market & Logistics Data</h2>
             <LiveTracker />
+
+            {/* New Widgets Row 1 - Market & General */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[400px]">
+                <FlightTracker />
+                <CommodityTicker />
+                <PublicHolidays />
+            </div>
+
+            {/* New Widgets Row 2 - Logistics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[350px]">
+                <VesselTracker />
+                <RailTracker />
+            </div>
 
             {/* Placeholder for Map or other big widget */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-80">

@@ -7,7 +7,7 @@ import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import ProductsPage from './pages/ProductsPage';
+import GasperPage from './pages/GasperPage';
 import PackagesPage from './pages/PackagesPage';
 import CartPage from './pages/CartPage';
 import ContactPage from './pages/ContactPage';
@@ -27,7 +27,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
-                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/gasper" element={<GasperPage />} />
                 <Route path="/packages" element={<PackagesPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/contact" element={<ContactPage />} />

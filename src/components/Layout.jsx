@@ -16,7 +16,7 @@ export default function Layout({ children }) {
 
   const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-    { label: 'Products', ariaLabel: 'View our products', link: '/products' },
+    { label: 'Gasper', ariaLabel: 'View our products', link: '/gasper' },
     { label: 'Packages', ariaLabel: 'View service packages', link: '/packages' },
     { label: 'Cart', ariaLabel: 'View shopping cart', link: '/cart' },
     // Conditional Account/Logout menu item
@@ -51,7 +51,7 @@ export default function Layout({ children }) {
       </div>
 
       {/* Footer */}
-      {location.pathname !== '/products' && <StackedCircularFooter />}
+      {location.pathname !== '/gasper' && <StackedCircularFooter />}
     </div>
   );
 }

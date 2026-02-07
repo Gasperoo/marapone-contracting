@@ -1,0 +1,276 @@
+/* GasperTool.css */
+
+/* Glassmorphism Variables (matching LiquidEther style) */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-highlight: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    --accent-color: #5227FF;
+    --accent-gradient: linear-gradient(135deg, #5227FF 0%, #FF9FFC 100%);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.5);
+}
+
+.gasper-tool-container {
+    width: 100%;
+    max-width: 1400px;
+    /* matched to container xl/2xl */
+    margin: 0 auto;
+    padding: 2rem;
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding-top: 100px;
+    /* Space for fixed header/menu */
+}
+
+/* Header */
+.gasper-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.gasper-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.gasper-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+/* Tabs */
+.gasper-tabs-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    background: var(--glass-bg);
+    padding: 0.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+.gasper-tab-trigger {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gasper-tab-trigger:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.gasper-tab-trigger.active {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(82, 39, 255, 0.3);
+}
+
+/* Content Area */
+.gasper-content {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+    box-shadow: var(--glass-shadow);
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Chat Interface */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chat-message {
+    max-width: 80%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.chat-message.user {
+    align-self: flex-end;
+    background: var(--accent-color);
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-message.assistant {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    border-bottom-left-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 1rem;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    gap: 0.75rem;
+}
+
+.chat-input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: white;
+    resize: none;
+    min-height: 50px;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Common UI */
+.gasper-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.gasper-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.gasper-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: white;
+    transition: border-color 0.2s;
+}
+
+.gasper-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.gasper-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    gap: 0.5rem;
+}
+
+.gasper-btn.primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.gasper-btn.primary:hover {
+    background: #6b46ff;
+    transform: translateY(-1px);
+}
+
+.gasper-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+/* Badge Styles */
+.gasper-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    padding: 0.125rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.gasper-badge.default {
+    background-color: var(--glass-highlight);
+    color: var(--text-primary);
+    border-color: var(--glass-border);
+}
+
+.gasper-badge.secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
+.gasper-badge.destructive {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.gasper-badge.outline {
+    border-color: var(--glass-border);
+    color: var(--text-primary);
+}

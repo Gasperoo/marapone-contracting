@@ -5,7 +5,7 @@ import { ArrowRight, Globe, Layers, Zap, Cpu, Network } from 'lucide-react';
 import RuixenAbout from '../components/RuixenAbout';
 import '../components/LandingPage/LandingPage.css';
 import NetworkMesh from '../components/AboutPage/NetworkMesh';
-import Evolution from '../components/AboutPage/Evolution';
+
 
 export default function AboutPage() {
   const containerRef = useRef(null);
@@ -46,8 +46,60 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Strategic Evolution */}
-      <Evolution />
+      {/* Strategic Overview */}
+      <section className="mb-32 relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Marapone Column */}
+          <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
+            <div className="mb-6 inline-flex p-3 rounded-2xl bg-[#5227FF]/10 text-[#5227FF] border border-[#5227FF]/20">
+              <Layers size={32} />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">The Infrastructure</h3>
+            <p className="text-slate-300 leading-relaxed mb-6">
+              Marapone is the backbone. We build the digital highways that connect carriers, ports, and warehouses into a single, cohesive ecosystem. Our infrastructure handles millions of data points daily, ensuring that the physical world of logistics is perfectly mirrored in the digital realm.
+            </p>
+            <ul className="space-y-3 text-slate-400">
+              <li className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#5227FF]" />
+                <span>Global Carrier Integrations</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#5227FF]" />
+                <span>Real-Time Data Pipelines</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#5227FF]" />
+                <span>Enterprise Security Architecture</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Gasper Column */}
+          <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
+            <div className="mb-6 inline-flex p-3 rounded-2xl bg-cyan-400/10 text-cyan-400 border border-cyan-400/20">
+              <Cpu size={32} />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">The Intelligence</h3>
+            <p className="text-slate-300 leading-relaxed mb-6">
+              Gasper is the brain. Built on top of Marapone's infrastructure, Gasper applies advanced machine learning and predictive analytics to make sense of the chaos. It doesn't just show you where your cargo is; it tells you where it should be and how to get it there faster.
+            </p>
+            <ul className="space-y-3 text-slate-400">
+              <li className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                <span>Predictive Risk Analysis</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                <span>Automated Decision Support</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                <span>Generative Supply Chain Assistant</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       {/* Core Values */}
       <section className="mb-24 px-6 relative z-10">

@@ -77,21 +77,22 @@ export function DashboardOverview() {
             <LiveTracker />
 
             {/* New Widgets Row 1 - Market & General */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[400px]">
+            {/* New Widgets Row 1 - Market & General */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[400px]">
                 <FlightTracker />
                 <CommodityTicker />
                 <PublicHolidays />
             </div>
 
             {/* New Widgets Row 2 - Logistics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[350px]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-[350px]">
                 <VesselTracker />
                 <RailTracker />
             </div>
 
             {/* Placeholder for Map or other big widget */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-80">
-                <Card className="col-span-2 glass-panel border-0 bg-white/5 p-6 flex flex-col justify-center items-center text-white/40 relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[320px]">
+                <Card className="col-span-1 lg:col-span-2 glass-panel border-0 bg-white/5 p-6 flex flex-col justify-center items-center text-white/40 relative overflow-hidden min-h-[300px]">
                     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80')] opacity-10 bg-cover bg-center"></div>
                     <Globe size={48} className="mb-4 opacity-50" />
                     <span className="z-10 text-lg font-medium">Global Logistics Map (Coming Soon)</span>

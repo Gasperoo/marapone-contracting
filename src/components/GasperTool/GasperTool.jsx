@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, User, Search } from 'lucide-react';
+import { Bell, User, Search, Menu } from 'lucide-react';
 import { DashboardSidebar } from './DashboardSidebar';
 import { DashboardOverview } from './DashboardOverview';
 import { ChatInterface } from './ChatInterface';
@@ -18,6 +18,7 @@ import './GasperTool.css';
 export default function GasperTool() {
     const [activeTab, setActiveTab] = useState('dashboard');
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const renderContent = () => {
         switch (activeTab) {
@@ -41,19 +42,32 @@ export default function GasperTool() {
         <div className="gasper-tool-container">
             <DashboardSidebar
                 activeTab={activeTab}
-                onTabChange={setActiveTab}
+                onTabChange={(tab) => {
+                    setActiveTab(tab);
+                    setMobileMenuOpen(false);
+                }}
                 isCollapsed={sidebarCollapsed}
                 toggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
+                isMobileOpen={mobileMenuOpen}
+                closeMobileMenu={() => setMobileMenuOpen(false)}
             />
 
             <main className="gasper-main">
                 <header className="dashboard-header">
-                    <div className="header-title">
-                        <h2>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Explorer</h2>
+                    <div className="flex items-center gap-3">
+                        <button
+                            className="md:hidden p-2 text-white/70 hover:text-white"
+                            onClick={() => setMobileMenuOpen(true)}
+                        >
+                            <Menu size={24} />
+                        </button>
+                        <div className="header-title">
+                            <h2>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Explorer</h2>
+                        </div>
                     </div>
 
                     <div className="header-actions">
-                        <div className="relative group">
+                        <div className="relative group hidden md:block">
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 h-4 w-4" />
                             <input
                                 type="text"
@@ -79,6 +93,14 @@ export default function GasperTool() {
                     {renderContent()}
                 </div>
             </main>
+
+            {/* Mobile Overlay */}
+            {mobileMenuOpen && (
+                <div
+                    className="fixed inset-0 bg-black/60 z-40 md:hidden backdrop-blur-sm"
+                    onClick={() => setMobileMenuOpen(false)}
+                />
+            )}
         </div>
     );
 }

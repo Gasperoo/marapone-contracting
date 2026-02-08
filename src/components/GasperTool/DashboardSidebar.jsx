@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import {
     MessageSquare, Search, Beaker, TrendingUp, BarChart3,
     Shield, FileText, Leaf, ShieldAlert, Globe, Package,
-    ChevronLeft, ChevronRight, LayoutDashboard, Settings
+    ChevronLeft, ChevronRight, LayoutDashboard, Settings, X
 } from 'lucide-react';
 import './GasperTool.css';
 
-export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCollapse }) {
+export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCollapse, isMobileOpen, closeMobileMenu }) {
 
     const navItems = [
         { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
@@ -24,7 +24,7 @@ export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCo
     ];
 
     return (
-        <div className={`gasper-sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+        <div className={`gasper-sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileOpen ? 'mobile-open' : ''}`}>
             <div className="sidebar-header">
                 <div className="brand-logo h-8 w-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
                     GT
@@ -32,6 +32,12 @@ export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCo
                 <h1 className={`font-bold text-lg tracking-tight text-white transition-opacity duration-300 ${isCollapsed ? 'opacity-0 w-0 hidden' : 'opacity-100'}`}>
                     Gasper<span className="text-blue-400">Tool</span>
                 </h1>
+                <button
+                    onClick={closeMobileMenu}
+                    className="md:hidden ml-auto text-white/60 hover:text-white"
+                >
+                    <X size={20} />
+                </button>
             </div>
 
             <div className="sidebar-nav custom-scrollbar">
@@ -50,7 +56,7 @@ export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCo
                 ))}
             </div>
 
-            <div className="p-4 border-t border-white/10">
+            <div className="p-4 border-t border-white/10 hidden md:block">
                 <button
                     onClick={toggleCollapse}
                     className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-white/5 text-white/60 hover:text-white transition-colors"

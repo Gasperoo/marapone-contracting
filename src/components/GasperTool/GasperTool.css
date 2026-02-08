@@ -129,6 +129,15 @@
     position: relative;
 }
 
+.dashboard-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2rem;
+    padding-bottom: 4rem;
+    /* Extra space at bottom */
+}
+
 /* Header */
 
 /* Chat Interface */
@@ -302,7 +311,60 @@
     border-color: rgba(239, 68, 68, 0.3);
 }
 
-.gasper-badge.outline {
-    border-color: var(--glass-border);
-    color: var(--text-primary);
+
+/* ... existing styles ... */
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .gasper-sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        bottom: 0;
+        width: 260px;
+        z-index: 50;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 10px 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .gasper-sidebar.mobile-open {
+        left: 0;
+    }
+
+    .gasper-main {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    /* Adjust Dashboard Content Padding */
+    .dashboard-content {
+        padding: 1rem;
+        padding-bottom: 6rem;
+        /* More space for bottom safe areas */
+    }
+
+    /* Dashboard Header Mobile Adjustments */
+    .dashboard-header {
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .header-title h2 {
+        font-size: 1.1rem;
+    }
+
+    .header-actions {
+        gap: 0.5rem;
+    }
+
+    /* Grid Adjustments */
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Hide some desktop-only elements */
+    .desktop-only {
+        display: none !important;
+    }
 }

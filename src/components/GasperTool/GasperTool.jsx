@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Bell, User, Search, Menu } from 'lucide-react';
+import { Bell, User, Search, Menu, Home as HomeIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { DashboardSidebar } from './DashboardSidebar';
 import { DashboardOverview } from './DashboardOverview';
 import { ChatInterface } from './ChatInterface';
@@ -17,6 +17,7 @@ import { LiveTrackingMap } from './LiveTrackingMap';
 import './GasperTool.css';
 
 export default function GasperTool() {
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('dashboard');
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,6 +67,13 @@ export default function GasperTool() {
                         <div className="header-title">
                             <h2>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Explorer</h2>
                         </div>
+                        <button
+                            className="flex items-center gap-2 ml-4 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all"
+                            onClick={() => navigate('/')}
+                        >
+                            <HomeIcon size={14} />
+                            <span>Back to Home</span>
+                        </button>
                     </div>
 
                     <div className="header-actions">

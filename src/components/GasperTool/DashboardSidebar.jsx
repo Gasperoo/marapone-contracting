@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import {
     MessageSquare, Search, Beaker, TrendingUp, BarChart3,
     Shield, FileText, Leaf, ShieldAlert, Globe, Package,
-    ChevronLeft, ChevronRight, LayoutDashboard, Settings, X
+    ChevronLeft, ChevronRight, LayoutDashboard, Settings, X, Home as HomeIcon
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './GasperTool.css';
 
 export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCollapse, isMobileOpen, closeMobileMenu }) {
+    const navigate = useNavigate();
 
     const navItems = [
         { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
@@ -22,6 +24,7 @@ export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCo
         { id: 'risk', label: 'Risk Monitor', icon: ShieldAlert },
         { id: 'carbon', label: 'Sustainability', icon: Leaf },
         { id: 'docs', label: 'Documents', icon: FileText },
+        { id: 'home', label: 'Back to Site', icon: HomeIcon, action: () => navigate('/') },
     ];
 
     return (
@@ -46,7 +49,7 @@ export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCo
                     <div
                         key={item.id}
                         className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-                        onClick={() => onTabChange(item.id)}
+                        onClick={() => item.action ? item.action() : onTabChange(item.id)}
                     >
                         <item.icon size={20} className={`nav-item-icon ${activeTab === item.id ? 'text-cyan-400' : ''}`} />
                         <span className="nav-label">{item.label}</span>

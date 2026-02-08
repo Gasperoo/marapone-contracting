@@ -21,6 +21,7 @@ export default function Layout({ children }) {
     { name: 'Pricing', url: '/pricing', icon: CreditCard },
     { name: 'About', url: '/about', icon: Info },
     { name: 'Contact', url: '/contact', icon: Mail },
+    { name: 'Launch App', url: '/gasper', icon: Zap },
     isAuthenticated
       ? { name: 'Logout', url: '/login', icon: LogOut, onClick: handleLogout }
       : { name: 'Account', url: '/account', icon: User }

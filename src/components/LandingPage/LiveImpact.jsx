@@ -77,8 +77,16 @@ export default function LiveImpact() {
                             <TickerItem type="success" text="Customs clearance approved: Shipment #88291 (JFK)" />
                         </div>
                         <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex gap-12 items-center">
-                            {/* Second marquee layer if needed for css animation style, but single long line usually works with one animation if duplicated content. 
-                               Using a simpler single-track marquee for now. */}
+                            <TickerItem type="success" text="Route optimization complete: Shanghai -> Rotterdam (Saved 4h)" />
+                            <TickerItem type="warning" text="Risk detected: Port congestion at LAX. Alternate route suggested." />
+                            <TickerItem type="neutral" text="New supplier verified: Apex Electronics (Vietnam)" />
+                            <TickerItem type="success" text="Customs clearance approved: Shipment #88291 (JFK)" />
+                            <TickerItem type="warning" text="Weather alert: Typhoon approaching South China Sea" />
+                            <TickerItem type="neutral" text="Data sync complete: SAP Integration" />
+                            <TickerItem type="success" text="Route optimization complete: Shanghai -> Rotterdam (Saved 4h)" />
+                            <TickerItem type="warning" text="Risk detected: Port congestion at LAX. Alternate route suggested." />
+                            <TickerItem type="neutral" text="New supplier verified: Apex Electronics (Vietnam)" />
+                            <TickerItem type="success" text="Customs clearance approved: Shipment #88291 (JFK)" />
                         </div>
                     </div>
                 </div>

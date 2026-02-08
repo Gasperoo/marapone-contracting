@@ -21,7 +21,7 @@ export function BentoGrid() {
             subtitle: 'Predictive intelligence.',
             description: 'Gasper’s AI doesn’t just report what happened; it predicts what will happen. We analyze weather patterns, strike probabilities, and historical route performance to forecast delays days in advance.',
             icon: <Cpu size={40} className="text-cyan-400" />,
-            className: "md:col-span-1 md:row-span-3",
+            className: "md:col-span-1 md:col-start-4 md:row-span-3",
             gradient: "from-cyan-500/10 via-transparent to-transparent"
         },
         {

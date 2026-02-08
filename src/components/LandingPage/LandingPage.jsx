@@ -1,11 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid } from 'lucide-react';
+import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor } from 'lucide-react';
 import './LandingPage.css';
 
 export default function LandingPage() {
     return (
         <div className="landing-container">
+            {/* Header / Nav Overlay */}
+            <header className="landing-header">
+                <div className="header-logo">
+                    <img src="/logo.png" alt="Marapone Logo" className="h-10 w-auto" />
+                    <span className="font-bold text-xl tracking-tight ml-2">Marapone</span>
+                </div>
+                <nav className="header-nav hidden md:flex gap-6">
+                    <a href="#features" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Features</a>
+                    <a href="#how-it-works" className="text-sm font-medium text-white/70 hover:text-white transition-colors">How It Works</a>
+                    <a href="#industries" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Industries</a>
+                </nav>
+                <div className="header-actions">
+                    <Link to="/login" className="text-sm font-medium text-white/70 hover:text-white transition-colors mr-4">Sign In</Link>
+                    <Link to="/gasper" className="btn-sm-primary">Launch App</Link>
+                </div>
+            </header>
+
             <div className="landing-content">
 
                 {/* Hero Section */}
@@ -36,8 +53,49 @@ export default function LandingPage() {
                     <div className="hero-visual"></div>
                 </section>
 
+                {/* Trusted By Section */}
+                <section className="trusted-by-section">
+                    <p className="trusted-label">Trusted by industry leaders worldwide</p>
+                    <div className="logos-grid opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                        {/* Placeholder Company Names/Logos */}
+                        <span className="text-xl font-bold font-mono">MAERSK</span>
+                        <span className="text-xl font-bold font-mono">MSC</span>
+                        <span className="text-xl font-bold font-mono">CMA CGM</span>
+                        <span className="text-xl font-bold font-mono">HAPAG-LLOYD</span>
+                        <span className="text-xl font-bold font-mono">EVERGREEN</span>
+                    </div>
+                </section>
+
+                {/* How It Works Section */}
+                <section id="how-it-works" className="how-it-works-section">
+                    <div className="section-header">
+                        <h2 className="section-title">From Chaos to Control</h2>
+                        <p className="section-subtitle">A simple, powerful workflow designed for modern logistics.</p>
+                    </div>
+
+                    <div className="workflow-steps">
+                        <div className="step-card">
+                            <div className="step-number">01</div>
+                            <h3 className="step-title">Connect</h3>
+                            <p className="step-desc">Integrate your existing ERP and carrier data streams in minutes.</p>
+                        </div>
+                        <div className="step-line"></div>
+                        <div className="step-card">
+                            <div className="step-number">02</div>
+                            <h3 className="step-title">Analyze</h3>
+                            <p className="step-desc">AI models process millions of data points to identify risks and opportunities.</p>
+                        </div>
+                        <div className="step-line"></div>
+                        <div className="step-card">
+                            <div className="step-number">03</div>
+                            <h3 className="step-title">Optimize</h3>
+                            <p className="step-desc">Execute automated strategies to reduce costs and improve delivery times.</p>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Features Highlights */}
-                <section className="features-section">
+                <section id="features" className="features-section">
                     <div className="section-header">
                         <h2 className="section-title">Enterprise-Grade Capabilities</h2>
                         <p className="section-subtitle">Built for modern logistics teams who demand speed, accuracy, and depth.</p>
@@ -86,6 +144,31 @@ export default function LandingPage() {
                     </div>
                 </section>
 
+                {/* Industries Section */}
+                <section id="industries" className="industries-section">
+                    <div className="section-header">
+                        <h2 className="section-title">Engineered for Every Sector</h2>
+                    </div>
+                    <div className="industries-grid">
+                        <div className="industry-card">
+                            <Anchor className="industry-icon" />
+                            <span>Maritime Logistics</span>
+                        </div>
+                        <div className="industry-card">
+                            <Truck className="industry-icon" />
+                            <span>Freight Forwarding</span>
+                        </div>
+                        <div className="industry-card">
+                            <Box className="industry-icon" />
+                            <span>Retail & E-commerce</span>
+                        </div>
+                        <div className="industry-card">
+                            <Layers className="industry-icon" />
+                            <span>Manufacturing</span>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Trust/Stats */}
                 <section className="stats-section">
                     <div className="stat-item">
@@ -99,6 +182,17 @@ export default function LandingPage() {
                     <div className="stat-item">
                         <div className="stat-value">&lt;2s</div>
                         <div className="stat-label">Data Latency</div>
+                    </div>
+                </section>
+
+                {/* Final CTA */}
+                <section className="final-cta-section">
+                    <div className="final-cta-content">
+                        <h2>Ready to Modernize Your Supply Chain?</h2>
+                        <p>Join thousands of forward-thinking logistics leaders today.</p>
+                        <Link to="/gasper" className="btn-primary mt-8 inline-block">
+                            Get Started Now
+                        </Link>
                     </div>
                 </section>
 

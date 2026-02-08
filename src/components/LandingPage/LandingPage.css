@@ -302,3 +302,211 @@
         transform: translateY(0);
     }
 }
+
+/* Header Styles */
+.landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    backdrop-filter: blur(5px);
+    /* Minimal blur for header */
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.btn-sm-primary {
+    background: var(--accent-gradient, linear-gradient(135deg, #5227FF 0%, #c084fc 100%));
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 99px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-sm-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(82, 39, 255, 0.3);
+}
+
+/* Trusted By Section */
+.trusted-by-section {
+    text-align: center;
+    padding: 2rem 0 4rem;
+    margin-top: -2rem;
+    /* Bring closer to hero */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trusted-label {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.logos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    color: #94a3b8;
+    flex-wrap: wrap;
+}
+
+/* How It Works Section */
+.how-it-works-section {
+    padding: 8rem 0;
+}
+
+.workflow-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.step-card {
+    text-align: center;
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+}
+
+.step-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 1;
+    margin-bottom: -1.5rem;
+    position: relative;
+    z-index: -1;
+}
+
+.step-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.step-desc {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.step-line {
+    flex: 0.5;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(82, 39, 255, 0.5), transparent);
+    margin-top: -3rem;
+    /* Align with numbers */
+}
+
+/* Industries Section */
+.industries-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(82, 39, 255, 0.05) 50%, transparent 100%);
+}
+
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.industry-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.industry-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(82, 39, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.industry-icon {
+    width: 40px;
+    height: 40px;
+    color: #22d3ee;
+}
+
+.industry-card span {
+    font-weight: 600;
+    color: white;
+}
+
+/* Final CTA Section */
+.final-cta-section {
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.final-cta-content {
+    background: radial-gradient(circle at center, rgba(82, 39, 255, 0.2) 0%, transparent 70%);
+    padding: 4rem 2rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.final-cta-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.final-cta-content p {
+    font-size: 1.25rem;
+    color: #94a3b8;
+}
+
+/* Mobile Adjustments for new sections */
+@media (max-width: 768px) {
+    .workflow-steps {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .step-line {
+        display: none;
+    }
+
+    .final-cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .trusted-by-section {
+        margin-top: 0;
+    }
+
+    .logos-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

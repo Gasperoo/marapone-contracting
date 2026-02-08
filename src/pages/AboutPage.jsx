@@ -5,6 +5,7 @@ import { ArrowRight, Globe, Layers, Zap, Cpu, Network } from 'lucide-react';
 import RuixenAbout from '../components/RuixenAbout';
 import '../components/LandingPage/LandingPage.css';
 import NetworkMesh from '../components/AboutPage/NetworkMesh';
+import Evolution from '../components/AboutPage/Evolution';
 
 export default function AboutPage() {
   const containerRef = useRef(null);
@@ -45,44 +46,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Living Timeline */}
-      <section className="mb-32 relative z-10 max-w-5xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-white text-center mb-16">Our Journey</h2>
-        <div className="relative">
-          {/* Central Line */}
-          <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2">
-            <motion.div
-              style={{ height: timelineHeight }}
-              className="w-full bg-gradient-to-b from-[#5227FF] via-cyan-400 to-[#5227FF]"
-            />
-          </div>
-
-          <TimelineItem
-            year="2019"
-            title="Inception"
-            description="Founded in Zurich by a team of logistics veterans and data scientists."
-            align="left"
-          />
-          <TimelineItem
-            year="2021"
-            title="AI Core V1"
-            description="Launched our first predictive model, accurately forecasting port congestion with 85% accuracy."
-            align="right"
-          />
-          <TimelineItem
-            year="2023"
-            title="Global Expansion"
-            description="Opened offices in Singapore and San Francisco. Partnered with 50 major carriers."
-            align="left"
-          />
-          <TimelineItem
-            year="2026"
-            title="Gasper Launch"
-            description="Released the Gasper total visibility platform to the public. Changing the game forever."
-            align="right"
-          />
-        </div>
-      </section>
+      {/* Strategic Evolution */}
+      <Evolution />
 
       {/* Core Values */}
       <section className="mb-24 px-6 relative z-10">
@@ -191,28 +156,7 @@ export default function AboutPage() {
   );
 }
 
-function TimelineItem({ year, title, description, align }) {
-  const isLeft = align === 'left';
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      className={`flex flex-col md:flex-row items-center mb-16 relative ${isLeft ? 'md:flex-row-reverse' : ''}`}
-    >
-      <div className={`md:w-1/2 w-full pl-12 md:pl-0 ${isLeft ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
-        <div className="text-[#5227FF] font-bold text-4xl mb-2">{year}</div>
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-slate-400">{description}</p>
-      </div>
 
-      {/* Dot */}
-      <div className="absolute left-[16px] md:left-1/2 top-0 w-3 h-3 bg-[#22d3ee] rounded-full border-2 border-slate-900 md:-translate-x-1/2 shadow-[0_0_10px_#22d3ee]" />
-
-      <div className="md:w-1/2" />
-    </motion.div>
-  );
-}
 
 function ValueCard({ title, description, icon }) {
   return (

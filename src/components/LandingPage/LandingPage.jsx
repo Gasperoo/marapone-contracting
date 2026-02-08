@@ -10,6 +10,7 @@ import { LandingPageFAQ } from './LandingPageFAQ';
 
 import LiveImpact from './LiveImpact';
 import InteractiveGlobe from './InteractiveGlobe';
+import ComingSoonContent from './ComingSoonContent';
 
 export default function LandingPage({ comingSoonMode = false }) {
     return (
@@ -88,71 +89,78 @@ export default function LandingPage({ comingSoonMode = false }) {
                 {/* Logo Marquee */}
                 <LogoMarquee />
 
-                {/* Bento Grid Features */}
-                <BentoGrid />
+                {/* Bento Grid Features - Only if NOT coming soon */}
+                {!comingSoonMode && <BentoGrid />}
 
-                {/* Live Impact Console (Replaces Testimonials) */}
-                <LiveImpact />
+                {/* Live Impact Console - Only if NOT coming soon */}
+                {!comingSoonMode && <LiveImpact />}
 
                 {/* How It Works Section */}
-                <section id="how-it-works" className="how-it-works-section">
-                    <div className="section-header">
-                        <h2 className="section-title">From Chaos to Control</h2>
-                        <p className="section-subtitle">A simple, powerful workflow designed for modern logistics.</p>
-                    </div>
+                {!comingSoonMode && (
+                    <section id="how-it-works" className="how-it-works-section">
+                        <div className="section-header">
+                            <h2 className="section-title">From Chaos to Control</h2>
+                            <p className="section-subtitle">A simple, powerful workflow designed for modern logistics.</p>
+                        </div>
 
-                    <div className="workflow-steps">
-                        <div className="step-card">
-                            <div className="step-number">01</div>
-                            <h3 className="step-title">Connect</h3>
-                            <p className="step-desc">Integrate your existing ERP and carrier data streams in minutes.</p>
+                        <div className="workflow-steps">
+                            <div className="step-card">
+                                <div className="step-number">01</div>
+                                <h3 className="step-title">Connect</h3>
+                                <p className="step-desc">Integrate your existing ERP and carrier data streams in minutes.</p>
+                            </div>
+                            <div className="step-line"></div>
+                            <div className="step-card">
+                                <div className="step-number">02</div>
+                                <h3 className="step-title">Analyze</h3>
+                                <p className="step-desc">AI models process millions of data points to identify risks and opportunities.</p>
+                            </div>
+                            <div className="step-line"></div>
+                            <div className="step-card">
+                                <div className="step-number">03</div>
+                                <h3 className="step-title">Optimize</h3>
+                                <p className="step-desc">Execute automated strategies to reduce costs and improve delivery times.</p>
+                            </div>
                         </div>
-                        <div className="step-line"></div>
-                        <div className="step-card">
-                            <div className="step-number">02</div>
-                            <h3 className="step-title">Analyze</h3>
-                            <p className="step-desc">AI models process millions of data points to identify risks and opportunities.</p>
-                        </div>
-                        <div className="step-line"></div>
-                        <div className="step-card">
-                            <div className="step-number">03</div>
-                            <h3 className="step-title">Optimize</h3>
-                            <p className="step-desc">Execute automated strategies to reduce costs and improve delivery times.</p>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                )}
 
-                {/* Industries Section */}
-                <motion.section
-                    id="industries"
-                    className="industries-section"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                    <div className="section-header">
-                        <h2 className="section-title">Engineered for Every Sector</h2>
-                    </div>
-                    <div className="industries-grid">
-                        <div className="industry-card">
-                            <Anchor className="industry-icon" />
-                            <span>Maritime Logistics</span>
+                {/* Industries Section - Only if NOT coming soon */}
+                {!comingSoonMode && (
+                    <motion.section
+                        id="industries"
+                        className="industries-section"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <div className="section-header">
+                            <h2 className="section-title">Engineered for Every Sector</h2>
                         </div>
-                        <div className="industry-card">
-                            <Truck className="industry-icon" />
-                            <span>Freight Forwarding</span>
+                        <div className="industries-grid">
+                            <div className="industry-card">
+                                <Anchor className="industry-icon" />
+                                <span>Maritime Logistics</span>
+                            </div>
+                            <div className="industry-card">
+                                <Truck className="industry-icon" />
+                                <span>Freight Forwarding</span>
+                            </div>
+                            <div className="industry-card">
+                                <Box className="industry-icon" />
+                                <span>Retail & E-commerce</span>
+                            </div>
+                            <div className="industry-card">
+                                <Layers className="industry-icon" />
+                                <span>Manufacturing</span>
+                            </div>
                         </div>
-                        <div className="industry-card">
-                            <Box className="industry-icon" />
-                            <span>Retail & E-commerce</span>
-                        </div>
-                        <div className="industry-card">
-                            <Layers className="industry-icon" />
-                            <span>Manufacturing</span>
-                        </div>
-                    </div>
-                </motion.section>
+                    </motion.section>
+                )}
+
+                {/* Enhanced Coming Soon Content */}
+                {comingSoonMode && <ComingSoonContent />}
 
                 {/* FAQ Section */}
                 <LandingPageFAQ />

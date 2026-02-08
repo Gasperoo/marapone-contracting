@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
+import LandingPage from './components/LandingPage/LandingPage';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import GasperPage from './pages/GasperPage';
@@ -25,7 +26,7 @@ function App() {
           <CurrencyProvider>
             <Layout>
               <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<LandingPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/gasper" element={<GasperPage />} />
                 <Route path="/packages" element={<PackagesPage />} />

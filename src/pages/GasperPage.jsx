@@ -1,10 +1,10 @@
 import React from 'react';
 import GasperTool from '../components/GasperTool/GasperTool';
-import { getOptimizedSettings } from '../utils/detectWindows';
+import '../components/LandingPage/LandingPage.css';
 
 export default function GasperPage() {
   return (
-    <div className="page-container" style={{ width: '100vw', minHeight: '100vh', background: '#000' }}>
+    <div className="landing-container w-full min-h-screen">
       <GasperTool />
     </div>
   );

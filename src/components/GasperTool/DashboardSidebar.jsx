@@ -10,8 +10,9 @@ export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCo
 
     const navItems = [
         { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
+        { id: 'map', label: 'Live Map', icon: Globe },
         { id: 'chat', label: 'AI Assistant', icon: MessageSquare },
-        { id: 'market', label: 'Market Intel', icon: Globe },
+        { id: 'market', label: 'Market Intel', icon: TrendingUp },
         { id: 'shipments', label: 'Shipments', icon: Package },
         { id: 'classifier', label: 'HS Classifier', icon: Search },
         { id: 'rates', label: 'Rate Check', icon: TrendingUp },

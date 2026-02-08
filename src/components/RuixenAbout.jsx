@@ -1,134 +1,110 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import '../styles/ruixen-about.css';
+import { ArrowRight, Globe, Zap, Users, Award } from 'lucide-react';
+import '../components/LandingPage/LandingPage.css'; // Ensure we have access to common styles
 
-export default function RuixenAbout({
-    achievements = [
-        { label: 'Companies Supported', value: '300+' },
-        { label: 'Projects Finalized', value: '800+' },
-        { label: 'Happy Customers', value: '99%' },
-        { label: 'Recognized Awards', value: '10+' },
-    ],
-}) {
+export default function RuixenAbout() {
     return (
-        <div className="ruixen-about-container">
-            {/* HERO SECTION */}
-            <section className="ruixen-hero-section">
-                <div className="ruixen-hero-content">
-                    <img
-                        className="ruixen-hero-image"
-                        src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_hero_gradient.jpg"
-                        alt="Hero section"
-                        width={1200}
-                        height={600}
-                    />
+        <div className="landing-container w-full">
+            <div className="max-w-7xl mx-auto px-6">
 
-                    <div className="ruixen-hero-grid">
-                        <h1 className="ruixen-hero-title">
-                            The Marapone <span className="ruixen-hero-accent">ecosystem</span>{' '}
-                            <span className="ruixen-hero-subtitle-inline">
-                                brings together AI solutions, consulting, and global logistics.
-                            </span>
-                        </h1>
-                        <div className="ruixen-hero-description">
-                            <p>
-                                Marapone is evolving to be more than just services. We support an entire ecosystem —
-                                from AI-powered automation to international trade platforms helping businesses innovate and grow globally.
+                {/* Ecosystem Hero */}
+                <section className="mb-24">
+                    <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 p-8 md:p-12 lg:p-16">
+                        {/* Background Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#5227FF]/10 to-transparent pointer-events-none" />
+
+                        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                                    The Marapone <span className="text-[#5227FF]">Ecosystem</span>
+                                </h2>
+                                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                                    Marapone is evolving beyond services. We are building a connected ecosystem bridging AI innovation, strategic consulting, and global logistics execution.
+                                </p>
+                                <div className="flex flex-wrap gap-4">
+                                    <div className="flex items-center gap-2 text-white bg-white/10 px-4 py-2 rounded-full border border-white/10">
+                                        <Globe size={18} className="text-[#22d3ee]" />
+                                        <span>Global Reach</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-white bg-white/10 px-4 py-2 rounded-full border border-white/10">
+                                        <Zap size={18} className="text-[#5227FF]" />
+                                        <span>AI Driven</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Visual Stats Grid */}
+                            <div className="grid grid-cols-2 gap-4">
+                                <StatCard value="300+" label="Partners" icon={<Users className="text-[#5227FF]" />} />
+                                <StatCard value="10+" label="Awards" icon={<Award className="text-amber-400" />} />
+                                <StatCard value="99%" label="Satisfaction" icon={<Zap className="text-[#22d3ee]" />} />
+                                <StatCard value="Global" label="Coverage" icon={<Globe className="text-emerald-400" />} />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Cards Section */}
+                <section className="grid md:grid-cols-2 gap-8 mb-20">
+                    {/* Innovation Card */}
+                    <motion.div
+                        whileHover={{ y: -5 }}
+                        className="group relative rounded-3xl overflow-hidden border border-white/10 bg-slate-900/50 p-8 min-h-[400px] flex flex-col justify-end"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
+                        {/* Abstract background */}
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#5227FF]/20 via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        <div className="relative z-20">
+                            <div className="w-12 h-12 rounded-xl bg-[#5227FF] flex items-center justify-center text-white mb-6 shadow-lg shadow-[#5227FF]/30">
+                                <Zap size={24} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-white mb-3">Accelerate Growth</h3>
+                            <p className="text-slate-300 mb-6">
+                                Our solutions drive innovation, efficiency, and measurable impact for businesses across multiple continents.
                             </p>
-                            <Link to="/services" className="ruixen-hero-button">
-                                <span>Learn More</span>
-                                <svg className="ruixen-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
+                            <Link to="/contact" className="inline-flex items-center text-white font-medium hover:text-[#5227FF] transition-colors">
+                                Partner with us <ArrowRight className="ml-2 w-4 h-4" />
                             </Link>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </motion.div>
 
-            {/* ABOUT SECTION */}
-            <section className="ruixen-about-section">
-                <div className="ruixen-about-content">
-                    {/* Header */}
-                    <div className="ruixen-about-header">
-                        <h1 className="ruixen-about-title">About Us</h1>
-                        <p className="ruixen-about-intro">
-                            Marapone is a passionate team dedicated to creating innovative solutions
-                            that empower businesses to thrive in the digital age through AI, consulting, and global logistics.
-                        </p>
-                    </div>
+                    {/* Future Ready Card */}
+                    <motion.div
+                        whileHover={{ y: -5 }}
+                        className="group relative rounded-3xl overflow-hidden border border-white/10 bg-slate-900/50 p-8 min-h-[400px] flex flex-col justify-end"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-[#22d3ee]/20 via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    {/* THREE CARDS LAYOUT */}
-                    <div className="ruixen-cards-layout">
-                        {/* LEFT BIG IMAGE */}
-                        <div className="ruixen-card-left">
-                            <img
-                                src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_chat_gradient.png"
-                                alt="AI Solutions"
-                                className="ruixen-card-left-image"
-                                width={800}
-                                height={550}
-                            />
+                        <div className="relative z-20">
+                            <div className="w-12 h-12 rounded-xl bg-[#22d3ee] flex items-center justify-center text-slate-900 mb-6 shadow-lg shadow-[#22d3ee]/30">
+                                <Globe size={24} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-white mb-3">Future-Ready Design</h3>
+                            <p className="text-slate-300 mb-6">
+                                Intuitive, scalable solutions for modern businesses combining aesthetics, functionality, and real-world results.
+                            </p>
+                            <Link to="/features" className="inline-flex items-center text-white font-medium hover:text-[#22d3ee] transition-colors">
+                                See our tech <ArrowRight className="ml-2 w-4 h-4" />
+                            </Link>
                         </div>
+                    </motion.div>
+                </section>
 
-                        {/* RIGHT TWO CARDS */}
-                        <div className="ruixen-cards-right">
-                            {/* FIRST CARD */}
-                            <motion.div
-                                whileHover={{ scale: 1.03 }}
-                                transition={{ type: 'spring', stiffness: 250, damping: 20 }}
-                                className="ruixen-card-dark"
-                            >
-                                <motion.div
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.4 }}
-                                    className="ruixen-card-image-wrapper"
-                                >
-                                    <img
-                                        src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_moon.png"
-                                        alt="Innovation"
-                                        className="ruixen-card-image"
-                                        width={600}
-                                        height={400}
-                                    />
-                                    <div className="ruixen-card-gradient-overlay" />
-                                </motion.div>
-                                <div className="ruixen-card-body">
-                                    <h3 className="ruixen-card-heading">Accelerate Growth</h3>
-                                    <p className="ruixen-card-text">
-                                        Our solutions drive innovation, efficiency, and measurable impact for businesses across multiple continents.
-                                    </p>
-                                    <Link to="/services" className="ruixen-card-button">
-                                        Learn More
-                                    </Link>
-                                </div>
-                            </motion.div>
+            </div>
+        </div>
+    );
+}
 
-                            {/* SECOND CARD */}
-                            <motion.div
-                                whileHover={{ scale: 1.03 }}
-                                transition={{ type: 'spring', stiffness: 250, damping: 20 }}
-                                className="ruixen-card-muted"
-                            >
-                                <img
-                                    src="https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/ruixen_hero_gradient.jpg"
-                                    alt="Future Ready"
-                                    className="ruixen-card-muted-image"
-                                    width={600}
-                                    height={400}
-                                />
-                                <div className="ruixen-card-muted-overlay">
-                                    <h3 className="ruixen-card-heading">Future-Ready Design</h3>
-                                    <p className="ruixen-card-text-light">
-                                        Intuitive, scalable solutions for modern businesses combining aesthetics, functionality, and real-world results.
-                                    </p>
-                                </div>
-                            </motion.div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+function StatCard({ value, label, icon }) {
+    return (
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors">
+            <div className="flex justify-center mb-2">{icon}</div>
+            <div className="text-2xl font-bold text-white mb-1">{value}</div>
+            <div className="text-xs text-slate-400 uppercase tracking-wider">{label}</div>
         </div>
     );
 }

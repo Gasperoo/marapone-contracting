@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Layers, Zap, Cpu, Network } from 'lucide-react';
 import RuixenAbout from '../components/RuixenAbout';
 import '../components/LandingPage/LandingPage.css'; // Reuse key styles
-import '../styles/about.css'; // Custom overrides
+import '../components/LandingPage/LandingPage.css'; // Reuse key styles
+
 
 export default function AboutPage() {
   return (

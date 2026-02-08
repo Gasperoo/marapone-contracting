@@ -13,6 +13,7 @@ import { DocumentGenerator } from './DocumentGenerator';
 import { CarbonOptimizer } from './CarbonOptimizer';
 import { SanctionsMonitor } from './SanctionsMonitor';
 import { MarketDashboard } from './MarketDashboard';
+import { LiveTrackingMap } from './LiveTrackingMap';
 import './GasperTool.css';
 
 export default function GasperTool() {
@@ -23,6 +24,7 @@ export default function GasperTool() {
     const renderContent = () => {
         switch (activeTab) {
             case 'dashboard': return <DashboardOverview />;
+            case 'map': return <LiveTrackingMap />;
             case 'chat': return <ChatInterface />;
             case 'classifier': return <HSCodeClassifier />;
             case 'shipments': return <ShipmentDashboard />;

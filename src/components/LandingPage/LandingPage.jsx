@@ -11,7 +11,7 @@ import { LandingPageFAQ } from './LandingPageFAQ';
 import LiveImpact from './LiveImpact';
 import InteractiveGlobe from './InteractiveGlobe';
 
-export default function LandingPage() {
+export default function LandingPage({ comingSoonMode = false }) {
     return (
         <div className="landing-container pt-12">
 
@@ -30,16 +30,16 @@ export default function LandingPage() {
                         animate={{ opacity: 1, y: 0 }}
                     >
                         <Zap size={14} />
-                        Next Gen Supply Chain Intelligence
+                        {comingSoonMode ? "Coming Soon to Public Beta" : "Next Gen Supply Chain Intelligence"}
                     </motion.div>
 
                     <motion.h1
-                        className="hero-title mx-auto text-center"
+                        className="hero-title mx-auto text-center max-w-5xl"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 }}
                     >
-                        Command Your Logistics with <span>Gasper Tool</span>
+                        Command Your Logistics with <span className="whitespace-nowrap">Gasper Tool</span>
                     </motion.h1>
 
                     <motion.p
@@ -51,19 +51,35 @@ export default function LandingPage() {
                         The all-in-one AI platform for real-time tracking, compliance analysis, and digital twin simulation. Transform chaos into clarity.
                     </motion.p>
 
-                    <motion.div
-                        className="cta-group justify-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                    >
-                        <Link to="/gasper" className="btn-primary">
-                            Launch Console <ArrowRight size={20} className="inline ml-2" />
-                        </Link>
-                        <Link to="/contact" className="btn-secondary">
-                            Book Demo
-                        </Link>
-                    </motion.div>
+                    {!comingSoonMode && (
+                        <motion.div
+                            className="cta-group justify-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                        >
+                            <Link to="/gasper" className="btn-primary">
+                                Launch Console <ArrowRight size={20} className="inline ml-2" />
+                            </Link>
+                            <Link to="/contact" className="btn-secondary">
+                                Book Demo
+                            </Link>
+                        </motion.div>
+                    )}
+
+                    {comingSoonMode && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="mt-8 p-4 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm max-w-md mx-auto"
+                        >
+                            <p className="text-slate-300 text-sm">
+                                We are currently in private beta. <br />
+                                Full public launch coming soon.
+                            </p>
+                        </motion.div>
+                    )}
                 </div>
             </section>
 

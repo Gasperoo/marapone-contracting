@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, User, Search, Menu, Home as HomeIcon } from 'lucide-react';
+import { Bell, User, Search, Menu, Home as HomeIcon, Settings, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { DashboardSidebar } from './DashboardSidebar';
 import { DashboardOverview } from './DashboardOverview';
@@ -92,15 +92,46 @@ export default function GasperTool() {
                             <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-red-500 rounded-full shadow-lg shadow-red-500/50"></span>
                         </button>
 
-                        <button className="p-1 rounded-full border border-white/10 hover:border-white/30 transition-colors">
-                            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-xs">
-                                GP
-                            </div>
-                        </button>
+                        <div className="relative">
+                            <button
+                                onClick={() => setActiveTab(activeTab === 'profile' ? 'dashboard' : 'profile')} // Simple toggle for now, ideally a proper dropdown state
+                                className="p-1 rounded-full border border-white/10 hover:border-white/30 transition-colors focus:outline-none focus:ring-2 focus:ring-white/20"
+                            >
+                                <div className="h-8 w-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-cyan-500/20">
+                                    GP
+                                </div>
+                            </button>
+
+                            {/* Dropdown Menu - Conditionally rendered based on a new state we need to add, or we can just make the avatar navigate to a profile tab */}
+                        </div>
                     </div>
                 </header>
 
-                <div className="dashboard-content custom-scrollbar">
+                <div className="dashboard-content custom-scrollbar relative">
+                    {/* We can use a simple overlay for the profile menu effectively */}
+                    {activeTab === 'profile' && (
+                        <div className="absolute top-0 right-0 m-4 w-64 bg-[#0f172a] border border-white/10 rounded-xl shadow-2xl z-50 overflow-hidden backdrop-blur-xl bg-opacity-90">
+                            <div className="p-4 border-b border-white/10">
+                                <h3 className="text-white font-bold">Gasper User</h3>
+                                <p className="text-xs text-white/50">gasper@marapone.com</p>
+                            </div>
+                            <div className="p-2">
+                                <button className="w-full text-left px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg flex items-center gap-2 transition-colors">
+                                    <User size={16} /> Profile
+                                </button>
+                                <button className="w-full text-left px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg flex items-center gap-2 transition-colors">
+                                    <Settings size={16} /> Settings
+                                </button>
+                                <div className="h-px bg-white/10 my-1" />
+                                <button
+                                    onClick={() => navigate('/')}
+                                    className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 rounded-lg flex items-center gap-2 transition-colors"
+                                >
+                                    <LogOut size={16} /> Sign Out
+                                </button>
+                            </div>
+                        </div>
+                    )}
                     {renderContent()}
                 </div>
             </main>

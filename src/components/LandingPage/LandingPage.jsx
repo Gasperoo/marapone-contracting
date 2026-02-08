@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor } from 'lucide-react';
 import './LandingPage.css';
@@ -104,7 +105,14 @@ export default function LandingPage() {
                 </section>
 
                 {/* Features Highlights */}
-                <section id="features" className="features-section">
+                <motion.section
+                    id="features"
+                    className="features-section"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
                     <div className="section-header">
                         <h2 className="section-title">Enterprise-Grade Capabilities</h2>
                         <p className="section-subtitle">Built for modern logistics teams who demand speed, accuracy, and depth.</p>
@@ -151,10 +159,17 @@ export default function LandingPage() {
                             </p>
                         </div>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Industries Section */}
-                <section id="industries" className="industries-section">
+                <motion.section
+                    id="industries"
+                    className="industries-section"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
                     <div className="section-header">
                         <h2 className="section-title">Engineered for Every Sector</h2>
                     </div>
@@ -176,10 +191,16 @@ export default function LandingPage() {
                             <span>Manufacturing</span>
                         </div>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Trust/Stats */}
-                <section className="stats-section">
+                <motion.section
+                    className="stats-section"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                >
                     <div className="stat-item">
                         <div className="stat-value">200+</div>
                         <div className="stat-label">Countries Monitored</div>
@@ -192,7 +213,7 @@ export default function LandingPage() {
                         <div className="stat-value">&lt;2s</div>
                         <div className="stat-label">Data Latency</div>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Final CTA */}
                 <section className="final-cta-section">

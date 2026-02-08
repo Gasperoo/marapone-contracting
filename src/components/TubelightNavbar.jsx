@@ -42,7 +42,10 @@ export function TubelightNavbar({ items, className }) {
                         <Link
                             key={item.name}
                             to={item.url}
-                            onClick={() => setActiveTab(item.name)}
+                            onClick={() => {
+                                setActiveTab(item.name)
+                                if (item.onClick) item.onClick()
+                            }}
                             className={cn(
                                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
                                 "text-white/60 hover:text-[#5227FF]",

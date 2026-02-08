@@ -1,113 +1,96 @@
 import React from 'react';
-import LiquidEther from '../components/LiquidEther';
-import CardStack from '../components/CardStack';
+import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Globe, Layers, Zap, Cpu, Network } from 'lucide-react';
 import RuixenAbout from '../components/RuixenAbout';
-import { getOptimizedSettings } from '../utils/detectWindows';
-import '../styles/page.css';
-import '../styles/about.css';
+import '../components/LandingPage/LandingPage.css'; // Reuse key styles
+import '../styles/about.css'; // Custom overrides
 
 export default function AboutPage() {
-  const isMobile = typeof window !== 'undefined' && (
-    /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
-    window.innerWidth <= 768
-  );
-
-  const settings = getOptimizedSettings(isMobile);
-
-  const partners = [
-    {
-      name: 'Claude AI',
-      url: 'https://claude.ai',
-      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Ctext x="10" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="%23E8DCC5"%3EClaude%3C/text%3E%3C/svg%3E'
-    },
-    {
-      name: 'Searates',
-      url: 'https://www.searates.com',
-      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Ctext x="10" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="%2300A3E0"%3ESeaRates%3C/text%3E%3C/svg%3E'
-    },
-    {
-      name: 'Freightos',
-      url: 'https://www.freightos.com',
-      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Ctext x="10" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="%2300D4AA"%3EFreightos%3C/text%3E%3C/svg%3E'
-    },
-    {
-      name: 'Airrates',
-      url: 'https://www.airrates.com',
-      logo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Ctext x="10" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="600" fill="%234A90E2"%3EAirrates%3C/text%3E%3C/svg%3E'
-    }
-  ];
-
   return (
-    <div className="page-container">
-      <LiquidEther
-        colors={['#5227FF', '#FF9FFC', '#B19EEF']}
-        mouseForce={isMobile ? 18 : 24}
-        cursorSize={isMobile ? 80 : 100}
-        isViscous
-        viscous={30}
-        iterationsViscous={settings.iterationsViscous}
-        iterationsPoisson={settings.iterationsPoisson}
-        resolution={settings.resolution}
-        isBounce={false}
-        autoDemo
-        autoSpeed={settings.autoSpeed}
-        autoIntensity={2.2}
-        takeoverDuration={0.25}
-        autoResumeDelay={3000}
-        autoRampDuration={0.6}
-      />
+    <div className="landing-container pt-20"> {/* Reusing landing-container for background */}
 
-      <div className="page-content">
-        <h1 className="page-title">About Marapone</h1>
-        <p className="page-subtitle">
-          Excellence in AI Solutions, Consulting, and Global Logistics
-        </p>
+      {/* Hero Section */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="hero-title mb-6">
+            About <span className="text-[#5227FF]">Marapone</span>
+          </h1>
+          <p className="hero-subtitle mx-auto max-w-3xl">
+            We are a global ecosystem bridging the gap between advanced AI technology and real-world logistics operations.
+          </p>
+        </motion.div>
+      </div>
 
-        {/* CardStack Section */}
-        <div className="card-swap-wrapper">
-          <CardStack
-            items={[
-              {
-                id: 1,
-                title: '🚀 Who We Are',
-                description: "We're your strategic partner for AI-powered solutions, international trade, and business growth. Operating across multiple continents, we blend cutting-edge tech with real-world expertise.",
-                imageSrc: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
-              },
-              {
-                id: 2,
-                title: '✨ Why Work With Us',
-                description: 'Global reach with multi-continent operations. Innovation-first approach with cutting-edge tech. Partnership-focused for long-term success. Results-driven with measurable outcomes.',
-                imageSrc: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
-              },
-              {
-                id: 3,
-                title: '🤝 Trusted Partners',
-                description: 'We team up with the best in the business: Claude AI, Searates, Freightos, and Airrates to bring you world-class solutions.',
-                imageSrc: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop',
-                href: 'https://claude.ai',
-              },
-              {
-                id: 4,
-                title: '🎯 What We Offer',
-                description: 'AI that actually works. Strategic consulting beyond PowerPoints. Global trade made easy. Marketing that converts. Everything integrates seamlessly.',
-                imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-              },
-            ]}
-            cardWidth={isMobile ? 350 : 520}
-            cardHeight={isMobile ? 400 : 320}
-            maxVisible={7}
-            overlap={0.48}
-            spreadDeg={48}
-            autoAdvance={true}
-            intervalMs={4000}
-            pauseOnHover={true}
-            loop={true}
-          />
+      {/* The Gasper Tool Section */}
+      <section className="py-20 bg-white/5 border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#5227FF]/10 text-[#c084fc] text-sm font-semibold mb-6 border border-[#5227FF]/20">
+                <Zap size={14} />
+                <span>Flagship Product</span>
+              </div>
+              <h2 className="text-4xl font-bold text-white mb-6">The Gasper Tool</h2>
+              <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+                The Gasper Tool is our premier SaaS platform, designed to be the "Digital Nervous System" for modern supply chains. It goes beyond simple tracking to provide predictive intelligence.
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3 text-slate-300">
+                  <div className="mt-1 p-1 bg-green-500/20 rounded text-green-400"><Cpu size={16} /></div>
+                  <span><strong>AI-Powered Analysis:</strong> Compliance and risk checks in milliseconds.</span>
+                </li>
+                <li className="flex items-start gap-3 text-slate-300">
+                  <div className="mt-1 p-1 bg-blue-500/20 rounded text-blue-400"><Network size={16} /></div>
+                  <span><strong>Digital Twin:</strong> Simulate disruptions before they happen.</span>
+                </li>
+                <li className="flex items-start gap-3 text-slate-300">
+                  <div className="mt-1 p-1 bg-purple-500/20 rounded text-purple-400"><Globe size={16} /></div>
+                  <span><strong>Global Vision:</strong> Real-time tracking across sea, air, and rail.</span>
+                </li>
+              </ul>
+              <Link to="/gasper" className="btn-primary inline-flex items-center">
+                Explore Gasper <ArrowRight className="ml-2" size={20} />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              {/* Abstract Representation of the Tool */}
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#5227FF]/20 to-transparent border border-white/10 p-8 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-20"></div>
+                <div className="relative z-10 text-center">
+                  <div className="w-32 h-32 mx-auto bg-black/40 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/10 shadow-[0_0_50px_rgba(82,39,255,0.3)] mb-6">
+                    <Layers size={64} className="text-[#5227FF]" />
+                  </div>
+                  <div className="text-2xl font-bold text-white">Gasper Intelligence</div>
+                  <div className="text-[#c084fc]">v2.0 Live</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
+      </section>
 
-        {/* Ruixen About Section */}
+      {/* Marapone Ecosystem / Ruixen Section */}
+      <div className="py-12">
         <RuixenAbout />
       </div>
+
     </div>
   );
 }

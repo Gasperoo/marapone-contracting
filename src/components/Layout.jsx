@@ -17,8 +17,7 @@ export default function Layout({ children }) {
   const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
     { label: 'Gasper', ariaLabel: 'View our products', link: '/gasper' },
-    { label: 'Packages', ariaLabel: 'View service packages', link: '/packages' },
-    { label: 'Cart', ariaLabel: 'View shopping cart', link: '/cart' },
+    { label: 'Pricing', ariaLabel: 'View pricing plans', link: '/pricing' },
     // Conditional Account/Logout menu item
     isAuthenticated
       ? { label: 'Logout', ariaLabel: 'Logout from account', link: '/login', onClick: handleLogout }

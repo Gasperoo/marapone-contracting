@@ -30,54 +30,8 @@ function StackedCircularFooter() {
                         <Link to="/contact" className="stacked-footer-link">Contact</Link>
                     </nav>
 
-                    {/* Social Icons */}
-                    <div className="stacked-footer-social">
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            className="stacked-footer-social-btn"
-                            onClick={() => window.open('https://instagram.com', '_blank')}
-                        >
-                            <Icons.instagram className="stacked-footer-icon" />
-                            <span className="sr-only">Instagram</span>
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            className="stacked-footer-social-btn"
-                            onClick={() => window.open('https://twitter.com', '_blank')}
-                        >
-                            <Icons.twitter className="stacked-footer-icon" />
-                            <span className="sr-only">X (Twitter)</span>
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            className="stacked-footer-social-btn"
-                            onClick={() => window.open('https://facebook.com', '_blank')}
-                        >
-                            <Icons.facebook className="stacked-footer-icon" />
-                            <span className="sr-only">Facebook</span>
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            className="stacked-footer-social-btn"
-                            onClick={() => window.open('https://github.com', '_blank')}
-                        >
-                            <Icons.github className="stacked-footer-icon" />
-                            <span className="sr-only">GitHub</span>
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            className="stacked-footer-social-btn"
-                            onClick={() => window.open('https://wa.me', '_blank')}
-                        >
-                            <Icons.whatsapp className="stacked-footer-icon" />
-                            <span className="sr-only">WhatsApp</span>
-                        </Button>
-                    </div>
+                    {/* Social Icons Removed */}
+
 
                     {/* Newsletter Subscription */}
                     <div className="stacked-footer-newsletter">

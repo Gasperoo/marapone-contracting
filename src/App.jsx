@@ -6,10 +6,9 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './components/LandingPage/LandingPage';
-import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import GasperPage from './pages/GasperPage';
-import PackagesPage from './pages/PackagesPage';
+import PricingPage from './pages/PricingPage';
 import CartPage from './pages/CartPage';
 import ContactPage from './pages/ContactPage';
 import AccountPage from './pages/AccountPage';
@@ -29,7 +28,7 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/gasper" element={<GasperPage />} />
-                <Route path="/packages" element={<PackagesPage />} />
+                <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/account" element={<AccountPage />} />

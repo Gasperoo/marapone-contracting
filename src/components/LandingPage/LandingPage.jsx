@@ -14,59 +14,60 @@ import InteractiveGlobe from './InteractiveGlobe';
 export default function LandingPage() {
     return (
         <div className="landing-container pt-12">
+
+            {/* Hero Section - Full Width */}
+            <section className="hero-section text-center items-center relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
+                {/* 3D Globe Background */}
+                <div className="absolute inset-0 z-0">
+                    <InteractiveGlobe />
+                </div>
+
+                {/* Hero Content */}
+                <div className="relative z-10 w-full max-w-4xl mx-auto px-4">
+                    <motion.div
+                        className="hero-label inline-flex items-center gap-2 mx-auto"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                    >
+                        <Zap size={14} />
+                        Next Gen Supply Chain Intelligence
+                    </motion.div>
+
+                    <motion.h1
+                        className="hero-title mx-auto text-center"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.1 }}
+                    >
+                        Command Your Logistics with <span>Gasper Tool</span>
+                    </motion.h1>
+
+                    <motion.p
+                        className="hero-subtitle text-center mx-auto"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        The all-in-one AI platform for real-time tracking, compliance analysis, and digital twin simulation. Transform chaos into clarity.
+                    </motion.p>
+
+                    <motion.div
+                        className="cta-group justify-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                    >
+                        <Link to="/gasper" className="btn-primary">
+                            Launch Console <ArrowRight size={20} className="inline ml-2" />
+                        </Link>
+                        <Link to="/contact" className="btn-secondary">
+                            Book Demo
+                        </Link>
+                    </motion.div>
+                </div>
+            </section>
+
             <div className="landing-content">
-
-                {/* Hero Section */}
-                <section className="hero-section text-center items-center relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
-                    {/* 3D Globe Background */}
-                    <div className="absolute inset-0 z-0">
-                        <InteractiveGlobe />
-                    </div>
-
-                    {/* Hero Content */}
-                    <div className="relative z-10 w-full max-w-4xl mx-auto px-4">
-                        <motion.div
-                            className="hero-label inline-flex items-center gap-2 mx-auto"
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                        >
-                            <Zap size={14} />
-                            Next Gen Supply Chain Intelligence
-                        </motion.div>
-
-                        <motion.h1
-                            className="hero-title mx-auto text-center"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.1 }}
-                        >
-                            Command Your Logistics with <span>Gasper Tool</span>
-                        </motion.h1>
-
-                        <motion.p
-                            className="hero-subtitle text-center mx-auto"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.2 }}
-                        >
-                            The all-in-one AI platform for real-time tracking, compliance analysis, and digital twin simulation. Transform chaos into clarity.
-                        </motion.p>
-
-                        <motion.div
-                            className="cta-group justify-center"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            <Link to="/gasper" className="btn-primary">
-                                Launch Console <ArrowRight size={20} className="inline ml-2" />
-                            </Link>
-                            <Link to="/contact" className="btn-secondary">
-                                Book Demo
-                            </Link>
-                        </motion.div>
-                    </div>
-                </section>
 
                 {/* Logo Marquee */}
                 <LogoMarquee />

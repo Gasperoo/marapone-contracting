@@ -29,11 +29,11 @@ export function TubelightNavbar({ items, className }) {
     return (
         <div
             className={cn(
-                "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-[100] mb-6 sm:pt-6",
+                "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-[100] mb-6 sm:pt-4",
                 className,
             )}
         >
-            <div className="flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-lg py-0.5 px-1 rounded-full shadow-lg">
                 {items.map((item) => {
                     const Icon = item.icon
                     const isActive = activeTab === item.name
@@ -47,8 +47,9 @@ export function TubelightNavbar({ items, className }) {
                                 if (item.onClick) item.onClick()
                             }}
                             className={cn(
-                                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                                "relative cursor-pointer text-sm font-semibold px-6 py-1.5 rounded-full transition-colors",
                                 "text-white/60 hover:text-[#5227FF]",
+                                "flex items-center justify-center gap-2",
                                 isActive && "bg-white/10 text-[#5227FF]",
                             )}
                         >

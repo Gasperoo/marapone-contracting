@@ -9,7 +9,7 @@ export default function IndustriesPage() {
         <div className="landing-container pt-24 pb-20">
             <div className="max-w-7xl mx-auto px-6">
 
-                {/* Hero */}
+                {/* Hero Text Only */}
                 <div className="text-center max-w-4xl mx-auto mb-20">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
@@ -26,24 +26,6 @@ export default function IndustriesPage() {
                     >
                         From raw materials to retail shelves, Gasper provides the specialized insights your industry needs.
                     </motion.p>
-
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1 }}
-                        className="rounded-3xl border border-white/10 overflow-hidden shadow-2xl relative mb-16 aspect-[21/9]"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-transparent z-10" />
-                        <img
-                            src="/maritime-shipping.png"
-                            alt="Futuristic Maritime Logistics"
-                            className="w-full h-full object-cover"
-                        />
-                        <div className="absolute bottom-8 left-8 z-20">
-                            <h3 className="text-3xl font-bold text-white mb-2">Maritime Excellence</h3>
-                            <p className="text-cyan-400 font-medium tracking-wider">REAL-TIME PORT INTELLIGENCE</p>
-                        </div>
-                    </motion.div>
                 </div>
 
                 {/* Industries Grid */}

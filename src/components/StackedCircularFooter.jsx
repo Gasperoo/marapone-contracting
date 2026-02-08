@@ -13,47 +13,37 @@ function StackedCircularFooter() {
     };
 
     return (
-        <footer className="stacked-footer">
-            <div className="stacked-footer-container">
-                <div className="stacked-footer-content">
-                    {/* Logo Circle */}
-                    <div className="stacked-footer-logo-circle">
+        <footer className="compact-footer">
+            <div className="compact-footer-container">
+                <div className="compact-footer-main">
+                    <div className="compact-footer-brand">
                         <Icons.logo />
+                        <span>Marapone</span>
                     </div>
 
-                    {/* Navigation Links */}
-                    <nav className="stacked-footer-nav">
-                        <Link to="/" className="stacked-footer-link">Home</Link>
-                        <Link to="/about" className="stacked-footer-link">About</Link>
-                        <Link to="/packages" className="stacked-footer-link">Packages</Link>
-                        <Link to="/products" className="stacked-footer-link">Products</Link>
-                        <Link to="/contact" className="stacked-footer-link">Contact</Link>
+                    <nav className="compact-footer-nav">
+                        <Link to="/features" className="compact-footer-link">Features</Link>
+                        <Link to="/pricing" className="compact-footer-link">Pricing</Link>
+                        <Link to="/about" className="compact-footer-link">About</Link>
+                        <Link to="/contact" className="compact-footer-link">Contact</Link>
                     </nav>
 
-                    {/* Social Icons Removed */}
-
-
-                    {/* Newsletter Subscription */}
-                    <div className="stacked-footer-newsletter">
-                        <form onSubmit={handleSubscribe} className="stacked-footer-form">
-                            <div className="stacked-footer-input-wrapper">
-                                <label htmlFor="email" className="sr-only">Email</label>
-                                <Input
-                                    id="email"
-                                    placeholder="Enter your email"
-                                    type="email"
-                                    className="stacked-footer-input"
-                                    required
-                                />
-                            </div>
-                            <Button type="submit" className="stacked-footer-submit">Subscribe</Button>
-                        </form>
+                    <div className="compact-footer-copyright">
+                        <p>© 2026 Marapone Contracting Inc.</p>
                     </div>
+                </div>
 
-                    {/* Copyright */}
-                    <div className="stacked-footer-copyright">
-                        <p>© 2026 Marapone Contracting Inc. All rights reserved.</p>
-                    </div>
+                <div className="compact-footer-newsletter">
+                    <form onSubmit={handleSubscribe} className="compact-footer-form">
+                        <Input
+                            id="email"
+                            placeholder="Newsletter"
+                            type="email"
+                            className="compact-footer-input"
+                            required
+                        />
+                        <Button type="submit" className="compact-footer-submit">Join</Button>
+                    </form>
                 </div>
             </div>
         </footer>

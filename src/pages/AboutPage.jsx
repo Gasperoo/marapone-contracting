@@ -27,6 +27,45 @@ export default function AboutPage() {
         </motion.div>
       </div>
 
+      {/* Mission & Vision */}
+      <section className="mb-20">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            To democratize access to enterprise-grade supply chain intelligence. We believe that every shipment tells a story, and by decoding that story with AI, we can build a more resilient, efficient, and sustainable global trade network.
+          </p>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="mb-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-white text-center mb-12">Core Values</h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            <ValueCard
+              title="Innovation"
+              description="We don't follow trends; we set them. Continuous improvement is in our DNA."
+              icon={<Zap size={24} className="text-yellow-400" />}
+            />
+            <ValueCard
+              title="Transparency"
+              description="No black boxes. We believe in open data and clear, explainable AI."
+              icon={<Globe size={24} className="text-blue-400" />}
+            />
+            <ValueCard
+              title="Reliability"
+              description="Global trade never stops, and neither do we. 99.99% uptime is our baseline."
+              icon={<Layers size={24} className="text-green-400" />}
+            />
+            <ValueCard
+              title="Sustainability"
+              description="Optimizing routes isn't just about cost; it's about reducing our carbon footprint."
+              icon={<Cpu size={24} className="text-emerald-400" />}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* The Gasper Tool Section */}
       <section className="py-20 bg-white/5 border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6">
@@ -101,6 +140,16 @@ export default function AboutPage() {
         <RuixenAbout />
       </div>
 
+    </div>
+  );
+}
+
+function ValueCard({ title, description, icon }) {
+  return (
+    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+      <div className="mb-4">{icon}</div>
+      <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+      <p className="text-slate-400 text-sm">{description}</p>
     </div>
   );
 }

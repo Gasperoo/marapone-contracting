@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, ArrowRight } from 'lucide-react';
+import { Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, ArrowRight, HardHat, Stethoscope, Plane } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import '../components/LandingPage/LandingPage.css';
 
@@ -28,7 +28,6 @@ export default function IndustriesPage() {
                     </motion.p>
                 </div>
 
-                {/* Industries Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
                     <IndustryCard
                         icon={<Anchor size={32} />}
@@ -66,6 +65,43 @@ export default function IndustriesPage() {
                         description="Monitor oil and gas shipments. React instantly to geopolitical events that affect energy trade routes."
                         color="text-red-400"
                     />
+                    <IndustryCard
+                        icon={<HardHat size={32} />}
+                        title="Construction"
+                        description="Coordinate just-in-time delivery of heavy machinery and materials to keeping large-scale projects on schedule."
+                        color="text-slate-400"
+                    />
+                    <IndustryCard
+                        icon={<Stethoscope size={32} />}
+                        title="Healthcare & Pharma"
+                        description="Maintain cold-chain integrity for sensitive pharmaceuticals with real-time temperature monitoring and deviation alerts."
+                        color="text-teal-400"
+                    />
+                    <IndustryCard
+                        icon={<Plane size={32} />}
+                        title="Aerospace"
+                        description="Track critical AOG (Aircraft on Ground) parts globally to minimize downtime and get fleets back in the air faster."
+                        color="text-sky-400"
+                    />
+                </div>
+
+                {/* Universal Benefits Section */}
+                <div className="mb-24">
+                    <h2 className="text-3xl font-bold text-white text-center mb-12">Universal Benefits</h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <BenefitCard
+                            title="Total Visibility"
+                            description="See every moving part of your supply chain in a single, unified dashboard."
+                        />
+                        <BenefitCard
+                            title="Cost Reduction"
+                            description="Identify inefficiencies and reduce detention & demurrage fees by up to 30%."
+                        />
+                        <BenefitCard
+                            title="Risk Mitigation"
+                            description="Predict disruptions before they happen with AI-driven weather and geopolitical analysis."
+                        />
+                    </div>
                 </div>
 
                 {/* Case Study / Testimonial Placeholder */}
@@ -101,5 +137,14 @@ function IndustryCard({ icon, title, description, color }) {
             <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
             <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
         </motion.div>
+    );
+}
+
+function BenefitCard({ title, description }) {
+    return (
+        <div className="p-8 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.08] transition-colors">
+            <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+            <p className="text-slate-400 leading-relaxed">{description}</p>
+        </div>
     );
 }

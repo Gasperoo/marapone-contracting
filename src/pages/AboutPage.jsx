@@ -71,15 +71,24 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              {/* Abstract Representation of the Tool */}
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#5227FF]/20 to-transparent border border-white/10 p-8 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-20"></div>
-                <div className="relative z-10 text-center">
-                  <div className="w-32 h-32 mx-auto bg-black/40 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/10 shadow-[0_0_50px_rgba(82,39,255,0.3)] mb-6">
-                    <Layers size={64} className="text-[#5227FF]" />
+              {/* Tool Visualization */}
+              <div className="rounded-2xl border border-white/10 overflow-hidden shadow-[0_0_50px_rgba(82,39,255,0.2)] relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#5227FF]/20 to-transparent mix-blend-overlay"></div>
+                <img
+                  src="/global-trade.png"
+                  alt="Gasper Intelligence Global Trade Map"
+                  className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/60 backdrop-blur-md border border-white/10 rounded-xl">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-white font-bold">Gasper Intelligence</div>
+                      <div className="text-[#c084fc] text-xs">v2.0 Live Network Feed</div>
+                    </div>
+                    <div className="px-2 py-1 bg-green-500/20 text-green-400 text-[10px] font-bold rounded animate-pulse">
+                      ACTIVE
+                    </div>
                   </div>
-                  <div className="text-2xl font-bold text-white">Gasper Intelligence</div>
-                  <div className="text-[#c084fc]">v2.0 Live</div>
                 </div>
               </div>
             </motion.div>

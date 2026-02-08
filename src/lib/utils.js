@@ -1,33 +1,33 @@
-import { clsx } from 'clsx';
+import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs) {
-    return clsx(inputs);
+    return twMerge(clsx(inputs))
 }
 
-export function formatCurrency(amount, currency = 'CAD') {
-    return new Intl.NumberFormat('en-CA', {
+export function generateId() {
+    return Math.random().toString(36).substring(2, 9);
+}
+
+export function formatCurrency(amount) {
+    return new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: currency,
+        currency: 'USD',
     }).format(amount);
 }
 
 export function formatDate(date) {
-    const d = typeof date === 'string' ? new Date(date) : date;
-    return new Intl.DateTimeFormat('en-CA', {
-        year: 'numeric',
+    return new Date(date).toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
-    }).format(d);
+        year: 'numeric',
+    });
 }
 
-export function generateId() {
-    return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-}
-
-export function formatPercentage(value, decimals = 2) {
-    return `${value.toFixed(decimals)}%`;
+export function formatPercentage(value) {
+    return `${(value * 100).toFixed(1)}%`;
 }
 
 export function simulateDelay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }

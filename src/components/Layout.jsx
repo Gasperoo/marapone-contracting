@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import StaggeredMenu from './StaggeredMenu';
+import { TubelightNavbar } from './TubelightNavbar';
 import { useAuth } from '../context/AuthContext';
 import { StackedCircularFooter } from './StackedCircularFooter';
+import { Home, Zap, CreditCard, Info, Mail, User, LogOut } from 'lucide-react';
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
@@ -14,35 +15,27 @@ export default function Layout({ children }) {
     navigate('/login');
   };
 
-  const menuItems = [
-    { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-    { label: 'Gasper', ariaLabel: 'View our products', link: '/gasper' },
-    { label: 'Pricing', ariaLabel: 'View pricing plans', link: '/pricing' },
-    // Conditional Account/Logout menu item
+  const navItems = [
+    { name: 'Home', url: '/', icon: Home },
+    { name: 'Features', url: '/features', icon: Zap },
+    { name: 'Pricing', url: '/pricing', icon: CreditCard },
+    { name: 'About', url: '/about', icon: Info },
+    { name: 'Contact', url: '/contact', icon: Mail },
     isAuthenticated
-      ? { label: 'Logout', ariaLabel: 'Logout from account', link: '/login', onClick: handleLogout }
-      : { label: 'Account', ariaLabel: 'Create an account', link: '/account' },
-    { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
-    { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
+      ? { name: 'Logout', url: '/login', icon: LogOut, onClick: handleLogout }
+      : { name: 'Account', url: '/account', icon: User }
   ];
+
+  const isGasperPage = location.pathname.startsWith('/gasper');
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* StaggeredMenu - Fixed overlay */}
-      <StaggeredMenu
-        position="right"
-        items={menuItems}
-        displaySocials={false}
-        displayItemNumbering={true}
-        menuButtonColor="#ffffff"
-        openMenuButtonColor="#000000"
-        changeMenuColorOnOpen={true}
-        colors={['#B19EEF', '#5227FF', '#FF9FFC']}
-        accentColor="#5227FF"
-        isFixed={true}
-        closeOnClickAway={true}
-        isAuthenticated={isAuthenticated}
-      />
+      {/* TubelightNavbar - Fixed overlay, hidden on Gasper Tool */}
+      {!isGasperPage && (
+        <TubelightNavbar
+          items={navItems}
+        />
+      )}
 
       {/* Page content */}
       <div style={{ flex: 1 }}>
@@ -50,7 +43,7 @@ export default function Layout({ children }) {
       </div>
 
       {/* Footer */}
-      {location.pathname !== '/gasper' && <StackedCircularFooter />}
+      {!isGasperPage && <StackedCircularFooter />}
     </div>
   );
 }

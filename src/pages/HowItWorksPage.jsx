@@ -26,6 +26,20 @@ export default function HowItWorksPage() {
                     >
                         How Gasper ingests millions of data points, processes them with advanced AI, and delivers actionable insights in milliseconds.
                     </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        className="rounded-3xl border border-white/10 overflow-hidden shadow-2xl relative group mb-12"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent z-10" />
+                        <img
+                            src="/ai-analysis.png"
+                            alt="AI Logistics Analysis"
+                            className="w-full h-auto transition-transform duration-[2s] group-hover:scale-105"
+                        />
+                    </motion.div>
                 </div>
 
                 {/* Process Steps */}

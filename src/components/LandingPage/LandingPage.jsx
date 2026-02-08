@@ -13,9 +13,6 @@ export default function LandingPage() {
                     <span className="font-bold text-xl tracking-tight ml-2">Marapone</span>
                 </div>
                 <nav className="header-nav hidden md:flex gap-6">
-                    <Link to="/features" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Features</Link>
-                    <Link to="/how-it-works" className="text-sm font-medium text-white/70 hover:text-white transition-colors">How It Works</Link>
-                    <Link to="/industries" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Industries</Link>
                 </nav>
                 <div className="header-actions">
                     <Link to="/login" className="text-sm font-medium text-white/70 hover:text-white transition-colors mr-4">Sign In</Link>
@@ -49,8 +46,20 @@ export default function LandingPage() {
                         </Link>
                     </div>
 
-                    {/* Abstract Visual Background Element */}
-                    <div className="hero-visual"></div>
+                    {/* Hero Visual Section */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        className="hero-visual-container mt-16 relative"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-transparent z-10"></div>
+                        <img
+                            src="/hero-network.png"
+                            alt="Global Logistics Network"
+                            className="w-full max-w-5xl mx-auto rounded-3xl border border-white/10 shadow-[0_0_100px_rgba(82,39,255,0.2)]"
+                        />
+                    </motion.div>
                 </section>
 
                 {/* Trusted By Section */}

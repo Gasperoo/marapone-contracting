@@ -1,5 +1,9 @@
 import { useRef } from 'react';
-import { useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Globe, Layers, Zap, Cpu, Network } from 'lucide-react';
+import RuixenAbout from '../components/RuixenAbout';
+import '../components/LandingPage/LandingPage.css';
 import NetworkMesh from '../components/AboutPage/NetworkMesh';
 
 export default function AboutPage() {

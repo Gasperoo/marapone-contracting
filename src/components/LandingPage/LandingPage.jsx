@@ -13,9 +13,9 @@ export default function LandingPage() {
                     <span className="font-bold text-xl tracking-tight ml-2">Marapone</span>
                 </div>
                 <nav className="header-nav hidden md:flex gap-6">
-                    <a href="#features" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Features</a>
-                    <a href="#how-it-works" className="text-sm font-medium text-white/70 hover:text-white transition-colors">How It Works</a>
-                    <a href="#industries" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Industries</a>
+                    <Link to="/features" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Features</Link>
+                    <Link to="/how-it-works" className="text-sm font-medium text-white/70 hover:text-white transition-colors">How It Works</Link>
+                    <Link to="/industries" className="text-sm font-medium text-white/70 hover:text-white transition-colors">Industries</Link>
                 </nav>
                 <div className="header-actions">
                     <Link to="/login" className="text-sm font-medium text-white/70 hover:text-white transition-colors mr-4">Sign In</Link>

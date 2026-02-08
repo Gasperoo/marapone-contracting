@@ -9,6 +9,9 @@ import LandingPage from './components/LandingPage/LandingPage';
 import AboutPage from './pages/AboutPage';
 import GasperPage from './pages/GasperPage';
 import PricingPage from './pages/PricingPage';
+import FeaturesPage from './pages/FeaturesPage';
+import HowItWorksPage from './pages/HowItWorksPage';
+import IndustriesPage from './pages/IndustriesPage';
 import CartPage from './pages/CartPage';
 import ContactPage from './pages/ContactPage';
 import AccountPage from './pages/AccountPage';
@@ -27,6 +30,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/features" element={<FeaturesPage />} />
+                <Route path="/how-it-works" element={<HowItWorksPage />} />
+                <Route path="/industries" element={<IndustriesPage />} />
                 <Route path="/gasper" element={<GasperPage />} />
                 <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/cart" element={<CartPage />} />

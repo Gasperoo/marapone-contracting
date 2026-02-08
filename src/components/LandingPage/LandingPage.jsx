@@ -40,7 +40,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 }}
                     >
-                        Command Your Logistics with <span className="whitespace-nowrap">Gasper Tool</span>
+                        Command Your Logistics with <span className="whitespace-nowrap">Gasper</span>
                     </motion.h1>
 
                     <motion.p

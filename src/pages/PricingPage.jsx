@@ -110,7 +110,7 @@ export default function PricingPage() {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="hero-title mb-6"
+                        className="hero-title mb-6 mx-auto"
                     >
                         Transparent <span className="text-[#5227FF]">Pricing</span>
                     </motion.h1>
@@ -182,8 +182,8 @@ export default function PricingPage() {
                             <Link
                                 to={tier.ctaLink}
                                 className={`w-full block text-center py-2.5 rounded-lg text-sm font-semibold transition-all mb-8 ${tier.highlight
-                                        ? 'bg-[#5227FF] hover:bg-[#4015ff] text-white shadow-lg shadow-[#5227FF]/25'
-                                        : 'bg-white/10 hover:bg-white/20 text-white'
+                                    ? 'bg-[#5227FF] hover:bg-[#4015ff] text-white shadow-lg shadow-[#5227FF]/25'
+                                    : 'bg-white/10 hover:bg-white/20 text-white'
                                     }`}
                             >
                                 {tier.cta}

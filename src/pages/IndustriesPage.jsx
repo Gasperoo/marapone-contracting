@@ -14,7 +14,7 @@ export default function IndustriesPage() {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="hero-title mb-6"
+                        className="hero-title mb-6 mx-auto"
                     >
                         Powering <span className="text-[#5227FF]">Every Sector</span>
                     </motion.h1>

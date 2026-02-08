@@ -14,7 +14,7 @@ export default function FeaturesPage() {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="hero-title mb-6"
+                        className="hero-title mb-6 mx-auto"
                     >
                         Intelligence <span className="text-[#5227FF]">Beyond Boundaries</span>
                     </motion.h1>

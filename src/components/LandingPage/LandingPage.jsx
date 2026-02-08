@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor } from 'lucide-react';
 import './LandingPage.css';
 
+import { LogoMarquee } from './LogoMarquee';
+import { BentoGrid } from './BentoGrid';
+import { LandingPageTestimonials } from './LandingPageTestimonials';
+import { LandingPageFAQ } from './LandingPageFAQ';
+
 export default function LandingPage() {
     return (
         <div className="landing-container pt-12">
@@ -12,21 +17,21 @@ export default function LandingPage() {
             <div className="landing-content">
 
                 {/* Hero Section */}
-                <section className="hero-section">
+                <section className="hero-section text-center items-center">
                     <div className="hero-label">
                         <Zap size={14} className="inline mr-2" />
                         Next Gen Supply Chain Intelligence
                     </div>
 
-                    <h1 className="hero-title">
-                        Command Your Logistics with <span>Gasper Tool</span>
+                    <h1 className="hero-title mx-auto text-center">
+                        Command You Logistics with <span>Gasper Tool</span>
                     </h1>
 
-                    <p className="hero-subtitle">
+                    <p className="hero-subtitle text-center mx-auto">
                         The all-in-one AI platform for real-time tracking, compliance analysis, and digital twin simulation. Transform chaos into clarity.
                     </p>
 
-                    <div className="cta-group">
+                    <div className="cta-group justify-center">
                         <Link to="/gasper" className="btn-primary">
                             Launch Console <ArrowRight size={20} className="inline ml-2" />
                         </Link>
@@ -35,21 +40,14 @@ export default function LandingPage() {
                         </Link>
                     </div>
 
-                    {/* Hero Visual Removed as requested */}
+                    {/* Dashboard Preview moved to Bento Grid area effectively */}
                 </section>
 
-                {/* Trusted By Section */}
-                <section className="trusted-by-section">
-                    <p className="trusted-label">Trusted by industry leaders worldwide</p>
-                    <div className="logos-grid opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                        {/* Placeholder Company Names/Logos */}
-                        <span className="text-xl font-bold font-mono">MAERSK</span>
-                        <span className="text-xl font-bold font-mono">MSC</span>
-                        <span className="text-xl font-bold font-mono">CMA CGM</span>
-                        <span className="text-xl font-bold font-mono">HAPAG-LLOYD</span>
-                        <span className="text-xl font-bold font-mono">EVERGREEN</span>
-                    </div>
-                </section>
+                {/* Logo Marquee */}
+                <LogoMarquee />
+
+                {/* Bento Grid Features */}
+                <BentoGrid />
 
                 {/* How It Works Section */}
                 <section id="how-it-works" className="how-it-works-section">
@@ -79,62 +77,8 @@ export default function LandingPage() {
                     </div>
                 </section>
 
-                {/* Features Highlights */}
-                <motion.section
-                    id="features"
-                    className="features-section"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <div className="section-header">
-                        <h2 className="section-title">Enterprise-Grade Capabilities</h2>
-                        <p className="section-subtitle">Built for modern logistics teams who demand speed, accuracy, and depth.</p>
-                    </div>
-
-                    <div className="features-grid">
-                        <div className="feature-card">
-                            <div className="feature-icon">
-                                <Activity size={32} />
-                            </div>
-                            <h3 className="feature-title">Real-Time Tracking</h3>
-                            <p className="feature-desc">
-                                Live monitoring of vessels, flights, and rail freight. Visualize your entire supply chain on an interactive 3D globe.
-                            </p>
-                        </div>
-
-                        <div className="feature-card">
-                            <div className="feature-icon">
-                                <TrendingUp size={32} />
-                            </div>
-                            <h3 className="feature-title">Digital Twin Simulation</h3>
-                            <p className="feature-desc">
-                                Simulate port strikes, tariff changes, and route disruptions to predict impacts on cost and delivery timelines.
-                            </p>
-                        </div>
-
-                        <div className="feature-card">
-                            <div className="feature-icon">
-                                <ShieldCheck size={32} />
-                            </div>
-                            <h3 className="feature-title">Compliance & Risk</h3>
-                            <p className="feature-desc">
-                                Automated HS code classification, sanctions screening, and document generation powered by advanced AI models.
-                            </p>
-                        </div>
-
-                        <div className="feature-card">
-                            <div className="feature-icon">
-                                <Grid size={32} />
-                            </div>
-                            <h3 className="feature-title">Market Intelligence</h3>
-                            <p className="feature-desc">
-                                Instant access to commodity prices, currency rates, and public holidays across key global markets.
-                            </p>
-                        </div>
-                    </div>
-                </motion.section>
+                {/* Testimonials */}
+                <LandingPageTestimonials />
 
                 {/* Industries Section */}
                 <motion.section
@@ -168,27 +112,8 @@ export default function LandingPage() {
                     </div>
                 </motion.section>
 
-                {/* Trust/Stats */}
-                <motion.section
-                    className="stats-section"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                >
-                    <div className="stat-item">
-                        <div className="stat-value">200+</div>
-                        <div className="stat-label">Countries Monitored</div>
-                    </div>
-                    <div className="stat-item">
-                        <div className="stat-value">99.9%</div>
-                        <div className="stat-label">Uptime Reliability</div>
-                    </div>
-                    <div className="stat-item">
-                        <div className="stat-value">&lt;2s</div>
-                        <div className="stat-label">Data Latency</div>
-                    </div>
-                </motion.section>
+                {/* FAQ Section */}
+                <LandingPageFAQ />
 
                 {/* Final CTA */}
                 <section className="final-cta-section">

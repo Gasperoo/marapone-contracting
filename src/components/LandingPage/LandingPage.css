@@ -84,7 +84,7 @@
     font-size: 1.25rem;
     color: #94a3b8;
     max-width: 600px;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem auto;
     line-height: 1.6;
     animation: fadeInUp 0.8s ease-out 0.4s backwards;
 }

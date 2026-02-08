@@ -70,7 +70,7 @@ export default function AccountPage() {
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#22d3ee]/20 rounded-full blur-[100px] animate-pulse delay-700" />
       </div>
 
-      <div className="page-content w-full max-w-md relative z-10 px-6">
+      <div className="page-content w-full max-w-md relative z-50 px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Bell, User, Search, Menu, Home as HomeIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { DashboardSidebar } from './DashboardSidebar';

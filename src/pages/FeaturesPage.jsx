@@ -88,20 +88,24 @@ export default function FeaturesPage() {
     );
 }
 
+import TiltCard from '../components/TiltCard';
+
 function FeatureCard({ icon, title, description, details }) {
     return (
-        <motion.div
+        <TiltCard
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-[#5227FF]/50 transition-colors group"
+            className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-[#5227FF]/50 transition-colors group h-full"
         >
-            <div className="w-16 h-16 rounded-xl bg-[#5227FF]/10 flex items-center justify-center text-[#5227FF] mb-6 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-xl bg-[#5227FF]/10 flex items-center justify-center text-[#5227FF] mb-6 group-hover:scale-110 transition-transform"
+                style={{ transform: "translateZ(20px)" }}
+            >
                 {icon}
             </div>
-            <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
-            <p className="text-slate-400 mb-6 leading-relaxed">{description}</p>
-            <ul className="grid grid-cols-2 gap-2">
+            <h3 className="text-2xl font-bold text-white mb-4" style={{ transform: "translateZ(30px)" }}>{title}</h3>
+            <p className="text-slate-400 mb-6 leading-relaxed" style={{ transform: "translateZ(20px)" }}>{description}</p>
+            <ul className="grid grid-cols-2 gap-2" style={{ transform: "translateZ(10px)" }}>
                 {details.map((item, i) => (
                     <li key={i} className="flex items-center text-sm text-slate-300">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#5227FF] mr-2" />
@@ -109,7 +113,7 @@ function FeatureCard({ icon, title, description, details }) {
                     </li>
                 ))}
             </ul>
-        </motion.div>
+        </TiltCard>
     );
 }
 

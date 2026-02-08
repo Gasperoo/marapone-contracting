@@ -34,54 +34,63 @@ export default function IndustriesPage() {
                         title="Maritime Logistics"
                         description="Optimize port calls, track container vessels in real-time, and predict congestion at major hubs. Reduce demurrage and detention costs."
                         color="text-blue-400"
+                        useCase="Vessel Tracking & Fuel Optimization"
                     />
                     <IndustryCard
                         icon={<Truck size={32} />}
                         title="Freight Forwarding"
                         description="Manage multi-modal shipments with ease. Automate documentation (HS Codes) and provide your clients with a white-labeled tracking portal."
                         color="text-green-400"
+                        useCase="Automated Documentation & Client Portal"
                     />
                     <IndustryCard
                         icon={<ShoppingBag size={32} />}
                         title="Retail & E-commerce"
                         description="Ensure stock availability by tracking inventory from factory to warehouse. Predict delays to manage customer expectations proactively."
                         color="text-purple-400"
+                        useCase="Inventory Visibility & Demand Sensing"
                     />
                     <IndustryCard
                         icon={<Factory size={32} />}
                         title="Manufacturing"
                         description="Secure your supply chain against disruptions. Monitor raw material shipments and identify alternative suppliers instantly."
                         color="text-orange-400"
+                        useCase="Supplier Risk Monitoring"
                     />
                     <IndustryCard
                         icon={<Wheat size={32} />}
                         title="Agriculture"
                         description="Track perishable goods with weather overlay integration. Ensure optimal routes to reduce spoilage and maintain freshness."
                         color="text-yellow-400"
+                        useCase="Cold Chain Integrity"
                     />
                     <IndustryCard
                         icon={<Fuel size={32} />}
                         title="Energy & Commodities"
                         description="Monitor oil and gas shipments. React instantly to geopolitical events that affect energy trade routes."
                         color="text-red-400"
+                        useCase="Geopolitical Route Optimization"
                     />
                     <IndustryCard
                         icon={<HardHat size={32} />}
                         title="Construction"
                         description="Coordinate just-in-time delivery of heavy machinery and materials to keeping large-scale projects on schedule."
                         color="text-slate-400"
+                        useCase="Project Logistics"
                     />
                     <IndustryCard
                         icon={<Stethoscope size={32} />}
                         title="Healthcare & Pharma"
                         description="Maintain cold-chain integrity for sensitive pharmaceuticals with real-time temperature monitoring and deviation alerts."
                         color="text-teal-400"
+                        useCase="Temperature Excursion Alerts"
                     />
                     <IndustryCard
                         icon={<Plane size={32} />}
                         title="Aerospace"
                         description="Track critical AOG (Aircraft on Ground) parts globally to minimize downtime and get fleets back in the air faster."
                         color="text-sky-400"
+                        useCase="AOG Parts Tracking"
                     />
                 </div>
 
@@ -123,19 +132,29 @@ export default function IndustriesPage() {
     );
 }
 
-function IndustryCard({ icon, title, description, color }) {
+function IndustryCard({ icon, title, description, color, useCase }) {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-white/20 transition-all cursor-default group"
+            className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-[#5227FF]/50 transition-all cursor-default overflow-hidden"
         >
-            <div className={`mb-6 ${color} transition-transform group-hover:scale-110 duration-300`}>
-                {icon}
+            <div className="relative z-10">
+                <div className={`mb-6 ${color} transition-transform group-hover:scale-110 duration-300`}>
+                    {icon}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+
+            {/* Hover Overlay */}
+            <div className="absolute inset-0 bg-[#5227FF]/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex items-center justify-center p-6 text-center z-20">
+                <div>
+                    <div className="text-white/80 text-xs font-bold uppercase tracking-wider mb-2">Primary Use Case</div>
+                    <div className="text-white font-bold text-lg">{useCase}</div>
+                </div>
+            </div>
         </motion.div>
     );
 }

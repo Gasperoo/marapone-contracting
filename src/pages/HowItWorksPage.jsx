@@ -31,7 +31,20 @@ export default function HowItWorksPage() {
                 {/* Process Steps */}
                 <div className="relative mb-24">
                     {/* Connecting Line (Desktop) */}
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#5227FF] via-[#22d3ee] to-[#5227FF] opacity-30 transform -translate-x-1/2" />
+                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 transform -translate-x-1/2">
+                        <motion.div
+                            className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#5227FF] via-[#22d3ee] to-[#5227FF]"
+                            animate={{
+                                backgroundPosition: ["0% 0%", "0% 200%"]
+                            }}
+                            transition={{
+                                duration: 8,
+                                ease: "linear",
+                                repeat: Infinity
+                            }}
+                            style={{ backgroundSize: "100% 50%" }}
+                        />
+                    </div>
 
                     <ProcessStep
                         number="01"
@@ -39,6 +52,12 @@ export default function HowItWorksPage() {
                         description="We aggregate structured and unstructured data from over 500 sources. This includes live AIS/ADS-B feeds for tracking, port authority APIs for congestion data, local weather stations, and even geopolitical news feeds processed for risk analysis."
                         icon={<Database size={32} />}
                         align="left"
+                        details={[
+                            "REST API & Webhooks",
+                            "EDI (X12, EDIFACT) Parsers",
+                            "Satellite Feeds (Inmarsat/Iridium)",
+                            "IoT Sensor Stream Integration"
+                        ]}
                     />
                     <ProcessStep
                         number="02"
@@ -46,6 +65,12 @@ export default function HowItWorksPage() {
                         description="Our proprietary ML models clean, normalize, and analyze the data. Natural Language Processing (NLP) extracts risks from news, while Predictive Models forecast delays. We turn chaos into structured, queryable intelligence."
                         icon={<Cpu size={32} />}
                         align="right"
+                        details={[
+                            "Entity Recognition (NER)",
+                            "Time-Series Forecasting",
+                            "Anomaly Detection Models",
+                            "Automated Data Cleansing"
+                        ]}
                     />
                     <ProcessStep
                         number="03"
@@ -53,6 +78,12 @@ export default function HowItWorksPage() {
                         description="The refined data feeds into a live simulation of your supply chain. This 'Digital Twin' allows us to run thousands of scenarios to find the optimal path, predicting bottlenecks before they occur."
                         icon={<Server size={32} />}
                         align="left"
+                        details={[
+                            "Monte Carlo Simulations",
+                            "Network Graph Optimization",
+                            "Inventory Flow Modeling",
+                            "Cost-Benefit Analysis Engine"
+                        ]}
                     />
                     <ProcessStep
                         number="04"
@@ -60,6 +91,12 @@ export default function HowItWorksPage() {
                         description="Finally, insights are delivered via our dashboard or API. You get alerts, updated ETAs, and cost-saving recommendations instantly. We don't just show you data; we tell you what to do with it."
                         icon={<BarChart3 size={32} />}
                         align="right"
+                        details={[
+                            "Real-time Push Notifications",
+                            "Customizable Dashboards",
+                            "Automated Reporting",
+                            "ERP Write-back Capability"
+                        ]}
                     />
                 </div>
 
@@ -134,33 +171,74 @@ export default function HowItWorksPage() {
     );
 }
 
-function ProcessStep({ number, title, description, icon, align }) {
+import { AnimatePresence } from 'motion/react';
+import { useState } from 'react';
+
+function ProcessStep({ number, title, description, icon, align, details }) {
     const isLeft = align === 'left';
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
-        <motion.div
-            initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className={`flex flex-col md:flex-row items-center gap-8 mb-16 md:mb-0 ${isLeft ? 'md:flex-row-reverse' : ''}`}
-        >
-            <div className={`md:w-1/2 flex ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}>
-                <div className={`
-                    relative p-8 rounded-2xl bg-slate-900/50 border border-white/10 max-w-lg
-                    ${isLeft ? 'md:mr-12 md:text-right' : 'md:ml-12 md:text-left'}
-                 `}>
-                    <div className="text-[#5227FF] text-sm font-bold tracking-widest mb-2">STEP {number}</div>
+        <div className={`flex flex-col md:flex-row items-center gap-8 mb-16 md:mb-0 relative z-10 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
+            {/* Content Side */}
+            <motion.div
+                initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className={`md:w-1/2 flex ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
+            >
+                <div
+                    onClick={() => setIsOpen(!isOpen)}
+                    className={`
+                        relative p-8 rounded-2xl bg-slate-900/80 border border-white/10 max-w-lg cursor-pointer hover:border-[#5227FF]/50 transition-all duration-300
+                        ${isLeft ? 'md:mr-12 text-left' : 'md:ml-12 text-left'}
+                        ${isOpen ? 'border-[#5227FF] bg-slate-800/80' : ''}
+                    `}
+                >
+                    <div className="text-[#5227FF] text-sm font-bold tracking-widest mb-2 flex items-center justify-between">
+                        <span>STEP {number}</span>
+                        <motion.span
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            className="text-white/50"
+                        >
+                            ▼
+                        </motion.span>
+                    </div>
                     <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
-                    <p className="text-slate-400">{description}</p>
+                    <p className="text-slate-400 mb-4">{description}</p>
+
+                    <AnimatePresence>
+                        {isOpen && (
+                            <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                className="overflow-hidden"
+                            >
+                                <div className="pt-4 mt-4 border-t border-white/10">
+                                    <h4 className="text-sm font-semibold text-white mb-3">Technical Specs:</h4>
+                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                        {details && details.map((detail, idx) => (
+                                            <li key={idx} className="text-xs text-slate-300 flex items-center">
+                                                <div className="w-1 h-1 bg-[#22d3ee] rounded-full mr-2" />
+                                                {detail}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Center Icon */}
-            <div className="relative z-10 w-16 h-16 rounded-full bg-[#0f172a] border-2 border-[#5227FF] flex items-center justify-center text-white shadow-[0_0_20px_rgba(82,39,255,0.4)]">
+            <div className={`relative z-10 w-16 h-16 rounded-full bg-[#0f172a] border-2 flex items-center justify-center text-white shadow-[0_0_20px_rgba(82,39,255,0.4)] transition-colors duration-300 ${isOpen ? 'border-[#22d3ee] text-[#22d3ee]' : 'border-[#5227FF]'}`}>
                 {icon}
             </div>
 
             <div className="md:w-1/2" /> {/* Spacer */}
-        </motion.div>
+        </div>
     );
 }
 

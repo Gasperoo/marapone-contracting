@@ -1,15 +1,19 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Layers, Zap, Cpu, Network } from 'lucide-react';
-import RuixenAbout from '../components/RuixenAbout';
-import '../components/LandingPage/LandingPage.css'; // Reuse key styles
-import '../components/LandingPage/LandingPage.css'; // Reuse key styles
-
+import { useRef } from 'react';
+import { useScroll, useTransform } from 'motion/react';
+import NetworkMesh from '../components/AboutPage/NetworkMesh';
 
 export default function AboutPage() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const timelineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <div className="landing-container pt-20"> {/* Reusing landing-container for background */}
+    <div className="landing-container pt-20 relative overflow-hidden" ref={containerRef}>
+      <NetworkMesh />
 
       {/* Hero Section */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 text-center">
@@ -28,7 +32,7 @@ export default function AboutPage() {
       </div>
 
       {/* Mission & Vision */}
-      <section className="mb-20">
+      <section className="mb-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
           <p className="text-lg text-slate-300 leading-relaxed">
@@ -37,8 +41,47 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Living Timeline */}
+      <section className="mb-32 relative z-10 max-w-5xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-white text-center mb-16">Our Journey</h2>
+        <div className="relative">
+          {/* Central Line */}
+          <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2">
+            <motion.div
+              style={{ height: timelineHeight }}
+              className="w-full bg-gradient-to-b from-[#5227FF] via-cyan-400 to-[#5227FF]"
+            />
+          </div>
+
+          <TimelineItem
+            year="2019"
+            title="Inception"
+            description="Founded in Zurich by a team of logistics veterans and data scientists."
+            align="left"
+          />
+          <TimelineItem
+            year="2021"
+            title="AI Core V1"
+            description="Launched our first predictive model, accurately forecasting port congestion with 85% accuracy."
+            align="right"
+          />
+          <TimelineItem
+            year="2023"
+            title="Global Expansion"
+            description="Opened offices in Singapore and San Francisco. Partnered with 50 major carriers."
+            align="left"
+          />
+          <TimelineItem
+            year="2026"
+            title="Gasper Launch"
+            description="Released the Gasper total visibility platform to the public. Changing the game forever."
+            align="right"
+          />
+        </div>
+      </section>
+
       {/* Core Values */}
-      <section className="mb-24 px-6">
+      <section className="mb-24 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-white text-center mb-12">Core Values</h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -67,7 +110,7 @@ export default function AboutPage() {
       </section>
 
       {/* The Gasper Tool Section */}
-      <section className="py-20 bg-white/5 border-y border-white/5">
+      <section className="py-20 bg-white/5 border-y border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -136,11 +179,34 @@ export default function AboutPage() {
       </section>
 
       {/* Marapone Ecosystem / Ruixen Section */}
-      <div className="py-12">
+      <div className="py-12 relative z-10">
         <RuixenAbout />
       </div>
 
     </div>
+  );
+}
+
+function TimelineItem({ year, title, description, align }) {
+  const isLeft = align === 'left';
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      className={`flex flex-col md:flex-row items-center mb-16 relative ${isLeft ? 'md:flex-row-reverse' : ''}`}
+    >
+      <div className={`md:w-1/2 w-full pl-12 md:pl-0 ${isLeft ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
+        <div className="text-[#5227FF] font-bold text-4xl mb-2">{year}</div>
+        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+        <p className="text-slate-400">{description}</p>
+      </div>
+
+      {/* Dot */}
+      <div className="absolute left-[16px] md:left-1/2 top-0 w-3 h-3 bg-[#22d3ee] rounded-full border-2 border-slate-900 md:-translate-x-1/2 shadow-[0_0_10px_#22d3ee]" />
+
+      <div className="md:w-1/2" />
+    </motion.div>
   );
 }
 

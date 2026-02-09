@@ -3,6 +3,7 @@
 
 const ENABLE_REAL_TRACKING = import.meta.env.VITE_ENABLE_REAL_TRACKING === 'true';
 const AISSTREAM_API_KEY = import.meta.env.VITE_AISSTREAM_API_KEY;
+const AISHUB_USERNAME = import.meta.env.VITE_AISHUB_USERNAME;
 const OPENSKY_USERNAME = import.meta.env.VITE_OPENSKY_NETWORK_USERNAME;
 const OPENSKY_PASSWORD = import.meta.env.VITE_OPENSKY_NETWORK_PASSWORD;
 
@@ -18,20 +19,150 @@ class TrackedVehicle {
     }
 }
 
-// ===== VESSEL TRACKING (AISStream.io) =====
+// ===== VESSEL TRACKING (AISStream.io + MyShipTracking.com + AISHub) =====
 class VesselTracker {
     constructor() {
         this.ws = null;
         this.vessels = new Map();
         this.reconnectAttempts = 0;
         this.maxReconnectAttempts = 5;
+        this.useMyShipTracking = !!import.meta.env.VITE_MYSHIPTRACKING_API_KEY;
+        this.useAISHub = !!AISHUB_USERNAME;
+        this.myShipTrackingInterval = null;
+        this.aisHubInterval = null;
     }
 
     connect() {
-        if (!AISSTREAM_API_KEY) {
-            console.warn('AISStream API key not configured. Vessel tracking disabled.');
-            return;
+        if (this.useMyShipTracking) {
+            this.connectMyShipTracking();
+        } else if (this.useAISHub) {
+            this.connectAISHub();
+        } else if (AISSTREAM_API_KEY) {
+            this.connectAISStream();
+        } else {
+            console.warn('No vessel tracking API configured.');
         }
+    }
+
+    // MyShipTracking.com REST API (Paid)
+    async connectMyShipTracking() {
+        console.log('✅ Using MyShipTracking.com API');
+
+        const fetchVessels = async () => {
+            try {
+                const zones = [
+                    { lat1: 20, lon1: -130, lat2: 50, lon2: -60 },  // North America
+                    { lat1: 35, lon1: -10, lat2: 60, lon2: 30 },    // Europe
+                    { lat1: -10, lon1: 90, lat2: 40, lon2: 140 },   // Asia-Pacific
+                ];
+
+                for (const zone of zones) {
+                    const url = `https://api.myshiptracking.com/vessels/zone?lat1=${zone.lat1}&lon1=${zone.lon1}&lat2=${zone.lat2}&lon2=${zone.lon2}`;
+
+                    const response = await fetch(url, {
+                        headers: {
+                            'x-api-key': import.meta.env.VITE_MYSHIPTRACKING_API_KEY
+                        }
+                    });
+
+                    if (!response.ok) continue;
+                    const data = await response.json();
+                    this.processMyShipTrackingData(data);
+                }
+            } catch (error) {
+                console.error('Error fetching MyShipTracking data:', error);
+            }
+        };
+
+        await fetchVessels();
+        this.myShipTrackingInterval = setInterval(fetchVessels, 30000);
+    }
+
+    processMyShipTrackingData(data) {
+        if (!data || !Array.isArray(data)) return;
+
+        data.forEach(vessel => {
+            const mmsi = vessel.MMSI;
+            if (!mmsi || !vessel.LAT || !vessel.LON) return;
+
+            this.vessels.set(mmsi, new TrackedVehicle(
+                `VESSEL-${mmsi}`,
+                'vessel',
+                vessel.LAT,
+                vessel.LON,
+                {
+                    mmsi, name: vessel.SHIPNAME || `Vessel ${mmsi}`,
+                    speed: vessel.SPEED || 0, heading: vessel.COURSE || 0,
+                    destination: vessel.DESTINATION || 'Unknown',
+                    shipType: vessel.TYPE_NAME || 'Cargo', icon: '🚢'
+                }
+            ));
+        });
+
+        if (this.vessels.size > 500) {
+            const keys = Array.from(this.vessels.keys()).slice(0, this.vessels.size - 500);
+            keys.forEach(k => this.vessels.delete(k));
+        }
+    }
+
+    // AISHub.net REST API (Free with AIS feed contribution)
+    async connectAISHub() {
+        console.log('✅ Using AISHub.net API');
+
+        const fetchVessels = async () => {
+            try {
+                const zones = [
+                    { latmin: 20, latmax: 50, lonmin: -130, lonmax: -60 },
+                    { latmin: 35, latmax: 60, lonmin: -10, lonmax: 30 },
+                    { latmin: -10, latmax: 40, lonmin: 90, lonmax: 140 },
+                ];
+
+                for (const zone of zones) {
+                    const url = `https://data.aishub.net/ws.php?username=${AISHUB_USERNAME}&format=1&output=json&compress=0&latmin=${zone.latmin}&latmax=${zone.latmax}&lonmin=${zone.lonmin}&lonmax=${zone.lonmax}`;
+                    const response = await fetch(url);
+                    if (!response.ok) continue;
+                    const data = await response.json();
+                    this.processAISHubData(data);
+                }
+            } catch (error) {
+                console.error('Error fetching AISHub data:', error);
+            }
+        };
+
+        await fetchVessels();
+        this.aisHubInterval = setInterval(fetchVessels, 60000);
+    }
+
+    processAISHubData(data) {
+        if (!data || !Array.isArray(data)) return;
+
+        data.forEach(vessel => {
+            const mmsi = vessel.MMSI;
+            if (!mmsi || !vessel.LATITUDE || !vessel.LONGITUDE) return;
+
+            this.vessels.set(mmsi, new TrackedVehicle(
+                `VESSEL-${mmsi}`,
+                'vessel',
+                vessel.LATITUDE,
+                vessel.LONGITUDE,
+                {
+                    mmsi, name: vessel.NAME || `Vessel ${mmsi}`,
+                    speed: vessel.SOG || 0, heading: vessel.COG || 0,
+                    destination: vessel.DEST || 'Unknown',
+                    shipType: vessel.TYPE || 'Cargo', icon: '🚢'
+                }
+            ));
+        });
+
+        if (this.vessels.size > 500) {
+            const keys = Array.from(this.vessels.keys()).slice(0, this.vessels.size - 500);
+            keys.forEach(k => this.vessels.delete(k));
+        }
+    }
+
+    // AISStream.io WebSocket API (Free)
+    connectAISStream() {
+        if (!AISSTREAM_API_KEY) return;
 
         try {
             this.ws = new WebSocket('wss://stream.aisstream.io/v0/stream');
@@ -39,72 +170,49 @@ class VesselTracker {
             this.ws.onopen = () => {
                 console.log('✅ Connected to AISStream.io');
                 this.reconnectAttempts = 0;
-
-                // Subscribe to global vessel positions
-                const subscriptionMessage = {
+                this.ws.send(JSON.stringify({
                     APIKey: AISSTREAM_API_KEY,
-                    BoundingBoxes: [
-                        [[-90, -180], [90, 180]] // Global coverage
-                    ],
-                    FilterMessageTypes: ['PositionReport'] // Only position updates
-                };
-
-                this.ws.send(JSON.stringify(subscriptionMessage));
+                    BoundingBoxes: [[[-90, -180], [90, 180]]],
+                    FilterMessageTypes: ['PositionReport']
+                }));
             };
 
             this.ws.onmessage = (event) => {
                 try {
                     const data = JSON.parse(event.data);
                     if (data.MessageType === 'PositionReport') {
-                        this.processVesselPosition(data);
+                        this.processAISStreamPosition(data);
                     }
                 } catch (error) {
                     console.error('Error parsing AIS message:', error);
                 }
             };
 
-            this.ws.onerror = (error) => {
-                console.error('AISStream WebSocket error:', error);
-            };
-
-            this.ws.onclose = () => {
-                console.log('AISStream connection closed');
-                this.attemptReconnect();
-            };
+            this.ws.onerror = (error) => console.error('AISStream error:', error);
+            this.ws.onclose = () => this.attemptReconnect();
         } catch (error) {
             console.error('Failed to connect to AISStream:', error);
         }
     }
 
-    processVesselPosition(data) {
+    processAISStreamPosition(data) {
         const msg = data.Message?.PositionReport;
-        if (!msg) return;
-
         const mmsi = data.MetaData?.MMSI;
-        const lat = msg.Latitude;
-        const lng = msg.Longitude;
+        if (!msg || !mmsi || !msg.Latitude || !msg.Longitude) return;
 
-        if (!mmsi || !lat || !lng) return;
-
-        const vessel = new TrackedVehicle(
+        this.vessels.set(mmsi, new TrackedVehicle(
             `VESSEL-${mmsi}`,
             'vessel',
-            lat,
-            lng,
+            msg.Latitude,
+            msg.Longitude,
             {
-                mmsi: mmsi,
-                name: data.MetaData?.ShipName || `Vessel ${mmsi}`,
-                speed: msg.Sog || 0, // Speed over ground
-                heading: msg.Cog || 0, // Course over ground
+                mmsi, name: data.MetaData?.ShipName || `Vessel ${mmsi}`,
+                speed: msg.Sog || 0, heading: msg.Cog || 0,
                 destination: data.MetaData?.Destination || 'Unknown',
-                shipType: data.MetaData?.ShipType || 'Cargo',
-                icon: '🚢'
+                shipType: data.MetaData?.ShipType || 'Cargo', icon: '🚢'
             }
-        );
+        ));
 
-        this.vessels.set(mmsi, vessel);
-
-        // Limit stored vessels to prevent memory issues
         if (this.vessels.size > 500) {
             const oldestKey = this.vessels.keys().next().value;
             this.vessels.delete(oldestKey);
@@ -115,8 +223,7 @@ class VesselTracker {
         if (this.reconnectAttempts < this.maxReconnectAttempts) {
             this.reconnectAttempts++;
             const delay = Math.min(1000 * Math.pow(2, this.reconnectAttempts), 30000);
-            console.log(`Reconnecting to AISStream in ${delay}ms (attempt ${this.reconnectAttempts})`);
-            setTimeout(() => this.connect(), delay);
+            setTimeout(() => this.connectAISStream(), delay);
         }
     }
 
@@ -129,15 +236,17 @@ class VesselTracker {
             this.ws.close();
             this.ws = null;
         }
+        if (this.myShipTrackingInterval) clearInterval(this.myShipTrackingInterval);
+        if (this.aisHubInterval) clearInterval(this.aisHubInterval);
     }
 }
 
-// ===== FLIGHT TRACKING (OpenSky Network) =====
+// ===== FLIGHT TRACKING (OpenSky Network with Cargo Filter) =====
 class FlightTracker {
     constructor() {
         this.flights = new Map();
         this.lastFetch = 0;
-        this.fetchInterval = 10000; // 10 seconds (respects rate limits)
+        this.fetchInterval = 10000;
         this.isLoading = false;
     }
 
@@ -154,17 +263,12 @@ class FlightTracker {
             const url = 'https://opensky-network.org/api/states/all';
             const options = {};
 
-            // Add authentication if credentials provided
             if (OPENSKY_USERNAME && OPENSKY_PASSWORD) {
-                const auth = btoa(`${OPENSKY_USERNAME}:${OPENSKY_PASSWORD}`);
-                options.headers = { 'Authorization': `Basic ${auth}` };
+                options.headers = { 'Authorization': `Basic ${btoa(`${OPENSKY_USERNAME}:${OPENSKY_PASSWORD}`)}` };
             }
 
             const response = await fetch(url, options);
-
-            if (!response.ok) {
-                throw new Error(`OpenSky API error: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`OpenSky API error: ${response.status}`);
 
             const data = await response.json();
             this.processFlightData(data);
@@ -181,39 +285,40 @@ class FlightTracker {
         if (!data.states) return;
 
         this.flights.clear();
+        let cargoCount = 0, otherCount = 0;
 
-        // Process up to 200 flights to avoid overwhelming the map
-        const states = data.states.slice(0, 200);
+        data.states.slice(0, 300).forEach(state => {
+            const [icao24, callsign, origin_country, , , longitude, latitude, baro_altitude, on_ground, velocity, true_track, vertical_rate, , geo_altitude] = state;
 
-        states.forEach(state => {
-            const [
-                icao24, callsign, origin_country, time_position, last_contact,
-                longitude, latitude, baro_altitude, on_ground, velocity,
-                true_track, vertical_rate, sensors, geo_altitude, squawk, spi, position_source
-            ] = state;
-
-            // Skip grounded aircraft
             if (on_ground || !latitude || !longitude) return;
 
-            const flight = new TrackedVehicle(
+            const cleanCallsign = callsign?.trim() || icao24;
+            const isCargo =
+                cleanCallsign.includes('CARGO') || cleanCallsign.includes('FDX') ||
+                cleanCallsign.includes('UPS') || cleanCallsign.includes('DHL') ||
+                cleanCallsign.includes('ABX') || cleanCallsign.includes('GTI') ||
+                cleanCallsign.includes('CKS') || cleanCallsign.match(/^[A-Z]{3}\d{1,4}F$/);
+
+            if (!isCargo && otherCount > 50) return;
+            if (isCargo) cargoCount++; else otherCount++;
+
+            this.flights.set(icao24, new TrackedVehicle(
                 `FLIGHT-${icao24}`,
                 'flight',
                 latitude,
                 longitude,
                 {
-                    icao24: icao24,
-                    callsign: callsign?.trim() || icao24,
-                    origin_country: origin_country,
+                    icao24, callsign: cleanCallsign, origin_country,
                     altitude: Math.round(baro_altitude || geo_altitude || 0),
                     velocity: Math.round(velocity || 0),
                     heading: Math.round(true_track || 0),
                     vertical_rate: vertical_rate || 0,
-                    icon: '✈️'
+                    isCargo, icon: isCargo ? '📦' : '✈️'
                 }
-            );
-
-            this.flights.set(icao24, flight);
+            ));
         });
+
+        console.log(`✈️ Loaded ${cargoCount} cargo flights, ${otherCount} other flights`);
     }
 
     getFlights() {
@@ -229,36 +334,26 @@ class RailTracker {
     }
 
     initializeTrains() {
-        // Major North American freight corridors
         const routes = [
-            // BNSF Northern Transcon
             { start: { name: 'Seattle', lat: 47.6062, lng: -122.3321 }, end: { name: 'Chicago', lat: 41.8781, lng: -87.6298 } },
-            // Union Pacific Sunset Route
             { start: { name: 'Los Angeles', lat: 34.0522, lng: -118.2437 }, end: { name: 'New Orleans', lat: 29.9511, lng: -90.0715 } },
-            // CSX I-95 Corridor
             { start: { name: 'Miami', lat: 25.7617, lng: -80.1918 }, end: { name: 'New York', lat: 40.7128, lng: -74.0060 } },
-            // Norfolk Southern Crescent Corridor
             { start: { name: 'Atlanta', lat: 33.7490, lng: -84.3880 }, end: { name: 'Washington DC', lat: 38.9072, lng: -77.0369 } },
-            // Canadian Pacific
             { start: { name: 'Vancouver', lat: 49.2827, lng: -123.1207 }, end: { name: 'Toronto', lat: 43.6532, lng: -79.3832 } },
         ];
 
         routes.forEach((route, idx) => {
-            const train = {
-                id: `RAIL-${1000 + idx}`,
-                type: 'rail',
-                start: route.start,
-                end: route.end,
-                progress: Math.random(),
-                speed: 0.08, // Realistic freight speed
+            this.trains.push({
+                id: `RAIL-${1000 + idx}`, type: 'rail',
+                start: route.start, end: route.end,
+                progress: Math.random(), speed: 0.08,
                 metadata: {
                     name: `Freight ${1000 + idx}`,
                     carrier: ['BNSF', 'UP', 'CSX', 'NS', 'CP'][idx],
                     cargo: ['Containers', 'Coal', 'Grain', 'Automobiles', 'Intermodal'][idx],
                     icon: '🚆'
                 }
-            };
-            this.trains.push(train);
+            });
         });
     }
 
@@ -267,29 +362,16 @@ class RailTracker {
             train.progress += train.speed * 0.005;
             if (train.progress >= 1) {
                 train.progress = 0;
-                // Swap start/end for round trip
-                const temp = train.start;
-                train.start = train.end;
-                train.end = temp;
+                [train.start, train.end] = [train.end, train.start];
             }
 
-            const lat = train.start.lat + (train.end.lat - train.start.lat) * train.progress;
-            const lng = train.start.lng + (train.end.lng - train.start.lng) * train.progress;
-
-            train.lat = lat;
-            train.lng = lng;
+            train.lat = train.start.lat + (train.end.lat - train.start.lat) * train.progress;
+            train.lng = train.start.lng + (train.end.lng - train.start.lng) * train.progress;
         });
 
         return this.trains.map(t => new TrackedVehicle(
-            t.id,
-            t.type,
-            t.lat,
-            t.lng,
-            {
-                ...t.metadata,
-                destination: t.end.name,
-                origin: t.start.name
-            }
+            t.id, t.type, t.lat, t.lng,
+            { ...t.metadata, destination: t.end.name, origin: t.start.name }
         ));
     }
 
@@ -313,7 +395,6 @@ class RealTimeTrackingService {
         if (ENABLE_REAL_TRACKING) {
             console.log('🌐 Initializing Real-Time Tracking Service');
             this.vesselTracker.connect();
-            // Flight data fetched on-demand to respect rate limits
         } else {
             console.log('📍 Real-time tracking disabled. Using simulated data.');
         }
@@ -323,7 +404,7 @@ class RealTimeTrackingService {
 
     async getAllVehicles() {
         if (!ENABLE_REAL_TRACKING) {
-            return this.railTracker.getTrains(); // Fallback to simulated rail only
+            return this.railTracker.getTrains();
         }
 
         const vessels = this.vesselTracker.getVessels();

@@ -75,10 +75,53 @@ GasperTool integrates with free APIs to provide real-time tracking for:
 
 ### Priority
 - If both AISStream and MyShipTracking keys are configured, **MyShipTracking takes priority**
+- If AISHub username is configured, **AISHub takes priority over AISStream**
+- Priority order: MyShipTracking > AISHub > AISStream
 - MyShipTracking provides better coverage in some coastal regions
+- AISHub provides good regional coverage (requires AIS feed contribution)
 - AISStream provides better global satellite coverage
 
-## 3. OpenSky Network (Flight Tracking)
+## 3. AISHub.net (Vessel Tracking - Free with Contribution)
+
+### Features
+- Real-time vessel tracking with REST API
+- **Free** when you contribute an AIS feed
+- Good regional coverage
+- JSON/XML/CSV output formats
+- Historical data and vessel search
+
+### Setup Steps
+
+1. **Set Up an AIS Feeder**
+   - You need to contribute AIS data to get free API access
+   - Requirements:
+     - Coverage of at least 10 vessels
+     - 90% uptime
+     - Maximum 60-second downsampling
+     - Maximum 10-second delay for AIS messages
+   - Visit: https://www.aishub.net/how-to-share
+
+2. **Register Your Feed**
+   - Once your feeder meets requirements, register at https://www.aishub.net
+   - You'll receive a username for API access
+
+3. **Add to Environment Variables**
+   ```bash
+   VITE_AISHUB_USERNAME=your_aishub_username_here
+   VITE_ENABLE_REAL_TRACKING=true
+   ```
+
+### Rate Limits
+- **Free with contribution**: Generous limits for contributors
+- **Refresh interval**: 60 seconds (recommended)
+- **Coverage**: Primarily terrestrial AIS from your region and other contributors
+
+### Note
+- This is the best **free** option if you can set up an AIS feeder
+- Requires technical setup (AIS receiver + software)
+- Great for regional/coastal coverage
+
+## 4. OpenSky Network (Flight Tracking with Cargo Filter)
 
 ### Features
 - Real-time flight positions worldwide

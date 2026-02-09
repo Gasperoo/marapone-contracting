@@ -5,7 +5,7 @@ import {
     Database, Cpu, Server, BarChart3,
     Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, HardHat, Stethoscope, Plane,
     CheckCircle2, ArrowRight, Mail, Layers, AlertTriangle, MonitorPlay,
-    Leaf, Wind, DollarSign, Star, Clock, ArrowRightLeft, Ship
+    Leaf, Wind, DollarSign, Star, Clock, ArrowRightLeft, Ship, Users, Building2, X, Check, Sparkles, Award, TrendingDown
 } from 'lucide-react';
 import TiltCard from '../TiltCard';
 
@@ -477,6 +477,247 @@ function SustainabilitySection() {
     );
 }
 
+// --- Testimonials Section ---
+function TestimonialsSection() {
+    const testimonials = [
+        {
+            quote: "Gasper reduced our supply chain disruptions by 67% in the first quarter. The AI predictions are uncannily accurate.",
+            author: "Sarah Chen",
+            title: "VP of Operations",
+            company: "GlobalTech Logistics",
+            logo: "🌐"
+        },
+        {
+            quote: "We cut freight costs by $2.3M annually by switching to Gasper's optimized routing. The ROI was immediate.",
+            author: "Marcus Rodriguez",
+            title: "Chief Supply Chain Officer",
+            company: "RetailCo International",
+            logo: "🛒"
+        },
+        {
+            quote: "The digital twin feature saved us during the Suez Canal crisis. We rerouted 40 shipments before they were affected.",
+            author: "Yuki Tanaka",
+            title: "Logistics Director",
+            company: "Pacific Manufacturing",
+            logo: "⚙️"
+        }
+    ];
+
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
+            <div className="text-center mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="inline-block px-4 py-1.5 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#5227FF] text-sm font-medium mb-4"
+                >
+                    <Users size={14} className="inline mr-2" />
+                    Trusted by Industry Leaders
+                </motion.div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What Our Beta Users Say</h2>
+                <p className="text-slate-400 max-w-2xl mx-auto">Real results from companies already using Gasper in private beta.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+                {testimonials.map((testimonial, idx) => (
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="relative p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl hover:border-[#5227FF]/30 transition-all group"
+                    >
+                        <div className="absolute top-0 left-0 text-[#5227FF]/10 text-8xl font-serif leading-none select-none">"</div>
+                        <div className="relative z-10">
+                            <div className="flex items-center gap-1 mb-4">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star key={i} size={14} className="text-yellow-500 fill-yellow-500" />
+                                ))}
+                            </div>
+                            <p className="text-slate-300 text-sm leading-relaxed mb-6 italic">{testimonial.quote}</p>
+                            <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                                <div className="w-10 h-10 rounded-full bg-[#5227FF]/20 flex items-center justify-center text-2xl">
+                                    {testimonial.logo}
+                                </div>
+                                <div>
+                                    <div className="text-white font-semibold text-sm">{testimonial.author}</div>
+                                    <div className="text-slate-400 text-xs">{testimonial.title}</div>
+                                    <div className="text-slate-500 text-xs">{testimonial.company}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+    );
+}
+
+// --- Technology Stack Section ---
+function TechnologyStackSection() {
+    const techCategories = [
+        {
+            category: "Data Sources",
+            icon: <Database size={20} />,
+            technologies: ["AIS Streams", "Port APIs", "Weather Data", "IoT Sensors"]
+        },
+        {
+            category: "AI & Machine Learning",
+            icon: <Cpu size={20} />,
+            technologies: ["TensorFlow", "PyTorch", "Time-Series Forecasting", "NLP Models"]
+        },
+        {
+            category: "Infrastructure",
+            icon: <Server size={20} />,
+            technologies: ["AWS", "Kubernetes", "Redis", "PostgreSQL"]
+        },
+        {
+            category: "Security",
+            icon: <Lock size={20} />,
+            technologies: ["SOC 2 Type II", "End-to-End Encryption", "GDPR Compliant", "ISO 27001"]
+        }
+    ];
+
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Built on Enterprise-Grade Technology</h2>
+                <p className="text-slate-400 max-w-2xl mx-auto">Powered by the most advanced tools in the industry.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {techCategories.map((cat, idx) => (
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl hover:border-[#22d3ee]/30 transition-all"
+                    >
+                        <div className="w-12 h-12 rounded-lg bg-[#22d3ee]/10 flex items-center justify-center text-[#22d3ee] mb-4">
+                            {cat.icon}
+                        </div>
+                        <h3 className="text-white font-bold mb-4">{cat.category}</h3>
+                        <ul className="space-y-2">
+                            {cat.technologies.map((tech, i) => (
+                                <li key={i} className="text-sm text-slate-400 flex items-center">
+                                    <div className="w-1 h-1 bg-[#22d3ee] rounded-full mr-2" />
+                                    {tech}
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+    );
+}
+
+// --- Comparison Table Section ---
+function ComparisonTableSection() {
+    const comparisons = [
+        { feature: "Real-Time Tracking", traditional: false, gasper: true },
+        { feature: "AI-Powered Predictions", traditional: false, gasper: true },
+        { feature: "Digital Twin Simulation", traditional: false, gasper: true },
+        { feature: "Automated Compliance", traditional: false, gasper: true },
+        { feature: "Multi-Modal Integration", traditional: true, gasper: true },
+        { feature: "Setup Time", traditional: "Weeks", gasper: "Minutes" },
+        { feature: "Cost Structure", traditional: "Per Shipment", gasper: "Flat Rate" }
+    ];
+
+    return (
+        <section className="px-6 max-w-5xl mx-auto py-20 relative overflow-hidden">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Gasper?</h2>
+                <p className="text-slate-400">See how we stack up against traditional logistics tools.</p>
+            </div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl overflow-hidden"
+            >
+                <div className="grid grid-cols-3 bg-white/5 border-b border-white/10">
+                    <div className="p-4"></div>
+                    <div className="p-4 text-center text-slate-400 text-sm font-semibold">Traditional Tools</div>
+                    <div className="p-4 text-center text-[#5227FF] text-sm font-semibold flex items-center justify-center gap-2">
+                        <Sparkles size={16} />
+                        Gasper
+                    </div>
+                </div>
+                {comparisons.map((item, idx) => (
+                    <div key={idx} className="grid grid-cols-3 border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
+                        <div className="p-4 text-white font-medium text-sm">{item.feature}</div>
+                        <div className="p-4 flex items-center justify-center">
+                            {typeof item.traditional === 'boolean' ? (
+                                item.traditional ? (
+                                    <Check size={20} className="text-slate-500" />
+                                ) : (
+                                    <X size={20} className="text-red-500/50" />
+                                )
+                            ) : (
+                                <span className="text-slate-400 text-sm">{item.traditional}</span>
+                            )}
+                        </div>
+                        <div className="p-4 flex items-center justify-center">
+                            {typeof item.gasper === 'boolean' ? (
+                                item.gasper ? (
+                                    <Check size={20} className="text-[#5227FF]" />
+                                ) : (
+                                    <X size={20} className="text-red-500/50" />
+                                )
+                            ) : (
+                                <span className="text-[#5227FF] text-sm font-semibold">{item.gasper}</span>
+                            )}
+                        </div>
+                    </div>
+                ))}
+            </motion.div>
+        </section>
+    );
+}
+
+// --- What You'll Get Section ---
+function WhatYouGetSection() {
+    const benefits = [
+        { icon: <Zap size={24} />, title: "Early Access", description: "Be among the first to experience Gasper when we launch" },
+        { icon: <DollarSign size={24} />, title: "Founding Member Pricing", description: "Lock in 40% off for life as a beta waitlist member" },
+        { icon: <Award size={24} />, title: "Priority Support", description: "Direct line to our engineering team for the first 6 months" },
+        { icon: <Users size={24} />, title: "Exclusive Community", description: "Join our private Slack with other supply chain innovators" }
+    ];
+
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What You'll Get</h2>
+                <p className="text-slate-400">Join the waitlist today and unlock exclusive benefits.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {benefits.map((benefit, idx) => (
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="p-6 rounded-2xl bg-gradient-to-br from-[#5227FF]/10 to-transparent border border-[#5227FF]/20 backdrop-blur-xl hover:border-[#5227FF]/40 transition-all group"
+                    >
+                        <div className="w-14 h-14 rounded-xl bg-[#5227FF]/20 flex items-center justify-center text-[#5227FF] mb-4 group-hover:scale-110 transition-transform">
+                            {benefit.icon}
+                        </div>
+                        <h3 className="text-white font-bold text-lg mb-2">{benefit.title}</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed">{benefit.description}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+    );
+}
+
 // --- Rate Check Deep Dive Section ---
 function RateCheckSection() {
     return (
@@ -669,11 +910,17 @@ export default function ComingSoonContent() {
                 </div>
             </section>
 
+            {/* --- COMPARISON TABLE --- */}
+            <ComparisonTableSection />
+
             {/* --- NEW DEEP DIVE SECTIONS --- */}
             <DigitalTwinSection />
             <RiskMonitorSection />
             <SustainabilitySection />
             <RateCheckSection />
+
+            {/* --- TECHNOLOGY STACK --- */}
+            <TechnologyStackSection />
 
             {/* --- HOW IT WORKS SECTION --- */}
             <section className="px-6 max-w-7xl mx-auto relative py-20">
@@ -779,19 +1026,30 @@ export default function ComingSoonContent() {
                 </div>
             </section>
 
+            {/* --- TESTIMONIALS --- */}
+            <TestimonialsSection />
+
+            {/* --- WHAT YOU'LL GET --- */}
+            <WhatYouGetSection />
+
             {/* --- WAITLIST SECTION --- */}
+
             <section className="px-6 max-w-3xl mx-auto pb-32 text-center">
                 <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#5227FF]/20 to-purple-900/20 border border-white/10 backdrop-blur-xl relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
                     <div className="relative z-10">
                         <Zap size={40} className="mx-auto text-[#5227FF] mb-6" />
                         <h2 className="text-3xl font-bold text-white mb-4">Secure Your Access</h2>
-                        <p className="text-slate-300 mb-8">
-                            Gasper is currently in private beta. Join the waitlist to be notificated when we open to the public.
+                        <p className="text-slate-300 mb-2">
+                            Gasper is currently in private beta. Join the waitlist to be notified when we open to the public.
+                        </p>
+                        <p className="text-[#22d3ee] text-sm font-semibold mb-8">
+                            <Users size={14} className="inline mr-1" />
+                            2,547 supply chain leaders joined this week
                         </p>
 
-                        <form className="max-w-md mx-auto relative flex flex-col md:flex-row gap-4">
-                            <div className="relative flex-grow">
+                        <form className="max-w-lg mx-auto space-y-4">
+                            <div className="relative">
                                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                                 <input
                                     type="email"
@@ -799,9 +1057,34 @@ export default function ComingSoonContent() {
                                     className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all placeholder:text-slate-500"
                                 />
                             </div>
+
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <div className="relative">
+                                    <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                                    <select className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all appearance-none cursor-pointer">
+                                        <option value="">Your Role</option>
+                                        <option value="logistics">Logistics Manager</option>
+                                        <option value="operations">Operations Director</option>
+                                        <option value="supply-chain">Supply Chain VP</option>
+                                        <option value="ceo">C-Level Executive</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div className="relative">
+                                    <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                                    <select className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all appearance-none cursor-pointer">
+                                        <option value="">Company Size</option>
+                                        <option value="1-50">1-50 employees</option>
+                                        <option value="51-200">51-200 employees</option>
+                                        <option value="201-1000">201-1,000 employees</option>
+                                        <option value="1000+">1,000+ employees</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <button
                                 type="button"
-                                className="bg-[#5227FF] hover:bg-[#4316db] text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-lg shadow-[#5227FF]/25 flex items-center justify-center whitespace-nowrap"
+                                className="w-full bg-[#5227FF] hover:bg-[#4316db] text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-lg shadow-[#5227FF]/25 flex items-center justify-center"
                             >
                                 Request Access <ArrowRight size={18} className="ml-2" />
                             </button>
@@ -812,6 +1095,7 @@ export default function ComingSoonContent() {
                     </div>
                 </div>
             </section>
+
 
         </div>
     );

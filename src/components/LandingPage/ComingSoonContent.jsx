@@ -4,7 +4,8 @@ import {
     Activity, TrendingUp, ShieldCheck, Grid, Zap, Globe, Lock,
     Database, Cpu, Server, BarChart3,
     Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, HardHat, Stethoscope, Plane,
-    CheckCircle2, ArrowRight, Mail, Layers, AlertTriangle, MonitorPlay
+    CheckCircle2, ArrowRight, Mail, Layers, AlertTriangle, MonitorPlay,
+    Leaf, Wind, DollarSign, Star, Clock, ArrowRightLeft, Ship
 } from 'lucide-react';
 import TiltCard from '../TiltCard';
 
@@ -371,7 +372,240 @@ function RiskMonitorSection() {
     );
 }
 
-// --- Main Content Component ---
+// --- Sustainability Deep Dive Section ---
+function SustainabilitySection() {
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-wider mb-6">
+                        <Leaf size={12} className="mr-2" /> GREEN LOGISTICS
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Decarbonize Your Supply Chain</h2>
+                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                        Sustainability isn't just a buzzword—it's a competitive advantage. Gasper automatically calculates the carbon footprint of every shipment and suggests eco-friendly alternatives.
+                    </p>
+
+                    <div className="space-y-6">
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex-shrink-0 flex items-center justify-center text-emerald-500">
+                                <Wind size={24} />
+                            </div>
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Carbon Footprint Analysis</h4>
+                                <p className="text-slate-400 text-sm">Granular CO2e reporting for every route, carrier, and mode of transport compliant with GLEC framework.</p>
+                            </div>
+                        </div>
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-teal-500/10 flex-shrink-0 flex items-center justify-center text-teal-500">
+                                <Ship size={24} />
+                            </div>
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Modal Shift Opportunities</h4>
+                                <p className="text-slate-400 text-sm">Identify opportunities to switch from Air to Ocean or Rail to save costs and reduce emissions by up to 90%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Visual Representation */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                >
+                    <div className="relative rounded-2xl bg-black/40 border border-white/10 p-6 overflow-hidden">
+                        <div className="absolute top-0 right-0 p-4 opacity-20">
+                            <Leaf size={100} className="text-emerald-500" />
+                        </div>
+
+                        <h4 className="text-slate-400 text-sm mb-6 uppercase tracking-wider font-semibold">Emissions Comparison</h4>
+
+                        <div className="space-y-6">
+                            <div>
+                                <div className="flex justify-between text-sm mb-2 text-white">
+                                    <span>Air Freight (Shanghai - Toronto)</span>
+                                    <span className="font-mono text-red-400">4,250 kg CO2e</span>
+                                </div>
+                                <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: '90%' }}
+                                        transition={{ duration: 1.5, ease: "easeOut" }}
+                                        className="h-full bg-red-500"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className="flex justify-between text-sm mb-2 text-white">
+                                    <span>Ocean Freight (Shanghai - Toronto)</span>
+                                    <span className="font-mono text-emerald-400">180 kg CO2e</span>
+                                </div>
+                                <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: '15%' }}
+                                        transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+                                        className="h-full bg-emerald-500"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 pt-6 border-t border-white/10">
+                            <div className="flex items-center justify-between">
+                                <div>
+                                    <p className="text-xs text-slate-400 uppercase">Potential Savings</p>
+                                    <p className="text-2xl font-bold text-emerald-400">-4,070 kg</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-xs text-slate-400 uppercase">Offset Cost</p>
+                                    <p className="text-2xl font-bold text-white">$12.50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+
+// --- Rate Check Deep Dive Section ---
+function RateCheckSection() {
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden text-right">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+                {/* Visual Side (Left) */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="relative order-2 md:order-1"
+                >
+                    <div className="relative">
+                        {/* Background Card (Stack Effect) */}
+                        <div className="absolute top-4 left-4 right-[-16px] bottom-[-16px] bg-white/5 border border-white/5 rounded-2xl z-0 transform rotate-2"></div>
+
+                        {/* Main Card */}
+                        <div className="relative z-10 bg-[#0f1014] border border-white/10 rounded-2xl p-6 shadow-2xl">
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="text-white font-semibold">Rate Comparison</h3>
+                                <div className="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Last Updated: 2m ago</div>
+                            </div>
+
+                            <div className="space-y-3">
+                                {/* Option 1: AI Recommended */}
+                                <div className="p-4 rounded-xl bg-gradient-to-r from-blue-900/20 to-indigo-900/20 border border-blue-500/30 relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl-lg">AI RECOMMENDED</div>
+                                    <div className="flex justify-between items-center relative z-10">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded bg-white flex items-center justify-center">
+                                                <img src="/freightos-logo.png" alt="C1" className="w-8 opacity-80" onError={(e) => e.target.style.display = 'none'} />
+                                                <Ship size={20} className="text-black absolute" style={{ opacity: 0.2 }} />
+                                            </div>
+                                            <div className="text-left">
+                                                <div className="text-white font-bold text-sm">Maersk Line</div>
+                                                <div className="text-blue-300 text-xs flex items-center gap-1"><Star size={10} fill="currentColor" /> 98% Reliability</div>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="text-white font-bold text-lg">$2,450</div>
+                                            <div className="text-slate-400 text-xs">24 Days</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Option 2 */}
+                                <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div className="flex justify-between items-center">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded bg-white flex items-center justify-center">
+                                                <Ship size={20} className="text-black/50" />
+                                            </div>
+                                            <div className="text-left">
+                                                <div className="text-white font-bold text-sm">MSC</div>
+                                                <div className="text-slate-400 text-xs">94% Reliability</div>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="text-white font-bold text-lg">$2,380</div>
+                                            <div className="text-slate-400 text-xs">28 Days</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Option 3 */}
+                                <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                                    <div className="flex justify-between items-center">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded bg-white flex items-center justify-center">
+                                                <Plane size={20} className="text-black/50" />
+                                            </div>
+                                            <div className="text-left">
+                                                <div className="text-white font-bold text-sm">DHL Express</div>
+                                                <div className="text-slate-400 text-xs">99% Reliability</div>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="text-white font-bold text-lg">$8,450</div>
+                                            <div className="text-slate-400 text-xs">3 Days</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Content Side (Right) */}
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="order-1 md:order-2 flex flex-col items-end"
+                >
+                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold tracking-wider mb-6">
+                        <DollarSign size={12} className="mr-2" /> COST OPTIMIZATION
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Smart Rate Comparison</h2>
+                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                        Stop overpaying for freight. Gasper aggregates real-time rates from hundreds of carriers, highlighting the best balance of speed, cost, and reliability for every shipment.
+                    </p>
+
+                    <div className="space-y-6 text-right w-full">
+                        <div className="flex gap-4 justify-end">
+                            <div className="text-right">
+                                <h4 className="text-white font-bold text-lg mb-1">Instant Quotes</h4>
+                                <p className="text-slate-400 text-sm">Get bookable spot rates in seconds, not days. Compare across air, ocean, and rail instantly.</p>
+                            </div>
+                            <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex-shrink-0 flex items-center justify-center text-blue-500">
+                                <Clock size={24} />
+                            </div>
+                        </div>
+                        <div className="flex gap-4 justify-end">
+                            <div className="text-right">
+                                <h4 className="text-white font-bold text-lg mb-1">Hidden Fee Detection</h4>
+                                <p className="text-slate-400 text-sm">Our AI scans for surcharges and hidden fees, ensuring the price you see is the price you pay.</p>
+                            </div>
+                            <div className="w-12 h-12 rounded-lg bg-indigo-500/10 flex-shrink-0 flex items-center justify-center text-indigo-500">
+                                <ShieldCheck size={24} />
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+
+
 
 export default function ComingSoonContent() {
     return (
@@ -438,6 +672,8 @@ export default function ComingSoonContent() {
             {/* --- NEW DEEP DIVE SECTIONS --- */}
             <DigitalTwinSection />
             <RiskMonitorSection />
+            <SustainabilitySection />
+            <RateCheckSection />
 
             {/* --- HOW IT WORKS SECTION --- */}
             <section className="px-6 max-w-7xl mx-auto relative py-20">

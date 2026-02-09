@@ -11,6 +11,8 @@ import { LandingPageFAQ } from './LandingPageFAQ';
 import LiveImpact from './LiveImpact';
 import InteractiveGlobe from './InteractiveGlobe';
 import ComingSoonContent from './ComingSoonContent';
+import ComingSoonHeroBackground from './ComingSoonHeroBackground';
+import ComingSoonFooter from './ComingSoonFooter';
 
 export default function LandingPage({ comingSoonMode = false }) {
     return (
@@ -18,9 +20,9 @@ export default function LandingPage({ comingSoonMode = false }) {
 
             {/* Hero Section - Full Width */}
             <section className="hero-section text-center items-center relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
-                {/* 3D Globe Background */}
+                {/* Background: Globe (Standard) or Particles (Coming Soon) */}
                 <div className="absolute inset-0 z-0">
-                    <InteractiveGlobe />
+                    {comingSoonMode ? <ComingSoonHeroBackground /> : <InteractiveGlobe />}
                 </div>
 
                 {/* Hero Content */}
@@ -177,6 +179,8 @@ export default function LandingPage({ comingSoonMode = false }) {
                 </section>
 
             </div>
+            {/* Coming Soon Footer */}
+            {comingSoonMode && <ComingSoonFooter />}
         </div>
     );
 }

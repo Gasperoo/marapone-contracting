@@ -4,7 +4,7 @@ import {
     Activity, TrendingUp, ShieldCheck, Grid, Zap, Globe, Lock,
     Database, Cpu, Server, BarChart3,
     Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, HardHat, Stethoscope, Plane,
-    CheckCircle2, ArrowRight, Mail
+    CheckCircle2, ArrowRight, Mail, Layers, AlertTriangle, MonitorPlay
 } from 'lucide-react';
 import TiltCard from '../TiltCard';
 
@@ -223,6 +223,154 @@ function IndustryCard({ icon, title, description, color, useCase }) {
     );
 }
 
+// --- Digital Twin Deep Dive Section ---
+function DigitalTwinSection() {
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#22d3ee]/30 bg-[#22d3ee]/10 text-[#22d3ee] text-xs font-bold tracking-wider mb-6">
+                        <Layers size={12} className="mr-2" /> SIMULATION ENGINE
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Predict the Unpredictable with Digital Twins</h2>
+                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                        Stop reacting to supply chain disruptions. Gasper creates a living, breathing virtual replica of your entire logistics network, allowing you to stress-test your operations against thousands of variables.
+                    </p>
+
+                    <div className="space-y-6">
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-[#22d3ee]/10 flex-shrink-0 flex items-center justify-center text-[#22d3ee]">
+                                <MonitorPlay size={24} />
+                            </div>
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Scenario Modeling</h4>
+                                <p className="text-slate-400 text-sm">Simulate port strikes, weather events, or supplier failures to see their downstream impact instantly.</p>
+                            </div>
+                        </div>
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-[#5227FF]/10 flex-shrink-0 flex items-center justify-center text-[#5227FF]">
+                                <BarChart3 size={24} />
+                            </div>
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Cost Impact Analysis</h4>
+                                <p className="text-slate-400 text-sm">Quantify the financial risk of every decision before you make it. Optimize inventory holding costs vs. service levels.</p>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Abstract Visual Representation */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                >
+                    <div className="aspect-square rounded-full border border-white/10 relative flex items-center justify-center">
+                        <div className="absolute inset-0 border border-[#22d3ee]/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                        <div className="absolute inset-8 border border-[#5227FF]/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+
+                        {/* Central Node */}
+                        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#5227FF] opacity-20 blur-xl absolute"></div>
+                        <div className="relative z-10 text-center">
+                            <div className="text-4xl font-bold text-white mb-2">99.4%</div>
+                            <div className="text-xs text-[#22d3ee] uppercase tracking-widest">Model Accuracy</div>
+                        </div>
+
+                        {/* Floating Nodes */}
+                        <div className="absolute top-10 left-10 w-3 h-3 bg-[#22d3ee] rounded-full shadow-[0_0_10px_#22d3ee]"></div>
+                        <div className="absolute bottom-20 right-10 w-2 h-2 bg-[#5227FF] rounded-full shadow-[0_0_10px_#5227FF]"></div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+
+// --- Risk Monitor Deep Dive Section ---
+function RiskMonitorSection() {
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden text-right">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+                {/* Visual Side (Left) */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="relative order-2 md:order-1"
+                >
+                    <div className="relative rounded-2xl bg-black/40 border border-white/10 aspect-video overflow-hidden">
+                        {/* Radar Scan Effect */}
+                        <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,rgba(0,0,0,0)_50%,rgba(239,68,68,0.1)_100%)] animate-[spin_4s_linear_infinite]"></div>
+                        <div className="absolute inset-0 grid grid-cols-6 grid-rows-4 opacity-10">
+                            {[...Array(24)].map((_, i) => (
+                                <div key={i} className="border border-red-500/20"></div>
+                            ))}
+                        </div>
+
+                        {/* Alert Blips */}
+                        <div className="absolute top-1/4 left-1/3 flex items-center gap-2">
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                            </span>
+                            <span className="text-xs text-red-400 font-mono bg-black/80 px-1 rounded">Congestion Alert</span>
+                        </div>
+                        <div className="absolute bottom-1/3 right-1/4 flex items-center gap-2">
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                            </span>
+                            <span className="text-xs text-orange-400 font-mono bg-black/80 px-1 rounded">Port Strike Risk</span>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Content Side (Right) */}
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="order-1 md:order-2 flex flex-col items-end"
+                >
+                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-bold tracking-wider mb-6">
+                        <AlertTriangle size={12} className="mr-2" /> GLOBAL WATCHTOWER
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Advanced Risk Detection</h2>
+                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                        The world is volatile. Gasper acts as your always-on watchtower, scanning thousands of data sources for geopolitical events, weather disruptions, and infrastructure failures.
+                    </p>
+
+                    <div className="space-y-6 text-right w-full">
+                        <div className="flex gap-4 justify-end">
+                            <div className="text-right">
+                                <h4 className="text-white font-bold text-lg mb-1">Geopolitical Intelligence</h4>
+                                <p className="text-slate-400 text-sm">Real-time alerts on sanctions, trade wars, and regional instability that could affect your routes.</p>
+                            </div>
+                            <div className="w-12 h-12 rounded-lg bg-red-500/10 flex-shrink-0 flex items-center justify-center text-red-500">
+                                <Globe size={24} />
+                            </div>
+                        </div>
+                        <div className="flex gap-4 justify-end">
+                            <div className="text-right">
+                                <h4 className="text-white font-bold text-lg mb-1">Infrastructure Monitoring</h4>
+                                <p className="text-slate-400 text-sm">Detect crane failures, canal blockages, and terminal congestion before your cargo gets stuck.</p>
+                            </div>
+                            <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex-shrink-0 flex items-center justify-center text-orange-500">
+                                <Anchor size={24} />
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+
 // --- Main Content Component ---
 
 export default function ComingSoonContent() {
@@ -286,6 +434,10 @@ export default function ComingSoonContent() {
                     />
                 </div>
             </section>
+
+            {/* --- NEW DEEP DIVE SECTIONS --- */}
+            <DigitalTwinSection />
+            <RiskMonitorSection />
 
             {/* --- HOW IT WORKS SECTION --- */}
             <section className="px-6 max-w-7xl mx-auto relative py-20">

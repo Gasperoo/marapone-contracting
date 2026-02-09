@@ -5,7 +5,8 @@ import {
     Database, Cpu, Server, BarChart3,
     Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, HardHat, Stethoscope, Plane,
     CheckCircle2, ArrowRight, Mail, Layers, AlertTriangle, MonitorPlay,
-    Leaf, Wind, DollarSign, Star, Clock, ArrowRightLeft, Ship, Users, Building2, X, Check, Sparkles, Award, TrendingDown
+    Leaf, Wind, DollarSign, Star, Clock, ArrowRightLeft, Ship, Users, Building2, X, Check, Sparkles, Award, TrendingDown,
+    Bot, MessageSquare, Brain, FileText, Send, MapPin
 } from 'lucide-react';
 import TiltCard from '../TiltCard';
 
@@ -478,28 +479,27 @@ function SustainabilitySection() {
 }
 
 // --- Testimonials Section ---
-function TestimonialsSection() {
-    const testimonials = [
+function GasperAIBotSection() {
+    const features = [
         {
-            quote: "Gasper reduced our supply chain disruptions by 67% in the first quarter. The AI predictions are uncannily accurate.",
-            author: "Sarah Chen",
-            title: "VP of Operations",
-            company: "GlobalTech Logistics",
-            logo: "🌐"
+            icon: <MessageSquare size={24} />,
+            title: "Natural Language Queries",
+            description: "Ask questions in plain English and get instant, accurate answers about your shipments, routes, and logistics."
         },
         {
-            quote: "We cut freight costs by $2.3M annually by switching to Gasper's optimized routing. The ROI was immediate.",
-            author: "Marcus Rodriguez",
-            title: "Chief Supply Chain Officer",
-            company: "RetailCo International",
-            logo: "🛒"
+            icon: <Zap size={24} />,
+            title: "Real-Time Insights",
+            description: "Get live updates on vessel positions, delays, weather impacts, and route optimizations without searching through dashboards."
         },
         {
-            quote: "The digital twin feature saved us during the Suez Canal crisis. We rerouted 40 shipments before they were affected.",
-            author: "Yuki Tanaka",
-            title: "Logistics Director",
-            company: "Pacific Manufacturing",
-            logo: "⚙️"
+            icon: <Brain size={24} />,
+            title: "Predictive Intelligence",
+            description: "Our AI proactively alerts you to potential disruptions and suggests optimal alternatives before issues arise."
+        },
+        {
+            icon: <FileText size={24} />,
+            title: "Automated Documentation",
+            description: "Generate shipping documents, compliance reports, and customs paperwork with simple conversational commands."
         }
     ];
 
@@ -509,50 +509,136 @@ function TestimonialsSection() {
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="inline-block px-4 py-1.5 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#5227FF] text-sm font-medium mb-4"
+                    className="inline-block px-4 py-1.5 rounded-full border border-[#22d3ee]/30 bg-[#22d3ee]/10 text-[#22d3ee] text-sm font-medium mb-4"
                 >
-                    <Users size={14} className="inline mr-2" />
-                    Trusted by Industry Leaders
+                    <Bot size={14} className="inline mr-2" />
+                    AI-Powered Assistant
                 </motion.div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What Our Beta Users Say</h2>
-                <p className="text-slate-400 max-w-2xl mx-auto">Real results from companies already using Gasper in private beta.</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meet Your Gasper AI Bot</h2>
+                <p className="text-slate-400 max-w-2xl mx-auto">
+                    Your intelligent logistics assistant that understands your supply chain and speaks your language.
+                </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-                {testimonials.map((testimonial, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="relative p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl hover:border-[#5227FF]/30 transition-all group"
-                    >
-                        <div className="absolute top-0 left-0 text-[#5227FF]/10 text-8xl font-serif leading-none select-none">"</div>
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-1 mb-4">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} size={14} className="text-yellow-500 fill-yellow-500" />
-                                ))}
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+                {/* Left: Chat Demo */}
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="relative p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl"
+                >
+                    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#5227FF] flex items-center justify-center">
+                            <Bot size={20} className="text-white" />
+                        </div>
+                        <div>
+                            <div className="text-white font-semibold">Gasper AI</div>
+                            <div className="text-xs text-green-400 flex items-center gap-1">
+                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                Online
                             </div>
-                            <p className="text-slate-300 text-sm leading-relaxed mb-6 italic">{testimonial.quote}</p>
-                            <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                                <div className="w-10 h-10 rounded-full bg-[#5227FF]/20 flex items-center justify-center text-2xl">
-                                    {testimonial.logo}
-                                </div>
-                                <div>
-                                    <div className="text-white font-semibold text-sm">{testimonial.author}</div>
-                                    <div className="text-slate-400 text-xs">{testimonial.title}</div>
-                                    <div className="text-slate-500 text-xs">{testimonial.company}</div>
+                        </div>
+                    </div>
+
+                    {/* Sample Chat Messages */}
+                    <div className="space-y-4">
+                        <div className="flex justify-end">
+                            <div className="bg-[#5227FF]/20 border border-[#5227FF]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                                <p className="text-white text-sm">Where is shipment #SH-2847?</p>
+                            </div>
+                        </div>
+                        <div className="flex justify-start">
+                            <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                                <p className="text-slate-300 text-sm mb-2">Shipment #SH-2847 is currently:</p>
+                                <div className="space-y-1 text-xs text-slate-400">
+                                    <div className="flex items-center gap-2">
+                                        <Ship size={12} className="text-[#22d3ee]" />
+                                        <span>Vessel: MAERSK ESSEX</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <MapPin size={12} className="text-[#22d3ee]" />
+                                        <span>Location: 35.2°N, 139.7°E (Tokyo Bay)</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={12} className="text-green-400" />
+                                        <span>ETA: Feb 12, 2026 - On Time</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
-                ))}
+                        <div className="flex justify-end">
+                            <div className="bg-[#5227FF]/20 border border-[#5227FF]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                                <p className="text-white text-sm">Any weather risks?</p>
+                            </div>
+                        </div>
+                        <div className="flex justify-start">
+                            <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                                <p className="text-slate-300 text-sm">✅ No significant weather risks detected along the current route. Smooth sailing ahead!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Input Box */}
+                    <div className="mt-6 pt-4 border-t border-white/10">
+                        <div className="flex items-center gap-2 bg-black/40 border border-white/10 rounded-xl px-4 py-2">
+                            <input
+                                type="text"
+                                placeholder="Ask Gasper AI anything..."
+                                className="flex-1 bg-transparent text-white text-sm outline-none placeholder:text-slate-500"
+                                disabled
+                            />
+                            <Send size={16} className="text-slate-500" />
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Right: Features Grid */}
+                <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 gap-4"
+                >
+                    {features.map((feature, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="p-5 rounded-xl bg-black/40 border border-white/10 backdrop-blur-xl hover:border-[#22d3ee]/30 transition-all group"
+                        >
+                            <div className="flex items-start gap-4">
+                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#22d3ee]/20 to-[#5227FF]/20 flex items-center justify-center text-[#22d3ee] flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    {feature.icon}
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-semibold mb-1">{feature.title}</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">{feature.description}</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
+
+            {/* Bottom CTA */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center p-6 rounded-2xl bg-gradient-to-r from-[#22d3ee]/10 to-[#5227FF]/10 border border-white/10"
+            >
+                <p className="text-slate-300 text-sm">
+                    <Sparkles size={16} className="inline text-[#22d3ee] mr-2" />
+                    Gasper AI learns from your operations and gets smarter over time, providing increasingly personalized insights.
+                </p>
+            </motion.div>
         </section>
     );
 }
+
 
 // --- Technology Stack Section ---
 function TechnologyStackSection() {
@@ -1027,7 +1113,7 @@ export default function ComingSoonContent() {
             </section>
 
             {/* --- TESTIMONIALS --- */}
-            <TestimonialsSection />
+            <GasperAIBotSection />
 
             {/* --- WHAT YOU'LL GET --- */}
             <WhatYouGetSection />

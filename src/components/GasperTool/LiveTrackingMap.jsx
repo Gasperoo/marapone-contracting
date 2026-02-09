@@ -26,7 +26,11 @@ const createCustomIcon = (emoji) => L.divIcon({
 
 export function LiveTrackingMap() {
     const [vehicles, setVehicles] = useState([]);
-    const [filter, setFilter] = useState('all'); // 'all', 'vessel', 'flight', 'rail'
+    const [filters, setFilters] = useState({
+        vessel: true,
+        flight: true,
+        rail: true
+    });
     const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
@@ -53,9 +57,11 @@ export function LiveTrackingMap() {
         };
     }, []);
 
-    const filteredVehicles = filter === 'all'
-        ? vehicles
-        : vehicles.filter(v => v.type === filter);
+    const toggleFilter = (type) => {
+        setFilters(prev => ({ ...prev, [type]: !prev[type] }));
+    };
+
+    const filteredVehicles = vehicles.filter(v => filters[v.type]);
 
     return (
         <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
@@ -69,18 +75,30 @@ export function LiveTrackingMap() {
                     Tracking {filteredVehicles.length} active units
                 </div>
 
-                {/* Mode Filter */}
-                <div className="flex gap-2 flex-wrap">
-                    {['all', 'vessel', 'flight', 'rail'].map(mode => (
+                {/* Multi-Select Filter */}
+                <div className="flex flex-col gap-2">
+                    <div className="text-xs text-slate-400 mb-1">Filter by Type:</div>
+                    {[
+                        { key: 'vessel', label: '🚢 Vessels', count: vehicles.filter(v => v.type === 'vessel').length },
+                        { key: 'flight', label: '✈️ Flights', count: vehicles.filter(v => v.type === 'flight').length },
+                        { key: 'rail', label: '🚆 Rail', count: vehicles.filter(v => v.type === 'rail').length }
+                    ].map(({ key, label, count }) => (
                         <button
-                            key={mode}
-                            onClick={() => setFilter(mode)}
-                            className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${filter === mode
-                                    ? 'bg-[#5227FF] text-white'
-                                    : 'bg-white/10 text-slate-300 hover:bg-white/20'
+                            key={key}
+                            onClick={() => toggleFilter(key)}
+                            className={`flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-all ${filters[key]
+                                    ? 'bg-[#5227FF] text-white shadow-lg shadow-purple-500/20'
+                                    : 'bg-white/5 text-slate-400 hover:bg-white/10'
                                 }`}
                         >
-                            {mode === 'all' ? 'All' : mode === 'vessel' ? '🚢 Vessels' : mode === 'flight' ? '✈️ Flights' : '🚆 Rail'}
+                            <span className="flex items-center gap-2">
+                                <span className={`w-4 h-4 rounded border-2 flex items-center justify-center ${filters[key] ? 'border-white bg-white' : 'border-slate-500'
+                                    }`}>
+                                    {filters[key] && <span className="text-[#5227FF] text-xs">✓</span>}
+                                </span>
+                                {label}
+                            </span>
+                            <span className="text-xs opacity-70">{count}</span>
                         </button>
                     ))}
                 </div>

@@ -714,53 +714,125 @@ function ComparisonTableSection() {
     ];
 
     return (
-        <section className="px-6 max-w-5xl mx-auto py-20 relative overflow-hidden">
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose Gasper?</h2>
-                <p className="text-slate-400">See how we stack up against traditional logistics tools.</p>
+        <section className="px-6 max-w-6xl mx-auto py-20 relative overflow-hidden">
+            {/* Background Gradient Orbs */}
+            <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#5227FF]/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#22d3ee]/10 rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+            <div className="text-center mb-16 relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="inline-block px-4 py-1.5 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#5227FF] text-sm font-medium mb-6"
+                >
+                    <TrendingUp size={14} className="inline mr-2" />
+                    Competitive Advantage
+                </motion.div>
+                <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-4">
+                    Why Choose Gasper?
+                </h2>
+                <p className="text-slate-400 text-lg">See how we stack up against traditional logistics tools.</p>
             </div>
 
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl overflow-hidden"
+                transition={{ duration: 0.6 }}
+                className="relative group"
             >
-                <div className="grid grid-cols-3 bg-white/5 border-b border-white/10">
-                    <div className="p-4"></div>
-                    <div className="p-4 text-center text-slate-400 text-sm font-semibold">Traditional Tools</div>
-                    <div className="p-4 text-center text-[#5227FF] text-sm font-semibold flex items-center justify-center gap-2">
-                        <Sparkles size={16} />
-                        Gasper
+                {/* Outer Glow Container */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#5227FF]/20 via-[#22d3ee]/20 to-[#5227FF]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                {/* Main Table Container */}
+                <div className="relative rounded-3xl bg-gradient-to-br from-black/60 to-black/40 border border-white/20 backdrop-blur-2xl overflow-hidden shadow-2xl">
+                    {/* Header Row */}
+                    <div className="grid grid-cols-3 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border-b border-white/20">
+                        <div className="p-6"></div>
+                        <div className="p-6 text-center">
+                            <div className="text-slate-300 text-sm font-bold uppercase tracking-wider mb-1">Traditional Tools</div>
+                            <div className="text-xs text-slate-500">Legacy Systems</div>
+                        </div>
+                        <div className="p-6 text-center bg-gradient-to-br from-[#5227FF]/10 to-transparent border-l border-white/10">
+                            <div className="flex items-center justify-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee] text-sm font-bold uppercase tracking-wider mb-1">
+                                <Sparkles size={16} className="text-[#5227FF]" />
+                                Gasper
+                            </div>
+                            <div className="text-xs text-[#22d3ee]/80">Next-Gen Platform</div>
+                        </div>
+                    </div>
+
+                    {/* Comparison Rows */}
+                    {comparisons.map((item, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.05 }}
+                            className="grid grid-cols-3 border-b border-white/5 last:border-0 hover:bg-gradient-to-r hover:from-[#5227FF]/5 hover:to-transparent transition-all duration-300 group/row"
+                        >
+                            {/* Feature Name */}
+                            <div className="p-5 flex items-center">
+                                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#5227FF] to-[#22d3ee] mr-3 opacity-0 group-hover/row:opacity-100 transition-opacity"></div>
+                                <span className="text-white font-semibold text-base group-hover/row:text-[#22d3ee] transition-colors">
+                                    {item.feature}
+                                </span>
+                            </div>
+
+                            {/* Traditional Column */}
+                            <div className="p-5 flex items-center justify-center">
+                                {typeof item.traditional === 'boolean' ? (
+                                    item.traditional ? (
+                                        <div className="relative">
+                                            <Check size={24} className="text-slate-500" />
+                                        </div>
+                                    ) : (
+                                        <div className="relative">
+                                            <X size={24} className="text-red-500/40" />
+                                            <div className="absolute inset-0 bg-red-500/10 rounded-full blur-md"></div>
+                                        </div>
+                                    )
+                                ) : (
+                                    <span className="text-slate-400 text-sm font-medium px-3 py-1 rounded-lg bg-white/5">
+                                        {item.traditional}
+                                    </span>
+                                )}
+                            </div>
+
+                            {/* Gasper Column */}
+                            <div className="p-5 flex items-center justify-center bg-gradient-to-r from-transparent to-[#5227FF]/5 border-l border-white/5">
+                                {typeof item.gasper === 'boolean' ? (
+                                    item.gasper ? (
+                                        <div className="relative">
+                                            <Check size={24} className="text-[#5227FF] drop-shadow-[0_0_8px_rgba(82,39,255,0.6)]" />
+                                            <div className="absolute inset-0 bg-[#5227FF]/20 rounded-full blur-md animate-pulse"></div>
+                                        </div>
+                                    ) : (
+                                        <div className="relative">
+                                            <X size={24} className="text-red-500/40" />
+                                        </div>
+                                    )
+                                ) : (
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee] text-sm font-bold px-4 py-1.5 rounded-lg bg-[#5227FF]/10 border border-[#5227FF]/20 shadow-[0_0_15px_rgba(82,39,255,0.2)]">
+                                        {item.gasper}
+                                    </span>
+                                )}
+                            </div>
+                        </motion.div>
+                    ))}
+
+                    {/* Bottom CTA Banner */}
+                    <div className="bg-gradient-to-r from-[#5227FF]/20 via-[#22d3ee]/10 to-[#5227FF]/20 border-t border-white/10 p-6">
+                        <div className="flex items-center justify-center gap-3 text-center">
+                            <Award size={20} className="text-[#22d3ee]" />
+                            <p className="text-slate-300 text-sm">
+                                Join <span className="text-[#5227FF] font-bold">2,500+</span> companies already on the waitlist
+                            </p>
+                            <TrendingUp size={20} className="text-[#5227FF]" />
+                        </div>
                     </div>
                 </div>
-                {comparisons.map((item, idx) => (
-                    <div key={idx} className="grid grid-cols-3 border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
-                        <div className="p-4 text-white font-medium text-sm">{item.feature}</div>
-                        <div className="p-4 flex items-center justify-center">
-                            {typeof item.traditional === 'boolean' ? (
-                                item.traditional ? (
-                                    <Check size={20} className="text-slate-500" />
-                                ) : (
-                                    <X size={20} className="text-red-500/50" />
-                                )
-                            ) : (
-                                <span className="text-slate-400 text-sm">{item.traditional}</span>
-                            )}
-                        </div>
-                        <div className="p-4 flex items-center justify-center">
-                            {typeof item.gasper === 'boolean' ? (
-                                item.gasper ? (
-                                    <Check size={20} className="text-[#5227FF]" />
-                                ) : (
-                                    <X size={20} className="text-red-500/50" />
-                                )
-                            ) : (
-                                <span className="text-[#5227FF] text-sm font-semibold">{item.gasper}</span>
-                            )}
-                        </div>
-                    </div>
-                ))}
             </motion.div>
         </section>
     );

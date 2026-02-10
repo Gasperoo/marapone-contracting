@@ -72,15 +72,16 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                     {comingSoonMode && (
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                            className="mt-8 p-4 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm max-w-md mx-auto"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.3, duration: 0.5 }}
+                            className="mt-8 flex justify-center"
                         >
-                            <p className="text-slate-300 text-sm">
-                                We are currently in private beta. <br />
-                                Full public launch coming soon.
-                            </p>
+                            <img
+                                src="/images/gasper-logo-g.png"
+                                alt="Gasper Logo"
+                                className="w-24 h-24 md:w-32 md:h-32 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                            />
                         </motion.div>
                     )}
                 </div>

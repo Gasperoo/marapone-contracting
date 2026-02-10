@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView, useSpring, useMotionValue, useTransform } from 'motion/react';
+import { Link } from 'react-router-dom';
 import {
     Activity, TrendingUp, ShieldCheck, Grid, Zap, Globe, Lock,
     Database, Cpu, Server, BarChart3,
@@ -1039,7 +1040,19 @@ function WaitlistSection() {
                     </form>
 
                     <p className="mt-4 text-xs text-slate-500">
-                        By joining, you agree to our Terms of Service. No spam, ever.
+                        By joining, you agree to our{' '}
+                        <Link to="/terms" className="text-[#22d3ee] hover:text-[#5227FF] transition-colors underline">
+                            Terms of Service
+                        </Link>
+                        {', '}
+                        <Link to="/privacy" className="text-[#22d3ee] hover:text-[#5227FF] transition-colors underline">
+                            Privacy Policy
+                        </Link>
+                        {', and '}
+                        <Link to="/cookies" className="text-[#22d3ee] hover:text-[#5227FF] transition-colors underline">
+                            Cookie Policy
+                        </Link>
+                        . No spam, ever.
                     </p>
                 </div>
             </div>

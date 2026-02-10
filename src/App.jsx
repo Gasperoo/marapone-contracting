@@ -31,34 +31,44 @@ function App() {
         <AuthProvider>
           <CurrencyProvider>
             <ComingSoonGuard>
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<LandingPage />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="/features" element={<FeaturesPage />} />
-                  <Route path="/how-it-works" element={<HowItWorksPage />} />
-                  <Route path="/industries" element={<IndustriesPage />} />
-                  <Route path="/gasper" element={<GasperPage />} />
-                  <Route path="/pricing" element={<PricingPage />} />
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/account" element={<AccountPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route
-                    path="/settings"
-                    element={
-                      <ProtectedRoute>
-                        <SettingsPage />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
-                  <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-                  <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-                  <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-              </Layout>
+              <Routes>
+                {/* Legal pages - no Layout wrapper (no navbar) */}
+                <Route path="/terms" element={<TermsOfServicePage />} />
+                <Route path="/privacy" element={<PrivacyPolicyPage />} />
+                <Route path="/cookies" element={<CookiePolicyPage />} />
+                <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+
+                {/* All other pages - with Layout wrapper (includes navbar) */}
+                <Route path="*" element={
+                  <Layout>
+                    <Routes>
+                      <Route path="/" element={<LandingPage />} />
+                      <Route path="/about" element={<AboutPage />} />
+                      <Route path="/features" element={<FeaturesPage />} />
+                      <Route path="/how-it-works" element={<HowItWorksPage />} />
+                      <Route path="/industries" element={<IndustriesPage />} />
+                      <Route path="/gasper" element={<GasperPage />} />
+                      <Route path="/pricing" element={<PricingPage />} />
+                      <Route path="/cart" element={<CartPage />} />
+                      <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/account" element={<AccountPage />} />
+                      <Route path="/login" element={<LoginPage />} />
+                      <Route
+                        path="/settings"
+                        element={
+                          <ProtectedRoute>
+                            <SettingsPage />
+                          </ProtectedRoute>
+                        }
+                      />
+                      <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
+                      <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
+                  </Layout>
+                } />
+              </Routes>
             </ComingSoonGuard>
           </CurrencyProvider>
         </AuthProvider>

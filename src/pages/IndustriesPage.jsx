@@ -3,10 +3,29 @@ import { motion } from 'motion/react';
 import { Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, ArrowRight, HardHat, Stethoscope, Plane } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import '../components/LandingPage/LandingPage.css';
+import IndustryCard from '../components/IndustryCard';
+import Particles from '../components/Particles/Particles';
 
 export default function IndustriesPage() {
     return (
-        <div className="landing-container pt-24 pb-20">
+        <div className="landing-container pt-24 pb-20 relative">
+            {/* Particles Background */}
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+                <Particles
+                    particleColors={["#5227FF", "#22d3ee", "#8b5cf6"]}
+                    particleCount={400}
+                    particleSpread={15}
+                    speed={0.08}
+                    particleBaseSize={80}
+                    moveParticlesOnHover={false}
+                    alphaParticles={true}
+                    disableRotation={false}
+                    sizeRandomness={1.5}
+                    cameraDistance={25}
+                    pixelRatio={Math.min(window.devicePixelRatio, 2)}
+                />
+            </div>
+
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Hero Text Only */}
@@ -16,7 +35,7 @@ export default function IndustriesPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="hero-title mb-6 mx-auto"
                     >
-                        Powering <span className="text-[#5227FF]">Every Sector</span>
+                        Powering <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee]">Every Sector</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -129,33 +148,6 @@ export default function IndustriesPage() {
 
             </div>
         </div>
-    );
-}
-
-function IndustryCard({ icon, title, description, color, useCase }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-[#5227FF]/50 transition-all cursor-default overflow-hidden"
-        >
-            <div className="relative z-10">
-                <div className={`mb-6 ${color} transition-transform group-hover:scale-110 duration-300`}>
-                    {icon}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
-            </div>
-
-            {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-[#5227FF]/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex items-center justify-center p-6 text-center z-20">
-                <div>
-                    <div className="text-white/80 text-xs font-bold uppercase tracking-wider mb-2">Primary Use Case</div>
-                    <div className="text-white font-bold text-lg">{useCase}</div>
-                </div>
-            </div>
-        </motion.div>
     );
 }
 

@@ -3,10 +3,30 @@ import { motion } from 'motion/react';
 import { Database, Cpu, BarChart3, ArrowRight, Server, Globe2, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import '../components/LandingPage/LandingPage.css';
+import ProcessStep from '../components/ProcessStep';
+import Counter from '../components/Counter';
+import Particles from '../components/Particles/Particles';
 
 export default function HowItWorksPage() {
     return (
-        <div className="landing-container pt-24 pb-20">
+        <div className="landing-container pt-24 pb-20 relative">
+            {/* Particles Background */}
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+                <Particles
+                    particleColors={["#5227FF", "#22d3ee", "#8b5cf6"]}
+                    particleCount={400}
+                    particleSpread={15}
+                    speed={0.08}
+                    particleBaseSize={80}
+                    moveParticlesOnHover={false}
+                    alphaParticles={true}
+                    disableRotation={false}
+                    sizeRandomness={1.5}
+                    cameraDistance={25}
+                    pixelRatio={Math.min(window.devicePixelRatio, 2)}
+                />
+            </div>
+
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Hero Text Only */}
@@ -16,7 +36,7 @@ export default function HowItWorksPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="hero-title mb-6 mx-auto"
                     >
-                        The Engine of <span className="text-[#5227FF]">Global Trade</span>
+                        The Engine of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee]">Global Trade</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -27,6 +47,16 @@ export default function HowItWorksPage() {
                         How Gasper ingests millions of data points, processes them with advanced AI, and delivers actionable insights in milliseconds.
                     </motion.p>
                 </div>
+
+                {/* Stats Counter Section */}
+                <section className="mb-32">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                        <Counter value={5000} label="Connected Vessels" suffix="+" />
+                        <Counter value={98} label="Accuracy Rating" suffix="%" />
+                        <Counter value={120} label="Countries Covered" suffix="+" />
+                        <Counter value={2} label="Data Points" suffix="B+" />
+                    </div>
+                </section>
 
                 {/* Process Steps */}
                 <div className="relative mb-24">
@@ -167,77 +197,6 @@ export default function HowItWorksPage() {
                     </Link>
                 </div>
             </div>
-        </div>
-    );
-}
-
-import { AnimatePresence } from 'motion/react';
-import { useState } from 'react';
-
-function ProcessStep({ number, title, description, icon, align, details }) {
-    const isLeft = align === 'left';
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div className={`flex flex-col md:flex-row items-center gap-8 mb-16 md:mb-0 relative z-10 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
-            {/* Content Side */}
-            <motion.div
-                initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className={`md:w-1/2 flex ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
-            >
-                <div
-                    onClick={() => setIsOpen(!isOpen)}
-                    className={`
-                        relative p-8 rounded-2xl bg-slate-900/80 border border-white/10 max-w-lg cursor-pointer hover:border-[#5227FF]/50 transition-all duration-300
-                        ${isLeft ? 'md:mr-12 text-left' : 'md:ml-12 text-left'}
-                        ${isOpen ? 'border-[#5227FF] bg-slate-800/80' : ''}
-                    `}
-                >
-                    <div className="text-[#5227FF] text-sm font-bold tracking-widest mb-2 flex items-center justify-between">
-                        <span>STEP {number}</span>
-                        <motion.span
-                            animate={{ rotate: isOpen ? 180 : 0 }}
-                            className="text-white/50"
-                        >
-                            ▼
-                        </motion.span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
-                    <p className="text-slate-400 mb-4">{description}</p>
-
-                    <AnimatePresence>
-                        {isOpen && (
-                            <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: 'auto', opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                className="overflow-hidden"
-                            >
-                                <div className="pt-4 mt-4 border-t border-white/10">
-                                    <h4 className="text-sm font-semibold text-white mb-3">Technical Specs:</h4>
-                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                        {details && details.map((detail, idx) => (
-                                            <li key={idx} className="text-xs text-slate-300 flex items-center">
-                                                <div className="w-1 h-1 bg-[#22d3ee] rounded-full mr-2" />
-                                                {detail}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
-            </motion.div>
-
-            {/* Center Icon */}
-            <div className={`relative z-10 w-16 h-16 rounded-full bg-[#0f172a] border-2 flex items-center justify-center text-white shadow-[0_0_20px_rgba(82,39,255,0.4)] transition-colors duration-300 ${isOpen ? 'border-[#22d3ee] text-[#22d3ee]' : 'border-[#5227FF]'}`}>
-                {icon}
-            </div>
-
-            <div className="md:w-1/2" /> {/* Spacer */}
         </div>
     );
 }

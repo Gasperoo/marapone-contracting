@@ -26,6 +26,9 @@ function StackedCircularFooter() {
                         <Link to="/pricing" className="compact-footer-link">Pricing</Link>
                         <Link to="/about" className="compact-footer-link">About</Link>
                         <Link to="/contact" className="compact-footer-link">Contact</Link>
+                        <Link to="/terms-of-service" className="compact-footer-link">Terms of Service</Link>
+                        <Link to="/privacy-policy" className="compact-footer-link">Privacy Policy</Link>
+                        <Link to="/cookie-policy" className="compact-footer-link">Cookie Policy</Link>
                     </nav>
 
                     <div className="compact-footer-copyright">

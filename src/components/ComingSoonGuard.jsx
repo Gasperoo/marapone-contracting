@@ -45,6 +45,12 @@ const ComingSoonGuard = ({ children }) => {
         return <>{children}</>;
     }
 
+    // Allow access to legal pages even when locked (for compliance)
+    const legalPaths = ['/terms-of-service', '/privacy-policy', '/cookie-policy'];
+    if (legalPaths.includes(location.pathname)) {
+        return <>{children}</>;
+    }
+
     // If locked, show Landing Page with Coming Soon mode
     return <LandingPage comingSoonMode={true} />;
 };

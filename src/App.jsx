@@ -20,6 +20,9 @@ import LoginPage from './pages/LoginPage';
 import SettingsPage from './pages/SettingsPage';
 import CheckoutSuccessPage from './pages/CheckoutSuccessPage';
 import NotFoundPage from './pages/NotFoundPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import CookiePolicyPage from './pages/CookiePolicyPage';
 
 function App() {
   return (
@@ -50,6 +53,9 @@ function App() {
                     }
                   />
                   <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
+                  <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                  <Route path="/cookie-policy" element={<CookiePolicyPage />} />
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </Layout>

@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import TiltCard from '../TiltCard';
 import Particles from '../Particles/Particles';
+import emailjs from '@emailjs/browser';
+import { EMAIL_CONFIG } from '../../config/emailConfig';
 
 // --- Animated Counter Component ---
 function Counter({ value, label, suffix = "" }) {
@@ -839,6 +841,224 @@ function ComparisonTableSection() {
     );
 }
 
+// --- Waitlist Section with Email Functionality ---
+function WaitlistSection() {
+    const [formData, setFormData] = useState({
+        email: '',
+        role: '',
+        companySize: ''
+    });
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const validateForm = () => {
+        if (!formData.email) {
+            setErrorMessage('Please enter your email address');
+            return false;
+        }
+
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setErrorMessage('Please enter a valid email address');
+            return false;
+        }
+
+        if (!formData.role) {
+            setErrorMessage('Please select your role');
+            return false;
+        }
+
+        if (!formData.companySize) {
+            setErrorMessage('Please select your company size');
+            return false;
+        }
+
+        return true;
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrorMessage('');
+
+        // Validate form
+        if (!validateForm()) {
+            setStatus('error');
+            return;
+        }
+
+        setStatus('loading');
+
+        try {
+            // Prepare email template parameters
+            const templateParams = {
+                user_email: formData.email,
+                user_role: formData.role,
+                company_size: formData.companySize,
+                timestamp: new Date().toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    timeZoneName: 'short'
+                }),
+                to_email: EMAIL_CONFIG.recipientEmail
+            };
+
+            // Send email via EmailJS
+            const response = await emailjs.send(
+                EMAIL_CONFIG.serviceId,
+                EMAIL_CONFIG.templateId,
+                templateParams,
+                EMAIL_CONFIG.publicKey
+            );
+
+            if (response.status === 200) {
+                setStatus('success');
+                // Reset form
+                setFormData({
+                    email: '',
+                    role: '',
+                    companySize: ''
+                });
+            } else {
+                throw new Error('Failed to send email');
+            }
+        } catch (error) {
+            console.error('Email send error:', error);
+            setStatus('error');
+            setErrorMessage('Failed to send request. Please try again or contact us directly at gasper@marapone.com');
+        }
+    };
+
+    return (
+        <section className="px-6 max-w-3xl mx-auto pb-32 text-center">
+            <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#5227FF]/20 to-purple-900/20 border border-white/10 backdrop-blur-xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+                <div className="relative z-10">
+                    <Zap size={40} className="mx-auto text-[#5227FF] mb-6" />
+                    <h2 className="text-3xl font-bold text-white mb-4">Secure Your Access</h2>
+                    <p className="text-slate-300 mb-2">
+                        Gasper is currently in private beta. Join the waitlist to be notified when we open to the public.
+                    </p>
+                    <p className="text-[#22d3ee] text-sm font-semibold mb-8">
+                        <Users size={14} className="inline mr-1" />
+                        2,547 supply chain leaders joined this week
+                    </p>
+
+                    <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
+                        <div className="relative">
+                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                placeholder="Enter your email address"
+                                className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all placeholder:text-slate-500"
+                                disabled={status === 'loading'}
+                            />
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-4">
+                            <div className="relative">
+                                <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                                <select
+                                    name="role"
+                                    value={formData.role}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all appearance-none cursor-pointer"
+                                    disabled={status === 'loading'}
+                                >
+                                    <option value="">Your Role</option>
+                                    <option value="Logistics Manager">Logistics Manager</option>
+                                    <option value="Operations Director">Operations Director</option>
+                                    <option value="Supply Chain VP">Supply Chain VP</option>
+                                    <option value="C-Level Executive">C-Level Executive</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div className="relative">
+                                <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                                <select
+                                    name="companySize"
+                                    value={formData.companySize}
+                                    onChange={handleInputChange}
+                                    className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all appearance-none cursor-pointer"
+                                    disabled={status === 'loading'}
+                                >
+                                    <option value="">Company Size</option>
+                                    <option value="1-50 employees">1-50 employees</option>
+                                    <option value="51-200 employees">51-200 employees</option>
+                                    <option value="201-1,000 employees">201-1,000 employees</option>
+                                    <option value="1,000+ employees">1,000+ employees</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={status === 'loading'}
+                            className={`w-full font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-[#5227FF]/25 flex items-center justify-center ${status === 'loading'
+                                    ? 'bg-[#5227FF]/50 cursor-not-allowed'
+                                    : 'bg-[#5227FF] hover:bg-[#4316db]'
+                                } text-white`}
+                        >
+                            {status === 'loading' ? (
+                                <>
+                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                                    Sending...
+                                </>
+                            ) : (
+                                <>
+                                    Request Access <ArrowRight size={18} className="ml-2" />
+                                </>
+                            )}
+                        </button>
+
+                        {/* Success Message */}
+                        {status === 'success' && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 flex items-center gap-2"
+                            >
+                                <Check size={20} />
+                                <span>Success! We'll be in touch soon.</span>
+                            </motion.div>
+                        )}
+
+                        {/* Error Message */}
+                        {status === 'error' && errorMessage && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 flex items-start gap-2"
+                            >
+                                <AlertTriangle size={20} className="flex-shrink-0 mt-0.5" />
+                                <span className="text-sm">{errorMessage}</span>
+                            </motion.div>
+                        )}
+                    </form>
+
+                    <p className="mt-4 text-xs text-slate-500">
+                        By joining, you agree to our Terms of Service. No spam, ever.
+                    </p>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 // --- What You'll Get Section ---
 function WhatYouGetSection() {
     const benefits = [
@@ -1202,68 +1422,7 @@ export default function ComingSoonContent() {
             <WhatYouGetSection />
 
             {/* --- WAITLIST SECTION --- */}
-
-            <section className="px-6 max-w-3xl mx-auto pb-32 text-center">
-                <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#5227FF]/20 to-purple-900/20 border border-white/10 backdrop-blur-xl relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
-                    <div className="relative z-10">
-                        <Zap size={40} className="mx-auto text-[#5227FF] mb-6" />
-                        <h2 className="text-3xl font-bold text-white mb-4">Secure Your Access</h2>
-                        <p className="text-slate-300 mb-2">
-                            Gasper is currently in private beta. Join the waitlist to be notified when we open to the public.
-                        </p>
-                        <p className="text-[#22d3ee] text-sm font-semibold mb-8">
-                            <Users size={14} className="inline mr-1" />
-                            2,547 supply chain leaders joined this week
-                        </p>
-
-                        <form className="max-w-lg mx-auto space-y-4">
-                            <div className="relative">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email address"
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all placeholder:text-slate-500"
-                                />
-                            </div>
-
-                            <div className="grid md:grid-cols-2 gap-4">
-                                <div className="relative">
-                                    <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                                    <select className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all appearance-none cursor-pointer">
-                                        <option value="">Your Role</option>
-                                        <option value="logistics">Logistics Manager</option>
-                                        <option value="operations">Operations Director</option>
-                                        <option value="supply-chain">Supply Chain VP</option>
-                                        <option value="ceo">C-Level Executive</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                <div className="relative">
-                                    <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                                    <select className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all appearance-none cursor-pointer">
-                                        <option value="">Company Size</option>
-                                        <option value="1-50">1-50 employees</option>
-                                        <option value="51-200">51-200 employees</option>
-                                        <option value="201-1000">201-1,000 employees</option>
-                                        <option value="1000+">1,000+ employees</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <button
-                                type="button"
-                                className="w-full bg-[#5227FF] hover:bg-[#4316db] text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-lg shadow-[#5227FF]/25 flex items-center justify-center"
-                            >
-                                Request Access <ArrowRight size={18} className="ml-2" />
-                            </button>
-                        </form>
-                        <p className="mt-4 text-xs text-slate-500">
-                            By joining, you agree to our Terms of Service. No spam, ever.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <WaitlistSection />
 
 
         </div>

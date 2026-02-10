@@ -10,8 +10,6 @@ import {
 } from 'lucide-react';
 import TiltCard from '../TiltCard';
 import Particles from '../Particles/Particles';
-import emailjs from '@emailjs/browser';
-import { EMAIL_CONFIG } from '../../config/emailConfig';
 
 // --- Animated Counter Component ---
 function Counter({ value, label, suffix = "" }) {
@@ -898,41 +896,31 @@ function WaitlistSection() {
         setStatus('loading');
 
         try {
-            // Prepare email template parameters
-            const templateParams = {
-                user_email: formData.email,
-                user_role: formData.role,
-                company_size: formData.companySize,
-                timestamp: new Date().toLocaleString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    timeZoneName: 'short'
-                }),
-                to_email: EMAIL_CONFIG.recipientEmail
-            };
+            // Send email via API endpoint
+            const response = await fetch('/api/send-waitlist-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    role: formData.role,
+                    companySize: formData.companySize
+                })
+            });
 
-            // Send email via EmailJS
-            const response = await emailjs.send(
-                EMAIL_CONFIG.serviceId,
-                EMAIL_CONFIG.templateId,
-                templateParams,
-                EMAIL_CONFIG.publicKey
-            );
-
-            if (response.status === 200) {
-                setStatus('success');
-                // Reset form
-                setFormData({
-                    email: '',
-                    role: '',
-                    companySize: ''
-                });
-            } else {
-                throw new Error('Failed to send email');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to send email');
             }
+
+            setStatus('success');
+            // Reset form
+            setFormData({
+                email: '',
+                role: '',
+                companySize: ''
+            });
         } catch (error) {
             console.error('Email send error:', error);
             setStatus('error');
@@ -1009,8 +997,8 @@ function WaitlistSection() {
                             type="submit"
                             disabled={status === 'loading'}
                             className={`w-full font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-[#5227FF]/25 flex items-center justify-center ${status === 'loading'
-                                    ? 'bg-[#5227FF]/50 cursor-not-allowed'
-                                    : 'bg-[#5227FF] hover:bg-[#4316db]'
+                                ? 'bg-[#5227FF]/50 cursor-not-allowed'
+                                : 'bg-[#5227FF] hover:bg-[#4316db]'
                                 } text-white`}
                         >
                             {status === 'loading' ? (

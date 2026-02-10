@@ -9,7 +9,6 @@
     "server": "node server/index.js"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@paper-design/shaders-react": "^0.0.71",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
@@ -30,6 +29,7 @@
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.20.0",
     "recharts": "^3.7.0",
+    "resend": "^6.9.1",
     "stripe": "^20.3.0",
     "tailwind-merge": "^3.4.0",
     "three": "^0.182.0"

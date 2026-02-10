@@ -9,6 +9,7 @@ import {
     Bot, MessageSquare, Brain, FileText, Send, MapPin
 } from 'lucide-react';
 import TiltCard from '../TiltCard';
+import Particles from '../Particles/Particles';
 
 // --- Animated Counter Component ---
 function Counter({ value, label, suffix = "" }) {
@@ -1010,11 +1011,21 @@ export default function ComingSoonContent() {
     return (
         <div className="mt-20 space-y-32 relative">
 
-            {/* Background Ambient Effects */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
-                <div className="absolute top-[10%] left-[5%] w-[500px] h-[500px] bg-[#5227FF] rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-pulse"></div>
-                <div className="absolute top-[40%] right-[5%] w-[400px] h-[400px] bg-[#22d3ee] rounded-full mix-blend-screen filter blur-[100px] opacity-10 animate-pulse" style={{ animationDelay: '2s' }}></div>
-                <div className="absolute bottom-[10%] left-[20%] w-[600px] h-[600px] bg-purple-900 rounded-full mix-blend-screen filter blur-[150px] opacity-10"></div>
+            {/* Particles Background */}
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+                <Particles
+                    particleColors={["#5227FF", "#22d3ee", "#8b5cf6"]}
+                    particleCount={400}
+                    particleSpread={15}
+                    speed={0.08}
+                    particleBaseSize={80}
+                    moveParticlesOnHover={false}
+                    alphaParticles={true}
+                    disableRotation={false}
+                    sizeRandomness={1.5}
+                    cameraDistance={25}
+                    pixelRatio={Math.min(window.devicePixelRatio, 2)}
+                />
             </div>
 
             {/* --- STATS SECTION --- */}

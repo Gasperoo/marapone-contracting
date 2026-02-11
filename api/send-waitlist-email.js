@@ -3,41 +3,50 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
-    // Enable CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-    // Handle preflight request
-    if (req.method === 'OPTIONS') {
-        return res.status(200).end();
-    }
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
 
-    // Only allow POST requests
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+  // Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-    const { email, role, companySize } = req.body;
+  const { email, role, companySize } = req.body;
 
-    // Validate input
-    if (!email || !role || !companySize) {
-        return res.status(400).json({ error: 'Missing required fields' });
-    }
+  // Validate input
+  if (!email || !role || !companySize) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
 
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        return res.status(400).json({ error: 'Invalid email format' });
-    }
+  // Basic email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ error: 'Invalid email format' });
+  }
 
-    try {
-        const data = await resend.emails.send({
-            from: 'Gasper Waitlist <gasper@marapone.com>',
-            to: ['gasper@marapone.com'],
-            replyTo: email,
-            subject: 'New Waitlist Request - Gasper Access',
-            html: `
+  // Check if Resend API key is configured
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not configured');
+    return res.status(500).json({
+      error: 'Email service not configured',
+      message: 'Please contact us directly at gasper@marapone.com'
+    });
+  }
+
+  try {
+    const data = await resend.emails.send({
+      from: 'Gasper Waitlist <gasper@marapone.com>',
+      to: ['gasper@marapone.com'],
+      replyTo: email,
+      subject: 'New Waitlist Request - Gasper Access',
+      html: `
         <!DOCTYPE html>
         <html>
         <head>
@@ -73,13 +82,13 @@ export default async function handler(req, res) {
               
               <div class="info-row">
                 <span class="label">Submitted:</span> ${new Date().toLocaleString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                timeZoneName: 'short'
-            })}
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZoneName: 'short'
+      })}
               </div>
               
               <div class="footer">
@@ -91,14 +100,14 @@ export default async function handler(req, res) {
         </body>
         </html>
       `
-        });
+    });
 
-        return res.status(200).json({ success: true, id: data.id });
-    } catch (error) {
-        console.error('Email send error:', error);
-        return res.status(500).json({
-            error: 'Failed to send email',
-            message: error.message
-        });
-    }
+    return res.status(200).json({ success: true, id: data.id });
+  } catch (error) {
+    console.error('Email send error:', error);
+    return res.status(500).json({
+      error: 'Failed to send email',
+      message: error.message
+    });
+  }
 }

@@ -486,22 +486,22 @@ function GasperAIBotSection() {
         {
             icon: <MessageSquare size={24} />,
             title: "Natural Language Queries",
-            description: "Ask questions in plain English and get instant, accurate answers about your shipments, routes, and logistics."
+            description: "Ask complex logistics questions in plain English. Track shipments, compare routes, analyze costs, and get instant answers without navigating complex dashboards."
         },
         {
             icon: <Zap size={24} />,
-            title: "Real-Time Insights",
-            description: "Get live updates on vessel positions, delays, weather impacts, and route optimizations without searching through dashboards."
+            title: "Multi-Carrier Analysis",
+            description: "Instantly compare rates, transit times, and reliability scores across hundreds of carriers. Get AI-powered recommendations optimized for your specific needs."
         },
         {
             icon: <Brain size={24} />,
-            title: "Predictive Intelligence",
-            description: "Our AI proactively alerts you to potential disruptions and suggests optimal alternatives before issues arise."
+            title: "Proactive Intelligence",
+            description: "Our AI continuously monitors your supply chain and proactively alerts you to risks like port congestion, weather disruptions, or compliance issues before they impact your operations."
         },
         {
             icon: <FileText size={24} />,
-            title: "Automated Documentation",
-            description: "Generate shipping documents, compliance reports, and customs paperwork with simple conversational commands."
+            title: "Intelligent Automation",
+            description: "Generate shipping documents, classify HS codes, screen sanctions lists, and create compliance reports through simple conversational commands."
         }
     ];
 
@@ -516,9 +516,9 @@ function GasperAIBotSection() {
                     <Bot size={14} className="inline mr-2" />
                     AI-Powered Assistant
                 </motion.div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meet Your Gasper AI Bot</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meet Your Gasper AI Assistant</h2>
                 <p className="text-slate-400 max-w-2xl mx-auto">
-                    Your intelligent logistics assistant that understands your supply chain and speaks your language.
+                    Your intelligent logistics copilot that analyzes your entire supply chain, answers complex questions instantly, and proactively identifies opportunities to save time and money.
                 </p>
             </div>
 
@@ -531,8 +531,12 @@ function GasperAIBotSection() {
                     className="relative p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl"
                 >
                     <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#5227FF] flex items-center justify-center">
-                            <Bot size={20} className="text-white" />
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#5227FF] flex items-center justify-center p-1.5">
+                            <img
+                                src="/images/gasper-logo-g.png"
+                                alt="Gasper AI"
+                                className="w-full h-full object-contain"
+                            />
                         </div>
                         <div>
                             <div className="text-white font-semibold">Gasper AI</div>
@@ -545,11 +549,14 @@ function GasperAIBotSection() {
 
                     {/* Sample Chat Messages */}
                     <div className="space-y-4">
+                        {/* User Query 1 */}
                         <div className="flex justify-end">
                             <div className="bg-[#5227FF]/20 border border-[#5227FF]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                                 <p className="text-white text-sm">Where is shipment #SH-2847?</p>
                             </div>
                         </div>
+
+                        {/* AI Response 1 */}
                         <div className="flex justify-start">
                             <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
                                 <p className="text-slate-300 text-sm mb-2">Shipment #SH-2847 is currently:</p>
@@ -569,14 +576,74 @@ function GasperAIBotSection() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* User Query 2 */}
                         <div className="flex justify-end">
                             <div className="bg-[#5227FF]/20 border border-[#5227FF]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                                 <p className="text-white text-sm">Any weather risks?</p>
                             </div>
                         </div>
+
+                        {/* AI Response 2 */}
                         <div className="flex justify-start">
                             <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                                <p className="text-slate-300 text-sm">✅ No significant weather risks detected along the current route. Smooth sailing ahead!</p>
+                                <p className="text-slate-300 text-sm mb-2">✅ No significant weather risks detected along the current route. Smooth sailing ahead!</p>
+                            </div>
+                        </div>
+
+                        {/* User Query 3 - More Complex */}
+                        <div className="flex justify-end">
+                            <div className="bg-[#5227FF]/20 border border-[#5227FF]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                                <p className="text-white text-sm">What's the cheapest way to ship 500kg from Shanghai to LA next week?</p>
+                            </div>
+                        </div>
+
+                        {/* AI Response 3 - Detailed Analysis */}
+                        <div className="flex justify-start">
+                            <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                                <p className="text-slate-300 text-sm mb-3">I've analyzed 47 carrier options for you:</p>
+
+                                {/* Recommended Option */}
+                                <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-2 mb-2">
+                                    <div className="flex items-center justify-between mb-1">
+                                        <span className="text-blue-300 text-xs font-semibold flex items-center gap-1">
+                                            <Star size={10} fill="currentColor" /> RECOMMENDED
+                                        </span>
+                                        <span className="text-white font-bold text-sm">$2,180</span>
+                                    </div>
+                                    <div className="text-xs text-slate-400 space-y-0.5">
+                                        <div>Ocean Freight - CMA CGM</div>
+                                        <div className="flex items-center gap-1">
+                                            <Clock size={10} className="text-green-400" />
+                                            <span>14 days • 96% on-time rate</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Alternative Options */}
+                                <div className="text-xs text-slate-400 space-y-1">
+                                    <div className="flex justify-between">
+                                        <span>Air Express (DHL): 3 days</span>
+                                        <span className="text-slate-300">$8,450</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <span>Ocean Standard: 18 days</span>
+                                        <span className="text-slate-300">$1,890</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Proactive AI Alert */}
+                        <div className="flex justify-start">
+                            <div className="bg-orange-500/10 border border-orange-500/30 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                                <div className="flex items-start gap-2">
+                                    <AlertTriangle size={14} className="text-orange-400 flex-shrink-0 mt-0.5" />
+                                    <div>
+                                        <p className="text-orange-300 text-xs font-semibold mb-1">Proactive Alert</p>
+                                        <p className="text-slate-300 text-sm">I noticed your shipment #SH-3012 may be affected by upcoming port congestion in Long Beach. Would you like me to explore alternative routing through Oakland?</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -829,7 +896,7 @@ function ComparisonTableSection() {
                         <div className="flex items-center justify-center gap-3 text-center">
                             <Award size={20} className="text-[#22d3ee]" />
                             <p className="text-slate-300 text-sm">
-                                Join <span className="text-[#5227FF] font-bold">2,500+</span> companies already on the waitlist
+                                Join innovative companies transforming their supply chains
                             </p>
                             <TrendingUp size={20} className="text-[#5227FF]" />
                         </div>
@@ -941,7 +1008,7 @@ function WaitlistSection() {
                     </p>
                     <p className="text-[#22d3ee] text-sm font-semibold mb-8">
                         <Users size={14} className="inline mr-1" />
-                        2,547 supply chain leaders joined this week
+                        Limited spots available for the private beta
                     </p>
 
                     <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">

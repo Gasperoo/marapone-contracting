@@ -73,14 +73,25 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {comingSoonMode && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.3, duration: 0.5 }}
+                            animate={{
+                                opacity: 1,
+                                scale: [1, 1.05, 1]
+                            }}
+                            transition={{
+                                opacity: { delay: 0.3, duration: 0.5 },
+                                scale: {
+                                    delay: 0.8,
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }
+                            }}
                             className="mt-8 flex justify-center"
                         >
                             <img
                                 src="/images/gasper-logo-g.png"
                                 alt="Gasper Logo"
-                                className="w-24 h-24 md:w-32 md:h-32 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                                className="w-32 h-32 md:w-40 md:h-40 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
                             />
                         </motion.div>
                     )}

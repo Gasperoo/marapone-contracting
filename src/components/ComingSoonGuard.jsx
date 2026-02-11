@@ -46,7 +46,10 @@ const ComingSoonGuard = ({ children }) => {
     }
 
     // Allow access to legal pages even when locked (for compliance)
-    const legalPaths = ['/terms-of-service', '/privacy-policy', '/cookie-policy'];
+    const legalPaths = [
+        '/terms-of-service', '/privacy-policy', '/cookie-policy',
+        '/terms', '/privacy', '/cookies'
+    ];
     if (legalPaths.includes(location.pathname)) {
         return <>{children}</>;
     }

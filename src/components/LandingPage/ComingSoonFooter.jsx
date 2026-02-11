@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Twitter, Linkedin, Mail, Github } from 'lucide-react';
 
 export default function ComingSoonFooter() {
@@ -54,9 +55,9 @@ export default function ComingSoonFooter() {
 
                 {/* Secondary Links */}
                 <div className="mt-8 pt-8 border-t border-white/5 flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2 text-xs text-slate-600">
-                    <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
-                    <a href="#" className="hover:text-slate-300 transition-colors">Terms of Service</a>
-                    <a href="#" className="hover:text-slate-300 transition-colors">Cookie Policy</a>
+                    <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
+                    <Link to="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
+                    <Link to="/cookies" className="hover:text-slate-300 transition-colors">Cookie Policy</Link>
                 </div>
             </div>
         </footer>

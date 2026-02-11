@@ -19,6 +19,7 @@ import {
   createOrder,
   updateOrder
 } from './supabase.js';
+import waitlistHandler from '../api/send-waitlist-email.js';
 
 // Load environment variables
 dotenv.config();
@@ -155,6 +156,9 @@ app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async
 app.use(express.json());
 
 app.use('/api/account', accountRoutes);
+
+// Waitlist email endpoint
+app.post('/api/send-waitlist-email', waitlistHandler);
 
 // Create Stripe checkout session
 app.post('/api/stripe/create-checkout-session', async (req, res) => {

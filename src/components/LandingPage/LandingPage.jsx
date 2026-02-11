@@ -98,7 +98,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                 </div>
             </section>
 
-            <div className="landing-content">
+            <div className="landing-content" style={comingSoonMode ? { maxWidth: '100%', padding: 0 } : {}}>
 
                 {/* Logo Marquee */}
                 <LogoMarquee />

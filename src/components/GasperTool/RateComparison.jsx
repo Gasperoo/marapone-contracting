@@ -3,10 +3,123 @@ import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
 import { Input } from '../ui/Input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/Select';
-import { Loader2, Star, Truck, ArrowRightLeft, Plane, Ship, Train, Zap, DollarSign, Calendar, Info, MapPin } from 'lucide-react';
+import { Loader2, Star, Truck, ArrowRightLeft, Plane, Ship, Train, Zap, DollarSign, Calendar, Info, MapPin, Clock, Anchor, Activity } from 'lucide-react';
 import { compareCarrierRates, estimateReturnCost } from './services/rateOptimizationService';
 import { formatCurrency, formatPercentage, simulateDelay } from '../../lib/utils';
 import './GasperTool.css';
+
+const RateCard = ({ rate, origin, destination }) => {
+    const getModeIcon = (mode) => {
+        switch (mode) {
+            case 'air': return Plane;
+            case 'ocean': return Ship;
+            case 'rail': return Train;
+            default: return Truck;
+        }
+    };
+
+    const Icon = getModeIcon(rate.mode);
+
+    return (
+        <Card className="bg-[#050b14] border-white/10 overflow-hidden group hover:border-blue-500/30 transition-all duration-500 shadow-xl relative">
+
+            {/* Carrier Identity HUD */}
+            <div className="flex flex-col md:flex-row p-6 md:p-8 gap-8 items-start md:items-center relative z-10">
+                <div className="flex-shrink-0">
+                    <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-500/10 group-hover:border-blue-500/20 transition-all">
+                        <Icon size={32} className="text-white/40 group-hover:text-blue-400" />
+                    </div>
+                </div>
+
+                <div className="flex-grow space-y-2">
+                    <div className="flex items-center gap-3">
+                        <h3 className="text-2xl font-black text-white tracking-tight">{rate.carrier}</h3>
+                        <span className="text-[10px] font-black bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-1 rounded uppercase">
+                            {rate.service}
+                        </span>
+                    </div>
+                    <div className="flex flex-wrap gap-4 items-center">
+                        <div className="flex items-center gap-1.5 text-white/40 text-xs font-bold uppercase tracking-wider">
+                            <Clock size={14} /> {rate.transitDays} Days
+                        </div>
+                        <div className="h-3 w-px bg-white/10"></div>
+                        <div className="flex items-center gap-1.5 text-white/40 text-xs font-bold uppercase tracking-wider">
+                            <Anchor size={14} /> {rate.vessel || 'Direct Routing'}
+                        </div>
+                        <div className="h-3 w-px bg-white/10"></div>
+                        <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                            <Zap size={14} /> {Math.round(rate.reliability * 100)}% Reliability
+                        </div>
+                    </div>
+                </div>
+
+                {/* Price & Book HUD */}
+                <div className="text-right space-y-3 min-w-[200px]">
+                    <div className="space-y-0.5">
+                        <p className="text-[10px] text-white/40 uppercase font-black tracking-widest">Total Estimated Freight</p>
+                        <div className="text-4xl font-black text-white tabular-nums">${rate.price.toLocaleString()}</div>
+                    </div>
+                    <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest text-xs py-6 rounded-xl shadow-lg shadow-blue-500/20">
+                        Book Space
+                    </Button>
+                </div>
+            </div>
+
+            {/* Dynamic Route Arc Visualizer */}
+            <div className="h-32 bg-black/40 border-t border-white/5 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+
+                {/* Visual Arc */}
+                <svg className="w-full h-full px-20 overflow-visible" viewBox="0 0 800 120">
+                    <defs>
+                        <linearGradient id={`grad-${rate.id}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#3b82f6" stopOpacity="0" />
+                            <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.5" />
+                            <stop offset="100%" stopColor="#3b82f6" stopOpacity="1" />
+                        </linearGradient>
+                    </defs>
+
+                    {/* The Path */}
+                    <path
+                        d="M 50 100 Q 400 -20 750 100"
+                        fill="none"
+                        stroke={`url(#grad-${rate.id})`}
+                        strokeWidth="2"
+                        strokeDasharray="8,8"
+                        className="animate-[dash_30s_linear_infinite]"
+                    />
+
+                    {/* Origin/Dest Nodes */}
+                    <g transform="translate(50, 100)">
+                        <circle r="6" fill="#050b14" stroke="#3b82f6" strokeWidth="2" />
+                        <text y="20" textAnchor="middle" className="fill-white/40 text-[10px] font-black uppercase tracking-widest">{origin}</text>
+                    </g>
+                    <g transform="translate(750, 100)">
+                        <circle r="6" fill="#3b82f6" className="animate-pulse" />
+                        <text y="20" textAnchor="middle" className="fill-blue-400 text-[10px] font-black uppercase tracking-widest">{destination}</text>
+                    </g>
+                </svg>
+
+                {/* Metadata HUD Overlays */}
+                <div className="absolute top-4 left-8 text-[9px] font-mono text-white/20 uppercase tracking-[0.2em]">Telemetry Link: Active</div>
+                <div className="absolute bottom-4 right-8 text-[9px] font-mono text-emerald-500/40 uppercase tracking-[0.2em]">Fuel Surcharge: {rate.history.percent}% Flux</div>
+            </div>
+
+            {/* AI Insight Bar */}
+            <div className="bg-white/5 px-8 py-3 flex items-center justify-between border-t border-white/5">
+                <div className="flex items-center gap-2">
+                    <Activity size={12} className="text-yellow-500" />
+                    <span className="text-[10px] text-white/60 font-medium">AI INSIGHT: {rate.features.join(' • ')}</span>
+                </div>
+                <div className="flex gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/40"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20"></div>
+                </div>
+            </div>
+        </Card>
+    );
+};
 
 export function RateComparison() {
     const [mode, setMode] = useState('forward');
@@ -169,26 +282,48 @@ export function RateComparison() {
                     <div className="lg:col-span-3 space-y-6">
                         {result ? (
                             <div className="space-y-6">
-                                {/* Visual Route Map (Placeholder for now, could be Google Maps / Leaflet) */}
-                                <div className="h-48 w-full rounded-2xl bg-[#0f172a] border border-white/10 relative overflow-hidden flex items-center justify-center group">
-                                    {/* Simple SVG Route Visualization */}
-                                    <div className="absolute inset-0 opacity-30 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg')] bg-cover bg-center grayscale"></div>
-                                    <div className="relative z-10 flex items-center gap-8 w-full max-w-2xl px-12">
+                                {/* Visual Route Map */}
+                                <div className="h-64 w-full rounded-3xl bg-[#050b14] border border-white/10 relative overflow-hidden flex items-center justify-center group shadow-2xl">
+                                    <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                                    <div className="absolute inset-0 bg-blue-500/5 backdrop-blur-[2px]"></div>
+
+                                    <div className="relative z-10 flex items-center gap-12 w-full max-w-4xl px-20">
                                         <div className="flex flex-col items-center">
-                                            <div className="h-4 w-4 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)]"></div>
-                                            <span className="mt-2 text-sm font-bold text-white">{origin}</span>
+                                            <div className="h-4 w-4 bg-white rounded-full shadow-[0_0_20px_rgba(255,255,255,0.8)] border-4 border-white/20"></div>
+                                            <span className="mt-4 text-xs font-black text-white uppercase tracking-[0.3em]">{origin}</span>
                                         </div>
-                                        <div className="flex-1 h-0.5 bg-gradient-to-r from-white/10 via-blue-500 to-white/10 relative">
-                                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0f172a] px-2 text-xs text-blue-400 font-mono">
-                                                {origin === 'Shanghai' ? (destination.includes('Canada') ? '11,000 km' : '10,500 km') : 'Distance Calc...'}
+
+                                        <div className="flex-1 relative h-32 flex items-center">
+                                            <svg className="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 400 100">
+                                                <path
+                                                    d="M 0 50 Q 200 -20 400 50"
+                                                    fill="none"
+                                                    stroke="#3b82f6"
+                                                    strokeWidth="2"
+                                                    strokeDasharray="4,4"
+                                                    className="opacity-40"
+                                                />
+                                                <circle r="4" fill="#3b82f6">
+                                                    <animateMotion
+                                                        path="M 0 50 Q 200 -20 400 50"
+                                                        dur="3s"
+                                                        repeatCount="indefinite"
+                                                    />
+                                                </circle>
+                                            </svg>
+                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#050b14] border border-white/10 px-4 py-1 rounded-full text-[10px] font-black text-blue-400 uppercase tracking-widest">
+                                                Active Corridor Analysis
                                             </div>
-                                            <Plane className="absolute top-1/2 left-1/3 -translate-y-1/2 -mt-3 text-white/50 animate-pulse" size={16} />
                                         </div>
+
                                         <div className="flex flex-col items-center">
-                                            <div className="h-4 w-4 bg-blue-500 rounded-full shadow-[0_0_12px_rgba(59,130,246,0.8)]"></div>
-                                            <span className="mt-2 text-sm font-bold text-white">{destination}</span>
+                                            <div className="h-4 w-4 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.8)] border-4 border-blue-500/20"></div>
+                                            <span className="mt-4 text-xs font-black text-white uppercase tracking-[0.3em]">{destination}</span>
                                         </div>
                                     </div>
+
+                                    {/* Scanline Effect */}
+                                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-blue-500/5 via-transparent to-blue-500/5 opacity-50"></div>
                                 </div>
 
                                 {/* Controls: Tabs & Sort */}
@@ -227,77 +362,9 @@ export function RateComparison() {
                                 </div>
 
                                 {/* Rate Cards */}
-                                <div className="space-y-4">
+                                <div className="space-y-6">
                                     {filteredRates?.map((rate) => (
-                                        <Card key={rate.id} className="group overflow-hidden bg-white/5 border-white/10 hover:border-blue-500/50 transition-all duration-300">
-                                            <div className="p-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-
-                                                {/* Carrier Info */}
-                                                <div className="md:col-span-3">
-                                                    <div className="flex items-center gap-3">
-                                                        <div className={`h-10 w-10 index flex items-center justify-center rounded-lg ${rate.mode === 'air' ? 'bg-purple-500/10 text-purple-400' :
-                                                                rate.mode === 'ocean' ? 'bg-blue-500/10 text-blue-400' :
-                                                                    'bg-orange-500/10 text-orange-400'
-                                                            }`}>
-                                                            {rate.mode === 'air' ? <Plane size={20} /> : rate.mode === 'ocean' ? <Ship size={20} /> : <Train size={20} />}
-                                                        </div>
-                                                        <div>
-                                                            <h4 className="font-bold text-white text-lg">{rate.carrier}</h4>
-                                                            <p className="text-xs text-white/50 uppercase tracking-wide">{rate.service}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                {/* Route Info */}
-                                                <div className="md:col-span-3">
-                                                    <div className="flex items-center gap-1 text-white/80 mb-1">
-                                                        <Calendar size={14} className="text-white/40" />
-                                                        <span className="font-medium text-lg">{rate.transitDays} Days</span>
-                                                    </div>
-                                                    <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                                                        <div className="bg-green-500 h-full" style={{ width: `${rate.reliability * 100}%` }}></div>
-                                                    </div>
-                                                    <p className="text-xs text-white/40 mt-1">{Math.round(rate.reliability * 100)}% on-time performance</p>
-                                                </div>
-
-                                                {/* Eco & Features */}
-                                                <div className="md:col-span-3 space-y-2">
-                                                    <div className="flex flex-wrap gap-2">
-                                                        {rate.features.map((feat, i) => (
-                                                            <span key={i} className="text-[10px] px-2 py-0.5 bg-white/5 rounded border border-white/5 text-white/60">
-                                                                {feat}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                    <div className="text-xs text-white/40 flex items-center gap-1">
-                                                        <div className={`h-2 w-2 rounded-full ${rate.emissions < 500 ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
-                                                        {rate.emissions} kg CO2e
-                                                    </div>
-                                                </div>
-
-                                                {/* Price & Action */}
-                                                <div className="md:col-span-3 text-right">
-                                                    <div className="text-2xl font-black text-white mb-1">{formatCurrency(rate.price)}</div>
-                                                    <div className="text-xs text-green-400 mb-3 flex justify-end items-center gap-1">
-                                                        {rate.history.trend === 'down' ? '↓' : '↑'} {rate.history.percent}% vs avg
-                                                    </div>
-                                                    <Button size="sm" className="bg-white/10 hover:bg-white/20 text-white w-full border border-white/10">
-                                                        View Details
-                                                    </Button>
-                                                </div>
-                                            </div>
-
-                                            {/* Expandable Details (Always visible for demo but styled as "breakdown") */}
-                                            <div className="px-6 py-4 bg-black/20 border-t border-white/5 flex flex-wrap gap-x-8 gap-y-2 justify-end text-sm">
-                                                <span className="text-white/40 font-semibold uppercase text-xs tracking-wider">Cost Breakdown:</span>
-                                                {Object.entries(rate.costBreakdown).map(([key, val]) => (
-                                                    <div key={key} className="flex items-center gap-2">
-                                                        <span className="text-white/60 capitalize">{key.replace('_', ' ')}:</span>
-                                                        <span className="text-white font-mono">{formatCurrency(val)}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </Card>
+                                        <RateCard key={rate.id} rate={rate} origin={origin} destination={destination} />
                                     ))}
                                 </div>
                             </div>

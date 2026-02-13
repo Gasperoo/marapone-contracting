@@ -31,7 +31,7 @@ export function HSCodeClassifier() {
         // Simulate multi-step "thinking" process
         for (let i = 0; i < loadingSteps.length; i++) {
             setLoadingStep(i);
-            await new Promise(resolve => setTimeout(resolve, 600)); // 600ms per step
+            await new Promise(resolve => setTimeout(resolve, 600));
         }
 
         const classification = classifyHSCode(productDescription);
@@ -40,201 +40,185 @@ export function HSCodeClassifier() {
     };
 
     return (
-        <div className="space-y-8 pb-12 max-w-6xl mx-auto">
+        <div className="space-y-8 pb-12 max-w-6xl mx-auto relative">
+
+            {/* Background Circuitry Aesthetic (Neural Links) */}
+            {isLoading && (
+                <div className="absolute inset-0 pointer-events-none z-0">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px]">
+                        <svg className="w-full h-full opacity-20" viewBox="0 0 800 400">
+                            <path d="M100 200 L400 200 M400 200 L700 100 M400 200 L700 300" stroke="#3b82f6" strokeWidth="2" fill="none" className="animate-pulse" />
+                            <circle cx="100" cy="200" r="4" fill="#3b82f6" className="animate-ping" />
+                            <circle cx="700" cy="100" r="4" fill="#3b82f6" style={{ animationDelay: '500ms' }} className="animate-ping" />
+                            <circle cx="700" cy="300" r="4" fill="#3b82f6" style={{ animationDelay: '1000ms' }} className="animate-ping" />
+                        </svg>
+                    </div>
+                </div>
+            )}
+
             {/* Header / Search Section */}
-            <div className="text-center space-y-6 py-8">
-                <h2 className="text-3xl font-bold text-white tracking-tight">AI Commodity Classifier</h2>
-                <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                    Instantly classify products with our advanced reasoning engine. Get HS codes, duty estimates, and compliance checks in seconds.
+            <div className="text-center space-y-6 py-8 relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 mb-2">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                    <span className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em]">Neural Engine v4.0</span>
+                </div>
+                <h2 className="text-4xl font-black text-white tracking-tight">Commodity Intelligence Core</h2>
+                <p className="text-lg text-white/40 max-w-2xl mx-auto font-medium">
+                    Proprietary deep-learning architecture for global HTS/HS classification & duty optimization.
                 </p>
 
                 <form onSubmit={handleClassify} className="max-w-xl mx-auto relative">
                     <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                         <div className="relative flex shadow-2xl">
                             <Input
-                                placeholder="Describe your product (e.g., 'Wireless Bluetooth Speaker')"
+                                placeholder="Universal product descriptor..."
                                 value={productDescription}
                                 onChange={(e) => setProductDescription(e.target.value)}
-                                className="h-14 pl-6 pr-32 rounded-xl bg-[#0f172a] border-white/10 text-lg shadow-inner focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
+                                className="h-16 pl-8 pr-32 rounded-2xl bg-[#050b14]/80 backdrop-blur-md border-white/10 text-lg shadow-inner focus:ring-2 focus:ring-blue-500/50 transition-all font-medium text-white"
                             />
                             <Button
                                 type="submit"
                                 disabled={isLoading || !productDescription.trim()}
-                                className="absolute right-2 top-2 bottom-2 px-6 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-lg hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="absolute right-2 top-2 bottom-2 px-8 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest text-xs transition-all shadow-lg hover:shadow-blue-500/25"
                             >
-                                {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : "Classify"}
+                                {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : "Analyze"}
                             </Button>
                         </div>
                     </div>
                 </form>
             </div>
 
-            {/* Loading State - Visualizing the "Mind" */}
+            {/* Loading State */}
             {isLoading && (
-                <div className="flex flex-col items-center justify-center py-12 space-y-6 animate-in fade-in zoom-in duration-500">
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-blue-500/20 blur-xl rounded-full animate-pulse"></div>
-                        <Loader2 className="h-16 w-16 text-blue-400 animate-spin relative z-10" />
+                <div className="flex flex-col items-center justify-center py-20 space-y-8 animate-in fade-in zoom-in duration-500 relative z-10">
+                    <div className="grid grid-cols-5 gap-4">
+                        {loadingSteps.map((_, idx) => (
+                            <div key={idx} className={`h-1 w-12 rounded-full transition-all duration-500 ${idx <= loadingStep ? 'bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]' : 'bg-white/5'}`}></div>
+                        ))}
                     </div>
-                    <div className="space-y-2 text-center">
-                        <h3 className="text-xl font-medium text-white">{loadingSteps[loadingStep]}</h3>
-                        <div className="flex gap-2 justify-center">
-                            {loadingSteps.map((_, idx) => (
-                                <div
-                                    key={idx}
-                                    className={`h-1.5 w-8 rounded-full transition-colors duration-300 ${idx <= loadingStep ? 'bg-blue-500' : 'bg-white/10'}`}
-                                />
-                            ))}
-                        </div>
+                    <div className="text-center">
+                        <h3 className="text-sm font-bold text-white/60 uppercase tracking-[0.3em] h-5">{loadingSteps[loadingStep]}</h3>
                     </div>
                 </div>
             )}
 
             {/* Result Section */}
             {result && !isLoading && (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-in slide-in-from-bottom-5 duration-700">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in slide-in-from-bottom-5 duration-700 relative z-10">
 
                     {/* Classification Card (Main) */}
-                    <div className="lg:col-span-2 space-y-6">
-                        <Card className="p-8 bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-white/10 shadow-2xl relative overflow-hidden group">
-                            {/* Decorative glow */}
-                            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all duration-1000"></div>
+                    <div className="lg:col-span-8 space-y-6">
+                        <Card className="p-10 bg-[#050b14] border-white/10 shadow-3xl relative overflow-hidden group border-l-4 border-l-blue-500">
+                            <div className="absolute top-0 right-0 p-8 opacity-5">
+                                <FileText size={160} className="text-white" />
+                            </div>
 
-                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 relative z-10">
-                                <div>
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <span className="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                                            HS Code Result
+                            <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-12 relative z-10">
+                                <div className="flex-1">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest">
+                                            Verified Result
                                         </span>
-                                        {result.confidence >= 0.8 && (
-                                            <span className="flex items-center gap-1 text-green-400 text-xs font-medium">
-                                                <CheckCircle2 size={12} /> High Confidence
-                                            </span>
-                                        )}
+                                        <div className="flex items-center gap-1 text-blue-400 text-[10px] font-bold uppercase tracking-widest">
+                                            <ShieldCheck size={12} /> Legal Binding: Tier 1
+                                        </div>
                                     </div>
-                                    <h1 className="text-5xl md:text-6xl font-black text-white tracking-tighter tabular-nums text-transparent bg-clip-text bg-gradient-to-br from-white to-white/50">
+                                    <h1 className="text-7xl font-black text-white tracking-tighter mb-4 flex items-baseline gap-2">
                                         {result.code}
+                                        <span className="text-sm font-mono text-white/20">/HS-REV-23</span>
                                     </h1>
-                                    <p className="text-lg text-white/60 mt-2 font-medium">{result.description}</p>
+                                    <p className="text-xl text-white/50 font-medium leading-relaxed italic border-l-2 border-white/5 pl-6">{result.description}</p>
                                 </div>
 
-                                {/* Confidence Score Visual */}
-                                <div className="text-center p-4 bg-white/5 rounded-2xl border border-white/5 backdrop-blur-sm">
-                                    <div className="relative h-20 w-20 mx-auto flex items-center justify-center">
+                                {/* Confidence Score */}
+                                <div className="bg-white/5 rounded-3xl p-6 border border-white/5 backdrop-blur-sm text-center min-w-[140px]">
+                                    <div className="relative h-24 w-24 mx-auto flex items-center justify-center">
                                         <svg className="h-full w-full -rotate-90" viewBox="0 0 36 36">
-                                            <path className="text-white/10" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="4" />
-                                            <path className={`transition-all duration-1000 ease-out ${result.confidence >= 0.8 ? 'text-green-500' : 'text-yellow-500'}`}
+                                            <circle cx="18" cy="18" r="16" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="3" />
+                                            <path
+                                                className={`transition-all duration-1000 ease-out ${result.confidence >= 0.8 ? 'text-blue-500' : 'text-yellow-500'}`}
                                                 strokeDasharray={`${result.confidence * 100}, 100`}
                                                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                                                fill="none" stroke="currentColor" strokeWidth="4"
+                                                fill="none" stroke="currentColor" strokeWidth="3"
+                                                strokeLinecap="round"
                                             />
                                         </svg>
-                                        <span className="absolute text-xl font-bold text-white">{(result.confidence * 100).toFixed(0)}%</span>
+                                        <span className="absolute text-2xl font-black text-white">{(result.confidence * 100).toFixed(0)}%</span>
                                     </div>
-                                    <span className="text-xs text-white/40 uppercase tracking-widest mt-2 block">Match Score</span>
+                                    <span className="text-[10px] text-white/30 uppercase font-black tracking-widest mt-4 block">Confidence Index</span>
                                 </div>
                             </div>
 
-                            {/* Hierarchy Tree */}
-                            <div className="space-y-3 relative z-10 bg-black/20 rounded-xl p-5 border border-white/5">
-                                <h4 className="text-sm font-semibold text-white/50 uppercase tracking-wider mb-2">Classification Hierarchy</h4>
-                                <div className="space-y-3">
-                                    {[
-                                        { label: 'Section', val: result.hierarchy.section },
-                                        { label: 'Chapter', val: result.hierarchy.chapter },
-                                        { label: 'Heading', val: result.hierarchy.heading },
-                                        { label: 'Subheading', val: result.hierarchy.subheading, active: true },
-                                    ].map((item, idx) => (
-                                        <div key={idx} className={`flex items-start gap-4 ${item.active ? 'opacity-100' : 'opacity-60 hover:opacity-100 transition-opacity'}`}>
-                                            <div className="flex flex-col items-center mt-1">
-                                                <div className={`h-2 w-2 rounded-full ${item.active ? 'bg-blue-500 shadow-[0_0_8px_rgb(59,130,246)]' : 'bg-white/30'}`}></div>
-                                                {idx !== 3 && <div className="h-full w-px bg-white/10 my-1"></div>}
+                            {/* Reasoning Engine Trace */}
+                            <div className="space-y-6 relative z-10">
+                                <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
+                                    <h4 className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                                        <Zap size={14} className="text-yellow-500" />
+                                        Neural Logic Trace
+                                    </h4>
+                                    <div className="space-y-4">
+                                        {result.reasoning_steps?.map((step, idx) => (
+                                            <div key={idx} className="flex gap-4 text-sm text-white/70 animate-in fade-in slide-in-from-left-2" style={{ animationDelay: `${idx * 150}ms` }}>
+                                                <span className="text-blue-500 font-black font-mono">[{idx + 1}]</span>
+                                                <span className="leading-relaxed">{step}</span>
                                             </div>
-                                            <div>
-                                                <span className="text-[10px] uppercase font-bold text-white/40 tracking-wider">{item.label}</span>
-                                                <p className={`text-sm ${item.active ? 'text-white font-semibold' : 'text-white/80'}`}>{item.val}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </Card>
-
-                        {/* Reasoning Engine Output */}
-                        <Card className="p-6 bg-white/5 border-white/10">
-                            <h4 className="flex items-center gap-2 text-lg font-semibold text-white mb-4">
-                                <Zap className="text-yellow-400 h-5 w-5" />
-                                AI Reasoning Engine
-                            </h4>
-                            <div className="space-y-3">
-                                {result.reasoning_steps?.map((step, idx) => (
-                                    <div key={idx} className="flex gap-3 text-sm text-white/80 items-start p-2 rounded hover:bg-white/5 transition-colors">
-                                        <span className="text-blue-400 font-mono mt-0.5">{idx + 1}.</span>
-                                        <span>{step}</span>
+                                        ))}
                                     </div>
-                                )) || (
-                                        <p className="text-white/60 text-sm italic">No reasoning steps available.</p>
-                                    )}
+                                </div>
                             </div>
                         </Card>
                     </div>
 
-                    {/* Sidebar Cards (Duty & Compliance) */}
-                    <div className="space-y-6">
-                        {/* Duty Estimator */}
-                        <Card className="p-6 bg-[#0f172a] border-white/10 shadow-xl">
-                            <h4 className="flex items-center gap-2 font-semibold text-white mb-6 border-b border-white/5 pb-4">
-                                <Calculator className="text-green-400 h-5 w-5" />
-                                Estimated Landed Cost
+                    {/* Sidebar: Lab Diagnostics */}
+                    <div className="lg:col-span-4 space-y-6">
+                        {/* Financial Analysis */}
+                        <Card className="p-8 bg-[#050b14] border-white/10 relative overflow-hidden group">
+                            <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500/50"></div>
+                            <h4 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-8 border-b border-white/5 pb-4">
+                                Financial Impact Analysis
                             </h4>
-                            <div className="space-y-5">
-                                <div className="flex justify-between items-center group">
-                                    <span className="text-sm text-white/60">General Duty Rate</span>
-                                    <span className="font-bold text-white bg-white/5 px-2 py-1 rounded group-hover:bg-white/10 transition-colors">
-                                        {result.duties.general}
-                                    </span>
+                            <div className="space-y-6">
+                                <div className="space-y-1">
+                                    <p className="text-[10px] text-white/40 uppercase font-bold">Standard Duty Vector</p>
+                                    <div className="flex justify-between items-end">
+                                        <span className="text-2xl font-black text-white">{result.duties.general}</span>
+                                        <span className="text-[10px] text-emerald-400 font-bold mb-1">OPTIMIZED</span>
+                                    </div>
                                 </div>
-                                <div className="flex justify-between items-center group">
-                                    <span className="text-sm text-white/60">China Tariff (301)</span>
-                                    <span className="font-bold text-red-400 bg-red-500/10 px-2 py-1 rounded border border-red-500/20">
-                                        {result.duties.china_tariff}
-                                    </span>
+                                <div className="space-y-1">
+                                    <p className="text-[10px] text-white/40 uppercase font-bold">China Tariff Surcharge (301)</p>
+                                    <div className="flex justify-between items-end">
+                                        <span className="text-2xl font-black text-red-500">{result.duties.china_tariff}</span>
+                                        <span className="text-[10px] text-red-400/50 font-bold mb-1">HIGH IMPACT</span>
+                                    </div>
                                 </div>
-                                <div className="flex justify-between items-center group">
-                                    <span className="text-sm text-white/60">Import VAT</span>
-                                    <span className="font-bold text-white bg-white/5 px-2 py-1 rounded">
-                                        {result.duties.vat}
-                                    </span>
-                                </div>
-
-                                <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg text-xs text-blue-300 leading-relaxed mt-4">
-                                    <span className="font-bold">Pro Tip:</span> Confirm FTA eligibility (e.g., USMCA) to potentially reduce these duties to 0%.
+                                <div className="pt-4 border-t border-white/5">
+                                    <p className="text-[11px] text-white/60 leading-relaxed italic">
+                                        System suggests auditing USMCA eligibility for potential 100% duty remission.
+                                    </p>
                                 </div>
                             </div>
                         </Card>
 
-                        {/* Compliance Check */}
-                        <Card className="p-6 bg-[#0f172a] border-white/10 shadow-xl">
-                            <h4 className="flex items-center gap-2 font-semibold text-white mb-4">
-                                <ShieldCheck className="text-purple-400 h-5 w-5" />
-                                Compliance Checks
+                        {/* Compliance Matrix */}
+                        <Card className="p-8 bg-[#050b14] border-white/10 relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-1 h-full bg-purple-500/50"></div>
+                            <h4 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-6">
+                                Compliance Matrix
                             </h4>
-                            <ul className="space-y-3">
+                            <div className="space-y-3">
                                 {result.compliance.restrictions.map((req, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
-                                        <FileText className="h-4 w-4 text-white/40 mt-0.5 flex-shrink-0" />
-                                        <span className="text-sm text-white/80">{req}</span>
-                                    </li>
+                                    <div key={idx} className="flex items-start gap-4 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-white/10 transition-colors">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 shadow-[0_0_5px_rgba(192,132,252,0.8)]"></div>
+                                        <span className="text-xs text-white/70 leading-relaxed">{req}</span>
+                                    </div>
                                 ))}
-                            </ul>
-                            <div className="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
-                                <span className="text-xs text-white/40 uppercase">Risk Level</span>
-                                <span className={`text-xs font-bold px-2 py-0.5 rounded border ${result.compliance.risk_level === 'Low' ? 'bg-green-500/10 text-green-400 border-green-500/20' :
-                                    result.compliance.risk_level === 'Medium' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20' :
-                                        'bg-red-500/10 text-red-400 border-red-500/20'
-                                    }`}>
-                                    {result.compliance.risk_level}
+                            </div>
+                            <div className="mt-8 flex justify-between items-center bg-black/40 p-3 rounded-lg border border-white/5">
+                                <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">Global Risk Seal</span>
+                                <span className={`text-[10px] font-black px-2 py-1 rounded tracking-tighter ${result.compliance.risk_level === 'Low' ? 'text-emerald-400' : 'text-red-400'}`}>
+                                    CLASS: {result.compliance.risk_level.toUpperCase()}
                                 </span>
                             </div>
                         </Card>
@@ -245,3 +229,4 @@ export function HSCodeClassifier() {
         </div>
     );
 }
+

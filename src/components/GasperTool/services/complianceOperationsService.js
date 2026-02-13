@@ -350,3 +350,52 @@ export function analyzePOD(pod, expectedData) {
         claimTemplate,
     };
 }
+
+// ============================================================================
+// COMPLIANCE GUARD - Advanced Visualizations
+// ============================================================================
+
+export function getRegulatoryHeatmapData() {
+    // Mock data for 3D Earth Regulatory Radar
+    return [
+        { lat: 31.2304, lng: 121.4737, intensity: 0.9, type: 'critical', location: 'Shanghai, CN', issue: 'New Export Controls' },
+        { lat: 51.5074, lng: -0.1278, intensity: 0.7, type: 'warning', location: 'London, UK', issue: 'Brexit Customs Update' },
+        { lat: 40.7128, lng: -74.0060, intensity: 0.5, type: 'alert', location: 'New York, USA', issue: 'Tariff Adjustment' },
+        { lat: 19.4326, lng: -99.1332, intensity: 0.8, type: 'critical', location: 'Mexico City, MX', issue: 'Labor Law Reform' },
+        { lat: 55.7558, lng: 37.6173, intensity: 1.0, type: 'critical', location: 'Moscow, RU', issue: 'Trade Sanctions' },
+        { lat: 25.2048, lng: 55.2708, intensity: 0.4, type: 'safe', location: 'Dubai, UAE', issue: 'Free Trade Zone Expansion' }
+    ];
+}
+
+export function getBlockchainAuditLog() {
+    // Mock Blockchain Ledger Data
+    const bases = [
+        { id: 'BLK-0921', action: 'Sanction Screen', subject: 'Supplier QX-99', status: 'PASS', hash: '0x9d...2a1' },
+        { id: 'BLK-0922', action: 'HS Classification', subject: 'Automotive Parts', status: 'VERIFIED', hash: '0x4b...8f2' },
+        { id: 'BLK-0923', action: 'Duty Payment', subject: 'Inv #8821', status: 'CLEARED', hash: '0x7c...3e4' },
+        { id: 'BLK-0924', action: 'Doc Verification', subject: 'Bill of Lading', status: 'AUDITED', hash: '0x1a...9b0' },
+        { id: 'BLK-0925', action: 'Carbon Tax', subject: 'EU Import', status: 'PENDING', hash: '0x2f...1d8' }
+    ];
+    return bases;
+}
+
+export function getDocumentScanOverlay() {
+    // Mock AI "Terminator Vision" Scan Points
+    return [
+        { x: 10, y: 20, label: 'Shipper Address', status: 'verified' },
+        { x: 10, y: 40, label: 'Consignee', status: 'verified' },
+        { x: 60, y: 20, label: 'Invoice #', status: 'verified' },
+        { x: 60, y: 35, label: 'Date', status: 'warning', msg: 'Format mismatch' },
+        { x: 10, y: 70, label: 'Line Items', status: 'verified' },
+        { x: 60, y: 80, label: 'Total Value', status: 'alert', msg: 'Threshold exceeding' }
+    ];
+}
+
+export function getComplianceNews() {
+    return [
+        { time: '10:42 AM', source: 'Reuters', headline: 'EU Parliament Approves Final CBAM Draft' },
+        { time: '09:15 AM', source: 'Bloomberg', headline: 'US-India Trade Pact Discussions Resume' },
+        { time: '08:00 AM', source: 'FT', headline: 'Container Rates Spike Amidst Red Sea Tensions' },
+        { time: 'Yesterday', source: 'WSJ', headline: 'Mexico Labor Reforms Key to New USMCA Compliance' }
+    ];
+}

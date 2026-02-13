@@ -78,3 +78,61 @@ export function calculateCarbonFootprint(origin, destination, weightKg) {
         ],
     };
 }
+
+// ============================================================================
+// ECO SENTINEL - Advanced ESG Command Center
+// ============================================================================
+
+export function getGlobalHeatmapData() {
+    // Mock data for Global Emissions Heatmap
+    return [
+        { lat: 31.2304, lng: 121.4737, intensity: 0.95, type: 'source', location: 'Shanghai, CN', status: 'High Intensity' },
+        { lat: 40.7128, lng: -74.0060, intensity: 0.75, type: 'source', location: 'New York, USA', status: 'Processing Hub' },
+        { lat: -23.5505, lng: -46.6333, intensity: 0.85, type: 'offset', location: 'Amazon Rainforest', status: 'Reforestation Active' },
+        { lat: 51.5074, lng: -0.1278, intensity: 0.40, type: 'source', location: 'London, UK', status: 'Low Carbon Zone' },
+        { lat: 1.3521, lng: 103.8198, intensity: 0.60, type: 'source', location: 'Singapore', status: 'Sustainable Bunkering' },
+        { lat: -15.7938, lng: -47.8828, intensity: 0.90, type: 'offset', location: 'Cerrado Region', status: 'Bio-char Project' }
+    ];
+}
+
+export function getESGScorecard() {
+    return {
+        overall: 78,
+        levers: [
+            { id: 'scope1', label: 'Scope 1 (Direct)', value: 1240, unit: 'tCO2e', trend: 'down', status: 'good' },
+            { id: 'scope2', label: 'Scope 2 (Energy)', value: 850, unit: 'tCO2e', trend: 'up', status: 'warning' },
+            { id: 'scope3', label: 'Scope 3 (Supply Chain)', value: 4520, unit: 'tCO2e', trend: 'down', status: 'good' }
+        ],
+        milestones: [
+            { label: 'Net Zero 2030', progress: 45 },
+            { label: 'RE100 Commitment', progress: 80 }
+        ]
+    };
+}
+
+export function getGreenCorridors() {
+    return [
+        {
+            route: 'Shanghai → Rotterdam',
+            mode: 'Ocean (Bio-LNG)',
+            reduction: '85%',
+            costImpact: '+12%',
+            reliability: 'High'
+        },
+        {
+            route: 'Guangzhou → Paris',
+            mode: 'Rail (Electric)',
+            reduction: '72%',
+            costImpact: '+20%',
+            reliability: 'Medium'
+        },
+        {
+            route: 'Los Angeles → New York',
+            mode: 'Truck (Hydrogen)',
+            reduction: '92%',
+            costImpact: '+35%',
+            reliability: 'Experimental'
+        }
+    ];
+}
+

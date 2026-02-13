@@ -63,3 +63,39 @@ export function generateTradeDocument(request) {
         },
     };
 }
+
+/**
+ * Mocks the extraction of data from a raw document image/PDF via Neural OCR
+ */
+export function parseDocumentOCR(docType = 'bill_of_lading') {
+    return {
+        confidence: 0.985,
+        fieldsExtracted: [
+            { label: 'Carrier', value: 'Maersk Line A/S', confidence: 0.99 },
+            { label: 'Vessel', value: 'MAERSK MC-KINNEY MOLLER', confidence: 0.98 },
+            { label: 'Container ID', value: 'MSKU 123456-7', confidence: 0.99 },
+            { label: 'Weight', value: '24,500 KG', confidence: 0.97 },
+            { label: 'Origin Port', value: 'Shanghai (CNSHA)', confidence: 0.99 }
+        ],
+        anomalies: [
+            { field: 'Date', raw: '2024-02-30', suggestion: 'Possible invalid date detected (Feb offset)', severity: 'warning' }
+        ]
+    };
+}
+
+/**
+ * Mocks a blockchain notary check for document authenticity
+ */
+export function getBlockchainNotaryRecord(docId) {
+    const timestamp = new Date().toISOString();
+    return {
+        isAuthentic: true,
+        chainId: 'ETH-L2-OPTIMISM-99',
+        blockNumber: 15482931,
+        txHash: '0x' + Math.random().toString(16).slice(2, 42),
+        notaryTime: timestamp,
+        merkleRoot: '0xabc...def',
+        certificateUrl: `/api/verify/${docId}`
+    };
+}
+

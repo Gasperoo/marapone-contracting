@@ -339,3 +339,93 @@ export function getConversionMetrics(quotes) {
         averageQuoteValue: avgQuoteValue,
     };
 }
+
+// --- NEW ANALYTICS FEATURES ---
+
+export function getPredictiveSpendData() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const currentMonthIndex = new Date().getMonth();
+
+    return months.map((month, index) => {
+        const isFuture = index > currentMonthIndex;
+        // Base value: 1.2M - 1.5M range
+        const baseSpend = 1200000 + Math.random() * 300000;
+
+        // Add trend: increasing towards end of year
+        const trend = index * 20000;
+
+        let value = baseSpend + trend;
+
+        // Future values include uncertainty range
+        if (isFuture) {
+            const uncertainty = (index - currentMonthIndex) * 50000;
+            return {
+                month,
+                spend: Math.round(value),
+                predicted: true,
+                lowerBound: Math.round(value - uncertainty),
+                upperBound: Math.round(value + uncertainty)
+            };
+        }
+
+        return {
+            month,
+            spend: Math.round(value),
+            predicted: false
+        };
+    });
+}
+
+export function getCarrierHologramData() {
+    return [
+        { subject: 'Speed', A: 120, B: 110, fullMark: 150 },
+        { subject: 'Reliability', A: 98, B: 130, fullMark: 150 },
+        { subject: 'Cost Efficiency', A: 86, B: 130, fullMark: 150 },
+        { subject: 'Sustainability', A: 99, B: 100, fullMark: 150 },
+        { subject: 'Flexibility', A: 85, B: 90, fullMark: 150 },
+        { subject: 'Tech Integration', A: 65, B: 85, fullMark: 150 },
+    ];
+}
+
+export function getSustainabilityMetrics() {
+    return {
+        totalCarbon: 12450, // kg CO2
+        target: 10000,
+        trend: -12.5, // 12.5% reduction
+        offset: 8500,
+        net: 3950
+    };
+}
+
+export function processNLPQuery(query) {
+    const q = query.toLowerCase();
+
+    if (q.includes('spend') && q.includes('q4')) {
+        return {
+            answer: "Projected spend for Q4 2024 is $4.2M, which is 12% higher than Q3 due to anticipated holiday surcharges.",
+            confidence: 98,
+            relatedMetric: 'predictive_spend'
+        };
+    }
+
+    if (q.includes('maersk') || q.includes('reliability')) {
+        return {
+            answer: "Maersk is currently ranking #1 for Reliability Score (98/100) but has a higher cost variance than MSC.",
+            confidence: 94,
+            relatedMetric: 'carrier_hologram'
+        };
+    }
+
+    if (q.includes('carbon') || q.includes('sustainability')) {
+        return {
+            answer: "Current carbon emissions are 12.5% below baseline. We are on track to meet the 2025 Net Zero targets.",
+            confidence: 99,
+            relatedMetric: 'sustainability'
+        };
+    }
+
+    return {
+        answer: "I'm analyzing that query. Here is a general breakdown of your supply chain performance...",
+        confidence: 75
+    };
+}

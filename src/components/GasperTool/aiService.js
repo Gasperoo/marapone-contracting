@@ -6,145 +6,239 @@ const HS_CODE_DATABASE = {
         code: '8518.21.00',
         description: 'Loudspeakers, without housing (portable)',
         confidence: 0.92,
-        reasoning: 'Product is a portable audio device with wireless connectivity',
-        dutyRate: '0% (MFN)',
+        hierarchy: {
+            section: 'XVI - Machinery and Mechanical Appliances',
+            chapter: '85 - Electrical Machinery and Equipment',
+            heading: '8518 - Microphones and Loudspeakers',
+            subheading: '8518.21 - Single loudspeakers, mounted in their enclosures'
+        },
+        reasoning_steps: [
+            "Identified product as an audio output device.",
+            "Categorized under Section XVI (Machinery & Mechanical Appliances).",
+            "Mapped to Chapter 85 (Electrical Machinery).",
+            "Refined to Heading 8518 (Loudspeakers).",
+            "Specified Subheading 21 for 'Single loudspeakers, mounted in their enclosures' based on 'portable' keyword."
+        ],
+        duties: {
+            general: '0%',
+            china_tariff: '25% (Section 301)',
+            vat: 'Standard Rate'
+        },
+        compliance: {
+            restrictions: ['FCC Compliance Required', 'Bluetooth SIG Registration'],
+            risk_level: 'Low'
+        }
     },
     'laptop': {
         code: '8471.30.01',
         description: 'Portable automatic data processing machines, weighing not more than 10 kg',
         confidence: 0.95,
-        reasoning: 'Portable computing device for personal use',
-        dutyRate: '0% (MFN)',
+        hierarchy: {
+            section: 'XVI - Machinery and Mechanical Appliances',
+            chapter: '84 - Nuclear Reactors, Boilers, Machinery',
+            heading: '8471 - Automatic Data Processing Machines',
+            subheading: '8471.30 - Portable, weighing <= 10kg'
+        },
+        reasoning_steps: [
+            "Identified product as a computing device.",
+            "Locating within Chapter 84 (Machinery & Mechanical Appliances).",
+            "Matching to Heading 8471 (ADP Machines).",
+            "Confirming weight < 10kg for 'Portable' classification."
+        ],
+        duties: {
+            general: '0%',
+            china_tariff: 'Exempt',
+            vat: 'Standard Rate'
+        },
+        compliance: {
+            restrictions: ['Battery Safety (UN38.3)', 'FCC Part 15'],
+            risk_level: 'Medium'
+        }
     },
     'smartphone': {
         code: '8517.13.00',
         description: 'Smartphones',
         confidence: 0.98,
-        reasoning: 'Mobile telephone with computing capabilities',
-        dutyRate: '0% (MFN)',
+        hierarchy: {
+            section: 'XVI - Machinery and Mechanical Appliances',
+            chapter: '85 - Electrical Machinery and Equipment',
+            heading: '8517 - Telephone Sets',
+            subheading: '8517.13 - Smartphones'
+        },
+        reasoning_steps: [
+            "Identified transmission apparatus function.",
+            "Mapped to Chapter 85.",
+            "Classified under Heading 8517 (Telephone Sets).",
+            "Specific match for 'Smartphones' introduced in HS 2022 revision."
+        ],
+        duties: {
+            general: '0%',
+            china_tariff: '0%',
+            vat: 'Standard Rate'
+        },
+        compliance: {
+            restrictions: ['FCC ID Required', 'IMEI Registration'],
+            risk_level: 'Low'
+        }
     },
-    'headphones': {
-        code: '8518.30.20',
-        description: 'Headphones and earphones, whether or not combined with a microphone',
-        confidence: 0.94,
-        reasoning: 'Personal audio listening device',
-        dutyRate: '0% (MFN)',
-    },
-    'tablet': {
-        code: '8471.30.01',
-        description: 'Portable automatic data processing machines, weighing not more than 10 kg',
-        confidence: 0.93,
-        reasoning: 'Portable touchscreen computing device',
-        dutyRate: '0% (MFN)',
-    },
-
-    // Clothing & Textiles
+    // Clothing usage
     'cotton t-shirt': {
         code: '6109.10.00',
         description: 'T-shirts, singlets and other vests, of cotton, knitted or crocheted',
         confidence: 0.96,
-        reasoning: 'Knitted cotton garment for upper body',
-        dutyRate: '18% (MFN)',
+        hierarchy: {
+            section: 'XI - Textiles and Textile Articles',
+            chapter: '61 - Articles of Apparel, Knitted',
+            heading: '6109 - T-shirts, Singlets, etc.',
+            subheading: '6109.10 - Of Cotton'
+        },
+        reasoning_steps: [
+            "Identified textile article of apparel.",
+            "Determined construction as 'Knitted' (Chapter 61).",
+            "Matched specific garment type 'T-shirt' (Heading 6109).",
+            "Material composition identified as 'Cotton' (Subheading 10)."
+        ],
+        duties: {
+            general: '16.5%',
+            china_tariff: '7.5% (Additional)',
+            vat: 'Standard Rate'
+        },
+        compliance: {
+            restrictions: ['Textile Flammability Act', 'Care Labeling Rule'],
+            risk_level: 'Low'
+        }
     },
     'jeans': {
         code: '6203.42.00',
         description: 'Men\'s or boys\' trousers, bib and brace overalls, of cotton',
         confidence: 0.94,
-        reasoning: 'Cotton denim trousers',
-        dutyRate: '17% (MFN)',
+        hierarchy: {
+            section: 'XI - Textiles and Textile Articles',
+            chapter: '62 - Articles of Apparel, Not Knitted',
+            heading: '6203 - Men\'s Suits, Trousers, etc.',
+            subheading: '6203.42 - Trousers of Cotton'
+        },
+        reasoning_steps: [
+            "Identified as apparel, woven fabric (Not Knitted - Chapter 62).",
+            "Categorized as Trousers.",
+            "Material identified as Cotton.",
+            "Classification assumes Men's/Boys' (Common crossover for unisex jeans)."
+        ],
+        duties: {
+            general: '16.6%',
+            china_tariff: '7.5% (Additional)',
+            vat: 'Standard Rate'
+        },
+        compliance: {
+            restrictions: ['Care Labeling'],
+            risk_level: 'Low'
+        }
     },
-    'running shoes': {
-        code: '6404.11.00',
-        description: 'Sports footwear; tennis shoes, basketball shoes, gym shoes, training shoes',
-        confidence: 0.91,
-        reasoning: 'Athletic footwear with rubber/plastic outer sole',
-        dutyRate: '20% (MFN)',
-    },
-
-    // Food & Beverage
+    // Food
     'coffee beans': {
         code: '0901.21.00',
         description: 'Coffee, not roasted, not decaffeinated',
         confidence: 0.97,
-        reasoning: 'Raw coffee beans for roasting',
-        dutyRate: '0% (MFN)',
-    },
-    'olive oil': {
-        code: '1509.10.00',
-        description: 'Virgin olive oil',
-        confidence: 0.95,
-        reasoning: 'Edible vegetable oil from olives',
-        dutyRate: '0% (MFN)',
-    },
-
-    // Furniture
-    'office chair': {
-        code: '9401.30.00',
-        description: 'Swivel seats with variable height adjustment',
-        confidence: 0.93,
-        reasoning: 'Adjustable seating furniture for office use',
-        dutyRate: '0% (MFN)',
-    },
-    'wooden table': {
-        code: '9403.60.00',
-        description: 'Other wooden furniture',
-        confidence: 0.89,
-        reasoning: 'Furniture primarily of wood construction',
-        dutyRate: '0% (MFN)',
-    },
-
-    // Toys & Games
-    'board game': {
-        code: '9504.90.00',
-        description: 'Other games, operated by coins, banknotes, bank cards, tokens or by other means of payment',
-        confidence: 0.87,
-        reasoning: 'Entertainment game for multiple players',
-        dutyRate: '0% (MFN)',
-    },
-    'stuffed animal': {
-        code: '9503.00.21',
-        description: 'Toys representing animals or non-human creatures',
-        confidence: 0.94,
-        reasoning: 'Soft toy in animal form',
-        dutyRate: '0% (MFN)',
-    },
+        hierarchy: {
+            section: 'II - Vegetable Products',
+            chapter: '09 - Coffee, Tea, Maté and Spices',
+            heading: '0901 - Coffee',
+            subheading: '0901.21 - Not roasted, not decaffeinated'
+        },
+        reasoning_steps: [
+            "Identified as Vegetable Product.",
+            "Mapped to Chapter 09 (Coffee, Tea).",
+            "Matched Heading 0901.",
+            "Specific condition: Not Roasted, Not Decaffeinated."
+        ],
+        duties: {
+            general: 'Free',
+            china_tariff: 'N/A',
+            vat: 'Zero-Rated'
+        },
+        compliance: {
+            restrictions: ['FDA Prior Notice', 'Phytosanitary Certificate'],
+            risk_level: 'High'
+        }
+    }
 };
 
 export function classifyHSCode(productDescription) {
     const query = productDescription.toLowerCase().trim();
 
-    // Direct match
+    // Helper to find best match
+    let bestMatch = null;
+    let maxScore = 0;
+
+    // Direct or key match
     if (HS_CODE_DATABASE[query]) {
         return HS_CODE_DATABASE[query];
     }
 
     // Fuzzy keyword matching
-    const keywords = query.split(' ');
+    const queryWords = query.split(' ');
     for (const [key, value] of Object.entries(HS_CODE_DATABASE)) {
         const keyWords = key.split(' ');
-        const matchCount = keywords.filter(kw => keyWords.some(k => k.includes(kw) || kw.includes(k))).length;
+        let matchCount = 0;
 
-        if (matchCount >= Math.min(2, keywords.length)) {
-            return {
-                ...value,
-                confidence: value.confidence * 0.85, // Lower confidence for fuzzy match
-                reasoning: `${value.reasoning} (matched based on keywords: ${keywords.join(', ')})`,
-            };
+        queryWords.forEach(qw => {
+            if (keyWords.some(kw => kw.includes(qw) || qw.includes(kw))) matchCount++;
+        });
+
+        if (matchCount > maxScore) {
+            maxScore = matchCount;
+            bestMatch = value;
         }
     }
 
-    // Generic fallback
+    if (bestMatch && maxScore >= 1) {
+        return {
+            ...bestMatch,
+            confidence: bestMatch.confidence * 0.9,
+            reasoning_steps: [
+                ...bestMatch.reasoning_steps,
+                `Note: Inferred from keyword match "${query}"`
+            ]
+        };
+    }
+
+    // Generic fallback with simulated structure
     return {
         code: '9999.99.99',
-        description: 'Product classification requires manual review',
+        description: 'Unclassified Product',
         confidence: 0.45,
-        reasoning: 'Unable to automatically classify this product. Please consult with a customs broker for accurate HS code determination.',
-        dutyRate: 'Unknown - requires manual classification',
+        hierarchy: {
+            section: 'Unknown',
+            chapter: '??',
+            heading: '????',
+            subheading: '????.??'
+        },
+        reasoning_steps: [
+            "Analyzing product description...",
+            "Unable to map to specific Harmonized System chapter.",
+            "Insufficient data to determine material consistency.",
+            "Manual review recommended."
+        ],
+        duties: {
+            general: 'Unknown',
+            china_tariff: 'Unknown',
+            vat: 'Unknown'
+        },
+        compliance: {
+            restrictions: ['Unable to determine'],
+            risk_level: 'Unknown'
+        }
     };
 }
 
 export function estimateLandedCost(params) {
-    const { units, unitPrice, origin, destination, weight = units * 0.5 } = params;
+    const {
+        units = 100,
+        unitPrice = 10,
+        origin = 'Shanghai',
+        destination = 'Toronto',
+        weight = 50
+    } = params || {};
 
     const productCost = units * unitPrice;
 

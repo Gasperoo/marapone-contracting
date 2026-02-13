@@ -26,74 +26,148 @@ const CARRIER_DATABASE = {
     ],
 };
 
+
 export function compareCarrierRates(request) {
-    const carriers = CARRIER_DATABASE[request.serviceType] || CARRIER_DATABASE.air;
+    // Generate multi-modal results if no specific mode is locked, or just the requested one
+    const modes = request.serviceType === 'all' ? ['ocean', 'air', 'ground', 'rail'] : [request.serviceType];
 
-    // Calculate distance factor
-    const distanceFactor = calculateDistanceFactor(request.origin, request.destination);
+    let allRates = [];
 
-    // Generate rates for each carrier
-    const rates = carriers.map((carrier) => {
-        const basePrice = request.weight * carrier.baseRate * distanceFactor;
-        const transitDays = Math.round(
-            (request.serviceType === 'ocean' ? 28 : request.serviceType === 'ground' ? 5 : 3) / carrier.speedFactor
-        );
+    modes.forEach(mode => {
+        if (!CARRIER_DATABASE[mode]) return;
 
-        // Calculate score based on preferences
-        let score = 50; // Base score
+        const carrierRates = CARRIER_DATABASE[mode].map(carrier => {
+            const distanceFactor = calculateDistanceFactor(request.origin, request.destination);
+            // Dynamic base price calculation with surcharge logic
+            const baseFreight = request.weight * carrier.baseRate * distanceFactor;
 
-        if (request.preferences.prioritizeSpeed) {
-            score += (carrier.speedFactor - 0.5) * 30;
-        }
+            // Generate detailed cost breakdown
+            const costBreakdown = generateCostBreakdown(baseFreight, mode);
+            const totalPrice = Object.values(costBreakdown).reduce((a, b) => a + b, 0);
 
-        if (request.preferences.prioritizeCost) {
-            const avgRate = carriers.reduce((sum, c) => sum + c.baseRate, 0) / carriers.length;
-            score += ((avgRate - carrier.baseRate) / avgRate) * 30;
-        }
+            // Transit time calc
+            const baseTransit = mode === 'ocean' ? 28 : mode === 'rail' ? 18 : mode === 'ground' ? 5 : 3;
+            const transitDays = Math.round(baseTransit / carrier.speedFactor);
 
-        score += carrier.reliabilityScore * 20;
+            // Sustainability Metrics (kg CO2e)
+            const emissions = calculateEmissions(request.weight, distanceFactor * 1000, mode);
 
-        // Features based on carrier
-        const features = [];
-        if (carrier.reliabilityScore > 0.9) features.push('Real-time tracking');
-        if (carrier.speedFactor > 1.1) features.push('Express delivery');
-        if (request.serviceType === 'ocean') features.push('Door-to-door service');
-        features.push('Insurance included');
+            // Historical Trend (simulated)
+            const history = {
+                trend: Math.random() > 0.5 ? 'up' : 'down',
+                percent: Math.floor(Math.random() * 15) + 1,
+                forecast: Math.random() > 0.5 ? 'stable' : 'increasing'
+            };
 
-        return {
-            carrier: carrier.name,
-            service: getServiceName(request.serviceType, carrier.name),
-            price: Math.round(basePrice * 100) / 100,
-            transitDays,
-            reliability: carrier.reliabilityScore,
-            features,
-            restrictions: getRestrictions(request.serviceType),
-            score: Math.round(score),
-        };
+            return {
+                id: `${mode}-${carrier.name}-${Date.now()}`,
+                mode: mode,
+                carrier: carrier.name,
+                service: getServiceName(mode, carrier.name),
+                price: Math.round(totalPrice * 100) / 100,
+                costBreakdown,
+                transitDays,
+                reliability: carrier.reliabilityScore,
+                emissions,
+                history,
+                features: generateFeatures(carrier, mode),
+                restrictions: getRestrictions(mode),
+                score: calculateScore(totalPrice, transitDays, carrier.reliabilityScore, request.preferences)
+            };
+        });
+        allRates = [...allRates, ...carrierRates];
     });
 
-    // Sort by score
-    rates.sort((a, b) => b.score - a.score);
-
-    // Generate AI recommendation
-    const topRate = rates[0];
-    const avgPrice = rates.reduce((sum, r) => sum + r.price, 0) / rates.length;
-    const savingsVsAverage = avgPrice - topRate.price;
-
-    const reasoning = generateRecommendationReasoning(topRate, request.preferences, savingsVsAverage);
-    const tradeoffs = generateTradeoffs(topRate, rates);
+    // Sort by checking preferences (default to lowest price)
+    allRates.sort((a, b) => a.price - b.price);
 
     return {
         request,
-        rates,
-        recommendation: {
-            carrier: topRate.carrier,
-            reasoning,
-            savingsVsAverage,
-            tradeoffs,
+        rates: allRates,
+        route: {
+            origin: { name: request.origin, coords: getCoordinates(request.origin) },
+            destination: { name: request.destination, coords: getCoordinates(request.destination) }
         },
+        recommendation: generateSmartRecommendation(allRates, request.preferences),
         timestamp: new Date().toISOString(),
     };
+}
+
+function generateCostBreakdown(baseFreight, mode) {
+    if (mode === 'ocean') {
+        return {
+            freight: Math.round(baseFreight * 0.7),
+            baf: Math.round(baseFreight * 0.15), // Bunker Adjustment Factor
+            caf: Math.round(baseFreight * 0.05), // Currency Adjustment Factor
+            thc: Math.round(baseFreight * 0.1),  // Terminal Handling Charge
+            docs: 45
+        };
+    } else if (mode === 'air') {
+        return {
+            freight: Math.round(baseFreight * 0.8),
+            fuel_surcharge: Math.round(baseFreight * 0.15),
+            security: Math.round(baseFreight * 0.05),
+            screening: 35
+        };
+    } else {
+        return {
+            freight: Math.round(baseFreight * 0.9),
+            fuel: Math.round(baseFreight * 0.1),
+            toll: 25
+        };
+    }
+}
+
+function calculateEmissions(weightKg, distanceKm, mode) {
+    // CO2 factors (kg CO2e per ton-km)
+    const factors = { ocean: 0.01, rail: 0.02, ground: 0.06, air: 0.55 };
+    const emissions = (weightKg / 1000) * distanceKm * (factors[mode] || 0.05);
+    return Math.round(emissions);
+}
+
+function generateFeatures(carrier, mode) {
+    const features = [];
+    if (carrier.reliabilityScore > 0.9) features.push('Guaranteed Capacity');
+    if (mode === 'ocean') features.push('Carbon Offset Available');
+    if (mode === 'air') features.push('Prio Boarding');
+    features.push('Real-time Tracking');
+    return features;
+}
+
+function calculateScore(price, days, reliability, prefs) {
+    let score = 50;
+    score -= price * 0.01; // Lower price = higher score
+    if (prefs?.prioritizeSpeed) score -= days * 2; // Lower days = higher score
+    score += reliability * 100;
+    return Math.round(score);
+}
+
+function generateSmartRecommendation(rates, prefs) {
+    // Find absolute bests
+    const cheapest = rates.reduce((prev, curr) => prev.price < curr.price ? prev : curr);
+    const fastest = rates.reduce((prev, curr) => prev.transitDays < curr.transitDays ? prev : curr);
+    const greenest = rates.reduce((prev, curr) => prev.emissions < curr.emissions ? prev : curr);
+
+    return {
+        cheapest: { ...cheapest, badge: 'Best Value' },
+        fastest: { ...fastest, badge: 'Fastest' },
+        greenest: { ...greenest, badge: 'Eco Choice' },
+        insight: `Going with ${greenest.carrier} via ${greenest.mode} saves ${((1 - greenest.emissions / rates.find(r => r.mode === 'air')?.emissions) * 100).toFixed(0)}% CO2 vs Air Freight.`
+    };
+}
+
+function getCoordinates(city) {
+    // Mock coordinates for map
+    const coords = {
+        'Shanghai': [121.47, 31.23],
+        'New York': [-74.00, 40.71],
+        'London': [-0.12, 51.50],
+        'Toronto': [-79.38, 43.65],
+        'Vancouver': [-123.12, 49.28],
+        'Montreal': [-73.56, 45.50],
+        'Los Angeles': [-118.24, 34.05]
+    };
+    return coords[city] || [0, 0];
 }
 
 function calculateCustomsDuties(price, _origin, _destination) {

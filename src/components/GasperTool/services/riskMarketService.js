@@ -188,3 +188,61 @@ export function getMarketData() {
 
     return { currencies, commodities, news, spotRates };
 }
+
+// ============================================================================
+// RISK SENTINEL - Advanced Threat Intelligence
+// ============================================================================
+
+export function getOperationalRiskMap() {
+    // Mock data for Global Threat Map
+    return [
+        { lat: 10.4326, lng: -75.5332, type: 'weather', severity: 'high', location: 'Caribbean Sea', event: 'Hurricane Warning' },
+        { lat: 31.2304, lng: 121.4737, type: 'logistics', severity: 'medium', location: 'Shanghai Port', event: 'Congestion > 5 days' },
+        { lat: 53.5488, lng: 9.9872, type: 'labor', severity: 'critical', location: 'Hamburg, DE', event: 'Union Strike Action' },
+        { lat: 25.2048, lng: 55.2708, type: 'geopolitical', severity: 'high', location: 'Strait of Hormuz', event: 'Naval Tensions' },
+        { lat: 33.7490, lng: -84.3880, type: 'cyber', severity: 'medium', location: 'Atlanta Hub', event: 'System Outage' },
+        { lat: 1.3521, lng: 103.8198, type: 'weather', severity: 'low', location: 'Singapore', event: 'Monsoon Delays' }
+    ];
+}
+
+export function getSupplierDependencyTree() {
+    // Mock Dependency Graph Nodes
+    return {
+        nodes: [
+            { id: 'root', label: 'Marapone HQ', type: 'hq', risk: 10 },
+            { id: 's1', label: 'Foxconn (CN)', type: 'supplier', risk: 45 },
+            { id: 's2', label: 'TSMC (TW)', type: 'supplier', risk: 85 }, // High geopolitical risk
+            { id: 's3', label: 'Samsung (KR)', type: 'supplier', risk: 20 },
+            { id: 'l1', label: 'Maersk Line', type: 'logistics', risk: 30 },
+            { id: 'l2', label: 'DHL Aviation', type: 'logistics', risk: 15 },
+        ],
+        links: [
+            { source: 'root', target: 's1' },
+            { source: 'root', target: 's2' },
+            { source: 'root', target: 's3' },
+            { source: 's1', target: 'l1' }, // Foxconn uses Maersk
+            { source: 's2', target: 'l2' }, // TSMC uses DHL
+            { source: 's3', target: 'l1' }
+        ]
+    };
+}
+
+export function getPredictiveRiskScores() {
+    // AI Risk Predictions
+    return [
+        { category: 'Geopolitical Stability', score: 85, trend: 'up', insight: 'Election year volatility in key manufacturing hubs' },
+        { category: 'Port Congestion', score: 62, trend: 'down', insight: 'Seasonal peak easing, but labor talks ongoing' },
+        { category: 'Cybersecurity', score: 45, trend: 'stable', insight: 'Ransomware threats to logistics providers rising' },
+        { category: 'Climate Risk', score: 78, trend: 'up', insight: 'El Niño pattern increasing storm frequency in Pacific' }
+    ];
+}
+
+export function getLiveDisruptionFeed() {
+    // Real-time Alerts
+    return [
+        { id: 1, type: 'critical', message: 'Suez Canal: Vessel grounded at km 151, traffic halted.', time: '10m ago' },
+        { id: 2, type: 'warning', message: 'Los Angeles Port: Gate system failure causing truck queues.', time: '45m ago' },
+        { id: 3, type: 'info', message: 'Panama Canal: Draft restrictions lifted for Neopanamax locks.', time: '2h ago' },
+        { id: 4, type: 'warning', message: 'Rotterdam: Customs strike planned for next Tuesday.', time: '5h ago' }
+    ];
+}

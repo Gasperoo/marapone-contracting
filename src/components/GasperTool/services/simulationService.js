@@ -5,57 +5,42 @@ import { generateId } from '../../../lib/utils';
 
 export function runSupplyChainSimulation(params) {
     const results = params.scenarios.map((scenario) => {
-        // Calculate impact based on scenario type and severity
-        const severityMultiplier = {
-            Low: 1.1,
-            Medium: 1.25,
-            High: 1.5,
-            Critical: 2.0,
-        }[scenario.severity];
+        // Advanced Simulation Logic: Node-Based Impact Propagation
+        // 1. Identify affected nodes based on scenario
+        const affectedNodes = identifyAffectedNodes(scenario.type, params.route);
 
-        const baseDelay = {
-            tariff_change: 0,
-            port_strike: 7,
-            carrier_failure: 5,
-            demand_spike: 3,
-            weather_event: 4,
-            customs_delay: 2,
-        }[scenario.type];
+        // 2. Calculate propagation speed (days per node hop)
+        const propagationSpeed = calculatePropagation(scenario.severity);
 
-        const baseCostIncrease = {
-            tariff_change: 0.25,
-            port_strike: 0.15,
-            carrier_failure: 0.20,
-            demand_spike: 0.30,
-            weather_event: 0.10,
-            customs_delay: 0.05,
-        }[scenario.type];
+        // 3. Financial Risk Calculation (Revenue at Risk)
+        const dailyRevenue = params.currentCost * 1.5; // Simulated revenue margin
+        const potentialLoss = calculateFinancialRisk(dailyRevenue, scenario.severity, scenario.type);
 
-        const projectedCost = params.currentCost * (1 + baseCostIncrease * severityMultiplier);
-        const baselineDays = 28; // Standard ocean freight
-        const projectedDays = baselineDays + Math.round(baseDelay * severityMultiplier);
-
-        // Generate mitigations based on scenario
-        const mitigations = generateMitigations(scenario.type, scenario.severity);
-        const alternativeRoutes = generateAlternativeRoutes(params.origin, params.destination, scenario.type);
+        // 4. AI Prediction Confidence
+        const aiConfidence = 85 + Math.floor(Math.random() * 10); // 85-95% confidence
 
         return {
-            scenarioName: `${scenario.type.replace(/_/g, ' ').toUpperCase()} - ${scenario.severity} Severity`,
-            costImpact: {
-                baseline: params.currentCost,
-                projected: projectedCost,
-                delta: projectedCost - params.currentCost,
-                deltaPercentage: ((projectedCost - params.currentCost) / params.currentCost) * 100,
+            id: generateId(),
+            scenarioName: `${scenario.type.replace(/_/g, ' ').toUpperCase()} - ${scenario.severity}`,
+            affectedNodes,
+            propagationSpeed,
+            financialImpact: {
+                revenueAtRisk: potentialLoss,
+                insuranceCoverage: potentialLoss * 0.4,
+                netExposure: potentialLoss * 0.6
             },
-            timelineImpact: {
-                baselineDays,
-                projectedDays,
-                delayDays: projectedDays - baselineDays,
+            operationalImpact: {
+                delayDays: Math.round(propagationSpeed * 2.5), // Simulated hop delay
+                efficiencyDrop: Math.round(Math.random() * 30 + 10) // 10-40% efficiency drop
             },
-            riskScore: Math.min(100, Math.round(severityMultiplier * 25 + Math.random() * 15)),
-            mitigations,
-            alternativeRoutes,
-            confidence: 0.75 + Math.random() * 0.2,
+            riskScore: calculateRiskScore(scenario.severity, potentialLoss),
+            aiPrediction: {
+                confidence: aiConfidence,
+                insight: generateAIInsight(scenario.type, affectedNodes.length, potentialLoss),
+                nextBestAction: generateNextBestAction(scenario.type)
+            },
+            mitigations: generateMitigations(scenario.type, scenario.severity),
+            timestamp: new Date().toISOString()
         };
     });
 
@@ -63,9 +48,81 @@ export function runSupplyChainSimulation(params) {
         id: generateId(),
         parameters: params,
         results,
+        networkStatus: {
+            activeNodes: 1420,
+            healthParams: { latency: '24ms', uptime: '99.9%' },
+            globalRiskLevel: 'Moderate'
+        },
         createdAt: new Date().toISOString(),
         status: 'completed',
     };
+}
+
+
+
+function identifyAffectedNodes(type, route) {
+    // Simulate identifying nodes in the graph
+    const baseNodes = ['Shanghai Port', 'Suez Canal', 'Rotterdam Hub'];
+    if (type === 'port_strike') return ['Los Angeles Port', 'Long Beach Terminal', 'Intermodal Rail A'];
+    if (type === 'weather_event') return ['Gulf of Mexico Route', 'Houston Port'];
+    if (type === 'supplier_bankruptcy') return ['Tier 2 Supplier - Shenzhen', 'Components Warehouse B'];
+    if (type === 'cyber_attack') return ['Global Operations Center', 'Maersk Data Hub', 'Customs EDI System'];
+    if (type === 'geopolitical_tension') return ['Red Sea Passage', 'Bab el-Mandeb Strait', 'Suez Canal'];
+    if (type === 'supplier_insolvency') return ['Chip Manufacturer A', 'Battery Supplier B', 'Assembly Plant C'];
+    return baseNodes;
+}
+
+function calculatePropagation(severity) {
+    switch (severity) {
+        case 'Critical': return 5; // Fast spread
+        case 'High': return 3;
+        case 'Medium': return 2;
+        default: return 1;
+    }
+}
+
+function calculateFinancialRisk(dailyRev, severity, type) {
+    const riskFactor = severity === 'Critical' ? 10 : severity === 'High' ? 5 : 2;
+    let multiplier = 0.8 + Math.random() * 0.4;
+
+    // Higher risk for specific events
+    if (type === 'cyber_attack') multiplier *= 1.5;
+    if (type === 'geopolitical_tension') multiplier *= 1.2;
+
+    return Math.round(dailyRev * riskFactor * multiplier);
+}
+
+function calculateRiskScore(severity, loss) {
+    let score = severity === 'Critical' ? 90 : severity === 'High' ? 75 : 45;
+    if (loss > 100000) score += 5;
+    return Math.min(99, score);
+}
+
+function generateAIInsight(type, nodesCount, loss) {
+    const insights = [
+        `AI detects anomaly pattern similar to 2024 ${type} event.`,
+        `Propagation analysis suggests ${nodesCount} critical nodes will be impacted within 48 hours.`,
+        `Financial models predict a $${(loss / 1000).toFixed(1)}k variances if unmitigated.`,
+    ];
+
+    if (type === 'cyber_attack') {
+        insights.push(`Ransomware signature detected in carrier booking system. Immediate isolation recommended.`);
+        insights.push(`Data integrity compromised in 3 nodes. Switch to manual verification.`);
+    }
+    if (type === 'geopolitical_tension') {
+        insights.push(`Hostile activity reported near key chokepoint. Insurance premiums spiking 400%.`);
+    }
+
+    return insights[Math.floor(Math.random() * insights.length)];
+}
+
+function generateNextBestAction(type) {
+    if (type === 'port_strike') return 'Reroute to Seattle/Tacoma (Capacity Available)';
+    if (type === 'weather_event') return 'Hold shipment at Origin Warehouse (Weather clearing in 48h)';
+    if (type === 'cyber_attack') return 'Switch to offline backup protocols & notify partners';
+    if (type === 'geopolitical_tension') return 'Reroute via Cape of Good Hope (+10 days transit)';
+    if (type === 'supplier_insolvency') return 'Activate secondary supplier in Vietnam';
+    return 'Activate redundancy protocol B-2';
 }
 
 function generateMitigations(scenarioType, severity) {

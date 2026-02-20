@@ -20,9 +20,9 @@ export default function LandingPage({ comingSoonMode = false }) {
 
             {/* Hero Section - Full Width */}
             <section className="hero-section text-center items-center relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
-                {/* Background: Globe (Standard) or Particles (Coming Soon) */}
+                {/* Background: Always use particle background for premium feel */}
                 <div className="absolute inset-0 z-0">
-                    {comingSoonMode ? <ComingSoonHeroBackground /> : <InteractiveGlobe />}
+                    <ComingSoonHeroBackground />
                 </div>
 
                 {/* Hero Content */}
@@ -42,7 +42,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 }}
                     >
-                        Command Your Logistics with <span className="whitespace-nowrap">Gasper</span>
+                        Command Your Logistics with <span className="gasper-gradient">Gasper</span>
                     </motion.h1>
 
                     <motion.p
@@ -111,26 +111,25 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                 {/* How It Works Section */}
                 {!comingSoonMode && (
-                    <section id="how-it-works" className="how-it-works-section">
+                    <section id="how-it-works" className="how-it-works-section relative py-32 z-10">
                         <div className="section-header">
                             <h2 className="section-title">From Chaos to Control</h2>
-                            <p className="section-subtitle">A simple, powerful workflow designed for modern logistics.</p>
+                            <p className="section-subtitle text-lg">A simple, powerful workflow designed for modern logistics.</p>
                         </div>
 
                         <div className="workflow-steps">
-                            <div className="step-card">
+                            <div className="step-line"></div>
+                            <div className="step-card group">
                                 <div className="step-number">01</div>
                                 <h3 className="step-title">Connect</h3>
                                 <p className="step-desc">Integrate your existing ERP and carrier data streams in minutes.</p>
                             </div>
-                            <div className="step-line"></div>
-                            <div className="step-card">
+                            <div className="step-card group">
                                 <div className="step-number">02</div>
                                 <h3 className="step-title">Analyze</h3>
                                 <p className="step-desc">AI models process millions of data points to identify risks and opportunities.</p>
                             </div>
-                            <div className="step-line"></div>
-                            <div className="step-card">
+                            <div className="step-card group">
                                 <div className="step-number">03</div>
                                 <h3 className="step-title">Optimize</h3>
                                 <p className="step-desc">Execute automated strategies to reduce costs and improve delivery times.</p>

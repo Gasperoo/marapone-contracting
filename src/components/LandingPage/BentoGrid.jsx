@@ -57,8 +57,8 @@ export function BentoGrid() {
                         key={item.id}
                         layoutId={item.id}
                         onClick={() => setSelectedId(item.id)}
-                        className={`bg-white/5 border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#5227FF]/50 transition-colors cursor-pointer ${item.className}`}
-                        whileHover={{ scale: 1.02 }}
+                        className={`glass-panel p-6 relative overflow-hidden group hover:border-[#5227FF]/50 transition-all duration-500 cursor-pointer ${item.className}`}
+                        whileHover={{ scale: 1.02, y: -5 }}
                         whileTap={{ scale: 0.98 }}
                     >
                         {item.bgImage && (
@@ -107,14 +107,15 @@ export function BentoGrid() {
 
                 {/* Integration Box (Static link) */}
                 <motion.div
-                    className="md:col-span-3 md:row-span-1 bg-gradient-to-r from-[#5227FF] to-cyan-500 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between text-white shadow-lg shadow-cyan-500/20"
+                    className="md:col-span-3 md:row-span-1 glass-panel p-8 flex flex-col md:flex-row items-center justify-between shadow-lg shadow-[#5227FF]/20 relative overflow-hidden group"
                     whileHover={{ scale: 1.01 }}
                 >
-                    <div className="mb-4 md:mb-0">
-                        <h3 className="text-2xl font-bold mb-2">Connect Your Stack</h3>
-                        <p className="opacity-90">Seamless integration with SAP, Oracle, and 50+ other ERPs.</p>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#5227FF]/20 to-cyan-500/20 opacity-50"></div>
+                    <div className="relative z-10 mb-4 md:mb-0">
+                        <h3 className="text-2xl font-bold mb-2 text-white">Connect Your Stack</h3>
+                        <p className="text-slate-300">Seamless integration with SAP, Oracle, and 50+ other ERPs.</p>
                     </div>
-                    <button className="px-6 py-3 bg-white text-[#5227FF] font-bold rounded-xl hover:bg-opacity-90 transition-colors">
+                    <button className="relative z-10 px-6 py-3 bg-gradient-to-r from-[#5227FF] to-[#c084fc] text-white font-bold rounded-xl hover:shadow-[0_0_20px_rgba(192,132,252,0.4)] transition-all duration-300">
                         View Documentation
                     </button>
                 </motion.div>
@@ -132,7 +133,7 @@ export function BentoGrid() {
                         />
                         <motion.div
                             layoutId={selectedId}
-                            className="bg-[#0f172a] border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden relative z-10 shadow-2xl"
+                            className="bg-[#0f172a]/90 backdrop-blur-2xl border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden relative z-10 shadow-[0_0_50px_rgba(82,39,255,0.3)]"
                         >
                             <button
                                 onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}

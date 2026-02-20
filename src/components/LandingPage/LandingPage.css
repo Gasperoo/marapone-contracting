@@ -1,8 +1,19 @@
 /* LandingPage.css */
 
+:root {
+    --gasper-bg: #030014;
+    --gasper-surface: rgba(15, 23, 42, 0.4);
+    --gasper-surface-hover: rgba(15, 23, 42, 0.6);
+    --gasper-border: rgba(255, 255, 255, 0.08);
+    --gasper-border-glow: rgba(82, 39, 255, 0.5);
+
+    --gasper-primary: #5227FF;
+    --gasper-secondary: #22d3ee;
+    --gasper-accent: #c084fc;
+}
+
 .landing-container {
-    background-color: #0f172a;
-    /* Deep Slate - Solid Background */
+    background-color: var(--gasper-bg);
     min-height: 100vh;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
@@ -12,7 +23,7 @@
     flex-direction: column;
 }
 
-/* Subtle gradient accent in background (fixed) */
+/* Subtle gradient accent in background */
 .landing-container::before {
     content: '';
     position: fixed;
@@ -20,9 +31,19 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(82, 39, 255, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle at center, rgba(82, 39, 255, 0.03) 0%, transparent 70%);
     z-index: 0;
     pointer-events: none;
+}
+
+/* Base glassmorphism utility class */
+.glass-panel {
+    background: var(--gasper-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--gasper-border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .landing-content {
@@ -61,32 +82,46 @@
 }
 
 .hero-title {
-    font-size: 4.5rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     max-width: 1200px;
-    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    letter-spacing: -0.02em;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
 }
 
-.hero-title span {
-    background: linear-gradient(135deg, #22d3ee 0%, #5227FF 100%);
+.hero-title span.gasper-gradient {
+    background: linear-gradient(to right, var(--gasper-secondary), var(--gasper-primary));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.hero-title span.gasper-gradient::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: inherit;
+    filter: blur(20px);
+    opacity: 0.3;
+    z-index: -1;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
-    color: #94a3b8;
-    max-width: 600px;
+    font-size: 1.35rem;
+    color: #cbd5e1;
+    max-width: 650px;
     margin: 0 auto 3rem auto;
     line-height: 1.6;
-    animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+    font-weight: 300;
 }
 
 .cta-group {
@@ -316,10 +351,11 @@
 .workflow-steps {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
+    gap: 2rem;
 }
 
 .step-card {
@@ -327,70 +363,131 @@
     flex: 1;
     position: relative;
     z-index: 2;
-    padding: 0 1rem;
+    padding: 3rem 2rem;
+    background: var(--gasper-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--gasper-border);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gasper-border-glow);
+    box-shadow: 0 20px 40px -10px rgba(82, 39, 255, 0.2);
+    background: var(--gasper-surface-hover);
 }
 
 .step-number {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.05);
     line-height: 1;
-    margin-bottom: -1.5rem;
-    position: relative;
-    z-index: -1;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .step-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: white;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .step-desc {
     color: #94a3b8;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .step-line {
-    flex: 0.5;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(82, 39, 255, 0.5), transparent);
-    margin-top: -3rem;
-    /* Align with numbers */
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--gasper-primary) 50%,
+            transparent 100%);
+    opacity: 0.3;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.step-line::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: var(--gasper-secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--gasper-secondary);
+    animation: moveLight 3s linear infinite;
+}
+
+@keyframes moveLight {
+    0% {
+        left: 0%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 /* Industries Section */
 .industries-section {
-    padding: 6rem 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(82, 39, 255, 0.05) 50%, transparent 100%);
+    padding: 8rem 0;
+    position: relative;
+    z-index: 10;
 }
 
 .industries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
 }
 
 .industry-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 2rem;
+    background: var(--gasper-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--gasper-border);
+    border-radius: 20px;
+    padding: 2.5rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .industry-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(82, 39, 255, 0.3);
-    transform: translateY(-5px);
+    background: var(--gasper-surface-hover);
+    border-color: var(--gasper-border-glow);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px -10px rgba(82, 39, 255, 0.3);
 }
 
 .industry-icon {
@@ -406,27 +503,45 @@
 
 /* Final CTA Section */
 .final-cta-section {
-    padding: 8rem 0;
+    padding: 10rem 0;
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 .final-cta-content {
-    background: radial-gradient(circle at center, rgba(82, 39, 255, 0.2) 0%, transparent 70%);
-    padding: 4rem 2rem;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--gasper-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 5rem 2rem;
+    border-radius: 36px;
+    border: 1px solid var(--gasper-border);
+    box-shadow: 0 0 50px rgba(82, 39, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+.final-cta-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(82, 39, 255, 0.2) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .final-cta-content h2 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: white;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #ffffff, #a5b4fc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .final-cta-content p {
     font-size: 1.25rem;
-    color: #94a3b8;
+    color: #cbd5e1;
 }
 
 /* Mobile Adjustments for new sections */

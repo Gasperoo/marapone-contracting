@@ -4,14 +4,13 @@ import { Activity, ShieldCheck, Truck, Users, AlertTriangle, CheckCircle, Clock 
 
 export default function LiveImpact() {
     return (
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-32 relative z-10">
             {/* Background elements */}
-            <div className="absolute inset-0 bg-[#0f172a]" />
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030014]/50 to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm font-semibold mb-6 border border-green-500/20 animate-pulse">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-green-400 text-sm font-semibold mb-6 border border-green-500/30 shadow-[0_0_15px_rgba(74,222,128,0.2)]">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -57,10 +56,10 @@ export default function LiveImpact() {
                 </div>
 
                 {/* Live Ticker */}
-                <div className="w-full bg-white/5 border border-white/10 rounded-xl overflow-hidden backdrop-blur-sm">
-                    <div className="flex items-center py-3 bg-white/5 border-b border-white/5 px-4">
-                        <Activity size={16} className="text-[#5227FF] mr-2" />
-                        <span className="text-xs font-bold text-white tracking-wider">LIVE EVENT LOG</span>
+                <div className="w-full glass-panel overflow-hidden border-t border-b border-l-0 border-r-0 rounded-none md:rounded-2xl md:border-l md:border-r border-white/10">
+                    <div className="flex items-center py-4 bg-white/5 border-b border-white/5 px-6">
+                        <Activity size={18} className="text-[#22d3ee] mr-3 animate-pulse" />
+                        <span className="text-sm font-bold text-white tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">Live Network Events</span>
                     </div>
                     <div className="py-4 relative flex overflow-x-hidden">
                         <div className="animate-marquee whitespace-nowrap flex gap-12 items-center">
@@ -105,19 +104,20 @@ function StatCard({ icon, label, value, suffix, delay }) {
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay }}
-            className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#5227FF]/30 transition-colors"
+            transition={{ delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="p-8 glass-panel group hover:border-[#5227FF]/50 transition-all duration-500"
+            whileHover={{ y: -5 }}
         >
-            <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 rounded-lg bg-white/5">
-                    {React.cloneElement(icon, { size: 24 })}
+            <div className="flex items-center gap-4 mb-6">
+                <div className="p-4 rounded-xl bg-white/5 group-hover:bg-[#5227FF]/20 transition-colors shadow-inner shadow-white/10">
+                    {React.cloneElement(icon, { size: 28 })}
                 </div>
-                <div className="text-slate-400 text-sm font-medium">{label}</div>
+                <div className="text-slate-400 text-sm font-semibold tracking-wide uppercase">{label}</div>
             </div>
-            <div className="text-4xl font-bold text-white">
+            <div className="text-5xl font-black text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
                 <motion.span>{rounded}</motion.span>{suffix}
             </div>
         </motion.div>

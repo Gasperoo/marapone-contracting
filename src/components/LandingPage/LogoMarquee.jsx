@@ -6,8 +6,8 @@ const logos = [
 
 export function LogoMarquee() {
     return (
-        <section className="py-10 border-b border-white/5 overflow-hidden bg-[#0f172a]">
-            <p className="text-center text-slate-500 text-sm font-semibold uppercase tracking-widest mb-8">Trusted by Global Logistics Leaders</p>
+        <section className="py-12 border-y border-white/5 overflow-hidden relative z-10 bg-gradient-to-b from-transparent via-[#030014]/30 to-transparent">
+            <p className="text-center text-slate-400 text-sm font-bold uppercase tracking-widest mb-10">Trusted by Global Logistics Leaders</p>
 
             <div className="relative flex overflow-x-hidden group">
                 <div className="animate-marquee whitespace-nowrap flex gap-16 px-8">

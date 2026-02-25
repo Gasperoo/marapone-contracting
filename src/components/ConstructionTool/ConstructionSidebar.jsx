@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import {
     LayoutDashboard, FileSearch, Calculator, BrainCircuit,
     Boxes, Wrench, ChevronLeft, ChevronRight, X,
-    Home as HomeIcon, ArrowLeft
+    Home as HomeIcon, ArrowLeft, DollarSign, UserSearch,
+    ShieldCheck, CalendarClock, MessageCircleHeart, Siren, MapPinCheck
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import '../GasperTool/GasperTool.css';
@@ -17,6 +18,13 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
         { id: 'planner', label: 'AI Planner', icon: BrainCircuit },
         { id: 'design', label: 'Generative Design', icon: Boxes },
         { id: 'maintenance', label: 'Predictive Maint.', icon: Wrench },
+        { id: 'cashflow', label: 'Cash Flow', icon: DollarSign },
+        { id: 'subcontractor', label: 'Sub Matchmaker', icon: UserSearch },
+        { id: 'cap', label: 'Compliance', icon: ShieldCheck },
+        { id: 'optimizer', label: 'Job Optimizer', icon: CalendarClock },
+        { id: 'feedback', label: 'Client Feedback', icon: MessageCircleHeart },
+        { id: 'theft', label: 'Theft Sentinel', icon: Siren },
+        { id: 'utilization', label: 'Site Arrival', icon: MapPinCheck },
         { id: 'launcher', label: 'Tool Launcher', icon: ArrowLeft, action: () => navigate('/gasper') },
         { id: 'home', label: 'Back to Site', icon: HomeIcon, action: () => navigate('/') },
     ];

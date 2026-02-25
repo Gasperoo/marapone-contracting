@@ -8,6 +8,13 @@ import { TakeoffTools } from './TakeoffTools';
 import { ConstructionAIPlanner } from './ConstructionAIPlanner';
 import { GenerativeDesign } from './GenerativeDesign';
 import { PredictiveMaintenance } from './PredictiveMaintenance';
+import { CashFlowGuardian } from './CashFlowGuardian';
+import { SubcontractorMatchmaker } from './SubcontractorMatchmaker';
+import { ComplianceAutoPilot } from './ComplianceAutoPilot';
+import { MicroProjectOptimizer } from './MicroProjectOptimizer';
+import { ClientFeedbackFusion } from './ClientFeedbackFusion';
+import { TheftSentinel } from './TheftSentinel';
+import { SiteArrivalOptimizer } from './SiteArrivalOptimizer';
 import '../GasperTool/GasperTool.css';
 
 export default function ConstructionTool() {
@@ -22,7 +29,14 @@ export default function ConstructionTool() {
         takeoff: 'Takeoff Tools',
         planner: 'AI Planner',
         design: 'Generative Design',
-        maintenance: 'Predictive Maintenance'
+        maintenance: 'Predictive Maintenance',
+        cashflow: 'Cash Flow Guardian',
+        subcontractor: 'Sub Matchmaker',
+        cap: 'Compliance Auto-Pilot',
+        optimizer: 'Micro-Project Optimizer',
+        feedback: 'Client Feedback Fusion',
+        theft: 'Theft Sentinel',
+        utilization: 'Site Arrival Optimizer',
     };
 
     const renderContent = () => {
@@ -33,6 +47,13 @@ export default function ConstructionTool() {
             case 'planner': return <ConstructionAIPlanner />;
             case 'design': return <GenerativeDesign />;
             case 'maintenance': return <PredictiveMaintenance />;
+            case 'cashflow': return <CashFlowGuardian />;
+            case 'subcontractor': return <SubcontractorMatchmaker />;
+            case 'cap': return <ComplianceAutoPilot />;
+            case 'optimizer': return <MicroProjectOptimizer />;
+            case 'feedback': return <ClientFeedbackFusion />;
+            case 'theft': return <TheftSentinel />;
+            case 'utilization': return <SiteArrivalOptimizer />;
             default: return <ConstructionDashboard onNavigate={setActiveTab} />;
         }
     };

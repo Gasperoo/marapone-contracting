@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import {
     HardHat, FileSearch, Calculator, BrainCircuit, Boxes, Wrench,
-    TrendingUp, TrendingDown, Clock, CheckCircle, AlertTriangle, ArrowRight
+    TrendingUp, TrendingDown, Clock, CheckCircle, AlertTriangle, ArrowRight,
+    DollarSign, UserSearch, ShieldCheck, CalendarClock, MessageCircleHeart, Siren, MapPinCheck
 } from 'lucide-react';
 
 const stats = [
@@ -18,6 +19,13 @@ const modules = [
     { id: 'planner', label: 'AI Planner', icon: BrainCircuit, desc: 'Smart scheduling & critical path', color: '#FF6B00' },
     { id: 'design', label: 'Generative Design', icon: Boxes, desc: '3D modeling & design optimization', color: '#a855f7' },
     { id: 'maintenance', label: 'Predictive Maintenance', icon: Wrench, desc: 'Equipment health & failure prediction', color: '#ef4444' },
+    { id: 'cashflow', label: 'Cash Flow Guardian', icon: DollarSign, desc: 'Predictive cash defense for SMBs', color: '#f59e0b' },
+    { id: 'subcontractor', label: 'Sub Matchmaker', icon: UserSearch, desc: 'AI sub matching & smart contracts', color: '#06b6d4' },
+    { id: 'cap', label: 'Compliance Auto-Pilot', icon: ShieldCheck, desc: 'Real-time compliance & permit mgmt', color: '#10b981' },
+    { id: 'optimizer', label: 'Job Optimizer', icon: CalendarClock, desc: 'Multi-job crew scheduling AI', color: '#8b5cf6' },
+    { id: 'feedback', label: 'Client Feedback', icon: MessageCircleHeart, desc: 'Sentiment analysis & retention AI', color: '#ec4899' },
+    { id: 'theft', label: 'Theft Sentinel', icon: Siren, desc: 'Predictive theft & anomaly detection', color: '#dc2626' },
+    { id: 'utilization', label: 'Site Arrival', icon: MapPinCheck, desc: 'Fleet utilization & billable time', color: '#0ea5e9' },
 ];
 
 const recentActivity = [
@@ -69,7 +77,7 @@ export function ConstructionDashboard({ onNavigate }) {
             {/* Module Quick Access */}
             <div>
                 <h3 className="text-white font-semibold mb-4">Quick Launch</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {modules.map((mod, idx) => (
                         <motion.div
                             key={mod.id}

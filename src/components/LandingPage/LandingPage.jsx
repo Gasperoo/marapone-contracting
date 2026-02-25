@@ -33,7 +33,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                         animate={{ opacity: 1, y: 0 }}
                     >
                         <Zap size={14} />
-                        {comingSoonMode ? "Coming Soon to Public Beta" : "Next Gen Supply Chain Intelligence"}
+                        {comingSoonMode ? "Coming Soon to Public Beta" : "AI-Powered Operations Intelligence"}
                     </motion.div>
 
                     <motion.h1
@@ -42,7 +42,11 @@ export default function LandingPage({ comingSoonMode = false }) {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 }}
                     >
-                        Command Your Logistics with <span className="gasper-gradient">Gasper</span>
+                        {comingSoonMode ? (
+                            <>One AI Platform for <span className="gasper-gradient">Logistics</span> & <span style={{ background: 'linear-gradient(135deg, #FF6B00, #F59E0B)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Construction</span></>
+                        ) : (
+                            <>Command Your Operations with <span className="gasper-gradient">Gasper</span></>
+                        )}
                     </motion.h1>
 
                     <motion.p
@@ -51,7 +55,10 @@ export default function LandingPage({ comingSoonMode = false }) {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
                     >
-                        The all-in-one AI platform for logistics intelligence and construction management. From supply chain tracking to blueprint analysis — transform chaos into clarity.
+                        {comingSoonMode
+                            ? 'The first AI platform that unifies supply chain intelligence and construction management. Track vessels, analyze blueprints, predict cash flow, and protect job sites — all from one command center.'
+                            : 'The all-in-one AI platform for logistics intelligence and construction management. From supply chain tracking to blueprint analysis — transform chaos into clarity.'
+                        }
                     </motion.p>
 
                     {!comingSoonMode && (

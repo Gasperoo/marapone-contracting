@@ -12,6 +12,7 @@ import {
 import TiltCard from '../TiltCard';
 import Particles from '../Particles/Particles';
 import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';
+import { SubcontractorMatchSection, ProjectCommandCenter, ROIImpactSection, ScheduleOptimizerSection } from './ConstructionAdvanced';
 
 // --- Animated Counter Component ---
 function Counter({ value, label, suffix = "" }) {
@@ -1401,6 +1402,12 @@ export default function ComingSoonContent() {
             <BlueprintAISection />
             <CashFlowSection />
             <SiteSecuritySection />
+
+            {/* --- CONSTRUCTION ADVANCED SECTIONS --- */}
+            <SubcontractorMatchSection />
+            <ProjectCommandCenter />
+            <ROIImpactSection />
+            <ScheduleOptimizerSection />
 
             {/* --- TECHNOLOGY STACK --- */}
             <TechnologyStackSection />

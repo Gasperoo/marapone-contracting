@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'motion/react';
 import {
     HardHat, Ruler, DollarSign, ShieldCheck, Camera, Truck, Users,
     CheckCircle2, ArrowRight, Layers, AlertTriangle, BarChart3,
     Clock, Shield, Eye, MapPin, Wrench, FileText, TrendingUp,
-    Building2, Zap, Star, Lock, Cpu, Brain, Target, Activity
+    Building2, Zap, Star, Lock, Cpu, Brain, Target, Activity,
+    Hammer, CalendarDays, UserCheck, Award, Percent, Timer, Gauge
 } from 'lucide-react';
 
 // ─── Platform Pillars — Dual Column Showcase ─────────────────────────────

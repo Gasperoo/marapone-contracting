@@ -1,259 +1,279 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Database, Cpu, BarChart3, ArrowRight, Server, Globe2, Share2, HardHat, FileSearch, BrainCircuit, Wrench } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { Database, Cpu, CloudRain, Globe2, Activity, Map, ArrowDown, HardHat, Building2, Wrench, Truck, Anchor, Box, GitBranch } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import '../components/LandingPage/LandingPage.css';
-import ProcessStep from '../components/ProcessStep';
-import Counter from '../components/Counter';
 import Particles from '../components/Particles/Particles';
 
-export default function HowItWorksPage() {
+// Reusable animated node for the pipeline
+const PipelineNode = ({ icon, title, description, color, delay = 0, align = 'center' }) => {
     return (
-        <div className="landing-container pt-24 pb-20 relative">
-            {/* Particles Background */}
-            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay }}
+            className={`relative p-8 rounded-3xl border backdrop-blur-md flex flex-col ${align === 'center' ? 'items-center text-center' : 'items-start text-left'}`}
+            style={{
+                backgroundColor: `${color}08`,
+                borderColor: `${color}20`,
+                boxShadow: `inset 0 0 50px ${color}05, 0 10px 30px rgba(0,0,0,0.5)`
+            }}
+        >
+            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 relative z-10`} style={{ backgroundColor: `${color}15`, color: color, border: `1px solid ${color}30` }}>
+                {icon}
+                {/* Pulsing ring */}
+                <motion.div
+                    className="absolute inset-x-0 inset-y-0 rounded-2xl"
+                    animate={{ boxShadow: [`0 0 0 0 ${color}40`, `0 0 0 20px ${color}00`] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
+            <p className="text-slate-400 leading-relaxed text-sm">{description}</p>
+        </motion.div>
+    );
+};
+
+export default function HowItWorksPage() {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Animate the main central trunk line
+    const trunkHeight = useTransform(scrollYProgress, [0.1, 0.4], ["0%", "100%"]);
+
+    // Animate the split branches
+    const branchWidth = useTransform(scrollYProgress, [0.4, 0.6], ["0%", "100%"]);
+
+    // Animate the vertical drops into the specific engines
+    const dropHeight = useTransform(scrollYProgress, [0.6, 0.9], ["0%", "100%"]);
+
+    return (
+        <div className="min-h-screen bg-[#050505] pt-32 pb-40 relative overflow-hidden text-white" ref={containerRef}>
+            {/* Ambient Background Effects */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
                 <Particles
-                    particleColors={["#5227FF", "#22d3ee", "#8b5cf6"]}
-                    particleCount={400}
-                    particleSpread={15}
-                    speed={0.08}
-                    particleBaseSize={80}
-                    moveParticlesOnHover={false}
-                    alphaParticles={true}
-                    disableRotation={false}
-                    sizeRandomness={1.5}
-                    cameraDistance={25}
-                    pixelRatio={Math.min(window.devicePixelRatio, 2)}
+                    particleColors={["#ffffff", "#5227FF", "#FF6B00"]}
+                    particleCount={250}
+                    speed={0.15}
+                    sizeRandomness={2}
                 />
             </div>
 
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-                {/* Hero Text Only */}
-                <div className="text-center max-w-4xl mx-auto mb-20">
+                {/* Header Section */}
+                <div className="text-center max-w-4xl mx-auto mb-24">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center justify-center p-4 rounded-full bg-white/5 border border-white/10 mb-8 w-20 h-20"
+                    >
+                        <Database size={32} className="text-white" />
+                    </motion.div>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="hero-title mb-6 mx-auto"
+                        transition={{ delay: 0.1 }}
+                        className="text-5xl md:text-7xl font-bold tracking-tight mb-8"
                     >
-                        The Engine of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee]">Global Trade</span>
+                        The Data to <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">Intelligence</span> Pipeline
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="hero-subtitle mb-8"
+                        className="text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto"
                     >
-                        How Gasper ingests millions of data points, processes them with advanced AI, and delivers actionable insights across logistics and construction.
+                        Gasper ingests massive volumes of structured and unstructured data, cleaning and routing it into specialized AI engines for the physical world.
                     </motion.p>
                 </div>
 
-                {/* Stats Counter Section */}
-                <section className="mb-32">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-                        <Counter value={5000} label="Connected Vessels" suffix="+" />
-                        <Counter value={98} label="Accuracy Rating" suffix="%" />
-                        <Counter value={120} label="Countries Covered" suffix="+" />
-                        <Counter value={2} label="Data Points" suffix="B+" />
-                    </div>
-                </section>
+                {/* THE PIPELINE VISUALIZATION */}
+                <div className="relative py-20">
 
-                {/* Process Steps */}
-                <div className="relative mb-24">
-                    {/* Connecting Line (Desktop) */}
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 transform -translate-x-1/2">
+                    {/* 1. TOP: Unified Data Ingestion */}
+                    <div className="max-w-3xl mx-auto mb-32 relative z-20">
+                        <div className="text-center mb-12">
+                            <h2 className="text-xl font-bold tracking-widest text-slate-500 uppercase">Stage 1: Unified Ingestion</h2>
+                        </div>
+                        <div className="grid md:grid-cols-3 gap-6">
+                            <PipelineNode
+                                icon={<CloudRain size={28} />}
+                                title="Global Sensors"
+                                description="Live feeds from AIS (vessels), ADS-B (aircraft), and heavy machinery IoT arrays."
+                                color="#ffffff"
+                                delay={0.1}
+                            />
+                            <PipelineNode
+                                icon={<Globe2 size={28} />}
+                                title="External APIs"
+                                description="Ingesting port congestion telemetry, hyper-local weather forecasting, and market conditions."
+                                color="#ffffff"
+                                delay={0.2}
+                            />
+                            <PipelineNode
+                                icon={<Activity size={28} />}
+                                title="Enterprise Data"
+                                description="Direct integrations with existing ERPs, traditional EDI feeds, and project management tools."
+                                color="#ffffff"
+                                delay={0.3}
+                            />
+                        </div>
+                    </div>
+
+                    {/* SVG ANIMATED PIPELINE SYSTEM */}
+                    <div className="absolute top-0 bottom-0 left-0 right-0 pointer-events-none z-10 hidden md:block">
+                        {/* Central Trunk down from Ingestion */}
                         <motion.div
-                            className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#5227FF] via-[#22d3ee] to-[#5227FF]"
-                            animate={{
-                                backgroundPosition: ["0% 0%", "0% 200%"]
-                            }}
-                            transition={{
-                                duration: 8,
-                                ease: "linear",
-                                repeat: Infinity
-                            }}
-                            style={{ backgroundSize: "100% 50%" }}
+                            className="absolute left-1/2 top-[20%] w-[2px] bg-gradient-to-b from-white/40 to-white/10"
+                            style={{ height: trunkHeight, translateX: '-50%' }}
+                        >
+                            {/* Fast traveling particle */}
+                            <motion.div
+                                className="w-2 h-8 bg-white absolute left-1/2 -translate-x-1/2 blur-[2px]"
+                                animate={{ top: ["0%", "100%"], opacity: [0, 1, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                            />
+                        </motion.div>
+
+                        {/* The Split Junction point */}
+                        <motion.div
+                            className="absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/20 bg-[#0a0a0a] flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+                            initial={{ scale: 0, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            viewport={{ once: true, margin: "-10%" }}
+                        >
+                            <GitBranch size={20} className="text-white/50" />
+                        </motion.div>
+
+                        {/* Left Branch (Logistics) */}
+                        <motion.div
+                            className="absolute right-1/2 top-[48%] h-[2px] bg-gradient-to-l from-white/10 to-[#5227FF]/50"
+                            style={{ width: branchWidth, transformOrigin: "right center" }}
+                        >
+                            <motion.div className="h-full w-20 bg-gradient-to-l from-transparent to-[#5227FF] absolute left-0 blur-[4px]" animate={{ left: ["100%", "0%"], opacity: [0, 1, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} />
+                        </motion.div>
+
+                        {/* Right Branch (Construction) */}
+                        <motion.div
+                            className="absolute left-1/2 top-[48%] h-[2px] bg-gradient-to-r from-white/10 to-[#FF6B00]/50"
+                            style={{ width: branchWidth, transformOrigin: "left center" }}
+                        >
+                            <motion.div className="h-full w-20 bg-gradient-to-r from-transparent to-[#FF6B00] absolute right-0 blur-[4px]" animate={{ right: ["100%", "0%"], opacity: [0, 1, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1 }} />
+                        </motion.div>
+
+                        {/* Left Drop (Logistics) */}
+                        <motion.div
+                            className="absolute right-[calc(50%+20%)] top-[48%] w-[2px] bg-gradient-to-b from-[#5227FF]/50 to-[#22d3ee]/20"
+                            style={{ height: dropHeight }}
+                        />
+
+                        {/* Right Drop (Construction) */}
+                        <motion.div
+                            className="absolute left-[calc(50%+20%)] top-[48%] w-[2px] bg-gradient-to-b from-[#FF6B00]/50 to-[#F59E0B]/20"
+                            style={{ height: dropHeight }}
                         />
                     </div>
 
-                    <ProcessStep
-                        number="01"
-                        title="Data Ingestion Ecosystem"
-                        description="We aggregate structured and unstructured data from over 500 sources. This includes live AIS/ADS-B feeds for tracking, port authority APIs for congestion data, local weather stations, and even geopolitical news feeds processed for risk analysis."
-                        icon={<Database size={32} />}
-                        align="left"
-                        details={[
-                            "REST API & Webhooks",
-                            "EDI (X12, EDIFACT) Parsers",
-                            "Satellite Feeds (Inmarsat/Iridium)",
-                            "IoT Sensor Stream Integration"
-                        ]}
-                    />
-                    <ProcessStep
-                        number="02"
-                        title="AI Processing & Normalization"
-                        description="Our proprietary ML models clean, normalize, and analyze the data. Natural Language Processing (NLP) extracts risks from news, while Predictive Models forecast delays. We turn chaos into structured, queryable intelligence."
-                        icon={<Cpu size={32} />}
-                        align="right"
-                        details={[
-                            "Entity Recognition (NER)",
-                            "Time-Series Forecasting",
-                            "Anomaly Detection Models",
-                            "Automated Data Cleansing"
-                        ]}
-                    />
-                    <ProcessStep
-                        number="03"
-                        title="Digital Twin Modeling"
-                        description="The refined data feeds into a live simulation of your supply chain. This 'Digital Twin' allows us to run thousands of scenarios to find the optimal path, predicting bottlenecks before they occur."
-                        icon={<Server size={32} />}
-                        align="left"
-                        details={[
-                            "Monte Carlo Simulations",
-                            "Network Graph Optimization",
-                            "Inventory Flow Modeling",
-                            "Cost-Benefit Analysis Engine"
-                        ]}
-                    />
-                    <ProcessStep
-                        number="04"
-                        title="Actionable Insights"
-                        description="Finally, insights are delivered via our dashboard or API. You get alerts, updated ETAs, and cost-saving recommendations instantly. We don't just show you data; we tell you what to do with it."
-                        icon={<BarChart3 size={32} />}
-                        align="right"
-                        details={[
-                            "Real-time Push Notifications",
-                            "Customizable Dashboards",
-                            "Automated Reporting",
-                            "ERP Write-back Capability"
-                        ]}
-                    />
-                </div>
+                    {/* 2. BOTTOM: Dual Engine Processing */}
+                    <div className="grid md:grid-cols-2 gap-x-12 gap-y-24 mt-40 relative z-20">
 
-                {/* New Integration Section */}
-                <div className="mb-24">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-3xl font-bold text-white mb-6">Seamless Integration</h2>
-                        <p className="text-slate-400">Gasper isn't another silo. It connects directly with your existing ERP, TMS, and WMS systems.</p>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-8 text-center">
-                        <div className="p-8 rounded-2xl bg-white/5 border border-white/10">
-                            <h3 className="text-xl font-bold text-white mb-3">Rest API</h3>
-                            <p className="text-slate-400">Full access to all Gasper data endpoints for custom dashboard building.</p>
-                        </div>
-                        <div className="p-8 rounded-2xl bg-white/5 border border-white/10">
-                            <h3 className="text-xl font-bold text-white mb-3">Webhooks</h3>
-                            <p className="text-slate-400">Real-time push notifications for critical events like delays or risks.</p>
-                        </div>
-                        <div className="p-8 rounded-2xl bg-white/5 border border-white/10">
-                            <h3 className="text-xl font-bold text-white mb-3">EDI Support</h3>
-                            <p className="text-slate-400">Legacy support for traditional EDI formats to ensure compatibility.</p>
-                        </div>
-                    </div>
-                </div>
+                        {/* Logistics Column */}
+                        <div className="space-y-12">
+                            <div className="text-center mb-8">
+                                <motion.div
+                                    initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+                                    className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#22d3ee] text-xs font-bold tracking-widest uppercase mb-4 shadow-[0_0_20px_rgba(82,39,255,0.2)]"
+                                >
+                                    Logistics OS Route
+                                </motion.div>
+                                <h2 className="text-3xl font-bold text-white">Supply Chain AI</h2>
+                            </div>
 
-                {/* New Security Section */}
-                <div className="flex flex-col md:flex-row items-center gap-12 mb-24 bg-gradient-to-br from-[#5227FF]/10 to-transparent p-8 md:p-12 rounded-3xl border border-[#5227FF]/20">
-                    <div className="md:w-1/2">
-                        <h2 className="text-3xl font-bold text-white mb-6">Enterprise-Grade Security</h2>
-                        <p className="text-slate-300 mb-6 leading-relaxed">
-                            Your supply chain data is sensitive. We treat it that way. Gasper is built with a security-first architecture, ensuring your data is encrypted, isolated, and compliant with global standards.
-                        </p>
-                        <ul className="space-y-3">
-                            <li className="flex items-center gap-3 text-slate-300">
-                                <div className="w-2 h-2 bg-green-400 rounded-full" /> SOC2 Type II Compliant
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300">
-                                <div className="w-2 h-2 bg-green-400 rounded-full" /> AES-256 Encryption at Rest
-                            </li>
-                            <li className="flex items-center gap-3 text-slate-300">
-                                <div className="w-2 h-2 bg-green-400 rounded-full" /> GDPR & CCPA Ready
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="md:w-1/2 flex justify-center">
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-[#5227FF] blur-[60px] opacity-20" />
-                            <Server size={120} className="text-white relative z-10" strokeWidth={1} />
+                            <PipelineNode
+                                icon={<Map size={28} />}
+                                title="Digital Twin Simulation"
+                                description="The raw data is assembled into a live, interactive 3D map. We simulate millions of shipment routes, evaluating transit times, port congestion, and fuel costs simultaneously."
+                                color="#5227FF"
+                                align="left"
+                            />
+                            <PipelineNode
+                                icon={<Anchor size={28} />}
+                                title="Risk & Delay Prediction"
+                                description="Our proprietary ML models analyze weather patterns and geopolitical news to forecast delays up to 14 days before standard carriers report them."
+                                color="#22d3ee"
+                                align="left"
+                            />
+                            <PipelineNode
+                                icon={<Box size={28} />}
+                                title="Automated Interventions"
+                                description="When a delay is predicted, Gasper automatically surfaces alternative routing options or triggers automated communications to end-customers."
+                                color="#8b5cf6"
+                                align="left"
+                            />
                         </div>
+
+                        {/* Construction Column */}
+                        <div className="space-y-12 mt-20 md:mt-0">
+                            <div className="text-center mb-8">
+                                <motion.div
+                                    initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+                                    className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-widest uppercase mb-4 shadow-[0_0_20px_rgba(255,107,0,0.2)]"
+                                >
+                                    Construction OS Route
+                                </motion.div>
+                                <h2 className="text-3xl font-bold text-white">Built Environment AI</h2>
+                            </div>
+
+                            <PipelineNode
+                                icon={<Building2 size={28} />}
+                                title="Generative Blueprint Analysis"
+                                description="CAD files and PDFs are ingested by vision-language models. The AI automatically extracts exact material quantities, spatial dimensions, and structural requirements."
+                                color="#FF6B00"
+                                align="left"
+                            />
+                            <PipelineNode
+                                icon={<Cpu size={28} />}
+                                title="4D Schedule Sequencing"
+                                description="The extracted data is cross-referenced with supply chain realities. The engine generates optimized critical-path schedules that account for actual material delivery lead times."
+                                color="#F59E0B"
+                                align="left"
+                            />
+                            <PipelineNode
+                                icon={<HardHat size={28} />}
+                                title="Dynamic Site Management"
+                                description="As the project progresses, Gasper continuously reconciles drone topology scans against the schedule to predict budget overruns before they materialize."
+                                color="#fb923c"
+                                align="left"
+                            />
+                        </div>
+
                     </div>
                 </div>
 
-                {/* Tech Stack / Architecture */}
-                <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 text-center mb-20">
-                    <h2 className="text-3xl font-bold text-white mb-8">Built on Modern Infrastructure</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <StackItem label="Real-Time WebSockets" icon={<Globe2 />} />
-                        <StackItem label="Distributed Cloud" icon={<Share2 />} />
-                        <StackItem label="End-to-End Encryption" icon={<Server />} />
-                        <StackItem label="99.99% Uptime SLA" icon={<ActivityIcon />} />
-                    </div>
-                </div>
-
-                {/* CTA */}
-                <div className="text-center"
+                {/* Final Output CTA */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-32 max-w-4xl mx-auto text-center"
                 >
-                    <Link to="/contact" className="btn-secondary inline-flex items-center">
-                        Request Technical Whitepaper <ArrowRight size={18} className="ml-2" />
-                    </Link>
-                </div>
+                    <div className="p-12 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl relative overflow-hidden">
+                        {/* Glow effect */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-[#5227FF]/10 via-transparent to-[#FF6B00]/10 blur-[50px] pointer-events-none" />
 
-                {/* Construction Workflow Section */}
-                <div className="mt-24 mb-24">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
-                            <HardHat size={12} className="mr-2" /> CONSTRUCTION MODE
-                        </div>
-                        <h2 className="text-3xl font-bold text-white mb-6">Construction Intelligence Pipeline</h2>
-                        <p className="text-slate-400">The same AI backbone, purpose-built for the construction industry.</p>
+                        <h2 className="text-4xl font-bold text-white mb-6 relative z-10">Experience the Engine</h2>
+                        <p className="text-xl text-slate-400 mb-10 relative z-10 max-w-2xl mx-auto">Stop working with fragmented data. Connect your systems to the Gasper engine and unlock true operational intelligence.</p>
+                        <Link to="/contact" className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-black bg-white rounded-xl hover:bg-slate-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.2)] relative z-10">
+                            Book Architecture Demo
+                        </Link>
                     </div>
-                    <div className="grid md:grid-cols-4 gap-6">
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.07] transition-all">
-                            <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mx-auto mb-4">
-                                <FileSearch size={24} className="text-[#FF6B00]" />
-                            </div>
-                            <h3 className="text-lg font-bold text-white mb-2">01. Blueprint Ingestion</h3>
-                            <p className="text-slate-400 text-sm">Upload CAD, PDF, or image plans. AI detects elements, dimensions, and generates material lists.</p>
-                        </div>
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.07] transition-all">
-                            <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mx-auto mb-4">
-                                <BrainCircuit size={24} className="text-[#FF6B00]" />
-                            </div>
-                            <h3 className="text-lg font-bold text-white mb-2">02. AI Planning</h3>
-                            <p className="text-slate-400 text-sm">Generate optimized schedules with critical path analysis and risk-aware resource allocation.</p>
-                        </div>
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.07] transition-all">
-                            <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mx-auto mb-4">
-                                <Cpu size={24} className="text-[#FF6B00]" />
-                            </div>
-                            <h3 className="text-lg font-bold text-white mb-2">03. Generative Design</h3>
-                            <p className="text-slate-400 text-sm">Set constraints and let AI produce scored design variants optimized for space, cost, and structure.</p>
-                        </div>
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.07] transition-all">
-                            <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mx-auto mb-4">
-                                <Wrench size={24} className="text-[#FF6B00]" />
-                            </div>
-                            <h3 className="text-lg font-bold text-white mb-2">04. Predict & Maintain</h3>
-                            <p className="text-slate-400 text-sm">IoT sensor data feeds AI models that predict equipment failures before they halt your project.</p>
-                        </div>
-                    </div>
-                </div>
+                </motion.div>
+
             </div>
         </div>
     );
-}
-
-function StackItem({ label, icon }) {
-    return (
-        <div className="flex flex-col items-center gap-3 text-slate-300">
-            <div className="p-4 rounded-full bg-white/5 text-[#22d3ee] mb-2">{icon}</div>
-            <span className="font-semibold">{label}</span>
-        </div>
-    );
-}
-
-function ActivityIcon() {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
-    )
 }

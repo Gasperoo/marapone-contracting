@@ -4,7 +4,8 @@ import {
     Activity, TrendingUp, ShieldCheck, Grid, Zap, Globe, Lock, Layers,
     AlertTriangle, MonitorPlay, BarChart3, Leaf, Wind, Ship, DollarSign,
     Clock, Bot, MessageSquare, Brain, FileText, Send, MapPin, Database,
-    Cpu, Server, Sparkles, Check, X, Award, TrendingDown, Star, Plane
+    Cpu, Server, Sparkles, Check, X, Award, TrendingDown, Star, Plane,
+    HardHat, Ruler, Boxes, Wrench, FileSearch
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import '../components/LandingPage/LandingPage.css';
@@ -48,11 +49,16 @@ export default function FeaturesPage() {
                         transition={{ delay: 0.2 }}
                         className="hero-subtitle"
                     >
-                        A comprehensive suite of AI-powered tools designed to give you total visibility and control over your supply chain.
+                        A comprehensive suite of AI-powered tools for logistics intelligence and construction management — total visibility and control.
                     </motion.p>
                 </div>
 
-                {/* Feature Grid */}
+                {/* Logistics Feature Grid */}
+                <div className="mb-6">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#5227FF] text-xs font-bold tracking-wider mb-6">
+                        <Ship size={12} className="mr-2" /> LOGISTICS INTELLIGENCE
+                    </div>
+                </div>
                 <div className="grid md:grid-cols-2 gap-8 mb-32">
                     <FeatureCard
                         icon={<Activity size={32} />}
@@ -77,6 +83,39 @@ export default function FeaturesPage() {
                         title="Market Intelligence"
                         description="Stay ahead of market shifts. Access live commodity prices, currency exchange rates, and spot rates."
                         details={['Live User Indices', 'Currency Exchange', 'Commodity Tickers', 'Global Holidays']}
+                    />
+                </div>
+
+                {/* Construction Feature Grid */}
+                <div className="mb-6">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                        <HardHat size={12} className="mr-2" /> CONSTRUCTION INTELLIGENCE
+                    </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-8 mb-32">
+                    <FeatureCard
+                        icon={<FileSearch size={32} />}
+                        title="Blueprint AI"
+                        description="Upload any blueprint or plan — our AI detects walls, doors, MEP systems, and dimensions with 99% accuracy."
+                        details={['Element Detection', 'Dimension Extraction', 'Code Compliance', 'Material Quantification']}
+                    />
+                    <FeatureCard
+                        icon={<Brain size={32} />}
+                        title="AI Construction Planner"
+                        description="Generate optimized construction schedules with critical path analysis, risk prediction, and resource planning."
+                        details={['Gantt Generation', 'Critical Path AI', 'Weather Impact', 'Resource Optimizer']}
+                    />
+                    <FeatureCard
+                        icon={<Boxes size={32} />}
+                        title="Generative Design"
+                        description="Input your constraints and let AI generate optimized design variants scored by space utilization, cost, and structural integrity."
+                        details={['3D Visualization', 'Multi-variant Scoring', 'Structural Analysis', 'Space Optimization']}
+                    />
+                    <FeatureCard
+                        icon={<Wrench size={32} />}
+                        title="Predictive Maintenance"
+                        description="IoT-connected equipment monitoring with AI-powered failure prediction and automated maintenance scheduling."
+                        details={['Sensor Monitoring', 'Failure Prediction', 'Cost-of-Failure', 'Smart Scheduling']}
                     />
                 </div>
 

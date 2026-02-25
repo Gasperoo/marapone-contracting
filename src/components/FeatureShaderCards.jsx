@@ -41,13 +41,15 @@ const features = [
         ),
     },
     {
-        title: 'Project Development/Management',
-        description: 'End-to-end project management ensuring on-time delivery and exceptional results.',
+        title: 'Construction Management',
+        description: 'AI-powered construction intelligence: blueprint analysis, takeoff tools, generative design, and predictive maintenance.',
         icon: (
             <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                <path d="M13.783 2.515a1 1 0 0 1 .434 1.347L11.74 8.5h5.76a1 1 0 0 1 .79 1.613l-7.5 9.5a1 1 0 0 1-1.79-.976L11.26 14H5.5a1 1 0 0 1-.79-1.613l7.5-9.5a1 1 0 0 1 1.573-.372z" />
             </svg>
         ),
+        isClickable: true,
+        href: '/gasper/construction',
     },
     {
         title: 'Contact Us',

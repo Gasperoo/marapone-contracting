@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Globe, Cpu, Zap, Shield, X, ArrowRight } from 'lucide-react';
+import { Globe, Cpu, Zap, Shield, X, ArrowRight, HardHat } from 'lucide-react';
 
 export function BentoGrid() {
     const [selectedId, setSelectedId] = useState(null);
@@ -19,26 +19,35 @@ export function BentoGrid() {
             id: 'ai',
             title: 'AI Core',
             subtitle: 'Predictive intelligence.',
-            description: 'Gasper’s AI doesn’t just report what happened; it predicts what will happen. We analyze weather patterns, strike probabilities, and historical route performance to forecast delays days in advance.',
+            description: "Gasper's AI doesn't just report what happened; it predicts what will happen. We analyze weather patterns, strike probabilities, and historical route performance to forecast delays days in advance.",
             icon: <Cpu size={40} className="text-cyan-400" />,
-            className: "md:col-span-1 md:col-start-4 md:row-span-3",
+            className: "md:col-span-1 md:row-span-2",
             gradient: "from-cyan-500/10 via-transparent to-transparent"
+        },
+        {
+            id: 'construction',
+            title: 'Construction AI',
+            subtitle: 'Blueprint to delivery.',
+            description: 'From AI-powered blueprint reading to generative 3D design and predictive maintenance — Gasper brings the same intelligence to construction that reshaped logistics.',
+            icon: <HardHat size={40} className="text-[#FF6B00]" />,
+            className: "md:col-span-1 md:row-span-2",
+            gradient: "from-orange-500/10 via-transparent to-transparent"
         },
         {
             id: 'speed',
             title: '<50ms Latency',
             subtitle: 'Instant updates.',
-            description: 'In logistics, speed is currency. Our distributed edge infrastructure ensures that when a status changes in the real world, it changes on your dashboard in milliseconds.',
+            description: 'In logistics and construction, speed is currency. Our distributed edge infrastructure ensures that when a status changes in the real world, it changes on your dashboard in milliseconds.',
             icon: <Zap size={32} className="text-amber-400" />,
-            className: "md:col-span-1 md:row-span-1 flex flex-col justify-center items-center text-center"
+            className: "md:col-span-2 md:row-span-1 flex flex-col justify-center items-center text-center"
         },
         {
             id: 'security',
             title: 'SOC2 Compliant',
             subtitle: 'Bank-grade security.',
-            description: 'Your supply chain data is sensitive. We encrypt it at rest and in transit, and our platform is rigorously audited to meet the highest enterprise security standards.',
+            description: 'Your supply chain and construction data is sensitive. We encrypt it at rest and in transit, and our platform is rigorously audited to meet the highest enterprise security standards.',
             icon: <Shield size={32} className="text-green-400" />,
-            className: "md:col-span-1 md:row-span-1 flex flex-col justify-center items-center text-center"
+            className: "md:col-span-2 md:row-span-1 flex flex-col justify-center items-center text-center"
         }
     ];
 
@@ -51,7 +60,7 @@ export function BentoGrid() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-4 md:grid-rows-3 gap-6 h-[800px] md:h-[600px]">
+            <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-6 md:grid-rows-3 gap-6 h-auto md:h-[600px]">
                 {items.map((item) => (
                     <motion.div
                         key={item.id}

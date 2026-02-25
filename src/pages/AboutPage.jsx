@@ -31,7 +31,7 @@ export default function AboutPage() {
             About <span className="text-[#5227FF]">Marapone</span>
           </h1>
           <p className="hero-subtitle mx-auto max-w-3xl">
-            We are a global ecosystem bridging the gap between advanced AI technology and real-world logistics operations.
+            We are a global ecosystem bridging the gap between advanced AI technology and real-world logistics and construction operations.
           </p>
         </motion.div>
       </div>
@@ -41,7 +41,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
           <p className="text-lg text-slate-300 leading-relaxed">
-            To democratize access to enterprise-grade supply chain intelligence. We believe that every shipment tells a story, and by decoding that story with AI, we can build a more resilient, efficient, and sustainable global trade network.
+            To democratize access to enterprise-grade supply chain and construction intelligence. We believe that every shipment and every project tells a story, and by decoding that story with AI, we can build a more resilient, efficient, and sustainable world.
           </p>
         </div>
       </section>
@@ -81,20 +81,24 @@ export default function AboutPage() {
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">The Intelligence</h3>
             <p className="text-slate-300 leading-relaxed mb-6">
-              Gasper is the brain. Built on top of Marapone's infrastructure, Gasper applies advanced machine learning and predictive analytics to make sense of the chaos. It doesn't just show you where your cargo is; it tells you where it should be and how to get it there faster.
+              Gasper is the brain. Built on top of Marapone's infrastructure, Gasper applies advanced machine learning and predictive analytics across two domains: global logistics and construction management. It doesn't just show you data; it tells you what to do with it.
             </p>
             <ul className="space-y-3 text-slate-400">
               <li className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                <span>Predictive Risk Analysis</span>
+                <span>Predictive Risk & Delay Analysis</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                <span>Automated Decision Support</span>
+                <span>AI Blueprint Reading & Takeoff</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                <span>Generative Supply Chain Assistant</span>
+                <span>Generative Design & 3D Planning</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                <span>Predictive Maintenance & Simulation</span>
               </li>
             </ul>
           </div>

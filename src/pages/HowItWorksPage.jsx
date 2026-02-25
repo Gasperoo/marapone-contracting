@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Database, Cpu, BarChart3, ArrowRight, Server, Globe2, Share2 } from 'lucide-react';
+import { Database, Cpu, BarChart3, ArrowRight, Server, Globe2, Share2, HardHat, FileSearch, BrainCircuit, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import '../components/LandingPage/LandingPage.css';
 import ProcessStep from '../components/ProcessStep';
@@ -44,7 +44,7 @@ export default function HowItWorksPage() {
                         transition={{ delay: 0.2 }}
                         className="hero-subtitle mb-8"
                     >
-                        How Gasper ingests millions of data points, processes them with advanced AI, and delivers actionable insights in milliseconds.
+                        How Gasper ingests millions of data points, processes them with advanced AI, and delivers actionable insights across logistics and construction.
                     </motion.p>
                 </div>
 
@@ -191,10 +191,52 @@ export default function HowItWorksPage() {
                 </div>
 
                 {/* CTA */}
-                <div className="text-center">
+                <div className="text-center"
+                >
                     <Link to="/contact" className="btn-secondary inline-flex items-center">
                         Request Technical Whitepaper <ArrowRight size={18} className="ml-2" />
                     </Link>
+                </div>
+
+                {/* Construction Workflow Section */}
+                <div className="mt-24 mb-24">
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                            <HardHat size={12} className="mr-2" /> CONSTRUCTION MODE
+                        </div>
+                        <h2 className="text-3xl font-bold text-white mb-6">Construction Intelligence Pipeline</h2>
+                        <p className="text-slate-400">The same AI backbone, purpose-built for the construction industry.</p>
+                    </div>
+                    <div className="grid md:grid-cols-4 gap-6">
+                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.07] transition-all">
+                            <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mx-auto mb-4">
+                                <FileSearch size={24} className="text-[#FF6B00]" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2">01. Blueprint Ingestion</h3>
+                            <p className="text-slate-400 text-sm">Upload CAD, PDF, or image plans. AI detects elements, dimensions, and generates material lists.</p>
+                        </div>
+                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.07] transition-all">
+                            <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mx-auto mb-4">
+                                <BrainCircuit size={24} className="text-[#FF6B00]" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2">02. AI Planning</h3>
+                            <p className="text-slate-400 text-sm">Generate optimized schedules with critical path analysis and risk-aware resource allocation.</p>
+                        </div>
+                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.07] transition-all">
+                            <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mx-auto mb-4">
+                                <Cpu size={24} className="text-[#FF6B00]" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2">03. Generative Design</h3>
+                            <p className="text-slate-400 text-sm">Set constraints and let AI produce scored design variants optimized for space, cost, and structure.</p>
+                        </div>
+                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.07] transition-all">
+                            <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mx-auto mb-4">
+                                <Wrench size={24} className="text-[#FF6B00]" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2">04. Predict & Maintain</h3>
+                            <p className="text-slate-400 text-sm">IoT sensor data feeds AI models that predict equipment failures before they halt your project.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

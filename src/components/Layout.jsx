@@ -29,7 +29,7 @@ export default function Layout({ children }) {
       : { name: 'Account', url: '/account', icon: User }
   ];
 
-  const isGasperPage = location.pathname.startsWith('/gasper');
+  const isGasperPage = location.pathname === '/gasper' || location.pathname.startsWith('/gasper/');
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

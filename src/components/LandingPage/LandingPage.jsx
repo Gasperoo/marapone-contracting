@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor } from 'lucide-react';
+import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor, HardHat, Ruler } from 'lucide-react';
 import './LandingPage.css';
 
 import { LogoMarquee } from './LogoMarquee';
@@ -51,7 +51,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
                     >
-                        The all-in-one AI platform for real-time tracking, compliance analysis, and digital twin simulation. Transform chaos into clarity.
+                        The all-in-one AI platform for logistics intelligence and construction management. From supply chain tracking to blueprint analysis — transform chaos into clarity.
                     </motion.p>
 
                     {!comingSoonMode && (
@@ -161,6 +161,14 @@ export default function LandingPage({ comingSoonMode = false }) {
                                 <span>Freight Forwarding</span>
                             </div>
                             <div className="industry-card">
+                                <HardHat className="industry-icon" />
+                                <span>General Contractors</span>
+                            </div>
+                            <div className="industry-card">
+                                <Ruler className="industry-icon" />
+                                <span>Engineering Firms</span>
+                            </div>
+                            <div className="industry-card">
                                 <Box className="industry-icon" />
                                 <span>Retail & E-commerce</span>
                             </div>
@@ -181,10 +189,10 @@ export default function LandingPage({ comingSoonMode = false }) {
                 {/* Final CTA */}
                 <section className="final-cta-section">
                     <div className="final-cta-content">
-                        <h2>Ready to Modernize Your Supply Chain?</h2>
-                        <p>Join thousands of forward-thinking logistics leaders today.</p>
+                        <h2>Ready to Modernize Your Operations?</h2>
+                        <p>Join thousands of forward-thinking logistics and construction leaders today.</p>
                         <Link to="/gasper" className="btn-primary mt-8 inline-block">
-                            Get Started Now
+                            Launch Gasper Tool
                         </Link>
                     </div>
                 </section>

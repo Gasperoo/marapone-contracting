@@ -13,11 +13,19 @@ const faqs = [
     },
     {
         question: "Can I try Gasper before committing?",
-        answer: "Yes! We offer a 14-day free trial on our Scout plan. For enterprise needs, contact our sales team for a guided pilot program using your own historical data."
+        answer: "Yes! We offer a 14-day free trial on our Scout plan for both Logistics and Construction tools. For enterprise needs, contact our sales team for a guided pilot program using your own historical data."
     },
     {
         question: "What makes your predictive AI different?",
-        answer: "Unlike generic models, Gasper's AI is trained specifically on logistics datasets. It ingests geopolitical news, local weather, and port congestion data to predict delays with 85% higher accuracy than standard ETAs."
+        answer: "Unlike generic models, Gasper's AI is trained specifically on logistics and construction datasets. It ingests geopolitical news, weather data, and industry-specific signals to predict delays and failures with 85% higher accuracy than standard tools."
+    },
+    {
+        question: "Can Gasper read my existing blueprints and plans?",
+        answer: "Yes — Gasper's Blueprint AI supports PDF, DWG, and image formats. It uses computer vision to detect walls, doors, MEP systems, and dimensions with 99% accuracy, and can automatically generate material takeoffs."
+    },
+    {
+        question: "Does the Construction tool integrate with BIM software?",
+        answer: "Gasper supports IFC file import and can connect with Revit, ArchiCAD, and other BIM platforms via our API. The Generative Design module can also export design variants in standard formats."
     }
 ];
 

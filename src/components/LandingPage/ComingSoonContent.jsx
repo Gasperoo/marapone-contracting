@@ -7,10 +7,11 @@ import {
     Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, HardHat, Stethoscope, Plane,
     CheckCircle2, ArrowRight, Mail, Layers, AlertTriangle, MonitorPlay,
     Leaf, Wind, DollarSign, Star, Clock, ArrowRightLeft, Ship, Users, Building2, X, Check, Sparkles, Award, TrendingDown,
-    Bot, MessageSquare, Brain, FileText, Send, MapPin
+    Bot, MessageSquare, Brain, FileText, Send, MapPin, Ruler, Eye, Wrench, Hammer
 } from 'lucide-react';
 import TiltCard from '../TiltCard';
 import Particles from '../Particles/Particles';
+import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';
 
 // --- Animated Counter Component ---
 function Counter({ value, label, suffix = "" }) {
@@ -715,17 +716,22 @@ function TechnologyStackSection() {
         {
             category: "Data Sources",
             icon: <Database size={20} />,
-            technologies: ["AIS Streams", "Port APIs", "Weather Data", "IoT Sensors"]
+            technologies: ["AIS Streams", "Port & BIM APIs", "Drone & IoT Sensors", "Weather Data"]
         },
         {
             category: "AI & Machine Learning",
             icon: <Cpu size={20} />,
-            technologies: ["TensorFlow", "PyTorch", "Time-Series Forecasting", "NLP Models"]
+            technologies: ["TensorFlow", "Computer Vision", "Time-Series Forecasting", "NLP Models"]
         },
         {
             category: "Infrastructure",
             icon: <Server size={20} />,
             technologies: ["AWS", "Kubernetes", "Redis", "PostgreSQL"]
+        },
+        {
+            category: "Construction Tech",
+            icon: <HardHat size={20} />,
+            technologies: ["BIM Integration", "GPS Fleet Tracking", "Blueprint OCR", "Permit APIs"]
         },
         {
             category: "Security",
@@ -741,7 +747,7 @@ function TechnologyStackSection() {
                 <p className="text-slate-400 max-w-2xl mx-auto">Powered by the most advanced tools in the industry.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
                 {techCategories.map((cat, idx) => (
                     <motion.div
                         key={idx}
@@ -778,8 +784,11 @@ function ComparisonTableSection() {
         { feature: "Digital Twin Simulation", traditional: false, gasper: true },
         { feature: "Automated Compliance", traditional: false, gasper: true },
         { feature: "Multi-Modal Integration", traditional: true, gasper: true },
+        { feature: "Blueprint AI Analysis", traditional: false, gasper: true },
+        { feature: "Cash Flow Forecasting", traditional: false, gasper: true },
+        { feature: "Theft & Asset Protection", traditional: false, gasper: true },
         { feature: "Setup Time", traditional: "Weeks", gasper: "Minutes" },
-        { feature: "Cost Structure", traditional: "Per Shipment", gasper: "Flat Rate" }
+        { feature: "Cost Structure", traditional: "Per Project", gasper: "Flat Rate" }
     ];
 
     return (
@@ -800,7 +809,7 @@ function ComparisonTableSection() {
                 <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-4">
                     Why Choose Gasper?
                 </h2>
-                <p className="text-slate-400 text-lg">See how we stack up against traditional logistics tools.</p>
+                <p className="text-slate-400 text-lg">See how we stack up against traditional logistics & construction tools.</p>
             </div>
 
             <motion.div
@@ -1039,6 +1048,10 @@ function WaitlistSection() {
                                     <option value="Logistics Manager">Logistics Manager</option>
                                     <option value="Operations Director">Operations Director</option>
                                     <option value="Supply Chain VP">Supply Chain VP</option>
+                                    <option value="General Contractor">General Contractor</option>
+                                    <option value="Project Manager">Project Manager (Construction)</option>
+                                    <option value="Site Engineer">Site Engineer</option>
+                                    <option value="Construction VP">Construction VP / Owner</option>
                                     <option value="C-Level Executive">C-Level Executive</option>
                                     <option value="Other">Other</option>
                                 </select>
@@ -1318,13 +1331,18 @@ export default function ComingSoonContent() {
 
             {/* --- STATS SECTION --- */}
             <section className="px-6 max-w-7xl mx-auto">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-white/5 bg-white/[0.02] backdrop-blur-sm rounded-3xl">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 py-10 border-y border-white/5 bg-white/[0.02] backdrop-blur-sm rounded-3xl">
                     <Counter value={5000} label="Connected Vessels" suffix="+" />
                     <Counter value={98} label="Accuracy Rating" suffix="%" />
                     <Counter value={120} label="Countries Covered" suffix="+" />
                     <Counter value={2} label="Data Points (B)" suffix="B+" />
+                    <Counter value={850} label="Active Job Sites" suffix="+" />
+                    <Counter value={99} label="Safety Score" suffix="%" />
                 </div>
             </section>
+
+            {/* --- PLATFORM PILLARS --- */}
+            <PlatformPillarsSection />
 
             {/* --- FEATURES SECTION --- */}
             <section className="px-6 max-w-7xl mx-auto">
@@ -1367,14 +1385,22 @@ export default function ComingSoonContent() {
                 </div>
             </section>
 
+            {/* --- CONSTRUCTION FEATURES --- */}
+            <ConstructionFeaturesSection />
+
             {/* --- COMPARISON TABLE --- */}
             <ComparisonTableSection />
 
-            {/* --- NEW DEEP DIVE SECTIONS --- */}
+            {/* --- LOGISTICS DEEP DIVES --- */}
             <DigitalTwinSection />
             <RiskMonitorSection />
             <SustainabilitySection />
             <RateCheckSection />
+
+            {/* --- CONSTRUCTION DEEP DIVES --- */}
+            <BlueprintAISection />
+            <CashFlowSection />
+            <SiteSecuritySection />
 
             {/* --- TECHNOLOGY STACK --- */}
             <TechnologyStackSection />
@@ -1453,32 +1479,32 @@ export default function ComingSoonContent() {
                         useCase="Automated Documentation & Client Portal"
                     />
                     <IndustryCard
-                        icon={<ShoppingBag size={28} />}
-                        title="Retail & E-commerce"
-                        description="Ensure stock availability by tracking inventory from factory to warehouse."
-                        color="text-purple-400"
-                        useCase="Inventory Visibility & Demand Sensing"
+                        icon={<HardHat size={28} />}
+                        title="General Contracting"
+                        description="AI-powered project management, cash flow forecasting, and compliance automation for GCs."
+                        color="text-[#FF6B00]"
+                        useCase="Full Project Lifecycle Intelligence"
+                    />
+                    <IndustryCard
+                        icon={<Building2 size={28} />}
+                        title="Commercial Construction"
+                        description="Manage multi-million dollar builds with blueprint AI, sub matching, and real-time cost tracking."
+                        color="text-amber-400"
+                        useCase="Blueprint Analysis & Cost Optimization"
                     />
                     <IndustryCard
                         icon={<Factory size={28} />}
                         title="Manufacturing"
                         description="Secure your supply chain against disruptions and monitor raw material shipments."
-                        color="text-orange-400"
+                        color="text-purple-400"
                         useCase="Supplier Risk Monitoring"
                     />
                     <IndustryCard
                         icon={<Fuel size={28} />}
-                        title="Energy & Commodities"
-                        description="Monitor oil and gas shipments and react instantly to geopolitical events."
+                        title="Energy & Infrastructure"
+                        description="Monitor energy projects and react instantly to safety and compliance events."
                         color="text-red-400"
-                        useCase="Geopolitical Route Optimization"
-                    />
-                    <IndustryCard
-                        icon={<Plane size={28} />}
-                        title="Aerospace"
-                        description="Track critical AOG parts globally to minimize downtime."
-                        color="text-sky-400"
-                        useCase="AOG Parts Tracking"
+                        useCase="Safety Compliance & Asset Protection"
                     />
                 </div>
             </section>

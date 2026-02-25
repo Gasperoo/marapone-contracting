@@ -13,9 +13,11 @@ import InteractiveGlobe from './InteractiveGlobe';
 import ComingSoonContent from './ComingSoonContent';
 import ComingSoonHeroBackground from './ComingSoonHeroBackground';
 import ComingSoonFooter from './ComingSoonFooter';
+import ContactModal from '../ContactModal';
 
 export default function LandingPage({ comingSoonMode = false }) {
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
     const scrollToContent = () => {
         setTimeout(() => {
@@ -254,15 +256,18 @@ export default function LandingPage({ comingSoonMode = false }) {
                     <div className="final-cta-content">
                         <h2>Ready to Modernize Your Operations?</h2>
                         <p>Join thousands of forward-thinking logistics and construction leaders today.</p>
-                        <Link to="/gasper" className="btn-primary mt-8 inline-block">
-                            Launch Gasper Tool
-                        </Link>
+                        <button onClick={() => setIsContactModalOpen(true)} className="btn-primary mt-8 inline-block">
+                            Book a demo
+                        </button>
                     </div>
                 </section>
 
             </div>
             {/* Coming Soon Footer */}
             {comingSoonMode && <ComingSoonFooter />}
+
+            {/* Contact Modal Popup */}
+            <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
         </div>
     );
 }

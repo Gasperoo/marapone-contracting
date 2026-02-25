@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor, HardHat, Ruler } from 'lucide-react';
@@ -15,6 +15,19 @@ import ComingSoonHeroBackground from './ComingSoonHeroBackground';
 import ComingSoonFooter from './ComingSoonFooter';
 
 export default function LandingPage({ comingSoonMode = false }) {
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+    const scrollToContent = () => {
+        setTimeout(() => {
+            const contentElement = document.getElementById('coming-soon-content');
+            if (contentElement) {
+                const yOffset = -50; // offset to not hide behind navbar
+                const y = contentElement.getBoundingClientRect().top + window.scrollY + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }, 100);
+    };
+
     return (
         <div className="landing-container pt-12">
 
@@ -78,29 +91,68 @@ export default function LandingPage({ comingSoonMode = false }) {
                     )}
 
                     {comingSoonMode && (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{
-                                opacity: 1,
-                                scale: [1, 1.05, 1]
-                            }}
-                            transition={{
-                                opacity: { delay: 0.3, duration: 0.5 },
-                                scale: {
-                                    delay: 0.8,
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }
-                            }}
-                            className="mt-8 flex justify-center"
-                        >
-                            <img
-                                src="/images/gasper-logo-g.png"
-                                alt="Gasper Logo"
-                                className="w-32 h-32 md:w-40 md:h-40 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
-                            />
-                        </motion.div>
+                        <div className="flex flex-col items-center mt-8 pb-12">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{
+                                    opacity: 1,
+                                    scale: [1, 1.05, 1]
+                                }}
+                                transition={{
+                                    opacity: { delay: 0.3, duration: 0.5 },
+                                    scale: {
+                                        delay: 0.8,
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }
+                                }}
+                                className="mb-12"
+                            >
+                                <img
+                                    src="/images/gasper-logo-g.png"
+                                    alt="Gasper Logo"
+                                    className="w-32 h-32 md:w-40 md:h-40 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                                />
+                            </motion.div>
+
+                            <motion.div
+                                className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-2xl"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.6 }}
+                            >
+                                <button
+                                    onClick={() => { setSelectedProduct('logistics'); scrollToContent(); }}
+                                    className={`relative group px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 ${selectedProduct === 'logistics' ? 'scale-105 shadow-[0_0_30px_rgba(82,39,255,0.4)]' : 'hover:scale-105'}`}
+                                >
+                                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5227FF] via-[#22d3ee] to-[#5227FF] opacity-80 group-hover:opacity-100 animate-[gradient_3s_ease_infinite] blur-md transition-opacity bg-[length:200%_auto]"></div>
+                                    <div className="absolute inset-[2px] rounded-full bg-black/80 backdrop-blur-xl group-hover:bg-black/60 transition-colors"></div>
+                                    <div className="relative z-10 flex items-center gap-3 text-white">
+                                        <Truck className="text-[#22d3ee]" size={24} />
+                                        <span>Gasper Logistics</span>
+                                    </div>
+                                    {selectedProduct === 'logistics' && (
+                                        <motion.div layoutId="activeInd" className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#22d3ee] shadow-[0_0_10px_#22d3ee]" />
+                                    )}
+                                </button>
+
+                                <button
+                                    onClick={() => { setSelectedProduct('construction'); scrollToContent(); }}
+                                    className={`relative group px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 ${selectedProduct === 'construction' ? 'scale-105 shadow-[0_0_30px_rgba(255,107,0,0.4)]' : 'hover:scale-105'}`}
+                                >
+                                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FF6B00] via-[#F59E0B] to-[#FF6B00] opacity-80 group-hover:opacity-100 animate-[gradient_3s_ease_infinite] blur-md transition-opacity bg-[length:200%_auto]"></div>
+                                    <div className="absolute inset-[2px] rounded-full bg-black/80 backdrop-blur-xl group-hover:bg-black/60 transition-colors"></div>
+                                    <div className="relative z-10 flex items-center gap-3 text-white">
+                                        <HardHat className="text-[#F59E0B]" size={24} />
+                                        <span>Gasper Construction</span>
+                                    </div>
+                                    {selectedProduct === 'construction' && (
+                                        <motion.div layoutId="activeInd" className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#F59E0B] shadow-[0_0_10px_#F59E0B]" />
+                                    )}
+                                </button>
+                            </motion.div>
+                        </div>
                     )}
                 </div>
             </section>
@@ -188,7 +240,11 @@ export default function LandingPage({ comingSoonMode = false }) {
                 )}
 
                 {/* Enhanced Coming Soon Content */}
-                {comingSoonMode && <ComingSoonContent />}
+                {comingSoonMode && selectedProduct && (
+                    <div id="coming-soon-content">
+                        <ComingSoonContent selectedProduct={selectedProduct} />
+                    </div>
+                )}
 
                 {/* FAQ Section */}
                 <LandingPageFAQ />

@@ -712,34 +712,47 @@ function GasperAIBotSection() {
 
 
 // --- Technology Stack Section ---
-function TechnologyStackSection() {
-    const techCategories = [
+function TechnologyStackSection({ selectedProduct }) {
+    const allCategories = [
         {
             category: "Data Sources",
             icon: <Database size={20} />,
-            technologies: ["AIS Streams", "Port & BIM APIs", "Drone & IoT Sensors", "Weather Data"]
+            technologies: ["AIS Streams", "Port & BIM APIs", "Drone & IoT Sensors", "Weather Data"],
+            product: 'both'
         },
         {
             category: "AI & Machine Learning",
             icon: <Cpu size={20} />,
-            technologies: ["TensorFlow", "Computer Vision", "Time-Series Forecasting", "NLP Models"]
+            technologies: ["TensorFlow", "Computer Vision", "Time-Series Forecasting", "NLP Models"],
+            product: 'both'
         },
         {
             category: "Infrastructure",
             icon: <Server size={20} />,
-            technologies: ["AWS", "Kubernetes", "Redis", "PostgreSQL"]
+            technologies: ["AWS", "Kubernetes", "Redis", "PostgreSQL"],
+            product: 'both'
         },
         {
             category: "Construction Tech",
             icon: <HardHat size={20} />,
-            technologies: ["BIM Integration", "GPS Fleet Tracking", "Blueprint OCR", "Permit APIs"]
+            technologies: ["BIM Integration", "GPS Fleet Tracking", "Blueprint OCR", "Permit APIs"],
+            product: 'construction'
+        },
+        {
+            category: "Logistics Tech",
+            icon: <Truck size={20} />,
+            technologies: ["Route Optimization Engine", "Global Carrier Integrations", "Customs API", "Freight Indexers"],
+            product: 'logistics'
         },
         {
             category: "Security",
             icon: <Lock size={20} />,
-            technologies: ["SOC 2 Type II", "End-to-End Encryption", "GDPR Compliant", "ISO 27001"]
+            technologies: ["SOC 2 Type II", "End-to-End Encryption", "GDPR Compliant", "ISO 27001"],
+            product: 'both'
         }
     ];
+
+    const techCategories = allCategories.filter(cat => cat.product === 'both' || cat.product === selectedProduct);
 
     return (
         <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
@@ -778,19 +791,23 @@ function TechnologyStackSection() {
 }
 
 // --- Comparison Table Section ---
-function ComparisonTableSection() {
-    const comparisons = [
-        { feature: "Real-Time Tracking", traditional: false, gasper: true },
-        { feature: "AI-Powered Predictions", traditional: false, gasper: true },
-        { feature: "Digital Twin Simulation", traditional: false, gasper: true },
-        { feature: "Automated Compliance", traditional: false, gasper: true },
-        { feature: "Multi-Modal Integration", traditional: true, gasper: true },
-        { feature: "Blueprint AI Analysis", traditional: false, gasper: true },
-        { feature: "Cash Flow Forecasting", traditional: false, gasper: true },
-        { feature: "Theft & Asset Protection", traditional: false, gasper: true },
-        { feature: "Setup Time", traditional: "Weeks", gasper: "Minutes" },
-        { feature: "Cost Structure", traditional: "Per Project", gasper: "Flat Rate" }
+function ComparisonTableSection({ selectedProduct }) {
+    const allComparisons = [
+        { feature: "Real-Time Tracking", traditional: false, gasper: true, product: 'logistics' },
+        { feature: "AI-Powered Predictions", traditional: false, gasper: true, product: 'logistics' },
+        { feature: "Digital Twin Simulation", traditional: false, gasper: true, product: 'logistics' },
+        { feature: "Automated Compliance", traditional: false, gasper: true, product: 'logistics' },
+        { feature: "Multi-Modal Integration", traditional: true, gasper: true, product: 'logistics' },
+        { feature: "Rate Benchmarking", traditional: false, gasper: true, product: 'logistics' },
+        { feature: "Blueprint AI Analysis", traditional: false, gasper: true, product: 'construction' },
+        { feature: "Cash Flow Forecasting", traditional: false, gasper: true, product: 'construction' },
+        { feature: "Theft & Asset Protection", traditional: false, gasper: true, product: 'construction' },
+        { feature: "Subcontractor Matching", traditional: false, gasper: true, product: 'construction' },
+        { feature: "Setup Time", traditional: "Weeks", gasper: "Minutes", product: 'both' },
+        { feature: "Cost Structure", traditional: "Per Project", gasper: "Flat Rate", product: 'both' }
     ];
+
+    const comparisons = allComparisons.filter(c => c.product === 'both' || c.product === selectedProduct);
 
     return (
         <section className="px-6 max-w-6xl mx-auto py-20 relative overflow-hidden">
@@ -918,14 +935,20 @@ function ComparisonTableSection() {
 }
 
 // --- Waitlist Section with Email Functionality ---
-function WaitlistSection() {
+function WaitlistSection({ selectedProduct }) {
+    const defaultRole = selectedProduct === 'construction' ? 'General Contractor' : 'Logistics Manager';
+
     const [formData, setFormData] = useState({
         email: '',
-        role: '',
+        role: defaultRole,
         companySize: ''
     });
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
     const [errorMessage, setErrorMessage] = useState('');
+
+    useEffect(() => {
+        setFormData(prev => ({ ...prev, role: defaultRole }));
+    }, [defaultRole]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -1309,7 +1332,7 @@ function RateCheckSection() {
 
 
 
-export default function ComingSoonContent() {
+export default function ComingSoonContent({ selectedProduct }) {
     return (
         <div className="mt-20 space-y-32 relative">
 
@@ -1333,136 +1356,162 @@ export default function ComingSoonContent() {
             {/* --- STATS SECTION --- */}
             <section className="px-6 max-w-7xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 py-10 border-y border-white/5 bg-white/[0.02] backdrop-blur-sm rounded-3xl">
-                    <Counter value={5000} label="Connected Vessels" suffix="+" />
-                    <Counter value={98} label="Accuracy Rating" suffix="%" />
-                    <Counter value={120} label="Countries Covered" suffix="+" />
-                    <Counter value={2} label="Data Points (B)" suffix="B+" />
-                    <Counter value={850} label="Active Job Sites" suffix="+" />
-                    <Counter value={99} label="Safety Score" suffix="%" />
+                    {selectedProduct === 'logistics' ? (
+                        <>
+                            <Counter value={5000} label="Connected Vessels" suffix="+" />
+                            <Counter value={98} label="Accuracy Rating" suffix="%" />
+                            <Counter value={120} label="Countries Covered" suffix="+" />
+                            <Counter value={2} label="Data Points (B)" suffix="B+" />
+                            <Counter value={300} label="Port Integrations" suffix="+" />
+                            <Counter value={50} label="M+ Routes Analyzed" suffix="M+" />
+                        </>
+                    ) : (
+                        <>
+                            <Counter value={850} label="Active Job Sites" suffix="+" />
+                            <Counter value={99} label="Safety Score" suffix="%" />
+                            <Counter value={5} label="Managed Value ($B)" suffix="B+" />
+                            <Counter value={20} label="Blueprints Analyzed (M)" suffix="M+" />
+                            <Counter value={1200} label="Subcontractors" suffix="+" />
+                            <Counter value={100} label="Code Violations Caught (K)" suffix="K+" />
+                        </>
+                    )}
                 </div>
             </section>
-
-            {/* --- PLATFORM PILLARS --- */}
-            <PlatformPillarsSection />
 
             {/* --- FEATURES SECTION --- */}
-            <section className="px-6 max-w-7xl mx-auto">
-                <div className="text-center mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="inline-block px-4 py-1.5 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#5227FF] text-sm font-medium mb-4"
-                    >
-                        Core Capabilities
-                    </motion.div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee]">Beyond Boundaries</span></h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-lg">A comprehensive suite of AI-powered tools designed to give you total visibility and control over your global operations.</p>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                    <FeatureCard
-                        icon={<Activity size={32} />}
-                        title="Real-Time Tracking"
-                        description="Monitor vessels, flights, and rail freight in real-time. Our global tracking network integrates data from thousands of carriers."
-                        details={['Vessel AIS Data', 'Live Flight Paths', 'Rail Freight Corridors', 'Delay Predictions']}
-                    />
-                    <FeatureCard
-                        icon={<TrendingUp size={32} />}
-                        title="Digital Twin Simulation"
-                        description="Create a virtual replica of your supply chain. Test 'what-if' scenarios to understand the impact of port strikes or disasters."
-                        details={['Scenario Modeling', 'Cost Impact Analysis', 'Route Alternates', 'Inventory Optimization']}
-                    />
-                    <FeatureCard
-                        icon={<ShieldCheck size={32} />}
-                        title="Compliance & Risk AI"
-                        description="Automate your compliance workflows. Our AI classifies HS codes with 99% accuracy and screens all partners."
-                        details={['Automated HS Classification', 'Sanctions Screening', 'Document Generation', 'Regulatory Alerts']}
-                    />
-                    <FeatureCard
-                        icon={<Grid size={32} />}
-                        title="Market Intelligence"
-                        description="Stay ahead of market shifts. Access live commodity prices, currency exchange rates, and spot rates."
-                        details={['Live User Indices', 'Currency Exchange', 'Commodity Tickers', 'Global Holidays']}
-                    />
-                </div>
-            </section>
+            {selectedProduct === 'logistics' && (
+                <section className="px-6 max-w-7xl mx-auto">
+                    <div className="text-center mb-20">
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="inline-block px-4 py-1.5 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#5227FF] text-sm font-medium mb-4"
+                        >
+                            Core Capabilities
+                        </motion.div>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee]">Beyond Boundaries</span></h2>
+                        <p className="text-slate-400 max-w-2xl mx-auto text-lg">A comprehensive suite of AI-powered tools designed to give you total visibility and control over your global operations.</p>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <FeatureCard
+                            icon={<Activity size={32} />}
+                            title="Real-Time Tracking"
+                            description="Monitor vessels, flights, and rail freight in real-time. Our global tracking network integrates data from thousands of carriers."
+                            details={['Vessel AIS Data', 'Live Flight Paths', 'Rail Freight Corridors', 'Delay Predictions']}
+                        />
+                        <FeatureCard
+                            icon={<TrendingUp size={32} />}
+                            title="Digital Twin Simulation"
+                            description="Create a virtual replica of your supply chain. Test 'what-if' scenarios to understand the impact of port strikes or disasters."
+                            details={['Scenario Modeling', 'Cost Impact Analysis', 'Route Alternates', 'Inventory Optimization']}
+                        />
+                        <FeatureCard
+                            icon={<ShieldCheck size={32} />}
+                            title="Compliance & Risk AI"
+                            description="Automate your compliance workflows. Our AI classifies HS codes with 99% accuracy and screens all partners."
+                            details={['Automated HS Classification', 'Sanctions Screening', 'Document Generation', 'Regulatory Alerts']}
+                        />
+                        <FeatureCard
+                            icon={<Grid size={32} />}
+                            title="Market Intelligence"
+                            description="Stay ahead of market shifts. Access live commodity prices, currency exchange rates, and spot rates."
+                            details={['Live User Indices', 'Currency Exchange', 'Commodity Tickers', 'Global Holidays']}
+                        />
+                    </div>
+                </section>
+            )}
 
             {/* --- CONSTRUCTION FEATURES --- */}
-            <ConstructionFeaturesSection />
+            {selectedProduct === 'construction' && <ConstructionFeaturesSection />}
 
             {/* --- COMPARISON TABLE --- */}
-            <ComparisonTableSection />
+            <ComparisonTableSection selectedProduct={selectedProduct} />
 
             {/* --- LOGISTICS DEEP DIVES --- */}
-            <DigitalTwinSection />
-            <RiskMonitorSection />
-            <SustainabilitySection />
-            <RateCheckSection />
+            {selectedProduct === 'logistics' && (
+                <>
+                    <DigitalTwinSection />
+                    <RiskMonitorSection />
+                    <SustainabilitySection />
+                    <RateCheckSection />
+                </>
+            )}
 
             {/* --- CONSTRUCTION DEEP DIVES --- */}
-            <BlueprintAISection />
-            <CashFlowSection />
-            <SiteSecuritySection />
+            {selectedProduct === 'construction' && (
+                <>
+                    <BlueprintAISection />
+                    <CashFlowSection />
+                    <SiteSecuritySection />
+                </>
+            )}
 
             {/* --- CONSTRUCTION ADVANCED SECTIONS --- */}
-            <SubcontractorMatchSection />
-            <ProjectCommandCenter />
-            <ROIImpactSection />
-            <ScheduleOptimizerSection />
+            {selectedProduct === 'construction' && (
+                <>
+                    <SubcontractorMatchSection />
+                    <ProjectCommandCenter />
+                    <ROIImpactSection />
+                    <ScheduleOptimizerSection />
+                </>
+            )}
 
             {/* --- TECHNOLOGY STACK --- */}
-            <TechnologyStackSection />
+            <TechnologyStackSection selectedProduct={selectedProduct} />
 
             {/* --- HOW IT WORKS SECTION --- */}
-            <section className="px-6 max-w-7xl mx-auto relative py-20">
-                <div className="text-center mb-24">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How Gasper Works</h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto">From unstructured chaos to actionable intelligence in three steps.</p>
-                </div>
-
-                <div className="relative">
-                    {/* Connecting Line (Desktop) */}
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 transform -translate-x-1/2 h-full z-0">
-                        <div className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#5227FF] via-[#22d3ee] to-[#5227FF] opacity-50 shadow-[0_0_15px_#5227FF]" />
+            {selectedProduct === 'logistics' && (
+                <section className="px-6 max-w-7xl mx-auto relative py-20">
+                    <div className="text-center mb-24">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How Gasper Works</h2>
+                        <p className="text-slate-400 max-w-2xl mx-auto">From unstructured chaos to actionable intelligence in three steps.</p>
                     </div>
 
-                    <ProcessStep
-                        number="01"
-                        title="Data Ingestion"
-                        description="We aggregate structured and unstructured data from over 500 sources, including AIS feeds, port APIs, and weather stations."
-                        icon={<Database size={32} />}
-                        align="left"
-                        details={[
-                            "REST API & Webhooks",
-                            "EDI (X12, EDIFACT) Parsers",
-                            "IoT Sensor Stream Integration"
-                        ]}
-                    />
-                    <ProcessStep
-                        number="02"
-                        title="AI Processing"
-                        description="Our proprietary ML models clean, normalize, and analyze the data to extract risks and forecast delays."
-                        icon={<Cpu size={32} />}
-                        align="right"
-                        details={[
-                            "Entity Recognition (NER)",
-                            "Time-Series Forecasting",
-                            "Anomaly Detection Models"
-                        ]}
-                    />
-                    <ProcessStep
-                        number="03"
-                        title="Actionable Insights"
-                        description="Insights are delivered via dashboard or API. You get alerts, updated ETAs, and cost-saving recommendations instantly."
-                        icon={<BarChart3 size={32} />}
-                        align="left"
-                        details={[
-                            "Real-time Push Notifications",
-                            "Customizable Dashboards",
-                            "Automated Reporting"
-                        ]}
-                    />
-                </div>
-            </section>
+                    <div className="relative">
+                        {/* Connecting Line (Desktop) */}
+                        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 transform -translate-x-1/2 h-full z-0">
+                            <div className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#5227FF] via-[#22d3ee] to-[#5227FF] opacity-50 shadow-[0_0_15px_#5227FF]" />
+                        </div>
+
+                        <ProcessStep
+                            number="01"
+                            title="Data Ingestion"
+                            description="We aggregate structured and unstructured data from over 500 sources, including AIS feeds, port APIs, and weather stations."
+                            icon={<Database size={32} />}
+                            align="left"
+                            details={[
+                                "REST API & Webhooks",
+                                "EDI (X12, EDIFACT) Parsers",
+                                "IoT Sensor Stream Integration"
+                            ]}
+                        />
+                        <ProcessStep
+                            number="02"
+                            title="AI Processing"
+                            description="Our proprietary ML models clean, normalize, and analyze the data to extract risks and forecast delays."
+                            icon={<Cpu size={32} />}
+                            align="right"
+                            details={[
+                                "Entity Recognition (NER)",
+                                "Time-Series Forecasting",
+                                "Anomaly Detection Models"
+                            ]}
+                        />
+                        <ProcessStep
+                            number="03"
+                            title="Actionable Insights"
+                            description="Insights are delivered via dashboard or API. You get alerts, updated ETAs, and cost-saving recommendations instantly."
+                            icon={<BarChart3 size={32} />}
+                            align="left"
+                            details={[
+                                "Real-time Push Notifications",
+                                "Customizable Dashboards",
+                                "Automated Reporting"
+                            ]}
+                        />
+                    </div>
+                </section>
+            )}
 
             {/* --- INDUSTRIES SECTION --- */}
             <section className="px-6 max-w-7xl mx-auto pb-20">
@@ -1471,48 +1520,56 @@ export default function ComingSoonContent() {
                     <p className="text-slate-400">Tailored solutions for the unique challenges of your industry.</p>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <IndustryCard
-                        icon={<Anchor size={28} />}
-                        title="Maritime Logistics"
-                        description="Optimize port calls, track container vessels in real-time, and predict congestion at major hubs."
-                        color="text-blue-400"
-                        useCase="Vessel Tracking & Fuel Optimization"
-                    />
-                    <IndustryCard
-                        icon={<Truck size={28} />}
-                        title="Freight Forwarding"
-                        description="Manage multi-modal shipments with ease. Automate documentation and tracking."
-                        color="text-green-400"
-                        useCase="Automated Documentation & Client Portal"
-                    />
-                    <IndustryCard
-                        icon={<HardHat size={28} />}
-                        title="General Contracting"
-                        description="AI-powered project management, cash flow forecasting, and compliance automation for GCs."
-                        color="text-[#FF6B00]"
-                        useCase="Full Project Lifecycle Intelligence"
-                    />
-                    <IndustryCard
-                        icon={<Building2 size={28} />}
-                        title="Commercial Construction"
-                        description="Manage multi-million dollar builds with blueprint AI, sub matching, and real-time cost tracking."
-                        color="text-amber-400"
-                        useCase="Blueprint Analysis & Cost Optimization"
-                    />
-                    <IndustryCard
-                        icon={<Factory size={28} />}
-                        title="Manufacturing"
-                        description="Secure your supply chain against disruptions and monitor raw material shipments."
-                        color="text-purple-400"
-                        useCase="Supplier Risk Monitoring"
-                    />
-                    <IndustryCard
-                        icon={<Fuel size={28} />}
-                        title="Energy & Infrastructure"
-                        description="Monitor energy projects and react instantly to safety and compliance events."
-                        color="text-red-400"
-                        useCase="Safety Compliance & Asset Protection"
-                    />
+                    {selectedProduct === 'logistics' && (
+                        <>
+                            <IndustryCard
+                                icon={<Anchor size={28} />}
+                                title="Maritime Logistics"
+                                description="Optimize port calls, track container vessels in real-time, and predict congestion at major hubs."
+                                color="text-blue-400"
+                                useCase="Vessel Tracking & Fuel Optimization"
+                            />
+                            <IndustryCard
+                                icon={<Truck size={28} />}
+                                title="Freight Forwarding"
+                                description="Manage multi-modal shipments with ease. Automate documentation and tracking."
+                                color="text-green-400"
+                                useCase="Automated Documentation & Client Portal"
+                            />
+                            <IndustryCard
+                                icon={<Factory size={28} />}
+                                title="Manufacturing"
+                                description="Secure your supply chain against disruptions and monitor raw material shipments."
+                                color="text-purple-400"
+                                useCase="Supplier Risk Monitoring"
+                            />
+                        </>
+                    )}
+                    {selectedProduct === 'construction' && (
+                        <>
+                            <IndustryCard
+                                icon={<HardHat size={28} />}
+                                title="General Contracting"
+                                description="AI-powered project management, cash flow forecasting, and compliance automation for GCs."
+                                color="text-[#FF6B00]"
+                                useCase="Full Project Lifecycle Intelligence"
+                            />
+                            <IndustryCard
+                                icon={<Building2 size={28} />}
+                                title="Commercial Construction"
+                                description="Manage multi-million dollar builds with blueprint AI, sub matching, and real-time cost tracking."
+                                color="text-amber-400"
+                                useCase="Blueprint Analysis & Cost Optimization"
+                            />
+                            <IndustryCard
+                                icon={<Fuel size={28} />}
+                                title="Energy & Infrastructure"
+                                description="Monitor energy projects and react instantly to safety and compliance events."
+                                color="text-red-400"
+                                useCase="Safety Compliance & Asset Protection"
+                            />
+                        </>
+                    )}
                 </div>
             </section>
 
@@ -1523,8 +1580,7 @@ export default function ComingSoonContent() {
             <WhatYouGetSection />
 
             {/* --- WAITLIST SECTION --- */}
-            <WaitlistSection />
-
+            <WaitlistSection selectedProduct={selectedProduct} />
 
         </div>
     );

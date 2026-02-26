@@ -1,43 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import {
     CalendarClock, Users, CloudRain, Car, Zap, Clock,
     AlertTriangle, CheckCircle, MapPin, ArrowRight, Activity, RefreshCw
 } from 'lucide-react';
 import { getOptimizedSchedule } from './constructionServices';
+import '../../styles/ConstructionTool.css';
 
 export function MicroProjectOptimizer() {
     const data = getOptimizedSchedule();
 
-    const statusColors = {
-        'in-progress': { bg: 'bg-green-500/10', text: 'text-green-400', border: 'border-green-500/20' },
-        'next': { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/20' },
-        'scheduled': { bg: 'bg-white/5', text: 'text-slate-400', border: 'border-white/10' },
-    };
-
-    const fatigueColors = {
-        'low': 'text-green-400',
-        'medium': 'text-amber-400',
-        'high': 'text-red-400',
+    const statusConfig = {
+        'in-progress': { color: '#22c55e', label: 'IN PROGRESS' },
+        'next': { color: '#3b82f6', label: 'NEXT' },
+        'scheduled': { color: 'rgba(255,255,255,0.3)', label: 'SCHEDULED' },
     };
 
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="ct-page-header">
                 <div>
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                        <CalendarClock className="text-[#FF6B00]" size={24} />
+                    <h2 className="ct-page-title">
+                        <CalendarClock className="icon-glow" style={{ color: '#FF6B00' }} size={24} />
                         Micro-Project Optimizer™
                     </h2>
-                    <p className="text-slate-400 text-sm mt-1">AI-powered daily scheduling for multi-job crews</p>
+                    <p className="ct-page-subtitle">AI-powered daily scheduling for multi-job crews</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs font-medium">
+                    <div className="ct-badge" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)' }}>
                         {data.date}
                     </div>
-                    <div className="px-3 py-1.5 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/20 text-[#FF6B00] text-xs font-bold flex items-center gap-1.5">
-                        <Zap size={12} />
+                    <div className="ct-badge ct-badge-orange ct-badge-live">
                         AI-Optimized
                     </div>
                 </div>
@@ -46,46 +40,39 @@ export function MicroProjectOptimizer() {
             {/* KPI Row */}
             <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
                 {[
-                    { label: 'Total Jobs', value: data.metrics.totalJobs, color: 'text-white' },
-                    { label: 'Completed', value: data.metrics.completedToday, color: 'text-green-400' },
-                    { label: 'On-Time Rate', value: data.metrics.onTime, color: 'text-[#FF6B00]' },
-                    { label: 'Avg Travel', value: data.metrics.avgTravelTime, color: 'text-blue-400' },
-                    { label: 'Utilization', value: data.metrics.utilizationRate, color: 'text-purple-400' },
-                    { label: 'Fuel Saved', value: data.metrics.fuelSaved, color: 'text-green-400' },
+                    { label: 'Total Jobs', value: data.metrics.totalJobs, color: 'white' },
+                    { label: 'Completed', value: data.metrics.completedToday, color: '#22c55e' },
+                    { label: 'On-Time Rate', value: data.metrics.onTime, color: '#FF6B00' },
+                    { label: 'Avg Travel', value: data.metrics.avgTravelTime, color: '#3b82f6' },
+                    { label: 'Utilization', value: data.metrics.utilizationRate, color: '#a855f7' },
+                    { label: 'Fuel Saved', value: data.metrics.fuelSaved, color: '#22c55e' },
                 ].map((kpi, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: idx * 0.04 }}
-                        className="bg-white/5 border border-white/10 rounded-xl p-3 text-center"
-                    >
-                        <div className="text-[10px] text-slate-500 uppercase tracking-wider">{kpi.label}</div>
-                        <div className={`text-lg font-bold ${kpi.color}`}>{kpi.value}</div>
+                    <motion.div key={idx} className="ct-kpi" style={{ '--kpi-color': kpi.color }}
+                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
+                        <div className="ct-kpi-label">{kpi.label}</div>
+                        <div className="ct-kpi-value" style={{ color: kpi.color }}>{kpi.value}</div>
                     </motion.div>
                 ))}
             </div>
 
-            {/* Disruptions Banner */}
+            {/* Disruptions */}
             {data.disruptions.length > 0 && (
                 <div className="space-y-2">
                     {data.disruptions.map((d, idx) => (
                         <motion.div
                             key={idx}
+                            className={`ct-alert ct-alert-${d.type === 'weather' ? 'low' : 'medium'}`}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 + idx * 0.05 }}
-                            className={`flex items-center gap-3 p-3 rounded-xl border ${d.type === 'weather' ? 'bg-blue-500/5 border-blue-500/20' : 'bg-amber-500/5 border-amber-500/20'
-                                }`}
+                            style={{ display: 'flex', alignItems: 'center', padding: 14 }}
                         >
-                            {d.type === 'weather' ? <CloudRain size={16} className="text-blue-400 flex-shrink-0" /> : <Car size={16} className="text-amber-400 flex-shrink-0" />}
-                            <div className="flex-1">
-                                <span className="text-xs text-white/80">{d.message}</span>
-                            </div>
-                            <div className="flex items-center gap-1 text-[10px] text-[#FF6B00] font-bold flex-shrink-0">
-                                <RefreshCw size={10} />
-                                {d.suggestion}
-                            </div>
+                            {d.type === 'weather' ? <CloudRain size={16} style={{ color: '#3b82f6', flexShrink: 0 }} /> :
+                                <Car size={16} style={{ color: '#f59e0b', flexShrink: 0 }} />}
+                            <span style={{ flex: 1, fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', marginLeft: 10 }}>{d.message}</span>
+                            <span className="ct-badge ct-badge-orange" style={{ fontSize: '0.55rem' }}>
+                                <RefreshCw size={8} /> {d.suggestion}
+                            </span>
                         </motion.div>
                     ))}
                 </div>
@@ -96,68 +83,78 @@ export function MicroProjectOptimizer() {
                 {data.crews.map((crew, crewIdx) => (
                     <motion.div
                         key={crew.id}
+                        className="ct-card"
+                        style={{ padding: 20 }}
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 + crewIdx * 0.1 }}
-                        className="bg-white/5 border border-white/10 rounded-2xl p-5"
+                        transition={{ delay: 0.3 + crewIdx * 0.08 }}
                     >
                         {/* Crew Header */}
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-lg bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center">
-                                    <Users size={18} className="text-[#FF6B00]" />
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                                <div className="ct-icon-box">
+                                    <Users size={16} style={{ color: '#FF6B00' }} />
                                 </div>
                                 <div>
-                                    <div className="text-white font-semibold">{crew.name}</div>
-                                    <div className="text-xs text-slate-500">Lead: {crew.lead} · {crew.members} members</div>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'white' }}>{crew.name}</div>
+                                    <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>Lead: {crew.lead} · {crew.members} members</div>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <div className={`text-[10px] font-bold uppercase px-2 py-1 rounded-full ${crew.fatigue === 'low' ? 'bg-green-500/10 text-green-400 border border-green-500/20' :
-                                        crew.fatigue === 'medium' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
-                                            'bg-red-500/10 text-red-400 border border-red-500/20'
-                                    }`}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                <span className={`ct-badge ${crew.fatigue === 'low' ? 'ct-badge-green' : crew.fatigue === 'medium' ? 'ct-badge-amber' : 'ct-badge-red'}`}
+                                    style={{ fontSize: '0.55rem' }}>
                                     Fatigue: {crew.fatigue}
-                                </div>
-                                <span className="text-xs text-slate-500">{crew.jobs.length} jobs</span>
+                                </span>
+                                <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)' }}>{crew.jobs.length} jobs</span>
                             </div>
                         </div>
 
                         {/* Jobs Timeline */}
                         <div className="space-y-2">
                             {crew.jobs.map((job, jobIdx) => {
-                                const sc = statusColors[job.status] || statusColors.scheduled;
+                                const sc = statusConfig[job.status] || statusConfig.scheduled;
                                 return (
-                                    <div
-                                        key={jobIdx}
-                                        className={`flex items-center gap-4 p-3 rounded-xl border transition-all hover:bg-white/[0.03] ${sc.border} ${sc.bg}`}
-                                    >
+                                    <div key={jobIdx} style={{
+                                        display: 'flex', alignItems: 'center', gap: 14, padding: 12,
+                                        borderRadius: 10,
+                                        background: job.status === 'in-progress' ? 'rgba(34,197,94,0.04)' :
+                                            job.status === 'next' ? 'rgba(59,130,246,0.04)' : 'rgba(255,255,255,0.015)',
+                                        border: `1px solid ${job.status === 'in-progress' ? 'rgba(34,197,94,0.12)' :
+                                            job.status === 'next' ? 'rgba(59,130,246,0.12)' : 'rgba(255,255,255,0.04)'}`,
+                                        transition: 'background 0.2s',
+                                    }}>
                                         {/* Time */}
-                                        <div className="w-20 flex-shrink-0">
-                                            <div className={`text-sm font-mono font-bold ${sc.text}`}>{job.time}</div>
+                                        <div style={{ width: 56, flexShrink: 0 }}>
+                                            <div style={{ fontSize: '0.8rem', fontFamily: 'monospace', fontWeight: 700, color: sc.color }}>{job.time}</div>
                                         </div>
 
-                                        {/* Status dot + connector */}
-                                        <div className="flex flex-col items-center gap-0.5 flex-shrink-0">
-                                            <div className={`w-3 h-3 rounded-full border-2 ${job.status === 'in-progress' ? 'bg-green-400 border-green-400 animate-pulse' :
-                                                    job.status === 'next' ? 'bg-blue-400 border-blue-400' :
-                                                        'bg-transparent border-white/20'
-                                                }`} />
-                                        </div>
+                                        {/* Status dot */}
+                                        <div style={{
+                                            width: 10, height: 10, borderRadius: '50%', flexShrink: 0,
+                                            background: sc.color,
+                                            boxShadow: job.status === 'in-progress' ? `0 0 8px ${sc.color}` : 'none',
+                                            animation: job.status === 'in-progress' ? 'ct-dot-pulse 2s ease-in-out infinite' : 'none',
+                                        }} />
 
                                         {/* Job Info */}
-                                        <div className="flex-1 min-w-0">
-                                            <div className="text-sm text-white font-medium truncate">{job.job}</div>
-                                            <div className="text-xs text-slate-500 flex items-center gap-2">
-                                                <span className="flex items-center gap-0.5"><MapPin size={9} />{job.address}</span>
-                                                <span className="flex items-center gap-0.5"><Clock size={9} />{job.duration}</span>
+                                        <div style={{ flex: 1, minWidth: 0 }}>
+                                            <div style={{ fontSize: '0.8rem', fontWeight: 500, color: 'rgba(255,255,255,0.8)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{job.job}</div>
+                                            <div style={{ display: 'flex', gap: 10, fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>
+                                                <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}><MapPin size={8} />{job.address}</span>
+                                                <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}><Clock size={8} />{job.duration}</span>
                                             </div>
                                         </div>
 
-                                        {/* Travel + Status */}
-                                        <div className="text-right flex-shrink-0">
-                                            <span className={`text-[10px] font-bold uppercase ${sc.text}`}>{job.status.replace('-', ' ')}</span>
-                                            <div className="text-[10px] text-slate-500 flex items-center gap-0.5 justify-end mt-0.5">
+                                        {/* Status label */}
+                                        <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                                            <span className={`ct-badge ${job.status === 'in-progress' ? 'ct-badge-green' : job.status === 'next' ? 'ct-badge-blue' : ''}`}
+                                                style={{
+                                                    fontSize: '0.5rem', padding: '2px 6px',
+                                                    ...(job.status === 'scheduled' ? { background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)', border: '1px solid rgba(255,255,255,0.06)' } : {}),
+                                                }}>
+                                                {sc.label}
+                                            </span>
+                                            <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.2)', marginTop: 4, display: 'flex', alignItems: 'center', gap: 3, justifyContent: 'flex-end' }}>
                                                 <Car size={8} /> {job.travel}
                                             </div>
                                         </div>
@@ -172,10 +169,10 @@ export function MicroProjectOptimizer() {
             {/* Quick Actions */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {['Send Crew Briefs via SMS', 'Re-Optimize Schedule', 'View Performance Report'].map((action, i) => (
-                    <button key={i} className="h-12 border border-white/10 rounded-xl bg-white/[0.03] hover:bg-white/5 hover:border-white/20 text-white text-sm flex items-center justify-center gap-2 transition-all group">
-                        <div className="w-2 h-2 rounded-full bg-white/20 group-hover:bg-[#FF6B00] transition-colors" />
+                    <button key={i} className="ct-action-btn" style={{ height: 48, justifyContent: 'center' }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.15)' }} />
                         {action}
-                        <ArrowRight size={14} className="text-white/30 group-hover:text-[#FF6B00] transition-colors" />
+                        <ArrowRight size={12} style={{ color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }} />
                     </button>
                 ))}
             </div>

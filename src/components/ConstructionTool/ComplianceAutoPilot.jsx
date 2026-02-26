@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import {
     ShieldCheck, AlertTriangle, CheckCircle, FileText, Camera,
-    Zap, Clock, Radio, ArrowRight, Globe, Scale
+    Zap, Clock, Radio, ArrowRight, Globe, Scale, Lightbulb
 } from 'lucide-react';
 import { getComplianceData } from './constructionServices';
+import '../../styles/ConstructionTool.css';
 
 export function ComplianceAutoPilot() {
     const data = getComplianceData();
@@ -18,36 +19,38 @@ export function ComplianceAutoPilot() {
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="ct-page-header">
                 <div>
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                        <ShieldCheck className="text-[#FF6B00]" size={24} />
+                    <h2 className="ct-page-title">
+                        <ShieldCheck className="icon-glow" style={{ color: '#FF6B00' }} size={24} />
                         Compliance Auto-Pilot™
                     </h2>
-                    <p className="text-slate-400 text-sm mt-1">End-to-end compliance coaching for construction SMBs</p>
+                    <p className="ct-page-subtitle">End-to-end compliance coaching for construction SMBs</p>
                 </div>
-                <div className="flex items-center gap-3">
-                    <div className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 ${data.overallScore >= 80 ? 'bg-green-500/10 border border-green-500/20 text-green-400' :
-                            data.overallScore >= 60 ? 'bg-amber-500/10 border border-amber-500/20 text-amber-400' :
-                                'bg-red-500/10 border border-red-500/20 text-red-400'
-                        }`}>
-                        <ShieldCheck size={12} />
-                        Compliance Score: {data.overallScore}/100
-                    </div>
+                <div className={`ct-badge ${data.overallScore >= 80 ? 'ct-badge-green' : data.overallScore >= 60 ? 'ct-badge-amber' : 'ct-badge-red'} ct-badge-live`}>
+                    <ShieldCheck size={10} /> Compliance Score: {data.overallScore}/100
                 </div>
             </div>
 
             {/* Reg Update Ticker */}
-            <div className="bg-[#0a0f1c] border border-white/10 rounded-full py-2 px-4 overflow-hidden">
-                <div className="flex items-center gap-3 animate-marquee whitespace-nowrap">
-                    <span className="text-[#FF6B00] font-bold text-xs">REGULATORY UPDATES:</span>
-                    {data.recentUpdates.map((update, i) => (
-                        <span key={i} className="text-xs text-white/60 mx-4">
-                            <span className="text-white/30 mr-2">[{update.time}]</span>
-                            {update.text}
-                            <span className="text-[#FF6B00] ml-2">● {update.source}</span>
-                        </span>
-                    ))}
+            <div className="ct-card" style={{ borderRadius: 100, padding: '10px 20px', overflow: 'hidden' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, whiteSpace: 'nowrap', overflow: 'hidden' }}>
+                    <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#FF6B00', flexShrink: 0, letterSpacing: '0.05em' }}>REGULATORY UPDATES:</span>
+                    <div style={{ overflow: 'hidden' }}>
+                        <motion.div
+                            animate={{ x: [0, -1000] }}
+                            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                            style={{ display: 'flex', gap: 32 }}
+                        >
+                            {[...data.recentUpdates, ...data.recentUpdates].map((update, i) => (
+                                <span key={i} style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)' }}>
+                                    <span style={{ color: 'rgba(255,255,255,0.2)', marginRight: 8 }}>[{update.time}]</span>
+                                    {update.text}
+                                    <span style={{ color: '#FF6B00', marginLeft: 8 }}>● {update.source}</span>
+                                </span>
+                            ))}
+                        </motion.div>
+                    </div>
                 </div>
             </div>
 
@@ -55,45 +58,50 @@ export function ComplianceAutoPilot() {
                 {/* Issues Panel */}
                 <div className="col-span-12 lg:col-span-8 space-y-6">
                     {/* Compliance Issues */}
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                        <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-                            <AlertTriangle size={16} className="text-amber-400" />
+                    <div className="ct-card" style={{ padding: 24 }}>
+                        <h3 className="ct-section-header">
+                            <AlertTriangle size={15} className="ct-section-icon" />
                             Flagged Compliance Issues
                         </h3>
                         <div className="space-y-3">
                             {data.issues.map((issue, idx) => (
                                 <motion.div
                                     key={issue.id}
+                                    className={`ct-alert ct-alert-${issue.severity}`}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.06 }}
-                                    className={`p-4 rounded-xl border transition-all hover:bg-white/[0.03] ${issue.severity === 'high' ? 'border-red-500/20 bg-red-500/5' :
-                                            issue.severity === 'medium' ? 'border-amber-500/20 bg-amber-500/5' :
-                                                'border-blue-500/20 bg-blue-500/5'
-                                        }`}
                                 >
-                                    <div className="flex items-start justify-between mb-2">
-                                        <div className="flex items-center gap-2">
-                                            <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase ${issue.severity === 'high' ? 'bg-red-500/20 text-red-400' :
-                                                    issue.severity === 'medium' ? 'bg-amber-500/20 text-amber-400' :
-                                                        'bg-blue-500/20 text-blue-400'
-                                                }`}>{issue.severity}</span>
-                                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-white/60 font-bold">{issue.category}</span>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                                            <span className={`ct-badge ct-badge-${issue.severity === 'high' ? 'red' : issue.severity === 'medium' ? 'amber' : 'blue'}`}
+                                                style={{ fontSize: '0.5rem', padding: '2px 6px' }}>
+                                                {issue.severity}
+                                            </span>
+                                            <span className="ct-badge" style={{
+                                                fontSize: '0.5rem', padding: '2px 6px',
+                                                background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.5)',
+                                                border: '1px solid rgba(255,255,255,0.08)',
+                                            }}>
+                                                {issue.category}
+                                            </span>
                                         </div>
-                                        <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${issue.status === 'open' ? 'bg-red-500/10 text-red-400' :
-                                                issue.status === 'in-progress' ? 'bg-amber-500/10 text-amber-400' :
-                                                    'bg-green-500/10 text-green-400'
-                                            }`}>{issue.status.toUpperCase()}</span>
+                                        <span className={`ct-badge ct-badge-${issue.status === 'open' ? 'red' : issue.status === 'in-progress' ? 'amber' : 'green'}`}
+                                            style={{ fontSize: '0.5rem', padding: '2px 6px' }}>
+                                            {issue.status.toUpperCase()}
+                                        </span>
                                     </div>
-                                    <div className="text-sm text-white font-medium mb-1">{issue.title}</div>
-                                    <div className="text-xs text-slate-400 mb-3">{issue.description}</div>
-                                    <div className="flex items-center justify-between p-2 rounded-lg bg-[#FF6B00]/5 border border-[#FF6B00]/10">
-                                        <div className="flex items-center gap-1.5 text-xs text-[#FF6B00]">
-                                            <Zap size={10} />
-                                            <span className="font-bold">AI Fix Plan:</span>
-                                            <span className="text-white/70">{issue.fixPlan}</span>
+                                    <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white', marginBottom: 4 }}>{issue.title}</div>
+                                    <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', marginBottom: 10 }}>{issue.description}</div>
+                                    <div className="ct-ai-suggestion">
+                                        <Lightbulb size={12} className="ai-icon" />
+                                        <div style={{ flex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <div>
+                                                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#FF6B00' }}>AI Fix Plan: </span>
+                                                <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)' }}>{issue.fixPlan}</span>
+                                            </div>
+                                            <span style={{ fontSize: '0.6rem', fontFamily: 'monospace', color: '#ef4444', fontWeight: 700 }}>Fine: {issue.estimatedFine}</span>
                                         </div>
-                                        <span className="text-[10px] text-red-400 font-mono">Fine: {issue.estimatedFine}</span>
                                     </div>
                                 </motion.div>
                             ))}
@@ -101,17 +109,19 @@ export function ComplianceAutoPilot() {
                     </div>
 
                     {/* Inspection Simulation */}
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                        <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-white font-semibold flex items-center gap-2">
-                                <Camera size={16} className="text-[#FF6B00]" />
+                    <div className="ct-card" style={{ padding: 24 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                            <h3 className="ct-section-header" style={{ marginBottom: 0 }}>
+                                <Camera size={15} className="ct-section-icon" />
                                 AI Inspection Simulator
                             </h3>
                             {scanning ? (
-                                <span className="text-xs text-[#FF6B00] animate-pulse font-mono">SCANNING...</span>
+                                <span className="ct-badge ct-badge-orange ct-badge-live" style={{ animation: 'ct-dot-pulse 1s infinite' }}>
+                                    SCANNING...
+                                </span>
                             ) : (
-                                <button onClick={handleScan} className="px-3 py-1.5 text-xs rounded-lg bg-[#FF6B00]/10 border border-[#FF6B00]/20 text-[#FF6B00] font-bold hover:bg-[#FF6B00]/20 transition-colors">
-                                    Run Simulation
+                                <button onClick={handleScan} className="ct-action-btn" style={{ padding: '6px 14px' }}>
+                                    <Zap size={12} /> Run Simulation
                                 </button>
                             )}
                         </div>
@@ -119,19 +129,26 @@ export function ComplianceAutoPilot() {
                             {data.inspectionResults.map((result, idx) => (
                                 <motion.div
                                     key={idx}
+                                    className="ct-kpi"
+                                    style={{
+                                        '--kpi-color': result.status === 'pass' ? '#22c55e' : '#ef4444',
+                                    }}
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.2 + idx * 0.05 }}
-                                    className={`p-3 rounded-xl text-center border ${result.status === 'pass' ? 'bg-green-500/5 border-green-500/20' : 'bg-red-500/5 border-red-500/20'
-                                        }`}
                                 >
-                                    <div className={`text-2xl font-bold ${result.status === 'pass' ? 'text-green-400' : 'text-red-400'}`}>
+                                    <div style={{
+                                        fontSize: '1.5rem', fontWeight: 800,
+                                        color: scanning ? 'rgba(255,255,255,0.3)' : result.status === 'pass' ? '#22c55e' : '#ef4444',
+                                        transition: 'color 0.3s',
+                                    }}>
                                         {scanning ? '...' : result.score}
                                     </div>
-                                    <div className="text-[10px] text-slate-500 mt-1">{result.area}</div>
-                                    <div className={`text-[9px] font-bold uppercase mt-1 ${result.status === 'pass' ? 'text-green-400' : 'text-red-400'}`}>
+                                    <div className="ct-kpi-label" style={{ marginTop: 4 }}>{result.area}</div>
+                                    <span className={`ct-badge ${result.status === 'pass' ? 'ct-badge-green' : 'ct-badge-red'}`}
+                                        style={{ fontSize: '0.5rem', padding: '1px 6px', marginTop: 6 }}>
                                         {scanning ? 'SCANNING' : result.status}
-                                    </div>
+                                    </span>
                                 </motion.div>
                             ))}
                         </div>
@@ -141,42 +158,55 @@ export function ComplianceAutoPilot() {
                 {/* Right Column */}
                 <div className="col-span-12 lg:col-span-4 space-y-6">
                     {/* Permits */}
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
-                        <h3 className="text-sm font-semibold text-white flex items-center gap-2 mb-4 uppercase tracking-wider">
-                            <FileText className="text-[#FF6B00] w-4 h-4" />
+                    <div className="ct-card" style={{ padding: 20 }}>
+                        <h3 className="ct-section-header">
+                            <FileText size={14} className="ct-section-icon" />
                             Permit Status
                         </h3>
                         <div className="space-y-2">
                             {data.permits.map((permit, idx) => (
-                                <div key={idx} className="p-3 rounded-lg bg-white/[0.03] border border-white/5 hover:bg-white/5 transition-colors">
-                                    <div className="flex items-center justify-between mb-1">
-                                        <span className="text-xs text-white font-medium">{permit.type}</span>
-                                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${permit.status === 'approved' ? 'bg-green-500/20 text-green-400' :
-                                                permit.status === 'pending-review' ? 'bg-amber-500/20 text-amber-400' :
-                                                    'bg-blue-500/20 text-blue-400'
-                                            }`}>{permit.status.toUpperCase()}</span>
+                                <motion.div key={idx}
+                                    initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.2 + idx * 0.04 }}
+                                    style={{
+                                        padding: 12, borderRadius: 10,
+                                        background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)',
+                                        transition: 'background 0.2s',
+                                    }}
+                                >
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                                        <span style={{ fontSize: '0.75rem', fontWeight: 500, color: 'white' }}>{permit.type}</span>
+                                        <span className={`ct-badge ${permit.status === 'approved' ? 'ct-badge-green' : permit.status === 'pending-review' ? 'ct-badge-amber' : 'ct-badge-blue'}`}
+                                            style={{ fontSize: '0.5rem', padding: '2px 6px' }}>
+                                            {permit.status.toUpperCase()}
+                                        </span>
                                     </div>
-                                    <div className="text-[10px] text-slate-500">{permit.id} · {permit.project}</div>
-                                    {permit.expires && <div className="text-[10px] text-slate-500 mt-0.5">Exp: {permit.expires}</div>}
-                                </div>
+                                    <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)' }}>{permit.id} · {permit.project}</div>
+                                    {permit.expires && <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.25)', marginTop: 2 }}>Exp: {permit.expires}</div>}
+                                </motion.div>
                             ))}
                         </div>
                     </div>
 
                     {/* Upload Zone */}
-                    <div className="bg-white/5 border border-dashed border-white/20 rounded-2xl p-6 text-center hover:border-[#FF6B00]/40 transition-colors cursor-pointer group">
-                        <Camera size={32} className="mx-auto text-white/20 group-hover:text-[#FF6B00] transition-colors mb-3" />
-                        <div className="text-sm text-white/60 group-hover:text-white transition-colors">Upload Photos or Documents</div>
-                        <div className="text-xs text-slate-500 mt-1">AI will analyze for compliance issues</div>
+                    <div className="ct-card" style={{
+                        padding: 24, textAlign: 'center', cursor: 'pointer',
+                        borderStyle: 'dashed', borderWidth: 1,
+                        borderColor: 'rgba(255,255,255,0.08)',
+                        transition: 'all 0.3s',
+                    }}>
+                        <Camera size={28} style={{ margin: '0 auto 12px', color: 'rgba(255,255,255,0.15)' }} />
+                        <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Upload Photos or Documents</div>
+                        <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.25)', marginTop: 4 }}>AI will analyze for compliance issues</div>
                     </div>
 
                     {/* Quick Actions */}
                     <div className="space-y-2">
                         {['Generate Audit Report', 'Auto-Fill Permit Application', 'Schedule Re-Inspection'].map((action, i) => (
-                            <button key={i} className="w-full py-3 px-4 text-xs font-medium text-left border border-white/10 rounded-xl bg-white/[0.03] hover:bg-white/5 hover:border-white/20 text-white flex items-center gap-2 transition-all group">
-                                <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-[#FF6B00] transition-colors" />
+                            <button key={i} className="ct-action-btn" style={{ width: '100%', justifyContent: 'flex-start' }}>
+                                <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.15)' }} />
                                 {action}
-                                <ArrowRight size={10} className="ml-auto text-white/20 group-hover:text-[#FF6B00] transition-colors" />
+                                <ArrowRight size={10} style={{ marginLeft: 'auto', color: 'rgba(255,255,255,0.2)' }} />
                             </button>
                         ))}
                     </div>

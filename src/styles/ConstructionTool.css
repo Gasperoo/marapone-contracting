@@ -1,0 +1,960 @@
+/* ============================================================
+   ConstructionTool.css — Premium Design System
+   Glassmorphism · Gradient Accents · Animated Visualizations
+   ============================================================ */
+
+/* ──────────── CSS Variables ──────────── */
+:root {
+    --ct-orange: #FF6B00;
+    --ct-amber: #FFB800;
+    --ct-orange-glow: rgba(255, 107, 0, 0.4);
+    --ct-gradient: linear-gradient(135deg, #FF6B00, #FFB800);
+    --ct-gradient-subtle: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(255, 184, 0, 0.08));
+    --ct-bg-deep: #080c14;
+    --ct-bg-card: rgba(255, 255, 255, 0.03);
+    --ct-bg-card-hover: rgba(255, 255, 255, 0.06);
+    --ct-border: rgba(255, 255, 255, 0.06);
+    --ct-border-hover: rgba(255, 255, 255, 0.12);
+    --ct-glass-blur: 16px;
+    --ct-radius: 16px;
+    --ct-radius-sm: 10px;
+    --ct-radius-xs: 6px;
+    --ct-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --ct-shadow-glow: 0 0 30px rgba(255, 107, 0, 0.08);
+}
+
+/* ──────────── Keyframe Animations ──────────── */
+@keyframes ct-glow-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(255, 107, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(255, 107, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+}
+
+@keyframes ct-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes ct-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes ct-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ct-bar-grow {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes ct-progress-fill {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes ct-ring-fill {
+    from {
+        stroke-dashoffset: 283;
+    }
+}
+
+@keyframes ct-dot-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes ct-gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes ct-scan-sweep {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes ct-particle-float {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+
+    25% {
+        transform: translateY(-15px) translateX(5px);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(-25px) translateX(-3px);
+        opacity: 0.4;
+    }
+
+    75% {
+        transform: translateY(-10px) translateX(7px);
+        opacity: 0.5;
+    }
+}
+
+/* ──────────── Ambient Background ──────────── */
+.ct-ambient-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.ct-ambient-bg::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.06) 0%, transparent 70%);
+    top: -200px;
+    right: -100px;
+    animation: ct-float 12s ease-in-out infinite;
+}
+
+.ct-ambient-bg::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 184, 0, 0.04) 0%, transparent 70%);
+    bottom: -150px;
+    left: -100px;
+    animation: ct-float 15s ease-in-out infinite reverse;
+}
+
+/* ──────────── Premium Card ──────────── */
+.ct-card {
+    background: var(--ct-bg-card);
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    backdrop-filter: blur(var(--ct-glass-blur));
+    -webkit-backdrop-filter: blur(var(--ct-glass-blur));
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ct-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    z-index: 1;
+}
+
+.ct-card:hover {
+    background: var(--ct-bg-card-hover);
+    border-color: var(--ct-border-hover);
+    box-shadow: var(--ct-shadow), var(--ct-shadow-glow);
+    transform: translateY(-2px);
+}
+
+/* Card with accent strip at top */
+.ct-card-accent {
+    composes: ct-card;
+}
+
+.ct-card-accent::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--ct-gradient);
+    z-index: 2;
+}
+
+/* ──────────── Stat Card ──────────── */
+.ct-stat-card {
+    background: var(--ct-bg-card);
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(var(--ct-glass-blur));
+    -webkit-backdrop-filter: blur(var(--ct-glass-blur));
+}
+
+.ct-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 0 3px 3px 0;
+    background: var(--accent-color, var(--ct-gradient));
+    opacity: 0.8;
+}
+
+.ct-stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-color, rgba(255, 107, 0, 0.06)) 0%, transparent 70%);
+    transform: translate(20px, -20px);
+}
+
+.ct-stat-card:hover {
+    border-color: var(--ct-border-hover);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.ct-stat-label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.ct-stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    margin-bottom: 6px;
+    font-variant-numeric: tabular-nums;
+}
+
+.ct-stat-change {
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ──────────── Badges ──────────── */
+.ct-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid transparent;
+    backdrop-filter: blur(8px);
+}
+
+.ct-badge-orange {
+    background: rgba(255, 107, 0, 0.12);
+    border-color: rgba(255, 107, 0, 0.25);
+    color: #FF6B00;
+}
+
+.ct-badge-green {
+    background: rgba(34, 197, 94, 0.12);
+    border-color: rgba(34, 197, 94, 0.25);
+    color: #22c55e;
+}
+
+.ct-badge-red {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.25);
+    color: #ef4444;
+}
+
+.ct-badge-amber {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.25);
+    color: #f59e0b;
+}
+
+.ct-badge-blue {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: rgba(59, 130, 246, 0.25);
+    color: #3b82f6;
+}
+
+.ct-badge-purple {
+    background: rgba(168, 85, 247, 0.12);
+    border-color: rgba(168, 85, 247, 0.25);
+    color: #a855f7;
+}
+
+/* Pulsing live badge */
+.ct-badge-live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: ct-dot-pulse 2s ease-in-out infinite;
+}
+
+/* ──────────── Progress Bar ──────────── */
+.ct-progress {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.ct-progress-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: var(--ct-gradient);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.ct-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background-size: 200% 100%;
+    animation: ct-shimmer 2s infinite;
+}
+
+.ct-progress-fill.green {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.ct-progress-fill.red {
+    background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+.ct-progress-fill.amber {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.ct-progress-fill.blue {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.ct-progress-fill.purple {
+    background: linear-gradient(90deg, #a855f7, #c084fc);
+}
+
+/* ──────────── Premium Table ──────────── */
+.ct-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.ct-table thead th {
+    padding: 10px 14px;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: left;
+    position: sticky;
+    top: 0;
+    background: rgba(8, 12, 20, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.ct-table tbody tr {
+    transition: background 0.2s;
+}
+
+.ct-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.ct-table tbody td {
+    padding: 12px 14px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.ct-table tfoot td {
+    padding: 14px;
+    border-top: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+/* ──────────── Chart Bar ──────────── */
+.ct-chart-bar {
+    border-radius: 6px 6px 0 0;
+    transform-origin: bottom;
+    animation: ct-bar-grow 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    position: relative;
+    transition: filter 0.2s;
+}
+
+.ct-chart-bar:hover {
+    filter: brightness(1.3);
+}
+
+.ct-chart-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+}
+
+/* ──────────── Component Header ──────────── */
+.ct-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.ct-page-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ct-page-title .icon-glow {
+    filter: drop-shadow(0 0 6px rgba(255, 107, 0, 0.5));
+}
+
+.ct-page-subtitle {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 4px;
+}
+
+/* ──────────── Section Header ──────────── */
+.ct-section-header {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.ct-section-header .ct-section-icon {
+    color: var(--ct-orange);
+    filter: drop-shadow(0 0 4px rgba(255, 107, 0, 0.3));
+}
+
+/* ──────────── Action Button ──────────── */
+.ct-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: var(--ct-radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid var(--ct-border);
+    background: var(--ct-bg-card);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.ct-action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.5s;
+}
+
+.ct-action-btn:hover::before {
+    left: 100%;
+}
+
+.ct-action-btn:hover {
+    border-color: var(--ct-border-hover);
+    background: var(--ct-bg-card-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ct-action-btn-primary {
+    background: var(--ct-gradient);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+}
+
+.ct-action-btn-primary:hover {
+    box-shadow: 0 6px 25px rgba(255, 107, 0, 0.4);
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* ──────────── Icon Glow Box ──────────── */
+.ct-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--ct-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    background: rgba(255, 107, 0, 0.08);
+    border: 1px solid rgba(255, 107, 0, 0.15);
+    transition: all 0.3s;
+}
+
+.ct-icon-box::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.ct-icon-box:hover::after,
+.group:hover .ct-icon-box::after {
+    opacity: 1;
+}
+
+/* ──────────── Alert / Risk Card ──────────── */
+.ct-alert {
+    padding: 16px;
+    border-radius: var(--ct-radius-sm);
+    border: 1px solid;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.ct-alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 3px 0 0 3px;
+}
+
+.ct-alert-high {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.15);
+}
+
+.ct-alert-high::before {
+    background: #ef4444;
+}
+
+.ct-alert-medium {
+    background: rgba(245, 158, 11, 0.05);
+    border-color: rgba(245, 158, 11, 0.15);
+}
+
+.ct-alert-medium::before {
+    background: #f59e0b;
+}
+
+.ct-alert-low {
+    background: rgba(59, 130, 246, 0.05);
+    border-color: rgba(59, 130, 246, 0.15);
+}
+
+.ct-alert-low::before {
+    background: #3b82f6;
+}
+
+.ct-alert:hover {
+    transform: translateX(2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ──────────── AI Suggestion Box ──────────── */
+.ct-ai-suggestion {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: var(--ct-radius-xs);
+    background: rgba(255, 107, 0, 0.04);
+    border: 1px solid rgba(255, 107, 0, 0.1);
+}
+
+.ct-ai-suggestion .ai-icon {
+    color: var(--ct-orange);
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 4px rgba(255, 107, 0, 0.4));
+}
+
+/* ──────────── Timeline / Gantt ──────────── */
+.ct-timeline-bar {
+    height: 28px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.2s, transform 0.2s;
+}
+
+.ct-timeline-bar:hover {
+    filter: brightness(1.2);
+    transform: scaleY(1.1);
+}
+
+.ct-timeline-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 100%);
+    border-radius: 6px 6px 0 0;
+}
+
+/* ──────────── Ring Gauge ──────────── */
+.ct-ring-gauge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ct-ring-gauge svg {
+    transform: rotate(-90deg);
+}
+
+.ct-ring-gauge circle.track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 4;
+}
+
+.ct-ring-gauge circle.fill {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ct-ring-value {
+    position: absolute;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: white;
+}
+
+/* ──────────── Module Quick Launch Card ──────────── */
+.ct-module-card {
+    background: var(--ct-bg-card);
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius);
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ct-module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--module-color, var(--ct-gradient));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.ct-module-card::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--module-color, rgba(255, 107, 0, 0.08)) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.ct-module-card:hover {
+    background: var(--ct-bg-card-hover);
+    border-color: var(--ct-border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--ct-shadow), 0 0 25px rgba(0, 0, 0, 0.1);
+}
+
+.ct-module-card:hover::before,
+.ct-module-card:hover::after {
+    opacity: 1;
+}
+
+/* ──────────── Activity Feed Item ──────────── */
+.ct-activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--ct-radius-sm);
+    transition: background 0.2s;
+    position: relative;
+}
+
+.ct-activity-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.ct-activity-item::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 36px;
+    bottom: -12px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.ct-activity-item:last-child::before {
+    display: none;
+}
+
+.ct-activity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+    box-shadow: 0 0 8px currentColor;
+}
+
+/* ──────────── KPI Row ──────────── */
+.ct-kpi {
+    background: var(--ct-bg-card);
+    border: 1px solid var(--ct-border);
+    border-radius: var(--ct-radius-sm);
+    padding: 14px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.ct-kpi:hover {
+    border-color: var(--ct-border-hover);
+    background: var(--ct-bg-card-hover);
+}
+
+.ct-kpi::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--kpi-color, var(--ct-gradient));
+    opacity: 0.5;
+}
+
+.ct-kpi-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 700;
+}
+
+.ct-kpi-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ──────────── Sidebar Enhancement ──────────── */
+.ct-sidebar-bg {
+    background: linear-gradient(180deg, rgba(13, 17, 23, 0.95) 0%, rgba(8, 12, 20, 0.98) 100%) !important;
+    border-right-color: rgba(255, 107, 0, 0.08) !important;
+}
+
+.ct-nav-item-active {
+    background: linear-gradient(90deg, rgba(255, 107, 0, 0.12), rgba(255, 184, 0, 0.06)) !important;
+    border: 1px solid rgba(255, 107, 0, 0.25) !important;
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+/* ──────────── Header Enhancement ──────────── */
+.ct-header {
+    background: rgba(8, 12, 20, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    position: relative;
+}
+
+.ct-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.15), transparent);
+}
+
+.ct-search-input {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 100px;
+    transition: all 0.3s;
+}
+
+.ct-search-input:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 107, 0, 0.3) !important;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.08);
+}
+
+/* ──────────── Scrollbar ──────────── */
+.ct-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ct-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ct-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 0, 0.15);
+    border-radius: 100px;
+}
+
+.ct-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 107, 0, 0.3);
+}
+
+/* ──────────── Utilties ──────────── */
+.ct-gradient-text {
+    background: var(--ct-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ct-glass {
+    background: var(--ct-bg-card);
+    backdrop-filter: blur(var(--ct-glass-blur));
+    -webkit-backdrop-filter: blur(var(--ct-glass-blur));
+    border: 1px solid var(--ct-border);
+}
+
+.ct-glow-orange {
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.15);
+}
+
+.ct-border-glow {
+    position: relative;
+}
+
+.ct-border-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.3), transparent, rgba(255, 184, 0, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}

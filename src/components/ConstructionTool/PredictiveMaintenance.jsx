@@ -5,22 +5,23 @@ import {
     Gauge, Clock, Calendar, TrendingUp, TrendingDown, Zap,
     BarChart3, Settings, Eye, Bell
 } from 'lucide-react';
+import '../../styles/ConstructionTool.css';
 
 const equipment = [
     {
         name: 'Tower Crane #01', status: 'healthy', health: 96, nextMaint: '12 days',
         sensors: [
             { label: 'Motor Temp', value: '72°C', max: '95°C', pct: 76, status: 'ok' },
-            { label: 'Bearing Vibration', value: '2.1 mm/s', max: '4.5 mm/s', pct: 47, status: 'ok' },
-            { label: 'Hydraulic Press.', value: '218 bar', max: '250 bar', pct: 87, status: 'warn' },
-            { label: 'Load Cycles', value: '14,287', max: '25,000', pct: 57, status: 'ok' },
+            { label: 'Load Cell', value: '4.2 ton', max: '8.0 ton', pct: 52, status: 'ok' },
+            { label: 'Cable Wear', value: '12%', max: '100%', pct: 12, status: 'ok' },
+            { label: 'Brake Pad', value: '68%', max: '100%', pct: 68, status: 'ok' },
         ]
     },
     {
-        name: 'Excavator #03', status: 'warning', health: 71, nextMaint: '3 days',
+        name: 'Excavator #03', status: 'warning', health: 72, nextMaint: '3 days',
         sensors: [
-            { label: 'Engine Temp', value: '98°C', max: '110°C', pct: 89, status: 'warn' },
-            { label: 'Fuel Efficiency', value: '82%', max: '100%', pct: 82, status: 'ok' },
+            { label: 'Hydraulic Pressure', value: '285 bar', max: '350 bar', pct: 81, status: 'warn' },
+            { label: 'Engine Temp', value: '92°C', max: '105°C', pct: 87, status: 'warn' },
             { label: 'Track Tension', value: '78%', max: '100%', pct: 78, status: 'warn' },
             { label: 'Operating Hours', value: '4,821', max: '6,000', pct: 80, status: 'ok' },
         ]
@@ -29,7 +30,7 @@ const equipment = [
         name: 'Concrete Pump #02', status: 'healthy', health: 89, nextMaint: '8 days',
         sensors: [
             { label: 'Pump Pressure', value: '165 bar', max: '200 bar', pct: 82, status: 'ok' },
-            { label: 'Pipeline Wear', value: '23%', max: '100%', pct: 23, status: 'ok' },
+            { label: 'Pipeline Wear', value: '22%', max: '100%', pct: 22, status: 'ok' },
             { label: 'Motor Speed', value: '1,420 RPM', max: '1,800 RPM', pct: 79, status: 'ok' },
             { label: 'Concrete Output', value: '45 m³/h', max: '60 m³/h', pct: 75, status: 'ok' },
         ]
@@ -38,14 +39,13 @@ const equipment = [
 
 const predictions = [
     { equipment: 'Crane #01 — Brake Assembly', prob: '18%', timeframe: '45-60 days', severity: 'low', cost: '$3,200' },
-    { equipment: 'Excavator #03 — Turbo Charger', prob: '67%', timeframe: '5-12 days', severity: 'high', cost: '$8,500' },
-    { equipment: 'Pump #02 — Delivery Pipe', prob: '34%', timeframe: '20-30 days', severity: 'medium', cost: '$1,800' },
-    { equipment: 'Generator #01 — Alternator', prob: '12%', timeframe: '90+ days', severity: 'low', cost: '$4,200' },
+    { equipment: 'Excavator #03 — Hydraulic Seals', prob: '67%', timeframe: '7-14 days', severity: 'high', cost: '$8,500' },
+    { equipment: 'Pump #02 — Pipeline Section B', prob: '34%', timeframe: '20-30 days', severity: 'medium', cost: '$4,100' },
 ];
 
-const maintenanceSchedule = [
-    { date: 'Feb 28', task: 'Excavator #03 — Oil & Filter Change', priority: 'high', status: 'scheduled' },
-    { date: 'Mar 05', task: 'Crane #01 — Rope Inspection', priority: 'medium', status: 'scheduled' },
+const schedule = [
+    { date: 'Feb 28', task: 'Excavator #03 — Hydraulic Service', priority: 'high', status: 'confirmed' },
+    { date: 'Mar 03', task: 'Crane #01 — Quarterly Inspection', priority: 'medium', status: 'scheduled' },
     { date: 'Mar 08', task: 'Pump #02 — Valve Replacement', priority: 'medium', status: 'pending' },
     { date: 'Mar 15', task: 'Generator #01 — Full Service', priority: 'low', status: 'pending' },
 ];
@@ -53,112 +53,130 @@ const maintenanceSchedule = [
 export function PredictiveMaintenance() {
     const [selectedEquipment, setSelectedEquipment] = useState(0);
 
+    const statusConfig = {
+        healthy: { color: '#22c55e', label: 'HEALTHY' },
+        warning: { color: '#f59e0b', label: 'WARNING' },
+        critical: { color: '#ef4444', label: 'CRITICAL' },
+    };
+
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="ct-page-header">
                 <div>
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                        <Wrench className="text-[#ef4444]" size={24} />
+                    <h2 className="ct-page-title">
+                        <Wrench className="icon-glow" style={{ color: '#FF6B00' }} size={24} />
                         Predictive Maintenance
                     </h2>
-                    <p className="text-slate-400 text-sm mt-1">IoT-powered equipment health monitoring & failure prediction</p>
+                    <p className="ct-page-subtitle">AI-powered equipment health monitoring & failure prediction</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold flex items-center gap-1.5">
-                        <Activity size={12} />
+                    <div className="ct-badge ct-badge-green ct-badge-live">
                         {equipment.filter(e => e.status === 'healthy').length}/{equipment.length} Healthy
+                    </div>
+                    <div className="ct-badge ct-badge-amber">
+                        <AlertTriangle size={10} /> 1 Warning
                     </div>
                 </div>
             </div>
 
             {/* Equipment Cards */}
             <div className="grid lg:grid-cols-3 gap-4">
-                {equipment.map((eq, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: idx * 0.08 }}
-                        onClick={() => setSelectedEquipment(idx)}
-                        className={`bg-white/5 border rounded-2xl p-5 cursor-pointer transition-all hover:-translate-y-1 ${selectedEquipment === idx ? 'border-[#FF6B00]/40 bg-white/[0.07]' : 'border-white/10'}`}
-                    >
-                        <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-white font-semibold text-sm">{eq.name}</h3>
-                            <div className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${eq.status === 'healthy' ? 'bg-green-500/20 text-green-400' : 'bg-amber-500/20 text-amber-400'}`}>
-                                {eq.status.toUpperCase()}
-                            </div>
-                        </div>
-
-                        {/* Health Gauge */}
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="relative w-16 h-16">
-                                <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
-                                    <path d="M18 2.5 a 15.5 15.5 0 0 1 0 31 a 15.5 15.5 0 0 1 0 -31" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
-                                    <path d="M18 2.5 a 15.5 15.5 0 0 1 0 31 a 15.5 15.5 0 0 1 0 -31" fill="none"
-                                        stroke={eq.health > 85 ? '#22c55e' : eq.health > 60 ? '#f59e0b' : '#ef4444'}
-                                        strokeWidth="3" strokeDasharray={`${eq.health} ${100 - eq.health}`} strokeLinecap="round" />
-                                </svg>
-                                <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white">{eq.health}%</div>
-                            </div>
-                            <div>
-                                <div className="text-xs text-slate-500">Next Maintenance</div>
-                                <div className="text-sm font-medium text-white flex items-center gap-1">
-                                    <Clock size={12} className="text-[#FF6B00]" />
-                                    {eq.nextMaint}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Sensor Bars */}
-                        <div className="space-y-2">
-                            {eq.sensors.map((sensor, sIdx) => (
-                                <div key={sIdx}>
-                                    <div className="flex items-center justify-between text-[10px] mb-0.5">
-                                        <span className="text-slate-500">{sensor.label}</span>
-                                        <span className="text-slate-400 font-mono">{sensor.value}</span>
+                {equipment.map((eq, idx) => {
+                    const sc = statusConfig[eq.status];
+                    const isSelected = selectedEquipment === idx;
+                    return (
+                        <motion.div
+                            key={idx}
+                            className="ct-card"
+                            style={{
+                                padding: 20, cursor: 'pointer',
+                                borderColor: isSelected ? `${sc.color}30` : undefined,
+                                boxShadow: isSelected ? `0 0 20px ${sc.color}15` : undefined,
+                            }}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.08 }}
+                            onClick={() => setSelectedEquipment(idx)}
+                        >
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
+                                <div>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'white' }}>{eq.name}</div>
+                                    <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>
+                                        Next maintenance: {eq.nextMaint}
                                     </div>
-                                    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                        <div
-                                            className="h-full rounded-full transition-all"
-                                            style={{
-                                                width: `${sensor.pct}%`,
-                                                background: sensor.status === 'warn' ? '#f59e0b' : '#22c55e'
-                                            }}
+                                </div>
+
+                                {/* Health Ring */}
+                                <div className="ct-ring-gauge" style={{ width: 52, height: 52 }}>
+                                    <svg width="52" height="52" viewBox="0 0 52 52">
+                                        <circle className="track" cx="26" cy="26" r="21" strokeWidth="4" />
+                                        <circle className="fill" cx="26" cy="26" r="21"
+                                            stroke={sc.color} strokeWidth="4"
+                                            strokeDasharray="132"
+                                            strokeDashoffset={132 - (132 * eq.health) / 100}
                                         />
+                                    </svg>
+                                    <div style={{ position: 'absolute', textAlign: 'center' }}>
+                                        <span className="ct-ring-value" style={{ fontSize: '0.8rem', color: sc.color }}>{eq.health}</span>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-                    </motion.div>
-                ))}
+                            </div>
+
+                            {/* Sensor Bars */}
+                            <div className="space-y-3">
+                                {eq.sensors.map((s, si) => (
+                                    <div key={si}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                                            <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>{s.label}</span>
+                                            <span style={{ fontSize: '0.65rem', fontWeight: 600, fontVariantNumeric: 'tabular-nums', color: s.status === 'warn' ? '#f59e0b' : 'rgba(255,255,255,0.7)' }}>
+                                                {s.value}
+                                            </span>
+                                        </div>
+                                        <div className="ct-progress">
+                                            <motion.div
+                                                className={`ct-progress-fill ${s.status === 'warn' ? 'amber' : s.pct > 80 ? 'amber' : 'green'}`}
+                                                initial={{ width: 0 }}
+                                                animate={{ width: `${s.pct}%` }}
+                                                transition={{ delay: 0.3 + si * 0.1, duration: 0.6 }}
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Status badge */}
+                            <div style={{ marginTop: 14, display: 'flex', justifyContent: 'flex-end' }}>
+                                <span className={`ct-badge ct-badge-${eq.status === 'healthy' ? 'green' : 'amber'}`}>
+                                    {sc.label}
+                                </span>
+                            </div>
+                        </motion.div>
+                    );
+                })}
             </div>
 
             <div className="grid lg:grid-cols-2 gap-6">
                 {/* Failure Predictions */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-                        <AlertTriangle size={16} className="text-amber-400" />
+                <div className="ct-card" style={{ padding: 24 }}>
+                    <h3 className="ct-section-header">
+                        <Activity size={15} className="ct-section-icon" />
                         Failure Predictions
                     </h3>
                     <div className="space-y-3">
                         {predictions.map((pred, idx) => (
                             <motion.div
                                 key={idx}
+                                className={`ct-alert ct-alert-${pred.severity}`}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.2 + idx * 0.06 }}
-                                className="p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:bg-white/5 transition-colors"
+                                transition={{ delay: 0.3 + idx * 0.08 }}
                             >
-                                <div className="flex items-center justify-between mb-1">
-                                    <span className="text-sm text-white font-medium">{pred.equipment}</span>
-                                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${pred.severity === 'high' ? 'bg-red-500/20 text-red-400' : pred.severity === 'medium' ? 'bg-amber-500/20 text-amber-400' : 'bg-green-500/20 text-green-400'}`}>
-                                        {pred.prob} risk
-                                    </span>
-                                </div>
-                                <div className="flex items-center gap-4 text-xs text-slate-500">
-                                    <span className="flex items-center gap-1"><Clock size={10} />{pred.timeframe}</span>
-                                    <span className="flex items-center gap-1 text-[#FF6B00]">Cost: {pred.cost}</span>
+                                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'white', marginBottom: 6 }}>{pred.equipment}</div>
+                                <div style={{ display: 'flex', gap: 16, fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
+                                    <span>Probability: <strong style={{ color: pred.severity === 'high' ? '#ef4444' : pred.severity === 'medium' ? '#f59e0b' : '#22c55e' }}>{pred.prob}</strong></span>
+                                    <span>Window: <strong style={{ color: 'rgba(255,255,255,0.6)' }}>{pred.timeframe}</strong></span>
+                                    <span>Est. Cost: <strong style={{ color: 'rgba(255,255,255,0.6)' }}>{pred.cost}</strong></span>
                                 </div>
                             </motion.div>
                         ))}
@@ -166,34 +184,40 @@ export function PredictiveMaintenance() {
                 </div>
 
                 {/* Maintenance Schedule */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-                        <Calendar size={16} className="text-[#FF6B00]" />
+                <div className="ct-card" style={{ padding: 24 }}>
+                    <h3 className="ct-section-header">
+                        <Calendar size={15} className="ct-section-icon" />
                         Upcoming Maintenance
                     </h3>
-                    <div className="space-y-3">
-                        {maintenanceSchedule.map((item, idx) => (
+                    <div className="space-y-2">
+                        {schedule.map((item, idx) => (
                             <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, x: 10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.2 + idx * 0.06 }}
-                                className="flex items-center gap-4 p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:bg-white/5 transition-colors"
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 + idx * 0.06 }}
+                                style={{
+                                    display: 'flex', alignItems: 'center', gap: 12, padding: 12,
+                                    borderRadius: 10, background: 'rgba(255,255,255,0.02)',
+                                    border: '1px solid rgba(255,255,255,0.04)',
+                                    transition: 'background 0.2s',
+                                }}
                             >
-                                <div className="text-center flex-shrink-0 w-14">
-                                    <div className="text-xs text-slate-500">{item.date.split(' ')[0]}</div>
-                                    <div className="text-lg font-bold text-white">{item.date.split(' ')[1]}</div>
+                                <div style={{
+                                    width: 44, flexShrink: 0, textAlign: 'center', padding: '4px 0',
+                                    borderRadius: 8,
+                                    background: item.priority === 'high' ? 'rgba(239,68,68,0.08)' : 'rgba(255,255,255,0.03)',
+                                    border: `1px solid ${item.priority === 'high' ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.04)'}`,
+                                }}>
+                                    <div style={{ fontSize: '0.6rem', fontWeight: 700, color: item.priority === 'high' ? '#ef4444' : 'rgba(255,255,255,0.5)' }}>{item.date}</div>
                                 </div>
-                                <div className="flex-1 min-w-0">
-                                    <div className="text-sm text-white truncate">{item.task}</div>
-                                    <div className="flex items-center gap-2 mt-1">
-                                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${item.priority === 'high' ? 'bg-red-500/20 text-red-400' : item.priority === 'medium' ? 'bg-amber-500/20 text-amber-400' : 'bg-blue-500/20 text-blue-400'}`}>
-                                            {item.priority}
-                                        </span>
-                                        <span className="text-[10px] text-slate-500 capitalize">{item.status}</span>
-                                    </div>
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                    <div style={{ fontSize: '0.8rem', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>{item.task}</div>
                                 </div>
-                                <Bell size={14} className="text-slate-600 flex-shrink-0" />
+                                <span className={`ct-badge ct-badge-${item.status === 'confirmed' ? 'green' : item.status === 'scheduled' ? 'blue' : 'amber'}`}
+                                    style={{ fontSize: '0.55rem' }}>
+                                    {item.status}
+                                </span>
                             </motion.div>
                         ))}
                     </div>

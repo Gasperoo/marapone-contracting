@@ -1,102 +1,100 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import {
     MessageCircleHeart, TrendingUp, TrendingDown, AlertTriangle,
-    Star, Mail, MessageSquare, Zap, ArrowRight, Heart, DollarSign, Minus
+    Star, Mail, MessageSquare, Zap, ArrowRight, Heart, DollarSign, Minus, Lightbulb
 } from 'lucide-react';
 import { getClientFeedbackData } from './constructionServices';
+import '../../styles/ConstructionTool.css';
 
 export function ClientFeedbackFusion() {
     const data = getClientFeedbackData();
 
-    const sentimentColors = {
-        positive: { bg: 'bg-green-500/10', text: 'text-green-400', border: 'border-green-500/20' },
-        neutral: { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/20' },
-        negative: { bg: 'bg-red-500/10', text: 'text-red-400', border: 'border-red-500/20' },
+    const sentimentConfig = {
+        positive: { color: '#22c55e', badge: 'ct-badge-green' },
+        neutral: { color: '#3b82f6', badge: 'ct-badge-blue' },
+        negative: { color: '#ef4444', badge: 'ct-badge-red' },
     };
 
-    const channelIcons = {
-        text: MessageSquare,
-        email: Mail,
-        review: Star,
-    };
+    const channelIcons = { text: MessageSquare, email: Mail, review: Star };
 
     return (
         <div className="space-y-6">
             {/* Header */}
-            <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="ct-page-header">
                 <div>
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                        <MessageCircleHeart className="text-[#FF6B00]" size={24} />
+                    <h2 className="ct-page-title">
+                        <MessageCircleHeart className="icon-glow" style={{ color: '#FF6B00' }} size={24} />
                         Client Feedback Fusion™
                     </h2>
-                    <p className="text-slate-400 text-sm mt-1">AI-powered relationship health monitor for construction SMBs</p>
+                    <p className="ct-page-subtitle">AI-powered relationship health monitor for construction SMBs</p>
                 </div>
-                <div className="px-3 py-1.5 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/20 text-[#FF6B00] text-xs font-bold flex items-center gap-1.5">
-                    <Heart size={12} />
-                    Relationship Intelligence Active
+                <div className="ct-badge ct-badge-orange ct-badge-live">
+                    <Heart size={10} /> Relationship Intelligence Active
                 </div>
             </div>
 
             {/* Satisfaction Trend */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <h3 className="text-white font-semibold mb-4">Client Satisfaction Trend</h3>
-                <div className="flex items-end gap-4 h-[160px]">
-                    {data.satisfactionTrend.map((point, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, scaleY: 0 }}
-                            animate={{ opacity: 1, scaleY: 1 }}
-                            transition={{ delay: idx * 0.06, duration: 0.4 }}
-                            style={{ transformOrigin: 'bottom' }}
-                            className="flex-1 flex flex-col items-center"
-                        >
-                            <div className="text-xs font-bold mb-1" style={{ color: point.score >= 85 ? '#22c55e' : point.score >= 75 ? '#f59e0b' : '#ef4444' }}>
-                                {point.score}
+            <div className="ct-card" style={{ padding: 24 }}>
+                <h3 className="ct-section-header">
+                    <TrendingUp size={15} className="ct-section-icon" />
+                    Client Satisfaction Trend
+                </h3>
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: 180 }}>
+                    {data.satisfactionTrend.map((point, idx) => {
+                        const barColor = point.score >= 85 ? '#22c55e' : point.score >= 75 ? '#f59e0b' : '#ef4444';
+                        return (
+                            <div key={idx} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ fontSize: '0.65rem', fontWeight: 700, color: barColor, marginBottom: 6 }}>
+                                    {point.score}
+                                </div>
+                                <motion.div
+                                    className="ct-chart-bar"
+                                    style={{
+                                        width: '60%',
+                                        background: `linear-gradient(180deg, ${barColor}, ${barColor}40)`,
+                                    }}
+                                    initial={{ height: 0 }}
+                                    animate={{ height: `${(point.score / 100) * 130}px` }}
+                                    transition={{ delay: idx * 0.06, duration: 0.5 }}
+                                />
+                                <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.25)', marginTop: 8, fontWeight: 600 }}>{point.month}</div>
                             </div>
-                            <div
-                                className="w-full rounded-t-lg transition-all"
-                                style={{
-                                    height: `${(point.score / 100) * 120}px`,
-                                    background: point.score >= 85 ? 'rgba(34,197,94,0.3)' : point.score >= 75 ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)',
-                                    border: `1px solid ${point.score >= 85 ? 'rgba(34,197,94,0.4)' : point.score >= 75 ? 'rgba(245,158,11,0.4)' : 'rgba(239,68,68,0.4)'}`,
-                                }}
-                            />
-                            <div className="text-[10px] text-slate-500 mt-2">{point.month}</div>
-                        </motion.div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-6">
                 {/* Project Sentiment */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-                        <Star size={16} className="text-[#FF6B00]" />
+                <div className="ct-card" style={{ padding: 24 }}>
+                    <h3 className="ct-section-header">
+                        <Star size={15} className="ct-section-icon" />
                         Project Sentiment Analysis
                     </h3>
                     <div className="space-y-3">
                         {data.projectSentiment.map((proj, idx) => {
-                            const sc = sentimentColors[proj.sentiment];
+                            const sc = sentimentConfig[proj.sentiment];
                             return (
                                 <motion.div
                                     key={idx}
+                                    className={`ct-alert ct-alert-${proj.sentiment === 'negative' ? 'high' : proj.sentiment === 'neutral' ? 'low' : 'medium'}`}
+                                    style={{ borderColor: `${sc.color}15`, background: `${sc.color}05` }}
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.2 + idx * 0.06 }}
-                                    className={`p-3 rounded-xl border ${sc.border} ${sc.bg} transition-all hover:bg-white/[0.05]`}
                                 >
-                                    <div className="flex items-center justify-between mb-1">
-                                        <span className="text-sm text-white font-medium">{proj.project}</span>
-                                        <span className={`text-lg font-bold ${sc.text}`}>{proj.score}</span>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                                        <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{proj.project}</span>
+                                        <span style={{ fontSize: '1.1rem', fontWeight: 800, color: sc.color }}>{proj.score}</span>
                                     </div>
-                                    <div className="flex items-center gap-3 text-xs text-slate-500">
-                                        <span className={`font-bold uppercase ${sc.text}`}>{proj.sentiment}</span>
+                                    <div style={{ display: 'flex', gap: 12, fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
+                                        <span className={sc.badge} style={{ fontSize: '0.5rem', padding: '2px 6px' }}>{proj.sentiment}</span>
                                         <span>{proj.reviews} reviews</span>
-                                        <span className="flex items-center gap-0.5">
-                                            {proj.trend === 'up' ? <TrendingUp size={10} className="text-green-400" /> :
-                                                proj.trend === 'down' ? <TrendingDown size={10} className="text-red-400" /> :
-                                                    <Minus size={10} className="text-slate-500" />}
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+                                            {proj.trend === 'up' ? <TrendingUp size={10} style={{ color: '#22c55e' }} /> :
+                                                proj.trend === 'down' ? <TrendingDown size={10} style={{ color: '#ef4444' }} /> :
+                                                    <Minus size={10} />}
                                             {proj.trend}
                                         </span>
                                     </div>
@@ -107,31 +105,33 @@ export function ClientFeedbackFusion() {
                 </div>
 
                 {/* Dispute Predictions */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-                        <AlertTriangle size={16} className="text-amber-400" />
+                <div className="ct-card" style={{ padding: 24 }}>
+                    <h3 className="ct-section-header">
+                        <AlertTriangle size={15} className="ct-section-icon" />
                         Dispute Prediction
                     </h3>
                     <div className="space-y-3">
                         {data.disputes.map((dispute, idx) => (
                             <motion.div
                                 key={dispute.id}
+                                className={`ct-alert ct-alert-${dispute.risk === 'high' ? 'high' : 'medium'}`}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 + idx * 0.08 }}
-                                className={`p-4 rounded-xl border ${dispute.risk === 'high' ? 'border-red-500/20 bg-red-500/5' : 'border-amber-500/20 bg-amber-500/5'
-                                    }`}
                             >
-                                <div className="flex items-center justify-between mb-2">
-                                    <span className="text-sm text-white font-medium">{dispute.client}</span>
-                                    <span className={`text-xs font-bold px-2 py-0.5 rounded ${dispute.risk === 'high' ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'
-                                        }`}>{dispute.probability} risk</span>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{dispute.client}</span>
+                                    <span className={`ct-badge ct-badge-${dispute.risk === 'high' ? 'red' : 'amber'}`} style={{ fontSize: '0.5rem' }}>
+                                        {dispute.probability} risk
+                                    </span>
                                 </div>
-                                <div className="text-xs text-slate-400 mb-2">{dispute.issue}</div>
-                                <div className="flex items-center gap-1.5 text-xs text-[#FF6B00] p-2 rounded-lg bg-[#FF6B00]/5 border border-[#FF6B00]/10">
-                                    <Zap size={10} />
-                                    <span className="font-bold">AI Suggestion:</span>
-                                    <span className="text-white/70">{dispute.suggestedAction}</span>
+                                <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>{dispute.issue}</div>
+                                <div className="ct-ai-suggestion">
+                                    <Lightbulb size={12} className="ai-icon" />
+                                    <div>
+                                        <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#FF6B00' }}>AI Suggestion: </span>
+                                        <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)' }}>{dispute.suggestedAction}</span>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))}
@@ -140,33 +140,36 @@ export function ClientFeedbackFusion() {
             </div>
 
             {/* Recent Communications */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-                    <MessageSquare size={16} className="text-[#FF6B00]" />
+            <div className="ct-card" style={{ padding: 24 }}>
+                <h3 className="ct-section-header">
+                    <MessageSquare size={15} className="ct-section-icon" />
                     Recent Communications
                 </h3>
-                <div className="space-y-2">
+                <div className="space-y-1">
                     {data.recentComms.map((comm, idx) => {
-                        const sc = sentimentColors[comm.sentiment];
+                        const sc = sentimentConfig[comm.sentiment];
                         const ChannelIcon = channelIcons[comm.channel] || MessageSquare;
                         return (
                             <motion.div
                                 key={comm.id}
+                                className="ct-activity-item"
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.4 + idx * 0.05 }}
-                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/[0.03] transition-colors"
                             >
-                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${sc.bg} border ${sc.border}`}>
-                                    <ChannelIcon size={14} className={sc.text} />
+                                <div className="ct-icon-box" style={{
+                                    width: 32, height: 32, borderRadius: 8,
+                                    background: `${sc.color}10`, border: `1px solid ${sc.color}20`,
+                                }}>
+                                    <ChannelIcon size={13} style={{ color: sc.color }} />
                                 </div>
-                                <div className="flex-1 min-w-0">
-                                    <div className="flex items-center gap-2 mb-0.5">
-                                        <span className="text-sm text-white font-medium">{comm.client}</span>
-                                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${sc.bg} ${sc.text}`}>{comm.sentiment}</span>
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+                                        <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'white' }}>{comm.client}</span>
+                                        <span className={sc.badge} style={{ fontSize: '0.45rem', padding: '1px 5px' }}>{comm.sentiment}</span>
                                     </div>
-                                    <p className="text-xs text-slate-400 leading-relaxed truncate">{comm.message}</p>
-                                    <div className="text-[10px] text-slate-600 mt-0.5">{comm.project} · {comm.time}</div>
+                                    <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{comm.message}</p>
+                                    <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.2)', marginTop: 2 }}>{comm.project} · {comm.time}</div>
                                 </div>
                             </motion.div>
                         );
@@ -175,28 +178,29 @@ export function ClientFeedbackFusion() {
             </div>
 
             {/* Upsell Suggestions */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-                    <DollarSign size={16} className="text-[#FF6B00]" />
+            <div className="ct-card" style={{ padding: 24 }}>
+                <h3 className="ct-section-header">
+                    <DollarSign size={15} className="ct-section-icon" />
                     AI Upsell Opportunities
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                     {data.upsells.map((upsell, idx) => (
                         <motion.div
                             key={idx}
+                            className="ct-card group"
+                            style={{ padding: 16, cursor: 'pointer', borderColor: 'rgba(255,107,0,0.1)' }}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 + idx * 0.08 }}
-                            className="p-4 rounded-xl bg-[#FF6B00]/5 border border-[#FF6B00]/15 hover:border-[#FF6B00]/30 transition-all cursor-pointer group"
                         >
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-sm text-white font-medium">{upsell.client}</span>
-                                <span className="text-lg font-bold text-[#FF6B00]">{upsell.estimatedValue}</span>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{upsell.client}</span>
+                                <span className="ct-gradient-text" style={{ fontSize: '1.1rem', fontWeight: 800 }}>{upsell.estimatedValue}</span>
                             </div>
-                            <p className="text-xs text-slate-400 mb-2">{upsell.suggestion}</p>
-                            <div className="flex items-center justify-between">
-                                <span className="text-[10px] text-green-400 font-bold">{upsell.probability} conversion probability</span>
-                                <span className="text-xs text-slate-500 group-hover:text-[#FF6B00] flex items-center gap-1 transition-colors">
+                            <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>{upsell.suggestion}</p>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <span className="ct-badge ct-badge-green" style={{ fontSize: '0.5rem' }}>{upsell.probability} conversion</span>
+                                <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', gap: 4 }}>
                                     Draft Proposal <ArrowRight size={10} />
                                 </span>
                             </div>

@@ -3,8 +3,10 @@ import { motion } from 'motion/react';
 import {
     HardHat, FileSearch, Calculator, BrainCircuit, Boxes, Wrench,
     TrendingUp, TrendingDown, Clock, CheckCircle, AlertTriangle, ArrowRight,
-    DollarSign, UserSearch, ShieldCheck, CalendarClock, MessageCircleHeart, Siren, MapPinCheck
+    DollarSign, UserSearch, ShieldCheck, CalendarClock, MessageCircleHeart, Siren, MapPinCheck,
+    Sparkles, Zap, Activity
 } from 'lucide-react';
+import '../../styles/ConstructionTool.css';
 
 const stats = [
     { label: 'Active Projects', value: '12', change: '+3 this month', trend: 'up', color: '#FF6B00' },
@@ -29,27 +31,26 @@ const modules = [
 ];
 
 const recentActivity = [
-    { type: 'success', text: 'Blueprint analysis completed — Warehouse B (Phase 2)', time: '5m ago' },
-    { type: 'warning', text: 'Equipment alert: Crane #04 bearing vibration anomaly detected', time: '12m ago' },
-    { type: 'info', text: 'AI Planner updated schedule for Commercial Tower – saved 6 days', time: '1h ago' },
-    { type: 'success', text: 'Takeoff report exported for Riverside Apartments (42 items)', time: '2h ago' },
-    { type: 'info', text: 'Generative Design produced 8 new layout variants for Office Complex', time: '3h ago' },
+    { type: 'success', text: 'Blueprint analysis completed — Warehouse B (Phase 2)', time: '5m ago', color: '#22c55e' },
+    { type: 'warning', text: 'Equipment alert: Crane #04 bearing vibration anomaly detected', time: '12m ago', color: '#f59e0b' },
+    { type: 'info', text: 'AI Planner updated schedule for Commercial Tower – saved 6 days', time: '1h ago', color: '#3b82f6' },
+    { type: 'success', text: 'Takeoff report exported for Riverside Apartments (42 items)', time: '2h ago', color: '#22c55e' },
+    { type: 'info', text: 'Generative Design produced 8 new layout variants for Office Complex', time: '3h ago', color: '#3b82f6' },
 ];
 
 export function ConstructionDashboard({ onNavigate }) {
     return (
         <div className="space-y-6">
             {/* Welcome */}
-            <div className="flex items-center justify-between">
+            <div className="ct-page-header">
                 <div>
-                    <h1 className="text-2xl font-bold text-white flex items-center gap-3">
-                        <HardHat className="text-[#FF6B00]" size={28} />
+                    <h1 className="ct-page-title">
+                        <HardHat className="icon-glow" style={{ color: '#FF6B00' }} size={28} />
                         Construction Command Center
                     </h1>
-                    <p className="text-slate-400 text-sm mt-1">AI-powered construction intelligence at your fingertips</p>
+                    <p className="ct-page-subtitle">AI-powered construction intelligence at your fingertips</p>
                 </div>
-                <div className="px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold flex items-center gap-1.5">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <div className="ct-badge ct-badge-green ct-badge-live">
                     All Systems Online
                 </div>
             </div>
@@ -62,12 +63,13 @@ export function ConstructionDashboard({ onNavigate }) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: idx * 0.08 }}
-                        className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/[0.07] transition-all group"
+                        className="ct-stat-card"
+                        style={{ '--accent-color': stat.color }}
                     >
-                        <div className="text-xs text-slate-500 uppercase tracking-wider mb-2">{stat.label}</div>
-                        <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                        <div className="flex items-center gap-1 text-xs" style={{ color: stat.color }}>
-                            <TrendingUp size={12} />
+                        <div className="ct-stat-label">{stat.label}</div>
+                        <div className="ct-stat-value" style={{ color: stat.color }}>{stat.value}</div>
+                        <div className="ct-stat-change" style={{ color: stat.color }}>
+                            <TrendingUp size={11} />
                             {stat.change}
                         </div>
                     </motion.div>
@@ -76,49 +78,55 @@ export function ConstructionDashboard({ onNavigate }) {
 
             {/* Module Quick Access */}
             <div>
-                <h3 className="text-white font-semibold mb-4">Quick Launch</h3>
+                <h3 className="ct-section-header">
+                    <Sparkles size={15} className="ct-section-icon" />
+                    Quick Launch
+                </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {modules.map((mod, idx) => (
                         <motion.div
                             key={mod.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 + idx * 0.06 }}
+                            transition={{ delay: 0.3 + idx * 0.04 }}
                             onClick={() => onNavigate?.(mod.id)}
-                            className="bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:bg-white/[0.08] hover:-translate-y-1 transition-all group"
+                            className="ct-module-card group"
+                            style={{ '--module-color': mod.color }}
                         >
-                            <div
-                                className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 transition-transform group-hover:scale-110"
-                                style={{ background: `${mod.color}15`, border: `1px solid ${mod.color}30` }}
-                            >
-                                <mod.icon size={20} style={{ color: mod.color }} />
+                            <div className="ct-icon-box" style={{
+                                background: `${mod.color}10`,
+                                border: `1px solid ${mod.color}20`,
+                                marginBottom: 12,
+                            }}>
+                                <mod.icon size={18} style={{ color: mod.color, transition: 'transform 0.3s' }} />
                             </div>
-                            <div className="text-white font-medium text-sm mb-1">{mod.label}</div>
-                            <div className="text-slate-500 text-xs">{mod.desc}</div>
+                            <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white', marginBottom: 4 }}>{mod.label}</div>
+                            <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)' }}>{mod.desc}</div>
                         </motion.div>
                     ))}
                 </div>
             </div>
 
             {/* Recent Activity */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <h3 className="text-white font-semibold mb-4">Recent Activity</h3>
-                <div className="space-y-3">
+            <div className="ct-card" style={{ padding: 24 }}>
+                <h3 className="ct-section-header">
+                    <Activity size={15} className="ct-section-icon" />
+                    Recent Activity
+                </h3>
+                <div className="space-y-1">
                     {recentActivity.map((item, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.5 + idx * 0.05 }}
-                            className="flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors"
+                            className="ct-activity-item"
                         >
-                            {item.type === 'success' && <CheckCircle size={16} className="text-green-400 mt-0.5 flex-shrink-0" />}
-                            {item.type === 'warning' && <AlertTriangle size={16} className="text-amber-400 mt-0.5 flex-shrink-0" />}
-                            {item.type === 'info' && <Clock size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />}
-                            <div className="flex-1 min-w-0">
-                                <p className="text-sm text-slate-300 leading-snug">{item.text}</p>
+                            <div className="ct-activity-dot" style={{ backgroundColor: item.color, color: item.color }} />
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                                <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{item.text}</p>
                             </div>
-                            <span className="text-xs text-slate-600 flex-shrink-0">{item.time}</span>
+                            <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.25)', flexShrink: 0 }}>{item.time}</span>
                         </motion.div>
                     ))}
                 </div>

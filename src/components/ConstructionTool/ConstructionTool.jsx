@@ -16,6 +16,7 @@ import { ClientFeedbackFusion } from './ClientFeedbackFusion';
 import { TheftSentinel } from './TheftSentinel';
 import { SiteArrivalOptimizer } from './SiteArrivalOptimizer';
 import '../GasperTool/GasperTool.css';
+import '../../styles/ConstructionTool.css';
 
 export default function ConstructionTool() {
     const navigate = useNavigate();
@@ -59,7 +60,10 @@ export default function ConstructionTool() {
     };
 
     return (
-        <div className="gasper-tool-container">
+        <div className="gasper-tool-container" style={{ background: 'linear-gradient(135deg, #080c14 0%, #0d1117 40%, #111827 100%)' }}>
+            {/* Ambient Glow Background */}
+            <div className="ct-ambient-bg" />
+
             <ConstructionSidebar
                 activeTab={activeTab}
                 onTabChange={(tab) => {
@@ -72,53 +76,117 @@ export default function ConstructionTool() {
                 closeMobileMenu={() => setMobileMenuOpen(false)}
             />
 
-            <main className="gasper-main">
-                <header className="dashboard-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+            <main className="gasper-main" style={{ position: 'relative', zIndex: 1 }}>
+                {/* Premium Header */}
+                <header className="ct-header" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '12px 24px',
+                }}>
                     <div className="flex items-center gap-3">
                         <button
                             className="md:hidden p-2 text-white/70 hover:text-white"
                             onClick={() => setMobileMenuOpen(true)}
                         >
-                            <Menu size={24} />
+                            <Menu size={22} />
                         </button>
-                        <div className="header-title">
-                            <h2 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'white' }}>
+                        <div>
+                            <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'white', lineHeight: 1.2 }}>
                                 {tabLabels[activeTab] || 'Dashboard'}
                             </h2>
                         </div>
                         <button
-                            className="flex items-center gap-2 ml-4 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all"
+                            className="flex items-center gap-2 ml-3 px-3 py-1.5 rounded-full text-xs font-medium transition-all"
                             onClick={() => navigate('/gasper')}
+                            style={{
+                                background: 'rgba(255,255,255,0.04)',
+                                border: '1px solid rgba(255,255,255,0.06)',
+                                color: 'rgba(255,255,255,0.5)',
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.background = 'rgba(255,107,0,0.08)';
+                                e.target.style.borderColor = 'rgba(255,107,0,0.2)';
+                                e.target.style.color = '#FF6B00';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.background = 'rgba(255,255,255,0.04)';
+                                e.target.style.borderColor = 'rgba(255,255,255,0.06)';
+                                e.target.style.color = 'rgba(255,255,255,0.5)';
+                            }}
                         >
-                            <HomeIcon size={14} />
+                            <HomeIcon size={13} />
                             <span>Launcher</span>
                         </button>
                     </div>
 
-                    <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <div className="relative group hidden md:block">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 h-4 w-4" />
+                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-3.5 w-3.5" style={{ color: 'rgba(255,255,255,0.25)' }} />
                             <input
                                 type="text"
                                 placeholder="Search projects, tasks..."
-                                className="bg-white/5 border border-white/10 rounded-full pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-[#FF6B00]/50 focus:bg-white/10 w-64 transition-all"
+                                className="ct-search-input"
+                                style={{
+                                    paddingLeft: '36px',
+                                    paddingRight: '16px',
+                                    paddingTop: '8px',
+                                    paddingBottom: '8px',
+                                    fontSize: '0.8rem',
+                                    color: 'white',
+                                    width: '240px',
+                                    outline: 'none',
+                                }}
                             />
                         </div>
 
-                        <button className="p-2 rounded-full hover:bg-white/10 text-white/70 hover:text-white transition-colors relative">
-                            <Bell size={20} />
-                            <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-[#FF6B00] rounded-full shadow-lg shadow-[#FF6B00]/50"></span>
+                        <button
+                            className="p-2 rounded-xl transition-all relative"
+                            style={{
+                                background: 'rgba(255,255,255,0.03)',
+                                border: '1px solid rgba(255,255,255,0.06)',
+                                color: 'rgba(255,255,255,0.5)',
+                            }}
+                        >
+                            <Bell size={17} />
+                            <span style={{
+                                position: 'absolute',
+                                top: 7,
+                                right: 7,
+                                width: 7,
+                                height: 7,
+                                borderRadius: '50%',
+                                background: '#FF6B00',
+                                boxShadow: '0 0 8px rgba(255,107,0,0.6)',
+                                animation: 'ct-dot-pulse 2s ease-in-out infinite',
+                            }} />
                         </button>
 
-                        <div className="p-1 rounded-full border border-white/10 hover:border-white/30 transition-colors">
-                            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-[#FF6B00] to-[#FFB800] flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-[#FF6B00]/20">
+                        <div style={{
+                            padding: 2,
+                            borderRadius: '50%',
+                            border: '1px solid rgba(255,255,255,0.08)',
+                        }}>
+                            <div style={{
+                                height: 32,
+                                width: 32,
+                                borderRadius: '50%',
+                                background: 'linear-gradient(135deg, #FF6B00, #FFB800)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: 'white',
+                                fontWeight: 800,
+                                fontSize: '0.7rem',
+                                boxShadow: '0 0 15px rgba(255,107,0,0.3)',
+                            }}>
                                 GP
                             </div>
                         </div>
                     </div>
                 </header>
 
-                <div className="dashboard-content custom-scrollbar">
+                <div className="dashboard-content ct-scrollbar" style={{ position: 'relative' }}>
                     {renderContent()}
                 </div>
             </main>
@@ -126,7 +194,7 @@ export default function ConstructionTool() {
             {/* Mobile Overlay */}
             {mobileMenuOpen && (
                 <div
-                    className="fixed inset-0 bg-black/60 z-40 md:hidden backdrop-blur-sm"
+                    className="fixed inset-0 bg-black/70 z-40 md:hidden backdrop-blur-sm"
                     onClick={() => setMobileMenuOpen(false)}
                 />
             )}

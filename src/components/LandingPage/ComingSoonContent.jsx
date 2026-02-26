@@ -14,7 +14,7 @@ import Particles from '../Particles/Particles';
 import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';
 import { SubcontractorMatchSection, ProjectCommandCenter, ROIImpactSection, ScheduleOptimizerSection } from './ConstructionAdvanced';
 
-// --- Animated Counter Component ---
+// --- Animated Counter Component (Holographic Panel) ---
 function Counter({ value, label, suffix = "" }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -34,21 +34,24 @@ function Counter({ value, label, suffix = "" }) {
     }, [springValue]);
 
     return (
-        <div ref={ref} className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-2 font-mono">
-                {displayValue.toLocaleString()}{suffix}
+        <div ref={ref} className="text-center relative group">
+            {/* Holographic panel background */}
+            <div className="absolute inset-[-8px] rounded-xl bg-white/[0.02] border border-white/[0.04] opacity-0 group-hover:opacity-100 transition-all duration-500" />
+            <div className="relative z-10">
+                <div className="text-4xl md:text-5xl font-bold mb-2 font-mono" style={{ background: 'linear-gradient(180deg, #fff 20%, rgba(124,58,237,0.6) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    {displayValue.toLocaleString()}{suffix}
+                </div>
+                <div className="text-[0.65rem] text-slate-500 uppercase tracking-[0.2em] font-semibold">{label}</div>
             </div>
-            <div className="text-sm text-slate-400 uppercase tracking-widest font-semibold">{label}</div>
         </div>
     );
 }
 
-// --- Spotlight Feature Card ---
+// --- Holographic Feature Card ---
 function FeatureCard({ icon, title, description, details }) {
     const divRef = useRef(null);
     const [isFocused, setIsFocused] = useState(false);
     const position = { x: useMotionValue(0), y: useMotionValue(0) };
-    const opacity = useMotionValue(0);
 
     const handleMouseMove = (e) => {
         if (!divRef.current) return;
@@ -57,65 +60,63 @@ function FeatureCard({ icon, title, description, details }) {
         position.y.set(e.clientY - rect.top);
     };
 
-    const handleFocus = () => {
-        setIsFocused(true);
-        opacity.set(1);
-    };
-
-    const handleBlur = () => {
-        setIsFocused(false);
-        opacity.set(0);
-    };
-
     return (
         <motion.div
             ref={divRef}
             onMouseMove={handleMouseMove}
-            onMouseEnter={handleFocus}
-            onMouseLeave={handleBlur}
-            initial={{ opacity: 0, y: 20 }}
+            onMouseEnter={() => setIsFocused(true)}
+            onMouseLeave={() => setIsFocused(false)}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative h-full rounded-2xl bg-slate-900/50 border border-white/10 overflow-hidden group"
+            className="relative h-full rounded-2xl overflow-hidden group"
         >
-            {/* Spotlight Gradient */}
+            {/* Iridescent border */}
+            <div className="absolute -inset-[1px] rounded-2xl z-0 overflow-hidden">
+                <motion.div
+                    className="absolute inset-0"
+                    style={{ background: 'conic-gradient(from 0deg, rgba(124,58,237,0.3), rgba(34,211,238,0.3), rgba(236,72,153,0.15), rgba(124,58,237,0.3))', opacity: isFocused ? 0.8 : 0.15 }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+                />
+            </div>
+
+            {/* Glass body */}
+            <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/90 backdrop-blur-xl z-[1]" />
+
+            {/* Prismatic refraction */}
             <motion.div
-                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
+                className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[2]"
                 style={{
                     background: useTransform(
                         [position.x, position.y],
-                        ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(82, 39, 255, 0.15), transparent 40%)`
+                        ([x, y]) => `radial-gradient(500px circle at ${x}px ${y}px, rgba(124,58,237,0.12), rgba(34,211,238,0.06) 30%, transparent 55%)`
                     ),
                 }}
             />
 
-            {/* Spotlight Border */}
-            <motion.div
-                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
-                style={{
-                    background: useTransform(
-                        [position.x, position.y],
-                        ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(82, 39, 255, 0.4), transparent 40%)`
-                    ),
-                    maskImage: `linear-gradient(black, black) content-box, linear-gradient(black, black)`,
-                    maskComposite: 'exclude',
-                    WebkitMaskComposite: 'xor',
-                    padding: '1px',
-                }}
-            />
+            {/* Scan line */}
+            <motion.div className="absolute inset-0 rounded-2xl z-[3] pointer-events-none overflow-hidden opacity-0 group-hover:opacity-60 transition-opacity">
+                <motion.div
+                    className="absolute w-full h-[1px] left-0"
+                    style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.5), rgba(34,211,238,0.5), transparent)' }}
+                    animate={{ top: ['-5%', '110%'] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
+                />
+            </motion.div>
 
             <div className="relative p-8 h-full flex flex-col z-10">
-                <div className="w-14 h-14 rounded-xl bg-[#5227FF]/10 flex items-center justify-center text-[#5227FF] mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(82,39,255,0.2)]">
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center text-[#7c3aed] mb-6 group-hover:scale-110 transition-transform duration-500" style={{ background: 'rgba(124,58,237,0.1)', boxShadow: '0 0 25px rgba(124,58,237,0.15)' }}>
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#5227FF] transition-colors">{title}</h3>
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#7c3aed] transition-colors duration-300">{title}</h3>
                 <p className="text-slate-400 mb-6 leading-relaxed flex-grow">{description}</p>
 
-                <div className="pt-6 border-t border-white/5">
+                <div className="pt-6 border-t border-white/[0.04]">
                     <ul className="grid grid-cols-1 gap-3">
                         {details.map((item, i) => (
                             <li key={i} className="flex items-center text-sm text-slate-300">
-                                <CheckCircle2 size={16} className="text-[#5227FF] mr-3 flex-shrink-0" />
+                                <CheckCircle2 size={14} className="text-[#22d3ee] mr-3 flex-shrink-0" />
                                 {item}
                             </li>
                         ))}
@@ -143,15 +144,15 @@ function ProcessStep({ number, title, description, icon, align, details }) {
                 <div
                     onClick={() => setIsOpen(!isOpen)}
                     className={`
-                        relative p-8 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 w-full max-w-lg cursor-pointer hover:border-[#5227FF]/50 transition-all duration-300 group
-                        ${isOpen ? 'border-[#5227FF] bg-black/60 shadow-[0_0_30px_rgba(82,39,255,0.15)]' : ''}
+                        relative p-8 rounded-2xl bg-[#06001a]/80 backdrop-blur-xl border w-full max-w-lg cursor-pointer transition-all duration-500 group
+                        ${isOpen ? 'border-[#7c3aed]/60 shadow-[0_0_40px_rgba(124,58,237,0.15)]' : 'border-white/[0.06] hover:border-[#7c3aed]/40'}
                     `}
                 >
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#5227FF] to-[#22d3ee] rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500 blur-sm"></div>
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#7c3aed] to-[#22d3ee] rounded-2xl opacity-0 group-hover:opacity-15 transition duration-700 blur-md"></div>
 
                     <div className="relative z-10">
-                        <div className="text-[#5227FF] text-xs font-bold tracking-widest mb-4 flex items-center justify-between">
-                            <span className="px-3 py-1 rounded-full bg-[#5227FF]/10 border border-[#5227FF]/20">STEP {number}</span>
+                        <div className="text-[#7c3aed] text-xs font-bold tracking-widest mb-4 flex items-center justify-between">
+                            <span className="px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20">STEP {number}</span>
                             <motion.span
                                 animate={{ rotate: isOpen ? 180 : 0 }}
                                 className="text-white/50"
@@ -192,11 +193,11 @@ function ProcessStep({ number, title, description, icon, align, details }) {
 
             {/* Center Icon */}
             <div className="relative z-10 flex-shrink-0">
-                <div className={`w-20 h-20 rounded-full bg-[#0f172a] border-2 flex items-center justify-center text-white shadow-[0_0_30px_rgba(82,39,255,0.3)] transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-110' : 'border-[#5227FF] text-white'}`}>
+                <div className={`w-20 h-20 rounded-full bg-[#06001a] border-2 flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-110 shadow-[0_0_40px_rgba(34,211,238,0.3)]' : 'border-[#7c3aed] text-white shadow-[0_0_30px_rgba(124,58,237,0.25)]'}`}>
                     {icon}
                 </div>
                 {/* Pulse Effect */}
-                <div className="absolute inset-0 rounded-full bg-[#5227FF] animate-ping opacity-20"></div>
+                <div className="absolute inset-0 rounded-full bg-[#7c3aed] animate-ping opacity-15"></div>
             </div>
 
             <div className="md:w-1/2" /> {/* Spacer */}
@@ -210,18 +211,27 @@ function IndustryCard({ icon, title, description, color, useCase }) {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="group relative p-1 rounded-2xl overflow-hidden bg-gradient-to-b from-white/10 to-transparent hover:from-[#5227FF]/50 transition-all duration-500"
+            className="group relative rounded-2xl overflow-hidden"
         >
-            <div className="absolute inset-0 bg-slate-950 rounded-2xl m-[1px] z-0"></div>
+            {/* Animated iridescent border */}
+            <div className="absolute -inset-[1px] rounded-2xl z-0 overflow-hidden">
+                <motion.div
+                    className="absolute inset-0"
+                    style={{ background: 'conic-gradient(from 0deg, rgba(124,58,237,0.2), rgba(34,211,238,0.2), rgba(236,72,153,0.1), rgba(124,58,237,0.2))', opacity: 0.2 }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+                />
+            </div>
+            <div className="absolute inset-[1px] bg-[#06001a]/90 rounded-2xl z-0 group-hover:bg-[#06001a]/80 transition-colors duration-500"></div>
             <div className="relative z-10 p-7 h-full flex flex-col">
-                <div className={`w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-6 ${color} group-hover:scale-110 transition-transform duration-500 group-hover:bg-white/10`}>
+                <div className={`w-12 h-12 rounded-lg bg-white/[0.04] flex items-center justify-center mb-6 ${color} group-hover:scale-110 transition-transform duration-500`} style={{ boxShadow: '0 0 20px rgba(124,58,237,0.1)' }}>
                     {icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#22d3ee] transition-colors duration-300">{title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">{description}</p>
 
-                <div className="mt-auto pt-4 border-t border-white/5 group-hover:border-[#5227FF]/20 transition-colors">
-                    <div className="text-xs text-slate-500 uppercase font-semibold mb-1">Use Case</div>
+                <div className="mt-auto pt-4 border-t border-white/[0.04] group-hover:border-[#7c3aed]/20 transition-colors">
+                    <div className="text-xs text-slate-500 uppercase font-semibold mb-1 tracking-widest">Use Case</div>
                     <div className="text-sm text-slate-200">{useCase}</div>
                 </div>
             </div>
@@ -258,7 +268,7 @@ function DigitalTwinSection() {
                             </div>
                         </div>
                         <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-[#5227FF]/10 flex-shrink-0 flex items-center justify-center text-[#5227FF]">
+                            <div className="w-12 h-12 rounded-lg bg-[#7c3aed]/10 flex-shrink-0 flex items-center justify-center text-[#7c3aed]">
                                 <BarChart3 size={24} />
                             </div>
                             <div>
@@ -278,10 +288,10 @@ function DigitalTwinSection() {
                 >
                     <div className="aspect-square rounded-full border border-white/10 relative flex items-center justify-center">
                         <div className="absolute inset-0 border border-[#22d3ee]/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                        <div className="absolute inset-8 border border-[#5227FF]/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                        <div className="absolute inset-8 border border-[#7c3aed]/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
 
                         {/* Central Node */}
-                        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#5227FF] opacity-20 blur-xl absolute"></div>
+                        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#7c3aed] opacity-20 blur-xl absolute"></div>
                         <div className="relative z-10 text-center">
                             <div className="text-4xl font-bold text-white mb-2">99.4%</div>
                             <div className="text-xs text-[#22d3ee] uppercase tracking-widest">Model Accuracy</div>
@@ -289,7 +299,7 @@ function DigitalTwinSection() {
 
                         {/* Floating Nodes */}
                         <div className="absolute top-10 left-10 w-3 h-3 bg-[#22d3ee] rounded-full shadow-[0_0_10px_#22d3ee]"></div>
-                        <div className="absolute bottom-20 right-10 w-2 h-2 bg-[#5227FF] rounded-full shadow-[0_0_10px_#5227FF]"></div>
+                        <div className="absolute bottom-20 right-10 w-2 h-2 bg-[#7c3aed] rounded-full shadow-[0_0_10px_#7c3aed]"></div>
                     </div>
                 </motion.div>
             </div>
@@ -533,7 +543,7 @@ function GasperAIBotSection() {
                     className="relative p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl"
                 >
                     <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#5227FF] flex items-center justify-center p-1.5">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#7c3aed] flex items-center justify-center p-1.5">
                             <img
                                 src="/images/gasper-logo-g.png"
                                 alt="Gasper AI"
@@ -553,7 +563,7 @@ function GasperAIBotSection() {
                     <div className="space-y-4">
                         {/* User Query 1 */}
                         <div className="flex justify-end">
-                            <div className="bg-[#5227FF]/20 border border-[#5227FF]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                            <div className="bg-[#7c3aed]/20 border border-[#7c3aed]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                                 <p className="text-white text-sm">Where is shipment #SH-2847?</p>
                             </div>
                         </div>
@@ -581,7 +591,7 @@ function GasperAIBotSection() {
 
                         {/* User Query 2 */}
                         <div className="flex justify-end">
-                            <div className="bg-[#5227FF]/20 border border-[#5227FF]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                            <div className="bg-[#7c3aed]/20 border border-[#7c3aed]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                                 <p className="text-white text-sm">Any weather risks?</p>
                             </div>
                         </div>
@@ -595,7 +605,7 @@ function GasperAIBotSection() {
 
                         {/* User Query 3 - More Complex */}
                         <div className="flex justify-end">
-                            <div className="bg-[#5227FF]/20 border border-[#5227FF]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                            <div className="bg-[#7c3aed]/20 border border-[#7c3aed]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                                 <p className="text-white text-sm">What's the cheapest way to ship 500kg from Shanghai to LA next week?</p>
                             </div>
                         </div>
@@ -681,7 +691,7 @@ function GasperAIBotSection() {
                             className="p-5 rounded-xl bg-black/40 border border-white/10 backdrop-blur-xl hover:border-[#22d3ee]/30 transition-all group"
                         >
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#22d3ee]/20 to-[#5227FF]/20 flex items-center justify-center text-[#22d3ee] flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#22d3ee]/20 to-[#7c3aed]/20 flex items-center justify-center text-[#22d3ee] flex-shrink-0 group-hover:scale-110 transition-transform">
                                     {feature.icon}
                                 </div>
                                 <div>
@@ -699,7 +709,7 @@ function GasperAIBotSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-center p-6 rounded-2xl bg-gradient-to-r from-[#22d3ee]/10 to-[#5227FF]/10 border border-white/10"
+                className="text-center p-6 rounded-2xl bg-gradient-to-r from-[#22d3ee]/10 to-[#7c3aed]/10 border border-white/10"
             >
                 <p className="text-slate-300 text-sm">
                     <Sparkles size={16} className="inline text-[#22d3ee] mr-2" />
@@ -812,14 +822,14 @@ function ComparisonTableSection({ selectedProduct }) {
     return (
         <section className="px-6 max-w-6xl mx-auto py-20 relative overflow-hidden">
             {/* Background Gradient Orbs */}
-            <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#5227FF]/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#22d3ee]/10 rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#7c3aed]/10 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#22d3ee]/10 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
 
             <div className="text-center mb-16 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="inline-block px-4 py-1.5 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#5227FF] text-sm font-medium mb-6"
+                    className="inline-block px-4 py-1.5 rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 text-[#7c3aed] text-sm font-medium mb-6"
                 >
                     <TrendingUp size={14} className="inline mr-2" />
                     Competitive Advantage
@@ -838,23 +848,23 @@ function ComparisonTableSection({ selectedProduct }) {
                 className="relative group"
             >
                 {/* Outer Glow Container */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#5227FF]/20 via-[#22d3ee]/20 to-[#5227FF]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#7c3aed]/15 via-[#22d3ee]/15 to-[#7c3aed]/15 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
                 {/* Main Table Container */}
-                <div className="relative rounded-3xl bg-gradient-to-br from-black/60 to-black/40 border border-white/20 backdrop-blur-2xl overflow-hidden shadow-2xl">
+                <div className="relative rounded-3xl bg-[#06001a]/80 border border-white/[0.06] backdrop-blur-2xl overflow-hidden shadow-2xl">
                     {/* Header Row */}
-                    <div className="grid grid-cols-3 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border-b border-white/20">
+                    <div className="grid grid-cols-3 bg-white/[0.03] border-b border-white/[0.06]">
                         <div className="p-6"></div>
                         <div className="p-6 text-center">
-                            <div className="text-slate-300 text-sm font-bold uppercase tracking-wider mb-1">Traditional Tools</div>
-                            <div className="text-xs text-slate-500">Legacy Systems</div>
+                            <div className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Traditional Tools</div>
+                            <div className="text-xs text-slate-600">Legacy Systems</div>
                         </div>
-                        <div className="p-6 text-center bg-gradient-to-br from-[#5227FF]/10 to-transparent border-l border-white/10">
-                            <div className="flex items-center justify-center gap-2 text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee] text-sm font-bold uppercase tracking-wider mb-1">
-                                <Sparkles size={16} className="text-[#5227FF]" />
+                        <div className="p-6 text-center bg-gradient-to-br from-[#7c3aed]/8 to-transparent border-l border-white/[0.04]">
+                            <div className="flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider mb-1" style={{ background: 'linear-gradient(to right, #7c3aed, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                                <Sparkles size={16} className="text-[#7c3aed]" />
                                 Gasper
                             </div>
-                            <div className="text-xs text-[#22d3ee]/80">Next-Gen Platform</div>
+                            <div className="text-xs text-[#22d3ee]/60">Next-Gen Platform</div>
                         </div>
                     </div>
 
@@ -866,11 +876,11 @@ function ComparisonTableSection({ selectedProduct }) {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.05 }}
-                            className="grid grid-cols-3 border-b border-white/5 last:border-0 hover:bg-gradient-to-r hover:from-[#5227FF]/5 hover:to-transparent transition-all duration-300 group/row"
+                            className="grid grid-cols-3 border-b border-white/[0.03] last:border-0 hover:bg-gradient-to-r hover:from-[#7c3aed]/5 hover:to-transparent transition-all duration-300 group/row"
                         >
                             {/* Feature Name */}
                             <div className="p-5 flex items-center">
-                                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#5227FF] to-[#22d3ee] mr-3 opacity-0 group-hover/row:opacity-100 transition-opacity"></div>
+                                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#22d3ee] mr-3 opacity-0 group-hover/row:opacity-100 transition-opacity"></div>
                                 <span className="text-white font-semibold text-base group-hover/row:text-[#22d3ee] transition-colors">
                                     {item.feature}
                                 </span>
@@ -897,12 +907,12 @@ function ComparisonTableSection({ selectedProduct }) {
                             </div>
 
                             {/* Gasper Column */}
-                            <div className="p-5 flex items-center justify-center bg-gradient-to-r from-transparent to-[#5227FF]/5 border-l border-white/5">
+                            <div className="p-5 flex items-center justify-center bg-gradient-to-r from-transparent to-[#7c3aed]/5 border-l border-white/[0.03]">
                                 {typeof item.gasper === 'boolean' ? (
                                     item.gasper ? (
                                         <div className="relative">
-                                            <Check size={24} className="text-[#5227FF] drop-shadow-[0_0_8px_rgba(82,39,255,0.6)]" />
-                                            <div className="absolute inset-0 bg-[#5227FF]/20 rounded-full blur-md animate-pulse"></div>
+                                            <Check size={24} className="text-[#7c3aed] drop-shadow-[0_0_8px_rgba(124,58,237,0.6)]" />
+                                            <div className="absolute inset-0 bg-[#7c3aed]/20 rounded-full blur-md animate-pulse"></div>
                                         </div>
                                     ) : (
                                         <div className="relative">
@@ -910,7 +920,7 @@ function ComparisonTableSection({ selectedProduct }) {
                                         </div>
                                     )
                                 ) : (
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee] text-sm font-bold px-4 py-1.5 rounded-lg bg-[#5227FF]/10 border border-[#5227FF]/20 shadow-[0_0_15px_rgba(82,39,255,0.2)]">
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#22d3ee] text-sm font-bold px-4 py-1.5 rounded-lg bg-[#7c3aed]/10 border border-[#7c3aed]/20 shadow-[0_0_15px_rgba(124,58,237,0.2)]">
                                         {item.gasper}
                                     </span>
                                 )}
@@ -919,13 +929,13 @@ function ComparisonTableSection({ selectedProduct }) {
                     ))}
 
                     {/* Bottom CTA Banner */}
-                    <div className="bg-gradient-to-r from-[#5227FF]/20 via-[#22d3ee]/10 to-[#5227FF]/20 border-t border-white/10 p-6">
+                    <div className="bg-gradient-to-r from-[#7c3aed]/15 via-[#22d3ee]/8 to-[#7c3aed]/15 border-t border-white/[0.04] p-6">
                         <div className="flex items-center justify-center gap-3 text-center">
                             <Award size={20} className="text-[#22d3ee]" />
-                            <p className="text-slate-300 text-sm">
+                            <p className="text-slate-400 text-sm">
                                 Join innovative companies transforming their supply chains
                             </p>
-                            <TrendingUp size={20} className="text-[#5227FF]" />
+                            <TrendingUp size={20} className="text-[#7c3aed]" />
                         </div>
                     </div>
                 </div>
@@ -1031,10 +1041,22 @@ function WaitlistSection({ selectedProduct }) {
 
     return (
         <section className="px-6 max-w-3xl mx-auto pb-32 text-center">
-            <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#5227FF]/20 to-purple-900/20 border border-white/10 backdrop-blur-xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+            <div className="relative p-8 md:p-12 rounded-3xl overflow-hidden">
+                {/* Iridescent animated border */}
+                <div className="absolute -inset-[1px] rounded-3xl z-0 overflow-hidden">
+                    <motion.div
+                        className="absolute inset-0"
+                        style={{ background: 'conic-gradient(from 0deg, rgba(124,58,237,0.4), rgba(34,211,238,0.3), rgba(236,72,153,0.2), rgba(16,185,129,0.2), rgba(124,58,237,0.4))' }}
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                    />
+                </div>
+                {/* Glass body */}
+                <div className="absolute inset-[1px] rounded-3xl bg-[#06001a]/90 backdrop-blur-2xl z-[1]" />
+                {/* Noise texture */}
+                <div className="absolute inset-[1px] rounded-3xl opacity-[0.03] z-[2]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} />
                 <div className="relative z-10">
-                    <Zap size={40} className="mx-auto text-[#5227FF] mb-6" />
+                    <Zap size={40} className="mx-auto text-[#7c3aed] mb-6" />
                     <h2 className="text-3xl font-bold text-white mb-4">Secure Your Access</h2>
                     <p className="text-slate-300 mb-2">
                         Gasper is currently in private beta. Join the waitlist to be notified when we open to the public.
@@ -1053,7 +1075,7 @@ function WaitlistSection({ selectedProduct }) {
                                 value={formData.email}
                                 onChange={handleInputChange}
                                 placeholder="Enter your email address"
-                                className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all placeholder:text-slate-500"
+                                className="w-full bg-[#06001a]/80 border border-white/[0.06] rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all placeholder:text-slate-600"
                                 disabled={status === 'loading'}
                             />
                         </div>
@@ -1065,7 +1087,7 @@ function WaitlistSection({ selectedProduct }) {
                                     name="role"
                                     value={formData.role}
                                     onChange={handleInputChange}
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all appearance-none cursor-pointer"
+                                    className="w-full bg-[#06001a]/80 border border-white/[0.06] rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all appearance-none cursor-pointer"
                                     disabled={status === 'loading'}
                                 >
                                     <option value="">Your Role</option>
@@ -1086,7 +1108,7 @@ function WaitlistSection({ selectedProduct }) {
                                     name="companySize"
                                     value={formData.companySize}
                                     onChange={handleInputChange}
-                                    className="w-full bg-black/40 border border-white/10 rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#5227FF] focus:ring-1 focus:ring-[#5227FF] transition-all appearance-none cursor-pointer"
+                                    className="w-full bg-[#06001a]/80 border border-white/[0.06] rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all appearance-none cursor-pointer"
                                     disabled={status === 'loading'}
                                 >
                                     <option value="">Company Size</option>
@@ -1101,9 +1123,9 @@ function WaitlistSection({ selectedProduct }) {
                         <button
                             type="submit"
                             disabled={status === 'loading'}
-                            className={`w-full font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-[#5227FF]/25 flex items-center justify-center ${status === 'loading'
-                                ? 'bg-[#5227FF]/50 cursor-not-allowed'
-                                : 'bg-[#5227FF] hover:bg-[#4316db]'
+                            className={`w-full font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center relative overflow-hidden ${status === 'loading'
+                                ? 'bg-[#7c3aed]/50 cursor-not-allowed'
+                                : 'bg-[#7c3aed] hover:bg-[#6d28d9] shadow-lg shadow-[#7c3aed]/30 hover:shadow-[#7c3aed]/50'
                                 } text-white`}
                         >
                             {status === 'loading' ? (
@@ -1145,15 +1167,15 @@ function WaitlistSection({ selectedProduct }) {
 
                     <p className="mt-4 text-xs text-slate-500">
                         By joining, you agree to our{' '}
-                        <Link to="/terms" className="text-[#22d3ee] hover:text-[#5227FF] transition-colors underline">
+                        <Link to="/terms" className="text-[#22d3ee] hover:text-[#7c3aed] transition-colors underline">
                             Terms of Service
                         </Link>
                         {', '}
-                        <Link to="/privacy" className="text-[#22d3ee] hover:text-[#5227FF] transition-colors underline">
+                        <Link to="/privacy" className="text-[#22d3ee] hover:text-[#7c3aed] transition-colors underline">
                             Privacy Policy
                         </Link>
                         {', and '}
-                        <Link to="/cookies" className="text-[#22d3ee] hover:text-[#5227FF] transition-colors underline">
+                        <Link to="/cookies" className="text-[#22d3ee] hover:text-[#7c3aed] transition-colors underline">
                             Cookie Policy
                         </Link>
                         . No spam, ever.
@@ -1188,9 +1210,9 @@ function WhatYouGetSection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
-                        className="p-6 rounded-2xl bg-gradient-to-br from-[#5227FF]/10 to-transparent border border-[#5227FF]/20 backdrop-blur-xl hover:border-[#5227FF]/40 transition-all group"
+                        className="p-6 rounded-2xl bg-[#06001a]/60 border border-[#7c3aed]/15 backdrop-blur-xl hover:border-[#7c3aed]/40 transition-all group"
                     >
-                        <div className="w-14 h-14 rounded-xl bg-[#5227FF]/20 flex items-center justify-center text-[#5227FF] mb-4 group-hover:scale-110 transition-transform">
+                        <div className="w-14 h-14 rounded-xl bg-[#7c3aed]/20 flex items-center justify-center text-[#7c3aed] mb-4 group-hover:scale-110 transition-transform">
                             {benefit.icon}
                         </div>
                         <h3 className="text-white font-bold text-lg mb-2">{benefit.title}</h3>
@@ -1334,47 +1356,59 @@ function RateCheckSection() {
 
 export default function ComingSoonContent({ selectedProduct }) {
     return (
-        <div className="mt-20 space-y-32 relative">
+        <div className="mt-20 space-y-24 relative">
 
             {/* Particles Background */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
                 <Particles
-                    particleColors={["#5227FF", "#22d3ee", "#8b5cf6"]}
-                    particleCount={400}
+                    particleColors={["#7c3aed", "#22d3ee", "#ec4899"]}
+                    particleCount={300}
                     particleSpread={15}
-                    speed={0.08}
-                    particleBaseSize={80}
+                    speed={0.05}
+                    particleBaseSize={60}
                     moveParticlesOnHover={false}
                     alphaParticles={true}
                     disableRotation={false}
                     sizeRandomness={1.5}
-                    cameraDistance={25}
+                    cameraDistance={30}
                     pixelRatio={Math.min(window.devicePixelRatio, 2)}
                 />
             </div>
 
-            {/* --- STATS SECTION --- */}
+            {/* --- STATS SECTION (Mission Metrics) --- */}
             <section className="px-6 max-w-7xl mx-auto">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 py-10 border-y border-white/5 bg-white/[0.02] backdrop-blur-sm rounded-3xl">
-                    {selectedProduct === 'logistics' ? (
-                        <>
-                            <Counter value={5000} label="Connected Vessels" suffix="+" />
-                            <Counter value={98} label="Accuracy Rating" suffix="%" />
-                            <Counter value={120} label="Countries Covered" suffix="+" />
-                            <Counter value={2} label="Data Points (B)" suffix="B+" />
-                            <Counter value={300} label="Port Integrations" suffix="+" />
-                            <Counter value={50} label="M+ Routes Analyzed" suffix="M+" />
-                        </>
-                    ) : (
-                        <>
-                            <Counter value={850} label="Active Job Sites" suffix="+" />
-                            <Counter value={99} label="Safety Score" suffix="%" />
-                            <Counter value={5} label="Managed Value ($B)" suffix="B+" />
-                            <Counter value={20} label="Blueprints Analyzed (M)" suffix="M+" />
-                            <Counter value={1200} label="Subcontractors" suffix="+" />
-                            <Counter value={100} label="Code Violations Caught (K)" suffix="K+" />
-                        </>
-                    )}
+                <div className="relative rounded-3xl overflow-hidden">
+                    {/* Glass panel with scan-line */}
+                    <div className="absolute inset-0 bg-[#06001a]/60 backdrop-blur-xl border border-white/[0.04] rounded-3xl" />
+                    <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                        <motion.div
+                            className="absolute w-full h-[1px] left-0"
+                            style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.4), rgba(34,211,238,0.4), transparent)' }}
+                            animate={{ top: ['-2%', '102%'] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
+                        />
+                    </div>
+                    <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 py-12 px-6">
+                        {selectedProduct === 'logistics' ? (
+                            <>
+                                <Counter value={5000} label="Connected Vessels" suffix="+" />
+                                <Counter value={98} label="Accuracy Rating" suffix="%" />
+                                <Counter value={120} label="Countries Covered" suffix="+" />
+                                <Counter value={2} label="Data Points (B)" suffix="B+" />
+                                <Counter value={300} label="Port Integrations" suffix="+" />
+                                <Counter value={50} label="M+ Routes Analyzed" suffix="M+" />
+                            </>
+                        ) : (
+                            <>
+                                <Counter value={850} label="Active Job Sites" suffix="+" />
+                                <Counter value={99} label="Safety Score" suffix="%" />
+                                <Counter value={5} label="Managed Value ($B)" suffix="B+" />
+                                <Counter value={20} label="Blueprints Analyzed (M)" suffix="M+" />
+                                <Counter value={1200} label="Subcontractors" suffix="+" />
+                                <Counter value={100} label="Code Violations Caught (K)" suffix="K+" />
+                            </>
+                        )}
+                    </div>
                 </div>
             </section>
 
@@ -1385,11 +1419,11 @@ export default function ComingSoonContent({ selectedProduct }) {
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="inline-block px-4 py-1.5 rounded-full border border-[#5227FF]/30 bg-[#5227FF]/10 text-[#5227FF] text-sm font-medium mb-4"
+                            className="inline-block px-4 py-1.5 rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 text-[#7c3aed] text-sm font-medium mb-4"
                         >
                             Core Capabilities
                         </motion.div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee]">Beyond Boundaries</span></h2>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#22d3ee]">Beyond Boundaries</span></h2>
                         <p className="text-slate-400 max-w-2xl mx-auto text-lg">A comprehensive suite of AI-powered tools designed to give you total visibility and control over your global operations.</p>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -1470,7 +1504,7 @@ export default function ComingSoonContent({ selectedProduct }) {
                     <div className="relative">
                         {/* Connecting Line (Desktop) */}
                         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 transform -translate-x-1/2 h-full z-0">
-                            <div className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#5227FF] via-[#22d3ee] to-[#5227FF] opacity-50 shadow-[0_0_15px_#5227FF]" />
+                            <div className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#7c3aed] via-[#22d3ee] to-[#7c3aed] opacity-50 shadow-[0_0_15px_#7c3aed]" />
                         </div>
 
                         <ProcessStep

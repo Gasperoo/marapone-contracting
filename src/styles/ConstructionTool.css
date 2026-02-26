@@ -190,7 +190,8 @@
 }
 
 /* ──────────── Premium Card ──────────── */
-.ct-card {
+.ct-card,
+.ct-card-accent {
     background: var(--ct-bg-card);
     border: 1px solid var(--ct-border);
     border-radius: var(--ct-radius);
@@ -201,7 +202,8 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ct-card::before {
+.ct-card::before,
+.ct-card-accent::before {
     content: '';
     position: absolute;
     top: 0;
@@ -212,7 +214,8 @@
     z-index: 1;
 }
 
-.ct-card:hover {
+.ct-card:hover,
+.ct-card-accent:hover {
     background: var(--ct-bg-card-hover);
     border-color: var(--ct-border-hover);
     box-shadow: var(--ct-shadow), var(--ct-shadow-glow);
@@ -220,9 +223,6 @@
 }
 
 /* Card with accent strip at top */
-.ct-card-accent {
-    composes: ct-card;
-}
 
 .ct-card-accent::after {
     content: '';

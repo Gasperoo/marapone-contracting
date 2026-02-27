@@ -186,11 +186,9 @@ function ProcessStep({ number, title, description, icon, align, details }) {
 
             {/* Center Icon */}
             <div className="relative z-10 flex-shrink-0">
-                <div className={`w-20 h-20 rounded-full bg-[#06001a] border-2 flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-110 shadow-[0_0_40px_rgba(34,211,238,0.3)]' : 'border-[#0EA5E9] text-white shadow-[0_0_30px_rgba(14,165,233,0.25)]'}`}>
+                <div className={`w-16 h-16 rounded-full bg-[#06001a] border flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-105' : 'border-white/10 text-white/70'}`} style={{ boxShadow: isOpen ? '0 0 25px rgba(34,211,238,0.2)' : '0 0 15px rgba(14,165,233,0.1)' }}>
                     {icon}
                 </div>
-                {/* Pulse Effect — static glow */}
-                <div className="absolute inset-[-4px] rounded-full opacity-20" style={{ boxShadow: '0 0 20px #0EA5E9' }}></div>
             </div>
 
             <div className="md:w-1/2" /> {/* Spacer */}
@@ -1165,27 +1163,31 @@ function WhatYouGetSection() {
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
+        <section className="px-6 max-w-7xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What You'll Get</h2>
-                <p className="text-slate-400">Join the waitlist today and unlock exclusive benefits.</p>
+                <p className="text-slate-400 max-w-xl mx-auto">Join the waitlist today and unlock exclusive founder benefits.</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {benefits.map((benefit, idx) => (
                     <motion.div
                         key={idx}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="p-6 rounded-2xl bg-[#06001a]/60 border border-[#0EA5E9]/15 backdrop-blur-xl hover:border-[#0EA5E9]/40 transition-all group"
+                        transition={{ delay: idx * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        className="relative rounded-2xl overflow-hidden group"
                     >
-                        <div className="w-14 h-14 rounded-xl bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9] mb-4 group-hover:scale-110 transition-transform">
-                            {benefit.icon}
+                        <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-10 group-hover:opacity-25" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
+                        <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 z-[1]" />
+                        <div className="relative z-10 p-7 text-center">
+                            <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center text-[#0EA5E9] group-hover:scale-105 transition-transform duration-500" style={{ background: 'rgba(14,165,233,0.06)', border: '1px solid rgba(14,165,233,0.1)' }}>
+                                {benefit.icon}
+                            </div>
+                            <h3 className="text-white font-bold text-lg mb-2">{benefit.title}</h3>
+                            <p className="text-slate-400 text-sm leading-relaxed">{benefit.description}</p>
                         </div>
-                        <h3 className="text-white font-bold text-lg mb-2">{benefit.title}</h3>
-                        <p className="text-slate-400 text-sm leading-relaxed">{benefit.description}</p>
                     </motion.div>
                 ))}
             </div>

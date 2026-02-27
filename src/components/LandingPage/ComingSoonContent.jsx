@@ -47,7 +47,7 @@ function Counter({ value, label, suffix = "" }) {
     );
 }
 
-// --- Holographic Feature Card ---
+// --- Executive Feature Card ---
 function FeatureCard({ icon, title, description, details }) {
     const divRef = useRef(null);
     const [isFocused, setIsFocused] = useState(false);
@@ -71,20 +71,19 @@ function FeatureCard({ icon, title, description, details }) {
             viewport={{ once: true }}
             className="relative h-full rounded-2xl overflow-hidden group"
         >
-            {/* Iridescent border */}
-            <div className="absolute -inset-[1px] rounded-2xl z-0 overflow-hidden">
-                <motion.div
-                    className="absolute inset-0"
-                    style={{ background: 'conic-gradient(from 0deg, rgba(124,58,237,0.3), rgba(34,211,238,0.3), rgba(236,72,153,0.15), rgba(124,58,237,0.3))', opacity: isFocused ? 0.8 : 0.15 }}
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-                />
-            </div>
+            {/* Static gradient border */}
+            <div
+                className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500"
+                style={{
+                    background: 'linear-gradient(135deg, rgba(124,58,237,0.3), rgba(34,211,238,0.2), rgba(124,58,237,0.3))',
+                    opacity: isFocused ? 0.8 : 0.15,
+                }}
+            />
 
             {/* Glass body */}
             <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/90 backdrop-blur-xl z-[1]" />
 
-            {/* Prismatic refraction */}
+            {/* Mouse-follow refraction */}
             <motion.div
                 className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[2]"
                 style={{
@@ -94,16 +93,6 @@ function FeatureCard({ icon, title, description, details }) {
                     ),
                 }}
             />
-
-            {/* Scan line */}
-            <motion.div className="absolute inset-0 rounded-2xl z-[3] pointer-events-none overflow-hidden opacity-0 group-hover:opacity-60 transition-opacity">
-                <motion.div
-                    className="absolute w-full h-[1px] left-0"
-                    style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.5), rgba(34,211,238,0.5), transparent)' }}
-                    animate={{ top: ['-5%', '110%'] }}
-                    transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
-                />
-            </motion.div>
 
             <div className="relative p-8 h-full flex flex-col z-10">
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center text-[#7c3aed] mb-6 group-hover:scale-110 transition-transform duration-500" style={{ background: 'rgba(124,58,237,0.1)', boxShadow: '0 0 25px rgba(124,58,237,0.15)' }}>
@@ -196,8 +185,8 @@ function ProcessStep({ number, title, description, icon, align, details }) {
                 <div className={`w-20 h-20 rounded-full bg-[#06001a] border-2 flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-110 shadow-[0_0_40px_rgba(34,211,238,0.3)]' : 'border-[#7c3aed] text-white shadow-[0_0_30px_rgba(124,58,237,0.25)]'}`}>
                     {icon}
                 </div>
-                {/* Pulse Effect */}
-                <div className="absolute inset-0 rounded-full bg-[#7c3aed] animate-ping opacity-15"></div>
+                {/* Pulse Effect — static glow */}
+                <div className="absolute inset-[-4px] rounded-full opacity-20" style={{ boxShadow: '0 0 20px #7c3aed' }}></div>
             </div>
 
             <div className="md:w-1/2" /> {/* Spacer */}
@@ -213,15 +202,14 @@ function IndustryCard({ icon, title, description, color, useCase }) {
             viewport={{ once: true }}
             className="group relative rounded-2xl overflow-hidden"
         >
-            {/* Animated iridescent border */}
-            <div className="absolute -inset-[1px] rounded-2xl z-0 overflow-hidden">
-                <motion.div
-                    className="absolute inset-0"
-                    style={{ background: 'conic-gradient(from 0deg, rgba(124,58,237,0.2), rgba(34,211,238,0.2), rgba(236,72,153,0.1), rgba(124,58,237,0.2))', opacity: 0.2 }}
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                />
-            </div>
+            {/* Static gradient border */}
+            <div
+                className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500"
+                style={{
+                    background: 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(34,211,238,0.15), rgba(124,58,237,0.2))',
+                    opacity: 0.3,
+                }}
+            />
             <div className="absolute inset-[1px] bg-[#06001a]/90 rounded-2xl z-0 group-hover:bg-[#06001a]/80 transition-colors duration-500"></div>
             <div className="relative z-10 p-7 h-full flex flex-col">
                 <div className={`w-12 h-12 rounded-lg bg-white/[0.04] flex items-center justify-center mb-6 ${color} group-hover:scale-110 transition-transform duration-500`} style={{ boxShadow: '0 0 20px rgba(124,58,237,0.1)' }}>
@@ -821,9 +809,7 @@ function ComparisonTableSection({ selectedProduct }) {
 
     return (
         <section className="px-6 max-w-6xl mx-auto py-20 relative overflow-hidden">
-            {/* Background Gradient Orbs */}
-            <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#7c3aed]/10 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#22d3ee]/10 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+            {/* Background — clean, no animated orbs */}
 
             <div className="text-center mb-16 relative z-10">
                 <motion.div
@@ -912,7 +898,6 @@ function ComparisonTableSection({ selectedProduct }) {
                                     item.gasper ? (
                                         <div className="relative">
                                             <Check size={24} className="text-[#7c3aed] drop-shadow-[0_0_8px_rgba(124,58,237,0.6)]" />
-                                            <div className="absolute inset-0 bg-[#7c3aed]/20 rounded-full blur-md animate-pulse"></div>
                                         </div>
                                     ) : (
                                         <div className="relative">
@@ -1042,15 +1027,14 @@ function WaitlistSection({ selectedProduct }) {
     return (
         <section className="px-6 max-w-3xl mx-auto pb-32 text-center">
             <div className="relative p-8 md:p-12 rounded-3xl overflow-hidden">
-                {/* Iridescent animated border */}
-                <div className="absolute -inset-[1px] rounded-3xl z-0 overflow-hidden">
-                    <motion.div
-                        className="absolute inset-0"
-                        style={{ background: 'conic-gradient(from 0deg, rgba(124,58,237,0.4), rgba(34,211,238,0.3), rgba(236,72,153,0.2), rgba(16,185,129,0.2), rgba(124,58,237,0.4))' }}
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                    />
-                </div>
+                {/* Static gradient border */}
+                <div
+                    className="absolute -inset-[1px] rounded-3xl z-0"
+                    style={{
+                        background: 'linear-gradient(135deg, rgba(124,58,237,0.4), rgba(34,211,238,0.3), rgba(16,185,129,0.2), rgba(124,58,237,0.4))',
+                        opacity: 0.6,
+                    }}
+                />
                 {/* Glass body */}
                 <div className="absolute inset-[1px] rounded-3xl bg-[#06001a]/90 backdrop-blur-2xl z-[1]" />
                 {/* Noise texture */}
@@ -1362,16 +1346,16 @@ export default function ComingSoonContent({ selectedProduct }) {
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
                 <Particles
                     particleColors={["#7c3aed", "#22d3ee", "#ec4899"]}
-                    particleCount={300}
-                    particleSpread={15}
-                    speed={0.05}
-                    particleBaseSize={60}
+                    particleCount={80}
+                    particleSpread={10}
+                    speed={0.03}
+                    particleBaseSize={40}
                     moveParticlesOnHover={false}
                     alphaParticles={true}
                     disableRotation={false}
-                    sizeRandomness={1.5}
+                    sizeRandomness={1.2}
                     cameraDistance={30}
-                    pixelRatio={Math.min(window.devicePixelRatio, 2)}
+                    pixelRatio={Math.min(window.devicePixelRatio, 1.5)}
                 />
             </div>
 
@@ -1381,11 +1365,10 @@ export default function ComingSoonContent({ selectedProduct }) {
                     {/* Glass panel with scan-line */}
                     <div className="absolute inset-0 bg-[#06001a]/60 backdrop-blur-xl border border-white/[0.04] rounded-3xl" />
                     <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
-                        <motion.div
-                            className="absolute w-full h-[1px] left-0"
-                            style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.4), rgba(34,211,238,0.4), transparent)' }}
-                            animate={{ top: ['-2%', '102%'] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
+                        {/* Clean divider line instead of animated scan-line */}
+                        <div
+                            className="absolute w-full h-[1px] top-0 left-0"
+                            style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.2), rgba(34,211,238,0.2), transparent)' }}
                         />
                     </div>
                     <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 py-12 px-6">

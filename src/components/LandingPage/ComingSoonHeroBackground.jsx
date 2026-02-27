@@ -1,19 +1,19 @@
 import React from 'react';
 
 /**
- * Nebula Command Center Hero Background
- * Layered CSS-only background: perspective grid + aurora blobs + star-field
+ * Executive Hero Background
+ * Refined layered CSS background: perspective grid + subtle aurora + minimal star-field
  */
 export default function ComingSoonHeroBackground() {
-    // Generate a static star-field of tiny dots
-    const stars = Array.from({ length: 80 }, (_, i) => ({
+    // Reduced star-field — fewer, subtler dots
+    const stars = Array.from({ length: 30 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.6 + 0.1,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
+        size: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.4 + 0.05,
+        delay: Math.random() * 6,
+        duration: Math.random() * 4 + 3,
     }));
 
     return (
@@ -36,7 +36,7 @@ export default function ComingSoonHeroBackground() {
                 <div className="aurora-blob aurora-blob--3" />
             </div>
 
-            {/* Layer 4: Star-field */}
+            {/* Layer 4: Minimal Star-field */}
             <div className="absolute inset-0">
                 {stars.map((star) => (
                     <div
@@ -63,11 +63,11 @@ export default function ComingSoonHeroBackground() {
                 }}
             />
 
-            {/* Inline keyframes for twinkle */}
+            {/* Inline keyframes for twinkle — opacity only, no transform */}
             <style>{`
                 @keyframes twinkle {
-                    0% { opacity: 0.1; transform: scale(0.8); }
-                    100% { opacity: 0.8; transform: scale(1.2); }
+                    0% { opacity: 0.05; }
+                    100% { opacity: 0.6; }
                 }
             `}</style>
         </div>

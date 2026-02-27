@@ -106,8 +106,9 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(120px);
-    opacity: 0.15;
+    opacity: 0.12;
     will-change: transform;
+    contain: layout style;
 }
 
 .aurora-blob--1 {
@@ -116,7 +117,7 @@
     background: linear-gradient(135deg, var(--aurora-violet), var(--aurora-blue));
     top: -15%;
     left: -10%;
-    animation: aurora-float-1 18s ease-in-out infinite;
+    animation: aurora-float-1 30s ease-in-out infinite;
 }
 
 .aurora-blob--2 {
@@ -125,7 +126,7 @@
     background: linear-gradient(225deg, var(--aurora-cyan), var(--aurora-emerald));
     top: 40%;
     right: -15%;
-    animation: aurora-float-2 22s ease-in-out infinite;
+    animation: aurora-float-2 40s ease-in-out infinite;
 }
 
 .aurora-blob--3 {
@@ -134,7 +135,7 @@
     background: linear-gradient(45deg, var(--aurora-pink), var(--aurora-violet));
     bottom: -10%;
     left: 30%;
-    animation: aurora-float-3 15s ease-in-out infinite;
+    animation: aurora-float-3 25s ease-in-out infinite;
 }
 
 @keyframes aurora-float-1 {
@@ -221,35 +222,7 @@
 }
 
 .scan-line::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(120, 80, 255, 0.6), rgba(34, 211, 238, 0.6), transparent);
-    animation: scan-sweep 4s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 20;
-}
-
-@keyframes scan-sweep {
-    0% {
-        top: -5%;
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    90% {
-        opacity: 1;
-    }
-
-    100% {
-        top: 105%;
-        opacity: 0;
-    }
+    display: none;
 }
 
 /* ============================================= */
@@ -305,16 +278,9 @@
     overflow: hidden;
 }
 
-/* Badge scanning-light effect */
+/* Badge — no scanning-light for performance */
 .hero-label::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.3), transparent);
-    animation: badge-scan 3s ease-in-out infinite;
+    display: none;
 }
 
 @keyframes badge-scan {
@@ -484,16 +450,7 @@
 }
 
 .step-line::after {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    background: var(--aurora-cyan);
-    border-radius: 50%;
-    box-shadow: 0 0 20px var(--aurora-cyan);
-    animation: moveLight 3s linear infinite;
+    display: none;
 }
 
 @keyframes moveLight {

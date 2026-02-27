@@ -21,73 +21,38 @@ import ContactModal from '../ContactModal';
 const KineticWord = ({ children, delay }) => (
     <motion.span
         className="inline-block mr-[0.3em]"
-        initial={{ opacity: 0, y: 50, rotateX: 40, filter: 'blur(12px)' }}
-        animate={{ opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)' }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
             delay,
-            duration: 0.8,
+            duration: 0.7,
             ease: [0.16, 1, 0.3, 1],
         }}
-        style={{ transformStyle: 'preserve-3d' }}
     >
         {children}
     </motion.span>
 );
 
-// --- Hexagonal Wireframe Icon Container ---
+// --- Clean Executive Icon Container ---
 const HexIcon = ({ Icon, color, active }) => (
     <div className="relative mb-8">
-        {/* Outer spinning hex wireframe */}
-        <motion.div
-            className="absolute inset-[-20px]"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-            style={{ opacity: active ? 0.5 : 0.15 }}
-        >
-            <svg viewBox="0 0 100 100" className="w-full h-full" style={{ filter: `drop-shadow(0 0 6px ${color})` }}>
-                <polygon
-                    points="50,2 93,25 93,75 50,98 7,75 7,25"
-                    fill="none"
-                    stroke={color}
-                    strokeWidth="0.8"
-                    strokeDasharray="4 3"
-                />
-            </svg>
-        </motion.div>
-
-        {/* Inner counter-spinning hex */}
-        <motion.div
-            className="absolute inset-[-10px]"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-            style={{ opacity: active ? 0.3 : 0.08 }}
-        >
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-                <polygon
-                    points="50,8 87,28 87,72 50,92 13,72 13,28"
-                    fill="none"
-                    stroke={color}
-                    strokeWidth="0.5"
-                />
-            </svg>
-        </motion.div>
-
-        {/* Pulse ring */}
-        <motion.div
-            className="absolute inset-[-8px] rounded-2xl"
-            style={{ border: `1px solid ${color}`, opacity: 0 }}
-            animate={{ scale: [1, 1.5, 1.5], opacity: [0.4, 0, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'easeOut' }}
+        {/* Subtle outer glow ring */}
+        <div
+            className="absolute inset-[-12px] rounded-2xl transition-all duration-700"
+            style={{
+                border: `1px solid ${active ? `${color}30` : `${color}08`}`,
+                boxShadow: active ? `0 0 40px ${color}15` : 'none',
+            }}
         />
 
         {/* Icon body */}
         <div
             className={`relative w-24 h-24 rounded-2xl flex items-center justify-center transition-all duration-700 ${active ? 'shadow-2xl' : ''}`}
             style={{
-                backgroundColor: `${color}12`,
+                backgroundColor: `${color}10`,
                 color,
-                border: `1px solid ${active ? `${color}50` : `${color}18`}`,
-                boxShadow: active ? `0 0 50px ${color}40, inset 0 0 30px ${color}10` : `0 0 20px ${color}10`,
+                border: `1px solid ${active ? `${color}40` : `${color}15`}`,
+                boxShadow: active ? `0 0 40px ${color}25, inset 0 0 20px ${color}08` : `0 0 15px ${color}08`,
             }}
         >
             <Icon size={44} strokeWidth={1.5} />
@@ -95,18 +60,18 @@ const HexIcon = ({ Icon, color, active }) => (
     </div>
 );
 
-// --- Holographic 3D Domain Card ---
+// --- Executive Domain Card ---
 const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor, onClick, active, delay: enterDelay }) => {
     const ref = useRef(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-    const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
-    const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
+    const mouseXSpring = useSpring(x, { stiffness: 120, damping: 25 });
+    const mouseYSpring = useSpring(y, { stiffness: 120, damping: 25 });
 
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
 
     const handleMouseMove = (e) => {
         if (!ref.current) return;
@@ -127,80 +92,52 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, delay: enterDelay, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: enterDelay, ease: [0.16, 1, 0.3, 1] }}
             ref={ref}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={onClick}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className={`relative w-full aspect-[4/5] max-w-md mx-auto rounded-3xl ${active ? 'scale-105' : 'hover:scale-[1.02]'} transition-all duration-500 cursor-pointer overflow-hidden group`}
+            className={`relative w-full aspect-[4/5] max-w-md mx-auto rounded-3xl ${active ? 'scale-[1.03]' : 'hover:scale-[1.02]'} transition-all duration-500 cursor-pointer overflow-hidden group`}
         >
-            {/* Iridescent animated border */}
-            <div className="absolute -inset-[2px] rounded-3xl z-0 overflow-hidden">
-                <motion.div
-                    className="absolute inset-0"
-                    style={{
-                        background: active
-                            ? `conic-gradient(from 0deg, ${themeColor}, ${sc}, rgba(236,72,153,0.5), rgba(34,211,238,0.5), ${themeColor})`
-                            : `conic-gradient(from 0deg, ${themeColor}40, ${sc}30, rgba(255,255,255,0.05), ${themeColor}40)`,
-                        opacity: active ? 1 : 0.3,
-                    }}
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: active ? 4 : 8, repeat: Infinity, ease: 'linear' }}
-                />
-            </div>
+            {/* Static gradient border */}
+            <div
+                className="absolute -inset-[1px] rounded-3xl z-0 transition-opacity duration-500"
+                style={{
+                    background: active
+                        ? `linear-gradient(135deg, ${themeColor}, ${sc}, ${themeColor})`
+                        : `linear-gradient(135deg, ${themeColor}30, ${sc}20, ${themeColor}30)`,
+                    opacity: active ? 1 : 0.5,
+                }}
+            />
 
             {/* Card inner — glass surface */}
             <div
-                className="absolute inset-[2px] rounded-3xl z-[1]"
+                className="absolute inset-[1px] rounded-3xl z-[1] transition-all duration-500"
                 style={{
                     background: active
-                        ? `radial-gradient(ellipse at center, ${themeColor}08 0%, rgba(4,2,16,0.95) 70%)`
-                        : 'rgba(4, 2, 16, 0.92)',
-                    backdropFilter: 'blur(24px) saturate(1.2)',
+                        ? `radial-gradient(ellipse at center, ${themeColor}06 0%, rgba(4,2,16,0.96) 70%)`
+                        : 'rgba(4, 2, 16, 0.94)',
+                    backdropFilter: 'blur(20px)',
                 }}
             />
 
-            {/* Noise texture overlay */}
-            <div
-                className="absolute inset-[2px] rounded-3xl z-[1] opacity-[0.03]"
-                style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-                }}
-            />
-
-            {/* Mouse-follow prismatic refraction */}
+            {/* Mouse-follow light */}
             <div
                 className="absolute inset-0 rounded-3xl z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                     background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, 
-                        ${themeColor}18 0%, 
-                        ${sc}10 25%, 
-                        rgba(236,72,153,0.05) 45%,
-                        transparent 65%)`,
+                        ${themeColor}12 0%, 
+                        transparent 50%)`,
                 }}
             />
-
-            {/* Scan-line sweep */}
-            <motion.div
-                className="absolute inset-0 rounded-3xl z-[2] pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-                <motion.div
-                    className="absolute w-full h-[1px] left-0"
-                    style={{
-                        background: `linear-gradient(90deg, transparent, ${themeColor}50, ${sc}60, rgba(236,72,153,0.3), transparent)`,
-                    }}
-                    animate={{ top: ['-5%', '110%'] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                />
-            </motion.div>
 
             {/* Content */}
             <div
                 className="relative z-10 flex flex-col items-center justify-center p-10 h-full text-center"
-                style={{ transform: "translateZ(50px)" }}
+                style={{ transform: "translateZ(40px)" }}
             >
                 <HexIcon Icon={Icon} color={themeColor} active={active} />
 
@@ -208,7 +145,7 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
                 <h3
                     className="text-3xl lg:text-4xl font-bold mb-4"
                     style={{
-                        transform: "translateZ(30px)",
+                        transform: "translateZ(25px)",
                         background: `linear-gradient(135deg, #fff 30%, ${sc})`,
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
@@ -225,43 +162,31 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
                 </p>
 
                 {/* CTA button */}
-                <motion.div
-                    className={`mt-8 px-8 py-4 rounded-full border transform uppercase tracking-widest text-xs font-bold transition-all duration-500 relative overflow-hidden
+                <div
+                    className={`mt-8 px-8 py-4 rounded-full border uppercase tracking-widest text-xs font-bold transition-all duration-500
                         ${active
                             ? 'text-white border-transparent'
                             : 'border-white/10 text-white/70 group-hover:text-white group-hover:border-white/20'
                         }`}
                     style={active ? {
                         background: `linear-gradient(135deg, ${themeColor}, ${sc})`,
-                        boxShadow: `0 0 30px ${themeColor}50`,
+                        boxShadow: `0 0 25px ${themeColor}40`,
                     } : {
                         background: 'rgba(255,255,255,0.03)',
                     }}
-                    whileHover={!active ? { scale: 1.05 } : {}}
                 >
-                    {/* Active CTA pulse wave */}
-                    {active && (
-                        <motion.div
-                            className="absolute inset-0 rounded-full"
-                            style={{ background: `linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)` }}
-                            animate={{ x: ['-100%', '200%'] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                        />
-                    )}
-                    <span className="relative z-10">
-                        {active ? '✦ Engine Active' : 'Select Engine →'}
-                    </span>
-                </motion.div>
+                    {active ? '✦ Engine Active' : 'Select Engine →'}
+                </div>
             </div>
 
             {/* Active highlight bar */}
             {active && (
                 <motion.div
                     layoutId="active-domain-underline"
-                    className="absolute bottom-0 left-0 right-0 h-[3px] z-20"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] z-20"
                     style={{
                         background: `linear-gradient(90deg, transparent, ${themeColor}, ${sc}, transparent)`,
-                        boxShadow: `0 -8px 30px ${themeColor}80`,
+                        boxShadow: `0 -6px 20px ${themeColor}60`,
                     }}
                 />
             )}
@@ -321,13 +246,13 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                 {/* Dynamic ambient glow for selected domain */}
                 <motion.div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full pointer-events-none z-0"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none z-0"
                     animate={{
                         backgroundColor: themeColor,
-                        opacity: selectedProduct ? 0.06 : 0.02,
+                        opacity: selectedProduct ? 0.05 : 0.015,
                     }}
-                    transition={{ duration: 1.5 }}
-                    style={{ filter: 'blur(200px)' }}
+                    transition={{ duration: 2 }}
+                    style={{ filter: 'blur(180px)', willChange: 'opacity' }}
                 />
 
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
@@ -335,38 +260,29 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {comingSoonMode && (
                         <motion.div
                             className="relative w-28 h-28 mx-auto mb-10"
-                            initial={{ opacity: 0, scale: 0.4, rotate: -30 }}
-                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            {/* Outer ring */}
-                            <motion.div
-                                className="absolute -inset-5 rounded-full"
+                            {/* Static outer glow ring */}
+                            <div
+                                className="absolute -inset-6 rounded-full"
                                 style={{
-                                    border: `1px solid ${themeColor}25`,
-                                    boxShadow: `0 0 50px ${themeColor}15`,
+                                    border: `1px solid ${themeColor}18`,
+                                    boxShadow: `0 0 40px ${themeColor}10`,
                                 }}
-                                animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.08, 0.4] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                            />
-                            {/* Second ring */}
-                            <motion.div
-                                className="absolute -inset-10 rounded-full"
-                                style={{ border: `1px solid ${themeColor}10` }}
-                                animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0, 0.2] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                             />
                             {/* Inner glow */}
                             <div
                                 className="absolute inset-0 rounded-full"
-                                style={{ background: `radial-gradient(circle, ${themeColor}25 0%, transparent 70%)` }}
+                                style={{ background: `radial-gradient(circle, ${themeColor}20 0%, transparent 70%)` }}
                             />
                             {/* Logo image */}
                             <img
                                 src="/images/gasper-logo-g.png"
                                 alt="Gasper"
                                 className="relative z-10 w-full h-full object-contain"
-                                style={{ filter: `drop-shadow(0 0 30px ${themeColor}60)` }}
+                                style={{ filter: `drop-shadow(0 0 20px ${themeColor}40)` }}
                             />
                         </motion.div>
                     )}

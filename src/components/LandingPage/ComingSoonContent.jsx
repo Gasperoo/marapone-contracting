@@ -659,38 +659,26 @@ function TechnologyStackSection({ selectedProduct }) {
     const allCategories = [
         {
             category: "Data Sources",
-            icon: <Database size={20} />,
-            technologies: ["AIS Streams", "Port & BIM APIs", "Drone & IoT Sensors", "Weather Data"],
+            icon: <Database size={18} />,
+            technologies: ["AIS Streams", "Port & BIM APIs", "IoT Sensors", "Weather Data"],
             product: 'both'
         },
         {
-            category: "AI & Machine Learning",
-            icon: <Cpu size={20} />,
-            technologies: ["TensorFlow", "Computer Vision", "Time-Series Forecasting", "NLP Models"],
+            category: "AI & ML",
+            icon: <Cpu size={18} />,
+            technologies: ["TensorFlow", "Computer Vision", "Time-Series", "NLP"],
             product: 'both'
         },
         {
             category: "Infrastructure",
-            icon: <Server size={20} />,
+            icon: <Server size={18} />,
             technologies: ["AWS", "Kubernetes", "Redis", "PostgreSQL"],
             product: 'both'
         },
         {
-            category: "Construction Tech",
-            icon: <HardHat size={20} />,
-            technologies: ["BIM Integration", "GPS Fleet Tracking", "Blueprint OCR", "Permit APIs"],
-            product: 'construction'
-        },
-        {
-            category: "Logistics Tech",
-            icon: <Truck size={20} />,
-            technologies: ["Route Optimization Engine", "Global Carrier Integrations", "Customs API", "Freight Indexers"],
-            product: 'logistics'
-        },
-        {
             category: "Security",
-            icon: <Lock size={20} />,
-            technologies: ["SOC 2 Type II", "End-to-End Encryption", "GDPR Compliant", "ISO 27001"],
+            icon: <Lock size={18} />,
+            technologies: ["SOC 2 Type II", "E2E Encryption", "GDPR", "ISO 27001"],
             product: 'both'
         }
     ];
@@ -698,30 +686,30 @@ function TechnologyStackSection({ selectedProduct }) {
     const techCategories = allCategories.filter(cat => cat.product === 'both' || cat.product === selectedProduct);
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Built on Enterprise-Grade Technology</h2>
-                <p className="text-slate-400 max-w-2xl mx-auto">Powered by the most advanced tools in the industry.</p>
+        <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+            <div className="text-center mb-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Enterprise-Grade Stack</h2>
+                <p className="text-slate-500 text-sm max-w-lg mx-auto">Powered by the most advanced tools in the industry.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {techCategories.map((cat, idx) => (
                     <motion.div
                         key={idx}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl hover:border-[#22d3ee]/30 transition-all"
+                        transition={{ delay: idx * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#22d3ee]/20 transition-all"
                     >
-                        <div className="w-12 h-12 rounded-lg bg-[#22d3ee]/10 flex items-center justify-center text-[#22d3ee] mb-4">
-                            {cat.icon}
+                        <div className="flex items-center gap-2 mb-3">
+                            <span className="text-[#22d3ee]">{cat.icon}</span>
+                            <h3 className="text-white font-semibold text-sm">{cat.category}</h3>
                         </div>
-                        <h3 className="text-white font-bold mb-4">{cat.category}</h3>
-                        <ul className="space-y-2">
+                        <ul className="space-y-1.5">
                             {cat.technologies.map((tech, i) => (
-                                <li key={i} className="text-sm text-slate-400 flex items-center">
-                                    <div className="w-1 h-1 bg-[#22d3ee] rounded-full mr-2" />
+                                <li key={i} className="text-xs text-slate-500 flex items-center">
+                                    <div className="w-1 h-1 bg-slate-600 rounded-full mr-2" />
                                     {tech}
                                 </li>
                             ))}
@@ -1333,7 +1321,7 @@ export default function ComingSoonContent({ selectedProduct }) {
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
                 <Particles
                     particleColors={["#0EA5E9", "#22d3ee", "#14B8A6"]}
-                    particleCount={60}
+                    particleCount={30}
                     particleSpread={10}
                     speed={0.02}
                     particleBaseSize={30}
@@ -1485,12 +1473,7 @@ export default function ComingSoonContent({ selectedProduct }) {
                 </>
             )}
 
-            <div className="section-divider" />
 
-            {/* ══════════════ TECHNOLOGY STACK ══════════════ */}
-            <TechnologyStackSection selectedProduct={selectedProduct} />
-
-            <div className="section-divider" />
 
             {/* ══════════════ HOW IT WORKS ══════════════ */}
             {selectedProduct === 'logistics' && (
@@ -1571,6 +1554,9 @@ export default function ComingSoonContent({ selectedProduct }) {
 
             <div className="section-divider" />
 
+            {/* ══════════════ TECHNOLOGY STACK (Compact) ══════════════ */}
+            <TechnologyStackSection selectedProduct={selectedProduct} />
+
             {/* ══════════════ INDUSTRIES ══════════════ */}
             <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
                 <div className="text-center mb-20">
@@ -1621,7 +1607,7 @@ export default function ComingSoonContent({ selectedProduct }) {
                                 icon={<Factory size={28} />}
                                 title="Manufacturing"
                                 description="Secure your supply chain against disruptions and monitor raw material shipments."
-                                color="text-purple-400"
+                                color="text-sky-400"
                                 useCase="Supplier Risk Monitoring"
                             />
                         </>

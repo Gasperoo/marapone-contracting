@@ -3,10 +3,10 @@
 
 :root {
     /* Core palette */
-    --nebula-void: #020008;
-    --nebula-deep: #06001a;
-    --nebula-surface: rgba(8, 4, 30, 0.6);
-    --nebula-surface-hover: rgba(15, 8, 50, 0.7);
+    --nebula-void: #060A14;
+    --nebula-deep: #0B1120;
+    --nebula-surface: rgba(11, 17, 32, 0.6);
+    --nebula-surface-hover: rgba(15, 23, 42, 0.7);
     --nebula-glass: rgba(255, 255, 255, 0.03);
     --nebula-glass-hover: rgba(255, 255, 255, 0.06);
     --nebula-border: rgba(255, 255, 255, 0.06);

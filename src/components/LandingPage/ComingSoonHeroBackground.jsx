@@ -1,34 +1,33 @@
 import React from 'react';
 
 /**
- * Executive Hero Background — OpenSpace-inspired organic gradients
- * Flowing blurred blobs over deep void, no perspective grid, minimal stars
+ * Executive Hero Background — professional, brighter dark theme
+ * Warm slate-navy gradients with subtle blue ambient glow
  */
 export default function ComingSoonHeroBackground() {
-    // Very sparse star-field — minimal ambient twinkle
-    const stars = Array.from({ length: 20 }, (_, i) => ({
+    const stars = Array.from({ length: 25 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 1.2 + 0.4,
-        opacity: Math.random() * 0.3 + 0.03,
+        size: Math.random() * 1.4 + 0.5,
+        opacity: Math.random() * 0.35 + 0.05,
         delay: Math.random() * 6,
         duration: Math.random() * 5 + 4,
     }));
 
     return (
         <div className="absolute inset-0 z-0" style={{ pointerEvents: 'none' }}>
-            {/* Layer 1: Deep void with warm violet gradient */}
+            {/* Layer 1: Brighter slate-navy base */}
             <div
                 className="absolute inset-0"
                 style={{
-                    background: 'radial-gradient(ellipse 140% 90% at 50% 20%, #0d0025 0%, #040010 40%, #000000 100%)',
+                    background: 'radial-gradient(ellipse 140% 90% at 50% 20%, #0F172A 0%, #0B1120 40%, #060A14 100%)',
                 }}
             />
 
-            {/* Layer 2: Large organic flowing gradients (OpenSpace-style) */}
+            {/* Layer 2: Soft ambient glows */}
             <div className="absolute inset-0 overflow-hidden">
-                {/* Top-right warm violet blob */}
+                {/* Top-right sky-blue glow */}
                 <div
                     className="absolute rounded-full"
                     style={{
@@ -36,11 +35,11 @@ export default function ComingSoonHeroBackground() {
                         height: '900px',
                         top: '-15%',
                         right: '-10%',
-                        background: 'radial-gradient(circle, rgba(14,165,233,0.12) 0%, rgba(14,165,233,0.06) 40%, transparent 70%)',
+                        background: 'radial-gradient(circle, rgba(14,165,233,0.10) 0%, rgba(14,165,233,0.04) 40%, transparent 70%)',
                         filter: 'blur(80px)',
                     }}
                 />
-                {/* Bottom-left cyan glow */}
+                {/* Bottom-left teal glow */}
                 <div
                     className="absolute rounded-full"
                     style={{
@@ -48,32 +47,32 @@ export default function ComingSoonHeroBackground() {
                         height: '700px',
                         bottom: '-10%',
                         left: '-5%',
-                        background: 'radial-gradient(circle, rgba(34,211,238,0.06) 0%, rgba(34,211,238,0.02) 40%, transparent 70%)',
+                        background: 'radial-gradient(circle, rgba(20,184,166,0.06) 0%, rgba(20,184,166,0.02) 40%, transparent 70%)',
                         filter: 'blur(80px)',
                     }}
                 />
-                {/* Center deep violet accent */}
+                {/* Center subtle warm accent */}
                 <div
                     className="absolute rounded-full"
                     style={{
-                        width: '600px',
-                        height: '600px',
-                        top: '30%',
-                        left: '40%',
-                        background: 'radial-gradient(circle, rgba(14,165,233,0.04) 0%, transparent 60%)',
+                        width: '500px',
+                        height: '500px',
+                        top: '35%',
+                        left: '45%',
+                        background: 'radial-gradient(circle, rgba(56,189,248,0.03) 0%, transparent 60%)',
                         filter: 'blur(100px)',
                     }}
                 />
             </div>
 
-            {/* Layer 3: Aurora Mesh (CSS-animated, subtle) */}
+            {/* Layer 3: Aurora Mesh */}
             <div className="aurora-mesh">
                 <div className="aurora-blob aurora-blob--1" />
                 <div className="aurora-blob aurora-blob--2" />
                 <div className="aurora-blob aurora-blob--3" />
             </div>
 
-            {/* Layer 4: Sparse star-field */}
+            {/* Layer 4: Star-field (slightly brighter) */}
             <div className="absolute inset-0">
                 {stars.map((star) => (
                     <div
@@ -84,7 +83,7 @@ export default function ComingSoonHeroBackground() {
                             height: star.size,
                             left: `${star.x}%`,
                             top: `${star.y}%`,
-                            backgroundColor: 'white',
+                            backgroundColor: 'rgba(255,255,255,0.9)',
                             opacity: star.opacity,
                             animation: `twinkle ${star.duration}s ease-in-out ${star.delay}s infinite alternate`,
                         }}
@@ -92,19 +91,18 @@ export default function ComingSoonHeroBackground() {
                 ))}
             </div>
 
-            {/* Layer 5: Radial vignette */}
+            {/* Layer 5: Softer vignette */}
             <div
                 className="absolute inset-0"
                 style={{
-                    background: 'radial-gradient(ellipse 60% 45% at 50% 45%, transparent 0%, rgba(2,0,8,0.5) 55%, rgba(2,0,8,0.9) 100%)',
+                    background: 'radial-gradient(ellipse 65% 50% at 50% 45%, transparent 0%, rgba(6,10,20,0.4) 55%, rgba(6,10,20,0.85) 100%)',
                 }}
             />
 
-            {/* Twinkle keyframe */}
             <style>{`
                 @keyframes twinkle {
-                    0% { opacity: 0.03; }
-                    100% { opacity: 0.5; }
+                    0% { opacity: 0.05; }
+                    100% { opacity: 0.55; }
                 }
             `}</style>
         </div>

@@ -85,7 +85,7 @@ function FeatureCard({ icon, title, description, details }) {
             />
 
             {/* Glass body */}
-            <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/90 backdrop-blur-xl z-[1]" />
+            <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/90 backdrop-blur-xl z-[1]" />
 
             {/* Mouse-follow refraction */}
             <motion.div
@@ -137,7 +137,7 @@ function ProcessStep({ number, title, description, icon, align, details }) {
                 <div
                     onClick={() => setIsOpen(!isOpen)}
                     className={`
-                        relative p-8 rounded-2xl bg-[#06001a]/80 backdrop-blur-xl border w-full max-w-lg cursor-pointer transition-all duration-500 group
+                        relative p-8 rounded-2xl bg-[#0B1120]/80 backdrop-blur-xl border w-full max-w-lg cursor-pointer transition-all duration-500 group
                         ${isOpen ? 'border-[#0EA5E9]/60 shadow-[0_0_40px_rgba(14,165,233,0.15)]' : 'border-white/[0.06] hover:border-[#0EA5E9]/40'}
                     `}
                 >
@@ -186,7 +186,7 @@ function ProcessStep({ number, title, description, icon, align, details }) {
 
             {/* Center Icon */}
             <div className="relative z-10 flex-shrink-0">
-                <div className={`w-16 h-16 rounded-full bg-[#06001a] border flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-105' : 'border-white/10 text-white/70'}`} style={{ boxShadow: isOpen ? '0 0 25px rgba(34,211,238,0.2)' : '0 0 15px rgba(14,165,233,0.1)' }}>
+                <div className={`w-16 h-16 rounded-full bg-[#0B1120] border flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-105' : 'border-white/10 text-white/70'}`} style={{ boxShadow: isOpen ? '0 0 25px rgba(34,211,238,0.2)' : '0 0 15px rgba(14,165,233,0.1)' }}>
                     {icon}
                 </div>
             </div>
@@ -212,7 +212,7 @@ function IndustryCard({ icon, title, description, color, useCase }) {
                     opacity: 0.4,
                 }}
             />
-            <div className="absolute inset-[1px] bg-[#06001a]/90 rounded-[1.5rem] z-0 group-hover:bg-[#06001a]/80 transition-colors duration-500" />
+            <div className="absolute inset-[1px] bg-[#0B1120]/90 rounded-[1.5rem] z-0 group-hover:bg-[#0B1120]/80 transition-colors duration-500" />
             <div className="relative z-10 p-10 h-full flex flex-col">
                 <div className={`w-16 h-16 rounded-2xl bg-white/[0.04] flex items-center justify-center mb-8 ${color} group-hover:scale-105 transition-transform duration-500`} style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
                     {icon}
@@ -548,7 +548,7 @@ function GasperAIBotSection() {
                 <div className="relative rounded-2xl overflow-hidden">
                     {/* Border glow */}
                     <div className="absolute -inset-[1px] rounded-2xl z-0" style={{ background: 'linear-gradient(135deg, rgba(14,165,233,0.2), rgba(34,211,238,0.15), rgba(14,165,233,0.1))', opacity: 0.6 }} />
-                    <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 backdrop-blur-2xl z-[1]" />
+                    <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/95 backdrop-blur-2xl z-[1]" />
 
                     <div className="relative z-10 p-6">
                         {/* Header */}
@@ -637,7 +637,7 @@ function GasperAIBotSection() {
                     >
                         {/* Border */}
                         <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-10 group-hover:opacity-30" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
-                        <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 z-[1]" />
+                        <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/95 z-[1]" />
 
                         <div className="relative z-10 p-8 text-center">
                             <div className="w-14 h-14 rounded-xl mx-auto mb-5 flex items-center justify-center text-[#22d3ee] group-hover:scale-105 transition-transform duration-500" style={{ background: 'rgba(34,211,238,0.06)', border: '1px solid rgba(34,211,238,0.1)' }}>
@@ -802,7 +802,7 @@ function ComparisonTableSection({ selectedProduct }) {
                     >
                         {/* Border */}
                         <div className="absolute -inset-[1px] rounded-2xl transition-opacity duration-500 opacity-20 group-hover:opacity-50" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
-                        <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 z-[1]" />
+                        <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/95 z-[1]" />
 
                         <div className="relative z-10 p-8 text-center">
                             <div className="w-12 h-12 rounded-xl mx-auto mb-5 flex items-center justify-center text-[#22d3ee]" style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.15)' }}>
@@ -828,7 +828,7 @@ function ComparisonTableSection({ selectedProduct }) {
             >
                 {/* Border */}
                 <div className="absolute -inset-[1px] rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(14,165,233,0.2), rgba(34,211,238,0.15), rgba(14,165,233,0.2))' }} />
-                <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/90 backdrop-blur-xl z-[1]" />
+                <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/90 backdrop-blur-xl z-[1]" />
 
                 <div className="relative z-10">
                     {/* Table header */}
@@ -997,7 +997,7 @@ function WaitlistSection({ selectedProduct }) {
                     }}
                 />
                 {/* Glass body */}
-                <div className="absolute inset-[1px] rounded-[2rem] bg-[#06001a]/92 backdrop-blur-2xl z-[1]" />
+                <div className="absolute inset-[1px] rounded-[2rem] bg-[#0B1120]/92 backdrop-blur-2xl z-[1]" />
                 <div className="relative z-10">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -1030,7 +1030,7 @@ function WaitlistSection({ selectedProduct }) {
                                 value={formData.email}
                                 onChange={handleInputChange}
                                 placeholder="Enter your email address"
-                                className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all placeholder:text-slate-600"
+                                className="w-full bg-[#0B1120]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all placeholder:text-slate-600"
                                 disabled={status === 'loading'}
                             />
                         </div>
@@ -1042,7 +1042,7 @@ function WaitlistSection({ selectedProduct }) {
                                     name="role"
                                     value={formData.role}
                                     onChange={handleInputChange}
-                                    className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all appearance-none cursor-pointer"
+                                    className="w-full bg-[#0B1120]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all appearance-none cursor-pointer"
                                     disabled={status === 'loading'}
                                 >
                                     <option value="">Your Role</option>
@@ -1063,7 +1063,7 @@ function WaitlistSection({ selectedProduct }) {
                                     name="companySize"
                                     value={formData.companySize}
                                     onChange={handleInputChange}
-                                    className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all appearance-none cursor-pointer"
+                                    className="w-full bg-[#0B1120]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all appearance-none cursor-pointer"
                                     disabled={status === 'loading'}
                                 >
                                     <option value="">Company Size</option>
@@ -1168,7 +1168,7 @@ function WhatYouGetSection() {
                         className="relative rounded-2xl overflow-hidden group"
                     >
                         <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-10 group-hover:opacity-25" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
-                        <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 z-[1]" />
+                        <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/95 z-[1]" />
                         <div className="relative z-10 p-7 text-center">
                             <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center text-[#0EA5E9] group-hover:scale-105 transition-transform duration-500" style={{ background: 'rgba(14,165,233,0.06)', border: '1px solid rgba(14,165,233,0.1)' }}>
                                 {benefit.icon}

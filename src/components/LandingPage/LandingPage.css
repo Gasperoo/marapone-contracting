@@ -504,7 +504,8 @@
     border-radius: 20px;
     padding: 2.5rem;
     text-align: center;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    will-change: transform;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -834,7 +835,8 @@
     border-radius: 1.5rem;
     padding: 2.5rem 2rem;
     text-align: center;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    will-change: transform;
 }
 
 .metric-card:hover {

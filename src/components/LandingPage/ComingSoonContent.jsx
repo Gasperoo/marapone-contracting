@@ -38,7 +38,8 @@ function Counter({ value, label, suffix = "" }) {
             ref={ref}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="metric-card group"
         >
             <div className="metric-card__value">
@@ -68,9 +69,10 @@ function FeatureCard({ icon, title, description, details }) {
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsFocused(true)}
             onMouseLeave={() => setIsFocused(false)}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="relative h-full rounded-2xl overflow-hidden group"
         >
             {/* Static gradient border */}
@@ -199,7 +201,7 @@ function ProcessStep({ number, title, description, icon, align, details }) {
 function IndustryCard({ icon, title, description, color, useCase }) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="group relative rounded-[1.5rem] overflow-hidden"
@@ -235,7 +237,7 @@ function DigitalTwinSection() {
         <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -24 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                 >
@@ -271,7 +273,7 @@ function DigitalTwinSection() {
 
                 {/* Abstract Visual Representation */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.96 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     className="relative"
@@ -304,7 +306,7 @@ function RiskMonitorSection() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 {/* Visual Side (Left) */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.96 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     className="relative order-2 md:order-1"
@@ -338,7 +340,7 @@ function RiskMonitorSection() {
 
                 {/* Content Side (Right) */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 24 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     className="order-1 md:order-2 flex flex-col items-start"
@@ -383,7 +385,7 @@ function SustainabilitySection() {
         <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -24 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                 >
@@ -419,7 +421,7 @@ function SustainabilitySection() {
 
                 {/* Visual Representation */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.96 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     className="relative"
@@ -527,7 +529,7 @@ function GasperAIBotSection() {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
                 {/* Left: Chat Demo */}
                 <motion.div
-                    initial={{ opacity: 0, x: -30 }}
+                    initial={{ opacity: 0, x: -16 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     className="relative p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl"
@@ -666,7 +668,7 @@ function GasperAIBotSection() {
 
                 {/* Right: Features Grid */}
                 <motion.div
-                    initial={{ opacity: 0, x: 30 }}
+                    initial={{ opacity: 0, x: 16 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     className="grid grid-cols-1 gap-4"
@@ -863,7 +865,7 @@ function ComparisonTableSection({ selectedProduct }) {
                 {metrics.map((m, i) => (
                     <motion.div
                         key={i}
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1, duration: 0.6 }}
@@ -889,7 +891,7 @@ function ComparisonTableSection({ selectedProduct }) {
 
             {/* ── Tier 2: Before / After Transformation Cards ────────── */}
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
@@ -1255,7 +1257,7 @@ function RateCheckSection() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 {/* Visual Side (Left) */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.96 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     className="relative order-2 md:order-1"
@@ -1337,7 +1339,7 @@ function RateCheckSection() {
 
                 {/* Content Side (Right) */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 24 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     className="order-1 md:order-2 flex flex-col items-start"

@@ -100,7 +100,7 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
             onMouseLeave={handleMouseLeave}
             onClick={onClick}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className={`relative w-full aspect-[4/5] max-w-md mx-auto rounded-3xl ${active ? 'scale-[1.03]' : 'hover:scale-[1.02]'} transition-all duration-500 cursor-pointer overflow-hidden group`}
+            className={`relative w-full aspect-[3/4] max-w-lg mx-auto rounded-[2rem] ${active ? 'scale-[1.02]' : 'hover:scale-[1.01]'} transition-all duration-500 cursor-pointer overflow-hidden group`}
         >
             {/* Static gradient border */}
             <div
@@ -238,7 +238,7 @@ export default function LandingPage({ comingSoonMode = false }) {
     return (
         <div className="landing-container pt-12 relative transition-colors duration-1000">
             {/* Grand Entrance Hero Section */}
-            <section className="hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-32">
+            <section className="hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40">
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
                     <ComingSoonHeroBackground />
@@ -246,62 +246,57 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                 {/* Dynamic ambient glow for selected domain */}
                 <motion.div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none z-0"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none z-0"
                     animate={{
                         backgroundColor: themeColor,
-                        opacity: selectedProduct ? 0.05 : 0.015,
+                        opacity: selectedProduct ? 0.04 : 0.01,
                     }}
                     transition={{ duration: 2 }}
-                    style={{ filter: 'blur(180px)', willChange: 'opacity' }}
+                    style={{ filter: 'blur(200px)', willChange: 'opacity' }}
                 />
 
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
                     {/* Gasper G Logo — comingSoon only */}
                     {comingSoonMode && (
                         <motion.div
-                            className="relative w-28 h-28 mx-auto mb-10"
+                            className="relative w-24 h-24 mx-auto mb-12"
                             initial={{ opacity: 0, scale: 0.5 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         >
                             {/* Static outer glow ring */}
                             <div
-                                className="absolute -inset-6 rounded-full"
+                                className="absolute -inset-4 rounded-full"
                                 style={{
-                                    border: `1px solid ${themeColor}18`,
-                                    boxShadow: `0 0 40px ${themeColor}10`,
+                                    border: `1px solid ${themeColor}12`,
+                                    boxShadow: `0 0 60px ${themeColor}08`,
                                 }}
-                            />
-                            {/* Inner glow */}
-                            <div
-                                className="absolute inset-0 rounded-full"
-                                style={{ background: `radial-gradient(circle, ${themeColor}20 0%, transparent 70%)` }}
                             />
                             {/* Logo image */}
                             <img
                                 src="/images/gasper-logo-g.png"
                                 alt="Gasper"
                                 className="relative z-10 w-full h-full object-contain"
-                                style={{ filter: `drop-shadow(0 0 20px ${themeColor}40)` }}
+                                style={{ filter: `drop-shadow(0 0 25px ${themeColor}30)` }}
                             />
                         </motion.div>
                     )}
 
-                    {/* Badge pill with scan light */}
+                    {/* Minimal badge */}
                     <motion.div
-                        className="hero-label inline-flex items-center gap-2 mx-auto mb-8"
+                        className="inline-flex items-center gap-2.5 mx-auto mb-10 px-5 py-2 rounded-full border border-white/[0.08] bg-white/[0.02] text-slate-400 text-sm font-medium tracking-wide"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                     >
-                        <Zap size={13} />
-                        {comingSoonMode ? "Coming Soon to Public Beta" : "AI-Powered Operations Intelligence"}
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#22d3ee]" style={{ boxShadow: '0 0 8px rgba(34,211,238,0.6)' }} />
+                        {comingSoonMode ? "Coming Soon — Public Beta" : "AI-Powered Operations Intelligence"}
                     </motion.div>
 
-                    {/* Kinetic Title */}
+                    {/* Giant hero title — OpenSpace-scale */}
                     <div
-                        className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-2 mx-auto text-center max-w-5xl overflow-hidden"
-                        style={{ perspective: '600px' }}
+                        className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-6 mx-auto text-center max-w-6xl overflow-hidden"
+                        style={{ letterSpacing: '-0.04em', lineHeight: 0.95 }}
                     >
                         {heroWords.map((word, i) => (
                             <KineticWord key={word} delay={0.3 + i * 0.12}>
@@ -336,10 +331,10 @@ export default function LandingPage({ comingSoonMode = false }) {
                         ))}
                     </div>
 
-                    {/* Sub heading */}
+                    {/* Sub heading — bigger, more authoritative */}
                     {comingSoonMode && (
                         <motion.p
-                            className="text-2xl md:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-500 mb-4"
+                            className="text-xl md:text-2xl font-medium text-slate-500 mb-6 tracking-wide"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5, duration: 0.8 }}
@@ -350,7 +345,7 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                     {/* Description */}
                     <motion.p
-                        className="text-lg md:text-xl text-slate-400 text-center mx-auto max-w-3xl mb-16"
+                        className="text-lg md:text-xl text-slate-400 text-center mx-auto max-w-2xl mb-10 leading-relaxed"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 0.8 }}
@@ -361,8 +356,38 @@ export default function LandingPage({ comingSoonMode = false }) {
                         }
                     </motion.p>
 
-                    {/* Holographic 3D Domain Cards */}
-                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12 perspective-1000">
+                    {/* Dual CTA buttons — OpenSpace-style */}
+                    {comingSoonMode && (
+                        <motion.div
+                            className="flex items-center justify-center gap-4 mb-20"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.7, duration: 0.8 }}
+                        >
+                            <button
+                                className="cta-primary"
+                                onClick={() => {
+                                    const el = document.getElementById('waitlist-section');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Join the Waitlist <ArrowRight size={16} />
+                            </button>
+                            <button
+                                className="cta-outline"
+                                onClick={() => {
+                                    if (!selectedProduct) handleDomainSelect('logistics');
+                                    const el = document.getElementById('domain-content');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Explore the Platform <ArrowRight size={16} />
+                            </button>
+                        </motion.div>
+                    )}
+
+                    {/* Domain Engine Cards */}
+                    <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto perspective-1000">
                         <DomainCard
                             title="Gasper Logistics"
                             description="Global Digital Twin, Predictive Routing & Automated Compliance."

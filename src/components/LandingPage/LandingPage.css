@@ -1,4 +1,5 @@
-/* LandingPage.css — Nebula Command Center Design System */
+/* LandingPage.css — Executive Design System (OpenSpace-inspired) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
     /* Core palette */
@@ -24,8 +25,13 @@
     --engine-construction: #FF6B00;
     --engine-construction-glow: rgba(255, 107, 0, 0.5);
 
-    /* Typography */
+    /* Typography — executive pairing */
     --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Spacing scale */
+    --section-pad-y: 8rem;
+    --section-pad-y-lg: 10rem;
 }
 
 /* ============================================= */
@@ -105,8 +111,8 @@
 .aurora-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.12;
+    filter: blur(140px);
+    opacity: 0.08;
     will-change: transform;
     contain: layout style;
 }
@@ -800,61 +806,175 @@
     }
 }
 
-/* Stagger helper for kinetic text */
-@keyframes word-reveal {
-    from {
-        opacity: 0;
-        transform: translateY(40px) rotateX(20deg);
-        filter: blur(10px);
-    }
+/* ============================================= */
+/*  EXECUTIVE UTILITY CLASSES                    */
+/* ============================================= */
 
-    to {
-        opacity: 1;
-        transform: translateY(0) rotateX(0);
-        filter: blur(0);
-    }
+/* Section divider — subtle gradient line */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.15), rgba(34, 211, 238, 0.15), transparent);
+    margin: 0 auto;
 }
 
-/* Hexagonal spin for icon containers */
-@keyframes hex-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+/* Glass section panel */
+.section-glass {
+    background: rgba(6, 0, 26, 0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* Pulse ring */
-@keyframes pulse-ring {
-    0% {
-        transform: scale(0.8);
-        opacity: 0.6;
-    }
-
-    50% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
+/* Metric card — OpenSpace-style floating stat */
+.metric-card {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(6, 0, 26, 0.95));
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Iridescent shimmer */
-@keyframes iridescent-shift {
-    0% {
-        background-position: 0% 50%;
+.metric-card:hover {
+    border-color: rgba(124, 58, 237, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(124, 58, 237, 0.1);
+}
+
+.metric-card__value {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #7c3aed, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.metric-card__label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.metric-card__desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* CTA button — primary filled */
+.cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.25rem;
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(135deg, var(--aurora-violet), #5227FF);
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+}
+
+.cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
+}
+
+/* CTA button — outline */
+.cta-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.25rem;
+    border-radius: 100px;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.8);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-outline:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Feature panel — full-width alternating layout */
+.feature-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+.feature-panel--reversed {
+    direction: rtl;
+}
+
+.feature-panel--reversed>* {
+    direction: ltr;
+}
+
+.feature-panel__visual {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(34, 211, 238, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Numbered step — OpenSpace 01/02/03 style */
+.step-number {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.25), rgba(124, 58, 237, 0.05));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-pad-y: 4rem;
+        --section-pad-y-lg: 6rem;
     }
 
-    50% {
-        background-position: 100% 50%;
+    .feature-panel {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
-    100% {
-        background-position: 0% 50%;
+    .feature-panel--reversed {
+        direction: ltr;
+    }
+
+    .metric-card__value {
+        font-size: 2.5rem;
+    }
+
+    .step-number {
+        font-size: 3.5rem;
     }
 }

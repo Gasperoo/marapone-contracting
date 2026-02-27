@@ -14,7 +14,7 @@ import Particles from '../Particles/Particles';
 import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';
 import { SubcontractorMatchSection, ProjectCommandCenter, ROIImpactSection, ScheduleOptimizerSection } from './ConstructionAdvanced';
 
-// --- Animated Counter Component (Holographic Panel) ---
+// --- Floating Metric Card (OpenSpace-style) ---
 function Counter({ value, label, suffix = "" }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -34,16 +34,18 @@ function Counter({ value, label, suffix = "" }) {
     }, [springValue]);
 
     return (
-        <div ref={ref} className="text-center relative group">
-            {/* Holographic panel background */}
-            <div className="absolute inset-[-8px] rounded-xl bg-white/[0.02] border border-white/[0.04] opacity-0 group-hover:opacity-100 transition-all duration-500" />
-            <div className="relative z-10">
-                <div className="text-4xl md:text-5xl font-bold mb-2 font-mono" style={{ background: 'linear-gradient(180deg, #fff 20%, rgba(124,58,237,0.6) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                    {displayValue.toLocaleString()}{suffix}
-                </div>
-                <div className="text-[0.65rem] text-slate-500 uppercase tracking-[0.2em] font-semibold">{label}</div>
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="metric-card group"
+        >
+            <div className="metric-card__value">
+                {displayValue.toLocaleString()}{suffix}
             </div>
-        </div>
+            <div className="metric-card__label">{label}</div>
+        </motion.div>
     );
 }
 
@@ -197,30 +199,30 @@ function ProcessStep({ number, title, description, icon, align, details }) {
 function IndustryCard({ icon, title, description, color, useCase }) {
     return (
         <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group relative rounded-2xl overflow-hidden"
+            className="group relative rounded-[1.5rem] overflow-hidden"
         >
-            {/* Static gradient border */}
+            {/* Border */}
             <div
-                className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500"
+                className="absolute -inset-[1px] rounded-[1.5rem] z-0 transition-opacity duration-500"
                 style={{
-                    background: 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(34,211,238,0.15), rgba(124,58,237,0.2))',
-                    opacity: 0.3,
+                    background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(34,211,238,0.1), rgba(124,58,237,0.15))',
+                    opacity: 0.4,
                 }}
             />
-            <div className="absolute inset-[1px] bg-[#06001a]/90 rounded-2xl z-0 group-hover:bg-[#06001a]/80 transition-colors duration-500"></div>
-            <div className="relative z-10 p-7 h-full flex flex-col">
-                <div className={`w-12 h-12 rounded-lg bg-white/[0.04] flex items-center justify-center mb-6 ${color} group-hover:scale-110 transition-transform duration-500`} style={{ boxShadow: '0 0 20px rgba(124,58,237,0.1)' }}>
+            <div className="absolute inset-[1px] bg-[#06001a]/90 rounded-[1.5rem] z-0 group-hover:bg-[#06001a]/80 transition-colors duration-500" />
+            <div className="relative z-10 p-10 h-full flex flex-col">
+                <div className={`w-16 h-16 rounded-2xl bg-white/[0.04] flex items-center justify-center mb-8 ${color} group-hover:scale-105 transition-transform duration-500`} style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
                     {icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#22d3ee] transition-colors duration-300">{title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow">{description}</p>
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#22d3ee] transition-colors duration-300">{title}</h3>
+                <p className="text-slate-400 text-[15px] leading-relaxed mb-8 flex-grow">{description}</p>
 
-                <div className="mt-auto pt-4 border-t border-white/[0.04] group-hover:border-[#7c3aed]/20 transition-colors">
-                    <div className="text-xs text-slate-500 uppercase font-semibold mb-1 tracking-widest">Use Case</div>
-                    <div className="text-sm text-slate-200">{useCase}</div>
+                <div className="mt-auto pt-6 border-t border-white/[0.04] group-hover:border-[#7c3aed]/20 transition-colors">
+                    <div className="text-xs text-slate-500 uppercase font-semibold mb-2 tracking-widest">Use Case</div>
+                    <div className="text-sm text-slate-200 font-medium">{useCase}</div>
                 </div>
             </div>
         </motion.div>
@@ -1053,28 +1055,38 @@ function WaitlistSection({ selectedProduct }) {
     };
 
     return (
-        <section className="px-6 max-w-3xl mx-auto pb-32 text-center">
-            <div className="relative p-8 md:p-12 rounded-3xl overflow-hidden">
-                {/* Static gradient border */}
+        <section className="px-6 max-w-4xl mx-auto text-center" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y-lg)' }}>
+            <div className="relative p-10 md:p-16 rounded-[2rem] overflow-hidden">
+                {/* Gradient border */}
                 <div
-                    className="absolute -inset-[1px] rounded-3xl z-0"
+                    className="absolute -inset-[1px] rounded-[2rem] z-0"
                     style={{
-                        background: 'linear-gradient(135deg, rgba(124,58,237,0.4), rgba(34,211,238,0.3), rgba(16,185,129,0.2), rgba(124,58,237,0.4))',
-                        opacity: 0.6,
+                        background: 'linear-gradient(135deg, rgba(124,58,237,0.35), rgba(34,211,238,0.25), rgba(16,185,129,0.15), rgba(124,58,237,0.35))',
+                        opacity: 0.5,
                     }}
                 />
                 {/* Glass body */}
-                <div className="absolute inset-[1px] rounded-3xl bg-[#06001a]/90 backdrop-blur-2xl z-[1]" />
-                {/* Noise texture */}
-                <div className="absolute inset-[1px] rounded-3xl opacity-[0.03] z-[2]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} />
+                <div className="absolute inset-[1px] rounded-[2rem] bg-[#06001a]/92 backdrop-blur-2xl z-[1]" />
                 <div className="relative z-10">
-                    <Zap size={40} className="mx-auto text-[#7c3aed] mb-6" />
-                    <h2 className="text-3xl font-bold text-white mb-4">Secure Your Access</h2>
-                    <p className="text-slate-300 mb-2">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-bold text-white mb-4"
+                        style={{ letterSpacing: '-0.03em' }}
+                    >
+                        Ready to see what's possible?
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-slate-400 mb-3 text-lg leading-relaxed max-w-xl mx-auto"
+                    >
                         Gasper is currently in private beta. Join the waitlist to be notified when we open to the public.
-                    </p>
-                    <p className="text-[#22d3ee] text-sm font-semibold mb-8">
-                        <Users size={14} className="inline mr-1" />
+                    </motion.p>
+                    <p className="text-[#22d3ee] text-sm font-semibold mb-10 flex items-center justify-center gap-1.5">
+                        <Users size={14} />
                         Limited spots available for the private beta
                     </p>
 
@@ -1087,7 +1099,7 @@ function WaitlistSection({ selectedProduct }) {
                                 value={formData.email}
                                 onChange={handleInputChange}
                                 placeholder="Enter your email address"
-                                className="w-full bg-[#06001a]/80 border border-white/[0.06] rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all placeholder:text-slate-600"
+                                className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all placeholder:text-slate-600"
                                 disabled={status === 'loading'}
                             />
                         </div>
@@ -1099,7 +1111,7 @@ function WaitlistSection({ selectedProduct }) {
                                     name="role"
                                     value={formData.role}
                                     onChange={handleInputChange}
-                                    className="w-full bg-[#06001a]/80 border border-white/[0.06] rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all appearance-none cursor-pointer"
+                                    className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all appearance-none cursor-pointer"
                                     disabled={status === 'loading'}
                                 >
                                     <option value="">Your Role</option>
@@ -1120,7 +1132,7 @@ function WaitlistSection({ selectedProduct }) {
                                     name="companySize"
                                     value={formData.companySize}
                                     onChange={handleInputChange}
-                                    className="w-full bg-[#06001a]/80 border border-white/[0.06] rounded-xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all appearance-none cursor-pointer"
+                                    className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all appearance-none cursor-pointer"
                                     disabled={status === 'loading'}
                                 >
                                     <option value="">Company Size</option>
@@ -1135,9 +1147,9 @@ function WaitlistSection({ selectedProduct }) {
                         <button
                             type="submit"
                             disabled={status === 'loading'}
-                            className={`w-full font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center relative overflow-hidden ${status === 'loading'
+                            className={`w-full font-bold py-4 px-8 rounded-full transition-all flex items-center justify-center relative overflow-hidden ${status === 'loading'
                                 ? 'bg-[#7c3aed]/50 cursor-not-allowed'
-                                : 'bg-[#7c3aed] hover:bg-[#6d28d9] shadow-lg shadow-[#7c3aed]/30 hover:shadow-[#7c3aed]/50'
+                                : 'bg-gradient-to-r from-[#7c3aed] to-[#5227FF] hover:from-[#6d28d9] hover:to-[#4118e0] shadow-lg shadow-[#7c3aed]/30 hover:shadow-[#7c3aed]/50'
                                 } text-white`}
                         >
                             {status === 'loading' ? (
@@ -1368,16 +1380,16 @@ function RateCheckSection() {
 
 export default function ComingSoonContent({ selectedProduct }) {
     return (
-        <div className="mt-20 space-y-24 relative">
+        <div className="relative">
 
             {/* Particles Background */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
                 <Particles
                     particleColors={["#7c3aed", "#22d3ee", "#ec4899"]}
-                    particleCount={80}
+                    particleCount={60}
                     particleSpread={10}
-                    speed={0.03}
-                    particleBaseSize={40}
+                    speed={0.02}
+                    particleBaseSize={30}
                     moveParticlesOnHover={false}
                     alphaParticles={true}
                     disableRotation={false}
@@ -1387,57 +1399,78 @@ export default function ComingSoonContent({ selectedProduct }) {
                 />
             </div>
 
-            {/* --- STATS SECTION (Mission Metrics) --- */}
-            <section className="px-6 max-w-7xl mx-auto">
-                <div className="relative rounded-3xl overflow-hidden">
-                    {/* Glass panel with scan-line */}
-                    <div className="absolute inset-0 bg-[#06001a]/60 backdrop-blur-xl border border-white/[0.04] rounded-3xl" />
-                    <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
-                        {/* Clean divider line instead of animated scan-line */}
-                        <div
-                            className="absolute w-full h-[1px] top-0 left-0"
-                            style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.2), rgba(34,211,238,0.2), transparent)' }}
-                        />
-                    </div>
-                    <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 py-12 px-6">
-                        {selectedProduct === 'logistics' ? (
-                            <>
-                                <Counter value={5000} label="Connected Vessels" suffix="+" />
-                                <Counter value={98} label="Accuracy Rating" suffix="%" />
-                                <Counter value={120} label="Countries Covered" suffix="+" />
-                                <Counter value={2} label="Data Points (B)" suffix="B+" />
-                                <Counter value={300} label="Port Integrations" suffix="+" />
-                                <Counter value={50} label="M+ Routes Analyzed" suffix="M+" />
-                            </>
-                        ) : (
-                            <>
-                                <Counter value={850} label="Active Job Sites" suffix="+" />
-                                <Counter value={99} label="Safety Score" suffix="%" />
-                                <Counter value={5} label="Managed Value ($B)" suffix="B+" />
-                                <Counter value={20} label="Blueprints Analyzed (M)" suffix="M+" />
-                                <Counter value={1200} label="Subcontractors" suffix="+" />
-                                <Counter value={100} label="Code Violations Caught (K)" suffix="K+" />
-                            </>
-                        )}
-                    </div>
+            {/* ══════════════ STATS SECTION ══════════════ */}
+            <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+                <div className="text-center mb-12">
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-slate-500 text-sm uppercase tracking-[0.2em] font-semibold mb-4"
+                    >
+                        {selectedProduct === 'construction' ? 'Construction Intelligence' : 'Global Logistics Intelligence'}
+                    </motion.p>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-3xl md:text-4xl font-bold text-white"
+                    >
+                        By the Numbers
+                    </motion.h2>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {selectedProduct === 'logistics' ? (
+                        <>
+                            <Counter value={5000} label="Connected Vessels" suffix="+" />
+                            <Counter value={98} label="Accuracy Rating" suffix="%" />
+                            <Counter value={120} label="Countries Covered" suffix="+" />
+                            <Counter value={50} label="Routes Analyzed (M)" suffix="M+" />
+                        </>
+                    ) : (
+                        <>
+                            <Counter value={850} label="Active Job Sites" suffix="+" />
+                            <Counter value={99} label="Safety Score" suffix="%" />
+                            <Counter value={5} label="Managed Value ($B)" suffix="B+" />
+                            <Counter value={20} label="Blueprints Analyzed (M)" suffix="M+" />
+                        </>
+                    )}
                 </div>
             </section>
 
-            {/* --- FEATURES SECTION --- */}
+            <div className="section-divider" />
+
+            {/* ══════════════ FEATURES SECTION ══════════════ */}
             {selectedProduct === 'logistics' && (
-                <section className="px-6 max-w-7xl mx-auto">
+                <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
                     <div className="text-center mb-20">
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="inline-block px-4 py-1.5 rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 text-[#7c3aed] text-sm font-medium mb-4"
+                            viewport={{ once: true }}
+                            className="inline-block px-4 py-1.5 rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 text-[#7c3aed] text-sm font-medium mb-6"
                         >
                             Core Capabilities
                         </motion.div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#22d3ee]">Beyond Boundaries</span></h2>
-                        <p className="text-slate-400 max-w-2xl mx-auto text-lg">A comprehensive suite of AI-powered tools designed to give you total visibility and control over your global operations.</p>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-4xl md:text-6xl font-bold text-white mb-6"
+                            style={{ letterSpacing: '-0.03em' }}
+                        >
+                            Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#22d3ee]">Beyond Boundaries</span>
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed"
+                        >
+                            A comprehensive suite of AI-powered tools designed to give you total visibility and control over your global operations.
+                        </motion.p>
                     </div>
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 gap-8">
                         <FeatureCard
                             icon={<Activity size={32} />}
                             title="Real-Time Tracking"
@@ -1469,8 +1502,12 @@ export default function ComingSoonContent({ selectedProduct }) {
             {/* --- CONSTRUCTION FEATURES --- */}
             {selectedProduct === 'construction' && <ConstructionFeaturesSection />}
 
-            {/* --- COMPARISON TABLE --- */}
+            <div className="section-divider" />
+
+            {/* ══════════════ COMPARISON / ADVANTAGES ══════════════ */}
             <ComparisonTableSection selectedProduct={selectedProduct} />
+
+            <div className="section-divider" />
 
             {/* --- LOGISTICS DEEP DIVES --- */}
             {selectedProduct === 'logistics' && (
@@ -1501,15 +1538,42 @@ export default function ComingSoonContent({ selectedProduct }) {
                 </>
             )}
 
-            {/* --- TECHNOLOGY STACK --- */}
+            <div className="section-divider" />
+
+            {/* ══════════════ TECHNOLOGY STACK ══════════════ */}
             <TechnologyStackSection selectedProduct={selectedProduct} />
 
-            {/* --- HOW IT WORKS SECTION --- */}
+            <div className="section-divider" />
+
+            {/* ══════════════ HOW IT WORKS ══════════════ */}
             {selectedProduct === 'logistics' && (
-                <section className="px-6 max-w-7xl mx-auto relative py-20">
+                <section className="px-6 max-w-7xl mx-auto relative" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
                     <div className="text-center mb-24">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How Gasper Works</h2>
-                        <p className="text-slate-400 max-w-2xl mx-auto">From unstructured chaos to actionable intelligence in three steps.</p>
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-slate-500 text-sm uppercase tracking-[0.2em] font-semibold mb-4"
+                        >
+                            From chaos to clarity
+                        </motion.p>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-4xl md:text-5xl font-bold text-white mb-4"
+                            style={{ letterSpacing: '-0.03em' }}
+                        >
+                            How Gasper Works
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-slate-400 max-w-2xl mx-auto text-lg"
+                        >
+                            From unstructured chaos to actionable intelligence in three steps.
+                        </motion.p>
                     </div>
 
                     <div className="relative">
@@ -1558,13 +1622,38 @@ export default function ComingSoonContent({ selectedProduct }) {
                 </section>
             )}
 
-            {/* --- INDUSTRIES SECTION --- */}
-            <section className="px-6 max-w-7xl mx-auto pb-20">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold text-white mb-4">Engineered for Every Sector</h2>
-                    <p className="text-slate-400">Tailored solutions for the unique challenges of your industry.</p>
+            <div className="section-divider" />
+
+            {/* ══════════════ INDUSTRIES ══════════════ */}
+            <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+                <div className="text-center mb-20">
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-slate-500 text-sm uppercase tracking-[0.2em] font-semibold mb-4"
+                    >
+                        Built for your sector
+                    </motion.p>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-bold text-white mb-4"
+                        style={{ letterSpacing: '-0.03em' }}
+                    >
+                        Engineered for Every Sector
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-slate-400 max-w-2xl mx-auto text-lg"
+                    >
+                        Tailored solutions for the unique challenges of your industry.
+                    </motion.p>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {selectedProduct === 'logistics' && (
                         <>
                             <IndustryCard
@@ -1618,15 +1707,22 @@ export default function ComingSoonContent({ selectedProduct }) {
                 </div>
             </section>
 
-            {/* --- TESTIMONIALS --- */}
+            <div className="section-divider" />
+
+            {/* ══════════════ AI BOT ══════════════ */}
             <GasperAIBotSection />
 
-            {/* --- WHAT YOU'LL GET --- */}
+            {/* ══════════════ WHAT YOU'LL GET ══════════════ */}
             <WhatYouGetSection />
 
-            {/* --- WAITLIST SECTION --- */}
-            <WaitlistSection selectedProduct={selectedProduct} />
+            <div className="section-divider" />
+
+            {/* ══════════════ WAITLIST ══════════════ */}
+            <div id="waitlist-section">
+                <WaitlistSection selectedProduct={selectedProduct} />
+            </div>
 
         </div>
     );
 }
+

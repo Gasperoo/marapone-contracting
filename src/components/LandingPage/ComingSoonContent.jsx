@@ -790,140 +790,168 @@ function TechnologyStackSection({ selectedProduct }) {
 
 // --- Comparison Table Section ---
 function ComparisonTableSection({ selectedProduct }) {
-    const allComparisons = [
-        { feature: "Real-Time Tracking", traditional: false, gasper: true, product: 'logistics' },
-        { feature: "AI-Powered Predictions", traditional: false, gasper: true, product: 'logistics' },
-        { feature: "Digital Twin Simulation", traditional: false, gasper: true, product: 'logistics' },
-        { feature: "Automated Compliance", traditional: false, gasper: true, product: 'logistics' },
-        { feature: "Multi-Modal Integration", traditional: true, gasper: true, product: 'logistics' },
-        { feature: "Rate Benchmarking", traditional: false, gasper: true, product: 'logistics' },
-        { feature: "Blueprint AI Analysis", traditional: false, gasper: true, product: 'construction' },
-        { feature: "Cash Flow Forecasting", traditional: false, gasper: true, product: 'construction' },
-        { feature: "Theft & Asset Protection", traditional: false, gasper: true, product: 'construction' },
-        { feature: "Subcontractor Matching", traditional: false, gasper: true, product: 'construction' },
-        { feature: "Setup Time", traditional: "Weeks", gasper: "Minutes", product: 'both' },
-        { feature: "Cost Structure", traditional: "Per Project", gasper: "Flat Rate", product: 'both' }
-    ];
+    const isConstruction = selectedProduct === 'construction';
 
-    const comparisons = allComparisons.filter(c => c.product === 'both' || c.product === selectedProduct);
+    const metrics = isConstruction
+        ? [
+            { value: '10×', label: 'Faster Estimates', desc: 'Blueprint AI analyzes plans in minutes, not days', icon: <Zap size={22} /> },
+            { value: '99.2%', label: 'Budget Accuracy', desc: 'AI-powered cash flow forecasting across all phases', icon: <TrendingUp size={22} /> },
+            { value: '< 5min', label: 'Setup Time', desc: 'Onboard your first job site in under five minutes', icon: <Clock size={22} /> },
+        ]
+        : [
+            { value: '10×', label: 'Faster Processing', desc: 'Automate customs, routing & compliance end-to-end', icon: <Zap size={22} /> },
+            { value: '99.7%', label: 'Prediction Accuracy', desc: 'AI models trained on billions of logistics data points', icon: <TrendingUp size={22} /> },
+            { value: '< 5min', label: 'Setup Time', desc: 'Connect your first shipment in under five minutes', icon: <Clock size={22} /> },
+        ];
+
+    const transformations = isConstruction
+        ? [
+            { before: 'Manual takeoffs from paper blueprints', after: 'AI extracts quantities & generates BOMs automatically', icon: <Ruler size={18} /> },
+            { before: 'Spreadsheet-based budget guesswork', after: 'Real-time cash flow projections per project phase', icon: <DollarSign size={18} /> },
+            { before: 'Reactive theft & loss reporting', after: 'Computer vision monitoring with instant alerts', icon: <Eye size={18} /> },
+            { before: 'Word-of-mouth subcontractor sourcing', after: 'AI-scored matching by trade, capacity & track record', icon: <Users size={18} /> },
+            { before: 'Disconnected project spreadsheets', after: 'Unified command center across every job site', icon: <Layers size={18} /> },
+        ]
+        : [
+            { before: 'Manual rate comparison across carriers', after: 'AI benchmarks 50+ carriers in real-time', icon: <ArrowRightLeft size={18} /> },
+            { before: 'Static tracking with day-old data', after: 'Global digital twin with live vessel positions', icon: <Globe size={18} /> },
+            { before: 'Reactive compliance firefighting', after: 'Automated HS classification & duty calculation', icon: <ShieldCheck size={18} /> },
+            { before: 'Siloed air, sea & ground systems', after: 'Unified multi-modal visibility in one platform', icon: <Ship size={18} /> },
+            { before: 'Manual customs documentation', after: 'AI-generated paperwork with 1-click filing', icon: <FileText size={18} /> },
+        ];
+
+    const differentiators = isConstruction
+        ? ['No per-seat fees', 'SOC 2 Certified', 'Unlimited job sites', '24/7 AI support']
+        : ['No per-shipment fees', 'SOC 2 Certified', 'Unlimited tracking', '24/7 AI support'];
 
     return (
-        <section className="px-6 max-w-6xl mx-auto py-20 relative overflow-hidden">
-            {/* Background — clean, no animated orbs */}
-
-            <div className="text-center mb-16 relative z-10">
+        <section className="px-6 max-w-6xl mx-auto py-24 relative">
+            {/* Section header */}
+            <div className="text-center mb-20 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     className="inline-block px-4 py-1.5 rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 text-[#7c3aed] text-sm font-medium mb-6"
                 >
-                    <TrendingUp size={14} className="inline mr-2" />
-                    Competitive Advantage
+                    <Award size={14} className="inline mr-2" />
+                    The Gasper Advantage
                 </motion.div>
-                <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-4">
-                    Why Choose Gasper?
-                </h2>
-                <p className="text-slate-400 text-lg">See how we stack up against traditional logistics & construction tools.</p>
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-4xl md:text-5xl font-bold mb-5"
+                    style={{ background: 'linear-gradient(to bottom, #fff, rgba(255,255,255,0.6))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+                >
+                    Why Industry Leaders Choose Gasper
+                </motion.h2>
+                <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-slate-400 text-lg max-w-2xl mx-auto"
+                >
+                    Purpose-built AI that transforms how {isConstruction ? 'construction teams build' : 'supply chains move'} — from first touch to final delivery.
+                </motion.p>
             </div>
 
+            {/* ── Tier 1: Hero Metric Pillars ────────────────────────── */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                {metrics.map((m, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1, duration: 0.6 }}
+                        className="relative group rounded-2xl overflow-hidden"
+                    >
+                        {/* Border */}
+                        <div className="absolute -inset-[1px] rounded-2xl transition-opacity duration-500 opacity-20 group-hover:opacity-50" style={{ background: 'linear-gradient(135deg, #7c3aed, #22d3ee)' }} />
+                        <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 z-[1]" />
+
+                        <div className="relative z-10 p-8 text-center">
+                            <div className="w-12 h-12 rounded-xl mx-auto mb-5 flex items-center justify-center text-[#22d3ee]" style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.15)' }}>
+                                {m.icon}
+                            </div>
+                            <div className="text-5xl font-black mb-2" style={{ background: 'linear-gradient(135deg, #7c3aed, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                                {m.value}
+                            </div>
+                            <div className="text-white font-semibold text-lg mb-2">{m.label}</div>
+                            <p className="text-slate-500 text-sm leading-relaxed">{m.desc}</p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+
+            {/* ── Tier 2: Before / After Transformation Cards ────────── */}
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="relative group"
+                className="relative rounded-2xl overflow-hidden mb-8"
             >
-                {/* Outer Glow Container */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#7c3aed]/15 via-[#22d3ee]/15 to-[#7c3aed]/15 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                {/* Border */}
+                <div className="absolute -inset-[1px] rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(34,211,238,0.15), rgba(124,58,237,0.2))' }} />
+                <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/90 backdrop-blur-xl z-[1]" />
 
-                {/* Main Table Container */}
-                <div className="relative rounded-3xl bg-[#06001a]/80 border border-white/[0.06] backdrop-blur-2xl overflow-hidden shadow-2xl">
-                    {/* Header Row */}
-                    <div className="grid grid-cols-3 bg-white/[0.03] border-b border-white/[0.06]">
-                        <div className="p-6"></div>
-                        <div className="p-6 text-center">
-                            <div className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Traditional Tools</div>
-                            <div className="text-xs text-slate-600">Legacy Systems</div>
+                <div className="relative z-10">
+                    {/* Table header */}
+                    <div className="grid grid-cols-[1fr_1fr] border-b border-white/[0.06]">
+                        <div className="px-8 py-5 flex items-center gap-3">
+                            <div className="w-2 h-2 rounded-full bg-red-500/60" />
+                            <span className="text-slate-500 text-sm font-semibold uppercase tracking-widest">Before Gasper</span>
                         </div>
-                        <div className="p-6 text-center bg-gradient-to-br from-[#7c3aed]/8 to-transparent border-l border-white/[0.04]">
-                            <div className="flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider mb-1" style={{ background: 'linear-gradient(to right, #7c3aed, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                                <Sparkles size={16} className="text-[#7c3aed]" />
-                                Gasper
-                            </div>
-                            <div className="text-xs text-[#22d3ee]/60">Next-Gen Platform</div>
+                        <div className="px-8 py-5 flex items-center gap-3 border-l border-white/[0.06]" style={{ background: 'linear-gradient(90deg, rgba(124,58,237,0.04), transparent)' }}>
+                            <div className="w-2 h-2 rounded-full bg-[#22d3ee]" style={{ boxShadow: '0 0 8px rgba(34,211,238,0.6)' }} />
+                            <span className="text-sm font-semibold uppercase tracking-widest" style={{ background: 'linear-gradient(90deg, #7c3aed, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>With Gasper</span>
                         </div>
                     </div>
 
-                    {/* Comparison Rows */}
-                    {comparisons.map((item, idx) => (
+                    {/* Transformation rows */}
+                    {transformations.map((t, i) => (
                         <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            key={i}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.05 }}
-                            className="grid grid-cols-3 border-b border-white/[0.03] last:border-0 hover:bg-gradient-to-r hover:from-[#7c3aed]/5 hover:to-transparent transition-all duration-300 group/row"
+                            transition={{ delay: i * 0.06 }}
+                            className="grid grid-cols-[1fr_1fr] border-b border-white/[0.03] last:border-0 group/row hover:bg-white/[0.01] transition-colors duration-300"
                         >
-                            {/* Feature Name */}
-                            <div className="p-5 flex items-center">
-                                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#22d3ee] mr-3 opacity-0 group-hover/row:opacity-100 transition-opacity"></div>
-                                <span className="text-white font-semibold text-base group-hover/row:text-[#22d3ee] transition-colors">
-                                    {item.feature}
-                                </span>
+                            {/* Before */}
+                            <div className="px-8 py-5 flex items-start gap-4">
+                                <div className="w-8 h-8 rounded-lg bg-white/[0.03] flex items-center justify-center text-slate-600 flex-shrink-0 mt-0.5">
+                                    {t.icon}
+                                </div>
+                                <span className="text-slate-500 text-[15px] leading-relaxed">{t.before}</span>
                             </div>
-
-                            {/* Traditional Column */}
-                            <div className="p-5 flex items-center justify-center">
-                                {typeof item.traditional === 'boolean' ? (
-                                    item.traditional ? (
-                                        <div className="relative">
-                                            <Check size={24} className="text-slate-500" />
-                                        </div>
-                                    ) : (
-                                        <div className="relative">
-                                            <X size={24} className="text-red-500/40" />
-                                            <div className="absolute inset-0 bg-red-500/10 rounded-full blur-md"></div>
-                                        </div>
-                                    )
-                                ) : (
-                                    <span className="text-slate-400 text-sm font-medium px-3 py-1 rounded-lg bg-white/5">
-                                        {item.traditional}
-                                    </span>
-                                )}
-                            </div>
-
-                            {/* Gasper Column */}
-                            <div className="p-5 flex items-center justify-center bg-gradient-to-r from-transparent to-[#7c3aed]/5 border-l border-white/[0.03]">
-                                {typeof item.gasper === 'boolean' ? (
-                                    item.gasper ? (
-                                        <div className="relative">
-                                            <Check size={24} className="text-[#7c3aed] drop-shadow-[0_0_8px_rgba(124,58,237,0.6)]" />
-                                        </div>
-                                    ) : (
-                                        <div className="relative">
-                                            <X size={24} className="text-red-500/40" />
-                                        </div>
-                                    )
-                                ) : (
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#22d3ee] text-sm font-bold px-4 py-1.5 rounded-lg bg-[#7c3aed]/10 border border-[#7c3aed]/20 shadow-[0_0_15px_rgba(124,58,237,0.2)]">
-                                        {item.gasper}
-                                    </span>
-                                )}
+                            {/* After */}
+                            <div className="px-8 py-5 flex items-start gap-4 border-l border-white/[0.06]" style={{ background: 'linear-gradient(90deg, rgba(124,58,237,0.02), transparent)' }}>
+                                <div className="w-8 h-8 rounded-lg flex items-center justify-center text-[#22d3ee] flex-shrink-0 mt-0.5" style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.1)' }}>
+                                    {t.icon}
+                                </div>
+                                <span className="text-slate-200 text-[15px] leading-relaxed group-hover/row:text-white transition-colors">{t.after}</span>
                             </div>
                         </motion.div>
                     ))}
-
-                    {/* Bottom CTA Banner */}
-                    <div className="bg-gradient-to-r from-[#7c3aed]/15 via-[#22d3ee]/8 to-[#7c3aed]/15 border-t border-white/[0.04] p-6">
-                        <div className="flex items-center justify-center gap-3 text-center">
-                            <Award size={20} className="text-[#22d3ee]" />
-                            <p className="text-slate-400 text-sm">
-                                Join innovative companies transforming their supply chains
-                            </p>
-                            <TrendingUp size={20} className="text-[#7c3aed]" />
-                        </div>
-                    </div>
                 </div>
+            </motion.div>
+
+            {/* ── Tier 3: Differentiator Strip ────────────────────────── */}
+            <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6"
+            >
+                {differentiators.map((d, i) => (
+                    <div key={i} className="flex items-center gap-2 text-sm">
+                        <CheckCircle2 size={16} className="text-[#22d3ee]" />
+                        <span className="text-slate-400 font-medium">{d}</span>
+                    </div>
+                ))}
             </motion.div>
         </section>
     );

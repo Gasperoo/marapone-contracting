@@ -1313,6 +1313,118 @@ function RateCheckSection() {
 
 
 
+// --- Custom LLM Builder Section ---
+function CustomLLMBuilderSection({ selectedProduct }) {
+    let accentTheme = { from: 'from-[#8B5CF6]', to: 'to-[#0EA5E9]', bgLight: 'bg-[#8B5CF6]/10', border: 'border-[#8B5CF6]/30', text: 'text-[#8B5CF6]' };
+    if (selectedProduct === 'construction') {
+        accentTheme = { from: 'from-[#FF6B00]', to: 'to-[#F59E0B]', bgLight: 'bg-[#FF6B00]/10', border: 'border-[#FF6B00]/30', text: 'text-[#FF6B00]' };
+    } else if (selectedProduct === 'logistics') {
+        accentTheme = { from: 'from-[#0EA5E9]', to: 'to-[#22d3ee]', bgLight: 'bg-[#0EA5E9]/10', border: 'border-[#0EA5E9]/30', text: 'text-[#0EA5E9]' };
+    }
+
+    const industryText = selectedProduct === 'construction' ? 'construction' : (selectedProduct === 'logistics' ? 'logistics' : 'logistics & construction');
+
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <div className="text-center mb-16 relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className={`inline-flex items-center px-4 py-1.5 rounded-full border ${accentTheme.border} ${accentTheme.bgLight} ${accentTheme.text} text-sm font-medium mb-6`}
+                >
+                    <Brain size={14} className="mr-2" />
+                    Bespoke Enterprise AI
+                </motion.div>
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-4xl md:text-5xl font-bold mb-6 text-white"
+                >
+                    Gasper <span className={`text-transparent bg-clip-text bg-gradient-to-r ${accentTheme.from} ${accentTheme.to}`}>Custom LLM Builder</span>
+                </motion.h2>
+                <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed"
+                >
+                    At Gasper, we offer building powerful <strong>custom Large Language Models (LLMs)</strong> designed specifically for {industryText}. We start by deeply understanding your unique workflows, proprietary data, terminology, and compliance needs to create an AI that truly speaks your business language.
+                </motion.p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 relative z-10">
+                {/* How we Build */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1, duration: 0.6 }}
+                    className="relative rounded-2xl p-8 border border-white/10 bg-[#0B1120]/80 backdrop-blur-xl group hover:border-white/20 transition-all overflow-hidden"
+                >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${accentTheme.from} ${accentTheme.to} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
+                    <div className="absolute -right-4 -top-4 p-6 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500 transform group-hover:scale-110">
+                        <Database size={120} />
+                    </div>
+                    <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${accentTheme.text} mb-6 shadow-lg shadow-black/20`}>
+                        <Cpu size={28} />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">How We Build</h3>
+                    <p className="text-slate-400 text-[15px] leading-relaxed relative z-10">
+                        Our expert team fine-tunes or builds tailored models using your internal documents, project histories, supply chain records, safety protocols, and operational data.
+                    </p>
+                </motion.div>
+
+                {/* How we Integrate */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="relative rounded-2xl p-8 border border-white/10 bg-[#0B1120]/80 backdrop-blur-xl group hover:border-white/20 transition-all overflow-hidden"
+                >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${accentTheme.from} ${accentTheme.to} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
+                    <div className="absolute -right-4 -top-4 p-6 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500 transform group-hover:scale-110">
+                        <Layers size={120} />
+                    </div>
+                    <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${accentTheme.text} mb-6 shadow-lg shadow-black/20`}>
+                        <Zap size={28} />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">Seamless Integration</h3>
+                    <p className="text-slate-400 text-[15px] leading-relaxed relative z-10">
+                        We embed your custom LLM into existing tools, ERP systems, project management platforms, chat interfaces, or custom dashboards via secure APIs, on-premise or cloud deployments.
+                    </p>
+                </motion.div>
+
+                {/* Why you need it */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
+                    className="relative rounded-2xl p-8 border border-white/10 bg-[#0B1120]/80 backdrop-blur-xl group hover:border-white/20 transition-all overflow-hidden md:col-span-3 lg:col-span-1"
+                >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${accentTheme.from} ${accentTheme.to} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
+                    <div className="absolute -right-4 -top-4 p-6 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500 transform group-hover:scale-110">
+                        <ShieldCheck size={120} />
+                    </div>
+                    <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${accentTheme.text} mb-6 shadow-lg shadow-black/20`}>
+                        <TrendingUp size={28} />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">Why You Need It</h3>
+                    <p className="text-slate-400 text-[15px] leading-relaxed relative z-10">
+                        Off-the-shelf AI misses industry nuances, risks data exposure, and delivers generic outputs. With Gasper's custom solution, you gain unmatched accuracy for tasks like predictive maintenance, supply chain optimization, contract analysis, delay forecasting, regulatory compliance, and automated reporting — driving efficiency, reducing errors, cutting costs, and securing your competitive edge while keeping full control over your sensitive data.
+                    </p>
+                </motion.div>
+            </div>
+
+            {/* Visual background element */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r ${accentTheme.from} ${accentTheme.to} opacity-[0.05] blur-[100px] rounded-[100%] pointer-events-none -z-10`} />
+        </section>
+    );
+}
+
 export default function ComingSoonContent({ selectedProduct }) {
     return (
         <div className="relative">
@@ -1644,6 +1756,11 @@ export default function ComingSoonContent({ selectedProduct }) {
 
             {/* ══════════════ AI BOT ══════════════ */}
             <GasperAIBotSection />
+
+            <div className="section-divider" />
+
+            {/* ══════════════ CUSTOM LLM BUILDER ══════════════ */}
+            <CustomLLMBuilderSection selectedProduct={selectedProduct} />
 
             {/* ══════════════ WHAT YOU'LL GET ══════════════ */}
             <WhatYouGetSection />

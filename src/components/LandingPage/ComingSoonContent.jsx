@@ -484,230 +484,173 @@ function SustainabilitySection() {
     );
 }
 
-// --- Testimonials Section ---
+// --- Meet Your Gasper AI — OpenSpace-Inspired Section ---
 function GasperAIBotSection() {
-    const features = [
+    const capabilities = [
         {
-            icon: <MessageSquare size={24} />,
-            title: "Natural Language Queries",
-            description: "Ask complex logistics questions in plain English. Track shipments, compare routes, analyze costs, and get instant answers without navigating complex dashboards."
+            icon: <MessageSquare size={28} />,
+            title: "Natural Language",
+            description: "Ask complex questions in plain English — track shipments, compare routes, and get instant answers."
         },
         {
-            icon: <Zap size={24} />,
-            title: "Multi-Carrier Analysis",
-            description: "Instantly compare rates, transit times, and reliability scores across hundreds of carriers. Get AI-powered recommendations optimized for your specific needs."
+            icon: <Brain size={28} />,
+            title: "Proactive Alerts",
+            description: "Monitors your supply chain 24/7 and alerts you to risks before they impact operations."
         },
         {
-            icon: <Brain size={24} />,
-            title: "Proactive Intelligence",
-            description: "Our AI continuously monitors your supply chain and proactively alerts you to risks like port congestion, weather disruptions, or compliance issues before they impact your operations."
-        },
-        {
-            icon: <FileText size={24} />,
-            title: "Intelligent Automation",
-            description: "Generate shipping documents, classify HS codes, screen sanctions lists, and create compliance reports through simple conversational commands."
+            icon: <Zap size={28} />,
+            title: "Instant Automation",
+            description: "Generate documents, classify HS codes, and compare carrier rates through simple commands."
         }
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
+        <section className="px-6 max-w-6xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+            {/* Large centered heading */}
             <div className="text-center mb-16">
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="inline-block px-4 py-1.5 rounded-full border border-[#22d3ee]/30 bg-[#22d3ee]/10 text-[#22d3ee] text-sm font-medium mb-4"
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#22d3ee]/20 bg-[#22d3ee]/5 text-[#22d3ee] text-sm font-medium mb-6"
                 >
-                    <Bot size={14} className="inline mr-2" />
+                    <Bot size={14} />
                     AI-Powered Assistant
                 </motion.div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meet Your Gasper AI Assistant</h2>
-                <p className="text-slate-400 max-w-2xl mx-auto">
-                    Your intelligent logistics copilot that analyzes your entire supply chain, answers complex questions instantly, and proactively identifies opportunities to save time and money.
-                </p>
+                <motion.h2
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-4xl md:text-6xl font-bold text-white mb-5"
+                    style={{ letterSpacing: '-0.03em' }}
+                >
+                    Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#22d3ee]">Gasper AI</span>
+                </motion.h2>
+                <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed"
+                >
+                    Your intelligent operations copilot. Ask anything, get instant insights, and let AI handle the complexity.
+                </motion.p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-                {/* Left: Chat Demo */}
-                <motion.div
-                    initial={{ opacity: 0, x: -16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="relative p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl"
-                >
-                    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#0EA5E9] flex items-center justify-center p-1.5">
-                            <img
-                                src="/images/gasper-logo-g.png"
-                                alt="Gasper AI"
-                                className="w-full h-full object-contain"
-                            />
-                        </div>
-                        <div>
-                            <div className="text-white font-semibold">Gasper AI</div>
-                            <div className="text-xs text-green-400 flex items-center gap-1">
-                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                Online
-                            </div>
-                        </div>
-                    </div>
+            {/* Centered Chat Mockup */}
+            <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-2xl mx-auto mb-20"
+            >
+                <div className="relative rounded-2xl overflow-hidden">
+                    {/* Border glow */}
+                    <div className="absolute -inset-[1px] rounded-2xl z-0" style={{ background: 'linear-gradient(135deg, rgba(14,165,233,0.2), rgba(34,211,238,0.15), rgba(14,165,233,0.1))', opacity: 0.6 }} />
+                    <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 backdrop-blur-2xl z-[1]" />
 
-                    {/* Sample Chat Messages */}
-                    <div className="space-y-4">
-                        {/* User Query 1 */}
-                        <div className="flex justify-end">
-                            <div className="bg-[#0EA5E9]/20 border border-[#0EA5E9]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
-                                <p className="text-white text-sm">Where is shipment #SH-2847?</p>
+                    <div className="relative z-10 p-6">
+                        {/* Header */}
+                        <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/[0.06]">
+                            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0EA5E9] to-[#22d3ee] flex items-center justify-center p-1">
+                                <img src="/images/gasper-logo-g.png" alt="Gasper AI" className="w-full h-full object-contain" />
                             </div>
-                        </div>
-
-                        {/* AI Response 1 */}
-                        <div className="flex justify-start">
-                            <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                                <p className="text-slate-300 text-sm mb-2">Shipment #SH-2847 is currently:</p>
-                                <div className="space-y-1 text-xs text-slate-400">
-                                    <div className="flex items-center gap-2">
-                                        <Ship size={12} className="text-[#22d3ee]" />
-                                        <span>Vessel: MAERSK ESSEX</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <MapPin size={12} className="text-[#22d3ee]" />
-                                        <span>Location: 35.2°N, 139.7°E (Tokyo Bay)</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <Clock size={12} className="text-green-400" />
-                                        <span>ETA: Feb 12, 2026 - On Time</span>
-                                    </div>
+                            <div>
+                                <div className="text-white font-semibold text-sm">Gasper AI</div>
+                                <div className="text-[10px] text-emerald-400 flex items-center gap-1">
+                                    <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                                    Online
                                 </div>
                             </div>
                         </div>
 
-                        {/* User Query 2 */}
-                        <div className="flex justify-end">
-                            <div className="bg-[#0EA5E9]/20 border border-[#0EA5E9]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
-                                <p className="text-white text-sm">Any weather risks?</p>
+                        {/* Chat messages */}
+                        <div className="space-y-4">
+                            {/* User */}
+                            <div className="flex justify-end">
+                                <div className="bg-[#0EA5E9]/15 border border-[#0EA5E9]/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]">
+                                    <p className="text-white text-sm">What's the cheapest way to ship 500kg from Shanghai to LA next week?</p>
+                                </div>
                             </div>
-                        </div>
 
-                        {/* AI Response 2 */}
-                        <div className="flex justify-start">
-                            <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                                <p className="text-slate-300 text-sm mb-2">✅ No significant weather risks detected along the current route. Smooth sailing ahead!</p>
-                            </div>
-                        </div>
-
-                        {/* User Query 3 - More Complex */}
-                        <div className="flex justify-end">
-                            <div className="bg-[#0EA5E9]/20 border border-[#0EA5E9]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
-                                <p className="text-white text-sm">What's the cheapest way to ship 500kg from Shanghai to LA next week?</p>
-                            </div>
-                        </div>
-
-                        {/* AI Response 3 - Detailed Analysis */}
-                        <div className="flex justify-start">
-                            <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                                <p className="text-slate-300 text-sm mb-3">I've analyzed 47 carrier options for you:</p>
-
-                                {/* Recommended Option */}
-                                <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-2 mb-2">
-                                    <div className="flex items-center justify-between mb-1">
-                                        <span className="text-blue-300 text-xs font-semibold flex items-center gap-1">
-                                            <Star size={10} fill="currentColor" /> RECOMMENDED
-                                        </span>
-                                        <span className="text-white font-bold text-sm">$2,180</span>
+                            {/* AI Response */}
+                            <div className="flex justify-start">
+                                <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                                    <p className="text-slate-300 text-sm mb-3">Analyzed 47 carrier options:</p>
+                                    <div className="bg-[#0EA5E9]/8 border border-[#0EA5E9]/15 rounded-lg p-3 mb-2">
+                                        <div className="flex items-center justify-between mb-1.5">
+                                            <span className="text-[#22d3ee] text-xs font-semibold flex items-center gap-1">
+                                                <Star size={10} fill="currentColor" /> RECOMMENDED
+                                            </span>
+                                            <span className="text-white font-bold text-sm">$2,180</span>
+                                        </div>
+                                        <div className="text-xs text-slate-400 flex items-center gap-3">
+                                            <span>Ocean — CMA CGM</span>
+                                            <span className="flex items-center gap-1 text-emerald-400">
+                                                <Clock size={10} /> 14 days
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div className="text-xs text-slate-400 space-y-0.5">
-                                        <div>Ocean Freight - CMA CGM</div>
-                                        <div className="flex items-center gap-1">
-                                            <Clock size={10} className="text-green-400" />
-                                            <span>14 days • 96% on-time rate</span>
+                                    <div className="text-xs text-slate-500 space-y-1">
+                                        <div className="flex justify-between"><span>Air Express (DHL)</span><span className="text-slate-400">$8,450 · 3 days</span></div>
+                                        <div className="flex justify-between"><span>Ocean Standard</span><span className="text-slate-400">$1,890 · 18 days</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Proactive Alert */}
+                            <div className="flex justify-start">
+                                <div className="bg-amber-500/8 border border-amber-500/20 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                                    <div className="flex items-start gap-2">
+                                        <AlertTriangle size={13} className="text-amber-400 flex-shrink-0 mt-0.5" />
+                                        <div>
+                                            <p className="text-amber-300 text-[11px] font-semibold mb-0.5 uppercase tracking-wide">Proactive Alert</p>
+                                            <p className="text-slate-300 text-sm">Port congestion detected in Long Beach — shall I reroute through Oakland?</p>
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Alternative Options */}
-                                <div className="text-xs text-slate-400 space-y-1">
-                                    <div className="flex justify-between">
-                                        <span>Air Express (DHL): 3 days</span>
-                                        <span className="text-slate-300">$8,450</span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span>Ocean Standard: 18 days</span>
-                                        <span className="text-slate-300">$1,890</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
-                        {/* Proactive AI Alert */}
-                        <div className="flex justify-start">
-                            <div className="bg-orange-500/10 border border-orange-500/30 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                                <div className="flex items-start gap-2">
-                                    <AlertTriangle size={14} className="text-orange-400 flex-shrink-0 mt-0.5" />
-                                    <div>
-                                        <p className="text-orange-300 text-xs font-semibold mb-1">Proactive Alert</p>
-                                        <p className="text-slate-300 text-sm">I noticed your shipment #SH-3012 may be affected by upcoming port congestion in Long Beach. Would you like me to explore alternative routing through Oakland?</p>
-                                    </div>
-                                </div>
+                        {/* Input */}
+                        <div className="mt-5 pt-4 border-t border-white/[0.06]">
+                            <div className="flex items-center gap-2 bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-2.5">
+                                <input type="text" placeholder="Ask Gasper AI anything..." className="flex-1 bg-transparent text-white text-sm outline-none placeholder:text-slate-600" disabled />
+                                <Send size={15} className="text-slate-600" />
                             </div>
                         </div>
                     </div>
-
-                    {/* Input Box */}
-                    <div className="mt-6 pt-4 border-t border-white/10">
-                        <div className="flex items-center gap-2 bg-black/40 border border-white/10 rounded-xl px-4 py-2">
-                            <input
-                                type="text"
-                                placeholder="Ask Gasper AI anything..."
-                                className="flex-1 bg-transparent text-white text-sm outline-none placeholder:text-slate-500"
-                                disabled
-                            />
-                            <Send size={16} className="text-slate-500" />
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Right: Features Grid */}
-                <motion.div
-                    initial={{ opacity: 0, x: 16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 gap-4"
-                >
-                    {features.map((feature, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="p-5 rounded-xl bg-black/40 border border-white/10 backdrop-blur-xl hover:border-[#22d3ee]/30 transition-all group"
-                        >
-                            <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#22d3ee]/20 to-[#0EA5E9]/20 flex items-center justify-center text-[#22d3ee] flex-shrink-0 group-hover:scale-110 transition-transform">
-                                    {feature.icon}
-                                </div>
-                                <div>
-                                    <h3 className="text-white font-semibold mb-1">{feature.title}</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">{feature.description}</p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </div>
-
-            {/* Bottom CTA */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-center p-6 rounded-2xl bg-gradient-to-r from-[#22d3ee]/10 to-[#0EA5E9]/10 border border-white/10"
-            >
-                <p className="text-slate-300 text-sm">
-                    <Sparkles size={16} className="inline text-[#22d3ee] mr-2" />
-                    Gasper AI learns from your operations and gets smarter over time, providing increasingly personalized insights.
-                </p>
+                </div>
             </motion.div>
+
+            {/* Capability Grid — 3 columns */}
+            <div className="grid md:grid-cols-3 gap-6">
+                {capabilities.map((cap, idx) => (
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        className="relative rounded-2xl overflow-hidden group"
+                    >
+                        {/* Border */}
+                        <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-10 group-hover:opacity-30" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
+                        <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 z-[1]" />
+
+                        <div className="relative z-10 p-8 text-center">
+                            <div className="w-14 h-14 rounded-xl mx-auto mb-5 flex items-center justify-center text-[#22d3ee] group-hover:scale-105 transition-transform duration-500" style={{ background: 'rgba(34,211,238,0.06)', border: '1px solid rgba(34,211,238,0.1)' }}>
+                                {cap.icon}
+                            </div>
+                            <h3 className="text-white font-bold text-lg mb-3">{cap.title}</h3>
+                            <p className="text-slate-400 text-sm leading-relaxed">{cap.description}</p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
         </section>
     );
 }

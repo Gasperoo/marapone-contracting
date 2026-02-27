@@ -300,7 +300,7 @@ function DigitalTwinSection() {
 // --- Risk Monitor Deep Dive Section ---
 function RiskMonitorSection() {
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden text-right">
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 {/* Visual Side (Left) */}
                 <motion.div
@@ -341,7 +341,7 @@ function RiskMonitorSection() {
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="order-1 md:order-2 flex flex-col items-end"
+                    className="order-1 md:order-2 flex flex-col items-start"
                 >
                     <div className="inline-flex items-center px-3 py-1 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-bold tracking-wider mb-6">
                         <AlertTriangle size={12} className="mr-2" /> GLOBAL WATCHTOWER
@@ -351,23 +351,23 @@ function RiskMonitorSection() {
                         The world is volatile. Gasper acts as your always-on watchtower, scanning thousands of data sources for geopolitical events, weather disruptions, and infrastructure failures.
                     </p>
 
-                    <div className="space-y-6 text-right w-full">
-                        <div className="flex gap-4 justify-end">
-                            <div className="text-right">
-                                <h4 className="text-white font-bold text-lg mb-1">Geopolitical Intelligence</h4>
-                                <p className="text-slate-400 text-sm">Real-time alerts on sanctions, trade wars, and regional instability that could affect your routes.</p>
-                            </div>
+                    <div className="space-y-6 w-full">
+                        <div className="flex gap-4">
                             <div className="w-12 h-12 rounded-lg bg-red-500/10 flex-shrink-0 flex items-center justify-center text-red-500">
                                 <Globe size={24} />
                             </div>
-                        </div>
-                        <div className="flex gap-4 justify-end">
-                            <div className="text-right">
-                                <h4 className="text-white font-bold text-lg mb-1">Infrastructure Monitoring</h4>
-                                <p className="text-slate-400 text-sm">Detect crane failures, canal blockages, and terminal congestion before your cargo gets stuck.</p>
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Geopolitical Intelligence</h4>
+                                <p className="text-slate-400 text-sm">Real-time alerts on sanctions, trade wars, and regional instability that could affect your routes.</p>
                             </div>
+                        </div>
+                        <div className="flex gap-4">
                             <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex-shrink-0 flex items-center justify-center text-orange-500">
                                 <Anchor size={24} />
+                            </div>
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Infrastructure Monitoring</h4>
+                                <p className="text-slate-400 text-sm">Detect crane failures, canal blockages, and terminal congestion before your cargo gets stuck.</p>
                             </div>
                         </div>
                     </div>
@@ -1251,7 +1251,7 @@ function WhatYouGetSection() {
 // --- Rate Check Deep Dive Section ---
 function RateCheckSection() {
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden text-right">
+        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 {/* Visual Side (Left) */}
                 <motion.div
@@ -1340,7 +1340,7 @@ function RateCheckSection() {
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="order-1 md:order-2 flex flex-col items-end"
+                    className="order-1 md:order-2 flex flex-col items-start"
                 >
                     <div className="inline-flex items-center px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold tracking-wider mb-6">
                         <DollarSign size={12} className="mr-2" /> COST OPTIMIZATION
@@ -1350,23 +1350,23 @@ function RateCheckSection() {
                         Stop overpaying for freight. Gasper aggregates real-time rates from hundreds of carriers, highlighting the best balance of speed, cost, and reliability for every shipment.
                     </p>
 
-                    <div className="space-y-6 text-right w-full">
-                        <div className="flex gap-4 justify-end">
-                            <div className="text-right">
-                                <h4 className="text-white font-bold text-lg mb-1">Instant Quotes</h4>
-                                <p className="text-slate-400 text-sm">Get bookable spot rates in seconds, not days. Compare across air, ocean, and rail instantly.</p>
-                            </div>
+                    <div className="space-y-6 w-full">
+                        <div className="flex gap-4">
                             <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex-shrink-0 flex items-center justify-center text-blue-500">
                                 <Clock size={24} />
                             </div>
-                        </div>
-                        <div className="flex gap-4 justify-end">
-                            <div className="text-right">
-                                <h4 className="text-white font-bold text-lg mb-1">Hidden Fee Detection</h4>
-                                <p className="text-slate-400 text-sm">Our AI scans for surcharges and hidden fees, ensuring the price you see is the price you pay.</p>
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Instant Quotes</h4>
+                                <p className="text-slate-400 text-sm">Get bookable spot rates in seconds, not days. Compare across air, ocean, and rail instantly.</p>
                             </div>
+                        </div>
+                        <div className="flex gap-4">
                             <div className="w-12 h-12 rounded-lg bg-indigo-500/10 flex-shrink-0 flex items-center justify-center text-indigo-500">
                                 <ShieldCheck size={24} />
+                            </div>
+                            <div>
+                                <h4 className="text-white font-bold text-lg mb-1">Hidden Fee Detection</h4>
+                                <p className="text-slate-400 text-sm">Our AI scans for surcharges and hidden fees, ensuring the price you see is the price you pay.</p>
                             </div>
                         </div>
                     </div>

@@ -82,7 +82,7 @@ export function SubcontractorMatchSection() {
     return (
         <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
             <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[#FF6B00]/5 rounded-full blur-[150px] -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#5227FF]/5 rounded-full blur-[120px]" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0EA5E9]/5 rounded-full blur-[120px]" />
 
             <div className="text-center mb-16 relative z-10">
                 <motion.div
@@ -486,7 +486,7 @@ export function ScheduleOptimizerSection() {
 
     return (
         <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
-            <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-[#5227FF]/5 rounded-full blur-[150px]" />
+            <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-[#0EA5E9]/5 rounded-full blur-[150px]" />
 
             <div className="grid lg:grid-cols-2 gap-12 items-start relative z-10">
                 {/* Resource Board */}

@@ -16,7 +16,7 @@ function GlobeMesh() {
             {/* Core Sphere */}
             <Sphere args={[1, 64, 64]} ref={meshRef}>
                 <meshBasicMaterial
-                    color="#5227FF"
+                    color="#0EA5E9"
                     wireframe
                     transparent
                     opacity={0.1}

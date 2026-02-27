@@ -33,14 +33,14 @@ export default function LiveImpact() {
                         delay={0}
                     />
                     <StatCard
-                        icon={<ShieldCheck className="text-[#5227FF]" />}
+                        icon={<ShieldCheck className="text-[#0EA5E9]" />}
                         label="Risks Mitigated"
                         value={849}
                         suffix=""
                         delay={0.1}
                     />
                     <StatCard
-                        icon={<Clock className="text-[#c084fc]" />}
+                        icon={<Clock className="text-[#38BDF8]" />}
                         label="Hours Saved"
                         value={12500}
                         suffix="+"
@@ -108,11 +108,11 @@ function StatCard({ icon, label, value, suffix, delay }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="p-8 glass-panel group hover:border-[#5227FF]/50 transition-all duration-500"
+            className="p-8 glass-panel group hover:border-[#0EA5E9]/50 transition-all duration-500"
             whileHover={{ y: -5 }}
         >
             <div className="flex items-center gap-4 mb-6">
-                <div className="p-4 rounded-xl bg-white/5 group-hover:bg-[#5227FF]/20 transition-colors shadow-inner shadow-white/10">
+                <div className="p-4 rounded-xl bg-white/5 group-hover:bg-[#0EA5E9]/20 transition-colors shadow-inner shadow-white/10">
                     {React.cloneElement(icon, { size: 28 })}
                 </div>
                 <div className="text-slate-400 text-sm font-semibold tracking-wide uppercase">{label}</div>

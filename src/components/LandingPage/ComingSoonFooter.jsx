@@ -17,7 +17,7 @@ export default function ComingSoonFooter() {
         <footer className="w-full relative mt-auto overflow-hidden">
             {/* Aurora gradient top border */}
             <div className="h-[2px] w-full" style={{
-                background: 'linear-gradient(90deg, transparent, #7c3aed, #22d3ee, #ec4899, #7c3aed, transparent)',
+                background: 'linear-gradient(90deg, transparent, #0EA5E9, #22d3ee, #14B8A6, #0EA5E9, transparent)',
                 opacity: 0.4,
             }} />
 
@@ -29,7 +29,7 @@ export default function ComingSoonFooter() {
                         {/* Brand */}
                         <div className="text-center md:text-left">
                             <div className="text-xl font-bold mb-2" style={{
-                                background: 'linear-gradient(135deg, #fff 40%, #7c3aed)',
+                                background: 'linear-gradient(135deg, #fff 40%, #0EA5E9)',
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent',
                             }}>
@@ -52,7 +52,7 @@ export default function ComingSoonFooter() {
                                     whileTap={{ scale: 0.95 }}
                                 >
                                     {/* Hover ripple glow */}
-                                    <div className="absolute inset-0 rounded-full bg-[#7c3aed]/0 group-hover:bg-[#7c3aed]/15 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(124,58,237,0.3)]" />
+                                    <div className="absolute inset-0 rounded-full bg-[#0EA5E9]/0 group-hover:bg-[#0EA5E9]/15 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(14,165,233,0.3)]" />
                                     <Icon size={18} className="relative z-10" />
                                 </motion.a>
                             ))}
@@ -72,7 +72,7 @@ export default function ComingSoonFooter() {
                                 className="relative hover:text-slate-300 transition-colors duration-300 group"
                             >
                                 {label}
-                                <span className="absolute bottom-[-2px] left-0 w-0 h-[1px] bg-gradient-to-r from-[#7c3aed] to-[#22d3ee] group-hover:w-full transition-all duration-300" />
+                                <span className="absolute bottom-[-2px] left-0 w-0 h-[1px] bg-gradient-to-r from-[#0EA5E9] to-[#22d3ee] group-hover:w-full transition-all duration-300" />
                             </Link>
                         ))}
                     </div>

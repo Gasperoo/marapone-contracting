@@ -228,7 +228,7 @@ export default function LandingPage({ comingSoonMode = false }) {
     };
 
     // Derived theme colors for the background
-    const themeColor = selectedProduct === 'construction' ? '#FF6B00' : selectedProduct === 'logistics' ? '#5227FF' : '#5227FF';
+    const themeColor = selectedProduct === 'construction' ? '#FF6B00' : selectedProduct === 'logistics' ? '#0EA5E9' : '#0EA5E9';
 
     // Kinetic title words
     const heroWords = comingSoonMode
@@ -392,7 +392,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                             title="Gasper Logistics"
                             description="Global Digital Twin, Predictive Routing & Automated Compliance."
                             icon={Globe}
-                            themeColor="#5227FF"
+                            themeColor="#0EA5E9"
                             secondaryColor="#22d3ee"
                             active={selectedProduct === 'logistics'}
                             onClick={() => handleDomainSelect('logistics')}

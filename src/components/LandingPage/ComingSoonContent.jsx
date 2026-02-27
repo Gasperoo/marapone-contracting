@@ -77,7 +77,7 @@ function FeatureCard({ icon, title, description, details }) {
             <div
                 className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500"
                 style={{
-                    background: 'linear-gradient(135deg, rgba(124,58,237,0.3), rgba(34,211,238,0.2), rgba(124,58,237,0.3))',
+                    background: 'linear-gradient(135deg, rgba(14,165,233,0.3), rgba(34,211,238,0.2), rgba(14,165,233,0.3))',
                     opacity: isFocused ? 0.8 : 0.15,
                 }}
             />
@@ -91,16 +91,16 @@ function FeatureCard({ icon, title, description, details }) {
                 style={{
                     background: useTransform(
                         [position.x, position.y],
-                        ([x, y]) => `radial-gradient(500px circle at ${x}px ${y}px, rgba(124,58,237,0.12), rgba(34,211,238,0.06) 30%, transparent 55%)`
+                        ([x, y]) => `radial-gradient(500px circle at ${x}px ${y}px, rgba(14,165,233,0.12), rgba(34,211,238,0.06) 30%, transparent 55%)`
                     ),
                 }}
             />
 
             <div className="relative p-8 h-full flex flex-col z-10">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center text-[#7c3aed] mb-6 group-hover:scale-110 transition-transform duration-500" style={{ background: 'rgba(124,58,237,0.1)', boxShadow: '0 0 25px rgba(124,58,237,0.15)' }}>
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center text-[#0EA5E9] mb-6 group-hover:scale-110 transition-transform duration-500" style={{ background: 'rgba(14,165,233,0.1)', boxShadow: '0 0 25px rgba(14,165,233,0.15)' }}>
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#7c3aed] transition-colors duration-300">{title}</h3>
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#0EA5E9] transition-colors duration-300">{title}</h3>
                 <p className="text-slate-400 mb-6 leading-relaxed flex-grow">{description}</p>
 
                 <div className="pt-6 border-t border-white/[0.04]">
@@ -136,14 +136,14 @@ function ProcessStep({ number, title, description, icon, align, details }) {
                     onClick={() => setIsOpen(!isOpen)}
                     className={`
                         relative p-8 rounded-2xl bg-[#06001a]/80 backdrop-blur-xl border w-full max-w-lg cursor-pointer transition-all duration-500 group
-                        ${isOpen ? 'border-[#7c3aed]/60 shadow-[0_0_40px_rgba(124,58,237,0.15)]' : 'border-white/[0.06] hover:border-[#7c3aed]/40'}
+                        ${isOpen ? 'border-[#0EA5E9]/60 shadow-[0_0_40px_rgba(14,165,233,0.15)]' : 'border-white/[0.06] hover:border-[#0EA5E9]/40'}
                     `}
                 >
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#7c3aed] to-[#22d3ee] rounded-2xl opacity-0 group-hover:opacity-15 transition duration-700 blur-md"></div>
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0EA5E9] to-[#22d3ee] rounded-2xl opacity-0 group-hover:opacity-15 transition duration-700 blur-md"></div>
 
                     <div className="relative z-10">
-                        <div className="text-[#7c3aed] text-xs font-bold tracking-widest mb-4 flex items-center justify-between">
-                            <span className="px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20">STEP {number}</span>
+                        <div className="text-[#0EA5E9] text-xs font-bold tracking-widest mb-4 flex items-center justify-between">
+                            <span className="px-3 py-1 rounded-full bg-[#0EA5E9]/10 border border-[#0EA5E9]/20">STEP {number}</span>
                             <motion.span
                                 animate={{ rotate: isOpen ? 180 : 0 }}
                                 className="text-white/50"
@@ -184,11 +184,11 @@ function ProcessStep({ number, title, description, icon, align, details }) {
 
             {/* Center Icon */}
             <div className="relative z-10 flex-shrink-0">
-                <div className={`w-20 h-20 rounded-full bg-[#06001a] border-2 flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-110 shadow-[0_0_40px_rgba(34,211,238,0.3)]' : 'border-[#7c3aed] text-white shadow-[0_0_30px_rgba(124,58,237,0.25)]'}`}>
+                <div className={`w-20 h-20 rounded-full bg-[#06001a] border-2 flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-110 shadow-[0_0_40px_rgba(34,211,238,0.3)]' : 'border-[#0EA5E9] text-white shadow-[0_0_30px_rgba(14,165,233,0.25)]'}`}>
                     {icon}
                 </div>
                 {/* Pulse Effect — static glow */}
-                <div className="absolute inset-[-4px] rounded-full opacity-20" style={{ boxShadow: '0 0 20px #7c3aed' }}></div>
+                <div className="absolute inset-[-4px] rounded-full opacity-20" style={{ boxShadow: '0 0 20px #0EA5E9' }}></div>
             </div>
 
             <div className="md:w-1/2" /> {/* Spacer */}
@@ -208,7 +208,7 @@ function IndustryCard({ icon, title, description, color, useCase }) {
             <div
                 className="absolute -inset-[1px] rounded-[1.5rem] z-0 transition-opacity duration-500"
                 style={{
-                    background: 'linear-gradient(135deg, rgba(124,58,237,0.15), rgba(34,211,238,0.1), rgba(124,58,237,0.15))',
+                    background: 'linear-gradient(135deg, rgba(14,165,233,0.15), rgba(34,211,238,0.1), rgba(14,165,233,0.15))',
                     opacity: 0.4,
                 }}
             />
@@ -220,7 +220,7 @@ function IndustryCard({ icon, title, description, color, useCase }) {
                 <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#22d3ee] transition-colors duration-300">{title}</h3>
                 <p className="text-slate-400 text-[15px] leading-relaxed mb-8 flex-grow">{description}</p>
 
-                <div className="mt-auto pt-6 border-t border-white/[0.04] group-hover:border-[#7c3aed]/20 transition-colors">
+                <div className="mt-auto pt-6 border-t border-white/[0.04] group-hover:border-[#0EA5E9]/20 transition-colors">
                     <div className="text-xs text-slate-500 uppercase font-semibold mb-2 tracking-widest">Use Case</div>
                     <div className="text-sm text-slate-200 font-medium">{useCase}</div>
                 </div>
@@ -258,7 +258,7 @@ function DigitalTwinSection() {
                             </div>
                         </div>
                         <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-[#7c3aed]/10 flex-shrink-0 flex items-center justify-center text-[#7c3aed]">
+                            <div className="w-12 h-12 rounded-lg bg-[#0EA5E9]/10 flex-shrink-0 flex items-center justify-center text-[#0EA5E9]">
                                 <BarChart3 size={24} />
                             </div>
                             <div>
@@ -278,10 +278,10 @@ function DigitalTwinSection() {
                 >
                     <div className="aspect-square rounded-full border border-white/10 relative flex items-center justify-center">
                         <div className="absolute inset-0 border border-[#22d3ee]/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                        <div className="absolute inset-8 border border-[#7c3aed]/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                        <div className="absolute inset-8 border border-[#0EA5E9]/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
 
                         {/* Central Node */}
-                        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#7c3aed] opacity-20 blur-xl absolute"></div>
+                        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#0EA5E9] opacity-20 blur-xl absolute"></div>
                         <div className="relative z-10 text-center">
                             <div className="text-4xl font-bold text-white mb-2">99.4%</div>
                             <div className="text-xs text-[#22d3ee] uppercase tracking-widest">Model Accuracy</div>
@@ -289,7 +289,7 @@ function DigitalTwinSection() {
 
                         {/* Floating Nodes */}
                         <div className="absolute top-10 left-10 w-3 h-3 bg-[#22d3ee] rounded-full shadow-[0_0_10px_#22d3ee]"></div>
-                        <div className="absolute bottom-20 right-10 w-2 h-2 bg-[#7c3aed] rounded-full shadow-[0_0_10px_#7c3aed]"></div>
+                        <div className="absolute bottom-20 right-10 w-2 h-2 bg-[#0EA5E9] rounded-full shadow-[0_0_10px_#0EA5E9]"></div>
                     </div>
                 </motion.div>
             </div>
@@ -533,7 +533,7 @@ function GasperAIBotSection() {
                     className="relative p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-xl"
                 >
                     <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#7c3aed] flex items-center justify-center p-1.5">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#0EA5E9] flex items-center justify-center p-1.5">
                             <img
                                 src="/images/gasper-logo-g.png"
                                 alt="Gasper AI"
@@ -553,7 +553,7 @@ function GasperAIBotSection() {
                     <div className="space-y-4">
                         {/* User Query 1 */}
                         <div className="flex justify-end">
-                            <div className="bg-[#7c3aed]/20 border border-[#7c3aed]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                            <div className="bg-[#0EA5E9]/20 border border-[#0EA5E9]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                                 <p className="text-white text-sm">Where is shipment #SH-2847?</p>
                             </div>
                         </div>
@@ -581,7 +581,7 @@ function GasperAIBotSection() {
 
                         {/* User Query 2 */}
                         <div className="flex justify-end">
-                            <div className="bg-[#7c3aed]/20 border border-[#7c3aed]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                            <div className="bg-[#0EA5E9]/20 border border-[#0EA5E9]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                                 <p className="text-white text-sm">Any weather risks?</p>
                             </div>
                         </div>
@@ -595,7 +595,7 @@ function GasperAIBotSection() {
 
                         {/* User Query 3 - More Complex */}
                         <div className="flex justify-end">
-                            <div className="bg-[#7c3aed]/20 border border-[#7c3aed]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
+                            <div className="bg-[#0EA5E9]/20 border border-[#0EA5E9]/30 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
                                 <p className="text-white text-sm">What's the cheapest way to ship 500kg from Shanghai to LA next week?</p>
                             </div>
                         </div>
@@ -681,7 +681,7 @@ function GasperAIBotSection() {
                             className="p-5 rounded-xl bg-black/40 border border-white/10 backdrop-blur-xl hover:border-[#22d3ee]/30 transition-all group"
                         >
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#22d3ee]/20 to-[#7c3aed]/20 flex items-center justify-center text-[#22d3ee] flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#22d3ee]/20 to-[#0EA5E9]/20 flex items-center justify-center text-[#22d3ee] flex-shrink-0 group-hover:scale-110 transition-transform">
                                     {feature.icon}
                                 </div>
                                 <div>
@@ -699,7 +699,7 @@ function GasperAIBotSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-center p-6 rounded-2xl bg-gradient-to-r from-[#22d3ee]/10 to-[#7c3aed]/10 border border-white/10"
+                className="text-center p-6 rounded-2xl bg-gradient-to-r from-[#22d3ee]/10 to-[#0EA5E9]/10 border border-white/10"
             >
                 <p className="text-slate-300 text-sm">
                     <Sparkles size={16} className="inline text-[#22d3ee] mr-2" />
@@ -834,7 +834,7 @@ function ComparisonTableSection({ selectedProduct }) {
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="inline-block px-4 py-1.5 rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 text-[#7c3aed] text-sm font-medium mb-6"
+                    className="inline-block px-4 py-1.5 rounded-full border border-[#0EA5E9]/30 bg-[#0EA5E9]/10 text-[#0EA5E9] text-sm font-medium mb-6"
                 >
                     <Award size={14} className="inline mr-2" />
                     The Gasper Advantage
@@ -870,14 +870,14 @@ function ComparisonTableSection({ selectedProduct }) {
                         className="relative group rounded-2xl overflow-hidden"
                     >
                         {/* Border */}
-                        <div className="absolute -inset-[1px] rounded-2xl transition-opacity duration-500 opacity-20 group-hover:opacity-50" style={{ background: 'linear-gradient(135deg, #7c3aed, #22d3ee)' }} />
+                        <div className="absolute -inset-[1px] rounded-2xl transition-opacity duration-500 opacity-20 group-hover:opacity-50" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
                         <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/95 z-[1]" />
 
                         <div className="relative z-10 p-8 text-center">
                             <div className="w-12 h-12 rounded-xl mx-auto mb-5 flex items-center justify-center text-[#22d3ee]" style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.15)' }}>
                                 {m.icon}
                             </div>
-                            <div className="text-5xl font-black mb-2" style={{ background: 'linear-gradient(135deg, #7c3aed, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                            <div className="text-5xl font-black mb-2" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                                 {m.value}
                             </div>
                             <div className="text-white font-semibold text-lg mb-2">{m.label}</div>
@@ -896,7 +896,7 @@ function ComparisonTableSection({ selectedProduct }) {
                 className="relative rounded-2xl overflow-hidden mb-8"
             >
                 {/* Border */}
-                <div className="absolute -inset-[1px] rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(34,211,238,0.15), rgba(124,58,237,0.2))' }} />
+                <div className="absolute -inset-[1px] rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(14,165,233,0.2), rgba(34,211,238,0.15), rgba(14,165,233,0.2))' }} />
                 <div className="absolute inset-[1px] rounded-2xl bg-[#06001a]/90 backdrop-blur-xl z-[1]" />
 
                 <div className="relative z-10">
@@ -906,9 +906,9 @@ function ComparisonTableSection({ selectedProduct }) {
                             <div className="w-2 h-2 rounded-full bg-red-500/60" />
                             <span className="text-slate-500 text-sm font-semibold uppercase tracking-widest">Before Gasper</span>
                         </div>
-                        <div className="px-8 py-5 flex items-center gap-3 border-l border-white/[0.06]" style={{ background: 'linear-gradient(90deg, rgba(124,58,237,0.04), transparent)' }}>
+                        <div className="px-8 py-5 flex items-center gap-3 border-l border-white/[0.06]" style={{ background: 'linear-gradient(90deg, rgba(14,165,233,0.04), transparent)' }}>
                             <div className="w-2 h-2 rounded-full bg-[#22d3ee]" style={{ boxShadow: '0 0 8px rgba(34,211,238,0.6)' }} />
-                            <span className="text-sm font-semibold uppercase tracking-widest" style={{ background: 'linear-gradient(90deg, #7c3aed, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>With Gasper</span>
+                            <span className="text-sm font-semibold uppercase tracking-widest" style={{ background: 'linear-gradient(90deg, #0EA5E9, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>With Gasper</span>
                         </div>
                     </div>
 
@@ -930,7 +930,7 @@ function ComparisonTableSection({ selectedProduct }) {
                                 <span className="text-slate-500 text-[15px] leading-relaxed">{t.before}</span>
                             </div>
                             {/* After */}
-                            <div className="px-8 py-5 flex items-start gap-4 border-l border-white/[0.06]" style={{ background: 'linear-gradient(90deg, rgba(124,58,237,0.02), transparent)' }}>
+                            <div className="px-8 py-5 flex items-start gap-4 border-l border-white/[0.06]" style={{ background: 'linear-gradient(90deg, rgba(14,165,233,0.02), transparent)' }}>
                                 <div className="w-8 h-8 rounded-lg flex items-center justify-center text-[#22d3ee] flex-shrink-0 mt-0.5" style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.1)' }}>
                                     {t.icon}
                                 </div>
@@ -1061,7 +1061,7 @@ function WaitlistSection({ selectedProduct }) {
                 <div
                     className="absolute -inset-[1px] rounded-[2rem] z-0"
                     style={{
-                        background: 'linear-gradient(135deg, rgba(124,58,237,0.35), rgba(34,211,238,0.25), rgba(16,185,129,0.15), rgba(124,58,237,0.35))',
+                        background: 'linear-gradient(135deg, rgba(14,165,233,0.35), rgba(34,211,238,0.25), rgba(16,185,129,0.15), rgba(14,165,233,0.35))',
                         opacity: 0.5,
                     }}
                 />
@@ -1099,7 +1099,7 @@ function WaitlistSection({ selectedProduct }) {
                                 value={formData.email}
                                 onChange={handleInputChange}
                                 placeholder="Enter your email address"
-                                className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all placeholder:text-slate-600"
+                                className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all placeholder:text-slate-600"
                                 disabled={status === 'loading'}
                             />
                         </div>
@@ -1111,7 +1111,7 @@ function WaitlistSection({ selectedProduct }) {
                                     name="role"
                                     value={formData.role}
                                     onChange={handleInputChange}
-                                    className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all appearance-none cursor-pointer"
+                                    className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all appearance-none cursor-pointer"
                                     disabled={status === 'loading'}
                                 >
                                     <option value="">Your Role</option>
@@ -1132,7 +1132,7 @@ function WaitlistSection({ selectedProduct }) {
                                     name="companySize"
                                     value={formData.companySize}
                                     onChange={handleInputChange}
-                                    className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#7c3aed]/60 focus:ring-1 focus:ring-[#7c3aed]/40 transition-all appearance-none cursor-pointer"
+                                    className="w-full bg-[#06001a]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all appearance-none cursor-pointer"
                                     disabled={status === 'loading'}
                                 >
                                     <option value="">Company Size</option>
@@ -1148,8 +1148,8 @@ function WaitlistSection({ selectedProduct }) {
                             type="submit"
                             disabled={status === 'loading'}
                             className={`w-full font-bold py-4 px-8 rounded-full transition-all flex items-center justify-center relative overflow-hidden ${status === 'loading'
-                                ? 'bg-[#7c3aed]/50 cursor-not-allowed'
-                                : 'bg-gradient-to-r from-[#7c3aed] to-[#5227FF] hover:from-[#6d28d9] hover:to-[#4118e0] shadow-lg shadow-[#7c3aed]/30 hover:shadow-[#7c3aed]/50'
+                                ? 'bg-[#0EA5E9]/50 cursor-not-allowed'
+                                : 'bg-gradient-to-r from-[#0EA5E9] to-[#0EA5E9] hover:from-[#0284C7] hover:to-[#0369A1] shadow-lg shadow-[#0EA5E9]/30 hover:shadow-[#0EA5E9]/50'
                                 } text-white`}
                         >
                             {status === 'loading' ? (
@@ -1191,15 +1191,15 @@ function WaitlistSection({ selectedProduct }) {
 
                     <p className="mt-4 text-xs text-slate-500">
                         By joining, you agree to our{' '}
-                        <Link to="/terms" className="text-[#22d3ee] hover:text-[#7c3aed] transition-colors underline">
+                        <Link to="/terms" className="text-[#22d3ee] hover:text-[#0EA5E9] transition-colors underline">
                             Terms of Service
                         </Link>
                         {', '}
-                        <Link to="/privacy" className="text-[#22d3ee] hover:text-[#7c3aed] transition-colors underline">
+                        <Link to="/privacy" className="text-[#22d3ee] hover:text-[#0EA5E9] transition-colors underline">
                             Privacy Policy
                         </Link>
                         {', and '}
-                        <Link to="/cookies" className="text-[#22d3ee] hover:text-[#7c3aed] transition-colors underline">
+                        <Link to="/cookies" className="text-[#22d3ee] hover:text-[#0EA5E9] transition-colors underline">
                             Cookie Policy
                         </Link>
                         . No spam, ever.
@@ -1234,9 +1234,9 @@ function WhatYouGetSection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
-                        className="p-6 rounded-2xl bg-[#06001a]/60 border border-[#7c3aed]/15 backdrop-blur-xl hover:border-[#7c3aed]/40 transition-all group"
+                        className="p-6 rounded-2xl bg-[#06001a]/60 border border-[#0EA5E9]/15 backdrop-blur-xl hover:border-[#0EA5E9]/40 transition-all group"
                     >
-                        <div className="w-14 h-14 rounded-xl bg-[#7c3aed]/20 flex items-center justify-center text-[#7c3aed] mb-4 group-hover:scale-110 transition-transform">
+                        <div className="w-14 h-14 rounded-xl bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9] mb-4 group-hover:scale-110 transition-transform">
                             {benefit.icon}
                         </div>
                         <h3 className="text-white font-bold text-lg mb-2">{benefit.title}</h3>
@@ -1385,7 +1385,7 @@ export default function ComingSoonContent({ selectedProduct }) {
             {/* Particles Background */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
                 <Particles
-                    particleColors={["#7c3aed", "#22d3ee", "#ec4899"]}
+                    particleColors={["#0EA5E9", "#22d3ee", "#14B8A6"]}
                     particleCount={60}
                     particleSpread={10}
                     speed={0.02}
@@ -1448,7 +1448,7 @@ export default function ComingSoonContent({ selectedProduct }) {
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="inline-block px-4 py-1.5 rounded-full border border-[#7c3aed]/30 bg-[#7c3aed]/10 text-[#7c3aed] text-sm font-medium mb-6"
+                            className="inline-block px-4 py-1.5 rounded-full border border-[#0EA5E9]/30 bg-[#0EA5E9]/10 text-[#0EA5E9] text-sm font-medium mb-6"
                         >
                             Core Capabilities
                         </motion.div>
@@ -1459,7 +1459,7 @@ export default function ComingSoonContent({ selectedProduct }) {
                             className="text-4xl md:text-6xl font-bold text-white mb-6"
                             style={{ letterSpacing: '-0.03em' }}
                         >
-                            Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#22d3ee]">Beyond Boundaries</span>
+                            Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#22d3ee]">Beyond Boundaries</span>
                         </motion.h2>
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
@@ -1579,7 +1579,7 @@ export default function ComingSoonContent({ selectedProduct }) {
                     <div className="relative">
                         {/* Connecting Line (Desktop) */}
                         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 transform -translate-x-1/2 h-full z-0">
-                            <div className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#7c3aed] via-[#22d3ee] to-[#7c3aed] opacity-50 shadow-[0_0_15px_#7c3aed]" />
+                            <div className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#0EA5E9] via-[#22d3ee] to-[#0EA5E9] opacity-50 shadow-[0_0_15px_#0EA5E9]" />
                         </div>
 
                         <ProcessStep

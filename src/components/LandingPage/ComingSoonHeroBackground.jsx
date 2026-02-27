@@ -36,7 +36,7 @@ export default function ComingSoonHeroBackground() {
                         height: '900px',
                         top: '-15%',
                         right: '-10%',
-                        background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, rgba(82,39,255,0.06) 40%, transparent 70%)',
+                        background: 'radial-gradient(circle, rgba(14,165,233,0.12) 0%, rgba(14,165,233,0.06) 40%, transparent 70%)',
                         filter: 'blur(80px)',
                     }}
                 />
@@ -60,7 +60,7 @@ export default function ComingSoonHeroBackground() {
                         height: '600px',
                         top: '30%',
                         left: '40%',
-                        background: 'radial-gradient(circle, rgba(82,39,255,0.04) 0%, transparent 60%)',
+                        background: 'radial-gradient(circle, rgba(14,165,233,0.04) 0%, transparent 60%)',
                         filter: 'blur(100px)',
                     }}
                 />

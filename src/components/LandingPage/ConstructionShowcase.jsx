@@ -14,8 +14,8 @@ export function PlatformPillarsSection() {
 
     const logistics = {
         label: 'Logistics OS',
-        color: '#5227FF',
-        glow: 'rgba(82,39,255,0.3)',
+        color: '#0EA5E9',
+        glow: 'rgba(14,165,233,0.3)',
         tagline: 'Command global supply chains with AI precision',
         features: [
             { icon: <Activity size={20} />, text: 'Real-Time Vessel & Cargo Tracking' },
@@ -63,7 +63,7 @@ export function PlatformPillarsSection() {
                 </motion.div>
                 <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
                     AI-Powered Intelligence for{' '}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#FF6B00]">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#FF6B00]">
                         Every Operation
                     </span>
                 </h2>
@@ -76,7 +76,7 @@ export function PlatformPillarsSection() {
             <div className="flex justify-center mb-16 relative z-10">
                 <div className="inline-flex rounded-2xl bg-black/40 border border-white/10 p-1.5 backdrop-blur-xl">
                     {[
-                        { key: 'logistics', label: 'Logistics OS', icon: <Truck size={16} />, color: '#5227FF' },
+                        { key: 'logistics', label: 'Logistics OS', icon: <Truck size={16} />, color: '#0EA5E9' },
                         { key: 'construction', label: 'Construction AI', icon: <HardHat size={16} />, color: '#FF6B00' },
                     ].map((tab) => (
                         <button

@@ -49,13 +49,13 @@ function FAQItem({ question, answer }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="glass-panel overflow-hidden transition-all duration-300 hover:border-[#5227FF]/40 mb-4 group hover:shadow-[0_0_20px_rgba(82,39,255,0.15)]">
+        <div className="glass-panel overflow-hidden transition-all duration-300 hover:border-[#0EA5E9]/40 mb-4 group hover:shadow-[0_0_20px_rgba(14,165,233,0.15)]">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
             >
                 <span className="text-lg font-medium text-white">{question}</span>
-                <span className={`text-[#5227FF] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                <span className={`text-[#0EA5E9] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
                     {isOpen ? <Minus /> : <Plus />}
                 </span>
             </button>

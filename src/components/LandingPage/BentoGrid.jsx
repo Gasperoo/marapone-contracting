@@ -11,7 +11,7 @@ export function BentoGrid() {
             title: 'Global Reach',
             subtitle: 'Real-time data from 200+ countries.',
             description: 'Our network spans the entire globe, integrating data from local carriers, port authorities, and satellite feeds. Whether your cargo is on a ship in the Pacific or a truck in Hamburg, you have total visibility.',
-            icon: <Globe size={40} className="text-[#5227FF]" />,
+            icon: <Globe size={40} className="text-[#0EA5E9]" />,
             className: "md:col-span-2 md:row-span-2",
             bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop"
         },
@@ -66,13 +66,13 @@ export function BentoGrid() {
                         key={item.id}
                         layoutId={item.id}
                         onClick={() => setSelectedId(item.id)}
-                        className={`glass-panel p-6 relative overflow-hidden group hover:border-[#5227FF]/50 transition-all duration-500 cursor-pointer ${item.className}`}
+                        className={`glass-panel p-6 relative overflow-hidden group hover:border-[#0EA5E9]/50 transition-all duration-500 cursor-pointer ${item.className}`}
                         whileHover={{ scale: 1.02, y: -5 }}
                         whileTap={{ scale: 0.98 }}
                     >
                         {item.bgImage && (
                             <>
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#5227FF]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="relative z-10 h-full flex flex-col justify-between">
                                     <div>
                                         <div className="mb-4">{item.icon}</div>
@@ -116,15 +116,15 @@ export function BentoGrid() {
 
                 {/* Integration Box (Static link) */}
                 <motion.div
-                    className="md:col-span-3 md:row-span-1 glass-panel p-8 flex flex-col md:flex-row items-center justify-between shadow-lg shadow-[#5227FF]/20 relative overflow-hidden group"
+                    className="md:col-span-3 md:row-span-1 glass-panel p-8 flex flex-col md:flex-row items-center justify-between shadow-lg shadow-[#0EA5E9]/20 relative overflow-hidden group"
                     whileHover={{ scale: 1.01 }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#5227FF]/20 to-cyan-500/20 opacity-50"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0EA5E9]/20 to-cyan-500/20 opacity-50"></div>
                     <div className="relative z-10 mb-4 md:mb-0">
                         <h3 className="text-2xl font-bold mb-2 text-white">Connect Your Stack</h3>
                         <p className="text-slate-300">Seamless integration with SAP, Oracle, and 50+ other ERPs.</p>
                     </div>
-                    <button className="relative z-10 px-6 py-3 bg-gradient-to-r from-[#5227FF] to-[#c084fc] text-white font-bold rounded-xl hover:shadow-[0_0_20px_rgba(192,132,252,0.4)] transition-all duration-300">
+                    <button className="relative z-10 px-6 py-3 bg-gradient-to-r from-[#0EA5E9] to-[#38BDF8] text-white font-bold rounded-xl hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all duration-300">
                         View Documentation
                     </button>
                 </motion.div>
@@ -142,7 +142,7 @@ export function BentoGrid() {
                         />
                         <motion.div
                             layoutId={selectedId}
-                            className="bg-[#0f172a]/90 backdrop-blur-2xl border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden relative z-10 shadow-[0_0_50px_rgba(82,39,255,0.3)]"
+                            className="bg-[#0f172a]/90 backdrop-blur-2xl border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden relative z-10 shadow-[0_0_50px_rgba(14,165,233,0.3)]"
                         >
                             <button
                                 onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
@@ -165,7 +165,7 @@ export function BentoGrid() {
                                         <div className="flex justify-end">
                                             <button
                                                 onClick={() => setSelectedId(null)}
-                                                className="px-6 py-2 bg-[#5227FF] text-white rounded-lg font-semibold hover:bg-[#4319cc] transition-colors"
+                                                className="px-6 py-2 bg-[#0EA5E9] text-white rounded-lg font-semibold hover:bg-[#0284C7] transition-colors"
                                             >
                                                 Got it
                                             </button>

@@ -351,7 +351,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                         transition={{ delay: 0.6, duration: 0.8 }}
                     >
                         {comingSoonMode
-                            ? 'One platform. Two AI engines. Choose your domain to explore how Gasper transforms operations into intelligence.'
+                            ? 'AI-powered construction management. Blueprint intelligence, cash flow forecasting, site security — one platform to command every job site.'
                             : 'One unified intelligence platform. Two specialized engines. Choose your operational domain to see how Marapone transforms chaos into clarity.'
                         }
                     </motion.p>
@@ -376,7 +376,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                             <button
                                 className="cta-outline"
                                 onClick={() => {
-                                    if (!selectedProduct) handleDomainSelect('logistics');
+                                    if (!selectedProduct) handleDomainSelect('construction');
                                     const el = document.getElementById('domain-content');
                                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                                 }}
@@ -449,7 +449,7 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                             {comingSoonMode ? (
                                 <div id="coming-soon-content">
-                                    <ComingSoonContent selectedProduct={selectedProduct} />
+                                    <ComingSoonContent />
                                     <ComingSoonFooter />
                                 </div>
                             ) : (

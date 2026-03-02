@@ -2,55 +2,65 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView, useSpring, useMotionValue, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
 import {
-    Activity, TrendingUp, ShieldCheck, Grid, Zap, Globe, Lock,
+    Activity, TrendingUp, ShieldCheck, Zap, Lock,
     Database, Cpu, Server, BarChart3,
-    Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, HardHat, Stethoscope, Plane,
-    CheckCircle2, ArrowRight, Mail, Layers, AlertTriangle, MonitorPlay,
-    Leaf, Wind, DollarSign, Star, Clock, ArrowRightLeft, Ship, Users, Building2, X, Check, Sparkles, Award, TrendingDown,
+    HardHat, Fuel,
+    CheckCircle2, Mail, Layers, AlertTriangle,
+    DollarSign, Star, Clock, Users, Building2, Check, Sparkles, Award, TrendingDown,
     Bot, MessageSquare, Brain, FileText, Send, MapPin, Ruler, Eye, Wrench, Hammer
 } from 'lucide-react';
-import TiltCard from '../TiltCard';
 import Particles from '../Particles/Particles';
 import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';
 import { SubcontractorMatchSection, ProjectCommandCenter, ROIImpactSection, ScheduleOptimizerSection } from './ConstructionAdvanced';
 
-// --- Floating Metric Card (OpenSpace-style) ---
-function Counter({ value, label, suffix = "" }) {
+// ─── Theme constants ─────────────────────────────────────────────────────────
+const C = {
+    primary: '#FF6B00',
+    secondary: '#F59E0B',
+    primaryGlow: 'rgba(255,107,0,0.15)',
+    secondaryGlow: 'rgba(245,158,11,0.12)',
+    bg: '#070C09',
+    surface: '#0D1610',
+    border: 'rgba(255,107,0,0.12)',
+    borderHover: 'rgba(255,107,0,0.30)',
+    textMuted: '#94a3b8',
+};
+
+// ─── Metric Counter Card ──────────────────────────────────────────────────────
+function Counter({ value, label, suffix = '' }) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: '-100px' });
     const springValue = useSpring(0, { stiffness: 50, damping: 20 });
-    const [displayValue, setDisplayValue] = useState(0);
+    const [display, setDisplay] = useState(0);
 
     useEffect(() => {
-        if (isInView) {
-            springValue.set(value);
-        }
+        if (isInView) springValue.set(value);
     }, [isInView, value, springValue]);
 
-    useEffect(() => {
-        return springValue.on("change", (latest) => {
-            setDisplayValue(Math.floor(latest));
-        });
-    }, [springValue]);
+    useEffect(() => springValue.on('change', (v) => setDisplay(Math.floor(v))), [springValue]);
 
     return (
         <motion.div
             ref={ref}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="metric-card group"
+            className="relative rounded-2xl overflow-hidden group"
         >
-            <div className="metric-card__value">
-                {displayValue.toLocaleString()}{suffix}
+            <div className="absolute -inset-[1px] rounded-2xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}20, ${C.secondary}15, ${C.primary}20)` }} />
+            <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: C.surface }} />
+            <div className="relative z-10 p-8 text-center">
+                <div className="text-4xl md:text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #fff 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    {display.toLocaleString()}{suffix}
+                </div>
+                <div className="text-xs uppercase tracking-widest font-semibold" style={{ color: C.textMuted }}>{label}</div>
             </div>
-            <div className="metric-card__label">{label}</div>
         </motion.div>
     );
 }
 
-// --- Executive Feature Card ---
+// ─── Executive Feature Card ───────────────────────────────────────────────────
 function FeatureCard({ icon, title, description, details }) {
     const divRef = useRef(null);
     const [isFocused, setIsFocused] = useState(false);
@@ -71,45 +81,27 @@ function FeatureCard({ icon, title, description, details }) {
             onMouseLeave={() => setIsFocused(false)}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="relative h-full rounded-2xl overflow-hidden group"
         >
-            {/* Static gradient border */}
-            <div
-                className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500"
-                style={{
-                    background: 'linear-gradient(135deg, rgba(14,165,233,0.3), rgba(34,211,238,0.2), rgba(14,165,233,0.3))',
-                    opacity: isFocused ? 0.8 : 0.15,
-                }}
-            />
-
-            {/* Glass body */}
-            <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/90 backdrop-blur-xl z-[1]" />
-
-            {/* Mouse-follow refraction */}
+            <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}40, ${C.secondary}25, ${C.primary}40)`, opacity: isFocused ? 0.9 : 0.2 }} />
+            <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: 'rgba(13,22,16,0.95)', backdropFilter: 'blur(20px)' }} />
             <motion.div
-                className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[2]"
-                style={{
-                    background: useTransform(
-                        [position.x, position.y],
-                        ([x, y]) => `radial-gradient(500px circle at ${x}px ${y}px, rgba(14,165,233,0.12), rgba(34,211,238,0.06) 30%, transparent 55%)`
-                    ),
-                }}
+                className="pointer-events-none absolute inset-0 rounded-2xl z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: useTransform([position.x, position.y], ([x, y]) => `radial-gradient(500px circle at ${x}px ${y}px, rgba(255,107,0,0.10), rgba(245,158,11,0.05) 30%, transparent 55%)`) }}
             />
-
             <div className="relative p-8 h-full flex flex-col z-10">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center text-[#0EA5E9] mb-6 group-hover:scale-110 transition-transform duration-500" style={{ background: 'rgba(14,165,233,0.1)', boxShadow: '0 0 25px rgba(14,165,233,0.15)' }}>
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500" style={{ background: `${C.primary}15`, color: C.primary, boxShadow: `0 0 25px ${C.primaryGlow}` }}>
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#0EA5E9] transition-colors duration-300">{title}</h3>
-                <p className="text-slate-400 mb-6 leading-relaxed flex-grow">{description}</p>
-
-                <div className="pt-6 border-t border-white/[0.04]">
+                <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-300" style={{ ...(isFocused ? { color: C.secondary } : {}) }}>{title}</h3>
+                <p className="mb-6 leading-relaxed flex-grow" style={{ color: C.textMuted }}>{description}</p>
+                <div className="pt-6 border-t" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
                     <ul className="grid grid-cols-1 gap-3">
                         {details.map((item, i) => (
                             <li key={i} className="flex items-center text-sm text-slate-300">
-                                <CheckCircle2 size={14} className="text-[#22d3ee] mr-3 flex-shrink-0" />
+                                <CheckCircle2 size={14} className="mr-3 flex-shrink-0" style={{ color: C.secondary }} />
                                 {item}
                             </li>
                         ))}
@@ -120,82 +112,7 @@ function FeatureCard({ icon, title, description, details }) {
     );
 }
 
-function ProcessStep({ number, title, description, icon, align, details }) {
-    const isLeft = align === 'left';
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div className={`flex flex-col md:flex-row items-center gap-8 mb-24 relative z-10 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
-
-            {/* Content Side */}
-            <motion.div
-                initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className={`md:w-1/2 flex ${isLeft ? 'md:justify-start' : 'md:justify-end'} w-full`}
-            >
-                <div
-                    onClick={() => setIsOpen(!isOpen)}
-                    className={`
-                        relative p-8 rounded-2xl bg-[#0B1120]/80 backdrop-blur-xl border w-full max-w-lg cursor-pointer transition-all duration-500 group
-                        ${isOpen ? 'border-[#0EA5E9]/60 shadow-[0_0_40px_rgba(14,165,233,0.15)]' : 'border-white/[0.06] hover:border-[#0EA5E9]/40'}
-                    `}
-                >
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0EA5E9] to-[#22d3ee] rounded-2xl opacity-0 group-hover:opacity-15 transition duration-700 blur-md"></div>
-
-                    <div className="relative z-10">
-                        <div className="text-[#0EA5E9] text-xs font-bold tracking-widest mb-4 flex items-center justify-between">
-                            <span className="px-3 py-1 rounded-full bg-[#0EA5E9]/10 border border-[#0EA5E9]/20">STEP {number}</span>
-                            <motion.span
-                                animate={{ rotate: isOpen ? 180 : 0 }}
-                                className="text-white/50"
-                            >
-                                ▼
-                            </motion.span>
-                        </div>
-                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#22d3ee] transition-colors">{title}</h3>
-                        <p className="text-slate-400 mb-4 leading-relaxed">{description}</p>
-
-                        <AnimatePresence>
-                            {isOpen && (
-                                <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: 'auto', opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    className="overflow-hidden"
-                                >
-                                    <div className="pt-4 mt-4 border-t border-white/10">
-                                        <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                                            <Cpu size={14} className="text-[#22d3ee]" /> Technical Specs
-                                        </h4>
-                                        <ul className="space-y-2">
-                                            {details && details.map((detail, idx) => (
-                                                <li key={idx} className="text-xs text-slate-300 flex items-center bg-white/5 p-2 rounded-lg">
-                                                    <div className="w-1.5 h-1.5 bg-[#22d3ee] rounded-full mr-3" />
-                                                    {detail}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
-                </div>
-            </motion.div>
-
-            {/* Center Icon */}
-            <div className="relative z-10 flex-shrink-0">
-                <div className={`w-16 h-16 rounded-full bg-[#0B1120] border flex items-center justify-center text-white transition-all duration-500 z-20 relative ${isOpen ? 'border-[#22d3ee] text-[#22d3ee] scale-105' : 'border-white/10 text-white/70'}`} style={{ boxShadow: isOpen ? '0 0 25px rgba(34,211,238,0.2)' : '0 0 15px rgba(14,165,233,0.1)' }}>
-                    {icon}
-                </div>
-            </div>
-
-            <div className="md:w-1/2" /> {/* Spacer */}
-        </div>
-    );
-}
-
+// ─── Industry Card ────────────────────────────────────────────────────────────
 function IndustryCard({ icon, title, description, color, useCase }) {
     return (
         <motion.div
@@ -204,24 +121,16 @@ function IndustryCard({ icon, title, description, color, useCase }) {
             viewport={{ once: true }}
             className="group relative rounded-[1.5rem] overflow-hidden"
         >
-            {/* Border */}
-            <div
-                className="absolute -inset-[1px] rounded-[1.5rem] z-0 transition-opacity duration-500"
-                style={{
-                    background: 'linear-gradient(135deg, rgba(14,165,233,0.15), rgba(34,211,238,0.1), rgba(14,165,233,0.15))',
-                    opacity: 0.4,
-                }}
-            />
-            <div className="absolute inset-[1px] bg-[#0B1120]/90 rounded-[1.5rem] z-0 group-hover:bg-[#0B1120]/80 transition-colors duration-500" />
+            <div className="absolute -inset-[1px] rounded-[1.5rem] z-0 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}20, ${C.secondary}12, ${C.primary}20)`, opacity: 0.4 }} />
+            <div className="absolute inset-[1px] rounded-[1.5rem] z-0 transition-colors duration-500" style={{ background: 'rgba(13,22,16,0.92)' }} />
             <div className="relative z-10 p-10 h-full flex flex-col">
                 <div className={`w-16 h-16 rounded-2xl bg-white/[0.04] flex items-center justify-center mb-8 ${color} group-hover:scale-105 transition-transform duration-500`} style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#22d3ee] transition-colors duration-300">{title}</h3>
-                <p className="text-slate-400 text-[15px] leading-relaxed mb-8 flex-grow">{description}</p>
-
-                <div className="mt-auto pt-6 border-t border-white/[0.04] group-hover:border-[#0EA5E9]/20 transition-colors">
-                    <div className="text-xs text-slate-500 uppercase font-semibold mb-2 tracking-widest">Use Case</div>
+                <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-300 group-hover:text-[#F59E0B]">{title}</h3>
+                <p className="text-[15px] leading-relaxed mb-8 flex-grow" style={{ color: C.textMuted }}>{description}</p>
+                <div className="mt-auto pt-6 border-t transition-colors" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
+                    <div className="text-xs uppercase font-semibold mb-2 tracking-widest" style={{ color: '#6b7280' }}>Use Case</div>
                     <div className="text-sm text-slate-200 font-medium">{useCase}</div>
                 </div>
             </div>
@@ -229,394 +138,90 @@ function IndustryCard({ icon, title, description, color, useCase }) {
     );
 }
 
-// --- Digital Twin Deep Dive Section ---
-function DigitalTwinSection() {
-    return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                <motion.div
-                    initial={{ opacity: 0, x: -24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#22d3ee]/30 bg-[#22d3ee]/10 text-[#22d3ee] text-xs font-bold tracking-wider mb-6">
-                        <Layers size={12} className="mr-2" /> SIMULATION ENGINE
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Predict the Unpredictable with Digital Twins</h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                        Stop reacting to supply chain disruptions. Gasper creates a living, breathing virtual replica of your entire logistics network, allowing you to stress-test your operations against thousands of variables.
-                    </p>
-
-                    <div className="space-y-6">
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-[#22d3ee]/10 flex-shrink-0 flex items-center justify-center text-[#22d3ee]">
-                                <MonitorPlay size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Scenario Modeling</h4>
-                                <p className="text-slate-400 text-sm">Simulate port strikes, weather events, or supplier failures to see their downstream impact instantly.</p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-[#0EA5E9]/10 flex-shrink-0 flex items-center justify-center text-[#0EA5E9]">
-                                <BarChart3 size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Cost Impact Analysis</h4>
-                                <p className="text-slate-400 text-sm">Quantify the financial risk of every decision before you make it. Optimize inventory holding costs vs. service levels.</p>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Abstract Visual Representation */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="relative"
-                >
-                    <div className="aspect-square rounded-full border border-white/10 relative flex items-center justify-center">
-                        <div className="absolute inset-0 border border-[#22d3ee]/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                        <div className="absolute inset-8 border border-[#0EA5E9]/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-
-                        {/* Central Node */}
-                        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#0EA5E9] opacity-20 blur-xl absolute"></div>
-                        <div className="relative z-10 text-center">
-                            <div className="text-4xl font-bold text-white mb-2">99.4%</div>
-                            <div className="text-xs text-[#22d3ee] uppercase tracking-widest">Model Accuracy</div>
-                        </div>
-
-                        {/* Floating Nodes */}
-                        <div className="absolute top-10 left-10 w-3 h-3 bg-[#22d3ee] rounded-full shadow-[0_0_10px_#22d3ee]"></div>
-                        <div className="absolute bottom-20 right-10 w-2 h-2 bg-[#0EA5E9] rounded-full shadow-[0_0_10px_#0EA5E9]"></div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
-}
-
-// --- Risk Monitor Deep Dive Section ---
-function RiskMonitorSection() {
-    return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                {/* Visual Side (Left) */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="relative order-2 md:order-1"
-                >
-                    <div className="relative rounded-2xl bg-black/40 border border-white/10 aspect-video overflow-hidden">
-                        {/* Radar Scan Effect */}
-                        <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,rgba(0,0,0,0)_50%,rgba(239,68,68,0.1)_100%)] animate-[spin_4s_linear_infinite]"></div>
-                        <div className="absolute inset-0 grid grid-cols-6 grid-rows-4 opacity-10">
-                            {[...Array(24)].map((_, i) => (
-                                <div key={i} className="border border-red-500/20"></div>
-                            ))}
-                        </div>
-
-                        {/* Alert Blips */}
-                        <div className="absolute top-1/4 left-1/3 flex items-center gap-2">
-                            <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                            </span>
-                            <span className="text-xs text-red-400 font-mono bg-black/80 px-1 rounded">Congestion Alert</span>
-                        </div>
-                        <div className="absolute bottom-1/3 right-1/4 flex items-center gap-2">
-                            <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
-                            </span>
-                            <span className="text-xs text-orange-400 font-mono bg-black/80 px-1 rounded">Port Strike Risk</span>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Content Side (Right) */}
-                <motion.div
-                    initial={{ opacity: 0, x: 24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="order-1 md:order-2 flex flex-col items-start"
-                >
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-bold tracking-wider mb-6">
-                        <AlertTriangle size={12} className="mr-2" /> GLOBAL WATCHTOWER
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Advanced Risk Detection</h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                        The world is volatile. Gasper acts as your always-on watchtower, scanning thousands of data sources for geopolitical events, weather disruptions, and infrastructure failures.
-                    </p>
-
-                    <div className="space-y-6 w-full">
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-red-500/10 flex-shrink-0 flex items-center justify-center text-red-500">
-                                <Globe size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Geopolitical Intelligence</h4>
-                                <p className="text-slate-400 text-sm">Real-time alerts on sanctions, trade wars, and regional instability that could affect your routes.</p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex-shrink-0 flex items-center justify-center text-orange-500">
-                                <Anchor size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Infrastructure Monitoring</h4>
-                                <p className="text-slate-400 text-sm">Detect crane failures, canal blockages, and terminal congestion before your cargo gets stuck.</p>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
-}
-
-// --- Sustainability Deep Dive Section ---
-function SustainabilitySection() {
-    return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                <motion.div
-                    initial={{ opacity: 0, x: -24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-wider mb-6">
-                        <Leaf size={12} className="mr-2" /> GREEN LOGISTICS
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Decarbonize Your Supply Chain</h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                        Sustainability isn't just a buzzword—it's a competitive advantage. Gasper automatically calculates the carbon footprint of every shipment and suggests eco-friendly alternatives.
-                    </p>
-
-                    <div className="space-y-6">
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex-shrink-0 flex items-center justify-center text-emerald-500">
-                                <Wind size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Carbon Footprint Analysis</h4>
-                                <p className="text-slate-400 text-sm">Granular CO2e reporting for every route, carrier, and mode of transport compliant with GLEC framework.</p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-teal-500/10 flex-shrink-0 flex items-center justify-center text-teal-500">
-                                <Ship size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Modal Shift Opportunities</h4>
-                                <p className="text-slate-400 text-sm">Identify opportunities to switch from Air to Ocean or Rail to save costs and reduce emissions by up to 90%.</p>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Visual Representation */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="relative"
-                >
-                    <div className="relative rounded-2xl bg-black/40 border border-white/10 p-6 overflow-hidden">
-                        <div className="absolute top-0 right-0 p-4 opacity-20">
-                            <Leaf size={100} className="text-emerald-500" />
-                        </div>
-
-                        <h4 className="text-slate-400 text-sm mb-6 uppercase tracking-wider font-semibold">Emissions Comparison</h4>
-
-                        <div className="space-y-6">
-                            <div>
-                                <div className="flex justify-between text-sm mb-2 text-white">
-                                    <span>Air Freight (Shanghai - Toronto)</span>
-                                    <span className="font-mono text-red-400">4,250 kg CO2e</span>
-                                </div>
-                                <div className="h-3 bg-white/10 rounded-full overflow-hidden">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: '90%' }}
-                                        transition={{ duration: 1.5, ease: "easeOut" }}
-                                        className="h-full bg-red-500"
-                                    />
-                                </div>
-                            </div>
-
-                            <div>
-                                <div className="flex justify-between text-sm mb-2 text-white">
-                                    <span>Ocean Freight (Shanghai - Toronto)</span>
-                                    <span className="font-mono text-emerald-400">180 kg CO2e</span>
-                                </div>
-                                <div className="h-3 bg-white/10 rounded-full overflow-hidden">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        whileInView={{ width: '15%' }}
-                                        transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-                                        className="h-full bg-emerald-500"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-8 pt-6 border-t border-white/10">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <p className="text-xs text-slate-400 uppercase">Potential Savings</p>
-                                    <p className="text-2xl font-bold text-emerald-400">-4,070 kg</p>
-                                </div>
-                                <div className="text-right">
-                                    <p className="text-xs text-slate-400 uppercase">Offset Cost</p>
-                                    <p className="text-2xl font-bold text-white">$12.50</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
-}
-
-// --- Meet Your Gasper AI — OpenSpace-Inspired Section ---
+// ─── Gasper AI Bot Section (Construction-focused) ────────────────────────────
 function GasperAIBotSection() {
     const capabilities = [
-        {
-            icon: <MessageSquare size={28} />,
-            title: "Natural Language",
-            description: "Ask complex questions in plain English — track shipments, compare routes, and get instant answers."
-        },
-        {
-            icon: <Brain size={28} />,
-            title: "Proactive Alerts",
-            description: "Monitors your supply chain 24/7 and alerts you to risks before they impact operations."
-        },
-        {
-            icon: <Zap size={28} />,
-            title: "Instant Automation",
-            description: "Generate documents, classify HS codes, and compare carrier rates through simple commands."
-        }
+        { icon: <MessageSquare size={28} />, title: 'Natural Language', description: 'Ask complex questions in plain English — query project budgets, analyze blueprints, and get instant field-ready answers.' },
+        { icon: <Brain size={28} />, title: 'Proactive Alerts', description: 'Monitors job sites 24/7 and alerts your PM team to schedule delays, cost overruns, or safety incidents before they escalate.' },
+        { icon: <Zap size={28} />, title: 'Instant Automation', description: 'Generate RFIs, classify subcontractor bids, and create progress reports through simple voice or text commands.' },
     ];
 
     return (
         <section className="px-6 max-w-6xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-            {/* Large centered heading */}
             <div className="text-center mb-16">
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#22d3ee]/20 bg-[#22d3ee]/5 text-[#22d3ee] text-sm font-medium mb-6"
-                >
-                    <Bot size={14} />
-                    AI-Powered Assistant
+                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
+                    style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
+                    <Bot size={14} /> AI-Powered Copilot
                 </motion.div>
-                <motion.h2
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-4xl md:text-6xl font-bold text-white mb-5"
-                    style={{ letterSpacing: '-0.03em' }}
-                >
-                    Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#22d3ee]">Gasper AI</span>
+                <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
+                    className="text-4xl md:text-6xl font-bold text-white mb-5" style={{ letterSpacing: '-0.03em' }}>
+                    Meet <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Gasper AI</span>
                 </motion.h2>
-                <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed"
-                >
-                    Your intelligent operations copilot. Ask anything, get instant insights, and let AI handle the complexity.
+                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}
+                    className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
+                    Your intelligent construction project copilot. Ask anything, get instant site intelligence, and let AI handle the complexity.
                 </motion.p>
             </div>
 
-            {/* Centered Chat Mockup */}
-            <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="max-w-2xl mx-auto mb-20"
-            >
+            {/* Chat Mockup */}
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.15 }} className="max-w-2xl mx-auto mb-20">
                 <div className="relative rounded-2xl overflow-hidden">
-                    {/* Border glow */}
-                    <div className="absolute -inset-[1px] rounded-2xl z-0" style={{ background: 'linear-gradient(135deg, rgba(14,165,233,0.2), rgba(34,211,238,0.15), rgba(14,165,233,0.1))', opacity: 0.6 }} />
-                    <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/95 backdrop-blur-2xl z-[1]" />
-
+                    <div className="absolute -inset-[1px] rounded-2xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}25, ${C.secondary}18, ${C.primary}12)`, opacity: 0.7 }} />
+                    <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: 'rgba(7,12,9,0.97)', backdropFilter: 'blur(24px)' }} />
                     <div className="relative z-10 p-6">
-                        {/* Header */}
-                        <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/[0.06]">
-                            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0EA5E9] to-[#22d3ee] flex items-center justify-center p-1">
+                        <div className="flex items-center gap-3 mb-6 pb-4 border-b" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
+                            <div className="w-9 h-9 rounded-full flex items-center justify-center p-1" style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>
                                 <img src="/images/gasper-logo-g.png" alt="Gasper AI" className="w-full h-full object-contain" />
                             </div>
                             <div>
                                 <div className="text-white font-semibold text-sm">Gasper AI</div>
-                                <div className="text-[10px] text-emerald-400 flex items-center gap-1">
-                                    <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
-                                    Online
-                                </div>
+                                <div className="text-[10px] text-emerald-400 flex items-center gap-1"><div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" /> Online — Construction Mode</div>
                             </div>
                         </div>
-
-                        {/* Chat messages */}
                         <div className="space-y-4">
                             {/* User */}
                             <div className="flex justify-end">
-                                <div className="bg-[#0EA5E9]/15 border border-[#0EA5E9]/20 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]">
-                                    <p className="text-white text-sm">What's the cheapest way to ship 500kg from Shanghai to LA next week?</p>
+                                <div className="rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[75%]" style={{ background: `${C.primary}18`, border: `1px solid ${C.primary}25` }}>
+                                    <p className="text-white text-sm">What's the projected cash flow shortfall for Phase 2 of the Westside Commercial project?</p>
                                 </div>
                             </div>
-
                             {/* AI Response */}
                             <div className="flex justify-start">
-                                <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
-                                    <p className="text-slate-300 text-sm mb-3">Analyzed 47 carrier options:</p>
-                                    <div className="bg-[#0EA5E9]/8 border border-[#0EA5E9]/15 rounded-lg p-3 mb-2">
+                                <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                                    <p className="text-slate-300 text-sm mb-3">Analyzed 14 billing cycles + subcontractor invoices:</p>
+                                    <div className="rounded-lg p-3 mb-2" style={{ background: `${C.primary}10`, border: `1px solid ${C.primary}18` }}>
                                         <div className="flex items-center justify-between mb-1.5">
-                                            <span className="text-[#22d3ee] text-xs font-semibold flex items-center gap-1">
-                                                <Star size={10} fill="currentColor" /> RECOMMENDED
-                                            </span>
-                                            <span className="text-white font-bold text-sm">$2,180</span>
+                                            <span className="text-xs font-semibold flex items-center gap-1" style={{ color: C.secondary }}><Star size={10} fill="currentColor" /> PROJECTED SHORTFALL</span>
+                                            <span className="text-white font-bold text-sm">$142,000</span>
                                         </div>
                                         <div className="text-xs text-slate-400 flex items-center gap-3">
-                                            <span>Ocean — CMA CGM</span>
-                                            <span className="flex items-center gap-1 text-emerald-400">
-                                                <Clock size={10} /> 14 days
-                                            </span>
+                                            <span>Weeks 18–22</span>
+                                            <span className="flex items-center gap-1 text-amber-400"><Clock size={10} /> Retention issue</span>
                                         </div>
                                     </div>
                                     <div className="text-xs text-slate-500 space-y-1">
-                                        <div className="flex justify-between"><span>Air Express (DHL)</span><span className="text-slate-400">$8,450 · 3 days</span></div>
-                                        <div className="flex justify-between"><span>Ocean Standard</span><span className="text-slate-400">$1,890 · 18 days</span></div>
+                                        <div className="flex justify-between"><span>MaterialCosts variance</span><span className="text-slate-400">+$38k over budget</span></div>
+                                        <div className="flex justify-between"><span>Owner draws pending</span><span className="text-slate-400">$104k held</span></div>
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Proactive Alert */}
+                            {/* Alert */}
                             <div className="flex justify-start">
-                                <div className="bg-amber-500/8 border border-amber-500/20 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                                <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]" style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)' }}>
                                     <div className="flex items-start gap-2">
-                                        <AlertTriangle size={13} className="text-amber-400 flex-shrink-0 mt-0.5" />
+                                        <AlertTriangle size={13} className="flex-shrink-0 mt-0.5" style={{ color: C.secondary }} />
                                         <div>
-                                            <p className="text-amber-300 text-[11px] font-semibold mb-0.5 uppercase tracking-wide">Proactive Alert</p>
-                                            <p className="text-slate-300 text-sm">Port congestion detected in Long Beach — shall I reroute through Oakland?</p>
+                                            <p className="text-[11px] font-semibold mb-0.5 uppercase tracking-wide" style={{ color: C.secondary }}>Proactive Alert</p>
+                                            <p className="text-slate-300 text-sm">Electrical sub has 3 pending invoices — shall I flag the GC for expedited approval?</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        {/* Input */}
-                        <div className="mt-5 pt-4 border-t border-white/[0.06]">
-                            <div className="flex items-center gap-2 bg-white/[0.02] border border-white/[0.06] rounded-xl px-4 py-2.5">
-                                <input type="text" placeholder="Ask Gasper AI anything..." className="flex-1 bg-transparent text-white text-sm outline-none placeholder:text-slate-600" disabled />
+                        <div className="mt-5 pt-4 border-t" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
+                            <div className="flex items-center gap-2 rounded-xl px-4 py-2.5" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                                <input type="text" placeholder="Ask Gasper AI anything about your projects..." className="flex-1 bg-transparent text-white text-sm outline-none placeholder:text-slate-600" disabled />
                                 <Send size={15} className="text-slate-600" />
                             </div>
                         </div>
@@ -624,27 +229,18 @@ function GasperAIBotSection() {
                 </div>
             </motion.div>
 
-            {/* Capability Grid — 3 columns */}
+            {/* Capability Grid */}
             <div className="grid md:grid-cols-3 gap-6">
                 {capabilities.map((cap, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                        className="relative rounded-2xl overflow-hidden group"
-                    >
-                        {/* Border */}
-                        <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-10 group-hover:opacity-30" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
-                        <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/95 z-[1]" />
-
+                    <motion.div key={idx} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.7 }} className="relative rounded-2xl overflow-hidden group">
+                        <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-10 group-hover:opacity-30" style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }} />
+                        <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: 'rgba(13,22,16,0.97)' }} />
                         <div className="relative z-10 p-8 text-center">
-                            <div className="w-14 h-14 rounded-xl mx-auto mb-5 flex items-center justify-center text-[#22d3ee] group-hover:scale-105 transition-transform duration-500" style={{ background: 'rgba(34,211,238,0.06)', border: '1px solid rgba(34,211,238,0.1)' }}>
+                            <div className="w-14 h-14 rounded-xl mx-auto mb-5 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}15`, color: C.secondary }}>
                                 {cap.icon}
                             </div>
                             <h3 className="text-white font-bold text-lg mb-3">{cap.title}</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">{cap.description}</p>
+                            <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{cap.description}</p>
                         </div>
                     </motion.div>
                 ))}
@@ -653,64 +249,36 @@ function GasperAIBotSection() {
     );
 }
 
-
-// --- Technology Stack Section ---
-function TechnologyStackSection({ selectedProduct }) {
-    const allCategories = [
-        {
-            category: "Data Sources",
-            icon: <Database size={18} />,
-            technologies: ["AIS Streams", "Port & BIM APIs", "IoT Sensors", "Weather Data"],
-            product: 'both'
-        },
-        {
-            category: "AI & ML",
-            icon: <Cpu size={18} />,
-            technologies: ["TensorFlow", "Computer Vision", "Time-Series", "NLP"],
-            product: 'both'
-        },
-        {
-            category: "Infrastructure",
-            icon: <Server size={18} />,
-            technologies: ["AWS", "Kubernetes", "Redis", "PostgreSQL"],
-            product: 'both'
-        },
-        {
-            category: "Security",
-            icon: <Lock size={18} />,
-            technologies: ["SOC 2 Type II", "E2E Encryption", "GDPR", "ISO 27001"],
-            product: 'both'
-        }
+// ─── Technology Stack ─────────────────────────────────────────────────────────
+function TechnologyStackSection() {
+    const techCategories = [
+        { category: 'Data Sources', icon: <Database size={18} />, technologies: ['BIM / IFC APIs', 'IoT Job Site Sensors', 'Weather & Soil Data', 'ERP Integrations'] },
+        { category: 'AI & ML', icon: <Cpu size={18} />, technologies: ['Computer Vision', 'Time-Series Forecasting', 'NLP Document AI', 'Generative Models'] },
+        { category: 'Infrastructure', icon: <Server size={18} />, technologies: ['AWS GovCloud', 'Kubernetes', 'Redis', 'PostgreSQL'] },
+        { category: 'Security', icon: <Lock size={18} />, technologies: ['SOC 2 Type II', 'E2E Encryption', 'GDPR Compliant', 'ISO 27001'] },
     ];
-
-    const techCategories = allCategories.filter(cat => cat.product === 'both' || cat.product === selectedProduct);
 
     return (
         <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-10">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Enterprise-Grade Stack</h2>
-                <p className="text-slate-500 text-sm max-w-lg mx-auto">Powered by the most advanced tools in the industry.</p>
+                <p className="text-sm max-w-lg mx-auto" style={{ color: '#64748b' }}>Built on the most secure, scalable infrastructure in the industry.</p>
             </div>
-
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {techCategories.map((cat, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#22d3ee]/20 transition-all"
+                    <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08, duration: 0.6 }}
+                        className="p-5 rounded-xl transition-all" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,107,0,0.08)' }}
+                        onMouseEnter={e => e.currentTarget.style.borderColor = `${C.primary}25`}
+                        onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.08)'}
                     >
                         <div className="flex items-center gap-2 mb-3">
-                            <span className="text-[#22d3ee]">{cat.icon}</span>
+                            <span style={{ color: C.secondary }}>{cat.icon}</span>
                             <h3 className="text-white font-semibold text-sm">{cat.category}</h3>
                         </div>
                         <ul className="space-y-1.5">
                             {cat.technologies.map((tech, i) => (
-                                <li key={i} className="text-xs text-slate-500 flex items-center">
-                                    <div className="w-1 h-1 bg-slate-600 rounded-full mr-2" />
-                                    {tech}
+                                <li key={i} className="text-xs flex items-center" style={{ color: '#64748b' }}>
+                                    <div className="w-1 h-1 rounded-full mr-2" style={{ background: '#374151' }} />{tech}
                                 </li>
                             ))}
                         </ul>
@@ -721,460 +289,120 @@ function TechnologyStackSection({ selectedProduct }) {
     );
 }
 
-// --- Comparison Table Section ---
-function ComparisonTableSection({ selectedProduct }) {
-    const isConstruction = selectedProduct === 'construction';
+// ─── Comparison / Advantages ──────────────────────────────────────────────────
+function ComparisonTableSection() {
+    const metrics = [
+        { value: '10×', label: 'Faster Estimates', desc: 'Blueprint AI analyzes plans in minutes, not days', icon: <Zap size={22} /> },
+        { value: '99.2%', label: 'Budget Accuracy', desc: 'AI-powered cash flow forecasting across all phases', icon: <TrendingUp size={22} /> },
+        { value: '<5min', label: 'Setup Time', desc: 'Onboard your first job site in under five minutes', icon: <Clock size={22} /> },
+    ];
 
-    const metrics = isConstruction
-        ? [
-            { value: '10×', label: 'Faster Estimates', desc: 'Blueprint AI analyzes plans in minutes, not days', icon: <Zap size={22} /> },
-            { value: '99.2%', label: 'Budget Accuracy', desc: 'AI-powered cash flow forecasting across all phases', icon: <TrendingUp size={22} /> },
-            { value: '< 5min', label: 'Setup Time', desc: 'Onboard your first job site in under five minutes', icon: <Clock size={22} /> },
-        ]
-        : [
-            { value: '10×', label: 'Faster Processing', desc: 'Automate customs, routing & compliance end-to-end', icon: <Zap size={22} /> },
-            { value: '99.7%', label: 'Prediction Accuracy', desc: 'AI models trained on billions of logistics data points', icon: <TrendingUp size={22} /> },
-            { value: '< 5min', label: 'Setup Time', desc: 'Connect your first shipment in under five minutes', icon: <Clock size={22} /> },
-        ];
+    const transformations = [
+        { before: 'Manual takeoffs from paper blueprints', after: 'AI extracts quantities & generates BOMs automatically', icon: <Ruler size={18} /> },
+        { before: 'Spreadsheet-based budget guesswork', after: 'Real-time cash flow projections per project phase', icon: <DollarSign size={18} /> },
+        { before: 'Reactive theft & loss reporting', after: 'Computer vision monitoring with instant alerts', icon: <Eye size={18} /> },
+        { before: 'Word-of-mouth subcontractor sourcing', after: 'AI-scored matching by trade, capacity & track record', icon: <Users size={18} /> },
+        { before: 'Disconnected project spreadsheets', after: 'Unified command center across every job site', icon: <Layers size={18} /> },
+    ];
 
-    const transformations = isConstruction
-        ? [
-            { before: 'Manual takeoffs from paper blueprints', after: 'AI extracts quantities & generates BOMs automatically', icon: <Ruler size={18} /> },
-            { before: 'Spreadsheet-based budget guesswork', after: 'Real-time cash flow projections per project phase', icon: <DollarSign size={18} /> },
-            { before: 'Reactive theft & loss reporting', after: 'Computer vision monitoring with instant alerts', icon: <Eye size={18} /> },
-            { before: 'Word-of-mouth subcontractor sourcing', after: 'AI-scored matching by trade, capacity & track record', icon: <Users size={18} /> },
-            { before: 'Disconnected project spreadsheets', after: 'Unified command center across every job site', icon: <Layers size={18} /> },
-        ]
-        : [
-            { before: 'Manual rate comparison across carriers', after: 'AI benchmarks 50+ carriers in real-time', icon: <ArrowRightLeft size={18} /> },
-            { before: 'Static tracking with day-old data', after: 'Global digital twin with live vessel positions', icon: <Globe size={18} /> },
-            { before: 'Reactive compliance firefighting', after: 'Automated HS classification & duty calculation', icon: <ShieldCheck size={18} /> },
-            { before: 'Siloed air, sea & ground systems', after: 'Unified multi-modal visibility in one platform', icon: <Ship size={18} /> },
-            { before: 'Manual customs documentation', after: 'AI-generated paperwork with 1-click filing', icon: <FileText size={18} /> },
-        ];
-
-    const differentiators = isConstruction
-        ? ['No per-seat fees', 'SOC 2 Certified', 'Unlimited job sites', '24/7 AI support']
-        : ['No per-shipment fees', 'SOC 2 Certified', 'Unlimited tracking', '24/7 AI support'];
+    const differentiators = ['No per-seat fees', 'SOC 2 Certified', 'Unlimited job sites', '24/7 AI support'];
 
     return (
         <section className="px-6 max-w-6xl mx-auto py-24 relative">
-            {/* Section header */}
             <div className="text-center mb-20 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="inline-block px-4 py-1.5 rounded-full border border-[#0EA5E9]/30 bg-[#0EA5E9]/10 text-[#0EA5E9] text-sm font-medium mb-6"
-                >
-                    <Award size={14} className="inline mr-2" />
-                    The Gasper Advantage
+                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="inline-block px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
+                    style={{ borderColor: `${C.primary}35`, background: `${C.primary}10`, color: C.primary }}>
+                    <Award size={14} className="inline mr-2" />The Gasper Advantage
                 </motion.div>
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-4xl md:text-5xl font-bold mb-5"
-                    style={{ background: 'linear-gradient(to bottom, #fff, rgba(255,255,255,0.6))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
-                >
+                    style={{ background: 'linear-gradient(to bottom, #fff, rgba(255,255,255,0.6))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     Why Industry Leaders Choose Gasper
                 </motion.h2>
-                <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-slate-400 text-lg max-w-2xl mx-auto"
-                >
-                    Purpose-built AI that transforms how {isConstruction ? 'construction teams build' : 'supply chains move'} — from first touch to final delivery.
+                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="text-lg max-w-2xl mx-auto" style={{ color: C.textMuted }}>
+                    Purpose-built AI that transforms how construction teams build — from groundbreak to certificate of occupancy.
                 </motion.p>
             </div>
 
-            {/* ── Tier 1: Hero Metric Pillars ────────────────────────── */}
+            {/* Metric Pillars */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                 {metrics.map((m, i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1, duration: 0.6 }}
-                        className="relative group rounded-2xl overflow-hidden"
-                    >
-                        {/* Border */}
-                        <div className="absolute -inset-[1px] rounded-2xl transition-opacity duration-500 opacity-20 group-hover:opacity-50" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
-                        <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/95 z-[1]" />
-
-                        <div className="relative z-10 p-8 text-center">
-                            <div className="w-12 h-12 rounded-xl mx-auto mb-5 flex items-center justify-center text-[#22d3ee]" style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.15)' }}>
-                                {m.icon}
-                            </div>
-                            <div className="text-5xl font-black mb-2" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                                {m.value}
-                            </div>
-                            <div className="text-white font-semibold text-lg mb-2">{m.label}</div>
-                            <p className="text-slate-500 text-sm leading-relaxed">{m.desc}</p>
+                    <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.6 }}
+                        className="relative rounded-2xl p-8 text-center overflow-hidden group"
+                        style={{ background: C.surface, border: `1px solid ${C.border}` }}>
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: `radial-gradient(ellipse at center, ${C.primaryGlow} 0%, transparent 70%)` }} />
+                        <div className="relative z-10">
+                            <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style={{ background: `${C.primary}12`, color: C.primary }}>{m.icon}</div>
+                            <div className="text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #fff 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
+                            <div className="text-white font-bold text-lg mb-2">{m.label}</div>
+                            <p className="text-sm" style={{ color: C.textMuted }}>{m.desc}</p>
                         </div>
                     </motion.div>
                 ))}
             </div>
 
-            {/* ── Tier 2: Before / After Transformation Cards ────────── */}
-            <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="relative rounded-2xl overflow-hidden mb-8"
-            >
-                {/* Border */}
-                <div className="absolute -inset-[1px] rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(14,165,233,0.2), rgba(34,211,238,0.15), rgba(14,165,233,0.2))' }} />
-                <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/90 backdrop-blur-xl z-[1]" />
-
-                <div className="relative z-10">
-                    {/* Table header */}
-                    <div className="grid grid-cols-[1fr_1fr] border-b border-white/[0.06]">
-                        <div className="px-8 py-5 flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-red-500/60" />
-                            <span className="text-slate-500 text-sm font-semibold uppercase tracking-widest">Before Gasper</span>
-                        </div>
-                        <div className="px-8 py-5 flex items-center gap-3 border-l border-white/[0.06]" style={{ background: 'linear-gradient(90deg, rgba(14,165,233,0.04), transparent)' }}>
-                            <div className="w-2 h-2 rounded-full bg-[#22d3ee]" style={{ boxShadow: '0 0 8px rgba(34,211,238,0.6)' }} />
-                            <span className="text-sm font-semibold uppercase tracking-widest" style={{ background: 'linear-gradient(90deg, #0EA5E9, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>With Gasper</span>
-                        </div>
-                    </div>
-
-                    {/* Transformation rows */}
+            {/* Before / After */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                className="rounded-3xl p-8 md:p-12 mb-10" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
+                <h3 className="text-2xl font-bold text-white text-center mb-10">The Old Way vs. The Gasper Way</h3>
+                <div className="space-y-0 divide-y" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
                     {transformations.map((t, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.06 }}
-                            className="grid grid-cols-[1fr_1fr] border-b border-white/[0.03] last:border-0 group/row hover:bg-white/[0.01] transition-colors duration-300"
-                        >
-                            {/* Before */}
-                            <div className="px-8 py-5 flex items-start gap-4">
-                                <div className="w-8 h-8 rounded-lg bg-white/[0.03] flex items-center justify-center text-slate-600 flex-shrink-0 mt-0.5">
-                                    {t.icon}
-                                </div>
-                                <span className="text-slate-500 text-[15px] leading-relaxed">{t.before}</span>
+                        <div key={i} className="grid md:grid-cols-[1fr_auto_1fr] items-center gap-4 py-5">
+                            <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-slate-500" style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.12)' }}>{t.icon}</div>
+                                <span className="text-sm text-slate-500 line-through">{t.before}</span>
                             </div>
-                            {/* After */}
-                            <div className="px-8 py-5 flex items-start gap-4 border-l border-white/[0.06]" style={{ background: 'linear-gradient(90deg, rgba(14,165,233,0.02), transparent)' }}>
-                                <div className="w-8 h-8 rounded-lg flex items-center justify-center text-[#22d3ee] flex-shrink-0 mt-0.5" style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.1)' }}>
-                                    {t.icon}
-                                </div>
-                                <span className="text-slate-200 text-[15px] leading-relaxed group-hover/row:text-white transition-colors">{t.after}</span>
+                            <div className="hidden md:flex w-8 h-8 rounded-full items-center justify-center text-xs font-bold flex-shrink-0 mx-auto" style={{ background: `${C.primary}15`, color: C.primary }}>→</div>
+                            <div className="flex items-center gap-3 md:justify-end">
+                                <span className="text-sm text-slate-200 font-medium">{t.after}</span>
+                                <Check size={16} className="flex-shrink-0" style={{ color: C.secondary }} />
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </motion.div>
 
-            {/* ── Tier 3: Differentiator Strip ────────────────────────── */}
-            <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6"
-            >
+            {/* Trust Pills */}
+            <div className="flex flex-wrap justify-center gap-3">
                 {differentiators.map((d, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm">
-                        <CheckCircle2 size={16} className="text-[#22d3ee]" />
-                        <span className="text-slate-400 font-medium">{d}</span>
-                    </div>
+                    <span key={i} className="px-4 py-2 rounded-full text-sm font-semibold" style={{ background: `${C.primary}10`, border: `1px solid ${C.primary}25`, color: C.secondary }}>
+                        <CheckCircle2 size={13} className="inline mr-1.5" />{d}
+                    </span>
                 ))}
-            </motion.div>
-        </section>
-    );
-}
-
-// --- Waitlist Section with Email Functionality ---
-function WaitlistSection({ selectedProduct }) {
-    const defaultRole = selectedProduct === 'construction' ? 'General Contractor' : 'Logistics Manager';
-
-    const [formData, setFormData] = useState({
-        email: '',
-        role: defaultRole,
-        companySize: ''
-    });
-    const [status, setStatus] = useState('idle'); // idle, loading, success, error
-    const [errorMessage, setErrorMessage] = useState('');
-
-    useEffect(() => {
-        setFormData(prev => ({ ...prev, role: defaultRole }));
-    }, [defaultRole]);
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const validateForm = () => {
-        if (!formData.email) {
-            setErrorMessage('Please enter your email address');
-            return false;
-        }
-
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            setErrorMessage('Please enter a valid email address');
-            return false;
-        }
-
-        if (!formData.role) {
-            setErrorMessage('Please select your role');
-            return false;
-        }
-
-        if (!formData.companySize) {
-            setErrorMessage('Please select your company size');
-            return false;
-        }
-
-        return true;
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setErrorMessage('');
-
-        // Validate form
-        if (!validateForm()) {
-            setStatus('error');
-            return;
-        }
-
-        setStatus('loading');
-
-        try {
-            // Send email via API endpoint
-            const response = await fetch('/api/send-waitlist-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: formData.email,
-                    role: formData.role,
-                    companySize: formData.companySize
-                })
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || 'Failed to send email');
-            }
-
-            setStatus('success');
-            // Reset form
-            setFormData({
-                email: '',
-                role: '',
-                companySize: ''
-            });
-        } catch (error) {
-            console.error('Email send error:', error);
-            setStatus('error');
-            setErrorMessage('Failed to send request. Please try again or contact us directly at gasper@marapone.com');
-        }
-    };
-
-    return (
-        <section className="px-6 max-w-4xl mx-auto text-center" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y-lg)' }}>
-            <div className="relative p-10 md:p-16 rounded-[2rem] overflow-hidden">
-                {/* Gradient border */}
-                <div
-                    className="absolute -inset-[1px] rounded-[2rem] z-0"
-                    style={{
-                        background: 'linear-gradient(135deg, rgba(14,165,233,0.35), rgba(34,211,238,0.25), rgba(16,185,129,0.15), rgba(14,165,233,0.35))',
-                        opacity: 0.5,
-                    }}
-                />
-                {/* Glass body */}
-                <div className="absolute inset-[1px] rounded-[2rem] bg-[#0B1120]/92 backdrop-blur-2xl z-[1]" />
-                <div className="relative z-10">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-white mb-4"
-                        style={{ letterSpacing: '-0.03em' }}
-                    >
-                        Ready to see what's possible?
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-slate-400 mb-3 text-lg leading-relaxed max-w-xl mx-auto"
-                    >
-                        Gasper is currently in private beta. Join the waitlist to be notified when we open to the public.
-                    </motion.p>
-                    <p className="text-[#22d3ee] text-sm font-semibold mb-10 flex items-center justify-center gap-1.5">
-                        <Users size={14} />
-                        Limited spots available for the private beta
-                    </p>
-
-                    <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
-                        <div className="relative">
-                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                placeholder="Enter your email address"
-                                className="w-full bg-[#0B1120]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all placeholder:text-slate-600"
-                                disabled={status === 'loading'}
-                            />
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-4">
-                            <div className="relative">
-                                <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                                <select
-                                    name="role"
-                                    value={formData.role}
-                                    onChange={handleInputChange}
-                                    className="w-full bg-[#0B1120]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all appearance-none cursor-pointer"
-                                    disabled={status === 'loading'}
-                                >
-                                    <option value="">Your Role</option>
-                                    <option value="Logistics Manager">Logistics Manager</option>
-                                    <option value="Operations Director">Operations Director</option>
-                                    <option value="Supply Chain VP">Supply Chain VP</option>
-                                    <option value="General Contractor">General Contractor</option>
-                                    <option value="Project Manager">Project Manager (Construction)</option>
-                                    <option value="Site Engineer">Site Engineer</option>
-                                    <option value="Construction VP">Construction VP / Owner</option>
-                                    <option value="C-Level Executive">C-Level Executive</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                            <div className="relative">
-                                <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                                <select
-                                    name="companySize"
-                                    value={formData.companySize}
-                                    onChange={handleInputChange}
-                                    className="w-full bg-[#0B1120]/80 border border-white/[0.08] rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-[#0EA5E9]/60 focus:ring-1 focus:ring-[#0EA5E9]/40 transition-all appearance-none cursor-pointer"
-                                    disabled={status === 'loading'}
-                                >
-                                    <option value="">Company Size</option>
-                                    <option value="1-50 employees">1-50 employees</option>
-                                    <option value="51-200 employees">51-200 employees</option>
-                                    <option value="201-1,000 employees">201-1,000 employees</option>
-                                    <option value="1,000+ employees">1,000+ employees</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={status === 'loading'}
-                            className={`w-full font-bold py-4 px-8 rounded-full transition-all flex items-center justify-center relative overflow-hidden ${status === 'loading'
-                                ? 'bg-[#0EA5E9]/50 cursor-not-allowed'
-                                : 'bg-gradient-to-r from-[#0EA5E9] to-[#0EA5E9] hover:from-[#0284C7] hover:to-[#0369A1] shadow-lg shadow-[#0EA5E9]/30 hover:shadow-[#0EA5E9]/50'
-                                } text-white`}
-                        >
-                            {status === 'loading' ? (
-                                <>
-                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
-                                    Sending...
-                                </>
-                            ) : (
-                                <>
-                                    Request Access <ArrowRight size={18} className="ml-2" />
-                                </>
-                            )}
-                        </button>
-
-                        {/* Success Message */}
-                        {status === 'success' && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 flex items-center gap-2"
-                            >
-                                <Check size={20} />
-                                <span>Success! We'll be in touch soon.</span>
-                            </motion.div>
-                        )}
-
-                        {/* Error Message */}
-                        {status === 'error' && errorMessage && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 flex items-start gap-2"
-                            >
-                                <AlertTriangle size={20} className="flex-shrink-0 mt-0.5" />
-                                <span className="text-sm">{errorMessage}</span>
-                            </motion.div>
-                        )}
-                    </form>
-
-                    <p className="mt-4 text-xs text-slate-500">
-                        By joining, you agree to our{' '}
-                        <Link to="/terms" className="text-[#22d3ee] hover:text-[#0EA5E9] transition-colors underline">
-                            Terms of Service
-                        </Link>
-                        {', '}
-                        <Link to="/privacy" className="text-[#22d3ee] hover:text-[#0EA5E9] transition-colors underline">
-                            Privacy Policy
-                        </Link>
-                        {', and '}
-                        <Link to="/cookies" className="text-[#22d3ee] hover:text-[#0EA5E9] transition-colors underline">
-                            Cookie Policy
-                        </Link>
-                        . No spam, ever.
-                    </p>
-                </div>
             </div>
         </section>
     );
 }
 
-// --- What You'll Get Section ---
+// ─── What You'll Get ──────────────────────────────────────────────────────────
 function WhatYouGetSection() {
     const benefits = [
-        { icon: <Zap size={24} />, title: "Early Access", description: "Be among the first to experience Gasper when we launch" },
-        { icon: <DollarSign size={24} />, title: "Founding Member Pricing", description: "Lock in 40% off for life as a beta waitlist member" },
-        { icon: <Award size={24} />, title: "Priority Support", description: "Direct line to our engineering team for the first 6 months" },
-        { icon: <Users size={24} />, title: "Exclusive Community", description: "Join our private Slack with other supply chain innovators" }
+        { icon: <Zap size={24} />, title: 'Early Access', description: 'Join our private beta and shape the platform before public launch' },
+        { icon: <DollarSign size={24} />, title: 'Founding Rate', description: 'Lock in 40% off enterprise pricing for life as a founding member' },
+        { icon: <Award size={24} />, title: 'White-Glove Onboarding', description: 'Dedicated implementation support from our construction AI experts' },
+        { icon: <Users size={24} />, title: 'Investor Updates', description: 'Quarterly product roadmap calls direct with founders and leadership' },
     ];
 
     return (
         <section className="px-6 max-w-7xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What You'll Get</h2>
-                <p className="text-slate-400 max-w-xl mx-auto">Join the waitlist today and unlock exclusive founder benefits.</p>
+                <p className="max-w-xl mx-auto" style={{ color: C.textMuted }}>Founding members and early partners get exclusive access to shape the future of construction AI.</p>
             </div>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {benefits.map((benefit, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                        className="relative rounded-2xl overflow-hidden group"
-                    >
-                        <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-10 group-hover:opacity-25" style={{ background: 'linear-gradient(135deg, #0EA5E9, #22d3ee)' }} />
-                        <div className="absolute inset-[1px] rounded-2xl bg-[#0B1120]/95 z-[1]" />
+                {benefits.map((b, idx) => (
+                    <motion.div key={idx} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.7 }}
+                        className="relative rounded-2xl overflow-hidden group">
+                        <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-15 group-hover:opacity-35" style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }} />
+                        <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: C.surface }} />
                         <div className="relative z-10 p-7 text-center">
-                            <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center text-[#0EA5E9] group-hover:scale-105 transition-transform duration-500" style={{ background: 'rgba(14,165,233,0.06)', border: '1px solid rgba(14,165,233,0.1)' }}>
-                                {benefit.icon}
+                            <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}15`, color: C.primary }}>
+                                {b.icon}
                             </div>
-                            <h3 className="text-white font-bold text-lg mb-2">{benefit.title}</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">{benefit.description}</p>
+                            <h3 className="text-white font-bold text-lg mb-2">{b.title}</h3>
+                            <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{b.description}</p>
                         </div>
                     </motion.div>
                 ))}
@@ -1183,260 +411,192 @@ function WhatYouGetSection() {
     );
 }
 
-// --- Rate Check Deep Dive Section ---
-function RateCheckSection() {
-    return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                {/* Visual Side (Left) */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="relative order-2 md:order-1"
-                >
-                    <div className="relative">
-                        {/* Background Card (Stack Effect) */}
-                        <div className="absolute top-4 left-4 right-[-16px] bottom-[-16px] bg-white/5 border border-white/5 rounded-2xl z-0 transform rotate-2"></div>
-
-                        {/* Main Card */}
-                        <div className="relative z-10 bg-[#0f1014] border border-white/10 rounded-2xl p-6 shadow-2xl">
-                            <div className="flex justify-between items-center mb-6">
-                                <h3 className="text-white font-semibold">Rate Comparison</h3>
-                                <div className="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded">Last Updated: 2m ago</div>
-                            </div>
-
-                            <div className="space-y-3">
-                                {/* Option 1: AI Recommended */}
-                                <div className="p-4 rounded-xl bg-gradient-to-r from-blue-900/20 to-indigo-900/20 border border-blue-500/30 relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl-lg">AI RECOMMENDED</div>
-                                    <div className="flex justify-between items-center relative z-10">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded bg-white flex items-center justify-center">
-                                                <img src="/freightos-logo.png" alt="C1" className="w-8 opacity-80" onError={(e) => e.target.style.display = 'none'} />
-                                                <Ship size={20} className="text-black absolute" style={{ opacity: 0.2 }} />
-                                            </div>
-                                            <div className="text-left">
-                                                <div className="text-white font-bold text-sm">Maersk Line</div>
-                                                <div className="text-blue-300 text-xs flex items-center gap-1"><Star size={10} fill="currentColor" /> 98% Reliability</div>
-                                            </div>
-                                        </div>
-                                        <div className="text-right">
-                                            <div className="text-white font-bold text-lg">$2,450</div>
-                                            <div className="text-slate-400 text-xs">24 Days</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Option 2 */}
-                                <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div className="flex justify-between items-center">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded bg-white flex items-center justify-center">
-                                                <Ship size={20} className="text-black/50" />
-                                            </div>
-                                            <div className="text-left">
-                                                <div className="text-white font-bold text-sm">MSC</div>
-                                                <div className="text-slate-400 text-xs">94% Reliability</div>
-                                            </div>
-                                        </div>
-                                        <div className="text-right">
-                                            <div className="text-white font-bold text-lg">$2,380</div>
-                                            <div className="text-slate-400 text-xs">28 Days</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Option 3 */}
-                                <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                                    <div className="flex justify-between items-center">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded bg-white flex items-center justify-center">
-                                                <Plane size={20} className="text-black/50" />
-                                            </div>
-                                            <div className="text-left">
-                                                <div className="text-white font-bold text-sm">DHL Express</div>
-                                                <div className="text-slate-400 text-xs">99% Reliability</div>
-                                            </div>
-                                        </div>
-                                        <div className="text-right">
-                                            <div className="text-white font-bold text-lg">$8,450</div>
-                                            <div className="text-slate-400 text-xs">3 Days</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Content Side (Right) */}
-                <motion.div
-                    initial={{ opacity: 0, x: 24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="order-1 md:order-2 flex flex-col items-start"
-                >
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-bold tracking-wider mb-6">
-                        <DollarSign size={12} className="mr-2" /> COST OPTIMIZATION
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Smart Rate Comparison</h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                        Stop overpaying for freight. Gasper aggregates real-time rates from hundreds of carriers, highlighting the best balance of speed, cost, and reliability for every shipment.
-                    </p>
-
-                    <div className="space-y-6 w-full">
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex-shrink-0 flex items-center justify-center text-blue-500">
-                                <Clock size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Instant Quotes</h4>
-                                <p className="text-slate-400 text-sm">Get bookable spot rates in seconds, not days. Compare across air, ocean, and rail instantly.</p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-indigo-500/10 flex-shrink-0 flex items-center justify-center text-indigo-500">
-                                <ShieldCheck size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Hidden Fee Detection</h4>
-                                <p className="text-slate-400 text-sm">Our AI scans for surcharges and hidden fees, ensuring the price you see is the price you pay.</p>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
-}
-
-
-
-// --- Custom LLM Builder Section ---
-function CustomLLMBuilderSection({ selectedProduct }) {
-    let accentTheme = { from: 'from-[#8B5CF6]', to: 'to-[#0EA5E9]', bgLight: 'bg-[#8B5CF6]/10', border: 'border-[#8B5CF6]/30', text: 'text-[#8B5CF6]' };
-    if (selectedProduct === 'construction') {
-        accentTheme = { from: 'from-[#FF6B00]', to: 'to-[#F59E0B]', bgLight: 'bg-[#FF6B00]/10', border: 'border-[#FF6B00]/30', text: 'text-[#FF6B00]' };
-    } else if (selectedProduct === 'logistics') {
-        accentTheme = { from: 'from-[#0EA5E9]', to: 'to-[#22d3ee]', bgLight: 'bg-[#0EA5E9]/10', border: 'border-[#0EA5E9]/30', text: 'text-[#0EA5E9]' };
-    }
-
-    const industryText = selectedProduct === 'construction' ? 'construction' : (selectedProduct === 'logistics' ? 'logistics' : 'logistics & construction');
-
+// ─── Custom LLM Builder ───────────────────────────────────────────────────────
+function CustomLLMBuilderSection() {
     return (
         <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
             <div className="text-center mb-16 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className={`inline-flex items-center px-4 py-1.5 rounded-full border ${accentTheme.border} ${accentTheme.bgLight} ${accentTheme.text} text-sm font-medium mb-6`}
-                >
-                    <Brain size={14} className="mr-2" />
-                    Bespoke Enterprise AI
+                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="inline-flex items-center px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
+                    style={{ borderColor: `${C.primary}30`, background: `${C.primary}10`, color: C.primary }}>
+                    <Brain size={14} className="mr-2" /> Bespoke Enterprise AI
                 </motion.div>
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-bold mb-6 text-white"
-                >
-                    Gasper <span className={`text-transparent bg-clip-text bg-gradient-to-r ${accentTheme.from} ${accentTheme.to}`}>Custom LLM Builder</span>
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                    Gasper <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Custom LLM Builder</span>
                 </motion.h2>
-                <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed"
-                >
-                    At Gasper, we offer building powerful <strong>custom Large Language Models (LLMs)</strong> designed specifically for {industryText}. We start by deeply understanding your unique workflows, proprietary data, terminology, and compliance needs to create an AI that truly speaks your business language.
+                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="text-lg max-w-3xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
+                    We build powerful <strong className="text-white">custom Large Language Models</strong> designed specifically for construction. Trained on your project histories, specs, contracts, and workflows — an AI that truly speaks your business language.
                 </motion.p>
             </div>
-
             <div className="grid md:grid-cols-3 gap-6 relative z-10">
-                {/* How we Build */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1, duration: 0.6 }}
-                    className="relative rounded-2xl p-8 border border-white/10 bg-[#0B1120]/80 backdrop-blur-xl group hover:border-white/20 transition-all overflow-hidden"
-                >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${accentTheme.from} ${accentTheme.to} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
-                    <div className="absolute -right-4 -top-4 p-6 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500 transform group-hover:scale-110">
-                        <Database size={120} />
-                    </div>
-                    <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${accentTheme.text} mb-6 shadow-lg shadow-black/20`}>
-                        <Cpu size={28} />
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">How We Build</h3>
-                    <p className="text-slate-400 text-[15px] leading-relaxed relative z-10">
-                        Our expert team fine-tunes or builds tailored models using your internal documents, project histories, supply chain records, safety protocols, and operational data.
-                    </p>
-                </motion.div>
-
-                {/* How we Integrate */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
-                    className="relative rounded-2xl p-8 border border-white/10 bg-[#0B1120]/80 backdrop-blur-xl group hover:border-white/20 transition-all overflow-hidden"
-                >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${accentTheme.from} ${accentTheme.to} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
-                    <div className="absolute -right-4 -top-4 p-6 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500 transform group-hover:scale-110">
-                        <Layers size={120} />
-                    </div>
-                    <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${accentTheme.text} mb-6 shadow-lg shadow-black/20`}>
-                        <Zap size={28} />
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">Seamless Integration</h3>
-                    <p className="text-slate-400 text-[15px] leading-relaxed relative z-10">
-                        We embed your custom LLM into existing tools, ERP systems, project management platforms, chat interfaces, or custom dashboards via secure APIs, on-premise or cloud deployments.
-                    </p>
-                </motion.div>
-
-                {/* Why you need it */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3, duration: 0.6 }}
-                    className="relative rounded-2xl p-8 border border-white/10 bg-[#0B1120]/80 backdrop-blur-xl group hover:border-white/20 transition-all overflow-hidden md:col-span-3 lg:col-span-1"
-                >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${accentTheme.from} ${accentTheme.to} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
-                    <div className="absolute -right-4 -top-4 p-6 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500 transform group-hover:scale-110">
-                        <ShieldCheck size={120} />
-                    </div>
-                    <div className={`w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${accentTheme.text} mb-6 shadow-lg shadow-black/20`}>
-                        <TrendingUp size={28} />
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">Why You Need It</h3>
-                    <p className="text-slate-400 text-[15px] leading-relaxed relative z-10">
-                        Off-the-shelf AI misses industry nuances, risks data exposure, and delivers generic outputs. With Gasper's custom solution, you gain unmatched accuracy for tasks like predictive maintenance, supply chain optimization, contract analysis, delay forecasting, regulatory compliance, and automated reporting — driving efficiency, reducing errors, cutting costs, and securing your competitive edge while keeping full control over your sensitive data.
-                    </p>
-                </motion.div>
+                {[
+                    { icon: <Cpu size={28} />, bg: <Database size={120} />, title: 'How We Build', body: 'Our experts fine-tune models using your internal documents, project archives, safety protocols, subcontractor records, and operational data — creating an AI that understands your construction business deeply.' },
+                    { icon: <Zap size={28} />, bg: <Layers size={120} />, title: 'Seamless Integration', body: 'We embed your custom LLM into Procore, Autodesk, existing ERP systems, or custom dashboards via secure APIs. On-premise or cloud — your data never leaves your control.' },
+                    { icon: <TrendingUp size={28} />, bg: <ShieldCheck size={120} />, title: 'Why You Need It', body: 'Off-the-shelf AI misses construction nuances and exposes sensitive data. With Gasper, you gain unmatched accuracy on estimates, RFI drafting, safety compliance, delay forecasting, and contract analysis — at a fraction of the engineering cost.' },
+                ].map((card, i) => (
+                    <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 * (i + 1), duration: 0.6 }}
+                        className="relative rounded-2xl p-8 border group hover:border-white/20 transition-all overflow-hidden"
+                        style={{ background: 'rgba(13,22,16,0.85)', borderColor: C.border, backdropFilter: 'blur(20px)' }}>
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}04, ${C.secondary}02)` }} />
+                        <div className="absolute -right-4 -top-4 p-6 transition-opacity duration-500 opacity-[0.03] group-hover:opacity-[0.05]">{card.bg}</div>
+                        <div className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center shadow-lg shadow-black/20" style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${C.border}`, color: C.primary }}>
+                            {card.icon}
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
+                        <p className="text-[15px] leading-relaxed relative z-10" style={{ color: C.textMuted }}>{card.body}</p>
+                    </motion.div>
+                ))}
             </div>
-
-            {/* Visual background element */}
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r ${accentTheme.from} ${accentTheme.to} opacity-[0.05] blur-[100px] rounded-[100%] pointer-events-none -z-10`} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] opacity-[0.05] blur-[100px] rounded-[100%] pointer-events-none -z-10"
+                style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }} />
         </section>
     );
 }
 
-export default function ComingSoonContent({ selectedProduct }) {
-    return (
-        <div className="relative">
+// ─── Waitlist Section ─────────────────────────────────────────────────────────
+function WaitlistSection() {
+    const [form, setForm] = useState({ name: '', email: '', company: '', role: '' });
+    const [errors, setErrors] = useState({});
+    const [status, setStatus] = useState('idle');
+    const [message, setMessage] = useState('');
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
+        if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+        if (!form.name.trim()) newErrors.name = 'Name is required';
+        if (!form.email.trim()) newErrors.email = 'Email is required';
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = 'Please enter a valid email';
+        if (!form.company.trim()) newErrors.company = 'Company is required';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!validateForm()) return;
+        setStatus('loading');
+        try {
+            const response = await fetch('https://formspree.io/f/mkgononq', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({ ...form, source: 'coming-soon-construction', timestamp: new Date().toISOString() }),
+            });
+            if (response.ok) {
+                setStatus('success');
+                setMessage("You're on the list. We'll be in touch soon.");
+                setForm({ name: '', email: '', company: '', role: '' });
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch {
+            setStatus('error');
+            setMessage('Something went wrong. Please try again or email us directly.');
+        }
+    };
+
+    return (
+        <section id="waitlist-section" className="px-6 max-w-4xl mx-auto relative" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+            {/* Background glow */}
+            <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center">
+                <div className="w-[600px] h-[400px] rounded-full opacity-10 blur-[120px]" style={{ background: `radial-gradient(ellipse, ${C.primary}, ${C.secondary})` }} />
+            </div>
+
+            <div className="text-center mb-16">
+                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="inline-flex items-center px-4 py-1.5 rounded-full border text-sm font-semibold mb-6"
+                    style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
+                    <Sparkles size={14} className="mr-2" /> Limited Early Access
+                </motion.div>
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="text-4xl md:text-5xl font-bold text-white mb-5" style={{ letterSpacing: '-0.02em' }}>
+                    Request Early Access
+                </motion.h2>
+                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
+                    We're onboarding a select group of construction companies and strategic investors in Q2 2025. Secure your spot and lock in founding-member pricing.
+                </motion.p>
+            </div>
+
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative rounded-3xl overflow-hidden">
+                <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}40, ${C.secondary}25, ${C.primary}20)` }} />
+                <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(7,12,9,0.97)', backdropFilter: 'blur(24px)' }} />
+
+                <div className="relative z-10 p-8 md:p-12">
+                    {status === 'success' ? (
+                        <div className="text-center py-12">
+                            <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: `${C.primary}15`, border: `2px solid ${C.primary}40` }}>
+                                <Check size={36} style={{ color: C.secondary }} />
+                            </div>
+                            <h3 className="text-3xl font-bold text-white mb-4">You're In</h3>
+                            <p className="text-lg" style={{ color: C.textMuted }}>{message}</p>
+                        </div>
+                    ) : (
+                        <form onSubmit={handleSubmit} className="space-y-5">
+                            <div className="grid md:grid-cols-2 gap-5">
+                                {[
+                                    { name: 'name', label: 'Full Name', placeholder: 'John Marapone', type: 'text' },
+                                    { name: 'email', label: 'Work Email', placeholder: 'john@company.com', type: 'email' },
+                                    { name: 'company', label: 'Company / Organization', placeholder: 'Marapone Contracting', type: 'text' },
+                                    { name: 'role', label: 'Your Role (Optional)', placeholder: 'COO, Project Director, Investor...', type: 'text' },
+                                ].map(field => (
+                                    <div key={field.name}>
+                                        <label className="block text-sm font-semibold mb-2 text-slate-300">{field.label}</label>
+                                        <input
+                                            type={field.type}
+                                            name={field.name}
+                                            value={form[field.name]}
+                                            onChange={handleInputChange}
+                                            placeholder={field.placeholder}
+                                            className="w-full px-4 py-3 rounded-xl text-white text-sm outline-none transition-all"
+                                            style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${errors[field.name] ? 'rgba(239,68,68,0.5)' : 'rgba(255,107,0,0.12)'}`, color: 'white' }}
+                                            onFocus={e => e.target.style.borderColor = `${C.primary}50`}
+                                            onBlur={e => e.target.style.borderColor = errors[field.name] ? 'rgba(239,68,68,0.5)' : 'rgba(255,107,0,0.12)'}
+                                        />
+                                        {errors[field.name] && <p className="text-red-400 text-xs mt-1">{errors[field.name]}</p>}
+                                    </div>
+                                ))}
+                            </div>
+
+                            {status === 'error' && <p className="text-red-400 text-sm text-center py-2">{message}</p>}
+
+                            <button
+                                type="submit"
+                                disabled={status === 'loading'}
+                                className="w-full py-4 rounded-xl font-bold text-white text-lg transition-all duration-300 flex items-center justify-center gap-2"
+                                style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`, boxShadow: `0 8px 30px ${C.primaryGlow}`, opacity: status === 'loading' ? 0.7 : 1 }}
+                            >
+                                {status === 'loading' ? 'Submitting...' : <><Send size={16} /> Request Early Access</>}
+                            </button>
+                            <p className="text-center text-xs" style={{ color: '#4b5563' }}>
+                                No spam, ever. By submitting, you agree to receive product updates from Gasper.
+                            </p>
+                        </form>
+                    )}
+                </div>
+            </motion.div>
+        </section>
+    );
+}
+
+// ─── Main Export ──────────────────────────────────────────────────────────────
+export default function ComingSoonContent() {
+    return (
+        <div className="relative" style={{ background: C.bg }}>
             {/* Particles Background */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
                 <Particles
-                    particleColors={["#0EA5E9", "#22d3ee", "#14B8A6"]}
-                    particleCount={30}
-                    particleSpread={10}
-                    speed={0.02}
-                    particleBaseSize={30}
+                    particleColors={[C.primary, C.secondary, '#F97316']}
+                    particleCount={20}
+                    particleSpread={12}
+                    speed={0.015}
+                    particleBaseSize={25}
                     moveParticlesOnHover={false}
                     alphaParticles={true}
                     disableRotation={false}
@@ -1446,333 +606,96 @@ export default function ComingSoonContent({ selectedProduct }) {
                 />
             </div>
 
-            {/* ══════════════ STATS SECTION ══════════════ */}
+            {/* ══ STATS ══ */}
             <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
                 <div className="text-center mb-12">
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-slate-500 text-sm uppercase tracking-[0.2em] font-semibold mb-4"
-                    >
-                        {selectedProduct === 'construction' ? 'Construction Intelligence' : 'Global Logistics Intelligence'}
+                    <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="text-sm uppercase tracking-[0.2em] font-semibold mb-4" style={{ color: C.primary }}>
+                        Construction Intelligence
                     </motion.p>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-bold text-white"
-                    >
+                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="text-3xl md:text-4xl font-bold text-white">
                         By the Numbers
                     </motion.h2>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {selectedProduct === 'logistics' ? (
-                        <>
-                            <Counter value={5000} label="Connected Vessels" suffix="+" />
-                            <Counter value={98} label="Accuracy Rating" suffix="%" />
-                            <Counter value={120} label="Countries Covered" suffix="+" />
-                            <Counter value={50} label="Routes Analyzed (M)" suffix="M+" />
-                        </>
-                    ) : (
-                        <>
-                            <Counter value={850} label="Active Job Sites" suffix="+" />
-                            <Counter value={99} label="Safety Score" suffix="%" />
-                            <Counter value={5} label="Managed Value ($B)" suffix="B+" />
-                            <Counter value={20} label="Blueprints Analyzed (M)" suffix="M+" />
-                        </>
-                    )}
+                    <Counter value={850} label="Active Job Sites" suffix="+" />
+                    <Counter value={99} label="Safety Score" suffix="%" />
+                    <Counter value={5} label="Managed Value ($B)" suffix="B+" />
+                    <Counter value={20} label="Blueprints Analyzed" suffix="M+" />
                 </div>
             </section>
 
             <div className="section-divider" />
 
-            {/* ══════════════ FEATURES SECTION ══════════════ */}
-            {selectedProduct === 'logistics' && (
-                <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-                    <div className="text-center mb-20">
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="inline-block px-4 py-1.5 rounded-full border border-[#0EA5E9]/30 bg-[#0EA5E9]/10 text-[#0EA5E9] text-sm font-medium mb-6"
-                        >
-                            Core Capabilities
-                        </motion.div>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-4xl md:text-6xl font-bold text-white mb-6"
-                            style={{ letterSpacing: '-0.03em' }}
-                        >
-                            Intelligence <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#22d3ee]">Beyond Boundaries</span>
-                        </motion.h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed"
-                        >
-                            A comprehensive suite of AI-powered tools designed to give you total visibility and control over your global operations.
-                        </motion.p>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <FeatureCard
-                            icon={<Activity size={32} />}
-                            title="Real-Time Tracking"
-                            description="Monitor vessels, flights, and rail freight in real-time. Our global tracking network integrates data from thousands of carriers."
-                            details={['Vessel AIS Data', 'Live Flight Paths', 'Rail Freight Corridors', 'Delay Predictions']}
-                        />
-                        <FeatureCard
-                            icon={<TrendingUp size={32} />}
-                            title="Digital Twin Simulation"
-                            description="Create a virtual replica of your supply chain. Test 'what-if' scenarios to understand the impact of port strikes or disasters."
-                            details={['Scenario Modeling', 'Cost Impact Analysis', 'Route Alternates', 'Inventory Optimization']}
-                        />
-                        <FeatureCard
-                            icon={<ShieldCheck size={32} />}
-                            title="Compliance & Risk AI"
-                            description="Automate your compliance workflows. Our AI classifies HS codes with 99% accuracy and screens all partners."
-                            details={['Automated HS Classification', 'Sanctions Screening', 'Document Generation', 'Regulatory Alerts']}
-                        />
-                        <FeatureCard
-                            icon={<Grid size={32} />}
-                            title="Market Intelligence"
-                            description="Stay ahead of market shifts. Access live commodity prices, currency exchange rates, and spot rates."
-                            details={['Live User Indices', 'Currency Exchange', 'Commodity Tickers', 'Global Holidays']}
-                        />
-                    </div>
-                </section>
-            )}
-
-            {/* --- CONSTRUCTION FEATURES --- */}
-            {selectedProduct === 'construction' && <ConstructionFeaturesSection />}
+            {/* ══ CONSTRUCTION FEATURES ══ */}
+            <ConstructionFeaturesSection />
 
             <div className="section-divider" />
 
-            {/* ══════════════ COMPARISON / ADVANTAGES ══════════════ */}
-            <ComparisonTableSection selectedProduct={selectedProduct} />
+            {/* ══ ADVANTAGES ══ */}
+            <ComparisonTableSection />
 
             <div className="section-divider" />
 
-            {/* --- LOGISTICS DEEP DIVES --- */}
-            {selectedProduct === 'logistics' && (
-                <>
-                    <DigitalTwinSection />
-                    <RiskMonitorSection />
-                    <SustainabilitySection />
-                    <RateCheckSection />
-                </>
-            )}
+            {/* ══ DEEP DIVES ══ */}
+            <BlueprintAISection />
+            <CashFlowSection />
+            <SiteSecuritySection />
 
-            {/* --- CONSTRUCTION DEEP DIVES --- */}
-            {selectedProduct === 'construction' && (
-                <>
-                    <BlueprintAISection />
-                    <CashFlowSection />
-                    <SiteSecuritySection />
-                </>
-            )}
-
-            {/* --- CONSTRUCTION ADVANCED SECTIONS --- */}
-            {selectedProduct === 'construction' && (
-                <>
-                    <SubcontractorMatchSection />
-                    <ProjectCommandCenter />
-                    <ROIImpactSection />
-                    <ScheduleOptimizerSection />
-                </>
-            )}
-
-
-
-            {/* ══════════════ HOW IT WORKS ══════════════ */}
-            {selectedProduct === 'logistics' && (
-                <section className="px-6 max-w-7xl mx-auto relative" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-                    <div className="text-center mb-24">
-                        <motion.p
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-slate-500 text-sm uppercase tracking-[0.2em] font-semibold mb-4"
-                        >
-                            From chaos to clarity
-                        </motion.p>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-4xl md:text-5xl font-bold text-white mb-4"
-                            style={{ letterSpacing: '-0.03em' }}
-                        >
-                            How Gasper Works
-                        </motion.h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-slate-400 max-w-2xl mx-auto text-lg"
-                        >
-                            From unstructured chaos to actionable intelligence in three steps.
-                        </motion.p>
-                    </div>
-
-                    <div className="relative">
-                        {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-800 transform -translate-x-1/2 h-full z-0">
-                            <div className="absolute top-0 bottom-0 w-full bg-gradient-to-b from-[#0EA5E9] via-[#22d3ee] to-[#0EA5E9] opacity-50 shadow-[0_0_15px_#0EA5E9]" />
-                        </div>
-
-                        <ProcessStep
-                            number="01"
-                            title="Data Ingestion"
-                            description="We aggregate structured and unstructured data from over 500 sources, including AIS feeds, port APIs, and weather stations."
-                            icon={<Database size={32} />}
-                            align="left"
-                            details={[
-                                "REST API & Webhooks",
-                                "EDI (X12, EDIFACT) Parsers",
-                                "IoT Sensor Stream Integration"
-                            ]}
-                        />
-                        <ProcessStep
-                            number="02"
-                            title="AI Processing"
-                            description="Our proprietary ML models clean, normalize, and analyze the data to extract risks and forecast delays."
-                            icon={<Cpu size={32} />}
-                            align="right"
-                            details={[
-                                "Entity Recognition (NER)",
-                                "Time-Series Forecasting",
-                                "Anomaly Detection Models"
-                            ]}
-                        />
-                        <ProcessStep
-                            number="03"
-                            title="Actionable Insights"
-                            description="Insights are delivered via dashboard or API. You get alerts, updated ETAs, and cost-saving recommendations instantly."
-                            icon={<BarChart3 size={32} />}
-                            align="left"
-                            details={[
-                                "Real-time Push Notifications",
-                                "Customizable Dashboards",
-                                "Automated Reporting"
-                            ]}
-                        />
-                    </div>
-                </section>
-            )}
+            {/* ══ ADVANCED SECTIONS ══ */}
+            <SubcontractorMatchSection />
+            <ProjectCommandCenter />
+            <ROIImpactSection />
+            <ScheduleOptimizerSection />
 
             <div className="section-divider" />
 
-            {/* ══════════════ TECHNOLOGY STACK (Compact) ══════════════ */}
-            <TechnologyStackSection selectedProduct={selectedProduct} />
-
-            {/* ══════════════ INDUSTRIES ══════════════ */}
+            {/* ══ INDUSTRIES ══ */}
             <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
                 <div className="text-center mb-20">
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-slate-500 text-sm uppercase tracking-[0.2em] font-semibold mb-4"
-                    >
+                    <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="text-sm uppercase tracking-[0.2em] font-semibold mb-4" style={{ color: C.primary }}>
                         Built for your sector
                     </motion.p>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-white mb-4"
-                        style={{ letterSpacing: '-0.03em' }}
-                    >
+                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ letterSpacing: '-0.03em' }}>
                         Engineered for Every Sector
                     </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-slate-400 max-w-2xl mx-auto text-lg"
-                    >
-                        Tailored solutions for the unique challenges of your industry.
+                    <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                        className="max-w-2xl mx-auto text-lg" style={{ color: C.textMuted }}>
+                        Tailored solutions for the unique challenges of construction and infrastructure.
                     </motion.p>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {selectedProduct === 'logistics' && (
-                        <>
-                            <IndustryCard
-                                icon={<Anchor size={28} />}
-                                title="Maritime Logistics"
-                                description="Optimize port calls, track container vessels in real-time, and predict congestion at major hubs."
-                                color="text-blue-400"
-                                useCase="Vessel Tracking & Fuel Optimization"
-                            />
-                            <IndustryCard
-                                icon={<Truck size={28} />}
-                                title="Freight Forwarding"
-                                description="Manage multi-modal shipments with ease. Automate documentation and tracking."
-                                color="text-green-400"
-                                useCase="Automated Documentation & Client Portal"
-                            />
-                            <IndustryCard
-                                icon={<Factory size={28} />}
-                                title="Manufacturing"
-                                description="Secure your supply chain against disruptions and monitor raw material shipments."
-                                color="text-sky-400"
-                                useCase="Supplier Risk Monitoring"
-                            />
-                        </>
-                    )}
-                    {selectedProduct === 'construction' && (
-                        <>
-                            <IndustryCard
-                                icon={<HardHat size={28} />}
-                                title="General Contracting"
-                                description="AI-powered project management, cash flow forecasting, and compliance automation for GCs."
-                                color="text-[#FF6B00]"
-                                useCase="Full Project Lifecycle Intelligence"
-                            />
-                            <IndustryCard
-                                icon={<Building2 size={28} />}
-                                title="Commercial Construction"
-                                description="Manage multi-million dollar builds with blueprint AI, sub matching, and real-time cost tracking."
-                                color="text-amber-400"
-                                useCase="Blueprint Analysis & Cost Optimization"
-                            />
-                            <IndustryCard
-                                icon={<Fuel size={28} />}
-                                title="Energy & Infrastructure"
-                                description="Monitor energy projects and react instantly to safety and compliance events."
-                                color="text-red-400"
-                                useCase="Safety Compliance & Asset Protection"
-                            />
-                        </>
-                    )}
+                    <IndustryCard icon={<HardHat size={28} />} title="General Contracting" description="AI-powered project management, cash flow forecasting, and compliance automation for GCs of all sizes." color="text-[#FF6B00]" useCase="Full Project Lifecycle Intelligence" />
+                    <IndustryCard icon={<Building2 size={28} />} title="Commercial Construction" description="Manage multi-million dollar builds with blueprint AI, sub matching, and real-time cost tracking." color="text-amber-400" useCase="Blueprint Analysis & Cost Optimization" />
+                    <IndustryCard icon={<Fuel size={28} />} title="Energy & Infrastructure" description="Monitor large-scale energy and infrastructure projects with real-time safety and compliance events." color="text-red-400" useCase="Safety Compliance & Asset Protection" />
                 </div>
             </section>
 
             <div className="section-divider" />
 
-            {/* ══════════════ AI BOT ══════════════ */}
+            {/* ══ GASPER AI ══ */}
             <GasperAIBotSection />
 
             <div className="section-divider" />
 
-            {/* ══════════════ CUSTOM LLM BUILDER ══════════════ */}
-            <CustomLLMBuilderSection selectedProduct={selectedProduct} />
+            {/* ══ TECHNOLOGY STACK ══ */}
+            <TechnologyStackSection />
 
-            {/* ══════════════ WHAT YOU'LL GET ══════════════ */}
+            <div className="section-divider" />
+
+            {/* ══ CUSTOM LLM ══ */}
+            <CustomLLMBuilderSection />
+
+            {/* ══ WHAT YOU'LL GET ══ */}
             <WhatYouGetSection />
 
             <div className="section-divider" />
 
-            {/* ══════════════ WAITLIST ══════════════ */}
-            <div id="waitlist-section">
-                <WaitlistSection selectedProduct={selectedProduct} />
-            </div>
-
+            {/* ══ WAITLIST ══ */}
+            <WaitlistSection />
         </div>
     );
 }
-

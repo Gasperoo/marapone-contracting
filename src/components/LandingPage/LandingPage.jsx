@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor, HardHat, Ruler, Brain, FileText, Navigation, Hexagon, ChevronDown } from 'lucide-react';
+import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor, HardHat, Ruler, Brain, FileText, Navigation, Hexagon, ChevronDown, DollarSign, Users, Clock } from 'lucide-react';
 import './LandingPage.css';
 
 import { LogoMarquee } from './LogoMarquee';
@@ -204,9 +204,193 @@ const ScrollBeacon = () => (
     </div>
 );
 
+// --- Construction Hero Panel (replaces dual domain cards in coming-soon mode) ---
+const ConstructionHeroPanel = () => {
+    const features = [
+        {
+            icon: <FileText size={22} />,
+            label: 'Blueprint AI',
+            desc: 'Auto-extract quantities from plans in minutes',
+            stat: '10× faster',
+            statLabel: 'than manual takeoffs',
+        },
+        {
+            icon: <DollarSign size={22} />,
+            label: 'Cash Flow Guardian',
+            desc: 'Real-time budget & retention tracking per phase',
+            stat: '99.2%',
+            statLabel: 'forecast accuracy',
+        },
+        {
+            icon: <ShieldCheck size={22} />,
+            label: 'Site Security AI',
+            desc: 'Computer vision monitoring, instant incident alerts',
+            stat: '24/7',
+            statLabel: 'live surveillance',
+        },
+        {
+            icon: <Users size={22} />,
+            label: 'Sub Matching',
+            desc: 'AI-scored subcontractor sourcing by trade & capacity',
+            stat: '3×',
+            statLabel: 'faster procurement',
+        },
+    ];
+
+    const projects = [
+        { name: 'Westside Commercial', phase: 'Structural', budget: '$4.2M', progress: 68, status: 'On Track' },
+        { name: 'Harbor View Tower', phase: 'Foundation', budget: '$8.7M', progress: 31, status: 'On Track' },
+        { name: 'Midtown Renovation', phase: 'MEP Rough-In', budget: '$1.9M', progress: 82, status: 'At Risk' },
+    ];
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-5xl mx-auto"
+        >
+            {/* Outer glow border */}
+            <div className="relative rounded-3xl overflow-hidden">
+                <div className="absolute -inset-[1px] rounded-3xl z-0"
+                    style={{ background: 'linear-gradient(135deg, #FF6B00 0%, rgba(245,158,11,0.4) 50%, rgba(255,107,0,0.15) 100%)' }} />
+                <div className="absolute inset-[1px] rounded-3xl z-[1]"
+                    style={{ background: 'rgba(7,12,9,0.97)', backdropFilter: 'blur(28px)' }} />
+
+                <div className="relative z-10 p-7 md:p-9">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-7">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                                style={{ background: 'rgba(255,107,0,0.15)', border: '1px solid rgba(255,107,0,0.35)', color: '#FF6B00' }}>
+                                <HardHat size={20} />
+                            </div>
+                            <div>
+                                <div className="text-white font-bold text-base leading-tight">Gasper Construction</div>
+                                <div className="text-xs" style={{ color: '#4b5563' }}>AI Project Intelligence Platform</div>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full"
+                            style={{ background: 'rgba(255,107,0,0.08)', border: '1px solid rgba(255,107,0,0.20)' }}>
+                            <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#FF6B00' }} />
+                            <span className="text-xs font-semibold" style={{ color: '#FF6B00' }}>Beta · Q2 2025</span>
+                        </div>
+                    </div>
+
+                    {/* Two-column layout: Features + Live Dashboard */}
+                    <div className="grid md:grid-cols-2 gap-6">
+
+                        {/* Left: Feature grid */}
+                        <div className="grid grid-cols-2 gap-3">
+                            {features.map((f, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.7 + i * 0.08, duration: 0.6 }}
+                                    className="group rounded-2xl p-4 transition-all duration-300"
+                                    style={{
+                                        background: 'rgba(255,107,0,0.04)',
+                                        border: '1px solid rgba(255,107,0,0.10)',
+                                    }}
+                                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.25)'}
+                                    onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.10)'}
+                                >
+                                    <div className="w-8 h-8 rounded-lg mb-3 flex items-center justify-center"
+                                        style={{ background: 'rgba(255,107,0,0.12)', color: '#F59E0B' }}>
+                                        {f.icon}
+                                    </div>
+                                    <div className="text-white font-semibold text-sm mb-0.5 leading-tight">{f.label}</div>
+                                    <div className="text-xs leading-relaxed mb-3" style={{ color: '#4b5563' }}>{f.desc}</div>
+                                    <div className="pt-2 border-t" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
+                                        <span className="text-sm font-black" style={{ color: '#F59E0B' }}>{f.stat}</span>
+                                        <span className="text-xs ml-1.5" style={{ color: '#6b7280' }}>{f.statLabel}</span>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Right: Live project dashboard mockup */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 16 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.75, duration: 0.7 }}
+                            className="rounded-2xl p-5 flex flex-col"
+                            style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid rgba(255,107,0,0.08)' }}
+                        >
+                            <div className="flex items-center justify-between mb-4">
+                                <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#6b7280' }}>Live Projects</span>
+                                <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', border: '1px solid rgba(16,185,129,0.2)' }}>
+                                    ● 3 Active
+                                </span>
+                            </div>
+                            <div className="space-y-4 flex-1">
+                                {projects.map((p, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, x: 10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.9 + i * 0.1, duration: 0.5 }}
+                                    >
+                                        <div className="flex items-start justify-between mb-1.5">
+                                            <div>
+                                                <div className="text-white text-xs font-semibold">{p.name}</div>
+                                                <div className="text-xs" style={{ color: '#4b5563' }}>{p.phase} · {p.budget}</div>
+                                            </div>
+                                            <span className="text-[10px] px-1.5 py-0.5 rounded font-semibold"
+                                                style={p.status === 'At Risk'
+                                                    ? { background: 'rgba(239,68,68,0.12)', color: '#f87171' }
+                                                    : { background: 'rgba(16,185,129,0.10)', color: '#34d399' }}>
+                                                {p.status}
+                                            </span>
+                                        </div>
+                                        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                                            <motion.div
+                                                className="h-full rounded-full"
+                                                initial={{ width: 0 }}
+                                                animate={{ width: `${p.progress}%` }}
+                                                transition={{ delay: 1.0 + i * 0.15, duration: 0.9, ease: 'easeOut' }}
+                                                style={{ background: p.status === 'At Risk' ? 'linear-gradient(90deg, #ef4444, #f97316)' : 'linear-gradient(90deg, #FF6B00, #F59E0B)' }}
+                                            />
+                                        </div>
+                                        <div className="text-right text-[10px] mt-0.5" style={{ color: '#4b5563' }}>{p.progress}% complete</div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                            <div className="mt-4 pt-3 border-t flex items-center justify-between" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
+                                <span className="text-xs" style={{ color: '#4b5563' }}>Total managed</span>
+                                <span className="text-sm font-black" style={{ color: '#F59E0B' }}>$14.8M</span>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Bottom metrics strip */}
+                    <div className="grid grid-cols-4 gap-4 mt-6 pt-5 border-t" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
+                        {[
+                            { value: '850+', label: 'Job Sites' },
+                            { value: '10×', label: 'Faster Estimates' },
+                            { value: '$5B+', label: 'Managed Value' },
+                            { value: '99%', label: 'Safety Score' },
+                        ].map((m, i) => (
+                            <div key={i} className="text-center">
+                                <div className="text-xl font-black mb-0.5"
+                                    style={{ background: 'linear-gradient(135deg, #fff 30%, #F59E0B)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                                    {m.value}
+                                </div>
+                                <div className="text-[10px] uppercase tracking-wider" style={{ color: '#4b5563' }}>{m.label}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
+
 export default function LandingPage({ comingSoonMode = false }) {
-    // In comingSoon mode, start with no engine selected so the user must pick.
-    const [selectedProduct, setSelectedProduct] = useState(comingSoonMode ? null : 'logistics');
+    // In comingSoon mode, auto-select construction so content shows immediately.
+    const [selectedProduct, setSelectedProduct] = useState(comingSoonMode ? 'construction' : 'logistics');
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
     const scrollToContent = () => {
@@ -334,12 +518,12 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Sub heading — bigger, more authoritative */}
                     {comingSoonMode && (
                         <motion.p
-                            className="text-xl md:text-2xl font-medium text-slate-500 mb-6 tracking-wide"
+                            className="text-lg md:text-xl font-medium text-slate-500 mb-6 tracking-wide"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5, duration: 0.8 }}
                         >
-                            Select Your Engine
+                            AI-Powered Construction Management
                         </motion.p>
                     )}
 
@@ -386,29 +570,34 @@ export default function LandingPage({ comingSoonMode = false }) {
                         </motion.div>
                     )}
 
-                    {/* Domain Engine Cards */}
-                    <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto perspective-1000">
-                        <DomainCard
-                            title="Gasper Logistics"
-                            description="Global Digital Twin, Predictive Routing & Automated Compliance."
-                            icon={Globe}
-                            themeColor="#0EA5E9"
-                            secondaryColor="#22d3ee"
-                            active={selectedProduct === 'logistics'}
-                            onClick={() => handleDomainSelect('logistics')}
-                            delay={0.5}
-                        />
-                        <DomainCard
-                            title="Gasper Construction"
-                            description="Generative Blueprint AI, Critical Path & Site Security."
-                            icon={HardHat}
-                            themeColor="#FF6B00"
-                            secondaryColor="#F59E0B"
-                            active={selectedProduct === 'construction'}
-                            onClick={() => handleDomainSelect('construction')}
-                            delay={0.65}
-                        />
-                    </div>
+                    {/* Domain Engine Cards — hidden in comingSoon mode, replaced by Construction Panel */}
+                    {!comingSoonMode && (
+                        <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto perspective-1000">
+                            <DomainCard
+                                title="Gasper Logistics"
+                                description="Global Digital Twin, Predictive Routing & Automated Compliance."
+                                icon={Globe}
+                                themeColor="#0EA5E9"
+                                secondaryColor="#22d3ee"
+                                active={selectedProduct === 'logistics'}
+                                onClick={() => handleDomainSelect('logistics')}
+                                delay={0.5}
+                            />
+                            <DomainCard
+                                title="Gasper Construction"
+                                description="Generative Blueprint AI, Critical Path & Site Security."
+                                icon={HardHat}
+                                themeColor="#FF6B00"
+                                secondaryColor="#F59E0B"
+                                active={selectedProduct === 'construction'}
+                                onClick={() => handleDomainSelect('construction')}
+                                delay={0.65}
+                            />
+                        </div>
+                    )}
+
+                    {/* Coming Soon — Construction Platform Showcase Panel */}
+                    {comingSoonMode && <ConstructionHeroPanel />}
                 </div>
 
                 {/* Scroll Beacon */}

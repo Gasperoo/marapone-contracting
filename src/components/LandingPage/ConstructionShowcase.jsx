@@ -74,7 +74,7 @@ export function PlatformPillarsSection() {
 
             {/* Toggle */}
             <div className="flex justify-center mb-16 relative z-10">
-                <div className="inline-flex rounded-2xl bg-black/40 border border-white/10 p-1.5 backdrop-blur-xl">
+                <div className="inline-flex rounded-2xl bg-white border border-black/10 p-1.5 shadow-sm">
                     {[
                         { key: 'logistics', label: 'Logistics OS', icon: <Truck size={16} />, color: '#0EA5E9' },
                         { key: 'construction', label: 'Construction AI', icon: <HardHat size={16} />, color: '#FF6B00' },
@@ -112,7 +112,7 @@ export function PlatformPillarsSection() {
                 >
                     <div className="grid lg:grid-cols-5 gap-8">
                         {/* Feature List */}
-                        <div className="lg:col-span-3 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-xl p-8 relative overflow-hidden">
+                        <div className="lg:col-span-3 rounded-3xl bg-white border border-black/8 shadow-sm p-8 relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[80px] opacity-10" style={{ background: accentColor }} />
 
                             <div className="relative z-10">
@@ -129,7 +129,7 @@ export function PlatformPillarsSection() {
                                             initial={{ opacity: 0, x: -10 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: i * 0.05 }}
-                                            className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/15 transition-all group"
+                                            className="flex items-center gap-3 p-3 rounded-xl bg-white border border-black/5 hover:border-black/15 transition-all group"
                                         >
                                             <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${accentColor}15`, color: accentColor }}>
                                                 {f.icon}
@@ -153,7 +153,7 @@ export function PlatformPillarsSection() {
                                 </div>
                             </div>
 
-                            <div className="rounded-3xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 p-6 backdrop-blur-xl">
+                            <div className="rounded-3xl bg-white border border-black/8 p-6 shadow-sm">
                                 <div className="flex items-center gap-3 mb-4">
                                     <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${accentColor}15`, color: accentColor }}>
                                         <Lock size={20} />
@@ -232,7 +232,7 @@ export function ConstructionFeaturesSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
-                        className="relative h-full rounded-2xl bg-slate-900/50 border border-white/10 overflow-hidden group hover:border-[#FF6B00]/30 transition-all duration-500"
+                        className="relative h-full rounded-2xl bg-white border border-black/8 overflow-hidden group hover:border-[#FF6B00]/30 transition-all duration-500 shadow-sm"
                     >
                         <div className="relative p-8 h-full flex flex-col z-10">
                             <div className="w-14 h-14 rounded-xl bg-[#FF6B00]/10 flex items-center justify-center text-[#FF6B00] mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(255,107,0,0.2)]">
@@ -240,7 +240,7 @@ export function ConstructionFeaturesSection() {
                             </div>
                             <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 group-hover:text-[#FF6B00] transition-colors">{f.title}</h3>
                             <p className="text-[#6b7280] mb-6 leading-relaxed flex-grow">{f.description}</p>
-                            <div className="pt-6 border-t border-white/5">
+                            <div className="pt-6 border-t border-black/5">
                                 <ul className="grid grid-cols-1 gap-3">
                                     {f.details.map((d, i) => (
                                         <li key={i} className="flex items-center text-sm text-[#374151]">
@@ -290,7 +290,7 @@ export function BlueprintAISection() {
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
-                    <div className="relative rounded-2xl bg-black/40 border border-white/10 p-6 overflow-hidden">
+                    <div className="relative rounded-2xl bg-white border border-black/8 p-6 overflow-hidden shadow-sm">
                         <div className="flex justify-between items-center mb-6">
                             <h3 className="text-[#1a1a1a] font-semibold">Blueprint Analysis</h3>
                             <div className="text-xs text-[#FF6B00] bg-[#FF6B00]/10 px-2 py-1 rounded font-bold">AI PROCESSING</div>
@@ -304,7 +304,7 @@ export function BlueprintAISection() {
                                     initial={{ opacity: 0 }}
                                     whileInView={{ opacity: 1 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className={`p-3 rounded-lg border text-center ${i === 0 ? 'border-[#FF6B00]/50 bg-[#FF6B00]/10 col-span-2 row-span-2' : 'border-white/10 bg-white/5'}`}
+                                    className={`p-3 rounded-lg border text-center ${i === 0 ? 'border-[#FF6B00]/50 bg-[#FF6B00]/10 col-span-2 row-span-2' : 'border-black/8 bg-gray-50'}`}
                                 >
                                     <div className={`text-xs font-bold mb-1 ${i === 0 ? 'text-[#FF6B00]' : 'text-[#1a1a1a]'}`}>{room}</div>
                                     <div className="text-[10px] text-[#6b7280]">{['320 sqft', '180 sqft', '240 sqft', '85 sqft', '150 sqft', '400 sqft'][i]}</div>
@@ -312,7 +312,7 @@ export function BlueprintAISection() {
                             ))}
                         </div>
 
-                        <div className="border-t border-white/10 pt-4 flex justify-between">
+                        <div className="border-t border-black/8 pt-4 flex justify-between">
                             <div>
                                 <div className="text-xs text-[#6b7280] uppercase">Rooms Detected</div>
                                 <div className="text-xl font-bold text-[#FF6B00]">12</div>
@@ -340,7 +340,7 @@ export function CashFlowSection() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 {/* Visual Side */}
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative order-2 md:order-1">
-                    <div className="relative rounded-2xl bg-black/40 border border-white/10 p-6 overflow-hidden">
+                    <div className="relative rounded-2xl bg-white border border-black/8 p-6 overflow-hidden shadow-sm">
                         <div className="flex justify-between items-center mb-6">
                             <h3 className="text-[#1a1a1a] font-semibold">Cash Flow Forecast</h3>
                             <div className="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded font-bold">HEALTHY</div>
@@ -368,7 +368,7 @@ export function CashFlowSection() {
                                             initial={{ width: 0 }}
                                             whileInView={{ width: `${m.outflow}%` }}
                                             transition={{ duration: 1, delay: i * 0.15 + 0.1 }}
-                                            className="h-full bg-white/10 rounded-r-md"
+                                            className="h-full bg-black/10 rounded-r-md"
                                         />
                                     </div>
                                 </div>
@@ -376,10 +376,10 @@ export function CashFlowSection() {
                         </div>
                         <div className="flex gap-4 mt-4 text-xs text-[#6b7280]">
                             <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#FF6B00]" /> Inflow</span>
-                            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-white/20" /> Outflow</span>
+                            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-black/20" /> Outflow</span>
                         </div>
 
-                        <div className="border-t border-white/10 pt-4 mt-6">
+                        <div className="border-t border-black/8 pt-4 mt-6">
                             <div className="flex justify-between">
                                 <div className="text-left">
                                     <div className="text-xs text-[#6b7280] uppercase">Net Cash Position</div>
@@ -458,7 +458,7 @@ export function SiteSecuritySection() {
 
                 {/* Security Visual */}
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
-                    <div className="relative rounded-2xl bg-black/40 border border-white/10 p-6 overflow-hidden">
+                    <div className="relative rounded-2xl bg-white border border-black/8 p-6 overflow-hidden shadow-sm">
                         {/* Radar pulse */}
                         <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,rgba(0,0,0,0)_50%,rgba(255,107,0,0.08)_100%)] animate-[spin_4s_linear_infinite]" />
 
@@ -480,7 +480,7 @@ export function SiteSecuritySection() {
                                         initial={{ opacity: 0, x: -10 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ delay: i * 0.1 }}
-                                        className={`p-3 rounded-xl border ${item.ok ? 'border-white/10 bg-white/5' : 'border-red-500/30 bg-red-500/10'} flex items-center justify-between`}
+                                        className={`p-3 rounded-xl border ${item.ok ? 'border-black/8 bg-gray-50' : 'border-red-500/30 bg-red-500/10'} flex items-center justify-between`}
                                     >
                                         <div className="flex items-center gap-3">
                                             <span className="text-lg">{item.icon}</span>

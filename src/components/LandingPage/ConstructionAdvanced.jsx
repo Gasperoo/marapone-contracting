@@ -111,8 +111,8 @@ export function SubcontractorMatchSection() {
                             transition={{ delay: i * 0.1 }}
                             onClick={() => setSelectedSub(i)}
                             className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 relative overflow-hidden ${selectedSub === i
-                                    ? 'border-[#FF6B00]/50 bg-[#FF6B00]/10 shadow-[0_0_30px_rgba(255,107,0,0.1)]'
-                                    : 'border-white/10 bg-black/30 hover:border-white/20'
+                                ? 'border-[#FF6B00]/50 bg-[#FF6B00]/10 shadow-[0_0_30px_rgba(255,107,0,0.1)]'
+                                : 'border-black/8 bg-white hover:border-black/15 shadow-sm'
                                 }`}
                         >
                             {selectedSub === i && (
@@ -144,7 +144,7 @@ export function SubcontractorMatchSection() {
                 </div>
 
                 {/* Score Breakdown */}
-                <div className="lg:col-span-2 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-xl p-8 relative overflow-hidden">
+                <div className="lg:col-span-2 rounded-3xl bg-white border border-black/8 shadow-sm p-8 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-48 h-48 bg-[#FF6B00]/5 rounded-full blur-[60px]" />
 
                     <div className="relative z-10">
@@ -174,7 +174,7 @@ export function SubcontractorMatchSection() {
                                         </div>
                                         <span className="text-sm font-bold text-[#1a1a1a]">{metric.value}%</span>
                                     </div>
-                                    <div className="h-2.5 bg-white/5 rounded-full overflow-hidden">
+                                    <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
                                         <motion.div
                                             key={`${selectedSub}-${i}`}
                                             initial={{ width: 0 }}
@@ -264,7 +264,7 @@ export function ProjectCommandCenter() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="p-4 rounded-xl bg-white/5 border border-white/5"
+                                className="p-4 rounded-xl bg-gray-50 border border-black/5"
                             >
                                 <div className="text-xs text-[#6b7280] uppercase tracking-wider mb-1">{s.label}</div>
                                 <div className={`text-2xl font-black ${s.color}`}>{s.value}</div>
@@ -279,7 +279,7 @@ export function ProjectCommandCenter() {
                     initial={{ opacity: 0, x: 40 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="lg:col-span-3 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-xl p-6 relative overflow-hidden"
+                    className="lg:col-span-3 rounded-3xl bg-white border border-black/8 shadow-sm p-6 relative overflow-hidden"
                 >
                     <div className="flex justify-between items-center mb-6">
                         <h3 className="text-[#1a1a1a] font-bold">Riverside Commons — Phase II</h3>
@@ -311,7 +311,7 @@ export function ProjectCommandCenter() {
                                     <span className="text-sm">{phase.icon}</span>
                                     <span className="text-xs text-[#374151] truncate">{phase.name}</span>
                                 </div>
-                                <div className="flex-1 h-8 bg-white/5 rounded-lg relative overflow-hidden">
+                                <div className="flex-1 h-8 bg-gray-100 rounded-lg relative overflow-hidden">
                                     {/* Full bar (planned) */}
                                     <div
                                         className="absolute top-0 bottom-0 rounded-lg opacity-20"
@@ -352,8 +352,8 @@ export function ProjectCommandCenter() {
                     {/* Timeline Now Marker */}
                     <div className="relative mt-2" style={{ paddingLeft: '35%' }}>
                         <div className="flex flex-col items-center">
-                            <div className="w-0.5 h-4 bg-white/40" />
-                            <div className="text-[9px] text-[#1a1a1a]/60 uppercase tracking-widest bg-white/10 px-2 py-0.5 rounded">Today</div>
+                            <div className="w-0.5 h-4 bg-black/20" />
+                            <div className="text-[9px] text-[#1a1a1a]/60 uppercase tracking-widest bg-gray-100 px-2 py-0.5 rounded">Today</div>
                         </div>
                     </div>
                 </motion.div>
@@ -494,7 +494,7 @@ export function ScheduleOptimizerSection() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="rounded-3xl bg-black/40 border border-white/10 backdrop-blur-xl p-8 relative overflow-hidden"
+                    className="rounded-3xl bg-white border border-black/8 shadow-sm p-8 relative overflow-hidden"
                 >
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF6B00] via-[#F59E0B] to-[#FF6B00]" />
 
@@ -527,13 +527,13 @@ export function ScheduleOptimizerSection() {
                                     <div className="flex items-center justify-between mb-1.5">
                                         <div className="flex items-center gap-2">
                                             <span className="text-sm text-[#1a1a1a] font-semibold">{r.name}</span>
-                                            <span className={`text-[10px] ${statusColor} bg-white/5 px-1.5 py-0.5 rounded`}>{status}</span>
+                                            <span className={`text-[10px] ${statusColor} bg-gray-50 px-1.5 py-0.5 rounded`}>{status}</span>
                                         </div>
                                         <div className="text-xs text-[#6b7280]">
                                             <span className="text-[#1a1a1a] font-bold">{r.allocated}</span>/{r.needed} workers
                                         </div>
                                     </div>
-                                    <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                                         <motion.div
                                             initial={{ width: 0 }}
                                             whileInView={{ width: `${r.utilization}%` }}
@@ -582,15 +582,15 @@ export function ScheduleOptimizerSection() {
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.15 }}
                                 className={`p-4 rounded-xl border backdrop-blur-xl flex items-start gap-3 ${s.type === 'critical'
-                                        ? 'border-red-500/30 bg-red-500/5'
-                                        : s.type === 'optimize'
-                                            ? 'border-[#FF6B00]/30 bg-[#FF6B00]/5'
-                                            : 'border-amber-500/30 bg-amber-500/5'
+                                    ? 'border-red-500/30 bg-red-500/5'
+                                    : s.type === 'optimize'
+                                        ? 'border-[#FF6B00]/30 bg-[#FF6B00]/5'
+                                        : 'border-amber-500/30 bg-amber-500/5'
                                     }`}
                             >
                                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${s.type === 'critical' ? 'bg-red-500/20 text-red-400'
-                                        : s.type === 'optimize' ? 'bg-[#FF6B00]/20 text-[#FF6B00]'
-                                            : 'bg-amber-500/20 text-amber-400'
+                                    : s.type === 'optimize' ? 'bg-[#FF6B00]/20 text-[#FF6B00]'
+                                        : 'bg-amber-500/20 text-amber-400'
                                     }`}>
                                     {s.icon}
                                 </div>

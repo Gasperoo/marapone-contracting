@@ -52,12 +52,17 @@ html {
     flex-direction: column;
 }
 
-/* Construction content wrapper — edge-to-edge */
+/* Construction content wrapper — light off-white for coming-soon */
 #coming-soon-content {
-    background: var(--nebula-void);
+    background: #F5F5F5;
     position: relative;
     z-index: 1;
     overflow-x: hidden;
+}
+
+/* Hero override for coming-soon light mode */
+.coming-soon-hero {
+    background: #F5F5F5 !important;
 }
 
 .landing-content {
@@ -830,7 +835,7 @@ html {
 .section-divider {
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.15), rgba(245, 158, 11, 0.12), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), rgba(255, 107, 0, 0.15), rgba(0, 0, 0, 0.08), transparent);
     margin: 0 auto;
 }
 

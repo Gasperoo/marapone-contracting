@@ -253,9 +253,9 @@ const ConstructionHeroPanel = () => {
             {/* Outer glow border */}
             <div className="relative rounded-3xl overflow-hidden">
                 <div className="absolute -inset-[1px] rounded-3xl z-0"
-                    style={{ background: 'linear-gradient(135deg, #FF6B00 0%, rgba(245,158,11,0.4) 50%, rgba(255,107,0,0.15) 100%)' }} />
+                    style={{ background: 'linear-gradient(135deg, rgba(255,107,0,0.3) 0%, rgba(245,158,11,0.2) 50%, rgba(255,107,0,0.08) 100%)' }} />
                 <div className="absolute inset-[1px] rounded-3xl z-[1]"
-                    style={{ background: 'rgba(7,12,9,0.97)', backdropFilter: 'blur(28px)' }} />
+                    style={{ background: '#FFFFFF', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }} />
 
                 <div className="relative z-10 p-7 md:p-9">
                     {/* Header */}
@@ -266,8 +266,8 @@ const ConstructionHeroPanel = () => {
                                 <HardHat size={20} />
                             </div>
                             <div>
-                                <div className="text-white font-bold text-base leading-tight">Gasper Construction</div>
-                                <div className="text-xs" style={{ color: '#4b5563' }}>AI Project Intelligence Platform</div>
+                                <div className="text-[#1a1a1a] font-bold text-base leading-tight">Gasper Construction</div>
+                                <div className="text-xs" style={{ color: '#6b7280' }}>AI Project Intelligence Platform</div>
                             </div>
                         </div>
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full"
@@ -291,17 +291,17 @@ const ConstructionHeroPanel = () => {
                                     className="group rounded-2xl p-4 transition-all duration-300"
                                     style={{
                                         background: 'rgba(255,107,0,0.04)',
-                                        border: '1px solid rgba(255,107,0,0.10)',
+                                        border: '1px solid rgba(255,107,0,0.12)',
                                     }}
-                                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.25)'}
-                                    onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.10)'}
+                                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.30)'}
+                                    onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.12)'}
                                 >
                                     <div className="w-8 h-8 rounded-lg mb-3 flex items-center justify-center"
                                         style={{ background: 'rgba(255,107,0,0.12)', color: '#F59E0B' }}>
                                         {f.icon}
                                     </div>
-                                    <div className="text-white font-semibold text-sm mb-0.5 leading-tight">{f.label}</div>
-                                    <div className="text-xs leading-relaxed mb-3" style={{ color: '#4b5563' }}>{f.desc}</div>
+                                    <div className="text-[#1a1a1a] font-semibold text-sm mb-0.5 leading-tight">{f.label}</div>
+                                    <div className="text-xs leading-relaxed mb-3" style={{ color: '#6b7280' }}>{f.desc}</div>
                                     <div className="pt-2 border-t" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
                                         <span className="text-sm font-black" style={{ color: '#F59E0B' }}>{f.stat}</span>
                                         <span className="text-xs ml-1.5" style={{ color: '#6b7280' }}>{f.statLabel}</span>
@@ -316,7 +316,7 @@ const ConstructionHeroPanel = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.75, duration: 0.7 }}
                             className="rounded-2xl p-5 flex flex-col"
-                            style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid rgba(255,107,0,0.08)' }}
+                            style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)' }}
                         >
                             <div className="flex items-center justify-between mb-4">
                                 <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: '#6b7280' }}>Live Projects</span>
@@ -334,8 +334,8 @@ const ConstructionHeroPanel = () => {
                                     >
                                         <div className="flex items-start justify-between mb-1.5">
                                             <div>
-                                                <div className="text-white text-xs font-semibold">{p.name}</div>
-                                                <div className="text-xs" style={{ color: '#4b5563' }}>{p.phase} · {p.budget}</div>
+                                                <div className="text-[#1a1a1a] text-xs font-semibold">{p.name}</div>
+                                                <div className="text-xs" style={{ color: '#6b7280' }}>{p.phase} · {p.budget}</div>
                                             </div>
                                             <span className="text-[10px] px-1.5 py-0.5 rounded font-semibold"
                                                 style={p.status === 'At Risk'
@@ -344,7 +344,7 @@ const ConstructionHeroPanel = () => {
                                                 {p.status}
                                             </span>
                                         </div>
-                                        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                                        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(0,0,0,0.06)' }}>
                                             <motion.div
                                                 className="h-full rounded-full"
                                                 initial={{ width: 0 }}
@@ -353,7 +353,7 @@ const ConstructionHeroPanel = () => {
                                                 style={{ background: p.status === 'At Risk' ? 'linear-gradient(90deg, #ef4444, #f97316)' : 'linear-gradient(90deg, #FF6B00, #F59E0B)' }}
                                             />
                                         </div>
-                                        <div className="text-right text-[10px] mt-0.5" style={{ color: '#4b5563' }}>{p.progress}% complete</div>
+                                        <div className="text-right text-[10px] mt-0.5" style={{ color: '#6b7280' }}>{p.progress}% complete</div>
                                     </motion.div>
                                 ))}
                             </div>
@@ -374,7 +374,7 @@ const ConstructionHeroPanel = () => {
                         ].map((m, i) => (
                             <div key={i} className="text-center">
                                 <div className="text-xl font-black mb-0.5"
-                                    style={{ background: 'linear-gradient(135deg, #fff 30%, #F59E0B)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                                    style={{ background: 'linear-gradient(135deg, #1a1a1a 30%, #FF6B00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                                     {m.value}
                                 </div>
                                 <div className="text-[10px] uppercase tracking-wider" style={{ color: '#4b5563' }}>{m.label}</div>
@@ -383,7 +383,7 @@ const ConstructionHeroPanel = () => {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </motion.div >
     );
 };
 
@@ -420,9 +420,9 @@ export default function LandingPage({ comingSoonMode = false }) {
         : ['Select', 'Your', 'Domain'];
 
     return (
-        <div className="landing-container pt-12 relative transition-colors duration-1000">
+        <div className={`landing-container pt-12 relative transition-colors duration-1000`} style={comingSoonMode ? { backgroundColor: '#F5F5F5', color: '#1a1a1a' } : {}}>
             {/* Grand Entrance Hero Section */}
-            <section className="hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40">
+            <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40 ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
                     <ComingSoonHeroBackground />
@@ -448,39 +448,34 @@ export default function LandingPage({ comingSoonMode = false }) {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            {/* Static outer glow ring */}
-                            <div
-                                className="absolute -inset-4 rounded-full"
-                                style={{
-                                    border: `1px solid ${themeColor}12`,
-                                    boxShadow: `0 0 60px ${themeColor}08`,
-                                }}
-                            />
-                            {/* Logo image */}
+                            {/* Logo image — clean, no borders */}
                             <img
                                 src="/images/gasper-logo-g.png"
                                 alt="Gasper"
                                 className="relative z-10 w-full h-full object-contain"
-                                style={{ filter: `drop-shadow(0 0 25px ${themeColor}30)` }}
                             />
                         </motion.div>
                     )}
 
                     {/* Minimal badge */}
                     <motion.div
-                        className="inline-flex items-center gap-2.5 mx-auto mb-10 px-5 py-2 rounded-full border border-white/[0.08] bg-white/[0.02] text-slate-400 text-sm font-medium tracking-wide"
+                        className="inline-flex items-center gap-2.5 mx-auto mb-10 px-5 py-2 rounded-full text-sm font-medium tracking-wide"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
+                        style={comingSoonMode
+                            ? { border: '1px solid rgba(0,0,0,0.10)', background: 'rgba(0,0,0,0.04)', color: '#4b5563' }
+                            : { border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)', color: '#94a3b8' }
+                        }
                     >
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#22d3ee]" style={{ boxShadow: '0 0 8px rgba(34,211,238,0.6)' }} />
+                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: comingSoonMode ? '#FF6B00' : '#22d3ee', boxShadow: comingSoonMode ? '0 0 8px rgba(255,107,0,0.5)' : '0 0 8px rgba(34,211,238,0.6)' }} />
                         {comingSoonMode ? "Coming Soon — Public Beta" : "AI-Powered Operations Intelligence"}
                     </motion.div>
 
                     {/* Giant hero title — OpenSpace-scale */}
                     <div
-                        className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-6 mx-auto text-center max-w-6xl overflow-hidden"
-                        style={{ letterSpacing: '-0.04em', lineHeight: 0.95 }}
+                        className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 mx-auto text-center max-w-6xl overflow-hidden"
+                        style={{ letterSpacing: '-0.04em', lineHeight: 0.95, color: comingSoonMode ? '#1a1a1a' : '#ffffff' }}
                     >
                         {heroWords.map((word, i) => (
                             <KineticWord key={word} delay={0.3 + i * 0.12}>
@@ -518,7 +513,8 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Sub heading — bigger, more authoritative */}
                     {comingSoonMode && (
                         <motion.p
-                            className="text-lg md:text-xl font-medium text-slate-500 mb-6 tracking-wide"
+                            className="text-lg md:text-xl font-medium mb-6 tracking-wide"
+                            style={{ color: '#6b7280' }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5, duration: 0.8 }}
@@ -529,7 +525,8 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                     {/* Description */}
                     <motion.p
-                        className="text-lg md:text-xl text-slate-400 text-center mx-auto max-w-2xl mb-10 leading-relaxed"
+                        className="text-lg md:text-xl text-center mx-auto max-w-2xl mb-10 leading-relaxed"
+                        style={{ color: comingSoonMode ? '#6b7280' : '#94a3b8' }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 0.8 }}

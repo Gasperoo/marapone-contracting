@@ -18,13 +18,14 @@ import { ProjectCommandCenter } from './ConstructionAdvanced';
 const C = {
     primary: '#FF6B00',
     secondary: '#F59E0B',
-    primaryGlow: 'rgba(255,107,0,0.15)',
-    secondaryGlow: 'rgba(245,158,11,0.12)',
-    bg: '#0F1614',
-    surface: '#141E1A',
-    border: 'rgba(255,107,0,0.10)',
-    borderHover: 'rgba(255,107,0,0.28)',
-    textMuted: '#94a3b8',
+    primaryGlow: 'rgba(255,107,0,0.12)',
+    secondaryGlow: 'rgba(245,158,11,0.08)',
+    bg: '#F5F5F5',
+    surface: '#FFFFFF',
+    border: 'rgba(0,0,0,0.08)',
+    borderHover: 'rgba(255,107,0,0.25)',
+    textPrimary: '#1a1a1a',
+    textMuted: '#6b7280',
 };
 
 // Smooth scroll-triggered animation defaults
@@ -60,7 +61,7 @@ function Counter({ value, label, suffix = '' }) {
             <div className="absolute -inset-[1px] rounded-2xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}20, ${C.secondary}15, ${C.primary}20)` }} />
             <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: C.surface }} />
             <div className="relative z-10 p-8 text-center">
-                <div className="text-4xl md:text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #fff 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                <div className="text-4xl md:text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #1a1a1a 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     {display.toLocaleString()}{suffix}
                 </div>
                 <div className="text-xs uppercase tracking-widest font-semibold" style={{ color: C.textMuted }}>{label}</div>
@@ -95,7 +96,7 @@ function FeatureCard({ icon, title, description, details }) {
             className="relative h-full rounded-2xl overflow-hidden group"
         >
             <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}40, ${C.secondary}25, ${C.primary}40)`, opacity: isFocused ? 0.9 : 0.2 }} />
-            <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: 'rgba(13,22,16,0.95)', backdropFilter: 'blur(20px)' }} />
+            <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)' }} />
             <motion.div
                 className="pointer-events-none absolute inset-0 rounded-2xl z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: useTransform([position.x, position.y], ([x, y]) => `radial-gradient(500px circle at ${x}px ${y}px, rgba(255,107,0,0.10), rgba(245,158,11,0.05) 30%, transparent 55%)`) }}
@@ -104,12 +105,12 @@ function FeatureCard({ icon, title, description, details }) {
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500" style={{ background: `${C.primary}15`, color: C.primary, boxShadow: `0 0 25px ${C.primaryGlow}` }}>
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-300" style={{ ...(isFocused ? { color: C.secondary } : {}) }}>{title}</h3>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 transition-colors duration-300" style={{ ...(isFocused ? { color: C.secondary } : {}) }}>{title}</h3>
                 <p className="mb-6 leading-relaxed flex-grow" style={{ color: C.textMuted }}>{description}</p>
                 <div className="pt-6 border-t" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
                     <ul className="grid grid-cols-1 gap-3">
                         {details.map((item, i) => (
-                            <li key={i} className="flex items-center text-sm text-slate-300">
+                            <li key={i} className="flex items-center text-sm text-[#374151]">
                                 <CheckCircle2 size={14} className="mr-3 flex-shrink-0" style={{ color: C.secondary }} />
                                 {item}
                             </li>
@@ -131,16 +132,16 @@ function IndustryCard({ icon, title, description, color, useCase }) {
             className="group relative rounded-[1.5rem] overflow-hidden"
         >
             <div className="absolute -inset-[1px] rounded-[1.5rem] z-0 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}20, ${C.secondary}12, ${C.primary}20)`, opacity: 0.4 }} />
-            <div className="absolute inset-[1px] rounded-[1.5rem] z-0 transition-colors duration-500" style={{ background: 'rgba(13,22,16,0.92)' }} />
+            <div className="absolute inset-[1px] rounded-[1.5rem] z-0 transition-colors duration-500" style={{ background: 'rgba(255,255,255,0.92)' }} />
             <div className="relative z-10 p-10 h-full flex flex-col">
-                <div className={`w-16 h-16 rounded-2xl bg-white/[0.04] flex items-center justify-center mb-8 ${color} group-hover:scale-105 transition-transform duration-500`} style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className={`w-16 h-16 rounded-2xl bg-white/[0.04] flex items-center justify-center mb-8 ${color} group-hover:scale-105 transition-transform duration-500`} style={{ border: '1px solid rgba(0,0,0,0.06)' }}>
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-300 group-hover:text-[#F59E0B]">{title}</h3>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 transition-colors duration-300 group-hover:text-[#F59E0B]">{title}</h3>
                 <p className="text-[15px] leading-relaxed mb-8 flex-grow" style={{ color: C.textMuted }}>{description}</p>
                 <div className="mt-auto pt-6 border-t transition-colors" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
                     <div className="text-xs uppercase font-semibold mb-2 tracking-widest" style={{ color: '#6b7280' }}>Use Case</div>
-                    <div className="text-sm text-slate-200 font-medium">{useCase}</div>
+                    <div className="text-sm text-[#4b5563] font-medium">{useCase}</div>
                 </div>
             </div>
         </motion.div>
@@ -167,7 +168,7 @@ function GasperAIBotSection() {
                             style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
                             <Bot size={14} /> AI Construction Copilot
                         </motion.div>
-                        <motion.h2 {...fadeUp(0.06)} className="text-4xl md:text-5xl font-bold text-white mb-5" style={{ letterSpacing: '-0.03em' }}>
+                        <motion.h2 {...fadeUp(0.06)} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.03em' }}>
                             Meet <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Gasper AI</span>
                         </motion.h2>
                         <motion.p {...fadeUp(0.12)} className="text-lg leading-relaxed mb-8" style={{ color: C.textMuted }}>
@@ -179,9 +180,9 @@ function GasperAIBotSection() {
                             <div className="text-xs uppercase tracking-widest font-semibold mb-3" style={{ color: '#4b5563' }}>Try asking</div>
                             {queries.map((q, i) => (
                                 <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300"
-                                    style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                                    style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)' }}>
                                     <MessageSquare size={13} style={{ color: C.primary, flexShrink: 0 }} />
-                                    <span className="text-sm text-slate-400">{q}</span>
+                                    <span className="text-sm text-[#6b7280]">{q}</span>
                                 </div>
                             ))}
                         </motion.div>
@@ -200,7 +201,7 @@ function GasperAIBotSection() {
                     {/* Right — Chat mockup */}
                     <motion.div {...fadeUp(0.14)} className="relative rounded-3xl overflow-hidden">
                         <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(180deg, ${C.primary}30, ${C.secondary}15, transparent)` }} />
-                        <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(10,16,12,0.97)', backdropFilter: 'blur(24px)' }} />
+                        <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(24px)' }} />
                         <div className="relative z-10 p-6">
                             {/* Chat header */}
                             <div className="flex items-center gap-3 mb-5 pb-4 border-b" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
@@ -208,7 +209,7 @@ function GasperAIBotSection() {
                                     <img src="/images/gasper-logo-g.png" alt="Gasper AI" className="w-full h-full object-contain" />
                                 </div>
                                 <div className="flex-1">
-                                    <div className="text-white font-semibold text-sm">Gasper AI</div>
+                                    <div className="text-[#1a1a1a] font-semibold text-sm">Gasper AI</div>
                                     <div className="text-[10px] text-emerald-400 flex items-center gap-1"><div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" /> Online</div>
                                 </div>
                             </div>
@@ -217,20 +218,20 @@ function GasperAIBotSection() {
                                 {/* User message */}
                                 <div className="flex justify-end">
                                     <div className="rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[80%]" style={{ background: `${C.primary}15`, border: `1px solid ${C.primary}20` }}>
-                                        <p className="text-white text-sm">Show me projected cash flow for Phase 2 of Westside Commercial</p>
+                                        <p className="text-[#1a1a1a] text-sm">Show me projected cash flow for Phase 2 of Westside Commercial</p>
                                     </div>
                                 </div>
 
                                 {/* AI response */}
                                 <div className="flex justify-start">
-                                    <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%]" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                                        <p className="text-slate-300 text-sm mb-3">Analyzed 14 billing cycles across 3 cost codes:</p>
+                                    <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%]" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)' }}>
+                                        <p className="text-[#374151] text-sm mb-3">Analyzed 14 billing cycles across 3 cost codes:</p>
                                         <div className="space-y-2">
                                             <div className="flex justify-between text-xs"><span style={{ color: '#6b7280' }}>Forecasted shortfall</span><span className="font-bold text-amber-400">$142,000</span></div>
                                             <div className="flex justify-between text-xs"><span style={{ color: '#6b7280' }}>Material variance</span><span className="font-bold text-red-400">+$38k over</span></div>
-                                            <div className="flex justify-between text-xs"><span style={{ color: '#6b7280' }}>Owner retention held</span><span className="font-bold text-slate-300">$104k</span></div>
+                                            <div className="flex justify-between text-xs"><span style={{ color: '#6b7280' }}>Owner retention held</span><span className="font-bold text-[#374151]">$104k</span></div>
                                         </div>
-                                        <div className="mt-3 pt-2 border-t flex items-center gap-2" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+                                        <div className="mt-3 pt-2 border-t flex items-center gap-2" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
                                             <AlertTriangle size={11} style={{ color: C.secondary }} />
                                             <span className="text-[11px]" style={{ color: C.secondary }}>Electrical sub has 3 unpaid invoices — flag for review?</span>
                                         </div>
@@ -239,7 +240,7 @@ function GasperAIBotSection() {
 
                                 {/* Typing indicator */}
                                 <div className="flex justify-start">
-                                    <div className="rounded-2xl rounded-tl-sm px-4 py-3" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                                    <div className="rounded-2xl rounded-tl-sm px-4 py-3" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.04)' }}>
                                         <div className="flex gap-1.5 items-center">
                                             <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: C.primary, animationDelay: '0ms' }} />
                                             <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: C.primary, animationDelay: '150ms' }} />
@@ -251,8 +252,8 @@ function GasperAIBotSection() {
 
                             {/* Input */}
                             <div className="mt-5 pt-4 border-t" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
-                                <div className="flex items-center gap-2 rounded-xl px-4 py-2.5" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                                    <input type="text" placeholder="Ask about any project..." className="flex-1 bg-transparent text-white text-sm outline-none placeholder:text-slate-600" disabled />
+                                <div className="flex items-center gap-2 rounded-xl px-4 py-2.5" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.06)' }}>
+                                    <input type="text" placeholder="Ask about any project..." className="flex-1 bg-transparent text-[#1a1a1a] text-sm outline-none placeholder:text-slate-600" disabled />
                                     <Send size={15} className="text-slate-600" />
                                 </div>
                             </div>
@@ -276,19 +277,19 @@ function TechnologyStackSection() {
     return (
         <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Enterprise-Grade Stack</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-3">Enterprise-Grade Stack</h2>
                 <p className="text-sm max-w-lg mx-auto" style={{ color: '#64748b' }}>Built on the most secure, scalable infrastructure in the industry.</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {techCategories.map((cat, idx) => (
                     <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08, duration: 0.6 }}
-                        className="p-5 rounded-xl transition-all" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,107,0,0.08)' }}
+                        className="p-5 rounded-xl transition-all" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(255,107,0,0.08)' }}
                         onMouseEnter={e => e.currentTarget.style.borderColor = `${C.primary}25`}
                         onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.08)'}
                     >
                         <div className="flex items-center gap-2 mb-3">
                             <span style={{ color: C.secondary }}>{cat.icon}</span>
-                            <h3 className="text-white font-semibold text-sm">{cat.category}</h3>
+                            <h3 className="text-[#1a1a1a] font-semibold text-sm">{cat.category}</h3>
                         </div>
                         <ul className="space-y-1.5">
                             {cat.technologies.map((tech, i) => (
@@ -332,7 +333,7 @@ function ComparisonTableSection() {
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-4xl md:text-5xl font-bold mb-5"
-                    style={{ background: 'linear-gradient(to bottom, #fff, rgba(255,255,255,0.6))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    style={{ background: 'linear-gradient(to bottom, #1a1a1a, rgba(26,26,26,0.7))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     Why Industry Leaders Choose Gasper
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -350,8 +351,8 @@ function ComparisonTableSection() {
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: `radial-gradient(ellipse at center, ${C.primaryGlow} 0%, transparent 70%)` }} />
                         <div className="relative z-10">
                             <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style={{ background: `${C.primary}12`, color: C.primary }}>{m.icon}</div>
-                            <div className="text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #fff 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
-                            <div className="text-white font-bold text-lg mb-2">{m.label}</div>
+                            <div className="text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #1a1a1a 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
+                            <div className="text-[#1a1a1a] font-bold text-lg mb-2">{m.label}</div>
                             <p className="text-sm" style={{ color: C.textMuted }}>{m.desc}</p>
                         </div>
                     </motion.div>
@@ -361,7 +362,7 @@ function ComparisonTableSection() {
             {/* Before / After */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 className="rounded-3xl p-8 md:p-12 mb-10" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                <h3 className="text-2xl font-bold text-white text-center mb-10">The Old Way vs. The Gasper Way</h3>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] text-center mb-10">The Old Way vs. The Gasper Way</h3>
                 <div className="space-y-0 divide-y" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
                     {transformations.map((t, i) => (
                         <div key={i} className="grid md:grid-cols-[1fr_auto_1fr] items-center gap-4 py-5">
@@ -371,7 +372,7 @@ function ComparisonTableSection() {
                             </div>
                             <div className="hidden md:flex w-8 h-8 rounded-full items-center justify-center text-xs font-bold flex-shrink-0 mx-auto" style={{ background: `${C.primary}15`, color: C.primary }}>→</div>
                             <div className="flex items-center gap-3 md:justify-end">
-                                <span className="text-sm text-slate-200 font-medium">{t.after}</span>
+                                <span className="text-sm text-[#4b5563] font-medium">{t.after}</span>
                                 <Check size={16} className="flex-shrink-0" style={{ color: C.secondary }} />
                             </div>
                         </div>
@@ -403,7 +404,7 @@ function WhatYouGetSection() {
     return (
         <section className="px-6 max-w-7xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What You'll Get</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">What You'll Get</h2>
                 <p className="max-w-xl mx-auto" style={{ color: C.textMuted }}>Founding members and early partners get exclusive access to shape the future of construction AI.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -416,7 +417,7 @@ function WhatYouGetSection() {
                             <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}15`, color: C.primary }}>
                                 {b.icon}
                             </div>
-                            <h3 className="text-white font-bold text-lg mb-2">{b.title}</h3>
+                            <h3 className="text-[#1a1a1a] font-bold text-lg mb-2">{b.title}</h3>
                             <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{b.description}</p>
                         </div>
                     </motion.div>
@@ -437,12 +438,12 @@ function CustomLLMBuilderSection() {
                     <Brain size={14} className="mr-2" /> Bespoke Enterprise AI
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                    className="text-4xl md:text-5xl font-bold mb-6 text-[#1a1a1a]">
                     Gasper <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Custom LLM Builder</span>
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-lg max-w-3xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
-                    We build powerful <strong className="text-white">custom Large Language Models</strong> designed specifically for construction. Trained on your project histories, specs, contracts, and workflows — an AI that truly speaks your business language.
+                    We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for construction. Trained on your project histories, specs, contracts, and workflows — an AI that truly speaks your business language.
                 </motion.p>
             </div>
             <div className="grid md:grid-cols-3 gap-6 relative z-10">
@@ -453,13 +454,13 @@ function CustomLLMBuilderSection() {
                 ].map((card, i) => (
                     <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 * (i + 1), duration: 0.6 }}
                         className="relative rounded-2xl p-8 border group hover:border-white/20 transition-all overflow-hidden"
-                        style={{ background: 'rgba(13,22,16,0.85)', borderColor: C.border, backdropFilter: 'blur(20px)' }}>
+                        style={{ background: 'rgba(255,255,255,0.95)', borderColor: C.border, backdropFilter: 'blur(20px)' }}>
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}04, ${C.secondary}02)` }} />
                         <div className="absolute -right-4 -top-4 p-6 transition-opacity duration-500 opacity-[0.03] group-hover:opacity-[0.05]">{card.bg}</div>
                         <div className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center shadow-lg shadow-black/20" style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${C.border}`, color: C.primary }}>
                             {card.icon}
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
+                        <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">{card.title}</h3>
                         <p className="text-[15px] leading-relaxed relative z-10" style={{ color: C.textMuted }}>{card.body}</p>
                     </motion.div>
                 ))}
@@ -530,7 +531,7 @@ function WaitlistSection() {
                     <Sparkles size={14} className="mr-2" /> Limited Early Access
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-bold text-white mb-5" style={{ letterSpacing: '-0.02em' }}>
+                    className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.02em' }}>
                     Request Early Access
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -541,7 +542,7 @@ function WaitlistSection() {
 
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative rounded-3xl overflow-hidden">
                 <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}40, ${C.secondary}25, ${C.primary}20)` }} />
-                <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(7,12,9,0.97)', backdropFilter: 'blur(24px)' }} />
+                <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(24px)' }} />
 
                 <div className="relative z-10 p-8 md:p-12">
                     {status === 'success' ? (
@@ -549,7 +550,7 @@ function WaitlistSection() {
                             <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: `${C.primary}15`, border: `2px solid ${C.primary}40` }}>
                                 <Check size={36} style={{ color: C.secondary }} />
                             </div>
-                            <h3 className="text-3xl font-bold text-white mb-4">You're In</h3>
+                            <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">You're In</h3>
                             <p className="text-lg" style={{ color: C.textMuted }}>{message}</p>
                         </div>
                     ) : (
@@ -562,15 +563,15 @@ function WaitlistSection() {
                                     { name: 'role', label: 'Your Role (Optional)', placeholder: 'COO, Project Director, Investor...', type: 'text' },
                                 ].map(field => (
                                     <div key={field.name}>
-                                        <label className="block text-sm font-semibold mb-2 text-slate-300">{field.label}</label>
+                                        <label className="block text-sm font-semibold mb-2 text-[#374151]">{field.label}</label>
                                         <input
                                             type={field.type}
                                             name={field.name}
                                             value={form[field.name]}
                                             onChange={handleInputChange}
                                             placeholder={field.placeholder}
-                                            className="w-full px-4 py-3 rounded-xl text-white text-sm outline-none transition-all"
-                                            style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${errors[field.name] ? 'rgba(239,68,68,0.5)' : 'rgba(255,107,0,0.12)'}`, color: 'white' }}
+                                            className="w-full px-4 py-3 rounded-xl text-[#1a1a1a] text-sm outline-none transition-all"
+                                            style={{ background: 'rgba(0,0,0,0.04)', border: `1px solid ${errors[field.name] ? 'rgba(239,68,68,0.5)' : 'rgba(255,107,0,0.12)'}`, color: 'white' }}
                                             onFocus={e => e.target.style.borderColor = `${C.primary}50`}
                                             onBlur={e => e.target.style.borderColor = errors[field.name] ? 'rgba(239,68,68,0.5)' : 'rgba(255,107,0,0.12)'}
                                         />
@@ -584,7 +585,7 @@ function WaitlistSection() {
                             <button
                                 type="submit"
                                 disabled={status === 'loading'}
-                                className="w-full py-4 rounded-xl font-bold text-white text-lg transition-all duration-300 flex items-center justify-center gap-2"
+                                className="w-full py-4 rounded-xl font-bold text-[#1a1a1a] text-lg transition-all duration-300 flex items-center justify-center gap-2"
                                 style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`, boxShadow: `0 8px 30px ${C.primaryGlow}`, opacity: status === 'loading' ? 0.7 : 1 }}
                             >
                                 {status === 'loading' ? 'Submitting...' : <><Send size={16} /> Request Early Access</>}
@@ -625,7 +626,7 @@ function MaterialPriceAggregatorSection() {
                         style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
                         <Search size={14} /> Real-Time Price Intelligence
                     </motion.div>
-                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-white mb-5" style={{ letterSpacing: '-0.03em' }}>
+                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.03em' }}>
                         AI Material <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Price Scanner</span>
                     </motion.h2>
                     <motion.p {...fadeUp(0.14)} className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
@@ -643,7 +644,7 @@ function MaterialPriceAggregatorSection() {
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${C.primary}15`, color: C.primary }}><Search size={16} /></div>
                                 <div>
-                                    <div className="text-white font-semibold text-sm">Material Price Scanner</div>
+                                    <div className="text-[#1a1a1a] font-semibold text-sm">Material Price Scanner</div>
                                     <div className="text-xs" style={{ color: '#4b5563' }}>Scanning 4 stores near <span style={{ color: C.secondary }}>Toronto, ON</span></div>
                                 </div>
                             </div>
@@ -665,9 +666,9 @@ function MaterialPriceAggregatorSection() {
                             {materials.map((m, idx) => (
                                 <motion.div key={idx} {...fadeUp(0.22 + idx * 0.06)}
                                     className="grid grid-cols-[1.5fr_repeat(4,1fr)] gap-3 items-center rounded-xl px-3 py-3 transition-colors"
-                                    style={{ background: idx % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                                    style={{ background: idx % 2 === 0 ? 'rgba(0,0,0,0.02)' : 'transparent' }}>
                                     <div>
-                                        <div className="text-white text-sm font-medium">{m.item}</div>
+                                        <div className="text-[#1a1a1a] text-sm font-medium">{m.item}</div>
                                         <div className="text-[10px]" style={{ color: '#4b5563' }}>{m.category}</div>
                                     </div>
                                     {m.prices.map((p, pi) => (
@@ -686,9 +687,9 @@ function MaterialPriceAggregatorSection() {
                         <div className="mt-6 pt-4 border-t flex flex-wrap items-center justify-between gap-4" style={{ borderColor: C.border }}>
                             <div className="flex items-center gap-6">
                                 <div><span className="text-xs" style={{ color: '#4b5563' }}>Est. savings per project</span><span className="text-lg font-black ml-2" style={{ color: '#10b981' }}>$12,400+</span></div>
-                                <div><span className="text-xs" style={{ color: '#4b5563' }}>Stores scanned</span><span className="text-sm font-bold ml-2 text-white">47 near you</span></div>
+                                <div><span className="text-xs" style={{ color: '#4b5563' }}>Stores scanned</span><span className="text-sm font-bold ml-2 text-[#1a1a1a]">47 near you</span></div>
                             </div>
-                            <div className="text-xs" style={{ color: '#4b5563' }}>Prices updated <span className="text-white font-medium">2 min ago</span></div>
+                            <div className="text-xs" style={{ color: '#4b5563' }}>Prices updated <span className="text-[#1a1a1a] font-medium">2 min ago</span></div>
                         </div>
                     </div>
                 </motion.div>
@@ -698,7 +699,7 @@ function MaterialPriceAggregatorSection() {
                     {['Home Depot', 'Lowes', 'Rona', 'Home Hardware', 'BMR', 'Castle Building', 'TIMBER MART', 'All Local Suppliers'].map((s, i) => (
                         <motion.span key={i} {...fadeUp(0.3 + i * 0.04)}
                             className="px-4 py-2 rounded-full text-xs font-semibold"
-                            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#94a3b8' }}>
+                            style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.06)', color: '#94a3b8' }}>
                             <Store size={11} className="inline mr-1.5" />{s}
                         </motion.span>
                     ))}
@@ -725,7 +726,7 @@ function ProjectTimelineSection() {
                         style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
                         <CalendarDays size={14} /> Full Lifecycle Coverage
                     </motion.div>
-                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-white mb-5" style={{ letterSpacing: '-0.03em' }}>
+                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.03em' }}>
                         From Groundbreak to <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Certificate of Occupancy</span>
                     </motion.h2>
                     <motion.p {...fadeUp(0.14)} className="text-lg max-w-2xl mx-auto" style={{ color: C.textMuted }}>
@@ -743,8 +744,8 @@ function ProjectTimelineSection() {
                                 {/* Timeline dot */}
                                 <div className="hidden md:flex flex-shrink-0 w-16 h-16 rounded-2xl items-center justify-center relative z-10"
                                     style={{
-                                        background: p.status === 'complete' ? 'rgba(16,185,129,0.15)' : p.status === 'active' ? `${C.primary}20` : 'rgba(255,255,255,0.04)',
-                                        border: `1px solid ${p.status === 'complete' ? 'rgba(16,185,129,0.3)' : p.status === 'active' ? `${C.primary}40` : 'rgba(255,255,255,0.08)'}`,
+                                        background: p.status === 'complete' ? 'rgba(16,185,129,0.15)' : p.status === 'active' ? `${C.primary}20` : 'rgba(0,0,0,0.04)',
+                                        border: `1px solid ${p.status === 'complete' ? 'rgba(16,185,129,0.3)' : p.status === 'active' ? `${C.primary}40` : 'rgba(0,0,0,0.06)'}`,
                                         color: p.status === 'complete' ? '#10b981' : p.status === 'active' ? C.primary : '#4b5563',
                                     }}>
                                     {p.icon}
@@ -754,18 +755,18 @@ function ProjectTimelineSection() {
                                 <div className="flex-1 rounded-2xl p-6 transition-all duration-500"
                                     style={{ background: C.surface, border: `1px solid ${p.status === 'active' ? `${C.primary}25` : C.border}` }}>
                                     <div className="flex items-center gap-3 mb-3">
-                                        <h3 className="text-white font-bold text-lg">{p.phase}</h3>
+                                        <h3 className="text-[#1a1a1a] font-bold text-lg">{p.phase}</h3>
                                         <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider"
                                             style={p.status === 'complete' ? { background: 'rgba(16,185,129,0.1)', color: '#10b981' }
                                                 : p.status === 'active' ? { background: `${C.primary}15`, color: C.primary }
-                                                    : { background: 'rgba(255,255,255,0.04)', color: '#4b5563' }}>
+                                                    : { background: 'rgba(0,0,0,0.04)', color: '#4b5563' }}>
                                             {p.status === 'complete' ? '✓ Done' : p.status === 'active' ? '● Active' : 'Upcoming'}
                                         </span>
                                         <span className="text-xs ml-auto" style={{ color: '#4b5563' }}>{p.duration}</span>
                                     </div>
                                     <div className="flex flex-wrap gap-2">
                                         {p.items.map((item, j) => (
-                                            <span key={j} className="text-xs px-3 py-1.5 rounded-lg" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#94a3b8' }}>{item}</span>
+                                            <span key={j} className="text-xs px-3 py-1.5 rounded-lg" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', color: '#94a3b8' }}>{item}</span>
                                         ))}
                                     </div>
                                 </div>
@@ -801,7 +802,7 @@ function SafetyComplianceSection() {
                         style={{ borderColor: 'rgba(16,185,129,0.3)', background: 'rgba(16,185,129,0.08)', color: '#10b981' }}>
                         <Shield size={14} /> Safety & Compliance
                     </motion.div>
-                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-white mb-5" style={{ letterSpacing: '-0.03em' }}>
+                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.03em' }}>
                         Zero-Incident <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #10b981, #34d399)' }}>Job Sites</span>
                     </motion.h2>
                     <motion.p {...fadeUp(0.14)} className="text-lg max-w-2xl mx-auto" style={{ color: C.textMuted }}>
@@ -814,8 +815,8 @@ function SafetyComplianceSection() {
                     {metrics.map((m, i) => (
                         <div key={i} className="rounded-2xl p-5 text-center transition-all duration-500" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
                             <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981' }}>{m.icon}</div>
-                            <div className="text-2xl font-black text-white mb-1">{m.value}</div>
-                            <div className="text-xs font-semibold text-slate-400 mb-1">{m.label}</div>
+                            <div className="text-2xl font-black text-[#1a1a1a] mb-1">{m.value}</div>
+                            <div className="text-xs font-semibold text-[#6b7280] mb-1">{m.label}</div>
                             <div className="text-[10px]" style={{ color: '#10b981' }}>{m.trend}</div>
                         </div>
                     ))}
@@ -833,7 +834,7 @@ function SafetyComplianceSection() {
                                 style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.15)', color: '#10b981' }}>
                                 {f.icon}
                             </div>
-                            <h3 className="text-white font-bold text-lg mb-3">{f.title}</h3>
+                            <h3 className="text-[#1a1a1a] font-bold text-lg mb-3">{f.title}</h3>
                             <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{f.desc}</p>
                         </motion.div>
                     ))}
@@ -847,22 +848,7 @@ function SafetyComplianceSection() {
 export default function ComingSoonContent() {
     return (
         <div className="relative" style={{ background: C.bg }}>
-            {/* Particles Background */}
-            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
-                <Particles
-                    particleColors={[C.primary, C.secondary, '#F97316']}
-                    particleCount={20}
-                    particleSpread={12}
-                    speed={0.015}
-                    particleBaseSize={25}
-                    moveParticlesOnHover={false}
-                    alphaParticles={true}
-                    disableRotation={false}
-                    sizeRandomness={1.2}
-                    cameraDistance={30}
-                    pixelRatio={Math.min(window.devicePixelRatio, 1.5)}
-                />
-            </div>
+
 
 
 
@@ -899,7 +885,7 @@ export default function ComingSoonContent() {
                         Built for your sector
                     </motion.p>
                     <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ letterSpacing: '-0.03em' }}>
+                        className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-4" style={{ letterSpacing: '-0.03em' }}>
                         Engineered for Every Sector
                     </motion.h2>
                     <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}

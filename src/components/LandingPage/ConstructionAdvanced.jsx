@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 // ─── Animated Number ─────────────────────────────────────────────────────
-function AnimatedNum({ value, prefix = '', suffix = '', color = 'text-white' }) {
+function AnimatedNum({ value, prefix = '', suffix = '', color = 'text-[#1a1a1a]' }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
     const [display, setDisplay] = useState(0);
@@ -93,10 +93,10 @@ export function SubcontractorMatchSection() {
                     <UserCheck size={14} className="inline mr-2" />
                     AI-Powered Matching
                 </motion.div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
                     Find Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Perfect Subcontractor</span> in Seconds
                 </h2>
-                <p className="text-slate-400 max-w-2xl mx-auto text-lg">Our AI analyzes 50+ data points — reliability, safety records, past performance, and availability — to match you with the ideal sub for every trade.</p>
+                <p className="text-[#6b7280] max-w-2xl mx-auto text-lg">Our AI analyzes 50+ data points — reliability, safety records, past performance, and availability — to match you with the ideal sub for every trade.</p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-6 relative z-10">
@@ -120,12 +120,12 @@ export function SubcontractorMatchSection() {
                             )}
                             <div className="flex items-center justify-between mb-2">
                                 <div>
-                                    <div className="text-white font-bold">{sub.name}</div>
-                                    <div className="text-xs text-slate-400">{sub.specialty}</div>
+                                    <div className="text-[#1a1a1a] font-bold">{sub.name}</div>
+                                    <div className="text-xs text-[#6b7280]">{sub.specialty}</div>
                                 </div>
                                 <div className="text-right">
                                     <div className="text-2xl font-black text-[#FF6B00]">{sub.match}%</div>
-                                    <div className="text-[10px] text-slate-500 uppercase tracking-widest">Match</div>
+                                    <div className="text-[10px] text-[#6b7280] uppercase tracking-widest">Match</div>
                                 </div>
                             </div>
                             <div className="flex items-center gap-2 mt-2">
@@ -133,7 +133,7 @@ export function SubcontractorMatchSection() {
                                     <Star size={10} fill="currentColor" /> {sub.rating}
                                 </div>
                                 <span className="text-slate-600">•</span>
-                                <div className="text-xs text-slate-400">{sub.projects} projects</div>
+                                <div className="text-xs text-[#6b7280]">{sub.projects} projects</div>
                                 <span className="text-slate-600">•</span>
                                 <div className={`text-xs ${sub.available ? 'text-emerald-400' : 'text-red-400'}`}>
                                     {sub.available ? '✓ Available' : '✗ Booked'}
@@ -150,8 +150,8 @@ export function SubcontractorMatchSection() {
                     <div className="relative z-10">
                         <div className="flex items-center justify-between mb-8">
                             <div>
-                                <h3 className="text-xl font-bold text-white">{active.name}</h3>
-                                <p className="text-sm text-slate-400">{active.specialty}</p>
+                                <h3 className="text-xl font-bold text-[#1a1a1a]">{active.name}</h3>
+                                <p className="text-sm text-[#6b7280]">{active.specialty}</p>
                             </div>
                             <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#FF6B00]/20 to-[#FF6B00]/5 border border-[#FF6B00]/30 flex flex-col items-center justify-center">
                                 <div className="text-2xl font-black text-[#FF6B00]">{active.match}</div>
@@ -168,11 +168,11 @@ export function SubcontractorMatchSection() {
                             ].map((metric, i) => (
                                 <div key={i}>
                                     <div className="flex items-center justify-between mb-2">
-                                        <div className="flex items-center gap-2 text-sm text-slate-300">
+                                        <div className="flex items-center gap-2 text-sm text-[#374151]">
                                             <span className="text-[#FF6B00]">{metric.icon}</span>
                                             {metric.label}
                                         </div>
-                                        <span className="text-sm font-bold text-white">{metric.value}%</span>
+                                        <span className="text-sm font-bold text-[#1a1a1a]">{metric.value}%</span>
                                     </div>
                                     <div className="h-2.5 bg-white/5 rounded-full overflow-hidden">
                                         <motion.div
@@ -199,8 +199,8 @@ export function SubcontractorMatchSection() {
                             <div className="flex items-start gap-3">
                                 <Zap size={18} className="text-[#FF6B00] mt-0.5 flex-shrink-0" />
                                 <div>
-                                    <div className="text-sm font-bold text-white mb-1">AI Recommendation</div>
-                                    <div className="text-xs text-slate-400">
+                                    <div className="text-sm font-bold text-[#1a1a1a] mb-1">AI Recommendation</div>
+                                    <div className="text-xs text-[#6b7280]">
                                         {active.name} has completed {active.projects} similar projects with a {active.onTime}% on-time rate.
                                         {active.safety === 100 ? ' Perfect safety record — zero incidents reported.' : ` Safety score: ${active.safety}%.`}
                                     </div>
@@ -242,11 +242,11 @@ export function ProjectCommandCenter() {
                     <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
                         <CalendarDays size={12} className="mr-2" /> LIVE PROJECT TIMELINE
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">
                         Your Entire Project Timeline —{' '}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">AI-Orchestrated</span>
                     </h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
                         See every phase, milestone, and dependency at a glance. Our AI auto-adjusts schedules when delays occur, re-sequences tasks, and alerts you to cascading impacts.
                     </p>
 
@@ -266,9 +266,9 @@ export function ProjectCommandCenter() {
                                 transition={{ delay: i * 0.1 }}
                                 className="p-4 rounded-xl bg-white/5 border border-white/5"
                             >
-                                <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">{s.label}</div>
+                                <div className="text-xs text-[#6b7280] uppercase tracking-wider mb-1">{s.label}</div>
                                 <div className={`text-2xl font-black ${s.color}`}>{s.value}</div>
-                                <div className="text-xs text-slate-400 mt-1">{s.sub}</div>
+                                <div className="text-xs text-[#6b7280] mt-1">{s.sub}</div>
                             </motion.div>
                         ))}
                     </div>
@@ -282,7 +282,7 @@ export function ProjectCommandCenter() {
                     className="lg:col-span-3 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-xl p-6 relative overflow-hidden"
                 >
                     <div className="flex justify-between items-center mb-6">
-                        <h3 className="text-white font-bold">Riverside Commons — Phase II</h3>
+                        <h3 className="text-[#1a1a1a] font-bold">Riverside Commons — Phase II</h3>
                         <div className="flex items-center gap-1 text-xs text-emerald-400">
                             <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
                             Live
@@ -290,7 +290,7 @@ export function ProjectCommandCenter() {
                     </div>
 
                     {/* Timeline Header */}
-                    <div className="flex justify-between text-[10px] text-slate-500 uppercase tracking-widest mb-3 px-1">
+                    <div className="flex justify-between text-[10px] text-[#6b7280] uppercase tracking-widest mb-3 px-1">
                         {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'].map(m => (
                             <span key={m}>{m}</span>
                         ))}
@@ -309,7 +309,7 @@ export function ProjectCommandCenter() {
                             >
                                 <div className="w-32 flex items-center gap-2 flex-shrink-0">
                                     <span className="text-sm">{phase.icon}</span>
-                                    <span className="text-xs text-slate-300 truncate">{phase.name}</span>
+                                    <span className="text-xs text-[#374151] truncate">{phase.name}</span>
                                 </div>
                                 <div className="flex-1 h-8 bg-white/5 rounded-lg relative overflow-hidden">
                                     {/* Full bar (planned) */}
@@ -338,7 +338,7 @@ export function ProjectCommandCenter() {
                                     {/* Progress label */}
                                     {phase.progress > 0 && (
                                         <div
-                                            className="absolute top-1/2 -translate-y-1/2 text-[10px] font-bold text-white"
+                                            className="absolute top-1/2 -translate-y-1/2 text-[10px] font-bold text-[#1a1a1a]"
                                             style={{ left: `${phase.start + 1}%` }}
                                         >
                                             {phase.progress}%
@@ -353,7 +353,7 @@ export function ProjectCommandCenter() {
                     <div className="relative mt-2" style={{ paddingLeft: '35%' }}>
                         <div className="flex flex-col items-center">
                             <div className="w-0.5 h-4 bg-white/40" />
-                            <div className="text-[9px] text-white/60 uppercase tracking-widest bg-white/10 px-2 py-0.5 rounded">Today</div>
+                            <div className="text-[9px] text-[#1a1a1a]/60 uppercase tracking-widest bg-white/10 px-2 py-0.5 rounded">Today</div>
                         </div>
                     </div>
                 </motion.div>
@@ -379,10 +379,10 @@ export function ROIImpactSection() {
                     <TrendingUp size={14} className="inline mr-2" />
                     Proven Results
                 </motion.div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
                     The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#FF6B00]">ROI</span> Speaks for Itself
                 </h2>
-                <p className="text-slate-400 max-w-2xl mx-auto text-lg">Average results from construction firms in their first 6 months with Gasper.</p>
+                <p className="text-[#6b7280] max-w-2xl mx-auto text-lg">Average results from construction firms in their first 6 months with Gasper.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 relative z-10">
@@ -394,7 +394,7 @@ export function ROIImpactSection() {
                     className="rounded-3xl border border-red-500/20 bg-gradient-to-br from-red-500/5 to-transparent backdrop-blur-xl p-8 relative"
                 >
                     <div className="absolute top-6 right-6 text-xs font-bold text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">BEFORE GASPER</div>
-                    <h3 className="text-2xl font-bold text-white mb-8">Traditional Approach</h3>
+                    <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8">Traditional Approach</h3>
 
                     <div className="space-y-6">
                         {[
@@ -406,7 +406,7 @@ export function ROIImpactSection() {
                             <div key={i} className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 flex-shrink-0">{m.icon}</div>
                                 <div className="flex-1">
-                                    <div className="text-sm text-slate-400">{m.label}</div>
+                                    <div className="text-sm text-[#6b7280]">{m.label}</div>
                                     <div className={`text-2xl font-black ${m.color}`}>
                                         <AnimatedNum value={m.value} suffix={m.suffix} color={m.color} />
                                     </div>
@@ -426,7 +426,7 @@ export function ROIImpactSection() {
                     <div className="absolute top-6 right-6 text-xs font-bold text-[#FF6B00] bg-[#FF6B00]/10 px-3 py-1 rounded-full border border-[#FF6B00]/20 flex items-center gap-1">
                         <Zap size={10} /> WITH GASPER
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-8">AI-Powered Results</h3>
+                    <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8">AI-Powered Results</h3>
 
                     <div className="space-y-6">
                         {[
@@ -438,7 +438,7 @@ export function ROIImpactSection() {
                             <div key={i} className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-[#FF6B00]/10 flex items-center justify-center text-[#FF6B00] flex-shrink-0">{m.icon}</div>
                                 <div className="flex-1">
-                                    <div className="text-sm text-slate-400 flex items-center gap-2">
+                                    <div className="text-sm text-[#6b7280] flex items-center gap-2">
                                         {m.label}
                                         <span className="text-emerald-400 text-xs font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">{m.saved}</span>
                                     </div>
@@ -453,11 +453,11 @@ export function ROIImpactSection() {
                     {/* Bottom highlight */}
                     <div className="mt-8 p-4 rounded-xl bg-gradient-to-r from-[#FF6B00]/10 to-emerald-500/10 border border-[#FF6B00]/20">
                         <div className="text-center">
-                            <div className="text-xs text-slate-400 uppercase tracking-widest mb-1">Average Annual Savings</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-widest mb-1">Average Annual Savings</div>
                             <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-emerald-400">
                                 $2.4M
                             </div>
-                            <div className="text-xs text-slate-500 mt-1">per $50M project value</div>
+                            <div className="text-xs text-[#6b7280] mt-1">per $50M project value</div>
                         </div>
                     </div>
                 </motion.div>
@@ -500,8 +500,8 @@ export function ScheduleOptimizerSection() {
 
                     <div className="flex justify-between items-center mb-8">
                         <div>
-                            <h3 className="text-xl font-bold text-white">Resource Allocation</h3>
-                            <p className="text-xs text-slate-500 mt-1">Week of March 1-7 • AI Optimized</p>
+                            <h3 className="text-xl font-bold text-[#1a1a1a]">Resource Allocation</h3>
+                            <p className="text-xs text-[#6b7280] mt-1">Week of March 1-7 • AI Optimized</p>
                         </div>
                         <div className="text-xs font-bold bg-[#FF6B00]/10 text-[#FF6B00] px-3 py-1 rounded-full border border-[#FF6B00]/20">
                             <Zap size={10} className="inline mr-1" />
@@ -526,11 +526,11 @@ export function ScheduleOptimizerSection() {
                                 >
                                     <div className="flex items-center justify-between mb-1.5">
                                         <div className="flex items-center gap-2">
-                                            <span className="text-sm text-white font-semibold">{r.name}</span>
+                                            <span className="text-sm text-[#1a1a1a] font-semibold">{r.name}</span>
                                             <span className={`text-[10px] ${statusColor} bg-white/5 px-1.5 py-0.5 rounded`}>{status}</span>
                                         </div>
-                                        <div className="text-xs text-slate-400">
-                                            <span className="text-white font-bold">{r.allocated}</span>/{r.needed} workers
+                                        <div className="text-xs text-[#6b7280]">
+                                            <span className="text-[#1a1a1a] font-bold">{r.allocated}</span>/{r.needed} workers
                                         </div>
                                     </div>
                                     <div className="h-2 bg-white/5 rounded-full overflow-hidden">
@@ -565,10 +565,10 @@ export function ScheduleOptimizerSection() {
                     <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#F59E0B]/30 bg-[#F59E0B]/10 text-[#F59E0B] text-xs font-bold tracking-wider mb-6">
                         <Timer size={12} className="mr-2" /> SCHEDULE OPTIMIZATION
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">
                         AI That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Re-sequences</span> Your Schedule in Real Time
                     </h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
                         Weather changes, material delays, labor shortages — Gasper's Optimizer AI re-calculates your critical path in real-time and suggests actionable re-sequencing to keep your project on track.
                     </p>
 
@@ -600,7 +600,7 @@ export function ScheduleOptimizerSection() {
                                     }}>
                                         {s.type === 'critical' ? 'Critical' : s.type === 'optimize' ? 'Optimization' : 'Weather Alert'}
                                     </div>
-                                    <div className="text-sm text-slate-300">{s.text}</div>
+                                    <div className="text-sm text-[#374151]">{s.text}</div>
                                 </div>
                             </motion.div>
                         ))}

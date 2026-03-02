@@ -674,7 +674,7 @@ function MaterialPriceAggregatorSection() {
                                     {m.prices.map((p, pi) => (
                                         <div key={pi} className="text-center">
                                             <span className={`text-sm font-bold ${pi === m.best ? 'px-2 py-0.5 rounded-lg' : ''}`}
-                                                style={pi === m.best ? { color: '#10b981', background: 'rgba(16,185,129,0.12)' } : { color: '#94a3b8' }}>
+                                                style={pi === m.best ? { color: '#10b981', background: 'rgba(16,185,129,0.12)' } : { color: '#6b7280' }}>
                                                 {p} {pi === m.best && '✓'}
                                             </span>
                                         </div>
@@ -699,7 +699,7 @@ function MaterialPriceAggregatorSection() {
                     {['Home Depot', 'Lowes', 'Rona', 'Home Hardware', 'BMR', 'Castle Building', 'TIMBER MART', 'All Local Suppliers'].map((s, i) => (
                         <motion.span key={i} {...fadeUp(0.3 + i * 0.04)}
                             className="px-4 py-2 rounded-full text-xs font-semibold"
-                            style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.06)', color: '#94a3b8' }}>
+                            style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.06)', color: '#6b7280' }}>
                             <Store size={11} className="inline mr-1.5" />{s}
                         </motion.span>
                     ))}
@@ -766,7 +766,7 @@ function ProjectTimelineSection() {
                                     </div>
                                     <div className="flex flex-wrap gap-2">
                                         {p.items.map((item, j) => (
-                                            <span key={j} className="text-xs px-3 py-1.5 rounded-lg" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', color: '#94a3b8' }}>{item}</span>
+                                            <span key={j} className="text-xs px-3 py-1.5 rounded-lg" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', color: '#6b7280' }}>{item}</span>
                                         ))}
                                     </div>
                                 </div>

@@ -44,7 +44,7 @@ html {
 .landing-container {
     background-color: var(--nebula-void);
     min-height: 100vh;
-    color: #ffffff;
+    color: #1a1a1a;
     font-family: var(--font-display);
     overflow-x: hidden;
     position: relative;
@@ -391,11 +391,11 @@ html {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: white;
+    color: #1a1a1a;
 }
 
 .section-subtitle {
-    color: #94a3b8;
+    color: #6b7280;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -452,12 +452,12 @@ html {
 .step-title {
     font-size: 1.75rem;
     font-weight: 700;
-    color: white;
+    color: #1a1a1a;
     margin-bottom: 1rem;
 }
 
 .step-desc {
-    color: #94a3b8;
+    color: #6b7280;
     font-size: 1rem;
     line-height: 1.6;
 }
@@ -547,7 +547,7 @@ html {
 
 .industry-card span {
     font-weight: 600;
-    color: white;
+    color: #1a1a1a;
 }
 
 /* ============================================= */
@@ -586,7 +586,7 @@ html {
     font-size: 3.5rem;
     font-weight: 900;
     margin-bottom: 1.5rem;
-    background: linear-gradient(to right, #ffffff, #a5b4fc);
+    background: linear-gradient(to right, #1a1a1a, #FF6B00);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -594,7 +594,7 @@ html {
 
 .final-cta-content p {
     font-size: 1.25rem;
-    color: #cbd5e1;
+    color: #6b7280;
 }
 
 /* ============================================= */
@@ -647,7 +647,7 @@ html {
 .header-logo {
     display: flex;
     align-items: center;
-    color: white;
+    color: #1a1a1a;
 }
 
 .btn-sm-primary {
@@ -841,22 +841,23 @@ html {
 
 /* Glass section panel */
 .section-glass {
-    background: rgba(6, 0, 26, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-/* Metric card — OpenSpace-style floating stat */
+/* Metric card — floating stat card */
 .metric-card {
-    background: linear-gradient(135deg, rgba(255, 107, 0, 0.06), rgba(7, 12, 9, 0.95));
-    border: 1px solid rgba(255, 107, 0, 0.12);
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.04), #FFFFFF);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 1.5rem;
     padding: 2.5rem 2rem;
     text-align: center;
     transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
     will-change: transform;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .metric-card:hover {
@@ -871,7 +872,7 @@ html {
     letter-spacing: -0.03em;
     line-height: 1;
     margin-bottom: 0.75rem;
-    background: linear-gradient(135deg, #ffffff 30%, #F59E0B);
+    background: linear-gradient(135deg, #1a1a1a 30%, #FF6B00);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -880,7 +881,7 @@ html {
 .metric-card__label {
     font-size: 1rem;
     font-weight: 600;
-    color: #fff;
+    color: #1a1a1a;
     margin-bottom: 0.25rem;
 }
 
@@ -925,16 +926,16 @@ html {
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.01em;
-    color: rgba(255, 255, 255, 0.8);
+    color: #374151;
     background: transparent;
-    border: 1px solid rgba(255, 107, 0, 0.20);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cta-outline:hover {
     border-color: rgba(255, 107, 0, 0.40);
-    color: #fff;
+    color: #FF6B00;
     transform: translateY(-2px);
     background: rgba(255, 107, 0, 0.05);
 }

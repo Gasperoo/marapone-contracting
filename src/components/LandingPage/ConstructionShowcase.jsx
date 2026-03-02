@@ -56,18 +56,18 @@ export function PlatformPillarsSection() {
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-white text-sm font-medium mb-6"
+                    className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 text-[#1a1a1a] text-sm font-medium mb-6"
                 >
                     <Zap size={14} className="inline mr-2 text-amber-400" />
                     Two Platforms. One AI Engine.
                 </motion.div>
-                <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold text-[#1a1a1a] mb-6 leading-tight">
                     AI-Powered Intelligence for{' '}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#FF6B00]">
                         Every Operation
                     </span>
                 </h2>
-                <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
                     Whether you're moving cargo across oceans or managing a $50M build site, Gasper's AI adapts to your vertical and delivers actionable intelligence in real-time.
                 </p>
             </div>
@@ -82,7 +82,7 @@ export function PlatformPillarsSection() {
                         <button
                             key={tab.key}
                             onClick={() => setActiveTab(tab.key)}
-                            className={`relative flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${activeTab === tab.key ? 'text-white' : 'text-slate-400 hover:text-white'
+                            className={`relative flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${activeTab === tab.key ? 'text-[#1a1a1a]' : 'text-[#6b7280] hover:text-[#1a1a1a]'
                                 }`}
                         >
                             {activeTab === tab.key && (
@@ -120,7 +120,7 @@ export function PlatformPillarsSection() {
                                     {activeTab === 'logistics' ? <Truck size={12} className="mr-2" /> : <HardHat size={12} className="mr-2" />}
                                     {active.label}
                                 </div>
-                                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{active.tagline}</h3>
+                                <h3 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-4">{active.tagline}</h3>
 
                                 <div className="grid sm:grid-cols-2 gap-4 mt-8">
                                     {active.features.map((f, i) => (
@@ -134,7 +134,7 @@ export function PlatformPillarsSection() {
                                             <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${accentColor}15`, color: accentColor }}>
                                                 {f.icon}
                                             </div>
-                                            <span className="text-sm text-slate-300 font-medium">{f.text}</span>
+                                            <span className="text-sm text-[#374151] font-medium">{f.text}</span>
                                         </motion.div>
                                     ))}
                                 </div>
@@ -149,7 +149,7 @@ export function PlatformPillarsSection() {
                                     <div className="text-6xl md:text-7xl font-black mb-3 bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(180deg, white, ${accentColor})` }}>
                                         {active.stat.value}
                                     </div>
-                                    <div className="text-sm text-slate-400 uppercase tracking-widest font-semibold">{active.stat.label}</div>
+                                    <div className="text-sm text-[#6b7280] uppercase tracking-widest font-semibold">{active.stat.label}</div>
                                 </div>
                             </div>
 
@@ -159,8 +159,8 @@ export function PlatformPillarsSection() {
                                         <Lock size={20} />
                                     </div>
                                     <div>
-                                        <div className="text-white font-bold text-sm">Enterprise-Grade Security</div>
-                                        <div className="text-slate-500 text-xs">SOC 2 • GDPR • ISO 27001</div>
+                                        <div className="text-[#1a1a1a] font-bold text-sm">Enterprise-Grade Security</div>
+                                        <div className="text-[#6b7280] text-xs">SOC 2 • GDPR • ISO 27001</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3">
@@ -168,8 +168,8 @@ export function PlatformPillarsSection() {
                                         <Cpu size={20} />
                                     </div>
                                     <div>
-                                        <div className="text-white font-bold text-sm">AI-First Architecture</div>
-                                        <div className="text-slate-500 text-xs">Proprietary ML • Real-time Processing</div>
+                                        <div className="text-[#1a1a1a] font-bold text-sm">AI-First Architecture</div>
+                                        <div className="text-[#6b7280] text-xs">Proprietary ML • Real-time Processing</div>
                                     </div>
                                 </div>
                             </div>
@@ -221,8 +221,8 @@ export function ConstructionFeaturesSection() {
                     <HardHat size={14} className="inline mr-2" />
                     Construction Intelligence
                 </motion.div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Build Smarter with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">AI Precision</span></h2>
-                <p className="text-slate-400 max-w-2xl mx-auto text-lg">Purpose-built AI tools that eliminate cost overruns, safety incidents, and project delays.</p>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">Build Smarter with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">AI Precision</span></h2>
+                <p className="text-[#6b7280] max-w-2xl mx-auto text-lg">Purpose-built AI tools that eliminate cost overruns, safety incidents, and project delays.</p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
                 {features.map((f, idx) => (
@@ -238,12 +238,12 @@ export function ConstructionFeaturesSection() {
                             <div className="w-14 h-14 rounded-xl bg-[#FF6B00]/10 flex items-center justify-center text-[#FF6B00] mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(255,107,0,0.2)]">
                                 {f.icon}
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#FF6B00] transition-colors">{f.title}</h3>
-                            <p className="text-slate-400 mb-6 leading-relaxed flex-grow">{f.description}</p>
+                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 group-hover:text-[#FF6B00] transition-colors">{f.title}</h3>
+                            <p className="text-[#6b7280] mb-6 leading-relaxed flex-grow">{f.description}</p>
                             <div className="pt-6 border-t border-white/5">
                                 <ul className="grid grid-cols-1 gap-3">
                                     {f.details.map((d, i) => (
-                                        <li key={i} className="flex items-center text-sm text-slate-300">
+                                        <li key={i} className="flex items-center text-sm text-[#374151]">
                                             <CheckCircle2 size={16} className="text-[#FF6B00] mr-3 flex-shrink-0" />
                                             {d}
                                         </li>
@@ -267,23 +267,23 @@ export function BlueprintAISection() {
                     <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
                         <Ruler size={12} className="mr-2" /> BLUEPRINT INTELLIGENCE
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Turn Blueprints into Actionable Data</h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">Turn Blueprints into Actionable Data</h2>
+                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
                         Upload any blueprint — PDF, DWG, or BIM — and watch our AI extract every room, dimension, and material specification in seconds. No more manual takeoffs.
                     </p>
                     <div className="space-y-6">
                         <div className="flex gap-4">
                             <div className="w-12 h-12 rounded-lg bg-[#FF6B00]/10 flex-shrink-0 flex items-center justify-center text-[#FF6B00]"><Layers size={24} /></div>
                             <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Automated Takeoffs</h4>
-                                <p className="text-slate-400 text-sm">Extract material quantities, room dimensions, and structural elements automatically from any blueprint format.</p>
+                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Automated Takeoffs</h4>
+                                <p className="text-[#6b7280] text-sm">Extract material quantities, room dimensions, and structural elements automatically from any blueprint format.</p>
                             </div>
                         </div>
                         <div className="flex gap-4">
                             <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex-shrink-0 flex items-center justify-center text-amber-500"><AlertTriangle size={24} /></div>
                             <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Code Violation Detection</h4>
-                                <p className="text-slate-400 text-sm">AI cross-references designs against local building codes, fire safety regulations, and ADA requirements.</p>
+                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Code Violation Detection</h4>
+                                <p className="text-[#6b7280] text-sm">AI cross-references designs against local building codes, fire safety regulations, and ADA requirements.</p>
                             </div>
                         </div>
                     </div>
@@ -292,7 +292,7 @@ export function BlueprintAISection() {
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
                     <div className="relative rounded-2xl bg-black/40 border border-white/10 p-6 overflow-hidden">
                         <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-white font-semibold">Blueprint Analysis</h3>
+                            <h3 className="text-[#1a1a1a] font-semibold">Blueprint Analysis</h3>
                             <div className="text-xs text-[#FF6B00] bg-[#FF6B00]/10 px-2 py-1 rounded font-bold">AI PROCESSING</div>
                         </div>
 
@@ -306,23 +306,23 @@ export function BlueprintAISection() {
                                     transition={{ delay: i * 0.1 }}
                                     className={`p-3 rounded-lg border text-center ${i === 0 ? 'border-[#FF6B00]/50 bg-[#FF6B00]/10 col-span-2 row-span-2' : 'border-white/10 bg-white/5'}`}
                                 >
-                                    <div className={`text-xs font-bold mb-1 ${i === 0 ? 'text-[#FF6B00]' : 'text-white'}`}>{room}</div>
-                                    <div className="text-[10px] text-slate-500">{['320 sqft', '180 sqft', '240 sqft', '85 sqft', '150 sqft', '400 sqft'][i]}</div>
+                                    <div className={`text-xs font-bold mb-1 ${i === 0 ? 'text-[#FF6B00]' : 'text-[#1a1a1a]'}`}>{room}</div>
+                                    <div className="text-[10px] text-[#6b7280]">{['320 sqft', '180 sqft', '240 sqft', '85 sqft', '150 sqft', '400 sqft'][i]}</div>
                                 </motion.div>
                             ))}
                         </div>
 
                         <div className="border-t border-white/10 pt-4 flex justify-between">
                             <div>
-                                <div className="text-xs text-slate-400 uppercase">Rooms Detected</div>
+                                <div className="text-xs text-[#6b7280] uppercase">Rooms Detected</div>
                                 <div className="text-xl font-bold text-[#FF6B00]">12</div>
                             </div>
                             <div>
-                                <div className="text-xs text-slate-400 uppercase">Total Area</div>
-                                <div className="text-xl font-bold text-white">2,450 sqft</div>
+                                <div className="text-xs text-[#6b7280] uppercase">Total Area</div>
+                                <div className="text-xl font-bold text-[#1a1a1a]">2,450 sqft</div>
                             </div>
                             <div>
-                                <div className="text-xs text-slate-400 uppercase">Violations</div>
+                                <div className="text-xs text-[#6b7280] uppercase">Violations</div>
                                 <div className="text-xl font-bold text-amber-400">2</div>
                             </div>
                         </div>
@@ -342,7 +342,7 @@ export function CashFlowSection() {
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative order-2 md:order-1">
                     <div className="relative rounded-2xl bg-black/40 border border-white/10 p-6 overflow-hidden">
                         <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-white font-semibold">Cash Flow Forecast</h3>
+                            <h3 className="text-[#1a1a1a] font-semibold">Cash Flow Forecast</h3>
                             <div className="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded font-bold">HEALTHY</div>
                         </div>
 
@@ -355,7 +355,7 @@ export function CashFlowSection() {
                                 { label: 'Apr', inflow: 95, outflow: 50, color: '#FF6B00' },
                             ].map((m, i) => (
                                 <div key={i} className="flex items-center gap-3">
-                                    <div className="text-xs text-slate-400 w-8 text-left">{m.label}</div>
+                                    <div className="text-xs text-[#6b7280] w-8 text-left">{m.label}</div>
                                     <div className="flex-1 flex gap-1 h-6">
                                         <motion.div
                                             initial={{ width: 0 }}
@@ -374,7 +374,7 @@ export function CashFlowSection() {
                                 </div>
                             ))}
                         </div>
-                        <div className="flex gap-4 mt-4 text-xs text-slate-500">
+                        <div className="flex gap-4 mt-4 text-xs text-[#6b7280]">
                             <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#FF6B00]" /> Inflow</span>
                             <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-white/20" /> Outflow</span>
                         </div>
@@ -382,11 +382,11 @@ export function CashFlowSection() {
                         <div className="border-t border-white/10 pt-4 mt-6">
                             <div className="flex justify-between">
                                 <div className="text-left">
-                                    <div className="text-xs text-slate-400 uppercase">Net Cash Position</div>
+                                    <div className="text-xs text-[#6b7280] uppercase">Net Cash Position</div>
                                     <div className="text-2xl font-bold text-emerald-400">+$124K</div>
                                 </div>
                                 <div>
-                                    <div className="text-xs text-slate-400 uppercase">Overdue Invoices</div>
+                                    <div className="text-xs text-[#6b7280] uppercase">Overdue Invoices</div>
                                     <div className="text-2xl font-bold text-amber-400">3</div>
                                 </div>
                             </div>
@@ -399,22 +399,22 @@ export function CashFlowSection() {
                     <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-wider mb-6">
                         <DollarSign size={12} className="mr-2" /> FINANCIAL INTELLIGENCE
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Never Get Blindsided by Cash Crunches</h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">Never Get Blindsided by Cash Crunches</h2>
+                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
                         68% of construction firms fail due to cash flow issues. Gasper's AI predicts payment gaps 90 days ahead, auto-chases overdue invoices, and optimizes your draw schedules.
                     </p>
                     <div className="space-y-6 text-right w-full">
                         <div className="flex gap-4 justify-end">
                             <div className="text-right">
-                                <h4 className="text-white font-bold text-lg mb-1">Predictive Forecasting</h4>
-                                <p className="text-slate-400 text-sm">90-day rolling cash flow projections updated in real-time as invoices and change orders come in.</p>
+                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Predictive Forecasting</h4>
+                                <p className="text-[#6b7280] text-sm">90-day rolling cash flow projections updated in real-time as invoices and change orders come in.</p>
                             </div>
                             <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex-shrink-0 flex items-center justify-center text-emerald-500"><BarChart3 size={24} /></div>
                         </div>
                         <div className="flex gap-4 justify-end">
                             <div className="text-right">
-                                <h4 className="text-white font-bold text-lg mb-1">Auto Invoice Chase</h4>
-                                <p className="text-slate-400 text-sm">Smart reminders automatically sent to clients at optimized intervals to maximize collection rates.</p>
+                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Auto Invoice Chase</h4>
+                                <p className="text-[#6b7280] text-sm">Smart reminders automatically sent to clients at optimized intervals to maximize collection rates.</p>
                             </div>
                             <div className="w-12 h-12 rounded-lg bg-[#FF6B00]/10 flex-shrink-0 flex items-center justify-center text-[#FF6B00]"><Zap size={24} /></div>
                         </div>
@@ -434,23 +434,23 @@ export function SiteSecuritySection() {
                     <div className="inline-flex items-center px-3 py-1 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-bold tracking-wider mb-6">
                         <Eye size={12} className="mr-2" /> AI SECURITY
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">24/7 AI-Powered Asset Protection</h2>
-                    <p className="text-slate-400 text-lg leading-relaxed mb-8">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">24/7 AI-Powered Asset Protection</h2>
+                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
                         Construction theft costs the industry $1B+ annually. Gasper's Sentinel AI monitors every piece of equipment with GPS tracking, geofencing, and anomaly detection.
                     </p>
                     <div className="space-y-6">
                         <div className="flex gap-4">
                             <div className="w-12 h-12 rounded-lg bg-red-500/10 flex-shrink-0 flex items-center justify-center text-red-500"><MapPin size={24} /></div>
                             <div>
-                                <h4 className="text-white font-bold text-lg mb-1">Geofence Alerting</h4>
-                                <p className="text-slate-400 text-sm">Instant alerts when equipment leaves predefined job site boundaries. Track movement patterns across your fleet.</p>
+                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Geofence Alerting</h4>
+                                <p className="text-[#6b7280] text-sm">Instant alerts when equipment leaves predefined job site boundaries. Track movement patterns across your fleet.</p>
                             </div>
                         </div>
                         <div className="flex gap-4">
                             <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex-shrink-0 flex items-center justify-center text-amber-500"><Clock size={24} /></div>
                             <div>
-                                <h4 className="text-white font-bold text-lg mb-1">After-Hours Detection</h4>
-                                <p className="text-slate-400 text-sm">AI identifies unauthorized equipment activation outside working hours and notifies site managers instantly.</p>
+                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">After-Hours Detection</h4>
+                                <p className="text-[#6b7280] text-sm">AI identifies unauthorized equipment activation outside working hours and notifies site managers instantly.</p>
                             </div>
                         </div>
                     </div>
@@ -464,7 +464,7 @@ export function SiteSecuritySection() {
 
                         <div className="relative z-10">
                             <div className="flex justify-between items-center mb-6">
-                                <h3 className="text-white font-semibold">Fleet Status Monitor</h3>
+                                <h3 className="text-[#1a1a1a] font-semibold">Fleet Status Monitor</h3>
                                 <div className="flex items-center gap-1 text-xs text-emerald-400"><span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" /> All Secure</div>
                             </div>
 
@@ -485,8 +485,8 @@ export function SiteSecuritySection() {
                                         <div className="flex items-center gap-3">
                                             <span className="text-lg">{item.icon}</span>
                                             <div>
-                                                <div className="text-white text-sm font-bold">{item.name}</div>
-                                                <div className={`text-xs ${item.ok ? 'text-slate-400' : 'text-red-400'}`}>{item.status}</div>
+                                                <div className="text-[#1a1a1a] text-sm font-bold">{item.name}</div>
+                                                <div className={`text-xs ${item.ok ? 'text-[#6b7280]' : 'text-red-400'}`}>{item.status}</div>
                                             </div>
                                         </div>
                                         <div className={`w-2 h-2 rounded-full ${item.ok ? 'bg-emerald-400' : 'bg-red-500 animate-pulse'}`} />

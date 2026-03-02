@@ -604,10 +604,10 @@ function WaitlistSection() {
 // ─── Material Price Aggregator Section ────────────────────────────────────
 function MaterialPriceAggregatorSection() {
     const stores = [
-        { name: 'Home Depot', color: '#F96302' },
-        { name: 'Lowes', color: '#004990' },
-        { name: 'Rona', color: '#0054A6' },
-        { name: 'Home Hardware', color: '#E31937' },
+        { name: 'Supplier A', color: '#FF6B00' },
+        { name: 'Supplier B', color: '#0EA5E9' },
+        { name: 'Supplier C', color: '#10b981' },
+        { name: 'Supplier D', color: '#8b5cf6' },
     ];
 
     const materials = [
@@ -630,7 +630,7 @@ function MaterialPriceAggregatorSection() {
                         AI Material <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Price Scanner</span>
                     </motion.h2>
                     <motion.p {...fadeUp(0.14)} className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
-                        Gasper scans the entire internet — Home Depot, Lowes, Rona, Home Hardware, and every building supply store near your job site — to find you the lowest real-time material prices.
+                        The industry's first AI-powered price engine that crawls the entire internet in real time — every retailer, wholesaler, and building supply outlet — to surface the lowest material and building supply prices based on your exact location. Whether you're framing a single-family home or managing a $100M infrastructure project, Gasper eliminates hours of manual price shopping and ensures every line item on your budget is optimized.
                     </motion.p>
                 </div>
 
@@ -645,7 +645,7 @@ function MaterialPriceAggregatorSection() {
                                 <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${C.primary}15`, color: C.primary }}><Search size={16} /></div>
                                 <div>
                                     <div className="text-[#1a1a1a] font-semibold text-sm">Material Price Scanner</div>
-                                    <div className="text-xs" style={{ color: '#4b5563' }}>Scanning 4 stores near <span style={{ color: C.secondary }}>Toronto, ON</span></div>
+                                    <div className="text-xs" style={{ color: '#4b5563' }}>Scanning 47 suppliers near <span style={{ color: C.secondary }}>Your Location</span></div>
                                 </div>
                             </div>
                             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold" style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', border: '1px solid rgba(16,185,129,0.2)' }}>
@@ -687,7 +687,7 @@ function MaterialPriceAggregatorSection() {
                         <div className="mt-6 pt-4 border-t flex flex-wrap items-center justify-between gap-4" style={{ borderColor: C.border }}>
                             <div className="flex items-center gap-6">
                                 <div><span className="text-xs" style={{ color: '#4b5563' }}>Est. savings per project</span><span className="text-lg font-black ml-2" style={{ color: '#10b981' }}>$12,400+</span></div>
-                                <div><span className="text-xs" style={{ color: '#4b5563' }}>Stores scanned</span><span className="text-sm font-bold ml-2 text-[#1a1a1a]">47 near you</span></div>
+                                <div><span className="text-xs" style={{ color: '#4b5563' }}>Suppliers scanned</span><span className="text-sm font-bold ml-2 text-[#1a1a1a]">47 near you</span></div>
                             </div>
                             <div className="text-xs" style={{ color: '#4b5563' }}>Prices updated <span className="text-[#1a1a1a] font-medium">2 min ago</span></div>
                         </div>
@@ -696,7 +696,7 @@ function MaterialPriceAggregatorSection() {
 
                 {/* Bottom feature pills */}
                 <div className="flex flex-wrap justify-center gap-3 mt-10">
-                    {['Home Depot', 'Lowes', 'Rona', 'Home Hardware', 'BMR', 'Castle Building', 'TIMBER MART', 'All Local Suppliers'].map((s, i) => (
+                    {['Lumber & Framing', 'Concrete & Masonry', 'Electrical & Plumbing', 'Roofing & Siding', 'Tools & Equipment', 'Bulk & Wholesale', 'Local Suppliers', 'Online Retailers'].map((s, i) => (
                         <motion.span key={i} {...fadeUp(0.3 + i * 0.04)}
                             className="px-4 py-2 rounded-full text-xs font-semibold"
                             style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.06)', color: '#6b7280' }}>

@@ -424,9 +424,7 @@ export default function LandingPage({ comingSoonMode = false }) {
             {/* Grand Entrance Hero Section */}
             <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40 w-full overflow-hidden ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
                 {/* Background */}
-                <div className="absolute inset-0 z-0">
-                    <AuroraBackground showRadialGradient={false} className="h-full w-full absolute inset-0 rounded-none z-0" />
-                </div>
+                <div className="absolute inset-0 z-0" />
 
                 {/* Dynamic ambient glow for selected domain */}
                 <motion.div

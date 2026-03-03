@@ -13,7 +13,7 @@ import LiveImpact from './LiveImpact';
 import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';
 
 import ComingSoonContent from './ComingSoonContent';
-import ComingSoonHeroBackground from './ComingSoonHeroBackground';
+import { AuroraBackground } from '../ui/aurora-background';
 import ComingSoonFooter from './ComingSoonFooter';
 import ContactModal from '../ContactModal';
 
@@ -425,7 +425,7 @@ export default function LandingPage({ comingSoonMode = false }) {
             <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40 ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
-                    <ComingSoonHeroBackground />
+                    {comingSoonMode ? <AuroraBackground className="h-full w-full absolute inset-0 rounded-none z-0" /> : <div className="absolute inset-0 bg-slate-900" />}
                 </div>
 
                 {/* Dynamic ambient glow for selected domain */}

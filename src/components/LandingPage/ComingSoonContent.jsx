@@ -187,9 +187,7 @@ function GasperAIBotSection() {
                     </div>
 
                     {/* Right — Chat mockup */}
-                    <motion.div {...fadeUp(0.14)} className="relative rounded-3xl overflow-hidden">
-                        <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(180deg, ${C.primary}30, ${C.secondary}15, transparent)` }} />
-                        <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(24px)' }} />
+                    <motion.div {...fadeUp(0.14)} className="uiverse-scanline-card p-0 lg:col-span-1">
                         <div className="relative z-10 p-6">
                             {/* Chat header */}
                             <div className="flex items-center gap-3 mb-5 pb-4 border-b" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
@@ -437,9 +435,8 @@ function CustomLLMBuilderSection() {
                     { icon: <TrendingUp size={28} />, bg: <ShieldCheck size={120} />, title: 'Why You Need It', body: 'Off-the-shelf AI misses construction nuances and exposes sensitive data. With Gasper, you gain unmatched accuracy on estimates, RFI drafting, safety compliance, delay forecasting, and contract analysis — at a fraction of the engineering cost.' },
                 ].map((card, i) => (
                     <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 * (i + 1), duration: 0.6 }}
-                        className="relative rounded-2xl p-8 border group hover:border-white/20 transition-all overflow-hidden"
-                        style={{ background: 'rgba(255,255,255,0.95)', borderColor: C.border, backdropFilter: 'blur(20px)' }}>
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}04, ${C.secondary}02)` }} />
+                        className="uiverse-neo-card group relative"
+                    >
                         <div className="absolute -right-4 -top-4 p-6 transition-opacity duration-500 opacity-[0.03] group-hover:opacity-[0.05]">{card.bg}</div>
                         <div className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center shadow-lg shadow-black/20" style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${C.border}`, color: C.primary }}>
                             {card.icon}
@@ -554,10 +551,7 @@ function WaitlistSection() {
                                             value={form[field.name]}
                                             onChange={handleInputChange}
                                             placeholder={field.placeholder}
-                                            className="w-full px-4 py-3 rounded-xl text-[#1a1a1a] text-sm outline-none transition-all"
-                                            style={{ background: 'rgba(0,0,0,0.04)', border: `1px solid ${errors[field.name] ? 'rgba(239,68,68,0.5)' : 'rgba(255,107,0,0.12)'}`, color: 'white' }}
-                                            onFocus={e => e.target.style.borderColor = `${C.primary}50`}
-                                            onBlur={e => e.target.style.borderColor = errors[field.name] ? 'rgba(239,68,68,0.5)' : 'rgba(255,107,0,0.12)'}
+                                            className={`uiverse-input ${errors[field.name] ? 'error' : ''}`}
                                         />
                                         {errors[field.name] && <p className="text-red-400 text-xs mt-1">{errors[field.name]}</p>}
                                     </div>

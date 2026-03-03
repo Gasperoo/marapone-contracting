@@ -1180,3 +1180,81 @@ html {
     box-shadow: inset 0 0 0 1px rgba(255,107,0,0.2), inset 0 0 0 2px rgba(255, 255, 255, 0.8), 0 25px 40px -10px rgba(255,107,0,0.15);
 }
 
+
+/* 6. Uiverse Sleek Input Field */
+.uiverse-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border: 2px solid rgba(255, 107, 0, 0.15);
+    border-radius: 0.75rem;
+    color: #1a1a1a;
+    font-size: 0.875rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.uiverse-input::placeholder {
+    color: #9ca3af;
+}
+
+.uiverse-input:hover {
+    border-color: rgba(255, 107, 0, 0.3);
+    background-color: rgba(255, 107, 0, 0.02);
+}
+
+.uiverse-input:focus {
+    background-color: #ffffff;
+    border-color: #FF6B00;
+    box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.uiverse-input.error {
+    border-color: #ef4444;
+}
+.uiverse-input.error:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+}
+
+/* 7. Scanline 3D Card (Deep Tech feel) */
+.uiverse-scanline-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.uiverse-scanline-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 60px -12px rgba(255, 107, 0, 0.15), 0 18px 36px -18px rgba(0,0,0,0.05);
+}
+
+.uiverse-scanline-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 107, 0, 0.02) 2px,
+        rgba(255, 107, 0, 0.02) 4px
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.uiverse-scanline-card:hover::before {
+    opacity: 1;
+}
+

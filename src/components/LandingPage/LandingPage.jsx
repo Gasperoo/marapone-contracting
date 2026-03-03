@@ -527,7 +527,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                         transition={{ delay: 0.6, duration: 0.8 }}
                     >
                         {comingSoonMode
-                            ? 'AI-powered construction management. Blueprint intelligence, cash flow forecasting, site security — one platform to command every job site.'
+                            ? 'Blueprint Intelligence, forecasting, material price scanner, site-security, and custom LLMs integrations — one platform to command every job.'
                             : 'One unified intelligence platform. Two specialized engines. Choose your operational domain to see how Marapone transforms chaos into clarity.'
                         }
                     </motion.p>

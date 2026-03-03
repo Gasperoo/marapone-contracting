@@ -85,27 +85,17 @@ function FeatureCard({ icon, title, description, details }) {
 
     return (
         <motion.div
-            ref={divRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsFocused(true)}
-            onMouseLeave={() => setIsFocused(false)}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="relative h-full rounded-2xl overflow-hidden group"
+            className="uiverse-glow-card h-full flex flex-col"
         >
-            <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}40, ${C.secondary}25, ${C.primary}40)`, opacity: isFocused ? 0.9 : 0.2 }} />
-            <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)' }} />
-            <motion.div
-                className="pointer-events-none absolute inset-0 rounded-2xl z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: useTransform([position.x, position.y], ([x, y]) => `radial-gradient(500px circle at ${x}px ${y}px, rgba(255,107,0,0.10), rgba(245,158,11,0.05) 30%, transparent 55%)`) }}
-            />
-            <div className="relative p-8 h-full flex flex-col z-10">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500" style={{ background: `${C.primary}15`, color: C.primary, boxShadow: `0 0 25px ${C.primaryGlow}` }}>
+            <div className="relative h-full flex flex-col z-10">
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform duration-500 hover:scale-110" style={{ background: `${C.primary}15`, color: C.primary, boxShadow: `0 0 25px ${C.primaryGlow}` }}>
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 transition-colors duration-300" style={{ ...(isFocused ? { color: C.secondary } : {}) }}>{title}</h3>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 transition-colors duration-300 hover:text-[#F59E0B]">{title}</h3>
                 <p className="mb-6 leading-relaxed flex-grow" style={{ color: C.textMuted }}>{description}</p>
                 <div className="pt-6 border-t" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
                     <ul className="grid grid-cols-1 gap-3">
@@ -129,12 +119,10 @@ function IndustryCard({ icon, title, description, color, useCase }) {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group relative rounded-[1.5rem] overflow-hidden"
+            className="uiverse-neo-card h-full flex flex-col group"
         >
-            <div className="absolute -inset-[1px] rounded-[1.5rem] z-0 transition-opacity duration-500" style={{ background: `linear-gradient(135deg, ${C.primary}20, ${C.secondary}12, ${C.primary}20)`, opacity: 0.4 }} />
-            <div className="absolute inset-[1px] rounded-[1.5rem] z-0 transition-colors duration-500" style={{ background: 'rgba(255,255,255,0.92)' }} />
-            <div className="relative z-10 p-10 h-full flex flex-col">
-                <div className={`w-16 h-16 rounded-2xl bg-white/[0.04] flex items-center justify-center mb-8 ${color} group-hover:scale-105 transition-transform duration-500`} style={{ border: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="relative z-10 flex flex-col h-full">
+                <div className={`w-16 h-16 rounded-2xl bg-[#F5F5F5] flex items-center justify-center mb-8 ${color} transition-transform duration-500 group-hover:scale-105`} style={{ border: '1px solid rgba(0,0,0,0.06)' }}>
                     {icon}
                 </div>
                 <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 transition-colors duration-300 group-hover:text-[#F59E0B]">{title}</h3>
@@ -241,10 +229,10 @@ function GasperAIBotSection() {
                                 {/* Typing indicator */}
                                 <div className="flex justify-start">
                                     <div className="rounded-2xl rounded-tl-sm px-4 py-3" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.04)' }}>
-                                        <div className="flex gap-1.5 items-center">
-                                            <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: C.primary, animationDelay: '0ms' }} />
-                                            <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: C.primary, animationDelay: '150ms' }} />
-                                            <div className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: C.primary, animationDelay: '300ms' }} />
+                                        <div className="uiverse-loader">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -346,11 +334,9 @@ function ComparisonTableSection() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                 {metrics.map((m, i) => (
                     <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.6 }}
-                        className="relative rounded-2xl p-8 text-center overflow-hidden group"
-                        style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: `radial-gradient(ellipse at center, ${C.primaryGlow} 0%, transparent 70%)` }} />
+                        className="uiverse-depth-card text-center group">
                         <div className="relative z-10">
-                            <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style={{ background: `${C.primary}12`, color: C.primary }}>{m.icon}</div>
+                            <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110" style={{ background: `${C.primary}12`, color: C.primary }}>{m.icon}</div>
                             <div className="text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #1a1a1a 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
                             <div className="text-[#1a1a1a] font-bold text-lg mb-2">{m.label}</div>
                             <p className="text-sm" style={{ color: C.textMuted }}>{m.desc}</p>
@@ -410,10 +396,8 @@ function WhatYouGetSection() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {benefits.map((b, idx) => (
                     <motion.div key={idx} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.7 }}
-                        className="relative rounded-2xl overflow-hidden group">
-                        <div className="absolute -inset-[1px] rounded-2xl z-0 transition-opacity duration-500 opacity-15 group-hover:opacity-35" style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }} />
-                        <div className="absolute inset-[1px] rounded-2xl z-[1]" style={{ background: C.surface }} />
-                        <div className="relative z-10 p-7 text-center">
+                        className="uiverse-neo-card text-center group">
+                        <div className="relative z-10">
                             <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}15`, color: C.primary }}>
                                 {b.icon}
                             </div>
@@ -585,8 +569,8 @@ function WaitlistSection() {
                             <button
                                 type="submit"
                                 disabled={status === 'loading'}
-                                className="w-full py-4 rounded-xl font-bold text-[#1a1a1a] text-lg transition-all duration-300 flex items-center justify-center gap-2"
-                                style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`, boxShadow: `0 8px 30px ${C.primaryGlow}`, opacity: status === 'loading' ? 0.7 : 1 }}
+                                className="uiverse-glass-btn w-full py-4 text-lg transition-all duration-300 flex items-center justify-center gap-2"
+                                style={{ opacity: status === 'loading' ? 0.7 : 1 }}
                             >
                                 {status === 'loading' ? 'Submitting...' : <><Send size={16} /> Request Early Access</>}
                             </button>

@@ -554,16 +554,6 @@ export default function LandingPage({ comingSoonMode = false }) {
                             >
                                 Join the Waitlist <ArrowRight size={16} />
                             </button>
-                            <button
-                                className="cta-outline"
-                                onClick={() => {
-                                    if (!selectedProduct) handleDomainSelect('construction');
-                                    const el = document.getElementById('domain-content');
-                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                                }}
-                            >
-                                Explore the Platform <ArrowRight size={16} />
-                            </button>
                         </motion.div>
                     )}
 

@@ -46,7 +46,7 @@ export function SiteArrivalOptimizer() {
                             transition={{ delay: 0.1 + i * 0.05 }}
                             style={{ display: 'flex', alignItems: 'center', gap: 16, padding: 12, borderRadius: 10, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
                             <div style={{ width: 130, flexShrink: 0 }}>
-                                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'white' }}>{v.name}</div>
+                                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a' }}>{v.name}</div>
                                 <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', gap: 3 }}><MapPinCheck size={8} />{v.site}</div>
                             </div>
                             <div style={{ flex: 1 }}>
@@ -65,7 +65,7 @@ export function SiteArrivalOptimizer() {
                             </div>
                             <div style={{ display: 'flex', gap: 16, flexShrink: 0, fontSize: '0.7rem' }}>
                                 <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontWeight: 700, color: 'white' }}>{v.billableHours}h</div>
+                                    <div style={{ fontWeight: 700, color: '#1a1a1a' }}>{v.billableHours}h</div>
                                     <div style={{ fontSize: '0.5rem', color: 'rgba(255,255,255,0.3)' }}>Billable</div>
                                 </div>
                                 <div style={{ textAlign: 'center' }}>
@@ -91,14 +91,14 @@ export function SiteArrivalOptimizer() {
                                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.08 }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                                     <Car size={14} style={{ color: '#FF6B00' }} />
-                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{r.vehicle}</span>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{r.vehicle}</span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.7rem', marginBottom: 6 }}>
                                     <span style={{ color: 'rgba(239,68,68,0.7)' }}>{r.from}</span>
                                     <ArrowRight size={10} style={{ color: '#FF6B00' }} />
                                     <span style={{ color: '#22c55e' }}>{r.to}</span>
                                 </div>
-                                <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>{r.reason}</p>
+                                <p style={{ fontSize: '0.65rem', color: '#9ca3af' }}>{r.reason}</p>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
                                     <span className="ct-badge ct-badge-green" style={{ fontSize: '0.55rem' }}>Save {r.savings}</span>
                                     <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', gap: 4 }}>Apply <ArrowRight size={10} /></span>
@@ -116,17 +116,17 @@ export function SiteArrivalOptimizer() {
                                 transition={{ delay: 0.3 + i * 0.06 }}
                                 style={{ padding: 12, borderRadius: 10, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{site.site}</span>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{site.site}</span>
                                     <span className={`ct-badge ${site.peakVehicles > 0 ? 'ct-badge-green' : ''}`}
                                         style={{ fontSize: '0.5rem', padding: '2px 6px', ...(site.peakVehicles === 0 ? { background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)' } : {}) }}>
                                         {site.peakVehicles > 0 ? 'ACTIVE' : 'IDLE'}
                                     </span>
                                 </div>
                                 <div className="grid grid-cols-4 gap-2" style={{ fontSize: '0.6rem' }}>
-                                    <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>Arrivals:</span> <strong style={{ color: 'white' }}>{site.arrivals}</strong></div>
-                                    <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>Departures:</span> <strong style={{ color: 'white' }}>{site.departures}</strong></div>
-                                    <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>First In:</span> <strong style={{ color: 'white' }}>{site.firstArrival || '—'}</strong></div>
-                                    <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>Peak:</span> <strong style={{ color: 'white' }}>{site.peakVehicles} vehicles</strong></div>
+                                    <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>Arrivals:</span> <strong style={{ color: '#1a1a1a' }}>{site.arrivals}</strong></div>
+                                    <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>Departures:</span> <strong style={{ color: '#1a1a1a' }}>{site.departures}</strong></div>
+                                    <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>First In:</span> <strong style={{ color: '#1a1a1a' }}>{site.firstArrival || '—'}</strong></div>
+                                    <div><span style={{ color: 'rgba(255,255,255,0.3)' }}>Peak:</span> <strong style={{ color: '#1a1a1a' }}>{site.peakVehicles} vehicles</strong></div>
                                 </div>
                             </motion.div>
                         ))}

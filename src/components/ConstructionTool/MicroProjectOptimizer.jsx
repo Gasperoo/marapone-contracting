@@ -28,7 +28,7 @@ export function MicroProjectOptimizer() {
                     <p className="ct-page-subtitle">AI-powered daily scheduling for multi-job crews</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="ct-badge" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)' }}>
+                    <div className="ct-badge" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(0,0,0,0.08)', color: '#6b7280' }}>
                         {data.date}
                     </div>
                     <div className="ct-badge ct-badge-orange ct-badge-live">
@@ -40,7 +40,7 @@ export function MicroProjectOptimizer() {
             {/* KPI Row */}
             <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
                 {[
-                    { label: 'Total Jobs', value: data.metrics.totalJobs, color: 'white' },
+                    { label: 'Total Jobs', value: data.metrics.totalJobs, color: '#1a1a1a' },
                     { label: 'Completed', value: data.metrics.completedToday, color: '#22c55e' },
                     { label: 'On-Time Rate', value: data.metrics.onTime, color: '#FF6B00' },
                     { label: 'Avg Travel', value: data.metrics.avgTravelTime, color: '#3b82f6' },
@@ -69,7 +69,7 @@ export function MicroProjectOptimizer() {
                         >
                             {d.type === 'weather' ? <CloudRain size={16} style={{ color: '#3b82f6', flexShrink: 0 }} /> :
                                 <Car size={16} style={{ color: '#f59e0b', flexShrink: 0 }} />}
-                            <span style={{ flex: 1, fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', marginLeft: 10 }}>{d.message}</span>
+                            <span style={{ flex: 1, fontSize: '0.75rem', color: '#4b5563', marginLeft: 10 }}>{d.message}</span>
                             <span className="ct-badge ct-badge-orange" style={{ fontSize: '0.55rem' }}>
                                 <RefreshCw size={8} /> {d.suggestion}
                             </span>
@@ -96,8 +96,8 @@ export function MicroProjectOptimizer() {
                                     <Users size={16} style={{ color: '#FF6B00' }} />
                                 </div>
                                 <div>
-                                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'white' }}>{crew.name}</div>
-                                    <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>Lead: {crew.lead} · {crew.members} members</div>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1a1a1a' }}>{crew.name}</div>
+                                    <div style={{ fontSize: '0.65rem', color: '#9ca3af' }}>Lead: {crew.lead} · {crew.members} members</div>
                                 </div>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -138,7 +138,7 @@ export function MicroProjectOptimizer() {
 
                                         {/* Job Info */}
                                         <div style={{ flex: 1, minWidth: 0 }}>
-                                            <div style={{ fontSize: '0.8rem', fontWeight: 500, color: 'rgba(255,255,255,0.8)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{job.job}</div>
+                                            <div style={{ fontSize: '0.8rem', fontWeight: 500, color: '#374151', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{job.job}</div>
                                             <div style={{ display: 'flex', gap: 10, fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>
                                                 <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}><MapPin size={8} />{job.address}</span>
                                                 <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}><Clock size={8} />{job.duration}</span>
@@ -150,7 +150,7 @@ export function MicroProjectOptimizer() {
                                             <span className={`ct-badge ${job.status === 'in-progress' ? 'ct-badge-green' : job.status === 'next' ? 'ct-badge-blue' : ''}`}
                                                 style={{
                                                     fontSize: '0.5rem', padding: '2px 6px',
-                                                    ...(job.status === 'scheduled' ? { background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)', border: '1px solid rgba(255,255,255,0.06)' } : {}),
+                                                    ...(job.status === 'scheduled' ? { background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)', border: '1px solid rgba(0,0,0,0.06)' } : {}),
                                                 }}>
                                                 {sc.label}
                                             </span>

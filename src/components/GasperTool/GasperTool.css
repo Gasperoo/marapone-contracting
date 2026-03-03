@@ -2,22 +2,22 @@
 
 /* Glassmorphism Variables (matching LiquidEther style) */
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-highlight: rgba(255, 255, 255, 0.2);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
-    --accent-color: #5227FF;
-    --accent-gradient: linear-gradient(135deg, #5227FF 0%, #FF9FFC 100%);
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    --text-muted: rgba(255, 255, 255, 0.5);
+    --glass-bg: #FFFFFF;
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-highlight: rgba(0, 0, 0, 0.04);
+    --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    --accent-color: #FF6B00;
+    --accent-gradient: linear-gradient(135deg, #FF6B00 0%, #F59E0B 100%);
+    --text-primary: #1a1a1a;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
 }
 
 .gasper-tool-container {
     display: flex;
     height: 100vh;
     width: 100%;
-    background: radial-gradient(circle at top left, #1a1a2e, #16213e, #0f3460);
+    background: #F5F5F5;
     color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     overflow: hidden;
@@ -25,27 +25,27 @@
 
 /* Override standard Card styles within Gasper Tool */
 .gasper-tool-container .bg-card {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(12px);
+    background-color: #FFFFFF !important;
+    color: #1a1a1a !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: none;
 }
 
 .gasper-tool-container .text-card-foreground {
-    color: #ffffff !important;
+    color: #1a1a1a !important;
 }
 
 .gasper-tool-container .text-muted-foreground {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: #6b7280 !important;
 }
 
 /* Sidebar Styles */
 .gasper-sidebar {
     width: 260px;
     height: 100%;
-    background: rgba(13, 17, 23, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: #FFFFFF;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-right: 1px solid var(--glass-border);
     display: flex;
     flex-direction: column;
@@ -90,15 +90,15 @@
 }
 
 .nav-item:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.03);
     color: var(--text-primary);
 }
 
 .nav-item.active {
-    background: linear-gradient(90deg, rgba(0, 243, 255, 0.1) 0%, rgba(188, 19, 254, 0.1) 100%);
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
-    color: var(--neon-blue);
+    background: rgba(255, 107, 0, 0.08);
+    border: 1px solid rgba(255, 107, 0, 0.25);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.06);
+    color: #FF6B00;
 }
 
 .nav-item-icon {
@@ -173,7 +173,9 @@
 
 .chat-message.assistant {
     align-self: flex-start;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
     border: 1px solid var(--glass-border);
     color: var(--text-primary);
     border-bottom-left-radius: 2px;
@@ -188,11 +190,11 @@
 
 .chat-input {
     flex: 1;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.03);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
     padding: 0.75rem;
-    color: white;
+    color: #1a1a1a;
     resize: none;
     min-height: 50px;
 }
@@ -204,7 +206,7 @@
 
 /* Common UI */
 .gasper-card {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.02);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 1.5rem;
@@ -220,11 +222,11 @@
 
 .gasper-input {
     width: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.03);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
     padding: 0.75rem;
-    color: white;
+    color: #1a1a1a;
     transition: border-color 0.2s;
 }
 
@@ -247,12 +249,12 @@
 }
 
 .gasper-btn.primary {
-    background: var(--accent-color);
+    background: #FF6B00;
     color: white;
 }
 
 .gasper-btn.primary:hover {
-    background: #6b46ff;
+    background: #e65f00;
     transform: translateY(-1px);
 }
 
@@ -268,16 +270,16 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(0, 0, 0, 0.02);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.06);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.12);
 }
 
 /* Badge Styles */
@@ -301,14 +303,15 @@
 }
 
 .gasper-badge.secondary {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.06);
+    color: var(--text-secondary);
     color: var(--text-secondary);
 }
 
 .gasper-badge.destructive {
-    background-color: rgba(239, 68, 68, 0.2);
-    color: #fca5a5;
-    border-color: rgba(239, 68, 68, 0.3);
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.2);
 }
 
 
@@ -324,7 +327,7 @@
         width: 260px;
         z-index: 50;
         transition: left 0.3s ease-in-out;
-        box-shadow: 10px 0 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
     }
 
     .gasper-sidebar.mobile-open {
@@ -371,13 +374,13 @@
 
 /* --- New AI Chat Styles --- */
 .gasper-chat-sidebar {
-    background: rgba(13, 17, 23, 0.6);
+    background: rgba(0, 0, 0, 0.02);
     border-right: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
+    backdrop-filter: none;
 }
 
 .chat-welcome-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.02);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 1.25rem;
@@ -387,9 +390,9 @@
 }
 
 .chat-welcome-card:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.04);
     transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 .gasper-chat-bubble {
@@ -409,7 +412,9 @@
 }
 
 .gasper-chat-bubble.assistant {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
     border: 1px solid var(--glass-border);
     color: var(--text-primary);
     border-bottom-left-radius: 4px;
@@ -418,7 +423,7 @@
 .typing-dot {
     width: 6px;
     height: 6px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     animation: typing 1.4s infinite ease-in-out both;
 }
@@ -458,18 +463,18 @@
 }
 
 .shipment-filter-tab:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.03);
 }
 
 .shipment-filter-tab.active {
-    background: var(--accent-color);
+    background: #FF6B00;
     color: white;
-    box-shadow: 0 0 15px rgba(82, 39, 255, 0.4);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.2);
 }
 
 .shipment-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: #FFFFFF;
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 1.5rem;
@@ -479,14 +484,14 @@
 }
 
 .shipment-card:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
 }
 
 .shipment-progress-track {
     height: 4px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.06);
     border-radius: 2px;
     position: relative;
     margin: 2rem 0 1rem 0;
@@ -509,8 +514,8 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #1a1a2e;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: #F5F5F5;
+    border: 2px solid rgba(0, 0, 0, 0.1);
     z-index: 2;
     position: relative;
     transition: all 0.3s;
@@ -538,6 +543,7 @@
 }
 
 .shipment-milestone.active .milestone-label {
-    color: white;
+    color: var(--text-primary);
+    font-weight: 600;
     font-weight: 600;
 }

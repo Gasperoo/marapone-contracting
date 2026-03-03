@@ -38,21 +38,21 @@ export function DashboardOverview() {
             {/* Widget Detail Modal */}
             {selectedWidget && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedWidget(null)}>
-                    <div className="bg-[#0f172a] border border-white/10 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative" onClick={e => e.stopPropagation()}>
+                    <div className="bg-white border border-black/[0.08] rounded-2xl w-full max-w-lg p-6 shadow-2xl relative" onClick={e => e.stopPropagation()}>
                         <button
-                            className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
+                            className="absolute top-4 right-4 text-gray-500 hover:text-[#1a1a1a] transition-colors"
                             onClick={() => setSelectedWidget(null)}
                         >
                             <X size={20} />
                         </button>
-                        <h3 className="text-xl font-bold text-white mb-2">{selectedWidget.title}</h3>
+                        <h3 className="text-xl font-bold text-[#1a1a1a] mb-2">{selectedWidget.title}</h3>
                         <p className="text-slate-300 leading-relaxed">{selectedWidget.description}</p>
                     </div>
                 </div>
             )}
 
             {/* TradingView Ticker Tape */}
-            <div className="w-full h-12 overflow-hidden rounded-xl border border-white/10 shadow-lg">
+            <div className="w-full h-12 overflow-hidden rounded-xl border border-black/[0.08] shadow-lg">
                 <TradingViewWidget
                     src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
                     containerId="tv-ticker-tape"
@@ -84,15 +84,15 @@ export function DashboardOverview() {
                     { title: "Global Risk", val: "Low", trend: "Stable", icon: Globe, color: "red", spark: [20, 15, 25, 20, 15, 10] },
                     { title: "Pending Actions", val: "3", trend: "Attention", icon: Activity, color: "amber", spark: [5, 15, 8, 20, 12, 18] }
                 ].map((stat, i) => (
-                    <Card key={i} className="p-6 glass-panel border-0 bg-white/5 relative group hover:bg-white/10 transition-colors overflow-hidden">
+                    <Card key={i} className="p-6 glass-panel border-0 bg-black/[0.03] relative group hover:bg-black/[0.06] transition-colors overflow-hidden">
                         <WidgetInfoButton onClick={() => handleWidgetClick(stat.title, `${stat.val} metrics currently recorded.`)} />
                         <div className="flex items-center justify-between mb-2">
-                            <h3 className="text-white/60 font-medium text-xs uppercase tracking-wider">{stat.title}</h3>
+                            <h3 className="text-gray-400 font-medium text-xs uppercase tracking-wider">{stat.title}</h3>
                             <div className={`p-2 bg-${stat.color}-500/20 rounded-lg text-${stat.color}-400`}><stat.icon size={18} /></div>
                         </div>
                         <div className="flex items-end justify-between relative z-10">
                             <div>
-                                <div className="text-3xl font-bold text-white">{stat.val}</div>
+                                <div className="text-3xl font-bold text-[#1a1a1a]">{stat.val}</div>
                                 <div className={`flex items-center text-${stat.color}-400 text-[10px] font-bold uppercase mt-1`}>{stat.trend}</div>
                             </div>
 
@@ -119,8 +119,8 @@ export function DashboardOverview() {
             {/* Main Market Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Main Action: Advanced Chart */}
-                <div className="lg:col-span-2 h-[500px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative">
-                    <div className="absolute top-4 left-4 z-10 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-xs font-medium text-white/70">
+                <div className="lg:col-span-2 h-[500px] rounded-2xl overflow-hidden border border-black/[0.08] shadow-2xl relative">
+                    <div className="absolute top-4 left-4 z-10 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-black/[0.08] text-xs font-medium text-gray-500">
                         Brent Crude Oil (Global Logistics Benchmark)
                     </div>
                     <TradingViewWidget
@@ -146,31 +146,31 @@ export function DashboardOverview() {
 
                 {/* Side Panel: Neural Logistics Stream */}
                 <div className="lg:col-span-1 h-[500px] flex flex-col space-y-6">
-                    <Card className="flex-1 bg-[#050b14] border-white/10 p-6 flex flex-col relative overflow-hidden group">
+                    <Card className="flex-1 bg-white border-black/[0.08] p-6 flex flex-col relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                             <Activity size={80} className="text-blue-500" />
                         </div>
-                        <h3 className="text-sm font-bold text-white flex items-center gap-2 mb-6 uppercase tracking-widest relative z-10">
-                            <Zap className="text-blue-400 w-4 h-4" />
+                        <h3 className="text-sm font-bold text-[#1a1a1a] flex items-center gap-2 mb-6 uppercase tracking-widest relative z-10">
+                            <Zap className="text-[#FF6B00] w-4 h-4" />
                             Neural Telemetry Stream
                         </h3>
 
                         <div className="flex-1 space-y-4 overflow-hidden relative z-10">
                             {neuralFeed.map((event) => (
                                 <div key={event.id} className="animate-in slide-in-from-top-4 border-l-2 border-blue-500/30 pl-4 py-1">
-                                    <p className="text-[11px] text-white font-mono leading-relaxed">{event.text}</p>
-                                    <p className="text-[9px] text-white/30 uppercase mt-1 font-bold">{event.time}</p>
+                                    <p className="text-[11px] text-[#1a1a1a] font-mono leading-relaxed">{event.text}</p>
+                                    <p className="text-[9px] text-gray-300 uppercase mt-1 font-bold">{event.time}</p>
                                 </div>
                             ))}
                         </div>
 
                         {/* Global Flux Gauge */}
-                        <div className="mt-8 pt-6 border-t border-white/5 relative z-10">
+                        <div className="mt-8 pt-6 border-t border-black/[0.04] relative z-10">
                             <div className="flex justify-between items-center mb-2">
-                                <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Global Flux Intensity</span>
+                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Global Flux Intensity</span>
                                 <span className="text-[10px] font-bold text-emerald-400 uppercase">Class 2 (Optimal)</span>
                             </div>
-                            <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden flex">
+                            <div className="h-1.5 w-full bg-black/[0.03] rounded-full overflow-hidden flex">
                                 <div className="h-full bg-emerald-500" style={{ width: '40%' }}></div>
                                 <div className="h-full bg-emerald-500 animate-pulse" style={{ width: '2%' }}></div>
                             </div>
@@ -179,12 +179,12 @@ export function DashboardOverview() {
 
                     {/* Quick Stats Grid */}
                     <div className="grid grid-cols-2 gap-4">
-                        <Card className="p-4 bg-white/5 border-white/10 text-center">
-                            <p className="text-[9px] text-white/40 uppercase font-bold mb-1">Port Density</p>
-                            <p className="text-lg font-bold text-white">LOW</p>
+                        <Card className="p-4 bg-black/[0.03] border-black/[0.08] text-center">
+                            <p className="text-[9px] text-gray-400 uppercase font-bold mb-1">Port Density</p>
+                            <p className="text-lg font-bold text-[#1a1a1a]">LOW</p>
                         </Card>
-                        <Card className="p-4 bg-white/5 border-white/10 text-center">
-                            <p className="text-[9px] text-white/40 uppercase font-bold mb-1">Fuel Flux</p>
+                        <Card className="p-4 bg-black/[0.03] border-black/[0.08] text-center">
+                            <p className="text-[9px] text-gray-400 uppercase font-bold mb-1">Fuel Flux</p>
                             <p className="text-lg font-bold text-red-400 font-mono">+1.22%</p>
                         </Card>
                     </div>
@@ -214,7 +214,7 @@ function WidgetInfoButton({ onClick }) {
                 e.stopPropagation();
                 onClick();
             }}
-            className="absolute top-4 right-4 z-20 text-white/20 hover:text-white transition-colors opacity-0 group-hover:opacity-100"
+            className="absolute top-4 right-4 z-20 text-gray-200 hover:text-[#1a1a1a] transition-colors opacity-0 group-hover:opacity-100"
         >
             <Info size={16} />
         </button>

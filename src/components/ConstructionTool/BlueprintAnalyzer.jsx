@@ -232,7 +232,7 @@ export function BlueprintAnalyzer() {
             <div className="space-y-6">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                        <h2 className="text-xl font-bold text-[#1a1a1a] flex items-center gap-2">
                             <Sparkles className="text-[#FF6B00]" size={24} />
                             Blueprint AI
                         </h2>
@@ -266,7 +266,7 @@ export function BlueprintAnalyzer() {
                     </div>
 
                     <motion.h3
-                        className="text-xl font-bold text-white mb-2"
+                        className="text-xl font-bold text-[#1a1a1a] mb-2"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
@@ -308,7 +308,7 @@ export function BlueprintAnalyzer() {
                                     <FileText size={18} className="text-[#FF6B00]" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <div className="text-sm font-semibold text-white truncate">{sample.name}</div>
+                                    <div className="text-sm font-semibold text-[#1a1a1a] truncate">{sample.name}</div>
                                     <div className="text-xs text-slate-500 mt-0.5">{sample.format} • {sample.size} • {sample.type}</div>
                                 </div>
                                 <ArrowUpRight size={16} className="text-slate-500 flex-shrink-0" />
@@ -370,7 +370,7 @@ export function BlueprintAnalyzer() {
                         <Cpu size={16} className="animate-pulse" />
                         Gasper AI Engine Active
                     </div>
-                    <h2 className="text-2xl font-bold text-white mb-2">Analyzing Blueprint</h2>
+                    <h2 className="text-2xl font-bold text-[#1a1a1a] mb-2">Analyzing Blueprint</h2>
                     <p className="text-slate-400 text-sm">{currentFile?.name || 'Processing...'}</p>
                 </motion.div>
 
@@ -454,7 +454,7 @@ export function BlueprintAnalyzer() {
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
                 <div>
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <h2 className="text-xl font-bold text-[#1a1a1a] flex items-center gap-2">
                         <Sparkles className="text-[#FF6B00]" size={24} />
                         Blueprint AI
                     </h2>
@@ -772,7 +772,7 @@ export function BlueprintAnalyzer() {
                                                     <span className="text-xs text-slate-300">{el.type}</span>
                                                 </div>
                                                 <div className="element-stats">
-                                                    <span className="text-xs font-mono text-white font-semibold">{el.count}</span>
+                                                    <span className="text-xs font-mono text-[#1a1a1a] font-semibold">{el.count}</span>
                                                     <div className="confidence-bar-track">
                                                         <div
                                                             className={`confidence-bar-fill ${el.confidence < 90 ? 'low' : el.confidence < 95 ? 'medium' : ''}`}
@@ -835,7 +835,7 @@ export function BlueprintAnalyzer() {
                                                         exit={{ height: 0, opacity: 0 }}
                                                         className="overflow-hidden"
                                                     >
-                                                        <div className="mt-2 pt-2 border-t border-white/5 text-[11px] text-slate-400 leading-relaxed">
+                                                        <div className="mt-2 pt-2 border-t border-black/[0.04] text-[11px] text-slate-400 leading-relaxed">
                                                             {check.details}
                                                         </div>
                                                     </motion.div>
@@ -851,7 +851,7 @@ export function BlueprintAnalyzer() {
                                 <motion.div key="materials" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                                     <div className="flex items-center justify-between mb-3 px-1">
                                         <span className="text-xs text-slate-500">{result.materialQuantities.length} items</span>
-                                        <button onClick={() => alert("This operational feature is currently in preview.")} className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-white transition-colors">
+                                        <button onClick={() => alert("This operational feature is currently in preview.")} className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-[#1a1a1a] transition-colors">
                                             <Download size={10} />
                                             Export CSV
                                         </button>
@@ -886,7 +886,7 @@ export function BlueprintAnalyzer() {
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colSpan={2} className="text-xs font-bold text-white pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                                                <td colSpan={2} className="text-xs font-bold text-[#1a1a1a] pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                                                     Total Estimated
                                                 </td>
                                                 <td className="cost-cell text-right font-bold pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.1)', fontSize: '0.85rem' }}>
@@ -910,7 +910,7 @@ export function BlueprintAnalyzer() {
                                             transition={{ delay: idx * 0.05 }}
                                         >
                                             <div className="flex items-start justify-between gap-2 mb-1">
-                                                <span className="text-xs font-semibold text-white">{risk.title}</span>
+                                                <span className="text-xs font-semibold text-[#1a1a1a]">{risk.title}</span>
                                                 <span className={`severity-dot ${risk.severity}`}>{risk.severity}</span>
                                             </div>
                                             <div className="text-[10px] text-slate-500 mb-1.5">{risk.location}</div>
@@ -975,10 +975,10 @@ export function BlueprintAnalyzer() {
                 <div className="ai-chat-header" onClick={() => setChatOpen(!chatOpen)}>
                     <div className="flex items-center gap-2">
                         <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#FF6B00] to-[#FFB800] flex items-center justify-center">
-                            <MessageSquare size={14} className="text-white" />
+                            <MessageSquare size={14} className="text-[#1a1a1a]" />
                         </div>
                         <div>
-                            <span className="text-sm font-semibold text-white">Blueprint AI Assistant</span>
+                            <span className="text-sm font-semibold text-[#1a1a1a]">Blueprint AI Assistant</span>
                             <span className="text-[10px] text-slate-500 ml-2">Ask anything about this blueprint</span>
                         </div>
                     </div>

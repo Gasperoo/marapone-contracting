@@ -83,10 +83,10 @@ export function CashFlowGuardian() {
                     ))}
                 </div>
                 <div style={{ display: 'flex', gap: 16, justifyContent: 'center', marginTop: 16 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', color: '#9ca3af' }}>
                         <div style={{ width: 10, height: 10, borderRadius: 3, background: '#22c55e' }} /> Inflow
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', color: '#9ca3af' }}>
                         <div style={{ width: 10, height: 10, borderRadius: 3, background: '#ef4444' }} /> Outflow
                     </div>
                 </div>
@@ -108,13 +108,13 @@ export function CashFlowGuardian() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 + idx * 0.08 }}
                             >
-                                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'white', marginBottom: 4 }}>{alert.title}</div>
-                                <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', marginBottom: 8 }}>{alert.description}</div>
+                                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: 4 }}>{alert.title}</div>
+                                <div style={{ fontSize: '0.7rem', color: '#6b7280', marginBottom: 8 }}>{alert.description}</div>
                                 <div className="ct-ai-suggestion">
                                     <Lightbulb size={12} className="ai-icon" />
                                     <div>
                                         <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#FF6B00' }}>AI Fix: </span>
-                                        <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)' }}>{alert.suggestion}</span>
+                                        <span style={{ fontSize: '0.65rem', color: '#6b7280' }}>{alert.suggestion}</span>
                                     </div>
                                 </div>
                             </motion.div>
@@ -144,7 +144,7 @@ export function CashFlowGuardian() {
                                 }}
                             >
                                 <div>
-                                    <div style={{ fontSize: '0.8rem', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>{payment.vendor}</div>
+                                    <div style={{ fontSize: '0.8rem', fontWeight: 500, color: '#374151' }}>{payment.vendor}</div>
                                     <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>{payment.project} · Due: {payment.dueDate}</div>
                                 </div>
                                 <div style={{ textAlign: 'right' }}>

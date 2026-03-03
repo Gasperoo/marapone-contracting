@@ -126,7 +126,7 @@ export function TakeoffTools() {
                                         background: cat.color,
                                         boxShadow: `0 0 8px ${cat.color}80`,
                                     }} />
-                                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'white' }}>{cat.name}</span>
+                                    <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1a1a1a' }}>{cat.name}</span>
                                     <span style={{
                                         fontSize: '0.6rem', fontWeight: 700,
                                         padding: '2px 8px', borderRadius: 100,
@@ -137,7 +137,7 @@ export function TakeoffTools() {
                                     </span>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'white' }}>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a' }}>
                                         ${catTotal.toLocaleString()}
                                     </span>
                                     {isExpanded ? <ChevronDown size={16} style={{ color: 'rgba(255,255,255,0.3)' }} /> :
@@ -165,7 +165,7 @@ export function TakeoffTools() {
                                                     transition={{ delay: idx * 0.04 }}>
                                                     <td>{item.desc}</td>
                                                     <td style={{ textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{item.qty}</td>
-                                                    <td style={{ textAlign: 'right', color: 'rgba(255,255,255,0.4)' }}>{item.unit}</td>
+                                                    <td style={{ textAlign: 'right', color: '#9ca3af' }}>{item.unit}</td>
                                                     <td style={{ textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{item.rate}</td>
                                                     <td style={{ textAlign: 'right', fontWeight: 700, color: cat.color }}>{item.total}</td>
                                                 </motion.tr>
@@ -185,7 +185,7 @@ export function TakeoffTools() {
                     <div style={{ fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.3)' }}>
                         Grand Total Estimated Cost
                     </div>
-                    <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>
+                    <div style={{ fontSize: '0.7rem', color: '#9ca3af', marginTop: 2 }}>
                         AI confidence: 97.2% · Based on local market rates
                     </div>
                 </div>

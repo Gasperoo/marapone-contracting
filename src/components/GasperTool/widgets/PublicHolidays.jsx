@@ -30,27 +30,27 @@ export function PublicHolidays() {
     }, []);
 
     return (
-        <Card className="p-5 glass-panel border-0 bg-white/5 relative overflow-hidden h-full">
+        <Card className="p-5 glass-panel border-0 bg-black/[0.03] relative overflow-hidden h-full">
             <div className="flex justify-between items-center mb-4">
-                <h3 className="font-semibold text-white flex items-center gap-2">
-                    <Calendar size={18} className="text-purple-400" />
+                <h3 className="font-semibold text-[#1a1a1a] flex items-center gap-2">
+                    <Calendar size={18} className="text-[#FF6B00]" />
                     Global Holidays
                 </h3>
             </div>
 
             <div className="space-y-3">
                 {loading ? (
-                    <div className="text-white/40 text-sm animate-pulse">Loading calendar...</div>
+                    <div className="text-gray-400 text-sm animate-pulse">Loading calendar...</div>
                 ) : (
                     holidays.map((holiday, index) => (
-                        <div key={index} className="flex items-center justify-between p-2 rounded hover:bg-white/5 transition-colors border-b border-white/5 last:border-0">
+                        <div key={index} className="flex items-center justify-between p-2 rounded hover:bg-black/[0.03] transition-colors border-b border-black/[0.04] last:border-0">
                             <div className="flex items-center gap-3">
-                                <div className="text-xs font-bold text-white/50 bg-white/10 px-2 py-1 rounded w-10 text-center">
+                                <div className="text-xs font-bold text-gray-500 bg-black/[0.06] px-2 py-1 rounded w-10 text-center">
                                     {holiday.countryCode || 'GLO'}
                                 </div>
                                 <div>
-                                    <div className="text-sm font-medium text-white">{holiday.localName}</div>
-                                    <div className="text-xs text-white/40">{holiday.name}</div>
+                                    <div className="text-sm font-medium text-[#1a1a1a]">{holiday.localName}</div>
+                                    <div className="text-xs text-gray-400">{holiday.name}</div>
                                 </div>
                             </div>
                             <div className="text-xs text-purple-300 font-mono">
@@ -60,7 +60,7 @@ export function PublicHolidays() {
                     ))
                 )}
             </div>
-            <div className="mt-3 text-[10px] text-white/30 text-center">
+            <div className="mt-3 text-[10px] text-gray-300 text-center">
                 Powered by Nager.Date
             </div>
         </Card>

@@ -43,7 +43,7 @@ export function ComplianceAutoPilot() {
                             style={{ display: 'flex', gap: 32 }}
                         >
                             {[...data.recentUpdates, ...data.recentUpdates].map((update, i) => (
-                                <span key={i} style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)' }}>
+                                <span key={i} style={{ fontSize: '0.7rem', color: '#6b7280' }}>
                                     <span style={{ color: 'rgba(255,255,255,0.2)', marginRight: 8 }}>[{update.time}]</span>
                                     {update.text}
                                     <span style={{ color: '#FF6B00', marginLeft: 8 }}>● {update.source}</span>
@@ -80,8 +80,8 @@ export function ComplianceAutoPilot() {
                                             </span>
                                             <span className="ct-badge" style={{
                                                 fontSize: '0.5rem', padding: '2px 6px',
-                                                background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.5)',
-                                                border: '1px solid rgba(255,255,255,0.08)',
+                                                background: 'rgba(0,0,0,0.03)', color: '#6b7280',
+                                                border: '1px solid rgba(0,0,0,0.08)',
                                             }}>
                                                 {issue.category}
                                             </span>
@@ -91,14 +91,14 @@ export function ComplianceAutoPilot() {
                                             {issue.status.toUpperCase()}
                                         </span>
                                     </div>
-                                    <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white', marginBottom: 4 }}>{issue.title}</div>
+                                    <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a', marginBottom: 4 }}>{issue.title}</div>
                                     <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', marginBottom: 10 }}>{issue.description}</div>
                                     <div className="ct-ai-suggestion">
                                         <Lightbulb size={12} className="ai-icon" />
                                         <div style={{ flex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                             <div>
                                                 <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#FF6B00' }}>AI Fix Plan: </span>
-                                                <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)' }}>{issue.fixPlan}</span>
+                                                <span style={{ fontSize: '0.65rem', color: '#6b7280' }}>{issue.fixPlan}</span>
                                             </div>
                                             <span style={{ fontSize: '0.6rem', fontFamily: 'monospace', color: '#ef4444', fontWeight: 700 }}>Fine: {issue.estimatedFine}</span>
                                         </div>
@@ -175,7 +175,7 @@ export function ComplianceAutoPilot() {
                                     }}
                                 >
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                                        <span style={{ fontSize: '0.75rem', fontWeight: 500, color: 'white' }}>{permit.type}</span>
+                                        <span style={{ fontSize: '0.75rem', fontWeight: 500, color: '#1a1a1a' }}>{permit.type}</span>
                                         <span className={`ct-badge ${permit.status === 'approved' ? 'ct-badge-green' : permit.status === 'pending-review' ? 'ct-badge-amber' : 'ct-badge-blue'}`}
                                             style={{ fontSize: '0.5rem', padding: '2px 6px' }}>
                                             {permit.status.toUpperCase()}
@@ -192,11 +192,11 @@ export function ComplianceAutoPilot() {
                     <div className="ct-card" style={{
                         padding: 24, textAlign: 'center', cursor: 'pointer',
                         borderStyle: 'dashed', borderWidth: 1,
-                        borderColor: 'rgba(255,255,255,0.08)',
+                        borderColor: 'rgba(0,0,0,0.08)',
                         transition: 'all 0.3s',
                     }}>
                         <Camera size={28} style={{ margin: '0 auto 12px', color: 'rgba(255,255,255,0.15)' }} />
-                        <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Upload Photos or Documents</div>
+                        <div style={{ fontSize: '0.8rem', color: '#6b7280' }}>Upload Photos or Documents</div>
                         <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.25)', marginTop: 4 }}>AI will analyze for compliance issues</div>
                     </div>
 

@@ -60,50 +60,50 @@ export function LiveTracker() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Currency Tracker */}
-            <Card className="p-5 glass-panel border-0 bg-white/5 relative overflow-hidden group">
+            <Card className="p-5 glass-panel border-0 bg-black/[0.03] relative overflow-hidden group">
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                     <TrendingUp size={100} />
                 </div>
 
                 <div className="flex justify-between items-center mb-4 relative z-10">
-                    <h3 className="font-semibold text-white flex items-center gap-2">
+                    <h3 className="font-semibold text-[#1a1a1a] flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                         Live Forex (USD Base)
                     </h3>
-                    <button onClick={fetchData} className="p-1 hover:bg-white/10 rounded-full transition-colors">
-                        <RefreshCw size={14} className={`text-white/60 ${loading ? 'animate-spin' : ''}`} />
+                    <button onClick={fetchData} className="p-1 hover:bg-black/[0.06] rounded-full transition-colors">
+                        <RefreshCw size={14} className={`text-gray-400 ${loading ? 'animate-spin' : ''}`} />
                     </button>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 relative z-10">
                     {loading && !currency ? (
-                        <div className="text-white/40 text-sm col-span-2">Loading rates...</div>
+                        <div className="text-gray-400 text-sm col-span-2">Loading rates...</div>
                     ) : currency ? (
                         <>
-                            <div className="bg-white/5 p-3 rounded-lg border border-white/5 hover:border-white/20 transition-colors">
-                                <div className="text-xs text-white/60 mb-1">EUR / USD</div>
-                                <div className="text-xl font-bold text-white">{(1 / currency.EUR).toFixed(4)}</div>
+                            <div className="bg-black/[0.03] p-3 rounded-lg border border-black/[0.04] hover:border-black/[0.12] transition-colors">
+                                <div className="text-xs text-gray-400 mb-1">EUR / USD</div>
+                                <div className="text-xl font-bold text-[#1a1a1a]">{(1 / currency.EUR).toFixed(4)}</div>
                                 <div className="text-xs text-green-400 flex items-center mt-1">
                                     <TrendingUp size={10} className="mr-1" /> Live
                                 </div>
                             </div>
-                            <div className="bg-white/5 p-3 rounded-lg border border-white/5 hover:border-white/20 transition-colors">
-                                <div className="text-xs text-white/60 mb-1">GBP / USD</div>
-                                <div className="text-xl font-bold text-white">{(1 / currency.GBP).toFixed(4)}</div>
+                            <div className="bg-black/[0.03] p-3 rounded-lg border border-black/[0.04] hover:border-black/[0.12] transition-colors">
+                                <div className="text-xs text-gray-400 mb-1">GBP / USD</div>
+                                <div className="text-xl font-bold text-[#1a1a1a]">{(1 / currency.GBP).toFixed(4)}</div>
                                 <div className="text-xs text-green-400 flex items-center mt-1">
                                     <TrendingUp size={10} className="mr-1" /> Live
                                 </div>
                             </div>
-                            <div className="bg-white/5 p-3 rounded-lg border border-white/5 hover:border-white/20 transition-colors">
-                                <div className="text-xs text-white/60 mb-1">USD / CNY</div>
-                                <div className="text-xl font-bold text-white">{currency.CNY.toFixed(4)}</div>
-                                <div className="text-xs text-blue-400 flex items-center mt-1">
+                            <div className="bg-black/[0.03] p-3 rounded-lg border border-black/[0.04] hover:border-black/[0.12] transition-colors">
+                                <div className="text-xs text-gray-400 mb-1">USD / CNY</div>
+                                <div className="text-xl font-bold text-[#1a1a1a]">{currency.CNY.toFixed(4)}</div>
+                                <div className="text-xs text-[#FF6B00] flex items-center mt-1">
                                     <ArrowRight size={10} className="mr-1" /> Stable
                                 </div>
                             </div>
-                            <div className="bg-white/5 p-3 rounded-lg border border-white/5 hover:border-white/20 transition-colors">
-                                <div className="text-xs text-white/60 mb-1">USD / JPY</div>
-                                <div className="text-xl font-bold text-white">{currency.JPY.toFixed(2)}</div>
+                            <div className="bg-black/[0.03] p-3 rounded-lg border border-black/[0.04] hover:border-black/[0.12] transition-colors">
+                                <div className="text-xs text-gray-400 mb-1">USD / JPY</div>
+                                <div className="text-xl font-bold text-[#1a1a1a]">{currency.JPY.toFixed(2)}</div>
                                 <div className="text-xs text-red-400 flex items-center mt-1">
                                     <TrendingDown size={10} className="mr-1" /> -0.2%
                                 </div>
@@ -113,19 +113,19 @@ export function LiveTracker() {
                         <div className="text-red-400 text-sm col-span-2">Failed to load</div>
                     )}
                 </div>
-                <div className="text-[10px] text-white/30 mt-3 text-right">
+                <div className="text-[10px] text-gray-300 mt-3 text-right">
                     Updated: {lastUpdated}
                 </div>
             </Card>
 
             {/* Port Weather Tracker */}
-            <Card className="p-5 glass-panel border-0 bg-white/5 relative overflow-hidden group">
+            <Card className="p-5 glass-panel border-0 bg-black/[0.03] relative overflow-hidden group">
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                     <CloudRain size={100} />
                 </div>
 
                 <div className="flex justify-between items-center mb-4 relative z-10">
-                    <h3 className="font-semibold text-white flex items-center gap-2">
+                    <h3 className="font-semibold text-[#1a1a1a] flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                         Port Conditions
                     </h3>
@@ -133,25 +133,25 @@ export function LiveTracker() {
 
                 <div className="space-y-3 relative z-10">
                     {loading && Object.keys(weather).length === 0 ? (
-                        <div className="text-white/40 text-sm">Loading weather...</div>
+                        <div className="text-gray-400 text-sm">Loading weather...</div>
                     ) : (
                         Object.entries(PORTS).map(([key, port]) => {
                             const w = weather[key]?.current;
                             if (!w) return null;
                             return (
-                                <div key={key} className="flex items-center justify-between p-2 rounded hover:bg-white/5 transition-colors">
+                                <div key={key} className="flex items-center justify-between p-2 rounded hover:bg-black/[0.03] transition-colors">
                                     <div className="flex items-center gap-3">
                                         <div className="text-2xl">{getWeatherIcon(w.weather_code)}</div>
                                         <div>
-                                            <div className="text-sm font-medium text-white">{port.name}</div>
-                                            <div className="text-xs text-white/50 flex items-center gap-2">
+                                            <div className="text-sm font-medium text-[#1a1a1a]">{port.name}</div>
+                                            <div className="text-xs text-gray-500 flex items-center gap-2">
                                                 <span className="flex items-center gap-1"><Wind size={10} /> {w.wind_speed_10m} km/h</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <div className="text-lg font-bold text-white">{w.temperature_2m}°C</div>
-                                        <div className="text-xs text-white/40">Real-time</div>
+                                        <div className="text-lg font-bold text-[#1a1a1a]">{w.temperature_2m}°C</div>
+                                        <div className="text-xs text-gray-400">Real-time</div>
                                     </div>
                                 </div>
                             );

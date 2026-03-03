@@ -36,7 +36,7 @@ export function SubcontractorMatchmaker() {
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                     <div>
                         <div className="ct-kpi-label">Project</div>
-                        <div style={{ fontSize: '0.85rem', color: 'white', fontWeight: 600, marginTop: 4 }}>{data.projectSpec.name}</div>
+                        <div style={{ fontSize: '0.85rem', color: '#1a1a1a', fontWeight: 600, marginTop: 4 }}>{data.projectSpec.name}</div>
                     </div>
                     <div>
                         <div className="ct-kpi-label">Trades Needed</div>
@@ -48,13 +48,13 @@ export function SubcontractorMatchmaker() {
                     </div>
                     <div>
                         <div className="ct-kpi-label">Location</div>
-                        <div style={{ fontSize: '0.85rem', color: 'white', fontWeight: 500, marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
-                            <MapPin size={10} style={{ color: 'rgba(255,255,255,0.4)' }} />{data.projectSpec.location}
+                        <div style={{ fontSize: '0.85rem', color: '#1a1a1a', fontWeight: 500, marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <MapPin size={10} style={{ color: '#9ca3af' }} />{data.projectSpec.location}
                         </div>
                     </div>
                     <div>
                         <div className="ct-kpi-label">Start Date</div>
-                        <div style={{ fontSize: '0.85rem', color: 'white', fontWeight: 500, marginTop: 4 }}>{data.projectSpec.startDate}</div>
+                        <div style={{ fontSize: '0.85rem', color: '#1a1a1a', fontWeight: 500, marginTop: 4 }}>{data.projectSpec.startDate}</div>
                     </div>
                     <div>
                         <div className="ct-kpi-label">Budget</div>
@@ -87,7 +87,7 @@ export function SubcontractorMatchmaker() {
                             {/* Header */}
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
                                 <div>
-                                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'white' }}>{sub.name}</div>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1a1a1a' }}>{sub.name}</div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4 }}>
                                         <span className="ct-badge ct-badge-orange" style={{ fontSize: '0.55rem', padding: '2px 8px' }}>{sub.trade}</span>
                                         <span style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.35)', display: 'flex', alignItems: 'center', gap: 3 }}>
@@ -122,7 +122,7 @@ export function SubcontractorMatchmaker() {
                                         textAlign: 'center', padding: 8, borderRadius: 8,
                                         background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)',
                                     }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3, fontSize: '0.8rem', fontWeight: 700, color: 'white' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3, fontSize: '0.8rem', fontWeight: 700, color: '#1a1a1a' }}>
                                             {s.icon}{s.value}
                                         </div>
                                         <div style={{ fontSize: '0.5rem', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>{s.label}</div>
@@ -133,7 +133,7 @@ export function SubcontractorMatchmaker() {
                             {/* Availability & Price */}
                             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem' }}>
                                 <span style={{ color: '#22c55e', display: 'flex', alignItems: 'center', gap: 4 }}><Clock size={10} />{sub.availability}</span>
-                                <span style={{ color: 'rgba(255,255,255,0.4)' }}>{sub.priceRange}</span>
+                                <span style={{ color: '#9ca3af' }}>{sub.priceRange}</span>
                             </div>
 
                             {/* Certifications */}
@@ -177,7 +177,7 @@ export function SubcontractorMatchmaker() {
                             <div className="ct-kpi" style={{
                                 flex: 1, '--kpi-color': ms.status === 'complete' ? '#22c55e' : 'rgba(255,255,255,0.1)',
                             }}>
-                                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'white' }}>{ms.phase}</div>
+                                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#1a1a1a' }}>{ms.phase}</div>
                                 <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>{ms.dueDate}</div>
                                 <span className={`ct-badge ${ms.status === 'complete' ? 'ct-badge-green' : 'ct-badge-blue'}`}
                                     style={{ fontSize: '0.5rem', padding: '2px 6px', marginTop: 6 }}>

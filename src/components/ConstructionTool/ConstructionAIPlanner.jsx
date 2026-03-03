@@ -54,7 +54,7 @@ export function ConstructionAIPlanner() {
             {/* KPI Row */}
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                 {[
-                    { label: 'Total Duration', value: '24 Weeks', color: 'white' },
+                    { label: 'Total Duration', value: '24 Weeks', color: '#1a1a1a' },
                     { label: 'On Schedule', value: '87%', color: '#22c55e' },
                     { label: 'Critical Path', value: '18 Tasks', color: '#ef4444' },
                     { label: 'AI Optimized', value: '14 Days Saved', color: '#FF6B00' },
@@ -107,7 +107,7 @@ export function ConstructionAIPlanner() {
                                     background: task.color,
                                     boxShadow: `0 0 6px ${task.color}60`,
                                 }} />
-                                <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>{task.name}</span>
+                                <span style={{ fontSize: '0.75rem', color: '#4b5563', fontWeight: 500 }}>{task.name}</span>
                             </div>
 
                             {/* Bar Track */}
@@ -150,7 +150,7 @@ export function ConstructionAIPlanner() {
                                     )}
                                     <span style={{
                                         position: 'absolute', left: 8, top: '50%', transform: 'translateY(-50%)',
-                                        fontSize: '0.55rem', fontWeight: 700, color: 'white',
+                                        fontSize: '0.55rem', fontWeight: 700, color: '#1a1a1a',
                                         textShadow: '0 1px 2px rgba(0,0,0,0.5)',
                                     }}>
                                         {task.progress > 0 ? `${task.progress}%` : ''}
@@ -179,14 +179,14 @@ export function ConstructionAIPlanner() {
                                 transition={{ delay: 0.3 + idx * 0.06 }}
                             >
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{risk.factor}</span>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{risk.factor}</span>
                                     <span className={`ct-badge ct-badge-${risk.level === 'high' ? 'red' : risk.level === 'medium' ? 'amber' : 'green'}`}>
                                         {risk.level}
                                     </span>
                                 </div>
-                                <div style={{ display: 'flex', gap: 16, fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)' }}>
+                                <div style={{ display: 'flex', gap: 16, fontSize: '0.7rem', color: '#9ca3af' }}>
                                     <span>Probability: <strong style={{ color: risk.color }}>{risk.probability}</strong></span>
-                                    <span>Impact: <strong style={{ color: 'rgba(255,255,255,0.7)' }}>{risk.impact}</strong></span>
+                                    <span>Impact: <strong style={{ color: '#4b5563' }}>{risk.impact}</strong></span>
                                 </div>
                             </motion.div>
                         ))}

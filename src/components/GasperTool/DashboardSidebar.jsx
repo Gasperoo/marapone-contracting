@@ -30,15 +30,15 @@ export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCo
     return (
         <div className={`gasper-sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileOpen ? 'mobile-open' : ''}`}>
             <div className="sidebar-header">
-                <div className="brand-logo h-8 w-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                <div className="brand-logo h-8 w-8 bg-gradient-to-br from-[#FF6B00] to-[#F59E0B] rounded-full flex items-center justify-center text-white font-bold text-xs">
                     GT
                 </div>
-                <h1 className={`font-bold text-lg tracking-tight text-white transition-opacity duration-300 ${isCollapsed ? 'opacity-0 w-0 hidden' : 'opacity-100'}`}>
-                    Gasper<span className="text-blue-400">Tool</span>
+                <h1 className={`font-bold text-lg tracking-tight text-[#1a1a1a] transition-opacity duration-300 ${isCollapsed ? 'opacity-0 w-0 hidden' : 'opacity-100'}`}>
+                    Gasper<span className="text-[#FF6B00]">Tool</span>
                 </h1>
                 <button
                     onClick={closeMobileMenu}
-                    className="md:hidden ml-auto text-white/60 hover:text-white"
+                    className="md:hidden ml-auto text-gray-500 hover:text-gray-900"
                 >
                     <X size={20} />
                 </button>
@@ -51,19 +51,19 @@ export function DashboardSidebar({ activeTab, onTabChange, isCollapsed, toggleCo
                         className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
                         onClick={() => item.action ? item.action() : onTabChange(item.id)}
                     >
-                        <item.icon size={20} className={`nav-item-icon ${activeTab === item.id ? 'text-cyan-400' : ''}`} />
+                        <item.icon size={20} className={`nav-item-icon ${activeTab === item.id ? 'text-[#FF6B00]' : ''}`} />
                         <span className="nav-label">{item.label}</span>
                         {activeTab === item.id && !isCollapsed && (
-                            <div className="ml-auto w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                            <div className="ml-auto w-1.5 h-1.5 rounded-full bg-[#FF6B00] shadow-[0_0_8px_rgba(255,107,0,0.6)]" />
                         )}
                     </div>
                 ))}
             </div>
 
-            <div className="p-4 border-t border-white/10 hidden md:block">
+            <div className="p-4 border-t border-black/[0.06] hidden md:block">
                 <button
                     onClick={toggleCollapse}
-                    className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-white/5 text-white/60 hover:text-white transition-colors"
+                    className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-black/5 text-gray-400 hover:text-gray-700 transition-colors"
                 >
                     {isCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
                 </button>

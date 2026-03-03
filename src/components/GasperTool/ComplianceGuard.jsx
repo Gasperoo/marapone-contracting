@@ -34,20 +34,20 @@ export function ComplianceGuard() {
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+                    <h1 className="text-2xl font-bold text-[#1a1a1a] tracking-tight flex items-center gap-2">
                         <Shield className="text-emerald-400" />
                         ComplianceGuard™
                     </h1>
-                    <p className="text-white/40 text-sm">Autonomous Regulatory Defense System</p>
+                    <p className="text-gray-400 text-sm">Autonomous Regulatory Defense System</p>
                 </div>
 
                 {/* News Ticker */}
-                <div className="flex-1 max-w-2xl bg-[#0a0f1c] border border-white/10 rounded-full py-2 px-4 overflow-hidden relative">
+                <div className="flex-1 max-w-2xl bg-white border border-black/[0.08] rounded-full py-2 px-4 overflow-hidden relative">
                     <div className="flex items-center gap-3 animate-marquee whitespace-nowrap">
                         <span className="text-red-400 font-bold text-xs">LIVE UPDATES:</span>
                         {newsFeed.map((news, i) => (
-                            <span key={i} className="text-xs text-white/60 mx-4">
-                                <span className="text-white/30 mr-2">[{news.time}]</span>
+                            <span key={i} className="text-xs text-gray-400 mx-4">
+                                <span className="text-gray-300 mr-2">[{news.time}]</span>
                                 {news.headline}
                                 <span className="text-emerald-500 ml-2">● {news.source}</span>
                             </span>
@@ -61,7 +61,7 @@ export function ComplianceGuard() {
 
                 {/* 1. Regulatory Radar (3D Globe Representation) */}
                 <div className="col-span-12 lg:col-span-8">
-                    <Card className="h-[600px] bg-[#050b14] border-white/10 p-0 relative overflow-hidden group">
+                    <Card className="h-[600px] bg-white border-black/[0.08] p-0 relative overflow-hidden group">
 
                         {/* Map Background (Visual Simulation) */}
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.05),transparent_70%)]"></div>
@@ -94,10 +94,10 @@ export function ComplianceGuard() {
                                     </div>
 
                                     {/* Hover Tooltip */}
-                                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 bg-black/90 border border-white/20 p-2 rounded backdrop-blur-md opacity-0 group-hover/point:opacity-100 transition-opacity z-20 pointer-events-none">
-                                        <div className="text-xs font-bold text-white mb-1">{point.location}</div>
-                                        <div className="text-[10px] text-white/70 uppercase tracking-wider mb-1">{point.issue}</div>
-                                        <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+                                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 bg-black/90 border border-black/[0.12] p-2 rounded backdrop-blur-md opacity-0 group-hover/point:opacity-100 transition-opacity z-20 pointer-events-none">
+                                        <div className="text-xs font-bold text-[#1a1a1a] mb-1">{point.location}</div>
+                                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">{point.issue}</div>
+                                        <div className="w-full bg-black/[0.06] h-1 rounded-full overflow-hidden">
                                             <div className="bg-current h-full" style={{ width: point.intensity * 100 + '%', color: point.type === 'critical' ? '#ef4444' : '#f97316' }}></div>
                                         </div>
                                     </div>
@@ -107,11 +107,11 @@ export function ComplianceGuard() {
 
                         {/* HUD Overlays */}
                         <div className="absolute top-6 left-6">
-                            <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                                <Globe className="text-blue-400 w-5 h-5" />
+                            <h3 className="text-lg font-semibold text-[#1a1a1a] flex items-center gap-2">
+                                <Globe className="text-[#FF6B00] w-5 h-5" />
                                 Regulatory Radar
                             </h3>
-                            <div className="flex gap-4 mt-2 text-xs text-white/40 font-mono">
+                            <div className="flex gap-4 mt-2 text-xs text-gray-400 font-mono">
                                 <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-red-500"></div> CRITICAL</span>
                                 <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-orange-500"></div> WARNING</span>
                                 <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-blue-500"></div> MONITORING</span>
@@ -124,51 +124,51 @@ export function ComplianceGuard() {
                 <div className="col-span-12 lg:col-span-4 space-y-6">
 
                     {/* A. Smart Contract Audit Ledger */}
-                    <Card className="h-[280px] bg-[#050b14] border-white/10 p-4 flex flex-col">
-                        <h3 className="text-sm font-semibold text-white flex items-center gap-2 mb-4 uppercase tracking-wider">
-                            <Activity className="text-purple-400 w-4 h-4" />
+                    <Card className="h-[280px] bg-white border-black/[0.08] p-4 flex flex-col">
+                        <h3 className="text-sm font-semibold text-[#1a1a1a] flex items-center gap-2 mb-4 uppercase tracking-wider">
+                            <Activity className="text-[#FF6B00] w-4 h-4" />
                             Smart Contract Ledger
                         </h3>
                         <div className="flex-1 overflow-hidden relative">
                             <div className="absolute inset-0 overflow-y-auto space-y-2 pr-2 scrollbar-hide">
                                 {auditLog.map((log, i) => (
-                                    <div key={i} className="bg-white/5 border border-white/5 p-2 rounded flex items-center justify-between text-xs group hover:bg-white/10 transition-colors">
+                                    <div key={i} className="bg-black/[0.03] border border-black/[0.04] p-2 rounded flex items-center justify-between text-xs group hover:bg-black/[0.06] transition-colors">
                                         <div className="flex items-center gap-3">
-                                            <div className="font-mono text-white/30">{log.id}</div>
+                                            <div className="font-mono text-gray-300">{log.id}</div>
                                             <div>
                                                 <div className="text-white font-medium">{log.action}</div>
-                                                <div className="text-white/40 text-[10px]">{log.subject}</div>
+                                                <div className="text-gray-400 text-[10px]">{log.subject}</div>
                                             </div>
                                         </div>
                                         <div className="text-right">
                                             <div className={`px-2 py-0.5 rounded text-[10px] font-bold 
-                                                ${log.status === 'PASS' || log.status === 'VERIFIED' || log.status === 'CLEARED' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-blue-500/10 text-blue-400'}`}>
+                                                ${log.status === 'PASS' || log.status === 'VERIFIED' || log.status === 'CLEARED' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-blue-500/10 text-[#FF6B00]'}`}>
                                                 {log.status}
                                             </div>
-                                            <div className="text-[9px] font-mono text-white/20 mt-1">{log.hash}</div>
+                                            <div className="text-[9px] font-mono text-gray-200 mt-1">{log.hash}</div>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="mt-2 pt-2 border-t border-white/10 flex justify-between items-center text-[10px] text-white/30 font-mono">
+                        <div className="mt-2 pt-2 border-t border-black/[0.08] flex justify-between items-center text-[10px] text-gray-300 font-mono">
                             <span>BLOCK: #8829102</span>
                             <span className="flex items-center gap-1 text-emerald-500"><CheckCircle size={10} /> NETWORK SECURE</span>
                         </div>
                     </Card>
 
                     {/* B. AI Document Audit */}
-                    <Card className="h-[296px] bg-[#050b14] border-white/10 p-0 relative overflow-hidden flex flex-col">
+                    <Card className="h-[296px] bg-white border-black/[0.08] p-0 relative overflow-hidden flex flex-col">
                         <div className="absolute inset-0 p-6 flex flex-col z-10">
                             <div className="flex justify-between items-start mb-4">
-                                <h3 className="text-sm font-semibold text-white flex items-center gap-2 uppercase tracking-wider">
-                                    <ScanLine className="text-blue-400 w-4 h-4" />
+                                <h3 className="text-sm font-semibold text-[#1a1a1a] flex items-center gap-2 uppercase tracking-wider">
+                                    <ScanLine className="text-[#FF6B00] w-4 h-4" />
                                     AI Optical Scanner
                                 </h3>
                                 {scanning ? (
-                                    <span className="text-xs text-blue-400 animate-pulse font-mono">SCANNING...</span>
+                                    <span className="text-xs text-[#FF6B00] animate-pulse font-mono">SCANNING...</span>
                                 ) : (
-                                    <Button size="xs" variant="outline" onClick={handleScan} className="border-white/10 h-6 text-[10px]">
+                                    <Button size="xs" variant="outline" onClick={handleScan} className="border-black/[0.08] h-6 text-[10px]">
                                         START SCAN
                                     </Button>
                                 )}
@@ -216,7 +216,7 @@ export function ComplianceGuard() {
             {/* 3. Bottom Action Bar */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {['Generate Audit Report', 'Verify HS Codes', 'Sanctions Screening', 'Upload Documents'].map((action, i) => (
-                    <Button onClick={() => alert("This operational feature is currently in preview.")} key={i} variant="outline" className="h-12 border-white/10 hover:bg-white/5 hover:border-white/20 text-white justify-start pl-4 group">
+                    <Button onClick={() => alert("This operational feature is currently in preview.")} key={i} variant="outline" className="h-12 border-black/[0.08] hover:bg-black/[0.03] hover:border-black/[0.12] text-[#1a1a1a] justify-start pl-4 group">
                         <div className="w-2 h-2 rounded-full bg-white/20 group-hover:bg-blue-400 mr-3 transition-colors"></div>
                         {action}
                     </Button>

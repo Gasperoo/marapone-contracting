@@ -59,7 +59,7 @@ export function TheftSentinel() {
                                         initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.05 }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                                             <div>
-                                                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'white' }}>{v.name}</div>
+                                                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a' }}>{v.name}</div>
                                                 <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>{v.type} · {v.driver}</div>
                                             </div>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -89,10 +89,10 @@ export function TheftSentinel() {
                                 <motion.div key={a.id} className={`ct-alert ct-alert-${a.severity}`} style={{ padding: 12 }}
                                     initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.06 }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                                        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'white' }}>{a.vehicle}</span>
+                                        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1a1a1a' }}>{a.vehicle}</span>
                                         <span className={`ct-badge ct-badge-${a.severity === 'high' ? 'red' : a.severity === 'medium' ? 'amber' : 'blue'}`} style={{ fontSize: '0.45rem', padding: '1px 5px' }}>{a.severity}</span>
                                     </div>
-                                    <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)' }}>{a.message}</p>
+                                    <p style={{ fontSize: '0.7rem', color: '#6b7280' }}>{a.message}</p>
                                     <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.2)', fontFamily: 'monospace', marginTop: 4 }}>{a.time} · {a.type}</div>
                                 </motion.div>
                             ))}
@@ -105,7 +105,7 @@ export function TheftSentinel() {
                             {data.geofences.map((gf, i) => (
                                 <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 10, borderRadius: 8, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
                                     <div>
-                                        <div style={{ fontSize: '0.75rem', fontWeight: 500, color: 'white' }}>{gf.name}</div>
+                                        <div style={{ fontSize: '0.75rem', fontWeight: 500, color: '#1a1a1a' }}>{gf.name}</div>
                                         <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)' }}>{gf.vehicleCount} vehicles · {gf.type}</div>
                                     </div>
                                     <span className={`ct-badge ${gf.status === 'secure' ? 'ct-badge-green' : ''}`} style={{ fontSize: '0.5rem', padding: '2px 6px', ...(gf.status !== 'secure' ? { background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)' } : {}) }}>{gf.status}</span>

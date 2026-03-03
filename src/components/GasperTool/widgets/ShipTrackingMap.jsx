@@ -45,7 +45,7 @@ export function ShipTrackingMap() {
     return (
         <div
             ref={containerRef}
-            className="w-full h-full min-h-[500px] bg-[#0f172a] rounded-xl overflow-hidden border border-white/5 relative z-0"
+            className="w-full h-full min-h-[500px] bg-white rounded-xl overflow-hidden border border-black/[0.04] relative z-0"
         />
     );
 }

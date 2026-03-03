@@ -46,26 +46,26 @@ export function Analytics() {
             {/* 1. Header & NLP Query Interface */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-                        <BarChart3 className="text-purple-400" />
+                    <h1 className="text-2xl font-bold text-[#1a1a1a] tracking-tight flex items-center gap-2">
+                        <BarChart3 className="text-[#FF6B00]" />
                         Predictive Analytics
                     </h1>
-                    <p className="text-white/40 text-sm">AI-Powered Supply Chain Intelligence</p>
+                    <p className="text-gray-400 text-sm">AI-Powered Supply Chain Intelligence</p>
                 </div>
 
                 {/* 'Ask Analytics' Bar */}
                 <form onSubmit={handleSearch} className="w-full md:w-[600px] relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-xl group-hover:blur-2xl transition-all opacity-50"></div>
-                    <div className="relative flex items-center bg-[#0a0f1c] border border-white/10 rounded-full px-4 py-2 shadow-2xl focus-within:border-purple-500/50 transition-colors">
-                        <Search className="text-white/40 w-5 h-5 mr-3" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-[#F59E0B]/20 rounded-full blur-xl group-hover:blur-2xl transition-all opacity-50"></div>
+                    <div className="relative flex items-center bg-white border border-black/[0.08] rounded-full px-4 py-2 shadow-2xl focus-within:border-purple-500/50 transition-colors">
+                        <Search className="text-gray-400 w-5 h-5 mr-3" />
                         <input
                             type="text"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder="Ask me anything (e.g., 'Projected spend for Q4', 'Maersk reliability')"
-                            className="bg-transparent border-none outline-none text-white w-full placeholder:text-white/20 text-sm font-light"
+                            className="bg-transparent border-none outline-none text-[#1a1a1a] w-full placeholder:text-gray-200 text-sm font-light"
                         />
-                        {isTyping && <div className="animate-pulse text-purple-400 text-xs font-mono mr-2">ANALYZING...</div>}
+                        {isTyping && <div className="animate-pulse text-[#FF6B00] text-xs font-mono mr-2">ANALYZING...</div>}
                     </div>
                 </form>
             </div>
@@ -77,12 +77,12 @@ export function Analytics() {
                         <div className="absolute top-0 left-0 w-1 bg-purple-500 h-full"></div>
                         <div className="flex gap-4">
                             <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
-                                <Zap className="text-purple-400 w-5 h-5" />
+                                <Zap className="text-[#FF6B00] w-5 h-5" />
                             </div>
                             <div>
                                 <h3 className="text-purple-300 font-mono text-sm mb-1 uppercase tracking-widest">AI Insight</h3>
-                                <p className="text-xl text-white font-light leading-relaxed">"{aiResponse.answer}"</p>
-                                <div className="mt-3 flex items-center gap-4 text-xs text-white/40 font-mono">
+                                <p className="text-xl text-[#1a1a1a] font-light leading-relaxed">"{aiResponse.answer}"</p>
+                                <div className="mt-3 flex items-center gap-4 text-xs text-gray-400 font-mono">
                                     <span>Confidence: <span className="text-green-400">{aiResponse.confidence}%</span></span>
                                     <span>Source: {aiResponse.relatedMetric.toUpperCase()} MODEL</span>
                                 </div>
@@ -97,20 +97,20 @@ export function Analytics() {
 
                 {/* A. Predictive Spend Modeling (The Oracle) */}
                 <div className="col-span-12 lg:col-span-8">
-                    <Card className="h-[500px] bg-[#050b14] border-white/10 p-6 relative overflow-hidden group">
+                    <Card className="h-[500px] bg-white border-black/[0.08] p-6 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
                         <div className="relative z-10 h-full flex flex-col">
                             <div className="flex justify-between items-start mb-6">
                                 <div>
-                                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                                        <TrendingUp className="text-blue-400 w-5 h-5" />
+                                    <h3 className="text-lg font-semibold text-[#1a1a1a] flex items-center gap-2">
+                                        <TrendingUp className="text-[#FF6B00] w-5 h-5" />
                                         Predictive Spend Model
                                     </h3>
-                                    <p className="text-xs text-white/40">Historical Actuals vs. AI Forecast</p>
+                                    <p className="text-xs text-gray-400">Historical Actuals vs. AI Forecast</p>
                                 </div>
                                 <div className="flex gap-2">
-                                    <span className="flex items-center gap-1 text-xs text-blue-400"><div className="w-3 h-0.5 bg-blue-500"></div> Actual</span>
-                                    <span className="flex items-center gap-1 text-xs text-purple-400"><div className="w-3 h-0.5 bg-purple-500 border-dashed border-t"></div> Forecast</span>
+                                    <span className="flex items-center gap-1 text-xs text-[#FF6B00]"><div className="w-3 h-0.5 bg-blue-500"></div> Actual</span>
+                                    <span className="flex items-center gap-1 text-xs text-[#FF6B00]"><div className="w-3 h-0.5 bg-purple-500 border-dashed border-t"></div> Forecast</span>
                                 </div>
                             </div>
 
@@ -127,7 +127,7 @@ export function Analytics() {
                                             tickFormatter={(value) => `$${value / 1000}k`}
                                         />
                                         <Tooltip
-                                            contentStyle={{ backgroundColor: '#0f172a', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                                            contentStyle={{ backgroundColor: '#ffffff', borderColor: 'rgba(0,0,0,0.08)', borderRadius: '12px' }}
                                             itemStyle={{ color: '#fff' }}
                                             formatter={(value) => formatCurrency(value)}
                                         />
@@ -155,13 +155,13 @@ export function Analytics() {
 
                 {/* B. Carrier Performance Hologram */}
                 <div className="col-span-12 lg:col-span-4">
-                    <Card className="h-[500px] bg-[#050b14] border-white/10 p-6 relative overflow-hidden flex flex-col">
+                    <Card className="h-[500px] bg-white border-black/[0.08] p-6 relative overflow-hidden flex flex-col">
                         <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                            <h3 className="text-lg font-semibold text-[#1a1a1a] flex items-center gap-2">
                                 <Activity className="text-emerald-400 w-5 h-5" />
                                 Carrier Hologram
                             </h3>
-                            <div className="bg-white/5 rounded-full px-3 py-1 text-xs text-white/60 font-mono">L3 Comparison</div>
+                            <div className="bg-black/[0.03] rounded-full px-3 py-1 text-xs text-gray-400 font-mono">L3 Comparison</div>
                         </div>
 
                         <div className="flex-1 w-full relative">
@@ -190,14 +190,14 @@ export function Analytics() {
                                         fillOpacity={0.1}
                                     />
                                     <Tooltip
-                                        contentStyle={{ backgroundColor: '#0f172a', borderColor: 'rgba(255,255,255,0.1)' }}
+                                        contentStyle={{ backgroundColor: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}
                                         itemStyle={{ color: '#fff' }}
                                     />
                                 </RadarChart>
                             </ResponsiveContainer>
                         </div>
 
-                        <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-white/60">
+                        <div className="mt-4 grid grid-cols-2 gap-2 text-xs text-gray-400">
                             <div className="flex items-center gap-2">
                                 <div className="w-2 h-2 rounded-full bg-emerald-500"></div> Top Tier (Maersk)
                             </div>
@@ -210,19 +210,19 @@ export function Analytics() {
 
                 {/* C. Sustainability Impact Tracker */}
                 <div className="col-span-12 md:col-span-6 lg:col-span-4">
-                    <Card className="bg-gradient-to-br from-[#050b14] to-emerald-950/20 border border-white/10 p-6">
-                        <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
+                    <Card className="bg-gradient-to-br from-[#050b14] to-emerald-950/20 border border-black/[0.08] p-6">
+                        <h3 className="text-lg font-semibold text-[#1a1a1a] flex items-center gap-2 mb-4">
                             <Leaf className="text-emerald-400 w-5 h-5" />
                             Eco-Impact Tracker
                         </h3>
                         <div className="flex items-end gap-2 mb-2">
-                            <span className="text-4xl font-bold text-white">{formatCurrency(sustainability.net).replace('$', '').replace('.00', '')}</span>
-                            <span className="text-sm text-white/40 mb-1">kg CO₂e Net</span>
+                            <span className="text-4xl font-bold text-[#1a1a1a]">{formatCurrency(sustainability.net).replace('$', '').replace('.00', '')}</span>
+                            <span className="text-sm text-gray-400 mb-1">kg CO₂e Net</span>
                         </div>
-                        <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden mb-2">
+                        <div className="w-full bg-black/[0.03] h-2 rounded-full overflow-hidden mb-2">
                             <div className="bg-emerald-500 h-full rounded-full" style={{ width: '65%' }}></div>
                         </div>
-                        <div className="flex justify-between text-xs text-white/40">
+                        <div className="flex justify-between text-xs text-gray-400">
                             <span>0 kg</span>
                             <span>Target: {sustainability.target} kg</span>
                         </div>
@@ -230,7 +230,7 @@ export function Analytics() {
                             <div className="bg-emerald-500/10 px-3 py-1 rounded text-xs text-emerald-400 border border-emerald-500/20">
                                 {sustainability.trend}% vs Last Month
                             </div>
-                            <div className="bg-white/5 px-3 py-1 rounded text-xs text-white/60 border border-white/10">
+                            <div className="bg-black/[0.03] px-3 py-1 rounded text-xs text-gray-400 border border-black/[0.08]">
                                 {sustainability.offset} kg Offset
                             </div>
                         </div>
@@ -239,12 +239,12 @@ export function Analytics() {
 
                 {/* D. Additional KPI Cards (Placeholder for Density) */}
                 <div className="col-span-12 md:col-span-3 lg:col-span-4">
-                    <Card className="h-full bg-[#050b14] border-white/10 p-6 flex flex-col justify-center items-center text-center">
+                    <Card className="h-full bg-white border-black/[0.08] p-6 flex flex-col justify-center items-center text-center">
                         <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mb-3">
-                            <Globe className="text-blue-400 w-6 h-6" />
+                            <Globe className="text-[#FF6B00] w-6 h-6" />
                         </div>
                         <h4 className="text-white font-medium">Network Efficiency</h4>
-                        <span className="text-2xl font-bold text-white mt-1">94.8%</span>
+                        <span className="text-2xl font-bold text-[#1a1a1a] mt-1">94.8%</span>
                         <span className="text-xs text-green-400 mt-1 flex items-center gap-1">
                             <TrendingUp size={12} /> +2.4%
                         </span>
@@ -252,12 +252,12 @@ export function Analytics() {
                 </div>
 
                 <div className="col-span-12 md:col-span-3 lg:col-span-4">
-                    <Card className="h-full bg-[#050b14] border-white/10 p-6 flex flex-col justify-center items-center text-center">
+                    <Card className="h-full bg-white border-black/[0.08] p-6 flex flex-col justify-center items-center text-center">
                         <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mb-3">
                             <AlertTriangle className="text-orange-400 w-6 h-6" />
                         </div>
                         <h4 className="text-white font-medium">Risk Exposure</h4>
-                        <span className="text-2xl font-bold text-white mt-1">$420k</span>
+                        <span className="text-2xl font-bold text-[#1a1a1a] mt-1">$420k</span>
                         <span className="text-xs text-orange-400 mt-1">Medium Level</span>
                     </Card>
                 </div>

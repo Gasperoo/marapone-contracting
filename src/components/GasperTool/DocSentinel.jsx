@@ -64,19 +64,19 @@ export function DocSentinel() {
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+                    <h1 className="text-2xl font-bold text-[#1a1a1a] tracking-tight flex items-center gap-2">
                         <ShieldCheck className="text-blue-500" />
                         DocSentinel Hub™
                     </h1>
-                    <p className="text-white/40 text-sm">Neural Document Processing & Blockchain Notary</p>
+                    <p className="text-gray-400 text-sm">Neural Document Processing & Blockchain Notary</p>
                 </div>
 
                 <div className="flex gap-3">
-                    <Button onClick={() => alert("This operational feature is currently in preview.")} variant="outline" className="border-white/10 text-white/60 hover:text-white">
+                    <Button onClick={() => alert("This operational feature is currently in preview.")} variant="outline" className="border-black/[0.08] text-gray-400 hover:text-[#1a1a1a]">
                         <Database size={16} className="mr-2" />
                         Archive
                     </Button>
-                    <Button onClick={handleScan} disabled={isScanning} className="bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20">
+                    <Button onClick={handleScan} disabled={isScanning} className="bg-blue-600 hover:bg-blue-500 text-[#1a1a1a] shadow-lg shadow-blue-500/20">
                         {isScanning ? <RefreshCw className="mr-2 animate-spin" size={16} /> : <Zap className="mr-2" size={16} />}
                         Neural Scan Document
                     </Button>
@@ -91,7 +91,7 @@ export function DocSentinel() {
                     <Card className="h-[650px] bg-[#0a0f18] border-blue-500/10 p-0 relative overflow-hidden group">
 
                         {/* Scanner Viewport */}
-                        <div className="absolute inset-x-8 top-8 bottom-24 bg-white/5 rounded-xl border border-white/5 overflow-hidden flex items-center justify-center">
+                        <div className="absolute inset-x-8 top-8 bottom-24 bg-black/[0.03] rounded-xl border border-black/[0.04] overflow-hidden flex items-center justify-center">
 
                             {/* Paper Simulation */}
                             <div className={`w-[450px] aspect-[1/1.4] bg-white shadow-2xl transition-all duration-1000 transform ${isScanning ? 'scale-105 opacity-80' : 'scale-100'}`}>
@@ -133,23 +133,23 @@ export function DocSentinel() {
                             {!isScanning && !ocrData && (
                                 <div className="text-center space-y-4">
                                     <div className="w-20 h-20 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto border border-blue-500/20">
-                                        <FileText className="text-blue-400" size={32} />
+                                        <FileText className="text-[#FF6B00]" size={32} />
                                     </div>
-                                    <p className="text-white/40 font-medium">Drop document or click scan to begin AI extraction</p>
+                                    <p className="text-gray-400 font-medium">Drop document or click scan to begin AI extraction</p>
                                 </div>
                             )}
                         </div>
 
                         {/* Scanner HUD Overlay */}
-                        <div className="absolute bottom-0 inset-x-0 h-20 bg-black/40 backdrop-blur-md border-t border-white/5 px-8 flex items-center justify-between">
+                        <div className="absolute bottom-0 inset-x-0 h-20 bg-black/40 backdrop-blur-md border-t border-black/[0.04] px-8 flex items-center justify-between">
                             <div className="flex items-center gap-4">
                                 <div className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${isScanning ? 'bg-blue-500 animate-pulse text-white' : 'bg-emerald-500/20 text-emerald-400'}`}>
                                     {isScanning ? `Extracting Data... ${scanProgress}%` : ocrData ? 'Extraction Verified' : 'Ready to Parse'}
                                 </div>
-                                {ocrData && <span className="text-white/40 text-[10px] uppercase font-mono">Confidence: {(ocrData.confidence * 100).toFixed(1)}%</span>}
+                                {ocrData && <span className="text-gray-400 text-[10px] uppercase font-mono">Confidence: {(ocrData.confidence * 100).toFixed(1)}%</span>}
                             </div>
                             <div className="flex gap-2">
-                                <Button onClick={() => alert("This operational feature is currently in preview.")} size="sm" variant="ghost" className="text-white/40 hover:text-white">
+                                <Button onClick={() => alert("This operational feature is currently in preview.")} size="sm" variant="ghost" className="text-gray-400 hover:text-[#1a1a1a]">
                                     <Eye size={14} className="mr-2" /> Detail Mode
                                 </Button>
                             </div>
@@ -162,16 +162,16 @@ export function DocSentinel() {
 
                     {/* Neural Extractions Card */}
                     <Card className="bg-[#0a0f18] border-blue-500/10 p-6 flex flex-col h-[380px]">
-                        <h3 className="text-sm font-semibold text-white flex items-center gap-2 mb-6 uppercase tracking-wider">
-                            <Cpu className="text-blue-400 w-4 h-4" />
+                        <h3 className="text-sm font-semibold text-[#1a1a1a] flex items-center gap-2 mb-6 uppercase tracking-wider">
+                            <Cpu className="text-[#FF6B00] w-4 h-4" />
                             Neural Extractions
                         </h3>
                         <div className="flex-1 overflow-y-auto space-y-4 pr-2 scrollbar-hide">
                             {ocrData ? (
                                 ocrData.fieldsExtracted.map((field, i) => (
-                                    <div key={i} className="group relative bg-white/5 border border-white/5 p-4 rounded-xl hover:border-blue-500/30 transition-all">
+                                    <div key={i} className="group relative bg-black/[0.03] border border-black/[0.04] p-4 rounded-xl hover:border-blue-500/30 transition-all">
                                         <div className="flex justify-between items-start mb-1">
-                                            <p className="text-[10px] text-white/40 font-bold uppercase">{field.label}</p>
+                                            <p className="text-[10px] text-gray-400 font-bold uppercase">{field.label}</p>
                                             <div className="text-[10px] text-emerald-400 flex items-center gap-1 font-mono">
                                                 <Fingerprint size={10} /> {(field.confidence * 100).toFixed(0)}%
                                             </div>
@@ -181,7 +181,7 @@ export function DocSentinel() {
                                 ))
                             ) : (
                                 <div className="h-full flex flex-col items-center justify-center text-center opacity-20">
-                                    <Layers size={48} className="mb-4 text-blue-400" />
+                                    <Layers size={48} className="mb-4 text-[#FF6B00]" />
                                     <p className="text-sm">No data extracted yet</p>
                                 </div>
                             )}
@@ -192,7 +192,7 @@ export function DocSentinel() {
                                 <AlertCircle className="text-yellow-500 shrink-0" size={16} />
                                 <div>
                                     <p className="text-[10px] font-bold text-yellow-500 uppercase">Risk Alert</p>
-                                    <p className="text-[10px] text-white/70">{ocrData.anomalies[0].suggestion}</p>
+                                    <p className="text-[10px] text-gray-500">{ocrData.anomalies[0].suggestion}</p>
                                 </div>
                             </div>
                         )}
@@ -205,26 +205,26 @@ export function DocSentinel() {
                         <div className="absolute top-0 right-0 w-32 h-32 -mr-8 -mt-8 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-colors"></div>
 
                         <div className="relative z-10">
-                            <h3 className="text-sm font-semibold text-white flex items-center gap-2 mb-6 uppercase tracking-wider">
+                            <h3 className="text-sm font-semibold text-[#1a1a1a] flex items-center gap-2 mb-6 uppercase tracking-wider">
                                 <Lock className="text-emerald-400 w-4 h-4" />
                                 Blockchain Notary Seal
                             </h3>
 
                             {notaryInfo ? (
                                 <div className="space-y-4">
-                                    <div className="flex justify-between items-end border-b border-white/5 pb-4">
+                                    <div className="flex justify-between items-end border-b border-black/[0.04] pb-4">
                                         <div>
-                                            <p className="text-[10px] text-white/40 font-bold uppercase">Chain ID</p>
-                                            <p className="text-xs font-mono text-white">{notaryInfo.chainId}</p>
+                                            <p className="text-[10px] text-gray-400 font-bold uppercase">Chain ID</p>
+                                            <p className="text-xs font-mono text-[#1a1a1a]">{notaryInfo.chainId}</p>
                                         </div>
                                         <div className="text-right">
-                                            <p className="text-[10px] text-white/40 font-bold uppercase">Block</p>
-                                            <p className="text-xs font-mono text-white">#{notaryInfo.blockNumber}</p>
+                                            <p className="text-[10px] text-gray-400 font-bold uppercase">Block</p>
+                                            <p className="text-xs font-mono text-[#1a1a1a]">#{notaryInfo.blockNumber}</p>
                                         </div>
                                     </div>
                                     <div className="space-y-2">
-                                        <p className="text-[10px] text-white/40 font-bold uppercase">Transaction Hash</p>
-                                        <p className="text-[10px] font-mono text-blue-300 break-all p-2 bg-black/40 rounded border border-white/5">
+                                        <p className="text-[10px] text-gray-400 font-bold uppercase">Transaction Hash</p>
+                                        <p className="text-[10px] font-mono text-blue-300 break-all p-2 bg-black/40 rounded border border-black/[0.04]">
                                             {notaryInfo.txHash}
                                         </p>
                                     </div>
@@ -233,7 +233,7 @@ export function DocSentinel() {
                                     </div>
                                 </div>
                             ) : (
-                                <p className="text-white/20 text-xs italic">Complete scan to notarize document...</p>
+                                <p className="text-gray-200 text-xs italic">Complete scan to notarize document...</p>
                             )}
                         </div>
                     </Card>
@@ -250,26 +250,26 @@ export function DocSentinel() {
                                 <Send className="text-blue-500" />
                                 Express Customs Dispatch
                             </h3>
-                            <p className="text-white/40 text-sm max-w-md">Automated filing to 190+ global port authorities via EDI & Blockchain Direct-Link.</p>
+                            <p className="text-gray-400 text-sm max-w-md">Automated filing to 190+ global port authorities via EDI & Blockchain Direct-Link.</p>
                         </div>
 
                         <div className="flex-1 max-w-xl w-full">
                             {isDispatching ? (
                                 <div className="space-y-4 w-full">
-                                    <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-blue-400">
+                                    <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-[#FF6B00]">
                                         <span>{dispatchStep === 1 ? 'Handshaking...' : dispatchStep === 2 ? 'Validating Fields...' : 'Transmission Success'}</span>
                                         <span>{dispatchStep * 33}%</span>
                                     </div>
-                                    <div className="h-3 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                                    <div className="h-3 w-full bg-black/[0.03] rounded-full overflow-hidden border border-black/[0.04]">
                                         <div className="h-full bg-blue-500 transition-all duration-1000" style={{ width: (dispatchStep * 33.33) + '%' }}></div>
                                     </div>
                                 </div>
                             ) : (
                                 <div className="flex justify-center md:justify-end gap-4 w-full">
-                                    <Button onClick={() => alert("This operational feature is currently in preview.")} variant="outline" className="border-white/10 text-white/60">
+                                    <Button onClick={() => alert("This operational feature is currently in preview.")} variant="outline" className="border-black/[0.08] text-gray-400">
                                         <Download className="mr-2" size={16} /> Bulk Export
                                     </Button>
-                                    <Button onClick={handleDispatch} className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 gap-2 h-12 shadow-lg shadow-emerald-500/20">
+                                    <Button onClick={handleDispatch} className="bg-emerald-600 hover:bg-emerald-500 text-[#1a1a1a] px-10 gap-2 h-12 shadow-lg shadow-emerald-500/20">
                                         <Globe size={18} />
                                         Initialize Global Dispatch
                                     </Button>

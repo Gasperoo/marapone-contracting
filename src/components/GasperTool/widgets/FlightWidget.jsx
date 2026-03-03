@@ -52,25 +52,25 @@ export function FlightTracker() {
     }, []);
 
     return (
-        <Card className="p-5 glass-panel border-0 bg-white/5 relative overflow-hidden h-full flex flex-col">
+        <Card className="p-5 glass-panel border-0 bg-black/[0.03] relative overflow-hidden h-full flex flex-col">
             <div className="flex justify-between items-center mb-4 flex-shrink-0">
-                <h3 className="font-semibold text-white flex items-center gap-2">
-                    <Plane size={18} className="text-blue-400 transform -rotate-45" />
+                <h3 className="font-semibold text-[#1a1a1a] flex items-center gap-2">
+                    <Plane size={18} className="text-[#FF6B00] transform -rotate-45" />
                     Live Air Traffic (Europe)
                 </h3>
-                <button onClick={fetchOpenSky} className="p-1 hover:bg-white/10 rounded-full transition-colors">
-                    <RefreshCw size={14} className={`text-white/60 ${loading ? 'animate-spin' : ''}`} />
+                <button onClick={fetchOpenSky} className="p-1 hover:bg-black/[0.06] rounded-full transition-colors">
+                    <RefreshCw size={14} className={`text-gray-400 ${loading ? 'animate-spin' : ''}`} />
                 </button>
             </div>
 
             <div className="mb-4 relative flex-shrink-0">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/30 h-3 w-3" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300 h-3 w-3" />
                 <input
                     type="text"
                     placeholder="Filter by Callsign..."
                     value={searchCallsign}
                     onChange={(e) => setSearchCallsign(e.target.value)}
-                    className="w-full bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs px-3 py-2 pl-8 text-white focus:outline-none focus:border-blue-400/50 transition-colors placeholder:text-white/20"
+                    className="w-full bg-black/[0.03] hover:bg-black/[0.06] border border-black/[0.08] rounded-lg text-xs px-3 py-2 pl-8 text-[#1a1a1a] focus:outline-none focus:border-blue-400/50 transition-colors placeholder:text-gray-200"
                 />
             </div>
 
@@ -78,26 +78,26 @@ export function FlightTracker() {
                 {flights
                     .filter(f => f.callsign.toLowerCase().includes(searchCallsign.toLowerCase()))
                     .map((flight, index) => (
-                        <div key={index} className="flex items-center justify-between p-2 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10 group cursor-pointer">
+                        <div key={index} className="flex items-center justify-between p-2 rounded-lg hover:bg-black/[0.03] transition-colors border border-transparent hover:border-black/[0.08] group cursor-pointer">
                             <div className="flex items-center gap-3">
                                 <div className="bg-blue-500/20 p-2 rounded-lg group-hover:bg-blue-500/30 transition-colors">
-                                    <Plane size={14} className="text-blue-400 transform -rotate-45" />
+                                    <Plane size={14} className="text-[#FF6B00] transform -rotate-45" />
                                 </div>
                                 <div>
-                                    <div className="text-sm font-bold text-white tracking-wide">{flight.callsign}</div>
-                                    <div className="text-[10px] text-white/50 flex items-center gap-1">
+                                    <div className="text-sm font-bold text-[#1a1a1a] tracking-wide">{flight.callsign}</div>
+                                    <div className="text-[10px] text-gray-500 flex items-center gap-1">
                                         <MapPin size={10} /> {flight.country}
                                     </div>
                                 </div>
                             </div>
                             <div className="text-right">
-                                <div className="text-xs text-white/90 font-mono">{(flight.velocity * 3.6).toFixed(0)} km/h</div>
-                                <div className="text-[10px] text-white/40">{flight.altitude ? (flight.altitude).toFixed(0) : 0}m Alt</div>
+                                <div className="text-xs text-gray-800 font-mono">{(flight.velocity * 3.6).toFixed(0)} km/h</div>
+                                <div className="text-[10px] text-gray-400">{flight.altitude ? (flight.altitude).toFixed(0) : 0}m Alt</div>
                             </div>
                         </div>
                     ))}
             </div>
-            <div className="mt-3 text-[10px] text-white/30 text-center flex-shrink-0 pt-2 border-t border-white/5">
+            <div className="mt-3 text-[10px] text-gray-300 text-center flex-shrink-0 pt-2 border-t border-black/[0.04]">
                 Data provided by OpenSky Network
             </div>
         </Card>

@@ -9,11 +9,11 @@ export function MarketDashboard() {
     return (
         <div className="space-y-6 pb-10">
             <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold flex items-center gap-2 text-white/90">
+                <h3 className="text-xl font-semibold flex items-center gap-2 text-gray-800">
                     <Globe className="text-blue-500" />
                     Global Market Intelligence
                 </h3>
-                <span className="text-xs font-semibold text-white/40 bg-white/5 px-3 py-1.5 rounded-full border border-white/5 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-gray-400 bg-black/[0.03] px-3 py-1.5 rounded-full border border-black/[0.04] uppercase tracking-wider">
                     Live Institutional Data
                 </span>
             </div>
@@ -21,9 +21,9 @@ export function MarketDashboard() {
             {/* Top Row: The "Money Grid" - Forex Cross Rates & Technical Sentiment */}
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 h-[450px]">
                 {/* 1. Forex Cross Rates (2/3 width) - The matrix of global trade */}
-                <div className="xl:col-span-2 rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative bg-[#0f172a] group hover:border-white/20 transition-all duration-300">
-                    <div className="absolute top-0 left-0 right-0 h-9 bg-gradient-to-r from-[#0f172a] to-transparent z-10 flex items-center px-4 border-b border-white/5 pointer-events-none">
-                        <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest flex items-center gap-2">
+                <div className="xl:col-span-2 rounded-2xl overflow-hidden border border-black/[0.08] shadow-2xl relative bg-white group hover:border-black/[0.12] transition-all duration-300">
+                    <div className="absolute top-0 left-0 right-0 h-9 bg-gradient-to-r from-[#0f172a] to-transparent z-10 flex items-center px-4 border-b border-black/[0.04] pointer-events-none">
+                        <span className="text-[10px] font-bold text-[#FF6B00] uppercase tracking-widest flex items-center gap-2">
                             <TrendingUp size={12} /> Forex Cross Rates
                         </span>
                     </div>
@@ -51,7 +51,7 @@ export function MarketDashboard() {
                 {/* 2. Technical Analysis Speedometers (1/3 width) */}
                 <div className="xl:col-span-1 grid grid-rows-2 gap-4">
                     {/* Oil Sentiment */}
-                    <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-[#0f172a] relative">
+                    <div className="rounded-2xl overflow-hidden border border-black/[0.08] shadow-lg bg-white relative">
                         <div className="absolute top-3 left-3 z-10 pointer-events-none">
                             <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest bg-black/40 px-2 py-0.5 rounded backdrop-blur-sm border border-amber-500/20">
                                 Brent Crude Oil
@@ -75,7 +75,7 @@ export function MarketDashboard() {
                         />
                     </div>
                     {/* Gold Sentiment */}
-                    <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-[#0f172a] relative">
+                    <div className="rounded-2xl overflow-hidden border border-black/[0.08] shadow-lg bg-white relative">
                         <div className="absolute top-3 left-3 z-10 pointer-events-none">
                             <span className="text-[10px] font-bold text-yellow-400 uppercase tracking-widest bg-black/40 px-2 py-0.5 rounded backdrop-blur-sm border border-yellow-400/20">
                                 Gold Spot
@@ -104,8 +104,8 @@ export function MarketDashboard() {
             {/* Middle Row: The Visuals - Heatmap & Timeline */}
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 h-[600px]">
                 {/* 3. Forex/Stock Heatmap (2/3 width) */}
-                <div className="xl:col-span-2 rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative bg-[#0f172a]">
-                    <div className="absolute top-0 left-0 right-0 h-9 bg-[#0f172a] z-10 flex items-center px-4 border-b border-white/5 pointer-events-none">
+                <div className="xl:col-span-2 rounded-2xl overflow-hidden border border-black/[0.08] shadow-2xl relative bg-white">
+                    <div className="absolute top-0 left-0 right-0 h-9 bg-white z-10 flex items-center px-4 border-b border-black/[0.04] pointer-events-none">
                         <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest flex items-center gap-2">
                             <BarChart2 size={12} /> Market Heatmap
                         </span>
@@ -135,9 +135,9 @@ export function MarketDashboard() {
                 </div>
 
                 {/* 4. News Timeline (1/3 width) */}
-                <div className="xl:col-span-1 rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative bg-[#0f172a]">
-                    <div className="absolute top-0 left-0 right-0 h-9 bg-[#0f172a] z-10 flex items-center px-4 border-b border-white/5 pointer-events-none">
-                        <span className="text-[10px] font-bold text-purple-400 uppercase tracking-widest flex items-center gap-2">
+                <div className="xl:col-span-1 rounded-2xl overflow-hidden border border-black/[0.08] shadow-2xl relative bg-white">
+                    <div className="absolute top-0 left-0 right-0 h-9 bg-white z-10 flex items-center px-4 border-b border-black/[0.04] pointer-events-none">
+                        <span className="text-[10px] font-bold text-[#FF6B00] uppercase tracking-widest flex items-center gap-2">
                             <Newspaper size={12} /> Global Market News
                         </span>
                     </div>
@@ -162,7 +162,7 @@ export function MarketDashboard() {
             </div>
 
             {/* Bottom Row: Ticker Tape (Logistics Focus) */}
-            <div className="h-[72px] rounded-xl overflow-hidden border border-white/10 shadow-lg bg-[#0f172a] flex items-center">
+            <div className="h-[72px] rounded-xl overflow-hidden border border-black/[0.08] shadow-lg bg-white flex items-center">
                 <TradingViewWidget
                     src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
                     containerId="tv-logistics-tape"

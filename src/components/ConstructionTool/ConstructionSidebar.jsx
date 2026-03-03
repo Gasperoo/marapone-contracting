@@ -64,10 +64,10 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
                 >
                     CT
                 </div>
-                <h1 className={`font-bold text-lg tracking-tight text-white transition-all duration-300 ${isCollapsed ? 'opacity-0 w-0 hidden' : 'opacity-100'}`}>
+                <h1 className={`font-bold text-lg tracking-tight text-[#1a1a1a] transition-all duration-300 ${isCollapsed ? 'opacity-0 w-0 hidden' : 'opacity-100'}`}>
                     Gasper<span className="ct-gradient-text">Build</span>
                 </h1>
-                <button onClick={closeMobileMenu} className="md:hidden ml-auto text-white/60 hover:text-white">
+                <button onClick={closeMobileMenu} className="md:hidden ml-auto text-gray-500 hover:text-gray-900">
                     <X size={20} />
                 </button>
             </div>
@@ -83,7 +83,7 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
                                 fontWeight: 700,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.12em',
-                                color: 'rgba(255,255,255,0.2)',
+                                color: 'rgba(0,0,0,0.3)',
                             }}>
                                 {group.label}
                             </div>
@@ -92,7 +92,7 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
                             <div style={{
                                 margin: '8px 12px',
                                 height: 1,
-                                background: 'rgba(255,255,255,0.06)',
+                                background: 'rgba(0,0,0,0.06)',
                             }} />
                         )}
                         {group.items.map((item) => {
@@ -107,7 +107,7 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
                                     <item.icon
                                         size={18}
                                         style={{
-                                            color: isActive ? '#FF6B00' : 'rgba(255,255,255,0.5)',
+                                            color: isActive ? '#FF6B00' : '#6b7280',
                                             filter: isActive ? 'drop-shadow(0 0 6px rgba(255,107,0,0.5))' : 'none',
                                             transition: 'all 0.3s',
                                         }}
@@ -115,7 +115,7 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
                                     <span className="nav-label" style={{
                                         fontSize: '0.8rem',
                                         fontWeight: isActive ? 600 : 400,
-                                        color: isActive ? 'white' : 'rgba(255,255,255,0.55)',
+                                        color: isActive ? '#1a1a1a' : '#6b7280',
                                     }}>
                                         {item.label}
                                     </span>
@@ -137,7 +137,7 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
                 ))}
 
                 {/* Separator */}
-                <div style={{ margin: '8px 12px', height: 1, background: 'rgba(255,255,255,0.06)' }} />
+                <div style={{ margin: '8px 12px', height: 1, background: 'rgba(0,0,0,0.06)' }} />
 
                 {/* Footer Nav */}
                 {footerItems.map((item) => (
@@ -147,10 +147,10 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
                         onClick={() => item.action?.()}
                         title={isCollapsed ? item.label : undefined}
                     >
-                        <item.icon size={18} style={{ color: 'rgba(255,255,255,0.4)' }} />
+                        <item.icon size={18} style={{ color: '#6b7280' }} />
                         <span className="nav-label" style={{
                             fontSize: '0.8rem',
-                            color: 'rgba(255,255,255,0.45)',
+                            color: '#6b7280',
                         }}>
                             {item.label}
                         </span>
@@ -159,10 +159,10 @@ export function ConstructionSidebar({ activeTab, onTabChange, isCollapsed, toggl
             </div>
 
             {/* Collapse Toggle */}
-            <div className="p-4 border-t border-white/[0.04] hidden md:block">
+            <div className="p-4 border-t border-black/[0.06] hidden md:block">
                 <button
                     onClick={toggleCollapse}
-                    className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-white/5 text-white/40 hover:text-white transition-colors"
+                    className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-black/5 text-gray-400 hover:text-gray-700 transition-colors"
                 >
                     {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
                 </button>

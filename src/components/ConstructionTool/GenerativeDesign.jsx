@@ -54,7 +54,7 @@ export function GenerativeDesign() {
                         initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
                         <c.icon size={14} style={{ color: '#a855f7', margin: '0 auto 6px', display: 'block', filter: 'drop-shadow(0 0 4px rgba(168,85,247,0.4))' }} />
                         <div className="ct-kpi-label">{c.name}</div>
-                        <div className="ct-kpi-value" style={{ fontSize: '0.95rem', color: 'white' }}>{c.value}</div>
+                        <div className="ct-kpi-value" style={{ fontSize: '0.95rem', color: '#1a1a1a' }}>{c.value}</div>
                     </motion.div>
                 ))}
             </div>
@@ -172,9 +172,9 @@ export function GenerativeDesign() {
                                 </div>
 
                                 <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{variant.name}</div>
-                                    <div style={{ display: 'flex', gap: 12, marginTop: 4, fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
-                                        <span>Cost: <strong style={{ color: 'rgba(255,255,255,0.7)' }}>{variant.cost}</strong></span>
+                                    <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{variant.name}</div>
+                                    <div style={{ display: 'flex', gap: 12, marginTop: 4, fontSize: '0.65rem', color: '#9ca3af' }}>
+                                        <span>Cost: <strong style={{ color: '#4b5563' }}>{variant.cost}</strong></span>
                                         <span>Energy: <strong style={{ color: '#22c55e' }}>{variant.energy}</strong></span>
                                         <span>Light: <strong style={{ color: '#f59e0b' }}>{variant.light}</strong></span>
                                     </div>

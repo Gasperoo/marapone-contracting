@@ -25,9 +25,9 @@ export function RailTracker() {
     }, []);
 
     return (
-        <Card className="p-5 glass-panel border-0 bg-white/5 relative overflow-hidden h-full flex flex-col">
+        <Card className="p-5 glass-panel border-0 bg-black/[0.03] relative overflow-hidden h-full flex flex-col">
             <div className="flex justify-between items-center mb-4">
-                <h3 className="font-semibold text-white flex items-center gap-2">
+                <h3 className="font-semibold text-[#1a1a1a] flex items-center gap-2">
                     <Train size={18} className="text-amber-400" />
                     Rail Freight Tracker
                 </h3>
@@ -38,11 +38,11 @@ export function RailTracker() {
 
             <div className="space-y-4 overflow-y-auto custom-scrollbar pr-1 flex-1">
                 {shipments.map((shipment, index) => (
-                    <div key={index} className="p-3 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                    <div key={index} className="p-3 rounded-lg bg-black/[0.03] border border-black/[0.04] hover:bg-black/[0.06] transition-colors">
                         <div className="flex justify-between mb-2">
                             <div className="flex items-center gap-2">
-                                <Package size={14} className="text-white/60" />
-                                <span className="text-sm font-bold text-white">{shipment.id}</span>
+                                <Package size={14} className="text-gray-400" />
+                                <span className="text-sm font-bold text-[#1a1a1a]">{shipment.id}</span>
                             </div>
                             <div className={`flex items-center gap-1 text-xs px-2 py-0.5 rounded-full ${shipment.status === 'On Time' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
                                 {shipment.status === 'On Time' ? <CheckCircle2 size={10} /> : <AlertCircle size={10} />}
@@ -50,7 +50,7 @@ export function RailTracker() {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-1 text-[11px] text-white/50 mb-3">
+                        <div className="flex items-center gap-1 text-[11px] text-gray-500 mb-3">
                             <MapPin size={10} /> {shipment.route}
                         </div>
 
@@ -59,24 +59,24 @@ export function RailTracker() {
                                 <span className="text-[10px] font-semibold text-amber-200 py-0.5 rounded uppercase">
                                     {shipment.carrier}
                                 </span>
-                                <span className="text-[10px] font-semibold text-white">
+                                <span className="text-[10px] font-semibold text-[#1a1a1a]">
                                     {shipment.progress.toFixed(0)}%
                                 </span>
                             </div>
-                            <div className="overflow-hidden h-1.5 mb-1 text-xs flex rounded bg-white/10">
+                            <div className="overflow-hidden h-1.5 mb-1 text-xs flex rounded bg-black/[0.06]">
                                 <div
                                     style={{ width: `${shipment.progress}%` }}
-                                    className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center transition-all duration-1000 ${shipment.status === 'Delayed' ? 'bg-red-500' : 'bg-amber-500'}`}
+                                    className={`shadow-none flex flex-col text-center whitespace-nowrap text-[#1a1a1a] justify-center transition-all duration-1000 ${shipment.status === 'Delayed' ? 'bg-red-500' : 'bg-amber-500'}`}
                                 ></div>
                             </div>
-                            <div className="text-right text-[10px] text-white/40">
+                            <div className="text-right text-[10px] text-gray-400">
                                 ETA: {shipment.eta}
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="mt-3 text-[10px] text-white/30 text-center pt-2 border-t border-white/5">
+            <div className="mt-3 text-[10px] text-gray-300 text-center pt-2 border-t border-black/[0.04]">
                 Connected to Regional Rail APIs
             </div>
         </Card>

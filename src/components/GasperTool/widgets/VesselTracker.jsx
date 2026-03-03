@@ -114,15 +114,15 @@ export function VesselTracker() {
     };
 
     return (
-        <Card className="p-5 glass-panel border-0 bg-white/5 relative overflow-hidden h-full flex flex-col">
+        <Card className="p-5 glass-panel border-0 bg-black/[0.03] relative overflow-hidden h-full flex flex-col">
             <div className="flex justify-between items-center mb-4 flex-shrink-0">
-                <h3 className="font-semibold text-white flex items-center gap-2">
-                    <Ship size={18} className="text-cyan-400" />
+                <h3 className="font-semibold text-[#1a1a1a] flex items-center gap-2">
+                    <Ship size={18} className="text-[#FF6B00]" />
                     Global Vessel Tracking
                 </h3>
                 <button
                     onClick={toggleMode}
-                    className={`text-[10px] px-2 py-1 rounded border transition-colors ${isDemo ? 'bg-cyan-500/20 border-cyan-500/50 text-cyan-300' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10'}`}
+                    className={`text-[10px] px-2 py-1 rounded border transition-colors ${isDemo ? 'bg-cyan-500/20 border-cyan-500/50 text-[#FF6B00]' : 'bg-black/[0.03] border-black/[0.08] text-gray-500 hover:bg-black/[0.06]'}`}
                 >
                     {isDemo ? 'DEMO MODE' : 'LIVE API'}
                 </button>
@@ -135,11 +135,11 @@ export function VesselTracker() {
                         placeholder="Enter AISStream API Key"
                         value={apiKey}
                         onChange={(e) => setApiKey(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white mb-2"
+                        className="w-full bg-black/[0.03] border border-black/[0.08] rounded px-2 py-1 text-xs text-[#1a1a1a] mb-2"
                     />
                     <button
                         onClick={connectAISStream}
-                        className="w-full bg-cyan-600 hover:bg-cyan-500 text-white text-xs py-1.5 rounded transition-colors"
+                        className="w-full bg-cyan-600 hover:bg-cyan-500 text-[#1a1a1a] text-xs py-1.5 rounded transition-colors"
                     >
                         Connect WebSocket
                     </button>
@@ -148,27 +148,27 @@ export function VesselTracker() {
 
             <div className="flex-1 overflow-y-auto custom-scrollbar space-y-2 pr-1">
                 {vessels.map((v, i) => (
-                    <div key={i} className="flex items-center justify-between p-2 rounded bg-white/5 border border-white/5 hover:border-cyan-500/30 transition-all">
+                    <div key={i} className="flex items-center justify-between p-2 rounded bg-black/[0.03] border border-black/[0.04] hover:border-cyan-500/30 transition-all">
                         <div className="flex items-center gap-3">
-                            <div className="p-1.5 rounded bg-cyan-900/40 text-cyan-400">
+                            <div className="p-1.5 rounded bg-cyan-900/40 text-[#FF6B00]">
                                 {v.status === 'Moored' ? <Anchor size={14} /> : <Navigation size={14} className={v.status === 'Underway' ? 'transform rotate-45' : ''} />}
                             </div>
                             <div>
-                                <div className="text-sm font-bold text-white leading-none">{v.name}</div>
-                                <div className="text-[10px] text-white/50 mt-1 flex items-center gap-1">
+                                <div className="text-sm font-bold text-[#1a1a1a] leading-none">{v.name}</div>
+                                <div className="text-[10px] text-gray-500 mt-1 flex items-center gap-1">
                                     <Map size={10} /> {v.lat.toFixed(2)}, {v.lon.toFixed(2)}
                                 </div>
                             </div>
                         </div>
                         <div className="text-right">
-                            <div className="text-xs font-mono text-cyan-300">{v.speed.toFixed(1)} kn</div>
-                            <div className="text-[10px] text-white/40">{v.dest}</div>
+                            <div className="text-xs font-mono text-[#FF6B00]">{v.speed.toFixed(1)} kn</div>
+                            <div className="text-[10px] text-gray-400">{v.dest}</div>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="mt-3 pt-2 border-t border-white/5 flex justify-between items-center text-[10px] text-white/40">
+            <div className="mt-3 pt-2 border-t border-black/[0.04] flex justify-between items-center text-[10px] text-gray-400">
                 <span>{vessels.length} Active Vessels</span>
                 <span className="flex items-center gap-1">
                     {status === 'connected' ? <Wifi size={10} className="text-green-400" /> : <WifiOff size={10} />}

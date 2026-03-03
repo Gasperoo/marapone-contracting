@@ -100,8 +100,8 @@ export function ConstructionDashboard({ onNavigate }) {
                             }}>
                                 <mod.icon size={18} style={{ color: mod.color, transition: 'transform 0.3s' }} />
                             </div>
-                            <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white', marginBottom: 4 }}>{mod.label}</div>
-                            <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)' }}>{mod.desc}</div>
+                            <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a', marginBottom: 4 }}>{mod.label}</div>
+                            <div style={{ fontSize: '0.7rem', color: '#9ca3af' }}>{mod.desc}</div>
                         </motion.div>
                     ))}
                 </div>

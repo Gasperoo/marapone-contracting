@@ -85,10 +85,10 @@ export function ClientFeedbackFusion() {
                                     transition={{ delay: 0.2 + idx * 0.06 }}
                                 >
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                                        <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{proj.project}</span>
+                                        <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{proj.project}</span>
                                         <span style={{ fontSize: '1.1rem', fontWeight: 800, color: sc.color }}>{proj.score}</span>
                                     </div>
-                                    <div style={{ display: 'flex', gap: 12, fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
+                                    <div style={{ display: 'flex', gap: 12, fontSize: '0.65rem', color: '#9ca3af' }}>
                                         <span className={sc.badge} style={{ fontSize: '0.5rem', padding: '2px 6px' }}>{proj.sentiment}</span>
                                         <span>{proj.reviews} reviews</span>
                                         <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
@@ -120,7 +120,7 @@ export function ClientFeedbackFusion() {
                                 transition={{ delay: 0.3 + idx * 0.08 }}
                             >
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{dispute.client}</span>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{dispute.client}</span>
                                     <span className={`ct-badge ct-badge-${dispute.risk === 'high' ? 'red' : 'amber'}`} style={{ fontSize: '0.5rem' }}>
                                         {dispute.probability} risk
                                     </span>
@@ -130,7 +130,7 @@ export function ClientFeedbackFusion() {
                                     <Lightbulb size={12} className="ai-icon" />
                                     <div>
                                         <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#FF6B00' }}>AI Suggestion: </span>
-                                        <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)' }}>{dispute.suggestedAction}</span>
+                                        <span style={{ fontSize: '0.65rem', color: '#6b7280' }}>{dispute.suggestedAction}</span>
                                     </div>
                                 </div>
                             </motion.div>
@@ -165,7 +165,7 @@ export function ClientFeedbackFusion() {
                                 </div>
                                 <div style={{ flex: 1, minWidth: 0 }}>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-                                        <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'white' }}>{comm.client}</span>
+                                        <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a' }}>{comm.client}</span>
                                         <span className={sc.badge} style={{ fontSize: '0.45rem', padding: '1px 5px' }}>{comm.sentiment}</span>
                                     </div>
                                     <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{comm.message}</p>
@@ -194,7 +194,7 @@ export function ClientFeedbackFusion() {
                             transition={{ delay: 0.5 + idx * 0.08 }}
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'white' }}>{upsell.client}</span>
+                                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{upsell.client}</span>
                                 <span className="ct-gradient-text" style={{ fontSize: '1.1rem', fontWeight: 800 }}>{upsell.estimatedValue}</span>
                             </div>
                             <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>{upsell.suggestion}</p>

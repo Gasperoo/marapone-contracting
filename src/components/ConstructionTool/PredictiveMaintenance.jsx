@@ -101,8 +101,8 @@ export function PredictiveMaintenance() {
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
                                 <div>
-                                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'white' }}>{eq.name}</div>
-                                    <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1a1a1a' }}>{eq.name}</div>
+                                    <div style={{ fontSize: '0.65rem', color: '#9ca3af', marginTop: 2 }}>
                                         Next maintenance: {eq.nextMaint}
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ export function PredictiveMaintenance() {
                                 {eq.sensors.map((s, si) => (
                                     <div key={si}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                                            <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>{s.label}</span>
+                                            <span style={{ fontSize: '0.65rem', color: '#9ca3af' }}>{s.label}</span>
                                             <span style={{ fontSize: '0.65rem', fontWeight: 600, fontVariantNumeric: 'tabular-nums', color: s.status === 'warn' ? '#f59e0b' : 'rgba(255,255,255,0.7)' }}>
                                                 {s.value}
                                             </span>
@@ -172,11 +172,11 @@ export function PredictiveMaintenance() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.3 + idx * 0.08 }}
                             >
-                                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'white', marginBottom: 6 }}>{pred.equipment}</div>
-                                <div style={{ display: 'flex', gap: 16, fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
+                                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a', marginBottom: 6 }}>{pred.equipment}</div>
+                                <div style={{ display: 'flex', gap: 16, fontSize: '0.65rem', color: '#9ca3af' }}>
                                     <span>Probability: <strong style={{ color: pred.severity === 'high' ? '#ef4444' : pred.severity === 'medium' ? '#f59e0b' : '#22c55e' }}>{pred.prob}</strong></span>
-                                    <span>Window: <strong style={{ color: 'rgba(255,255,255,0.6)' }}>{pred.timeframe}</strong></span>
-                                    <span>Est. Cost: <strong style={{ color: 'rgba(255,255,255,0.6)' }}>{pred.cost}</strong></span>
+                                    <span>Window: <strong style={{ color: '#6b7280' }}>{pred.timeframe}</strong></span>
+                                    <span>Est. Cost: <strong style={{ color: '#6b7280' }}>{pred.cost}</strong></span>
                                 </div>
                             </motion.div>
                         ))}
@@ -212,7 +212,7 @@ export function PredictiveMaintenance() {
                                     <div style={{ fontSize: '0.6rem', fontWeight: 700, color: item.priority === 'high' ? '#ef4444' : 'rgba(255,255,255,0.5)' }}>{item.date}</div>
                                 </div>
                                 <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: '0.8rem', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>{item.task}</div>
+                                    <div style={{ fontSize: '0.8rem', fontWeight: 500, color: '#374151' }}>{item.task}</div>
                                 </div>
                                 <span className={`ct-badge ct-badge-${item.status === 'confirmed' ? 'green' : item.status === 'scheduled' ? 'blue' : 'amber'}`}
                                     style={{ fontSize: '0.55rem' }}>

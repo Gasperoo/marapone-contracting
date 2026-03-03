@@ -6,19 +6,19 @@ export default function LiveImpact() {
     return (
         <section className="py-32 relative z-10">
             {/* Background elements */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030014]/50 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#f3f4f6]/50 to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-green-400 text-sm font-semibold mb-6 border border-green-500/30 shadow-[0_0_15px_rgba(74,222,128,0.2)]">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#1a1a1a]/10 text-green-600 text-sm font-semibold mb-6 shadow-sm">
                         <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
                         </span>
                         LIVE NETWORK ACTIVITY
                     </div>
-                    <h2 className="text-4xl font-bold text-white mb-6">Real-Time Global Impact</h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto">
+                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Real-Time Global Impact</h2>
+                    <p className="text-[#6b7280] max-w-2xl mx-auto">
                         See how Gasper is optimizing supply chains around the world right now.
                     </p>
                 </div>
@@ -56,10 +56,10 @@ export default function LiveImpact() {
                 </div>
 
                 {/* Live Ticker */}
-                <div className="w-full glass-panel overflow-hidden border-t border-b border-l-0 border-r-0 rounded-none md:rounded-2xl md:border-l md:border-r border-white/10">
-                    <div className="flex items-center py-4 bg-white/5 border-b border-white/5 px-6">
-                        <Activity size={18} className="text-[#22d3ee] mr-3 animate-pulse" />
-                        <span className="text-sm font-bold text-white tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">Live Network Events</span>
+                <div className="w-full bg-white overflow-hidden border-t border-b border-l-0 border-r-0 rounded-none md:rounded-2xl md:border-l md:border-r border-[#1a1a1a]/10 shadow-sm">
+                    <div className="flex items-center py-4 bg-[#f9fafb] border-b border-[#1a1a1a]/10 px-6">
+                        <Activity size={18} className="text-[#0EA5E9] mr-3 animate-pulse" />
+                        <span className="text-sm font-bold tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#1a1a1a] to-[#6b7280]">Live Network Events</span>
                     </div>
                     <div className="py-4 relative flex overflow-x-hidden">
                         <div className="animate-marquee whitespace-nowrap flex gap-12 items-center">
@@ -108,16 +108,16 @@ function StatCard({ icon, label, value, suffix, delay }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="p-8 glass-panel group hover:border-[#0EA5E9]/50 transition-all duration-500"
+            className="p-8 bg-white rounded-2xl border border-[#1a1a1a]/10 shadow-sm hover:shadow-md group hover:border-[#0EA5E9]/50 transition-all duration-500"
             whileHover={{ y: -5 }}
         >
             <div className="flex items-center gap-4 mb-6">
-                <div className="p-4 rounded-xl bg-white/5 group-hover:bg-[#0EA5E9]/20 transition-colors shadow-inner shadow-white/10">
+                <div className="p-4 rounded-xl bg-[#f9fafb] border border-[#1a1a1a]/5 group-hover:bg-[#0EA5E9]/10 transition-colors">
                     {React.cloneElement(icon, { size: 28 })}
                 </div>
-                <div className="text-slate-400 text-sm font-semibold tracking-wide uppercase">{label}</div>
+                <div className="text-[#6b7280] text-sm font-semibold tracking-wide uppercase">{label}</div>
             </div>
-            <div className="text-5xl font-black text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
+            <div className="text-5xl font-black bg-clip-text text-transparent bg-gradient-to-b from-[#1a1a1a] to-[#4b5563]">
                 <motion.span>{rounded}</motion.span>{suffix}
             </div>
         </motion.div>
@@ -126,9 +126,9 @@ function StatCard({ icon, label, value, suffix, delay }) {
 
 function TickerItem({ type, text }) {
     const colors = {
-        success: 'text-emerald-400',
-        warning: 'text-yellow-400',
-        neutral: 'text-slate-300'
+        success: 'text-emerald-600',
+        warning: 'text-amber-500',
+        neutral: 'text-[#6b7280]'
     };
 
     const icons = {
@@ -140,7 +140,7 @@ function TickerItem({ type, text }) {
     return (
         <div className="flex items-center gap-2 text-sm">
             <span className={colors[type]}>{icons[type]}</span>
-            <span className="text-slate-300 font-mono">{text}</span>
+            <span className="text-[#4b5563] font-mono">{text}</span>
         </div>
     );
 }

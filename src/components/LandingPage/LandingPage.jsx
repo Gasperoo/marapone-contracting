@@ -635,26 +635,26 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                                             <section id="how-it-works" className="how-it-works-section relative py-32 z-10">
                                                 <div className="section-header">
-                                                    <h2 className="section-title">From Chaos to Control</h2>
-                                                    <p className="section-subtitle text-lg">A simple, powerful workflow designed for modern logistics.</p>
+                                                    <h2 className="section-title text-[#1a1a1a]">From Chaos to Control</h2>
+                                                    <p className="section-subtitle text-lg text-[#6b7280]">A simple, powerful workflow designed for modern logistics.</p>
                                                 </div>
 
                                                 <div className="workflow-steps">
-                                                    <div className="step-line"></div>
-                                                    <div className="step-card group">
-                                                        <div className="step-number">01</div>
-                                                        <h3 className="step-title">Connect</h3>
-                                                        <p className="step-desc">Integrate your existing ERP and carrier data streams in minutes.</p>
+                                                    <div className="step-line border-[#1a1a1a]/10"></div>
+                                                    <div className="step-card group bg-white border border-[#1a1a1a]/10 shadow-sm">
+                                                        <div className="step-number bg-[#FF6B00]/10 text-[#FF6B00]">01</div>
+                                                        <h3 className="step-title text-[#1a1a1a]">Connect</h3>
+                                                        <p className="step-desc text-[#6b7280]">Integrate your existing ERP and carrier data streams in minutes.</p>
                                                     </div>
-                                                    <div className="step-card group">
-                                                        <div className="step-number">02</div>
-                                                        <h3 className="step-title">Analyze</h3>
-                                                        <p className="step-desc">AI models process millions of data points to identify risks and opportunities.</p>
+                                                    <div className="step-card group bg-white border border-[#1a1a1a]/10 shadow-sm">
+                                                        <div className="step-number bg-[#F59E0B]/10 text-[#F59E0B]">02</div>
+                                                        <h3 className="step-title text-[#1a1a1a]">Analyze</h3>
+                                                        <p className="step-desc text-[#6b7280]">AI models process millions of data points to identify risks and opportunities.</p>
                                                     </div>
-                                                    <div className="step-card group">
-                                                        <div className="step-number">03</div>
-                                                        <h3 className="step-title">Optimize</h3>
-                                                        <p className="step-desc">Execute automated strategies to reduce costs and improve delivery times.</p>
+                                                    <div className="step-card group bg-white border border-[#1a1a1a]/10 shadow-sm">
+                                                        <div className="step-number bg-[#0EA5E9]/10 text-[#0EA5E9]">03</div>
+                                                        <h3 className="step-title text-[#1a1a1a]">Optimize</h3>
+                                                        <p className="step-desc text-[#6b7280]">Execute automated strategies to reduce costs and improve delivery times.</p>
                                                     </div>
                                                 </div>
                                             </section>
@@ -668,15 +668,15 @@ export default function LandingPage({ comingSoonMode = false }) {
                                                 transition={{ duration: 0.8 }}
                                             >
                                                 <div className="section-header">
-                                                    <h2 className="section-title">Engineered for Every Sector</h2>
+                                                    <h2 className="section-title text-[#1a1a1a]">Engineered for Every Sector</h2>
                                                 </div>
-                                                <div className="industries-grid">
-                                                    <div className="industry-card"><Anchor className="industry-icon" /><span>Maritime Logistics</span></div>
-                                                    <div className="industry-card"><Truck className="industry-icon" /><span>Freight Forwarding</span></div>
-                                                    <div className="industry-card"><Box className="industry-icon" /><span>Retail & E-commerce</span></div>
-                                                    <div className="industry-card"><Layers className="industry-icon" /><span>Manufacturing</span></div>
-                                                    <div className="industry-card"><Activity className="industry-icon" /><span>Cold Chain</span></div>
-                                                    <div className="industry-card"><Globe className="industry-icon" /><span>Global Trade</span></div>
+                                                <div className="industries-grid text-[#4b5563]">
+                                                    <div className="industry-card bg-white border border-[#1a1a1a]/10 shadow-sm hover:shadow-md"><Anchor className="industry-icon text-[#0EA5E9]" /><span>Maritime Logistics</span></div>
+                                                    <div className="industry-card bg-white border border-[#1a1a1a]/10 shadow-sm hover:shadow-md"><Truck className="industry-icon text-[#0EA5E9]" /><span>Freight Forwarding</span></div>
+                                                    <div className="industry-card bg-white border border-[#1a1a1a]/10 shadow-sm hover:shadow-md"><Box className="industry-icon text-[#0EA5E9]" /><span>Retail & E-commerce</span></div>
+                                                    <div className="industry-card bg-white border border-[#1a1a1a]/10 shadow-sm hover:shadow-md"><Layers className="industry-icon text-[#0EA5E9]" /><span>Manufacturing</span></div>
+                                                    <div className="industry-card bg-white border border-[#1a1a1a]/10 shadow-sm hover:shadow-md"><Activity className="industry-icon text-[#0EA5E9]" /><span>Cold Chain</span></div>
+                                                    <div className="industry-card bg-white border border-[#1a1a1a]/10 shadow-sm hover:shadow-md"><Globe className="industry-icon text-[#0EA5E9]" /><span>Global Trade</span></div>
                                                 </div>
                                             </motion.section>
                                         </>
@@ -699,12 +699,12 @@ export default function LandingPage({ comingSoonMode = false }) {
                                     {/* Final CTA */}
                                     <section className="final-cta-section relative mt-20">
                                         <div className="absolute inset-0 z-0">
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10" />
-                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full opacity-20" style={{ background: `radial-gradient(circle at top, ${themeColor}, transparent)` }} />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[#f9fafb] to-transparent z-10" />
+                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full opacity-10" style={{ background: `radial-gradient(circle at top, ${themeColor}, transparent)` }} />
                                         </div>
                                         <div className="final-cta-content relative z-20">
-                                            <h2>Ready to Modernize Your Operations?</h2>
-                                            <p>Join thousands of forward-thinking leaders today.</p>
+                                            <h2 className="text-[#1a1a1a]">Ready to Modernize Your Operations?</h2>
+                                            <p className="text-[#4b5563]">Join thousands of forward-thinking leaders today.</p>
                                             <button onClick={() => setIsContactModalOpen(true)} className="btn-primary mt-8 inline-block" style={{ backgroundColor: themeColor, borderColor: themeColor, color: '#fff' }}>
                                                 Book a demo
                                             </button>

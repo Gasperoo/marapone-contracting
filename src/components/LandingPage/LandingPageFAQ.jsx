@@ -33,7 +33,7 @@ export function LandingPageFAQ() {
     return (
         <section className="py-24 max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-[#1a1a1a] mb-6">Frequently Asked Questions</h2>
             </div>
 
             <div className="space-y-4">
@@ -49,12 +49,12 @@ function FAQItem({ question, answer }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="glass-panel overflow-hidden transition-all duration-300 hover:border-[#0EA5E9]/40 mb-4 group hover:shadow-[0_0_20px_rgba(14,165,233,0.15)]">
+        <div className="bg-white border border-[#1a1a1a]/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#0EA5E9]/40 mb-4 group shadow-sm hover:shadow-md">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
             >
-                <span className="text-lg font-medium text-white">{question}</span>
+                <span className="text-lg font-medium text-[#1a1a1a]">{question}</span>
                 <span className={`text-[#0EA5E9] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
                     {isOpen ? <Minus /> : <Plus />}
                 </span>
@@ -67,7 +67,7 @@ function FAQItem({ question, answer }) {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                     >
-                        <div className="p-6 pt-0 text-slate-400 leading-relaxed border-t border-white/5">
+                        <div className="p-6 pt-0 text-[#6b7280] leading-relaxed border-t border-[#1a1a1a]/5">
                             {answer}
                         </div>
                     </motion.div>

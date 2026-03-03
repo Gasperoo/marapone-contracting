@@ -443,7 +443,7 @@ html {
     font-weight: 900;
     line-height: 1;
     margin-bottom: 1rem;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(to bottom, rgba(26, 26, 26, 0.6), rgba(26, 26, 26, 0.1));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

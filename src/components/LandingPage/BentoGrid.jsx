@@ -54,8 +54,8 @@ export function BentoGrid() {
     return (
         <section className="py-24 px-6 max-w-7xl mx-auto">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Why Gasper?</h2>
-                <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+                <h2 className="text-3xl md:text-5xl font-bold text-[#1a1a1a] mb-6">Why Gasper?</h2>
+                <p className="text-[#6b7280] max-w-2xl mx-auto text-lg">
                     Click any card to explore our core capabilities.
                 </p>
             </div>
@@ -66,20 +66,20 @@ export function BentoGrid() {
                         key={item.id}
                         layoutId={item.id}
                         onClick={() => setSelectedId(item.id)}
-                        className={`glass-panel p-6 relative overflow-hidden group hover:border-[#0EA5E9]/50 transition-all duration-500 cursor-pointer ${item.className}`}
+                        className={`bg-white border border-[#1a1a1a]/10 rounded-2xl p-6 relative overflow-hidden group hover:border-[#0EA5E9]/50 transition-all shadow-sm hover:shadow-md duration-500 cursor-pointer ${item.className}`}
                         whileHover={{ scale: 1.02, y: -5 }}
                         whileTap={{ scale: 0.98 }}
                     >
                         {item.bgImage && (
                             <>
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="relative z-10 h-full flex flex-col justify-between">
                                     <div>
                                         <div className="mb-4">{item.icon}</div>
-                                        <h3 className="text-2xl font-bold text-white mb-2">{item.title}</h3>
-                                        <p className="text-slate-400 line-clamp-2">{item.subtitle}</p>
+                                        <h3 className="text-2xl font-bold text-[#1a1a1a] mb-2">{item.title}</h3>
+                                        <p className="text-[#4b5563] line-clamp-2">{item.subtitle}</p>
                                     </div>
-                                    <div className={`w-full h-32 bg-cover bg-center rounded-xl opacity-60 mix-blend-screen grayscale group-hover:grayscale-0 transition-all duration-500`} style={{ backgroundImage: `url(${item.bgImage})` }} />
+                                    <div className={`w-full h-32 bg-cover bg-center rounded-xl opacity-60 mix-blend-multiply transition-all duration-500`} style={{ backgroundImage: `url(${item.bgImage})` }} />
                                 </div>
                             </>
                         )}
@@ -89,13 +89,13 @@ export function BentoGrid() {
                                 <div className={`absolute inset-0 bg-gradient-to-t ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                                 <div className="relative z-10 h-full flex flex-col">
                                     <div className="mb-4">{item.icon}</div>
-                                    <h3 className="text-2xl font-bold text-white mb-2">{item.title}</h3>
-                                    <p className="text-slate-400 mb-4">{item.subtitle}</p>
+                                    <h3 className="text-2xl font-bold text-[#1a1a1a] mb-2">{item.title}</h3>
+                                    <p className="text-[#4b5563] mb-4">{item.subtitle}</p>
 
                                     {/* Abstract Visual for AI */}
                                     <div className="mt-auto space-y-3">
                                         {[1, 2, 3].map(i => (
-                                            <div key={i} className="h-2 bg-white/10 rounded-full w-full overflow-hidden">
+                                            <div key={i} className="h-2 bg-[#1a1a1a]/5 rounded-full w-full overflow-hidden">
                                                 <div className="h-full bg-cyan-500/50 rounded-full w-[80%]" />
                                             </div>
                                         ))}
@@ -107,8 +107,8 @@ export function BentoGrid() {
                         {!item.bgImage && !item.gradient && (
                             <>
                                 <div className="mb-2 group-hover:scale-110 transition-transform">{item.icon}</div>
-                                <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                                {item.subtitle && <p className="text-slate-400 text-sm mt-2">{item.subtitle}</p>}
+                                <h3 className="text-xl font-bold text-[#1a1a1a]">{item.title}</h3>
+                                {item.subtitle && <p className="text-[#6b7280] text-sm mt-2">{item.subtitle}</p>}
                             </>
                         )}
                     </motion.div>
@@ -116,15 +116,15 @@ export function BentoGrid() {
 
                 {/* Integration Box (Static link) */}
                 <motion.div
-                    className="md:col-span-3 md:row-span-1 glass-panel p-8 flex flex-col md:flex-row items-center justify-between shadow-lg shadow-[#0EA5E9]/20 relative overflow-hidden group"
+                    className="md:col-span-3 md:row-span-1 bg-white border border-[#1a1a1a]/10 p-8 flex flex-col md:flex-row items-center justify-between shadow-sm hover:shadow-md relative overflow-hidden group rounded-2xl"
                     whileHover={{ scale: 1.01 }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0EA5E9]/20 to-cyan-500/20 opacity-50"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0EA5E9]/10 to-cyan-500/10 opacity-50"></div>
                     <div className="relative z-10 mb-4 md:mb-0">
-                        <h3 className="text-2xl font-bold mb-2 text-white">Connect Your Stack</h3>
-                        <p className="text-slate-300">Seamless integration with SAP, Oracle, and 50+ other ERPs.</p>
+                        <h3 className="text-2xl font-bold mb-2 text-[#1a1a1a]">Connect Your Stack</h3>
+                        <p className="text-[#4b5563]">Seamless integration with SAP, Oracle, and 50+ other ERPs.</p>
                     </div>
-                    <button className="relative z-10 px-6 py-3 bg-gradient-to-r from-[#0EA5E9] to-[#38BDF8] text-white font-bold rounded-xl hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all duration-300">
+                    <button className="relative z-10 px-6 py-3 bg-[#1a1a1a] text-white font-bold rounded-xl hover:bg-[#333333] hover:shadow-lg transition-all duration-300">
                         View Documentation
                     </button>
                 </motion.div>
@@ -142,11 +142,11 @@ export function BentoGrid() {
                         />
                         <motion.div
                             layoutId={selectedId}
-                            className="bg-[#0f172a]/90 backdrop-blur-2xl border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden relative z-10 shadow-[0_0_50px_rgba(14,165,233,0.3)]"
+                            className="bg-white/95 backdrop-blur-2xl border border-[#1a1a1a]/10 w-full max-w-2xl rounded-3xl overflow-hidden relative z-10 shadow-xl"
                         >
                             <button
                                 onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
-                                className="absolute top-4 right-4 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors text-white"
+                                className="absolute top-4 right-4 p-2 bg-[#1a1a1a]/5 rounded-full hover:bg-[#1a1a1a]/10 transition-colors text-[#1a1a1a]"
                             >
                                 <X size={20} />
                             </button>
@@ -156,10 +156,10 @@ export function BentoGrid() {
                                 return item ? (
                                     <div className="p-8">
                                         <div className="flex items-center gap-4 mb-6">
-                                            <div className="p-4 bg-white/5 rounded-2xl">{item.icon}</div>
-                                            <h3 className="text-3xl font-bold text-white">{item.title}</h3>
+                                            <div className="p-4 bg-[#1a1a1a]/5 rounded-2xl">{item.icon}</div>
+                                            <h3 className="text-3xl font-bold text-[#1a1a1a]">{item.title}</h3>
                                         </div>
-                                        <p className="text-lg text-slate-300 leading-relaxed mb-8">
+                                        <p className="text-lg text-[#4b5563] leading-relaxed mb-8">
                                             {item.description}
                                         </p>
                                         <div className="flex justify-end">

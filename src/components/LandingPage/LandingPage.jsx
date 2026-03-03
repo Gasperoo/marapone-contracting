@@ -115,11 +115,11 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
 
             {/* Card inner — glass surface */}
             <div
-                className="absolute inset-[1px] rounded-3xl z-[1] transition-all duration-500"
+                className="absolute inset-[1px] rounded-3xl z-[1] transition-all duration-500 shadow-sm"
                 style={{
                     background: active
-                        ? `radial-gradient(ellipse at center, ${themeColor}06 0%, rgba(4,2,16,0.96) 70%)`
-                        : 'rgba(4, 2, 16, 0.94)',
+                        ? `radial-gradient(ellipse at center, ${themeColor}08 0%, rgba(255,255,255,0.98) 70%)`
+                        : 'rgba(255, 255, 255, 0.94)',
                     backdropFilter: 'blur(20px)',
                 }}
             />
@@ -129,7 +129,7 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
                 className="absolute inset-0 rounded-3xl z-[2] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                     background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, 
-                        ${themeColor}12 0%, 
+                        ${themeColor}15 0%, 
                         transparent 50%)`,
                 }}
             />
@@ -146,7 +146,7 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
                     className="text-3xl lg:text-4xl font-bold mb-4"
                     style={{
                         transform: "translateZ(25px)",
-                        background: `linear-gradient(135deg, #fff 30%, ${sc})`,
+                        background: `linear-gradient(135deg, #1a1a1a 30%, ${sc})`,
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                     }}
@@ -155,7 +155,7 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
                 </h3>
 
                 <p
-                    className="text-slate-400 text-lg leading-relaxed mb-auto"
+                    className="text-[#6b7280] text-lg leading-relaxed mb-auto"
                     style={{ transform: "translateZ(15px)" }}
                 >
                     {description}
@@ -166,13 +166,13 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
                     className={`mt-8 px-8 py-4 rounded-full border uppercase tracking-widest text-xs font-bold transition-all duration-500
                         ${active
                             ? 'text-white border-transparent'
-                            : 'border-white/10 text-white/70 group-hover:text-white group-hover:border-white/20'
+                            : 'border-black/10 text-[#4b5563] group-hover:text-[#1a1a1a] group-hover:border-black/20'
                         }`}
                     style={active ? {
                         background: `linear-gradient(135deg, ${themeColor}, ${sc})`,
                         boxShadow: `0 0 25px ${themeColor}40`,
                     } : {
-                        background: 'rgba(255,255,255,0.03)',
+                        background: 'rgba(0,0,0,0.03)',
                     }}
                 >
                     {active ? '✦ Engine Active' : 'Select Engine →'}
@@ -420,12 +420,12 @@ export default function LandingPage({ comingSoonMode = false }) {
         : ['Select', 'Your', 'Domain'];
 
     return (
-        <div className={`landing-container ${comingSoonMode ? '' : 'pt-12'} relative transition-colors duration-1000`} style={comingSoonMode ? { backgroundColor: '#F5F5F5', color: '#1a1a1a' } : {}}>
+        <div className={`landing-container ${comingSoonMode ? '' : 'pt-12'} relative transition-colors duration-1000`} style={{ backgroundColor: '#F5F5F5', color: '#1a1a1a' }}>
             {/* Grand Entrance Hero Section */}
             <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40 w-full overflow-hidden ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
-                    {comingSoonMode ? <AuroraBackground showRadialGradient={false} className="h-full w-full absolute inset-0 rounded-none z-0" /> : <div className="absolute inset-0 bg-slate-900" />}
+                    <AuroraBackground showRadialGradient={false} className="h-full w-full absolute inset-0 rounded-none z-0" />
                 </div>
 
                 {/* Dynamic ambient glow for selected domain */}
@@ -463,10 +463,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        style={comingSoonMode
-                            ? { border: '1px solid rgba(0,0,0,0.10)', background: 'rgba(0,0,0,0.04)', color: '#4b5563' }
-                            : { border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)', color: '#94a3b8' }
-                        }
+                        style={{ border: '1px solid rgba(0,0,0,0.10)', background: 'rgba(0,0,0,0.04)', color: '#4b5563' }}
                     >
                         <div className="w-1.5 h-1.5 rounded-full" style={{ background: comingSoonMode ? '#FF6B00' : '#22d3ee', boxShadow: comingSoonMode ? '0 0 8px rgba(255,107,0,0.5)' : '0 0 8px rgba(34,211,238,0.6)' }} />
                         {comingSoonMode ? "Coming Soon — Public Beta" : "AI-Powered Operations Intelligence"}
@@ -475,7 +472,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Giant hero title — OpenSpace-scale */}
                     <div
                         className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 mx-auto text-center max-w-6xl overflow-hidden"
-                        style={{ letterSpacing: '-0.04em', lineHeight: 0.95, color: comingSoonMode ? '#1a1a1a' : '#ffffff' }}
+                        style={{ letterSpacing: '-0.04em', lineHeight: 0.95, color: '#1a1a1a' }}
                     >
                         {heroWords.map((word, i) => (
                             <KineticWord key={word} delay={0.3 + i * 0.12}>
@@ -526,7 +523,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Description */}
                     <motion.p
                         className="text-lg md:text-xl text-center mx-auto max-w-2xl mb-10 leading-relaxed"
-                        style={{ color: comingSoonMode ? '#6b7280' : '#94a3b8' }}
+                        style={{ color: '#6b7280' }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 0.8 }}
@@ -605,9 +602,9 @@ export default function LandingPage({ comingSoonMode = false }) {
                             animate={{ y: [0, -8, 0] }}
                             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                         >
-                            <ChevronDown size={32} className="mx-auto mb-4 text-slate-600" />
+                            <ChevronDown size={32} className="mx-auto mb-4 text-[#4b5563]" />
                         </motion.div>
-                        <p className="text-lg text-slate-500 font-medium tracking-wide">Select an engine above to explore</p>
+                        <p className="text-lg text-[#6b7280] font-medium tracking-wide">Select an engine above to explore</p>
                     </motion.div>
                 )}
 

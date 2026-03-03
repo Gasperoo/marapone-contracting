@@ -64,14 +64,14 @@ export default function GasperToolLauncher() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-sm font-medium mb-6">
-                    <Zap size={14} className="text-[#5227FF]" />
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-[#4b5563] text-sm font-medium mb-6">
+                    <Zap size={14} className="text-[#FF6B00]" />
                     Gasper Tool Suite
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                    Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5227FF] to-[#22d3ee]">Command Center</span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a1a1a] mb-4">
+                    Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Command Center</span>
                 </h1>
-                <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                <p className="text-[#6b7280] text-lg max-w-2xl mx-auto">
                     Two industry-defining AI platforms. One ecosystem. Select your domain to begin.
                 </p>
             </motion.div>
@@ -94,7 +94,7 @@ export default function GasperToolLauncher() {
                         />
 
                         {/* Card */}
-                        <div className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-8 transition-all duration-500 group-hover:border-white/20 group-hover:bg-white/[0.06] group-hover:-translate-y-2 overflow-hidden h-full">
+                        <div className="relative bg-white border border-black/10 rounded-3xl p-8 transition-all duration-500 group-hover:border-black/20 shadow-sm group-hover:shadow-md group-hover:-translate-y-2 overflow-hidden h-full uiverse-depth-card">
                             {/* Top accent line */}
                             <div
                                 className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -103,7 +103,7 @@ export default function GasperToolLauncher() {
 
                             {/* Background gradient */}
                             <div
-                                className="absolute top-0 right-0 w-64 h-64 opacity-5 group-hover:opacity-10 transition-opacity duration-500 rounded-full blur-3xl"
+                                className="absolute top-0 right-0 w-64 h-64 opacity-5 border-transparent transition-opacity duration-500 rounded-full blur-3xl"
                                 style={{ background: tool.accentColor }}
                             />
 
@@ -111,7 +111,7 @@ export default function GasperToolLauncher() {
                             <div className="relative mb-6">
                                 <div
                                     className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
-                                    style={{ background: `${tool.accentColor}15`, border: `1px solid ${tool.accentColor}30` }}
+                                    style={{ background: `${tool.accentColor}10`, border: `1px solid ${tool.accentColor}20` }}
                                 >
                                     <tool.icon size={32} style={{ color: tool.accentColor }} />
                                 </div>
@@ -125,15 +125,15 @@ export default function GasperToolLauncher() {
                                 >
                                     {tool.subtitle}
                                 </div>
-                                <h2 className="text-2xl font-bold text-white mb-3">{tool.title}</h2>
-                                <p className="text-slate-400 text-sm leading-relaxed mb-6">{tool.description}</p>
+                                <h2 className="text-2xl font-bold text-[#1a1a1a] mb-3">{tool.title}</h2>
+                                <p className="text-[#6b7280] text-sm leading-relaxed mb-6">{tool.description}</p>
 
                                 {/* Feature Pills */}
                                 <div className="flex flex-wrap gap-2 mb-6">
                                     {tool.features.map((feat, fIdx) => (
                                         <div
                                             key={fIdx}
-                                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/70"
+                                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs text-[#4b5563]"
                                         >
                                             <feat.icon size={12} style={{ color: tool.accentColor }} />
                                             {feat.label}
@@ -142,17 +142,17 @@ export default function GasperToolLauncher() {
                                 </div>
 
                                 {/* Stats */}
-                                <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                                <div className="flex items-center justify-between pt-4 border-t border-[#1a1a1a]/5">
                                     <div>
-                                        <div className="text-xs text-slate-500 uppercase tracking-wider">{tool.stats.label}</div>
-                                        <div className="text-xl font-bold text-white">{tool.stats.value}</div>
+                                        <div className="text-xs text-[#6b7280] uppercase tracking-wider">{tool.stats.label}</div>
+                                        <div className="text-xl font-bold text-[#1a1a1a]">{tool.stats.value}</div>
                                     </div>
                                     <div
                                         className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 group-hover:gap-3"
                                         style={{
                                             background: `linear-gradient(135deg, ${tool.gradientFrom}, ${tool.gradientTo})`,
                                             color: 'white',
-                                            boxShadow: `0 4px 15px ${tool.gradientFrom}40`
+                                            boxShadow: `0 4px 15px ${tool.gradientFrom}30`
                                         }}
                                     >
                                         Launch <ArrowRight size={16} />
@@ -170,7 +170,7 @@ export default function GasperToolLauncher() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
                 onClick={() => navigate('/')}
-                className="relative z-10 mt-10 flex items-center gap-2 text-white/40 hover:text-white/70 text-sm transition-colors"
+                className="relative z-10 mt-10 flex items-center gap-2 text-[#4b5563] hover:text-[#1a1a1a] text-sm transition-colors"
             >
                 <HomeIcon size={14} />
                 Back to Marapone.com

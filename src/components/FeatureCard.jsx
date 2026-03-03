@@ -34,7 +34,7 @@ export default function FeatureCard({ icon, title, description, details }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative h-full rounded-2xl bg-slate-900/50 border border-white/10 overflow-hidden group"
+            className="relative h-full rounded-2xl bg-white border border-[#1a1a1a]/10 overflow-hidden group shadow-sm hover:shadow-md transition-shadow uiverse-depth-card"
         >
             {/* Spotlight Gradient */}
             <motion.div
@@ -42,7 +42,7 @@ export default function FeatureCard({ icon, title, description, details }) {
                 style={{
                     background: useTransform(
                         [position.x, position.y],
-                        ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(82, 39, 255, 0.15), transparent 40%)`
+                        ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(255, 107, 0, 0.08), transparent 40%)`
                     ),
                 }}
             />
@@ -53,9 +53,9 @@ export default function FeatureCard({ icon, title, description, details }) {
                 style={{
                     background: useTransform(
                         [position.x, position.y],
-                        ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(82, 39, 255, 0.4), transparent 40%)`
+                        ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(255, 107, 0, 0.3), transparent 40%)`
                     ),
-                    maskImage: `linear-gradient(black, black) content-box, linear-gradient(black, black)`,
+                    maskImage: `linear-gradient(white, white) content-box, linear-gradient(white, white)`,
                     maskComposite: 'exclude',
                     WebkitMaskComposite: 'xor',
                     padding: '1px',
@@ -63,17 +63,17 @@ export default function FeatureCard({ icon, title, description, details }) {
             />
 
             <div className="relative p-8 h-full flex flex-col z-10">
-                <div className="w-14 h-14 rounded-xl bg-[#5227FF]/10 flex items-center justify-center text-[#5227FF] mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(82,39,255,0.2)]">
+                <div className="w-14 h-14 rounded-xl bg-[#FF6B00]/10 flex items-center justify-center text-[#FF6B00] mb-6 group-hover:scale-110 transition-transform duration-500 shadow-sm border border-[#FF6B00]/20">
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#5227FF] transition-colors">{title}</h3>
-                <p className="text-slate-400 mb-6 leading-relaxed flex-grow">{description}</p>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 group-hover:text-[#FF6B00] transition-colors">{title}</h3>
+                <p className="text-[#6b7280] mb-6 leading-relaxed flex-grow">{description}</p>
 
-                <div className="pt-6 border-t border-white/5">
+                <div className="pt-6 border-t border-[#1a1a1a]/5">
                     <ul className="grid grid-cols-1 gap-3">
                         {details.map((item, i) => (
-                            <li key={i} className="flex items-center text-sm text-slate-300">
-                                <CheckCircle2 size={16} className="text-[#5227FF] mr-3 flex-shrink-0" />
+                            <li key={i} className="flex items-center text-sm text-[#4b5563]">
+                                <CheckCircle2 size={16} className="text-[#FF6B00] mr-3 flex-shrink-0" />
                                 {item}
                             </li>
                         ))}

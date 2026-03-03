@@ -19,6 +19,7 @@ import {
     detectFileType
 } from './blueprintAIServices';
 import '../../styles/BlueprintAI.css';
+import BlueprintOCR from '../BlueprintOCR/BlueprintOCR';
 
 // Icon lookup for dynamic element rendering
 const iconMap = {
@@ -735,6 +736,7 @@ export function BlueprintAnalyzer() {
                             { id: 'materials', label: 'Materials', icon: Layers },
                             { id: 'risks', label: 'Risks', icon: TriangleAlert },
                             { id: 'rooms', label: 'Rooms', icon: Home },
+                            { id: 'ocr', label: 'OCR', icon: FileSearch },
                         ].map(tab => (
                             <button
                                 key={tab.id}
@@ -954,6 +956,13 @@ export function BlueprintAnalyzer() {
                                             ))}
                                         </tbody>
                                     </table>
+                                </motion.div>
+                            )}
+
+                            {/* OCR Tab */}
+                            {activeInsightTab === 'ocr' && (
+                                <motion.div key="ocr" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                                    <BlueprintOCR />
                                 </motion.div>
                             )}
                         </AnimatePresence>

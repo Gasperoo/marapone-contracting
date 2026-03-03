@@ -765,10 +765,10 @@ function MaterialPriceAggregatorSection() {
                                 {crawlSteps.map((step, i) => (
                                     <React.Fragment key={i}>
                                         <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === crawlStep
-                                                ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm'
-                                                : i < crawlStep
-                                                    ? 'text-[#10B981]'
-                                                    : 'text-[#9ca3af]'
+                                            ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm'
+                                            : i < crawlStep
+                                                ? 'text-[#10B981]'
+                                                : 'text-[#9ca3af]'
                                             }`}>
                                             {i < crawlStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
                                             <span className="hidden sm:inline">{step.label}</span>
@@ -864,133 +864,405 @@ function MaterialPriceAggregatorSection() {
 
 // ─── Project Timeline Section (replaces ROI) ─────────────────────────────────
 function ProjectTimelineSection() {
+    const [activePhase, setActivePhase] = useState(1);
+    const [progressStep, setProgressStep] = useState(0);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+        const interval = setInterval(() => {
+            setProgressStep(s => (s + 1) % 4);
+        }, 2500);
+        return () => clearInterval(interval);
+    }, [isInView]);
+
     const phases = [
-        { phase: 'Pre-Construction', duration: '2–4 weeks', items: ['Site assessment & permits', 'Blueprint AI analysis', 'Material cost aggregation'], icon: <ClipboardCheck size={20} />, status: 'complete' },
-        { phase: 'Foundation & Structural', duration: '6–12 weeks', items: ['Automated scheduling', 'Daily progress tracking', 'Cash flow milestone gates'], icon: <Hammer size={20} />, status: 'active' },
-        { phase: 'MEP & Finishing', duration: '8–16 weeks', items: ['Sub coordination AI', 'Change order management', 'Quality inspection logs'], icon: <Wrench size={20} />, status: 'upcoming' },
-        { phase: 'Closeout & Handover', duration: '2–4 weeks', items: ['Punch list automation', 'As-built documentation', 'Warranty tracking'], icon: <CheckCircle2 size={20} />, status: 'upcoming' },
+        { phase: 'Pre-Construction', duration: '2–4 weeks', items: ['Site assessment & permits', 'Blueprint AI analysis', 'Material cost aggregation'], icon: <ClipboardCheck size={16} />, status: 'complete', progress: 100, color: '#10B981' },
+        { phase: 'Foundation & Structural', duration: '6–12 weeks', items: ['Automated scheduling', 'Daily progress tracking', 'Cash flow milestone gates'], icon: <Hammer size={16} />, status: 'active', progress: 64, color: '#FF6B00' },
+        { phase: 'MEP & Finishing', duration: '8–16 weeks', items: ['Sub coordination AI', 'Change order management', 'Quality inspection logs'], icon: <Wrench size={16} />, status: 'upcoming', progress: 0, color: '#3B82F6' },
+        { phase: 'Closeout & Handover', duration: '2–4 weeks', items: ['Punch list automation', 'As-built documentation', 'Warranty tracking'], icon: <CheckCircle2 size={16} />, status: 'upcoming', progress: 0, color: '#8B5CF6' },
+    ];
+
+    const pipelineSteps = [
+        { label: 'Planning', icon: <ClipboardCheck size={14} /> },
+        { label: 'Scheduling', icon: <CalendarDays size={14} /> },
+        { label: 'Tracking', icon: <Activity size={14} /> },
+        { label: 'Reporting', icon: <BarChart3 size={14} /> },
+    ];
+
+    const stats = [
+        { value: '64%', label: 'Project Progress', color: '#FF6B00' },
+        { value: '3 Days', label: 'Ahead of Schedule', color: '#10B981' },
+        { value: '12', label: 'Milestones Hit', color: '#3B82F6' },
+        { value: '98%', label: 'On-Time Delivery', color: '#8B5CF6' },
     ];
 
     return (
-        <section className="w-full relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-            <div className="max-w-6xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <motion.div {...fadeUp()} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
-                        style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
-                        <CalendarDays size={14} /> Full Lifecycle Coverage
-                    </motion.div>
-                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.03em' }}>
-                        From Groundbreak to <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Certificate of Occupancy</span>
-                    </motion.h2>
-                    <motion.p {...fadeUp(0.14)} className="text-lg max-w-2xl mx-auto" style={{ color: C.textMuted }}>
-                        Gasper AI manages every phase of your project — automated scheduling, real-time cost tracking, and AI-powered coordination from start to finish.
-                    </motion.p>
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <CalendarDays size={12} className="mr-2" /> PROJECT LIFECYCLE ENGINE
                 </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    From Groundbreak to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Certificate of Occupancy</span>
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    Gasper AI manages every phase — automated scheduling, real-time cost tracking, and AI-powered coordination from start to finish.
+                </p>
+            </motion.div>
 
-                <div className="relative">
-                    {/* Vertical timeline line */}
-                    <div className="hidden md:block absolute left-8 top-0 bottom-0 w-px" style={{ background: `linear-gradient(180deg, ${C.primary}40, ${C.primary}10)` }} />
-
-                    <div className="space-y-8">
-                        {phases.map((p, i) => (
-                            <motion.div key={i} {...fadeUp(0.1 + i * 0.1)} className="relative flex gap-6 md:gap-10 items-start">
-                                {/* Timeline dot */}
-                                <div className="hidden md:flex flex-shrink-0 w-16 h-16 rounded-2xl items-center justify-center relative z-10"
-                                    style={{
-                                        background: p.status === 'complete' ? 'rgba(16,185,129,0.15)' : p.status === 'active' ? `${C.primary}20` : 'rgba(0,0,0,0.04)',
-                                        border: `1px solid ${p.status === 'complete' ? 'rgba(16,185,129,0.3)' : p.status === 'active' ? `${C.primary}40` : 'rgba(0,0,0,0.06)'}`,
-                                        color: p.status === 'complete' ? '#10b981' : p.status === 'active' ? C.primary : '#4b5563',
-                                    }}>
-                                    {p.icon}
+            <div className="grid lg:grid-cols-5 gap-8">
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* Toolbar */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">harbor_view_project.gasper</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-gray-100 px-2 py-0.5 rounded">4 Phases</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-[#FF6B00]">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] animate-pulse" />
+                                    Phase 2
                                 </div>
+                            </div>
+                        </div>
 
-                                {/* Content card */}
-                                <div className="flex-1 rounded-2xl p-6 transition-all duration-500"
-                                    style={{ background: C.surface, border: `1px solid ${p.status === 'active' ? `${C.primary}25` : C.border}` }}>
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <h3 className="text-[#1a1a1a] font-bold text-lg">{p.phase}</h3>
-                                        <span className="text-[10px] px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider"
-                                            style={p.status === 'complete' ? { background: 'rgba(16,185,129,0.1)', color: '#10b981' }
-                                                : p.status === 'active' ? { background: `${C.primary}15`, color: C.primary }
-                                                    : { background: 'rgba(0,0,0,0.04)', color: '#4b5563' }}>
-                                            {p.status === 'complete' ? '✓ Done' : p.status === 'active' ? '● Active' : 'Upcoming'}
-                                        </span>
-                                        <span className="text-xs ml-auto" style={{ color: '#4b5563' }}>{p.duration}</span>
-                                    </div>
-                                    <div className="flex flex-wrap gap-2">
-                                        {p.items.map((item, j) => (
-                                            <span key={j} className="text-xs px-3 py-1.5 rounded-lg" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', color: '#6b7280' }}>{item}</span>
-                                        ))}
-                                    </div>
+                        {/* Overall Progress Bar */}
+                        <div className="px-5 pt-4 pb-2">
+                            <div className="flex items-center justify-between mb-2">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#9ca3af]">Overall Progress</span>
+                                <span className="text-sm font-black text-[#FF6B00]">64%</span>
+                            </div>
+                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <motion.div initial={{ width: 0 }} whileInView={{ width: '64%' }} transition={{ duration: 1.5, ease: 'easeOut' }}
+                                    className="h-full rounded-full bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]" />
+                            </div>
+                        </div>
+
+                        {/* Phase Cards */}
+                        <div className="px-5 py-3 space-y-2">
+                            {phases.map((p, i) => {
+                                const isActive = activePhase === i;
+                                return (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.2 + i * 0.08, type: 'spring', bounce: 0.2 }}
+                                        viewport={{ once: true }}
+                                        className="p-3 rounded-xl cursor-pointer transition-all duration-300"
+                                        style={{
+                                            border: isActive ? `1px solid ${p.color}40` : '1px solid rgba(0,0,0,0.04)',
+                                            background: isActive ? `${p.color}04` : 'rgba(0,0,0,0.01)',
+                                        }}
+                                        onClick={() => setActivePhase(i)}
+                                    >
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${p.color}15`, color: p.color }}>
+                                                    {p.icon}
+                                                </div>
+                                                <div>
+                                                    <div className="text-sm font-bold text-[#1a1a1a]">{p.phase}</div>
+                                                    <div className="text-[10px] text-[#9ca3af]">{p.duration}</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
+                                                    style={p.status === 'complete' ? { background: '#10B98115', color: '#10B981' }
+                                                        : p.status === 'active' ? { background: '#FF6B0015', color: '#FF6B00' }
+                                                            : { background: 'rgba(0,0,0,0.04)', color: '#9ca3af' }}>
+                                                    {p.status === 'complete' ? '✓ Done' : p.status === 'active' ? '● Active' : 'Upcoming'}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        {isActive && (
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-3 pt-3 border-t border-black/5">
+                                                <div className="flex flex-wrap gap-2">
+                                                    {p.items.map((item, j) => (
+                                                        <span key={j} className="text-[10px] px-2.5 py-1 rounded-lg bg-gray-50 border border-black/5 text-[#6b7280] font-medium">
+                                                            <CheckCircle2 size={10} className="inline mr-1" style={{ color: p.color }} />{item}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                                {p.progress > 0 && (
+                                                    <div className="mt-2 flex items-center gap-2">
+                                                        <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                                            <div className="h-full rounded-full" style={{ width: `${p.progress}%`, background: p.color }} />
+                                                        </div>
+                                                        <span className="text-[9px] font-bold" style={{ color: p.color }}>{p.progress}%</span>
+                                                    </div>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Pipeline */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <CalendarDays size={12} className="text-[#FF6B00]" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Project Management Pipeline</span>
+                            </div>
+                            <div className="flex items-center gap-0">
+                                {pipelineSteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === progressStep ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm' : i < progressStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < progressStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < pipelineSteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < progressStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Right Panel */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                        {stats.map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                                    {s.value}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
+                        {[
+                            { icon: <CalendarDays size={18} />, title: 'Auto Scheduling', desc: 'AI generates optimized construction schedules based on dependencies, crew availability, and weather forecasts.', color: '#FF6B00' },
+                            { icon: <Activity size={18} />, title: 'Real-Time Tracking', desc: 'Daily progress photos and drone surveys analyzed by AI to track completion percentage against schedule.', color: '#3B82F6' },
+                            { icon: <Target size={18} />, title: 'Milestone Gates', desc: 'Automatic cash flow releases tied to milestone completion — verified by AI, not paperwork.', color: '#10B981' },
+                        ].map((f, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default">
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                        {['Gantt Charts', 'CPM Analysis', 'Resource Leveling', 'Weather Delays', 'Change Orders', 'Punch Lists'].map((tag, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/8 text-[#6b7280] hover:border-[#FF6B00]/30 hover:text-[#FF6B00] transition-all cursor-default">{tag}</span>
+                        ))}
+                    </motion.div>
                 </div>
             </div>
         </section>
     );
 }
 
-// ─── Safety & Compliance Section (replaces Schedule) ──────────────────────────
 function SafetyComplianceSection() {
-    const metrics = [
-        { label: 'Incident-Free Days', value: '247', icon: <Shield size={18} />, trend: '+12% from avg' },
-        { label: 'Safety Score', value: '98.7%', icon: <Target size={18} />, trend: 'A+ rating' },
-        { label: 'Inspections Passed', value: '156', icon: <ClipboardCheck size={18} />, trend: '100% first-pass' },
-        { label: 'Response Time', value: '<90s', icon: <Timer size={18} />, trend: 'AI-powered alerts' },
+    const [activeCheck, setActiveCheck] = useState(null);
+    const [safetyStep, setSafetyStep] = useState(0);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+        const interval = setInterval(() => {
+            setSafetyStep(s => (s + 1) % 4);
+        }, 2500);
+        return () => clearInterval(interval);
+    }, [isInView]);
+
+    const checks = [
+        { id: 'ppe', item: 'PPE Compliance Scan', zone: 'All Zones', status: 'pass', workers: 24, violations: 0, lastScan: '3 min ago', color: '#10B981' },
+        { id: 'scaffold', item: 'Scaffold Inspection', zone: 'Zone B — Tower', status: 'pass', workers: 8, violations: 0, lastScan: '12 min ago', color: '#10B981' },
+        { id: 'crane', item: 'Crane Load Check', zone: 'Zone A — Main', status: 'warning', workers: 3, violations: 1, lastScan: '6 min ago', color: '#F59E0B' },
+        { id: 'trench', item: 'Trench Shoring', zone: 'Zone C — East', status: 'pass', workers: 6, violations: 0, lastScan: '22 min ago', color: '#10B981' },
+        { id: 'fire', item: 'Fire Extinguisher Audit', zone: 'All Zones', status: 'pass', workers: null, violations: 0, lastScan: '1 hr ago', color: '#10B981' },
     ];
 
-    const features = [
-        { title: 'Computer Vision Monitoring', desc: 'AI cameras detect PPE violations, unauthorized access, and unsafe conditions in real-time across every job site.', icon: <Eye size={22} /> },
-        { title: 'Automated Incident Reports', desc: 'When an event occurs, Gasper generates OSHA-compliant incident reports instantly — no paperwork, no delays.', icon: <FileText size={22} /> },
-        { title: 'Predictive Risk Analysis', desc: 'Machine learning models analyze weather, crew fatigue patterns, and past incidents to predict and prevent safety events.', icon: <AlertTriangle size={22} /> },
+    const pipelineSteps = [
+        { label: 'Detect', icon: <Eye size={14} /> },
+        { label: 'Classify', icon: <Target size={14} /> },
+        { label: 'Report', icon: <FileText size={14} /> },
+        { label: 'Resolve', icon: <CheckCircle2 size={14} /> },
+    ];
+
+    const stats = [
+        { value: '247', label: 'Incident-Free Days', color: '#10B981' },
+        { value: '98.7%', label: 'Safety Score', color: '#3B82F6' },
+        { value: '156', label: 'Inspections Passed', color: '#FF6B00' },
+        { value: '<90s', label: 'Response Time', color: '#8B5CF6' },
     ];
 
     return (
-        <section className="w-full relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-            <div className="max-w-6xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <motion.div {...fadeUp()} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
-                        style={{ borderColor: 'rgba(16,185,129,0.3)', background: 'rgba(16,185,129,0.08)', color: '#10b981' }}>
-                        <Shield size={14} /> Safety & Compliance
-                    </motion.div>
-                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.03em' }}>
-                        Zero-Incident <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #10b981, #34d399)' }}>Job Sites</span>
-                    </motion.h2>
-                    <motion.p {...fadeUp(0.14)} className="text-lg max-w-2xl mx-auto" style={{ color: C.textMuted }}>
-                        AI-powered safety monitoring that protects your crews, keeps projects compliant, and eliminates paperwork.
-                    </motion.p>
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 text-xs font-bold tracking-wider mb-6">
+                    <Shield size={12} className="mr-2" /> AI SAFETY COMMAND
                 </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    Zero-Incident <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-[#10B981]">Job Sites</span>
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    AI-powered safety monitoring that protects your crews, keeps projects compliant, and eliminates paperwork.
+                </p>
+            </motion.div>
 
-                {/* Metrics strip */}
-                <motion.div {...fadeUp(0.16)} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
-                    {metrics.map((m, i) => (
-                        <div key={i} className="rounded-2xl p-5 text-center transition-all duration-500" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                            <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981' }}>{m.icon}</div>
-                            <div className="text-2xl font-black text-[#1a1a1a] mb-1">{m.value}</div>
-                            <div className="text-xs font-semibold text-[#6b7280] mb-1">{m.label}</div>
-                            <div className="text-[10px]" style={{ color: '#10b981' }}>{m.trend}</div>
+            <div className="grid lg:grid-cols-5 gap-8">
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* Toolbar */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">safety_compliance.gasper</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-gray-100 px-2 py-0.5 rounded">OSHA Ready</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                    A+ Score
+                                </div>
+                            </div>
                         </div>
-                    ))}
+
+                        {/* Compliance Checklist */}
+                        <div className="px-5 py-3 space-y-2">
+                            {checks.map((c, i) => {
+                                const isActive = activeCheck === c.id;
+                                return (
+                                    <motion.div
+                                        key={c.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.15 + i * 0.08, type: 'spring', bounce: 0.2 }}
+                                        viewport={{ once: true }}
+                                        className="p-3 rounded-xl cursor-pointer transition-all duration-300"
+                                        style={{
+                                            border: isActive ? `1px solid ${c.color}40` : '1px solid rgba(0,0,0,0.04)',
+                                            background: isActive ? `${c.color}04` : 'rgba(0,0,0,0.01)',
+                                        }}
+                                        onMouseEnter={() => setActiveCheck(c.id)}
+                                        onMouseLeave={() => setActiveCheck(null)}
+                                    >
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${c.color}15`, color: c.color }}>
+                                                    {c.status === 'pass' ? <CheckCircle2 size={14} /> : <AlertTriangle size={14} />}
+                                                </div>
+                                                <div>
+                                                    <div className="text-sm font-bold text-[#1a1a1a]">{c.item}</div>
+                                                    <div className="text-[10px] text-[#9ca3af]">{c.zone}</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[9px] font-mono text-[#9ca3af] hidden sm:block">{c.lastScan}</span>
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
+                                                    style={c.status === 'pass' ? { background: '#10B98115', color: '#10B981' } : { background: '#F59E0B15', color: '#F59E0B' }}>
+                                                    {c.status === 'pass' ? '✓ Pass' : '⚠ Warning'}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        {isActive && (
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-2 pt-2 border-t border-black/5">
+                                                <div className="grid grid-cols-3 gap-3">
+                                                    {c.workers !== null && (
+                                                        <div className="text-center">
+                                                            <div className="text-[9px] text-[#9ca3af] uppercase">Workers</div>
+                                                            <div className="text-[11px] font-bold text-[#1a1a1a]">{c.workers}</div>
+                                                        </div>
+                                                    )}
+                                                    <div className="text-center">
+                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Violations</div>
+                                                        <div className="text-[11px] font-bold" style={{ color: c.violations > 0 ? '#F59E0B' : '#10B981' }}>{c.violations}</div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Status</div>
+                                                        <div className="text-[11px] font-bold" style={{ color: c.color }}>{c.status === 'pass' ? 'Compliant' : 'Review'}</div>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Pipeline */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <Shield size={12} className="text-emerald-500" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Safety Intelligence Pipeline</span>
+                            </div>
+                            <div className="flex items-center gap-0">
+                                {pipelineSteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === safetyStep ? 'bg-emerald-500/10 text-emerald-500 shadow-sm' : i < safetyStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < safetyStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < pipelineSteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < safetyStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </motion.div>
 
-                {/* Feature cards */}
-                <div className="grid md:grid-cols-3 gap-6">
-                    {features.map((f, i) => (
-                        <motion.div key={i} {...fadeUp(0.2 + i * 0.08)}
-                            className="rounded-2xl p-7 group transition-all duration-500"
-                            style={{ background: C.surface, border: `1px solid ${C.border}` }}
-                            onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(16,185,129,0.25)'}
-                            onMouseLeave={e => e.currentTarget.style.borderColor = C.border}>
-                            <div className="w-12 h-12 rounded-xl mb-5 flex items-center justify-center group-hover:scale-105 transition-transform duration-500"
-                                style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.15)', color: '#10b981' }}>
-                                {f.icon}
+                {/* Right Panel */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                        {stats.map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                                    {s.value}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
                             </div>
-                            <h3 className="text-[#1a1a1a] font-bold text-lg mb-3">{f.title}</h3>
-                            <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{f.desc}</p>
-                        </motion.div>
-                    ))}
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
+                        {[
+                            { icon: <Eye size={18} />, title: 'Computer Vision Monitoring', desc: 'AI cameras detect PPE violations, unauthorized access, and unsafe conditions in real-time across every job site.', color: '#10B981' },
+                            { icon: <FileText size={18} />, title: 'Automated OSHA Reports', desc: 'When an event occurs, Gasper generates OSHA-compliant incident reports instantly — no paperwork, no delays.', color: '#FF6B00' },
+                            { icon: <AlertTriangle size={18} />, title: 'Predictive Risk Analysis', desc: 'ML models analyze weather, crew fatigue patterns, and past incidents to predict and prevent safety events.', color: '#F59E0B' },
+                        ].map((f, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default">
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                        {['PPE Detection', 'Fall Protection', 'OSHA Logs', 'Toolbox Talks', 'Incident Reports', 'Training AI'].map((tag, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/8 text-[#6b7280] hover:border-emerald-500/30 hover:text-emerald-500 transition-all cursor-default">{tag}</span>
+                        ))}
+                    </motion.div>
                 </div>
             </div>
         </section>

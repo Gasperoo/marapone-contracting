@@ -72,7 +72,7 @@ export function DocSentinel() {
                 </div>
 
                 <div className="flex gap-3">
-                    <Button variant="outline" className="border-white/10 text-white/60 hover:text-white">
+                    <Button onClick={() => alert("This operational feature is currently in preview.")} variant="outline" className="border-white/10 text-white/60 hover:text-white">
                         <Database size={16} className="mr-2" />
                         Archive
                     </Button>
@@ -149,7 +149,7 @@ export function DocSentinel() {
                                 {ocrData && <span className="text-white/40 text-[10px] uppercase font-mono">Confidence: {(ocrData.confidence * 100).toFixed(1)}%</span>}
                             </div>
                             <div className="flex gap-2">
-                                <Button size="sm" variant="ghost" className="text-white/40 hover:text-white">
+                                <Button onClick={() => alert("This operational feature is currently in preview.")} size="sm" variant="ghost" className="text-white/40 hover:text-white">
                                     <Eye size={14} className="mr-2" /> Detail Mode
                                 </Button>
                             </div>
@@ -266,7 +266,7 @@ export function DocSentinel() {
                                 </div>
                             ) : (
                                 <div className="flex justify-center md:justify-end gap-4 w-full">
-                                    <Button variant="outline" className="border-white/10 text-white/60">
+                                    <Button onClick={() => alert("This operational feature is currently in preview.")} variant="outline" className="border-white/10 text-white/60">
                                         <Download className="mr-2" size={16} /> Bulk Export
                                     </Button>
                                     <Button onClick={handleDispatch} className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 gap-2 h-12 shadow-lg shadow-emerald-500/20">

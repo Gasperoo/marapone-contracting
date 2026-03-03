@@ -212,10 +212,12 @@ export default function IndustriesPage() {
                                                 </div>
                                             </div>
 
-                                            <button className="w-full mt-6 py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group border border-black/5"
+                                            <Link
+                                                to={hoveredIndustry.category === 'Logistics' ? '/gasper/logistics' : '/gasper/construction'}
+                                                className="w-full mt-6 py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group border border-black/5"
                                                 style={{ backgroundImage: `linear-gradient(to right, ${hoveredIndustry.color}, ${hoveredIndustry.color}dd)` }}>
                                                 Explore {hoveredIndustry.category} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                                            </button>
+                                            </Link>
                                         </div>
                                     </motion.div>
                                 ) : (

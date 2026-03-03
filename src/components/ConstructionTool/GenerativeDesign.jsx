@@ -41,7 +41,7 @@ export function GenerativeDesign() {
                     <div className="ct-badge ct-badge-purple ct-badge-live">
                         {designVariants.length} Variants Generated
                     </div>
-                    <button className="ct-action-btn">
+                    <button onClick={() => alert("This operational feature is currently in preview.")} className="ct-action-btn">
                         <RotateCw size={14} /> Regenerate
                     </button>
                 </div>

@@ -124,7 +124,7 @@ export function BentoGrid() {
                         <h3 className="text-2xl font-bold mb-2 text-[#1a1a1a]">Connect Your Stack</h3>
                         <p className="text-[#4b5563]">Seamless integration with SAP, Oracle, and 50+ other ERPs.</p>
                     </div>
-                    <button className="relative z-10 px-6 py-3 bg-[#1a1a1a] text-white font-bold rounded-xl hover:bg-[#333333] hover:shadow-lg transition-all duration-300">
+                    <button onClick={() => window.location.href = '/features'} className="relative z-10 px-6 py-3 bg-[#1a1a1a] text-white font-bold rounded-xl hover:bg-[#333333] hover:shadow-lg transition-all duration-300">
                         View Documentation
                     </button>
                 </motion.div>

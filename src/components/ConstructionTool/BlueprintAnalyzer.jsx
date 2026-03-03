@@ -464,7 +464,7 @@ export function BlueprintAnalyzer() {
                         <Plus size={14} />
                         New Analysis
                     </button>
-                    <button className="new-analysis-btn">
+                    <button onClick={() => alert("This operational feature is currently in preview.")} className="new-analysis-btn">
                         <Download size={14} />
                         Export Report
                     </button>
@@ -849,7 +849,7 @@ export function BlueprintAnalyzer() {
                                 <motion.div key="materials" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                                     <div className="flex items-center justify-between mb-3 px-1">
                                         <span className="text-xs text-slate-500">{result.materialQuantities.length} items</span>
-                                        <button className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-white transition-colors">
+                                        <button onClick={() => alert("This operational feature is currently in preview.")} className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-white transition-colors">
                                             <Download size={10} />
                                             Export CSV
                                         </button>

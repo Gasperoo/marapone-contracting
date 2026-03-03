@@ -203,7 +203,7 @@ export function ComplianceAutoPilot() {
                     {/* Quick Actions */}
                     <div className="space-y-2">
                         {['Generate Audit Report', 'Auto-Fill Permit Application', 'Schedule Re-Inspection'].map((action, i) => (
-                            <button key={i} className="ct-action-btn" style={{ width: '100%', justifyContent: 'flex-start' }}>
+                            <button onClick={() => alert("This operational feature is currently in preview.")} key={i} className="ct-action-btn" style={{ width: '100%', justifyContent: 'flex-start' }}>
                                 <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.15)' }} />
                                 {action}
                                 <ArrowRight size={10} style={{ marginLeft: 'auto', color: 'rgba(255,255,255,0.2)' }} />

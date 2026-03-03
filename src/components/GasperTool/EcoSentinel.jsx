@@ -185,7 +185,7 @@ export function EcoSentinel() {
                                 <p className="text-white/30 text-xs font-mono uppercase">Verified Environmental Assets • Immutable Audit Trail</p>
                             </div>
                         </div>
-                        <Button className="bg-emerald-600 hover:bg-emerald-500 text-white gap-2">
+                        <Button onClick={() => alert("This operational feature is currently in preview.")} className="bg-emerald-600 hover:bg-emerald-500 text-white gap-2">
                             <Leaf size={16} />
                             Purchase Offset Credits
                         </Button>

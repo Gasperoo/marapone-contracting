@@ -127,7 +127,7 @@ export function ShipmentDashboard() {
                             className="w-full bg-black/20 border border-white/10 rounded-xl pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-[#5227FF]/50 transition-colors"
                         />
                     </div>
-                    <Button className="bg-white text-black hover:bg-gray-200 rounded-xl shadow-lg shadow-white/10 gap-2 font-semibold whitespace-nowrap px-4">
+                    <Button onClick={() => alert("This operational feature is currently in preview.")} className="bg-white text-black hover:bg-gray-200 rounded-xl shadow-lg shadow-white/10 gap-2 font-semibold whitespace-nowrap px-4">
                         <Plus size={16} /> <span className="hidden sm:inline">New</span>
                     </Button>
                 </div>
@@ -238,7 +238,7 @@ export function ShipmentDashboard() {
                                             <span className="text-white/20">→</span>
                                             <span className="flex items-center gap-2"><MapPin size={14} /> {shipment.destination}</span>
                                         </div>
-                                        <Button size="sm" variant="ghost" className="text-white/70 hover:text-white hover:bg-white/10 group/btn">
+                                        <Button onClick={() => alert("This operational feature is currently in preview.")} size="sm" variant="ghost" className="text-white/70 hover:text-white hover:bg-white/10 group/btn">
                                             View Details <ChevronRight size={16} className="ml-1 group-hover/btn:translate-x-1 transition-transform" />
                                         </Button>
                                     </div>

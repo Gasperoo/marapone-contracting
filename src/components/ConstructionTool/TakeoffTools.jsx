@@ -67,10 +67,10 @@ export function TakeoffTools() {
                     <p className="ct-page-subtitle">AI-extracted quantities & BOQ generation</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <button className="ct-action-btn">
+                    <button onClick={() => alert("This operational feature is currently in preview.")} className="ct-action-btn">
                         <Download size={14} /> Export BOQ
                     </button>
-                    <button className="ct-action-btn-primary ct-action-btn">
+                    <button onClick={() => alert("This operational feature is currently in preview.")} className="ct-action-btn-primary ct-action-btn">
                         <Plus size={14} /> New Takeoff
                     </button>
                 </div>

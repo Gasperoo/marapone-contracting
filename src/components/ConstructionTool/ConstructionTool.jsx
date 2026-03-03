@@ -140,7 +140,7 @@ export default function ConstructionTool() {
                             />
                         </div>
 
-                        <button
+                        <button onClick={() => alert("This operational feature is currently in preview.")}
                             className="p-2 rounded-xl transition-all relative"
                             style={{
                                 background: 'rgba(255,255,255,0.03)',

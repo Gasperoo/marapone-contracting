@@ -59,7 +59,7 @@ const RateCard = ({ rate, origin, destination }) => {
                         <p className="text-[10px] text-white/40 uppercase font-black tracking-widest">Total Estimated Freight</p>
                         <div className="text-4xl font-black text-white tabular-nums">${rate.price.toLocaleString()}</div>
                     </div>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest text-xs py-6 rounded-xl shadow-lg shadow-blue-500/20">
+                    <Button onClick={() => alert("This operational feature is currently in preview.")} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest text-xs py-6 rounded-xl shadow-lg shadow-blue-500/20">
                         Book Space
                     </Button>
                 </div>

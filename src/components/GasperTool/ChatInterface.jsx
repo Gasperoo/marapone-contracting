@@ -136,7 +136,7 @@ export function ChatInterface() {
                     <h3 className="text-xs font-semibold text-white/40 px-3 mb-2 uppercase tracking-wider">Recent</h3>
                     <div className="space-y-1">
                         {['Import Regulations China', 'HS Code 8517.62', 'Cost Estimate Q4'].map((chat, i) => (
-                            <button key={i} className="w-full text-left px-3 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors flex items-center gap-2 group">
+                            <button key={i} onClick={() => handleCardClick(chat)} className="w-full text-left px-3 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors flex items-center gap-2 group">
                                 <MessageSquare size={14} className="opacity-50 group-hover:opacity-100" />
                                 <span className="truncate">{chat}</span>
                             </button>
@@ -146,10 +146,10 @@ export function ChatInterface() {
                     <div className="mt-8">
                         <h3 className="text-xs font-semibold text-white/40 px-3 mb-2 uppercase tracking-wider">Suggested</h3>
                         <div className="space-y-1">
-                            <button className="w-full text-left px-3 py-2 text-sm text-indigo-300 hover:text-indigo-200 hover:bg-indigo-500/10 rounded-lg transition-colors flex items-center gap-2">
+                            <button onClick={() => handleCardClick('Detect anomalies in my supply chain')} className="w-full text-left px-3 py-2 text-sm text-indigo-300 hover:text-indigo-200 hover:bg-indigo-500/10 rounded-lg transition-colors flex items-center gap-2">
                                 <Zap size={14} /> Detect Anomalies
                             </button>
-                            <button className="w-full text-left px-3 py-2 text-sm text-indigo-300 hover:text-indigo-200 hover:bg-indigo-500/10 rounded-lg transition-colors flex items-center gap-2">
+                            <button onClick={() => handleCardClick('Draft a supplier contract template')} className="w-full text-left px-3 py-2 text-sm text-indigo-300 hover:text-indigo-200 hover:bg-indigo-500/10 rounded-lg transition-colors flex items-center gap-2">
                                 <FileText size={14} /> Draft Contract
                             </button>
                         </div>

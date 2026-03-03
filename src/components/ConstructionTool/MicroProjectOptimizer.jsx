@@ -169,7 +169,7 @@ export function MicroProjectOptimizer() {
             {/* Quick Actions */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {['Send Crew Briefs via SMS', 'Re-Optimize Schedule', 'View Performance Report'].map((action, i) => (
-                    <button key={i} className="ct-action-btn" style={{ height: 48, justifyContent: 'center' }}>
+                    <button onClick={() => alert("This operational feature is currently in preview.")} key={i} className="ct-action-btn" style={{ height: 48, justifyContent: 'center' }}>
                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.15)' }} />
                         {action}
                         <ArrowRight size={12} style={{ color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }} />

@@ -152,10 +152,10 @@ export function SubcontractorMatchmaker() {
                                     animate={{ opacity: 1, height: 'auto' }}
                                     style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', gap: 8 }}
                                 >
-                                    <button className="ct-action-btn" style={{ flex: 1 }}>
+                                    <button onClick={() => alert("This operational feature is currently in preview.")} className="ct-action-btn" style={{ flex: 1 }}>
                                         <MessageSquare size={12} /> Contact
                                     </button>
-                                    <button className="ct-action-btn ct-action-btn-primary" style={{ flex: 1 }}>
+                                    <button onClick={() => alert("This operational feature is currently in preview.")} className="ct-action-btn ct-action-btn-primary" style={{ flex: 1 }}>
                                         <Award size={12} /> Generate Contract
                                     </button>
                                 </motion.div>

@@ -216,7 +216,7 @@ export function ComplianceGuard() {
             {/* 3. Bottom Action Bar */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {['Generate Audit Report', 'Verify HS Codes', 'Sanctions Screening', 'Upload Documents'].map((action, i) => (
-                    <Button key={i} variant="outline" className="h-12 border-white/10 hover:bg-white/5 hover:border-white/20 text-white justify-start pl-4 group">
+                    <Button onClick={() => alert("This operational feature is currently in preview.")} key={i} variant="outline" className="h-12 border-white/10 hover:bg-white/5 hover:border-white/20 text-white justify-start pl-4 group">
                         <div className="w-2 h-2 rounded-full bg-white/20 group-hover:bg-blue-400 mr-3 transition-colors"></div>
                         {action}
                     </Button>

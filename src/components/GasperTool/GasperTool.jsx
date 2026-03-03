@@ -87,7 +87,7 @@ export default function GasperTool() {
                             />
                         </div>
 
-                        <button className="p-2 rounded-full hover:bg-white/10 text-white/70 hover:text-white transition-colors relative">
+                        <button onClick={() => alert("This operational feature is currently in preview.")} className="p-2 rounded-full hover:bg-white/10 text-white/70 hover:text-white transition-colors relative">
                             <Bell size={20} />
                             <span className="absolute top-1.5 right-1.5 h-2 w-2 bg-red-500 rounded-full shadow-lg shadow-red-500/50"></span>
                         </button>
@@ -116,10 +116,10 @@ export default function GasperTool() {
                                 <p className="text-xs text-white/50">gasper@marapone.com</p>
                             </div>
                             <div className="p-2">
-                                <button className="w-full text-left px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg flex items-center gap-2 transition-colors">
+                                <button onClick={() => alert("This operational feature is currently in preview.")} className="w-full text-left px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg flex items-center gap-2 transition-colors">
                                     <User size={16} /> Profile
                                 </button>
-                                <button className="w-full text-left px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg flex items-center gap-2 transition-colors">
+                                <button onClick={() => alert("This operational feature is currently in preview.")} className="w-full text-left px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg flex items-center gap-2 transition-colors">
                                     <Settings size={16} /> Settings
                                 </button>
                                 <div className="h-px bg-white/10 my-1" />

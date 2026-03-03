@@ -258,76 +258,303 @@ export function ConstructionFeaturesSection() {
     );
 }
 
-// ─── Blueprint AI Deep Dive ──────────────────────────────────────────────
+// ─── Blueprint AI Deep Dive — Advanced Interactive Showcase ──────────────
 export function BlueprintAISection() {
+    const [activeRoom, setActiveRoom] = useState(null);
+    const [scanProgress, setScanProgress] = useState(0);
+    const [pipelineStep, setPipelineStep] = useState(0);
+    const [metricsVisible, setMetricsVisible] = useState(false);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+        const scanInterval = setInterval(() => {
+            setScanProgress(p => (p >= 100 ? 0 : p + 0.5));
+        }, 30);
+        const pipelineInterval = setInterval(() => {
+            setPipelineStep(s => (s + 1) % 5);
+        }, 2000);
+        const metricsTimer = setTimeout(() => setMetricsVisible(true), 800);
+        return () => { clearInterval(scanInterval); clearInterval(pipelineInterval); clearTimeout(metricsTimer); };
+    }, [isInView]);
+
+    const rooms = [
+        { id: 'living', name: 'Living Room', area: '320 sqft', dims: '20\' × 16\'', x: 0, y: 0, w: 2, h: 2, materials: 14, color: '#FF6B00' },
+        { id: 'kitchen', name: 'Kitchen', area: '180 sqft', dims: '15\' × 12\'', x: 2, y: 0, w: 1, h: 1, materials: 22, color: '#F59E0B' },
+        { id: 'master', name: 'Master Bedroom', area: '240 sqft', dims: '20\' × 12\'', x: 2, y: 1, w: 1, h: 1, materials: 8, color: '#10B981' },
+        { id: 'bath', name: 'Bathroom', area: '85 sqft', dims: '10\' × 8.5\'', x: 0, y: 2, w: 1, h: 1, materials: 18, color: '#3B82F6' },
+        { id: 'office', name: 'Home Office', area: '150 sqft', dims: '12\' × 12.5\'', x: 1, y: 2, w: 1, h: 1, materials: 6, color: '#8B5CF6' },
+        { id: 'garage', name: 'Garage', area: '400 sqft', dims: '20\' × 20\'', x: 2, y: 2, w: 1, h: 1, materials: 4, color: '#6B7280' },
+    ];
+
+    const pipelineSteps = [
+        { label: 'Parsing', icon: <FileText size={14} />, desc: 'Reading blueprint data' },
+        { label: 'Detection', icon: <Eye size={14} />, desc: 'Finding walls & rooms' },
+        { label: 'Measurement', icon: <Ruler size={14} />, desc: 'Extracting dimensions' },
+        { label: 'Analysis', icon: <Brain size={14} />, desc: 'Code compliance check' },
+        { label: 'Output', icon: <CheckCircle2 size={14} />, desc: 'Generating takeoff' },
+    ];
+
+    const stats = [
+        { value: '12', label: 'Rooms', suffix: '', color: '#FF6B00' },
+        { value: '2,450', label: 'Sq Ft', suffix: '', color: '#1a1a1a' },
+        { value: '72', label: 'Materials', suffix: '', color: '#10B981' },
+        { value: '2', label: 'Violations', suffix: '', color: '#F59E0B' },
+        { value: '99.2', label: 'Accuracy', suffix: '%', color: '#3B82F6' },
+    ];
+
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
-                        <Ruler size={12} className="mr-2" /> BLUEPRINT INTELLIGENCE
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">Turn Blueprints into Actionable Data</h2>
-                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
-                        Upload any blueprint — PDF, DWG, or BIM — and watch our AI extract every room, dimension, and material specification in seconds. No more manual takeoffs.
-                    </p>
-                    <div className="space-y-6">
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-[#FF6B00]/10 flex-shrink-0 flex items-center justify-center text-[#FF6B00]"><Layers size={24} /></div>
-                            <div>
-                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Automated Takeoffs</h4>
-                                <p className="text-[#6b7280] text-sm">Extract material quantities, room dimensions, and structural elements automatically from any blueprint format.</p>
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            {/* Section Header */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+            >
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <Ruler size={12} className="mr-2" /> BLUEPRINT INTELLIGENCE ENGINE
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    AI That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Reads Blueprints</span> Like an Expert
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    Upload any format — PDF, DWG, BIM, or even a photo — and watch our neural network extract every room, dimension, material, and code violation in real-time.
+                </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-5 gap-8">
+                {/* ─── Interactive Blueprint Canvas ─── */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="lg:col-span-3 relative"
+                >
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* ── Toolbar ── */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">residential_floorplan_v3.dwg</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-gray-100 px-2 py-0.5 rounded">1:50 Scale</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-[#FF6B00]">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] animate-pulse" />
+                                    AI Active
+                                </div>
                             </div>
                         </div>
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex-shrink-0 flex items-center justify-center text-amber-500"><AlertTriangle size={24} /></div>
-                            <div>
-                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Code Violation Detection</h4>
-                                <p className="text-[#6b7280] text-sm">AI cross-references designs against local building codes, fire safety regulations, and ADA requirements.</p>
+
+                        {/* ── Blueprint Canvas ── */}
+                        <div className="relative aspect-[4/3] bg-[#FAFAF8]" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+                            {/* Scan line */}
+                            <motion.div
+                                className="absolute left-0 right-0 h-[2px] z-20 pointer-events-none"
+                                style={{
+                                    top: `${scanProgress}%`,
+                                    background: 'linear-gradient(90deg, transparent, #FF6B00, transparent)',
+                                    boxShadow: '0 0 20px rgba(255,107,0,0.4), 0 0 60px rgba(255,107,0,0.15)',
+                                }}
+                            />
+                            {/* Scan glow area */}
+                            <div
+                                className="absolute left-0 right-0 pointer-events-none z-10 transition-all duration-100"
+                                style={{
+                                    top: `${Math.max(0, scanProgress - 8)}%`,
+                                    height: '8%',
+                                    background: 'linear-gradient(180deg, transparent, rgba(255,107,0,0.04), transparent)',
+                                }}
+                            />
+
+                            {/* Room Grid */}
+                            <div className="absolute inset-4 grid grid-cols-3 grid-rows-3 gap-[3px]">
+                                {rooms.map((room, i) => (
+                                    <motion.div
+                                        key={room.id}
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: 0.3 + i * 0.12, type: 'spring', bounce: 0.3 }}
+                                        viewport={{ once: true }}
+                                        className="relative rounded-xl cursor-pointer transition-all duration-300 group overflow-hidden"
+                                        style={{
+                                            gridColumn: `${room.x + 1} / span ${room.w}`,
+                                            gridRow: `${room.y + 1} / span ${room.h}`,
+                                            border: activeRoom === room.id ? `2px solid ${room.color}` : '1.5px dashed rgba(0,0,0,0.12)',
+                                            background: activeRoom === room.id ? `${room.color}08` : 'rgba(255,255,255,0.7)',
+                                        }}
+                                        onMouseEnter={() => setActiveRoom(room.id)}
+                                        onMouseLeave={() => setActiveRoom(null)}
+                                    >
+                                        {/* Corner markers */}
+                                        {['-top-[1px] -left-[1px]', '-top-[1px] -right-[1px]', '-bottom-[1px] -left-[1px]', '-bottom-[1px] -right-[1px]'].map((pos, ci) => (
+                                            <div key={ci} className={`absolute ${pos} w-2 h-2 border-[#FF6B00] transition-opacity ${activeRoom === room.id ? 'opacity-100' : 'opacity-0'}`}
+                                                style={{ borderWidth: ci < 2 ? '2px 0 0 2px' : ci === 2 ? '0 0 2px 2px' : '0 2px 2px 0', borderColor: room.color, borderStyle: 'solid', borderTopWidth: ci < 2 ? '2px' : '0', borderLeftWidth: ci % 2 === 0 ? '2px' : '0', borderBottomWidth: ci >= 2 ? '2px' : '0', borderRightWidth: ci % 2 !== 0 ? '2px' : '0' }}
+                                            />
+                                        ))}
+
+                                        <div className="absolute inset-0 flex flex-col items-center justify-center p-2 text-center">
+                                            <div className="text-xs font-bold mb-0.5 transition-colors" style={{ color: activeRoom === room.id ? room.color : '#374151' }}>
+                                                {room.name}
+                                            </div>
+                                            <div className="text-[10px] text-[#9ca3af] font-mono">{room.area}</div>
+                                            {activeRoom === room.id && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 4 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    className="mt-1 text-[9px] font-mono px-2 py-0.5 rounded-full"
+                                                    style={{ background: `${room.color}15`, color: room.color }}
+                                                >
+                                                    {room.dims} · {room.materials} items
+                                                </motion.div>
+                                            )}
+                                        </div>
+
+                                        {/* Detection highlight shimmer */}
+                                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                            style={{ background: `linear-gradient(135deg, transparent 30%, ${room.color}08 50%, transparent 70%)` }}
+                                        />
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            {/* Dimension annotations */}
+                            <div className="absolute top-2 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[9px] font-mono text-[#9ca3af]">
+                                <div className="w-8 h-[1px] bg-[#9ca3af]" /> 52'-0" <div className="w-8 h-[1px] bg-[#9ca3af]" />
+                            </div>
+                            <div className="absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 flex items-center gap-1 text-[9px] font-mono text-[#9ca3af]">
+                                <div className="w-6 h-[1px] bg-[#9ca3af]" /> 36'-0" <div className="w-6 h-[1px] bg-[#9ca3af]" />
+                            </div>
+                        </div>
+
+                        {/* ── AI Pipeline Status Bar ── */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <Brain size={12} className="text-[#FF6B00]" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Neural Analysis Pipeline</span>
+                            </div>
+                            <div className="flex items-center gap-0">
+                                {pipelineSteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === pipelineStep
+                                                ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm'
+                                                : i < pipelineStep
+                                                    ? 'text-[#10B981]'
+                                                    : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < pipelineStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < pipelineSteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < pipelineStep ? 'bg-[#10B981]' : 'bg-black/8'
+                                                }`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
                             </div>
                         </div>
                     </div>
                 </motion.div>
 
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
-                    <div className="relative rounded-2xl bg-white border border-black/8 p-6 overflow-hidden shadow-sm">
-                        <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-[#1a1a1a] font-semibold">Blueprint Analysis</h3>
-                            <div className="text-xs text-[#FF6B00] bg-[#FF6B00]/10 px-2 py-1 rounded font-bold">AI PROCESSING</div>
-                        </div>
-
-                        {/* Mock Blueprint Grid */}
-                        <div className="grid grid-cols-3 gap-2 mb-6">
-                            {['Living Room', 'Kitchen', 'Master Bed', 'Bathroom', 'Office', 'Garage'].map((room, i) => (
+                {/* ─── Right Panel: Metrics + Features ─── */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    {/* Stats Grid */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="grid grid-cols-3 gap-3"
+                    >
+                        {stats.slice(0, 3).map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                                 <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className={`p-3 rounded-lg border text-center ${i === 0 ? 'border-[#FF6B00]/50 bg-[#FF6B00]/10 col-span-2 row-span-2' : 'border-black/8 bg-gray-50'}`}
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.5 + i * 0.1, type: 'spring' }}
+                                    className="text-2xl font-black"
+                                    style={{ color: s.color }}
                                 >
-                                    <div className={`text-xs font-bold mb-1 ${i === 0 ? 'text-[#FF6B00]' : 'text-[#1a1a1a]'}`}>{room}</div>
-                                    <div className="text-[10px] text-[#6b7280]">{['320 sqft', '180 sqft', '240 sqft', '85 sqft', '150 sqft', '400 sqft'][i]}</div>
+                                    {s.value}{s.suffix}
                                 </motion.div>
-                            ))}
-                        </div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                        className="grid grid-cols-2 gap-3"
+                    >
+                        {stats.slice(3).map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.7 + i * 0.1, type: 'spring' }}
+                                    className="text-2xl font-black"
+                                    style={{ color: s.color }}
+                                >
+                                    {s.value}{s.suffix}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
 
-                        <div className="border-t border-black/8 pt-4 flex justify-between">
-                            <div>
-                                <div className="text-xs text-[#6b7280] uppercase">Rooms Detected</div>
-                                <div className="text-xl font-bold text-[#FF6B00]">12</div>
-                            </div>
-                            <div>
-                                <div className="text-xs text-[#6b7280] uppercase">Total Area</div>
-                                <div className="text-xl font-bold text-[#1a1a1a]">2,450 sqft</div>
-                            </div>
-                            <div>
-                                <div className="text-xs text-[#6b7280] uppercase">Violations</div>
-                                <div className="text-xl font-bold text-amber-400">2</div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
+                    {/* Feature Cards */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4"
+                    >
+                        {[
+                            { icon: <Layers size={18} />, title: 'Automated Takeoffs', desc: 'Material quantities, dimensions, and structural elements — extracted in seconds from any format.', color: '#FF6B00' },
+                            { icon: <AlertTriangle size={18} />, title: 'Code Violation Detection', desc: 'Cross-references against IBC, fire safety, ADA, and 230+ local building codes.', color: '#F59E0B' },
+                            { icon: <Target size={18} />, title: 'Cost Estimation', desc: 'Instant material cost estimates with real-time pricing from 500+ suppliers.', color: '#10B981' },
+                        ].map((f, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.5 + i * 0.1 }}
+                                viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default"
+                            >
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>
+                                    {f.icon}
+                                </div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    {/* Format Support */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6 }}
+                        className="flex flex-wrap gap-2 justify-center"
+                    >
+                        {['PDF', 'DWG', 'DXF', 'BIM/IFC', 'JPEG', 'PNG', 'TIFF'].map((fmt, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/8 text-[#6b7280] hover:border-[#FF6B00]/30 hover:text-[#FF6B00] transition-all cursor-default">
+                                {fmt}
+                            </span>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

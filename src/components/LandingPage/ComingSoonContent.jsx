@@ -579,110 +579,283 @@ function WaitlistSection() {
     );
 }
 
-// ─── Material Price Aggregator Section ────────────────────────────────────
+// ─── Material Price Aggregator — Advanced Interactive Showcase ─────────────
 function MaterialPriceAggregatorSection() {
+    const [activeRow, setActiveRow] = useState(null);
+    const [crawlStep, setCrawlStep] = useState(0);
+    const [supplierCount, setSupplierCount] = useState(0);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+        const crawlInterval = setInterval(() => {
+            setCrawlStep(s => (s + 1) % 4);
+        }, 2500);
+        // Animate supplier count up
+        let count = 0;
+        const countInterval = setInterval(() => {
+            count += 1;
+            if (count > 47) { clearInterval(countInterval); return; }
+            setSupplierCount(count);
+        }, 40);
+        return () => { clearInterval(crawlInterval); clearInterval(countInterval); };
+    }, [isInView]);
+
     const stores = [
-        { name: 'Supplier A', color: '#FF6B00' },
-        { name: 'Supplier B', color: '#0EA5E9' },
-        { name: 'Supplier C', color: '#10b981' },
-        { name: 'Supplier D', color: '#8b5cf6' },
+        { name: 'Home Depot', color: '#F97316', initial: 'HD' },
+        { name: 'Lowes', color: '#0EA5E9', initial: 'LW' },
+        { name: 'BuildPro Supply', color: '#10B981', initial: 'BP' },
+        { name: 'Local Wholesale', color: '#8B5CF6', initial: 'LW' },
     ];
 
     const materials = [
-        { item: '2×4 SPF Stud 8ft', category: 'Lumber', prices: ['$4.28', '$4.15', '$4.49', '$3.97'], best: 3 },
-        { item: 'Portland Cement 40kg', category: 'Concrete', prices: ['$12.98', '$13.47', '$11.99', '$12.50'], best: 2 },
-        { item: '½" Plywood 4×8 Sheet', category: 'Sheathing', prices: ['$42.97', '$39.88', '$44.50', '$41.25'], best: 1 },
-        { item: 'R-20 Batt Insulation', category: 'Insulation', prices: ['$68.99', '$71.48', '$65.99', '$69.97'], best: 2 },
-        { item: '#10 × 3" Deck Screws (1lb)', category: 'Fasteners', prices: ['$9.97', '$8.48', '$9.29', '$8.97'], best: 1 },
+        { item: '2×4 SPF Stud 8ft', category: 'Lumber', prices: [4.28, 4.15, 4.49, 3.97], unit: 'ea', best: 3 },
+        { item: 'Portland Cement 40kg', category: 'Concrete', prices: [12.98, 13.47, 11.99, 12.50], unit: 'bag', best: 2 },
+        { item: '½" Plywood 4×8 Sheet', category: 'Sheathing', prices: [42.97, 39.88, 44.50, 41.25], unit: 'sht', best: 1 },
+        { item: 'R-20 Batt Insulation', category: 'Insulation', prices: [68.99, 71.48, 65.99, 69.97], unit: 'roll', best: 2 },
+        { item: '#10 × 3" Deck Screws (1lb)', category: 'Fasteners', prices: [9.97, 8.48, 9.29, 8.97], unit: 'box', best: 1 },
+        { item: 'PVC Conduit ¾" × 10ft', category: 'Electrical', prices: [3.88, 4.12, 3.65, 3.99], unit: 'ea', best: 2 },
+    ];
+
+    const crawlSteps = [
+        { label: 'Crawling', desc: 'Scanning retailer websites', icon: <Globe size={14} /> },
+        { label: 'Comparing', desc: 'Matching product SKUs', icon: <Search size={14} /> },
+        { label: 'Optimizing', desc: 'Finding lowest prices', icon: <TrendingDown size={14} /> },
+        { label: 'Complete', desc: 'Results ready', icon: <CheckCircle2 size={14} /> },
+    ];
+
+    const savings = [
+        { label: 'Avg. Savings', value: '$12,400+', color: '#10B981' },
+        { label: 'Suppliers', value: supplierCount.toString(), color: '#FF6B00' },
+        { label: 'Updated', value: '2 min ago', color: '#6b7280' },
+        { label: 'Accuracy', value: '99.8%', color: '#3B82F6' },
     ];
 
     return (
-        <section className="w-full relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-            <div className="max-w-6xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <motion.div {...fadeUp()} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
-                        style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
-                        <Search size={14} /> Real-Time Price Intelligence
-                    </motion.div>
-                    <motion.h2 {...fadeUp(0.08)} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.03em' }}>
-                        AI Material <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Price Scanner</span>
-                    </motion.h2>
-                    <motion.p {...fadeUp(0.14)} className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
-                        The industry's first AI-powered price engine that crawls the entire internet in real time — every retailer, wholesaler, and building supply outlet — to surface the lowest material and building supply prices based on your exact location. Whether you're framing a single-family home or managing a $100M infrastructure project, Gasper eliminates hours of manual price shopping and ensures every line item on your budget is optimized.
-                    </motion.p>
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            {/* Header */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+            >
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <Search size={12} className="mr-2" /> AI PRICE INTELLIGENCE ENGINE
                 </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    AI That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Finds the Best Prices</span> Instantly
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    The industry's first AI price engine that crawls every retailer, wholesaler, and supplier in real-time — surfacing the lowest prices based on your exact location.
+                </p>
+            </motion.div>
 
-                {/* Price Table Mockup */}
-                <motion.div {...fadeUp(0.18)} className="relative rounded-3xl overflow-hidden">
-                    <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}25, ${C.secondary}15, transparent)` }} />
-                    <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: C.surface, backdropFilter: 'blur(20px)' }} />
-                    <div className="relative z-10 p-6 md:p-8">
-                        {/* Header bar */}
-                        <div className="flex items-center justify-between mb-6 pb-4 border-b" style={{ borderColor: C.border }}>
+            <div className="grid lg:grid-cols-5 gap-8">
+                {/* ─── Price Comparison Canvas ─── */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="lg:col-span-3 relative"
+                >
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* ── Toolbar ── */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">material_price_scan.gasper</span>
+                            </div>
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${C.primary}15`, color: C.primary }}><Search size={16} /></div>
-                                <div>
-                                    <div className="text-[#1a1a1a] font-semibold text-sm">Material Price Scanner</div>
-                                    <div className="text-xs" style={{ color: '#4b5563' }}>Scanning 47 suppliers near <span style={{ color: C.secondary }}>Your Location</span></div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-[#6b7280]">
+                                    <MapPin size={10} /> <span className="text-[#FF6B00] font-semibold">Your Location</span>
+                                </div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                    Live
                                 </div>
                             </div>
-                            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold" style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', border: '1px solid rgba(16,185,129,0.2)' }}>
-                                <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" /> Live Prices
-                            </div>
                         </div>
 
-                        {/* Store headers */}
-                        <div className="overflow-x-auto hide-scrollbar pb-4">
-                            <div className="min-w-[600px] mb-3 px-2 grid grid-cols-[1.5fr_repeat(4,1fr)] gap-3">
-                                <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#4b5563' }}>Material</div>
+                        {/* ── Supplier Header Row ── */}
+                        <div className="px-5 pt-4 pb-2 border-b border-black/4">
+                            <div className="grid grid-cols-[1.8fr_repeat(4,1fr)] gap-2 items-center">
+                                <div className="text-[10px] font-bold uppercase tracking-wider text-[#9ca3af]">Material</div>
                                 {stores.map((s, i) => (
-                                    <div key={i} className="text-center text-xs font-bold whitespace-nowrap" style={{ color: s.color }}>{s.name}</div>
-                                ))}
-                            </div>
-
-                            {/* Price rows */}
-                            <div className="min-w-[600px] space-y-2">
-                                {materials.map((m, idx) => (
-                                    <motion.div key={idx} {...fadeUp(0.22 + idx * 0.06)}
-                                        className="grid grid-cols-[1.5fr_repeat(4,1fr)] gap-3 items-center rounded-xl px-3 py-3 transition-colors"
-                                        style={{ background: idx % 2 === 0 ? 'rgba(0,0,0,0.02)' : 'transparent' }}>
-                                        <div>
-                                            <div className="text-[#1a1a1a] text-sm font-medium">{m.item}</div>
-                                            <div className="text-[10px]" style={{ color: '#4b5563' }}>{m.category}</div>
+                                    <div key={i} className="flex flex-col items-center gap-1">
+                                        <div className="w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-black text-white" style={{ background: s.color }}>
+                                            {s.initial}
                                         </div>
-                                        {m.prices.map((p, pi) => (
-                                            <div key={pi} className="text-center">
-                                                <span className={`text-sm font-bold ${pi === m.best ? 'px-2 py-0.5 rounded-lg' : ''}`}
-                                                    style={pi === m.best ? { color: '#10b981', background: 'rgba(16,185,129,0.12)' } : { color: '#6b7280' }}>
-                                                    {p} {pi === m.best && '✓'}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </motion.div>
+                                        <span className="text-[9px] font-semibold text-[#6b7280] hidden sm:block">{s.name}</span>
+                                    </div>
                                 ))}
                             </div>
                         </div>
 
-                        {/* Summary bar */}
-                        <div className="mt-6 pt-4 border-t flex flex-wrap items-center justify-between gap-4" style={{ borderColor: C.border }}>
-                            <div className="flex items-center gap-6">
-                                <div><span className="text-xs" style={{ color: '#4b5563' }}>Est. savings per project</span><span className="text-lg font-black ml-2" style={{ color: '#10b981' }}>$12,400+</span></div>
-                                <div><span className="text-xs" style={{ color: '#4b5563' }}>Suppliers scanned</span><span className="text-sm font-bold ml-2 text-[#1a1a1a]">47 near you</span></div>
+                        {/* ── Price Rows ── */}
+                        <div className="px-5 py-2">
+                            {materials.map((m, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.2 + idx * 0.08, type: 'spring', bounce: 0.2 }}
+                                    viewport={{ once: true }}
+                                    className="grid grid-cols-[1.8fr_repeat(4,1fr)] gap-2 items-center py-2.5 px-2 rounded-xl cursor-pointer transition-all duration-300"
+                                    style={{
+                                        background: activeRow === idx ? 'rgba(255,107,0,0.04)' : idx % 2 === 0 ? 'rgba(0,0,0,0.015)' : 'transparent',
+                                        border: activeRow === idx ? '1px solid rgba(255,107,0,0.15)' : '1px solid transparent',
+                                    }}
+                                    onMouseEnter={() => setActiveRow(idx)}
+                                    onMouseLeave={() => setActiveRow(null)}
+                                >
+                                    <div>
+                                        <div className="text-sm font-semibold text-[#1a1a1a] leading-tight">{m.item}</div>
+                                        <div className="flex items-center gap-2 mt-0.5">
+                                            <span className="text-[10px] text-[#9ca3af]">{m.category}</span>
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-gray-100 text-[#9ca3af] font-mono">/{m.unit}</span>
+                                        </div>
+                                    </div>
+                                    {m.prices.map((p, pi) => {
+                                        const isBest = pi === m.best;
+                                        const maxPrice = Math.max(...m.prices);
+                                        const barWidth = (p / maxPrice) * 100;
+                                        return (
+                                            <div key={pi} className="text-center relative">
+                                                {/* Price bar background */}
+                                                {activeRow === idx && (
+                                                    <motion.div
+                                                        initial={{ width: 0 }}
+                                                        animate={{ width: `${barWidth}%` }}
+                                                        transition={{ duration: 0.5, delay: pi * 0.05 }}
+                                                        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[3px] rounded-full"
+                                                        style={{ background: isBest ? '#10B981' : `${stores[pi].color}30` }}
+                                                    />
+                                                )}
+                                                <span className={`text-sm font-bold transition-all ${isBest ? 'text-emerald-500' : 'text-[#6b7280]'}`}>
+                                                    ${p.toFixed(2)}
+                                                </span>
+                                                {isBest && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, scale: 0 }}
+                                                        whileInView={{ opacity: 1, scale: 1 }}
+                                                        transition={{ delay: 0.6 + idx * 0.1 }}
+                                                        className="text-[8px] font-black text-emerald-500 uppercase tracking-wider mt-0.5"
+                                                    >
+                                                        Best ✓
+                                                    </motion.div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* ── AI Crawl Pipeline ── */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <Globe size={12} className="text-[#FF6B00]" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Web Crawler Pipeline</span>
                             </div>
-                            <div className="text-xs" style={{ color: '#4b5563' }}>Prices updated <span className="text-[#1a1a1a] font-medium">2 min ago</span></div>
+                            <div className="flex items-center gap-0">
+                                {crawlSteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === crawlStep
+                                                ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm'
+                                                : i < crawlStep
+                                                    ? 'text-[#10B981]'
+                                                    : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < crawlStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < crawlSteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < crawlStep ? 'bg-[#10B981]' : 'bg-black/8'
+                                                }`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Bottom feature pills */}
-                <div className="flex flex-wrap justify-center gap-3 mt-10">
-                    {['Lumber & Framing', 'Concrete & Masonry', 'Electrical & Plumbing', 'Roofing & Siding', 'Tools & Equipment', 'Bulk & Wholesale', 'Local Suppliers', 'Online Retailers'].map((s, i) => (
-                        <motion.span key={i} {...fadeUp(0.3 + i * 0.04)}
-                            className="px-4 py-2 rounded-full text-xs font-semibold"
-                            style={{ background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.06)', color: '#6b7280' }}>
-                            <Store size={11} className="inline mr-1.5" />{s}
-                        </motion.span>
-                    ))}
+                {/* ─── Right Panel: Metrics + Features ─── */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    {/* Savings Grid */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="grid grid-cols-2 gap-3"
+                    >
+                        {savings.map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.5 + i * 0.1, type: 'spring' }}
+                                    className="text-2xl font-black"
+                                    style={{ color: s.color }}
+                                >
+                                    {s.value}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
+
+                    {/* Feature Cards */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4"
+                    >
+                        {[
+                            { icon: <Globe size={18} />, title: 'Real-Time Web Crawling', desc: 'AI scans every retailer, wholesaler, and outlet — matching exact SKUs and product specs.', color: '#FF6B00' },
+                            { icon: <MapPin size={18} />, title: 'Location-Aware Pricing', desc: 'Prices auto-adjusted for your exact zip code, including local taxes, delivery, and availability.', color: '#3B82F6' },
+                            { icon: <TrendingDown size={18} />, title: 'Budget Optimization', desc: 'AI recommends substitutions and bulk buys that can cut material costs by up to 23%.', color: '#10B981' },
+                        ].map((f, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.5 + i * 0.1 }}
+                                viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default"
+                            >
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>
+                                    {f.icon}
+                                </div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    {/* Category Tags */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6 }}
+                        className="flex flex-wrap gap-2 justify-center"
+                    >
+                        {['Lumber & Framing', 'Concrete', 'Electrical', 'Plumbing', 'Roofing', 'Insulation', 'Tools', 'Bulk Wholesale'].map((cat, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/8 text-[#6b7280] hover:border-[#FF6B00]/30 hover:text-[#FF6B00] transition-all cursor-default">
+                                {cat}
+                            </span>
+                        ))}
+                    </motion.div>
                 </div>
             </div>
         </section>

@@ -441,10 +441,10 @@ export function BlueprintAISection() {
                                 {pipelineSteps.map((step, i) => (
                                     <React.Fragment key={i}>
                                         <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === pipelineStep
-                                                ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm'
-                                                : i < pipelineStep
-                                                    ? 'text-[#10B981]'
-                                                    : 'text-[#9ca3af]'
+                                            ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm'
+                                            : i < pipelineStep
+                                                ? 'text-[#10B981]'
+                                                : 'text-[#9ca3af]'
                                             }`}>
                                             {i < pipelineStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
                                             <span className="hidden sm:inline">{step.label}</span>
@@ -560,169 +560,401 @@ export function BlueprintAISection() {
     );
 }
 
-// ─── Cash Flow Guardian Deep Dive ────────────────────────────────────────
+// ─── Cash Flow Guardian — Advanced Interactive Showcase ───────────────────
 export function CashFlowSection() {
+    const [activeMonth, setActiveMonth] = useState(null);
+    const [alertStep, setAlertStep] = useState(0);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+        const alertInterval = setInterval(() => {
+            setAlertStep(s => (s + 1) % 4);
+        }, 2500);
+        return () => clearInterval(alertInterval);
+    }, [isInView]);
+
+    const months = [
+        { label: 'Jan', inflow: 185000, outflow: 142000, net: 43000, invoices: 12, overdue: 1 },
+        { label: 'Feb', inflow: 156000, outflow: 168000, net: -12000, invoices: 15, overdue: 3 },
+        { label: 'Mar', inflow: 210000, outflow: 138000, net: 72000, invoices: 9, overdue: 0 },
+        { label: 'Apr', inflow: 245000, outflow: 155000, net: 90000, invoices: 11, overdue: 1 },
+        { label: 'May', inflow: 198000, outflow: 189000, net: 9000, invoices: 14, overdue: 2 },
+        { label: 'Jun', inflow: 267000, outflow: 148000, net: 119000, invoices: 8, overdue: 0 },
+    ];
+
+    const alertSteps = [
+        { label: 'Monitoring', icon: <Eye size={14} />, desc: 'Tracking all invoices' },
+        { label: 'Forecasting', icon: <TrendingUp size={14} />, desc: '90-day projections' },
+        { label: 'Alerting', icon: <AlertTriangle size={14} />, desc: 'Flagging risks' },
+        { label: 'Collecting', icon: <DollarSign size={14} />, desc: 'Auto-chasing payments' },
+    ];
+
+    const maxFlow = Math.max(...months.map(m => Math.max(m.inflow, m.outflow)));
+
+    const stats = [
+        { value: '+$124K', label: 'Net Position', color: '#10B981' },
+        { value: '3', label: 'Overdue', color: '#F59E0B' },
+        { value: '92%', label: 'Collection Rate', color: '#3B82F6' },
+        { value: '90 Days', label: 'Forecast Window', color: '#FF6B00' },
+    ];
+
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden text-right">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                {/* Visual Side */}
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative order-2 md:order-1">
-                    <div className="relative rounded-2xl bg-white border border-black/8 p-6 overflow-hidden shadow-sm">
-                        <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-[#1a1a1a] font-semibold">Cash Flow Forecast</h3>
-                            <div className="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded font-bold">HEALTHY</div>
-                        </div>
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 text-xs font-bold tracking-wider mb-6">
+                    <DollarSign size={12} className="mr-2" /> FINANCIAL INTELLIGENCE ENGINE
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    AI That <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-[#FF6B00]">Predicts Cash Crunches</span> 90 Days Ahead
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    68% of construction firms fail due to cash flow issues. Gasper monitors every invoice, change order, and receivable in real-time to keep your projects financially healthy.
+                </p>
+            </motion.div>
 
-                        {/* Animated Bars */}
-                        <div className="space-y-4">
-                            {[
-                                { label: 'Jan', inflow: 85, outflow: 60, color: '#FF6B00' },
-                                { label: 'Feb', inflow: 70, outflow: 75, color: '#ef4444' },
-                                { label: 'Mar', inflow: 90, outflow: 55, color: '#FF6B00' },
-                                { label: 'Apr', inflow: 95, outflow: 50, color: '#FF6B00' },
-                            ].map((m, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                    <div className="text-xs text-[#6b7280] w-8 text-left">{m.label}</div>
-                                    <div className="flex-1 flex gap-1 h-6">
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: `${m.inflow}%` }}
-                                            transition={{ duration: 1, delay: i * 0.15 }}
-                                            className="h-full rounded-l-md"
-                                            style={{ background: m.color }}
-                                        />
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: `${m.outflow}%` }}
-                                            transition={{ duration: 1, delay: i * 0.15 + 0.1 }}
-                                            className="h-full bg-black/10 rounded-r-md"
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="flex gap-4 mt-4 text-xs text-[#6b7280]">
-                            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#FF6B00]" /> Inflow</span>
-                            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-black/20" /> Outflow</span>
-                        </div>
-
-                        <div className="border-t border-black/8 pt-4 mt-6">
-                            <div className="flex justify-between">
-                                <div className="text-left">
-                                    <div className="text-xs text-[#6b7280] uppercase">Net Cash Position</div>
-                                    <div className="text-2xl font-bold text-emerald-400">+$124K</div>
-                                </div>
-                                <div>
-                                    <div className="text-xs text-[#6b7280] uppercase">Overdue Invoices</div>
-                                    <div className="text-2xl font-bold text-amber-400">3</div>
+            <div className="grid lg:grid-cols-5 gap-8">
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* Toolbar */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">cashflow_forecast_q2.gasper</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-gray-100 px-2 py-0.5 rounded">FY 2025</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                    Healthy
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </motion.div>
 
-                {/* Content Side */}
-                <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="order-1 md:order-2 flex flex-col items-end">
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-wider mb-6">
-                        <DollarSign size={12} className="mr-2" /> FINANCIAL INTELLIGENCE
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">Never Get Blindsided by Cash Crunches</h2>
-                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
-                        68% of construction firms fail due to cash flow issues. Gasper's AI predicts payment gaps 90 days ahead, auto-chases overdue invoices, and optimizes your draw schedules.
-                    </p>
-                    <div className="space-y-6 text-right w-full">
-                        <div className="flex gap-4 justify-end">
-                            <div className="text-right">
-                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Predictive Forecasting</h4>
-                                <p className="text-[#6b7280] text-sm">90-day rolling cash flow projections updated in real-time as invoices and change orders come in.</p>
-                            </div>
-                            <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex-shrink-0 flex items-center justify-center text-emerald-500"><BarChart3 size={24} /></div>
-                        </div>
-                        <div className="flex gap-4 justify-end">
-                            <div className="text-right">
-                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Auto Invoice Chase</h4>
-                                <p className="text-[#6b7280] text-sm">Smart reminders automatically sent to clients at optimized intervals to maximize collection rates.</p>
-                            </div>
-                            <div className="w-12 h-12 rounded-lg bg-[#FF6B00]/10 flex-shrink-0 flex items-center justify-center text-[#FF6B00]"><Zap size={24} /></div>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
-}
-
-// ─── Site Security Deep Dive ─────────────────────────────────────────────
-export function SiteSecuritySection() {
-    return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-bold tracking-wider mb-6">
-                        <Eye size={12} className="mr-2" /> AI SECURITY
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">24/7 AI-Powered Asset Protection</h2>
-                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
-                        Construction theft costs the industry $1B+ annually. Gasper's Sentinel AI monitors every piece of equipment with GPS tracking, geofencing, and anomaly detection.
-                    </p>
-                    <div className="space-y-6">
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-red-500/10 flex-shrink-0 flex items-center justify-center text-red-500"><MapPin size={24} /></div>
-                            <div>
-                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">Geofence Alerting</h4>
-                                <p className="text-[#6b7280] text-sm">Instant alerts when equipment leaves predefined job site boundaries. Track movement patterns across your fleet.</p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex-shrink-0 flex items-center justify-center text-amber-500"><Clock size={24} /></div>
-                            <div>
-                                <h4 className="text-[#1a1a1a] font-bold text-lg mb-1">After-Hours Detection</h4>
-                                <p className="text-[#6b7280] text-sm">AI identifies unauthorized equipment activation outside working hours and notifies site managers instantly.</p>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Security Visual */}
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
-                    <div className="relative rounded-2xl bg-white border border-black/8 p-6 overflow-hidden shadow-sm">
-                        {/* Radar pulse */}
-                        <div className="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,rgba(0,0,0,0)_50%,rgba(255,107,0,0.08)_100%)] animate-[spin_4s_linear_infinite]" />
-
-                        <div className="relative z-10">
-                            <div className="flex justify-between items-center mb-6">
-                                <h3 className="text-[#1a1a1a] font-semibold">Fleet Status Monitor</h3>
-                                <div className="flex items-center gap-1 text-xs text-emerald-400"><span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" /> All Secure</div>
-                            </div>
-
-                            <div className="space-y-3">
-                                {[
-                                    { name: 'CAT 320 Excavator', status: 'On-Site', icon: '🚜', ok: true },
-                                    { name: 'Liebherr Tower Crane', status: 'Active', icon: '🏗️', ok: true },
-                                    { name: 'Bobcat S650 Skid', status: 'Alert: Left Zone', icon: '⚠️', ok: false },
-                                    { name: 'JLG Boom Lift', status: 'Idle', icon: '🔧', ok: true },
-                                ].map((item, i) => (
-                                    <motion.div
-                                        key={i}
-                                        initial={{ opacity: 0, x: -10 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: i * 0.1 }}
-                                        className={`p-3 rounded-xl border ${item.ok ? 'border-black/8 bg-gray-50' : 'border-red-500/30 bg-red-500/10'} flex items-center justify-between`}
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            <span className="text-lg">{item.icon}</span>
-                                            <div>
-                                                <div className="text-[#1a1a1a] text-sm font-bold">{item.name}</div>
-                                                <div className={`text-xs ${item.ok ? 'text-[#6b7280]' : 'text-red-400'}`}>{item.status}</div>
+                        {/* Chart Area */}
+                        <div className="px-5 pt-6 pb-4">
+                            <div className="flex items-end gap-3 h-48">
+                                {months.map((m, i) => {
+                                    const inflowH = (m.inflow / maxFlow) * 100;
+                                    const outflowH = (m.outflow / maxFlow) * 100;
+                                    const isActive = activeMonth === i;
+                                    return (
+                                        <div key={i} className="flex-1 flex flex-col items-center gap-1 cursor-pointer group"
+                                            onMouseEnter={() => setActiveMonth(i)}
+                                            onMouseLeave={() => setActiveMonth(null)}
+                                        >
+                                            {/* Tooltip */}
+                                            {isActive && (
+                                                <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }}
+                                                    className="text-[9px] font-mono px-2 py-1 rounded-lg bg-[#1a1a1a] text-white mb-1 whitespace-nowrap shadow-lg z-10">
+                                                    Net: <span className={m.net >= 0 ? 'text-emerald-400' : 'text-red-400'}>${(m.net / 1000).toFixed(0)}k</span>
+                                                </motion.div>
+                                            )}
+                                            <div className="flex gap-[2px] items-end w-full">
+                                                <motion.div
+                                                    initial={{ height: 0 }}
+                                                    whileInView={{ height: `${inflowH}%` }}
+                                                    transition={{ duration: 0.8, delay: i * 0.1 }}
+                                                    className="flex-1 rounded-t-md transition-all"
+                                                    style={{ background: isActive ? '#FF6B00' : 'rgba(255,107,0,0.6)', minHeight: 4 }}
+                                                />
+                                                <motion.div
+                                                    initial={{ height: 0 }}
+                                                    whileInView={{ height: `${outflowH}%` }}
+                                                    transition={{ duration: 0.8, delay: i * 0.1 + 0.05 }}
+                                                    className="flex-1 rounded-t-md transition-all"
+                                                    style={{ background: isActive ? '#1a1a1a' : 'rgba(0,0,0,0.12)', minHeight: 4 }}
+                                                />
                                             </div>
+                                            <span className={`text-[10px] font-mono transition-colors ${isActive ? 'text-[#FF6B00] font-bold' : 'text-[#9ca3af]'}`}>{m.label}</span>
                                         </div>
-                                        <div className={`w-2 h-2 rounded-full ${item.ok ? 'bg-emerald-400' : 'bg-red-500 animate-pulse'}`} />
+                                    );
+                                })}
+                            </div>
+                            <div className="flex gap-4 mt-3 text-[10px] text-[#9ca3af] justify-center">
+                                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm bg-[#FF6B00]" /> Inflow</span>
+                                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm bg-black/15" /> Outflow</span>
+                            </div>
+                        </div>
+
+                        {/* Invoice Aging */}
+                        <div className="px-5 py-3 border-t border-black/4">
+                            <div className="grid grid-cols-3 gap-3">
+                                {[
+                                    { label: '0-30 Days', count: 18, amount: '$84K', color: '#10B981' },
+                                    { label: '30-60 Days', count: 5, amount: '$32K', color: '#F59E0B' },
+                                    { label: '60-90+ Days', count: 3, amount: '$18K', color: '#EF4444' },
+                                ].map((bucket, i) => (
+                                    <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
+                                        className="text-center p-2 rounded-xl border border-black/4">
+                                        <div className="text-lg font-black" style={{ color: bucket.color }}>{bucket.count}</div>
+                                        <div className="text-[9px] text-[#6b7280] font-semibold">{bucket.label}</div>
+                                        <div className="text-[10px] font-bold text-[#1a1a1a]">{bucket.amount}</div>
                                     </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Pipeline */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <DollarSign size={12} className="text-emerald-500" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Cash Flow Intelligence Pipeline</span>
+                            </div>
+                            <div className="flex items-center gap-0">
+                                {alertSteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === alertStep ? 'bg-emerald-500/10 text-emerald-500 shadow-sm' : i < alertStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < alertStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < alertSteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < alertStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                        )}
+                                    </React.Fragment>
                                 ))}
                             </div>
                         </div>
                     </div>
                 </motion.div>
+
+                {/* Right Panel */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                        {stats.map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                                    {s.value}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
+                        {[
+                            { icon: <BarChart3 size={18} />, title: 'Predictive Forecasting', desc: '90-day rolling cash flow projections updated in real-time as invoices and change orders come in.', color: '#10B981' },
+                            { icon: <Zap size={18} />, title: 'Auto Invoice Chase', desc: 'Smart reminders automatically sent to clients at optimized intervals to maximize collection rates.', color: '#FF6B00' },
+                            { icon: <AlertTriangle size={18} />, title: 'Draw Schedule Optimizer', desc: 'AI optimizes your payment draws to maximize cash on hand while meeting all contract obligations.', color: '#F59E0B' },
+                        ].map((f, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default">
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                        {['Invoices', 'Change Orders', 'Receivables', 'Draw Schedules', 'Retainage', 'Lien Waivers'].map((tag, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/8 text-[#6b7280] hover:border-emerald-500/30 hover:text-emerald-500 transition-all cursor-default">{tag}</span>
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+// ─── Site Security — Advanced Interactive Showcase ────────────────────────
+export function SiteSecuritySection() {
+    const [activeAsset, setActiveAsset] = useState(null);
+    const [securityStep, setSecurityStep] = useState(0);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+        const interval = setInterval(() => {
+            setSecurityStep(s => (s + 1) % 4);
+        }, 2500);
+        return () => clearInterval(interval);
+    }, [isInView]);
+
+    const assets = [
+        { id: 'exc', name: 'CAT 320 Excavator', status: 'On-Site', zone: 'Zone A — North Lot', gps: '40.7128°N', fuel: 82, hours: 1247, ok: true, color: '#10B981' },
+        { id: 'crane', name: 'Liebherr Tower Crane', status: 'Active', zone: 'Zone B — Main Build', gps: '40.7131°N', fuel: 65, hours: 892, ok: true, color: '#3B82F6' },
+        { id: 'skid', name: 'Bobcat S650 Skid', status: '⚠ Left Zone at 2:14 AM', zone: 'Last: Zone A', gps: 'Moving', fuel: 41, hours: 2103, ok: false, color: '#EF4444' },
+        { id: 'lift', name: 'JLG Boom Lift', status: 'Idle — Parked', zone: 'Zone C — Storage', gps: '40.7125°N', fuel: 93, hours: 456, ok: true, color: '#10B981' },
+        { id: 'dump', name: 'Volvo A30G Hauler', status: 'In Transit', zone: 'En Route → Zone B', gps: 'Moving', fuel: 58, hours: 1689, ok: true, color: '#F59E0B' },
+    ];
+
+    const securitySteps = [
+        { label: 'GPS Track', icon: <MapPin size={14} />, desc: 'Real-time positioning' },
+        { label: 'Geofence', icon: <Shield size={14} />, desc: 'Boundary monitoring' },
+        { label: 'Anomaly', icon: <AlertTriangle size={14} />, desc: 'Pattern detection' },
+        { label: 'Alert', icon: <Zap size={14} />, desc: 'Instant notification' },
+    ];
+
+    const stats = [
+        { value: '24/7', label: 'Monitoring', color: '#EF4444' },
+        { value: '14', label: 'Assets Tracked', color: '#FF6B00' },
+        { value: '1', label: 'Active Alert', color: '#F59E0B' },
+        { value: '99.9%', label: 'Uptime', color: '#10B981' },
+    ];
+
+    return (
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-red-500/30 bg-red-500/10 text-red-500 text-xs font-bold tracking-wider mb-6">
+                    <Eye size={12} className="mr-2" /> AI SECURITY SENTINEL
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-[#FF6B00]">24/7 AI-Powered</span> Asset Protection
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    Construction theft costs the industry $1B+ annually. Gasper's Sentinel AI monitors every piece of equipment with GPS tracking, geofencing, and anomaly detection.
+                </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-5 gap-8">
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* Toolbar */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">fleet_security_monitor.gasper</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-gray-100 px-2 py-0.5 rounded">5 Assets</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-red-500">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                                    1 Alert
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Asset List */}
+                        <div className="px-5 py-3 space-y-2">
+                            {assets.map((asset, i) => {
+                                const isActive = activeAsset === asset.id;
+                                return (
+                                    <motion.div
+                                        key={asset.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.15 + i * 0.08, type: 'spring', bounce: 0.2 }}
+                                        viewport={{ once: true }}
+                                        className="p-3 rounded-xl cursor-pointer transition-all duration-300"
+                                        style={{
+                                            border: isActive ? `1px solid ${asset.color}40` : asset.ok ? '1px solid rgba(0,0,0,0.05)' : '1px solid rgba(239,68,68,0.25)',
+                                            background: isActive ? `${asset.color}06` : asset.ok ? 'rgba(0,0,0,0.01)' : 'rgba(239,68,68,0.04)',
+                                        }}
+                                        onMouseEnter={() => setActiveAsset(asset.id)}
+                                        onMouseLeave={() => setActiveAsset(null)}
+                                    >
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${asset.color}15`, color: asset.color }}>
+                                                    <Truck size={14} />
+                                                </div>
+                                                <div>
+                                                    <div className="text-sm font-bold text-[#1a1a1a]">{asset.name}</div>
+                                                    <div className={`text-[10px] ${asset.ok ? 'text-[#9ca3af]' : 'text-red-500 font-semibold'}`}>{asset.status}</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[9px] font-mono text-[#9ca3af] hidden sm:block">{asset.zone}</span>
+                                                <div className={`w-2.5 h-2.5 rounded-full ${asset.ok ? 'bg-emerald-400' : 'bg-red-500 animate-pulse'}`} />
+                                            </div>
+                                        </div>
+                                        {/* Expanded details on hover */}
+                                        {isActive && (
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-2 pt-2 border-t border-black/5">
+                                                <div className="grid grid-cols-3 gap-3">
+                                                    <div className="text-center">
+                                                        <div className="text-[9px] text-[#9ca3af] uppercase">GPS</div>
+                                                        <div className="text-[11px] font-bold text-[#1a1a1a] font-mono">{asset.gps}</div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Fuel</div>
+                                                        <div className="text-[11px] font-bold" style={{ color: asset.fuel > 50 ? '#10B981' : '#F59E0B' }}>{asset.fuel}%</div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Hours</div>
+                                                        <div className="text-[11px] font-bold text-[#1a1a1a] font-mono">{asset.hours.toLocaleString()}</div>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Security Pipeline */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <Shield size={12} className="text-red-500" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Security Intelligence Pipeline</span>
+                            </div>
+                            <div className="flex items-center gap-0">
+                                {securitySteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === securityStep ? 'bg-red-500/10 text-red-500 shadow-sm' : i < securityStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < securityStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < securitySteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < securityStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Right Panel */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                        {stats.map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                                    {s.value}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
+                        {[
+                            { icon: <MapPin size={18} />, title: 'Geofence Alerting', desc: 'Instant alerts when equipment leaves predefined job site boundaries. Track movement patterns across your fleet.', color: '#EF4444' },
+                            { icon: <Clock size={18} />, title: 'After-Hours Detection', desc: 'AI identifies unauthorized equipment activation outside working hours and notifies site managers instantly.', color: '#F59E0B' },
+                            { icon: <Camera size={18} />, title: 'Visual Surveillance AI', desc: 'Computer vision analyzes site camera feeds to detect unauthorized personnel, safety violations, and anomalies.', color: '#3B82F6' },
+                        ].map((f, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default">
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                        {['GPS Tracking', 'Geofencing', 'Night Vision', 'Motion Alerts', 'Fleet Reports', 'RFID Tags'].map((tag, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/8 text-[#6b7280] hover:border-red-500/30 hover:text-red-500 transition-all cursor-default">{tag}</span>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

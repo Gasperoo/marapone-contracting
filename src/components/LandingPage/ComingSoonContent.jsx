@@ -499,25 +499,25 @@ function WaitlistSection() {
     };
 
     return (
-        <section id="waitlist-section" className="px-6 max-w-4xl mx-auto relative" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+        <div id="waitlist-section" className="relative">
             {/* Background glow */}
             <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center">
-                <div className="w-[600px] h-[400px] rounded-full opacity-10 blur-[120px]" style={{ background: `radial-gradient(ellipse, ${C.primary}, ${C.secondary})` }} />
+                <div className="w-[400px] h-[300px] rounded-full opacity-10 blur-[120px]" style={{ background: `radial-gradient(ellipse, ${C.primary}, ${C.secondary})` }} />
             </div>
 
-            <div className="text-center mb-16">
+            <div className="mb-8">
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="inline-flex items-center px-4 py-1.5 rounded-full border text-sm font-semibold mb-6"
+                    className="inline-flex items-center px-4 py-1.5 rounded-full border text-sm font-semibold mb-4"
                     style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
                     <Sparkles size={14} className="mr-2" /> Limited Early Access
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.02em' }}>
+                    className="text-3xl font-bold text-[#1a1a1a] mb-3" style={{ letterSpacing: '-0.02em' }}>
                     Request Early Access
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
-                    We're onboarding a select group of construction companies and strategic investors in Q2 2025. Secure your spot and lock in founding-member pricing.
+                    className="text-base leading-relaxed" style={{ color: C.textMuted }}>
+                    We're onboarding a select group of construction companies and strategic investors in Q2 2025. Secure your spot.
                 </motion.p>
             </div>
 
@@ -525,7 +525,7 @@ function WaitlistSection() {
                 <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}40, ${C.secondary}25, ${C.primary}20)` }} />
                 <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(24px)' }} />
 
-                <div className="relative z-10 p-8 md:p-12">
+                <div className="relative z-10 p-6 md:p-8">
                     {status === 'success' ? (
                         <div className="text-center py-12">
                             <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: `${C.primary}15`, border: `2px solid ${C.primary}40` }}>
@@ -575,7 +575,7 @@ function WaitlistSection() {
                     )}
                 </div>
             </motion.div>
-        </section>
+        </div>
     );
 }
 
@@ -824,13 +824,92 @@ function SafetyComplianceSection() {
     );
 }
 
+// ─── Feature Tabs ─────────────────────────────────────────────────────────────
+function FeatureTabsSection() {
+    const tabs = [
+        { id: 'blueprint', label: 'Blueprint AI', icon: <Ruler size={16} /> },
+        { id: 'cashflow', label: 'Cash Flow', icon: <DollarSign size={16} /> },
+        { id: 'security', label: 'Site Security', icon: <Shield size={16} /> },
+        { id: 'materials', label: 'Materials', icon: <Search size={16} /> },
+        { id: 'command', label: 'Command Center', icon: <Layers size={16} /> },
+        { id: 'timeline', label: 'Timeline', icon: <CalendarDays size={16} /> },
+        { id: 'safety', label: 'Safety', icon: <ShieldCheck size={16} /> },
+        { id: 'ai', label: 'Gasper AI', icon: <Bot size={16} /> },
+        { id: 'llm', label: 'Custom LLM', icon: <Brain size={16} /> },
+    ];
+
+    const [active, setActive] = useState('blueprint');
+
+    const renderContent = () => {
+        switch (active) {
+            case 'blueprint': return <BlueprintAISection />;
+            case 'cashflow': return <CashFlowSection />;
+            case 'security': return <SiteSecuritySection />;
+            case 'materials': return <MaterialPriceAggregatorSection />;
+            case 'command': return <ProjectCommandCenter />;
+            case 'timeline': return <ProjectTimelineSection />;
+            case 'safety': return <SafetyComplianceSection />;
+            case 'ai': return <GasperAIBotSection />;
+            case 'llm': return <CustomLLMBuilderSection />;
+            default: return <BlueprintAISection />;
+        }
+    };
+
+    return (
+        <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+            <div className="text-center mb-10">
+                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="text-sm uppercase tracking-[0.2em] font-semibold mb-4" style={{ color: C.primary }}>
+                    Platform Modules
+                </motion.p>
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4" style={{ letterSpacing: '-0.03em' }}>
+                    Explore the <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Gasper Platform</span>
+                </motion.h2>
+                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                    className="max-w-2xl mx-auto" style={{ color: C.textMuted }}>
+                    Click any module below to explore its capabilities.
+                </motion.p>
+            </div>
+
+            {/* Tab bar */}
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+                {tabs.map((tab) => (
+                    <button
+                        key={tab.id}
+                        onClick={() => setActive(tab.id)}
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer"
+                        style={active === tab.id
+                            ? { background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`, color: '#fff', boxShadow: `0 4px 16px ${C.primaryGlow}` }
+                            : { background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', color: '#6b7280' }
+                        }
+                    >
+                        {tab.icon}
+                        <span className="hidden sm:inline">{tab.label}</span>
+                    </button>
+                ))}
+            </div>
+
+            {/* Tab content */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={active}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
+                    {renderContent()}
+                </motion.div>
+            </AnimatePresence>
+        </section>
+    );
+}
+
 // ─── Main Export ──────────────────────────────────────────────────────────────
 export default function ComingSoonContent() {
     return (
         <div className="relative" style={{ background: C.bg }}>
-
-
-
 
             {/* ══ CONSTRUCTION FEATURES ══ */}
             <ConstructionFeaturesSection />
@@ -842,30 +921,20 @@ export default function ComingSoonContent() {
 
             <div className="section-divider" />
 
-            {/* ══ DEEP DIVES ══ */}
-            <BlueprintAISection />
-            <CashFlowSection />
-            <SiteSecuritySection />
-
-            {/* ══ MATERIAL PRICE AGGREGATOR (replaces SubcontractorMatch) ══ */}
-            <MaterialPriceAggregatorSection />
-            <ProjectCommandCenter />
-            {/* ══ PROJECT TIMELINE (replaces ROI) ══ */}
-            <ProjectTimelineSection />
-            {/* ══ SAFETY COMPLIANCE (replaces Schedule) ══ */}
-            <SafetyComplianceSection />
+            {/* ══ PLATFORM MODULES (Tabbed) ══ */}
+            <FeatureTabsSection />
 
             <div className="section-divider" />
 
             {/* ══ INDUSTRIES ══ */}
             <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-                <div className="text-center mb-20">
+                <div className="text-center mb-12">
                     <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                         className="text-sm uppercase tracking-[0.2em] font-semibold mb-4" style={{ color: C.primary }}>
                         Built for your sector
                     </motion.p>
                     <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-4" style={{ letterSpacing: '-0.03em' }}>
+                        className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4" style={{ letterSpacing: '-0.03em' }}>
                         Engineered for Every Sector
                     </motion.h2>
                     <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -873,7 +942,7 @@ export default function ComingSoonContent() {
                         Tailored solutions for the unique challenges of construction and infrastructure.
                     </motion.p>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-6">
                     <IndustryCard icon={<HardHat size={28} />} title="General Contracting" description="AI-powered project management, cash flow forecasting, and compliance automation for GCs of all sizes." color="text-[#FF6B00]" useCase="Full Project Lifecycle Intelligence" />
                     <IndustryCard icon={<Building2 size={28} />} title="Commercial Construction" description="Manage multi-million dollar builds with blueprint AI, sub matching, and real-time cost tracking." color="text-amber-400" useCase="Blueprint Analysis & Cost Optimization" />
                     <IndustryCard icon={<Fuel size={28} />} title="Energy & Infrastructure" description="Monitor large-scale energy and infrastructure projects with real-time safety and compliance events." color="text-red-400" useCase="Safety Compliance & Asset Protection" />
@@ -882,26 +951,41 @@ export default function ComingSoonContent() {
 
             <div className="section-divider" />
 
-            {/* ══ GASPER AI ══ */}
-            <GasperAIBotSection />
-
-            <div className="section-divider" />
-
             {/* ══ TECHNOLOGY STACK ══ */}
             <TechnologyStackSection />
 
             <div className="section-divider" />
 
-            {/* ══ CUSTOM LLM ══ */}
-            <CustomLLMBuilderSection />
+            {/* ══ WHAT YOU'LL GET + WAITLIST (side-by-side) ══ */}
+            <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+                <div className="grid lg:grid-cols-2 gap-10 items-start">
+                    {/* Left: What You'll Get */}
+                    <div>
+                        <h2 className="text-3xl font-bold text-[#1a1a1a] mb-3">What You'll Get</h2>
+                        <p className="mb-8" style={{ color: C.textMuted }}>Founding members and early partners get exclusive access to shape the future of construction AI.</p>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            {[
+                                { icon: <Zap size={22} />, title: 'Early Access', description: 'Join our private beta and shape the platform before public launch' },
+                                { icon: <DollarSign size={22} />, title: 'Founding Rate', description: 'Lock in 40% off enterprise pricing for life as a founding member' },
+                                { icon: <Award size={22} />, title: 'White-Glove Onboarding', description: 'Dedicated implementation support from our construction AI experts' },
+                                { icon: <Users size={22} />, title: 'Investor Updates', description: 'Quarterly product roadmap calls direct with founders and leadership' },
+                            ].map((b, idx) => (
+                                <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08, duration: 0.6 }}
+                                    className="rounded-2xl p-5 group transition-all duration-300" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
+                                    <div className="w-10 h-10 rounded-xl mb-3 flex items-center justify-center group-hover:scale-105 transition-transform" style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}15`, color: C.primary }}>
+                                        {b.icon}
+                                    </div>
+                                    <h3 className="text-[#1a1a1a] font-bold mb-1">{b.title}</h3>
+                                    <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{b.description}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
 
-            {/* ══ WHAT YOU'LL GET ══ */}
-            <WhatYouGetSection />
-
-            <div className="section-divider" />
-
-            {/* ══ WAITLIST ══ */}
-            <WaitlistSection />
+                    {/* Right: Waitlist Form */}
+                    <WaitlistSection />
+                </div>
+            </section>
         </div>
     );
 }

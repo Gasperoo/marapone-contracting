@@ -1,9 +1,9 @@
 /* Compact Footer Styles */
 
 .compact-footer {
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
     padding: 1.5rem 0;
     width: 100%;
     margin-top: auto;
@@ -30,14 +30,14 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: white;
+    color: #1a1a1a;
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: -0.02em;
 }
 
 .compact-footer-brand svg {
-    color: #5227FF;
+    color: #FF6B00;
 }
 
 .compact-footer-nav {
@@ -46,7 +46,7 @@
 }
 
 .compact-footer-link {
-    color: #94a3b8;
+    color: #6b7280;
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
@@ -54,11 +54,11 @@
 }
 
 .compact-footer-link:hover {
-    color: #5227FF;
+    color: #FF6B00;
 }
 
 .compact-footer-copyright {
-    color: #475569;
+    color: #94a3b8;
     font-size: 0.75rem;
     white-space: nowrap;
 }
@@ -73,17 +73,17 @@
 }
 
 .compact-footer-input {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
     border-radius: 99px !important;
     height: 36px !important;
     padding: 0 1rem !important;
     font-size: 0.8rem !important;
-    color: white !important;
+    color: #1a1a1a !important;
 }
 
 .compact-footer-submit {
-    background: #5227FF !important;
+    background: #FF6B00 !important;
     color: white !important;
     border-radius: 99px !important;
     height: 36px !important;
@@ -94,7 +94,7 @@
 }
 
 .compact-footer-submit:hover {
-    background: #4319cc !important;
+    background: #e66000 !important;
     transform: translateY(-1px);
 }
 

@@ -138,111 +138,186 @@ function IndustryCard({ icon, title, description, color, useCase }) {
 
 // ─── Gasper AI Bot Section (Revamped — Split Panel) ──────────────────────────
 function GasperAIBotSection() {
-    const queries = [
-        'What materials are over budget on the Harbor View project?',
-        'Show me all pending RFIs for Phase 2',
-        'Which subs have open change orders this week?',
-        'Generate a safety briefing for tomorrow\'s concrete pour',
+    const [aiStep, setAiStep] = useState(0);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+        const interval = setInterval(() => {
+            setAiStep(s => (s + 1) % 4);
+        }, 2500);
+        return () => clearInterval(interval);
+    }, [isInView]);
+
+    const pipelineSteps = [
+        { label: 'Parse', icon: <MessageSquare size={14} /> },
+        { label: 'Reason', icon: <Brain size={14} /> },
+        { label: 'Query', icon: <Database size={14} /> },
+        { label: 'Respond', icon: <Sparkles size={14} /> },
+    ];
+
+    const stats = [
+        { value: '<2s', label: 'Response Time', color: '#FF6B00' },
+        { value: '14', label: 'Data Sources', color: '#3B82F6' },
+        { value: '99.4%', label: 'Accuracy', color: '#10B981' },
+        { value: '24/7', label: 'Availability', color: '#8B5CF6' },
     ];
 
     return (
-        <section className="w-full relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-            <div className="max-w-6xl mx-auto px-6">
-                <div className="grid md:grid-cols-2 gap-10 items-center">
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <Bot size={12} className="mr-2" /> AI CONSTRUCTION COPILOT
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Gasper AI</span>
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    Ask anything about your projects in plain English. Gasper AI understands construction — budgets, schedules, safety, subcontractors — and delivers answers in seconds.
+                </p>
+            </motion.div>
 
-                    {/* Left — Intro */}
-                    <div>
-                        <motion.div {...fadeUp()} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
-                            style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
-                            <Bot size={14} /> AI Construction Copilot
-                        </motion.div>
-                        <motion.h2 {...fadeUp(0.06)} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-5" style={{ letterSpacing: '-0.03em' }}>
-                            Meet <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Gasper AI</span>
-                        </motion.h2>
-                        <motion.p {...fadeUp(0.12)} className="text-lg leading-relaxed mb-8" style={{ color: C.textMuted }}>
-                            Ask anything about your projects in plain English. Gasper AI understands construction — budgets, schedules, safety, subcontractors — and delivers answers in seconds, not hours.
-                        </motion.p>
-
-                        {/* Example queries */}
-                        <motion.div {...fadeUp(0.18)} className="space-y-3">
-                            <div className="text-xs uppercase tracking-widest font-semibold mb-3" style={{ color: '#4b5563' }}>Try asking</div>
-                            {queries.map((q, i) => (
-                                <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300"
-                                    style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)' }}>
-                                    <MessageSquare size={13} style={{ color: C.primary, flexShrink: 0 }} />
-                                    <span className="text-sm text-[#6b7280]">{q}</span>
+            <div className="grid lg:grid-cols-5 gap-8">
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* Toolbar */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">gasper_ai_copilot.chat</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-gray-100 px-2 py-0.5 rounded">GPT-4 Turbo</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                    Online
                                 </div>
-                            ))}
-                        </motion.div>
+                            </div>
+                        </div>
 
-                        {/* Capability badges */}
-                        <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-2 mt-8">
-                            {['Natural Language', 'Voice Commands', 'Proactive Alerts', 'Auto-Reports', 'Multi-Project'].map((c, i) => (
-                                <span key={i} className="px-3 py-1.5 rounded-full text-xs font-semibold"
-                                    style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}18`, color: C.secondary }}>
-                                    {c}
-                                </span>
-                            ))}
-                        </motion.div>
+                        {/* Chat Area */}
+                        <div className="px-5 py-4 space-y-4">
+                            {/* User message */}
+                            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+                                className="flex justify-end">
+                                <div className="rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[80%] bg-[#FF6B00]/10 border border-[#FF6B00]/20">
+                                    <p className="text-[#1a1a1a] text-sm">Show me projected cash flow for Phase 2 of Westside Commercial</p>
+                                </div>
+                            </motion.div>
+
+                            {/* AI response */}
+                            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                                className="flex justify-start">
+                                <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%] bg-gray-50 border border-black/5">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <div className="w-5 h-5 rounded-full bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] flex items-center justify-center">
+                                            <img src="/images/gasper-logo-g.png" alt="G" className="w-3.5 h-3.5 object-contain" />
+                                        </div>
+                                        <span className="text-[10px] font-bold text-[#1a1a1a]">Gasper AI</span>
+                                        <span className="text-[9px] text-[#9ca3af]">just now</span>
+                                    </div>
+                                    <p className="text-[#374151] text-sm mb-3">Analyzed 14 billing cycles across 3 cost codes:</p>
+                                    <div className="space-y-2 pl-2 border-l-2 border-[#FF6B00]/20">
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Forecasted shortfall</span><span className="font-bold text-amber-500">$142,000</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Material variance</span><span className="font-bold text-red-500">+$38k over</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Owner retention held</span><span className="font-bold text-[#1a1a1a]">$104k</span></div>
+                                    </div>
+                                    <div className="mt-3 pt-2 border-t border-black/5 flex items-center gap-2">
+                                        <AlertTriangle size={11} className="text-[#F59E0B]" />
+                                        <span className="text-[11px] text-[#F59E0B]">Electrical sub has 3 unpaid invoices — flag for review?</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Typing indicator */}
+                            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
+                                className="flex justify-start">
+                                <div className="rounded-2xl rounded-tl-sm px-4 py-3 bg-gray-50/50 border border-black/4">
+                                    <div className="flex gap-1">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#9ca3af] animate-bounce" style={{ animationDelay: '0ms' }} />
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#9ca3af] animate-bounce" style={{ animationDelay: '150ms' }} />
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#9ca3af] animate-bounce" style={{ animationDelay: '300ms' }} />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Input bar */}
+                        <div className="px-5 py-3 border-t border-black/6">
+                            <div className="flex items-center gap-2 rounded-xl px-4 py-2.5 bg-gray-50 border border-black/5">
+                                <input type="text" placeholder="Ask about any project..." className="flex-1 bg-transparent text-[#1a1a1a] text-sm outline-none placeholder:text-[#9ca3af]" disabled />
+                                <Send size={15} className="text-[#FF6B00]" />
+                            </div>
+                        </div>
+
+                        {/* Pipeline */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <Brain size={12} className="text-[#FF6B00]" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">AI Reasoning Pipeline</span>
+                            </div>
+                            <div className="flex items-center gap-0">
+                                {pipelineSteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === aiStep ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm' : i < aiStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < aiStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < pipelineSteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < aiStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                        </div>
                     </div>
+                </motion.div>
 
-                    {/* Right — Chat mockup */}
-                    <motion.div {...fadeUp(0.14)} className="uiverse-scanline-card p-0 lg:col-span-1">
-                        <div className="relative z-10 p-6">
-                            {/* Chat header */}
-                            <div className="flex items-center gap-3 mb-5 pb-4 border-b" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
-                                <div className="w-9 h-9 rounded-full flex items-center justify-center p-1" style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>
-                                    <img src="/images/gasper-logo-g.png" alt="Gasper AI" className="w-full h-full object-contain" />
-                                </div>
-                                <div className="flex-1">
-                                    <div className="text-[#1a1a1a] font-semibold text-sm">Gasper AI</div>
-                                    <div className="text-[10px] text-emerald-400 flex items-center gap-1"><div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" /> Online</div>
-                                </div>
+                {/* Right Panel */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                        {stats.map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                                    {s.value}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
                             </div>
+                        ))}
+                    </motion.div>
 
-                            <div className="space-y-4">
-                                {/* User message */}
-                                <div className="flex justify-end">
-                                    <div className="rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[80%]" style={{ background: `${C.primary}15`, border: `1px solid ${C.primary}20` }}>
-                                        <p className="text-[#1a1a1a] text-sm">Show me projected cash flow for Phase 2 of Westside Commercial</p>
-                                    </div>
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
+                        {[
+                            { icon: <MessageSquare size={18} />, title: 'Natural Language Queries', desc: 'Ask about budgets, schedules, change orders, or safety in plain English — no training needed.', color: '#FF6B00' },
+                            { icon: <Zap size={18} />, title: 'Proactive Alerts', desc: 'Gasper AI monitors your projects 24/7, alerting you to risks before they become costly problems.', color: '#F59E0B' },
+                            { icon: <FileText size={18} />, title: 'Auto-Generated Reports', desc: 'Daily, weekly, or custom reports built automatically from live project data — share with one click.', color: '#3B82F6' },
+                        ].map((f, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default">
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
                                 </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
 
-                                {/* AI response */}
-                                <div className="flex justify-start">
-                                    <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%]" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)' }}>
-                                        <p className="text-[#374151] text-sm mb-3">Analyzed 14 billing cycles across 3 cost codes:</p>
-                                        <div className="space-y-2">
-                                            <div className="flex justify-between text-xs"><span style={{ color: '#6b7280' }}>Forecasted shortfall</span><span className="font-bold text-amber-400">$142,000</span></div>
-                                            <div className="flex justify-between text-xs"><span style={{ color: '#6b7280' }}>Material variance</span><span className="font-bold text-red-400">+$38k over</span></div>
-                                            <div className="flex justify-between text-xs"><span style={{ color: '#6b7280' }}>Owner retention held</span><span className="font-bold text-[#374151]">$104k</span></div>
-                                        </div>
-                                        <div className="mt-3 pt-2 border-t flex items-center gap-2" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
-                                            <AlertTriangle size={11} style={{ color: C.secondary }} />
-                                            <span className="text-[11px]" style={{ color: C.secondary }}>Electrical sub has 3 unpaid invoices — flag for review?</span>
-                                        </div>
-                                    </div>
+                    {/* Example queries */}
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
+                        className="rounded-2xl bg-white border border-black/6 p-4 shadow-sm">
+                        <div className="text-[10px] font-bold uppercase tracking-wider text-[#9ca3af] mb-3">Try Asking</div>
+                        <div className="space-y-2">
+                            {['What materials are over budget?', 'Show pending RFIs for Phase 2', 'Which subs have open change orders?', 'Generate a safety briefing'].map((q, i) => (
+                                <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-50 border border-black/4 text-[11px] text-[#6b7280]">
+                                    <MessageSquare size={10} className="text-[#FF6B00] flex-shrink-0" /> {q}
                                 </div>
-
-                                {/* Typing indicator */}
-                                <div className="flex justify-start">
-                                    <div className="rounded-2xl rounded-tl-sm px-4 py-3" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.04)' }}>
-                                        <div className="uiverse-loader">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Input */}
-                            <div className="mt-5 pt-4 border-t" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
-                                <div className="flex items-center gap-2 rounded-xl px-4 py-2.5" style={{ background: 'rgba(0,0,0,0.02)', border: '1px solid rgba(0,0,0,0.06)' }}>
-                                    <input type="text" placeholder="Ask about any project..." className="flex-1 bg-transparent text-[#1a1a1a] text-sm outline-none placeholder:text-slate-600" disabled />
-                                    <Send size={15} className="text-slate-600" />
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </motion.div>
                 </div>
@@ -411,43 +486,205 @@ function WhatYouGetSection() {
 
 // ─── Custom LLM Builder ───────────────────────────────────────────────────────
 function CustomLLMBuilderSection() {
+    const [activeSource, setActiveSource] = useState(null);
+    const [trainStep, setTrainStep] = useState(0);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+        const interval = setInterval(() => {
+            setTrainStep(s => (s + 1) % 4);
+        }, 2500);
+        return () => clearInterval(interval);
+    }, [isInView]);
+
+    const dataSources = [
+        { id: 'contracts', name: 'Contract Documents', count: '4,230', type: 'PDF/DOCX', size: '18.2 GB', color: '#FF6B00', icon: <FileText size={14} /> },
+        { id: 'rfis', name: 'RFI Archives', count: '12,891', type: 'Structured', size: '5.6 GB', color: '#3B82F6', icon: <MessageSquare size={14} /> },
+        { id: 'specs', name: 'Project Specifications', count: '1,847', type: 'PDF', size: '22.1 GB', color: '#10B981', icon: <ClipboardCheck size={14} /> },
+        { id: 'safety', name: 'Safety Protocols', count: '3,456', type: 'Mixed', size: '8.3 GB', color: '#F59E0B', icon: <Shield size={14} /> },
+        { id: 'cost', name: 'Cost Databases', count: '89,102', type: 'CSV/SQL', size: '2.1 GB', color: '#8B5CF6', icon: <Database size={14} /> },
+    ];
+
+    const pipelineSteps = [
+        { label: 'Ingest', icon: <Database size={14} /> },
+        { label: 'Clean', icon: <Search size={14} /> },
+        { label: 'Train', icon: <Cpu size={14} /> },
+        { label: 'Deploy', icon: <Zap size={14} /> },
+    ];
+
+    const stats = [
+        { value: '50B+', label: 'Parameters', color: '#FF6B00' },
+        { value: '99.2%', label: 'Accuracy', color: '#10B981' },
+        { value: '<500ms', label: 'Inference', color: '#3B82F6' },
+        { value: 'SOC 2', label: 'Compliant', color: '#8B5CF6' },
+    ];
+
     return (
-        <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
-            <div className="text-center mb-16 relative z-10">
-                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="inline-flex items-center px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
-                    style={{ borderColor: `${C.primary}30`, background: `${C.primary}10`, color: C.primary }}>
-                    <Brain size={14} className="mr-2" /> Bespoke Enterprise AI
-                </motion.div>
-                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-bold mb-6 text-[#1a1a1a]">
-                    Gasper <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Custom LLM Builder</span>
-                </motion.h2>
-                <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-lg max-w-3xl mx-auto leading-relaxed" style={{ color: C.textMuted }}>
-                    We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for construction. Trained on your project histories, specs, contracts, and workflows — an AI that truly speaks your business language.
-                </motion.p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 relative z-10">
-                {[
-                    { icon: <Cpu size={28} />, bg: <Database size={120} />, title: 'How We Build', body: 'Our experts fine-tune models using your internal documents, project archives, safety protocols, subcontractor records, and operational data — creating an AI that understands your construction business deeply.' },
-                    { icon: <Zap size={28} />, bg: <Layers size={120} />, title: 'Seamless Integration', body: 'We embed your custom LLM into Procore, Autodesk, existing ERP systems, or custom dashboards via secure APIs. On-premise or cloud — your data never leaves your control.' },
-                    { icon: <TrendingUp size={28} />, bg: <ShieldCheck size={120} />, title: 'Why You Need It', body: 'Off-the-shelf AI misses construction nuances and exposes sensitive data. With Gasper, you gain unmatched accuracy on estimates, RFI drafting, safety compliance, delay forecasting, and contract analysis — at a fraction of the engineering cost.' },
-                ].map((card, i) => (
-                    <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 * (i + 1), duration: 0.6 }}
-                        className="uiverse-neo-card group relative"
-                    >
-                        <div className="absolute -right-4 -top-4 p-6 transition-opacity duration-500 opacity-[0.03] group-hover:opacity-[0.05]">{card.bg}</div>
-                        <div className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center shadow-lg shadow-black/20" style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${C.border}`, color: C.primary }}>
-                            {card.icon}
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-500 text-xs font-bold tracking-wider mb-6">
+                    <Brain size={12} className="mr-2" /> CUSTOM LLM BUILDER
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    Gasper <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-[#FF6B00]">Custom LLM Builder</span>
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for construction. Trained on your project histories, specs, contracts, and workflows.
+                </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-5 gap-8">
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* Toolbar */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">llm_training_pipeline.gasper</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-gray-100 px-2 py-0.5 rounded">5 Sources</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-purple-500">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
+                                    Training
+                                </div>
+                            </div>
                         </div>
-                        <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">{card.title}</h3>
-                        <p className="text-[15px] leading-relaxed relative z-10" style={{ color: C.textMuted }}>{card.body}</p>
+
+                        {/* Training Progress */}
+                        <div className="px-5 pt-4 pb-2">
+                            <div className="flex items-center justify-between mb-2">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#9ca3af]">Model Training Progress</span>
+                                <span className="text-sm font-black text-purple-500">78%</span>
+                            </div>
+                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <motion.div initial={{ width: 0 }} whileInView={{ width: '78%' }} transition={{ duration: 1.5, ease: 'easeOut' }}
+                                    className="h-full rounded-full bg-gradient-to-r from-purple-500 to-[#FF6B00]" />
+                            </div>
+                        </div>
+
+                        {/* Data Sources */}
+                        <div className="px-5 py-3 space-y-2">
+                            {dataSources.map((src, i) => {
+                                const isActive = activeSource === src.id;
+                                return (
+                                    <motion.div
+                                        key={src.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.2 + i * 0.08, type: 'spring', bounce: 0.2 }}
+                                        viewport={{ once: true }}
+                                        className="p-3 rounded-xl cursor-pointer transition-all duration-300"
+                                        style={{
+                                            border: isActive ? `1px solid ${src.color}40` : '1px solid rgba(0,0,0,0.04)',
+                                            background: isActive ? `${src.color}04` : 'rgba(0,0,0,0.01)',
+                                        }}
+                                        onMouseEnter={() => setActiveSource(src.id)}
+                                        onMouseLeave={() => setActiveSource(null)}
+                                    >
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${src.color}15`, color: src.color }}>
+                                                    {src.icon}
+                                                </div>
+                                                <div>
+                                                    <div className="text-sm font-bold text-[#1a1a1a]">{src.name}</div>
+                                                    <div className="text-[10px] text-[#9ca3af]">{src.count} documents</div>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[9px] px-2 py-0.5 rounded-full font-bold bg-gray-50 border border-black/5 text-[#9ca3af]">{src.type}</span>
+                                            </div>
+                                        </div>
+                                        {isActive && (
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-2 pt-2 border-t border-black/5">
+                                                <div className="grid grid-cols-3 gap-3">
+                                                    <div className="text-center">
+                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Documents</div>
+                                                        <div className="text-[11px] font-bold text-[#1a1a1a] font-mono">{src.count}</div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Size</div>
+                                                        <div className="text-[11px] font-bold" style={{ color: src.color }}>{src.size}</div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Status</div>
+                                                        <div className="text-[11px] font-bold text-[#10B981]">Ingested</div>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Pipeline */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <Cpu size={12} className="text-purple-500" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">LLM Training Pipeline</span>
+                            </div>
+                            <div className="flex items-center gap-0">
+                                {pipelineSteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === trainStep ? 'bg-purple-500/10 text-purple-500 shadow-sm' : i < trainStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < trainStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < pipelineSteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < trainStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Right Panel */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                        {stats.map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                                    {s.value}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                            </div>
+                        ))}
                     </motion.div>
-                ))}
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
+                        {[
+                            { icon: <Cpu size={18} />, title: 'Custom Fine-Tuning', desc: 'We fine-tune models on your internal documents, project archives, safety protocols, and operational data.', color: '#8B5CF6' },
+                            { icon: <Zap size={18} />, title: 'Seamless Integration', desc: 'Embed into Procore, Autodesk, ERP systems, or custom dashboards via secure APIs. On-premise or cloud.', color: '#FF6B00' },
+                            { icon: <Lock size={18} />, title: 'Enterprise Security', desc: 'Your data never leaves your control. SOC 2 compliant, on-premise deployment options, and encrypted at rest.', color: '#10B981' },
+                        ].map((f, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default">
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                        {['Fine-Tuning', 'RAG Pipeline', 'Vector DB', 'On-Premise', 'API Access', 'Multi-Tenant'].map((tag, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/8 text-[#6b7280] hover:border-purple-500/30 hover:text-purple-500 transition-all cursor-default">{tag}</span>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] opacity-[0.05] blur-[100px] rounded-[100%] pointer-events-none -z-10"
-                style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }} />
         </section>
     );
 }

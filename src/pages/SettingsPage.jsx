@@ -238,10 +238,10 @@ export default function SettingsPage() {
     };
 
     return (
-        <div className="landing-container pt-24 pb-20">
+        <div className="landing-container pt-24 pb-20 bg-[#F5F5F5] min-h-screen text-[#1a1a1a]">
 
             <div className="page-content">
-                <h1 className="page-title text-white">Account Settings</h1>
+                <h1 className="page-title text-[#1a1a1a]">Account Settings</h1>
 
                 <div className="account-form-wrapper">
                     {/* Success/Error Messages */}
@@ -423,7 +423,10 @@ export default function SettingsPage() {
                                     style={{
                                         padding: '0.5rem 1.5rem',
                                         fontSize: '0.9rem',
-                                        background: 'linear-gradient(135deg, #5227FF, #B19EEF)',
+                                        background: 'linear-gradient(135deg, #FF6B00, #F59E0B)',
+                                        color: 'white',
+                                        border: 'none',
+                                        borderRadius: '8px'
                                     }}
                                 >
                                     {portalLoading ? 'Loading...' : '💳 Manage Billing'}

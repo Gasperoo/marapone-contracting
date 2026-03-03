@@ -407,9 +407,9 @@ export default function PackagesPage() {
   };
 
   return (
-    <div className="page-container">
+    <div className="page-container bg-[#F5F5F5] min-h-screen text-[#1a1a1a]">
       <LiquidEther
-        colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+        colors={['#FF6B00', '#F59E0B', '#Fcd34d']}
         mouseForce={isMobile ? 18 : 24}
         cursorSize={isMobile ? 80 : 100}
         isViscous
@@ -427,15 +427,15 @@ export default function PackagesPage() {
       />
 
       <div className="page-content packages-content">
-        <h1 className="page-title">Service Packages</h1>
+        <h1 className="page-title text-[#1a1a1a]">Service Packages</h1>
 
         {!selectedCategory ? (
           <div className="products-grid">
             <div onClick={() => handleCategoryClick('AI Solutions')}>
-              <SpotlightCard spotlightColor="rgba(82, 39, 255, 0.3)">
+              <SpotlightCard spotlightColor="rgba(255, 107, 0, 0.2)">
                 <span className="spotlight-card-icon">🤖</span>
-                <h2>AI Solutions</h2>
-                <p>
+                <h2 className="text-[#1a1a1a] font-bold text-xl mb-2">AI Solutions</h2>
+                <p className="text-[#4b5563]">
                   Choose from our tiered AI packages designed to fit your business needs and budget.
                   From starter implementations to enterprise-grade solutions with full support.
                 </p>
@@ -443,10 +443,10 @@ export default function PackagesPage() {
             </div>
 
             <div onClick={() => handleCategoryClick('Consulting')}>
-              <SpotlightCard spotlightColor="rgba(255, 159, 252, 0.3)">
+              <SpotlightCard spotlightColor="rgba(245, 158, 11, 0.2)">
                 <span className="spotlight-card-icon">💡</span>
-                <h2>Consulting</h2>
-                <p>
+                <h2 className="text-[#1a1a1a] font-bold text-xl mb-2">Consulting</h2>
+                <p className="text-[#4b5563]">
                   Strategic consulting packages tailored to your organization's size and objectives.
                   From essential guidance to full transformation partnerships.
                 </p>
@@ -454,10 +454,10 @@ export default function PackagesPage() {
             </div>
 
             <div onClick={() => handleCategoryClick('Import/Export & Logistics')}>
-              <SpotlightCard spotlightColor="rgba(177, 158, 239, 0.3)">
+              <SpotlightCard spotlightColor="rgba(255, 107, 0, 0.2)">
                 <span className="spotlight-card-icon">🌍</span>
-                <h2>Import/Export & Logistics</h2>
-                <p>
+                <h2 className="text-[#1a1a1a] font-bold text-xl mb-2">Import/Export & Logistics</h2>
+                <p className="text-[#4b5563]">
                   International trade and logistics packages for businesses of all sizes.
                   From starter documentation to premium global trade management.
                 </p>
@@ -465,10 +465,10 @@ export default function PackagesPage() {
             </div>
 
             <div onClick={() => handleCategoryClick('Marketing Solutions')}>
-              <SpotlightCard spotlightColor="rgba(82, 39, 255, 0.3)">
+              <SpotlightCard spotlightColor="rgba(245, 158, 11, 0.2)">
                 <span className="spotlight-card-icon">📈</span>
-                <h2>Marketing Solutions</h2>
-                <p>
+                <h2 className="text-[#1a1a1a] font-bold text-xl mb-2">Marketing Solutions</h2>
+                <p className="text-[#4b5563]">
                   Comprehensive marketing packages to build and amplify your brand.
                   From digital presence to full-scale brand domination strategies.
                 </p>
@@ -478,10 +478,10 @@ export default function PackagesPage() {
         ) : (
           <div className="packages-tier-overlay" onClick={handleBackgroundClick}>
             <div className="packages-tier-content" onClick={(e) => e.stopPropagation()}>
-              <button className="back-button" onClick={() => setSelectedCategory(null)}>
+              <button className="back-button text-[#1a1a1a] hover:text-[#FF6B00] transition-colors" onClick={() => setSelectedCategory(null)}>
                 ← Back to Packages
               </button>
-              <h2 className="detail-title">{selectedCategory} Packages</h2>
+              <h2 className="detail-title text-[#1a1a1a]">{selectedCategory} Packages</h2>
 
               <div className="tier-grid">
                 {/* Bronze Tier */}

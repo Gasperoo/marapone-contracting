@@ -218,145 +218,207 @@ export function SubcontractorMatchSection() {
 // 2. PROJECT COMMAND CENTER — Live Gantt Timeline
 // ═══════════════════════════════════════════════════════════════════════════
 export function ProjectCommandCenter() {
+    const [activePhase, setActivePhase] = useState(null);
+    const [pipeStep, setPipeStep] = useState(0);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+    React.useEffect(() => {
+        if (!isInView) return;
+        const interval = setInterval(() => {
+            setPipeStep(s => (s + 1) % 4);
+        }, 2500);
+        return () => clearInterval(interval);
+    }, [isInView]);
+
     const phases = [
-        { name: 'Pre-Construction', start: 0, width: 15, progress: 100, color: '#22d3ee', icon: '📋' },
-        { name: 'Foundation', start: 12, width: 18, progress: 100, color: '#10b981', icon: '🏗️' },
-        { name: 'Framing & Structure', start: 25, width: 22, progress: 78, color: '#FF6B00', icon: '🔨' },
-        { name: 'MEP Rough-In', start: 40, width: 20, progress: 45, color: '#F59E0B', icon: '⚡' },
-        { name: 'Interior Finish', start: 55, width: 25, progress: 0, color: '#8b5cf6', icon: '🎨' },
-        { name: 'Final Inspections', start: 78, width: 12, progress: 0, color: '#ef4444', icon: '✅' },
+        { name: 'Pre-Construction', start: 0, width: 15, progress: 100, color: '#22d3ee', months: 'Jan–Feb', tasks: 12, workers: 6 },
+        { name: 'Foundation', start: 12, width: 18, progress: 100, color: '#10b981', months: 'Feb–Apr', tasks: 18, workers: 14 },
+        { name: 'Framing & Structure', start: 25, width: 22, progress: 78, color: '#FF6B00', months: 'Mar–Jun', tasks: 24, workers: 22 },
+        { name: 'MEP Rough-In', start: 40, width: 20, progress: 45, color: '#F59E0B', months: 'May–Jul', tasks: 31, workers: 18 },
+        { name: 'Interior Finish', start: 55, width: 25, progress: 0, color: '#8b5cf6', months: 'Jul–Sep', tasks: 28, workers: 0 },
+        { name: 'Final Inspections', start: 78, width: 12, progress: 0, color: '#ef4444', months: 'Sep–Oct', tasks: 9, workers: 0 },
+    ];
+
+    const pipelineSteps = [
+        { label: 'Schedule', icon: <CalendarDays size={14} /> },
+        { label: 'Track', icon: <BarChart3 size={14} /> },
+        { label: 'Optimize', icon: <Zap size={14} /> },
+        { label: 'Report', icon: <Target size={14} /> },
+    ];
+
+    const stats = [
+        { value: '47%', label: 'Overall Progress', color: '#FF6B00' },
+        { value: '94', label: 'Days Remaining', color: '#3B82F6' },
+        { value: '38', label: 'Active Workers', color: '#10B981' },
+        { value: '2', label: 'AI Alerts', color: '#F59E0B' },
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
-            <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#FF6B00]/5 rounded-full blur-[150px]" />
+        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <CalendarDays size={12} className="mr-2" /> LIVE PROJECT TIMELINE
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    Your Entire Project — <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">AI-Orchestrated</span>
+                </h2>
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    See every phase, milestone, and dependency at a glance. Our AI auto-adjusts schedules when delays occur and alerts you to cascading impacts.
+                </p>
+            </motion.div>
 
-            <div className="grid lg:grid-cols-5 gap-12 items-start relative z-10">
-                {/* Left Content */}
-                <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="lg:col-span-2"
-                >
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
-                        <CalendarDays size={12} className="mr-2" /> LIVE PROJECT TIMELINE
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6">
-                        Your Entire Project Timeline —{' '}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">AI-Orchestrated</span>
-                    </h2>
-                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8">
-                        See every phase, milestone, and dependency at a glance. Our AI auto-adjusts schedules when delays occur, re-sequences tasks, and alerts you to cascading impacts.
-                    </p>
-
-                    {/* Live Stats */}
-                    <div className="grid grid-cols-2 gap-4">
-                        {[
-                            { label: 'Overall Progress', value: '47%', sub: 'On Track', color: 'text-emerald-400' },
-                            { label: 'Days Remaining', value: '94', sub: 'Est. July 15', color: 'text-[#FF6B00]' },
-                            { label: 'Active Workers', value: '38', sub: '+5 vs last week', color: 'text-[#22d3ee]' },
-                            { label: 'AI Alerts', value: '2', sub: 'Weather + Delivery', color: 'text-amber-400' },
-                        ].map((s, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 10 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="p-4 rounded-xl bg-gray-50 border border-black/5"
-                            >
-                                <div className="text-xs text-[#6b7280] uppercase tracking-wider mb-1">{s.label}</div>
-                                <div className={`text-2xl font-black ${s.color}`}>{s.value}</div>
-                                <div className="text-xs text-[#6b7280] mt-1">{s.sub}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* Right — Gantt Chart */}
-                <motion.div
-                    initial={{ opacity: 0, x: 40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="lg:col-span-3 rounded-3xl bg-white border border-black/8 shadow-sm p-6 relative overflow-hidden"
-                >
-                    <div className="flex justify-between items-center mb-6">
-                        <h3 className="text-[#1a1a1a] font-bold">Riverside Commons — Phase II</h3>
-                        <div className="flex items-center gap-1 text-xs text-emerald-400">
-                            <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                            Live
-                        </div>
-                    </div>
-
-                    {/* Timeline Header */}
-                    <div className="flex justify-between text-[10px] text-[#6b7280] uppercase tracking-widest mb-3 px-1">
-                        {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'].map(m => (
-                            <span key={m}>{m}</span>
-                        ))}
-                    </div>
-
-                    {/* Gantt Bars */}
-                    <div className="space-y-3">
-                        {phases.map((phase, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.08 }}
-                                className="flex items-center gap-3"
-                            >
-                                <div className="w-32 flex items-center gap-2 flex-shrink-0">
-                                    <span className="text-sm">{phase.icon}</span>
-                                    <span className="text-xs text-[#374151] truncate">{phase.name}</span>
+            <div className="grid lg:grid-cols-5 gap-8">
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
+                    <div className="relative rounded-3xl bg-white border border-black/8 overflow-hidden shadow-lg">
+                        {/* Toolbar */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/6 bg-gradient-to-r from-gray-50 to-white">
+                            <div className="flex items-center gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">riverside_commons_phase2.gasper</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-gray-100 px-2 py-0.5 rounded">6 Phases</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                    Live
                                 </div>
-                                <div className="flex-1 h-8 bg-gray-100 rounded-lg relative overflow-hidden">
-                                    {/* Full bar (planned) */}
-                                    <div
-                                        className="absolute top-0 bottom-0 rounded-lg opacity-20"
-                                        style={{
-                                            left: `${phase.start}%`,
-                                            width: `${phase.width}%`,
-                                            background: phase.color,
-                                        }}
-                                    />
-                                    {/* Progress bar (actual) */}
-                                    {phase.progress > 0 && (
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: `${(phase.width * phase.progress) / 100}%` }}
-                                            transition={{ duration: 1.5, delay: i * 0.1 }}
-                                            className="absolute top-0 bottom-0 rounded-lg shadow-lg"
-                                            style={{
-                                                left: `${phase.start}%`,
-                                                background: `linear-gradient(90deg, ${phase.color}, ${phase.color}88)`,
-                                                boxShadow: `0 0 12px ${phase.color}40`,
-                                            }}
-                                        />
-                                    )}
-                                    {/* Progress label */}
-                                    {phase.progress > 0 && (
-                                        <div
-                                            className="absolute top-1/2 -translate-y-1/2 text-[10px] font-bold text-[#1a1a1a]"
-                                            style={{ left: `${phase.start + 1}%` }}
-                                        >
-                                            {phase.progress}%
+                            </div>
+                        </div>
+
+                        {/* Month headers */}
+                        <div className="px-5 pt-3 pb-1">
+                            <div className="flex justify-between text-[9px] text-[#9ca3af] uppercase tracking-widest font-mono">
+                                {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'].map(m => (
+                                    <span key={m}>{m}</span>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Gantt Bars */}
+                        <div className="px-5 py-2 space-y-2">
+                            {phases.map((phase, i) => {
+                                const isActive = activePhase === i;
+                                return (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.15 + i * 0.08, type: 'spring', bounce: 0.2 }}
+                                        viewport={{ once: true }}
+                                        className="cursor-pointer transition-all duration-300"
+                                        onMouseEnter={() => setActivePhase(i)}
+                                        onMouseLeave={() => setActivePhase(null)}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-28 flex-shrink-0">
+                                                <div className="text-[11px] font-bold text-[#1a1a1a] truncate">{phase.name}</div>
+                                                <div className="text-[9px] text-[#9ca3af]">{phase.months}</div>
+                                            </div>
+                                            <div className="flex-1 h-7 bg-gray-50 rounded-lg relative overflow-hidden border border-black/4">
+                                                <div className="absolute top-0 bottom-0 rounded-lg opacity-15" style={{ left: `${phase.start}%`, width: `${phase.width}%`, background: phase.color }} />
+                                                {phase.progress > 0 && (
+                                                    <motion.div initial={{ width: 0 }} whileInView={{ width: `${(phase.width * phase.progress) / 100}%` }}
+                                                        transition={{ duration: 1.5, delay: i * 0.1 }}
+                                                        className="absolute top-0 bottom-0 rounded-lg"
+                                                        style={{ left: `${phase.start}%`, background: `linear-gradient(90deg, ${phase.color}, ${phase.color}99)`, boxShadow: `0 0 8px ${phase.color}30` }}
+                                                    />
+                                                )}
+                                                {phase.progress > 0 && (
+                                                    <div className="absolute top-1/2 -translate-y-1/2 text-[9px] font-bold text-white drop-shadow-sm"
+                                                        style={{ left: `${phase.start + 1.5}%` }}>
+                                                        {phase.progress}%
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
-                                    )}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                                        {isActive && (
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="ml-[7.5rem] mt-1 mb-1 pl-3 border-l-2" style={{ borderColor: `${phase.color}40` }}>
+                                                <div className="flex gap-4 text-[9px]">
+                                                    <div><span className="text-[#9ca3af] uppercase">Tasks</span> <span className="font-bold text-[#1a1a1a]">{phase.tasks}</span></div>
+                                                    <div><span className="text-[#9ca3af] uppercase">Workers</span> <span className="font-bold text-[#1a1a1a]">{phase.workers}</span></div>
+                                                    <div><span className="text-[#9ca3af] uppercase">Progress</span> <span className="font-bold" style={{ color: phase.color }}>{phase.progress}%</span></div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
 
-                    {/* Timeline Now Marker */}
-                    <div className="relative mt-2" style={{ paddingLeft: '35%' }}>
-                        <div className="flex flex-col items-center">
-                            <div className="w-0.5 h-4 bg-black/20" />
-                            <div className="text-[9px] text-[#1a1a1a]/60 uppercase tracking-widest bg-gray-100 px-2 py-0.5 rounded">Today</div>
+                        {/* Today marker */}
+                        <div className="px-5 py-1">
+                            <div className="relative" style={{ paddingLeft: '35%' }}>
+                                <div className="flex flex-col items-center">
+                                    <div className="w-0.5 h-3 bg-[#FF6B00]/30" />
+                                    <div className="text-[8px] text-[#FF6B00] uppercase tracking-widest bg-[#FF6B00]/10 px-2 py-0.5 rounded font-bold">Today</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Pipeline */}
+                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
+                            <div className="flex items-center gap-1 mb-2">
+                                <CalendarDays size={12} className="text-[#FF6B00]" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Project Intelligence Pipeline</span>
+                            </div>
+                            <div className="flex items-center gap-0">
+                                {pipelineSteps.map((step, i) => (
+                                    <React.Fragment key={i}>
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === pipeStep ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm' : i < pipeStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                            }`}>
+                                            {i < pipeStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            <span className="hidden sm:inline">{step.label}</span>
+                                        </div>
+                                        {i < pipelineSteps.length - 1 && (
+                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < pipeStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </motion.div>
+
+                {/* Right Panel */}
+                <div className="lg:col-span-2 flex flex-col gap-5">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                        {stats.map((s, i) => (
+                            <div key={i} className="rounded-2xl bg-white border border-black/6 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                                    {s.value}
+                                </motion.div>
+                                <div className="text-[10px] text-[#6b7280] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                            </div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                        className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
+                        {[
+                            { icon: <Zap size={18} />, title: 'Auto Re-Sequencing', desc: 'AI detects delays and re-calculates your critical path in real-time, suggesting actionable schedule adjustments.', color: '#FF6B00' },
+                            { icon: <AlertTriangle size={18} />, title: 'Cascade Impact Alerts', desc: 'See exactly how one delay ripples across all dependent phases — before it costs you money.', color: '#F59E0B' },
+                            { icon: <Users size={18} />, title: 'Crew Coordination', desc: 'Resource allocation optimized by AI — right crew, right phase, right time. Zero idle workers.', color: '#3B82F6' },
+                        ].map((f, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
+                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default">
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                <div>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                        {['Gantt Charts', 'Critical Path', 'Weather AI', 'Milestone Gates', 'Crew Tracking', 'Daily Logs'].map((tag, i) => (
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/8 text-[#6b7280] hover:border-[#FF6B00]/30 hover:text-[#FF6B00] transition-all cursor-default">{tag}</span>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

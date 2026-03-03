@@ -527,7 +527,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                         transition={{ delay: 0.6, duration: 0.8 }}
                     >
                         {comingSoonMode
-                            ? 'Blueprint Intelligence, forecasting, material price scanner, site-security, and custom LLMs integrations — one platform to command every job.'
+                            ? 'Blueprint Intelligence, Forecasting, Material Price Scanner, Site Security, and Custom LLM Integrations — one platform to command every job.'
                             : 'One unified intelligence platform. Two specialized engines. Choose your operational domain to see how Marapone transforms chaos into clarity.'
                         }
                     </motion.p>

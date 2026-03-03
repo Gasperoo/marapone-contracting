@@ -420,12 +420,12 @@ export default function LandingPage({ comingSoonMode = false }) {
         : ['Select', 'Your', 'Domain'];
 
     return (
-        <div className={`landing-container pt-12 relative transition-colors duration-1000`} style={comingSoonMode ? { backgroundColor: '#F5F5F5', color: '#1a1a1a' } : {}}>
+        <div className={`landing-container ${comingSoonMode ? '' : 'pt-12'} relative transition-colors duration-1000`} style={comingSoonMode ? { backgroundColor: '#F5F5F5', color: '#1a1a1a' } : {}}>
             {/* Grand Entrance Hero Section */}
             <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40 ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
-                    {comingSoonMode ? <AuroraBackground className="h-full w-full absolute inset-0 rounded-none z-0" /> : <div className="absolute inset-0 bg-slate-900" />}
+                    {comingSoonMode ? <AuroraBackground showRadialGradient={false} className="h-full w-full absolute inset-0 rounded-none z-0" /> : <div className="absolute inset-0 bg-slate-900" />}
                 </div>
 
                 {/* Dynamic ambient glow for selected domain */}

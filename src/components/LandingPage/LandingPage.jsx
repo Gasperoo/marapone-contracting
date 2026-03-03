@@ -422,7 +422,7 @@ export default function LandingPage({ comingSoonMode = false }) {
     return (
         <div className={`landing-container ${comingSoonMode ? '' : 'pt-12'} relative transition-colors duration-1000`} style={comingSoonMode ? { backgroundColor: '#F5F5F5', color: '#1a1a1a' } : {}}>
             {/* Grand Entrance Hero Section */}
-            <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40 ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
+            <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40 w-full overflow-hidden ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
                 {/* Background */}
                 <div className="absolute inset-0 z-0">
                     {comingSoonMode ? <AuroraBackground showRadialGradient={false} className="h-full w-full absolute inset-0 rounded-none z-0" /> : <div className="absolute inset-0 bg-slate-900" />}
@@ -439,7 +439,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                     style={{ filter: 'blur(200px)', willChange: 'opacity' }}
                 />
 
-                <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
+                <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6">
                     {/* Gasper G Logo — comingSoon only */}
                     {comingSoonMode && (
                         <motion.div

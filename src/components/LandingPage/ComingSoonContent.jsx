@@ -345,16 +345,16 @@ function ComparisonTableSection() {
 
             {/* Before / After */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                className="rounded-3xl p-8 md:p-12 mb-10" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                <h3 className="text-2xl font-bold text-[#1a1a1a] text-center mb-10">The Old Way vs. The Gasper Way</h3>
-                <div className="space-y-0 divide-y" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
+                className="rounded-3xl p-6 md:p-12 mb-10 overflow-x-auto" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
+                <h3 className="text-xl md:text-2xl font-bold text-[#1a1a1a] text-center mb-10">The Old Way vs. The Gasper Way</h3>
+                <div className="space-y-0 divide-y min-w-[600px] md:min-w-0" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
                     {transformations.map((t, i) => (
-                        <div key={i} className="grid md:grid-cols-[1fr_auto_1fr] items-center gap-4 py-5">
+                        <div key={i} className="grid grid-cols-[1fr_auto_1fr] md:grid-cols-[1fr_auto_1fr] items-center gap-4 py-5">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-slate-500" style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.12)' }}>{t.icon}</div>
                                 <span className="text-sm text-slate-500 line-through">{t.before}</span>
                             </div>
-                            <div className="hidden md:flex w-8 h-8 rounded-full items-center justify-center text-xs font-bold flex-shrink-0 mx-auto" style={{ background: `${C.primary}15`, color: C.primary }}>→</div>
+                            <div className="flex w-8 h-8 rounded-full items-center justify-center text-xs font-bold flex-shrink-0 mx-auto" style={{ background: `${C.primary}15`, color: C.primary }}>→</div>
                             <div className="flex items-center gap-3 md:justify-end">
                                 <span className="text-sm text-[#4b5563] font-medium">{t.after}</span>
                                 <Check size={16} className="flex-shrink-0" style={{ color: C.secondary }} />
@@ -632,33 +632,35 @@ function MaterialPriceAggregatorSection() {
                         </div>
 
                         {/* Store headers */}
-                        <div className="grid grid-cols-[1.5fr_repeat(4,1fr)] gap-3 mb-3 px-2">
-                            <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#4b5563' }}>Material</div>
-                            {stores.map((s, i) => (
-                                <div key={i} className="text-center text-xs font-bold" style={{ color: s.color }}>{s.name}</div>
-                            ))}
-                        </div>
+                        <div className="overflow-x-auto hide-scrollbar pb-4">
+                            <div className="min-w-[600px] mb-3 px-2 grid grid-cols-[1.5fr_repeat(4,1fr)] gap-3">
+                                <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#4b5563' }}>Material</div>
+                                {stores.map((s, i) => (
+                                    <div key={i} className="text-center text-xs font-bold whitespace-nowrap" style={{ color: s.color }}>{s.name}</div>
+                                ))}
+                            </div>
 
-                        {/* Price rows */}
-                        <div className="space-y-2">
-                            {materials.map((m, idx) => (
-                                <motion.div key={idx} {...fadeUp(0.22 + idx * 0.06)}
-                                    className="grid grid-cols-[1.5fr_repeat(4,1fr)] gap-3 items-center rounded-xl px-3 py-3 transition-colors"
-                                    style={{ background: idx % 2 === 0 ? 'rgba(0,0,0,0.02)' : 'transparent' }}>
-                                    <div>
-                                        <div className="text-[#1a1a1a] text-sm font-medium">{m.item}</div>
-                                        <div className="text-[10px]" style={{ color: '#4b5563' }}>{m.category}</div>
-                                    </div>
-                                    {m.prices.map((p, pi) => (
-                                        <div key={pi} className="text-center">
-                                            <span className={`text-sm font-bold ${pi === m.best ? 'px-2 py-0.5 rounded-lg' : ''}`}
-                                                style={pi === m.best ? { color: '#10b981', background: 'rgba(16,185,129,0.12)' } : { color: '#6b7280' }}>
-                                                {p} {pi === m.best && '✓'}
-                                            </span>
+                            {/* Price rows */}
+                            <div className="min-w-[600px] space-y-2">
+                                {materials.map((m, idx) => (
+                                    <motion.div key={idx} {...fadeUp(0.22 + idx * 0.06)}
+                                        className="grid grid-cols-[1.5fr_repeat(4,1fr)] gap-3 items-center rounded-xl px-3 py-3 transition-colors"
+                                        style={{ background: idx % 2 === 0 ? 'rgba(0,0,0,0.02)' : 'transparent' }}>
+                                        <div>
+                                            <div className="text-[#1a1a1a] text-sm font-medium">{m.item}</div>
+                                            <div className="text-[10px]" style={{ color: '#4b5563' }}>{m.category}</div>
                                         </div>
-                                    ))}
-                                </motion.div>
-                            ))}
+                                        {m.prices.map((p, pi) => (
+                                            <div key={pi} className="text-center">
+                                                <span className={`text-sm font-bold ${pi === m.best ? 'px-2 py-0.5 rounded-lg' : ''}`}
+                                                    style={pi === m.best ? { color: '#10b981', background: 'rgba(16,185,129,0.12)' } : { color: '#6b7280' }}>
+                                                    {p} {pi === m.best && '✓'}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Summary bar */}

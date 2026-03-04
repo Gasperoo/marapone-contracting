@@ -115,7 +115,7 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
 
             {/* Card inner — glass surface */}
             <div
-                className="absolute inset-[1px] rounded-3xl z-[1] transition-all duration-500 shadow-sm pointer-events-none"
+                className="absolute inset-[1px] rounded-3xl z-[1] transition-all duration-500 shadow-sm"
                 style={{
                     background: active
                         ? `radial-gradient(ellipse at center, ${themeColor}08 0%, rgba(255,255,255,0.98) 70%)`

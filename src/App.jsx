@@ -8,9 +8,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 import ComingSoonGuard from './components/ComingSoonGuard';
 import LandingPage from './components/LandingPage/LandingPage';
 import AboutPage from './pages/AboutPage';
-import GasperPage from './pages/GasperPage';
 import GasperToolLauncher from './components/GasperToolLauncher';
 import ConstructionTool from './components/ConstructionTool/ConstructionTool';
+import LogisticsTool from './components/LogisticsTool/LogisticsTool';
 import PricingPage from './pages/PricingPage';
 import FeaturesPage from './pages/FeaturesPage';
 import HowItWorksPage from './pages/HowItWorksPage';
@@ -52,7 +52,7 @@ function App() {
                       <Route path="/how-it-works" element={<HowItWorksPage />} />
                       <Route path="/industries" element={<IndustriesPage />} />
                       <Route path="/gasper" element={<GasperToolLauncher />} />
-                      <Route path="/gasper/logistics" element={<GasperPage />} />
+                      <Route path="/gasper/logistics" element={<LogisticsTool />} />
                       <Route path="/gasper/construction" element={<ConstructionTool />} />
                       <Route path="/pricing" element={<PricingPage />} />
                       <Route path="/cart" element={<CartPage />} />

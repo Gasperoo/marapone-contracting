@@ -78,7 +78,7 @@ export function CashFlowGuardian() {
                                 animate={{ height: `${(month.outflow / maxVal) * 150}px` }}
                                 transition={{ delay: 0.3 + idx * 0.05, duration: 0.5 }}
                             />
-                            <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)', marginTop: 4, fontWeight: 600 }}>{month.month}</div>
+                            <div style={{ fontSize: '0.55rem', color: '#6b7280', marginTop: 4, fontWeight: 600 }}>{month.month}</div>
                         </div>
                     ))}
                 </div>
@@ -145,7 +145,7 @@ export function CashFlowGuardian() {
                             >
                                 <div>
                                     <div style={{ fontSize: '0.8rem', fontWeight: 500, color: '#374151' }}>{payment.vendor}</div>
-                                    <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>{payment.project} · Due: {payment.dueDate}</div>
+                                    <div style={{ fontSize: '0.6rem', color: '#9ca3af', marginTop: 2 }}>{payment.project} · Due: {payment.dueDate}</div>
                                 </div>
                                 <div style={{ textAlign: 'right' }}>
                                     <div style={{

@@ -6,20 +6,33 @@
 
 export function getCashFlowForecast() {
     return {
-        weeks: [
-            { week: 'W1', inflow: 45000, outflow: 38000, balance: 52000 },
-            { week: 'W2', inflow: 12000, outflow: 41000, balance: 23000 },
-            { week: 'W3', inflow: 8000, outflow: 35000, balance: -4000 },
-            { week: 'W4', inflow: 62000, outflow: 29000, balance: 29000 },
-            { week: 'W5', inflow: 55000, outflow: 44000, balance: 40000 },
-            { week: 'W6', inflow: 18000, outflow: 52000, balance: 6000 },
-            { week: 'W7', inflow: 71000, outflow: 33000, balance: 44000 },
-            { week: 'W8', inflow: 30000, outflow: 47000, balance: 27000 },
+        healthScore: 84,
+        currentBalance: '$287,400',
+        monthlyBurn: '$52,300',
+        runway: '5.5 months',
+        arOutstanding: '$245,600',
+        apDue: '$118,200',
+        monthly: [
+            { month: 'Jan', inflow: 95000, outflow: 78000 },
+            { month: 'Feb', inflow: 62000, outflow: 81000 },
+            { month: 'Mar', inflow: 108000, outflow: 72000 },
+            { month: 'Apr', inflow: 55000, outflow: 89000 },
+            { month: 'May', inflow: 120000, outflow: 94000 },
+            { month: 'Jun', inflow: 71000, outflow: 82000 },
+            { month: 'Jul', inflow: 135000, outflow: 77000 },
+            { month: 'Aug', inflow: 88000, outflow: 97000 },
         ],
         alerts: [
-            { id: 1, severity: 'critical', message: 'Projected $4K shortfall in Week 3 — client payment delayed on Riverside Apts', action: 'Accelerate Invoice #1047', savingsEstimate: '$3,200' },
-            { id: 2, severity: 'warning', message: 'Material price hike expected: lumber up 12% by March', action: 'Lock supplier pricing now', savingsEstimate: '$8,400' },
-            { id: 3, severity: 'info', message: 'Week 6 cash thin — consider extending supplier terms on concrete order', action: 'Auto-draft extension request', savingsEstimate: '$2,100' },
+            { severity: 'critical', title: 'Cash Shortfall Risk', description: 'Projected $19K shortfall in April — client payment delayed on Riverside Apts project.', suggestion: 'Accelerate Invoice #1047 ($34.5K) to close gap before payroll.' },
+            { severity: 'warning', title: 'Material Price Surge', description: 'Lumber prices up 12.3% — impacting margins on 3 active projects.', suggestion: 'Lock supplier pricing now to save an estimated $8,400.' },
+            { severity: 'info', title: 'Thin Cash Window', description: 'June cash reserves will dip below safety threshold based on current AP schedule.', suggestion: 'Auto-draft extension request for concrete supplier terms.' },
+        ],
+        upcomingPayments: [
+            { vendor: 'Riverside Apartments LLC', project: 'Riverside Phase 2', dueDate: 'Mar 12', amount: '$34,500', type: 'receivable' },
+            { vendor: 'Metro Commercial Group', project: 'Office Tower A', dueDate: 'Mar 18', amount: '$67,200', type: 'receivable' },
+            { vendor: 'ABC Lumber Supply', project: 'Henderson Reno', dueDate: 'Mar 15', amount: '$12,800', type: 'payable' },
+            { vendor: 'City Concrete Co.', project: 'Municipal Center', dueDate: 'Mar 20', amount: '$28,400', type: 'payable' },
+            { vendor: 'Henderson Homes', project: 'Henderson Reno', dueDate: 'Mar 25', amount: '$18,900', type: 'receivable' },
         ],
         invoices: [
             { id: 'INV-1047', client: 'Riverside Apartments LLC', amount: 34500, age: 42, status: 'overdue', project: 'Riverside Phase 2' },

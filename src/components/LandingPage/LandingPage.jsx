@@ -365,7 +365,7 @@ const ConstructionHeroPanel = () => {
                     </div>
 
                     {/* Bottom metrics strip */}
-                    <div className="grid grid-cols-4 gap-4 mt-6 pt-5 border-t" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-5 border-t" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
                         {[
                             { value: '850+', label: 'Job Sites' },
                             { value: '10×', label: 'Faster Estimates' },
@@ -422,7 +422,7 @@ export default function LandingPage({ comingSoonMode = false }) {
     return (
         <div className={`landing-container ${comingSoonMode ? '' : 'pt-12'} relative transition-colors duration-1000`} style={{ backgroundColor: '#F5F5F5', color: '#1a1a1a' }}>
             {/* Grand Entrance Hero Section */}
-            <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-40 w-full overflow-hidden ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
+            <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-16 md:pb-40 w-full overflow-hidden ${comingSoonMode ? 'coming-soon-hero' : ''}`}>
                 {/* Background */}
                 <div className="absolute inset-0 z-0" />
 
@@ -469,7 +469,7 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                     {/* Giant hero title — OpenSpace-scale */}
                     <div
-                        className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 mx-auto text-center max-w-6xl overflow-hidden"
+                        className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black mb-6 mx-auto text-center max-w-6xl overflow-hidden"
                         style={{ letterSpacing: '-0.04em', lineHeight: 0.95, color: '#1a1a1a' }}
                     >
                         {heroWords.map((word, i) => (
@@ -535,7 +535,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Dual CTA buttons — OpenSpace-style */}
                     {comingSoonMode && (
                         <motion.div
-                            className="flex items-center justify-center gap-4 mb-20"
+                            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 md:mb-20 px-4 sm:px-0"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7, duration: 0.8 }}

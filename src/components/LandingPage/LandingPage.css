@@ -1271,3 +1271,135 @@ html {
 .uiverse-scanline-card:hover::before {
     opacity: 1;
 }
+
+/* ============================================= */
+/*  MOBILE — COMING SOON LANDING PAGE            */
+/* ============================================= */
+@media (max-width: 768px) {
+
+    /* Hero: tighten vertical space */
+    .coming-soon-hero {
+        min-height: auto !important;
+        padding-top: 5rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* Section headers: smaller on mobile */
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    /* Dividers: less vertical space */
+    .section-divider {
+        margin: 1rem auto;
+    }
+
+    .nebula-divider {
+        margin: 2rem auto;
+    }
+
+    /* Landing content: less side padding */
+    .landing-content {
+        padding: 0 1rem;
+    }
+
+    /* CTA buttons: full width on mobile */
+    .cta-primary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* How-It-Works step cards: less padding */
+    .step-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .step-title {
+        font-size: 1.25rem;
+    }
+
+    /* Industry cards: less padding */
+    .industry-card {
+        padding: 1.5rem;
+    }
+
+    /* Final CTA: reduce padding */
+    .final-cta-section {
+        padding: 4rem 0;
+    }
+
+    .final-cta-content {
+        padding: 3rem 1.5rem;
+        border-radius: 24px;
+    }
+
+    .final-cta-content h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Metric cards: tighter on mobile */
+    .metric-card {
+        padding: 1.5rem 1rem;
+    }
+
+    /* Feature panels: less gap */
+    .feature-panel {
+        gap: 1.5rem;
+        padding: 2rem 0;
+    }
+
+    /* UIverse cards: smaller padding */
+    .uiverse-glow-card {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+    }
+
+    .uiverse-neo-card {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+    }
+
+    .uiverse-depth-card {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+    }
+
+    .uiverse-scanline-card {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+    }
+
+    /* Glass button: full width */
+    .uiverse-glass-btn {
+        padding: 0.875rem 2rem;
+    }
+
+    /* Header: tighter padding */
+    .landing-header {
+        padding: 1rem;
+    }
+}
+
+/* Smaller phones — further tightening */
+@media (max-width: 480px) {
+    .coming-soon-hero {
+        padding-top: 4rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .metric-card__value {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .step-number {
+        font-size: 2.5rem;
+    }
+}

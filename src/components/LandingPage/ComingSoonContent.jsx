@@ -165,7 +165,7 @@ function GasperAIBotSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
                     <Bot size={12} className="mr-2" /> AI CONSTRUCTION COPILOT
@@ -385,7 +385,7 @@ function ComparisonTableSection() {
     const differentiators = ['No per-seat fees', 'SOC 2 Certified', 'Unlimited job sites', '24/7 AI support'];
 
     return (
-        <section className="px-6 max-w-6xl mx-auto py-24 relative">
+        <section className="px-4 sm:px-6 max-w-6xl mx-auto py-16 sm:py-24 relative">
             <div className="text-center mb-20 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="inline-block px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
@@ -420,11 +420,11 @@ function ComparisonTableSection() {
 
             {/* Before / After */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                className="rounded-3xl p-6 md:p-12 mb-10 overflow-x-auto" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                <h3 className="text-xl md:text-2xl font-bold text-[#1a1a1a] text-center mb-10">The Old Way vs. The Gasper Way</h3>
-                <div className="space-y-0 divide-y min-w-[600px] md:min-w-0" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
+                className="rounded-3xl p-4 sm:p-6 md:p-12 mb-10 overflow-x-auto" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a1a1a] text-center mb-6 sm:mb-10">The Old Way vs. The Gasper Way</h3>
+                <div className="space-y-0 divide-y" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
                     {transformations.map((t, i) => (
-                        <div key={i} className="grid grid-cols-[1fr_auto_1fr] md:grid-cols-[1fr_auto_1fr] items-center gap-4 py-5">
+                        <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4 py-4 sm:py-5">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-slate-500" style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.12)' }}>{t.icon}</div>
                                 <span className="text-sm text-slate-500 line-through">{t.before}</span>
@@ -1345,7 +1345,7 @@ function SafetyComplianceSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 text-xs font-bold tracking-wider mb-6">
                     <Shield size={12} className="mr-2" /> AI SAFETY COMMAND
@@ -1538,7 +1538,7 @@ function FeatureTabsSection() {
     };
 
     return (
-        <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+        <section className="px-4 sm:px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-10">
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-sm uppercase tracking-[0.2em] font-semibold mb-4" style={{ color: C.primary }}>
@@ -1609,7 +1609,7 @@ export default function ComingSoonContent() {
             <div className="section-divider" />
 
             {/* ══ INDUSTRIES ══ */}
-            <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+            <section className="px-4 sm:px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
                 <div className="text-center mb-12">
                     <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                         className="text-sm uppercase tracking-[0.2em] font-semibold mb-4" style={{ color: C.primary }}>
@@ -1639,7 +1639,7 @@ export default function ComingSoonContent() {
             <div className="section-divider" />
 
             {/* ══ WHAT YOU'LL GET + WAITLIST (side-by-side) ══ */}
-            <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+            <section className="px-4 sm:px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
                 <div className="grid lg:grid-cols-2 gap-10 items-start">
                     {/* Left: What You'll Get */}
                     <div>

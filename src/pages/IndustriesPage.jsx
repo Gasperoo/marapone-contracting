@@ -15,6 +15,7 @@ const IndustryNode = ({ icon, title, description, color, useCase, category, isHo
             transition={{ duration: 0.3 }}
             onMouseEnter={onHover}
             onMouseLeave={() => onHover(null)}
+            onClick={onClick}
             className={`relative p-6 rounded-2xl cursor-pointer transition-all duration-300 border backdrop-blur-md
                 ${isSelected || isHovered
                     ? 'bg-white shadow-xl scale-[1.02]'
@@ -50,6 +51,7 @@ const IndustryNode = ({ icon, title, description, color, useCase, category, isHo
 export default function IndustriesPage() {
     const [activeFilter, setActiveFilter] = useState('all');
     const [hoveredIndustry, setHoveredIndustry] = useState(null);
+    const [selectedIndustry, setSelectedIndustry] = useState(null);
 
     const industries = [
         { id: 'maritime', category: 'Logistics', icon: <Anchor size={28} />, title: 'Maritime Supply', description: 'Optimize port calls, track container vessels globally, and predict congestion at major hubs to reduce demurrage.', color: '#ea580c', useCase: 'Voyage Optimization AI' },
@@ -161,8 +163,9 @@ export default function IndustriesPage() {
                                     key={ind.id}
                                     {...ind}
                                     isHovered={hoveredIndustry?.id === ind.id}
-                                    isSelected={hoveredIndustry?.id === ind.id}
+                                    isSelected={selectedIndustry?.id === ind.id}
                                     onHover={() => setHoveredIndustry(ind)}
+                                    onClick={() => setSelectedIndustry(selectedIndustry?.id === ind.id ? null : ind)}
                                 />
                             ))}
                         </AnimatePresence>
@@ -172,9 +175,9 @@ export default function IndustriesPage() {
                     <div className="lg:w-[400px] xl:w-[500px] hidden lg:block">
                         <div className="sticky top-32">
                             <AnimatePresence mode="wait">
-                                {hoveredIndustry ? (
+                                {(selectedIndustry || hoveredIndustry) ? (
                                     <motion.div
-                                        key={hoveredIndustry.id}
+                                        key={(selectedIndustry || hoveredIndustry).id}
                                         initial={{ opacity: 0, x: 20, filter: 'blur(10px)' }}
                                         animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                                         exit={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
@@ -182,22 +185,22 @@ export default function IndustriesPage() {
                                         className="h-[600px] rounded-3xl border backdrop-blur-xl p-10 flex flex-col justify-between overflow-hidden relative"
                                         style={{
                                             backgroundColor: 'rgba(255,255,255,0.95)',
-                                            borderColor: `${hoveredIndustry.color}30`,
-                                            boxShadow: `0 20px 40px rgba(0,0,0,0.05), inset 0 0 100px ${hoveredIndustry.color}10`
+                                            borderColor: `${(selectedIndustry || hoveredIndustry).color}30`,
+                                            boxShadow: `0 20px 40px rgba(0,0,0,0.05), inset 0 0 100px ${(selectedIndustry || hoveredIndustry).color}10`
                                         }}
                                     >
                                         {/* Background Glow */}
-                                        <div className="absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-10" style={{ backgroundColor: hoveredIndustry.color }} />
+                                        <div className="absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-10" style={{ backgroundColor: (selectedIndustry || hoveredIndustry).color }} />
 
                                         <div>
                                             <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/20 text-xs font-bold tracking-wider text-[#FF6B00] mb-8 uppercase">
                                                 Active Intelligence
                                             </div>
                                             <h3 className="text-4xl font-bold text-[#1a1a1a] mb-6 leading-tight">
-                                                {hoveredIndustry.title} <span style={{ color: hoveredIndustry.color }}>OS</span>
+                                                {(selectedIndustry || hoveredIndustry).title} <span style={{ color: (selectedIndustry || hoveredIndustry).color }}>OS</span>
                                             </h3>
                                             <p className="text-xl text-[#4b5563] leading-relaxed mb-8">
-                                                {hoveredIndustry.description}
+                                                {(selectedIndustry || hoveredIndustry).description}
                                             </p>
                                         </div>
 
@@ -205,18 +208,18 @@ export default function IndustriesPage() {
                                             <div className="p-6 rounded-2xl bg-[#F5F5F5] border border-black/5">
                                                 <h4 className="text-sm font-bold text-[#6b7280] uppercase tracking-widest mb-4">Primary AI Agent</h4>
                                                 <div className="flex items-center gap-4">
-                                                    <div className="w-12 h-12 rounded-full flex items-center justify-center border" style={{ backgroundColor: `${hoveredIndustry.color}15`, borderColor: hoveredIndustry.color, color: hoveredIndustry.color }}>
-                                                        {hoveredIndustry.icon}
+                                                    <div className="w-12 h-12 rounded-full flex items-center justify-center border" style={{ backgroundColor: `${(selectedIndustry || hoveredIndustry).color}15`, borderColor: (selectedIndustry || hoveredIndustry).color, color: (selectedIndustry || hoveredIndustry).color }}>
+                                                        {(selectedIndustry || hoveredIndustry).icon}
                                                     </div>
-                                                    <span className="text-lg font-bold text-[#1a1a1a]">{hoveredIndustry.useCase}</span>
+                                                    <span className="text-lg font-bold text-[#1a1a1a]">{(selectedIndustry || hoveredIndustry).useCase}</span>
                                                 </div>
                                             </div>
 
                                             <Link
-                                                to={hoveredIndustry.category === 'Logistics' ? '/gasper/logistics' : '/gasper/construction'}
+                                                to={(selectedIndustry || hoveredIndustry).category === 'Logistics' ? '/gasper/logistics' : '/gasper/construction'}
                                                 className="w-full mt-6 py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group border border-black/5"
-                                                style={{ backgroundImage: `linear-gradient(to right, ${hoveredIndustry.color}, ${hoveredIndustry.color}dd)` }}>
-                                                Explore {hoveredIndustry.category} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                                style={{ backgroundImage: `linear-gradient(to right, ${(selectedIndustry || hoveredIndustry).color}, ${(selectedIndustry || hoveredIndustry).color}dd)` }}>
+                                                Explore {(selectedIndustry || hoveredIndustry).category} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                                             </Link>
                                         </div>
                                     </motion.div>

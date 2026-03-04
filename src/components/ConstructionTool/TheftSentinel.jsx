@@ -1,130 +1,113 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import {
-    Siren, MapPin, Lock, Unlock, AlertTriangle, CheckCircle,
-    Zap, Clock, Car, Shield, Eye, ArrowRight, Radio
-} from 'lucide-react';
-import { getTheftSentinelData } from './constructionServices';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Siren, AlertTriangle, CheckCircle, Shield, Plus, X, Edit2, Trash2, Eye, Clock, MapPin } from 'lucide-react';
+import { DataStore } from '../../services/ConstructionDataStore';
 import '../../styles/ConstructionTool.css';
 
 export function TheftSentinel() {
-    const data = getTheftSentinelData();
-    const statusCfg = {
-        'on-site': { color: '#22c55e', badge: 'ct-badge-green', label: 'ON SITE' },
-        'in-transit': { color: '#3b82f6', badge: 'ct-badge-blue', label: 'IN TRANSIT' },
-        'yard': { color: '#a855f7', badge: 'ct-badge-purple', label: 'AT YARD' },
-        'parked': { color: '#f59e0b', badge: 'ct-badge-amber', label: 'PARKED' },
+    const [alerts, setAlerts] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [editItem, setEditItem] = useState(null);
+    const [form, setForm] = useState({});
+
+    useEffect(() => { refresh(); }, []);
+    const refresh = () => { if (!DataStore.isSeeded()) DataStore.seed(); setAlerts(DataStore.getAll('securityAlerts')); };
+
+    const handleAdd = () => { setEditItem(null); setForm({ type: 'unauthorized_access', severity: 'medium', site: '', description: '', status: 'open', timestamp: new Date().toISOString().split('T')[0] }); setShowModal(true); };
+    const handleEdit = (item) => { setEditItem(item); setForm({ ...item, timestamp: item.timestamp?.split('T')[0] || '' }); setShowModal(true); };
+    const handleSave = () => {
+        const payload = { ...form, timestamp: form.timestamp ? new Date(form.timestamp).toISOString() : new Date().toISOString() };
+        if (editItem) DataStore.update('securityAlerts', editItem.id, payload);
+        else DataStore.create('securityAlerts', payload);
+        setShowModal(false); refresh();
     };
+    const handleDelete = (id) => { DataStore.delete('securityAlerts', id); refresh(); };
+    const handleResolve = (id) => { DataStore.update('securityAlerts', id, { status: 'resolved' }); refresh(); };
+
+    const open = alerts.filter(a => a.status === 'open').length;
+    const investigating = alerts.filter(a => a.status === 'investigating').length;
+    const resolved = alerts.filter(a => a.status === 'resolved').length;
+
+    const sevColors = { high: '#ef4444', medium: '#f59e0b', low: '#3b82f6' };
+    const statusColors = { open: '#ef4444', investigating: '#f59e0b', resolved: '#22c55e' };
+    const typeLabels = { unauthorized_access: 'Unauthorized Access', equipment_movement: 'Equipment Movement', material_discrepancy: 'Material Discrepancy', vandalism: 'Vandalism', other: 'Other' };
 
     return (
         <div className="space-y-6">
             <div className="ct-page-header">
-                <div>
-                    <h2 className="ct-page-title"><Siren className="icon-glow" style={{ color: '#FF6B00' }} size={24} />Theft Sentinel™</h2>
-                    <p className="ct-page-subtitle">AI predictive theft & unauthorized use detection</p>
-                </div>
-                <div className="flex items-center gap-3">
-                    <div className="ct-badge ct-badge-green ct-badge-live"><Shield size={10} /> All Perimeters Secure</div>
-                    <div className="ct-badge ct-badge-orange"><Zap size={10} /> {data.stats.anomaliesToday} Anomalies</div>
-                </div>
+                <div><h2 className="ct-page-title"><Siren className="icon-glow" style={{ color: '#dc2626' }} size={24} /> Theft Sentinel</h2><p className="ct-page-subtitle">Security alerts & incident management</p></div>
+                <button onClick={handleAdd} className="ct-btn-primary" style={{ fontSize: '0.75rem', padding: '6px 12px' }}><Plus size={14} /> Log Alert</button>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                 {[
-                    { l: 'Total Vehicles', v: data.stats.totalVehicles, c: 'white' },
-                    { l: 'Active Today', v: data.stats.activeToday, c: '#22c55e' },
-                    { l: 'Anomalies', v: data.stats.anomaliesToday, c: '#f59e0b' },
-                    { l: 'Thefts Prevented', v: data.stats.theftsPrevented, c: '#FF6B00' },
-                    { l: 'Avg Risk', v: data.stats.avgRiskScore, c: '#3b82f6' },
-                    { l: 'Cost Saved', v: data.stats.costSaved, c: '#22c55e' },
-                ].map((s, i) => (
-                    <motion.div key={i} className="ct-kpi" style={{ '--kpi-color': s.c }}
-                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}>
-                        <div className="ct-kpi-label">{s.l}</div>
-                        <div className="ct-kpi-value" style={{ color: s.c }}>{s.v}</div>
+                    { label: 'Total Alerts', value: String(alerts.length), color: '#3b82f6' },
+                    { label: 'Open', value: String(open), color: open > 0 ? '#ef4444' : '#22c55e' },
+                    { label: 'Investigating', value: String(investigating), color: '#f59e0b' },
+                    { label: 'Resolved', value: String(resolved), color: '#22c55e' },
+                ].map((kpi, idx) => (
+                    <motion.div key={idx} className="ct-kpi" style={{ '--kpi-color': kpi.color }} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
+                        <div className="ct-kpi-label">{kpi.label}</div>
+                        <div className="ct-kpi-value" style={{ color: kpi.color }}>{kpi.value}</div>
                     </motion.div>
                 ))}
             </div>
 
-            <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-12 lg:col-span-8">
-                    <div className="ct-card" style={{ padding: 24 }}>
-                        <h3 className="ct-section-header"><Car size={15} className="ct-section-icon" />Fleet Status Monitor</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            {data.vehicles.map((v, i) => {
-                                const sc = statusCfg[v.status] || statusCfg.parked;
-                                const hi = v.riskScore > 30;
-                                return (
-                                    <motion.div key={v.id} className="ct-card" style={{ padding: 16, borderColor: hi ? 'rgba(239,68,68,0.2)' : undefined, boxShadow: hi ? '0 0 15px rgba(239,68,68,0.08)' : undefined }}
-                                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.05 }}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                                            <div>
-                                                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#1a1a1a' }}>{v.name}</div>
-                                                <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>{v.type} · {v.driver}</div>
-                                            </div>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                                {v.engineLock ? <Lock size={13} style={{ color: '#22c55e' }} /> : <Unlock size={13} style={{ color: 'rgba(255,255,255,0.2)' }} />}
-                                                <span className={`ct-badge ${sc.badge}`} style={{ fontSize: '0.5rem', padding: '2px 6px' }}>{sc.label}</span>
-                                            </div>
-                                        </div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.35)', display: 'flex', alignItems: 'center', gap: 4 }}><MapPin size={9} />{v.location}</span>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                                <span style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.25)' }}><Clock size={8} /> {v.lastPing}</span>
-                                                <span style={{ fontSize: '0.7rem', fontFamily: 'monospace', fontWeight: 800, color: v.riskScore > 30 ? '#ef4444' : v.riskScore > 15 ? '#f59e0b' : '#22c55e' }}>R:{v.riskScore}</span>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-span-12 lg:col-span-4 space-y-6">
-                    <div className="ct-card" style={{ padding: 20 }}>
-                        <h3 className="ct-section-header"><AlertTriangle size={14} className="ct-section-icon" />Anomaly Feed</h3>
-                        <div className="space-y-2">
-                            {data.anomalies.map((a, i) => (
-                                <motion.div key={a.id} className={`ct-alert ct-alert-${a.severity}`} style={{ padding: 12 }}
-                                    initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.06 }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                                        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#1a1a1a' }}>{a.vehicle}</span>
-                                        <span className={`ct-badge ct-badge-${a.severity === 'high' ? 'red' : a.severity === 'medium' ? 'amber' : 'blue'}`} style={{ fontSize: '0.45rem', padding: '1px 5px' }}>{a.severity}</span>
-                                    </div>
-                                    <p style={{ fontSize: '0.7rem', color: '#6b7280' }}>{a.message}</p>
-                                    <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.2)', fontFamily: 'monospace', marginTop: 4 }}>{a.time} · {a.type}</div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="ct-card" style={{ padding: 20 }}>
-                        <h3 className="ct-section-header"><Radio size={14} className="ct-section-icon" />Geofence Zones</h3>
-                        <div className="space-y-2">
-                            {data.geofences.map((gf, i) => (
-                                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 10, borderRadius: 8, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
-                                    <div>
-                                        <div style={{ fontSize: '0.75rem', fontWeight: 500, color: '#1a1a1a' }}>{gf.name}</div>
-                                        <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)' }}>{gf.vehicleCount} vehicles · {gf.type}</div>
-                                    </div>
-                                    <span className={`ct-badge ${gf.status === 'secure' ? 'ct-badge-green' : ''}`} style={{ fontSize: '0.5rem', padding: '2px 6px', ...(gf.status !== 'secure' ? { background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)' } : {}) }}>{gf.status}</span>
+            <div className="space-y-3">
+                {alerts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).map((alert, idx) => (
+                    <motion.div key={alert.id} className="ct-card" style={{ padding: 16, borderLeft: `3px solid ${sevColors[alert.severity]}` }} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.03 }}>
+                        <div className="flex items-start justify-between">
+                            <div className="flex items-start gap-3">
+                                <div style={{ background: `${sevColors[alert.severity]}15`, borderRadius: 8, padding: 6, display: 'flex' }}>
+                                    <AlertTriangle size={16} style={{ color: sevColors[alert.severity] }} />
                                 </div>
-                            ))}
+                                <div>
+                                    <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{typeLabels[alert.type] || alert.type}</div>
+                                    <div style={{ fontSize: '0.7rem', color: '#9ca3af' }}><MapPin size={10} style={{ display: 'inline', verticalAlign: -1 }} /> {alert.site} · {new Date(alert.timestamp).toLocaleDateString()}</div>
+                                    <p style={{ fontSize: '0.8rem', color: '#374151', marginTop: 4 }}>{alert.description}</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className={`ct-badge`} style={{ fontSize: '0.55rem', background: `${statusColors[alert.status]}15`, color: statusColors[alert.status], border: `1px solid ${statusColors[alert.status]}30` }}>{alert.status}</span>
+                                {alert.status !== 'resolved' && <button onClick={() => handleResolve(alert.id)} title="Mark Resolved" style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 6, padding: 4, cursor: 'pointer', color: '#22c55e', display: 'flex' }}><CheckCircle size={12} /></button>}
+                                <button onClick={() => handleEdit(alert)} style={tinyBtn}><Edit2 size={11} style={{ color: '#3b82f6' }} /></button>
+                                <button onClick={() => handleDelete(alert.id)} style={tinyBtn}><Trash2 size={11} style={{ color: '#ef4444' }} /></button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {['Lock All Idle Vehicles', 'Generate Theft Report', 'Configure Geofence Alerts'].map((a, i) => (
-                    <button onClick={() => alert("This operational feature is currently in preview.")} key={i} className="ct-action-btn" style={{ height: 48, justifyContent: 'center' }}>
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.15)' }} />
-                        {a}
-                        <ArrowRight size={12} style={{ color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }} />
-                    </button>
+                    </motion.div>
                 ))}
             </div>
+
+            <AnimatePresence>
+                {showModal && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={overlayStyle} onClick={() => setShowModal(false)}>
+                        <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} style={modalStyle} onClick={e => e.stopPropagation()}>
+                            <div className="flex items-center justify-between mb-5"><h3 style={{ fontSize: '1rem', fontWeight: 700 }}>{editItem ? 'Edit' : 'Log'} Security Alert</h3><button onClick={() => setShowModal(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af' }}><X size={18} /></button></div>
+                            <div className="space-y-3">
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div><label style={labelStyle}>Type</label><select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} style={inputStyle}><option value="unauthorized_access">Unauthorized Access</option><option value="equipment_movement">Equipment Movement</option><option value="material_discrepancy">Material Discrepancy</option><option value="vandalism">Vandalism</option><option value="other">Other</option></select></div>
+                                    <div><label style={labelStyle}>Severity</label><select value={form.severity} onChange={e => setForm({ ...form, severity: e.target.value })} style={inputStyle}><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div>
+                                </div>
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div><label style={labelStyle}>Site</label><input value={form.site || ''} onChange={e => setForm({ ...form, site: e.target.value })} style={inputStyle} /></div>
+                                    <div><label style={labelStyle}>Date</label><input type="date" value={form.timestamp || ''} onChange={e => setForm({ ...form, timestamp: e.target.value })} style={inputStyle} /></div>
+                                </div>
+                                <div><label style={labelStyle}>Description</label><textarea value={form.description || ''} onChange={e => setForm({ ...form, description: e.target.value })} style={{ ...inputStyle, minHeight: 60, resize: 'vertical' }} /></div>
+                                <div><label style={labelStyle}>Status</label><select value={form.status} onChange={e => setForm({ ...form, status: e.target.value })} style={inputStyle}><option value="open">Open</option><option value="investigating">Investigating</option><option value="resolved">Resolved</option></select></div>
+                            </div>
+                            <div className="flex gap-3 mt-6"><button onClick={() => setShowModal(false)} style={cancelBtn}>Cancel</button><button onClick={handleSave} style={saveBtn}>{editItem ? 'Update' : 'Log Alert'}</button></div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
+
+const tinyBtn = { background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 4, padding: 3, cursor: 'pointer', display: 'flex' };
+const labelStyle = { fontSize: '0.7rem', fontWeight: 600, color: '#6b7280', display: 'block', marginBottom: 4 };
+const inputStyle = { width: '100%', padding: '8px 12px', borderRadius: 8, border: '1px solid rgba(0,0,0,0.1)', fontSize: '0.8rem', outline: 'none', background: '#fafafa', boxSizing: 'border-box' };
+const overlayStyle = { position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' };
+const modalStyle = { background: 'white', borderRadius: 16, padding: 28, width: '100%', maxWidth: 440, boxShadow: '0 20px 60px rgba(0,0,0,0.3)' };
+const cancelBtn = { flex: 1, padding: '10px', borderRadius: 10, border: '1px solid rgba(0,0,0,0.1)', background: 'white', color: '#6b7280', fontWeight: 600, fontSize: '0.8rem', cursor: 'pointer' };
+const saveBtn = { flex: 1, padding: '10px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #dc2626, #b91c1c)', color: 'white', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer' };

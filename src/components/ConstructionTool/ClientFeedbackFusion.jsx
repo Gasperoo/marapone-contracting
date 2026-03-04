@@ -1,213 +1,113 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import {
-    MessageCircleHeart, TrendingUp, TrendingDown, AlertTriangle,
-    Star, Mail, MessageSquare, Zap, ArrowRight, Heart, DollarSign, Minus, Lightbulb
-} from 'lucide-react';
-import { getClientFeedbackData } from './constructionServices';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { MessageCircleHeart, Star, TrendingUp, TrendingDown, Plus, X, Edit2, Trash2, ThumbsUp, ThumbsDown, Minus } from 'lucide-react';
+import { DataStore } from '../../services/ConstructionDataStore';
 import '../../styles/ConstructionTool.css';
 
 export function ClientFeedbackFusion() {
-    const data = getClientFeedbackData();
+    const [feedback, setFeedback] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [editItem, setEditItem] = useState(null);
+    const [form, setForm] = useState({});
 
-    const sentimentConfig = {
-        positive: { color: '#22c55e', badge: 'ct-badge-green' },
-        neutral: { color: '#3b82f6', badge: 'ct-badge-blue' },
-        negative: { color: '#ef4444', badge: 'ct-badge-red' },
+    useEffect(() => { refresh(); }, []);
+    const refresh = () => { if (!DataStore.isSeeded()) DataStore.seed(); setFeedback(DataStore.getAll('clientFeedback')); };
+
+    const handleAdd = () => { setEditItem(null); setForm({ client: '', project: '', rating: 4, sentiment: 'positive', comment: '', date: new Date().toISOString().split('T')[0] }); setShowModal(true); };
+    const handleEdit = (item) => { setEditItem(item); setForm({ ...item, date: item.date?.split('T')[0] || '' }); setShowModal(true); };
+    const handleSave = () => {
+        const payload = { ...form, rating: parseInt(form.rating) || 0, date: form.date ? new Date(form.date).toISOString() : new Date().toISOString() };
+        if (editItem) DataStore.update('clientFeedback', editItem.id, payload);
+        else DataStore.create('clientFeedback', payload);
+        setShowModal(false); refresh();
     };
+    const handleDelete = (id) => { DataStore.delete('clientFeedback', id); refresh(); };
 
-    const channelIcons = { text: MessageSquare, email: Mail, review: Star };
+    const avgRating = feedback.length ? (feedback.reduce((s, f) => s + (f.rating || 0), 0) / feedback.length).toFixed(1) : '0';
+    const positive = feedback.filter(f => f.sentiment === 'positive').length;
+    const negative = feedback.filter(f => f.sentiment === 'negative').length;
+    const nps = feedback.length ? Math.round(((positive - negative) / feedback.length) * 100) : 0;
+    const sentimentColors = { positive: '#22c55e', neutral: '#f59e0b', negative: '#ef4444' };
+    const SentimentIcon = { positive: ThumbsUp, neutral: Minus, negative: ThumbsDown };
 
     return (
         <div className="space-y-6">
-            {/* Header */}
             <div className="ct-page-header">
-                <div>
-                    <h2 className="ct-page-title">
-                        <MessageCircleHeart className="icon-glow" style={{ color: '#FF6B00' }} size={24} />
-                        Client Feedback Fusion™
-                    </h2>
-                    <p className="ct-page-subtitle">AI-powered relationship health monitor for construction SMBs</p>
-                </div>
-                <div className="ct-badge ct-badge-orange ct-badge-live">
-                    <Heart size={10} /> Relationship Intelligence Active
-                </div>
+                <div><h2 className="ct-page-title"><MessageCircleHeart className="icon-glow" style={{ color: '#ec4899' }} size={24} /> Client Feedback Fusion</h2><p className="ct-page-subtitle">Track client satisfaction & sentiment analysis</p></div>
+                <button onClick={handleAdd} className="ct-btn-primary" style={{ fontSize: '0.75rem', padding: '6px 12px' }}><Plus size={14} /> Add Feedback</button>
             </div>
 
-            {/* Satisfaction Trend */}
-            <div className="ct-card" style={{ padding: 24 }}>
-                <h3 className="ct-section-header">
-                    <TrendingUp size={15} className="ct-section-icon" />
-                    Client Satisfaction Trend
-                </h3>
-                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: 180 }}>
-                    {data.satisfactionTrend.map((point, idx) => {
-                        const barColor = point.score >= 85 ? '#22c55e' : point.score >= 75 ? '#f59e0b' : '#ef4444';
-                        return (
-                            <div key={idx} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                <div style={{ fontSize: '0.65rem', fontWeight: 700, color: barColor, marginBottom: 6 }}>
-                                    {point.score}
-                                </div>
-                                <motion.div
-                                    className="ct-chart-bar"
-                                    style={{
-                                        width: '60%',
-                                        background: `linear-gradient(180deg, ${barColor}, ${barColor}40)`,
-                                    }}
-                                    initial={{ height: 0 }}
-                                    animate={{ height: `${(point.score / 100) * 130}px` }}
-                                    transition={{ delay: idx * 0.06, duration: 0.5 }}
-                                />
-                                <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.25)', marginTop: 8, fontWeight: 600 }}>{point.month}</div>
-                            </div>
-                        );
-                    })}
-                </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                {[
+                    { label: 'Total Reviews', value: String(feedback.length), color: '#3b82f6' },
+                    { label: 'Avg Rating', value: `${avgRating}/5`, color: '#f59e0b' },
+                    { label: 'NPS Score', value: `${nps > 0 ? '+' : ''}${nps}`, color: nps >= 0 ? '#22c55e' : '#ef4444' },
+                    { label: 'Positive', value: `${feedback.length ? Math.round(positive / feedback.length * 100) : 0}%`, color: '#22c55e' },
+                ].map((kpi, idx) => (
+                    <motion.div key={idx} className="ct-kpi" style={{ '--kpi-color': kpi.color }} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.04 }}>
+                        <div className="ct-kpi-label">{kpi.label}</div>
+                        <div className="ct-kpi-value" style={{ color: kpi.color }}>{kpi.value}</div>
+                    </motion.div>
+                ))}
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-6">
-                {/* Project Sentiment */}
-                <div className="ct-card" style={{ padding: 24 }}>
-                    <h3 className="ct-section-header">
-                        <Star size={15} className="ct-section-icon" />
-                        Project Sentiment Analysis
-                    </h3>
-                    <div className="space-y-3">
-                        {data.projectSentiment.map((proj, idx) => {
-                            const sc = sentimentConfig[proj.sentiment];
-                            return (
-                                <motion.div
-                                    key={idx}
-                                    className={`ct-alert ct-alert-${proj.sentiment === 'negative' ? 'high' : proj.sentiment === 'neutral' ? 'low' : 'medium'}`}
-                                    style={{ borderColor: `${sc.color}15`, background: `${sc.color}05` }}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.2 + idx * 0.06 }}
-                                >
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                                        <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{proj.project}</span>
-                                        <span style={{ fontSize: '1.1rem', fontWeight: 800, color: sc.color }}>{proj.score}</span>
+            <div className="space-y-3">
+                {feedback.sort((a, b) => new Date(b.date) - new Date(a.date)).map((item, idx) => {
+                    const Icon = SentimentIcon[item.sentiment] || Minus;
+                    return (
+                        <motion.div key={item.id} className="ct-card" style={{ padding: 18 }} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
+                            <div className="flex items-start justify-between">
+                                <div className="flex items-start gap-3">
+                                    <div style={{ background: `${sentimentColors[item.sentiment]}15`, border: `1px solid ${sentimentColors[item.sentiment]}30`, borderRadius: 8, padding: 6, display: 'flex' }}>
+                                        <Icon size={16} style={{ color: sentimentColors[item.sentiment] }} />
                                     </div>
-                                    <div style={{ display: 'flex', gap: 12, fontSize: '0.65rem', color: '#9ca3af' }}>
-                                        <span className={sc.badge} style={{ fontSize: '0.5rem', padding: '2px 6px' }}>{proj.sentiment}</span>
-                                        <span>{proj.reviews} reviews</span>
-                                        <span style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                                            {proj.trend === 'up' ? <TrendingUp size={10} style={{ color: '#22c55e' }} /> :
-                                                proj.trend === 'down' ? <TrendingDown size={10} style={{ color: '#ef4444' }} /> :
-                                                    <Minus size={10} />}
-                                            {proj.trend}
-                                        </span>
-                                    </div>
-                                </motion.div>
-                            );
-                        })}
-                    </div>
-                </div>
-
-                {/* Dispute Predictions */}
-                <div className="ct-card" style={{ padding: 24 }}>
-                    <h3 className="ct-section-header">
-                        <AlertTriangle size={15} className="ct-section-icon" />
-                        Dispute Prediction
-                    </h3>
-                    <div className="space-y-3">
-                        {data.disputes.map((dispute, idx) => (
-                            <motion.div
-                                key={dispute.id}
-                                className={`ct-alert ct-alert-${dispute.risk === 'high' ? 'high' : 'medium'}`}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 + idx * 0.08 }}
-                            >
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                                    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{dispute.client}</span>
-                                    <span className={`ct-badge ct-badge-${dispute.risk === 'high' ? 'red' : 'amber'}`} style={{ fontSize: '0.5rem' }}>
-                                        {dispute.probability} risk
-                                    </span>
-                                </div>
-                                <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>{dispute.issue}</div>
-                                <div className="ct-ai-suggestion">
-                                    <Lightbulb size={12} className="ai-icon" />
                                     <div>
-                                        <span style={{ fontSize: '0.65rem', fontWeight: 700, color: '#FF6B00' }}>AI Suggestion: </span>
-                                        <span style={{ fontSize: '0.65rem', color: '#6b7280' }}>{dispute.suggestedAction}</span>
+                                        <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{item.client}</div>
+                                        <div style={{ fontSize: '0.7rem', color: '#9ca3af' }}>{item.project} · {new Date(item.date).toLocaleDateString()}</div>
+                                        <div className="flex items-center gap-1 mt-1">
+                                            {Array.from({ length: 5 }, (_, i) => <Star key={i} size={12} fill={i < item.rating ? '#f59e0b' : 'none'} stroke={i < item.rating ? '#f59e0b' : '#d1d5db'} />)}
+                                        </div>
+                                        <p style={{ fontSize: '0.8rem', color: '#374151', marginTop: 6, lineHeight: 1.5 }}>"{item.comment}"</p>
                                     </div>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Recent Communications */}
-            <div className="ct-card" style={{ padding: 24 }}>
-                <h3 className="ct-section-header">
-                    <MessageSquare size={15} className="ct-section-icon" />
-                    Recent Communications
-                </h3>
-                <div className="space-y-1">
-                    {data.recentComms.map((comm, idx) => {
-                        const sc = sentimentConfig[comm.sentiment];
-                        const ChannelIcon = channelIcons[comm.channel] || MessageSquare;
-                        return (
-                            <motion.div
-                                key={comm.id}
-                                className="ct-activity-item"
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.4 + idx * 0.05 }}
-                            >
-                                <div className="ct-icon-box" style={{
-                                    width: 32, height: 32, borderRadius: 8,
-                                    background: `${sc.color}10`, border: `1px solid ${sc.color}20`,
-                                }}>
-                                    <ChannelIcon size={13} style={{ color: sc.color }} />
+                                <div className="flex gap-1">
+                                    <button onClick={() => handleEdit(item)} style={tinyBtn}><Edit2 size={11} style={{ color: '#3b82f6' }} /></button>
+                                    <button onClick={() => handleDelete(item.id)} style={tinyBtn}><Trash2 size={11} style={{ color: '#ef4444' }} /></button>
                                 </div>
-                                <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-                                        <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#1a1a1a' }}>{comm.client}</span>
-                                        <span className={sc.badge} style={{ fontSize: '0.45rem', padding: '1px 5px' }}>{comm.sentiment}</span>
-                                    </div>
-                                    <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{comm.message}</p>
-                                    <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.2)', marginTop: 2 }}>{comm.project} · {comm.time}</div>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
-                </div>
-            </div>
-
-            {/* Upsell Suggestions */}
-            <div className="ct-card" style={{ padding: 24 }}>
-                <h3 className="ct-section-header">
-                    <DollarSign size={15} className="ct-section-icon" />
-                    AI Upsell Opportunities
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                    {data.upsells.map((upsell, idx) => (
-                        <motion.div
-                            key={idx}
-                            className="ct-card group"
-                            style={{ padding: 16, cursor: 'pointer', borderColor: 'rgba(255,107,0,0.1)' }}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 + idx * 0.08 }}
-                        >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#1a1a1a' }}>{upsell.client}</span>
-                                <span className="ct-gradient-text" style={{ fontSize: '1.1rem', fontWeight: 800 }}>{upsell.estimatedValue}</span>
-                            </div>
-                            <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>{upsell.suggestion}</p>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <span className="ct-badge ct-badge-green" style={{ fontSize: '0.5rem' }}>{upsell.probability} conversion</span>
-                                <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                                    Draft Proposal <ArrowRight size={10} />
-                                </span>
                             </div>
                         </motion.div>
-                    ))}
-                </div>
+                    );
+                })}
             </div>
+
+            <AnimatePresence>
+                {showModal && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={overlayStyle} onClick={() => setShowModal(false)}>
+                        <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} style={modalStyle} onClick={e => e.stopPropagation()}>
+                            <div className="flex items-center justify-between mb-5"><h3 style={{ fontSize: '1rem', fontWeight: 700 }}>{editItem ? 'Edit' : 'Add'} Feedback</h3><button onClick={() => setShowModal(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af' }}><X size={18} /></button></div>
+                            <div className="space-y-3">
+                                <div><label style={labelStyle}>Client</label><input value={form.client || ''} onChange={e => setForm({ ...form, client: e.target.value })} style={inputStyle} /></div>
+                                <div><label style={labelStyle}>Project</label><input value={form.project || ''} onChange={e => setForm({ ...form, project: e.target.value })} style={inputStyle} /></div>
+                                <div className="grid grid-cols-3 gap-3">
+                                    <div><label style={labelStyle}>Rating (1-5)</label><input type="number" min="1" max="5" value={form.rating} onChange={e => setForm({ ...form, rating: e.target.value })} style={inputStyle} /></div>
+                                    <div><label style={labelStyle}>Sentiment</label><select value={form.sentiment} onChange={e => setForm({ ...form, sentiment: e.target.value })} style={inputStyle}><option value="positive">Positive</option><option value="neutral">Neutral</option><option value="negative">Negative</option></select></div>
+                                    <div><label style={labelStyle}>Date</label><input type="date" value={form.date || ''} onChange={e => setForm({ ...form, date: e.target.value })} style={inputStyle} /></div>
+                                </div>
+                                <div><label style={labelStyle}>Comment</label><textarea value={form.comment || ''} onChange={e => setForm({ ...form, comment: e.target.value })} style={{ ...inputStyle, minHeight: 80, resize: 'vertical' }} /></div>
+                            </div>
+                            <div className="flex gap-3 mt-6"><button onClick={() => setShowModal(false)} style={cancelBtn}>Cancel</button><button onClick={handleSave} style={saveBtn}>{editItem ? 'Update' : 'Add'}</button></div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
+
+const tinyBtn = { background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 4, padding: 3, cursor: 'pointer', display: 'flex' };
+const labelStyle = { fontSize: '0.7rem', fontWeight: 600, color: '#6b7280', display: 'block', marginBottom: 4 };
+const inputStyle = { width: '100%', padding: '8px 12px', borderRadius: 8, border: '1px solid rgba(0,0,0,0.1)', fontSize: '0.8rem', outline: 'none', background: '#fafafa', boxSizing: 'border-box' };
+const overlayStyle = { position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' };
+const modalStyle = { background: 'white', borderRadius: 16, padding: 28, width: '100%', maxWidth: 440, boxShadow: '0 20px 60px rgba(0,0,0,0.3)' };
+const cancelBtn = { flex: 1, padding: '10px', borderRadius: 10, border: '1px solid rgba(0,0,0,0.1)', background: 'white', color: '#6b7280', fontWeight: 600, fontSize: '0.8rem', cursor: 'pointer' };
+const saveBtn = { flex: 1, padding: '10px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #ec4899, #db2777)', color: 'white', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer' };

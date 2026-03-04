@@ -1,19 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import {
     HardHat, FileSearch, Calculator, BrainCircuit, Boxes, Wrench,
     TrendingUp, TrendingDown, Clock, CheckCircle, AlertTriangle, ArrowRight,
     DollarSign, UserSearch, ShieldCheck, CalendarClock, MessageCircleHeart, Siren, MapPinCheck,
-    Sparkles, Zap, Activity
+    Sparkles, Zap, Activity, RefreshCw
 } from 'lucide-react';
+import { DataStore } from '../../services/ConstructionDataStore';
 import '../../styles/ConstructionTool.css';
-
-const stats = [
-    { label: 'Active Projects', value: '12', change: '+3 this month', trend: 'up', color: '#FF6B00' },
-    { label: 'Tasks Completed', value: '847', change: '94% on time', trend: 'up', color: '#22c55e' },
-    { label: 'Blueprint Analyses', value: '2,341', change: '+127 this week', trend: 'up', color: '#3b82f6' },
-    { label: 'Maint. Predictions', value: '98.2%', change: 'Accuracy rate', trend: 'up', color: '#a855f7' },
-];
 
 const modules = [
     { id: 'blueprint', label: 'Blueprint Analyzer', icon: FileSearch, desc: 'AI-powered plan reading & annotation', color: '#3b82f6' },
@@ -30,15 +24,43 @@ const modules = [
     { id: 'utilization', label: 'Site Arrival', icon: MapPinCheck, desc: 'Fleet utilization & billable time', color: '#0ea5e9' },
 ];
 
-const recentActivity = [
-    { type: 'success', text: 'Blueprint analysis completed — Warehouse B (Phase 2)', time: '5m ago', color: '#22c55e' },
-    { type: 'warning', text: 'Equipment alert: Crane #04 bearing vibration anomaly detected', time: '12m ago', color: '#f59e0b' },
-    { type: 'info', text: 'AI Planner updated schedule for Commercial Tower – saved 6 days', time: '1h ago', color: '#3b82f6' },
-    { type: 'success', text: 'Takeoff report exported for Riverside Apartments (42 items)', time: '2h ago', color: '#22c55e' },
-    { type: 'info', text: 'Generative Design produced 8 new layout variants for Office Complex', time: '3h ago', color: '#3b82f6' },
-];
+function timeAgo(iso) {
+    if (!iso) return '';
+    const diff = Date.now() - new Date(iso).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    return `${Math.floor(hrs / 24)}d ago`;
+}
 
 export function ConstructionDashboard({ onNavigate }) {
+    const [dashData, setDashData] = useState(null);
+
+    useEffect(() => {
+        // Seed on first visit
+        if (!DataStore.isSeeded()) DataStore.seed();
+        refreshData();
+    }, []);
+
+    const refreshData = () => {
+        const stats = DataStore.getDashboardStats();
+        const activity = DataStore.getActivity(8);
+        const cf = DataStore.getCashFlowSummary();
+        setDashData({ stats, activity, cf });
+    };
+
+    if (!dashData) return null;
+    const { stats, activity, cf } = dashData;
+
+    const statCards = [
+        { label: 'Active Projects', value: String(stats.activeProjects), change: `$${(stats.totalBudget / 1000000).toFixed(1)}M portfolio`, trend: 'up', color: '#FF6B00' },
+        { label: 'Tasks', value: `${stats.completedTasks}/${stats.totalTasks}`, change: stats.totalTasks > 0 ? `${Math.round(stats.completedTasks / stats.totalTasks * 100)}% complete` : 'No tasks yet', trend: 'up', color: '#22c55e' },
+        { label: 'Takeoff Items', value: String(stats.takeoffItemCount), change: 'Across all projects', trend: 'up', color: '#3b82f6' },
+        { label: 'Equip. Health', value: stats.avgEquipmentHealth > 0 ? `${stats.avgEquipmentHealth}%` : 'N/A', change: 'Average fleet health', trend: stats.avgEquipmentHealth >= 85 ? 'up' : 'down', color: stats.avgEquipmentHealth >= 85 ? '#22c55e' : '#f59e0b' },
+    ];
+
     return (
         <div className="space-y-6">
             {/* Welcome */}
@@ -48,16 +70,50 @@ export function ConstructionDashboard({ onNavigate }) {
                         <HardHat className="icon-glow" style={{ color: '#FF6B00' }} size={28} />
                         Construction Command Center
                     </h1>
-                    <p className="ct-page-subtitle">AI-powered construction intelligence at your fingertips</p>
+                    <p className="ct-page-subtitle">AI-powered construction intelligence — live data</p>
                 </div>
-                <div className="ct-badge ct-badge-green ct-badge-live">
-                    All Systems Online
+                <div className="flex items-center gap-2">
+                    <button onClick={refreshData} className="ct-badge" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <RefreshCw size={12} /> Refresh
+                    </button>
+                    <div className="ct-badge ct-badge-green ct-badge-live">
+                        All Systems Online
+                    </div>
                 </div>
             </div>
 
+            {/* Cash Flow Banner */}
+            <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="ct-card"
+                style={{ padding: '16px 20px', cursor: 'pointer' }}
+                onClick={() => onNavigate?.('cashflow')}
+            >
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                    <div className="flex items-center gap-3">
+                        <div className="ct-icon-box" style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)' }}>
+                            <DollarSign size={16} style={{ color: '#22c55e' }} />
+                        </div>
+                        <div>
+                            <div className="text-xs font-medium" style={{ color: '#6b7280' }}>Cash Balance</div>
+                            <div className="text-lg font-black" style={{ color: cf.cashBalance >= 0 ? '#22c55e' : '#ef4444' }}>
+                                ${Math.abs(cf.cashBalance).toLocaleString()}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-6 text-xs">
+                        <div><span style={{ color: '#6b7280' }}>AR Outstanding: </span><span className="font-bold" style={{ color: '#f59e0b' }}>${cf.outstandingAR.toLocaleString()}</span></div>
+                        <div><span style={{ color: '#6b7280' }}>AP Due: </span><span className="font-bold" style={{ color: '#ef4444' }}>${cf.outstandingAP.toLocaleString()}</span></div>
+                        <div><span style={{ color: '#6b7280' }}>Health: </span><span className="font-bold" style={{ color: cf.healthScore >= 70 ? '#22c55e' : '#f59e0b' }}>{cf.healthScore}/100</span></div>
+                    </div>
+                    <ArrowRight size={16} style={{ color: '#9ca3af' }} />
+                </div>
+            </motion.div>
+
             {/* Stat Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {stats.map((stat, idx) => (
+                {statCards.map((stat, idx) => (
                     <motion.div
                         key={idx}
                         initial={{ opacity: 0, y: 20 }}
@@ -69,7 +125,7 @@ export function ConstructionDashboard({ onNavigate }) {
                         <div className="ct-stat-label">{stat.label}</div>
                         <div className="ct-stat-value" style={{ color: stat.color }}>{stat.value}</div>
                         <div className="ct-stat-change" style={{ color: stat.color }}>
-                            <TrendingUp size={11} />
+                            {stat.trend === 'up' ? <TrendingUp size={11} /> : <TrendingDown size={11} />}
                             {stat.change}
                         </div>
                     </motion.div>
@@ -114,7 +170,10 @@ export function ConstructionDashboard({ onNavigate }) {
                     Recent Activity
                 </h3>
                 <div className="space-y-1">
-                    {recentActivity.map((item, idx) => (
+                    {activity.length === 0 && (
+                        <p style={{ fontSize: '0.8rem', color: '#9ca3af', padding: '1rem 0' }}>No activity yet. Use the tools to start generating data.</p>
+                    )}
+                    {activity.map((item, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, x: -10 }}
@@ -124,9 +183,9 @@ export function ConstructionDashboard({ onNavigate }) {
                         >
                             <div className="ct-activity-dot" style={{ backgroundColor: item.color, color: item.color }} />
                             <div style={{ flex: 1, minWidth: 0 }}>
-                                <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{item.text}</p>
+                                <p style={{ fontSize: '0.8rem', color: '#374151', lineHeight: 1.5 }}>{item.label}</p>
                             </div>
-                            <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.25)', flexShrink: 0 }}>{item.time}</span>
+                            <span style={{ fontSize: '0.65rem', color: '#9ca3af', flexShrink: 0 }}>{timeAgo(item.time)}</span>
                         </motion.div>
                     ))}
                 </div>

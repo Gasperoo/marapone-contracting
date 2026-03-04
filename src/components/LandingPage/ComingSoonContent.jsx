@@ -1555,19 +1555,19 @@ function FeatureTabsSection() {
             </div>
 
             {/* Tab bar */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
+            <div className="flex overflow-x-auto hide-scrollbar pb-4 mb-4 sm:mb-8 sm:flex-wrap sm:justify-center sm:overflow-visible sm:pb-0 gap-2 px-1 sm:px-0">
                 {tabs.map((tab) => (
                     <button
                         key={tab.id}
                         onClick={() => setActive(tab.id)}
-                        className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer"
+                        className="flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer"
                         style={active === tab.id
                             ? { background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})`, color: '#fff', boxShadow: `0 4px 16px ${C.primaryGlow}` }
                             : { background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', color: '#6b7280' }
                         }
                     >
                         {tab.icon}
-                        <span className="hidden sm:inline">{tab.label}</span>
+                        <span className="inline-block whitespace-nowrap">{tab.label}</span>
                     </button>
                 ))}
             </div>

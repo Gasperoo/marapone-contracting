@@ -1403,3 +1403,16 @@ html {
         font-size: 2.5rem;
     }
 }
+
+/* Hide scrollbar for horizontal scrolling elements */
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}

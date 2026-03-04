@@ -29,3 +29,6 @@ dist/
 .env
 .env.local
 .env.*.local
+
+# iOS App Wrapper
+gasper-ios-app/

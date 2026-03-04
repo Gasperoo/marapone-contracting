@@ -61,7 +61,44 @@ export default function AboutPage() {
       </div>
 
       {/* Main Content Area (Scrolls over the sticky hero) */}
-      <div className="relative z-20 bg-white/90 backdrop-blur-2xl border-t border-black/5 mt-[100vh]">
+      <div className="relative z-20 bg-white/90 backdrop-blur-2xl border-t border-black/5">
+
+        {/* By the Numbers — Bridge Section */}
+        <div className="border-b border-black/5 bg-gradient-to-b from-black/[0.02] to-transparent">
+          <div className="max-w-7xl mx-auto px-6 py-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <span className="text-xs font-mono text-[#FF6B00] tracking-[0.3em] uppercase font-bold">By the Numbers</span>
+              <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mt-3">Powering operations at scale</h2>
+            </motion.div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { value: '10.5M+', label: 'Daily tracking events processed', delay: 0 },
+                { value: '50+', label: 'Global ports & hubs integrated', delay: 0.1 },
+                { value: '99.9%', label: 'Neural engine classification accuracy', delay: 0.2 },
+                { value: '2.4x', label: 'Avg. ROI within first quarter', delay: 0.3 },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: stat.delay }}
+                  viewport={{ once: true }}
+                  className="text-center p-6 rounded-2xl border border-black/5 bg-white/60 backdrop-blur-sm hover:border-[#FF6B00]/20 hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-2">{stat.value}</div>
+                  <div className="text-sm text-[#4b5563] leading-snug">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Scroll Progress Line */}
         <div className="absolute left-8 top-0 bottom-0 w-px bg-black/10 hidden lg:block">

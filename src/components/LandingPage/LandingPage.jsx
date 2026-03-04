@@ -104,7 +104,7 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
         >
             {/* Static gradient border */}
             <div
-                className="absolute -inset-[1px] rounded-3xl z-0 transition-opacity duration-500"
+                className="absolute -inset-[1px] rounded-3xl z-0 transition-opacity duration-500 pointer-events-none"
                 style={{
                     background: active
                         ? `linear-gradient(135deg, ${themeColor}, ${sc}, ${themeColor})`
@@ -115,7 +115,7 @@ const DomainCard = ({ title, description, icon: Icon, themeColor, secondaryColor
 
             {/* Card inner — glass surface */}
             <div
-                className="absolute inset-[1px] rounded-3xl z-[1] transition-all duration-500 shadow-sm"
+                className="absolute inset-[1px] rounded-3xl z-[1] transition-all duration-500 shadow-sm pointer-events-none"
                 style={{
                     background: active
                         ? `radial-gradient(ellipse at center, ${themeColor}08 0%, rgba(255,255,255,0.98) 70%)`
@@ -390,7 +390,7 @@ const ConstructionHeroPanel = () => {
 
 export default function LandingPage({ comingSoonMode = false }) {
     // In comingSoon mode, auto-select construction so content shows immediately.
-    const [selectedProduct, setSelectedProduct] = useState(comingSoonMode ? 'construction' : 'logistics');
+    const [selectedProduct, setSelectedProduct] = useState(comingSoonMode ? 'construction' : null);
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
     const scrollToContent = () => {

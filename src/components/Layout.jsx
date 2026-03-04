@@ -18,12 +18,12 @@ export default function Layout({ children }) {
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
     { name: 'Features', url: '/features', icon: Zap },
-    { name: 'How it Works', url: '/how-it-works', icon: HelpCircle },
+    { name: 'Mechanics', url: '/how-it-works', icon: HelpCircle },
     { name: 'Industries', url: '/industries', icon: Factory },
     { name: 'Pricing', url: '/pricing', icon: CreditCard },
     { name: 'About', url: '/about', icon: Info },
     { name: 'Contact', url: '/contact', icon: Mail },
-    { name: 'Launch App', url: '/gasper', icon: Zap },
+    { name: 'GasperAI', url: '/gasper', icon: Zap },
     isAuthenticated
       ? { name: 'Logout', url: '/login', icon: LogOut, onClick: handleLogout }
       : { name: 'Account', url: '/account', icon: User }

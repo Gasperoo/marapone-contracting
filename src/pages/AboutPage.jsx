@@ -201,8 +201,8 @@ export default function AboutPage() {
 
         </div>
 
-        {/* Legacy Ruixen Section (Maintained at bottom) */}
-        <div className="border-t border-white/10 bg-black py-20 relative z-30">
+        {/* Ecosystem Section */}
+        <div className="border-t border-black/5 bg-[#F5F5F5] py-20 relative z-30">
           <RuixenAbout />
         </div>
 

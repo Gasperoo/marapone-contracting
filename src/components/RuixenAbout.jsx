@@ -1,97 +1,117 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Zap, Users, Award } from 'lucide-react';
-import '../components/LandingPage/LandingPage.css'; // Ensure we have access to common styles
+import { ArrowRight, Globe, Zap, Ship, HardHat, Brain, Shield, BarChart3, Layers } from 'lucide-react';
+import '../components/LandingPage/LandingPage.css';
 
 export default function RuixenAbout() {
     return (
-        <div className="landing-container w-full">
+        <div className="w-full">
             <div className="max-w-7xl mx-auto px-6">
 
-                {/* Ecosystem Hero */}
-                <section className="mb-24">
-                    <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 p-8 md:p-12 lg:p-16">
-                        {/* Background Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#5227FF]/10 to-transparent pointer-events-none" />
-
-                        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                            <div>
-                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                                    The Marapone <span className="text-[#5227FF]">Ecosystem</span>
-                                </h2>
-                                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                                    Marapone is evolving beyond services. We are building a connected ecosystem bridging AI innovation, strategic consulting, and global logistics execution.
-                                </p>
-                                <div className="flex flex-wrap gap-4">
-                                    <div className="flex items-center gap-2 text-white bg-white/10 px-4 py-2 rounded-full border border-white/10">
-                                        <Globe size={18} className="text-[#22d3ee]" />
-                                        <span>Global Reach</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-white bg-white/10 px-4 py-2 rounded-full border border-white/10">
-                                        <Zap size={18} className="text-[#5227FF]" />
-                                        <span>AI Driven</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Visual Stats Grid */}
-                            <div className="grid grid-cols-2 gap-4">
-                                <StatCard value="300+" label="Partners" icon={<Users className="text-[#5227FF]" />} />
-                                <StatCard value="10+" label="Awards" icon={<Award className="text-amber-400" />} />
-                                <StatCard value="99%" label="Satisfaction" icon={<Zap className="text-[#22d3ee]" />} />
-                                <StatCard value="Global" label="Coverage" icon={<Globe className="text-emerald-400" />} />
-                            </div>
+                {/* Dual Engine Hero */}
+                <section className="mb-20">
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-black/5 bg-white/60 backdrop-blur-md mb-6 text-sm font-medium text-[#4b5563] shadow-sm">
+                            <Layers size={14} className="text-[#FF6B00]" />
+                            Unified Platform
                         </div>
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 leading-tight">
+                            Two Engines. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#FF6B00]">One Vision.</span>
+                        </h2>
+                        <p className="text-lg text-[#4b5563] max-w-2xl mx-auto leading-relaxed">
+                            Gasper unifies supply chain intelligence and construction AI under a single architecture — purpose-built for industries that move and build the physical world.
+                        </p>
+                    </div>
+
+                    {/* Engine Cards */}
+                    <div className="grid md:grid-cols-2 gap-8 mb-16">
+                        {/* Logistics Engine */}
+                        <motion.div
+                            whileHover={{ y: -4 }}
+                            className="group relative rounded-3xl overflow-hidden border border-[#0EA5E9]/20 bg-gradient-to-b from-[#0EA5E9]/5 to-white p-8 md:p-10 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(14,165,233,0.12)] hover:border-[#0EA5E9]/40"
+                        >
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0EA5E9] to-[#38BDF8] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+
+                            <div className="p-3 rounded-xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 inline-flex mb-6">
+                                <Ship className="text-[#0EA5E9] w-7 h-7" />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-3">Logistics OS</h3>
+                            <p className="text-[#4b5563] mb-6 leading-relaxed">
+                                Real-time vessel tracking, predictive route optimization, automated HS code classification, and freight rate intelligence — all unified in one digital twin.
+                            </p>
+                            <div className="space-y-3 mb-8">
+                                {['Global AIS Vessel Tracking', 'AI-Powered Risk Screening', 'Multi-Modal Visibility'].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3 text-sm text-[#4b5563]">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9]" />
+                                        {item}
+                                    </div>
+                                ))}
+                            </div>
+                            <Link to="/features" className="inline-flex items-center text-[#0EA5E9] font-bold hover:text-[#38BDF8] transition-colors group/link">
+                                Explore Logistics <ArrowRight className="ml-2 w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
+                            </Link>
+                        </motion.div>
+
+                        {/* Construction Engine */}
+                        <motion.div
+                            whileHover={{ y: -4 }}
+                            className="group relative rounded-3xl overflow-hidden border border-[#FF6B00]/20 bg-gradient-to-b from-[#FF6B00]/5 to-white p-8 md:p-10 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(255,107,0,0.12)] hover:border-[#FF6B00]/40"
+                        >
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+
+                            <div className="p-3 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 inline-flex mb-6">
+                                <HardHat className="text-[#FF6B00] w-7 h-7" />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-3">Construction AI</h3>
+                            <p className="text-[#4b5563] mb-6 leading-relaxed">
+                                Blueprint intelligence, automated takeoffs, generative design, cash flow forecasting, and real-time site security — end-to-end project command.
+                            </p>
+                            <div className="space-y-3 mb-8">
+                                {['Automated Blueprint Takeoffs', 'Predictive Cash Flow Engine', 'AI Site Security Monitoring'].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3 text-sm text-[#4b5563]">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
+                                        {item}
+                                    </div>
+                                ))}
+                            </div>
+                            <Link to="/features" className="inline-flex items-center text-[#FF6B00] font-bold hover:text-[#F59E0B] transition-colors group/link">
+                                Explore Construction <ArrowRight className="ml-2 w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
+                            </Link>
+                        </motion.div>
+                    </div>
+
+                    {/* Platform Stats Strip */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <StatCard value="12+" label="AI Agents" icon={<Brain size={20} className="text-[#FF6B00]" />} />
+                        <StatCard value="99.9%" label="Uptime SLA" icon={<Shield size={20} className="text-[#0EA5E9]" />} />
+                        <StatCard value="$5B+" label="Managed Value" icon={<BarChart3 size={20} className="text-[#F59E0B]" />} />
+                        <StatCard value="Global" label="Coverage" icon={<Globe size={20} className="text-[#38BDF8]" />} />
                     </div>
                 </section>
 
-                {/* Cards Section */}
-                <section className="grid md:grid-cols-2 gap-8 mb-20">
-                    {/* Innovation Card */}
-                    <motion.div
-                        whileHover={{ y: -5 }}
-                        className="group relative rounded-3xl overflow-hidden border border-white/10 bg-slate-900/50 p-8 min-h-[400px] flex flex-col justify-end"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
-                        {/* Abstract background */}
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#5227FF]/20 via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Bottom CTA */}
+                <section className="text-center pb-8">
+                    <div className="p-10 md:p-14 rounded-3xl border border-black/5 bg-gradient-to-br from-white to-[#FF6B00]/5 shadow-sm relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-10 bg-[#FF6B00] pointer-events-none" />
+                        <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full blur-[100px] opacity-10 bg-[#0EA5E9] pointer-events-none" />
 
-                        <div className="relative z-20">
-                            <div className="w-12 h-12 rounded-xl bg-[#5227FF] flex items-center justify-center text-white mb-6 shadow-lg shadow-[#5227FF]/30">
-                                <Zap size={24} />
-                            </div>
-                            <h3 className="text-2xl font-bold text-white mb-3">Accelerate Growth</h3>
-                            <p className="text-slate-300 mb-6">
-                                Our solutions drive innovation, efficiency, and measurable impact for businesses across multiple continents.
+                        <div className="relative z-10">
+                            <Zap size={28} className="text-[#FF6B00] mx-auto mb-4" />
+                            <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">Ready to Transform Your Operations?</h3>
+                            <p className="text-lg text-[#4b5563] max-w-xl mx-auto mb-8">
+                                Whether you're moving cargo across oceans or building skyscrapers, Gasper's AI platform delivers the intelligence edge you need.
                             </p>
-                            <Link to="/contact" className="inline-flex items-center text-white font-medium hover:text-[#5227FF] transition-colors">
-                                Partner with us <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
-                        </div>
-                    </motion.div>
-
-                    {/* Future Ready Card */}
-                    <motion.div
-                        whileHover={{ y: -5 }}
-                        className="group relative rounded-3xl overflow-hidden border border-white/10 bg-slate-900/50 p-8 min-h-[400px] flex flex-col justify-end"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-[#22d3ee]/20 via-transparent to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-
-                        <div className="relative z-20">
-                            <div className="w-12 h-12 rounded-xl bg-[#22d3ee] flex items-center justify-center text-slate-900 mb-6 shadow-lg shadow-[#22d3ee]/30">
-                                <Globe size={24} />
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] shadow-[0_8px_25px_rgba(255,107,0,0.25)] hover:-translate-y-1 transition-all">
+                                    Request a Demo <ArrowRight className="ml-2 w-4 h-4" />
+                                </Link>
+                                <Link to="/pricing" className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold text-[#1a1a1a] bg-white border border-black/10 hover:bg-black/5 transition-all">
+                                    View Pricing
+                                </Link>
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-3">Future-Ready Design</h3>
-                            <p className="text-slate-300 mb-6">
-                                Intuitive, scalable solutions for modern businesses combining aesthetics, functionality, and real-world results.
-                            </p>
-                            <Link to="/features" className="inline-flex items-center text-white font-medium hover:text-[#22d3ee] transition-colors">
-                                See our tech <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
                         </div>
-                    </motion.div>
+                    </div>
                 </section>
 
             </div>
@@ -101,10 +121,10 @@ export default function RuixenAbout() {
 
 function StatCard({ value, label, icon }) {
     return (
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors">
-            <div className="flex justify-center mb-2">{icon}</div>
-            <div className="text-2xl font-bold text-white mb-1">{value}</div>
-            <div className="text-xs text-slate-400 uppercase tracking-wider">{label}</div>
+        <div className="bg-white border border-black/5 rounded-2xl p-6 text-center hover:shadow-md transition-shadow group">
+            <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform">{icon}</div>
+            <div className="text-2xl font-bold text-[#1a1a1a] mb-1">{value}</div>
+            <div className="text-xs text-[#6b7280] uppercase tracking-wider">{label}</div>
         </div>
     );
 }

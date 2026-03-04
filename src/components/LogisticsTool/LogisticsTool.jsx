@@ -15,8 +15,7 @@ import { ComplianceGuard } from './ComplianceGuard';
 import { DocSentinel } from './DocSentinel';
 import { EcoSentinel } from './EcoSentinel';
 import { RiskSentinel } from './RiskSentinel';
-import { ProfitabilityAnalyzer } from '../GasperTool/ProfitabilityAnalyzer';
-import '../GasperTool/GasperTool.css';
+import { ProfitabilityAnalyzer } from './ProfitabilityAnalyzer';
 import '../../styles/LogisticsTool.css';
 
 export default function LogisticsTool() {

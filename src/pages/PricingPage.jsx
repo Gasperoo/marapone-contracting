@@ -300,7 +300,7 @@ export default function PricingPage() {
 
                 {/* Framer Motion Layout for Pricing Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch max-w-7xl mx-auto w-full">
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="popLayout">
                         {tiers.map((tier, idx) => (
                             <motion.div
                                 key={`${activeProduct}-${tier.id}`}
@@ -429,7 +429,7 @@ export default function PricingPage() {
 
             </div>
 
-            <style jsx>{`
+            <style>{`
                 @keyframes shimmer {
                     100% { transform: translateX(100%); }
                 }

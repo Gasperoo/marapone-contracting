@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, ArrowRight, HardHat, Stethoscope, Plane, Hammer, Wrench, Building2, Trees } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Particles from '../components/Particles/Particles';
 
 // Reusable animated Industry Node component
-const IndustryNode = ({ icon, title, description, color, useCase, category, isHovered, onHover, onClick, isSelected }) => {
+const IndustryNode = forwardRef(({ icon, title, description, color, useCase, category, isHovered, onHover, onClick, isSelected }, ref) => {
     return (
         <motion.div
+            ref={ref}
             layout
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -46,7 +47,7 @@ const IndustryNode = ({ icon, title, description, color, useCase, category, isHo
             />
         </motion.div>
     );
-};
+});
 
 export default function IndustriesPage() {
     const [activeFilter, setActiveFilter] = useState('all');

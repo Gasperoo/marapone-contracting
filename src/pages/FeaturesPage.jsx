@@ -104,7 +104,7 @@ export default function FeaturesPage() {
                 <div className="min-h-[800px]">
                     <AnimatePresence mode="wait">
                         {/* LOGISTICS ECOSYSTEM */}
-                        {activeTab === 'logistics' && (
+                        {activeTab === 'logistics' ? (
                             <motion.div
                                 key="logistics"
                                 initial={{ opacity: 0, y: 20 }}
@@ -158,11 +158,10 @@ export default function FeaturesPage() {
                                                 <div className="absolute bottom-1/4 right-1/4 w-12 h-12 rounded-full bg-sky-50 border border-sky-200 flex items-center justify-center shadow-sm"><Database size={20} className="text-[#38BDF8]" /></div>
                                                 <div className="absolute top-1/3 right-1/4 w-12 h-12 rounded-full bg-sky-100 border border-sky-200 flex items-center justify-center shadow-sm"><Globe size={20} className="text-[#0EA5E9]" /></div>
 
-                                                {/* Connecting Lines (Svg overlay) */}
-                                                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-50">
-                                                    <path d="M 50% 50% L 25% 25%" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
-                                                    <path d="M 50% 50% L 75% 75%" stroke="#38BDF8" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
-                                                    <path d="M 50% 50% L 75% 33%" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+                                                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none opacity-50">
+                                                    <path d="M 50 50 L 25 25" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
+                                                    <path d="M 50 50 L 75 75" stroke="#38BDF8" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
+                                                    <path d="M 50 50 L 75 33" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
                                                 </svg>
                                             </div>
                                         </div>
@@ -215,10 +214,7 @@ export default function FeaturesPage() {
                                     />
                                 </div>
                             </motion.div>
-                        )}
-
-                        {/* CONSTRUCTION ECOSYSTEM */}
-                        {activeTab === 'construction' && (
+                        ) : activeTab === 'construction' ? (
                             <motion.div
                                 key="construction"
                                 initial={{ opacity: 0, y: 20 }}
@@ -281,11 +277,10 @@ export default function FeaturesPage() {
                                                 <div className="absolute bottom-1/4 right-1/4 w-12 h-12 rounded-lg bg-amber-100 border border-amber-300 flex items-center justify-center transform -rotate-6 shadow-sm"><HardHat size={20} className="text-[#F59E0B]" /></div>
                                                 <div className="absolute top-1/3 right-1/4 w-12 h-12 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center transform rotate-45 shadow-sm"><Wrench size={20} className="text-[#FF6B00]" /></div>
 
-                                                {/* Connecting Lines (Svg overlay) */}
-                                                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-50">
-                                                    <path d="M 50% 50% L 25% 25%" stroke="#FF6B00" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
-                                                    <path d="M 50% 50% L 75% 75%" stroke="#F59E0B" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
-                                                    <path d="M 50% 50% L 75% 33%" stroke="#fb923c" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+                                                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none opacity-50">
+                                                    <path d="M 50 50 L 25 25" stroke="#FF6B00" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" />
+                                                    <path d="M 50 50 L 75 75" stroke="#F59E0B" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '1s' }} />
+                                                    <path d="M 50 50 L 75 33" stroke="#fb923c" strokeWidth="2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
                                                 </svg>
                                             </div>
                                         </div>
@@ -338,7 +333,7 @@ export default function FeaturesPage() {
                                     />
                                 </div>
                             </motion.div>
-                        )}
+                        ) : null}
                     </AnimatePresence>
                 </div>
 

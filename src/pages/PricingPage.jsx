@@ -191,12 +191,12 @@ export default function PricingPage() {
     ];
 
     const tiers = activeProduct === 'logistics' ? logisticsTiers : constructionTiers;
-    const themeColor = activeProduct === 'logistics' ? '#FF6B00' : '#FF6B00';
-    const themeSecondary = activeProduct === 'logistics' ? '#ea580c' : '#F59E0B';
+    const themeColor = activeProduct === 'logistics' ? '#0EA5E9' : '#FF6B00';
+    const themeSecondary = activeProduct === 'logistics' ? '#38BDF8' : '#F59E0B';
 
     const bgColors = {
-        logistics: ['#FF6B00', '#ea580c', '#fb923c'],
-        construction: ['#F59E0B', '#d97706', '#fbbf24']
+        logistics: ['#0EA5E9', '#38BDF8', '#0284C7'],
+        construction: ['#FF6B00', '#F59E0B', '#ea580c']
     };
 
     return (
@@ -251,10 +251,10 @@ export default function PricingPage() {
                     <div className="flex justify-center items-center gap-2 mb-12 p-1.5 bg-white/60 backdrop-blur-md rounded-full border border-black/5 w-fit mx-auto relative shadow-sm overflow-hidden">
                         {/* Animated sliding background indicator */}
                         <motion.div
-                            className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-full z-0"
+                            className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-full z-0 pointer-events-none"
                             animate={{
                                 left: activeProduct === 'logistics' ? '6px' : 'calc(50% + 0px)',
-                                backgroundColor: activeProduct === 'logistics' ? '#FF6B00' : '#ea580c'
+                                backgroundColor: activeProduct === 'logistics' ? '#0EA5E9' : '#FF6B00'
                             }}
                             transition={{ type: "spring", stiffness: 300, damping: 25 }}
                         />
@@ -284,7 +284,7 @@ export default function PricingPage() {
                             style={{ boxShadow: `inset 0 2px 5px rgba(0,0,0,0.1)` }}
                         >
                             <div
-                                className="absolute w-6 h-6 rounded-full transform transition-all duration-300 shadow-[0_2px_5px_rgba(0,0,0,0.2)]"
+                                className="absolute w-6 h-6 rounded-full transform transition-all duration-300 shadow-[0_2px_5px_rgba(0,0,0,0.2)] pointer-events-none"
                                 style={{
                                     background: isAnnual ? themeSecondary : '#d1d5db',
                                     left: isAnnual ? 'calc(100% - 28px)' : '4px',

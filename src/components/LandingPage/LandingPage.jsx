@@ -382,50 +382,60 @@ export default function LandingPage({ comingSoonMode = false }) {
     }
 
     // ═══════════════════════════════════════════
-    //  COMING-SOON MODE (unchanged)
+    //  COMING-SOON MODE (Corporate B2B Redesign)
     // ═══════════════════════════════════════════
-    const heroWords = ['Marapone'];
-
     return (
-        <div className="landing-container relative transition-colors duration-1000" style={{ backgroundColor: '#F5F5F5', color: '#1a1a1a' }}>
-            <section className={`hero-section text-center items-center relative min-h-screen flex flex-col justify-center pt-20 pb-16 md:pb-40 w-full overflow-hidden coming-soon-hero`}>
-                <div className="absolute inset-0 z-0" />
-                <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none z-0" animate={{ backgroundColor: themeColor, opacity: 0.04 }} transition={{ duration: 2 }} style={{ filter: 'blur(200px)', willChange: 'opacity' }} />
+        <div className="landing-container relative transition-colors duration-1000 bg-[#FAFAFA] text-[#1a1a1a] font-sans">
+            <section className="hero-section relative min-h-screen flex flex-col justify-center pt-24 pb-20 w-full overflow-hidden">
+                {/* Refined Corporate Background */}
+                <div className="absolute inset-0 z-0 bg-grid-slate-100/[0.04] bg-[bottom_1px_center]" />
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-[#FAFAFA] to-[#F5F5F5]" />
 
-                <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6">
-                    <motion.div className="relative w-24 h-24 mx-auto mb-12" initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
-                        <img src="/images/gasper-logo-g.png" alt="Gasper" className="relative z-10 w-full h-full object-contain" />
+                {/* Subtle Glows */}
+                <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none z-0" animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none z-0" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+
+                <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
+
+                    {/* Marapone Logo & Badge */}
+                    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center mb-8">
+                        <div className="relative w-32 h-32 md:w-40 md:h-40 mb-6 group">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-[#1a1a1a] to-[#3d3d3d] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-2 border border-black/10 flex items-center justify-center overflow-hidden">
+                                {/* Assuming Marapone has a logo or we use a clean text/icon representation */}
+                                <div className="absolute inset-0 opacity-20 bg-[url('/images/noise.png')]" />
+                                <span className="text-white font-black text-4xl tracking-tighter relative z-10">M</span>
+                                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                            </div>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm">
+                            <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Powered by</span>
+                            <img src="/images/gasper-logo-g.png" alt="Gasper" className="w-5 h-5 object-contain" />
+                            <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">GasperAI</span>
+                        </div>
                     </motion.div>
 
-                    <motion.div className="inline-flex items-center gap-2.5 mx-auto mb-10 px-5 py-2 rounded-full text-sm font-medium tracking-wide" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} style={{ border: '1px solid rgba(0,0,0,0.10)', background: 'rgba(0,0,0,0.04)', color: '#4b5563' }}>
-                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#FF6B00', boxShadow: '0 0 8px rgba(255,107,0,0.5)' }} />
-                        Marapone — AI Integration Partners
-                    </motion.div>
-
-                    <div className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black mb-6 mx-auto text-center max-w-6xl overflow-hidden" style={{ letterSpacing: '-0.04em', lineHeight: 0.95, color: '#1a1a1a' }}>
-                        {heroWords.map((word, i) => (
-                            <KineticWord key={word} delay={0.3 + i * 0.12}>
-                                {word}
-                                <motion.span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(to right, ${themeColor}, #F59E0B)` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>.</motion.span>
-                            </KineticWord>
-                        ))}
+                    {/* Main Corporate Headline */}
+                    <div className="max-w-4xl mx-auto mb-8">
+                        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#1a1a1a] leading-[1.05]">
+                            Engineering the Future of <span className="relative inline-block"><span className="relative z-10">Enterprise AI</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
+                        </motion.h1>
                     </div>
 
-                    <motion.p className="text-lg md:text-xl font-medium mb-6 tracking-wide" style={{ color: '#6b7280' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8 }}>
-                        Bespoke AI Solutions for Your Workflows
+                    <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+                        Marapone builds bespoke, fully sovereign AI integrations for structural industries. Zero subscriptions. Complete ownership.
                     </motion.p>
 
-                    <motion.p className="text-lg md:text-xl text-center mx-auto max-w-2xl mb-10 leading-relaxed" style={{ color: '#6b7280' }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.8 }}>
-                        We build custom AI integrations for Construction, Logistics, Marketing, and E-Commerce using our proprietary GasperAI engine. Fully owned by you, no subscriptions.
-                    </motion.p>
-
-                    <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 md:mb-20 px-4 sm:px-0" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.8 }}>
-                        <button className="cta-primary" onClick={() => { const el = document.getElementById('waitlist-section'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>
-                            Request a Custom Evaluation <ArrowRight size={16} />
+                    {/* Unified CTA */}
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 w-full sm:w-auto">
+                        <button className="w-full sm:w-auto px-8 py-4 bg-[#1a1a1a] hover:bg-black text-white rounded-xl font-bold text-base transition-all shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group" onClick={() => { const el = document.getElementById('waitlist-section'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>
+                            Schedule an Evaluation <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                         </button>
                     </motion.div>
 
-                    <BusinessIntegrationPanel />
+                    {/* Refined Integration Panel */}
+                    <div className="w-full max-w-5xl mx-auto opacity-0 animate-[fadeIn_1s_ease-out_0.6s_forwards]">
+                        <BusinessIntegrationPanel />
+                    </div>
                 </div>
 
                 {selectedProduct && <ScrollBeacon />}

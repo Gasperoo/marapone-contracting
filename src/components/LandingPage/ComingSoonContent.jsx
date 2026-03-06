@@ -1724,104 +1724,198 @@ function SafetyComplianceSection() {
     );
 }
 
-// ─── Dynamic Industry Showcase (For Tabs) ──────────────────────────────────
-const industryData = {
-    construction: {
-        title: "Construction Intelligence", subtitle: "From Groundbreak to Handover",
-        description: "Automate blueprint takeoffs, monitor site security via computer vision, and forecast cash flow with pinpoint accuracy.",
-        features: [
-            { icon: <Ruler size={20} />, title: "Automated Takeoffs", desc: "Extract quantities directly from architectural PDFs." },
-            { icon: <TrendingUp size={20} />, title: "Cash Flow Forecasting", desc: "Real-time budget analysis across all project phases." },
-            { icon: <Eye size={20} />, title: "Site Vision AI", desc: "Detect compliance and monitor progress autonomously." }
-        ], color: "#FF6B00"
-    },
-    logistics: {
-        title: "Global Supply Chain Twin", subtitle: "Predictive Routing & Customs Automation",
-        description: "Transform your logistics network into a real-time digital twin to predict transit delays and automate compliance.",
-        features: [
-            { icon: <Truck size={20} />, title: "Predictive Routing", desc: "Dynamic rerouting based on global weather and port data." },
-            { icon: <FileText size={20} />, title: "Customs Automation", desc: "Extract and validate codes from unstructured transit logistics docs." },
-            { icon: <Activity size={20} />, title: "Delay Forecasting", desc: "Machine learning models predict transit bottlenecks early." }
-        ], color: "#0EA5E9"
-    },
-    marketing: {
-        title: "Growth Engine AI", subtitle: "Hyper-Personalization & Predictive Scoring",
-        description: "Deploy generative campaigns that automatically optimize based on proprietary predictive lead scoring and sentiment analysis.",
-        features: [
-            { icon: <Target size={20} />, title: "Predictive Lead Scoring", desc: "Identify high-value enterprise accounts proactively." },
-            { icon: <MessageSquare size={20} />, title: "Generative Campaigns", desc: "Create millions of ad variations instantly for micro-segments." },
-            { icon: <BarChart3 size={20} />, title: "Sentiment Analysis", desc: "Ingest social and CRM data to measure brand health instantly." }
-        ], color: "#F59E0B"
-    },
-    ecommerce: {
-        title: "Revenue Optimization", subtitle: "Dynamic Pricing & Autonomous Support",
-        description: "Maximize margins with intelligent dynamic pricing while deploying fully autonomous support agents that understand your catalog.",
-        features: [
-            { icon: <DollarSign size={20} />, title: "Dynamic Pricing", desc: "Algorithmic repricing based on competitor stock and demand spikes." },
-            { icon: <Package size={20} />, title: "Demand Forecasting", desc: "Predict stock depletion down to the SKU level." },
-            { icon: <Bot size={20} />, title: "Autonomous Agents", desc: "Resolve 80% of L1 support tickets without human intervention." }
-        ], color: "#8B5CF6"
-    }
-};
+// ─── Unique Industry Showcases (Premium Animated Cards) ────────────────────
 
-function GenericIndustryShowcase({ keyName }) {
-    const data = industryData[keyName];
-    if (!data) return null;
-
+// 1. Construction Showcase
+function ConstructionShowcase() {
     return (
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-5xl mx-auto">
-            <div className="flex flex-col lg:flex-row gap-10 items-center">
-                <div className="lg:w-5/12 text-left">
-                    <div className="inline-flex items-center px-3 py-1 rounded-full border mb-4 shadow-sm" style={{ borderColor: `${data.color}30`, backgroundColor: `${data.color}08`, color: data.color }}>
-                        <span className="text-[10px] font-bold tracking-wider uppercase">{data.subtitle}</span>
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12 items-center">
+                <div className="lg:w-5/12">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                        <HardHat size={14} className="mr-2" /> CONSTRUCTION INTELLIGENCE
                     </div>
-                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">{data.title}</h3>
-                    <p className="text-[#6b7280] text-sm leading-relaxed mb-8">{data.description}</p>
-                    <div className="space-y-4 border-t border-black/5 pt-6">
-                        {data.features.map((f, i) => (
-                            <div key={i} className="flex gap-3 items-start">
-                                <div className="mt-0.5 rounded-lg flex items-center justify-center p-2" style={{ background: `${data.color}15`, color: data.color }}>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">From Groundbreak to Handover</h3>
+                    <p className="text-[#6b7280] text-base leading-relaxed mb-8">
+                        Automate blueprint takeoffs, monitor site security via computer vision, and forecast cash flow with pinpoint accuracy using custom-trained models that understand your specific building codes and historical project data.
+                    </p>
+                    <div className="space-y-5 border-t border-black/5 pt-6">
+                        {[
+                            { icon: <Ruler size={18} />, title: 'Automated Takeoffs', desc: 'Extract quantities directly from architectural PDFs.' },
+                            { icon: <TrendingUp size={18} />, title: 'Cash Flow Forecasting', desc: 'Real-time budget analysis across all project phases.' },
+                            { icon: <Eye size={18} />, title: 'Site Vision AI', desc: 'Detect compliance and monitor progress autonomously.' }
+                        ].map((f, i) => (
+                            <div key={i} className="flex gap-4 items-start group">
+                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#FF6B00]/10 text-[#FF6B00] group-hover:bg-[#FF6B00] group-hover:text-white transition-colors duration-300">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-[#1a1a1a] text-sm mb-0.5">{f.title}</h4>
-                                    <p className="text-[#6b7280] text-xs">{f.desc}</p>
+                                    <h4 className="font-bold text-[#1a1a1a] text-sm mb-1">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-sm">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-
                 <div className="lg:w-7/12 w-full">
-                    <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-black/10">
-                        {/* Interface Header */}
-                        <div className="bg-gray-50 border-b border-black/5 px-4 py-3 flex items-center justify-between">
-                            <div className="flex gap-1.5">
-                                <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                                <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                                <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                            </div>
-                            <div className="text-[10px] font-mono text-gray-400">marapone_brain_v2.0</div>
+                    {/* Unique Animated Card for Construction */}
+                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-white border border-gray-200 aspect-[16/10] flex flex-col">
+                        <div className="h-12 border-b border-gray-100 flex items-center px-4 justify-between bg-gray-50/50">
+                            <div className="flex gap-2"><div className="w-3 h-3 rounded-full bg-gray-200" /><div className="w-3 h-3 rounded-full bg-gray-200" /><div className="w-3 h-3 rounded-full bg-gray-200" /></div>
+                            <div className="text-xs font-mono text-gray-400">marapone_blueprint_analyzer.ts</div>
                         </div>
-                        {/* Abstract Interface Body */}
-                        <div className="aspect-[4/3] sm:aspect-[16/9] bg-[#fafafa] relative overflow-hidden flex items-center justify-center p-6">
-                            {/* Animated Grid Background */}
-                            <div className="absolute inset-0 pattern-grid opacity-5" style={{ backgroundSize: '30px 30px', backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)' }} />
+                        <div className="flex-1 bg-[#FDFDFD] relative overflow-hidden p-6 flex items-center justify-center">
+                            {/* Blueprint Grid Background */}
+                            <div className="absolute inset-0 pattern-grid opacity-10" style={{ backgroundSize: '40px 40px', backgroundImage: 'linear-gradient(to right, #0055FF 1px, transparent 1px), linear-gradient(to bottom, #0055FF 1px, transparent 1px)' }} />
 
-                            <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 w-40 h-40 rounded-full flex items-center justify-center">
-                                <div className="absolute inset-0 rounded-full blur-[50px] opacity-20" style={{ background: data.color }} />
-                                <div className="relative w-20 h-20 rounded-2xl bg-white shadow-xl flex items-center justify-center border border-black/5" style={{ color: data.color }}>
-                                    {data.features[0].icon}
+                            {/* Scanning Animation */}
+                            <motion.div animate={{ top: ['0%', '100%', '0%'] }} transition={{ duration: 4, repeat: Infinity, ease: 'linear' }} className="absolute left-0 right-0 h-1 bg-[#FF6B00] shadow-[0_0_20px_#FF6B00] z-20 opacity-50" />
+
+                            {/* Wireframe Building Graphic */}
+                            <div className="relative z-10 w-full max-w-xs aspect-square border-2 border-[#1a1a1a] rounded-xl flex flex-col p-4 bg-white/50 backdrop-blur-sm">
+                                <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }} className="w-1/2 h-1/2 border-r-2 border-b-2 border-[#FF6B00]" />
+                                <div className="absolute bottom-4 right-4 text-[#FF6B00] font-mono text-xs">DATA: Extracted ✓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+// 2. Logistics Showcase
+function LogisticsShowcase() {
+    return (
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12 items-center">
+                <div className="lg:w-5/12">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#0EA5E9]/20 bg-[#0EA5E9]/5 text-[#0EA5E9] text-xs font-bold tracking-wider mb-6">
+                        <Truck size={14} className="mr-2" /> GLOBAL SUPPLY CHAIN TWIN
+                    </div>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Predictive Routing Automation</h3>
+                    <p className="text-[#6b7280] text-base leading-relaxed mb-8">
+                        Transform your logistics network into a real-time digital twin to predict transit delays and automate customs compliance, saving millions in demurrage and routing inefficiencies.
+                    </p>
+                    <div className="space-y-5 border-t border-black/5 pt-6">
+                        {[
+                            { icon: <MapPin size={18} />, title: 'Predictive Routing', desc: 'Dynamic rerouting based on global weather and port data.' },
+                            { icon: <FileText size={18} />, title: 'Customs Automation', desc: 'Extract and validate codes from transit logistics docs.' },
+                            { icon: <Activity size={18} />, title: 'Delay Forecasting', desc: 'ML models predict transit bottlenecks weeks early.' }
+                        ].map((f, i) => (
+                            <div key={i} className="flex gap-4 items-start group">
+                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#0EA5E9]/10 text-[#0EA5E9] group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors duration-300">
+                                    {f.icon}
                                 </div>
+                                <div>
+                                    <h4 className="font-bold text-[#1a1a1a] text-sm mb-1">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-sm">{f.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="lg:w-7/12 w-full">
+                    {/* Unique Animated Card for Logistics */}
+                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-white border border-gray-200 aspect-[16/10] flex flex-col">
+                        <div className="h-12 border-b border-gray-100 flex items-center px-4 justify-between bg-[#1a1a1a] text-white">
+                            <div className="text-xs font-mono text-[#0EA5E9]">NODE MAP: GLOBAL</div>
+                            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> <span className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Tracking Active</span></div>
+                        </div>
+                        <div className="flex-1 bg-[#121212] relative overflow-hidden flex items-center justify-center p-8">
+                            {/* Map-like dark background */}
+                            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
-                                {/* Orbital Nodes */}
-                                {[0, 120, 240].map((deg, i) => (
-                                    <motion.div key={i} animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear", delay: i * 4 }} className="absolute inset-0">
-                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow-md border border-black/5 flex items-center justify-center" style={{ color: data.color, transform: `rotate(-${deg}deg)` }}>
-                                            {data.features[i % data.features.length].icon}
-                                        </div>
-                                    </motion.div>
+                            {/* Animated routing line */}
+                            <div className="relative w-full h-full max-w-md max-h-48 border border-white/10 rounded-3xl bg-white/5 p-6 backdrop-blur-md">
+                                <motion.svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
+                                    <motion.path
+                                        d="M 50 150 Q 150 50, 250 150 T 350 50"
+                                        fill="transparent"
+                                        stroke="#0EA5E9"
+                                        strokeWidth="3"
+                                        strokeDasharray="10 10"
+                                        animate={{ strokeDashoffset: [0, -40] }}
+                                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                    />
+                                </motion.svg>
+
+                                {/* Nodes */}
+                                <div className="absolute top-[40px] left-[340px] w-4 h-4 rounded-full bg-white shadow-[0_0_15px_#0EA5E9]" />
+                                <div className="absolute top-[140px] left-[40px] w-4 h-4 rounded-full bg-[#0EA5E9]" />
+
+                                <div className="absolute bottom-4 left-4 right-4 bg-black/60 border border-white/10 p-3 rounded-xl flex justify-between items-center text-xs font-mono text-white/80">
+                                    <span>Route optimized: Weather incident bypassed.</span>
+                                    <span className="text-green-400">ETA: -12hrs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+// 3. Marketing Showcase
+function MarketingShowcase() {
+    return (
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12 items-center">
+                <div className="lg:w-5/12">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F59E0B]/20 bg-[#F59E0B]/5 text-[#F59E0B] text-xs font-bold tracking-wider mb-6">
+                        <Target size={14} className="mr-2" /> GROWTH ENGINE AI
+                    </div>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Hyper-Personalization at Scale</h3>
+                    <p className="text-[#6b7280] text-base leading-relaxed mb-8">
+                        Deploy generative campaigns that automatically optimize based on proprietary predictive lead scoring. Identify high-value enterprise accounts proactively before competitors do.
+                    </p>
+                    <div className="space-y-5 border-t border-black/5 pt-6">
+                        {[
+                            { icon: <Target size={18} />, title: 'Predictive Lead Scoring', desc: 'Identify high-value enterprise accounts proactively.' },
+                            { icon: <MessageSquare size={18} />, title: 'Generative Campaigns', desc: 'Create millions of ad variations instantly.' },
+                            { icon: <BarChart3 size={18} />, title: 'Sentiment Analysis', desc: 'Ingest CRM data to measure brand health instantly.' }
+                        ].map((f, i) => (
+                            <div key={i} className="flex gap-4 items-start group">
+                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#F59E0B]/10 text-[#F59E0B] group-hover:bg-[#F59E0B] group-hover:text-white transition-colors duration-300">
+                                    {f.icon}
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-[#1a1a1a] text-sm mb-1">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-sm">{f.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="lg:w-7/12 w-full">
+                    {/* Unique Animated Card for Marketing */}
+                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-white border border-gray-200 aspect-[16/10] flex flex-col">
+                        <div className="h-12 border-b border-gray-100 flex items-center px-6 justify-between bg-white text-[#1a1a1a]">
+                            <div className="font-bold text-sm">Campaign Dashboard</div>
+                            <div className="text-xs bg-[#F59E0B]/10 text-[#F59E0B] px-3 py-1 rounded-full font-bold">LIVE</div>
+                        </div>
+                        <div className="flex-1 bg-gray-50 relative overflow-hidden flex items-end p-6">
+                            {/* Bar Chart Animation */}
+                            <div className="w-full h-full flex items-end justify-between gap-2">
+                                {[30, 50, 40, 70, 60, 90, 80, 100].map((height, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="w-full bg-gradient-to-t from-[#F59E0B] to-[#FFCF70] rounded-t-sm"
+                                        initial={{ height: "0%" }}
+                                        animate={{ height: `${height}%` }}
+                                        transition={{ duration: 1.5, delay: i * 0.1, ease: 'easeOut' }}
+                                    />
                                 ))}
+                            </div>
+
+                            {/* Overlay Card */}
+                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }} className="absolute top-6 right-6 bg-white p-4 rounded-xl shadow-lg border border-black/5 w-48">
+                                <div className="text-[10px] text-gray-500 font-bold tracking-widest uppercase mb-1">Conversion Rate</div>
+                                <div className="text-3xl font-black text-[#1a1a1a] mb-2">+42%</div>
+                                <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                                    <motion.div initial={{ width: "0%" }} animate={{ width: "85%" }} transition={{ delay: 1.5, duration: 1 }} className="h-full bg-green-500" />
+                                </div>
                             </motion.div>
                         </div>
                     </div>
@@ -1830,6 +1924,75 @@ function GenericIndustryShowcase({ keyName }) {
         </motion.div>
     );
 }
+
+// 4. E-Commerce Showcase
+function EcommerceShowcase() {
+    return (
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12 items-center">
+                <div className="lg:w-5/12">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 text-[#8B5CF6] text-xs font-bold tracking-wider mb-6">
+                        <Package size={14} className="mr-2" /> REVENUE OPTIMIZATION
+                    </div>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Dynamic Pricing & Support</h3>
+                    <p className="text-[#6b7280] text-base leading-relaxed mb-8">
+                        Maximize margins with intelligent dynamic pricing while deploying fully autonomous support agents that understand your catalog and integrate directly into your CMS.
+                    </p>
+                    <div className="space-y-5 border-t border-black/5 pt-6">
+                        {[
+                            { icon: <DollarSign size={18} />, title: 'Dynamic Pricing', desc: 'Algorithmic repricing based on competitor stock and demand.' },
+                            { icon: <Package size={18} />, title: 'Demand Forecasting', desc: 'Predict stock depletion down to the exact SKU.' },
+                            { icon: <Bot size={18} />, title: 'Autonomous Agents', desc: 'Resolve 80% of L1 support tickets without human intervention.' }
+                        ].map((f, i) => (
+                            <div key={i} className="flex gap-4 items-start group">
+                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#8B5CF6]/10 text-[#8B5CF6] group-hover:bg-[#8B5CF6] group-hover:text-white transition-colors duration-300">
+                                    {f.icon}
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-[#1a1a1a] text-sm mb-1">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-sm">{f.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="lg:w-7/12 w-full">
+                    {/* Unique Animated Card for E-Commerce */}
+                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-white border border-gray-200 aspect-[16/10] flex flex-col">
+                        <div className="h-12 border-b border-gray-100 flex items-center px-4 justify-between bg-white text-[#1a1a1a]">
+                            <div className="flex items-center gap-3">
+                                <Bot size={20} className="text-[#8B5CF6]" />
+                                <span className="font-bold text-sm tracking-wide">Automated Customer Resolution</span>
+                            </div>
+                        </div>
+                        <div className="flex-1 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden flex flex-col p-6 gap-4">
+
+                            {/* Chat Bubbles Animation */}
+                            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="self-start bg-white border border-gray-100 p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[80%]">
+                                <p className="text-sm text-gray-600">"Where is my order #19284 for the ergonomic chair? It's been 3 days."</p>
+                            </motion.div>
+
+                            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 }} className="self-end bg-[#8B5CF6] p-4 rounded-2xl rounded-tr-sm shadow-md max-w-[80%] text-white relative">
+                                <p className="text-sm">"I've located your order. It left the Memphis hub 2 hours ago. It is scheduled for delivery tomorrow between 2-4 PM.<br /><br />Would you like text updates?"</p>
+                                <div className="absolute -left-12 top-1/2 -translate-y-1/2 flex gap-1">
+                                    <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity, delay: 0 }} className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
+                                    <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity, delay: 0.2 }} className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
+                                    <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity, delay: 0.4 }} className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
+                                </div>
+                            </motion.div>
+
+                            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.5 }} className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
+                                Ticket Resolved Automatically
+                            </motion.div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
 
 // ─── Feature Tabs ─────────────────────────────────────────────────────────────
 function FeatureTabsSection() {
@@ -1846,13 +2009,13 @@ function FeatureTabsSection() {
 
     const renderContent = () => {
         switch (active) {
-            case 'construction': return <GenericIndustryShowcase keyName="construction" />;
-            case 'logistics': return <GenericIndustryShowcase keyName="logistics" />;
-            case 'marketing': return <GenericIndustryShowcase keyName="marketing" />;
-            case 'ecommerce': return <GenericIndustryShowcase keyName="ecommerce" />;
+            case 'construction': return <ConstructionShowcase />;
+            case 'logistics': return <LogisticsShowcase />;
+            case 'marketing': return <MarketingShowcase />;
+            case 'ecommerce': return <EcommerceShowcase />;
             case 'ai': return <GasperAIBotSection />;
             case 'llm': return <CustomLLMBuilderSection />;
-            default: return <GenericIndustryShowcase keyName="construction" />;
+            default: return <ConstructionShowcase />;
         }
     };
 

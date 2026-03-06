@@ -5,7 +5,7 @@ import {
     Activity, TrendingUp, ShieldCheck, Zap, Lock,
     Database, Cpu, Server, BarChart3,
     HardHat, Fuel, Search, Store, Globe,
-    CheckCircle2, Mail, Layers, AlertTriangle,
+    CheckCircle2, Mail, Layers, AlertTriangle, ArrowDown,
     DollarSign, Star, Clock, Users, Building2, Check, Sparkles, Award, TrendingDown,
     Bot, MessageSquare, Brain, FileText, Send, MapPin, Ruler, Eye, Wrench, Hammer,
     CalendarDays, Shield, Target, Gauge, Timer, ClipboardCheck, Truck, Package,
@@ -144,20 +144,72 @@ function GasperEngineInfoSection() {
             <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
                 {/* Visual Side */}
-                <div className="md:w-5/12 w-full flex justify-center md:justify-end">
-                    <div className="relative">
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[1px] border-dashed border-white/20 rounded-full scale-[1.3] opacity-50" />
-                        <motion.div animate={{ rotate: -360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[1px] border-white/10 rounded-full scale-[1.1] opacity-70" />
+                <div className="md:w-5/12 w-full flex justify-center py-6">
+                    <div className="relative w-full max-w-sm aspect-[4/5] bg-white rounded-3xl border border-black/5 shadow-xl p-6 md:p-8 flex flex-col overflow-hidden">
+                        {/* Abstract Background Grid */}
+                        <div className="absolute inset-0 bg-gray-50 opacity-50" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
-                        <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-white shadow-xl flex items-center justify-center p-8 border border-black/5 relative z-10">
-                            <img src="/images/gasper-logo-g.png" alt="Gasper Engine" className="w-full h-full object-contain drop-shadow-lg" />
+                        {/* Top Section */}
+                        <div className="relative z-10 flex items-center justify-between border-b border-black/5 pb-5">
+                            <div className="flex items-center gap-3">
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF6B00] to-[#F59E0B] p-2.5 flex items-center justify-center shadow-md">
+                                    <img src="/images/gasper-logo-g.png" alt="Gasper" className="w-full h-full object-contain brightness-0 invert" />
+                                </div>
+                                <div>
+                                    <div className="text-[#1a1a1a] font-black text-base">Gasper Core</div>
+                                    <div className="text-[10px] text-[#10B981] font-mono tracking-widest flex items-center gap-1.5 mt-0.5">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" /> SYNCHRONIZED
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="px-2.5 py-1 rounded bg-black/5 text-[10px] font-mono text-[#6b7280] font-bold">v4.2.0</div>
+                        </div>
 
-                            {/* Orbiting Tech Nodes */}
-                            {[1, 2, 3].map((i) => (
-                                <motion.div key={i} animate={{ rotate: 360 }} transition={{ duration: 15, delay: i * 5, repeat: Infinity, ease: "linear" }} className="absolute inset-0">
-                                    <div className="w-3 h-3 rounded-full bg-[#FF6B00] shadow-[0_0_15px_#FF6B00] absolute -top-1.5 left-1/2 -translate-x-1/2" />
-                                </motion.div>
-                            ))}
+                        {/* Middle Section: Architecture Flow */}
+                        <div className="relative z-10 my-auto flex flex-col justify-center gap-y-4 pt-4 pb-2">
+                            <div className="p-4 rounded-xl border border-black/5 bg-gray-50/80 backdrop-blur-sm flex items-center gap-4 shadow-sm transition-transform hover:-translate-y-0.5">
+                                <Database size={18} className="text-[#3B82F6]" />
+                                <div>
+                                    <div className="text-sm font-bold text-[#1a1a1a]">Enterprise ERP Sync</div>
+                                    <div className="text-[10px] text-gray-500 font-mono">1.2TB Processed / Hr</div>
+                                </div>
+                            </div>
+
+                            <div className="flex justify-center -my-3 text-gray-300 relative z-0">
+                                <div className="h-6 w-px bg-gradient-to-b from-gray-200 to-[#FF6B00]/30" />
+                            </div>
+
+                            <div className="p-4 rounded-xl border border-[#FF6B00]/20 bg-[#FF6B00]/5 flex items-center gap-4 shadow-md relative group transition-transform hover:-translate-y-0.5">
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B00]/0 via-[#FF6B00]/5 to-[#FF6B00]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                <div className="relative z-10 flex items-center gap-4">
+                                    <Brain size={18} className="text-[#FF6B00]" />
+                                    <div>
+                                        <div className="text-sm font-bold text-[#FF6B00]">Neural Processing Core</div>
+                                        <div className="text-[10px] text-gray-500 font-mono">Inferencing Engine Active</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex justify-center -my-3 text-gray-300 relative z-0">
+                                <div className="h-6 w-px bg-gradient-to-b from-[#FF6B00]/30 to-gray-200" />
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-3">
+                                <div className="p-3 rounded-xl border border-black/5 bg-gray-50/80 backdrop-blur-sm flex items-center justify-center gap-2 shadow-sm transition-transform hover:-translate-y-0.5">
+                                    <Zap size={14} className="text-[#10B981]" />
+                                    <div className="text-xs font-bold text-[#1a1a1a]">Automate</div>
+                                </div>
+                                <div className="p-3 rounded-xl border border-black/5 bg-gray-50/80 backdrop-blur-sm flex items-center justify-center gap-2 shadow-sm transition-transform hover:-translate-y-0.5">
+                                    <BarChart3 size={14} className="text-[#8B5CF6]" />
+                                    <div className="text-xs font-bold text-[#1a1a1a]">Predict</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Bottom Metric */}
+                        <div className="relative z-10 pt-5 mt-auto border-t border-black/5 flex items-center justify-between">
+                            <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Compute Loads</div>
+                            <div className="text-xs font-mono font-bold text-[#1a1a1a] bg-gray-100 px-2.5 py-1 rounded">8.4T FLOPS</div>
                         </div>
                     </div>
                 </div>

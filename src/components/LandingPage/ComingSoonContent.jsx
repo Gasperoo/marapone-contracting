@@ -357,208 +357,172 @@ function B2BEnterpriseSection() {
     );
 }
 
-// ─── Multi-Agent Orchestration Section (Premium Polish) ──────────────────────
+// ─── Enterprise Workflow Orchestration ──────────────────────────────────────────
 function AgentOrchestrationSection() {
     return (
         <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
             <div className="text-center mb-16">
-                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-500 text-xs font-bold tracking-wider mb-6">
-                    <Layers size={12} className="mr-2" /> MULTI-AGENT ORCHESTRATION
+                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <Layers size={14} className="mr-2" /> WORKFLOW ORCHESTRATION
                 </motion.div>
-                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
-                    Workflows Managed by <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-[#FF6B00]">Swarm Intelligence</span>
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 leading-tight">
+                    End-to-End <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Process Automation</span>
                 </motion.h2>
-                <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[#6b7280] max-w-3xl mx-auto text-lg">
-                    A single AI is a tool. A swarm of specialized AI agents working together is a workforce. We deploy multi-agent systems where custom models communicate autonomously to resolve complex business logic securely.
+                <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[#6b7280] max-w-3xl mx-auto text-lg leading-relaxed">
+                    Deploy networks of specialized, deterministic AI agents that execute complex business logic autonomously. From supply chain reconciliation to compliance auditing, transform multi-day manual workflows into instant background processes.
                 </motion.p>
             </div>
 
-            {/* Glowing Visualization Container */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.06)] overflow-hidden border border-black/5">
-                {/* Background Grid */}
-                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+            {/* Architecture Dashboard */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto bg-white rounded-3xl p-2 shadow-xl border border-black/5 overflow-hidden">
+                <div className="bg-gray-50 rounded-2xl p-6 md:p-10 border border-black/5 relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                    <div className="grid md:grid-cols-3 gap-6 relative z-10">
+                        {/* Connecting Line (Desktop) */}
+                        <div className="hidden md:block absolute top-[52px] left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent z-0" />
 
-                <div className="grid md:grid-cols-3 gap-6 relative z-10">
-                    {[
-                        { title: 'Data Synthesis Node', icon: <Database />, color: '#0EA5E9', desc: 'Monitors external streams, cleans raw data, and updates state.', active: true },
-                        { title: 'Logic Processing Hub', icon: <Brain />, color: '#8B5CF6', desc: 'Evaluates state against company guidelines securely.', active: true },
-                        { title: 'Execution Actuator', icon: <Zap />, color: '#FF6B00', desc: 'Fires API payloads to ERPs, avoiding manual input.', active: true },
-                    ].map((node, i) => (
-                        <div key={i} className="relative p-6 rounded-2xl bg-gray-50 border border-black/5 hover:bg-white hover:shadow-xl transition-all">
-                            {/* Animated connection lines between nodes for desktop */}
-                            {i < 2 && (
-                                <div className="hidden md:block absolute top-1/2 -right-6 w-6 h-[2px] bg-gradient-to-r from-black/5 to-transparent">
-                                    <motion.div className="h-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" animate={{ x: ['-100%', '200%'] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'linear', delay: i * 0.5 }} />
-                                </div>
-                            )}
-
-                            <div className="flex items-center gap-3 mb-4 border-b border-black/5 pb-4">
-                                <div className="w-10 h-10 rounded-xl flex items-center justify-center relative bg-white shadow-sm" style={{ color: node.color, border: `1px solid ${node.color}20` }}>
-                                    <div className="absolute inset-0 rounded-xl blur-md opacity-20 animate-pulse" style={{ background: node.color }} />
-                                    {node.icon}
-                                </div>
-                                <div>
-                                    <div className="text-[#1a1a1a] font-bold text-sm tracking-wide">{node.title}</div>
-                                    <div className="flex items-center gap-1.5 mt-1">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                                        <span className="text-[10px] text-green-600 font-mono tracking-widest uppercase">Online</span>
+                        {[
+                            { title: 'Ingestion Protocol', icon: <Database />, color: '#0EA5E9', desc: 'Securely extracts and normalizes unstructured data from legacy systems.' },
+                            { title: 'Routing & Analysis', icon: <Brain />, color: '#8B5CF6', desc: 'Evaluates context against strict company policies with zero hallucinations.' },
+                            { title: 'Execution Engine', icon: <Send />, color: '#10B981', desc: 'Fires validated API payloads to update ERPs and trigger notifications.' },
+                        ].map((node, i) => (
+                            <div key={i} className="relative bg-white rounded-xl p-6 border border-black/5 shadow-sm transform transition-all hover:-translate-y-1 hover:shadow-md z-10">
+                                <div className="flex flex-col items-center text-center">
+                                    <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center mb-5 border border-black/5 shadow-inner" style={{ color: node.color }}>
+                                        {node.icon}
                                     </div>
+                                    <div className="text-sm font-bold text-[#1a1a1a] mb-2">{node.title}</div>
+                                    <p className="text-xs text-gray-500 leading-relaxed mb-6">{node.desc}</p>
+                                </div>
+
+                                {/* Terminal/Log output snippet */}
+                                <div className="p-3 bg-gray-900 rounded-lg border border-gray-800 font-mono text-[10px] text-gray-400 h-20 flex flex-col justify-end overflow-hidden relative group">
+                                    <motion.div animate={{ y: [0, -20] }} transition={{ duration: 3, repeat: Infinity, ease: 'linear' }} className="space-y-1">
+                                        <div className="text-gray-600">[sys] await state_change</div>
+                                        <div style={{ color: node.color }}>[exe] processing_batch</div>
+                                        <div className="text-gray-500">[net] payload_verified</div>
+                                    </motion.div>
+                                    <div className="absolute top-0 left-0 right-0 h-6 bg-gradient-to-b from-gray-900 to-transparent z-10" />
                                 </div>
                             </div>
-
-                            <p className="text-[#6b7280] text-xs leading-relaxed">{node.desc}</p>
-
-                            <div className="mt-4 p-3 rounded-lg overflow-hidden bg-white border border-black/5 font-mono text-[10px] text-[#9ca3af] space-y-1.5 relative h-20 flex flex-col justify-end">
-                                <motion.div animate={{ y: [20, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}>
-                                    <div className="opacity-40">{'>'} Polling endpoint...</div>
-                                    <div style={{ color: node.color }}>{'>'} Processing payload</div>
-                                    <div>{'>'} Task 200 OK</div>
-                                </motion.div>
-                                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white to-transparent z-10" />
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </motion.div>
         </section>
     );
 }
 
-// ─── Gasper AI Bot Section (Revamped — Split Panel) ──────────────────────────
+// ─── Custom Enterprise Copilots Section ──────────────────────────────────────
 function GasperAIBotSection() {
-    const [aiStep, setAiStep] = useState(0);
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
-    useEffect(() => {
-        if (!isInView) return;
-        const interval = setInterval(() => {
-            setAiStep(s => (s + 1) % 4);
-        }, 2500);
-        return () => clearInterval(interval);
-    }, [isInView]);
-
     const pipelineSteps = [
-        { label: 'Parse', icon: <MessageSquare size={14} /> },
-        { label: 'Reason', icon: <Brain size={14} /> },
-        { label: 'Query', icon: <Database size={14} /> },
-        { label: 'Respond', icon: <Sparkles size={14} /> },
+        { label: 'Parse Intent', icon: <MessageSquare size={14} /> },
+        { label: 'Query Data Lake', icon: <Database size={14} /> },
+        { label: 'Apply Logic', icon: <Brain size={14} /> },
+        { label: 'Generate Action', icon: <Zap size={14} /> },
     ];
 
     const stats = [
-        { value: '<2s', label: 'Response Time', color: '#FF6B00' },
-        { value: '14', label: 'Data Sources', color: '#3B82F6' },
-        { value: '99.4%', label: 'Accuracy', color: '#10B981' },
-        { value: '24/7', label: 'Availability', color: '#8B5CF6' },
+        { value: '<800ms', label: 'Inference Latency', color: '#FF6B00' },
+        { value: 'Zero', label: 'Data Retention', color: '#10B981' },
+        { value: '100%', label: 'Private Tenant', color: '#3B82F6' },
+        { value: 'SOC-2', label: 'Compliance', color: '#8B5CF6' },
     ];
 
     return (
         <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
-                    <Bot size={12} className="mr-2" /> PROPRIETARY AI ENGINE
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <Bot size={12} className="mr-2" /> ENTERPRISE AI INTERFACES
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
-                    Powered by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">GasperAI</span>
+                    Custom <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Enterprise Copilots</span>
                 </h2>
-                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
-                    We deploy our proprietary GasperAI engine directly into your existing infrastructure. Custom-trained on your data, it understands your unique business logic and delivers answers in seconds.
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg leading-relaxed">
+                    We deploy proprietary AI models directly into your existing infrastructure. Custom-trained on your internal documentation and data warehouses, your copilot understands your unique business logic and assists employees securely.
                 </p>
             </motion.div>
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-white border border-black/5 overflow-hidden shadow-xl">
+                    <div className="relative rounded-3xl bg-white border border-black/10 overflow-hidden shadow-2xl">
                         {/* Toolbar */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/5 bg-gradient-to-r from-gray-50 to-white">
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/5 bg-gray-50">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-400" />
                                 <div className="w-3 h-3 rounded-full bg-amber-400" />
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                                <span className="ml-3 text-xs font-mono text-[#6b7280]">gasper_ai_copilot.chat</span>
+                                <span className="ml-3 text-xs font-mono text-gray-500 font-medium">internal_copilot_v4.2</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <div className="text-[10px] font-mono text-[#6b7280] bg-black/5 px-2 py-0.5 rounded border border-black/5">GPT-4 Turbo</div>
-                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                <div className="text-[10px] font-mono text-gray-500 font-bold bg-white px-2 py-0.5 rounded border border-black/5 uppercase">Private Instance</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-600 font-bold uppercase tracking-wider">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                                     Online
                                 </div>
                             </div>
                         </div>
 
                         {/* Chat Area */}
-                        <div className="px-5 py-4 space-y-4">
+                        <div className="px-5 py-6 space-y-6">
                             {/* User message */}
                             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
                                 className="flex justify-end">
-                                <div className="rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[80%] bg-[#FF6B00]/10 border border-[#FF6B00]/20">
-                                    <p className="text-[#1a1a1a] text-sm">Analyze inventory levels against next month's demand forecast</p>
+                                <div className="rounded-2xl rounded-tr-sm px-5 py-3 max-w-[85%] bg-[#1a1a1a] text-white shadow-sm border border-black/10">
+                                    <p className="text-sm tracking-wide">Analyze Q3 supply chain variance against current active vendor contracts.</p>
                                 </div>
                             </motion.div>
 
                             {/* AI response */}
                             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
                                 className="flex justify-start">
-                                <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%] bg-gray-50 border border-black/5">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <div className="w-5 h-5 rounded-full bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] flex items-center justify-center">
-                                            <img src="/images/gasper-logo-g.png" alt="G" className="w-3.5 h-3.5 object-contain" />
+                                <div className="rounded-2xl rounded-tl-sm px-5 py-4 max-w-[90%] bg-gray-50 border border-black/10 shadow-sm relative">
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF6B00] to-[#F59E0B] flex items-center justify-center shadow-inner">
+                                            <Brain size={14} className="text-white" />
                                         </div>
-                                        <span className="text-[10px] font-bold text-[#1a1a1a]">GasperAI Matrix</span>
-                                        <span className="text-[9px] text-[#6b7280]">just now</span>
+                                        <span className="text-[11px] font-black text-[#1a1a1a] uppercase tracking-wider">System Copilot</span>
+                                        <span className="text-[10px] text-gray-400 font-mono ml-auto">0.82s execution</span>
                                     </div>
-                                    <p className="text-[#374151] text-sm mb-3">Computed pipeline across 4 regional fulfillment centers:</p>
-                                    <div className="space-y-2 pl-2 border-l-2 border-[#FF6B00]/20">
-                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Predicted Shortfall (SKU-892)</span><span className="font-bold text-amber-600">4,200 units</span></div>
-                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Transit Delay Impact</span><span className="font-bold text-red-600">-12% stock</span></div>
-                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Reorder Confidence</span><span className="font-bold text-[#1a1a1a]">98.2%</span></div>
+                                    <p className="text-[#374151] text-sm mb-4 leading-relaxed font-medium">Analyzed 14,204 vendor records across 3 ERP databases. Found major variance drivers:</p>
+                                    <div className="space-y-2 pl-3 border-l-2 border-[#FF6B00] bg-white p-3 rounded-r-lg shadow-sm">
+                                        <div className="flex justify-between text-xs border-b border-black/5 pb-1"><span className="text-gray-600">Contract Compliance Deficit</span><span className="font-bold text-red-600">-$1.24M</span></div>
+                                        <div className="flex justify-between text-xs border-b border-black/5 pb-1"><span className="text-gray-600">Logistics SLAs Missed</span><span className="font-bold text-amber-600">14% increase</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-gray-600">Data Confidence</span><span className="font-bold text-[#10B981]">99.8%</span></div>
                                     </div>
-                                    <div className="mt-3 pt-2 border-t border-black/5 flex items-center gap-2">
-                                        <AlertTriangle size={11} className="text-[#F59E0B]" />
-                                        <span className="text-[11px] text-[#F59E0B]">Supplier B lead times have increased by 4 days — adjust automated POs?</span>
-                                    </div>
-                                </div>
-                            </motion.div>
-
-                            {/* Typing indicator */}
-                            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
-                                className="flex justify-start">
-                                <div className="rounded-2xl rounded-tl-sm px-4 py-3 bg-gray-50/50 border border-black/4">
-                                    <div className="flex gap-1">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#9ca3af] animate-bounce" style={{ animationDelay: '0ms' }} />
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#9ca3af] animate-bounce" style={{ animationDelay: '150ms' }} />
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#9ca3af] animate-bounce" style={{ animationDelay: '300ms' }} />
+                                    <div className="mt-4 pt-3 border-t border-black/5 flex items-start gap-3 bg-[#FF6B00]/5 p-3 rounded-lg border-l-2 border-l-[#FF6B00]">
+                                        <Zap size={14} className="text-[#FF6B00] flex-shrink-0 mt-0.5" />
+                                        <span className="text-xs text-[#1a1a1a] leading-relaxed">Action recommended: Draft renegotiation terms for Top 3 underperforming vendors and update procurement policies?</span>
                                     </div>
                                 </div>
                             </motion.div>
                         </div>
 
                         {/* Input bar */}
-                        <div className="px-5 py-3 border-t border-black/6">
-                            <div className="flex items-center gap-2 rounded-xl px-4 py-2.5 bg-gray-50 border border-black/5">
-                                <input type="text" placeholder="Ask about any project..." className="flex-1 bg-transparent text-[#1a1a1a] text-sm outline-none placeholder:text-[#9ca3af]" disabled />
-                                <Send size={15} className="text-[#FF6B00]" />
+                        <div className="px-5 py-4 border-t border-black/10 bg-white">
+                            <div className="flex items-center justify-between gap-3 rounded-xl px-4 py-3 bg-gray-50 border-2 border-transparent transition-colors hover:border-black/5 focus-within:border-[#FF6B00]/30 focus-within:bg-white shadow-inner">
+                                <input type="text" placeholder="Query enterprise data securely..." className="flex-1 bg-transparent text-[#1a1a1a] text-sm outline-none placeholder:text-gray-400 font-medium" disabled />
+                                <div className="w-8 h-8 rounded-lg bg-[#FF6B00] flex items-center justify-center text-white shadow-md cursor-not-allowed">
+                                    <Send size={14} />
+                                </div>
                             </div>
                         </div>
 
                         {/* Pipeline */}
-                        <div className="px-5 py-3 border-t border-black/6 bg-gradient-to-r from-white to-gray-50">
-                            <div className="flex items-center gap-1 mb-2">
-                                <Brain size={12} className="text-[#FF6B00]" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">AI Reasoning Pipeline</span>
+                        <div className="px-5 py-3 border-t border-black/5 bg-gray-50 flex flex-wrap items-center justify-between md:justify-start gap-4">
+                            <div className="flex items-center gap-2">
+                                <Brain size={14} className="text-gray-400" />
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-[#1a1a1a]">Telemetry</span>
                             </div>
-                            <div className="flex items-center gap-0">
+                            <div className="flex items-center gap-4">
                                 {pipelineSteps.map((step, i) => (
-                                    <React.Fragment key={i}>
-                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === aiStep ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm' : i < aiStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
-                                            }`}>
-                                            {i < aiStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
-                                            <span className="hidden sm:inline">{step.label}</span>
-                                        </div>
-                                        {i < pipelineSteps.length - 1 && (
-                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < aiStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
-                                        )}
-                                    </React.Fragment>
+                                    <div key={i} className="flex items-center gap-1.5 text-[10px] font-bold text-gray-500">
+                                        <span className="text-gray-400">{step.icon}</span>
+                                        <span className="hidden sm:inline">{step.label}</span>
+                                    </div>
                                 ))}
                             </div>
                         </div>
@@ -566,41 +530,40 @@ function GasperAIBotSection() {
                 </motion.div>
 
                 {/* Right Panel */}
-                <div className="lg:col-span-2 flex flex-col gap-5">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                <div className="lg:col-span-2 flex flex-col gap-6">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-4">
                         {stats.map((s, i) => (
-                            <div key={i} className="rounded-2xl bg-white border border-black/5 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
-                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                            <div key={i} className="rounded-2xl bg-white border border-black/10 p-5 text-center shadow-lg transition-transform hover:-translate-y-1">
+                                <div className="text-3xl font-black mb-1" style={{ color: s.color }}>
                                     {s.value}
-                                </motion.div>
-                                <div className="text-[10px] text-[#4b5563] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                                </div>
+                                <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-tight">{s.label}</div>
                             </div>
                         ))}
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-                        className="rounded-2xl bg-white border border-black/10 p-5 shadow-sm space-y-4">
+                        className="rounded-2xl bg-white border border-black/10 p-6 shadow-lg space-y-5">
                         {[
-                            { icon: <MessageSquare size={18} />, title: 'Natural Language Interfaces', desc: 'Interact with your proprietary data through natural language — no retraining required for your teams.', color: '#FF6B00' },
-                            { icon: <Zap size={18} />, title: 'Autonomous Workflows', desc: 'We build agents that don\'t just answer questions, but execute tasks across your tech stack securely.', color: '#F59E0B' },
-                            { icon: <FileText size={18} />, title: 'Full Ownership', desc: 'The customized engine runs in your environment. You own the data, the outputs, and the workflow.', color: '#3B82F6' },
+                            { icon: <ShieldCheck size={20} />, title: 'Absolute Data Privacy', desc: 'No vendor lock-in. No data sharing. Your intellectual property never leaves your private cloud.', color: '#10B981' },
+                            { icon: <Database size={20} />, title: 'ERP Deep Integration', desc: 'Natively queries your databases—SQL, Snowflake, Salesforce—to ground responses in reality.', color: '#0EA5E9' },
+                            { icon: <Lock size={20} />, title: 'Role-Based Access', desc: 'Enforces your existing permission structures so employees only access what they are cleared for.', color: '#8B5CF6' },
                         ].map((f, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
-                                className="flex items-start gap-4 pb-4 border-b border-black/5 last:pb-0 last:border-b-0">
-                                <div className="mt-1 flex-shrink-0" style={{ color: f.color }}>{f.icon}</div>
-                                <div><h4 className="text-[#1a1a1a] font-bold text-[15px]">{f.title}</h4><p className="text-[13px] text-[#6b7280] leading-snug">{f.desc}</p></div>
-                            </motion.div>
+                            <div key={i} className="flex items-start gap-4 pb-5 border-b border-black/5 last:pb-0 last:border-b-0">
+                                <div className="mt-0.5 flex-shrink-0" style={{ color: f.color }}>{f.icon}</div>
+                                <div><h4 className="text-[#1a1a1a] font-black text-sm mb-1">{f.title}</h4><p className="text-[13px] text-gray-500 leading-relaxed font-medium">{f.desc}</p></div>
+                            </div>
                         ))}
                     </motion.div>
 
                     {/* Example queries */}
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
-                        className="rounded-2xl bg-white border border-black/5 p-4 shadow-sm">
-                        <div className="text-[10px] font-bold uppercase tracking-wider text-[#9ca3af] mb-3">Try Asking</div>
-                        <div className="space-y-2">
-                            {['What materials are over budget?', 'Show pending RFIs for Phase 2', 'Which subs have open change orders?', 'Generate a safety briefing'].map((q, i) => (
-                                <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-50 border border-black/5 text-[11px] text-[#4b5563]">
-                                    <MessageSquare size={10} className="text-[#FF6B00] flex-shrink-0" /> {q}
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
+                        className="rounded-2xl bg-white border border-black/10 p-5 shadow-lg">
+                        <div className="text-[10px] font-bold uppercase tracking-widest text-[#1a1a1a] mb-4">Common Executive Queries</div>
+                        <div className="space-y-2.5">
+                            {['Cross-reference Q2 employee churn against departmental budgets', 'Identify compliance gaps in recent vendor SLAs', 'Generate an automated audit trail for invoice #8922A'].map((q, i) => (
+                                <div key={i} className="flex items-start gap-3 px-3 py-2.5 rounded-xl bg-gray-50 border border-black/5 text-xs text-[#1a1a1a] font-medium hover:bg-white transition-colors cursor-pointer group">
+                                    <MessageSquare size={12} className="text-[#FF6B00] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" /> <span className="leading-snug">{q}</span>
                                 </div>
                             ))}
                         </div>
@@ -785,11 +748,11 @@ function CustomLLMBuilderSection() {
     }, [isInView]);
 
     const dataSources = [
-        { id: 'contracts', name: 'Contract Documents', count: '4,230', type: 'PDF/DOCX', size: '18.2 GB', color: '#FF6B00', icon: <FileText size={14} /> },
-        { id: 'rfis', name: 'RFI Archives', count: '12,891', type: 'Structured', size: '5.6 GB', color: '#3B82F6', icon: <MessageSquare size={14} /> },
-        { id: 'specs', name: 'Project Specifications', count: '1,847', type: 'PDF', size: '22.1 GB', color: '#10B981', icon: <ClipboardCheck size={14} /> },
-        { id: 'safety', name: 'Safety Protocols', count: '3,456', type: 'Mixed', size: '8.3 GB', color: '#F59E0B', icon: <Shield size={14} /> },
-        { id: 'cost', name: 'Cost Databases', count: '89,102', type: 'CSV/SQL', size: '2.1 GB', color: '#8B5CF6', icon: <Database size={14} /> },
+        { id: 'contracts', name: 'Vendor Contracts', count: '4,230', type: 'PDF/DOCX', size: '18.2 GB', color: '#FF6B00', icon: <FileText size={14} /> },
+        { id: 'crm', name: 'Sales & CRM Data', count: '12,891', type: 'Structured', size: '5.6 GB', color: '#3B82F6', icon: <MessageSquare size={14} /> },
+        { id: 'erp', name: 'ERP Financials', count: '1,847', type: 'Database', size: '22.1 GB', color: '#10B981', icon: <ClipboardCheck size={14} /> },
+        { id: 'compliance', name: 'Compliance Frameworks', count: '3,456', type: 'Mixed', size: '8.3 GB', color: '#F59E0B', icon: <Shield size={14} /> },
+        { id: 'sops', name: 'Process SOPs', count: '89,102', type: 'Internal Wiki', size: '2.1 GB', color: '#8B5CF6', icon: <Database size={14} /> },
     ];
 
     const pipelineSteps = [
@@ -815,8 +778,8 @@ function CustomLLMBuilderSection() {
                 <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
                     Bespoke <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-[#FF6B00]">AI Development</span>
                 </h2>
-                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
-                    We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for your business. Trained on your secure archives, protocols, financial data, and workflows.
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg leading-relaxed">
+                    We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for your business. Trained securely on your legacy archives, protocols, financial data, and workflows.
                 </p>
             </motion.div>
 
@@ -829,31 +792,37 @@ function CustomLLMBuilderSection() {
                                 <div className="w-3 h-3 rounded-full bg-red-400" />
                                 <div className="w-3 h-3 rounded-full bg-amber-400" />
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                                <span className="ml-3 text-xs font-mono text-[#6b7280]">llm_training_pipeline.gasper</span>
+                                <span className="ml-3 text-xs font-mono text-[#6b7280] font-medium">llm_training_pipeline.run</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <div className="text-[10px] font-mono text-[#6b7280] bg-black/5 px-2 py-0.5 rounded border border-black/5">5 Sources</div>
-                                <div className="flex items-center gap-1 text-[10px] font-mono text-purple-600">
+                                <div className="text-[10px] font-mono text-gray-600 bg-white px-2 py-0.5 rounded border border-black/5 font-bold">Secure Enclave</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-purple-600 font-bold uppercase tracking-widest">
                                     <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
-                                    Training
+                                    Training Phase
                                 </div>
                             </div>
                         </div>
 
                         {/* Training Progress */}
-                        <div className="px-5 pt-4 pb-2">
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Model Training Progress</span>
-                                <span className="text-sm font-black text-purple-600">78%</span>
+                        <div className="px-5 pt-5 pb-3 bg-gray-50/50">
+                            <div className="flex items-center justify-between mb-3">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Model Convergence</span>
+                                <span className="text-sm font-black text-purple-600">78% Complete</span>
                             </div>
-                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="h-2.5 bg-gray-200/60 rounded-full overflow-hidden shadow-inner">
                                 <motion.div initial={{ width: 0 }} whileInView={{ width: '78%' }} transition={{ duration: 1.5, ease: 'easeOut' }}
-                                    className="h-full rounded-full bg-gradient-to-r from-purple-500 to-[#FF6B00]" />
+                                    className="h-full rounded-full bg-gradient-to-r from-purple-500 to-[#FF6B00] relative overflow-hidden" >
+                                    <div className="absolute inset-0 bg-white/20 w-full h-full" style={{ backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent)', backgroundSize: '1rem 1rem' }} />
+                                </motion.div>
+                            </div>
+                            <div className="flex justify-between mt-2 text-[9px] font-mono text-gray-400">
+                                <span>Epoch 14/20</span>
+                                <span>Loss: 0.0421</span>
                             </div>
                         </div>
 
                         {/* Data Sources */}
-                        <div className="px-5 py-3 space-y-2">
+                        <div className="px-5 py-4 space-y-2.5 border-t border-black/5">
                             {dataSources.map((src, i) => {
                                 const isActive = activeSource === src.id;
                                 return (
@@ -863,42 +832,42 @@ function CustomLLMBuilderSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.2 + i * 0.08, type: 'spring', bounce: 0.2 }}
                                         viewport={{ once: true }}
-                                        className="p-3 rounded-xl cursor-pointer transition-all duration-300"
+                                        className="p-3.5 rounded-xl cursor-pointer transition-all duration-300 shadow-sm"
                                         style={{
-                                            border: isActive ? `1px solid ${src.color}40` : '1px solid rgba(0,0,0,0.04)',
-                                            background: isActive ? `${src.color}04` : 'rgba(0,0,0,0.01)',
+                                            border: isActive ? `1px solid ${src.color}40` : '1px solid rgba(0,0,0,0.06)',
+                                            background: isActive ? `${src.color}06` : 'rgba(255,255,255,1)',
                                         }}
                                         onMouseEnter={() => setActiveSource(src.id)}
                                         onMouseLeave={() => setActiveSource(null)}
                                     >
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${src.color}15`, color: src.color }}>
+                                                <div className="w-9 h-9 rounded-lg flex items-center justify-center shadow-inner" style={{ background: `${src.color}15`, color: src.color }}>
                                                     {src.icon}
                                                 </div>
                                                 <div>
                                                     <div className="text-sm font-bold text-[#1a1a1a]">{src.name}</div>
-                                                    <div className="text-[10px] text-[#6b7280]">{src.count} documents</div>
+                                                    <div className="text-[10px] text-gray-500 font-medium">{src.count} records parsed</div>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full font-bold bg-[#111111] border border-white/5 text-[#9ca3af]">{src.type}</span>
+                                                <span className="text-[9px] px-2.5 py-1 rounded-full font-bold bg-black/5 text-[#6b7280] uppercase tracking-wider">{src.type}</span>
                                             </div>
                                         </div>
                                         {isActive && (
-                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-2 pt-2 border-t border-black/5">
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-3 pt-3 border-t border-black/5">
                                                 <div className="grid grid-cols-3 gap-3">
-                                                    <div className="text-center">
-                                                        <div className="text-[9px] text-[#6b7280] uppercase">Documents</div>
+                                                    <div className="text-center bg-white p-2 rounded-lg border border-black/5">
+                                                        <div className="text-[9px] text-[#6b7280] uppercase font-bold tracking-widest mb-1">Items</div>
                                                         <div className="text-[11px] font-bold text-[#1a1a1a] font-mono">{src.count}</div>
                                                     </div>
-                                                    <div className="text-center">
-                                                        <div className="text-[9px] text-[#6b7280] uppercase">Size</div>
-                                                        <div className="text-[11px] font-bold" style={{ color: src.color }}>{src.size}</div>
+                                                    <div className="text-center bg-white p-2 rounded-lg border border-black/5">
+                                                        <div className="text-[9px] text-[#6b7280] uppercase font-bold tracking-widest mb-1">Volume</div>
+                                                        <div className="text-[11px] font-bold font-mono" style={{ color: src.color }}>{src.size}</div>
                                                     </div>
-                                                    <div className="text-center">
-                                                        <div className="text-[9px] text-[#6b7280] uppercase">Status</div>
-                                                        <div className="text-[11px] font-bold text-[#10B981]">Ingested</div>
+                                                    <div className="text-center bg-white p-2 rounded-lg border border-black/5">
+                                                        <div className="text-[9px] text-[#6b7280] uppercase font-bold tracking-widest mb-1">Status</div>
+                                                        <div className="text-[11px] font-bold text-[#10B981] uppercase tracking-wider">Indexed</div>
                                                     </div>
                                                 </div>
                                             </motion.div>
@@ -909,15 +878,15 @@ function CustomLLMBuilderSection() {
                         </div>
 
                         {/* Pipeline */}
-                        <div className="px-5 py-3 border-t border-black/5 bg-gradient-to-r from-white to-gray-50">
-                            <div className="flex items-center gap-1 mb-2">
-                                <Cpu size={12} className="text-purple-600" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">LLM Training Pipeline</span>
+                        <div className="px-5 py-3 border-t border-black/5 bg-gray-50 flex flex-wrap items-center justify-between md:justify-start gap-4">
+                            <div className="flex items-center gap-2">
+                                <Cpu size={14} className="text-purple-600" />
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-[#1a1a1a]">LLM Pipeline</span>
                             </div>
                             <div className="flex items-center gap-0">
                                 {pipelineSteps.map((step, i) => (
                                     <React.Fragment key={i}>
-                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === trainStep ? 'bg-purple-500/10 text-purple-500 shadow-sm' : i < trainStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-bold transition-all duration-500 ${i === trainStep ? 'bg-purple-500/10 text-purple-600 shadow-sm border border-purple-500/20' : i < trainStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
                                             }`}>
                                             {i < trainStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
                                             <span className="hidden sm:inline">{step.label}</span>
@@ -933,39 +902,35 @@ function CustomLLMBuilderSection() {
                 </motion.div>
 
                 {/* Right Panel */}
-                <div className="lg:col-span-2 flex flex-col gap-5">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                <div className="lg:col-span-2 flex flex-col gap-6">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-4">
                         {stats.map((s, i) => (
-                            <div key={i} className="rounded-2xl bg-white border border-black/5 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
-                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                            <div key={i} className="rounded-2xl bg-white border border-black/10 p-5 text-center shadow-lg transition-transform hover:-translate-y-1">
+                                <div className="text-3xl font-black mb-1" style={{ color: s.color }}>
                                     {s.value}
-                                </motion.div>
-                                <div className="text-[10px] text-[#4b5563] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                                </div>
+                                <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-tight">{s.label}</div>
                             </div>
                         ))}
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-                        className="rounded-2xl bg-white border border-black/10 p-5 shadow-sm space-y-4">
+                        className="rounded-2xl bg-white border border-black/10 p-6 shadow-lg space-y-5">
                         {[
-                            { icon: <Cpu size={18} />, title: 'Custom Fine-Tuning', desc: 'We fine-tune models on your internal documents, historical data, safety protocols, and operational workflows.', color: '#8B5CF6' },
-                            { icon: <Zap size={18} />, title: 'Seamless Integration', desc: 'Embedded into your ERP systems, custom dashboards, or existing software stack via secure APIs. On-premise or cloud.', color: '#FF6B00' },
-                            { icon: <Lock size={18} />, title: 'Enterprise Security', desc: 'Your data never leaves your control. SOC 2 compliant, on-premise deployment options, and encrypted at rest.', color: '#10B981' },
+                            { icon: <Cpu size={20} />, title: 'Custom Fine-Tuning', desc: 'We train foundation models exclusively on your proprietary operational workflows and legacy data.', color: '#8B5CF6' },
+                            { icon: <Zap size={20} />, title: 'Infrastructure Agnostic', desc: 'Deploy seamlessly into existing ERPs, custom portals, or internal networks. Available fully air-gapped.', color: '#FF6B00' },
+                            { icon: <Lock size={20} />, title: 'Enterprise Security Barrier', desc: 'Your intelligence never leaves your control. Guaranteed zero-training-retention by external vendors.', color: '#10B981' },
                         ].map((f, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
-                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group cursor-default">
-                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
-                                <div>
-                                    <h4 className="text-white font-bold text-sm mb-0.5">{f.title}</h4>
-                                    <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
-                                </div>
-                            </motion.div>
+                            <div key={i} className="flex items-start gap-4 pb-5 border-b border-black/5 last:pb-0 last:border-b-0">
+                                <div className="mt-0.5 flex-shrink-0" style={{ color: f.color }}>{f.icon}</div>
+                                <div><h4 className="text-[#1a1a1a] font-black text-sm mb-1">{f.title}</h4><p className="text-[13px] text-gray-500 leading-relaxed font-medium">{f.desc}</p></div>
+                            </div>
                         ))}
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
-                        {['Fine-Tuning', 'RAG Pipeline', 'Vector DB', 'On-Premise', 'API Access', 'Multi-Tenant'].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/5 text-[#6b7280] hover:border-purple-500/50 hover:text-purple-600 transition-all cursor-default">{tag}</span>
+                        {['Architecture Optimization', 'RAG Integration', 'Private Vector DBs', 'On-Premise Ready', 'High-Trust Inference'].map((tag, i) => (
+                            <span key={i} className="px-3 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase bg-white border border-black/10 text-[#6b7280] shadow-sm hover:border-purple-500/50 hover:text-purple-600 transition-colors duration-300 cursor-default">{tag}</span>
                         ))}
                     </motion.div>
                 </div>
@@ -973,6 +938,7 @@ function CustomLLMBuilderSection() {
         </section>
     );
 }
+
 
 // ─── Waitlist Section ─────────────────────────────────────────────────────────
 function WaitlistSection() {

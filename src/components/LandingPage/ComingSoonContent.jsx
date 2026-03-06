@@ -140,38 +140,38 @@ function IndustryCard({ icon, title, description, color, useCase }) {
 // ─── Gasper Engine Info Section (Below Hero) ──────────────────────────────────
 function GasperEngineInfoSection() {
     return (
-        <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-20 relative bg-white border-y border-black/5 z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.03)] rounded-2xl sm:rounded-3xl mt-8 mb-8 sm:mt-12 sm:mb-12">
+        <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-20 relative backdrop-blur-md bg-white/70 border-y border-black/[0.03] z-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl sm:rounded-3xl mt-8 mb-8 sm:mt-12 sm:mb-12 transition-all hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
             <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
                 {/* Visual Side */}
                 <div className="md:w-5/12 w-full flex justify-center py-6">
-                    <div className="relative w-full max-w-sm aspect-[4/5] bg-white rounded-3xl border border-black/5 shadow-xl p-6 md:p-8 flex flex-col overflow-hidden">
+                    <div className="relative w-full max-w-sm aspect-[4/5] bg-white rounded-3xl border border-black/[0.03] shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-6 md:p-8 flex flex-col overflow-hidden">
                         {/* Abstract Background Grid */}
-                        <div className="absolute inset-0 bg-gray-50 opacity-50" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                        <div className="absolute inset-0 bg-gray-50 opacity-40" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
                         {/* Top Section */}
                         <div className="relative z-10 flex items-center justify-between border-b border-black/5 pb-5">
                             <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF6B00] to-[#F59E0B] p-2.5 flex items-center justify-center shadow-md">
+                                <div className="w-[52px] h-[52px] rounded-2xl bg-gradient-to-br from-[#FF6B00] to-[#F59E0B] p-3 flex items-center justify-center shadow-[0_4px_15px_rgba(255,107,0,0.2)]">
                                     <img src="/images/gasper-logo-g.png" alt="Gasper" className="w-full h-full object-contain brightness-0 invert" />
                                 </div>
                                 <div>
-                                    <div className="text-[#1a1a1a] font-black text-base">Gasper Core</div>
-                                    <div className="text-[10px] text-[#10B981] font-mono tracking-widest flex items-center gap-1.5 mt-0.5">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" /> SYNCHRONIZED
+                                    <div className="text-[#1a1a1a] font-extrabold text-[1.05rem] tracking-tight">Gasper Core</div>
+                                    <div className="text-[10px] text-[#10B981] font-mono tracking-[0.15em] font-semibold flex items-center gap-1.5 mt-1">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse" /> SYNCHRONIZED
                                     </div>
                                 </div>
                             </div>
-                            <div className="px-2.5 py-1 rounded bg-black/5 text-[10px] font-mono text-[#6b7280] font-bold">v4.2.0</div>
+                            <div className="px-2.5 py-1 rounded bg-black/[0.03] text-[10px] font-mono text-gray-500 font-bold border border-black/[0.04]">v4.2.0</div>
                         </div>
 
                         {/* Middle Section: Architecture Flow */}
                         <div className="relative z-10 my-auto flex flex-col justify-center gap-y-4 pt-4 pb-2">
-                            <div className="p-4 rounded-xl border border-black/5 bg-gray-50/80 backdrop-blur-sm flex items-center gap-4 shadow-sm transition-transform hover:-translate-y-0.5">
+                            <div className="p-4 rounded-xl border border-black/[0.04] bg-white/60 backdrop-blur-md flex items-center gap-4 shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgb(0,0,0,0.04)]">
                                 <Database size={18} className="text-[#3B82F6]" />
                                 <div>
-                                    <div className="text-sm font-bold text-[#1a1a1a]">Enterprise ERP Sync</div>
-                                    <div className="text-[10px] text-gray-500 font-mono">1.2TB Processed / Hr</div>
+                                    <div className="text-[13px] font-bold text-[#1a1a1a] tracking-tight">Enterprise ERP Sync</div>
+                                    <div className="text-[10px] text-gray-500 font-mono mt-0.5">1.2TB Processed / Hr</div>
                                 </div>
                             </div>
 
@@ -179,13 +179,13 @@ function GasperEngineInfoSection() {
                                 <div className="h-6 w-px bg-gradient-to-b from-gray-200 to-[#FF6B00]/30" />
                             </div>
 
-                            <div className="p-4 rounded-xl border border-[#FF6B00]/20 bg-[#FF6B00]/5 flex items-center gap-4 shadow-md relative group transition-transform hover:-translate-y-0.5">
-                                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B00]/0 via-[#FF6B00]/5 to-[#FF6B00]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            <div className="p-4 rounded-xl border border-[#FF6B00]/10 bg-gradient-to-r from-[#FF6B00]/[0.02] to-transparent flex items-center gap-4 shadow-[0_2px_10px_rgb(0,0,0,0.02)] relative group transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(255,107,0,0.06)]">
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B00]/0 via-[#FF6B00]/[0.04] to-[#FF6B00]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 <div className="relative z-10 flex items-center gap-4">
                                     <Brain size={18} className="text-[#FF6B00]" />
                                     <div>
-                                        <div className="text-sm font-bold text-[#FF6B00]">Neural Processing Core</div>
-                                        <div className="text-[10px] text-gray-500 font-mono">Inferencing Engine Active</div>
+                                        <div className="text-[13px] font-bold text-[#FF6B00] tracking-tight">Neural Processing Core</div>
+                                        <div className="text-[10px] text-gray-500 font-mono mt-0.5">Inferencing Engine Active</div>
                                     </div>
                                 </div>
                             </div>
@@ -195,54 +195,54 @@ function GasperEngineInfoSection() {
                             </div>
 
                             <div className="grid grid-cols-2 gap-3">
-                                <div className="p-3 rounded-xl border border-black/5 bg-gray-50/80 backdrop-blur-sm flex items-center justify-center gap-2 shadow-sm transition-transform hover:-translate-y-0.5">
+                                <div className="p-3 rounded-xl border border-black/[0.04] bg-white/60 backdrop-blur-md flex items-center justify-center gap-2 shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_15px_rgb(0,0,0,0.04)]">
                                     <Zap size={14} className="text-[#10B981]" />
-                                    <div className="text-xs font-bold text-[#1a1a1a]">Automate</div>
+                                    <div className="text-[13px] font-bold text-[#1a1a1a] tracking-tight">Automate</div>
                                 </div>
-                                <div className="p-3 rounded-xl border border-black/5 bg-gray-50/80 backdrop-blur-sm flex items-center justify-center gap-2 shadow-sm transition-transform hover:-translate-y-0.5">
+                                <div className="p-3 rounded-xl border border-black/[0.04] bg-white/60 backdrop-blur-md flex items-center justify-center gap-2 shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_15px_rgb(0,0,0,0.04)]">
                                     <BarChart3 size={14} className="text-[#8B5CF6]" />
-                                    <div className="text-xs font-bold text-[#1a1a1a]">Predict</div>
+                                    <div className="text-[13px] font-bold text-[#1a1a1a] tracking-tight">Predict</div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Bottom Metric */}
-                        <div className="relative z-10 pt-5 mt-auto border-t border-black/5 flex items-center justify-between">
+                        <div className="relative z-10 pt-5 mt-auto border-t border-black/[0.04] flex items-center justify-between">
                             <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Compute Loads</div>
-                            <div className="text-xs font-mono font-bold text-[#1a1a1a] bg-gray-100 px-2.5 py-1 rounded">8.4T FLOPS</div>
+                            <div className="text-xs font-mono font-bold text-[#1a1a1a] bg-black/[0.02] border border-black/[0.03] px-2.5 py-1 rounded">8.4T FLOPS</div>
                         </div>
                     </div>
                 </div>
 
                 {/* Content Side */}
                 <div className="md:w-7/12 w-full text-center md:text-left">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                         <Zap size={14} className="mr-2" /> CORE ENGINE
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6 leading-tight">
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
                         Built on the Foundation of<br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Gasper AI</span>
                     </h2>
-                    <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-xl mx-auto md:mx-0">
+                    <p className="text-gray-500 text-[1.1rem] leading-[1.7] mb-8 max-w-xl mx-auto md:mx-0">
                         Marapone leverages the proprietary, battle-tested architecture of the Gasper Engine. Originally developed to power massive-scale SaaS AI agents, it is now exclusively available as the private intelligence core for our B2B integration clients.
                     </p>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="border border-black/5 rounded-xl p-4 bg-white shadow-sm">
-                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">99.9%</div>
-                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Uptime Reliability</div>
+                        <div className="border border-black/[0.04] rounded-2xl p-5 bg-white shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_20px_rgb(0,0,0,0.04)]">
+                            <div className="font-mono text-2xl font-black text-[#1a1a1a] mb-1.5 tracking-tight">99.9%</div>
+                            <div className="text-[11px] text-[#6b7280] uppercase tracking-wider font-bold">Uptime Reliability</div>
                         </div>
-                        <div className="border border-black/5 rounded-xl p-4 bg-white shadow-sm">
-                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">SOC-2</div>
-                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Security Compliant</div>
+                        <div className="border border-black/[0.04] rounded-2xl p-5 bg-white shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_20px_rgb(0,0,0,0.04)]">
+                            <div className="font-mono text-2xl font-black text-[#1a1a1a] mb-1.5 tracking-tight">SOC-2</div>
+                            <div className="text-[11px] text-[#6b7280] uppercase tracking-wider font-bold">Security Compliant</div>
                         </div>
-                        <div className="border border-black/5 rounded-xl p-4 bg-white shadow-sm">
-                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">0ms</div>
-                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Data Latency</div>
+                        <div className="border border-black/[0.04] rounded-2xl p-5 bg-white shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_20px_rgb(0,0,0,0.04)]">
+                            <div className="font-mono text-2xl font-black text-[#1a1a1a] mb-1.5 tracking-tight">0ms</div>
+                            <div className="text-[11px] text-[#6b7280] uppercase tracking-wider font-bold">Data Latency</div>
                         </div>
-                        <div className="border border-black/5 rounded-xl p-4 bg-white shadow-sm">
-                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">On-Prem</div>
-                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Deployment Option</div>
+                        <div className="border border-black/[0.04] rounded-2xl p-5 bg-white shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_20px_rgb(0,0,0,0.04)]">
+                            <div className="font-mono text-2xl font-black text-[#1a1a1a] mb-1.5 tracking-tight">On-Prem</div>
+                            <div className="text-[11px] text-[#6b7280] uppercase tracking-wider font-bold">Deployment Option</div>
                         </div>
                     </div>
                 </div>
@@ -269,26 +269,26 @@ function B2BEnterpriseSection() {
             <div className="flex flex-col lg:flex-row gap-16 items-center">
                 {/* Left Side: Text and Stacking */}
                 <div className="lg:w-1/2">
-                    <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-black/10 bg-white text-[#1a1a1a] text-xs font-bold tracking-wider mb-6 shadow-sm">
+                    <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-black/[0.04] bg-white/80 backdrop-blur-sm text-[#1a1a1a] text-xs font-semibold tracking-[0.15em] mb-6 shadow-sm">
                         <Shield size={12} className="mr-2 text-[#FF6B00]" /> ENTERPRISE CAPABILITIES
                     </motion.div>
-                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 leading-tight">
+                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
                         Architecting <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Competitive Moats</span> with AI
                     </motion.h2>
-                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-gray-400 mb-8 leading-relaxed">
+                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-[1.1rem] text-gray-500 mb-8 leading-[1.7]">
                         We don't sell software. We partner with industry leaders to engineer tailored AI solutions that operate as an extension of your existing workforce—fully integrated, secure, and permanently owned by you.
                     </motion.p>
 
                     <div className="grid sm:grid-cols-2 gap-6">
                         {features.map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.1 }} className="relative group">
-                                <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" style={{ background: f.color }} />
-                                <div className="relative p-5 rounded-2xl bg-white border border-black/5 shadow-xl h-full">
-                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110 border border-black/5" style={{ background: `${f.color}10`, color: f.color }}>
+                                <div className="absolute -inset-[1px] rounded-[17px] opacity-0 group-hover:opacity-[0.08] transition-opacity duration-500" style={{ background: f.color }} />
+                                <div className="relative p-6 rounded-2xl backdrop-blur-md bg-white/70 border border-black/[0.04] shadow-[0_4px_20px_rgb(0,0,0,0.03)] h-full transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-110 border border-black/[0.03]" style={{ background: `${f.color}10`, color: f.color }}>
                                         {f.icon}
                                     </div>
-                                    <h3 className="text-[#1a1a1a] font-bold mb-2">{f.title}</h3>
-                                    <p className="text-xs text-[#6b7280] leading-relaxed">{f.desc}</p>
+                                    <h3 className="text-[#1a1a1a] font-bold text-base mb-2.5 tracking-tight">{f.title}</h3>
+                                    <p className="text-[13px] text-[#6b7280] leading-[1.6] font-medium">{f.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -297,21 +297,21 @@ function B2BEnterpriseSection() {
 
                 {/* Right Side: Abstract Visual */}
                 <div className="lg:w-1/2 w-full mt-10 lg:mt-0 relative">
-                    <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-gradient-to-br from-white to-gray-50 border border-black/5 p-8 flex items-center justify-center">
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-gradient-to-br from-white/90 to-gray-50/80 backdrop-blur-xl border border-black/[0.04] p-8 flex items-center justify-center">
 
                         {/* Sovereign Infrastructure Diagram */}
                         <div className="w-full flex flex-col gap-4 relative z-10">
                             {/* Top row */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="p-4 bg-white border border-black/5 rounded-2xl shadow-sm transition-transform hover:-translate-y-1">
-                                    <Database size={20} className="text-[#0EA5E9] mb-2" />
-                                    <div className="text-sm font-bold text-[#1a1a1a]">Proprietary Data</div>
-                                    <div className="text-[10px] text-gray-500 mt-0.5 font-mono">Air-gapped ingestion</div>
+                                <div className="p-4 bg-white/90 backdrop-blur-sm border border-black/[0.04] rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+                                    <Database size={20} className="text-[#0EA5E9] mb-2.5" />
+                                    <div className="text-[13px] font-bold text-[#1a1a1a] tracking-tight">Proprietary Data</div>
+                                    <div className="text-[10px] text-gray-500 mt-1 font-mono uppercase tracking-wider">Air-gapped ingestion</div>
                                 </div>
-                                <div className="p-4 bg-white border border-black/5 rounded-2xl shadow-sm transition-transform hover:-translate-y-1">
-                                    <Lock size={20} className="text-[#10B981] mb-2" />
-                                    <div className="text-sm font-bold text-[#1a1a1a]">Zero-Trust Core</div>
-                                    <div className="text-[10px] text-gray-500 mt-0.5 font-mono">SOC-2 Type II secure</div>
+                                <div className="p-4 bg-white/90 backdrop-blur-sm border border-black/[0.04] rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+                                    <Lock size={20} className="text-[#10B981] mb-2.5" />
+                                    <div className="text-[13px] font-bold text-[#1a1a1a] tracking-tight">Zero-Trust Core</div>
+                                    <div className="text-[10px] text-gray-500 mt-1 font-mono uppercase tracking-wider">SOC-2 Type II secure</div>
                                 </div>
                             </div>
 

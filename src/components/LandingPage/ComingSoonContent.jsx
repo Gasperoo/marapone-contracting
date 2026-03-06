@@ -227,6 +227,73 @@ function B2BEnterpriseSection() {
     );
 }
 
+// ─── Multi-Agent Orchestration Section (Premium Polish) ──────────────────────
+function AgentOrchestrationSection() {
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            <div className="text-center mb-16">
+                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-500 text-xs font-bold tracking-wider mb-6">
+                    <Layers size={12} className="mr-2" /> MULTI-AGENT ORCHESTRATION
+                </motion.div>
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                    Workflows Managed by <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-[#FF6B00]">Swarm Intelligence</span>
+                </motion.h2>
+                <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    A single AI is a tool. A swarm of specialized AI agents working together is a workforce. We deploy multi-agent systems where custom models communicate autonomously to resolve complex business logic securely.
+                </motion.p>
+            </div>
+
+            {/* Glowing Visualization Container */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto bg-[#1a1a1a] rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden border border-white/10">
+                {/* Background Grid */}
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+
+                <div className="grid md:grid-cols-3 gap-6 relative z-10">
+                    {[
+                        { title: 'Data Synthesis Node', icon: <Database />, color: '#0EA5E9', desc: 'Monitors external streams, cleans raw data, and updates state.', active: true },
+                        { title: 'Logic Processing Hub', icon: <Brain />, color: '#8B5CF6', desc: 'Evaluates state against company guidelines securely.', active: true },
+                        { title: 'Execution Actuator', icon: <Zap />, color: '#FF6B00', desc: 'Fires API payloads to ERPs, avoiding manual input.', active: true },
+                    ].map((node, i) => (
+                        <div key={i} className="relative p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors">
+                            {/* Animated connection lines between nodes for desktop */}
+                            {i < 2 && (
+                                <div className="hidden md:block absolute top-1/2 -right-6 w-6 h-[2px] bg-gradient-to-r from-white/20 to-transparent">
+                                    <motion.div className="h-full bg-white shadow-[0_0_10px_white]" animate={{ x: ['-100%', '200%'] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'linear', delay: i * 0.5 }} />
+                                </div>
+                            )}
+
+                            <div className="flex items-center gap-3 mb-4 border-b border-white/10 pb-4">
+                                <div className="w-10 h-10 rounded-xl flex items-center justify-center relative bg-black/40" style={{ color: node.color, border: `1px solid ${node.color}40` }}>
+                                    <div className="absolute inset-0 rounded-xl blur-md opacity-30 animate-pulse" style={{ background: node.color }} />
+                                    {node.icon}
+                                </div>
+                                <div>
+                                    <div className="text-white font-bold text-sm tracking-wide">{node.title}</div>
+                                    <div className="flex items-center gap-1.5 mt-1">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                                        <span className="text-[10px] text-green-400 font-mono tracking-widest uppercase">Online</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p className="text-gray-400 text-xs leading-relaxed">{node.desc}</p>
+
+                            <div className="mt-4 p-3 rounded-lg overflow-hidden bg-black/40 border border-white/5 font-mono text-[10px] text-white/50 space-y-1.5 relative h-20 flex flex-col justify-end">
+                                <motion.div animate={{ y: [20, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}>
+                                    <div className="opacity-40">{'>'} Polling endpoint...</div>
+                                    <div style={{ color: node.color }}>{'>'} Processing payload</div>
+                                    <div>{'>'} Task 200 OK</div>
+                                </motion.div>
+                                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-black/80 to-transparent z-10" />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </motion.div>
+        </section>
+    );
+}
+
 // ─── Gasper AI Bot Section (Revamped — Split Panel) ──────────────────────────
 function GasperAIBotSection() {
     const [aiStep, setAiStep] = useState(0);
@@ -1789,6 +1856,11 @@ export default function ComingSoonContent() {
 
             {/* ══ ADVANTAGES ══ */}
             <ComparisonTableSection />
+
+            <div className="section-divider" />
+
+            {/* ══ MULTI-AGENT ORCHESTRATION (New High-End Feature) ══ */}
+            <AgentOrchestrationSection />
 
             <div className="section-divider" />
 

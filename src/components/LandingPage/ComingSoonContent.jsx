@@ -1594,6 +1594,113 @@ function SafetyComplianceSection() {
     );
 }
 
+// ─── Dynamic Industry Showcase (For Tabs) ──────────────────────────────────
+const industryData = {
+    construction: {
+        title: "Construction Intelligence", subtitle: "From Groundbreak to Handover",
+        description: "Automate blueprint takeoffs, monitor site security via computer vision, and forecast cash flow with pinpoint accuracy.",
+        features: [
+            { icon: <Ruler size={20} />, title: "Automated Takeoffs", desc: "Extract quantities directly from architectural PDFs." },
+            { icon: <TrendingUp size={20} />, title: "Cash Flow Forecasting", desc: "Real-time budget analysis across all project phases." },
+            { icon: <Eye size={20} />, title: "Site Vision AI", desc: "Detect compliance and monitor progress autonomously." }
+        ], color: "#FF6B00"
+    },
+    logistics: {
+        title: "Global Supply Chain Twin", subtitle: "Predictive Routing & Customs Automation",
+        description: "Transform your logistics network into a real-time digital twin to predict transit delays and automate compliance.",
+        features: [
+            { icon: <Truck size={20} />, title: "Predictive Routing", desc: "Dynamic rerouting based on global weather and port data." },
+            { icon: <FileText size={20} />, title: "Customs Automation", desc: "Extract and validate codes from unstructured transit logistics docs." },
+            { icon: <Activity size={20} />, title: "Delay Forecasting", desc: "Machine learning models predict transit bottlenecks early." }
+        ], color: "#0EA5E9"
+    },
+    marketing: {
+        title: "Growth Engine AI", subtitle: "Hyper-Personalization & Predictive Scoring",
+        description: "Deploy generative campaigns that automatically optimize based on proprietary predictive lead scoring and sentiment analysis.",
+        features: [
+            { icon: <Target size={20} />, title: "Predictive Lead Scoring", desc: "Identify high-value enterprise accounts proactively." },
+            { icon: <MessageSquare size={20} />, title: "Generative Campaigns", desc: "Create millions of ad variations instantly for micro-segments." },
+            { icon: <BarChart3 size={20} />, title: "Sentiment Analysis", desc: "Ingest social and CRM data to measure brand health instantly." }
+        ], color: "#F59E0B"
+    },
+    ecommerce: {
+        title: "Revenue Optimization", subtitle: "Dynamic Pricing & Autonomous Support",
+        description: "Maximize margins with intelligent dynamic pricing while deploying fully autonomous support agents that understand your catalog.",
+        features: [
+            { icon: <DollarSign size={20} />, title: "Dynamic Pricing", desc: "Algorithmic repricing based on competitor stock and demand spikes." },
+            { icon: <Package size={20} />, title: "Demand Forecasting", desc: "Predict stock depletion down to the SKU level." },
+            { icon: <Bot size={20} />, title: "Autonomous Agents", desc: "Resolve 80% of L1 support tickets without human intervention." }
+        ], color: "#8B5CF6"
+    }
+};
+
+function GenericIndustryShowcase({ keyName }) {
+    const data = industryData[keyName];
+    if (!data) return null;
+
+    return (
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-5xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-10 items-center">
+                <div className="lg:w-5/12 text-left">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full border mb-4 shadow-sm" style={{ borderColor: `${data.color}30`, backgroundColor: `${data.color}08`, color: data.color }}>
+                        <span className="text-[10px] font-bold tracking-wider uppercase">{data.subtitle}</span>
+                    </div>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">{data.title}</h3>
+                    <p className="text-[#6b7280] text-sm leading-relaxed mb-8">{data.description}</p>
+                    <div className="space-y-4 border-t border-black/5 pt-6">
+                        {data.features.map((f, i) => (
+                            <div key={i} className="flex gap-3 items-start">
+                                <div className="mt-0.5 rounded-lg flex items-center justify-center p-2" style={{ background: `${data.color}15`, color: data.color }}>
+                                    {f.icon}
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-[#1a1a1a] text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs">{f.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="lg:w-7/12 w-full">
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-black/10">
+                        {/* Interface Header */}
+                        <div className="bg-gray-50 border-b border-black/5 px-4 py-3 flex items-center justify-between">
+                            <div className="flex gap-1.5">
+                                <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                                <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                            </div>
+                            <div className="text-[10px] font-mono text-gray-400">marapone_brain_v2.0</div>
+                        </div>
+                        {/* Abstract Interface Body */}
+                        <div className="aspect-[4/3] sm:aspect-[16/9] bg-[#fafafa] relative overflow-hidden flex items-center justify-center p-6">
+                            {/* Animated Grid Background */}
+                            <div className="absolute inset-0 pattern-grid opacity-5" style={{ backgroundSize: '30px 30px', backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)' }} />
+
+                            <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="relative z-10 w-40 h-40 rounded-full flex items-center justify-center">
+                                <div className="absolute inset-0 rounded-full blur-[50px] opacity-20" style={{ background: data.color }} />
+                                <div className="relative w-20 h-20 rounded-2xl bg-white shadow-xl flex items-center justify-center border border-black/5" style={{ color: data.color }}>
+                                    {data.features[0].icon}
+                                </div>
+
+                                {/* Orbital Nodes */}
+                                {[0, 120, 240].map((deg, i) => (
+                                    <motion.div key={i} animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear", delay: i * 4 }} className="absolute inset-0">
+                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow-md border border-black/5 flex items-center justify-center" style={{ color: data.color, transform: `rotate(-${deg}deg)` }}>
+                                            {data.features[i % data.features.length].icon}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
 // ─── Feature Tabs ─────────────────────────────────────────────────────────────
 function FeatureTabsSection() {
     const tabs = [
@@ -1609,13 +1716,13 @@ function FeatureTabsSection() {
 
     const renderContent = () => {
         switch (active) {
-            case 'construction': return <BlueprintAISection />; // Repurposing existing components for now
-            case 'logistics': return <MaterialPriceAggregatorSection />;
-            case 'marketing': return <ProjectCommandCenter />;
-            case 'ecommerce': return <CashFlowSection />;
+            case 'construction': return <GenericIndustryShowcase keyName="construction" />;
+            case 'logistics': return <GenericIndustryShowcase keyName="logistics" />;
+            case 'marketing': return <GenericIndustryShowcase keyName="marketing" />;
+            case 'ecommerce': return <GenericIndustryShowcase keyName="ecommerce" />;
             case 'ai': return <GasperAIBotSection />;
             case 'llm': return <CustomLLMBuilderSection />;
-            default: return <BlueprintAISection />;
+            default: return <GenericIndustryShowcase keyName="construction" />;
         }
     };
 

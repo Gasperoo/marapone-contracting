@@ -2134,22 +2134,23 @@ export default function ComingSoonContent() {
                 <div className="grid lg:grid-cols-2 gap-10 items-start">
                     {/* Left: What You'll Get */}
                     <div>
-                        <h2 className="text-3xl font-bold text-[#1a1a1a] mb-3">What You'll Get</h2>
-                        <p className="mb-8" style={{ color: C.textMuted }}>Founding members and early partners get exclusive access to shape the future of construction AI.</p>
-                        <div className="grid sm:grid-cols-2 gap-4">
+                        <h2 className="text-3xl font-bold text-[#1a1a1a] mb-3">The Engagement Process</h2>
+                        <p className="mb-8 text-lg" style={{ color: C.textMuted }}>We don't do self-serve SaaS. We engineer bespoke integrations that become permanent competitive advantages.</p>
+                        <div className="grid sm:grid-cols-2 gap-5">
                             {[
-                                { icon: <Zap size={22} />, title: 'Early Access', description: 'Join our private beta and shape the platform before public launch' },
-                                { icon: <DollarSign size={22} />, title: 'Founding Rate', description: 'Lock in 40% off enterprise pricing for life as a founding member' },
-                                { icon: <Award size={22} />, title: 'White-Glove Onboarding', description: 'Dedicated implementation support from our construction AI experts' },
-                                { icon: <Users size={22} />, title: 'Investor Updates', description: 'Quarterly product roadmap calls direct with founders and leadership' },
+                                { icon: <PhoneCall size={22} />, title: 'Discovery Phase', description: 'Deep-dive audit of your current workflows and data silos to identify high-ROI automation targets.' },
+                                { icon: <Code size={22} />, title: 'Custom Architecture', description: 'We architect and train isolated LLMs exclusively on your operational history and guidelines.' },
+                                { icon: <Plug size={22} />, title: 'Seamless Integration', description: 'Deployment of autonomous agents that connect organically to your existing ERPs and CRMs.' },
+                                { icon: <Key size={22} />, title: 'Complete Handover', description: 'Zero vendor lock-in. You own the models, the data pipelines, and the infrastructure forever.' },
                             ].map((b, idx) => (
                                 <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08, duration: 0.6 }}
-                                    className="rounded-2xl p-5 group transition-all duration-300" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                                    <div className="w-10 h-10 rounded-xl mb-3 flex items-center justify-center group-hover:scale-105 transition-transform" style={{ background: `${C.primary}08`, border: `1px solid ${C.primary}15`, color: C.primary }}>
+                                    className="rounded-2xl p-6 group transition-all duration-300 relative overflow-hidden" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
+                                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-black/[0.02] to-transparent rounded-bl-full -z-0" />
+                                    <div className="relative z-10 w-12 h-12 rounded-xl mb-4 flex items-center justify-center group-hover:scale-105 transition-transform bg-black/5 text-[#1a1a1a]">
                                         {b.icon}
                                     </div>
-                                    <h3 className="text-[#1a1a1a] font-bold mb-1">{b.title}</h3>
-                                    <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{b.description}</p>
+                                    <h3 className="text-[#1a1a1a] font-bold mb-2 text-lg relative z-10">{b.title}</h3>
+                                    <p className="text-sm leading-relaxed relative z-10" style={{ color: C.textMuted }}>{b.description}</p>
                                 </motion.div>
                             ))}
                         </div>

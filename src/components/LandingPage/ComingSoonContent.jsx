@@ -362,47 +362,48 @@ function AgentOrchestrationSection() {
     return (
         <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <div className="text-center mb-16">
-                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                     <Layers size={14} className="mr-2" /> WORKFLOW ORCHESTRATION
                 </motion.div>
-                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 leading-tight">
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
                     End-to-End <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Process Automation</span>
                 </motion.h2>
-                <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[#6b7280] max-w-3xl mx-auto text-lg leading-relaxed">
+                <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[1.1rem] text-gray-500 max-w-3xl mx-auto leading-[1.7]">
                     Deploy networks of specialized, deterministic AI agents that execute complex business logic autonomously. From supply chain reconciliation to compliance auditing, transform multi-day manual workflows into instant background processes.
                 </motion.p>
             </div>
 
             {/* Architecture Dashboard */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto bg-white rounded-3xl p-2 shadow-xl border border-black/5 overflow-hidden">
-                <div className="bg-gray-50 rounded-2xl p-6 md:p-10 border border-black/5 relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto backdrop-blur-md bg-white/70 rounded-[2rem] p-2 shadow-[0_20px_50px_rgb(0,0,0,0.08)] border border-black/[0.04] overflow-hidden transition-all hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
+                <div className="bg-gray-50/80 rounded-[1.5rem] p-6 md:p-10 border border-black/[0.03] relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
                     <div className="grid md:grid-cols-3 gap-6 relative z-10">
                         {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-[52px] left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent z-0" />
+                        <div className="hidden md:block absolute top-[52px] left-[16%] right-[16%] h-[2px] bg-gradient-to-r from-transparent via-[#FF6B00]/20 to-transparent z-0" />
 
                         {[
                             { title: 'Ingestion Protocol', icon: <Database />, color: '#0EA5E9', desc: 'Securely extracts and normalizes unstructured data from legacy systems.' },
                             { title: 'Routing & Analysis', icon: <Brain />, color: '#8B5CF6', desc: 'Evaluates context against strict company policies with zero hallucinations.' },
                             { title: 'Execution Engine', icon: <Send />, color: '#10B981', desc: 'Fires validated API payloads to update ERPs and trigger notifications.' },
                         ].map((node, i) => (
-                            <div key={i} className="relative bg-white rounded-xl p-6 border border-black/5 shadow-sm transform transition-all hover:-translate-y-1 hover:shadow-md z-10">
-                                <div className="flex flex-col items-center text-center">
-                                    <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center mb-5 border border-black/5 shadow-inner" style={{ color: node.color }}>
+                            <div key={i} className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-black/[0.04] shadow-[0_4px_20px_rgb(0,0,0,0.03)] transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] z-10 group">
+                                <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent opacity-50 rounded-2xl pointer-events-none" />
+                                <div className="flex flex-col items-center text-center relative z-10">
+                                    <div className="w-[60px] h-[60px] rounded-2xl flex items-center justify-center mb-5 border border-black/[0.03] shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-transform duration-500 group-hover:scale-110 group-hover:shadow-[0_8px_20px_rgb(0,0,0,0.06)]" style={{ backgroundColor: `${node.color}08`, color: node.color }}>
                                         {node.icon}
                                     </div>
-                                    <div className="text-sm font-bold text-[#1a1a1a] mb-2">{node.title}</div>
-                                    <p className="text-xs text-gray-500 leading-relaxed mb-6">{node.desc}</p>
+                                    <div className="text-[15px] font-bold text-[#1a1a1a] mb-2.5 tracking-tight">{node.title}</div>
+                                    <p className="text-[13px] text-gray-500 leading-[1.6] mb-6 font-medium">{node.desc}</p>
                                 </div>
 
                                 {/* Terminal/Log output snippet */}
-                                <div className="p-3 bg-gray-900 rounded-lg border border-gray-800 font-mono text-[10px] text-gray-400 h-20 flex flex-col justify-end overflow-hidden relative group">
-                                    <motion.div animate={{ y: [0, -20] }} transition={{ duration: 3, repeat: Infinity, ease: 'linear' }} className="space-y-1">
-                                        <div className="text-gray-600">[sys] await state_change</div>
-                                        <div style={{ color: node.color }}>[exe] processing_batch</div>
-                                        <div className="text-gray-500">[net] payload_verified</div>
+                                <div className="p-3.5 bg-[#0a0a0a] rounded-xl border border-white/5 shadow-inner font-mono text-[11px] text-gray-400 h-24 flex flex-col justify-end overflow-hidden relative group-hover:border-white/10 transition-colors duration-500">
+                                    <motion.div animate={{ y: [0, -24] }} transition={{ duration: 3, repeat: Infinity, ease: 'linear' }} className="space-y-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
+                                        <div className="text-gray-500/80">[sys] await state_change</div>
+                                        <div className="font-semibold mix-blend-screen" style={{ color: node.color, textShadow: `0 0 10px ${node.color}40` }}>[exe] processing_batch</div>
+                                        <div className="text-gray-500/80">[net] payload_verified</div>
                                     </motion.div>
-                                    <div className="absolute top-0 left-0 right-0 h-6 bg-gradient-to-b from-gray-900 to-transparent z-10" />
+                                    <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10" />
                                 </div>
                             </div>
                         ))}
@@ -636,17 +637,15 @@ function ComparisonTableSection() {
         <section className="px-4 sm:px-6 max-w-6xl mx-auto py-16 sm:py-24 relative">
             <div className="text-center mb-20 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="inline-block px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
-                    style={{ borderColor: `${C.primary}35`, background: `${C.primary}10`, color: C.primary }}>
-                    <Award size={14} className="inline mr-2" />The Marapone Advantage
+                    className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
+                    <Award size={14} className="mr-2" /> THE MARAPONE ADVANTAGE
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-bold mb-5"
-                    style={{ background: 'linear-gradient(to bottom, #1a1a1a, rgba(26,26,26,0.7))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                    Why Enterprises Partner With Us
+                    className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
+                    Why Enterprises <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Partner With Us</span>
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-lg max-w-2xl mx-auto" style={{ color: C.textMuted }}>
+                    className="text-[1.1rem] text-gray-500 max-w-2xl mx-auto leading-[1.7]">
                     We don't sell software subscriptions. We build tailored competitive advantages that you own forever.
                 </motion.p>
             </div>
@@ -655,12 +654,15 @@ function ComparisonTableSection() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                 {metrics.map((m, i) => (
                     <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.6 }}
-                        className="uiverse-depth-card text-center group">
+                        className="relative bg-white/90 backdrop-blur-sm rounded-[2rem] p-8 text-center border border-black/[0.04] shadow-[0_4px_20px_rgb(0,0,0,0.03)] transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] group">
+                        <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent opacity-50 rounded-[2rem] pointer-events-none" />
                         <div className="relative z-10">
-                            <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110" style={{ background: `${C.primary}12`, color: C.primary }}>{m.icon}</div>
-                            <div className="text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #1a1a1a 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
-                            <div className="text-[#1a1a1a] font-bold text-lg mb-2">{m.label}</div>
-                            <p className="text-sm" style={{ color: C.textMuted }}>{m.desc}</p>
+                            <div className="w-[60px] h-[60px] rounded-2xl mx-auto mb-6 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 border border-black/[0.03] shadow-[0_2px_10px_rgb(0,0,0,0.02)] group-hover:shadow-[0_8px_20px_rgb(0,0,0,0.06)] bg-[#FF6B00]/5 text-[#FF6B00]">
+                                {m.icon}
+                            </div>
+                            <div className="text-[2.5rem] font-black tracking-tight mb-2.5" style={{ background: `linear-gradient(135deg, #1a1a1a 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
+                            <div className="text-[1.1rem] font-extrabold text-[#1a1a1a] tracking-tight mb-3">{m.label}</div>
+                            <p className="text-[13px] text-gray-500 leading-[1.6] font-medium max-w-[220px] mx-auto">{m.desc}</p>
                         </div>
                     </motion.div>
                 ))}
@@ -668,19 +670,20 @@ function ComparisonTableSection() {
 
             {/* Before / After */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                className="rounded-3xl p-4 sm:p-6 md:p-12 mb-10 overflow-x-auto" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a1a1a] text-center mb-6 sm:mb-10">SaaS Vendors vs. Marapone Integration</h3>
-                <div className="space-y-0 divide-y" style={{ borderColor: 'rgba(255,107,0,0.15)' }}>
+                className="relative backdrop-blur-md bg-white/70 rounded-[2rem] p-6 sm:p-8 md:p-12 mb-10 overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] border border-black/[0.04]">
+                <div className="absolute inset-0 opacity-40 bg-gray-50/50" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+                <h3 className="relative z-10 text-[1.25rem] sm:text-2xl font-extrabold tracking-tight text-[#1a1a1a] text-center mb-8 sm:mb-12">SaaS Vendors vs. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Marapone Integration</span></h3>
+                <div className="relative z-10 space-y-0 divide-y divide-black/[0.04]">
                     {transformations.map((t, i) => (
-                        <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4 py-4 sm:py-5">
-                            <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-gray-500" style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.2)' }}>{t.icon}</div>
-                                <span className="text-sm text-gray-500 line-through">{t.before}</span>
+                        <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center gap-4 sm:gap-6 py-5 sm:py-6 group hover:bg-black/[0.01] transition-colors rounded-xl -mx-4 px-4">
+                            <div className="flex items-center gap-4 opacity-70 group-hover:opacity-100 transition-opacity">
+                                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-gray-500 bg-red-50 border border-red-100/50">{t.icon}</div>
+                                <span className="text-[13px] text-gray-500 font-medium leading-[1.6] line-through">{t.before}</span>
                             </div>
-                            <div className="flex w-8 h-8 rounded-full items-center justify-center text-xs font-bold flex-shrink-0 mx-auto" style={{ background: `${C.primary}15`, color: C.primary }}>→</div>
-                            <div className="flex items-center gap-3 md:justify-end">
-                                <span className="text-sm text-[#374151] font-medium">{t.after}</span>
-                                <Check size={16} className="flex-shrink-0" style={{ color: C.secondary }} />
+                            <div className="flex w-10 h-10 rounded-full items-center justify-center text-sm font-black flex-shrink-0 mx-auto bg-[#10B981]/10 text-[#10B981] shadow-sm transform transition-transform group-hover:scale-110">→</div>
+                            <div className="flex items-center gap-4 md:justify-end opacity-90 group-hover:opacity-100 transition-opacity">
+                                <span className="text-[14px] text-[#1a1a1a] font-bold leading-[1.6] text-right">{t.after}</span>
+                                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/20 shadow-sm"><Check size={18} /></div>
                             </div>
                         </div>
                     ))}
@@ -711,19 +714,20 @@ function WhatYouGetSection() {
     return (
         <section className="px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">Our Engagement Process</h2>
-                <p className="max-w-xl mx-auto" style={{ color: C.textMuted }}>From initial audit to final deployment, we build tailored AI engines as an extension of your technical team.</p>
+                <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-5 leading-[1.15]">Our Engagement Process</h2>
+                <p className="max-w-xl mx-auto text-[1.1rem] text-gray-500 leading-[1.7]">From initial audit to final deployment, we build tailored AI engines as an extension of your technical team.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {benefits.map((b, idx) => (
                     <motion.div key={idx} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.7 }}
-                        className="uiverse-neo-card p-8 transition-all duration-300 text-center group relative overflow-hidden">
+                        className="relative bg-white/90 backdrop-blur-sm rounded-[2rem] p-8 text-center border border-black/[0.04] shadow-[0_4px_20px_rgb(0,0,0,0.03)] transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] group">
+                        <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent opacity-50 rounded-[2rem] pointer-events-none" />
                         <div className="relative z-10">
-                            <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ background: `${C.primary}10`, border: `1px solid ${C.primary}25`, color: C.primary }}>
+                            <div className="w-[60px] h-[60px] rounded-2xl mx-auto mb-6 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 border border-black/[0.03] shadow-[0_2px_10px_rgb(0,0,0,0.02)] group-hover:shadow-[0_8px_20px_rgb(0,0,0,0.06)] bg-[#FF6B00]/5 text-[#FF6B00]">
                                 {b.icon}
                             </div>
-                            <h3 className="text-[#1a1a1a] font-bold text-lg mb-2">{b.title}</h3>
-                            <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{b.description}</p>
+                            <h3 className="text-[#1a1a1a] font-extrabold tracking-tight text-[1.1rem] mb-2.5">{b.title}</h3>
+                            <p className="text-[13px] text-gray-500 leading-[1.6] font-medium">{b.description}</p>
                         </div>
                     </motion.div>
                 ))}

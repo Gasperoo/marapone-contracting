@@ -299,43 +299,57 @@ function B2BEnterpriseSection() {
                 <div className="lg:w-1/2 w-full mt-10 lg:mt-0 relative">
                     <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-gradient-to-br from-white to-gray-50 border border-black/5 p-8 flex items-center justify-center">
 
-                        {/* Abstract Network Rings */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                            {[1, 2, 3].map((ring) => (
-                                <motion.div key={ring}
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 25 * ring, repeat: Infinity, ease: "linear" }}
-                                    className="absolute rounded-full border border-white/20"
-                                    style={{ width: `${ring * 30}%`, height: `${ring * 30}%`, borderStyle: ring % 2 === 0 ? 'dashed' : 'solid' }}
-                                />
-                            ))}
-                        </div>
-
-                        {/* Center Hub */}
-                        <div className="relative z-10 w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#FF6B00] to-[#F59E0B] shadow-[0_0_50px_rgba(255,107,0,0.4)] flex items-center justify-center overflow-hidden">
-                            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute inset-0 bg-white/10 rounded-2xl" />
-                            <Brain size={40} className="text-white relative z-10" />
-                        </div>
-
-                        {/* Orbiting Elements */}
-                        {[
-                            { icon: <Database size={16} />, delay: 0, color: 'text-blue-400', label: 'ERP Data' },
-                            { icon: <Lock size={16} />, delay: 2, color: 'text-emerald-400', label: 'Secure Core' },
-                            { icon: <Server size={16} />, delay: 4, color: 'text-purple-400', label: 'Local Compute' },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                className="absolute"
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 15, delay: item.delay, repeat: Infinity, ease: "linear" }}
-                                style={{ width: '60%', height: '60%' }}
-                            >
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-white border border-black/5 flex items-center justify-center shadow-lg" style={{ transform: 'rotate(-' + (0) + 'deg)' }}>
-                                    <span className={item.color}>{item.icon}</span>
-                                    <span className="absolute -bottom-6 text-[10px] text-[#6b7280] font-mono whitespace-nowrap">{item.label}</span>
+                        {/* Sovereign Infrastructure Diagram */}
+                        <div className="w-full flex flex-col gap-4 relative z-10">
+                            {/* Top row */}
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="p-4 bg-white border border-black/5 rounded-2xl shadow-sm transition-transform hover:-translate-y-1">
+                                    <Database size={20} className="text-[#0EA5E9] mb-2" />
+                                    <div className="text-sm font-bold text-[#1a1a1a]">Proprietary Data</div>
+                                    <div className="text-[10px] text-gray-500 mt-0.5 font-mono">Air-gapped ingestion</div>
                                 </div>
-                            </motion.div>
-                        ))}
+                                <div className="p-4 bg-white border border-black/5 rounded-2xl shadow-sm transition-transform hover:-translate-y-1">
+                                    <Lock size={20} className="text-[#10B981] mb-2" />
+                                    <div className="text-sm font-bold text-[#1a1a1a]">Zero-Trust Core</div>
+                                    <div className="text-[10px] text-gray-500 mt-0.5 font-mono">SOC-2 Type II secure</div>
+                                </div>
+                            </div>
+
+                            {/* Center Engine block */}
+                            <div className="relative p-6 bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] rounded-2xl shadow-lg border border-white/10 overflow-hidden transform transition-all hover:scale-[1.02]">
+                                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)', backgroundSize: '15px 15px' }} />
+                                <div className="relative z-10 flex items-center justify-between">
+                                    <div>
+                                        <div className="flex items-center gap-2 mb-1.5">
+                                            <Brain size={18} className="text-[#FF6B00]" />
+                                            <span className="text-xs font-bold text-white tracking-wider">CUSTOM LLM ENGINE</span>
+                                        </div>
+                                        <div className="text-[10px] text-gray-400 font-mono">Dedicated sovereign inference</div>
+                                    </div>
+                                    <div className="flex gap-1.5">
+                                        {[1, 2, 3].map(i => (
+                                            <div key={i} className="w-1.5 h-8 bg-white/10 rounded-full overflow-hidden flex flex-col justify-end">
+                                                <div className="w-full bg-gradient-to-t from-[#FF6B00] to-[#F59E0B] animate-pulse" style={{ height: `${40 + i * 20}%` }} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Bottom row */}
+                            <div className="p-4 bg-white border border-black/5 rounded-2xl shadow-sm flex items-center justify-between transition-transform hover:-translate-y-1">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-lg bg-[#8B5CF6]/10 flex items-center justify-center">
+                                        <Server size={16} className="text-[#8B5CF6]" />
+                                    </div>
+                                    <div>
+                                        <div className="text-sm font-bold text-[#1a1a1a]">On-Premise Ready</div>
+                                        <div className="text-[10px] text-gray-500 font-mono">Self-hosted deployment</div>
+                                    </div>
+                                </div>
+                                <div className="w-2 h-2 rounded-full bg-[#10B981] shadow-[0_0_8px_#10B981]" />
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </div>

@@ -2106,7 +2106,7 @@ function FeatureTabsSection() {
 // ─── Main Export ──────────────────────────────────────────────────────────────
 export default function ComingSoonContent() {
     return (
-        <div className="relative" style={{ background: C.bg }}>
+        <div className="relative z-10">
 
             {/* ══ GASPER ENGINE INFO ══ */}
             <GasperEngineInfoSection />

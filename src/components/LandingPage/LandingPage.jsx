@@ -10,6 +10,7 @@ import { LandingPageFAQ } from './LandingPageFAQ';
 
 import LiveImpact from './LiveImpact';
 import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';
+import Particles from '../Particles/Particles';
 
 import ComingSoonContent from './ComingSoonContent';
 import { AuroraBackground } from '../ui/aurora-background';
@@ -385,11 +386,21 @@ export default function LandingPage({ comingSoonMode = false }) {
     //  COMING-SOON MODE (Corporate B2B Redesign)
     // ═══════════════════════════════════════════
     return (
-        <div className="landing-container relative transition-colors duration-1000 bg-[#FAFAFA] text-[#1a1a1a] font-sans">
-            <section className="hero-section relative min-h-screen flex flex-col justify-center pt-24 pb-20 w-full overflow-hidden">
+        <div className="landing-container relative transition-colors duration-1000 bg-[#F5F5F5] text-[#1a1a1a] font-sans">
+            {/* Ambient Background Effects */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                <Particles
+                    particleColors={["#FF6B00", "#F59E0B", "#1a1a1a"]}
+                    particleCount={250}
+                    speed={0.15}
+                    sizeRandomness={2}
+                />
+            </div>
+
+            <section className="hero-section relative min-h-screen flex flex-col justify-center pt-24 pb-20 w-full overflow-hidden z-10">
                 {/* Refined Corporate Background */}
                 <div className="absolute inset-0 z-0 bg-grid-slate-100/[0.04] bg-[bottom_1px_center]" />
-                <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-[#FAFAFA] to-[#F5F5F5]" />
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/20 via-transparent to-transparent pointer-events-none" />
 
                 {/* Subtle Glows */}
                 <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none z-0" animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />

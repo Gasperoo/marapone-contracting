@@ -451,17 +451,17 @@ function ComparisonTableSection() {
 // ─── What You'll Get ──────────────────────────────────────────────────────────
 function WhatYouGetSection() {
     const benefits = [
-        { icon: <Zap size={24} />, title: 'Early Access', description: 'Join our private beta and shape the platform before public launch' },
-        { icon: <DollarSign size={24} />, title: 'Founding Rate', description: 'Lock in 40% off enterprise pricing for life as a founding member' },
-        { icon: <Award size={24} />, title: 'White-Glove Onboarding', description: 'Dedicated implementation support from our construction AI experts' },
-        { icon: <Users size={24} />, title: 'Investor Updates', description: 'Quarterly product roadmap calls direct with founders and leadership' },
+        { icon: <Search size={24} />, title: '1. Discovery', description: 'Deep dive into your workflows to pinpoint high-ROI AI opportunities' },
+        { icon: <Cpu size={24} />, title: '2. Custom Build', description: 'We architect and train isolated models securely on your proprietary data' },
+        { icon: <Zap size={24} />, title: '3. Integration', description: 'Seamless deployment into your existing tech stack and ERP systems' },
+        { icon: <Award size={24} />, title: '4. Handover & Training', description: 'You own the final product with zero subscriptions, plus team onboarding' },
     ];
 
     return (
         <section className="px-6 max-w-7xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">What You'll Get</h2>
-                <p className="max-w-xl mx-auto" style={{ color: C.textMuted }}>Founding members and early partners get exclusive access to shape the future of construction AI.</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">Our Engagement Process</h2>
+                <p className="max-w-xl mx-auto" style={{ color: C.textMuted }}>From initial audit to final deployment, we build tailored AI engines as an extension of your technical team.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {benefits.map((b, idx) => (
@@ -522,13 +522,13 @@ function CustomLLMBuilderSection() {
         <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-500 text-xs font-bold tracking-wider mb-6">
-                    <Brain size={12} className="mr-2" /> CUSTOM LLM BUILDER
+                    <Brain size={12} className="mr-2" /> CUSTOM TRAINED MODELS
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
-                    Gasper <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-[#FF6B00]">Custom LLM Builder</span>
+                    Bespoke <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-[#FF6B00]">AI Development</span>
                 </h2>
                 <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
-                    We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for construction. Trained on your project histories, specs, contracts, and workflows.
+                    We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for your business. Trained on your secure archives, protocols, financial data, and workflows.
                 </p>
             </motion.div>
 
@@ -660,8 +660,8 @@ function CustomLLMBuilderSection() {
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
                         className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
                         {[
-                            { icon: <Cpu size={18} />, title: 'Custom Fine-Tuning', desc: 'We fine-tune models on your internal documents, project archives, safety protocols, and operational data.', color: '#8B5CF6' },
-                            { icon: <Zap size={18} />, title: 'Seamless Integration', desc: 'Embed into Procore, Autodesk, ERP systems, or custom dashboards via secure APIs. On-premise or cloud.', color: '#FF6B00' },
+                            { icon: <Cpu size={18} />, title: 'Custom Fine-Tuning', desc: 'We fine-tune models on your internal documents, historical data, safety protocols, and operational workflows.', color: '#8B5CF6' },
+                            { icon: <Zap size={18} />, title: 'Seamless Integration', desc: 'Embedded into your ERP systems, custom dashboards, or existing software stack via secure APIs. On-premise or cloud.', color: '#FF6B00' },
                             { icon: <Lock size={18} />, title: 'Enterprise Security', desc: 'Your data never leaves your control. SOC 2 compliant, on-premise deployment options, and encrypted at rest.', color: '#10B981' },
                         ].map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
@@ -743,11 +743,11 @@ function WaitlistSection() {
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="inline-flex items-center px-4 py-1.5 rounded-full border text-sm font-semibold mb-4"
                     style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
-                    <Sparkles size={14} className="mr-2" /> Limited Early Access
+                    <Sparkles size={14} className="mr-2" /> Book a Discovery Call
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-3xl font-bold text-[#1a1a1a] mb-3" style={{ letterSpacing: '-0.02em' }}>
-                    Request Early Access
+                    Request an Evaluation
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-base leading-relaxed" style={{ color: C.textMuted }}>

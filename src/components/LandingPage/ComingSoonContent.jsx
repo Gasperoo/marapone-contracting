@@ -436,32 +436,32 @@ function GasperAIBotSection() {
     return (
         <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                     <Bot size={12} className="mr-2" /> ENTERPRISE AI INTERFACES
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
+                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
                     Custom <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Enterprise Copilots</span>
                 </h2>
-                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg leading-relaxed">
+                <p className="text-[1.1rem] text-gray-500 max-w-3xl mx-auto leading-[1.7]">
                     We deploy proprietary AI models directly into your existing infrastructure. Custom-trained on your internal documentation and data warehouses, your copilot understands your unique business logic and assists employees securely.
                 </p>
             </motion.div>
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-white border border-black/10 overflow-hidden shadow-2xl">
+                    <div className="relative rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                         {/* Toolbar */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/5 bg-gray-50">
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.04] bg-gray-50/50">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-400" />
                                 <div className="w-3 h-3 rounded-full bg-amber-400" />
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                                <span className="ml-3 text-xs font-mono text-gray-500 font-medium">internal_copilot_v4.2</span>
+                                <span className="ml-3 text-xs font-mono text-gray-500 font-bold">internal_copilot_v4.2</span>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <div className="text-[10px] font-mono text-gray-500 font-bold bg-white px-2 py-0.5 rounded border border-black/5 uppercase">Private Instance</div>
-                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-600 font-bold uppercase tracking-wider">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <div className="flex items-center gap-4">
+                                <div className="text-[10px] font-mono text-gray-500 font-bold bg-white px-2.5 py-1 rounded border border-black/[0.06] shadow-sm uppercase tracking-wide">Private Instance</div>
+                                <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#10B981] font-bold uppercase tracking-widest bg-[#10B981]/10 px-2.5 py-1 rounded-full">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                                     Online
                                 </div>
                             </div>
@@ -776,13 +776,13 @@ function CustomLLMBuilderSection() {
     return (
         <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-500 text-xs font-bold tracking-wider mb-6">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[var(--color-primary)]/10 bg-[var(--color-primary)]/5 text-[var(--color-primary)] text-xs font-semibold tracking-[0.15em] mb-6">
                     <Brain size={12} className="mr-2" /> CUSTOM TRAINED MODELS
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
-                    Bespoke <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-[#FF6B00]">AI Development</span>
+                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
+                    Bespoke <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6]">AI Development</span>
                 </h2>
-                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg leading-relaxed">
+                <p className="text-[1.1rem] text-gray-500 max-w-3xl mx-auto leading-[1.7]">
                     We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for your business. Trained securely on your legacy archives, protocols, financial data, and workflows.
                 </p>
             </motion.div>
@@ -808,25 +808,25 @@ function CustomLLMBuilderSection() {
                         </div>
 
                         {/* Training Progress */}
-                        <div className="px-5 pt-5 pb-3 bg-gray-50/50">
-                            <div className="flex items-center justify-between mb-3">
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Model Convergence</span>
-                                <span className="text-sm font-black text-purple-600">78% Complete</span>
+                        <div className="px-6 pt-6 pb-4 bg-gray-50/30">
+                            <div className="flex items-center justify-between mb-4">
+                                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500">Model Convergence</span>
+                                <span className="text-[14px] font-black text-[#8B5CF6]">78% Complete</span>
                             </div>
-                            <div className="h-2.5 bg-gray-200/60 rounded-full overflow-hidden shadow-inner">
+                            <div className="h-2.5 bg-black/[0.04] rounded-full overflow-hidden shadow-inner">
                                 <motion.div initial={{ width: 0 }} whileInView={{ width: '78%' }} transition={{ duration: 1.5, ease: 'easeOut' }}
-                                    className="h-full rounded-full bg-gradient-to-r from-purple-500 to-[#FF6B00] relative overflow-hidden" >
+                                    className="h-full rounded-full bg-gradient-to-r from-[#8B5CF6] to-[#7C3AED] relative overflow-hidden" >
                                     <div className="absolute inset-0 bg-white/20 w-full h-full" style={{ backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent)', backgroundSize: '1rem 1rem' }} />
                                 </motion.div>
                             </div>
-                            <div className="flex justify-between mt-2 text-[9px] font-mono text-gray-400">
+                            <div className="flex justify-between mt-3 text-[10px] font-mono text-gray-400 font-medium">
                                 <span>Epoch 14/20</span>
                                 <span>Loss: 0.0421</span>
                             </div>
                         </div>
 
                         {/* Data Sources */}
-                        <div className="px-5 py-4 space-y-2.5 border-t border-black/5">
+                        <div className="px-6 py-5 space-y-3 border-t border-black/[0.04]">
                             {dataSources.map((src, i) => {
                                 const isActive = activeSource === src.id;
                                 return (
@@ -836,42 +836,43 @@ function CustomLLMBuilderSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.2 + i * 0.08, type: 'spring', bounce: 0.2 }}
                                         viewport={{ once: true }}
-                                        className="p-3.5 rounded-xl cursor-pointer transition-all duration-300 shadow-sm"
+                                        className="p-4 rounded-[1.25rem] cursor-pointer transition-all duration-300 shadow-sm"
                                         style={{
-                                            border: isActive ? `1px solid ${src.color}40` : '1px solid rgba(0,0,0,0.06)',
+                                            border: isActive ? `1px solid ${src.color}40` : '1px solid rgba(0,0,0,0.04)',
                                             background: isActive ? `${src.color}06` : 'rgba(255,255,255,1)',
+                                            boxShadow: isActive ? `0 8px 25px ${src.color}10` : '0 2px 10px rgba(0,0,0,0.02)'
                                         }}
                                         onMouseEnter={() => setActiveSource(src.id)}
                                         onMouseLeave={() => setActiveSource(null)}
                                     >
                                         <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-9 h-9 rounded-lg flex items-center justify-center shadow-inner" style={{ background: `${src.color}15`, color: src.color }}>
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-inner" style={{ background: `${src.color}15`, color: src.color }}>
                                                     {src.icon}
                                                 </div>
                                                 <div>
-                                                    <div className="text-sm font-bold text-[#1a1a1a]">{src.name}</div>
-                                                    <div className="text-[10px] text-gray-500 font-medium">{src.count} records parsed</div>
+                                                    <div className="text-[14px] font-extrabold text-[#1a1a1a] tracking-tight">{src.name}</div>
+                                                    <div className="text-[11px] text-gray-500 font-medium">{src.count} records parsed</div>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <span className="text-[9px] px-2.5 py-1 rounded-full font-bold bg-black/5 text-[#6b7280] uppercase tracking-wider">{src.type}</span>
+                                                <span className="text-[10px] px-3 py-1.5 rounded-full font-bold bg-black/[0.02] text-gray-500 border border-black/[0.04] uppercase tracking-[0.1em]">{src.type}</span>
                                             </div>
                                         </div>
                                         {isActive && (
-                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-3 pt-3 border-t border-black/5">
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-4 pt-4 border-t border-black/[0.04]">
                                                 <div className="grid grid-cols-3 gap-3">
-                                                    <div className="text-center bg-white p-2 rounded-lg border border-black/5">
-                                                        <div className="text-[9px] text-[#6b7280] uppercase font-bold tracking-widest mb-1">Items</div>
-                                                        <div className="text-[11px] font-bold text-[#1a1a1a] font-mono">{src.count}</div>
+                                                    <div className="text-center bg-gray-50 p-2.5 rounded-xl border border-black/[0.04]">
+                                                        <div className="text-[9px] text-gray-500 uppercase font-bold tracking-[0.15em] mb-1">Items</div>
+                                                        <div className="text-[12px] font-black text-[#1a1a1a] font-mono">{src.count}</div>
                                                     </div>
-                                                    <div className="text-center bg-white p-2 rounded-lg border border-black/5">
-                                                        <div className="text-[9px] text-[#6b7280] uppercase font-bold tracking-widest mb-1">Volume</div>
-                                                        <div className="text-[11px] font-bold font-mono" style={{ color: src.color }}>{src.size}</div>
+                                                    <div className="text-center bg-gray-50 p-2.5 rounded-xl border border-black/[0.04]">
+                                                        <div className="text-[9px] text-gray-500 uppercase font-bold tracking-[0.15em] mb-1">Volume</div>
+                                                        <div className="text-[12px] font-black font-mono" style={{ color: src.color }}>{src.size}</div>
                                                     </div>
-                                                    <div className="text-center bg-white p-2 rounded-lg border border-black/5">
-                                                        <div className="text-[9px] text-[#6b7280] uppercase font-bold tracking-widest mb-1">Status</div>
-                                                        <div className="text-[11px] font-bold text-[#10B981] uppercase tracking-wider">Indexed</div>
+                                                    <div className="text-center bg-gray-50 p-2.5 rounded-xl border border-black/[0.04]">
+                                                        <div className="text-[9px] text-gray-500 uppercase font-bold tracking-[0.15em] mb-1">Status</div>
+                                                        <div className="text-[12px] font-black text-[#10B981] uppercase tracking-[0.1em]">Indexed</div>
                                                     </div>
                                                 </div>
                                             </motion.div>
@@ -882,21 +883,21 @@ function CustomLLMBuilderSection() {
                         </div>
 
                         {/* Pipeline */}
-                        <div className="px-5 py-3 border-t border-black/5 bg-gray-50 flex flex-wrap items-center justify-between md:justify-start gap-4">
+                        <div className="px-6 py-4 border-t border-black/[0.04] bg-gray-50 flex flex-wrap items-center justify-between md:justify-start gap-5">
                             <div className="flex items-center gap-2">
-                                <Cpu size={14} className="text-purple-600" />
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-[#1a1a1a]">LLM Pipeline</span>
+                                <Cpu size={16} className="text-[#8B5CF6]" />
+                                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]">LLM Pipeline</span>
                             </div>
                             <div className="flex items-center gap-0">
                                 {pipelineSteps.map((step, i) => (
                                     <React.Fragment key={i}>
-                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-bold transition-all duration-500 ${i === trainStep ? 'bg-purple-500/10 text-purple-600 shadow-sm border border-purple-500/20' : i < trainStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                        <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-500 ${i === trainStep ? 'bg-[#8B5CF6]/10 text-[#8B5CF6] shadow-sm border border-[#8B5CF6]/20' : i < trainStep ? 'text-[#10B981]' : 'text-gray-400'
                                             }`}>
-                                            {i < trainStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            {i < trainStep ? <CheckCircle2 size={14} className="text-[#10B981]" /> : step.icon}
                                             <span className="hidden sm:inline">{step.label}</span>
                                         </div>
                                         {i < pipelineSteps.length - 1 && (
-                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < trainStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                            <div className={`w-5 h-[2px] mx-1 rounded-full transition-colors duration-500 ${i < trainStep ? 'bg-[#10B981]' : 'bg-black/[0.04]'}`} />
                                         )}
                                     </React.Fragment>
                                 ))}
@@ -909,32 +910,32 @@ function CustomLLMBuilderSection() {
                 <div className="lg:col-span-2 flex flex-col gap-6">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-4">
                         {stats.map((s, i) => (
-                            <div key={i} className="rounded-2xl bg-white border border-black/10 p-5 text-center shadow-lg transition-transform hover:-translate-y-1">
-                                <div className="text-3xl font-black mb-1" style={{ color: s.color }}>
+                            <div key={i} className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-6 text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-transform hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+                                <div className="text-[2rem] font-black tracking-tight mb-1" style={{ color: s.color }}>
                                     {s.value}
                                 </div>
-                                <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest leading-tight">{s.label}</div>
+                                <div className="text-[11px] text-gray-500 font-bold uppercase tracking-[0.15em] leading-tight mt-2">{s.label}</div>
                             </div>
                         ))}
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-                        className="rounded-2xl bg-white border border-black/10 p-6 shadow-lg space-y-5">
+                        className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] space-y-6">
                         {[
-                            { icon: <Cpu size={20} />, title: 'Custom Fine-Tuning', desc: 'We train foundation models exclusively on your proprietary operational workflows and legacy data.', color: '#8B5CF6' },
-                            { icon: <Zap size={20} />, title: 'Infrastructure Agnostic', desc: 'Deploy seamlessly into existing ERPs, custom portals, or internal networks. Available fully air-gapped.', color: '#FF6B00' },
-                            { icon: <Lock size={20} />, title: 'Enterprise Security Barrier', desc: 'Your intelligence never leaves your control. Guaranteed zero-training-retention by external vendors.', color: '#10B981' },
+                            { icon: <Cpu size={24} />, title: 'Custom Fine-Tuning', desc: 'We train foundation models exclusively on your proprietary operational workflows and legacy data.', color: '#8B5CF6' },
+                            { icon: <Zap size={24} />, title: 'Infrastructure Agnostic', desc: 'Deploy seamlessly into existing ERPs, custom portals, or internal networks. Available fully air-gapped.', color: '#FF6B00' },
+                            { icon: <Lock size={24} />, title: 'Enterprise Security Barrier', desc: 'Your intelligence never leaves your control. Guaranteed zero-training-retention by external vendors.', color: '#10B981' },
                         ].map((f, i) => (
-                            <div key={i} className="flex items-start gap-4 pb-5 border-b border-black/5 last:pb-0 last:border-b-0">
+                            <div key={i} className="flex items-start gap-4 pb-6 border-b border-black/[0.04] last:pb-0 last:border-b-0">
                                 <div className="mt-0.5 flex-shrink-0" style={{ color: f.color }}>{f.icon}</div>
-                                <div><h4 className="text-[#1a1a1a] font-black text-sm mb-1">{f.title}</h4><p className="text-[13px] text-gray-500 leading-relaxed font-medium">{f.desc}</p></div>
+                                <div><h4 className="text-[#1a1a1a] font-extrabold tracking-tight text-[15px] mb-1.5">{f.title}</h4><p className="text-[14px] text-gray-500 leading-[1.6] font-medium">{f.desc}</p></div>
                             </div>
                         ))}
                     </motion.div>
 
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center mt-2">
                         {['Architecture Optimization', 'RAG Integration', 'Private Vector DBs', 'On-Premise Ready', 'High-Trust Inference'].map((tag, i) => (
-                            <span key={i} className="px-3 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase bg-white border border-black/10 text-[#6b7280] shadow-sm hover:border-purple-500/50 hover:text-purple-600 transition-colors duration-300 cursor-default">{tag}</span>
+                            <span key={i} className="px-4 py-2 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase bg-white/50 backdrop-blur-sm border border-black/[0.04] text-gray-500 shadow-sm hover:border-[#8B5CF6]/30 hover:text-[#8B5CF6] transition-colors duration-300 cursor-default">{tag}</span>
                         ))}
                     </motion.div>
                 </div>
@@ -1769,11 +1770,11 @@ function ConstructionShowcase() {
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                 <div className="lg:w-5/12">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                         <HardHat size={14} className="mr-2" /> CONSTRUCTION INTELLIGENCE
                     </div>
-                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">From Groundbreak to Handover</h3>
-                    <p className="text-gray-400 text-base leading-relaxed mb-8">
+                    <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">From Groundbreak to Handover</h3>
+                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-8 font-medium">
                         Automate blueprint takeoffs, monitor site security via computer vision, and forecast cash flow with pinpoint accuracy using custom-trained models that understand your specific building codes and historical project data.
                     </p>
                     <div className="space-y-5 border-t border-white/5 pt-6">
@@ -1783,12 +1784,12 @@ function ConstructionShowcase() {
                             { icon: <Eye size={18} />, title: 'Site Vision AI', desc: 'Detect compliance and monitor progress autonomously.' }
                         ].map((f, i) => (
                             <div key={i} className="flex gap-4 items-start group">
-                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#FF6B00]/10 text-[#FF6B00] group-hover:bg-[#FF6B00] group-hover:text-white transition-colors duration-300">
+                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#FF6B00]/5 border border-[#FF6B00]/10 text-[#FF6B00] group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-[#1a1a1a] text-sm mb-1">{f.title}</h4>
-                                    <p className="text-gray-400 text-sm">{f.desc}</p>
+                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1">{f.title}</h4>
+                                    <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -1796,14 +1797,14 @@ function ConstructionShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full">
                     {/* Unique Animated Card for Construction */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] bg-white border border-black/5 aspect-[16/10] flex flex-col">
-                        <div className="h-12 border-b border-white/5 flex items-center px-4 justify-between bg-[#111111]">
-                            <div className="flex gap-2"><div className="w-3 h-3 rounded-full bg-white/20" /><div className="w-3 h-3 rounded-full bg-white/20" /><div className="w-3 h-3 rounded-full bg-white/20" /></div>
-                            <div className="text-xs font-mono text-gray-500">marapone_blueprint_analyzer.ts</div>
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-white border border-black/[0.04] aspect-[16/10] flex flex-col transition-transform hover:-translate-y-1 hover:shadow-[0_25px_60px_rgb(0,0,0,0.12)]">
+                        <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-gray-50/80 backdrop-blur-md">
+                            <div className="flex gap-2"><div className="w-3 h-3 rounded-full bg-red-400/80" /><div className="w-3 h-3 rounded-full bg-amber-400/80" /><div className="w-3 h-3 rounded-full bg-green-400/80" /></div>
+                            <div className="text-[11px] font-mono font-bold text-gray-500">marapone_blueprint_analyzer.ts</div>
                         </div>
-                        <div className="flex-1 bg-gray-50 relative overflow-hidden p-6 flex items-center justify-center">
+                        <div className="flex-1 bg-white relative overflow-hidden p-6 flex items-center justify-center">
                             {/* Blueprint Grid Background */}
-                            <div className="absolute inset-0 pattern-grid opacity-10" style={{ backgroundSize: '40px 40px', backgroundImage: 'linear-gradient(to right, #0055FF 1px, transparent 1px), linear-gradient(to bottom, #0055FF 1px, transparent 1px)' }} />
+                            <div className="absolute inset-0 pattern-grid opacity-[0.03]" style={{ backgroundSize: '40px 40px', backgroundImage: 'linear-gradient(to right, #0055FF 1px, transparent 1px), linear-gradient(to bottom, #0055FF 1px, transparent 1px)' }} />
 
                             {/* Scanning Animation */}
                             <motion.div animate={{ top: ['0%', '100%', '0%'] }} transition={{ duration: 4, repeat: Infinity, ease: 'linear' }} className="absolute left-0 right-0 h-1 bg-[#FF6B00] shadow-[0_0_20px_#FF6B00] z-20 opacity-50" />
@@ -1827,11 +1828,11 @@ function LogisticsShowcase() {
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                 <div className="lg:w-5/12">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#0EA5E9]/20 bg-[#0EA5E9]/5 text-[#0EA5E9] text-xs font-bold tracking-wider mb-6">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#0EA5E9]/10 bg-[#0EA5E9]/5 text-[#0EA5E9] text-xs font-semibold tracking-[0.15em] mb-6">
                         <Truck size={14} className="mr-2" /> GLOBAL SUPPLY CHAIN TWIN
                     </div>
-                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Predictive Routing Automation</h3>
-                    <p className="text-gray-400 text-base leading-relaxed mb-8">
+                    <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">Predictive Routing Automation</h3>
+                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-8 font-medium">
                         Transform your logistics network into a real-time digital twin to predict transit delays and automate customs compliance, saving millions in demurrage and routing inefficiencies.
                     </p>
                     <div className="space-y-5 border-t border-white/5 pt-6">
@@ -1841,12 +1842,12 @@ function LogisticsShowcase() {
                             { icon: <Activity size={18} />, title: 'Delay Forecasting', desc: 'ML models predict transit bottlenecks weeks early.' }
                         ].map((f, i) => (
                             <div key={i} className="flex gap-4 items-start group">
-                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#0EA5E9]/10 text-[#0EA5E9] group-hover:bg-[#0EA5E9] group-hover:text-white transition-colors duration-300">
+                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#0EA5E9]/5 border border-[#0EA5E9]/10 text-[#0EA5E9] group-hover:bg-[#0EA5E9] group-hover:text-white transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-white text-sm mb-1">{f.title}</h4>
-                                    <p className="text-gray-400 text-sm">{f.desc}</p>
+                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1">{f.title}</h4>
+                                    <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -1854,14 +1855,14 @@ function LogisticsShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full">
                     {/* Unique Animated Card for Logistics */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] bg-white border border-black/5 aspect-[16/10] flex flex-col">
-                        <div className="h-12 border-b border-white/5 flex items-center px-4 justify-between bg-[#111111] text-white">
-                            <div className="text-xs font-mono text-[#0EA5E9]">NODE MAP: GLOBAL</div>
-                            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">Tracking Active</span></div>
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-white border border-black/[0.04] aspect-[16/10] flex flex-col transition-transform hover:-translate-y-1 hover:shadow-[0_25px_60px_rgb(0,0,0,0.12)]">
+                        <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-gray-50/80 backdrop-blur-md">
+                            <div className="text-[11px] font-mono font-bold text-[#0EA5E9]">NODE MAP: GLOBAL</div>
+                            <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse" /> <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-gray-500">Tracking Active</span></div>
                         </div>
-                        <div className="flex-1 bg-gray-50 relative overflow-hidden flex items-center justify-center p-8">
+                        <div className="flex-1 bg-white relative overflow-hidden flex items-center justify-center p-8">
                             {/* Map-like dark background */}
-                            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                            <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
                             {/* Animated routing line */}
                             <div className="relative w-full h-full max-w-md max-h-48 border border-black/5 rounded-3xl bg-white/50 p-6 backdrop-blur-md">
@@ -1900,11 +1901,11 @@ function MarketingShowcase() {
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                 <div className="lg:w-5/12">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F59E0B]/20 bg-[#F59E0B]/5 text-[#F59E0B] text-xs font-bold tracking-wider mb-6">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F59E0B]/10 bg-[#F59E0B]/5 text-[#F59E0B] text-xs font-semibold tracking-[0.15em] mb-6">
                         <Target size={14} className="mr-2" /> GROWTH ENGINE AI
                     </div>
-                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Hyper-Personalization at Scale</h3>
-                    <p className="text-gray-400 text-base leading-relaxed mb-8">
+                    <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">Hyper-Personalization at Scale</h3>
+                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-8 font-medium">
                         Deploy generative campaigns that automatically optimize based on proprietary predictive lead scoring. Identify high-value enterprise accounts proactively before competitors do.
                     </p>
                     <div className="space-y-5 border-t border-white/5 pt-6">
@@ -1914,12 +1915,12 @@ function MarketingShowcase() {
                             { icon: <BarChart3 size={18} />, title: 'Sentiment Analysis', desc: 'Ingest CRM data to measure brand health instantly.' }
                         ].map((f, i) => (
                             <div key={i} className="flex gap-4 items-start group">
-                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#F59E0B]/10 text-[#F59E0B] group-hover:bg-[#F59E0B] group-hover:text-white transition-colors duration-300">
+                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#F59E0B]/5 border border-[#F59E0B]/10 text-[#F59E0B] group-hover:bg-[#F59E0B] group-hover:text-white transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-white text-sm mb-1">{f.title}</h4>
-                                    <p className="text-gray-400 text-sm">{f.desc}</p>
+                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1">{f.title}</h4>
+                                    <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -1927,12 +1928,12 @@ function MarketingShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full">
                     {/* Unique Animated Card for Marketing */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] bg-white border border-black/5 aspect-[16/10] flex flex-col">
-                        <div className="h-12 border-b border-white/5 flex items-center px-6 justify-between bg-[#111111] text-white">
-                            <div className="font-bold text-sm">Campaign Dashboard</div>
-                            <div className="text-xs bg-[#F59E0B]/10 text-[#F59E0B] px-3 py-1 rounded-full font-bold">LIVE</div>
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-white border border-black/[0.04] aspect-[16/10] flex flex-col transition-transform hover:-translate-y-1 hover:shadow-[0_25px_60px_rgb(0,0,0,0.12)]">
+                        <div className="h-12 border-b border-black/[0.04] flex items-center px-6 justify-between bg-gray-50/80 backdrop-blur-md">
+                            <div className="font-bold text-[13px] text-[#1a1a1a]">Campaign Dashboard</div>
+                            <div className="text-[10px] bg-[#F59E0B]/10 text-[#F59E0B] px-3 py-1 rounded-full font-bold border border-[#F59E0B]/20 shadow-sm">LIVE</div>
                         </div>
-                        <div className="flex-1 bg-gray-50 relative overflow-hidden flex items-end p-6">
+                        <div className="flex-1 bg-white relative overflow-hidden flex items-end p-6">
                             {/* Bar Chart Animation */}
                             <div className="w-full h-full flex items-end justify-between gap-2">
                                 {[30, 50, 40, 70, 60, 90, 80, 100].map((height, i) => (
@@ -1947,10 +1948,10 @@ function MarketingShowcase() {
                             </div>
 
                             {/* Overlay Card */}
-                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }} className="absolute top-6 right-6 bg-white p-4 rounded-xl shadow-lg border border-black/5 w-48">
+                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }} className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-[1rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-black/[0.04] w-48">
                                 <div className="text-[10px] text-gray-500 font-bold tracking-widest uppercase mb-1">Conversion Rate</div>
-                                <div className="text-3xl font-black text-[#1a1a1a] mb-2">+42%</div>
-                                <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div className="text-[1.75rem] font-black text-[#1a1a1a] mb-2 tracking-tight">+42%</div>
+                                <div className="h-1.5 w-full bg-black/[0.04] rounded-full overflow-hidden">
                                     <motion.div initial={{ width: "0%" }} animate={{ width: "85%" }} transition={{ delay: 1.5, duration: 1 }} className="h-full bg-green-500" />
                                 </div>
                             </motion.div>
@@ -1968,11 +1969,11 @@ function EcommerceShowcase() {
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                 <div className="lg:w-5/12">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 text-[#8B5CF6] text-xs font-bold tracking-wider mb-6">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#8B5CF6]/10 bg-[#8B5CF6]/5 text-[#8B5CF6] text-xs font-semibold tracking-[0.15em] mb-6">
                         <Package size={14} className="mr-2" /> REVENUE OPTIMIZATION
                     </div>
-                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Dynamic Pricing & Support</h3>
-                    <p className="text-gray-400 text-base leading-relaxed mb-8">
+                    <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">Dynamic Pricing & Support</h3>
+                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-8 font-medium">
                         Maximize margins with intelligent dynamic pricing while deploying fully autonomous support agents that understand your catalog and integrate directly into your CMS.
                     </p>
                     <div className="space-y-5 border-t border-white/5 pt-6">
@@ -1982,12 +1983,12 @@ function EcommerceShowcase() {
                             { icon: <Bot size={18} />, title: 'Autonomous Agents', desc: 'Resolve 80% of L1 support tickets without human intervention.' }
                         ].map((f, i) => (
                             <div key={i} className="flex gap-4 items-start group">
-                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#8B5CF6]/10 text-[#8B5CF6] group-hover:bg-[#8B5CF6] group-hover:text-white transition-colors duration-300">
+                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#8B5CF6]/5 border border-[#8B5CF6]/10 text-[#8B5CF6] group-hover:bg-[#8B5CF6] group-hover:text-white transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-white text-sm mb-1">{f.title}</h4>
-                                    <p className="text-gray-400 text-sm">{f.desc}</p>
+                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1">{f.title}</h4>
+                                    <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -1995,22 +1996,22 @@ function EcommerceShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full">
                     {/* Unique Animated Card for E-Commerce */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] bg-white border border-black/5 aspect-[16/10] flex flex-col">
-                        <div className="h-12 border-b border-white/5 flex items-center px-4 justify-between bg-[#111111] text-white">
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-white border border-black/[0.04] aspect-[16/10] flex flex-col transition-transform hover:-translate-y-1 hover:shadow-[0_25px_60px_rgb(0,0,0,0.12)]">
+                        <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-gray-50/80 backdrop-blur-md">
                             <div className="flex items-center gap-3">
-                                <Bot size={20} className="text-[#8B5CF6]" />
-                                <span className="font-bold text-sm tracking-wide">Automated Customer Resolution</span>
+                                <Bot size={18} className="text-[#8B5CF6]" />
+                                <span className="font-bold text-[13px] text-[#1a1a1a] tracking-tight">Automated Customer Resolution</span>
                             </div>
                         </div>
-                        <div className="flex-1 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden flex flex-col p-6 gap-4">
+                        <div className="flex-1 bg-white relative overflow-hidden flex flex-col p-6 gap-4">
 
                             {/* Chat Bubbles Animation */}
-                            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="self-start bg-white border border-black/5 p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[80%]">
-                                <p className="text-sm text-[#374151]">"Where is my order #19284 for the ergonomic chair? It's been 3 days."</p>
+                            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="self-start bg-gray-50/80 backdrop-blur-sm border border-black/[0.04] p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[80%]">
+                                <p className="text-[13px] text-[#374151] font-medium leading-[1.6]">"Where is my order #19284 for the ergonomic chair? It's been 3 days."</p>
                             </motion.div>
 
-                            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 }} className="self-end bg-[#8B5CF6] p-4 rounded-2xl rounded-tr-sm shadow-md max-w-[80%] text-white relative">
-                                <p className="text-sm">"I've located your order. It left the Memphis hub 2 hours ago. It is scheduled for delivery tomorrow between 2-4 PM.<br /><br />Would you like text updates?"</p>
+                            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 }} className="self-end bg-gradient-to-br from-[#8B5CF6] to-[#7C3AED] p-4 rounded-2xl rounded-tr-sm shadow-[0_4px_15px_rgba(139,92,246,0.3)] max-w-[80%] text-white relative">
+                                <p className="text-[13px] leading-[1.6]">"I've located your order. It left the Memphis hub 2 hours ago. It is scheduled for delivery tomorrow between 2-4 PM.<br /><br />Would you like text updates?"</p>
                                 <div className="absolute -left-12 top-1/2 -translate-y-1/2 flex gap-1">
                                     <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity, delay: 0 }} className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
                                     <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity, delay: 0.2 }} className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />

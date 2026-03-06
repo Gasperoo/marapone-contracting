@@ -998,74 +998,78 @@ function WaitlistSection() {
                 <div className="w-[400px] h-[300px] rounded-full opacity-10 blur-3xl" style={{ background: `radial-gradient(ellipse, ${C.primary}, ${C.secondary})` }} />
             </div>
 
-            <div className="mb-8">
+            <div className="mb-10 text-center">
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="inline-flex items-center px-4 py-1.5 rounded-full border text-sm font-semibold mb-4"
-                    style={{ borderColor: `${C.primary}30`, background: `${C.primary}08`, color: C.primary }}>
+                    className="inline-flex items-center px-4 py-1.5 rounded-full border border-black/[0.04] bg-white text-[11px] font-bold tracking-[0.1em] uppercase shadow-sm mb-4"
+                    style={{ color: C.primary }}>
                     <Sparkles size={14} className="mr-2" /> Book a Discovery Call
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-3xl font-bold text-[#1a1a1a] mb-3" style={{ letterSpacing: '-0.02em' }}>
+                    className="text-4xl md:text-5xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">
                     Request an Evaluation
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-base leading-relaxed" style={{ color: C.textMuted }}>
+                    className="text-[1.1rem] leading-[1.7] max-w-2xl mx-auto font-medium" style={{ color: C.textLight }}>
                     We're onboarding a select group of construction companies and strategic investors in Q2 2025. Secure your spot.
                 </motion.p>
             </div>
 
-            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative rounded-3xl overflow-hidden">
-                <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}30, ${C.secondary}15, ${C.primary}10)` }} />
-                <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(24px)' }} />
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-4xl mx-auto z-10">
+                <div className="rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] p-8 md:p-12 shadow-[0_20px_50px_rgb(0,0,0,0.06)] relative overflow-hidden">
+                    {/* Decorative gradient orb for premium look */}
+                    <div className="absolute top-0 right-0 -m-32 w-64 h-64 rounded-full opacity-[0.03] blur-3xl pointer-events-none" style={{ background: C.secondary }} />
+                    <div className="absolute bottom-0 left-0 -m-32 w-64 h-64 rounded-full opacity-[0.03] blur-3xl pointer-events-none" style={{ background: C.primary }} />
 
-                <div className="relative z-10 p-6 md:p-8">
-                    {status === 'success' ? (
-                        <div className="text-center py-12">
-                            <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: `${C.primary}15`, border: `2px solid ${C.primary}40` }}>
-                                <Check size={36} style={{ color: C.secondary }} />
+                    <div className="relative z-10">
+                        {status === 'success' ? (
+                            <div className="text-center py-12">
+                                <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: `${C.primary}15`, border: `2px solid ${C.primary}40` }}>
+                                    <Check size={36} style={{ color: C.secondary }} />
+                                </div>
+                                <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">You're In</h3>
+                                <p className="text-lg" style={{ color: C.textMuted }}>{message}</p>
                             </div>
-                            <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">You're In</h3>
-                            <p className="text-lg" style={{ color: C.textMuted }}>{message}</p>
-                        </div>
-                    ) : (
-                        <form onSubmit={handleSubmit} className="space-y-5">
-                            <div className="grid md:grid-cols-2 gap-5">
-                                {[
-                                    { name: 'name', label: 'Full Name', placeholder: 'John Marapone', type: 'text' },
-                                    { name: 'email', label: 'Work Email', placeholder: 'john@company.com', type: 'email' },
-                                    { name: 'company', label: 'Company / Organization', placeholder: 'Marapone Contracting', type: 'text' },
-                                    { name: 'role', label: 'Your Role (Optional)', placeholder: 'COO, Project Director, Investor...', type: 'text' },
-                                ].map(field => (
-                                    <div key={field.name}>
-                                        <label className="block text-sm font-semibold mb-2 text-gray-300">{field.label}</label>
-                                        <input
-                                            type={field.type}
-                                            name={field.name}
-                                            value={form[field.name]}
-                                            onChange={handleInputChange}
-                                            placeholder={field.placeholder}
-                                            className={`uiverse-input ${errors[field.name] ? 'error' : ''}`}
-                                        />
-                                        {errors[field.name] && <p className="text-red-400 text-xs mt-1">{errors[field.name]}</p>}
-                                    </div>
-                                ))}
-                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    {[
+                                        { name: 'name', label: 'Full Name', placeholder: 'John Marapone', type: 'text' },
+                                        { name: 'email', label: 'Work Email', placeholder: 'john@company.com', type: 'email' },
+                                        { name: 'company', label: 'Company Name', placeholder: 'Marapone Contracting', type: 'text' },
+                                        { name: 'role', label: 'Job Title (Optional)', placeholder: 'COO, Project Director...', type: 'text' },
+                                    ].map(field => (
+                                        <div key={field.name}>
+                                            <label className="block text-[13px] font-extrabold mb-2 text-[#1a1a1a] tracking-tight">{field.label}</label>
+                                            <input
+                                                type={field.type}
+                                                name={field.name}
+                                                value={form[field.name]}
+                                                onChange={handleInputChange}
+                                                placeholder={field.placeholder}
+                                                className={`w-full bg-gray-50 border border-black/[0.04] rounded-xl px-4 py-3.5 text-sm font-medium text-[#1a1a1a] placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all shadow-inner ${errors[field.name] ? 'ring-2 ring-red-400/50' : 'focus:ring-[#FF6B00]/40'}`}
+                                                autoComplete="off"
+                                            />
+                                            {errors[field.name] && <p className="text-red-500 text-[11px] font-bold mt-1.5">{errors[field.name]}</p>}
+                                        </div>
+                                    ))}
+                                </div>
 
-                            {status === 'error' && <p className="text-red-400 text-sm text-center py-2">{message}</p>}
+                                {status === 'error' && <p className="text-red-400 text-sm text-center py-2">{message}</p>}
 
-                            <button
-                                type="submit"
-                                disabled={status === 'loading'}
-                                className="uiverse-glass-btn w-full py-4 text-lg transition-all duration-300 flex items-center justify-center gap-2"
-                                style={{ opacity: status === 'loading' ? 0.7 : 1 }}
-                            >
-                                {status === 'loading' ? 'Submitting...' : <><Send size={16} /> Request Early Access</>}
-                            </button>
-                            <p className="text-center text-xs" style={{ color: '#4b5563' }}>
-                                No spam, ever. By submitting, you agree to receive product updates from Gasper.
-                            </p>
-                        </form>
-                    )}
+                                <button
+                                    type="submit"
+                                    disabled={status === 'loading'}
+                                    className="w-full py-4 rounded-xl text-white font-extrabold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_8px_20px_rgb(255,107,0,0.2)] hover:shadow-[0_12px_25px_rgb(255,107,0,0.3)] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:hover:translate-y-0"
+                                    style={{ background: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}
+                                >
+                                    {status === 'loading' ? 'Submitting Request...' : <><Send size={18} /> Ensure Priority Access</>}
+                                </button>
+                                <p className="text-center text-[12px] font-medium text-gray-400 mt-4">
+                                    No spam, ever. By submitting, you agree to receive strategic product updates.
+                                </p>
+                            </form>
+                        )}
+                    </div>
                 </div>
             </motion.div>
         </div>

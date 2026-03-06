@@ -136,6 +136,97 @@ function IndustryCard({ icon, title, description, color, useCase }) {
     );
 }
 
+// ─── B2B Enterprise Section ───────────────────────────────────────────────────
+function B2BEnterpriseSection() {
+    const features = [
+        { icon: <Database size={24} />, title: "Proprietary Data Ingestion", desc: "We build secure data pipelines that connect organically to your ERPs, CRMs, and internal archives, transforming unstructured data into structured intelligence.", color: "#FF6B00" },
+        { icon: <Lock size={24} />, title: "Sovereign AI Infrastructure", desc: "Enterprise-grade security architecture with options for fully air-gapped or on-premise deployments. Your models, your data, your ownership.", color: "#10B981" },
+        { icon: <Cpu size={24} />, title: "Bespoke Model Fine-Tuning", desc: "Moving beyond generic APIs. We architect and train isolated Large Language Models exclusively on your company's operational history and logic.", color: "#8B5CF6" },
+        { icon: <Activity size={24} />, title: "Autonomous Workflow Agents", desc: "Deploy specialized AI agents that act sequentially across multiple softwares, turning complex multi-day workflows into instant background processes.", color: "#0EA5E9" },
+    ];
+
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
+            <div className="flex flex-col lg:flex-row gap-16 items-center">
+                {/* Left Side: Text and Stacking */}
+                <div className="lg:w-1/2">
+                    <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-[#1a1a1a] text-xs font-bold tracking-wider mb-6">
+                        <Shield size={12} className="mr-2 text-[#FF6B00]" /> ENTERPRISE CAPABILITIES
+                    </motion.div>
+                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 leading-tight">
+                        Architecting <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Competitive Moats</span> with AI
+                    </motion.h2>
+                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-[#6b7280] mb-8 leading-relaxed">
+                        We don't sell software. We partner with industry leaders to engineer tailored AI solutions that operate as an extension of your existing workforce—fully integrated, secure, and permanently owned by you.
+                    </motion.p>
+
+                    <div className="grid sm:grid-cols-2 gap-6">
+                        {features.map((f, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.1 }} className="relative group">
+                                <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md" style={{ background: f.color }} />
+                                <div className="relative p-5 rounded-2xl bg-white border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-full">
+                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110" style={{ background: `${f.color}15`, color: f.color }}>
+                                        {f.icon}
+                                    </div>
+                                    <h3 className="text-[#1a1a1a] font-bold mb-2">{f.title}</h3>
+                                    <p className="text-xs text-[#6b7280] leading-relaxed">{f.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Right Side: Abstract Visual */}
+                <div className="lg:w-1/2 w-full mt-10 lg:mt-0 relative">
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-2xl bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] border border-white/10 p-8 flex items-center justify-center">
+
+                        {/* Abstract Network Rings */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                            {[1, 2, 3].map((ring) => (
+                                <motion.div key={ring}
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 25 * ring, repeat: Infinity, ease: "linear" }}
+                                    className="absolute rounded-full border border-white/20"
+                                    style={{ width: `${ring * 30}%`, height: `${ring * 30}%`, borderStyle: ring % 2 === 0 ? 'dashed' : 'solid' }}
+                                />
+                            ))}
+                        </div>
+
+                        {/* Center Hub */}
+                        <div className="relative z-10 w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#FF6B00] to-[#F59E0B] shadow-[0_0_50px_rgba(255,107,0,0.4)] flex items-center justify-center overflow-hidden">
+                            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute inset-0 bg-white/20 rounded-2xl blur-md" />
+                            <Brain size={40} className="text-white relative z-10" />
+                        </div>
+
+                        {/* Orbiting Elements */}
+                        {[
+                            { icon: <Database size={16} />, delay: 0, color: 'text-blue-400', label: 'ERP Data' },
+                            { icon: <Lock size={16} />, delay: 2, color: 'text-emerald-400', label: 'Secure Core' },
+                            { icon: <Server size={16} />, delay: 4, color: 'text-purple-400', label: 'Local Compute' },
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                className="absolute"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 15, delay: item.delay, repeat: Infinity, ease: "linear" }}
+                                style={{ width: '60%', height: '60%' }}
+                            >
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-[#1a1a1a] border border-white/10 flex items-center justify-center shadow-lg backdrop-blur-md" style={{ transform: 'rotate(-' + (0) + 'deg)' }}>
+                                    <span className={item.color}>{item.icon}</span>
+                                    <span className="absolute -bottom-6 text-[10px] text-white/60 font-mono whitespace-nowrap">{item.label}</span>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 // ─── Gasper AI Bot Section (Revamped — Split Panel) ──────────────────────────
 function GasperAIBotSection() {
     const [aiStep, setAiStep] = useState(0);
@@ -1584,8 +1675,8 @@ export default function ComingSoonContent() {
     return (
         <div className="relative" style={{ background: C.bg }}>
 
-            {/* ══ CONSTRUCTION FEATURES ══ */}
-            <ConstructionFeaturesSection />
+            {/* ══ ENTERPRISE ARCHITECTURE ══ */}
+            <B2BEnterpriseSection />
 
             <div className="section-divider" />
 

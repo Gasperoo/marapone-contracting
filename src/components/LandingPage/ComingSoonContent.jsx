@@ -1509,28 +1509,22 @@ function SafetyComplianceSection() {
 // ─── Feature Tabs ─────────────────────────────────────────────────────────────
 function FeatureTabsSection() {
     const tabs = [
-        { id: 'blueprint', label: 'Blueprint AI', icon: <Ruler size={16} /> },
-        { id: 'cashflow', label: 'Cash Flow', icon: <DollarSign size={16} /> },
-        { id: 'security', label: 'Site Security', icon: <Shield size={16} /> },
-        { id: 'materials', label: 'Materials', icon: <Search size={16} /> },
-        { id: 'command', label: 'Command Center', icon: <Layers size={16} /> },
-        { id: 'timeline', label: 'Timeline', icon: <CalendarDays size={16} /> },
-        { id: 'safety', label: 'Safety', icon: <ShieldCheck size={16} /> },
-        { id: 'ai', label: 'Gasper AI', icon: <Bot size={16} /> },
-        { id: 'llm', label: 'Custom LLM', icon: <Brain size={16} /> },
+        { id: 'construction', label: 'Construction', icon: <HardHat size={16} /> },
+        { id: 'logistics', label: 'Logistics', icon: <Truck size={16} /> },
+        { id: 'marketing', label: 'Marketing', icon: <TrendingUp size={16} /> },
+        { id: 'ecommerce', label: 'E-Commerce', icon: <Package size={16} /> },
+        { id: 'ai', label: 'Gasper AI Engine', icon: <Bot size={16} /> },
+        { id: 'llm', label: 'Custom LLMs', icon: <Brain size={16} /> },
     ];
 
-    const [active, setActive] = useState('blueprint');
+    const [active, setActive] = useState('construction');
 
     const renderContent = () => {
         switch (active) {
-            case 'blueprint': return <BlueprintAISection />;
-            case 'cashflow': return <CashFlowSection />;
-            case 'security': return <SiteSecuritySection />;
-            case 'materials': return <MaterialPriceAggregatorSection />;
-            case 'command': return <ProjectCommandCenter />;
-            case 'timeline': return <ProjectTimelineSection />;
-            case 'safety': return <SafetyComplianceSection />;
+            case 'construction': return <BlueprintAISection />; // Repurposing existing components for now
+            case 'logistics': return <MaterialPriceAggregatorSection />;
+            case 'marketing': return <ProjectCommandCenter />;
+            case 'ecommerce': return <CashFlowSection />;
             case 'ai': return <GasperAIBotSection />;
             case 'llm': return <CustomLLMBuilderSection />;
             default: return <BlueprintAISection />;
@@ -1621,13 +1615,14 @@ export default function ComingSoonContent() {
                     </motion.h2>
                     <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                         className="max-w-2xl mx-auto text-lg" style={{ color: C.textMuted }}>
-                        Tailored solutions for the unique challenges of construction and infrastructure.
+                        Tailored integrations using the GasperAI engine, designed to solve the unique challenges of your industry.
                     </motion.p>
                 </div>
-                <div className="grid md:grid-cols-3 gap-6">
-                    <IndustryCard icon={<HardHat size={28} />} title="General Contracting" description="AI-powered project management, cash flow forecasting, and compliance automation for GCs of all sizes." color="text-[#FF6B00]" useCase="Full Project Lifecycle Intelligence" />
-                    <IndustryCard icon={<Building2 size={28} />} title="Commercial Construction" description="Manage multi-million dollar builds with blueprint AI, sub matching, and real-time cost tracking." color="text-amber-400" useCase="Blueprint Analysis & Cost Optimization" />
-                    <IndustryCard icon={<Fuel size={28} />} title="Energy & Infrastructure" description="Monitor large-scale energy and infrastructure projects with real-time safety and compliance events." color="text-red-400" useCase="Safety Compliance & Asset Protection" />
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <IndustryCard icon={<HardHat size={28} />} title="Construction" description="Blueprint takeoffs, site security vision, schedule optimization, and predictive cash flow modeling." color="text-[#FF6B00]" useCase="Full Project Intelligence" />
+                    <IndustryCard icon={<Truck size={28} />} title="Logistics" description="Predictive automated routing, real-time supply chain tracking, and customs document extraction." color="text-[#0EA5E9]" useCase="Global Digital Twin" />
+                    <IndustryCard icon={<TrendingUp size={28} />} title="Marketing" description="Automated ad campaign optimization, predictive lead scoring, and customer sentiment analysis." color="text-[#F59E0B]" useCase="AI-Driven Growth" />
+                    <IndustryCard icon={<Package size={28} />} title="E-Commerce" description="Dynamic pricing algorithms, smart inventory forecasting, and autonomous support agents." color="text-[#8B5CF6]" useCase="Revenue Optimization" />
                 </div>
             </section>
 

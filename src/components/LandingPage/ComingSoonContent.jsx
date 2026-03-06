@@ -120,7 +120,7 @@ function IndustryCard({ icon, title, description, color, useCase }) {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="uiverse-neo-card h-full flex flex-col group"
+            className="rounded-3xl bg-[#0a0a0a] border border-white/10 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,107,0,0.1)] transition-all duration-300 p-8 h-full flex flex-col group relative overflow-hidden"
         >
             <div className="relative z-10 flex flex-col h-full">
                 <div className={`w-16 h-16 rounded-2xl bg-[#111111] flex items-center justify-center mb-8 ${color} transition-transform duration-500 group-hover:scale-105`} style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
@@ -688,7 +688,7 @@ function WhatYouGetSection() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {benefits.map((b, idx) => (
                     <motion.div key={idx} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.7 }}
-                        className="uiverse-neo-card text-center group">
+                        className="rounded-2xl p-8 bg-[#0a0a0a] border border-white/10 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-300 text-center group relative overflow-hidden">
                         <div className="relative z-10">
                             <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ background: `${C.primary}10`, border: `1px solid ${C.primary}25`, color: C.primary }}>
                                 {b.icon}

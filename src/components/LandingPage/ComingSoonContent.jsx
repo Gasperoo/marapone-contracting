@@ -136,6 +136,69 @@ function IndustryCard({ icon, title, description, color, useCase }) {
     );
 }
 
+// ─── Gasper Engine Info Section (Below Hero) ──────────────────────────────────
+function GasperEngineInfoSection() {
+    return (
+        <section className="px-6 max-w-7xl mx-auto py-20 relative bg-white border-y border-black/5 z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.02)]">
+            <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+
+                {/* Visual Side */}
+                <div className="md:w-5/12 w-full flex justify-center md:justify-end">
+                    <div className="relative">
+                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[1px] border-dashed border-gray-300 rounded-full scale-[1.3] opacity-50" />
+                        <motion.div animate={{ rotate: -360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[1px] border-gray-200 rounded-full scale-[1.1] opacity-70" />
+
+                        <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-white shadow-2xl flex items-center justify-center p-8 border border-black/5 relative z-10">
+                            <img src="/images/gasper-logo-g.png" alt="Gasper Engine" className="w-full h-full object-contain" />
+
+                            {/* Orbiting Tech Nodes */}
+                            {[1, 2, 3].map((i) => (
+                                <motion.div key={i} animate={{ rotate: 360 }} transition={{ duration: 15, delay: i * 5, repeat: Infinity, ease: "linear" }} className="absolute inset-0">
+                                    <div className="w-3 h-3 rounded-full bg-[#FF6B00] shadow-[0_0_10px_#FF6B00] absolute -top-1.5 left-1/2 -translate-x-1/2" />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Content Side */}
+                <div className="md:w-7/12 w-full text-center md:text-left">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                        <Zap size={14} className="mr-2" /> CORE ENGINE
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6 leading-tight">
+                        Built on the Foundation of<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Gasper AI</span>
+                    </h2>
+                    <p className="text-[#6b7280] text-lg leading-relaxed mb-8 max-w-xl mx-auto md:mx-0">
+                        Marapone leverages the proprietary, battle-tested architecture of the Gasper Engine. Originally developed to power massive-scale SaaS AI agents, it is now exclusively available as the private intelligence core for our B2B integration clients.
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="border border-black/5 rounded-xl p-4 bg-gray-50/50">
+                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">99.9%</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Uptime Reliability</div>
+                        </div>
+                        <div className="border border-black/5 rounded-xl p-4 bg-gray-50/50">
+                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">SOC-2</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Security Compliant</div>
+                        </div>
+                        <div className="border border-black/5 rounded-xl p-4 bg-gray-50/50">
+                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">0ms</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Data Latency</div>
+                        </div>
+                        <div className="border border-black/5 rounded-xl p-4 bg-gray-50/50">
+                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">On-Prem</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Deployment Option</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    );
+}
+
 // ─── B2B Enterprise Section ───────────────────────────────────────────────────
 function B2BEnterpriseSection() {
     const features = [
@@ -1848,6 +1911,9 @@ function FeatureTabsSection() {
 export default function ComingSoonContent() {
     return (
         <div className="relative" style={{ background: C.bg }}>
+
+            {/* ══ GASPER ENGINE INFO ══ */}
+            <GasperEngineInfoSection />
 
             {/* ══ ENTERPRISE ARCHITECTURE ══ */}
             <B2BEnterpriseSection />

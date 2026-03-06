@@ -149,7 +149,7 @@ function GasperEngineInfoSection() {
                         <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[1px] border-dashed border-white/20 rounded-full scale-[1.3] opacity-50" />
                         <motion.div animate={{ rotate: -360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[1px] border-white/10 rounded-full scale-[1.1] opacity-70" />
 
-                        <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-white shadow-2xl flex items-center justify-center p-8 border border-black/5 relative z-10">
+                        <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-white shadow-xl flex items-center justify-center p-8 border border-black/5 relative z-10">
                             <img src="/images/gasper-logo-g.png" alt="Gasper Engine" className="w-full h-full object-contain drop-shadow-lg" />
 
                             {/* Orbiting Tech Nodes */}
@@ -212,7 +212,7 @@ function B2BEnterpriseSection() {
     return (
         <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
             {/* Background Effects */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-full blur-3xl -z-10 pointer-events-none" />
 
             <div className="flex flex-col lg:flex-row gap-16 items-center">
                 {/* Left Side: Text and Stacking */}
@@ -230,8 +230,8 @@ function B2BEnterpriseSection() {
                     <div className="grid sm:grid-cols-2 gap-6">
                         {features.map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.1 }} className="relative group">
-                                <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md" style={{ background: f.color }} />
-                                <div className="relative p-5 rounded-2xl bg-white border border-black/5 shadow-2xl h-full">
+                                <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" style={{ background: f.color }} />
+                                <div className="relative p-5 rounded-2xl bg-white border border-black/5 shadow-xl h-full">
                                     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110 border border-black/5" style={{ background: `${f.color}10`, color: f.color }}>
                                         {f.icon}
                                     </div>
@@ -245,7 +245,7 @@ function B2BEnterpriseSection() {
 
                 {/* Right Side: Abstract Visual */}
                 <div className="lg:w-1/2 w-full mt-10 lg:mt-0 relative">
-                    <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-50 border border-black/5 p-8 flex items-center justify-center">
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-gradient-to-br from-white to-gray-50 border border-black/5 p-8 flex items-center justify-center">
 
                         {/* Abstract Network Rings */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-30">
@@ -261,7 +261,7 @@ function B2BEnterpriseSection() {
 
                         {/* Center Hub */}
                         <div className="relative z-10 w-24 h-24 rounded-2xl bg-gradient-to-tr from-[#FF6B00] to-[#F59E0B] shadow-[0_0_50px_rgba(255,107,0,0.4)] flex items-center justify-center overflow-hidden">
-                            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute inset-0 bg-white/20 rounded-2xl blur-md" />
+                            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute inset-0 bg-white/10 rounded-2xl" />
                             <Brain size={40} className="text-white relative z-10" />
                         </div>
 
@@ -402,7 +402,7 @@ function GasperAIBotSection() {
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-white border border-black/5 overflow-hidden shadow-2xl">
+                    <div className="relative rounded-3xl bg-white border border-black/5 overflow-hidden shadow-xl">
                         {/* Toolbar */}
                         <div className="flex items-center justify-between px-5 py-3 border-b border-black/5 bg-gradient-to-r from-gray-50 to-white">
                             <div className="flex items-center gap-2">
@@ -756,7 +756,7 @@ function CustomLLMBuilderSection() {
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-white border border-black/5 overflow-hidden shadow-2xl">
+                    <div className="relative rounded-3xl bg-white border border-black/5 overflow-hidden shadow-xl">
                         {/* Toolbar */}
                         <div className="flex items-center justify-between px-5 py-3 border-b border-black/5 bg-gradient-to-r from-gray-50 to-white">
                             <div className="flex items-center gap-2">
@@ -958,7 +958,7 @@ function WaitlistSection() {
         <div id="waitlist-section" className="relative">
             {/* Background glow */}
             <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center">
-                <div className="w-[400px] h-[300px] rounded-full opacity-10 blur-[120px]" style={{ background: `radial-gradient(ellipse, ${C.primary}, ${C.secondary})` }} />
+                <div className="w-[400px] h-[300px] rounded-full opacity-10 blur-3xl" style={{ background: `radial-gradient(ellipse, ${C.primary}, ${C.secondary})` }} />
             </div>
 
             <div className="mb-8">
@@ -1116,7 +1116,7 @@ function MaterialPriceAggregatorSection() {
                     viewport={{ once: true }}
                     className="lg:col-span-3 relative"
                 >
-                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-2xl">
+                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-xl">
                         {/* ── Toolbar ── */}
                         <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-gradient-to-r from-[#111111] to-[#0a0a0a]">
                             <div className="flex items-center gap-2">
@@ -1370,7 +1370,7 @@ function ProjectTimelineSection() {
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-2xl">
+                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-xl">
                         {/* Toolbar */}
                         <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-gradient-to-r from-[#111111] to-[#0a0a0a]">
                             <div className="flex items-center gap-2">
@@ -1579,7 +1579,7 @@ function SafetyComplianceSection() {
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-2xl">
+                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-xl">
                         {/* Toolbar */}
                         <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-gradient-to-r from-[#111111] to-[#0a0a0a]">
                             <div className="flex items-center gap-2">

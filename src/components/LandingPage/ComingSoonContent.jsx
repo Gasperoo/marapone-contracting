@@ -168,13 +168,13 @@ function GasperAIBotSection() {
         <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
-                    <Bot size={12} className="mr-2" /> AI CONSTRUCTION COPILOT
+                    <Bot size={12} className="mr-2" /> PROPRIETARY AI ENGINE
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
-                    Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Gasper AI</span>
+                    Powered by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">GasperAI</span>
                 </h2>
                 <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
-                    Ask anything about your projects in plain English. Gasper AI understands construction — budgets, schedules, safety, subcontractors — and delivers answers in seconds.
+                    We deploy our proprietary GasperAI engine directly into your existing infrastructure. Custom-trained on your data, it understands your unique business logic and delivers answers in seconds.
                 </p>
             </motion.div>
 
@@ -204,7 +204,7 @@ function GasperAIBotSection() {
                             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
                                 className="flex justify-end">
                                 <div className="rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[80%] bg-[#FF6B00]/10 border border-[#FF6B00]/20">
-                                    <p className="text-[#1a1a1a] text-sm">Show me projected cash flow for Phase 2 of Westside Commercial</p>
+                                    <p className="text-[#1a1a1a] text-sm">Analyze inventory levels against next month's demand forecast</p>
                                 </div>
                             </motion.div>
 
@@ -216,18 +216,18 @@ function GasperAIBotSection() {
                                         <div className="w-5 h-5 rounded-full bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] flex items-center justify-center">
                                             <img src="/images/gasper-logo-g.png" alt="G" className="w-3.5 h-3.5 object-contain" />
                                         </div>
-                                        <span className="text-[10px] font-bold text-[#1a1a1a]">Gasper AI</span>
+                                        <span className="text-[10px] font-bold text-[#1a1a1a]">GasperAI Matrix</span>
                                         <span className="text-[9px] text-[#9ca3af]">just now</span>
                                     </div>
-                                    <p className="text-[#374151] text-sm mb-3">Analyzed 14 billing cycles across 3 cost codes:</p>
+                                    <p className="text-[#374151] text-sm mb-3">Computed pipeline across 4 regional fulfillment centers:</p>
                                     <div className="space-y-2 pl-2 border-l-2 border-[#FF6B00]/20">
-                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Forecasted shortfall</span><span className="font-bold text-amber-500">$142,000</span></div>
-                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Material variance</span><span className="font-bold text-red-500">+$38k over</span></div>
-                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Owner retention held</span><span className="font-bold text-[#1a1a1a]">$104k</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Predicted Shortfall (SKU-892)</span><span className="font-bold text-amber-500">4,200 units</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Transit Delay Impact</span><span className="font-bold text-red-500">-12% stock</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Reorder Confidence</span><span className="font-bold text-[#1a1a1a]">98.2%</span></div>
                                     </div>
                                     <div className="mt-3 pt-2 border-t border-black/5 flex items-center gap-2">
                                         <AlertTriangle size={11} className="text-[#F59E0B]" />
-                                        <span className="text-[11px] text-[#F59E0B]">Electrical sub has 3 unpaid invoices — flag for review?</span>
+                                        <span className="text-[11px] text-[#F59E0B]">Supplier B lead times have increased by 4 days — adjust automated POs?</span>
                                     </div>
                                 </div>
                             </motion.div>
@@ -293,17 +293,14 @@ function GasperAIBotSection() {
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
                         className="rounded-2xl bg-white border border-black/6 p-5 shadow-sm space-y-4">
                         {[
-                            { icon: <MessageSquare size={18} />, title: 'Natural Language Queries', desc: 'Ask about budgets, schedules, change orders, or safety in plain English — no training needed.', color: '#FF6B00' },
-                            { icon: <Zap size={18} />, title: 'Proactive Alerts', desc: 'Gasper AI monitors your projects 24/7, alerting you to risks before they become costly problems.', color: '#F59E0B' },
-                            { icon: <FileText size={18} />, title: 'Auto-Generated Reports', desc: 'Daily, weekly, or custom reports built automatically from live project data — share with one click.', color: '#3B82F6' },
+                            { icon: <MessageSquare size={18} />, title: 'Natural Language Interfaces', desc: 'Interact with your proprietary data through natural language — no retraining required for your teams.', color: '#FF6B00' },
+                            { icon: <Zap size={18} />, title: 'Autonomous Workflows', desc: 'We build agents that don\'t just answer questions, but execute tasks across your tech stack securely.', color: '#F59E0B' },
+                            { icon: <FileText size={18} />, title: 'Full Ownership', desc: 'The customized engine runs in your environment. You own the data, the outputs, and the workflow.', color: '#3B82F6' },
                         ].map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
-                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50/80 transition-all group cursor-default">
-                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
-                                <div>
-                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
-                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
-                                </div>
+                                className="flex items-start gap-4 pb-4 border-b border-black/5 last:pb-0 last:border-b-0">
+                                <div className="mt-1 flex-shrink-0" style={{ color: f.color }}>{f.icon}</div>
+                                <div><h4 className="text-[#1a1a1a] font-bold text-[15px]">{f.title}</h4><p className="text-[13px] text-[#6b7280] leading-snug">{f.desc}</p></div>
                             </motion.div>
                         ))}
                     </motion.div>

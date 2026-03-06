@@ -42,35 +42,32 @@ const ScrollBeacon = () => (
 
 const BusinessIntegrationPanel = () => {
     const industries = [
-        { icon: <HardHat size={22} />, label: 'Construction', desc: 'Blueprint takeoffs, daily reporting, cash flow guarding', color: '#FF6B00' },
-        { icon: <Truck size={22} />, label: 'Import/Export', desc: 'Predictive routing, global digital twin, risk overlays', color: '#0EA5E9' },
-        { icon: <TrendingUp size={22} />, label: 'Marketing', desc: 'Predictive campaigns, customer segmentation, SEO', color: '#F59E0B' },
-        { icon: <Package size={22} />, label: 'E-Commerce', desc: 'Inventory forecasting, support bots, dynamic pricing', color: '#8B5CF6' },
+        { icon: <HardHat size={22} />, label: 'Construction', color: '#FF6B00' },
+        { icon: <Truck size={22} />, label: 'Logistics', color: '#0EA5E9' },
+        { icon: <TrendingUp size={22} />, label: 'Marketing', color: '#F59E0B' },
+        { icon: <Package size={22} />, label: 'E-Commerce', color: '#8B5CF6' },
     ];
     return (
         <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }} className="w-full max-w-4xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden">
                 <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: 'linear-gradient(135deg, rgba(255,107,0,0.3) 0%, rgba(245,158,11,0.2) 50%, rgba(255,107,0,0.08) 100%)' }} />
                 <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: '#FFFFFF', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }} />
-                <div className="relative z-10 p-7 md:p-9">
-                    <div className="flex items-center justify-between mb-7 border-b pb-5" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
+                <div className="relative z-10 p-6 md:p-8">
+                    <div className="flex items-center justify-between mb-6 pb-4 border-b" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: '#1a1a1a', border: '1px solid rgba(255,107,0,0.35)', color: '#FF6B00' }}><Layers size={20} /></div>
-                            <div><div className="text-[#1a1a1a] font-bold text-base leading-tight">Marapone Integration Matrix</div><div className="text-xs" style={{ color: '#6b7280' }}>Powered by GasperAI Engine</div></div>
+                            <div><div className="text-[#1a1a1a] font-bold text-base leading-tight">AI & Automation Integrations</div><div className="text-xs" style={{ color: '#6b7280' }}>Bespoke Solutions for Enterprise</div></div>
                         </div>
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full" style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.20)' }}>
                             <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#10b981' }} />
                             <span className="text-xs font-semibold" style={{ color: '#10b981' }}>Systems Online</span>
                         </div>
                     </div>
-                    <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                         {industries.map((ind, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 + i * 0.08, duration: 0.6 }} className="group rounded-2xl p-5 transition-all duration-300" style={{ background: `linear-gradient(180deg, ${ind.color}08 0%, rgba(0,0,0,0) 100%)`, border: `1px solid ${ind.color}25` }} onMouseEnter={e => e.currentTarget.style.borderColor = `${ind.color}60`} onMouseLeave={e => e.currentTarget.style.borderColor = `${ind.color}25`}>
-                                <div className="flex items-center gap-3 mb-3">
-                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110" style={{ background: `${ind.color}15`, color: ind.color }}>{ind.icon}</div>
-                                    <div className="text-[#1a1a1a] font-bold">{ind.label}</div>
-                                </div>
-                                <div className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{ind.desc}</div>
+                            <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 + i * 0.08, duration: 0.6 }} className="group rounded-2xl p-4 transition-all duration-300 flex flex-col items-center text-center" style={{ background: `linear-gradient(180deg, ${ind.color}08 0%, rgba(0,0,0,0) 100%)`, border: `1px solid ${ind.color}25` }} onMouseEnter={e => e.currentTarget.style.borderColor = `${ind.color}60`} onMouseLeave={e => e.currentTarget.style.borderColor = `${ind.color}25`}>
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110 shadow-sm" style={{ background: `${ind.color}15`, color: ind.color }}>{ind.icon}</div>
+                                <div className="text-[#1a1a1a] font-bold text-sm tracking-wide">{ind.label}</div>
                             </motion.div>
                         ))}
                     </div>

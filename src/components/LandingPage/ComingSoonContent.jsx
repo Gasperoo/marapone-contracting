@@ -140,7 +140,7 @@ function IndustryCard({ icon, title, description, color, useCase }) {
 // ─── Gasper Engine Info Section (Below Hero) ──────────────────────────────────
 function GasperEngineInfoSection() {
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative bg-white border-y border-black/5 z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.03)] rounded-3xl mt-12 mb-12">
+        <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-20 relative bg-white border-y border-black/5 z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.03)] rounded-2xl sm:rounded-3xl mt-8 mb-8 sm:mt-12 sm:mb-12">
             <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
                 {/* Visual Side */}
@@ -262,7 +262,7 @@ function B2BEnterpriseSection() {
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+        <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-full blur-3xl -z-10 pointer-events-none" />
 
@@ -302,7 +302,7 @@ function B2BEnterpriseSection() {
                         {/* Sovereign Infrastructure Diagram */}
                         <div className="w-full flex flex-col gap-4 relative z-10">
                             {/* Top row */}
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div className="p-4 bg-white border border-black/5 rounded-2xl shadow-sm transition-transform hover:-translate-y-1">
                                     <Database size={20} className="text-[#0EA5E9] mb-2" />
                                     <div className="text-sm font-bold text-[#1a1a1a]">Proprietary Data</div>
@@ -360,7 +360,7 @@ function B2BEnterpriseSection() {
 // ─── Enterprise Workflow Orchestration ──────────────────────────────────────────
 function AgentOrchestrationSection() {
     return (
-        <section className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+        <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <div className="text-center mb-16">
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
                     <Layers size={14} className="mr-2" /> WORKFLOW ORCHESTRATION
@@ -584,7 +584,7 @@ function TechnologyStackSection() {
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+        <section className="px-4 sm:px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-10">
                 <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-3">Enterprise-Grade Stack</h2>
                 <p className="text-sm max-w-lg mx-auto" style={{ color: '#6b7280' }}>Built on the most secure, scalable infrastructure in the industry.</p>
@@ -709,7 +709,7 @@ function WhatYouGetSection() {
     ];
 
     return (
-        <section className="px-6 max-w-7xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+        <section className="px-4 sm:px-6 max-w-7xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">Our Engagement Process</h2>
                 <p className="max-w-xl mx-auto" style={{ color: C.textMuted }}>From initial audit to final deployment, we build tailored AI engines as an extension of your technical team.</p>
@@ -770,7 +770,7 @@ function CustomLLMBuilderSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-500 text-xs font-bold tracking-wider mb-6">
                     <Brain size={12} className="mr-2" /> CUSTOM TRAINED MODELS
@@ -1121,7 +1121,7 @@ function MaterialPriceAggregatorSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             {/* Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -1387,7 +1387,7 @@ function ProjectTimelineSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-6 max-w-7xl mx-auto py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
                     <CalendarDays size={12} className="mr-2" /> PROJECT LIFECYCLE ENGINE

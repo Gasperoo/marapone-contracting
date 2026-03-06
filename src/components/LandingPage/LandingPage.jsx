@@ -399,13 +399,14 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                     {/* Marapone Logo & Badge */}
                     <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center mb-8">
-                        <div className="relative w-32 h-32 md:w-40 md:h-40 mb-6 group">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[#1a1a1a] to-[#3d3d3d] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-2 border border-black/10 flex items-center justify-center overflow-hidden">
-                                {/* Assuming Marapone has a logo or we use a clean text/icon representation */}
-                                <div className="absolute inset-0 opacity-20 bg-[url('/images/noise.png')]" />
-                                <span className="text-white font-black text-4xl tracking-tighter relative z-10">M</span>
-                                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                            </div>
+                        <div className="relative h-20 md:h-28 mb-10 group flex justify-center">
+                            <motion.img
+                                src="/logo.png"
+                                alt="Marapone Logo"
+                                className="w-auto h-full object-contain drop-shadow-2xl"
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                            />
                         </div>
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm">
                             <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Powered by</span>

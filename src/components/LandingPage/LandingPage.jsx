@@ -51,23 +51,23 @@ const BusinessIntegrationPanel = () => {
         <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }} className="w-full max-w-4xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden">
                 <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: 'linear-gradient(135deg, rgba(255,107,0,0.3) 0%, rgba(245,158,11,0.2) 50%, rgba(255,107,0,0.08) 100%)' }} />
-                <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: '#0a0a0a', boxShadow: '0 4px 24px rgba(0,0,0,0.5)' }} />
+                <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: '#FFFFFF', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }} />
                 <div className="relative z-10 p-6 md:p-8">
-                    <div className="flex items-center justify-between mb-6 pb-4 border-b" style={{ borderColor: 'rgba(255,107,0,0.15)' }}>
+                    <div className="flex items-center justify-between mb-6 pb-4 border-b" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,107,0,0.35)', color: '#FF6B00' }}><Layers size={20} /></div>
-                            <div><div className="text-white font-bold text-base leading-tight">AI & Automation Integrations</div><div className="text-xs" style={{ color: '#9ca3af' }}>Bespoke Solutions for Enterprise</div></div>
+                            <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: '#1a1a1a', border: '1px solid rgba(255,107,0,0.35)', color: '#FF6B00' }}><Layers size={20} /></div>
+                            <div><div className="text-[#1a1a1a] font-bold text-base leading-tight">AI & Automation Integrations</div><div className="text-xs" style={{ color: '#6b7280' }}>Bespoke Solutions for Enterprise</div></div>
                         </div>
-                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full" style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.30)' }}>
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full" style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.20)' }}>
                             <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#10b981' }} />
                             <span className="text-xs font-semibold" style={{ color: '#10b981' }}>Systems Online</span>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                         {industries.map((ind, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 + i * 0.08, duration: 0.6 }} className="group rounded-2xl p-4 transition-all duration-300 flex flex-col items-center text-center" style={{ background: `linear-gradient(180deg, ${ind.color}15 0%, rgba(0,0,0,0) 100%)`, border: `1px solid ${ind.color}35` }} onMouseEnter={e => e.currentTarget.style.borderColor = `${ind.color}80`} onMouseLeave={e => e.currentTarget.style.borderColor = `${ind.color}35`}>
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110 shadow-sm" style={{ background: `${ind.color}25`, color: ind.color }}>{ind.icon}</div>
-                                <div className="text-white font-bold text-sm tracking-wide">{ind.label}</div>
+                            <motion.div key={i} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 + i * 0.08, duration: 0.6 }} className="group rounded-2xl p-4 transition-all duration-300 flex flex-col items-center text-center" style={{ background: `linear-gradient(180deg, ${ind.color}08 0%, rgba(0,0,0,0) 100%)`, border: `1px solid ${ind.color}25` }} onMouseEnter={e => e.currentTarget.style.borderColor = `${ind.color}60`} onMouseLeave={e => e.currentTarget.style.borderColor = `${ind.color}25`}>
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110 shadow-sm" style={{ background: `${ind.color}15`, color: ind.color }}>{ind.icon}</div>
+                                <div className="text-[#1a1a1a] font-bold text-sm tracking-wide">{ind.label}</div>
                             </motion.div>
                         ))}
                     </div>
@@ -382,18 +382,18 @@ export default function LandingPage({ comingSoonMode = false }) {
     }
 
     // ═══════════════════════════════════════════
-    //  COMING-SOON MODE (Corporate B2B Redesign - Dark Theme)
+    //  COMING-SOON MODE (Corporate B2B Redesign)
     // ═══════════════════════════════════════════
     return (
-        <div className="landing-container relative transition-colors duration-1000 bg-[#050505] text-white font-sans">
+        <div className="landing-container relative transition-colors duration-1000 bg-[#FAFAFA] text-[#1a1a1a] font-sans">
             <section className="hero-section relative min-h-screen flex flex-col justify-center pt-24 pb-20 w-full overflow-hidden">
-                {/* Refined Dark Corporate Background */}
-                <div className="absolute inset-0 z-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center]" />
-                <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-[#0a0a0a] to-[#050505]" />
+                {/* Refined Corporate Background */}
+                <div className="absolute inset-0 z-0 bg-grid-slate-100/[0.04] bg-[bottom_1px_center]" />
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-[#FAFAFA] to-[#F5F5F5]" />
 
                 {/* Subtle Glows */}
-                <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none z-0" animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
-                <motion.div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none z-0" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+                <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none z-0" animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none z-0" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
 
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
 
@@ -406,11 +406,10 @@ export default function LandingPage({ comingSoonMode = false }) {
                                 className="w-auto h-full object-contain drop-shadow-2xl"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                                style={{ filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.1))' }}
                             />
                         </div>
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
-                            <span className="text-xs font-bold text-gray-400 tracking-widest uppercase">Powered by</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm">
+                            <span className="text-xs font-bold text-gray-500 tracking-widest uppercase">Powered by</span>
                             <img src="/images/gasper-logo-g.png" alt="Gasper" className="w-5 h-5 object-contain" />
                             <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">GasperAI</span>
                         </div>
@@ -418,18 +417,18 @@ export default function LandingPage({ comingSoonMode = false }) {
 
                     {/* Main Corporate Headline */}
                     <div className="max-w-4xl mx-auto mb-8">
-                        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.05]">
-                            Engineering the Future of <span className="relative inline-block"><span className="relative z-10">Enterprise AI</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/40 -z-0 rounded-full" /></span>
+                        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#1a1a1a] leading-[1.05]">
+                            Engineering the Future of <span className="relative inline-block"><span className="relative z-10">Enterprise AI</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
                         </motion.h1>
                     </div>
 
-                    <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+                    <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
                         Marapone builds bespoke, fully sovereign AI integrations for structural industries. Zero subscriptions. Complete ownership.
                     </motion.p>
 
                     {/* Unified CTA */}
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 w-full sm:w-auto">
-                        <button className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-100 text-[#1a1a1a] rounded-xl font-bold text-base transition-all shadow-[0_10px_30px_rgba(255,107,0,0.15)] hover:shadow-[0_15px_40px_rgba(255,107,0,0.25)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group" onClick={() => { const el = document.getElementById('waitlist-section'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>
+                        <button className="w-full sm:w-auto px-8 py-4 bg-[#1a1a1a] hover:bg-black text-white rounded-xl font-bold text-base transition-all shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group" onClick={() => { const el = document.getElementById('waitlist-section'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>
                             Schedule an Evaluation <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                         </button>
                     </motion.div>

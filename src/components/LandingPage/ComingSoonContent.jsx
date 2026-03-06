@@ -21,12 +21,12 @@ const C = {
     secondary: '#F59E0B',
     primaryGlow: 'rgba(255,107,0,0.15)',
     secondaryGlow: 'rgba(245,158,11,0.10)',
-    bg: '#050505',
-    surface: '#0a0a0a',
-    border: 'rgba(255,255,255,0.08)',
+    bg: '#F5F5F5',
+    surface: '#FFFFFF',
+    border: 'rgba(0,0,0,0.06)',
     borderHover: 'rgba(255,107,0,0.40)',
-    textPrimary: '#FFFFFF',
-    textMuted: '#9ca3af',
+    textPrimary: '#1a1a1a',
+    textMuted: '#6b7280',
 };
 
 // Smooth scroll-triggered animation defaults
@@ -120,17 +120,17 @@ function IndustryCard({ icon, title, description, color, useCase }) {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-3xl bg-[#0a0a0a] border border-white/10 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,107,0,0.1)] transition-all duration-300 p-8 h-full flex flex-col group relative overflow-hidden"
+            className="uiverse-neo-card p-8 h-full flex flex-col group relative overflow-hidden"
         >
             <div className="relative z-10 flex flex-col h-full">
-                <div className={`w-16 h-16 rounded-2xl bg-[#111111] flex items-center justify-center mb-8 ${color} transition-transform duration-500 group-hover:scale-105`} style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className={`w-16 h-16 rounded-2xl bg-white flex items-center justify-center mb-8 ${color} shadow-sm transition-transform duration-500 group-hover:scale-105`} style={{ border: '1px solid rgba(0,0,0,0.04)' }}>
                     {icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-300 group-hover:text-[#F59E0B]">{title}</h3>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 transition-colors duration-300 group-hover:text-[#F59E0B]">{title}</h3>
                 <p className="text-[15px] leading-relaxed mb-8 flex-grow" style={{ color: C.textMuted }}>{description}</p>
-                <div className="mt-auto pt-6 border-t transition-colors" style={{ borderColor: 'rgba(255,107,0,0.15)' }}>
-                    <div className="text-xs uppercase font-semibold mb-2 tracking-widest" style={{ color: '#9ca3af' }}>Use Case</div>
-                    <div className="text-sm text-gray-300 font-medium">{useCase}</div>
+                <div className="mt-auto pt-6 border-t transition-colors" style={{ borderColor: 'rgba(255,107,0,0.08)' }}>
+                    <div className="text-xs uppercase font-semibold mb-2 tracking-widest" style={{ color: '#4b5563' }}>Use Case</div>
+                    <div className="text-sm text-gray-700 font-medium">{useCase}</div>
                 </div>
             </div>
         </motion.div>
@@ -140,7 +140,7 @@ function IndustryCard({ icon, title, description, color, useCase }) {
 // ─── Gasper Engine Info Section (Below Hero) ──────────────────────────────────
 function GasperEngineInfoSection() {
     return (
-        <section className="px-6 max-w-7xl mx-auto py-20 relative bg-[#0a0a0a] border-y border-white/5 z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.3)] rounded-3xl mt-12 mb-12">
+        <section className="px-6 max-w-7xl mx-auto py-20 relative bg-white border-y border-black/5 z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.03)] rounded-3xl mt-12 mb-12">
             <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
                 {/* Visual Side */}
@@ -149,7 +149,7 @@ function GasperEngineInfoSection() {
                         <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[1px] border-dashed border-white/20 rounded-full scale-[1.3] opacity-50" />
                         <motion.div animate={{ rotate: -360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[1px] border-white/10 rounded-full scale-[1.1] opacity-70" />
 
-                        <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-[#111111] shadow-2xl flex items-center justify-center p-8 border border-white/10 relative z-10">
+                        <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-white shadow-2xl flex items-center justify-center p-8 border border-black/5 relative z-10">
                             <img src="/images/gasper-logo-g.png" alt="Gasper Engine" className="w-full h-full object-contain drop-shadow-lg" />
 
                             {/* Orbiting Tech Nodes */}
@@ -167,7 +167,7 @@ function GasperEngineInfoSection() {
                     <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
                         <Zap size={14} className="mr-2" /> CORE ENGINE
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-6 leading-tight">
                         Built on the Foundation of<br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Gasper AI</span>
                     </h2>
@@ -176,21 +176,21 @@ function GasperEngineInfoSection() {
                     </p>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="border border-white/10 rounded-xl p-4 bg-white/5 backdrop-blur-sm">
-                            <div className="font-mono text-xl font-bold text-white mb-1">99.9%</div>
-                            <div className="text-xs text-gray-400 uppercase tracking-wide font-semibold">Uptime Reliability</div>
+                        <div className="border border-black/5 rounded-xl p-4 bg-white shadow-sm">
+                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">99.9%</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Uptime Reliability</div>
                         </div>
-                        <div className="border border-white/10 rounded-xl p-4 bg-white/5 backdrop-blur-sm">
-                            <div className="font-mono text-xl font-bold text-white mb-1">SOC-2</div>
-                            <div className="text-xs text-gray-400 uppercase tracking-wide font-semibold">Security Compliant</div>
+                        <div className="border border-black/5 rounded-xl p-4 bg-white shadow-sm">
+                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">SOC-2</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Security Compliant</div>
                         </div>
-                        <div className="border border-white/10 rounded-xl p-4 bg-white/5 backdrop-blur-sm">
-                            <div className="font-mono text-xl font-bold text-white mb-1">0ms</div>
-                            <div className="text-xs text-gray-400 uppercase tracking-wide font-semibold">Data Latency</div>
+                        <div className="border border-black/5 rounded-xl p-4 bg-white shadow-sm">
+                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">0ms</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Data Latency</div>
                         </div>
-                        <div className="border border-white/10 rounded-xl p-4 bg-white/5 backdrop-blur-sm">
-                            <div className="font-mono text-xl font-bold text-white mb-1">On-Prem</div>
-                            <div className="text-xs text-gray-400 uppercase tracking-wide font-semibold">Deployment Option</div>
+                        <div className="border border-black/5 rounded-xl p-4 bg-white shadow-sm">
+                            <div className="font-mono text-xl font-bold text-[#1a1a1a] mb-1">On-Prem</div>
+                            <div className="text-xs text-[#6b7280] uppercase tracking-wide font-semibold">Deployment Option</div>
                         </div>
                     </div>
                 </div>
@@ -217,10 +217,10 @@ function B2BEnterpriseSection() {
             <div className="flex flex-col lg:flex-row gap-16 items-center">
                 {/* Left Side: Text and Stacking */}
                 <div className="lg:w-1/2">
-                    <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-white text-xs font-bold tracking-wider mb-6 backdrop-blur-sm">
+                    <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-black/10 bg-white text-[#1a1a1a] text-xs font-bold tracking-wider mb-6 shadow-sm">
                         <Shield size={12} className="mr-2 text-[#FF6B00]" /> ENTERPRISE CAPABILITIES
                     </motion.div>
-                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 leading-tight">
                         Architecting <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Competitive Moats</span> with AI
                     </motion.h2>
                     <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-gray-400 mb-8 leading-relaxed">
@@ -231,12 +231,12 @@ function B2BEnterpriseSection() {
                         {features.map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.1 }} className="relative group">
                                 <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md" style={{ background: f.color }} />
-                                <div className="relative p-5 rounded-2xl bg-[#0a0a0a] border border-white/5 shadow-2xl h-full backdrop-blur-sm">
-                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110 border border-white/5" style={{ background: `${f.color}20`, color: f.color }}>
+                                <div className="relative p-5 rounded-2xl bg-white border border-black/5 shadow-2xl h-full">
+                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110 border border-black/5" style={{ background: `${f.color}10`, color: f.color }}>
                                         {f.icon}
                                     </div>
-                                    <h3 className="text-white font-bold mb-2">{f.title}</h3>
-                                    <p className="text-xs text-gray-400 leading-relaxed">{f.desc}</p>
+                                    <h3 className="text-[#1a1a1a] font-bold mb-2">{f.title}</h3>
+                                    <p className="text-xs text-[#6b7280] leading-relaxed">{f.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -245,7 +245,7 @@ function B2BEnterpriseSection() {
 
                 {/* Right Side: Abstract Visual */}
                 <div className="lg:w-1/2 w-full mt-10 lg:mt-0 relative">
-                    <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-2xl bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] border border-white/10 p-8 flex items-center justify-center">
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative aspect-square md:aspect-video lg:aspect-square w-full rounded-[2.5rem] overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-50 border border-black/5 p-8 flex items-center justify-center">
 
                         {/* Abstract Network Rings */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-30">
@@ -278,9 +278,9 @@ function B2BEnterpriseSection() {
                                 transition={{ duration: 15, delay: item.delay, repeat: Infinity, ease: "linear" }}
                                 style={{ width: '60%', height: '60%' }}
                             >
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-[#1a1a1a] border border-white/10 flex items-center justify-center shadow-lg backdrop-blur-md" style={{ transform: 'rotate(-' + (0) + 'deg)' }}>
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-white border border-black/5 flex items-center justify-center shadow-lg" style={{ transform: 'rotate(-' + (0) + 'deg)' }}>
                                     <span className={item.color}>{item.icon}</span>
-                                    <span className="absolute -bottom-6 text-[10px] text-white/60 font-mono whitespace-nowrap">{item.label}</span>
+                                    <span className="absolute -bottom-6 text-[10px] text-[#6b7280] font-mono whitespace-nowrap">{item.label}</span>
                                 </div>
                             </motion.div>
                         ))}
@@ -308,7 +308,7 @@ function AgentOrchestrationSection() {
             </div>
 
             {/* Glowing Visualization Container */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto bg-[#1a1a1a] rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden border border-white/10">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.06)] overflow-hidden border border-black/5">
                 {/* Background Grid */}
                 <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
 
@@ -318,37 +318,37 @@ function AgentOrchestrationSection() {
                         { title: 'Logic Processing Hub', icon: <Brain />, color: '#8B5CF6', desc: 'Evaluates state against company guidelines securely.', active: true },
                         { title: 'Execution Actuator', icon: <Zap />, color: '#FF6B00', desc: 'Fires API payloads to ERPs, avoiding manual input.', active: true },
                     ].map((node, i) => (
-                        <div key={i} className="relative p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors">
+                        <div key={i} className="relative p-6 rounded-2xl bg-gray-50 border border-black/5 hover:bg-white hover:shadow-xl transition-all">
                             {/* Animated connection lines between nodes for desktop */}
                             {i < 2 && (
-                                <div className="hidden md:block absolute top-1/2 -right-6 w-6 h-[2px] bg-gradient-to-r from-white/20 to-transparent">
-                                    <motion.div className="h-full bg-white shadow-[0_0_10px_white]" animate={{ x: ['-100%', '200%'] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'linear', delay: i * 0.5 }} />
+                                <div className="hidden md:block absolute top-1/2 -right-6 w-6 h-[2px] bg-gradient-to-r from-black/5 to-transparent">
+                                    <motion.div className="h-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]" animate={{ x: ['-100%', '200%'] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'linear', delay: i * 0.5 }} />
                                 </div>
                             )}
 
-                            <div className="flex items-center gap-3 mb-4 border-b border-white/10 pb-4">
-                                <div className="w-10 h-10 rounded-xl flex items-center justify-center relative bg-black/40" style={{ color: node.color, border: `1px solid ${node.color}40` }}>
-                                    <div className="absolute inset-0 rounded-xl blur-md opacity-30 animate-pulse" style={{ background: node.color }} />
+                            <div className="flex items-center gap-3 mb-4 border-b border-black/5 pb-4">
+                                <div className="w-10 h-10 rounded-xl flex items-center justify-center relative bg-white shadow-sm" style={{ color: node.color, border: `1px solid ${node.color}20` }}>
+                                    <div className="absolute inset-0 rounded-xl blur-md opacity-20 animate-pulse" style={{ background: node.color }} />
                                     {node.icon}
                                 </div>
                                 <div>
-                                    <div className="text-white font-bold text-sm tracking-wide">{node.title}</div>
+                                    <div className="text-[#1a1a1a] font-bold text-sm tracking-wide">{node.title}</div>
                                     <div className="flex items-center gap-1.5 mt-1">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                                        <span className="text-[10px] text-green-400 font-mono tracking-widest uppercase">Online</span>
+                                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                                        <span className="text-[10px] text-green-600 font-mono tracking-widest uppercase">Online</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <p className="text-gray-400 text-xs leading-relaxed">{node.desc}</p>
+                            <p className="text-[#6b7280] text-xs leading-relaxed">{node.desc}</p>
 
-                            <div className="mt-4 p-3 rounded-lg overflow-hidden bg-black/40 border border-white/5 font-mono text-[10px] text-white/50 space-y-1.5 relative h-20 flex flex-col justify-end">
+                            <div className="mt-4 p-3 rounded-lg overflow-hidden bg-white border border-black/5 font-mono text-[10px] text-[#9ca3af] space-y-1.5 relative h-20 flex flex-col justify-end">
                                 <motion.div animate={{ y: [20, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}>
                                     <div className="opacity-40">{'>'} Polling endpoint...</div>
                                     <div style={{ color: node.color }}>{'>'} Processing payload</div>
                                     <div>{'>'} Task 200 OK</div>
                                 </motion.div>
-                                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-black/80 to-transparent z-10" />
+                                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white to-transparent z-10" />
                             </div>
                         </div>
                     ))}
@@ -392,27 +392,27 @@ function GasperAIBotSection() {
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
                     <Bot size={12} className="mr-2" /> PROPRIETARY AI ENGINE
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
                     Powered by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">GasperAI</span>
                 </h2>
-                <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
                     We deploy our proprietary GasperAI engine directly into your existing infrastructure. Custom-trained on your data, it understands your unique business logic and delivers answers in seconds.
                 </p>
             </motion.div>
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-2xl">
+                    <div className="relative rounded-3xl bg-white border border-black/5 overflow-hidden shadow-2xl">
                         {/* Toolbar */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-gradient-to-r from-[#111111] to-[#0a0a0a]">
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/5 bg-gradient-to-r from-gray-50 to-white">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-400" />
                                 <div className="w-3 h-3 rounded-full bg-amber-400" />
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                                <span className="ml-3 text-xs font-mono text-gray-500">gasper_ai_copilot.chat</span>
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">gasper_ai_copilot.chat</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <div className="text-[10px] font-mono text-gray-400 bg-white/5 px-2 py-0.5 rounded border border-white/10">GPT-4 Turbo</div>
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-black/5 px-2 py-0.5 rounded border border-black/5">GPT-4 Turbo</div>
                                 <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
                                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                                     Online
@@ -426,28 +426,28 @@ function GasperAIBotSection() {
                             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
                                 className="flex justify-end">
                                 <div className="rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[80%] bg-[#FF6B00]/10 border border-[#FF6B00]/20">
-                                    <p className="text-white text-sm">Analyze inventory levels against next month's demand forecast</p>
+                                    <p className="text-[#1a1a1a] text-sm">Analyze inventory levels against next month's demand forecast</p>
                                 </div>
                             </motion.div>
 
                             {/* AI response */}
                             <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
                                 className="flex justify-start">
-                                <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%] bg-[#111111] border border-white/5">
+                                <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%] bg-gray-50 border border-black/5">
                                     <div className="flex items-center gap-2 mb-2">
                                         <div className="w-5 h-5 rounded-full bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] flex items-center justify-center">
                                             <img src="/images/gasper-logo-g.png" alt="G" className="w-3.5 h-3.5 object-contain" />
                                         </div>
-                                        <span className="text-[10px] font-bold text-white">GasperAI Matrix</span>
-                                        <span className="text-[9px] text-[#9ca3af]">just now</span>
+                                        <span className="text-[10px] font-bold text-[#1a1a1a]">GasperAI Matrix</span>
+                                        <span className="text-[9px] text-[#6b7280]">just now</span>
                                     </div>
-                                    <p className="text-gray-300 text-sm mb-3">Computed pipeline across 4 regional fulfillment centers:</p>
+                                    <p className="text-[#374151] text-sm mb-3">Computed pipeline across 4 regional fulfillment centers:</p>
                                     <div className="space-y-2 pl-2 border-l-2 border-[#FF6B00]/20">
-                                        <div className="flex justify-between text-xs"><span className="text-gray-400">Predicted Shortfall (SKU-892)</span><span className="font-bold text-amber-500">4,200 units</span></div>
-                                        <div className="flex justify-between text-xs"><span className="text-gray-400">Transit Delay Impact</span><span className="font-bold text-red-500">-12% stock</span></div>
-                                        <div className="flex justify-between text-xs"><span className="text-gray-400">Reorder Confidence</span><span className="font-bold text-white">98.2%</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Predicted Shortfall (SKU-892)</span><span className="font-bold text-amber-600">4,200 units</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Transit Delay Impact</span><span className="font-bold text-red-600">-12% stock</span></div>
+                                        <div className="flex justify-between text-xs"><span className="text-[#6b7280]">Reorder Confidence</span><span className="font-bold text-[#1a1a1a]">98.2%</span></div>
                                     </div>
-                                    <div className="mt-3 pt-2 border-t border-white/5 flex items-center gap-2">
+                                    <div className="mt-3 pt-2 border-t border-black/5 flex items-center gap-2">
                                         <AlertTriangle size={11} className="text-[#F59E0B]" />
                                         <span className="text-[11px] text-[#F59E0B]">Supplier B lead times have increased by 4 days — adjust automated POs?</span>
                                     </div>
@@ -503,37 +503,37 @@ function GasperAIBotSection() {
                 <div className="lg:col-span-2 flex flex-col gap-5">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
                         {stats.map((s, i) => (
-                            <div key={i} className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                            <div key={i} className="rounded-2xl bg-white border border-black/5 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                                 <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
                                     {s.value}
                                 </motion.div>
-                                <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                                <div className="text-[10px] text-[#4b5563] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
                             </div>
                         ))}
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-                        className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-5 shadow-sm space-y-4">
+                        className="rounded-2xl bg-white border border-black/10 p-5 shadow-sm space-y-4">
                         {[
                             { icon: <MessageSquare size={18} />, title: 'Natural Language Interfaces', desc: 'Interact with your proprietary data through natural language — no retraining required for your teams.', color: '#FF6B00' },
                             { icon: <Zap size={18} />, title: 'Autonomous Workflows', desc: 'We build agents that don\'t just answer questions, but execute tasks across your tech stack securely.', color: '#F59E0B' },
                             { icon: <FileText size={18} />, title: 'Full Ownership', desc: 'The customized engine runs in your environment. You own the data, the outputs, and the workflow.', color: '#3B82F6' },
                         ].map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
-                                className="flex items-start gap-4 pb-4 border-b border-white/5 last:pb-0 last:border-b-0">
+                                className="flex items-start gap-4 pb-4 border-b border-black/5 last:pb-0 last:border-b-0">
                                 <div className="mt-1 flex-shrink-0" style={{ color: f.color }}>{f.icon}</div>
-                                <div><h4 className="text-white font-bold text-[15px]">{f.title}</h4><p className="text-[13px] text-gray-400 leading-snug">{f.desc}</p></div>
+                                <div><h4 className="text-[#1a1a1a] font-bold text-[15px]">{f.title}</h4><p className="text-[13px] text-[#6b7280] leading-snug">{f.desc}</p></div>
                             </motion.div>
                         ))}
                     </motion.div>
 
                     {/* Example queries */}
                     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
-                        className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-4 shadow-sm">
-                        <div className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-3">Try Asking</div>
+                        className="rounded-2xl bg-white border border-black/5 p-4 shadow-sm">
+                        <div className="text-[10px] font-bold uppercase tracking-wider text-[#9ca3af] mb-3">Try Asking</div>
                         <div className="space-y-2">
                             {['What materials are over budget?', 'Show pending RFIs for Phase 2', 'Which subs have open change orders?', 'Generate a safety briefing'].map((q, i) => (
-                                <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#111111] border border-white/5 text-[11px] text-gray-400">
+                                <div key={i} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-50 border border-black/5 text-[11px] text-[#4b5563]">
                                     <MessageSquare size={10} className="text-[#FF6B00] flex-shrink-0" /> {q}
                                 </div>
                             ))}
@@ -557,24 +557,24 @@ function TechnologyStackSection() {
     return (
         <section className="px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Enterprise-Grade Stack</h2>
-                <p className="text-sm max-w-lg mx-auto" style={{ color: '#9ca3af' }}>Built on the most secure, scalable infrastructure in the industry.</p>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-3">Enterprise-Grade Stack</h2>
+                <p className="text-sm max-w-lg mx-auto" style={{ color: '#6b7280' }}>Built on the most secure, scalable infrastructure in the industry.</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {techCategories.map((cat, idx) => (
                     <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08, duration: 0.6 }}
-                        className="p-5 rounded-xl transition-all" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,107,0,0.15)' }}
+                        className="p-5 rounded-xl transition-all bg-white border border-black/5 shadow-sm"
                         onMouseEnter={e => e.currentTarget.style.borderColor = `${C.primary}45`}
                         onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'}
                     >
                         <div className="flex items-center gap-2 mb-3">
                             <span style={{ color: C.secondary }}>{cat.icon}</span>
-                            <h3 className="text-white font-semibold text-sm">{cat.category}</h3>
+                            <h3 className="text-[#1a1a1a] font-semibold text-sm">{cat.category}</h3>
                         </div>
                         <ul className="space-y-1.5">
                             {cat.technologies.map((tech, i) => (
-                                <li key={i} className="text-xs flex items-center text-gray-400">
-                                    <div className="w-1 h-1 rounded-full mr-2" style={{ background: '#4b5563' }} />{tech}
+                                <li key={i} className="text-xs flex items-center text-[#6b7280]">
+                                    <div className="w-1 h-1 rounded-full mr-2" style={{ background: '#cbd5e1' }} />{tech}
                                 </li>
                             ))}
                         </ul>
@@ -613,7 +613,7 @@ function ComparisonTableSection() {
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-4xl md:text-5xl font-bold mb-5"
-                    style={{ background: 'linear-gradient(to bottom, #ffffff, rgba(255,255,255,0.7))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    style={{ background: 'linear-gradient(to bottom, #1a1a1a, rgba(26,26,26,0.7))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     Why Enterprises Partner With Us
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -629,8 +629,8 @@ function ComparisonTableSection() {
                         className="uiverse-depth-card text-center group">
                         <div className="relative z-10">
                             <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110" style={{ background: `${C.primary}12`, color: C.primary }}>{m.icon}</div>
-                            <div className="text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #ffffff 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
-                            <div className="text-white font-bold text-lg mb-2">{m.label}</div>
+                            <div className="text-5xl font-black mb-2" style={{ background: `linear-gradient(135deg, #1a1a1a 30%, ${C.secondary})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{m.value}</div>
+                            <div className="text-[#1a1a1a] font-bold text-lg mb-2">{m.label}</div>
                             <p className="text-sm" style={{ color: C.textMuted }}>{m.desc}</p>
                         </div>
                     </motion.div>
@@ -640,7 +640,7 @@ function ComparisonTableSection() {
             {/* Before / After */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 className="rounded-3xl p-4 sm:p-6 md:p-12 mb-10 overflow-x-auto" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white text-center mb-6 sm:mb-10">SaaS Vendors vs. Marapone Integration</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a1a1a] text-center mb-6 sm:mb-10">SaaS Vendors vs. Marapone Integration</h3>
                 <div className="space-y-0 divide-y" style={{ borderColor: 'rgba(255,107,0,0.15)' }}>
                     {transformations.map((t, i) => (
                         <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4 py-4 sm:py-5">
@@ -650,7 +650,7 @@ function ComparisonTableSection() {
                             </div>
                             <div className="flex w-8 h-8 rounded-full items-center justify-center text-xs font-bold flex-shrink-0 mx-auto" style={{ background: `${C.primary}15`, color: C.primary }}>→</div>
                             <div className="flex items-center gap-3 md:justify-end">
-                                <span className="text-sm text-gray-300 font-medium">{t.after}</span>
+                                <span className="text-sm text-[#374151] font-medium">{t.after}</span>
                                 <Check size={16} className="flex-shrink-0" style={{ color: C.secondary }} />
                             </div>
                         </div>
@@ -682,18 +682,18 @@ function WhatYouGetSection() {
     return (
         <section className="px-6 max-w-7xl mx-auto relative overflow-hidden" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Engagement Process</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4">Our Engagement Process</h2>
                 <p className="max-w-xl mx-auto" style={{ color: C.textMuted }}>From initial audit to final deployment, we build tailored AI engines as an extension of your technical team.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {benefits.map((b, idx) => (
                     <motion.div key={idx} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1, duration: 0.7 }}
-                        className="rounded-2xl p-8 bg-[#0a0a0a] border border-white/10 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-300 text-center group relative overflow-hidden">
+                        className="uiverse-neo-card p-8 transition-all duration-300 text-center group relative overflow-hidden">
                         <div className="relative z-10">
                             <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-500" style={{ background: `${C.primary}10`, border: `1px solid ${C.primary}25`, color: C.primary }}>
                                 {b.icon}
                             </div>
-                            <h3 className="text-white font-bold text-lg mb-2">{b.title}</h3>
+                            <h3 className="text-[#1a1a1a] font-bold text-lg mb-2">{b.title}</h3>
                             <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{b.description}</p>
                         </div>
                     </motion.div>
@@ -746,28 +746,28 @@ function CustomLLMBuilderSection() {
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-500 text-xs font-bold tracking-wider mb-6">
                     <Brain size={12} className="mr-2" /> CUSTOM TRAINED MODELS
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6">
                     Bespoke <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-[#FF6B00]">AI Development</span>
                 </h2>
-                <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-                    We build powerful <strong className="text-white">custom Large Language Models</strong> designed specifically for your business. Trained on your secure archives, protocols, financial data, and workflows.
+                <p className="text-[#6b7280] max-w-3xl mx-auto text-lg">
+                    We build powerful <strong className="text-[#1a1a1a]">custom Large Language Models</strong> designed specifically for your business. Trained on your secure archives, protocols, financial data, and workflows.
                 </p>
             </motion.div>
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-2xl">
+                    <div className="relative rounded-3xl bg-white border border-black/5 overflow-hidden shadow-2xl">
                         {/* Toolbar */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-gradient-to-r from-[#111111] to-[#0a0a0a]">
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-black/5 bg-gradient-to-r from-gray-50 to-white">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-400" />
                                 <div className="w-3 h-3 rounded-full bg-amber-400" />
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                                <span className="ml-3 text-xs font-mono text-gray-500">llm_training_pipeline.gasper</span>
+                                <span className="ml-3 text-xs font-mono text-[#6b7280]">llm_training_pipeline.gasper</span>
                             </div>
                             <div className="flex items-center gap-3">
-                                <div className="text-[10px] font-mono text-gray-400 bg-white/5 px-2 py-0.5 rounded border border-white/10">5 Sources</div>
-                                <div className="flex items-center gap-1 text-[10px] font-mono text-purple-500">
+                                <div className="text-[10px] font-mono text-[#6b7280] bg-black/5 px-2 py-0.5 rounded border border-black/5">5 Sources</div>
+                                <div className="flex items-center gap-1 text-[10px] font-mono text-purple-600">
                                     <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
                                     Training
                                 </div>
@@ -777,10 +777,10 @@ function CustomLLMBuilderSection() {
                         {/* Training Progress */}
                         <div className="px-5 pt-4 pb-2">
                             <div className="flex items-center justify-between mb-2">
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#9ca3af]">Model Training Progress</span>
-                                <span className="text-sm font-black text-purple-500">78%</span>
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">Model Training Progress</span>
+                                <span className="text-sm font-black text-purple-600">78%</span>
                             </div>
-                            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                                 <motion.div initial={{ width: 0 }} whileInView={{ width: '78%' }} transition={{ duration: 1.5, ease: 'easeOut' }}
                                     className="h-full rounded-full bg-gradient-to-r from-purple-500 to-[#FF6B00]" />
                             </div>
@@ -811,8 +811,8 @@ function CustomLLMBuilderSection() {
                                                     {src.icon}
                                                 </div>
                                                 <div>
-                                                    <div className="text-sm font-bold text-white">{src.name}</div>
-                                                    <div className="text-[10px] text-[#9ca3af]">{src.count} documents</div>
+                                                    <div className="text-sm font-bold text-[#1a1a1a]">{src.name}</div>
+                                                    <div className="text-[10px] text-[#6b7280]">{src.count} documents</div>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-2">
@@ -820,18 +820,18 @@ function CustomLLMBuilderSection() {
                                             </div>
                                         </div>
                                         {isActive && (
-                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-2 pt-2 border-t border-white/5">
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-2 pt-2 border-t border-black/5">
                                                 <div className="grid grid-cols-3 gap-3">
                                                     <div className="text-center">
-                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Documents</div>
-                                                        <div className="text-[11px] font-bold text-white font-mono">{src.count}</div>
+                                                        <div className="text-[9px] text-[#6b7280] uppercase">Documents</div>
+                                                        <div className="text-[11px] font-bold text-[#1a1a1a] font-mono">{src.count}</div>
                                                     </div>
                                                     <div className="text-center">
-                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Size</div>
+                                                        <div className="text-[9px] text-[#6b7280] uppercase">Size</div>
                                                         <div className="text-[11px] font-bold" style={{ color: src.color }}>{src.size}</div>
                                                     </div>
                                                     <div className="text-center">
-                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Status</div>
+                                                        <div className="text-[9px] text-[#6b7280] uppercase">Status</div>
                                                         <div className="text-[11px] font-bold text-[#10B981]">Ingested</div>
                                                     </div>
                                                 </div>
@@ -843,10 +843,10 @@ function CustomLLMBuilderSection() {
                         </div>
 
                         {/* Pipeline */}
-                        <div className="px-5 py-3 border-t border-white/5 bg-gradient-to-r from-[#0a0a0a] to-[#111111]">
+                        <div className="px-5 py-3 border-t border-black/5 bg-gradient-to-r from-white to-gray-50">
                             <div className="flex items-center gap-1 mb-2">
-                                <Cpu size={12} className="text-purple-500" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">LLM Training Pipeline</span>
+                                <Cpu size={12} className="text-purple-600" />
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-[#6b7280]">LLM Training Pipeline</span>
                             </div>
                             <div className="flex items-center gap-0">
                                 {pipelineSteps.map((step, i) => (
@@ -870,17 +870,17 @@ function CustomLLMBuilderSection() {
                 <div className="lg:col-span-2 flex flex-col gap-5">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
                         {stats.map((s, i) => (
-                            <div key={i} className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                            <div key={i} className="rounded-2xl bg-white border border-black/5 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
                                 <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
                                     {s.value}
                                 </motion.div>
-                                <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                                <div className="text-[10px] text-[#4b5563] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
                             </div>
                         ))}
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-                        className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-5 shadow-sm space-y-4">
+                        className="rounded-2xl bg-white border border-black/10 p-5 shadow-sm space-y-4">
                         {[
                             { icon: <Cpu size={18} />, title: 'Custom Fine-Tuning', desc: 'We fine-tune models on your internal documents, historical data, safety protocols, and operational workflows.', color: '#8B5CF6' },
                             { icon: <Zap size={18} />, title: 'Seamless Integration', desc: 'Embedded into your ERP systems, custom dashboards, or existing software stack via secure APIs. On-premise or cloud.', color: '#FF6B00' },
@@ -899,7 +899,7 @@ function CustomLLMBuilderSection() {
 
                     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
                         {['Fine-Tuning', 'RAG Pipeline', 'Vector DB', 'On-Premise', 'API Access', 'Multi-Tenant'].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-[#111111] border border-white/10 text-gray-400 hover:border-purple-500/50 hover:text-purple-500 transition-all cursor-default">{tag}</span>
+                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-white border border-black/5 text-[#6b7280] hover:border-purple-500/50 hover:text-purple-600 transition-all cursor-default">{tag}</span>
                         ))}
                     </motion.div>
                 </div>
@@ -968,7 +968,7 @@ function WaitlistSection() {
                     <Sparkles size={14} className="mr-2" /> Book a Discovery Call
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-3xl font-bold text-white mb-3" style={{ letterSpacing: '-0.02em' }}>
+                    className="text-3xl font-bold text-[#1a1a1a] mb-3" style={{ letterSpacing: '-0.02em' }}>
                     Request an Evaluation
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -978,8 +978,8 @@ function WaitlistSection() {
             </div>
 
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative rounded-3xl overflow-hidden">
-                <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}40, ${C.secondary}25, ${C.primary}20)` }} />
-                <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(10,10,10,0.97)', backdropFilter: 'blur(24px)' }} />
+                <div className="absolute -inset-[1px] rounded-3xl z-0" style={{ background: `linear-gradient(135deg, ${C.primary}30, ${C.secondary}15, ${C.primary}10)` }} />
+                <div className="absolute inset-[1px] rounded-3xl z-[1]" style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(24px)' }} />
 
                 <div className="relative z-10 p-6 md:p-8">
                     {status === 'success' ? (
@@ -987,7 +987,7 @@ function WaitlistSection() {
                             <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ background: `${C.primary}15`, border: `2px solid ${C.primary}40` }}>
                                 <Check size={36} style={{ color: C.secondary }} />
                             </div>
-                            <h3 className="text-3xl font-bold text-white mb-4">You're In</h3>
+                            <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">You're In</h3>
                             <p className="text-lg" style={{ color: C.textMuted }}>{message}</p>
                         </div>
                     ) : (
@@ -1507,10 +1507,10 @@ function ProjectTimelineSection() {
                         ].map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
                                 className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group cursor-default">
-                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}10`, color: f.color }}>{f.icon}</div>
                                 <div>
-                                    <h4 className="text-white font-bold text-sm mb-0.5">{f.title}</h4>
-                                    <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
+                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
+                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -1622,7 +1622,7 @@ function SafetyComplianceSection() {
                                                     {c.status === 'pass' ? <CheckCircle2 size={14} /> : <AlertTriangle size={14} />}
                                                 </div>
                                                 <div>
-                                                    <div className="text-sm font-bold text-white">{c.item}</div>
+                                                    <div className="text-sm font-bold text-[#1a1a1a]">{c.item}</div>
                                                     <div className="text-[10px] text-gray-500">{c.zone}</div>
                                                 </div>
                                             </div>
@@ -1736,7 +1736,7 @@ function ConstructionShowcase() {
                     <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
                         <HardHat size={14} className="mr-2" /> CONSTRUCTION INTELLIGENCE
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-4 leading-tight">From Groundbreak to Handover</h3>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">From Groundbreak to Handover</h3>
                     <p className="text-gray-400 text-base leading-relaxed mb-8">
                         Automate blueprint takeoffs, monitor site security via computer vision, and forecast cash flow with pinpoint accuracy using custom-trained models that understand your specific building codes and historical project data.
                     </p>
@@ -1751,7 +1751,7 @@ function ConstructionShowcase() {
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-white text-sm mb-1">{f.title}</h4>
+                                    <h4 className="font-bold text-[#1a1a1a] text-sm mb-1">{f.title}</h4>
                                     <p className="text-gray-400 text-sm">{f.desc}</p>
                                 </div>
                             </div>
@@ -1760,12 +1760,12 @@ function ConstructionShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full">
                     {/* Unique Animated Card for Construction */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-[#0a0a0a] border border-white/10 aspect-[16/10] flex flex-col">
+                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] bg-white border border-black/5 aspect-[16/10] flex flex-col">
                         <div className="h-12 border-b border-white/5 flex items-center px-4 justify-between bg-[#111111]">
                             <div className="flex gap-2"><div className="w-3 h-3 rounded-full bg-white/20" /><div className="w-3 h-3 rounded-full bg-white/20" /><div className="w-3 h-3 rounded-full bg-white/20" /></div>
                             <div className="text-xs font-mono text-gray-500">marapone_blueprint_analyzer.ts</div>
                         </div>
-                        <div className="flex-1 bg-[#121212] relative overflow-hidden p-6 flex items-center justify-center">
+                        <div className="flex-1 bg-gray-50 relative overflow-hidden p-6 flex items-center justify-center">
                             {/* Blueprint Grid Background */}
                             <div className="absolute inset-0 pattern-grid opacity-10" style={{ backgroundSize: '40px 40px', backgroundImage: 'linear-gradient(to right, #0055FF 1px, transparent 1px), linear-gradient(to bottom, #0055FF 1px, transparent 1px)' }} />
 
@@ -1794,7 +1794,7 @@ function LogisticsShowcase() {
                     <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#0EA5E9]/20 bg-[#0EA5E9]/5 text-[#0EA5E9] text-xs font-bold tracking-wider mb-6">
                         <Truck size={14} className="mr-2" /> GLOBAL SUPPLY CHAIN TWIN
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-4 leading-tight">Predictive Routing Automation</h3>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Predictive Routing Automation</h3>
                     <p className="text-gray-400 text-base leading-relaxed mb-8">
                         Transform your logistics network into a real-time digital twin to predict transit delays and automate customs compliance, saving millions in demurrage and routing inefficiencies.
                     </p>
@@ -1818,17 +1818,17 @@ function LogisticsShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full">
                     {/* Unique Animated Card for Logistics */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-[#0a0a0a] border border-white/10 aspect-[16/10] flex flex-col">
+                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] bg-white border border-black/5 aspect-[16/10] flex flex-col">
                         <div className="h-12 border-b border-white/5 flex items-center px-4 justify-between bg-[#111111] text-white">
                             <div className="text-xs font-mono text-[#0EA5E9]">NODE MAP: GLOBAL</div>
                             <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> <span className="text-[10px] uppercase font-bold tracking-widest text-gray-500">Tracking Active</span></div>
                         </div>
-                        <div className="flex-1 bg-[#121212] relative overflow-hidden flex items-center justify-center p-8">
+                        <div className="flex-1 bg-gray-50 relative overflow-hidden flex items-center justify-center p-8">
                             {/* Map-like dark background */}
                             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
                             {/* Animated routing line */}
-                            <div className="relative w-full h-full max-w-md max-h-48 border border-white/10 rounded-3xl bg-white/5 p-6 backdrop-blur-md">
+                            <div className="relative w-full h-full max-w-md max-h-48 border border-black/5 rounded-3xl bg-white/50 p-6 backdrop-blur-md">
                                 <motion.svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
                                     <motion.path
                                         d="M 50 150 Q 150 50, 250 150 T 350 50"
@@ -1845,7 +1845,7 @@ function LogisticsShowcase() {
                                 <div className="absolute top-[40px] left-[340px] w-4 h-4 rounded-full bg-white shadow-[0_0_15px_#0EA5E9]" />
                                 <div className="absolute top-[140px] left-[40px] w-4 h-4 rounded-full bg-[#0EA5E9]" />
 
-                                <div className="absolute bottom-4 left-4 right-4 bg-black/60 border border-white/10 p-3 rounded-xl flex justify-between items-center text-xs font-mono text-white/80">
+                                <div className="absolute bottom-4 left-4 right-4 bg-white/80 border border-black/5 p-3 rounded-xl flex justify-between items-center text-xs font-mono text-[#1a1a1a]">
                                     <span>Route optimized: Weather incident bypassed.</span>
                                     <span className="text-green-400">ETA: -12hrs</span>
                                 </div>
@@ -1867,7 +1867,7 @@ function MarketingShowcase() {
                     <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F59E0B]/20 bg-[#F59E0B]/5 text-[#F59E0B] text-xs font-bold tracking-wider mb-6">
                         <Target size={14} className="mr-2" /> GROWTH ENGINE AI
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-4 leading-tight">Hyper-Personalization at Scale</h3>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Hyper-Personalization at Scale</h3>
                     <p className="text-gray-400 text-base leading-relaxed mb-8">
                         Deploy generative campaigns that automatically optimize based on proprietary predictive lead scoring. Identify high-value enterprise accounts proactively before competitors do.
                     </p>
@@ -1891,12 +1891,12 @@ function MarketingShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full">
                     {/* Unique Animated Card for Marketing */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-[#0a0a0a] border border-white/10 aspect-[16/10] flex flex-col">
+                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] bg-white border border-black/5 aspect-[16/10] flex flex-col">
                         <div className="h-12 border-b border-white/5 flex items-center px-6 justify-between bg-[#111111] text-white">
                             <div className="font-bold text-sm">Campaign Dashboard</div>
                             <div className="text-xs bg-[#F59E0B]/10 text-[#F59E0B] px-3 py-1 rounded-full font-bold">LIVE</div>
                         </div>
-                        <div className="flex-1 bg-[#121212] relative overflow-hidden flex items-end p-6">
+                        <div className="flex-1 bg-gray-50 relative overflow-hidden flex items-end p-6">
                             {/* Bar Chart Animation */}
                             <div className="w-full h-full flex items-end justify-between gap-2">
                                 {[30, 50, 40, 70, 60, 90, 80, 100].map((height, i) => (
@@ -1935,7 +1935,7 @@ function EcommerceShowcase() {
                     <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 text-[#8B5CF6] text-xs font-bold tracking-wider mb-6">
                         <Package size={14} className="mr-2" /> REVENUE OPTIMIZATION
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-4 leading-tight">Dynamic Pricing & Support</h3>
+                    <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4 leading-tight">Dynamic Pricing & Support</h3>
                     <p className="text-gray-400 text-base leading-relaxed mb-8">
                         Maximize margins with intelligent dynamic pricing while deploying fully autonomous support agents that understand your catalog and integrate directly into your CMS.
                     </p>
@@ -1959,18 +1959,18 @@ function EcommerceShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full">
                     {/* Unique Animated Card for E-Commerce */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-[#0a0a0a] border border-white/10 aspect-[16/10] flex flex-col">
+                    <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.06)] bg-white border border-black/5 aspect-[16/10] flex flex-col">
                         <div className="h-12 border-b border-white/5 flex items-center px-4 justify-between bg-[#111111] text-white">
                             <div className="flex items-center gap-3">
                                 <Bot size={20} className="text-[#8B5CF6]" />
                                 <span className="font-bold text-sm tracking-wide">Automated Customer Resolution</span>
                             </div>
                         </div>
-                        <div className="flex-1 bg-gradient-to-b from-[#121212] to-[#0a0a0a] relative overflow-hidden flex flex-col p-6 gap-4">
+                        <div className="flex-1 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden flex flex-col p-6 gap-4">
 
                             {/* Chat Bubbles Animation */}
-                            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="self-start bg-[#1a1a1a] border border-white/10 p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[80%]">
-                                <p className="text-sm text-gray-300">"Where is my order #19284 for the ergonomic chair? It's been 3 days."</p>
+                            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="self-start bg-white border border-black/5 p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[80%]">
+                                <p className="text-sm text-[#374151]">"Where is my order #19284 for the ergonomic chair? It's been 3 days."</p>
                             </motion.div>
 
                             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 }} className="self-end bg-[#8B5CF6] p-4 rounded-2xl rounded-tr-sm shadow-md max-w-[80%] text-white relative">
@@ -2028,7 +2028,7 @@ function FeatureTabsSection() {
                     Platform Modules
                 </motion.p>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                    className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ letterSpacing: '-0.03em' }}>
+                    className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4" style={{ letterSpacing: '-0.03em' }}>
                     Explore the <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${C.primary}, ${C.secondary})` }}>Gasper Platform</span>
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -2107,7 +2107,7 @@ export default function ComingSoonContent() {
                         Built for your sector
                     </motion.p>
                     <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ letterSpacing: '-0.03em' }}>
+                        className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4" style={{ letterSpacing: '-0.03em' }}>
                         Engineered for Every Sector
                     </motion.h2>
                     <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -2135,7 +2135,7 @@ export default function ComingSoonContent() {
                 <div className="grid lg:grid-cols-2 gap-10 items-start">
                     {/* Left: What You'll Get */}
                     <div>
-                        <h2 className="text-3xl font-bold text-white mb-3">The Engagement Process</h2>
+                        <h2 className="text-3xl font-bold text-[#1a1a1a] mb-3">The Engagement Process</h2>
                         <p className="mb-8 text-lg" style={{ color: C.textMuted }}>We don't do self-serve SaaS. We engineer bespoke integrations that become permanent competitive advantages.</p>
                         <div className="grid sm:grid-cols-2 gap-5">
                             {[
@@ -2147,10 +2147,10 @@ export default function ComingSoonContent() {
                                 <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08, duration: 0.6 }}
                                     className="rounded-2xl p-6 group transition-all duration-300 relative overflow-hidden" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
                                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-white/[0.03] to-transparent rounded-bl-full -z-0" />
-                                    <div className="relative z-10 w-12 h-12 rounded-xl mb-4 flex items-center justify-center group-hover:scale-105 transition-transform bg-white/5 text-white">
+                                    <div className="relative z-10 w-12 h-12 rounded-xl mb-4 flex items-center justify-center group-hover:scale-105 transition-transform bg-black/5 text-[#1a1a1a]">
                                         {b.icon}
                                     </div>
-                                    <h3 className="text-white font-bold mb-2 text-lg relative z-10">{b.title}</h3>
+                                    <h3 className="text-[#1a1a1a] font-bold mb-2 text-lg relative z-10">{b.title}</h3>
                                     <p className="text-sm leading-relaxed relative z-10" style={{ color: C.textMuted }}>{b.description}</p>
                                 </motion.div>
                             ))}

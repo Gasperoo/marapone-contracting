@@ -366,20 +366,20 @@ function TechnologyStackSection() {
 // ─── Comparison / Advantages ──────────────────────────────────────────────────
 function ComparisonTableSection() {
     const metrics = [
-        { value: '10×', label: 'Faster Estimates', desc: 'Blueprint AI analyzes plans in minutes, not days', icon: <Zap size={22} /> },
-        { value: '99.2%', label: 'Budget Accuracy', desc: 'AI-powered cash flow forecasting across all phases', icon: <TrendingUp size={22} /> },
-        { value: '<5min', label: 'Setup Time', desc: 'Onboard your first job site in under five minutes', icon: <Clock size={22} /> },
+        { value: 'Custom', label: 'One-Time Payment', desc: 'No subscriptions, no per-seat licenses. You own the integration.', icon: <DollarSign size={22} /> },
+        { value: '100%', label: 'Data Ownership', desc: 'Deploy on your own servers or private cloud. Your data never leaves.', icon: <Lock size={22} /> },
+        { value: 'Zero', label: 'Vendor Lock-in', desc: 'Full source code and model weights handed over at completion.', icon: <Zap size={22} /> },
     ];
 
     const transformations = [
-        { before: 'Manual takeoffs from paper blueprints', after: 'AI extracts quantities & generates BOMs automatically', icon: <Ruler size={18} /> },
-        { before: 'Spreadsheet-based budget guesswork', after: 'Real-time cash flow projections per project phase', icon: <DollarSign size={18} /> },
-        { before: 'Reactive theft & loss reporting', after: 'Computer vision monitoring with instant alerts', icon: <Eye size={18} /> },
-        { before: 'Word-of-mouth subcontractor sourcing', after: 'AI-scored matching by trade, capacity & track record', icon: <Users size={18} /> },
-        { before: 'Disconnected project spreadsheets', after: 'Unified command center across every job site', icon: <Layers size={18} /> },
+        { before: 'Manually scraping competitor pricing daily', after: 'Dynamic pricing agents automatically adjust to market', icon: <TrendingUp size={18} /> },
+        { before: 'Spreadsheet-based supply chain forecasting', after: 'Global digital twin predicting transit delays in real-time', icon: <Activity size={18} /> },
+        { before: 'Generic ad copy and broad audience targeting', after: 'Generative campaigns tailored to micro-segments securely', icon: <Target size={18} /> },
+        { before: 'Teams waiting weeks for custom dashboards', after: 'Chat with your database securely in natural language', icon: <MessageSquare size={18} /> },
+        { before: 'SaaS tools charging $50/user for basic features', after: 'Fully owned internal tools with zero recurring license fees', icon: <Server size={18} /> },
     ];
 
-    const differentiators = ['No per-seat fees', 'SOC 2 Certified', 'Unlimited job sites', '24/7 AI support'];
+    const differentiators = ['No Subscription Fees', 'On-Premise Ready', 'Full Source Code', 'Agency-Level Support'];
 
     return (
         <section className="px-4 sm:px-6 max-w-6xl mx-auto py-16 sm:py-24 relative">
@@ -387,16 +387,16 @@ function ComparisonTableSection() {
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="inline-block px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
                     style={{ borderColor: `${C.primary}35`, background: `${C.primary}10`, color: C.primary }}>
-                    <Award size={14} className="inline mr-2" />The Gasper Advantage
+                    <Award size={14} className="inline mr-2" />The Marapone Advantage
                 </motion.div>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-4xl md:text-5xl font-bold mb-5"
                     style={{ background: 'linear-gradient(to bottom, #1a1a1a, rgba(26,26,26,0.7))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                    Why Industry Leaders Choose Gasper
+                    Why Enterprises Partner With Us
                 </motion.h2>
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-lg max-w-2xl mx-auto" style={{ color: C.textMuted }}>
-                    Purpose-built AI that transforms how construction teams build — from groundbreak to certificate of occupancy.
+                    We don't sell software subscriptions. We build tailored competitive advantages that you own forever.
                 </motion.p>
             </div>
 
@@ -418,7 +418,7 @@ function ComparisonTableSection() {
             {/* Before / After */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 className="rounded-3xl p-4 sm:p-6 md:p-12 mb-10 overflow-x-auto" style={{ background: C.surface, border: `1px solid ${C.border}` }}>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a1a1a] text-center mb-6 sm:mb-10">The Old Way vs. The Gasper Way</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a1a1a] text-center mb-6 sm:mb-10">SaaS Vendors vs. Marapone Integration</h3>
                 <div className="space-y-0 divide-y" style={{ borderColor: 'rgba(255,107,0,0.06)' }}>
                     {transformations.map((t, i) => (
                         <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-4 py-4 sm:py-5">

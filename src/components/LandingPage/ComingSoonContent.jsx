@@ -8,7 +8,8 @@ import {
     CheckCircle2, Mail, Layers, AlertTriangle,
     DollarSign, Star, Clock, Users, Building2, Check, Sparkles, Award, TrendingDown,
     Bot, MessageSquare, Brain, FileText, Send, MapPin, Ruler, Eye, Wrench, Hammer,
-    CalendarDays, Shield, Target, Gauge, Timer, ClipboardCheck, Truck, Package
+    CalendarDays, Shield, Target, Gauge, Timer, ClipboardCheck, Truck, Package,
+    PhoneCall, Code, Plug, Key
 } from 'lucide-react';
 import Particles from '../Particles/Particles';
 import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';

@@ -1134,13 +1134,13 @@ function MaterialPriceAggregatorSection() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
             >
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                     <Search size={12} className="mr-2" /> AI PRICE INTELLIGENCE ENGINE
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
                     AI That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Finds the Best Prices</span> Instantly
                 </h2>
-                <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+                <p className="text-[1.1rem] text-gray-500 max-w-3xl mx-auto leading-[1.7]">
                     The industry's first AI price engine that crawls every retailer, wholesaler, and supplier in real-time — surfacing the lowest prices based on your exact location.
                 </p>
             </motion.div>
@@ -1153,43 +1153,43 @@ function MaterialPriceAggregatorSection() {
                     viewport={{ once: true }}
                     className="lg:col-span-3 relative"
                 >
-                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-xl">
+                    <div className="relative rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                         {/* ── Toolbar ── */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-gradient-to-r from-[#111111] to-[#0a0a0a]">
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.04] bg-gray-50/50">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-400" />
                                 <div className="w-3 h-3 rounded-full bg-amber-400" />
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                                <span className="ml-3 text-xs font-mono text-gray-500">material_price_scan.gasper</span>
+                                <span className="ml-3 text-xs font-mono text-gray-500 font-bold">material_price_scan.gasper</span>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <div className="flex items-center gap-1 text-[10px] font-mono text-gray-500">
-                                    <MapPin size={10} /> <span className="text-[#FF6B00] font-semibold">Your Location</span>
+                            <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-1.5 text-[10px] font-mono text-gray-500 font-bold bg-white px-2.5 py-1 rounded border border-black/[0.06] shadow-sm tracking-wide">
+                                    <MapPin size={10} /> <span className="text-[#FF6B00]">Your Location</span>
                                 </div>
-                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#10B981] font-bold uppercase tracking-widest bg-[#10B981]/10 px-2.5 py-1 rounded-full">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                                     Live
                                 </div>
                             </div>
                         </div>
 
                         {/* ── Supplier Header Row ── */}
-                        <div className="px-5 pt-4 pb-2 border-b border-white/5">
+                        <div className="px-6 pt-5 pb-3 border-b border-black/[0.04]">
                             <div className="grid grid-cols-[1.8fr_repeat(4,1fr)] gap-2 items-center">
-                                <div className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Material</div>
+                                <div className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500">Material</div>
                                 {stores.map((s, i) => (
                                     <div key={i} className="flex flex-col items-center gap-1">
-                                        <div className="w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-black text-white" style={{ background: s.color }}>
+                                        <div className="w-8 h-8 rounded-xl flex items-center justify-center text-[11px] font-black text-white shadow-inner" style={{ background: s.color }}>
                                             {s.initial}
                                         </div>
-                                        <span className="text-[9px] font-semibold text-gray-500 hidden sm:block">{s.name}</span>
+                                        <span className="text-[9px] font-bold text-gray-400 uppercase tracking-wide hidden sm:block">{s.name}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
                         {/* ── Price Rows ── */}
-                        <div className="px-5 py-2">
+                        <div className="px-6 py-3">
                             {materials.map((m, idx) => (
                                 <motion.div
                                     key={idx}
@@ -1197,19 +1197,19 @@ function MaterialPriceAggregatorSection() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.2 + idx * 0.08, type: 'spring', bounce: 0.2 }}
                                     viewport={{ once: true }}
-                                    className="grid grid-cols-[1.8fr_repeat(4,1fr)] gap-2 items-center py-2.5 px-2 rounded-xl cursor-pointer transition-all duration-300"
+                                    className="grid grid-cols-[1.8fr_repeat(4,1fr)] gap-2 items-center py-3 px-3 rounded-xl cursor-pointer transition-all duration-300"
                                     style={{
-                                        background: activeRow === idx ? 'rgba(255,107,0,0.04)' : idx % 2 === 0 ? 'rgba(0,0,0,0.015)' : 'transparent',
-                                        border: activeRow === idx ? '1px solid rgba(255,107,0,0.15)' : '1px solid transparent',
+                                        background: activeRow === idx ? 'rgba(255,107,0,0.03)' : idx % 2 === 0 ? 'rgba(0,0,0,0.015)' : 'transparent',
+                                        border: activeRow === idx ? '1px solid rgba(255,107,0,0.1)' : '1px solid transparent',
                                     }}
                                     onMouseEnter={() => setActiveRow(idx)}
                                     onMouseLeave={() => setActiveRow(null)}
                                 >
                                     <div>
-                                        <div className="text-sm font-semibold text-white leading-tight">{m.item}</div>
-                                        <div className="flex items-center gap-2 mt-0.5">
-                                            <span className="text-[10px] text-gray-400">{m.category}</span>
-                                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-white/10 text-gray-400 font-mono">/{m.unit}</span>
+                                        <div className="text-[13px] font-extrabold text-[#1a1a1a] leading-tight tracking-tight">{m.item}</div>
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wide">{m.category}</span>
+                                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-black/[0.04] text-gray-500 font-mono font-bold">/{m.unit}</span>
                                         </div>
                                     </div>
                                     {m.prices.map((p, pi) => {
@@ -1228,7 +1228,7 @@ function MaterialPriceAggregatorSection() {
                                                         style={{ background: isBest ? '#10B981' : `${stores[pi].color}30` }}
                                                     />
                                                 )}
-                                                <span className={`text-sm font-bold transition-all ${isBest ? 'text-emerald-500' : 'text-gray-500'}`}>
+                                                <span className={`text-[13px] font-black tracking-tight transition-all ${isBest ? 'text-[#10B981]' : 'text-gray-500'}`}>
                                                     ${p.toFixed(2)}
                                                 </span>
                                                 {isBest && (
@@ -1236,7 +1236,7 @@ function MaterialPriceAggregatorSection() {
                                                         initial={{ opacity: 0, scale: 0 }}
                                                         whileInView={{ opacity: 1, scale: 1 }}
                                                         transition={{ delay: 0.6 + idx * 0.1 }}
-                                                        className="text-[8px] font-black text-emerald-500 uppercase tracking-wider mt-0.5"
+                                                        className="text-[8px] font-black text-[#10B981] uppercase tracking-widest mt-0.5"
                                                     >
                                                         Best ✓
                                                     </motion.div>
@@ -1249,25 +1249,25 @@ function MaterialPriceAggregatorSection() {
                         </div>
 
                         {/* ── AI Crawl Pipeline ── */}
-                        <div className="px-5 py-3 border-t border-white/5 bg-gradient-to-r from-[#0a0a0a] to-[#111111]">
-                            <div className="flex items-center gap-1 mb-2">
-                                <Globe size={12} className="text-[#FF6B00]" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Web Crawler Pipeline</span>
+                        <div className="px-6 py-4 border-t border-black/[0.04] bg-gray-50 flex flex-wrap items-center justify-between md:justify-start gap-5">
+                            <div className="flex items-center gap-2">
+                                <Globe size={16} className="text-[#FF6B00]" />
+                                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]">Web Crawler Pipeline</span>
                             </div>
                             <div className="flex items-center gap-0">
                                 {crawlSteps.map((step, i) => (
                                     <React.Fragment key={i}>
-                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === crawlStep
-                                            ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm'
+                                        <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-500 ${i === crawlStep
+                                            ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm border border-[#FF6B00]/20'
                                             : i < crawlStep
                                                 ? 'text-[#10B981]'
-                                                : 'text-[#9ca3af]'
+                                                : 'text-gray-400'
                                             }`}>
-                                            {i < crawlStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            {i < crawlStep ? <CheckCircle2 size={14} className="text-[#10B981]" /> : step.icon}
                                             <span className="hidden sm:inline">{step.label}</span>
                                         </div>
                                         {i < crawlSteps.length - 1 && (
-                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < crawlStep ? 'bg-[#10B981]' : 'bg-black/8'
+                                            <div className={`w-5 h-[2px] mx-1 rounded-full transition-colors duration-500 ${i < crawlStep ? 'bg-[#10B981]' : 'bg-black/[0.04]'
                                                 }`} />
                                         )}
                                     </React.Fragment>
@@ -1278,27 +1278,27 @@ function MaterialPriceAggregatorSection() {
                 </motion.div>
 
                 {/* ─── Right Panel: Metrics + Features ─── */}
-                <div className="lg:col-span-2 flex flex-col gap-5">
+                <div className="lg:col-span-2 flex flex-col gap-6">
                     {/* Savings Grid */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="grid grid-cols-2 gap-3"
+                        className="grid grid-cols-2 gap-4"
                     >
                         {savings.map((s, i) => (
-                            <div key={i} className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                            <div key={i} className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-6 text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:-translate-y-1 transition-transform hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.5 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.5 + i * 0.1, type: 'spring' }}
-                                    className="text-2xl font-black"
+                                    className="text-[2rem] font-black tracking-tight"
                                     style={{ color: s.color }}
                                 >
                                     {s.value}
                                 </motion.div>
-                                <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                                <div className="text-[11px] text-gray-500 font-bold uppercase tracking-[0.15em] leading-tight mt-2">{s.label}</div>
                             </div>
                         ))}
                     </motion.div>
@@ -1309,12 +1309,12 @@ function MaterialPriceAggregatorSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.4 }}
-                        className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-5 shadow-sm space-y-4"
+                        className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] space-y-6"
                     >
                         {[
-                            { icon: <Globe size={18} />, title: 'Real-Time Web Crawling', desc: 'AI scans every retailer, wholesaler, and outlet — matching exact SKUs and product specs.', color: '#FF6B00' },
-                            { icon: <MapPin size={18} />, title: 'Location-Aware Pricing', desc: 'Prices auto-adjusted for your exact zip code, including local taxes, delivery, and availability.', color: '#3B82F6' },
-                            { icon: <TrendingDown size={18} />, title: 'Budget Optimization', desc: 'AI recommends substitutions and bulk buys that can cut material costs by up to 23%.', color: '#10B981' },
+                            { icon: <Globe size={24} />, title: 'Real-Time Web Crawling', desc: 'AI scans every retailer, wholesaler, and outlet — matching exact SKUs and product specs.', color: '#FF6B00' },
+                            { icon: <MapPin size={24} />, title: 'Location-Aware Pricing', desc: 'Prices auto-adjusted for your exact zip code, including local taxes, delivery, and availability.', color: '#3B82F6' },
+                            { icon: <TrendingDown size={24} />, title: 'Budget Optimization', desc: 'AI recommends substitutions and bulk buys that can cut material costs by up to 23%.', color: '#10B981' },
                         ].map((f, i) => (
                             <motion.div
                                 key={i}
@@ -1322,14 +1322,14 @@ function MaterialPriceAggregatorSection() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.5 + i * 0.1 }}
                                 viewport={{ once: true }}
-                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group cursor-default"
+                                className="flex items-start gap-4 pb-6 border-b border-black/[0.04] last:pb-0 last:border-b-0 cursor-default"
                             >
-                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>
+                                <div className="mt-0.5 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${f.color}15`, color: f.color }}>
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-bold text-sm mb-0.5">{f.title}</h4>
-                                    <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
+                                    <h4 className="text-[#1a1a1a] font-extrabold tracking-tight text-[15px] mb-1.5">{f.title}</h4>
+                                    <p className="text-[14px] text-gray-500 leading-[1.6] font-medium">{f.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -1341,10 +1341,10 @@ function MaterialPriceAggregatorSection() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.6 }}
-                        className="flex flex-wrap gap-2 justify-center"
+                        className="flex flex-wrap gap-2 justify-center mt-2"
                     >
                         {['Lumber & Framing', 'Concrete', 'Electrical', 'Plumbing', 'Roofing', 'Insulation', 'Tools', 'Bulk Wholesale'].map((cat, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-[#111111] border border-white/10 text-gray-400 hover:border-[#FF6B00]/30 hover:text-[#FF6B00] transition-all cursor-default">
+                            <span key={i} className="px-4 py-2 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase bg-white/50 backdrop-blur-sm border border-black/[0.04] text-gray-500 shadow-sm hover:border-[#FF6B00]/30 hover:text-[#FF6B00] transition-colors duration-300 cursor-default">
                                 {cat}
                             </span>
                         ))}
@@ -1394,51 +1394,51 @@ function ProjectTimelineSection() {
     return (
         <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold tracking-wider mb-6">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                     <CalendarDays size={12} className="mr-2" /> PROJECT LIFECYCLE ENGINE
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
                     From Groundbreak to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Certificate of Occupancy</span>
                 </h2>
-                <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+                <p className="text-[1.1rem] text-gray-500 max-w-3xl mx-auto leading-[1.7]">
                     Gasper AI manages every phase — automated scheduling, real-time cost tracking, and AI-powered coordination from start to finish.
                 </p>
             </motion.div>
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-xl">
+                    <div className="relative rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                         {/* Toolbar */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-gradient-to-r from-[#111111] to-[#0a0a0a]">
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.04] bg-gray-50/50">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-400" />
                                 <div className="w-3 h-3 rounded-full bg-amber-400" />
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                                <span className="ml-3 text-xs font-mono text-gray-500">harbor_view_project.gasper</span>
+                                <span className="ml-3 text-xs font-mono text-gray-500 font-bold">harbor_view_project.gasper</span>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <div className="text-[10px] font-mono text-gray-500 bg-white/5 border border-white/5 px-2 py-0.5 rounded">4 Phases</div>
-                                <div className="flex items-center gap-1 text-[10px] font-mono text-[#FF6B00]">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] animate-pulse" />
+                            <div className="flex items-center gap-4">
+                                <div className="text-[10px] font-mono text-gray-500 font-bold bg-white px-2.5 py-1 rounded border border-black/[0.06] shadow-sm tracking-wide">4 Phases</div>
+                                <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#FF6B00] font-bold uppercase tracking-widest bg-[#FF6B00]/10 px-2.5 py-1 rounded-full">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] animate-pulse shadow-[0_0_8px_rgba(255,107,0,0.5)]" />
                                     Phase 2
                                 </div>
                             </div>
                         </div>
 
                         {/* Overall Progress Bar */}
-                        <div className="px-5 pt-4 pb-2">
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Overall Progress</span>
-                                <span className="text-sm font-black text-[#FF6B00]">64%</span>
+                        <div className="px-6 pt-5 pb-3">
+                            <div className="flex items-center justify-between mb-2.5">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500">Overall Progress</span>
+                                <span className="text-sm font-black text-[#FF6B00] tracking-tight">64%</span>
                             </div>
-                            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                            <div className="h-2.5 bg-black/[0.04] rounded-full overflow-hidden shadow-inner">
                                 <motion.div initial={{ width: 0 }} whileInView={{ width: '64%' }} transition={{ duration: 1.5, ease: 'easeOut' }}
                                     className="h-full rounded-full bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]" />
                             </div>
                         </div>
 
                         {/* Phase Cards */}
-                        <div className="px-5 py-3 space-y-2">
+                        <div className="px-6 py-4 space-y-3">
                             {phases.map((p, i) => {
                                 const isActive = activePhase === i;
                                 return (
@@ -1448,47 +1448,47 @@ function ProjectTimelineSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.2 + i * 0.08, type: 'spring', bounce: 0.2 }}
                                         viewport={{ once: true }}
-                                        className="p-3 rounded-xl cursor-pointer transition-all duration-300"
+                                        className="p-4 rounded-[1rem] cursor-pointer transition-all duration-300 shadow-sm"
                                         style={{
                                             border: isActive ? `1px solid ${p.color}40` : '1px solid rgba(0,0,0,0.04)',
-                                            background: isActive ? `${p.color}04` : 'rgba(0,0,0,0.01)',
+                                            background: isActive ? `${p.color}06` : '#ffffff',
                                         }}
                                         onClick={() => setActivePhase(i)}
                                     >
                                         <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${p.color}15`, color: p.color }}>
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm" style={{ background: isActive ? `${p.color}` : `${p.color}15`, color: isActive ? '#fff' : p.color }}>
                                                     {p.icon}
                                                 </div>
                                                 <div>
-                                                    <div className="text-sm font-bold text-white">{p.phase}</div>
-                                                    <div className="text-[10px] text-gray-400">{p.duration}</div>
+                                                    <div className="text-[14px] font-extrabold tracking-tight text-[#1a1a1a] mb-0.5">{p.phase}</div>
+                                                    <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">{p.duration}</div>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
+                                                <span className="text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest"
                                                     style={p.status === 'complete' ? { background: '#10B98115', color: '#10B981' }
                                                         : p.status === 'active' ? { background: '#FF6B0015', color: '#FF6B00' }
-                                                            : { background: 'rgba(255,255,255,0.05)', color: '#9ca3af' }}>
+                                                            : { background: 'rgba(0,0,0,0.04)', color: '#6b7280' }}>
                                                     {p.status === 'complete' ? '✓ Done' : p.status === 'active' ? '● Active' : 'Upcoming'}
                                                 </span>
                                             </div>
                                         </div>
                                         {isActive && (
-                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-3 pt-3 border-t border-white/5">
-                                                <div className="flex flex-wrap gap-2">
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-4 pt-4 border-t border-black/[0.04]">
+                                                <div className="flex flex-wrap gap-2.5">
                                                     {p.items.map((item, j) => (
-                                                        <span key={j} className="text-[10px] px-2.5 py-1 rounded-lg bg-[#111111] border border-white/5 text-gray-400 font-medium">
-                                                            <CheckCircle2 size={10} className="inline mr-1" style={{ color: p.color }} />{item}
+                                                        <span key={j} className="text-[11px] px-3 py-1.5 rounded-lg bg-gray-50 border border-black/[0.04] text-gray-600 font-bold shadow-sm">
+                                                            <CheckCircle2 size={12} className="inline mr-1.5" style={{ color: p.color }} />{item}
                                                         </span>
                                                     ))}
                                                 </div>
                                                 {p.progress > 0 && (
-                                                    <div className="mt-2 flex items-center gap-2">
-                                                        <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                                    <div className="mt-3.5 flex items-center gap-3">
+                                                        <div className="flex-1 h-2 bg-black/[0.04] rounded-full overflow-hidden shadow-inner">
                                                             <div className="h-full rounded-full" style={{ width: `${p.progress}%`, background: p.color }} />
                                                         </div>
-                                                        <span className="text-[9px] font-bold" style={{ color: p.color }}>{p.progress}%</span>
+                                                        <span className="text-[10px] font-black tracking-wider" style={{ color: p.color }}>{p.progress}%</span>
                                                     </div>
                                                 )}
                                             </motion.div>
@@ -1499,21 +1499,21 @@ function ProjectTimelineSection() {
                         </div>
 
                         {/* Pipeline */}
-                        <div className="px-5 py-3 border-t border-white/5 bg-gradient-to-r from-[#0a0a0a] to-[#111111]">
-                            <div className="flex items-center gap-1 mb-2">
-                                <CalendarDays size={12} className="text-[#FF6B00]" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Project Management Pipeline</span>
+                        <div className="px-6 py-4 border-t border-black/[0.04] bg-gray-50 flex flex-wrap items-center justify-between md:justify-start gap-5">
+                            <div className="flex items-center gap-2">
+                                <CalendarDays size={16} className="text-[#FF6B00]" />
+                                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]">Project Management Pipeline</span>
                             </div>
                             <div className="flex items-center gap-0">
                                 {pipelineSteps.map((step, i) => (
                                     <React.Fragment key={i}>
-                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === progressStep ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm' : i < progressStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                        <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-500 ${i === progressStep ? 'bg-[#FF6B00]/10 text-[#FF6B00] shadow-sm border border-[#FF6B00]/20' : i < progressStep ? 'text-[#10B981]' : 'text-gray-400'
                                             }`}>
-                                            {i < progressStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            {i < progressStep ? <CheckCircle2 size={14} className="text-[#10B981]" /> : step.icon}
                                             <span className="hidden sm:inline">{step.label}</span>
                                         </div>
                                         {i < pipelineSteps.length - 1 && (
-                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < progressStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                            <div className={`w-5 h-[2px] mx-1 rounded-full transition-colors duration-500 ${i < progressStep ? 'bg-[#10B981]' : 'bg-black/[0.04]'}`} />
                                         )}
                                     </React.Fragment>
                                 ))}
@@ -1523,39 +1523,39 @@ function ProjectTimelineSection() {
                 </motion.div>
 
                 {/* Right Panel */}
-                <div className="lg:col-span-2 flex flex-col gap-5">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                <div className="lg:col-span-2 flex flex-col gap-6">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-4">
                         {stats.map((s, i) => (
-                            <div key={i} className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
-                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                            <div key={i} className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-6 text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:-translate-y-1 transition-transform hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-[2rem] font-black tracking-tight" style={{ color: s.color }}>
                                     {s.value}
                                 </motion.div>
-                                <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                                <div className="text-[11px] text-gray-500 font-bold uppercase tracking-[0.15em] leading-tight mt-2">{s.label}</div>
                             </div>
                         ))}
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-                        className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-5 shadow-sm space-y-4">
+                        className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] space-y-6">
                         {[
-                            { icon: <CalendarDays size={18} />, title: 'Auto Scheduling', desc: 'AI generates optimized construction schedules based on dependencies, crew availability, and weather forecasts.', color: '#FF6B00' },
-                            { icon: <Activity size={18} />, title: 'Real-Time Tracking', desc: 'Daily progress photos and drone surveys analyzed by AI to track completion percentage against schedule.', color: '#3B82F6' },
-                            { icon: <Target size={18} />, title: 'Milestone Gates', desc: 'Automatic cash flow releases tied to milestone completion — verified by AI, not paperwork.', color: '#10B981' },
+                            { icon: <CalendarDays size={24} />, title: 'Auto Scheduling', desc: 'AI generates optimized construction schedules based on dependencies, crew availability, and weather forecasts.', color: '#FF6B00' },
+                            { icon: <Activity size={24} />, title: 'Real-Time Tracking', desc: 'Daily progress photos and drone surveys analyzed by AI to track completion percentage against schedule.', color: '#3B82F6' },
+                            { icon: <Target size={24} />, title: 'Milestone Gates', desc: 'Automatic cash flow releases tied to milestone completion — verified by AI, not paperwork.', color: '#10B981' },
                         ].map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
-                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group cursor-default">
-                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}10`, color: f.color }}>{f.icon}</div>
+                                className="flex items-start gap-4 pb-6 border-b border-black/[0.04] last:pb-0 last:border-b-0 cursor-default">
+                                <div className="mt-0.5 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${f.color}15`, color: f.color }}>{f.icon}</div>
                                 <div>
-                                    <h4 className="text-[#1a1a1a] font-bold text-sm mb-0.5">{f.title}</h4>
-                                    <p className="text-[#6b7280] text-xs leading-relaxed">{f.desc}</p>
+                                    <h4 className="text-[#1a1a1a] font-extrabold tracking-tight text-[15px] mb-1.5">{f.title}</h4>
+                                    <p className="text-[14px] text-gray-500 leading-[1.6] font-medium">{f.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
                     </motion.div>
 
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center mt-2">
                         {['Gantt Charts', 'CPM Analysis', 'Resource Leveling', 'Weather Delays', 'Change Orders', 'Punch Lists'].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-[#111111] border border-white/10 text-gray-400 hover:border-[#FF6B00]/30 hover:text-[#FF6B00] transition-all cursor-default">{tag}</span>
+                            <span key={i} className="px-4 py-2 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase bg-white/50 backdrop-blur-sm border border-black/[0.04] text-gray-500 shadow-sm hover:border-[#FF6B00]/30 hover:text-[#FF6B00] transition-colors duration-300 cursor-default">{tag}</span>
                         ))}
                     </motion.div>
                 </div>
@@ -1603,39 +1603,39 @@ function SafetyComplianceSection() {
     return (
         <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 text-xs font-bold tracking-wider mb-6">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-emerald-500/10 bg-emerald-500/5 text-emerald-600 text-xs font-semibold tracking-[0.15em] mb-6">
                     <Shield size={12} className="mr-2" /> AI SAFETY COMMAND
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1a1a1a] mb-6 leading-[1.15]">
                     Zero-Incident <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-[#10B981]">Job Sites</span>
                 </h2>
-                <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+                <p className="text-[1.1rem] text-gray-500 max-w-3xl mx-auto leading-[1.7]">
                     AI-powered safety monitoring that protects your crews, keeps projects compliant, and eliminates paperwork.
                 </p>
             </motion.div>
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-3xl bg-[#0a0a0a] border border-white/10 overflow-hidden shadow-xl">
+                    <div className="relative rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                         {/* Toolbar */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-gradient-to-r from-[#111111] to-[#0a0a0a]">
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.04] bg-gray-50/50">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-400" />
                                 <div className="w-3 h-3 rounded-full bg-amber-400" />
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                                <span className="ml-3 text-xs font-mono text-gray-500">safety_compliance.gasper</span>
+                                <span className="ml-3 text-xs font-mono text-gray-500 font-bold">safety_compliance.gasper</span>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <div className="text-[10px] font-mono text-gray-500 bg-white/5 border border-white/10 px-2 py-0.5 rounded">OSHA Ready</div>
-                                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-500">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            <div className="flex items-center gap-4">
+                                <div className="text-[10px] font-mono text-gray-500 font-bold bg-white px-2.5 py-1 rounded border border-black/[0.06] shadow-sm tracking-wide">OSHA Ready</div>
+                                <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#10B981] font-bold uppercase tracking-widest bg-[#10B981]/10 px-2.5 py-1 rounded-full">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                                     A+ Score
                                 </div>
                             </div>
                         </div>
 
                         {/* Compliance Checklist */}
-                        <div className="px-5 py-3 space-y-2">
+                        <div className="px-6 py-4 space-y-3">
                             {checks.map((c, i) => {
                                 const isActive = activeCheck === c.id;
                                 return (
@@ -1645,48 +1645,48 @@ function SafetyComplianceSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.15 + i * 0.08, type: 'spring', bounce: 0.2 }}
                                         viewport={{ once: true }}
-                                        className="p-3 rounded-xl cursor-pointer transition-all duration-300"
+                                        className="p-4 rounded-[1rem] cursor-pointer transition-all duration-300 shadow-sm"
                                         style={{
                                             border: isActive ? `1px solid ${c.color}40` : '1px solid rgba(0,0,0,0.04)',
-                                            background: isActive ? `${c.color}04` : 'rgba(0,0,0,0.01)',
+                                            background: isActive ? `${c.color}06` : '#ffffff',
                                         }}
                                         onMouseEnter={() => setActiveCheck(c.id)}
                                         onMouseLeave={() => setActiveCheck(null)}
                                     >
                                         <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${c.color}15`, color: c.color }}>
-                                                    {c.status === 'pass' ? <CheckCircle2 size={14} /> : <AlertTriangle size={14} />}
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm" style={{ background: isActive ? `${c.color}` : `${c.color}15`, color: isActive ? '#fff' : c.color }}>
+                                                    {c.status === 'pass' ? <CheckCircle2 size={16} /> : <AlertTriangle size={16} />}
                                                 </div>
                                                 <div>
-                                                    <div className="text-sm font-bold text-[#1a1a1a]">{c.item}</div>
-                                                    <div className="text-[10px] text-gray-500">{c.zone}</div>
+                                                    <div className="text-[14px] font-extrabold tracking-tight text-[#1a1a1a] mb-0.5">{c.item}</div>
+                                                    <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">{c.zone}</div>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <span className="text-[9px] font-mono text-gray-500 hidden sm:block">{c.lastScan}</span>
-                                                <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
+                                                <span className="text-[10px] font-mono text-gray-400 font-bold hidden sm:block tracking-wide">{c.lastScan}</span>
+                                                <span className="text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest"
                                                     style={c.status === 'pass' ? { background: '#10B98115', color: '#10B981' } : { background: '#F59E0B15', color: '#F59E0B' }}>
                                                     {c.status === 'pass' ? '✓ Pass' : '⚠ Warning'}
                                                 </span>
                                             </div>
                                         </div>
                                         {isActive && (
-                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-2 pt-2 border-t border-white/5">
-                                                <div className="grid grid-cols-3 gap-3">
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-4 pt-4 border-t border-black/[0.04]">
+                                                <div className="grid grid-cols-3 gap-4">
                                                     {c.workers !== null && (
-                                                        <div className="text-center">
-                                                            <div className="text-[9px] text-[#9ca3af] uppercase">Workers</div>
-                                                            <div className="text-[11px] font-bold text-white">{c.workers}</div>
+                                                        <div className="bg-gray-50 rounded-xl p-3 text-center border border-black/[0.04]">
+                                                            <div className="text-[9px] text-gray-500 font-bold tracking-[0.1em] uppercase mb-1">Workers</div>
+                                                            <div className="text-[16px] font-black text-[#1a1a1a]">{c.workers}</div>
                                                         </div>
                                                     )}
-                                                    <div className="text-center">
-                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Violations</div>
-                                                        <div className="text-[11px] font-bold" style={{ color: c.violations > 0 ? '#F59E0B' : '#10B981' }}>{c.violations}</div>
+                                                    <div className="bg-gray-50 rounded-xl p-3 text-center border border-black/[0.04]">
+                                                        <div className="text-[9px] text-gray-500 font-bold tracking-[0.1em] uppercase mb-1">Violations</div>
+                                                        <div className="text-[16px] font-black" style={{ color: c.violations > 0 ? '#F59E0B' : '#10B981' }}>{c.violations}</div>
                                                     </div>
-                                                    <div className="text-center">
-                                                        <div className="text-[9px] text-[#9ca3af] uppercase">Status</div>
-                                                        <div className="text-[11px] font-bold" style={{ color: c.color }}>{c.status === 'pass' ? 'Compliant' : 'Review'}</div>
+                                                    <div className="bg-gray-50 rounded-xl p-3 text-center border border-black/[0.04]">
+                                                        <div className="text-[9px] text-gray-500 font-bold tracking-[0.1em] uppercase mb-1">Status</div>
+                                                        <div className="text-[13px] font-black tracking-tight" style={{ color: c.color, margin: '2px 0 0 0' }}>{c.status === 'pass' ? 'Compliant' : 'Review'}</div>
                                                     </div>
                                                 </div>
                                             </motion.div>
@@ -1697,21 +1697,21 @@ function SafetyComplianceSection() {
                         </div>
 
                         {/* Pipeline */}
-                        <div className="px-5 py-3 border-t border-white/5 bg-gradient-to-r from-[#0a0a0a] to-[#111111]">
-                            <div className="flex items-center gap-1 mb-2">
-                                <Shield size={12} className="text-emerald-500" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Safety Intelligence Pipeline</span>
+                        <div className="px-6 py-4 border-t border-black/[0.04] bg-gray-50 flex flex-wrap items-center justify-between md:justify-start gap-5">
+                            <div className="flex items-center gap-2">
+                                <Shield size={16} className="text-[#10B981]" />
+                                <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1a1a1a]">Safety Intelligence Pipeline</span>
                             </div>
                             <div className="flex items-center gap-0">
                                 {pipelineSteps.map((step, i) => (
                                     <React.Fragment key={i}>
-                                        <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition-all duration-500 ${i === safetyStep ? 'bg-emerald-500/10 text-emerald-500 shadow-sm' : i < safetyStep ? 'text-[#10B981]' : 'text-[#9ca3af]'
+                                        <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-500 ${i === safetyStep ? 'bg-[#10B981]/10 text-[#10B981] shadow-sm border border-[#10B981]/20' : i < safetyStep ? 'text-[#3B82F6]' : 'text-gray-400'
                                             }`}>
-                                            {i < safetyStep ? <CheckCircle2 size={12} className="text-[#10B981]" /> : step.icon}
+                                            {i < safetyStep ? <CheckCircle2 size={14} className="text-[#3B82F6]" /> : step.icon}
                                             <span className="hidden sm:inline">{step.label}</span>
                                         </div>
                                         {i < pipelineSteps.length - 1 && (
-                                            <div className={`w-4 h-[2px] mx-0.5 rounded transition-colors duration-500 ${i < safetyStep ? 'bg-[#10B981]' : 'bg-black/8'}`} />
+                                            <div className={`w-5 h-[2px] mx-1 rounded-full transition-colors duration-500 ${i < safetyStep ? 'bg-[#3B82F6]' : 'bg-black/[0.04]'}`} />
                                         )}
                                     </React.Fragment>
                                 ))}
@@ -1721,39 +1721,39 @@ function SafetyComplianceSection() {
                 </motion.div>
 
                 {/* Right Panel */}
-                <div className="lg:col-span-2 flex flex-col gap-5">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-3">
+                <div className="lg:col-span-2 flex flex-col gap-6">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="grid grid-cols-2 gap-4">
                         {stats.map((s, i) => (
-                            <div key={i} className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-4 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
-                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-2xl font-black" style={{ color: s.color }}>
+                            <div key={i} className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-6 text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:-translate-y-1 transition-transform hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+                                <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 + i * 0.1, type: 'spring' }} className="text-[2rem] font-black tracking-tight" style={{ color: s.color }}>
                                     {s.value}
                                 </motion.div>
-                                <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider mt-1">{s.label}</div>
+                                <div className="text-[11px] text-gray-500 font-bold uppercase tracking-[0.15em] leading-tight mt-2">{s.label}</div>
                             </div>
                         ))}
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-                        className="rounded-2xl bg-[#0a0a0a] border border-white/10 p-5 shadow-sm space-y-4">
+                        className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] space-y-6">
                         {[
-                            { icon: <Eye size={18} />, title: 'Computer Vision Monitoring', desc: 'AI cameras detect PPE violations, unauthorized access, and unsafe conditions in real-time across every job site.', color: '#10B981' },
-                            { icon: <FileText size={18} />, title: 'Automated OSHA Reports', desc: 'When an event occurs, Gasper generates OSHA-compliant incident reports instantly — no paperwork, no delays.', color: '#FF6B00' },
-                            { icon: <AlertTriangle size={18} />, title: 'Predictive Risk Analysis', desc: 'ML models analyze weather, crew fatigue patterns, and past incidents to predict and prevent safety events.', color: '#F59E0B' },
+                            { icon: <Eye size={24} />, title: 'Computer Vision Monitoring', desc: 'AI cameras detect PPE violations, unauthorized access, and unsafe conditions in real-time across every job site.', color: '#10B981' },
+                            { icon: <FileText size={24} />, title: 'Automated OSHA Reports', desc: 'When an event occurs, Gasper generates OSHA-compliant incident reports instantly — no paperwork, no delays.', color: '#FF6B00' },
+                            { icon: <AlertTriangle size={24} />, title: 'Predictive Risk Analysis', desc: 'ML models analyze weather, crew fatigue patterns, and past incidents to predict and prevent safety events.', color: '#F59E0B' },
                         ].map((f, i) => (
                             <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.1 }} viewport={{ once: true }}
-                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group cursor-default">
-                                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110" style={{ background: `${f.color}12`, color: f.color }}>{f.icon}</div>
+                                className="flex items-start gap-4 pb-6 border-b border-black/[0.04] last:pb-0 last:border-b-0 cursor-default">
+                                <div className="mt-0.5 w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${f.color}15`, color: f.color }}>{f.icon}</div>
                                 <div>
-                                    <h4 className="text-white font-bold text-sm mb-0.5">{f.title}</h4>
-                                    <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
+                                    <h4 className="text-[#1a1a1a] font-extrabold tracking-tight text-[15px] mb-1.5">{f.title}</h4>
+                                    <p className="text-[14px] text-gray-500 leading-[1.6] font-medium">{f.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
                     </motion.div>
 
-                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center">
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} className="flex flex-wrap gap-2 justify-center mt-2">
                         {['PPE Detection', 'Fall Protection', 'OSHA Logs', 'Toolbox Talks', 'Incident Reports', 'Training AI'].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider bg-[#111111] border border-white/10 text-gray-400 hover:border-emerald-500/30 hover:text-emerald-500 transition-all cursor-default">{tag}</span>
+                            <span key={i} className="px-4 py-2 rounded-full text-[11px] font-bold tracking-[0.1em] uppercase bg-white/50 backdrop-blur-sm border border-black/[0.04] text-gray-500 shadow-sm hover:border-[#10B981]/30 hover:text-[#10B981] transition-colors duration-300 cursor-default">{tag}</span>
                         ))}
                     </motion.div>
                 </div>

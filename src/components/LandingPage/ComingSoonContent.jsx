@@ -2113,60 +2113,103 @@ function EcommerceShowcase() {
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                 <div className="lg:w-5/12">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#8B5CF6]/10 bg-[#8B5CF6]/5 text-[#8B5CF6] text-xs font-semibold tracking-[0.15em] mb-6">
-                        <Package size={14} className="mr-2" /> REVENUE OPTIMIZATION
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#8B5CF6]/10 bg-[#8B5CF6]/5 text-[#8B5CF6] text-xs font-semibold tracking-[0.15em] mb-6 shadow-sm">
+                        <ShoppingCart size={14} className="mr-2" /> RETAIL OPTIMIZATION AI
                     </div>
-                    <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">Dynamic Pricing & Support</h3>
-                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-8 font-medium">
-                        Maximize margins with intelligent dynamic pricing while deploying fully autonomous support agents that understand your catalog and integrate directly into your CMS.
+                    <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">Autonomous Commerce Operations</h3>
+                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-6 font-medium">
+                        Maximize margin through algorithmic pricing, forecast inventory depletion with ML, and deploy autonomous AI agents that resolve 80% of L1 support tickets without human intervention.
                     </p>
-                    <div className="space-y-5 border-t border-white/5 pt-6">
+                    <div className="bg-gradient-to-r from-[#8B5CF6]/5 to-transparent border-l-2 border-[#8B5CF6] p-4 rounded-r-xl mb-8">
+                        <p className="text-[13px] text-[#1a1a1a] font-medium leading-relaxed">
+                            <span className="font-bold text-[#8B5CF6]">Business Value:</span> E-commerce enterprise clients utilize our intelligence suite to dramatically reduce support headcount overhead, prevent stockouts during peak seasons, and increase gross margins by reacting to competitor pricing in real-time.
+                        </p>
+                    </div>
+                    <div className="space-y-5 border-t border-black/5 pt-6">
                         {[
-                            { icon: <DollarSign size={18} />, title: 'Dynamic Pricing', desc: 'Algorithmic repricing based on competitor stock and demand.' },
-                            { icon: <Package size={18} />, title: 'Demand Forecasting', desc: 'Predict stock depletion down to the exact SKU.' },
-                            { icon: <Bot size={18} />, title: 'Autonomous Agents', desc: 'Resolve 80% of L1 support tickets without human intervention.' }
+                            { icon: <DollarSign size={18} />, title: 'Dynamic Pricing Engine', desc: 'Algorithmic adjustments based on demand & inventory.' },
+                            { icon: <MessageSquare size={18} />, title: 'Autonomous Support Agents', desc: 'L1 resolution connected directly to your logistics DB.' },
+                            { icon: <Package size={18} />, title: 'Predictive Inventory', desc: 'Forecast depletion rates across multi-channel warehouses.' }
                         ].map((f, i) => (
-                            <div key={i} className="flex gap-4 items-start group">
-                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#8B5CF6]/5 border border-[#8B5CF6]/10 text-[#8B5CF6] group-hover:bg-[#8B5CF6] group-hover:text-white transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
+                            <div key={i} className="flex gap-4 items-start group relative">
+                                <div className="mt-1 rounded-xl flex items-center justify-center w-10 h-10 bg-[#8B5CF6]/5 border border-[#8B5CF6]/10 text-[#8B5CF6] group-hover:bg-[#8B5CF6] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-[0_4px_15px_rgba(139,92,246,0.3)] group-hover:-translate-y-0.5 z-10">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1">{f.title}</h4>
+                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1 group-hover:text-[#8B5CF6] transition-colors">{f.title}</h4>
                                     <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="lg:w-7/12 w-full">
-                    {/* Unique Animated Card for E-Commerce */}
-                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-white border border-black/[0.04] aspect-[16/10] flex flex-col transition-transform hover:-translate-y-1 hover:shadow-[0_25px_60px_rgb(0,0,0,0.12)]">
-                        <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-gray-50/80 backdrop-blur-md">
-                            <div className="flex items-center gap-3">
-                                <Bot size={18} className="text-[#8B5CF6]" />
-                                <span className="font-bold text-[13px] text-[#1a1a1a] tracking-tight">Automated Customer Resolution</span>
-                            </div>
-                        </div>
-                        <div className="flex-1 bg-white relative overflow-hidden flex flex-col p-6 gap-4">
-
-                            {/* Chat Bubbles Animation */}
-                            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="self-start bg-gray-50/80 backdrop-blur-sm border border-black/[0.04] p-4 rounded-2xl rounded-tl-sm shadow-sm max-w-[80%]">
-                                <p className="text-[13px] text-[#374151] font-medium leading-[1.6]">"Where is my order #19284 for the ergonomic chair? It's been 3 days."</p>
-                            </motion.div>
-
-                            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 }} className="self-end bg-gradient-to-br from-[#8B5CF6] to-[#7C3AED] p-4 rounded-2xl rounded-tr-sm shadow-[0_4px_15px_rgba(139,92,246,0.3)] max-w-[80%] text-white relative">
-                                <p className="text-[13px] leading-[1.6]">"I've located your order. It left the Memphis hub 2 hours ago. It is scheduled for delivery tomorrow between 2-4 PM.<br /><br />Would you like text updates?"</p>
-                                <div className="absolute -left-12 top-1/2 -translate-y-1/2 flex gap-1">
-                                    <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity, delay: 0 }} className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
-                                    <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity, delay: 0.2 }} className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
-                                    <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1, repeat: Infinity, delay: 0.4 }} className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
+                <div className="lg:w-7/12 w-full perspective-1000">
+                    {/* Premium Animated Card for E-Commerce */}
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
+                        <div className="h-12 border-b border-black/[0.04] flex items-center px-6 justify-between bg-white/90 backdrop-blur-md z-30">
+                            <div className="flex items-center gap-2">
+                                <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#8B5CF6] to-[#C084FC] flex items-center justify-center shadow-inner text-white">
+                                    <Bot size={12} />
                                 </div>
-                            </motion.div>
+                                <div className="font-bold text-[13px] text-[#1a1a1a] tracking-tight">Support Node Assistant</div>
+                            </div>
+                            <div className="text-[10px] uppercase font-bold tracking-widest text-[#8B5CF6] bg-[#8B5CF6]/10 px-2 py-0.5 rounded-sm flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] animate-pulse" /> ONLINE</div>
+                        </div>
 
-                            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.5 }} className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
-                                Ticket Resolved Automatically
-                            </motion.div>
+                        <div className="flex-1 bg-gradient-to-br from-[#ffffff] to-[#f1f5f9] relative overflow-hidden flex p-6">
+                            {/* Dot Grid Background */}
+                            <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundSize: '24px 24px', backgroundImage: 'radial-gradient(#8B5CF6 1px, transparent 1px)' }} />
 
+                            <div className="w-full h-full relative z-10 flex gap-6" style={{ perspective: '1000px' }}>
+
+                                {/* Chat Interface Simulation */}
+                                <div className="flex-1 flex flex-col justify-end gap-3 pb-2 relative z-10 w-[60%]">
+
+                                    {/* User Message */}
+                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="self-end bg-[#1a1a1a] text-white px-4 py-2.5 rounded-2xl rounded-tr-sm text-[13px] max-w-[85%] shadow-md">
+                                        Where is my order #12849? It was supposed to arrive yesterday.
+                                    </motion.div>
+
+                                    {/* Agent Process Simulation */}
+                                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 1, 0] }} transition={{ delay: 1.5, duration: 2 }} className="self-start flex flex-col gap-1 mb-1">
+                                        <div className="text-[10px] text-gray-400 font-mono flex items-center gap-1"><Terminal size={10} className="text-[#8B5CF6]" /> executing: query_logistics_db("12849")...</div>
+                                        <div className="text-[10px] text-gray-400 font-mono flex items-center gap-1"><Terminal size={10} className="text-[#8B5CF6]" /> executing: analyze_sentiment(user_input)...</div>
+                                    </motion.div>
+
+                                    {/* Agent Response */}
+                                    <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 3.5, type: 'spring' }} className="self-start bg-white border border-black/5 px-4 py-3 rounded-2xl rounded-tl-sm text-[13px] text-gray-700 max-w-[90%] shadow-lg relative">
+                                        <div className="absolute -top-1.5 -left-1.5 w-4 h-4 rounded-full bg-[#8B5CF6] flex items-center justify-center border-2 border-white"><Bot size={8} className="text-white" /></div>
+                                        I apologize for the delay. Tracking confirms a weather hold at the Memphis hub. I have upgraded your shipping to Priority Overnight at no cost. It will arrive by 10 AM tomorrow.
+                                    </motion.div>
+
+                                    {/* Resolution Tag */}
+                                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 4.5 }} className="self-start mt-1 flex items-center gap-2">
+                                        <div className="text-[9px] font-bold text-green-600 bg-green-500/10 px-2 py-0.5 rounded-sm uppercase tracking-widest flex items-center gap-1 border border-green-500/20"><CheckCircle2 size={10} /> ZERO HUMAN TOUCH</div>
+                                        <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Resolution Time: 1.2s</div>
+                                    </motion.div>
+                                </div>
+
+                                {/* Dynamic Pricing Sidebar */}
+                                <div className="w-[35%] flex flex-col gap-3 relative z-10 border-l border-black/[0.04] pl-6 pt-2">
+                                    <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Active Margin Opts</div>
+
+                                    <motion.div animate={{ scale: [1, 1.02, 1] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="bg-white border border-black/5 rounded-xl p-3 shadow-sm relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-bl from-[#8B5CF6]/10 to-transparent rounded-bl-xl" />
+                                        <div className="text-[9px] font-bold text-gray-500 uppercase tracking-wider mb-1">SKU-A992 Pricing</div>
+                                        <div className="flex items-end justify-between">
+                                            <div className="text-xl font-black text-[#1a1a1a]">$14.99</div>
+                                            <div className="text-[10px] font-bold text-green-500 flex items-center"><TrendingUp size={10} className="mr-0.5" /> +$0.50 margin</div>
+                                        </div>
+                                        <div className="text-[9px] text-gray-400 mt-1">Competitor stockout detected.</div>
+                                    </motion.div>
+
+                                    <div className="mt-auto bg-[#8B5CF6]/5 border border-[#8B5CF6]/20 rounded-xl p-3 flex flex-col items-center justify-center gap-1 text-center">
+                                        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm mb-1 text-[#8B5CF6]"><Zap size={14} /></div>
+                                        <div className="text-[10px] font-bold text-[#8B5CF6] uppercase tracking-wider">Agents Active</div>
+                                        <div className="text-xl font-black text-[#1a1a1a]">4,209</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

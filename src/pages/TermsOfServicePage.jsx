@@ -17,13 +17,13 @@ export default function TermsOfServicePage() {
                 <div className="max-w-none">
                     <div className="text-[#4b5563] space-y-8">
                         <p>
-                            Welcome to Marapone Contracting Inc. ("Marapone," "we," "us," or "our"). These Terms of Service ("Terms") govern your access to and use of our website at www.marapone.com (the "Website") and our AI-powered logistics platform, Gasper (the "Platform"), including any content, functionality, and services offered on or through the Website and Platform (collectively, the "Services"). By accessing or using the Services, including signing up for the waitlist or participating in the private beta, you agree to be bound by these Terms. If you do not agree, do not use the Services.
+                            Welcome to Marapone Contracting Inc. ("Marapone," "we," "us," or "our"). These Terms of Service ("Terms") govern your access to and use of our website at www.marapone.com (the "Website") and our AI-powered enterprise platform, Gasper (the "Platform"), including any content, functionality, and services offered on or through the Website and Platform (collectively, the "Services"). By accessing or using the Services, including signing up for the waitlist or participating in the private beta, you agree to be bound by these Terms. If you do not agree, do not use the Services.
                         </p>
 
                         <section>
                             <h2 className="text-2xl font-bold text-[#1a1a1a] mb-4">1. Eligibility</h2>
                             <p>
-                                You must be at least 18 years old and capable of forming a binding contract to use the Services. By using the Services, you represent that you meet these requirements. The Services are intended for business users in logistics, supply chain management, and related sectors, such as maritime, freight forwarding, retail, manufacturing, energy, commodities, and aerospace.
+                                You must be at least 18 years old and capable of forming a binding contract to use the Services. By using the Services, you represent that you meet these requirements. The Services are intended for B2B enterprise users across sectors including construction, logistics, marketing, e-commerce, and other intensive industries.
                             </p>
                         </section>
 
@@ -41,7 +41,7 @@ export default function TermsOfServicePage() {
                             <div className="space-y-4">
                                 <div>
                                     <h3 className="text-xl font-semibold text-[#1a1a1a] mb-2">Permitted Use</h3>
-                                    <p>You may use the Services for your internal business purposes, such as real-time tracking, digital twin simulations, compliance analysis, market intelligence, risk detection, green logistics calculations, cost optimization, and AI-assisted queries.</p>
+                                    <p>You may use the Services for your internal business purposes, such as AI blueprint analysis, supply chain digital twin simulations, predictive lead generation, dynamic pricing, compliance analysis, risk detection, and AI-assisted queries.</p>
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-semibold text-[#1a1a1a] mb-2">Prohibitions</h3>

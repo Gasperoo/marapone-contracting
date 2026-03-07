@@ -17,7 +17,7 @@ export default function CookiePolicyPage() {
                 <div className="max-w-none">
                     <div className="text-[#4b5563] space-y-8">
                         <p>
-                            Marapone Contracting Inc. ("Marapone," "we," "us," or "our") uses cookies and similar technologies on our website at www.marapone.com (the "Website") and AI-powered logistics platform, Gasper (the "Platform") (collectively, the "Services") to enhance user experience, analyze usage, and provide personalized features. This Cookie Policy explains our use of cookies. By using the Services, you consent to our use of cookies as described.
+                            Marapone Contracting Inc. ("Marapone," "we," "us," or "our") uses cookies and similar technologies on our website at www.marapone.com (the "Website") and AI-powered enterprise platform, Gasper (the "Platform") (collectively, the "Services") to enhance user experience, analyze usage, and provide personalized features. This Cookie Policy explains our use of cookies. By using the Services, you consent to our use of cookies as described.
                         </p>
 
                         <section>

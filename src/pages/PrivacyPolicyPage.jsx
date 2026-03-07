@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
                 <div className="max-w-none">
                     <div className="text-[#4b5563] space-y-8">
                         <p>
-                            Marapone Contracting Inc. ("Marapone," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard information when you visit our website at www.marapone.com (the "Website"), sign up for our waitlist, or use our AI-powered logistics platform, Gasper (the "Platform") (collectively, the "Services"). We comply with applicable laws, including GDPR.
+                            Marapone Contracting Inc. ("Marapone," "we," "us," or "our") is committed to protecting your company's privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard information when you visit our website at www.marapone.com (the "Website"), sign up for our waitlist, or use our AI-powered enterprise SaaS platform, Gasper (the "Platform") (collectively, the "Services"). As a B2B SaaS provider, we comply with applicable enterprise laws, including GDPR.
                         </p>
 
                         <section>
@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
                             <ul className="list-disc pl-6 space-y-2">
                                 <li><strong className="text-[#1a1a1a]">Personal Information:</strong> When you join the waitlist or create an account, we collect details such as your name, email, company name, role, and contact information.</li>
                                 <li><strong className="text-[#1a1a1a]">Usage Data:</strong> Automatically collected data includes IP address, browser type, device information, pages visited, and interaction times.</li>
-                                <li><strong className="text-[#1a1a1a]">Operational Data:</strong> For Platform users, we process shipment details, tracking data, compliance queries, and other inputs you provide. This may include data from integrated sources (e.g., AIS, APIs).</li>
+                                <li><strong className="text-[#1a1a1a]">Operational Data:</strong> For Platform users, we process intelligent telemetry, pipeline CRM data, supply chain digital twins, blueprint analytics, and other enterprise inputs you provide. This may include data from integrated sources (e.g., ERP, APIs).</li>
                                 <li><strong className="text-[#1a1a1a]">AI Interactions:</strong> Queries to the AI assistant and resulting insights. We do not collect sensitive personal data unless necessary for Services (e.g., for compliance screening).</li>
                             </ul>
                         </section>

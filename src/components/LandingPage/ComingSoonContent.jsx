@@ -1870,64 +1870,120 @@ function LogisticsShowcase() {
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                 <div className="lg:w-5/12">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#0EA5E9]/10 bg-[#0EA5E9]/5 text-[#0EA5E9] text-xs font-semibold tracking-[0.15em] mb-6">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#0EA5E9]/10 bg-[#0EA5E9]/5 text-[#0EA5E9] text-xs font-semibold tracking-[0.15em] mb-6 shadow-sm">
                         <Truck size={14} className="mr-2" /> GLOBAL SUPPLY CHAIN TWIN
                     </div>
                     <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">Predictive Routing Automation</h3>
-                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-8 font-medium">
+                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-6 font-medium">
                         Transform your logistics network into a real-time digital twin to predict transit delays and automate customs compliance, saving millions in demurrage and routing inefficiencies.
                     </p>
-                    <div className="space-y-5 border-t border-white/5 pt-6">
+                    <div className="bg-gradient-to-r from-[#0EA5E9]/5 to-transparent border-l-2 border-[#0EA5E9] p-4 rounded-r-xl mb-8">
+                        <p className="text-[13px] text-[#1a1a1a] font-medium leading-relaxed">
+                            <span className="font-bold text-[#0EA5E9]">Business Value:</span> Global distributors use our predictive models to bypass supply chain shocks weeks in advance, eliminating manual track-and-trace overhead, and rescuing millions in would-be demurrage fees.
+                        </p>
+                    </div>
+                    <div className="space-y-5 border-t border-black/5 pt-6">
                         {[
                             { icon: <MapPin size={18} />, title: 'Predictive Routing', desc: 'Dynamic rerouting based on global weather and port data.' },
                             { icon: <FileText size={18} />, title: 'Customs Automation', desc: 'Extract and validate codes from transit logistics docs.' },
                             { icon: <Activity size={18} />, title: 'Delay Forecasting', desc: 'ML models predict transit bottlenecks weeks early.' }
                         ].map((f, i) => (
-                            <div key={i} className="flex gap-4 items-start group">
-                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#0EA5E9]/5 border border-[#0EA5E9]/10 text-[#0EA5E9] group-hover:bg-[#0EA5E9] group-hover:text-white transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
+                            <div key={i} className="flex gap-4 items-start group relative">
+                                <div className="mt-1 rounded-xl flex items-center justify-center w-10 h-10 bg-[#0EA5E9]/5 border border-[#0EA5E9]/10 text-[#0EA5E9] group-hover:bg-[#0EA5E9] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-[0_4px_15px_rgba(14,165,233,0.3)] group-hover:-translate-y-0.5 z-10">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1">{f.title}</h4>
+                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1 group-hover:text-[#0EA5E9] transition-colors">{f.title}</h4>
                                     <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="lg:w-7/12 w-full">
-                    {/* Unique Animated Card for Logistics */}
-                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-white border border-black/[0.04] aspect-[16/10] flex flex-col transition-transform hover:-translate-y-1 hover:shadow-[0_25px_60px_rgb(0,0,0,0.12)]">
-                        <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-gray-50/80 backdrop-blur-md">
-                            <div className="text-[11px] font-mono font-bold text-[#0EA5E9]">NODE MAP: GLOBAL</div>
+                <div className="lg:w-7/12 w-full perspective-1000">
+                    {/* Premium Animated Card for Logistics */}
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
+                        <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-white/90 backdrop-blur-md z-30">
+                            <div className="text-[11px] font-mono font-bold text-[#0EA5E9] tracking-widest">NODE MAP: GLOBAL</div>
                             <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse" /> <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-gray-500">Tracking Active</span></div>
                         </div>
-                        <div className="flex-1 bg-white relative overflow-hidden flex items-center justify-center p-8">
+
+                        <div className="flex-1 bg-gradient-to-br from-[#ffffff] to-[#f1f5f9] relative overflow-hidden flex items-center justify-center p-8">
                             {/* Map-like dark background */}
-                            <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+                            <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }} />
 
-                            {/* Animated routing line */}
-                            <div className="relative w-full h-full max-w-md max-h-48 border border-black/5 rounded-3xl bg-white/50 p-6 backdrop-blur-md">
-                                <motion.svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
-                                    <motion.path
-                                        d="M 50 150 Q 150 50, 250 150 T 350 50"
-                                        fill="transparent"
-                                        stroke="#0EA5E9"
-                                        strokeWidth="3"
-                                        strokeDasharray="10 10"
-                                        animate={{ strokeDashoffset: [0, -40] }}
-                                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                                    />
-                                </motion.svg>
+                            {/* Animated routing line container */}
+                            <div className="relative w-full h-full max-w-lg max-h-56 border border-white/60 rounded-[2rem] bg-white/40 p-6 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]" style={{ perspective: '1000px' }}>
 
-                                {/* Nodes */}
-                                <div className="absolute top-[40px] left-[340px] w-4 h-4 rounded-full bg-white shadow-[0_0_15px_#0EA5E9]" />
-                                <div className="absolute top-[140px] left-[40px] w-4 h-4 rounded-full bg-[#0EA5E9]" />
+                                <motion.div animate={{ rotateX: [15, 25, 15], rotateY: [-5, 5, -5] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute inset-0 w-full h-full flex items-center justify-center">
+                                    <svg className="w-full h-full overflow-visible" viewBox="0 0 400 200" preserveAspectRatio="none">
+                                        <defs>
+                                            <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" stopColor="#0EA5E9" stopOpacity="0.2" />
+                                                <stop offset="50%" stopColor="#0EA5E9" stopOpacity="1" />
+                                                <stop offset="100%" stopColor="#8B5CF6" stopOpacity="1" />
+                                            </linearGradient>
+                                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                                <feGaussianBlur stdDeviation="4" result="blur" />
+                                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                            </filter>
+                                        </defs>
 
-                                <div className="absolute bottom-4 left-4 right-4 bg-white/80 border border-black/5 p-3 rounded-xl flex justify-between items-center text-xs font-mono text-[#1a1a1a]">
-                                    <span>Route optimized: Weather incident bypassed.</span>
-                                    <span className="text-green-400">ETA: -12hrs</span>
-                                </div>
+                                        {/* Original Path (Greyed out/Delayed) */}
+                                        <path
+                                            d="M 40 140 Q 150 150, 200 100 T 340 40"
+                                            fill="transparent"
+                                            stroke="#ef4444"
+                                            strokeWidth="2"
+                                            strokeDasharray="6 6"
+                                            opacity="0.3"
+                                        />
+
+                                        {/* New Optimized Path */}
+                                        <motion.path
+                                            d="M 40 140 C 100 80, 180 30, 240 70 S 300 160, 340 40"
+                                            fill="transparent"
+                                            stroke="url(#routeGradient)"
+                                            strokeWidth="4"
+                                            strokeLinecap="round"
+                                            strokeDasharray="12 12"
+                                            filter="url(#glow)"
+                                            animate={{ strokeDashoffset: [48, 0] }}
+                                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                                        />
+                                    </svg>
+
+                                    {/* Weather Obstacle Node */}
+                                    <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }} transition={{ duration: 3, repeat: Infinity }} className="absolute top-[35%] left-[45%] w-12 h-12 rounded-full border border-red-500/30 bg-red-500/10 backdrop-blur-sm flex items-center justify-center">
+                                        <AlertTriangle size={16} className="text-red-500" />
+                                    </motion.div>
+
+                                    {/* Start Node */}
+                                    <div className="absolute top-[68%] left-[8%] w-5 h-5 rounded-full bg-white shadow-[0_0_15px_#0EA5E9] flex items-center justify-center z-10">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#0EA5E9]" />
+                                    </div>
+
+                                    {/* End Node */}
+                                    <div className="absolute top-[18%] left-[85%] w-6 h-6 rounded-full bg-white shadow-[0_0_20px_#8B5CF6] flex items-center justify-center z-10">
+                                        <div className="w-3 h-3 rounded-full bg-[#8B5CF6]" />
+                                        <motion.div animate={{ scale: [1, 2.5], opacity: [0.8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="absolute inset-0 rounded-full border border-[#8B5CF6]" />
+                                    </div>
+
+                                    {/* Floating Data Panel */}
+                                    <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-[10%] inset-x-8 bg-white/95 backdrop-blur-xl border border-black/5 p-3.5 rounded-2xl flex justify-between items-center shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-8 h-8 rounded-lg bg-[#0EA5E9]/10 flex items-center justify-center"><Target size={14} className="text-[#0EA5E9]" /></div>
+                                            <div>
+                                                <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">Automated Reroute</div>
+                                                <div className="text-xs font-semibold text-[#1a1a1a]">Weather incident bypassed.</div>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">ETA Saving</div>
+                                            <div className="text-sm font-black text-[#10B981]">+14 hrs</div>
+                                        </div>
+                                    </motion.div>
+                                </motion.div>
                             </div>
                         </div>
                     </div>

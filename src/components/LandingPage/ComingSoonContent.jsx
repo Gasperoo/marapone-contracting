@@ -1774,49 +1774,87 @@ function ConstructionShowcase() {
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                 <div className="lg:w-5/12">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6 shadow-sm">
                         <HardHat size={14} className="mr-2" /> CONSTRUCTION INTELLIGENCE
                     </div>
                     <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">From Groundbreak to Handover</h3>
-                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-8 font-medium">
+                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-6 font-medium">
                         Automate blueprint takeoffs, monitor site security via computer vision, and forecast cash flow with pinpoint accuracy using custom-trained models that understand your specific building codes and historical project data.
                     </p>
-                    <div className="space-y-5 border-t border-white/5 pt-6">
+                    <div className="bg-gradient-to-r from-[#FF6B00]/5 to-transparent border-l-2 border-[#FF6B00] p-4 rounded-r-xl mb-8">
+                        <p className="text-[13px] text-[#1a1a1a] font-medium leading-relaxed">
+                            <span className="font-bold text-[#FF6B00]">Business Value:</span> We help top-tier general contractors reduce estimation time by 80%, identify compliance risks before they become costly delays, and maintain perfect visibility into multi-year project cash flows.
+                        </p>
+                    </div>
+                    <div className="space-y-5 border-t border-black/5 pt-6">
                         {[
                             { icon: <Ruler size={18} />, title: 'Automated Takeoffs', desc: 'Extract quantities directly from architectural PDFs.' },
                             { icon: <TrendingUp size={18} />, title: 'Cash Flow Forecasting', desc: 'Real-time budget analysis across all project phases.' },
                             { icon: <Eye size={18} />, title: 'Site Vision AI', desc: 'Detect compliance and monitor progress autonomously.' }
                         ].map((f, i) => (
-                            <div key={i} className="flex gap-4 items-start group">
-                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#FF6B00]/5 border border-[#FF6B00]/10 text-[#FF6B00] group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
+                            <div key={i} className="flex gap-4 items-start group relative">
+                                <div className="mt-1 rounded-xl flex items-center justify-center w-10 h-10 bg-[#FF6B00]/5 border border-[#FF6B00]/10 text-[#FF6B00] group-hover:bg-[#FF6B00] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-[0_4px_15px_rgba(255,107,0,0.3)] group-hover:-translate-y-0.5 z-10">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1">{f.title}</h4>
+                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1 group-hover:text-[#FF6B00] transition-colors">{f.title}</h4>
                                     <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="lg:w-7/12 w-full">
-                    {/* Unique Animated Card for Construction */}
-                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-white border border-black/[0.04] aspect-[16/10] flex flex-col transition-transform hover:-translate-y-1 hover:shadow-[0_25px_60px_rgb(0,0,0,0.12)]">
-                        <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-gray-50/80 backdrop-blur-md">
-                            <div className="flex gap-2"><div className="w-3 h-3 rounded-full bg-red-400/80" /><div className="w-3 h-3 rounded-full bg-amber-400/80" /><div className="w-3 h-3 rounded-full bg-green-400/80" /></div>
-                            <div className="text-[11px] font-mono font-bold text-gray-500">marapone_blueprint_analyzer.ts</div>
+                <div className="lg:w-7/12 w-full perspective-1000">
+                    {/* Premium Animated Card for Construction */}
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
+                        {/* Terminal Header */}
+                        <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-white/90 backdrop-blur-md z-30">
+                            <div className="flex gap-2"><div className="w-3 h-3 rounded-full bg-[#ff5f56]" /><div className="w-3 h-3 rounded-full bg-[#ffbd2e]" /><div className="w-3 h-3 rounded-full bg-[#27c93f]" /></div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] uppercase font-bold tracking-widest text-[#FF6B00] bg-[#FF6B00]/10 px-2 py-0.5 rounded-sm flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] animate-pulse" /> Processing</div>
+                                <div className="text-[11px] font-mono font-bold text-gray-500">blueprint_analysis_engine.ts</div>
+                            </div>
                         </div>
-                        <div className="flex-1 bg-white relative overflow-hidden p-6 flex items-center justify-center">
-                            {/* Blueprint Grid Background */}
-                            <div className="absolute inset-0 pattern-grid opacity-[0.03]" style={{ backgroundSize: '40px 40px', backgroundImage: 'linear-gradient(to right, #0055FF 1px, transparent 1px), linear-gradient(to bottom, #0055FF 1px, transparent 1px)' }} />
 
-                            {/* Scanning Animation */}
-                            <motion.div animate={{ top: ['0%', '100%', '0%'] }} transition={{ duration: 4, repeat: Infinity, ease: 'linear' }} className="absolute left-0 right-0 h-1 bg-[#FF6B00] shadow-[0_0_20px_#FF6B00] z-20 opacity-50" />
+                        <div className="flex-1 relative overflow-hidden flex items-center justify-center p-6 bg-gradient-to-br from-[#ffffff] to-[#f1f5f9]">
+                            {/* Sophisticated Blueprint Grid Background */}
+                            <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundSize: '30px 30px', backgroundImage: 'linear-gradient(to right, #0055FF 1px, transparent 1px), linear-gradient(to bottom, #0055FF 1px, transparent 1px)' }} />
+                            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundSize: '150px 150px', backgroundImage: 'linear-gradient(to right, #0055FF 2px, transparent 2px), linear-gradient(to bottom, #0055FF 2px, transparent 2px)' }} />
 
-                            {/* Wireframe Building Graphic */}
-                            <div className="relative z-10 w-full max-w-xs aspect-square border-2 border-white/20 rounded-xl flex flex-col p-4 bg-black/50 backdrop-blur-sm">
-                                <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }} className="w-1/2 h-1/2 border-r-2 border-b-2 border-[#FF6B00]" />
-                                <div className="absolute bottom-4 right-4 text-[#FF6B00] font-mono text-xs">DATA: Extracted ✓</div>
+                            {/* Scanning Laser */}
+                            <motion.div animate={{ top: ['0%', '100%', '0%'] }} transition={{ duration: 6, repeat: Infinity, ease: 'linear' }} className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF6B00] to-transparent shadow-[0_0_15px_#FF6B00] z-20 opacity-80" />
+
+                            {/* Center Blueprint Stack */}
+                            <div className="relative z-10 w-full max-w-sm aspect-[4/3]" style={{ perspective: '1000px' }}>
+                                {/* Back Layer */}
+                                <motion.div animate={{ y: [-5, 5, -5], rotateX: 60, rotateZ: -10 }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="absolute inset-0 bg-[#3B82F6]/5 border-2 border-[#3B82F6]/20 rounded-2xl backdrop-blur-sm" />
+
+                                {/* Middle Layer */}
+                                <motion.div animate={{ y: [-20, 20, -20], rotateX: 60, rotateZ: -10 }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }} className="absolute inset-0 bg-white/70 border border-[#FF6B00]/30 rounded-2xl backdrop-blur-md shadow-2xl flex items-center justify-center -translate-y-8">
+                                    <div className="w-[85%] h-[85%] border border-[#FF6B00]/20 flex flex-col gap-3 p-4 bg-[#FF6B00]/5 rounded-xl">
+                                        <div className="w-1/2 h-2.5 bg-[#FF6B00]/30 rounded-full" />
+                                        <div className="w-3/4 h-2.5 bg-[#FF6B00]/30 rounded-full" />
+                                        <div className="w-1/3 h-2.5 bg-[#FF6B00]/30 rounded-full" />
+                                        <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }} className="mt-auto w-full h-10 bg-[#FF6B00]/10 border border-[#FF6B00]/30 rounded-lg flex items-center justify-center text-[10px] text-[#FF6B00] font-mono font-bold tracking-widest shadow-inner">
+                                            HVAC DUCTING IDENTIFIED ✓
+                                        </motion.div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Floating Data Points */}
+                                <motion.div animate={{ y: [0, -10, 0], opacity: [0.9, 1, 0.9] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="absolute -top-4 -right-12 bg-white/95 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl p-3.5 z-30 pointer-events-none -translate-y-16">
+                                    <div className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.15em] mb-1">Takeoff Accuracy</div>
+                                    <div className="text-2xl font-black text-[#10B981] tracking-tight">99.4%</div>
+                                </motion.div>
+
+                                <motion.div animate={{ y: [0, 10, 0], opacity: [0.9, 1, 0.9] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }} className="absolute -bottom-4 -left-8 bg-white/95 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl p-3.5 z-30 pointer-events-none">
+                                    <div className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.15em] mb-1">Items Extracted</div>
+                                    <div className="text-2xl font-black text-[#FF6B00] tracking-tight">12,408</div>
+                                </motion.div>
+
+                                <motion.div animate={{ scale: [0.95, 1.05, 0.95], opacity: [0.8, 1, 0.8] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#FF6B00]/10 flex items-center justify-center border-2 border-[#FF6B00]/40 backdrop-blur-md z-30 shadow-[0_0_30px_rgba(255,107,0,0.2)]">
+                                    <Search size={32} className="text-[#FF6B00]" />
+                                </motion.div>
                             </div>
                         </div>
                     </div>

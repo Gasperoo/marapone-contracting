@@ -9,7 +9,7 @@ import {
     DollarSign, Star, Clock, Users, Building2, Check, Sparkles, Award, TrendingDown,
     Bot, MessageSquare, Brain, FileText, Send, MapPin, Ruler, Eye, Wrench, Hammer,
     CalendarDays, Shield, Target, Gauge, Timer, ClipboardCheck, Truck, Package,
-    PhoneCall, Code, Plug, Key
+    PhoneCall, Code, Plug, Key, ShoppingCart, Terminal
 } from 'lucide-react';
 import Particles from '../Particles/Particles';
 import { PlatformPillarsSection, ConstructionFeaturesSection, BlueprintAISection, CashFlowSection, SiteSecuritySection } from './ConstructionShowcase';

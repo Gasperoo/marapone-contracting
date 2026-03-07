@@ -1999,60 +1999,106 @@ function MarketingShowcase() {
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.4 }} className="py-8 max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-12 items-center">
                 <div className="lg:w-5/12">
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F59E0B]/10 bg-[#F59E0B]/5 text-[#F59E0B] text-xs font-semibold tracking-[0.15em] mb-6">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#F59E0B]/10 bg-[#F59E0B]/5 text-[#F59E0B] text-xs font-semibold tracking-[0.15em] mb-6 shadow-sm">
                         <Target size={14} className="mr-2" /> GROWTH ENGINE AI
                     </div>
-                    <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">Hyper-Personalization at Scale</h3>
-                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-8 font-medium">
+                    <h3 className="text-3xl font-extrabold text-[#1a1a1a] mb-4 tracking-tight leading-[1.15]">Predictive Lead Generation</h3>
+                    <p className="text-[1.05rem] text-gray-500 leading-[1.7] mb-6 font-medium">
                         Deploy generative campaigns that automatically optimize based on proprietary predictive lead scoring. Identify high-value enterprise accounts proactively before competitors do.
                     </p>
-                    <div className="space-y-5 border-t border-white/5 pt-6">
+                    <div className="bg-gradient-to-r from-[#F59E0B]/5 to-transparent border-l-2 border-[#F59E0B] p-4 rounded-r-xl mb-8">
+                        <p className="text-[13px] text-[#1a1a1a] font-medium leading-relaxed">
+                            <span className="font-bold text-[#F59E0B]">Business Value:</span> Stop wasting budget on broad audiences. Our engine ingests your CRM data to identify exactly which enterprise accounts have a high propensity to buy right now, dynamically adjusting ad spend to capture them.
+                        </p>
+                    </div>
+                    <div className="space-y-5 border-t border-black/5 pt-6">
                         {[
                             { icon: <Target size={18} />, title: 'Predictive Lead Scoring', desc: 'Identify high-value enterprise accounts proactively.' },
                             { icon: <MessageSquare size={18} />, title: 'Generative Campaigns', desc: 'Create millions of ad variations instantly.' },
                             { icon: <BarChart3 size={18} />, title: 'Sentiment Analysis', desc: 'Ingest CRM data to measure brand health instantly.' }
                         ].map((f, i) => (
-                            <div key={i} className="flex gap-4 items-start group">
-                                <div className="mt-1 rounded-lg flex items-center justify-center p-2.5 bg-[#F59E0B]/5 border border-[#F59E0B]/10 text-[#F59E0B] group-hover:bg-[#F59E0B] group-hover:text-white transition-all duration-300 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
+                            <div key={i} className="flex gap-4 items-start group relative">
+                                <div className="mt-1 rounded-xl flex items-center justify-center w-10 h-10 bg-[#F59E0B]/5 border border-[#F59E0B]/10 text-[#F59E0B] group-hover:bg-[#F59E0B] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-[0_4px_15px_rgba(245,158,11,0.3)] group-hover:-translate-y-0.5 z-10">
                                     {f.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1">{f.title}</h4>
+                                    <h4 className="font-extrabold text-[#1a1a1a] tracking-tight text-[14px] mb-1 group-hover:text-[#F59E0B] transition-colors">{f.title}</h4>
                                     <p className="text-[13px] text-gray-500 font-medium leading-[1.6]">{f.desc}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="lg:w-7/12 w-full">
-                    {/* Unique Animated Card for Marketing */}
-                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-white border border-black/[0.04] aspect-[16/10] flex flex-col transition-transform hover:-translate-y-1 hover:shadow-[0_25px_60px_rgb(0,0,0,0.12)]">
-                        <div className="h-12 border-b border-black/[0.04] flex items-center px-6 justify-between bg-gray-50/80 backdrop-blur-md">
-                            <div className="font-bold text-[13px] text-[#1a1a1a]">Campaign Dashboard</div>
-                            <div className="text-[10px] bg-[#F59E0B]/10 text-[#F59E0B] px-3 py-1 rounded-full font-bold border border-[#F59E0B]/20 shadow-sm">LIVE</div>
-                        </div>
-                        <div className="flex-1 bg-white relative overflow-hidden flex items-end p-6">
-                            {/* Bar Chart Animation */}
-                            <div className="w-full h-full flex items-end justify-between gap-2">
-                                {[30, 50, 40, 70, 60, 90, 80, 100].map((height, i) => (
-                                    <motion.div
-                                        key={i}
-                                        className="w-full bg-gradient-to-t from-[#F59E0B] to-[#FFCF70] rounded-t-sm"
-                                        initial={{ height: "0%" }}
-                                        animate={{ height: `${height}%` }}
-                                        transition={{ duration: 1.5, delay: i * 0.1, ease: 'easeOut' }}
-                                    />
-                                ))}
+                <div className="lg:w-7/12 w-full perspective-1000">
+                    {/* Premium Animated Card for Marketing */}
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
+                        <div className="h-12 border-b border-black/[0.04] flex items-center px-6 justify-between bg-white/90 backdrop-blur-md z-30">
+                            <div className="font-bold text-[13px] text-[#1a1a1a] tracking-tight">Campaign Command Center</div>
+                            <div className="flex items-center gap-3">
+                                <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-sm flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> LIVE STREAM</div>
                             </div>
+                        </div>
 
-                            {/* Overlay Card */}
-                            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }} className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-[1rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-black/[0.04] w-48">
-                                <div className="text-[10px] text-gray-500 font-bold tracking-widest uppercase mb-1">Conversion Rate</div>
-                                <div className="text-[1.75rem] font-black text-[#1a1a1a] mb-2 tracking-tight">+42%</div>
-                                <div className="h-1.5 w-full bg-black/[0.04] rounded-full overflow-hidden">
-                                    <motion.div initial={{ width: "0%" }} animate={{ width: "85%" }} transition={{ delay: 1.5, duration: 1 }} className="h-full bg-green-500" />
+                        <div className="flex-1 bg-gradient-to-br from-[#ffffff] to-[#f1f5f9] relative overflow-hidden flex flex-col p-6">
+                            {/* Abstract Grid Background */}
+                            <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundSize: '40px 40px', backgroundImage: 'linear-gradient(to right, #F59E0B 1px, transparent 1px), linear-gradient(to bottom, #F59E0B 1px, transparent 1px)' }} />
+
+                            <div className="flex-1 w-full relative z-10 grid grid-cols-2 gap-4" style={{ perspective: '1000px' }}>
+
+                                {/* Left Chart Segment */}
+                                <div className="col-span-1 relative flex flex-col justify-end gap-1.5 pb-2 border-b-2 border-black/[0.04]">
+                                    <div className="absolute top-0 left-0 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Real-Time Conversions</div>
+                                    <div className="w-full flex items-end justify-between gap-1.5 h-32 mt-auto">
+                                        {[30, 45, 35, 60, 50, 75, 65, 95].map((height, i) => (
+                                            <motion.div
+                                                key={i}
+                                                className="w-full bg-gradient-to-t from-[#F59E0B] to-[#FFCF70] rounded-t-sm shadow-[0_0_10px_rgba(245,158,11,0.2)]"
+                                                initial={{ height: "0%" }}
+                                                animate={{ height: [`${height * 0.8}%`, `${height}%`, `${height * 0.9}%`] }}
+                                                transition={{ duration: 3, delay: i * 0.1, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
-                            </motion.div>
+
+                                {/* Right Data Panels */}
+                                <div className="col-span-1 flex flex-col gap-4">
+                                    <motion.div animate={{ y: [-2, 2, -2] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="bg-white border border-black/[0.04] rounded-xl p-4 shadow-[0_8px_20px_rgb(0,0,0,0.04)]">
+                                        <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1.5">Acquisition Cost</div>
+                                        <div className="flex items-end gap-3">
+                                            <div className="text-3xl font-black text-[#1a1a1a] tracking-tight">$42.50</div>
+                                            <div className="text-xs font-bold text-green-500 bg-green-500/10 px-1.5 py-0.5 rounded flex items-center mb-1">
+                                                <TrendingDown size={12} className="mr-0.5" /> -18%
+                                            </div>
+                                        </div>
+                                    </motion.div>
+
+                                    <motion.div animate={{ y: [2, -2, 2] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }} className="bg-white border border-black/[0.04] rounded-xl p-4 shadow-[0_8px_20px_rgb(0,0,0,0.04)] relative overflow-hidden group">
+                                        <div className="absolute inset-0 bg-[#F59E0B]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1.5">Propensity Score</div>
+                                        <div className="flex items-center gap-3">
+                                            {/* Circular Progress (CSS) */}
+                                            <div className="relative w-10 h-10 flex items-center justify-center">
+                                                <svg className="w-full h-full transform -rotate-90">
+                                                    <circle cx="20" cy="20" r="16" fill="transparent" stroke="rgba(0,0,0,0.04)" strokeWidth="4" />
+                                                    <motion.circle cx="20" cy="20" r="16" fill="transparent" stroke="#F59E0B" strokeWidth="4" strokeDasharray="100.5" initial={{ strokeDashoffset: 100.5 }} animate={{ strokeDashoffset: 15 }} transition={{ duration: 2 }} />
+                                                </svg>
+                                                <div className="absolute text-[11px] font-black text-[#1a1a1a]">85</div>
+                                            </div>
+                                            <div className="text-xs font-semibold text-gray-600 leading-tight">High probability of<br />enterprise close.</div>
+                                        </div>
+                                    </motion.div>
+                                </div>
+
+                                {/* Overlay Floating Alert */}
+                                <motion.div animate={{ scale: [0.95, 1.05, 0.95], opacity: [0.9, 1, 0.9] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-xl border border-[#F59E0B]/20 p-3.5 rounded-2xl shadow-[0_8px_30px_rgba(245,158,11,0.15)] flex items-center gap-3 z-20">
+                                    <div className="w-8 h-8 rounded-lg bg-[#F59E0B] flex items-center justify-center shadow-inner"><Target size={14} className="text-white" /></div>
+                                    <div>
+                                        <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">Automated Action</div>
+                                        <div className="text-xs font-semibold text-[#1a1a1a]">Shifted $5k budget to Segment A</div>
+                                    </div>
+                                </motion.div>
+                            </div>
                         </div>
                     </div>
                 </div>

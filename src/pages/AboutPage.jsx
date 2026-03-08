@@ -211,6 +211,84 @@ export default function AboutPage() {
             </div>
           </section>
 
+          {/* Global Footprint Section */}
+          <section className="bg-[#1a1a1a] rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
+            {/* Background Map Graphic (Conceptual) */}
+            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-[#8B5CF6]/10 to-transparent rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl" />
+
+            <div className="grid md:grid-cols-2 gap-16 relative z-10 items-center">
+              <div>
+                <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-widest text-[#8B5CF6] uppercase mb-6 inline-block">03 // Global Footprint</span>
+                <h2 className="text-4xl font-black mb-8 leading-tight">Operating Where <br /><span className="text-[#FF6B00]">Complexity Lives</span></h2>
+                <p className="text-gray-400 text-lg leading-relaxed font-medium mb-10">
+                  We don't build software for startups. Marapone models are deployed in the supply chain nerve centers, port compliance desks, and heavy construction war rooms of the Global 2000.
+                </p>
+                <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
+                  <div>
+                    <div className="text-3xl font-black text-white mb-1">11+</div>
+                    <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Data Centers Secured</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-black text-white mb-1">2.4B</div>
+                    <div className="text-sm font-bold text-gray-500 uppercase tracking-wide">Parameters Fine-Tuned</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                  <div className="w-10 h-10 rounded-full bg-[#10B981]/20 flex items-center justify-center text-[#10B981] mb-4">
+                    <Shield size={20} />
+                  </div>
+                  <h4 className="font-bold text-white mb-2">Defense/Aero</h4>
+                  <p className="text-sm text-gray-400">Air-gapped models for ITAR-compliant schematics generation.</p>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm mt-0 sm:mt-8">
+                  <div className="w-10 h-10 rounded-full bg-[#8B5CF6]/20 flex items-center justify-center text-[#8B5CF6] mb-4">
+                    <Globe size={20} />
+                  </div>
+                  <h4 className="font-bold text-white mb-2">Maritime Logistics</h4>
+                  <p className="text-sm text-gray-400">Edge inference on cargo vessels lacking satellite uplink.</p>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                  <div className="w-10 h-10 rounded-full bg-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00] mb-4">
+                    <Network size={20} />
+                  </div>
+                  <h4 className="font-bold text-white mb-2">Grid Infrastructure</h4>
+                  <p className="text-sm text-gray-400">Sub-second anomalous readings routing via private networks.</p>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm mt-0 sm:mt-8">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white mb-4">
+                    <Lock size={20} />
+                  </div>
+                  <h4 className="font-bold text-white mb-2">Finance</h4>
+                  <p className="text-sm text-gray-400">On-premise contract vectorization for merger negotiations.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Philosophy Section */}
+          <section className="text-center max-w-4xl mx-auto">
+            <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">04 // Engineering Ethos</span>
+            <h2 className="text-4xl font-black text-[#1a1a1a] mb-8">Move Methodically. <br />Break Nothing.</h2>
+            <p className="text-xl text-[#4b5563] leading-relaxed font-medium mb-12">
+              The mantra of "move fast and break things" has no place in enterprise architecture. Our deployment cycles are rigorous, math-driven, and hyper-cautious. We do not gamble with corporate intelligence.
+            </p>
+            <div className="inline-flex items-center gap-6 px-8 py-4 bg-white border border-black/5 rounded-2xl shadow-sm">
+              <div className="flex -space-x-3">
+                <div className="w-10 h-10 rounded-full bg-[#1a1a1a] border-2 border-white" />
+                <div className="w-10 h-10 rounded-full bg-[#8B5CF6] border-2 border-white" />
+                <div className="w-10 h-10 rounded-full bg-[#FF6B00] border-2 border-white" />
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-bold text-[#1a1a1a]">Architected by experts</div>
+                <div className="text-xs text-[#6b7280]">from Deepmind, Palantir, and AWS</div>
+              </div>
+            </div>
+          </section>
+
         </div>
 
       </div>

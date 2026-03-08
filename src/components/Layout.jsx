@@ -23,7 +23,7 @@ export default function Layout({ children }) {
     { name: 'Pricing', url: '/pricing', icon: CreditCard },
     { name: 'About', url: '/about', icon: Info },
     { name: 'Contact', url: '/contact', icon: Mail },
-    { name: 'Custom LLM', url: '/custom-llm', icon: Brain },
+    { name: 'GasperAI', url: '/custom-llm', icon: Brain },
     isAuthenticated
       ? { name: 'Logout', url: '/login', icon: LogOut, onClick: handleLogout }
       : { name: 'Account', url: '/account', icon: User }

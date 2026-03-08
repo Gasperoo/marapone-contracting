@@ -431,12 +431,12 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Main Corporate Headline */}
                     <div className="max-w-4xl mx-auto mb-8">
                         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#1a1a1a] leading-[1.05]">
-                            Architecting the Future of <span className="relative inline-block"><span className="relative z-10">B2B Intelligence</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
+                            Turning chaos into <span className="relative inline-block"><span className="relative z-10">clarity.</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
                         </motion.h1>
                     </div>
 
                     <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
-                        Marapone builds bespoke, fully sovereign AI integrations for structural industries. Zero subscriptions. Complete ownership.
+                        Marapone builds bespoke, fully sovereign AI integrations for intensive industries. <strong className="text-[#1a1a1a]">ZERO</strong> subscriptions. <strong className="text-[#1a1a1a]">COMPLETE</strong> ownership.
                     </motion.p>
 
                     {/* Unified CTA */}

@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import {
     Database, Network, CloudRain, Globe2, Activity,
     Brain, Fingerprint, Lock, ShieldCheck, Zap,
-    Terminal, SearchCode, Workflow
+    Terminal, SearchCode, Workflow, ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Particles from '../components/Particles/Particles';

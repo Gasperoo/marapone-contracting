@@ -13,7 +13,7 @@ export default function PricingPage() {
             name: 'VPC Sandbox',
             id: 'tier-sandbox',
             price: '$2,500',
-            period: '/month',
+            period: 'One-Time',
             description: 'For pilot teams evaluating custom LLMs on a partitioned cloud instance.',
             features: [
                 'Dedicated Partitioned Inference',
@@ -31,7 +31,7 @@ export default function PricingPage() {
             name: 'Dedicated Cloud Core',
             id: 'tier-cloud-core',
             price: '$8,000',
-            period: '/month',
+            period: 'One-Time',
             description: 'Full production deployment within a secure, single-tenant AWS/Azure VPC.',
             features: [
                 'Single-Tenant GPU Cluster',
@@ -50,7 +50,7 @@ export default function PricingPage() {
             name: 'Global Cloud Enterprise',
             id: 'tier-cloud-enterprise',
             price: 'Custom',
-            period: 'Licensing',
+            period: 'One-Time',
             description: 'Multi-region deployment for global supply chains and massive data lakes.',
             features: [
                 'Multi-Region 99.99% SLA',
@@ -72,7 +72,7 @@ export default function PricingPage() {
             name: 'Air-Gapped Node',
             id: 'tier-air-gapped',
             price: '$15,000',
-            period: '/month',
+            period: 'One-Time',
             description: 'A fully isolated deployment on your hardware. We provide everything from Mac-mini local LLMs for small businesses all the way to enterprise-level servers.',
             features: [
                 'Full Local Model Weights Access',
@@ -90,7 +90,7 @@ export default function PricingPage() {
             name: 'Sovereign Cluster Deploy',
             id: 'tier-sovereign',
             price: 'Custom',
-            period: 'Contract',
+            period: 'One-Time',
             description: 'Defense-grade multi-node deployment for highly classified data environments.',
             features: [
                 'Multi-Node Local Kubernetes Deploy',

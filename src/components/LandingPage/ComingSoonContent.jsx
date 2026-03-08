@@ -2341,7 +2341,7 @@ export default function ComingSoonContent() {
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <IndustryCard icon={<HardHat size={28} />} title="Construction" description="Blueprint takeoffs, site security vision, schedule optimization, and predictive cash flow modeling." color="text-[#FF6B00]" useCase="Full Project Intelligence" />
-                    <IndustryCard icon={<Truck size={28} />} title="Logistics" description="Predictive automated routing, real-time supply chain tracking, and customs document extraction." color="text-[#0EA5E9]" useCase="Global Digital Twin" />
+                    <IndustryCard icon={<Truck size={28} />} title="Import/Export & Logistics" description="Predictive automated routing, real-time supply chain tracking, and customs document extraction." color="text-[#0EA5E9]" useCase="Global Digital Twin" />
                     <IndustryCard icon={<TrendingUp size={28} />} title="Marketing" description="Automated ad campaign optimization, predictive lead scoring, and customer sentiment analysis." color="text-[#F59E0B]" useCase="AI-Driven Growth" />
                     <IndustryCard icon={<Package size={28} />} title="E-Commerce" description="Dynamic pricing algorithms, smart inventory forecasting, and autonomous support agents." color="text-[#8B5CF6]" useCase="Revenue Optimization" />
                 </div>

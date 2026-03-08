@@ -260,8 +260,8 @@ export default function HowItWorksPage() {
                         {/* Glow effect */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-[#FF6B00]/10 via-transparent to-[#F59E0B]/10 blur-[50px] pointer-events-none" />
 
-                        <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6 relative z-10">Experience the Engine</h2>
-                        <p className="text-xl text-[#4b5563] mb-10 relative z-10 max-w-2xl mx-auto">Stop working with fragmented data. Connect your systems to the Gasper engine and unlock true operational intelligence.</p>
+                        <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6 relative z-10">Experience the Marapone Engine</h2>
+                        <p className="text-xl text-[#4b5563] mb-10 relative z-10 max-w-2xl mx-auto">Stop working with fragmented data. Secure a fully sovereign Custom LLM tailored to your exact operational realities.</p>
                         <Link to="/contact" className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-[#FF6B00] rounded-xl hover:bg-[#F59E0B] transition-colors shadow-[0_10px_40px_rgba(255,107,0,0.3)] hover:-translate-y-1 relative z-10">
                             Book Architecture Demo
                         </Link>

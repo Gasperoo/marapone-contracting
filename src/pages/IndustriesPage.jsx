@@ -1,6 +1,10 @@
 import React, { useState, forwardRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Anchor, Truck, ShoppingBag, Factory, Wheat, Fuel, ArrowRight, HardHat, Stethoscope, Plane, Hammer, Wrench, Building2, Trees } from 'lucide-react';
+import {
+    Anchor, Truck, Factory, Fuel, ArrowRight,
+    HardHat, Stethoscope, Building2, Server, Globe,
+    ShieldCheck, Cpu
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Particles from '../components/Particles/Particles';
 
@@ -17,34 +21,34 @@ const IndustryNode = forwardRef(({ icon, title, description, color, useCase, cat
             onMouseEnter={onHover}
             onMouseLeave={() => onHover(null)}
             onClick={onClick}
-            className={`relative p-6 rounded-2xl cursor-pointer transition-all duration-300 border backdrop-blur-md
+            className={`relative p-8 rounded-[1.5rem] cursor-pointer transition-all duration-500 border backdrop-blur-xl overflow-hidden group
                 ${isSelected || isHovered
-                    ? 'bg-white shadow-xl scale-[1.02]'
-                    : 'bg-white/80 border-black/5 hover:border-[#FF6B00]/20 shadow-sm'}
+                    ? 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] scale-[1.02] border-transparent'
+                    : 'bg-white/60 border-black/5 hover:bg-white/90 shadow-sm'}
             `}
             style={{
-                boxShadow: (isSelected || isHovered) ? `0 10px 30px ${color}15` : 'none',
-                borderColor: (isSelected || isHovered) ? color : 'rgba(0,0,0,0.05)'
+                boxShadow: (isSelected || isHovered) ? `0 20px 40px ${color}15, inset 0 0 0 1px ${color}40` : 'none',
             }}
         >
-            <div className={`w-14 h-14 rounded-xl mb-6 flex items-center justify-center transition-all ${isHovered || isSelected ? 'scale-110' : ''}`}
-                style={{ backgroundColor: `${color}10`, color: color, boxShadow: (isHovered || isSelected) ? `0 0 20px ${color}20` : 'none' }}>
+            {/* Hover Gradient Background */}
+            <div
+                className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`}
+                style={{ background: `radial-gradient(circle at top right, ${color}, transparent 70%)` }}
+            />
+
+            <div className={`w-14 h-14 rounded-2xl mb-8 flex items-center justify-center transition-all duration-300 relative z-10 ${isHovered || isSelected ? 'scale-110' : ''}`}
+                style={{ backgroundColor: `${color}15`, color: color, boxShadow: (isHovered || isSelected) ? `0 0 25px ${color}30` : 'none' }}>
                 {icon}
             </div>
-            <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">{title}</h3>
-            <p className="text-[#4b5563] text-sm leading-relaxed mb-6 line-clamp-3">{description}</p>
 
-            <div className={`pt-4 border-t border-black/5 flex items-center justify-between text-xs font-semibold uppercase tracking-wider ${isHovered || isSelected ? 'text-[#FF6B00]' : 'text-[#6b7280]'}`}>
+            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4 relative z-10">{title}</h3>
+            <p className="text-[#6b7280] text-base leading-relaxed mb-6 line-clamp-3 relative z-10">{description}</p>
+
+            <div className={`pt-6 border-t border-black/5 flex items-center justify-between text-xs font-bold uppercase tracking-widest transition-colors duration-300 relative z-10 ${isHovered || isSelected ? '' : 'text-[#9ca3af]'}`}
+                style={{ color: (isHovered || isSelected) ? color : undefined }}>
                 <span>{category}</span>
-                <ArrowRight size={16} />
+                <ArrowRight size={18} className={`transform transition-transform ${isHovered || isSelected ? 'translate-x-1' : ''}`} />
             </div>
-
-            {/* Glowing active indicator */}
-            <motion.div
-                className="absolute inset-x-0 bottom-0 h-1 rounded-b-2xl opacity-0"
-                animate={{ opacity: (isSelected || isHovered) ? 1 : 0 }}
-                style={{ backgroundColor: color, boxShadow: `0 -2px 10px ${color}40` }}
-            />
         </motion.div>
     );
 });
@@ -55,106 +59,91 @@ export default function IndustriesPage() {
     const [selectedIndustry, setSelectedIndustry] = useState(null);
 
     const industries = [
-        { id: 'maritime', category: 'Logistics', icon: <Anchor size={28} />, title: 'Maritime Supply', description: 'Optimize port calls, track container vessels globally, and predict congestion at major hubs to reduce demurrage.', color: '#ea580c', useCase: 'Voyage Optimization AI' },
-        { id: 'freight', category: 'Logistics', icon: <Truck size={28} />, title: 'Freight Forwarding', description: 'Manage multi-modal shipments seamlessly. Automate HS code classification and provide clients with white-labeled predictive tracking.', color: '#FF6B00', useCase: 'Automated Customs Brokerage' },
-        { id: 'retail', category: 'Logistics', icon: <ShoppingBag size={28} />, title: 'Retail & E-commerce', description: 'Ensure stock availability by tracking inventory from overseas factories to regional warehouses. Predict transit delays instantly.', color: '#f97316', useCase: 'Predictive Inventory Engine' },
-        { id: 'manufacturing', category: 'Logistics', icon: <Factory size={28} />, title: 'Manufacturing', description: 'Secure supply lines against disruptions. Monitor raw material shipments and identify alternative suppliers when geopolitics shift.', color: '#fb923c', useCase: 'Supplier Risk Radar' },
-        { id: 'pharma', category: 'Logistics', icon: <Stethoscope size={28} />, title: 'Healthcare & Pharma', description: 'Maintain strict cold-chain integrity for sensitive pharmaceuticals with real-time IoT temperature monitoring and deviation alerts.', color: '#fdba74', useCase: 'Cold Chain Guardian AI' },
+        // Supply Chain Phase
+        { id: 'maritime', category: 'Supply Chain', icon: <Anchor size={28} />, title: 'Global Maritime', description: 'Deploy a sovereign LLM to predict port congestion, automatically classify HS codes, and flag geopolitical risks across all shipping lanes.', color: '#0EA5E9', useCase: 'Voyage Risk Predictor' },
+        { id: 'logistics', category: 'Supply Chain', icon: <Truck size={28} />, title: 'Freight & Logistics', description: 'Instantly parse thousands of Bills of Lading and Commercial Invoices. The AI routes exceptions directly to human operators for approval.', color: '#38BDF8', useCase: 'Document Ingestion Engine' },
+        { id: 'manufacturing', category: 'Manufacturing', icon: <Factory size={28} />, title: 'Heavy Manufacturing', description: 'Connect IoT sensor data with supply chain telemetry. The LLM predicts material shortages weeks before they impact the production line.', color: '#8B5CF6', useCase: 'Supply Line Forecaster' },
 
-        { id: 'general-contracting', category: 'Construction', icon: <Building2 size={28} />, title: 'General Contracting', description: 'Unify your job site. Automate schedule updates based on actual progress tracking and material delivery predictions.', color: '#F59E0B', useCase: '4D Schedule Simulation' },
-        { id: 'heavy-civil', category: 'Construction', icon: <HardHat size={28} />, title: 'Heavy Civil', description: 'Coordinate massive fleet movements. Use drone topology processing to calculate cut/fill volumes with extreme millimeter precision.', color: '#d97706', useCase: 'Automated Topology AI' },
-        { id: 'specialty-trades', category: 'Construction', icon: <Wrench size={28} />, title: 'Specialty Trades', description: 'Ensure your teams never wait on materials. Just-in-time delivery scheduling synchronized completely with the master build plan.', color: '#b45309', useCase: 'JIT Material Sequencing' },
-        { id: 'engineering', category: 'Construction', icon: <Hammer size={28} />, title: 'Engineering & Design', description: 'Push Generative AI clashes back to the design phase. Run thousands of structural scenarios before groundbreaking ever occurs.', color: '#f59e0b', useCase: 'Generative BIM Clash Detection' },
-        { id: 'energy-infrastructure', category: 'Construction', icon: <Fuel size={28} />, title: 'Energy Infrastructure', description: 'Manage the extreme complexity of power plant and grid construction with AI-driven compliance and safety monitoring.', color: '#fbbf24', useCase: 'Predictive Site Safety AI' }
+        // Built Environment Phase
+        { id: 'general-contracting', category: 'Built Environment', icon: <Building2 size={28} />, title: 'General Contracting', description: 'Generative AI parses unstructured RFPs, local building codes, and massive 2D blueprint sets into structured, actionable intelligence instantly.', color: '#FF6B00', useCase: 'Automated Takeoff & Compliance' },
+        { id: 'heavy-civil', category: 'Built Environment', icon: <HardHat size={28} />, title: 'Heavy Civil', description: 'Unify disparate job site data. The AI correlates daily drone scans with safety logs and financial burn rates to predict schedule slips.', color: '#F59E0B', useCase: '4D Site Simulation' },
+
+        // Regulated Sectors
+        { id: 'pharma', category: 'Regulated Sectors', icon: <Stethoscope size={28} />, title: 'Pharma & Life Sciences', description: 'Train a sovereign model entirely on your proprietary clinical trial data and cold-chain compliance logs to ensure zero-defect distribution.', color: '#10B981', useCase: 'Cold-Chain Validation AI' },
+        { id: 'energy', category: 'Regulated Sectors', icon: <Fuel size={28} />, title: 'Energy & Resources', description: 'Manage massive infrastructure projects. The AI monitors global equipment sourcing and cross-references it against strict regulatory frameworks.', color: '#14B8A6', useCase: 'Regulatory Sync Engine' }
     ];
 
     const filteredIndustries = activeFilter === 'all'
         ? industries
-        : industries.filter(ind => ind.category.toLowerCase() === activeFilter);
-
-    // Dynamic background based on filter
-    const bgColors = {
-        all: ['#FF6B00', '#F59E0B', '#1a1a1a'],
-        logistics: ['#FF6B00', '#ea580c', '#fb923c'],
-        construction: ['#F59E0B', '#d97706', '#fbbf24']
-    };
+        : industries.filter(ind => ind.category.toLowerCase() === activeFilter.toLowerCase().replace('-', ' '));
 
     return (
         <div className="min-h-screen pt-32 pb-24 relative overflow-hidden text-[#1a1a1a]" style={{ backgroundColor: '#F5F5F5' }}>
-            {/* Dynamic Particles Background */}
-            <div className="absolute inset-0 z-0">
+            {/* Ambient Background */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
                 <Particles
                     key={activeFilter}
-                    particleColors={bgColors[activeFilter]}
-                    particleCount={300}
+                    particleColors={['#8B5CF6', '#1a1a1a', '#FF6B00', '#0EA5E9']}
+                    particleCount={150}
                     particleSpread={15}
-                    speed={0.1}
-                    particleBaseSize={80}
-                    moveParticlesOnHover={true}
-                    alphaParticles={true}
+                    speed={0.06}
                     sizeRandomness={1.5}
-                    cameraDistance={25}
+                    alphaParticles={true}
                 />
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
 
                 {/* Header Section */}
-                <div className="text-center max-w-4xl mx-auto mb-16">
+                <div className="text-center max-w-4xl mx-auto mb-20">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center px-4 py-2 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/5 backdrop-blur-md mb-8"
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-black/5 bg-white/60 backdrop-blur-md mb-8 shadow-sm"
                     >
-                        <span className="text-sm font-bold tracking-widest text-[#FF6B00] uppercase flex flex-col sm:flex-row gap-2">
-                            <span className="text-[#FF6B00]">Supply Chain</span>
-                            <span className="hidden sm:inline text-black/20 truncate">///</span>
-                            <span className="text-[#F59E0B]">Built Environment</span>
-                        </span>
+                        <Globe size={16} className="text-[#8B5CF6]" />
+                        <span className="text-sm font-bold tracking-widest text-[#1a1a1a] uppercase">Enterprise Use Cases</span>
                     </motion.div>
 
                     <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-bold tracking-tight text-[#1a1a1a] mb-8"
+                        className="text-5xl md:text-7xl font-black tracking-tight text-[#1a1a1a] mb-8 leading-[1.1]"
                     >
-                        Powering <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] via-[#ea580c] to-[#F59E0B]">Every Sector</span>
+                        Intelligence For <br className="hidden md:block" />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#1a1a1a] to-[#FF6B00]">Physical Operations</span>
                     </motion.h1>
 
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-[#4b5563] leading-relaxed"
+                        className="text-xl text-[#4b5563] leading-relaxed font-medium"
                     >
-                        From raw material extraction to final-mile delivery, and from groundbreaking to final inspection. Gasper provides the specialized AI intelligence your industry demands.
+                        Discover how the world's most complex industries are deploying fully sovereign Marapone large language models to turn chaos into clarity.
                     </motion.p>
                 </div>
 
                 {/* Interactive Filter Pills */}
                 <div className="flex flex-wrap justify-center gap-4 mb-16">
-                    {['all', 'logistics', 'construction'].map((filter) => (
+                    {['all', 'Supply Chain', 'Built Environment', 'Manufacturing', 'Regulated Sectors'].map((filter) => (
                         <button
                             key={filter}
-                            onClick={() => setActiveFilter(filter)}
-                            className={`px-8 py-3 rounded-xl font-bold text-sm tracking-wider transition-all duration-300 border backdrop-blur-md
-                                ${activeFilter === filter
-                                    ? filter === 'logistics'
-                                        ? 'bg-[#FF6B00]/20 border-[#FF6B00] text-[#1a1a1a] shadow-[0_5px_20px_rgba(255,107,0,0.2)]'
-                                        : filter === 'construction'
-                                            ? 'bg-[#F59E0B]/20 border-[#F59E0B] text-[#1a1a1a] shadow-[0_5px_20px_rgba(245,158,11,0.2)]'
-                                            : 'bg-white border-black/10 text-[#1a1a1a] shadow-md'
-                                    : 'bg-white border-black/5 text-[#4b5563] hover:text-[#1a1a1a] hover:border-[#FF6B00]/30 shadow-sm'
+                            onClick={() => setActiveFilter(filter === 'all' ? 'all' : filter)}
+                            className={`px-8 py-3.5 rounded-full font-bold text-sm tracking-wider transition-all duration-300 border backdrop-blur-md
+                                ${activeFilter.toLowerCase() === filter.toLowerCase()
+                                    ? 'bg-[#1a1a1a] border-[#1a1a1a] text-white shadow-lg shadow-black/10 scale-105'
+                                    : 'bg-white/80 border-black/10 text-[#4b5563] hover:text-[#1a1a1a] hover:bg-white shadow-sm'
                                 }`}
                         >
-                            {filter === 'all' ? 'All Sectors' : filter.charAt(0).toUpperCase() + filter.slice(1)}
+                            {filter === 'all' ? 'All Sectors' : filter}
                         </button>
                     ))}
                 </div>
 
-                {/* Industry Grid Area & Hero Reveal */}
-                <div className="flex flex-col lg:flex-row gap-12">
+                {/* Industry Grid Area & Reveal Panel */}
+                <div className="flex flex-col xl:flex-row gap-12">
 
                     {/* Interactive Grid */}
                     <div className="flex-1 grid md:grid-cols-2 gap-6">
@@ -173,7 +162,7 @@ export default function IndustriesPage() {
                     </div>
 
                     {/* Sticky Hover Reveal Panel */}
-                    <div className="lg:w-[400px] xl:w-[500px] hidden lg:block">
+                    <div className="xl:w-[450px] hidden xl:block">
                         <div className="sticky top-32">
                             <AnimatePresence mode="wait">
                                 {(selectedIndustry || hoveredIndustry) ? (
@@ -182,45 +171,61 @@ export default function IndustriesPage() {
                                         initial={{ opacity: 0, x: 20, filter: 'blur(10px)' }}
                                         animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                                         exit={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
-                                        transition={{ duration: 0.3 }}
-                                        className="h-[600px] rounded-3xl border backdrop-blur-xl p-10 flex flex-col justify-between overflow-hidden relative"
+                                        transition={{ duration: 0.4, ease: "easeOut" }}
+                                        className="h-[700px] rounded-[2.5rem] border backdrop-blur-2xl p-12 flex flex-col justify-between overflow-hidden relative shadow-[0_20px_60px_rgb(0,0,0,0.08)] bg-white/95"
                                         style={{
-                                            backgroundColor: 'rgba(255,255,255,0.95)',
                                             borderColor: `${(selectedIndustry || hoveredIndustry).color}30`,
-                                            boxShadow: `0 20px 40px rgba(0,0,0,0.05), inset 0 0 100px ${(selectedIndustry || hoveredIndustry).color}10`
                                         }}
                                     >
-                                        {/* Background Glow */}
-                                        <div className="absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-10" style={{ backgroundColor: (selectedIndustry || hoveredIndustry).color }} />
+                                        {/* Background Ambient Glow */}
+                                        <div
+                                            className="absolute -top-32 -right-32 w-96 h-96 blur-[120px] opacity-20 pointer-events-none rounded-full transition-colors duration-500"
+                                            style={{ backgroundColor: (selectedIndustry || hoveredIndustry).color }}
+                                        />
 
-                                        <div>
-                                            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/20 text-xs font-bold tracking-wider text-[#FF6B00] mb-8 uppercase">
-                                                Active Intelligence
+                                        <div className="relative z-10">
+                                            <div className="inline-flex items-center px-4 py-1.5 rounded-full border text-xs font-bold tracking-widest uppercase mb-10 transition-colors duration-500"
+                                                style={{
+                                                    backgroundColor: `${(selectedIndustry || hoveredIndustry).color}10`,
+                                                    borderColor: `${(selectedIndustry || hoveredIndustry).color}30`,
+                                                    color: (selectedIndustry || hoveredIndustry).color
+                                                }}>
+                                                <ShieldCheck size={14} className="mr-2" /> Sovereign AI Role
                                             </div>
-                                            <h3 className="text-4xl font-bold text-[#1a1a1a] mb-6 leading-tight">
-                                                {(selectedIndustry || hoveredIndustry).title} <span style={{ color: (selectedIndustry || hoveredIndustry).color }}>OS</span>
+
+                                            <div className="w-16 h-16 rounded-2xl mb-8 flex items-center justify-center border shadow-sm transition-colors duration-500"
+                                                style={{ backgroundColor: 'white', borderColor: `${(selectedIndustry || hoveredIndustry).color}20`, color: (selectedIndustry || hoveredIndustry).color }}>
+                                                {(selectedIndustry || hoveredIndustry).icon}
+                                            </div>
+
+                                            <h3 className="text-4xl font-extrabold text-[#1a1a1a] mb-6 leading-[1.15] tracking-tight transition-colors duration-500">
+                                                {(selectedIndustry || hoveredIndustry).title}
                                             </h3>
-                                            <p className="text-xl text-[#4b5563] leading-relaxed mb-8">
+
+                                            <p className="text-lg text-[#4b5563] leading-relaxed mb-8 font-medium">
                                                 {(selectedIndustry || hoveredIndustry).description}
                                             </p>
                                         </div>
 
-                                        <div>
-                                            <div className="p-6 rounded-2xl bg-[#F5F5F5] border border-black/5">
-                                                <h4 className="text-sm font-bold text-[#6b7280] uppercase tracking-widest mb-4">Primary AI Agent</h4>
-                                                <div className="flex items-center gap-4">
-                                                    <div className="w-12 h-12 rounded-full flex items-center justify-center border" style={{ backgroundColor: `${(selectedIndustry || hoveredIndustry).color}15`, borderColor: (selectedIndustry || hoveredIndustry).color, color: (selectedIndustry || hoveredIndustry).color }}>
-                                                        {(selectedIndustry || hoveredIndustry).icon}
-                                                    </div>
+                                        <div className="relative z-10 border-t border-black/5 pt-8">
+                                            <div className="mb-8">
+                                                <h4 className="text-xs font-bold text-[#9ca3af] uppercase tracking-widest mb-3">Deployed Cognitive Engine</h4>
+                                                <div className="flex items-center gap-3">
+                                                    <Cpu size={20} className="text-[#1a1a1a]" />
                                                     <span className="text-lg font-bold text-[#1a1a1a]">{(selectedIndustry || hoveredIndustry).useCase}</span>
                                                 </div>
                                             </div>
 
                                             <Link
                                                 to="/contact"
-                                                className="w-full mt-6 py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group border border-black/5"
-                                                style={{ backgroundImage: `linear-gradient(to right, ${(selectedIndustry || hoveredIndustry).color}, ${(selectedIndustry || hoveredIndustry).color}dd)` }}>
-                                                Request Custom Demo <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                                className="w-full py-5 rounded-2xl font-bold text-white transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 group relative overflow-hidden"
+                                                style={{ backgroundColor: '#1a1a1a' }}
+                                            >
+                                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                                                    style={{ background: `linear-gradient(to right, transparent, ${(selectedIndustry || hoveredIndustry).color}40, transparent)` }} />
+                                                <span className="relative z-10 flex items-center gap-2">
+                                                    Request Architecture Demo <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                                </span>
                                             </Link>
                                         </div>
                                     </motion.div>
@@ -230,13 +235,13 @@ export default function IndustriesPage() {
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
-                                        className="h-[600px] rounded-3xl border border-black/5 bg-white/50 backdrop-blur-sm p-10 flex flex-col items-center justify-center text-center border-dashed"
+                                        className="h-[700px] rounded-[2.5rem] border border-black/5 bg-white/40 backdrop-blur-md p-12 flex flex-col items-center justify-center text-center border-dashed"
                                     >
-                                        <div className="w-20 h-20 rounded-full bg-[#FF6B00]/10 flex items-center justify-center mb-6 text-[#FF6B00]">
-                                            <Wrench size={32} />
+                                        <div className="w-24 h-24 rounded-full bg-black/5 flex items-center justify-center mb-8 text-[#9ca3af]">
+                                            <Server size={40} />
                                         </div>
-                                        <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Select an Industry</h3>
-                                        <p className="text-[#6b7280] text-lg">Hover over any sector card to reveal the specialized Gasper AI agents operating in that domain.</p>
+                                        <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">Select an Environment</h3>
+                                        <p className="text-[#6b7280] text-lg max-w-sm">Hover over any sector card to explore how Marapone deploys sovereign intelligence into that domain.</p>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -249,12 +254,12 @@ export default function IndustriesPage() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-32 max-w-4xl mx-auto text-center"
+                    className="mt-40 border-t border-black/5 pt-20 max-w-4xl mx-auto text-center"
                 >
-                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6">Didn't find your specific niche?</h2>
-                    <p className="text-xl text-[#4b5563] mb-10">Our foundational AI models are highly adaptable. Contact our engineering team for a custom deployment evaluation.</p>
-                    <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-[#FF6B00] rounded-xl hover:bg-[#F59E0B] transition-colors shadow-[0_10px_30px_rgba(255,107,0,0.3)] hover:-translate-y-1">
-                        Speak with Engineering <ArrowRight size={20} className="ml-2" />
+                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6 tracking-tight">Don't see your specific sector?</h2>
+                    <p className="text-xl text-[#4b5563] mb-10 font-medium leading-relaxed">Our foundational models are domain-agnostic before they are trained on your unique data. We can architect a solution for any complex physical operation.</p>
+                    <Link to="/contact" className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-[#FF6B00] rounded-xl hover:bg-[#ea580c] transition-colors shadow-[0_10px_30px_rgba(255,107,0,0.3)] hover:-translate-y-1 group">
+                        Speak with Engineering <ArrowRight size={20} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </motion.div>
 

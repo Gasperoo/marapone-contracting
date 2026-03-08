@@ -400,7 +400,9 @@ export default function LandingPage({ comingSoonMode = false }) {
             <section className="hero-section relative min-h-screen flex flex-col justify-center pt-24 pb-20 w-full overflow-hidden z-10">
                 {/* Refined Corporate Background */}
                 <div className="absolute inset-0 z-0 bg-grid-slate-100/[0.04] bg-[bottom_1px_center]" />
-                <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/20 via-transparent to-transparent pointer-events-none" />
+
+                {/* Premium Black-to-White Header Gradient */}
+                <div className="absolute top-0 inset-x-0 h-[450px] z-[1] pointer-events-none" style={{ background: 'linear-gradient(to bottom, #050505 0%, rgba(5,5,5,0.9) 20%, rgba(245,245,245,0) 100%)' }} />
 
                 {/* Subtle Glows */}
                 <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none z-0" animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />

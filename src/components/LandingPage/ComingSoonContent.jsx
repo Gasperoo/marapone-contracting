@@ -458,7 +458,7 @@ function GasperAIBotSection() {
                                 <div className="w-3 h-3 rounded-full bg-green-400" />
                                 <span className="ml-3 text-xs font-mono text-gray-500 font-bold">internal_copilot_v4.2</span>
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center flex-wrap gap-2 sm:gap-4 justify-end">
                                 <div className="text-[10px] font-mono text-gray-500 font-bold bg-white px-2.5 py-1 rounded border border-black/[0.06] shadow-sm uppercase tracking-wide">Private Instance</div>
                                 <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#10B981] font-bold uppercase tracking-widest bg-[#10B981]/10 px-2.5 py-1 rounded-full">
                                     <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
@@ -1806,7 +1806,7 @@ function ConstructionShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full perspective-1000">
                     {/* Premium Animated Card for Construction */}
-                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] min-h-[400px] lg:min-h-0 lg:aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
                         {/* Terminal Header */}
                         <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-white/90 backdrop-blur-md z-30">
                             <div className="flex gap-2"><div className="w-3 h-3 rounded-full bg-[#ff5f56]" /><div className="w-3 h-3 rounded-full bg-[#ffbd2e]" /><div className="w-3 h-3 rounded-full bg-[#27c93f]" /></div>
@@ -1842,12 +1842,12 @@ function ConstructionShowcase() {
                                 </motion.div>
 
                                 {/* Floating Data Points */}
-                                <motion.div animate={{ y: [0, -10, 0], opacity: [0.9, 1, 0.9] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="absolute -top-4 -right-12 bg-white/95 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl p-3.5 z-30 pointer-events-none -translate-y-16">
+                                <motion.div animate={{ y: [0, -10, 0], opacity: [0.9, 1, 0.9] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-2 right-2 sm:-top-4 sm:-right-12 bg-white/95 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl p-3.5 z-30 pointer-events-none sm:-translate-y-16">
                                     <div className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.15em] mb-1">Takeoff Accuracy</div>
                                     <div className="text-2xl font-black text-[#10B981] tracking-tight">99.4%</div>
                                 </motion.div>
 
-                                <motion.div animate={{ y: [0, 10, 0], opacity: [0.9, 1, 0.9] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }} className="absolute -bottom-4 -left-8 bg-white/95 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl p-3.5 z-30 pointer-events-none">
+                                <motion.div animate={{ y: [0, 10, 0], opacity: [0.9, 1, 0.9] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }} className="absolute bottom-2 left-2 sm:-bottom-4 sm:-left-8 bg-white/95 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl p-3.5 z-30 pointer-events-none">
                                     <div className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.15em] mb-1">Items Extracted</div>
                                     <div className="text-2xl font-black text-[#FF6B00] tracking-tight">12,408</div>
                                 </motion.div>
@@ -1902,13 +1902,13 @@ function LogisticsShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full perspective-1000">
                     {/* Premium Animated Card for Logistics */}
-                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] min-h-[400px] lg:min-h-0 lg:aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
                         <div className="h-12 border-b border-black/[0.04] flex items-center px-5 justify-between bg-white/90 backdrop-blur-md z-30">
                             <div className="text-[11px] font-mono font-bold text-[#0EA5E9] tracking-widest">NODE MAP: GLOBAL</div>
                             <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse" /> <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-gray-500">Tracking Active</span></div>
                         </div>
 
-                        <div className="flex-1 bg-gradient-to-br from-[#ffffff] to-[#f1f5f9] relative overflow-hidden flex items-center justify-center p-8">
+                        <div className="flex-1 bg-gradient-to-br from-[#ffffff] to-[#f1f5f9] relative overflow-hidden flex items-center justify-center p-4 sm:p-8">
                             {/* Map-like dark background */}
                             <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }} />
 
@@ -1970,7 +1970,7 @@ function LogisticsShowcase() {
                                     </div>
 
                                     {/* Floating Data Panel */}
-                                    <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-[10%] inset-x-8 bg-white/95 backdrop-blur-xl border border-black/5 p-3.5 rounded-2xl flex justify-between items-center shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+                                    <motion.div animate={{ y: [-5, 5, -5] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-[5%] inset-x-4 sm:bottom-[10%] sm:inset-x-8 bg-white/95 backdrop-blur-xl border border-black/5 p-3.5 rounded-2xl flex justify-between items-center shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
                                         <div className="flex items-center gap-3">
                                             <div className="w-8 h-8 rounded-lg bg-[#0EA5E9]/10 flex items-center justify-center"><Target size={14} className="text-[#0EA5E9]" /></div>
                                             <div>
@@ -2031,7 +2031,7 @@ function MarketingShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full perspective-1000">
                     {/* Premium Animated Card for Marketing */}
-                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] min-h-[500px] lg:min-h-0 lg:aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
                         <div className="h-12 border-b border-black/[0.04] flex items-center px-6 justify-between bg-white/90 backdrop-blur-md z-30">
                             <div className="font-bold text-[13px] text-[#1a1a1a] tracking-tight">Campaign Command Center</div>
                             <div className="flex items-center gap-3">
@@ -2043,7 +2043,7 @@ function MarketingShowcase() {
                             {/* Abstract Grid Background */}
                             <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundSize: '40px 40px', backgroundImage: 'linear-gradient(to right, #F59E0B 1px, transparent 1px), linear-gradient(to bottom, #F59E0B 1px, transparent 1px)' }} />
 
-                            <div className="flex-1 w-full relative z-10 grid grid-cols-2 gap-4" style={{ perspective: '1000px' }}>
+                            <div className="flex-1 w-full relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4" style={{ perspective: '1000px' }}>
 
                                 {/* Left Chart Segment */}
                                 <div className="col-span-1 relative flex flex-col justify-end gap-1.5 pb-2 border-b-2 border-black/[0.04]">
@@ -2091,7 +2091,7 @@ function MarketingShowcase() {
                                 </div>
 
                                 {/* Overlay Floating Alert */}
-                                <motion.div animate={{ scale: [0.95, 1.05, 0.95], opacity: [0.9, 1, 0.9] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-xl border border-[#F59E0B]/20 p-3.5 rounded-2xl shadow-[0_8px_30px_rgba(245,158,11,0.15)] flex items-center gap-3 z-20">
+                                <motion.div animate={{ scale: [0.95, 1.05, 0.95], opacity: [0.9, 1, 0.9] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-xl border border-[#F59E0B]/20 p-3 sm:p-3.5 rounded-2xl shadow-[0_8px_30px_rgba(245,158,11,0.15)] flex items-center gap-3 z-20">
                                     <div className="w-8 h-8 rounded-lg bg-[#F59E0B] flex items-center justify-center shadow-inner"><Target size={14} className="text-white" /></div>
                                     <div>
                                         <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">Automated Action</div>
@@ -2145,7 +2145,7 @@ function EcommerceShowcase() {
                 </div>
                 <div className="lg:w-7/12 w-full perspective-1000">
                     {/* Premium Animated Card for E-Commerce */}
-                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
+                    <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.08)] bg-[#f8fafc] border border-black/[0.04] min-h-[550px] lg:min-h-0 lg:aspect-[16/10] flex flex-col group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)]" style={{ transformStyle: 'preserve-3d' }}>
                         <div className="h-12 border-b border-black/[0.04] flex items-center px-6 justify-between bg-white/90 backdrop-blur-md z-30">
                             <div className="flex items-center gap-2">
                                 <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#8B5CF6] to-[#C084FC] flex items-center justify-center shadow-inner text-white">
@@ -2156,14 +2156,14 @@ function EcommerceShowcase() {
                             <div className="text-[10px] uppercase font-bold tracking-widest text-[#8B5CF6] bg-[#8B5CF6]/10 px-2 py-0.5 rounded-sm flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] animate-pulse" /> ONLINE</div>
                         </div>
 
-                        <div className="flex-1 bg-gradient-to-br from-[#ffffff] to-[#f1f5f9] relative overflow-hidden flex p-6">
+                        <div className="flex-1 bg-gradient-to-br from-[#ffffff] to-[#f1f5f9] relative overflow-hidden flex p-4 sm:p-6">
                             {/* Dot Grid Background */}
                             <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundSize: '24px 24px', backgroundImage: 'radial-gradient(#8B5CF6 1px, transparent 1px)' }} />
 
-                            <div className="w-full h-full relative z-10 flex gap-6" style={{ perspective: '1000px' }}>
+                            <div className="w-full h-full relative z-10 flex flex-col sm:flex-row gap-4 sm:gap-6" style={{ perspective: '1000px' }}>
 
                                 {/* Chat Interface Simulation */}
-                                <div className="flex-1 flex flex-col justify-end gap-3 pb-2 relative z-10 w-[60%]">
+                                <div className="flex-1 flex flex-col justify-end gap-3 pb-2 relative z-10 w-full sm:w-[60%]">
 
                                     {/* User Message */}
                                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="self-end bg-[#1a1a1a] text-white px-4 py-2.5 rounded-2xl rounded-tr-sm text-[13px] max-w-[85%] shadow-md">
@@ -2190,7 +2190,7 @@ function EcommerceShowcase() {
                                 </div>
 
                                 {/* Dynamic Pricing Sidebar */}
-                                <div className="w-[35%] flex flex-col gap-3 relative z-10 border-l border-black/[0.04] pl-6 pt-2">
+                                <div className="w-full sm:w-[35%] flex flex-col gap-3 relative z-10 border-t sm:border-t-0 sm:border-l border-black/[0.04] pt-4 sm:pt-2 sm:pl-6">
                                     <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Active Margin Opts</div>
 
                                     <motion.div animate={{ scale: [1, 1.02, 1] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="bg-white border border-black/5 rounded-xl p-3 shadow-sm relative overflow-hidden group">

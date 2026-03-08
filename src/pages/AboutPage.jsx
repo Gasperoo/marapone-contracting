@@ -193,9 +193,9 @@ export default function AboutPage() {
                 <div className="w-14 h-14 bg-[#FF6B00]/10 border border-[#FF6B00]/20 rounded-2xl flex items-center justify-center text-[#FF6B00] mb-6">
                   <Globe size={28} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Any Cloud, Any Metal</h3>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Any Cloud, Any OS</h3>
                 <p className="text-[#6b7280] font-medium leading-relaxed">
-                  Deploy where you live. Our architecture runs seamlessly inside your existing AWS VPC, Azure tenant, or on bare-metal servers for environments requiring hyper-secure, air-gapped isolation.
+                  Integrate seamlessly on Windows, Mac, or Linux. We create custom local LLMs tailored to your business, deploying directly on the operating system that fits your infrastructure needs.
                 </p>
               </div>
 

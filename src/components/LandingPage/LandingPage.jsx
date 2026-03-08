@@ -431,7 +431,8 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Main Corporate Headline */}
                     <div className="max-w-4xl mx-auto mb-8">
                         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#1a1a1a] leading-[1.05]">
-                            Turning chaos into <span className="relative inline-block"><span className="relative z-10">clarity.</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
+                            Turning CHAOS <br />
+                            Into <span className="relative inline-block"><span className="relative z-10">CLARITY.</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
                         </motion.h1>
                     </div>
 

@@ -73,10 +73,10 @@ export default function PricingPage() {
             id: 'tier-air-gapped',
             price: '$15,000',
             period: '/month',
-            description: 'A fully isolated deployment on your hardware. Zero external network calls.',
+            description: 'A fully isolated deployment on your hardware. We provide everything from Mac-mini local LLMs for small businesses all the way to enterprise-level servers.',
             features: [
                 'Full Local Model Weights Access',
-                'Hardware Agnostic Inference Engine',
+                'Nvidia GPU-Powered Windows & Linux Builds',
                 'Zero-Trust Architecture Ready',
                 'Local Vector Database Auto-sync',
                 'Secure Offline Updates via USB'
@@ -94,8 +94,8 @@ export default function PricingPage() {
             description: 'Defense-grade multi-node deployment for highly classified data environments.',
             features: [
                 'Multi-Node Local Kubernetes Deploy',
+                'Nvidia GPU-Powered Windows & Linux Builds',
                 'Continuous Offline Fine-Tuning',
-                'Hardware Acceleration Consultation',
                 'ITAR / HIPAA / GDPR Compliant',
                 'Source Code Escrow Option',
                 'Dedicated Cleared Engineering Support'

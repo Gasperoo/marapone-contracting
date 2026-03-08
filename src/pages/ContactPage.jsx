@@ -7,6 +7,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    role: '',
     company: '',
     message: ''
   });
@@ -22,7 +23,7 @@ export default function ContactPage() {
     e.preventDefault();
     console.log('Form submitted:', formData);
     alert('Thank you. A solutions architect will be in touch shortly.');
-    setFormData({ name: '', email: '', company: '', message: '' });
+    setFormData({ name: '', email: '', role: '', company: '', message: '' });
   };
 
   return (
@@ -130,18 +131,34 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="company" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Organization</label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                required
-                className="w-full bg-[#f9fafb] border border-black/10 rounded-xl px-4 py-3 text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:bg-white focus:border-[#1a1a1a] focus:ring-1 focus:ring-[#1a1a1a] transition-all"
-                placeholder="Company GmbH"
-              />
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="role" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Job Role</label>
+                <input
+                  type="text"
+                  id="role"
+                  name="role"
+                  value={formData.role}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#f9fafb] border border-black/10 rounded-xl px-4 py-3 text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:bg-white focus:border-[#1a1a1a] focus:ring-1 focus:ring-[#1a1a1a] transition-all"
+                  placeholder="Director of Operations"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="company" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Organization</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#f9fafb] border border-black/10 rounded-xl px-4 py-3 text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:bg-white focus:border-[#1a1a1a] focus:ring-1 focus:ring-[#1a1a1a] transition-all"
+                  placeholder="Company GmbH"
+                />
+              </div>
             </div>
 
             <div className="space-y-2">

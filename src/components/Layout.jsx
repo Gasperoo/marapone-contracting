@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { TubelightNavbar } from './TubelightNavbar';
 import { useAuth } from '../context/AuthContext';
 import { StackedCircularFooter } from './StackedCircularFooter';
-import { Home, Zap, CreditCard, Info, Mail, User, LogOut, HelpCircle, Factory } from 'lucide-react';
+import { Home, Zap, CreditCard, Info, Mail, User, LogOut, HelpCircle, Factory, Brain } from 'lucide-react';
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export default function Layout({ children }) {
     { name: 'Pricing', url: '/pricing', icon: CreditCard },
     { name: 'About', url: '/about', icon: Info },
     { name: 'Contact', url: '/contact', icon: Mail },
-    { name: 'GasperAI', url: '/gasper', icon: Zap },
+    { name: 'Custom LLM', url: '/custom-llm', icon: Brain },
     isAuthenticated
       ? { name: 'Logout', url: '/login', icon: LogOut, onClick: handleLogout }
       : { name: 'Account', url: '/account', icon: User }

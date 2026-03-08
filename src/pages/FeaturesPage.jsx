@@ -344,14 +344,14 @@ export default function FeaturesPage() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-3xl font-bold text-[#1a1a1a] mb-6">Ready to upgrade your operations?</h2>
-                    <p className="text-[#4b5563] mb-8">Whether you are moving freight across the ocean or building skyscrapers, Gasper provides the intelligence you need to succeed.</p>
+                    <h2 className="text-3xl font-bold text-[#1a1a1a] mb-6">Power Your Operations with Custom Intelligence.</h2>
+                    <p className="text-[#4b5563] mb-8">Marapone builds fully isolated, sovereign AI systems trained on your data. Stop leasing intelligence and start owning it.</p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link to="/contact" className="px-8 py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:shadow-xl hover:-translate-y-1" style={{ background: primaryColor, boxShadow: `0 10px 25px ${bgGlow}` }}>
-                            Request Enterprise Demo
+                            Schedule Architecture Evaluation
                         </Link>
-                        <Link to="/pricing" className="px-8 py-4 rounded-xl font-bold text-[#1a1a1a] border border-black/10 bg-white hover:bg-black/5 transition-all">
-                            View Pricing Options
+                        <Link to="/custom-llm" className="px-8 py-4 rounded-xl font-bold text-[#1a1a1a] border border-black/10 bg-white hover:bg-black/5 transition-all">
+                            Learn about Custom LLMs
                         </Link>
                     </div>
                 </motion.div>

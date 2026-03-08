@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
+import { Icons } from './ui/Icons';
 import './StackedCircularFooter.css';
-import logo from '../images/marapone_logo.jpeg';
 
 function StackedCircularFooter() {
     const handleSubscribe = (e) => {
@@ -16,7 +16,7 @@ function StackedCircularFooter() {
             <div className="compact-footer-container">
                 <div className="compact-footer-main">
                     <div className="compact-footer-brand">
-                        <img src={logo} alt="Marapone Logo" className="w-6 h-6 rounded-sm object-cover" onError={(e) => { e.target.style.display = 'none' }} />
+                        <Icons.logo className="w-6 h-6" />
                         <span>Marapone Contracting Inc.</span>
                     </div>
 

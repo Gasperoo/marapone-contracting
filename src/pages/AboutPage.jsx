@@ -179,8 +179,8 @@ export default function AboutPage() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/features" className="text-[#FF6B00] font-bold inline-flex items-center group-hover:text-[#F59E0B] transition-colors">
-                  Explore Logistics OS <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                <Link to="/contact" className="text-[#FF6B00] font-bold inline-flex items-center group-hover:text-[#F59E0B] transition-colors">
+                  Contact Engineering for Logistics <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 
@@ -202,8 +202,8 @@ export default function AboutPage() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/features" className="text-[#F59E0B] font-bold inline-flex items-center group-hover:text-[#FF6B00] transition-colors">
-                  Explore Construction AI <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                <Link to="/contact" className="text-[#F59E0B] font-bold inline-flex items-center group-hover:text-[#FF6B00] transition-colors">
+                  Contact Engineering for Construction <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>

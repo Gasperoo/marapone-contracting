@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { ArrowRight, Globe, Layers, Zap, Cpu, Ship, HardHat, Shield, Activity } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { Globe, Shield, Cpu, Lock, Network, SearchCode, Fingerprint, Banknote } from 'lucide-react';
 import RuixenAbout from '../components/RuixenAbout';
-import NetworkMesh from '../components/AboutPage/NetworkMesh';
 import '../components/LandingPage/LandingPage.css';
 
 export default function AboutPage() {
@@ -13,15 +11,13 @@ export default function AboutPage() {
     offset: ["start start", "end end"]
   });
 
-  // Parallax and Opacity transforms for the Hero section
+  // Parallax and Opacity transforms
   const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-
-  // Progress bar for the "Mission Control" narrative
   const timelineScale = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
   return (
-    <div className="min-h-screen relative overflow-hidden" ref={containerRef}>
+    <div className="min-h-screen relative overflow-hidden text-[#1a1a1a]" style={{ backgroundColor: '#F5F5F5' }} ref={containerRef}>
 
       {/* Hero Section (Sticky & Parallax) */}
       <div className="h-screen sticky top-0 flex items-center justify-center p-6 z-10 pointer-events-none">
@@ -35,36 +31,36 @@ export default function AboutPage() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="inline-flex items-center justify-center p-4 rounded-full bg-black/5 border border-black/10 mb-8 w-24 h-24 shadow-xl relative backdrop-blur-md"
           >
-            <Globe size={40} className="text-[#FF6B00] relative z-10" />
-            <div className="absolute inset-0 blur-2xl opacity-40 bg-[#FF6B00]" />
+            <Shield size={40} className="text-[#1a1a1a] relative z-10" />
+            <div className="absolute inset-0 blur-2xl opacity-20 bg-[#1a1a1a]" />
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-8xl font-bold tracking-tight text-[#1a1a1a] mb-8 leading-tight"
+            className="text-5xl md:text-8xl font-black tracking-tight text-[#1a1a1a] mb-8 leading-[1.05]"
           >
-            Building the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Digital Nervous System</span>
+            Architects of <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#1a1a1a]">Sovereign AI</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-[#4b5563] font-light leading-relaxed max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-[#4b5563] font-medium leading-relaxed max-w-3xl mx-auto"
           >
-            We are the AI bridge connecting complex physical operations—from global supply chains to heavy construction—into a unified, intelligent ecosystem.
+            We deploy private, air-gapped language models for the world's most complex industrial operations. Your data. Your weights. Your intelligence.
           </motion.p>
         </motion.div>
       </div>
 
-      {/* Main Content Area (Scrolls over the sticky hero) */}
-      <div className="relative z-20 bg-white/90 backdrop-blur-2xl border-t border-black/5">
+      {/* Main Content Area */}
+      <div className="relative z-20 bg-[#F5F5F5] border-t border-black/5">
 
-        {/* By the Numbers — Bridge Section */}
-        <div className="border-b border-black/5 bg-gradient-to-b from-black/[0.02] to-transparent">
+        {/* By the Numbers */}
+        <div className="border-b border-black/5 bg-white/50 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-6 py-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -73,16 +69,16 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <span className="text-xs font-mono text-[#FF6B00] tracking-[0.3em] uppercase font-bold">By the Numbers</span>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mt-3">Powering operations at scale</h2>
+              <span className="text-xs font-bold tracking-widest text-[#8B5CF6] uppercase">Enterprise Scale</span>
+              <h2 className="text-3xl font-bold text-[#1a1a1a] mt-3">Uncompromising Performance</h2>
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { value: '10.5M+', label: 'Daily tracking events processed', delay: 0 },
-                { value: '50+', label: 'Global ports & hubs integrated', delay: 0.1 },
-                { value: '99.9%', label: 'Neural engine classification accuracy', delay: 0.2 },
-                { value: '2.4x', label: 'Avg. ROI within first quarter', delay: 0.3 },
+                { value: '100%', label: 'Data Sovereignty Guarantee', delay: 0 },
+                { value: '0', label: 'Public Network Leaks', delay: 0.1 },
+                { value: '< 200ms', label: 'Avg. Inference Latency', delay: 0.2 },
+                { value: 'SOC2', label: 'Type II Architecture', delay: 0.3 },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -90,188 +86,134 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: stat.delay }}
                   viewport={{ once: true }}
-                  className="text-center p-6 rounded-2xl border border-black/5 bg-white/60 backdrop-blur-sm hover:border-[#FF6B00]/20 hover:-translate-y-1 transition-all duration-300"
+                  className="text-center p-8 rounded-3xl border border-black/5 bg-white shadow-sm hover:shadow-lg transition-all duration-300 group"
                 >
-                  <div className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-2">{stat.value}</div>
-                  <div className="text-sm text-[#4b5563] leading-snug">{stat.label}</div>
+                  <div className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-2 group-hover:text-[#8B5CF6] transition-colors">{stat.value}</div>
+                  <div className="text-sm font-bold text-[#6b7280] tracking-wide uppercase">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Scroll Progress Line */}
-        <div className="absolute left-8 top-0 bottom-0 w-px bg-black/10 hidden lg:block">
-          <motion.div
-            className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#FF6B00] to-[#F59E0B] shadow-[0_0_15px_rgba(255,107,0,0.5)]"
-            style={{ height: "100%", scaleY: timelineScale, transformOrigin: 'top' }}
-          />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 lg:pl-24 py-32 space-y-40">
+        <div className="max-w-7xl mx-auto px-6 py-32 space-y-40">
 
           {/* Mission Section */}
           <section>
-            <SectionHeader title="01. The Mission" glowColor="#FF6B00" />
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 leading-tight">
-                  Decoding the Physical World.
+                <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">01 // The Paradigm Shift</span>
+                <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-8 leading-tight">
+                  Stop Leasing. Start Owning.
                 </h2>
-                <p className="text-lg text-[#4b5563] leading-relaxed mb-6">
-                  Our mission is to democratize access to enterprise-grade operational intelligence. We believe that every shipping lane, warehouse, and construction site generates a story written in data.
+                <p className="text-lg text-[#4b5563] leading-relaxed mb-6 font-medium">
+                  The SaaS era taught enterprises to rent their tools and outsource their data. In the age of AI, this model is fundamentally broken. Sending your proprietary supply chain data, financial burns, and strategic communications to public API endpoints is a critical security failure.
                 </p>
-                <p className="text-lg text-[#4b5563] leading-relaxed">
-                  By applying advanced predictive AI and generative models to this raw data, we transform chaotic, analog environments into orchestrated, predictive ecosystems. We build software that understands concrete and steel, ships and cargo.
+                <p className="text-lg text-[#4b5563] leading-relaxed font-medium">
+                  At Marapone, we believe that an enterprise's most valuable asset is its corporate memory. We build sovereign intelligence: deploying bespoke foundation models entirely within your isolated cloud environments.
                 </p>
               </div>
-              <div className="relative h-[400px] rounded-3xl border border-black/5 bg-black/5 overflow-hidden flex items-center justify-center p-8 group">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B00]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="grid grid-cols-2 gap-4 w-full h-full relative z-10">
-                  <div className="rounded-xl border border-black/5 bg-white/60 backdrop-blur-sm p-6 flex flex-col justify-end">
-                    <Activity className="text-[#FF6B00] mb-4 w-8 h-8" />
-                    <div className="text-[#1a1a1a] font-bold mb-1">Peta-Scale Data</div>
-                    <div className="text-xs text-slate-500">Processing real-time telemetry</div>
-                  </div>
-                  <div className="rounded-xl border border-black/5 bg-white/60 backdrop-blur-sm p-6 flex flex-col justify-start">
-                    <Cpu className="text-[#F59E0B] mb-4 w-8 h-8" />
-                    <div className="text-[#1a1a1a] font-bold mb-1">Deep Learning</div>
-                    <div className="text-xs text-slate-500">Neural network pattern recognition</div>
-                  </div>
-                  <div className="rounded-xl border border-black/5 bg-white/60 backdrop-blur-sm p-6 flex flex-col justify-end translate-y-4">
-                    <Layers className="text-[#FF6B00] mb-4 w-8 h-8" />
-                    <div className="text-[#1a1a1a] font-bold mb-1">Digital Twins</div>
-                    <div className="text-xs text-slate-500">1:1 Virtual system simulation</div>
-                  </div>
-                  <div className="rounded-xl border border-black/5 bg-white/60 backdrop-blur-sm p-6 flex flex-col justify-start">
-                    <Shield className="text-[#F59E0B] mb-4 w-8 h-8" />
-                    <div className="text-[#1a1a1a] font-bold mb-1">Zero-Trust Security</div>
-                    <div className="text-xs text-slate-500">Enterprise data isolation</div>
+
+              <div className="relative h-[450px] rounded-[2.5rem] bg-[#1a1a1a] p-1 overflow-hidden shadow-2xl">
+                {/* Security Visual */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
+                <div className="w-full h-full rounded-[2.3rem] overflow-hidden relative flex flex-col justify-center items-center">
+
+                  {/* Glowing Core */}
+                  <div className="w-32 h-32 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#8B5CF6] rounded-full blur-[80px] opacity-40 animate-pulse" />
+
+                  <div className="relative z-10 w-full px-12">
+                    <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
+                      <span className="text-white/50 font-mono text-sm tracking-widest">TENANT_ISOLATION_STATUS</span>
+                      <span className="text-[#10B981] font-mono text-sm tracking-widest animate-pulse">SECURE</span>
+                    </div>
+
+                    <div className="space-y-4 font-mono text-xs sm:text-sm">
+                      <div className="flex items-center text-white/70">
+                        <Lock size={16} className="text-[#8B5CF6] mr-3" />
+                        <span>Public Weights</span>
+                        <span className="mx-auto border-b border-white/20 border-dashed flex-grow relative top-[-4px] ml-4 mr-4" />
+                        <span className="text-red-400">DENIED</span>
+                      </div>
+                      <div className="flex items-center text-white/70">
+                        <Network size={16} className="text-[#10B981] mr-3" />
+                        <span className="text-white">Private VPC Router</span>
+                        <span className="mx-auto border-b border-white/20 border-dashed flex-grow relative top-[-4px] ml-4 mr-4" />
+                        <span className="text-[#10B981]">ACTIVE</span>
+                      </div>
+                      <div className="flex items-center text-white/70">
+                        <Cpu size={16} className="text-[#FF6B00] mr-3" />
+                        <span className="text-white">Local Inference Engine</span>
+                        <span className="mx-auto border-b border-white/20 border-dashed flex-grow relative top-[-4px] ml-4 mr-4" />
+                        <span className="text-[#10B981]">DEDICATED</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-12 bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-sm">
+                      <div className="text-white/50 text-xs tracking-widest uppercase mb-1">Corporate Memory Integrity</div>
+                      <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden mt-2">
+                        <div className="h-full bg-gradient-to-r from-[#8B5CF6] to-[#FF6B00] w-full" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Dual Ecosystem Section */}
+          {/* Value Proposition Grid */}
           <section>
-            <SectionHeader title="02. The Ecosystem" glowColor="#F59E0B" />
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-16 max-w-3xl">
-              One underlying architecture.<br />Two specialized engines.
-            </h2>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Logistics Domain */}
-              <div className="p-10 rounded-3xl bg-gradient-to-b from-[#FF6B00]/5 to-transparent border border-[#FF6B00]/20 relative overflow-hidden group hover:border-[#FF6B00]/40 transition-colors duration-500">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-
-                <div className="p-4 rounded-xl bg-white border border-black/5 shadow-sm inline-block mb-8">
-                  <Ship className="text-[#FF6B00] w-8 h-8" />
-                </div>
-                <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">Gasper Logistics OS</h3>
-                <p className="text-[#4b5563] text-lg mb-8 leading-relaxed">
-                  The global shipping network is a complex web of variable risks. Our Logistics OS utilizes LLMs and geospatial routing algorithms to predict delays, optimize voyages, and automate HS code compliance in milliseconds.
-                </p>
-                <ul className="space-y-4 mb-10">
-                  {['Global Carrier Integrations', 'Predictive Voyage Risk Analysis', 'Automated Trade Compliance'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 text-sm font-medium text-[#4b5563]">
-                      <div className="w-8 h-px bg-[#FF6B00]/50" /> {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact" className="text-[#FF6B00] font-bold inline-flex items-center group-hover:text-[#F59E0B] transition-colors">
-                  Contact Engineering for Logistics <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-
-              {/* Construction Domain */}
-              <div className="p-10 rounded-3xl bg-gradient-to-b from-[#F59E0B]/5 to-transparent border border-[#F59E0B]/20 relative overflow-hidden group hover:border-[#F59E0B]/40 transition-colors duration-500">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-
-                <div className="p-4 rounded-xl bg-white border border-black/5 shadow-sm inline-block mb-8">
-                  <HardHat className="text-[#F59E0B] w-8 h-8" />
-                </div>
-                <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">Gasper Construction AI</h3>
-                <p className="text-[#4b5563] text-lg mb-8 leading-relaxed">
-                  The built environment suffers from siloed data and reactive planning. Our Construction AI ingests CAD/BIM blueprints, applies generative sequencing, and monitors site safety in real-time to ensure projects stay on the critical path.
-                </p>
-                <ul className="space-y-4 mb-10">
-                  {['Generative Design & BIM Parsing', 'Critical Path Simulation', 'Automated Material Takeoffs'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 text-sm font-medium text-[#4b5563]">
-                      <div className="w-8 h-px bg-[#FF6B00]/50" /> {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact" className="text-[#F59E0B] font-bold inline-flex items-center group-hover:text-[#FF6B00] transition-colors">
-                  Contact Engineering for Construction <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+            <div className="text-center mb-16">
+              <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">02 // Core Architecture</span>
+              <h2 className="text-4xl font-black text-[#1a1a1a]">Built for the Enterprise</h2>
             </div>
-          </section>
 
-          {/* Core Values */}
-          <section className="pb-32">
-            <SectionHeader title="03. Core Values" glowColor="#FF6B00" />
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <ValueCard
-                title="Deterministic AI"
-                description="We reject the 'black box'. Our models provide transparent confidence scores and explainable logic chains for every operational decision."
-                glowColor="#FF6B00"
-              />
-              <ValueCard
-                title="Absolute Security"
-                description="SOC2 Type II architecture. Deep tenant isolation ensures that your proprietary operational data never pollutes a public model."
-                glowColor="#F59E0B"
-              />
-              <ValueCard
-                title="Relentless Uptime"
-                description="Global trade and tier-1 construction never sleep. We architect our distributed systems for 99.999% availability."
-                glowColor="#FF6B00"
-              />
-              <ValueCard
-                title="Impact Over Hype"
-                description="We focus on tangible ROI: saving days on ocean transit, minimizing concrete waste, and accelerating cash flow."
-                glowColor="#F59E0B"
-              />
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white p-10 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
+                <div className="w-14 h-14 bg-[#1a1a1a] rounded-2xl flex items-center justify-center text-white mb-6">
+                  <Fingerprint size={28} />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Identity-Aware Retrieval</h3>
+                <p className="text-[#6b7280] font-medium leading-relaxed">
+                  Our LLMs natively respect your existing Role-Based Access Control (RBAC). The AI will only synthesize answers using documents and data the querying user actually has permission to see.
+                </p>
+              </div>
+
+              <div className="bg-white p-10 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
+                <div className="w-14 h-14 bg-[#8B5CF6]/10 border border-[#8B5CF6]/20 rounded-2xl flex items-center justify-center text-[#8B5CF6] mb-6">
+                  <SearchCode size={28} />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Deterministic Output</h3>
+                <p className="text-[#6b7280] font-medium leading-relaxed">
+                  We eliminate hallucinations in critical environments. Every generated insight, summary, or predictive alert comes with explicit citations linking back to the exact source document in your database.
+                </p>
+              </div>
+
+              <div className="bg-white p-10 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
+                <div className="w-14 h-14 bg-[#FF6B00]/10 border border-[#FF6B00]/20 rounded-2xl flex items-center justify-center text-[#FF6B00] mb-6">
+                  <Globe size={28} />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Any Cloud, Any Metal</h3>
+                <p className="text-[#6b7280] font-medium leading-relaxed">
+                  Deploy where you live. Our architecture runs seamlessly inside your existing AWS VPC, Azure tenant, or on bare-metal servers for environments requiring hyper-secure, air-gapped isolation.
+                </p>
+              </div>
+
+              <div className="bg-white p-10 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
+                <div className="w-14 h-14 bg-[#10B981]/10 border border-[#10B981]/20 rounded-2xl flex items-center justify-center text-[#10B981] mb-6">
+                  <Banknote size={28} />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Deflationary Scaling</h3>
+                <p className="text-[#6b7280] font-medium leading-relaxed">
+                  Paying per-token to external API providers creates an artificial tax on enterprise scaling. By owning the model, your inference cost drops deterministically, allowing unbounded queries without budget fears.
+                </p>
+              </div>
             </div>
           </section>
 
         </div>
 
-        {/* Ecosystem Section */}
-        <div className="border-t border-black/5 bg-[#F5F5F5] py-20 relative z-30">
-          <RuixenAbout />
-        </div>
-
       </div>
-    </div>
-  );
-}
-
-// Helper Components
-
-// Helper Components
-
-function SectionHeader({ title, glowColor }) {
-  return (
-    <div className="flex items-center gap-6 mb-12">
-      <h3 className="text-xl font-mono text-[#1a1a1a] tracking-widest uppercase">{title}</h3>
-      <div className="h-px flex-grow bg-black/10 relative">
-        <div className="absolute top-0 left-0 h-full w-1/4" style={{ background: `linear-gradient(to right, ${glowColor}, transparent)` }} />
-      </div>
-    </div>
-  );
-}
-
-function ValueCard({ title, description, glowColor }) {
-  return (
-    <div className="p-8 rounded-3xl bg-white border border-black/5 shadow-sm relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
-      <div
-        className="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-10 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
-        style={{ background: `radial-gradient(circle at top right, ${glowColor}, transparent)` }}
-      />
-      <h4 className="text-xl font-bold text-[#1a1a1a] mb-4 relative z-10">{title}</h4>
-      <p className="text-[#4b5563] text-sm leading-relaxed relative z-10">{description}</p>
     </div>
   );
 }

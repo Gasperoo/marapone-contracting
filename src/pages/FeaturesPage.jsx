@@ -123,8 +123,11 @@ export default function FeaturesPage() {
                                         <Brain size={32} />
                                     </div>
                                     <h3 className="text-3xl font-bold text-white mb-4">3. The Sovereign LLM Engine</h3>
-                                    <p className="text-gray-400 text-lg leading-relaxed mb-8">
+                                    <p className="text-gray-400 text-lg leading-relaxed mb-4">
                                         Your custom model is air-gapped from public networks. It is trained to answer complex queries, write reports, and analyze risks using <em className="text-white">only your approved corporate knowledge</em>. Zero hallucination. Zero data leakage.
+                                    </p>
+                                    <p className="text-gray-400 text-lg leading-relaxed mb-8">
+                                        <strong>GasperAI</strong> is our proprietary fine-tuned model, trained intimately on world-class foundations including <strong>Claude (Anthropic)</strong>, <strong>Grok (xAI)</strong>, and <strong>Gemini (Google)</strong>. By partnering with these leaders and utilizing numerous models, we deploy the ultimate custom LLM specialized for intensive industries.
                                     </p>
                                     <div className="flex flex-wrap gap-4">
                                         <div className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-semibold flex items-center gap-2">
@@ -132,6 +135,9 @@ export default function FeaturesPage() {
                                         </div>
                                         <div className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-semibold flex items-center gap-2">
                                             <Fingerprint size={16} className="text-[#FF6B00]" /> Role-Based Access Control
+                                        </div>
+                                        <div className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-semibold flex items-center gap-2">
+                                            <Server size={16} className="text-[#10B981]" /> Windows, Mac & Linux Native
                                         </div>
                                     </div>
                                 </div>

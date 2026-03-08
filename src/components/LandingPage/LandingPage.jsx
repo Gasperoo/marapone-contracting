@@ -213,16 +213,16 @@ export default function LandingPage({ comingSoonMode = false }) {
                 />
             </div>
 
-            <section className="hero-section relative min-h-screen flex flex-col justify-center pt-24 pb-20 w-full overflow-hidden z-10">
+            <AuroraBackground className="hero-section relative min-h-screen flex flex-col justify-center pt-32 pb-20 w-full overflow-hidden z-10 !bg-transparent" showRadialGradient={true}>
                 {/* Refined Corporate Background */}
                 <div className="absolute inset-0 z-0 bg-grid-slate-100/[0.04] bg-[bottom_1px_center]" />
 
-                {/* Premium Black-to-White Header Gradient */}
-                <div className="absolute top-0 inset-x-0 h-[450px] z-[1] pointer-events-none" style={{ background: 'linear-gradient(to bottom, #050505 0%, rgba(5,5,5,0.9) 20%, rgba(245,245,245,0) 100%)' }} />
+                {/* Premium Black-to-White Header Gradient Removed entirely for cleaner look */}
+                <div className="absolute top-0 inset-x-0 h-[250px] z-[1] pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(245,245,245,1) 0%, rgba(245,245,245,0) 100%)' }} />
 
                 {/* Subtle Glows */}
-                <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none z-0" animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
-                <motion.div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-3xl pointer-events-none z-0" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+                <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#FF6B00]/5 rounded-full blur-3xl pointer-events-none z-0" animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#f59e0b]/5 rounded-full blur-3xl pointer-events-none z-0" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
 
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
 
@@ -247,21 +247,25 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Main Corporate Headline */}
                     <div className="max-w-4xl mx-auto mb-8">
                         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#1a1a1a] leading-[1.05]">
-                            Turning CHAOS <br />
-                            Into <span className="relative inline-block"><span className="relative z-10">CLARITY.</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
+                            Sovereign AI For <br />
+                            <span className="relative inline-block"><span className="relative z-10">Physical Operations.</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
                         </motion.h1>
                     </div>
 
                     <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
-                        Marapone builds bespoke, fully sovereign AI integrations for intensive industries. <strong className="text-[#1a1a1a]">ZERO</strong> subscriptions. <strong className="text-[#1a1a1a]">COMPLETE</strong> ownership.
+                        Marapone builds bespoke, fully isolated Large Language Models for intensive industries. Run natively on <strong className="text-[#1a1a1a]">Windows, Mac, or Linux</strong>. Seamlessly deploy with <strong className="text-[#1a1a1a]">zero</strong> subscriptions and <strong className="text-[#1a1a1a]">complete</strong> ownership.
                     </motion.p>
 
                     {/* Unified CTA */}
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 w-full sm:w-auto">
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 w-full sm:w-auto">
                         <Link to="/contact" className="w-full sm:w-auto px-8 py-4 bg-[#1a1a1a] hover:bg-black text-white rounded-xl font-bold text-base transition-all shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
                             Schedule an Evaluation <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                         </Link>
                     </motion.div>
+
+                    <div className="w-full max-w-4xl mx-auto mb-16 opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]">
+                        <LogoMarquee />
+                    </div>
 
                     {/* Refined Integration Panel */}
                     <div className="w-full max-w-5xl mx-auto opacity-0 animate-[fadeIn_1s_ease-out_0.6s_forwards]">
@@ -270,7 +274,7 @@ export default function LandingPage({ comingSoonMode = false }) {
                 </div>
 
                 {selectedProduct && <ScrollBeacon />}
-            </section>
+            </AuroraBackground>
 
             <div id="domain-content" className="landing-content relative z-10" style={{ maxWidth: '100%', padding: 0 }}>
                 {selectedProduct !== null && (

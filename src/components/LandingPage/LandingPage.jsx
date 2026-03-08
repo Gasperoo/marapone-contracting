@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, TrendingUp, ShieldCheck, Zap, Activity, Grid, Layers, Box, Truck, Anchor, HardHat, Ruler, Brain, FileText, Navigation, Hexagon, ChevronDown, DollarSign, Users, Clock, Ship, Database, Eye, Route, Package, BarChart3, Sparkles, CheckCircle2 } from 'lucide-react';
 import './LandingPage.css';
 
-import { LogoMarquee } from './LogoMarquee';
 import { BentoGrid } from './BentoGrid';
 import { LandingPageFAQ } from './LandingPageFAQ';
 
@@ -257,15 +256,11 @@ export default function LandingPage({ comingSoonMode = false }) {
                     </motion.p>
 
                     {/* Unified CTA */}
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 w-full sm:w-auto">
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 w-full sm:w-auto">
                         <Link to="/contact" className="w-full sm:w-auto px-8 py-4 bg-[#1a1a1a] hover:bg-black text-white rounded-xl font-bold text-base transition-all shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
                             Schedule an Evaluation <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                         </Link>
                     </motion.div>
-
-                    <div className="w-full max-w-4xl mx-auto mb-16 opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]">
-                        <LogoMarquee />
-                    </div>
 
                     {/* Refined Integration Panel */}
                     <div className="w-full max-w-5xl mx-auto opacity-0 animate-[fadeIn_1s_ease-out_0.6s_forwards]">

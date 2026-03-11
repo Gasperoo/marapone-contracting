@@ -127,17 +127,17 @@ export default function IndustriesPage() {
 
                 {/* Interactive Filter Pills */}
                 <div className="flex flex-wrap justify-center gap-4 mb-16">
-                    {['all', 'Supply Chain', 'Built Environment', 'Manufacturing', 'Regulated Sectors'].map((filter) => (
+                    {['Supply Chain', 'Built Environment', 'Manufacturing', 'Regulated Sectors'].map((filter) => (
                         <button
                             key={filter}
-                            onClick={() => setActiveFilter(filter === 'all' ? 'all' : filter)}
+                            onClick={() => setActiveFilter(activeFilter === filter ? 'all' : filter)}
                             className={`px-8 py-3.5 rounded-full font-bold text-sm tracking-wider transition-all duration-300 border backdrop-blur-md
                                 ${activeFilter.toLowerCase() === filter.toLowerCase()
                                     ? 'bg-[#1a1a1a] border-[#1a1a1a] text-white shadow-lg shadow-black/10 scale-105'
                                     : 'bg-white/80 border-black/10 text-[#4b5563] hover:text-[#1a1a1a] hover:bg-white shadow-sm'
                                 }`}
                         >
-                            {filter === 'all' ? 'All Sectors' : filter}
+                            {filter}
                         </button>
                     ))}
                 </div>

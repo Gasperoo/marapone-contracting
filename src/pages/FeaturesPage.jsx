@@ -42,8 +42,8 @@ export default function FeaturesPage() {
                         transition={{ delay: 0.1 }}
                         className="text-5xl md:text-7xl lg:text-8xl font-black text-[#1a1a1a] mb-8 tracking-tight leading-[1.05]"
                     >
-                        Beyond Software.<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#FF6B00]">Pure Cognition.</span>
+                        Intelligence Built For<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#FF6B00]">The Real World.</span>
                     </motion.h1>
 
                     <motion.p
@@ -52,7 +52,7 @@ export default function FeaturesPage() {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-[#4b5563] max-w-3xl mx-auto leading-relaxed font-medium"
                     >
-                        We do not sell boxed SaaS products. We architect and deploy fully isolated, bespoke Large Language Models trained exclusively on your corporation's proprietary data.
+                        We build completely private, customized AI tools tailored for construction, complex project management, and heavy industry. Your proprietary data stays on your servers, fueling a system that actually understands your business.
                     </motion.p>
                 </div>
 
@@ -124,20 +124,20 @@ export default function FeaturesPage() {
                                     </div>
                                     <h3 className="text-3xl font-bold text-white mb-4">3. The Sovereign LLM Engine</h3>
                                     <p className="text-gray-400 text-lg leading-relaxed mb-4">
-                                        Your custom model is air-gapped from public networks. It is trained to answer complex queries, write reports, and analyze risks using <em className="text-white">only your approved corporate knowledge</em>. Zero hallucination. Zero data leakage.
+                                        Your custom Gasper Engine is air-gapped from public networks. It is trained to answer complex questions, write reports, and analyze construction risks using <em className="text-white">only your approved corporate knowledge</em>. No guessing. No data leaks.
                                     </p>
                                     <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                                        <strong>GasperAI</strong> is our proprietary fine-tuned model, trained intimately on world-class foundations including <strong>Claude (Anthropic)</strong>, <strong>Grok (xAI)</strong>, and <strong>Gemini (Google)</strong>. By partnering with these leaders and utilizing numerous models, we deploy the ultimate custom LLM specialized for intensive industries.
+                                        <strong>We partner with the best.</strong> Under the hood, Gasper utilizes world-class foundations including <strong>Claude (Anthropic)</strong>, <strong>Super Grok (xAI)</strong>, and <strong>Gemini (Google)</strong> to build the ultimate custom AI specialized for project management and operational efficiency.
                                     </p>
                                     <div className="flex flex-wrap gap-4">
                                         <div className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-semibold flex items-center gap-2">
-                                            <Lock size={16} className="text-[#8B5CF6]" /> 100% Private Weights
+                                            <Lock size={16} className="text-[#8B5CF6]" /> 100% Private Data
                                         </div>
                                         <div className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-semibold flex items-center gap-2">
-                                            <Fingerprint size={16} className="text-[#FF6B00]" /> Role-Based Access Control
+                                            <Fingerprint size={16} className="text-[#FF6B00]" /> Strict User Permissions
                                         </div>
                                         <div className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-semibold flex items-center gap-2">
-                                            <Server size={16} className="text-[#10B981]" /> Windows, Mac & Linux Native
+                                            <Server size={16} className="text-[#10B981]" /> Runs On Any System
                                         </div>
                                     </div>
                                 </div>
@@ -163,18 +163,21 @@ export default function FeaturesPage() {
                     <div className="grid md:grid-cols-3 gap-6">
                         <FeatureBento
                             icon={<SearchCode size={24} />}
-                            title="Instant Context Retrieval"
-                            desc="Ask questions spanning thousands of documents. 'Why was the Berlin project delayed in 2021?' and get an answer synthesized from emails, PDFs, and invoices in seconds."
+                            title="Instant Blueprint Analysis"
+                            desc="Upload massive construction blueprint sets and RFPs. The AI instantly extracts material requirements, structural anomalies, and compliance checklists."
+                            color="#8B5CF6"
                         />
                         <FeatureBento
                             icon={<Workflow size={24} />}
-                            title="Automated Workflows"
-                            desc="The AI doesn't just read—it writes. Auto-generate compliance reports, draft supplier RFPs based on historical specs, and summarize daily site logs automatically."
+                            title="Automated Project Management"
+                            desc="Gasper doesn't just read—it acts. Auto-generate daily site logs, draft supplier contracts based on historical data, and streamline procurement workflows."
+                            color="#1a1a1a"
                         />
                         <FeatureBento
                             icon={<Activity size={24} />}
-                            title="Predictive Anomaly Detection"
-                            desc="Because the LLM sees the entirety of your operation, it spots financial variances, schedule slip risks, and compliance breaches before humans realize they exist."
+                            title="Predictive Risk Detection"
+                            desc="Because the AI oversees the entirety of your project, it spots financial variances, schedule slip risks, and safety breaches before they impact the bottom line."
+                            color="#FF6B00"
                         />
                     </div>
                 </div>
@@ -203,15 +206,22 @@ export default function FeaturesPage() {
     );
 }
 
-function FeatureBento({ icon, title, desc }) {
+function FeatureBento({ icon, title, desc, color }) {
     return (
-        <div className="bg-white p-8 rounded-[1.5rem] border border-black/5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-1 h-full bg-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="w-12 h-12 rounded-xl bg-black/5 flex items-center justify-center text-[#1a1a1a] mb-6">
+        <div className="bg-white p-8 rounded-[1.5rem] border border-black/5 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] transition-all duration-300 relative overflow-hidden group transform hover:-translate-y-2">
+            <div className={`absolute top-0 left-0 w-1.5 h-full opacity-0 group-hover:opacity-100 transition-opacity`} style={{ backgroundColor: color || '#1a1a1a' }} />
+            
+            {/* Ambient Background Glow on Hover */}
+            <div 
+                className="absolute -top-10 -right-10 w-40 h-40 rounded-full blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500" 
+                style={{ backgroundColor: color || '#1a1a1a' }} 
+            />
+            
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 relative z-10" style={{ backgroundColor: `${color || '#1a1a1a'}15`, color: color || '#1a1a1a' }}>
                 {icon}
             </div>
-            <h4 className="text-xl font-bold text-[#1a1a1a] mb-3">{title}</h4>
-            <p className="text-[#6b7280] leading-relaxed">{desc}</p>
+            <h4 className="text-xl font-bold text-[#1a1a1a] mb-3 relative z-10">{title}</h4>
+            <p className="text-[#6b7280] leading-relaxed relative z-10 font-medium">{desc}</p>
         </div>
     );
 }

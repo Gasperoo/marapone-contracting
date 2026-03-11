@@ -32,7 +32,7 @@ export default function CustomLLMPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 backdrop-blur-md mb-8 text-sm font-bold tracking-widest text-[#8B5CF6] uppercase shadow-sm"
                     >
-                        <Brain size={16} /> Autonomous Enterprise Intelligence
+                        <Brain size={16} /> Custom AI For Construction & Heavy Industry
                     </motion.div>
 
                     <motion.h1
@@ -51,16 +51,31 @@ export default function CustomLLMPage() {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-[#4b5563] leading-relaxed max-w-3xl mx-auto font-medium"
                     >
-                        We architect entirely isolated, custom Large Language Models trained exclusively on your corporate knowledge base. The result is a hyper-specialized AI employee that knows your business instantly.
+                        We build entirely private, custom AI assistants trained exclusively on your project data. Powered by the world's best intelligence models including <strong>Claude, Super Grok, and Gemini</strong>, Gasper AI becomes a hyper-specialized team member that knows your business instantly.
                     </motion.p>
                 </div>
+
+                {/* Powered By Section */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center justify-center mb-24 border-y border-black/5 py-8"
+                >
+                    <span className="text-xs font-bold tracking-widest text-[#6b7280] uppercase mb-4">Core Intelligence Powered By</span>
+                    <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60">
+                        <div className="text-xl font-black text-[#1a1a1a] tracking-tight">Claude <span className="text-xs font-normal align-top bg-black/5 px-1.5 py-0.5 rounded ml-1">Anthropic</span></div>
+                        <div className="text-xl font-black text-[#1a1a1a] tracking-tight">Super Grok <span className="text-xs font-normal align-top bg-black/5 px-1.5 py-0.5 rounded ml-1">xAI</span></div>
+                        <div className="text-xl font-black text-[#1a1a1a] tracking-tight">Gemini <span className="text-xs font-normal align-top bg-black/5 px-1.5 py-0.5 rounded ml-1">Google</span></div>
+                    </div>
+                </motion.div>
 
                 {/* Core Value Proposition Grid */}
                 <div className="grid md:grid-cols-3 gap-6 mb-32">
                     {[
-                        { icon: <Lock size={28} />, title: "Total Data Sovereignty", desc: "Your data never leaves your environment. No shared weights. No public model fine-tuning. 100% air-gapped security." },
-                        { icon: <Database size={28} />, title: "Proprietary Knowledge", desc: "Trained directly on your standard operating procedures, historical contracts, blueprints, and internal communication logs." },
-                        { icon: <Zap size={28} />, title: "Instant Deployment", desc: "Integrates seamlessly via API into your secure corporate intranet, Slack, Teams, or custom software stack." }
+                        { icon: <Lock size={28} />, title: "Total Data Sovereignty", desc: "Your blueprints and financials never leave your environment. No shared data. No public training. 100% air-gapped security." },
+                        { icon: <Database size={28} />, title: "Proprietary Knowledge", desc: "Trained directly on your standard operating procedures, historical contracts, RFIs, daily logs, and internal communications." },
+                        { icon: <Zap size={28} />, title: "Instant Deployment", desc: "Integrates seamlessly into your secure corporate intranet, Slack, Teams, or construction software stack (like Procore)." }
                     ].map((feature, i) => (
                         <motion.div
                             key={i}
@@ -90,14 +105,14 @@ export default function CustomLLMPage() {
                     <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
                         <div>
                             <h2 className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-6 tracking-tight leading-tight">
-                                From Chaos to <br /><span className="text-[#8B5CF6]">Cognition.</span>
+                                From Chaos to <br /><span className="text-[#8B5CF6]">Clarity.</span>
                             </h2>
                             <p className="text-lg text-[#4b5563] mb-8 leading-relaxed">
-                                Our pipeline cleanses and vectorizes decades of fragmented corporate data. We construct a semantic architecture that allows your custom AI to answer highly complex, multi-variable questions spanning different departments instantaneously.
+                                Our system organizes decades of fragmented project data. We construct a secure brain that allows your custom AI to answer highly complex project management questions spanning different departments and sites instantaneously.
                             </p>
 
                             <ul className="space-y-4 mb-10">
-                                {["ERP & Oracle NetSuite Sync", "SharePoint & Intranet Ingestion", "Historical PDF & Blueprint OCR", "Real-time Slack / Teams Integration"].map((item, i) => (
+                                {["Procore & Primavera P6 Sync", "SharePoint & Intranet Ingestion", "Historical Blueprint & RFP OCR", "Real-time Site Log Integration"].map((item, i) => (
                                     <li key={i} className="flex items-center gap-3">
                                         <div className="w-6 h-6 rounded-full bg-[#8B5CF6]/10 flex items-center justify-center text-[#8B5CF6]">
                                             <ShieldCheck size={14} />
@@ -175,12 +190,12 @@ export default function CustomLLMPage() {
                     viewport={{ once: true }}
                     className="text-center max-w-3xl mx-auto"
                 >
-                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6 tracking-tight">Stop leasing generic intelligence.</h2>
+                    <h2 className="text-4xl font-bold text-[#1a1a1a] mb-6 tracking-tight">Stop renting generic intelligence.</h2>
                     <p className="text-xl text-[#4b5563] mb-10 leading-relaxed">
-                        It's time to build a permanent intellectual asset that grows smarter with every project you complete.
+                        It's time to build a permanent AI team member that grows smarter with every construction project you complete.
                     </p>
                     <Link to="/contact" className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-gradient-to-r from-[#8B5CF6] to-[#C084FC] rounded-xl hover:shadow-[0_15px_40px_rgba(139,92,246,0.3)] hover:-translate-y-1 transition-all">
-                        Schedule an Evaluation <ArrowRight size={20} className="ml-2" />
+                        Schedule a Demo <ArrowRight size={20} className="ml-2" />
                     </Link>
                 </motion.div>
 

@@ -41,8 +41,8 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-8xl font-black tracking-tight text-[#1a1a1a] mb-8 leading-[1.05]"
           >
-            Architects of <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#1a1a1a]">Sovereign AI</span>
+            We Are <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#FF6B00]">Marapone</span>
           </motion.h1>
 
           <motion.p
@@ -51,7 +51,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-[#4b5563] font-medium leading-relaxed max-w-3xl mx-auto"
           >
-            We deploy private, air-gapped language models for the world's most complex industrial operations. Your data. Your weights. Your intelligence.
+            Headquartered in Canada & Italy with international operations. We deploy private, air-gapped language models and AI tools for the world's most complex industrial & construction environments.
           </motion.p>
         </motion.div>
       </div>
@@ -107,10 +107,10 @@ export default function AboutPage() {
                   Stop Leasing. Start Owning.
                 </h2>
                 <p className="text-lg text-[#4b5563] leading-relaxed mb-6 font-medium">
-                  The SaaS era taught enterprises to rent their tools and outsource their data. In the age of AI, this model is fundamentally broken. Sending your proprietary supply chain data, financial burns, and strategic communications to public API endpoints is a critical security failure.
+                  The SaaS era taught enterprises to rent their tools and outsource their data. In the age of AI, this model is fundamentally broken. Sending your proprietary supply chain data, blueprints, financial burns, and strategic communications to public API endpoints is a critical security failure.
                 </p>
                 <p className="text-lg text-[#4b5563] leading-relaxed font-medium">
-                  At Marapone, we believe that an enterprise's most valuable asset is its corporate memory. We build sovereign intelligence: deploying bespoke foundation models entirely within your isolated cloud environments.
+                  Founded with a vision to securely empower traditional industries, Marapone believes an enterprise's most valuable asset is its corporate memory. We build sovereign intelligence: deploying bespoke foundation models entirely within your isolated cloud environments. Our Gasper Engine ensures your data stays yours.
                 </p>
               </div>
 
@@ -271,20 +271,37 @@ export default function AboutPage() {
 
           {/* Philosophy Section */}
           <section className="text-center max-w-4xl mx-auto">
-            <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">04 // Engineering Ethos</span>
-            <h2 className="text-4xl font-black text-[#1a1a1a] mb-8">Move Methodically. <br />Break Nothing.</h2>
-            <p className="text-xl text-[#4b5563] leading-relaxed font-medium mb-12">
-              The mantra of "move fast and break things" has no place in enterprise architecture. Our deployment cycles are rigorous, math-driven, and hyper-cautious. We do not gamble with corporate intelligence.
+            <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">04 // Company Vision</span>
+            <h2 className="text-4xl font-black text-[#1a1a1a] mb-8">Empowering The <br />Builders & Makers</h2>
+            <p className="text-xl text-[#4b5563] leading-relaxed font-medium mb-12 max-w-3xl mx-auto">
+              We bridge the gap between cutting-edge AI and the heavy industries that build our world. From our dual headquarters in Canada and Italy, our international team operates with a singular focus: delivering clarity and security to complex, data-heavy operations.
             </p>
-            <div className="inline-flex items-center gap-6 px-8 py-4 bg-white border border-black/5 rounded-2xl shadow-sm">
+            
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
+                <div className="bg-white p-8 rounded-[2rem] border border-black/5 shadow-sm flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
+                    <img src="/logo.png" alt="Marapone Logo" className="h-[82px] w-auto mb-4 object-contain mix-blend-multiply" />
+                    <div className="text-sm font-bold text-[#1a1a1a] uppercase tracking-widest">Enterprise Platform</div>
+                </div>
+                
+                <div className="w-12 h-12 rounded-full bg-black/5 hidden md:flex items-center justify-center">
+                    <Globe size={20} className="text-[#8B5CF6]" />
+                </div>
+                
+                <div className="bg-white p-8 rounded-[2rem] border border-black/5 shadow-sm flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
+                    <img src="/gasper-logo.png" alt="Gasper Logo" className="h-16 w-auto mb-4 object-contain" />
+                    <div className="text-sm font-bold text-[#1a1a1a] uppercase tracking-widest mt-2">Core AI Engine</div>
+                </div>
+            </div>
+
+            <div className="inline-flex items-center gap-6 px-8 py-5 bg-white border border-black/5 rounded-2xl shadow-sm">
               <div className="flex -space-x-3">
-                <div className="w-10 h-10 rounded-full bg-[#1a1a1a] border-2 border-white" />
-                <div className="w-10 h-10 rounded-full bg-[#8B5CF6] border-2 border-white" />
-                <div className="w-10 h-10 rounded-full bg-[#FF6B00] border-2 border-white" />
+                <div className="w-12 h-12 rounded-full bg-[#1a1a1a] border-2 border-white flex items-center justify-center text-white font-bold text-xs">CA</div>
+                <div className="w-12 h-12 rounded-full bg-[#8B5CF6] border-2 border-white flex items-center justify-center text-white font-bold text-xs">IT</div>
+                <div className="w-12 h-12 rounded-full bg-[#FF6B00] border-2 border-white flex items-center justify-center text-white font-bold text-xs">GL</div>
               </div>
               <div className="text-left">
-                <div className="text-sm font-bold text-[#1a1a1a]">Architected by experts</div>
-                <div className="text-xs text-[#6b7280]">from Deepmind, Palantir, and AWS</div>
+                <div className="text-sm font-bold text-[#1a1a1a]">International Operations</div>
+                <div className="text-xs text-[#6b7280]">Deployed across multiple continents</div>
               </div>
             </div>
           </section>

@@ -26,7 +26,7 @@ export default function FeaturesPage() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Hero Header */}
-                <div className="text-center max-w-4xl mx-auto mb-24">
+                <div className="text-center max-w-4xl mx-auto mb-20">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -50,10 +50,24 @@ export default function FeaturesPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-[#4b5563] max-w-3xl mx-auto leading-relaxed font-medium"
+                        className="text-xl text-[#4b5563] max-w-3xl mx-auto leading-relaxed font-medium mb-12"
                     >
                         We build completely private, customized AI tools tailored for construction, complex project management, and heavy industry. Your proprietary data stays on your servers, fueling a system that actually understands your business.
                     </motion.p>
+                    
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="flex flex-col items-center justify-center pt-8 border-t border-black/5"
+                    >
+                        <span className="text-xs font-bold tracking-widest uppercase text-[#6b7280] mb-6 block">Platform Architecture By</span>
+                        <div className="flex items-center justify-center gap-12">
+                            <img src="/logo.png" alt="Marapone Logo" className="h-[60px] w-auto opacity-70 hover:opacity-100 transition-opacity mix-blend-multiply" />
+                            <div className="w-px h-8 bg-black/10" />
+                            <img src="/gasper-logo.png" alt="Gasper Logo" className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
+                        </div>
+                    </motion.div>
                 </div>
 
                 {/* Core Architectural Pillars */}

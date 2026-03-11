@@ -232,6 +232,11 @@ export default function HowItWorksPage() {
                         {/* Glow effect */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-r from-[#8B5CF6]/5 via-transparent to-[#FF6B00]/5 blur-[80px] group-hover:opacity-100 opacity-50 transition-opacity duration-700 pointer-events-none" />
 
+                        <div className="flex justify-center items-center gap-8 mb-8 opacity-60 mix-blend-multiply">
+                            <img src="/logo.png" alt="Marapone" className="h-[40px] w-auto" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-black/20" />
+                            <img src="/gasper-logo.png" alt="Gasper Engine" className="h-[30px] w-auto" />
+                        </div>
                         <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6 relative z-10 tracking-tight">Ready To Build The Future?</h2>
                         <p className="text-xl text-[#4b5563] mb-12 relative z-10 max-w-2xl mx-auto font-medium">Stop relying on fragmented dashboards and generic models. Secure a custom AI assistant tailored precisely to your project's operational realities.</p>
                         <Link to="/contact" className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-[#1a1a1a] hover:bg-black rounded-xl transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 relative z-10 group/btn">

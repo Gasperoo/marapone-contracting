@@ -61,7 +61,7 @@ export default function HowItWorksPage() {
                         className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-black/5 bg-white/60 backdrop-blur-md mb-8 shadow-sm"
                     >
                         <Network size={16} className="text-[#8B5CF6]" />
-                        <span className="text-sm font-bold tracking-widest text-[#1a1a1a] uppercase">Implementation Mechanics</span>
+                        <span className="text-sm font-bold tracking-widest text-[#1a1a1a] uppercase">How Marapone Works</span>
                     </motion.div>
 
                     <motion.h1
@@ -70,7 +70,7 @@ export default function HowItWorksPage() {
                         transition={{ delay: 0.1 }}
                         className="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-[1.1]"
                     >
-                        The Data to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#FF6B00]">Cognition</span> Pipeline
+                        Turning Complex Data into <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#FF6B00]">Simple Answers</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -78,7 +78,7 @@ export default function HowItWorksPage() {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-[#4b5563] leading-relaxed max-w-2xl mx-auto font-medium"
                     >
-                        See exactly how Marapone transforms your unstructured, fragmented corporate data into a unified, predictive sovereign intelligence.
+                        See exactly how Marapone securely transforms your chaotic project data and construction documents into an intelligent, predictive assistant.
                     </motion.p>
                 </div>
 
@@ -94,22 +94,22 @@ export default function HowItWorksPage() {
                         <div className="grid md:grid-cols-3 gap-6">
                             <PipelineNode
                                 icon={<Database size={24} />}
-                                title="Enterprise Systems"
-                                description="Native connectors extract clean historical data from ERPs (SAP, Oracle), CRM, and custom proprietary databases."
+                                title="Enterprise & Project Systems"
+                                description="Secure connectors extract clean historical data from ERPs (SAP, Oracle) and construction management software (Procore, Primavera)."
                                 color="#8B5CF6"
                                 delay={0.1}
                             />
                             <PipelineNode
                                 icon={<CloudRain size={24} />}
                                 title="Unstructured Assets"
-                                description="Multi-modal optical character recognition (OCR) parses decades of PDF contracts, blueprints, and scattered emails."
+                                description="Vision models and OCR scan massive heavy construction blueprint sets, 200-page RFPs, and thousands of scattered site photos/emails."
                                 color="#a855f7"
                                 delay={0.2}
                             />
                             <PipelineNode
                                 icon={<Activity size={24} />}
-                                title="Live Telemetry"
-                                description="Real-time ingestion of IoT sensors, AIS vessel tracking, and external market API conditions."
+                                title="Live Telemetry & Logs"
+                                description="Real-time ingestion of daily site logs, IoT sensor feeds, equipment tracking, and external market material costs."
                                 color="#c084fc"
                                 delay={0.3}
                             />
@@ -134,7 +134,7 @@ export default function HowItWorksPage() {
                     <div className="relative z-20 mb-32">
                         <div className="text-center mb-12">
                             <span className="px-4 py-1.5 rounded-full bg-[#FF6B00] text-white text-xs font-bold tracking-widest uppercase mb-4 inline-block shadow-lg shadow-[#FF6B00]/20">Phase 2</span>
-                            <h2 className="text-3xl font-bold text-[#1a1a1a]">Vectorization & Zero-Trust Training</h2>
+                            <h2 className="text-3xl font-bold text-[#1a1a1a]">Building Your Custom AI Brain</h2>
                         </div>
 
                         <div className="bg-[#1a1a1a] rounded-[2rem] p-10 md:p-14 border border-black/10 shadow-2xl relative overflow-hidden">
@@ -151,7 +151,7 @@ export default function HowItWorksPage() {
                                 </motion.div>
                                 <h3 className="text-2xl font-bold text-white mb-4">The Sovereign Brain</h3>
                                 <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10 text-lg">
-                                    All ingested data is cleansed, embedded into a multidimensional vector space, and used to fine-tune a foundation model. The model weights are entirely disconnected from the public internet.
+                                    All your chaotic project data is mapped together so the AI understands that a delayed material shipment in an email affects a concrete pour schedule in Primavera. This custom brain is entirely disconnected from the public internet.
                                 </p>
 
                                 <div className="grid sm:grid-cols-2 gap-4 w-full">
@@ -197,22 +197,22 @@ export default function HowItWorksPage() {
                         <div className="grid md:grid-cols-3 gap-6">
                             <PipelineNode
                                 icon={<SearchCode size={24} />}
-                                title="Generative Retrieval"
-                                description="Employees chat with their own corporate history. 'What were the safety violations on site B last year?'"
+                                title="Instant Answers"
+                                description="Project managers simply chat with the system. 'Why was the Phase 3 concrete pour delayed, and what is the cost impact?'"
                                 color="#f97316"
                                 delay={0.1}
                             />
                             <PipelineNode
                                 icon={<Zap size={24} />}
-                                title="Predictive Oracles"
-                                description="The engine automatically surfaces risk alerts—predicting supply chain delays or budget overruns before they occur."
+                                title="Predictive Risk Alerts"
+                                description="The engine automatically flags issues—predicting supply chain material shortages or budget overruns before they stall the site."
                                 color="#ea580c"
                                 delay={0.2}
                             />
                             <PipelineNode
                                 icon={<Workflow size={24} />}
                                 title="Automated Agents"
-                                description="AI agents draft compliance reports, re-route failing shipments, and trigger ERP workflows autonomously."
+                                description="AI agents draft daily construction logs, issue RFI responses, and trigger procurement orders autonomously."
                                 color="#c2410c"
                                 delay={0.3}
                             />
@@ -232,10 +232,10 @@ export default function HowItWorksPage() {
                         {/* Glow effect */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-r from-[#8B5CF6]/5 via-transparent to-[#FF6B00]/5 blur-[80px] group-hover:opacity-100 opacity-50 transition-opacity duration-700 pointer-events-none" />
 
-                        <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6 relative z-10 tracking-tight">Deploy Your Own Inteligence.</h2>
-                        <p className="text-xl text-[#4b5563] mb-12 relative z-10 max-w-2xl mx-auto font-medium">Stop relying on fragmented dashboards and generic models. Secure a fully sovereign custom LLM tailored precisely to your operational realities.</p>
+                        <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6 relative z-10 tracking-tight">Ready To Build The Future?</h2>
+                        <p className="text-xl text-[#4b5563] mb-12 relative z-10 max-w-2xl mx-auto font-medium">Stop relying on fragmented dashboards and generic models. Secure a custom AI assistant tailored precisely to your project's operational realities.</p>
                         <Link to="/contact" className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-[#1a1a1a] hover:bg-black rounded-xl transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 relative z-10 group/btn">
-                            Request Architecture Review <ArrowRight size={20} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
+                            Get In Touch <ArrowRight size={20} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
                         </Link>
                     </div>
                 </motion.div>

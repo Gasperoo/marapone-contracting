@@ -1,19 +1,11 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { TubelightNavbar } from './TubelightNavbar';
-import { useAuth } from '../context/AuthContext';
 import { StackedCircularFooter } from './StackedCircularFooter';
-import { Home, Zap, CreditCard, Info, Mail, User, LogOut, HelpCircle, Factory, Brain } from 'lucide-react';
+import { Home, Zap, HelpCircle, Factory, CreditCard, Info, Mail, Brain } from 'lucide-react';
 
 export default function Layout({ children }) {
-  const navigate = useNavigate();
   const location = useLocation();
-  const { isAuthenticated, logout } = useAuth();
-
-  const handleLogout = async () => {
-    await logout();
-    navigate('/login');
-  };
 
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
@@ -24,9 +16,6 @@ export default function Layout({ children }) {
     { name: 'About', url: '/about', icon: Info },
     { name: 'Contact', url: '/contact', icon: Mail },
     { name: 'GasperAI', url: '/custom-llm', icon: Brain },
-    isAuthenticated
-      ? { name: 'Logout', url: '/login', icon: LogOut, onClick: handleLogout }
-      : { name: 'Account', url: '/account', icon: User }
   ];
 
   const isGasperPage = location.pathname === '/gasper' || location.pathname.startsWith('/gasper/');

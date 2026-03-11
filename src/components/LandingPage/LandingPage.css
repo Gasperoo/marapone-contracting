@@ -1404,6 +1404,14 @@ html {
     }
 }
 
+/* ============================================= */
+/*  PERFORMANCE: CSS CONTAINMENT                 */
+/* ============================================= */
+.perf-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+}
+
 /* Hide scrollbar for horizontal scrolling elements */
 .hide-scrollbar {
     -ms-overflow-style: none;

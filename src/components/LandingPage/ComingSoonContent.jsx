@@ -140,7 +140,7 @@ function IndustryCard({ icon, title, description, color, useCase }) {
 // ─── Gasper Engine Info Section (Below Hero) ──────────────────────────────────
 function GasperEngineInfoSection() {
     return (
-        <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-20 relative backdrop-blur-md bg-white/70 border-y border-black/[0.03] z-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl sm:rounded-3xl mt-8 mb-8 sm:mt-12 sm:mb-12 transition-all hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
+        <section className="perf-section px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-20 relative bg-white/95 border-y border-black/[0.03] z-20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl sm:rounded-3xl mt-8 mb-8 sm:mt-12 sm:mb-12 transition-all hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]">
             <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
                 {/* Visual Side */}
@@ -262,7 +262,7 @@ function B2BEnterpriseSection() {
     ];
 
     return (
-        <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
+        <section className="perf-section px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-full blur-3xl -z-10 pointer-events-none" />
 
@@ -360,7 +360,7 @@ function B2BEnterpriseSection() {
 // ─── Enterprise Workflow Orchestration ──────────────────────────────────────────
 function AgentOrchestrationSection() {
     return (
-        <section className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
+        <section className="perf-section px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <div className="text-center mb-16">
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                     <Layers size={14} className="mr-2" /> WORKFLOW ORCHESTRATION
@@ -374,7 +374,7 @@ function AgentOrchestrationSection() {
             </div>
 
             {/* Architecture Dashboard */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto backdrop-blur-md bg-white/70 rounded-[2rem] p-2 shadow-[0_20px_50px_rgb(0,0,0,0.08)] border border-black/[0.04] overflow-hidden transition-all hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative max-w-5xl mx-auto bg-white/95 rounded-[2rem] p-2 shadow-[0_20px_50px_rgb(0,0,0,0.08)] border border-black/[0.04] overflow-hidden transition-all hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                 <div className="bg-gray-50/80 rounded-[1.5rem] p-6 md:p-10 border border-black/[0.03] relative overflow-hidden">
                     <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
                     <div className="grid md:grid-cols-3 gap-6 relative z-10">
@@ -434,7 +434,7 @@ function GasperAIBotSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="perf-section px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                     <Bot size={12} className="mr-2" /> ENTERPRISE AI INTERFACES
@@ -449,7 +449,7 @@ function GasperAIBotSection() {
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
+                    <div className="relative rounded-[2rem] bg-white/95 border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                         {/* Toolbar */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.04] bg-gray-50/50">
                             <div className="flex items-center gap-2">
@@ -634,7 +634,7 @@ function ComparisonTableSection() {
     const differentiators = ['No Subscription Fees', 'On-Premise Ready', 'Full Source Code', 'Agency-Level Support'];
 
     return (
-        <section className="px-4 sm:px-6 max-w-6xl mx-auto py-16 sm:py-24 relative">
+        <section className="perf-section px-4 sm:px-6 max-w-6xl mx-auto py-16 sm:py-24 relative">
             <div className="text-center mb-20 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
@@ -774,7 +774,7 @@ function CustomLLMBuilderSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="perf-section px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[var(--color-primary)]/10 bg-[var(--color-primary)]/5 text-[var(--color-primary)] text-xs font-semibold tracking-[0.15em] mb-6">
                     <Brain size={12} className="mr-2" /> CUSTOM TRAINED MODELS
@@ -1130,7 +1130,7 @@ function MaterialPriceAggregatorSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="perf-section px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             {/* Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -1157,7 +1157,7 @@ function MaterialPriceAggregatorSection() {
                     viewport={{ once: true }}
                     className="lg:col-span-3 relative"
                 >
-                    <div className="relative rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
+                    <div className="relative rounded-[2rem] bg-white/95 border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                         {/* ── Toolbar ── */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.04] bg-gray-50/50">
                             <div className="flex items-center gap-2">
@@ -1292,7 +1292,7 @@ function MaterialPriceAggregatorSection() {
                         className="grid grid-cols-2 gap-4"
                     >
                         {savings.map((s, i) => (
-                            <div key={i} className="rounded-[1.5rem] bg-white/90 backdrop-blur-sm border border-black/[0.04] p-6 text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:-translate-y-1 transition-transform hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+                            <div key={i} className="rounded-[1.5rem] bg-white/90 border border-black/[0.04] p-6 text-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:-translate-y-1 transition-transform hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.5 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
@@ -1396,7 +1396,7 @@ function ProjectTimelineSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="perf-section px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-semibold tracking-[0.15em] mb-6">
                     <CalendarDays size={12} className="mr-2" /> PROJECT LIFECYCLE ENGINE
@@ -1411,7 +1411,7 @@ function ProjectTimelineSection() {
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
+                    <div className="relative rounded-[2rem] bg-white/95 border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                         {/* Toolbar */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.04] bg-gray-50/50">
                             <div className="flex items-center gap-2">
@@ -1605,7 +1605,7 @@ function SafetyComplianceSection() {
     ];
 
     return (
-        <section ref={sectionRef} className="px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
+        <section ref={sectionRef} className="perf-section px-4 sm:px-6 max-w-7xl mx-auto py-16 sm:py-24 relative overflow-hidden">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
                 <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-emerald-500/10 bg-emerald-500/5 text-emerald-600 text-xs font-semibold tracking-[0.15em] mb-6">
                     <Shield size={12} className="mr-2" /> AI SAFETY COMMAND
@@ -1620,7 +1620,7 @@ function SafetyComplianceSection() {
 
             <div className="grid lg:grid-cols-5 gap-8">
                 <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="lg:col-span-3 relative">
-                    <div className="relative rounded-[2rem] bg-white/90 backdrop-blur-md border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
+                    <div className="relative rounded-[2rem] bg-white/95 border border-black/[0.04] overflow-hidden shadow-[0_20px_50px_rgb(0,0,0,0.06)] transform transition-all duration-500 hover:shadow-[0_25px_60px_rgb(0,0,0,0.1)]">
                         {/* Toolbar */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-black/[0.04] bg-gray-50/50">
                             <div className="flex items-center gap-2">
@@ -2245,7 +2245,7 @@ function FeatureTabsSection() {
     };
 
     return (
-        <section className="px-4 sm:px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+        <section className="perf-section px-4 sm:px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
             <div className="text-center mb-10">
                 <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                     className="text-sm uppercase tracking-[0.2em] font-semibold mb-4" style={{ color: C.primary }}>

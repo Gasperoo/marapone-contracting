@@ -203,11 +203,11 @@ export default function LandingPage({ comingSoonMode = false }) {
     return (
         <div className="landing-container relative transition-colors duration-1000 bg-[#F5F5F5] text-[#1a1a1a] font-sans">
             {/* Ambient Background Effects */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
+            <div className="fixed inset-0 z-0 pointer-events-none" style={{ willChange: 'transform' }}>
                 <Particles
                     particleColors={["#FF6B00", "#F59E0B", "#1a1a1a"]}
-                    particleCount={250}
-                    speed={0.15}
+                    particleCount={120}
+                    speed={0.08}
                     sizeRandomness={2}
                 />
             </div>
@@ -220,8 +220,8 @@ export default function LandingPage({ comingSoonMode = false }) {
                 <div className="absolute top-0 inset-x-0 h-[250px] z-[1] pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(245,245,245,1) 0%, rgba(245,245,245,0) 100%)' }} />
 
                 {/* Subtle Glows */}
-                <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#FF6B00]/5 rounded-full blur-3xl pointer-events-none z-0" animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
-                <motion.div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#f59e0b]/5 rounded-full blur-3xl pointer-events-none z-0" animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+                <motion.div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#FF6B00]/5 rounded-full blur-3xl pointer-events-none z-0" style={{ contain: 'strict', willChange: 'transform' }} animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#f59e0b]/5 rounded-full blur-3xl pointer-events-none z-0" style={{ contain: 'strict', willChange: 'transform' }} animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
 
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
 

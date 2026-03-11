@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Shield, Server, Box } from 'lucide-react';
+import { ArrowRight, Shield, Server, Box, CheckCircle2, ShieldAlert } from 'lucide-react';
 import '../components/LandingPage/LandingPage.css';
 
 export default function ContactPage() {
@@ -11,6 +11,9 @@ export default function ContactPage() {
     company: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -19,11 +22,38 @@ export default function ContactPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you. A solutions architect will be in touch shortly.');
-    setFormData({ name: '', email: '', role: '', company: '', message: '' });
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+        const baseUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000' 
+            : window.location.origin;
+
+        const response = await fetch(`${baseUrl}/api/send-contact-email`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || data.error || 'Failed to send message');
+        }
+
+        setIsSuccess(true);
+        setFormData({ name: '', email: '', company: '', role: '', message: '' });
+    } catch (err) {
+        console.error('Submission error:', err);
+        setError(err.message || 'Something went wrong. Please email us directly at general@marapone.com');
+    } finally {
+        setIsSubmitting(false);
+    }
   };
 
   return (
@@ -100,7 +130,30 @@ export default function ContactPage() {
 
           <h2 className="text-2xl font-bold text-[#1a1a1a] mb-8">Initiate Conversation</h2>
 
+          {isSuccess ? (
+            <div className="h-full flex flex-col items-center justify-center text-center py-10">
+                <div className="w-20 h-20 bg-[#10B981]/20 rounded-full flex items-center justify-center mb-6 border border-[#10B981]/50 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+                    <CheckCircle2 size={40} className="text-[#10B981]" />
+                </div>
+                <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">Transmission Successful</h3>
+                <p className="text-[#6b7280] text-lg leading-relaxed mb-8 max-w-sm">
+                    Your inquiry has been securely routed. Our engineering team will review your requirements and respond shortly.
+                </p>
+                <button
+                    onClick={() => setIsSuccess(false)}
+                    className="px-8 py-3 bg-[#1a1a1a] hover:bg-black text-white rounded-xl font-bold transition-colors shadow-sm"
+                >
+                    Send Another Message
+                </button>
+            </div>
+          ) : (
           <form className="space-y-6" onSubmit={handleSubmit}>
+            {error && (
+                <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-600 text-sm font-medium flex items-start gap-3">
+                    <ShieldAlert size={20} className="shrink-0 mt-0.5" />
+                    <span>{error}</span>
+                </div>
+            )}
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Name</label>
@@ -176,15 +229,18 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="w-full bg-[#1a1a1a] hover:bg-black text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 group"
+              disabled={isSubmitting}
+              className="w-full bg-[#1a1a1a] hover:bg-black text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
             >
-              Submit Request <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              {isSubmitting ? 'Transmitting...' : 'Submit Request'} 
+              {!isSubmitting && <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />}
             </button>
 
             <p className="text-xs text-center text-[#9ca3af] mt-4">
               By submitting, you agree to our strict enterprise non-disclosure policy.
             </p>
           </form>
+          )}
         </motion.div>
 
       </div>

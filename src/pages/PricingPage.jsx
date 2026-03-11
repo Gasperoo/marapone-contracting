@@ -12,8 +12,8 @@ export default function PricingPage() {
         {
             name: 'VPC Sandbox',
             id: 'tier-sandbox',
-            price: '$2,500',
-            period: 'One-Time',
+            price: "Let's Talk",
+            period: '',
             description: 'For pilot teams evaluating custom LLMs on a partitioned cloud instance.',
             features: [
                 'Dedicated Partitioned Inference',
@@ -22,7 +22,7 @@ export default function PricingPage() {
                 '1 Custom RAG Pipeline',
                 'Email Support (Next Business Day)',
             ],
-            cta: 'Start Sandbox Evaluation',
+            cta: 'Contact Us',
             ctaLink: '/contact?type=sandbox',
             highlight: false,
             color: '#8B5CF6',
@@ -30,8 +30,8 @@ export default function PricingPage() {
         {
             name: 'Dedicated Cloud Core',
             id: 'tier-cloud-core',
-            price: '$8,000',
-            period: 'One-Time',
+            price: 'Contact Us',
+            period: '',
             description: 'Full production deployment within a secure, single-tenant AWS/Azure VPC.',
             features: [
                 'Single-Tenant GPU Cluster',
@@ -41,7 +41,7 @@ export default function PricingPage() {
                 'SOC2 Compliant Architecture',
                 'Dedicated Solution Architect'
             ],
-            cta: 'Deploy Cloud Core',
+            cta: 'Contact Us',
             ctaLink: '/contact?type=cloud-core',
             highlight: true,
             color: '#F59E0B',
@@ -49,8 +49,8 @@ export default function PricingPage() {
         {
             name: 'Global Cloud Enterprise',
             id: 'tier-cloud-enterprise',
-            price: 'Custom',
-            period: 'One-Time',
+            price: 'Contact Us',
+            period: '',
             description: 'Multi-region deployment for global supply chains and massive data lakes.',
             features: [
                 'Multi-Region 99.99% SLA',
@@ -60,7 +60,7 @@ export default function PricingPage() {
                 'White-glove 24/7 SLA Support',
                 'On-site Engineering Rotation'
             ],
-            cta: 'Contact Architecture Team',
+            cta: 'Contact Us',
             ctaLink: '/contact?type=enterprise',
             highlight: false,
             color: '#10B981',
@@ -71,8 +71,8 @@ export default function PricingPage() {
         {
             name: 'Air-Gapped Node',
             id: 'tier-air-gapped',
-            price: '$15,000',
-            period: 'One-Time',
+            price: 'Contact Us',
+            period: '',
             description: 'A fully isolated deployment on your hardware. We provide everything from Mac-mini local LLMs for small businesses all the way to enterprise-level servers.',
             features: [
                 'Full Local Model Weights Access',
@@ -81,7 +81,7 @@ export default function PricingPage() {
                 'Local Vector Database Auto-sync',
                 'Secure Offline Updates via USB'
             ],
-            cta: 'Request Node Specs',
+            cta: 'Contact Us',
             ctaLink: '/contact?type=air-gapped',
             highlight: false,
             color: '#EF4444',
@@ -89,8 +89,8 @@ export default function PricingPage() {
         {
             name: 'Sovereign Cluster Deploy',
             id: 'tier-sovereign',
-            price: 'Custom',
-            period: 'One-Time',
+            price: 'Contact Us',
+            period: '',
             description: 'Defense-grade multi-node deployment for highly classified data environments.',
             features: [
                 'Multi-Node Local Kubernetes Deploy',
@@ -100,7 +100,7 @@ export default function PricingPage() {
                 'Source Code Escrow Option',
                 'Dedicated Cleared Engineering Support'
             ],
-            cta: 'Initiate Security Audit',
+            cta: 'Contact Us',
             ctaLink: '/contact?type=sovereign',
             highlight: true,
             color: '#FF6B00',

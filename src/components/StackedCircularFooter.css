@@ -71,6 +71,7 @@
 .footer-brand-name {
   background: linear-gradient(to right, #ffffff, #a3a3a3);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

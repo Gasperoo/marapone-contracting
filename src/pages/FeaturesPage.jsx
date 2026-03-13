@@ -63,9 +63,9 @@ export default function FeaturesPage() {
                     >
                         <span className="text-xs font-bold tracking-widest uppercase text-[#6b7280] mb-6 block">Platform Architecture By</span>
                         <div className="flex items-center justify-center gap-12 bg-[#1a1a1a] rounded-2xl px-12 py-8 shadow-xl">
-                            <img src="/logo.png" alt="Marapone Logo" className="h-[50px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
-                            <div className="w-px h-10 bg-white/20" />
-                            <img src="/images/gasper-logo-g.png" alt="Gasper Logo" className="h-[40px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
+                            <img src="/logo.png" alt="Marapone Logo" className="h-[75px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
+                            <div className="w-px h-16 bg-white/20" />
+                            <img src="/images/gasper-logo-g.png" alt="Gasper Logo" className="h-[65px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
                         </div>
                     </motion.div>
                 </div>

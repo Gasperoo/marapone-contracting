@@ -43,6 +43,7 @@ const ScrollBeacon = () => (
 const BusinessIntegrationPanel = () => {
     const industries = [
         {
+            id: 'construction',
             icon: <HardHat size={28} />,
             label: 'Construction',
             desc: 'Automate blueprint analysis & supply chain logistics.',
@@ -50,6 +51,7 @@ const BusinessIntegrationPanel = () => {
             bgGlow: 'rgba(255,107,0,0.15)'
         },
         {
+            id: 'logistics',
             icon: <Truck size={28} />,
             label: 'Logistics',
             desc: 'Predictive routing and dynamic inventory forecasting.',
@@ -57,6 +59,7 @@ const BusinessIntegrationPanel = () => {
             bgGlow: 'rgba(14,165,233,0.15)'
         },
         {
+            id: 'marketing',
             icon: <TrendingUp size={28} />,
             label: 'Marketing',
             desc: 'Generative campaigns with hyper-targeted segmentation.',
@@ -64,6 +67,7 @@ const BusinessIntegrationPanel = () => {
             bgGlow: 'rgba(245,158,11,0.15)'
         },
         {
+            id: 'ecommerce',
             icon: <Package size={28} />,
             label: 'E-Commerce',
             desc: 'Autonomous pricing agents and customer experience.',
@@ -116,36 +120,37 @@ const BusinessIntegrationPanel = () => {
 
                     <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
                         {industries.map((ind, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.8 + i * 0.1, duration: 0.7 }}
-                                className="group relative rounded-[2rem] p-6 lg:p-8 transition-all duration-500 cursor-pointer overflow-hidden z-20 flex flex-col h-full bg-white/95 border border-black/[0.04] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1"
-                            >
-                                {/* Hover background effect */}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(circle at 100% 100%, ${ind.bgGlow}, transparent 70%)` }} />
+                            <Link to={`/industries/${ind.id}`} key={i} className="block w-full h-full">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.8 + i * 0.1, duration: 0.7 }}
+                                    className="group relative rounded-[2rem] p-6 lg:p-8 transition-all duration-500 cursor-pointer overflow-hidden z-20 flex flex-col h-full bg-white/95 border border-black/[0.04] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1"
+                                >
+                                    {/* Hover background effect */}
+                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(circle at 100% 100%, ${ind.bgGlow}, transparent 70%)` }} />
 
-                                <div className="absolute top-0 right-0 w-32 h-32 transform translate-x-12 -translate-y-12 rounded-full opacity-0 blur-[30px] transition-all duration-700 group-hover:opacity-20 group-hover:scale-150" style={{ background: ind.color }} />
+                                    <div className="absolute top-0 right-0 w-32 h-32 transform translate-x-12 -translate-y-12 rounded-full opacity-0 blur-[30px] transition-all duration-700 group-hover:opacity-20 group-hover:scale-150" style={{ background: ind.color }} />
 
-                                <div className="relative z-10 flex flex-col h-full">
-                                    <div className="flex items-center justify-between mb-8">
-                                        <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-sm border border-white" style={{ background: `${ind.color}15`, color: ind.color, boxShadow: `0 8px 20px ${ind.bgGlow}` }}>
-                                            {ind.icon}
+                                    <div className="relative z-10 flex flex-col h-full">
+                                        <div className="flex items-center justify-between mb-8">
+                                            <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-sm border border-white" style={{ background: `${ind.color}15`, color: ind.color, boxShadow: `0 8px 20px ${ind.bgGlow}` }}>
+                                                {ind.icon}
+                                            </div>
+                                            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 border border-black/[0.04] text-gray-400 group-hover:bg-[#1a1a1a] group-hover:text-white group-hover:-rotate-45 transition-all duration-300 shadow-sm">
+                                                <ArrowRight size={18} />
+                                            </div>
                                         </div>
-                                        <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 border border-black/[0.04] text-gray-400 group-hover:bg-[#1a1a1a] group-hover:text-white group-hover:-rotate-45 transition-all duration-300 shadow-sm">
-                                            <ArrowRight size={18} />
-                                        </div>
+
+                                        <h3 className="text-[#1a1a1a] font-extrabold text-xl mb-3 transition-colors duration-300" style={{ '--hover-color': ind.color }} onMouseEnter={e => e.currentTarget.style.color = ind.color} onMouseLeave={e => e.currentTarget.style.color = '#1a1a1a'}>
+                                            {ind.label}
+                                        </h3>
+                                        <p className="text-[15px] font-medium leading-[1.7] text-gray-500 group-hover:text-gray-700 transition-colors">
+                                            {ind.desc}
+                                        </p>
                                     </div>
-
-                                    <h3 className="text-[#1a1a1a] font-extrabold text-xl mb-3 transition-colors duration-300" style={{ '--hover-color': ind.color }} onMouseEnter={e => e.currentTarget.style.color = ind.color} onMouseLeave={e => e.currentTarget.style.color = '#1a1a1a'}>
-                                        {ind.label}
-                                    </h3>
-                                    <p className="text-[15px] font-medium leading-[1.7] text-gray-500 group-hover:text-gray-700 transition-colors">
-                                        {ind.desc}
-                                    </p>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </Link>
                         ))}
                     </div>
                 </div>

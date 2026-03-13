@@ -12,6 +12,10 @@ import PricingPage from './pages/PricingPage';
 import FeaturesPage from './pages/FeaturesPage';
 import HowItWorksPage from './pages/HowItWorksPage';
 import IndustriesPage from './pages/IndustriesPage';
+import ConstructionPage from './pages/ConstructionPage';
+import LogisticsPage from './pages/LogisticsPage';
+import MarketingPage from './pages/MarketingPage';
+import EcommercePage from './pages/EcommercePage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
@@ -43,6 +47,10 @@ function App() {
                       <Route path="/features" element={<FeaturesPage />} />
                       <Route path="/how-it-works" element={<HowItWorksPage />} />
                       <Route path="/industries" element={<IndustriesPage />} />
+                      <Route path="/industries/construction" element={<ConstructionPage />} />
+                      <Route path="/industries/logistics" element={<LogisticsPage />} />
+                      <Route path="/industries/marketing" element={<MarketingPage />} />
+                      <Route path="/industries/ecommerce" element={<EcommercePage />} />
                       <Route path="/custom-llm" element={<CustomLLMPage />} />
                       <Route path="/pricing" element={<PricingPage />} />
                       <Route path="/contact" element={<ContactPage />} />

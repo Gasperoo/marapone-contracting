@@ -13,18 +13,18 @@ const IndustrySection = ({ industry, index }) => {
     const isEven = index % 2 === 0;
 
     return (
-        <div className={`py-24 md:py-32 relative ${isEven ? 'bg-white/40 border-y border-black/5' : 'bg-transparent'}`}>
+        <div className={`py-16 md:py-32 relative ${isEven ? 'bg-white/40 border-y border-black/5' : 'bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row gap-16 items-start">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
                     
                     {/* Left/Header block */}
                     <div className="lg:w-1/3">
-                        <div className="sticky top-32">
+                        <div className="lg:sticky lg:top-32">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-10%" }}
-                                className="w-20 h-20 rounded-[2rem] flex items-center justify-center mb-8 shadow-sm border border-black/5"
+                                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-[2rem] flex items-center justify-center mb-6 md:mb-8 shadow-sm border border-black/5"
                                 style={{ backgroundColor: `${industry.color}15`, color: industry.color }}
                             >
                                 {industry.icon}
@@ -33,7 +33,7 @@ const IndustrySection = ({ industry, index }) => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-10%" }}
-                                className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6 tracking-tight leading-[1.1]"
+                                className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-4 md:mb-6 tracking-tight leading-[1.1]"
                             >
                                 {industry.title}
                             </motion.h2>
@@ -42,26 +42,26 @@ const IndustrySection = ({ industry, index }) => {
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
                                 viewport={{ once: true }}
-                                className="h-1.5 w-24 rounded-full mb-8 origin-left"
+                                className="h-1.5 w-16 md:w-24 rounded-full mb-8 origin-left"
                                 style={{ backgroundColor: industry.color }}
                             />
                         </div>
                     </div>
 
                     {/* Right/Content block */}
-                    <div className="lg:w-2/3 flex flex-col gap-8">
+                    <div className="lg:w-2/3 flex flex-col gap-6 md:gap-8">
                         {/* The Challenge */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-10%" }}
-                            className="bg-white rounded-3xl p-8 md:p-10 border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                            className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                         >
-                            <div className="flex items-center gap-3 mb-5">
+                            <div className="flex items-center gap-3 mb-4 md:mb-5">
                                 <AlertTriangle size={24} className="text-[#EF4444]" />
                                 <h3 className="text-xl font-bold text-[#1a1a1a]">The Challenge</h3>
                             </div>
-                            <p className="text-lg text-gray-600 leading-relaxed font-medium">
+                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
                                 {industry.challenge}
                             </p>
                         </motion.div>
@@ -72,14 +72,14 @@ const IndustrySection = ({ industry, index }) => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-10%" }}
                             transition={{ delay: 0.1 }}
-                            className="bg-[#1a1a1a] rounded-3xl p-8 md:p-10 shadow-[0_20px_40px_rgb(0,0,0,0.15)] relative overflow-hidden"
+                            className="bg-[#1a1a1a] rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-[0_20px_40px_rgb(0,0,0,0.15)] relative overflow-hidden"
                         >
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-bl-full pointer-events-none" />
-                            <div className="flex items-center gap-3 mb-5 relative z-10">
+                            <div className="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-white/5 rounded-bl-full pointer-events-none" />
+                            <div className="flex items-center gap-3 mb-4 md:mb-5 relative z-10">
                                 <Layers size={24} className="text-white" />
                                 <h3 className="text-xl font-bold text-white">The Marapone Solution</h3>
                             </div>
-                            <p className="text-lg text-gray-300 leading-relaxed font-medium relative z-10">
+                            <p className="text-base md:text-lg text-gray-300 leading-relaxed font-medium relative z-10">
                                 {industry.solution}
                             </p>
                         </motion.div>
@@ -90,22 +90,22 @@ const IndustrySection = ({ industry, index }) => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-10%" }}
                             transition={{ delay: 0.2 }}
-                            className="bg-white rounded-3xl p-8 md:p-10 border shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden group"
+                            className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden group"
                             style={{ borderColor: `${industry.color}20` }}
                         >
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                                 style={{ background: `radial-gradient(circle at top right, ${industry.color}10, transparent 60%)` }} />
                             
-                            <div className="flex items-center justify-between mb-8 relative z-10">
-                                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest bg-white shadow-sm"
+                            <div className="flex items-center justify-between mb-6 md:mb-8 relative z-10">
+                                <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border text-[10px] md:text-xs font-bold uppercase tracking-widest bg-white shadow-sm"
                                     style={{ borderColor: `${industry.color}30`, color: industry.color }}>
                                     <Cpu size={14} /> GasperAI Use Case
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-black text-[#1a1a1a] mb-5 relative z-10">
+                            <h3 className="text-xl md:text-2xl font-black text-[#1a1a1a] mb-4 md:mb-5 relative z-10">
                                 {industry.useCaseTitle}
                             </h3>
-                            <p className="text-lg text-gray-600 leading-relaxed font-medium relative z-10">
+                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium relative z-10">
                                 {industry.useCaseDesc}
                             </p>
                         </motion.div>

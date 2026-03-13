@@ -167,6 +167,47 @@ export default function FeaturesPage() {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Key Differentiators */}
+                <div className="mb-32">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl font-bold text-[#1a1a1a]">Key Differentiators</h2>
+                        <div className="w-24 h-1 bg-[#8B5CF6] mx-auto mt-6 rounded-full opacity-20" />
+                        <p className="text-lg text-[#6b7280] max-w-2xl mx-auto mt-6">Why Gasper out-performs generic AI models in construction and heavy industry settings.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="bg-white p-8 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all flex flex-col items-center text-center">
+                            <div className="w-16 h-16 bg-[#8B5CF6]/10 text-[#8B5CF6] rounded-2xl flex items-center justify-center mb-6">
+                                <Activity size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Continuous Learning</h3>
+                            <p className="text-[#6b7280] font-medium leading-relaxed">
+                                Your digital brain gets smarter the longer it runs on your servers. It constantly adapts to how your company writes RFPs, handles change orders, and prices specialized bids based on new data flowing into the system.
+                            </p>
+                        </div>
+                        
+                        <div className="bg-white p-8 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all flex flex-col items-center text-center">
+                            <div className="w-16 h-16 bg-[#FF6B00]/10 text-[#FF6B00] rounded-2xl flex items-center justify-center mb-6">
+                                <FileText size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Multi-Modal Vision</h3>
+                            <p className="text-[#6b7280] font-medium leading-relaxed">
+                                It doesn't just read spreadsheets. The engine visually understands massive architectural blueprint sets, identifying MEP conflicts, missing structural elements, and generating automated takeoff quantities directly from the drawings.
+                            </p>
+                        </div>
+                        
+                        <div className="bg-white p-8 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all flex flex-col items-center text-center">
+                            <div className="w-16 h-16 bg-[#10B981]/10 text-[#10B981] rounded-2xl flex items-center justify-center mb-6">
+                                <Network size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">No-Code Connectors</h3>
+                            <p className="text-[#6b7280] font-medium leading-relaxed">
+                                No complex IT projects required. Our system provides out-of-the-box, secure connections to the tools your teams already use daily: Procore, Autodesk Build, Microsoft Outlook, SAP, and Primavera P6 schedules.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Capabilities Grid */}
                 <div className="mb-32">
                     <div className="text-center mb-16">
@@ -192,6 +233,24 @@ export default function FeaturesPage() {
                             title="Predictive Risk Detection"
                             desc="Because the AI oversees the entirety of your project, it spots financial variances, schedule slip risks, and safety breaches before they impact the bottom line."
                             color="#FF6B00"
+                        />
+                        <FeatureBento
+                            icon={<FileText size={24} />}
+                            title="Contract Verification"
+                            desc="Instantly cross-reference massive incoming supplier invoices against your previously negotiated rate cards to flag billing exceptions autonomously."
+                            color="#10B981"
+                        />
+                        <FeatureBento
+                            icon={<ShieldCheck size={24} />}
+                            title="Site Safety Auditing"
+                            desc="Utilize computer vision to analyze drone footage or site cameras, automatically logging daily PPE compliance and flagging hazard zones in real-time."
+                            color="#EF4444"
+                        />
+                        <FeatureBento
+                            icon={<Zap size={24} />}
+                            title="Historical Bid Generation"
+                            desc="Draft highly accurate proposals simply by having the AI compare a new RFP against the historical data of your past winning bids and their actual completed costs."
+                            color="#3B82F6"
                         />
                     </div>
                 </div>

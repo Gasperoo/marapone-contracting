@@ -1,9 +1,65 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Truck, MapPin, Activity, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Truck, MapPin, Activity, ShieldCheck, ArrowRight, CheckCircle2, Bot } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+const SimulatorToggle = ({ active, onClick, label, metric, color }) => (
+    <div 
+        onClick={onClick}
+        className={`cursor-pointer border p-4 rounded-xl transition-all duration-300 flex items-center justify-between ${active ? 'bg-white/10 border-white/20 shadow-md' : 'bg-transparent border-white/5 hover:bg-white/5'}`}
+    >
+        <div className="flex items-center gap-3">
+            <div className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-colors ${active ? `bg-[${color}] border-[${color}]` : 'border-gray-600'}`}>
+                {active && <CheckCircle2 size={12} className="text-white" />}
+            </div>
+            <div>
+                <div className={`font-bold text-sm ${active ? 'text-white' : 'text-gray-400'}`}>{label}</div>
+                <div className="text-[10px] text-gray-500">{metric}</div>
+            </div>
+        </div>
+        <div className={`w-2 h-2 rounded-full ${active ? `bg-[${color}] shadow-[0_0_8px_${color}] animate-pulse` : 'bg-gray-600'}`} />
+    </div>
+);
+
 const LogisticsPage = () => {
+    // Twin Simulator State
+    const [simState, setSimState] = useState({ storm: false, strike: false, canal: false });
+    const [activePath, setActivePath] = useState("M 100 200 Q 300 250, 700 150");
+    const [marginImpact, setMarginImpact] = useState(0);
+    const [actionText, setActionText] = useState("Monitoring Global Flow");
+
+    useEffect(() => {
+        let path = "M 100 200 Q 300 250, 700 150"; // Base path
+        let margin = 0;
+        let action = "Monitoring Global Flow";
+
+        if (simState.storm && !simState.strike && !simState.canal) {
+            path = "M 100 200 Q 300 100, 700 150"; // Reroute north of storm
+            margin = -0.05;
+            action = "Rerouting M/V Zenith (North Pacific)";
+        } else if (simState.strike && !simState.storm && !simState.canal) {
+            path = "M 100 200 Q 400 350, 700 150"; // Reroute via Panama
+            margin = -0.12;
+            action = "Diverting to Port of Houston";
+        } else if (simState.canal && !simState.storm && !simState.strike) {
+             path = "M 100 200 Q 400 350, 700 150"; // Reroute around Cape
+             margin = -0.18;
+             action = "Bypassing Suez (Cape Route)";
+        } else if (simState.storm && simState.strike) {
+             path = "M 100 200 Q 500 50, 700 150"; // Extreme north route
+             margin = -0.25;
+             action = "Air Freight Optimization Activated";
+        } else if (Object.values(simState).filter(Boolean).length >= 2) {
+             path = "M 100 200 Q 400 50, 700 150"; // Wildcard route for multiple events
+             margin = -0.45;
+             action = "Multi-Modal Intercept Protocol";
+        }
+
+        setActivePath(path);
+        setMarginImpact(margin);
+        setActionText(action);
+    }, [simState]);
+
     return (
         <div className="min-h-screen bg-[#F8FAFC] pt-32 pb-24 text-[#1a1a1a]">
             {/* Header Section */}
@@ -143,6 +199,131 @@ const LogisticsPage = () => {
                         </div>
                     </div>
                 </motion.div>
+            </div>
+
+            {/* TWIN SIMULATOR SECTION */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-24">
+                <div className="text-center mb-12">
+                     <h2 className="text-4xl font-black tracking-tight mb-4">Interactive Twin Simulator</h2>
+                     <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+                         Test Marapone's routing engine in real-time. Inject chaos into the supply chain grid and watch how the autonomous agents instantly recalculate paths and margins.
+                     </p>
+                </div>
+                
+                <div className="bg-[#1a1a1a] rounded-[2rem] p-6 lg:p-10 shadow-2xl border border-white/10 flex flex-col lg:flex-row gap-8 items-stretch overflow-hidden relative">
+                    {/* Simulator Controls */}
+                    <div className="w-full lg:w-1/3 flex flex-col gap-6 relative z-10">
+                        <div className="text-white">
+                            <h3 className="text-xl font-bold mb-1">Grid Variables</h3>
+                            <p className="text-xs text-gray-400">Toggle events to see real-time impact.</p>
+                        </div>
+                        
+                        <div className="space-y-4">
+                            <SimulatorToggle 
+                                active={simState.storm} 
+                                onClick={() => setSimState(s => ({...s, storm: !s.storm}))} 
+                                label="Typhoon in South China Sea" 
+                                metric="Impacts maritime lanes" 
+                                color="#0EA5E9" 
+                            />
+                            <SimulatorToggle 
+                                active={simState.strike} 
+                                onClick={() => setSimState(s => ({...s, strike: !s.strike}))} 
+                                label="Port of LA Labor Strike" 
+                                metric="Reduces offload capacity 80%" 
+                                color="#F59E0B" 
+                            />
+                            <SimulatorToggle 
+                                active={simState.canal} 
+                                onClick={() => setSimState(s => ({...s, canal: !s.canal}))} 
+                                label="Suez Canal Blockage" 
+                                metric="Severs Asia-Europe route" 
+                                color="#EF4444" 
+                            />
+                        </div>
+
+                        <div className="mt-auto bg-white/5 border border-white/10 rounded-xl p-5">
+                            <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-3">Live Recalculation Output</div>
+                            <div className="flex justify-between items-end mb-2">
+                                <span className="text-sm text-gray-300 font-medium">Original ETA Margin:</span>
+                                <span className="text-lg font-mono text-white">$1.24M</span>
+                            </div>
+                            <div className="flex justify-between items-end">
+                                <span className="text-sm text-gray-300 font-medium">Agent Preserved Margin:</span>
+                                <span className={`text-xl font-mono font-bold ${marginImpact < 0 ? 'text-red-400' : 'text-green-400'}`}>
+                                    ${(1.24 + marginImpact).toFixed(2)}M
+                                </span>
+                            </div>
+                            <div className="text-[10px] text-gray-500 mt-3 pt-3 border-t border-white/10">Engine evaluating 4.2M routing combinations per second.</div>
+                        </div>
+                    </div>
+
+                    {/* Visual Map */}
+                    <div className="w-full lg:w-2/3 bg-black rounded-xl border border-white/10 relative overflow-hidden flex items-center justify-center min-h-[400px]">
+                        {/* Grid Background */}
+                        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+                        
+                        <svg className="w-full h-full absolute inset-0 text-white" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+                             
+                             {/* Base inactive routes */}
+                             <path d="M 100 200 Q 300 250, 700 150" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="5 5" />
+                             <path d="M 100 200 Q 300 100, 700 150" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="5 5" />
+                             <path d="M 100 200 Q 400 350, 700 150" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeDasharray="5 5" />
+
+                             {/* Active Route rendered dynamically based on state */}
+                             <motion.path 
+                                d={activePath} 
+                                fill="none" 
+                                stroke="#10B981" 
+                                strokeWidth="4" 
+                                strokeLinecap="round"
+                                className="drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]"
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                                key={activePath} // force re-render animation when path changes
+                             />
+
+                             <circle cx="100" cy="200" r="6" fill="#0EA5E9" className="drop-shadow-[0_0_10px_#0EA5E9]" />
+                             <text x="100" y="225" fill="#888" fontSize="12" textAnchor="middle" fontWeight="bold">SHANGHAI</text>
+                             
+                             <circle cx="700" cy="150" r="6" fill="#8B5CF6" className="drop-shadow-[0_0_10px_#8B5CF6]" />
+                             <text x="700" y="175" fill="#888" fontSize="12" textAnchor="middle" fontWeight="bold">ROTTERDAM</text>
+
+                             {/* Chaos Nodes */}
+                             <AnimatePresence>
+                                {simState.storm && (
+                                    <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}>
+                                        <circle cx="300" cy="250" r="25" fill="rgba(14, 165, 233, 0.2)" stroke="#0EA5E9" strokeDasharray="4 4" />
+                                        <text x="300" y="254" fill="#0EA5E9" fontSize="20" textAnchor="middle" style={{fontFamily: 'system-ui'}}>☁</text>
+                                    </motion.g>
+                                )}
+                                {simState.strike && (
+                                    <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}>
+                                        <circle cx="700" cy="150" r="30" fill="rgba(245, 158, 11, 0.2)" stroke="#F59E0B" strokeDasharray="4 4" />
+                                        <text x="700" y="156" fill="#F59E0B" fontSize="20" textAnchor="middle" style={{fontFamily: 'system-ui'}}>⚠</text>
+                                    </motion.g>
+                                )}
+                                {simState.canal && (
+                                    <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0, opacity: 0 }}>
+                                        <circle cx="300" cy="100" r="25" fill="rgba(239, 68, 68, 0.2)" stroke="#EF4444" strokeDasharray="4 4" />
+                                        <text x="300" y="105" fill="#EF4444" fontSize="20" textAnchor="middle" style={{fontFamily: 'system-ui'}}>✖</text>
+                                    </motion.g>
+                                )}
+                             </AnimatePresence>
+                        </svg>
+
+                        {/* Floating Action Tag */}
+                        <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-lg flex items-center gap-3">
+                            <Bot size={18} className="text-[#10B981]" />
+                            <div>
+                                <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest leading-none mb-1">Agent Status</div>
+                                <div className="text-sm font-semibold text-white leading-none">{actionText}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             
             <div className="max-w-7xl mx-auto px-6 mt-16 text-center">

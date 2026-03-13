@@ -65,7 +65,7 @@ export default function FeaturesPage() {
                         <div className="flex items-center justify-center gap-12 bg-[#1a1a1a] rounded-2xl px-12 py-8 shadow-xl">
                             <img src="/logo.png" alt="Marapone Logo" className="h-[75px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
                             <div className="w-px h-16 bg-white/20" />
-                            <img src="/images/gasper-logo-g.png" alt="Gasper Logo" className="h-[65px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
+                            <img src="/images/gasper-logo-g.png" alt="Gasper Logo" className="h-[75px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
                         </div>
                     </motion.div>
                 </div>

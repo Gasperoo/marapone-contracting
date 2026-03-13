@@ -246,8 +246,10 @@ export default function LandingPage({ comingSoonMode = false }) {
                     {/* Main Corporate Headline */}
                     <div className="max-w-4xl mx-auto mb-8">
                         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#1a1a1a] leading-[1.05]">
-                            Sovereign AI For <br />
-                            <span className="relative inline-block"><span className="relative z-10">Physical Operations.</span><div className="absolute bottom-2 left-0 w-full h-3 bg-[#FF6B00]/20 -z-0 rounded-full" /></span>
+                            Turning{' '}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">CHAOS</span>
+                            <br />into{' '}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#6D28D9]">CLARITY</span>
                         </motion.h1>
                     </div>
 

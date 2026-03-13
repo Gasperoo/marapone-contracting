@@ -59,13 +59,13 @@ export default function FeaturesPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="flex flex-col items-center justify-center pt-8 border-t border-black/5"
+                        className="flex flex-col items-center justify-center pt-8 mt-12 border-t border-black/5"
                     >
                         <span className="text-xs font-bold tracking-widest uppercase text-[#6b7280] mb-6 block">Platform Architecture By</span>
-                        <div className="flex items-center justify-center gap-12">
-                            <img src="/logo.png" alt="Marapone Logo" className="h-[60px] w-auto opacity-70 hover:opacity-100 transition-opacity mix-blend-multiply" />
-                            <div className="w-px h-8 bg-black/10" />
-                            <img src="/gasper-logo.png" alt="Gasper Logo" className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" />
+                        <div className="flex items-center justify-center gap-12 bg-[#1a1a1a] rounded-2xl px-12 py-8 shadow-xl">
+                            <img src="/logo.png" alt="Marapone Logo" className="h-[50px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
+                            <div className="w-px h-10 bg-white/20" />
+                            <img src="/images/gasper-logo-g.png" alt="Gasper Logo" className="h-[40px] w-auto opacity-90 hover:opacity-100 transition-opacity" />
                         </div>
                     </motion.div>
                 </div>

@@ -278,18 +278,18 @@ export default function AboutPage() {
             </p>
             
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
-                <div className="bg-white p-8 rounded-[2rem] border border-black/5 shadow-sm flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
-                    <img src="/logo.png" alt="Marapone Logo" className="h-[82px] w-auto mb-4 object-contain mix-blend-multiply" />
-                    <div className="text-sm font-bold text-[#1a1a1a] uppercase tracking-widest">Enterprise Platform</div>
+                <div className="bg-[#1a1a1a] p-8 rounded-[2rem] border border-white/5 shadow-xl flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
+                    <img src="/logo.png" alt="Marapone Logo" className="h-[75px] w-auto mb-4 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                    <div className="text-sm font-bold text-white uppercase tracking-widest">Enterprise Platform</div>
                 </div>
                 
                 <div className="w-12 h-12 rounded-full bg-black/5 hidden md:flex items-center justify-center">
                     <Globe size={20} className="text-[#8B5CF6]" />
                 </div>
                 
-                <div className="bg-white p-8 rounded-[2rem] border border-black/5 shadow-sm flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
-                    <img src="/gasper-logo.png" alt="Gasper Logo" className="h-16 w-auto mb-4 object-contain" />
-                    <div className="text-sm font-bold text-[#1a1a1a] uppercase tracking-widest mt-2">Core AI Engine</div>
+                <div className="bg-[#1a1a1a] p-8 rounded-[2rem] border border-white/5 shadow-xl flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
+                    <img src="/images/gasper-logo-g.png" alt="Gasper Logo" className="h-[120px] w-auto mb-4 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                    <div className="text-sm font-bold text-white uppercase tracking-widest mt-2">Core AI Engine</div>
                 </div>
             </div>
 

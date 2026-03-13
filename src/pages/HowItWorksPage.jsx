@@ -221,29 +221,80 @@ export default function HowItWorksPage() {
 
                 </div>
 
-                {/* Final Output CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mt-32 max-w-4xl mx-auto text-center"
-                >
-                    <div className="p-16 rounded-[3rem] border border-black/5 bg-white shadow-2xl relative overflow-hidden group">
-                        {/* Glow effect */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-r from-[#8B5CF6]/5 via-transparent to-[#FF6B00]/5 blur-[80px] group-hover:opacity-100 opacity-50 transition-opacity duration-700 pointer-events-none" />
-
-                        <div className="flex justify-center items-center gap-8 mb-8 opacity-60 mix-blend-multiply">
-                            <img src="/logo.png" alt="Marapone" className="h-[40px] w-auto" />
-                            <div className="w-1.5 h-1.5 rounded-full bg-black/20" />
-                            <img src="/gasper-logo.png" alt="Gasper Engine" className="h-[30px] w-auto" />
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6 relative z-10 tracking-tight">Ready To Build The Future?</h2>
-                        <p className="text-xl text-[#4b5563] mb-12 relative z-10 max-w-2xl mx-auto font-medium">Stop relying on fragmented dashboards and generic models. Secure a custom AI assistant tailored precisely to your project's operational realities.</p>
-                        <Link to="/contact" className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-[#1a1a1a] hover:bg-black rounded-xl transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 relative z-10 group/btn">
-                            Get In Touch <ArrowRight size={20} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
-                        </Link>
+                {/* NEW SECTION: Technical Architecture Deep Dive */}
+                <div className="relative z-20 mt-32 mb-10 max-w-6xl mx-auto">
+                    <div className="text-center mb-16">
+                        <span className="px-4 py-1.5 rounded-full bg-[#1a1a1a] text-white text-xs font-bold tracking-widest uppercase mb-4 inline-block shadow-lg">Deep Dive</span>
+                        <h2 className="text-4xl font-black text-[#1a1a1a] mb-6">Enterprise-Grade Infrastructure</h2>
+                        <p className="text-lg text-[#6b7280] max-w-3xl mx-auto leading-relaxed">
+                            Marapone isn't just a wrapper around a public API. It's a foundational operating system designed specifically for the rigorous demands of heavy industry, prioritizing data sovereignty, low-latency edge inference, and native integration with your existing stack.
+                        </p>
                     </div>
-                </motion.div>
+
+                    <div className="grid lg:grid-cols-2 gap-10 items-start">
+                        {/* Security Architecture */}
+                        <div className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] h-full">
+                            <div className="w-14 h-14 bg-[#1a1a1a] text-white rounded-2xl flex items-center justify-center mb-8 shadow-inner">
+                                <ShieldCheck size={28} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8">Zero-Trust Security Model</h3>
+                            <ul className="space-y-6">
+                                <li className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-full bg-green-500/10 text-green-600 flex items-center justify-center flex-shrink-0 mt-1"><Lock size={18} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-[#1a1a1a] mb-2 text-lg">Air-Gapped Deployments</h4>
+                                        <p className="text-sm text-[#6b7280] leading-relaxed font-medium">For defense contractors and critical infrastructure, Marapone can be deployed entirely offline on local hardware, ensuring 100% containment of classified blueprint data.</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-full bg-blue-500/10 text-blue-600 flex items-center justify-center flex-shrink-0 mt-1"><Fingerprint size={18} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-[#1a1a1a] mb-2 text-lg">Native RBAC Identity</h4>
+                                        <p className="text-sm text-[#6b7280] leading-relaxed font-medium">Integrates directly with Azure AD, Okta, and Ping Identity. The AI respects document-level permissions; users physically cannot ask the AI about documents they lack access to.</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-full bg-purple-500/10 text-purple-600 flex items-center justify-center flex-shrink-0 mt-1"><Database size={18} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-[#1a1a1a] mb-2 text-lg">Dedicated Tenant Architecture</h4>
+                                        <p className="text-sm text-[#6b7280] leading-relaxed font-medium">No shared databases or vector stores. Your corporate memory is physically and logically partitioned from every other Marapone client preventing cross-contamination.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Integration Ecosystem */}
+                        <div className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] h-full">
+                            <div className="w-14 h-14 bg-[#8B5CF6]/10 text-[#8B5CF6] rounded-2xl flex items-center justify-center mb-8 border border-[#8B5CF6]/20">
+                                <SearchCode size={28} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#1a1a1a] mb-8">Seamless Data Syndication</h3>
+                            <ul className="space-y-6">
+                                <li className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-full bg-orange-500/10 text-orange-600 flex items-center justify-center flex-shrink-0 mt-1"><Network size={18} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-[#1a1a1a] mb-2 text-lg">ERP & Construction Management</h4>
+                                        <p className="text-sm text-[#6b7280] leading-relaxed font-medium">Pre-built, read-only connectors for Procore, Primavera P6, Autodesk Build, SAP, and Oracle ERP. Continuous streaming ensures the AI always has real-time operational context.</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-full bg-teal-500/10 text-teal-600 flex items-center justify-center flex-shrink-0 mt-1"><Globe2 size={18} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-[#1a1a1a] mb-2 text-lg">Unstructured Knowledge Bases</h4>
+                                        <p className="text-sm text-[#6b7280] leading-relaxed font-medium">Instantly ingests Microsoft SharePoint sites, Google Drive folders, legacy local file servers, and decades of archived email communications.</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <div className="w-10 h-10 rounded-full bg-rose-500/10 text-rose-600 flex items-center justify-center flex-shrink-0 mt-1"><Terminal size={18} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-[#1a1a1a] mb-2 text-lg">IoT & Edge Telemetry</h4>
+                                        <p className="text-sm text-[#6b7280] leading-relaxed font-medium">Connects to hardware APIs to process real-time sensor data from heavy machinery, concrete maturity sensors, and automated drone photogrammetry reports.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>

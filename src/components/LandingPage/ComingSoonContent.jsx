@@ -2300,52 +2300,28 @@ export default function ComingSoonContent() {
     return (
         <div className="relative z-10">
 
-            {/* ══ GASPER ENGINE INFO ══ */}
-            <GasperEngineInfoSection />
-
-            {/* ══ ENTERPRISE ARCHITECTURE ══ */}
+            {/* ══ ENTERPRISE ARCHITECTURE (Value Prop) ══ */}
             <B2BEnterpriseSection />
 
             <div className="section-divider" />
 
-            {/* ══ ADVANTAGES ══ */}
-            <ComparisonTableSection />
+            {/* ══ GASPER ENGINE INFO (The Tech Core) ══ */}
+            <GasperEngineInfoSection />
 
             <div className="section-divider" />
 
-            {/* ══ MULTI-AGENT ORCHESTRATION (New High-End Feature) ══ */}
+            {/* ══ MULTI-AGENT ORCHESTRATION ══ */}
             <AgentOrchestrationSection />
 
             <div className="section-divider" />
 
-            {/* ══ PLATFORM MODULES (Tabbed) ══ */}
+            {/* ══ PLATFORM MODULES (Tabbed Use Cases) ══ */}
             <FeatureTabsSection />
 
             <div className="section-divider" />
 
-            {/* ══ INDUSTRIES ══ */}
-            <section className="px-4 sm:px-6 max-w-7xl mx-auto" style={{ paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
-                <div className="text-center mb-12">
-                    <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                        className="text-sm uppercase tracking-[0.2em] font-semibold mb-4" style={{ color: C.primary }}>
-                        Built for your sector
-                    </motion.p>
-                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4" style={{ letterSpacing: '-0.03em' }}>
-                        Engineered for Every Sector
-                    </motion.h2>
-                    <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                        className="max-w-2xl mx-auto text-lg" style={{ color: C.textMuted }}>
-                        Tailored integrations using the GasperAI engine, designed to solve the unique challenges of your industry.
-                    </motion.p>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <IndustryCard icon={<HardHat size={28} />} title="Construction" description="Blueprint takeoffs, site security vision, schedule optimization, and predictive cash flow modeling." color="text-[#FF6B00]" useCase="Full Project Intelligence" />
-                    <IndustryCard icon={<Truck size={28} />} title="Import/Export & Logistics" description="Predictive automated routing, real-time supply chain tracking, and customs document extraction." color="text-[#0EA5E9]" useCase="Global Digital Twin" />
-                    <IndustryCard icon={<TrendingUp size={28} />} title="Marketing" description="Automated ad campaign optimization, predictive lead scoring, and customer sentiment analysis." color="text-[#F59E0B]" useCase="AI-Driven Growth" />
-                    <IndustryCard icon={<Package size={28} />} title="E-Commerce" description="Dynamic pricing algorithms, smart inventory forecasting, and autonomous support agents." color="text-[#8B5CF6]" useCase="Revenue Optimization" />
-                </div>
-            </section>
+            {/* ══ ADVANTAGES / WHY US ══ */}
+            <ComparisonTableSection />
 
             <div className="section-divider" />
 

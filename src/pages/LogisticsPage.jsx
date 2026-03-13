@@ -68,7 +68,7 @@ const LogisticsPage = () => {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#0EA5E9] animate-pulse mr-2" />
                     GLOBAL SUPPLY CHAIN TWIN
                 </div>
-                <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6 leading-[1.05]">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-[1.05]">
                     Predictive Routing Automation
                 </h1>
                 <p className="text-xl text-gray-500 font-medium max-w-3xl leading-relaxed">
@@ -80,8 +80,8 @@ const LogisticsPage = () => {
             <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-12">
                 
                 {/* Use Case 1: Predictive Routing */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row gap-12 items-center">
-                    <div className="md:w-1/2">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-6 md:p-8 lg:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+                    <div className="w-full lg:w-1/2">
                         <div className="w-14 h-14 rounded-2xl bg-[#0EA5E9]/10 text-[#0EA5E9] flex items-center justify-center mb-6">
                             <MapPin size={28} />
                         </div>
@@ -98,7 +98,7 @@ const LogisticsPage = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="md:w-1/2 w-full aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
+                    <div className="w-full lg:w-1/2 aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
                         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(#0EA5E9 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }} />
                          {/* Mock UI */}
                          <div className="relative z-10 w-[80%] bg-white shadow-xl rounded-xl border border-[#0EA5E9]/20 p-5">
@@ -125,8 +125,8 @@ const LogisticsPage = () => {
                 </motion.div>
 
                 {/* Use Case 2: Customs Automation */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row-reverse gap-12 items-center">
-                    <div className="md:w-1/2">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-6 md:p-8 lg:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center">
+                    <div className="w-full lg:w-1/2">
                         <div className="w-14 h-14 rounded-2xl bg-[#8B5CF6]/10 text-[#8B5CF6] flex items-center justify-center mb-6">
                             <ShieldCheck size={28} />
                         </div>
@@ -143,7 +143,7 @@ const LogisticsPage = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="md:w-1/2 w-full aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
+                    <div className="w-full lg:w-1/2 aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
                         {/* Mock UI */}
                         <div className="relative z-10 w-[80%] bg-white shadow-xl rounded-xl border border-black/5 p-5">
                              <div className="flex items-center justify-between mb-4 pb-2 border-b border-black/5">
@@ -166,8 +166,8 @@ const LogisticsPage = () => {
                 </motion.div>
 
                 {/* Use Case 3: Inventory AI */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row gap-12 items-center">
-                    <div className="md:w-1/2">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-6 md:p-8 lg:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+                    <div className="w-full lg:w-1/2">
                         <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 text-[#10B981] flex items-center justify-center mb-6">
                             <Activity size={28} />
                         </div>
@@ -184,7 +184,7 @@ const LogisticsPage = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="md:w-1/2 w-full aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
+                    <div className="w-full lg:w-1/2 aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
                         {/* Mock UI */}
                         <div className="relative z-10 w-[80%] h-[70%] bg-white shadow-xl rounded-xl border border-black/5 p-5 flex flex-col justify-end gap-2 px-6">
                             <div className="w-full flex justify-between absolute top-4 left-6 right-6">
@@ -204,8 +204,8 @@ const LogisticsPage = () => {
             {/* TWIN SIMULATOR SECTION */}
             <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-24">
                 <div className="text-center mb-12">
-                     <h2 className="text-4xl font-black tracking-tight mb-4">Interactive Twin Simulator</h2>
-                     <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+                     <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">Interactive Twin Simulator</h2>
+                     <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
                          Test Marapone's routing engine in real-time. Inject chaos into the supply chain grid and watch how the autonomous agents instantly recalculate paths and margins.
                      </p>
                 </div>

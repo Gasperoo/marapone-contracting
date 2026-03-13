@@ -70,7 +70,7 @@ const ConstructionPage = () => {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00] animate-pulse mr-2" />
                     CONSTRUCTION INTELLIGENCE
                 </div>
-                <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6 leading-[1.05]">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-[1.05]">
                     From Groundbreak to Handover
                 </h1>
                 <p className="text-xl text-gray-500 font-medium max-w-3xl leading-relaxed">
@@ -82,8 +82,8 @@ const ConstructionPage = () => {
             <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-12">
                 
                 {/* Use Case 1: Automated Takeoffs */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row gap-12 items-center">
-                    <div className="md:w-1/2">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-6 md:p-8 lg:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+                    <div className="w-full lg:w-1/2">
                         <div className="w-14 h-14 rounded-2xl bg-[#FF6B00]/10 text-[#FF6B00] flex items-center justify-center mb-6">
                             <Ruler size={28} />
                         </div>
@@ -100,7 +100,7 @@ const ConstructionPage = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="md:w-1/2 w-full aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
+                    <div className="w-full lg:w-1/2 aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
                         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundSize: '20px 20px', backgroundImage: 'linear-gradient(to right, #FF6B00 1px, transparent 1px), linear-gradient(to bottom, #FF6B00 1px, transparent 1px)' }} />
                          {/* Mock UI */}
                          <div className="relative z-10 w-[80%] bg-white shadow-xl rounded-xl border border-black/5 p-5">
@@ -118,8 +118,8 @@ const ConstructionPage = () => {
                 </motion.div>
 
                 {/* Use Case 2: Cash Flow */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row-reverse gap-12 items-center">
-                    <div className="md:w-1/2">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-6 md:p-8 lg:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center">
+                    <div className="w-full lg:w-1/2">
                         <div className="w-14 h-14 rounded-2xl bg-[#3B82F6]/10 text-[#3B82F6] flex items-center justify-center mb-6">
                             <TrendingUp size={28} />
                         </div>
@@ -136,7 +136,7 @@ const ConstructionPage = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="md:w-1/2 w-full aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
+                    <div className="w-full lg:w-1/2 aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
                         {/* Mock UI */}
                         <div className="relative z-10 w-[80%] h-[70%] bg-white shadow-xl rounded-xl border border-black/5 p-5 flex flex-col justify-end gap-2">
                              <div className="absolute top-4 left-4 text-xs font-bold text-gray-500 uppercase">Q3 Cash Flow Variance</div>
@@ -150,8 +150,8 @@ const ConstructionPage = () => {
                 </motion.div>
 
                 {/* Use Case 3: Site Safety */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-8 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row gap-12 items-center">
-                    <div className="md:w-1/2">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white rounded-[2rem] border border-black/5 p-6 md:p-8 lg:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+                    <div className="w-full lg:w-1/2">
                         <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 text-[#10B981] flex items-center justify-center mb-6">
                             <Eye size={28} />
                         </div>
@@ -168,7 +168,7 @@ const ConstructionPage = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="md:w-1/2 w-full aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
+                    <div className="w-full lg:w-1/2 aspect-[4/3] bg-gray-50 rounded-2xl border border-black/5 relative overflow-hidden flex items-center justify-center">
                         {/* Mock UI */}
                         <div className="relative z-10 w-[80%] bg-white shadow-xl rounded-xl border border-black/5 p-5">
                             <div className="flex items-center gap-3 mb-4">
@@ -192,8 +192,8 @@ const ConstructionPage = () => {
             {/* BIM & TAKEOFF SIMULATOR SECTION */}
             <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-24">
                 <div className="text-center mb-12">
-                     <h2 className="text-4xl font-black tracking-tight mb-4">Interactive Blueprint & BIM Engine</h2>
-                     <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+                     <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">Interactive Blueprint & BIM Engine</h2>
+                     <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto">
                          Experience how GasperAI dynamically processes architectural variables. Adjust the building class and materials to see instantly generated cost projections and procurement leads.
                      </p>
                 </div>

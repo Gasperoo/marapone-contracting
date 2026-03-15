@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Twitter, Linkedin, Mail, MapPin, ShieldCheck } from 'lucide-react';
+import { Instagram, Mail, MapPin, ShieldCheck } from 'lucide-react';
 import './StackedCircularFooter.css';
+
+const XIcon = ({ size = 18, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+);
 
 export function StackedCircularFooter() {
   const currentYear = new Date().getFullYear();
@@ -69,15 +75,17 @@ export function StackedCircularFooter() {
         {/* Bottom Bar */}
         <div className="premium-footer-bottom">
           <div className="footer-copyright">
-            © {currentYear} Marapone. All rights reserved.
+            © {currentYear} Marapone Contracting Inc. All rights reserved.
+            <br />
+            © {currentYear} GasperAI. All rights reserved.
           </div>
           
           <div className="footer-socials">
-            <a href="#" className="social-link" aria-label="LinkedIn">
-              <Linkedin size={18} />
+            <a href="https://instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
+              <Instagram size={18} />
             </a>
-            <a href="#" className="social-link" aria-label="Twitter">
-              <Twitter size={18} />
+            <a href="#" className="social-link" aria-label="X">
+              <XIcon size={18} />
             </a>
             <a href="mailto:general@marapone.com" className="social-link" aria-label="Email">
               <Mail size={18} />

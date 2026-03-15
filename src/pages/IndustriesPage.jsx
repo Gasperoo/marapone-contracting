@@ -119,14 +119,14 @@ const IndustrySection = ({ industry, index }) => {
 export default function IndustriesPage() {
     const verticals = [
         {
-            id: 'defense',
-            title: 'Defense & Aerospace',
-            icon: <ShieldCheck size={40} />,
-            color: '#10B981',
-            challenge: 'Handling highly sensitive, compartmentalized technical data (CUI/ITAR) across air-gapped networks. Legacy parsers cannot ingest complex engineering blueprints or defense procurement schematics without severe security exposure. Data silos lead to critical bottlenecks in manufacturing and supply chain coordination.',
-            solution: 'Marapone engineers completely isolated, on-premise LLM environments. Our zero-trust ingestion pipeline securely processes hundreds of gigabytes of raw military schematics, technical manuals, and procurement histories offline, allowing defense contractors to maintain absolute data sovereignty while modernizing their intelligence capabilities.',
-            useCaseTitle: 'ITAR-Compliant Schematic Inference',
-            useCaseDesc: 'The system automatically cross-references incoming multi-page Request For Proposals (RFPs) against historical engineering parameters and authorized, cleared vendor lists. The autonomous agent flags supply chain vulnerabilities and generates initial compliance reports without the source data ever leaving the secure facility.'
+            id: 'construction',
+            title: 'Heavy Construction',
+            icon: <HardHat size={40} />,
+            color: '#FF6B00',
+            challenge: 'Mega-projects suffer from disjointed communication between architects, site managers, and subcontractors. Critical insights—such as daily drone scans, unstructured RFI logs, and BIM models—are trapped in proprietary silos, making it impossible to accurately forecast cash flow or schedule slips.',
+            solution: 'Marapone creates a centralized intelligence layer for the entire project portfolio. Our AI visually analyzes terabytes of daily site scans, compares them against original 3D BIM models, and correlates structural construction deviations with financial burn rates from the accounting software.',
+            useCaseTitle: '4D Site Simulation & Cash Flow Guard',
+            useCaseDesc: 'The system autonomously identifies structural deviations from blueprints by analyzing regular drone footage. When a discrepancy is detected, it calculates the associated schedule delay, updates financial cash flow forecasts, and automatically drafts Request For Information (RFI) alerts to the architects before costly rework is required.'
         },
         {
             id: 'maritime',
@@ -139,16 +139,6 @@ export default function IndustriesPage() {
             useCaseDesc: 'By analyzing incoming maritime manifests against real-time satellite ship tracking, the Gasper engine predicts port dock delays days in advance. It autonomously routes exception alerts to operators and pre-generates the required customs clearance documentation to aggressively cut dwell times.'
         },
         {
-            id: 'grid',
-            title: 'Grid Infrastructure',
-            icon: <Zap size={40} />,
-            color: '#F59E0B',
-            challenge: 'Modernizing legacy power grids requires analyzing decades of handwritten maintenance logs, localized micro-weather patterns, and real-time IoT load data across entirely disconnected utility systems. The volume of data overwhelms human operators, shifting maintenance from predictive to purely reactive.',
-            solution: 'The Gasper framework bridges the analog and digital divide. It synthesizes historical field maintenance records with live, high-frequency sensor telemetry to create predictive health models. We integrate these models directly into enterprise asset management (EAM) systems.',
-            useCaseTitle: 'Predictive Load & Maintenance Orchestration',
-            useCaseDesc: 'The AI continuously synthesizes unstructured field technician reports with IoT transformer temperatures. It identifies microscopic anomalies and predicts localized grid failures 48 hours in advance, automatically drafting work orders and dispatching field teams before an emergency repair is necessary.'
-        },
-        {
             id: 'finance',
             title: 'Finance & Procurement',
             icon: <BarChart3 size={40} />,
@@ -159,14 +149,24 @@ export default function IndustriesPage() {
             useCaseDesc: 'Ingesting 10,000+ vendor invoices monthly, the AI cross-references every line item against the specific contractual SLAs and current market index pricing. It automatically flags non-compliant charges, routes them for procurement review, and drafts negotiation emails to the offending vendors.'
         },
         {
-            id: 'construction',
-            title: 'Heavy Construction',
-            icon: <HardHat size={40} />,
-            color: '#FF6B00',
-            challenge: 'Mega-projects suffer from disjointed communication between architects, site managers, and subcontractors. Critical insights—such as daily drone scans, unstructured RFI logs, and BIM models—are trapped in proprietary silos, making it impossible to accurately forecast cash flow or schedule slips.',
-            solution: 'Marapone creates a centralized intelligence layer for the entire project portfolio. Our AI visually analyzes terabytes of daily site scans, compares them against original 3D BIM models, and correlates structural construction deviations with financial burn rates from the accounting software.',
-            useCaseTitle: '4D Site Simulation & Cash Flow Guard',
-            useCaseDesc: 'The system autonomously identifies structural deviations from blueprints by analyzing regular drone footage. When a discrepancy is detected, it calculates the associated schedule delay, updates financial cash flow forecasts, and automatically drafts Request For Information (RFI) alerts to the architects before costly rework is required.'
+            id: 'grid',
+            title: 'Grid Infrastructure',
+            icon: <Zap size={40} />,
+            color: '#F59E0B',
+            challenge: 'Modernizing legacy power grids requires analyzing decades of handwritten maintenance logs, localized micro-weather patterns, and real-time IoT load data across entirely disconnected utility systems. The volume of data overwhelms human operators, shifting maintenance from predictive to purely reactive.',
+            solution: 'The Gasper framework bridges the analog and digital divide. It synthesizes historical field maintenance records with live, high-frequency sensor telemetry to create predictive health models. We integrate these models directly into enterprise asset management (EAM) systems.',
+            useCaseTitle: 'Predictive Load & Maintenance Orchestration',
+            useCaseDesc: 'The AI continuously synthesizes unstructured field technician reports with IoT transformer temperatures. It identifies microscopic anomalies and predicts localized grid failures 48 hours in advance, automatically drafting work orders and dispatching field teams before an emergency repair is necessary.'
+        },
+        {
+            id: 'defense',
+            title: 'Defense & Aerospace',
+            icon: <ShieldCheck size={40} />,
+            color: '#10B981',
+            challenge: 'Handling highly sensitive, compartmentalized technical data (CUI/ITAR) across air-gapped networks. Legacy parsers cannot ingest complex engineering blueprints or defense procurement schematics without severe security exposure. Data silos lead to critical bottlenecks in manufacturing and supply chain coordination.',
+            solution: 'Marapone engineers completely isolated, on-premise LLM environments. Our zero-trust ingestion pipeline securely processes hundreds of gigabytes of raw military schematics, technical manuals, and procurement histories offline, allowing defense contractors to maintain absolute data sovereignty while modernizing their intelligence capabilities.',
+            useCaseTitle: 'ITAR-Compliant Schematic Inference',
+            useCaseDesc: 'The system automatically cross-references incoming multi-page Request For Proposals (RFPs) against historical engineering parameters and authorized, cleared vendor lists. The autonomous agent flags supply chain vulnerabilities and generates initial compliance reports without the source data ever leaving the secure facility.'
         }
     ];
 

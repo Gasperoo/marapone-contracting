@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { TrendingUp, Target, MessageSquare, Briefcase, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { TrendingUp, Target, MessageSquare, Briefcase, ArrowRight, CheckCircle2, DollarSign, Activity, Users, Box, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const MarketingPage = () => {
@@ -141,6 +141,111 @@ const MarketingPage = () => {
                         </div>
                     </div>
                 </motion.div>
+            </div>
+
+             {/* Why GasperAI Metrics */}
+             <div className="bg-white border-y border-black/5 mt-24 py-24">
+                <div className="max-w-7xl mx-auto px-6 sm:px-8">
+                    <div className="text-center mb-16">
+                        <span className="text-sm font-bold tracking-widest text-[#F59E0B] uppercase mb-4 block">Proven Marketing ROI</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-6">Built For Revenue Velocity</h2>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            { icon: <TrendingUp size={32} />, stat: "3.2x", label: "Pipeline Velocity", desc: "Shorten sales cycles by targeting accounts when their buy-intent peaks." },
+                            { icon: <DollarSign size={32} />, stat: "-45%", label: "Lower CAC", desc: "Eliminate ad waste by deploying generative creative only to high-propensity targets." },
+                            { icon: <Users size={32} />, stat: "10k+", label: "Personalized Variants", desc: "Autonomous A/B testing across landing pages and ad copy at unprecedented scale." }
+                        ].map((metric, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 rounded-3xl bg-[#F8FAFC] border border-black/5 text-center hover:shadow-lg transition-all duration-300">
+                                <div className="w-16 h-16 mx-auto bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#F59E0B] mb-6 border border-black/5">
+                                    {metric.icon}
+                                </div>
+                                <div className="text-5xl font-black text-[#1a1a1a] mb-2">{metric.stat}</div>
+                                <div className="text-lg font-bold text-[#1a1a1a] mb-3">{metric.label}</div>
+                                <p className="text-gray-500 font-medium leading-relaxed">{metric.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Integrations Ecosystem */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-24">
+                <div className="bg-[#1a1a1a] rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+                    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#F59E0B]/20 to-transparent rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
+                    
+                    <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span className="inline-block px-3 py-1 rounded-full bg-[#F59E0B]/20 border border-[#F59E0B]/30 text-[#F59E0B] text-xs font-bold tracking-widest uppercase mb-6">Seamless Ecosystem</span>
+                            <h2 className="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">Plugs natively into your existing martech stack.</h2>
+                            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                                GasperAI doesn't replace your tools; it acts as the intelligent orchestration layer above them. Bidirectional syncing ensures your CRM and ad platforms are always aligned.
+                            </p>
+                            
+                            <div className="grid grid-cols-2 gap-4">
+                                {[
+                                    { name: "Salesforce CRM", type: "Bidirectional Sync" },
+                                    { name: "HubSpot", type: "Lead Scoring" },
+                                    { name: "LinkedIn Ads", type: "Dynamic Audiences" },
+                                    { name: "Google Ads", type: "Algorithmic Bidding" }
+                                ].map((int, i) => (
+                                    <div key={i} className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl">
+                                        <div className="w-8 h-8 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-[#F59E0B]">
+                                            <Zap size={14} />
+                                        </div>
+                                        <div>
+                                            <div className="text-white text-sm font-bold">{int.name}</div>
+                                            <div className="text-gray-500 text-xs">{int.type}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="bg-black/50 border border-white/10 rounded-2xl p-6 backdrop-blur-md relative">
+                            {/* Visual Representation of Flow */}
+                            <div className="flex flex-col items-center justify-center h-full gap-4">
+                                <div className="p-4 bg-white/5 border border-white/10 xl flex items-center gap-3 rounded-lg w-full">
+                                    <Activity size={20} className="text-[#F59E0B]" />
+                                    <span className="text-gray-300 font-mono text-sm">GasperAI Intent Engine</span>
+                                </div>
+                                <div className="h-8 border-l-2 border-dashed border-white/20" />
+                                <div className="flex gap-4 w-full">
+                                    <div className="flex-1 p-3 bg-[#00A4EF]/10 border border-[#00A4EF]/30 rounded text-center text-xs text-[#00A4EF] font-bold">Push to CRM</div>
+                                    <div className="flex-1 p-3 bg-[#0A66C2]/10 border border-[#0A66C2]/30 rounded text-center text-xs text-[#0A66C2] font-bold">Push to Ad Platform</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* How It Works Steps */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-32 mb-16">
+                 <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-6">Deployment Pipeline</h2>
+                    <p className="text-xl text-gray-500 font-medium max-w-2xl mx-auto">From signed NDA to fully operational sovereign intelligence in weeks.</p>
+                </div>
+                
+                <div className="grid md:grid-cols-4 gap-8 relative">
+                    {/* Progression Line */}
+                    <div className="hidden md:block absolute top-8 left-12 right-12 h-0.5 bg-black/5 z-0" />
+                    
+                    {[
+                        { step: "01", title: "Data Integration", desc: "We connect GasperAI to your CRM, analytics tools, and historical ad accounts." },
+                        { step: "02", title: "Model Training", desc: "The AI learns your brand voice, ideal customer profile (ICP), and past successful conversion paths." },
+                        { step: "03", title: "Generative Spin-Up", desc: "The engine produces thousands of compliant ad creatives and personalized landing pages." },
+                        { step: "04", title: "Autonomous Campaign Live", desc: "The system begins orchestrating multi-channel outreach, optimizing bids and copy in real-time." }
+                    ].map((phase, i) => (
+                        <div key={i} className="relative z-10 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none border border-black/5 md:border-none shadow-sm md:shadow-none">
+                            <div className="w-16 h-16 rounded-2xl bg-white border border-[#F59E0B]/20 shadow-md flex items-center justify-center text-[#F59E0B] font-black text-xl mb-6 mx-auto md:mx-0 relative">
+                                {phase.step}
+                            </div>
+                            <h3 className="font-bold text-[#1a1a1a] text-xl mb-3 text-center md:text-left">{phase.title}</h3>
+                            <p className="text-gray-500 leading-relaxed font-medium text-center md:text-left">{phase.desc}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
             
             <div className="max-w-7xl mx-auto px-6 mt-16 text-center">

@@ -9,7 +9,10 @@ const SimulatorToggle = ({ active, onClick, label, metric, color }) => (
         className={`cursor-pointer border p-4 rounded-xl transition-all duration-300 flex items-center justify-between ${active ? 'bg-white/10 border-white/20 shadow-md' : 'bg-transparent border-white/5 hover:bg-white/5'}`}
     >
         <div className="flex items-center gap-3">
-            <div className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-colors ${active ? `bg-[${color}] border-[${color}]` : 'border-gray-600'}`}>
+            <div 
+                className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-colors ${active ? '' : 'border-gray-600'}`}
+                style={active ? { backgroundColor: color, borderColor: color } : {}}
+            >
                 {active && <CheckCircle2 size={12} className="text-white" />}
             </div>
             <div>
@@ -17,7 +20,10 @@ const SimulatorToggle = ({ active, onClick, label, metric, color }) => (
                 <div className="text-[10px] text-gray-500">{metric}</div>
             </div>
         </div>
-        <div className={`w-2 h-2 rounded-full ${active ? `bg-[${color}] shadow-[0_0_8px_${color}] animate-pulse` : 'bg-gray-600'}`} />
+        <div 
+            className={`w-2 h-2 rounded-full ${active ? 'animate-pulse' : 'bg-gray-600'}`} 
+            style={active ? { backgroundColor: color, boxShadow: `0 0 8px ${color}` } : {}}
+        />
     </div>
 );
 

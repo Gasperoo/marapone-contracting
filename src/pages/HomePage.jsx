@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   Ship, HardHat, ArrowRight, Zap, Database, Brain, Lock,
   ShieldCheck, Building2, Globe, BarChart3, FileText,
-  Cpu, Network, CheckCircle2, Sparkles, ClipboardCheck
+  Cpu, Network, CheckCircle2, Sparkles, ClipboardCheck,
+  Activity, Search, Award, DollarSign, PhoneCall, Code, Plug, Key, Shield, Check
 } from 'lucide-react';
 import Particles from '../components/Particles/Particles';
 import { getOptimizedSettings } from '../utils/detectWindows';
@@ -361,6 +362,116 @@ export default function HomePage() {
             </div>
             <p className="text-sm text-[#6b7280] font-medium">GasperAI — A Marapone Product</p>
           </motion.div>
+        </section>
+
+        {/* ═══════════════════════ ENTERPRISE CAPABILITIES ═══════════════════════ */}
+        <section className="py-24 px-6 relative">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+                className="inline-flex items-center px-4 py-1.5 rounded-full border border-black/5 bg-white/80 text-xs font-bold tracking-widest uppercase mb-6 text-[#1a1a1a] shadow-sm">
+                <Shield size={12} className="mr-2 text-[#FF6B00]" /> Enterprise Capabilities
+              </motion.span>
+              <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight">
+                Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Competitive Moats</span> with AI
+              </motion.h2>
+              <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+                className="text-lg text-[#6b7280] max-w-2xl mx-auto mt-4 leading-relaxed">
+                We don't sell software. We partner with industry leaders to engineer tailored AI solutions that operate as an extension of your existing workforce.
+              </motion.p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: <Database size={24} />, title: "Proprietary Data Ingestion", desc: "We build secure data pipelines connecting to your ERPs, CRMs, and archives — transforming unstructured data into structured intelligence.", color: "#FF6B00" },
+                { icon: <Lock size={24} />, title: "Sovereign AI Infrastructure", desc: "Enterprise-grade security with options for fully air-gapped or on-premise deployments. Your models, your data, your ownership.", color: "#10B981" },
+                { icon: <Cpu size={24} />, title: "Bespoke Model Fine-Tuning", desc: "We architect and train isolated Large Language Models exclusively on your company's operational history and logic.", color: "#8B5CF6" },
+                { icon: <Activity size={24} />, title: "Autonomous Workflow Agents", desc: "Deploy specialized AI agents that execute complex multi-day workflows as instant background processes.", color: "#0EA5E9" },
+              ].map((f, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                  className="group p-8 rounded-3xl bg-white border border-black/5 hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-black/5 shadow-sm transition-transform group-hover:scale-110" style={{ backgroundColor: `${f.color}10`, color: f.color }}>
+                    {f.icon}
+                  </div>
+                  <h4 className="text-lg font-bold text-[#1a1a1a] mb-3">{f.title}</h4>
+                  <p className="text-[#6b7280] leading-relaxed text-sm">{f.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════ WHY PARTNER WITH US ═══════════════════════ */}
+        <section className="py-24 px-6 max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#FF6B00]/10 bg-[#FF6B00]/5 text-[#FF6B00] text-xs font-bold tracking-widest uppercase mb-6">
+              <Award size={14} className="mr-2" /> The Marapone Advantage
+            </motion.span>
+            <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight">
+              Why Enterprises <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Partner With Us</span>
+            </motion.h2>
+            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              className="text-lg text-[#6b7280] max-w-2xl mx-auto mt-4 leading-relaxed">
+              We don't sell software subscriptions. We build tailored competitive advantages that you own forever.
+            </motion.p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {[
+              { value: 'Custom', label: 'One-Time Payment', desc: 'No subscriptions, no per-seat licenses. You own the integration.', icon: <DollarSign size={22} /> },
+              { value: '100%', label: 'Data Ownership', desc: 'Deploy on your own servers or private cloud. Your data never leaves.', icon: <Lock size={22} /> },
+              { value: 'Zero', label: 'Vendor Lock-in', desc: 'Full source code and model weights handed over at completion.', icon: <Zap size={22} /> },
+            ].map((m, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                className="bg-white rounded-3xl p-8 text-center border border-black/5 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 group">
+                <div className="w-14 h-14 rounded-2xl mx-auto mb-6 flex items-center justify-center bg-[#FF6B00]/5 text-[#FF6B00] border border-black/5 group-hover:scale-110 transition-transform">
+                  {m.icon}
+                </div>
+                <div className="text-4xl font-black text-[#1a1a1a] mb-2">{m.value}</div>
+                <div className="text-lg font-bold text-[#1a1a1a] mb-3">{m.label}</div>
+                <p className="text-sm text-[#6b7280] leading-relaxed">{m.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ═══════════════════════ ENGAGEMENT PROCESS ═══════════════════════ */}
+        <section className="py-24 px-6 max-w-7xl mx-auto border-t border-black/5">
+          <div className="text-center mb-16">
+            <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight">Our Engagement Process</motion.h2>
+            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              className="text-lg text-[#6b7280] max-w-xl mx-auto mt-4 leading-relaxed">
+              From initial audit to final deployment, we build tailored AI engines as an extension of your technical team.
+            </motion.p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { icon: <PhoneCall size={24} />, title: '1. Discovery', desc: 'Deep-dive audit of your workflows and data silos to pinpoint high-ROI AI opportunities.' },
+              { icon: <Code size={24} />, title: '2. Custom Build', desc: 'We architect and train isolated models securely on your proprietary data.' },
+              { icon: <Plug size={24} />, title: '3. Integration', desc: 'Seamless deployment into your existing tech stack and ERP systems.' },
+              { icon: <Key size={24} />, title: '4. Handover', desc: 'You own the final product with zero subscriptions, plus full team onboarding.' },
+            ].map((b, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                className="bg-white rounded-3xl p-8 text-center border border-black/5 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 group">
+                <div className="w-14 h-14 rounded-2xl mx-auto mb-6 flex items-center justify-center bg-[#FF6B00]/5 text-[#FF6B00] border border-black/5 group-hover:scale-110 transition-transform">
+                  {b.icon}
+                </div>
+                <h3 className="text-lg font-bold text-[#1a1a1a] mb-3">{b.title}</h3>
+                <p className="text-sm text-[#6b7280] leading-relaxed">{b.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[#1a1a1a] hover:bg-black text-white rounded-xl font-bold text-lg transition-all shadow-lg hover:-translate-y-1 group">
+              Start Your Evaluation <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </section>
 
         {/* ═══════════════════════ CTA FOOTER ═══════════════════════ */}

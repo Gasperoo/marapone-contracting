@@ -30,6 +30,34 @@ export default function HomePage() {
             <span className="text-[10px] font-black tracking-[0.2em] text-[#FF6B00] uppercase">Canadian Operations AI Consulting</span>
           </motion.div>
 
+          {/* Pulsing Logo */}
+          <motion.div
+            className="flex justify-center mb-10 relative"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: 'easeOut', delay: 0.1 }}
+          >
+            {/* Background Glow Pulse */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-[#FF6B00]/30 rounded-full blur-[80px]"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.4, 0.8, 0.4]
+              }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Logo Image */}
+            <motion.img
+              src="/logo.png"
+              alt="Marapone Logo"
+              className="w-56 md:w-72 lg:w-[22rem] relative z-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+              animate={{
+                scale: [1, 1.03, 1],
+              }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

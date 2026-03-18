@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Truck, MapPin, Activity, ShieldCheck, ArrowRight, CheckCircle2, Bot } from 'lucide-react';
+import { Truck, MapPin, Activity, ShieldCheck, ArrowRight, CheckCircle2, Bot, Globe, Clock, DollarSign, Target, Package, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SimulatorToggle = ({ active, onClick, label, metric, color }) => (
@@ -323,6 +323,94 @@ const LogisticsPage = () => {
                         </div>
 
                     </div>
+                    </div>
+            </div>
+
+            {/* Why GasperAI Metrics */}
+            <div className="bg-white border-y border-black/5 mt-24 py-24">
+                <div className="max-w-7xl mx-auto px-6 sm:px-8">
+                    <div className="text-center mb-16">
+                        <span className="text-sm font-bold tracking-widest text-[#0EA5E9] uppercase mb-4 block">Proven Impact</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-6">Built For Radical Efficiency</h2>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            { icon: <Globe size={32} />, stat: "100%", label: "End-to-End Visibility", desc: "Unify fragmented ERP, telematics, and forwarder data into a single pane of glass." },
+                            { icon: <Clock size={32} />, stat: "3x", label: "Faster Customs Clearance", desc: "Automated HS classification and documentation extraction eliminates days of delay." },
+                            { icon: <DollarSign size={32} />, stat: "-40%", label: "Demurrage Reduction", desc: "Predict congestion and autonomously reroute shipments before penalties trigger." }
+                        ].map((metric, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 rounded-3xl bg-[#F8FAFC] border border-black/5 text-center hover:shadow-lg transition-all duration-300">
+                                <div className="w-16 h-16 mx-auto bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#0EA5E9] mb-6 border border-black/5">
+                                    {metric.icon}
+                                </div>
+                                <div className="text-5xl font-black text-[#1a1a1a] mb-2">{metric.stat}</div>
+                                <div className="text-lg font-bold text-[#1a1a1a] mb-3">{metric.label}</div>
+                                <p className="text-gray-500 font-medium leading-relaxed">{metric.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Deliverables / What You Get */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-24">
+                <div className="bg-[#1a1a1a] rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+                    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#0EA5E9]/20 to-transparent rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#FF6B00]/10 to-transparent rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl pointer-events-none" />
+                    
+                    <div className="relative z-10">
+                        <div className="text-center mb-16">
+                            <span className="inline-block px-3 py-1 rounded-full bg-[#0EA5E9]/20 border border-[#0EA5E9]/30 text-[#0EA5E9] text-xs font-bold tracking-widest uppercase mb-6">Core Deliverables</span>
+                            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">The Enterprise AI Command Center</h2>
+                            <p className="text-gray-400 text-lg max-w-2xl mx-auto">We don't deliver a scattered toolkit. GasperAI provides a unified, sovereign platform deployed into your VPC.</p>
+                        </div>
+                        
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[
+                                { icon: <Target className="text-[#0EA5E9]" />, title: "Predictive Control Tower", desc: "Real-time geographical mapping of all assets with AI-driven weather and congestion rerouting." },
+                                { icon: <Package className="text-[#10B981]" />, title: "Inventory Engine", desc: "Local LLM connected directly to WMS systems to forecast depletion and trigger POs autonomously." },
+                                { icon: <ShieldCheck className="text-[#8B5CF6]" />, title: "Compliance Copilot", desc: "Document parser that reads BoLs in 40+ languages to generate pre-filled customs declarations." },
+                                { icon: <Zap className="text-[#FF6B00]" />, title: "Carrier API Gateway", desc: "Unified interface that normalizes tracking data from ocean carriers, air freight, and 3PLs instantly." }
+                            ].map((item, i) => (
+                                <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md hover:bg-white/10 transition-colors">
+                                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+                                        {item.icon}
+                                    </div>
+                                    <h3 className="text-white font-bold text-lg mb-3">{item.title}</h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* How It Works Steps */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-32 mb-16">
+                 <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-6">Deployment Pipeline</h2>
+                    <p className="text-xl text-gray-500 font-medium max-w-2xl mx-auto">From signed NDA to fully operational sovereign intelligence in weeks.</p>
+                </div>
+                
+                <div className="grid md:grid-cols-4 gap-8 relative">
+                    {/* Progression Line */}
+                    <div className="hidden md:block absolute top-8 left-12 right-12 h-0.5 bg-black/5 z-0" />
+                    
+                    {[
+                        { step: "01", title: "Data Harmonization", desc: "We ingest and normalize fragmented historical EDI feeds, emails, and PDFs." },
+                        { step: "02", title: "Secure Deployment", desc: "GasperAI is deployed directly into your isolated VPC. No public APIs." },
+                        { step: "03", title: "Model Alignment", desc: "The logistics agent is fine-tuned locally to understand your specific vendor nuances and SLA penalties." },
+                        { step: "04", title: "Control Tower Live", desc: "Rollout copilots to supply chain planners and procurement officers for immediate ROI." }
+                    ].map((phase, i) => (
+                        <div key={i} className="relative z-10 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none border border-black/5 md:border-none shadow-sm md:shadow-none">
+                            <div className="w-16 h-16 rounded-2xl bg-white border border-[#0EA5E9]/20 shadow-md flex items-center justify-center text-[#0EA5E9] font-black text-xl mb-6 mx-auto md:mx-0 relative">
+                                {phase.step}
+                            </div>
+                            <h3 className="font-bold text-[#1a1a1a] text-xl mb-3 text-center md:text-left">{phase.title}</h3>
+                            <p className="text-gray-500 leading-relaxed font-medium text-center md:text-left">{phase.desc}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
             

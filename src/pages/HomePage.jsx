@@ -5,10 +5,131 @@ import {
   Ship, HardHat, ArrowRight, Zap, Database, Brain, Lock,
   ShieldCheck, Building2, Globe, BarChart3, FileText,
   Cpu, Network, CheckCircle2, Sparkles, ClipboardCheck,
-  Activity, Search, Award, DollarSign, PhoneCall, Code, Plug, Key, Shield, Check
+  Activity, Search, Award, DollarSign, PhoneCall, Code, Plug, Key, Shield, Check,
+  Truck, TrendingUp, Package, Layers
 } from 'lucide-react';
 import Particles from '../components/Particles/Particles';
 import { getOptimizedSettings } from '../utils/detectWindows';
+
+export function BusinessIntegrationPanel() {
+    const industries = [
+        {
+            id: 'construction',
+            icon: <HardHat size={28} />,
+            label: 'Construction',
+            desc: 'Automate blueprint analysis & supply chain logistics.',
+            color: '#FF6B00',
+            bgGlow: 'rgba(255,107,0,0.15)'
+        },
+        {
+            id: 'logistics',
+            icon: <Truck size={28} />,
+            label: 'Logistics',
+            desc: 'Predictive routing and dynamic inventory forecasting.',
+            color: '#0EA5E9',
+            bgGlow: 'rgba(14,165,233,0.15)'
+        },
+        {
+            id: 'marketing',
+            icon: <TrendingUp size={28} />,
+            label: 'Marketing',
+            desc: 'Generative campaigns with hyper-targeted segmentation.',
+            color: '#F59E0B',
+            bgGlow: 'rgba(245,158,11,0.15)'
+        },
+        {
+            id: 'ecommerce',
+            icon: <Package size={28} />,
+            label: 'E-Commerce',
+            desc: 'Autonomous pricing agents and customer experience.',
+            color: '#8B5CF6',
+            bgGlow: 'rgba(139,92,246,0.15)'
+        },
+    ];
+
+    return (
+        <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }} className="w-full max-w-5xl mx-auto my-16 px-6 relative z-10">
+
+            {/* Ambient Background Glows */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-gradient-to-r from-[#FF6B00]/10 via-[#8B5CF6]/10 to-[#0EA5E9]/10 blur-[80px] -z-10 pointer-events-none rounded-full" />
+
+            <div className="relative rounded-[2.5rem] bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_30px_60px_rgba(0,0,0,0.08)] overflow-hidden">
+                {/* Header section with gradient border base */}
+                <div className="px-8 py-8 md:px-12 md:py-10 border-b border-black/[0.04] relative overflow-hidden">
+                    <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/90 to-gray-50/50" />
+
+                    <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                        <div className="flex items-center gap-5">
+                            <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] shadow-[0_8px_20px_rgba(0,0,0,0.2)]">
+                                <div className="absolute inset-0 rounded-2xl border border-white/20 p-[1px]">
+                                    <div className="w-full h-full rounded-[15px] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+                                </div>
+                                <Layers size={28} className="text-[#FF6B00] filter drop-shadow-[0_0_8px_rgba(255,107,0,0.4)]" />
+                            </div>
+                            <div>
+                                <h2 className="text-2xl md:text-3xl font-black text-[#1a1a1a] tracking-tight mb-1">
+                                    Enterprise AI Integrations
+                                </h2>
+                                <p className="text-[15px] text-gray-500 font-medium tracking-wide">
+                                    Bespoke autonomous systems across 4 primary sectors
+                                </p>
+                            </div>
+                        </div>
+                        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/80 border border-black/5 shadow-sm backdrop-blur-md self-start md:self-auto">
+                            <span className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#10b981]"></span>
+                            </span>
+                            <span className="text-[13px] font-bold text-[#10b981] uppercase tracking-wider">Systems Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Grid Content */}
+                <div className="p-8 md:p-12 relative bg-white/50">
+                    <div className="absolute inset-0 bg-grid-slate-100/[0.4] bg-[bottom_1px_center] z-0" />
+
+                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {industries.map((ind, i) => (
+                            <Link to={`/industries/${ind.id}`} key={i} className="block w-full h-full">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2 + i * 0.1, duration: 0.7 }}
+                                    className="group relative rounded-[2rem] p-6 lg:p-8 transition-all duration-500 cursor-pointer overflow-hidden z-20 flex flex-col h-full bg-white/95 border border-black/[0.04] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1"
+                                >
+                                    {/* Hover background effect */}
+                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(circle at 100% 100%, ${ind.bgGlow}, transparent 70%)` }} />
+
+                                    <div className="absolute top-0 right-0 w-32 h-32 transform translate-x-12 -translate-y-12 rounded-full opacity-0 blur-[30px] transition-all duration-700 group-hover:opacity-20 group-hover:scale-150" style={{ background: ind.color }} />
+
+                                    <div className="relative z-10 flex flex-col h-full">
+                                        <div className="flex items-center justify-between mb-8">
+                                            <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-sm border border-white" style={{ background: `${ind.color}15`, color: ind.color, boxShadow: `0 8px 20px ${ind.bgGlow}` }}>
+                                                {ind.icon}
+                                            </div>
+                                            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 border border-black/[0.04] text-gray-400 group-hover:bg-[#1a1a1a] group-hover:text-white group-hover:-rotate-45 transition-all duration-300 shadow-sm">
+                                                <ArrowRight size={18} />
+                                            </div>
+                                        </div>
+
+                                        <h3 className="text-[#1a1a1a] font-extrabold text-xl mb-3 transition-colors duration-300" style={{ '--hover-color': ind.color }} onMouseEnter={e => e.currentTarget.style.color = ind.color} onMouseLeave={e => e.currentTarget.style.color = '#1a1a1a'}>
+                                            {ind.label}
+                                        </h3>
+                                        <p className="text-[15px] font-medium leading-[1.7] text-gray-500 group-hover:text-gray-700 transition-colors">
+                                            {ind.desc}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -165,71 +286,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ═══════════════════════ DOMAINS SECTION ═══════════════════════ */}
-        <section className="py-24 px-6 max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-sm font-bold tracking-widest text-[#8B5CF6] uppercase mb-4 block">Our Platforms</span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight">Two Industries. <span className="text-[#8B5CF6]">One Intelligence.</span></h2>
-          </div>
+        {/* ═══════════════════════ INTEGRATION SECTION ═══════════════════════ */}
+        <BusinessIntegrationPanel />
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Logistics Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="uiverse-neo-card group relative p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-black/5 overflow-hidden shadow-xl cursor-pointer hover:-translate-y-1 transition-all duration-300"
-              onClick={() => navigate('/gasper')}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/5 to-transparent pointer-events-none" />
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="w-16 h-16 rounded-2xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 flex items-center justify-center mb-8 shadow-sm">
-                  <Ship className="text-[#0EA5E9] w-8 h-8" />
-                </div>
-                <h2 className="text-3xl font-black text-[#1a1a1a] mb-4">Logistics <span className="text-[#0EA5E9]">OS</span></h2>
-                <p className="text-[#4b5563] text-lg leading-relaxed mb-6 flex-grow">
-                  Track shipments in real time, predict port delays, and automate customs paperwork. Our AI watches global trade routes so you don't have to.
-                </p>
-                <ul className="space-y-2 mb-8 text-sm text-[#6b7280]">
-                  <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-[#0EA5E9]" /> Real-time shipment tracking</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-[#0EA5E9]" /> Automated customs compliance</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-[#0EA5E9]" /> Geopolitical risk alerts</li>
-                </ul>
-                <div className="flex items-center text-[#0EA5E9] font-bold text-lg group-hover:text-[#38BDF8] transition-colors">
-                  Launch Command Center <ArrowRight size={20} className="ml-2 transform group-hover:translate-x-2 transition-transform duration-300" />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Construction Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="uiverse-neo-card group relative p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-black/5 overflow-hidden shadow-xl cursor-pointer hover:-translate-y-1 transition-all duration-300"
-              onClick={() => navigate('/gasper/construction')}
-            >
-              <div className="absolute inset-0 bg-gradient-to-bl from-[#FF6B00]/5 to-transparent pointer-events-none" />
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="w-16 h-16 rounded-2xl bg-[#FF6B00]/10 border border-[#FF6B00]/20 flex items-center justify-center mb-8 shadow-sm">
-                  <HardHat className="text-[#F59E0B] w-8 h-8" />
-                </div>
-                <h2 className="text-3xl font-black text-[#1a1a1a] mb-4">Construction <span className="text-[#FF6B00]">AI</span></h2>
-                <p className="text-[#4b5563] text-lg leading-relaxed mb-6 flex-grow">
-                  Read blueprints instantly, predict project delays, and manage costs in real time. AI-powered project management that keeps builds on time and on budget.
-                </p>
-                <ul className="space-y-2 mb-8 text-sm text-[#6b7280]">
-                  <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-[#FF6B00]" /> AI blueprint analysis & takeoffs</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-[#FF6B00]" /> Predictive schedule optimization</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-[#FF6B00]" /> Real-time cost tracking</li>
-                </ul>
-                <div className="flex items-center text-[#FF6B00] font-bold text-lg group-hover:text-[#F59E0B] transition-colors">
-                  Launch Command Center <ArrowRight size={20} className="ml-2 transform group-hover:translate-x-2 transition-transform duration-300" />
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
 
         {/* ═══════════════════════ POWERED BY SECTION ═══════════════════════ */}
         <section className="py-24 px-6 relative">

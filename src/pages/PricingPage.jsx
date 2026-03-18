@@ -110,14 +110,11 @@ export default function PricingPage() {
     const currentTiers = activeArchitecture === 'cloud' ? cloudTiers : onPremiseTiers;
 
     return (
-        <div className="min-h-screen pt-32 pb-40 relative overflow-hidden text-white bg-[#0a0a0a]">
+        <div className="min-h-screen pt-32 pb-40 relative overflow-hidden text-[#1a1a1a] bg-[#F5F5F5]">
 
-            {/* Dark Ambient Gradients */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-[#8B5CF6]/10 to-transparent rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#FF6B00]/10 to-transparent rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl pointer-events-none" />
-
-            {/* Grid Pattern */}
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
+            {/* Light Ambient Gradients */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-[#8B5CF6]/5 to-transparent rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#FF6B00]/5 to-transparent rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
 
@@ -126,16 +123,16 @@ export default function PricingPage() {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8"
+                        className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-black/5 bg-white shadow-sm mb-8"
                     >
                         <Shield size={16} className="text-[#8B5CF6]" />
-                        <span className="text-sm font-bold tracking-widest text-white/80 uppercase">Deployment Architecture</span>
+                        <span className="text-sm font-bold tracking-widest text-[#1a1a1a] uppercase">Deployment Architecture</span>
                     </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-[1.1]"
+                        className="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-[1.1] text-[#1a1a1a]"
                     >
                         Transparent <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#FF6B00] to-[#F59E0B]">Enterprise Scaling</span>
@@ -144,33 +141,33 @@ export default function PricingPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto mb-12 font-medium"
+                        className="text-xl text-[#6b7280] leading-relaxed max-w-2xl mx-auto mb-12 font-medium"
                     >
                         We do not charge per token. Secure a flat-rate sovereign infrastructure license based on your computational footprint and security posture.
                     </motion.p>
 
                     {/* Architecture Toggle */}
-                    <div className="flex justify-center items-center gap-2 mb-8 p-1.5 bg-white/5 backdrop-blur-md rounded-full border border-white/10 w-fit mx-auto relative shadow-2xl">
+                    <div className="flex justify-center items-center gap-2 mb-8 p-1.5 bg-white backdrop-blur-md rounded-full border border-black/5 w-fit mx-auto relative shadow-sm">
 
                         <motion.div
                             className="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-full z-0 pointer-events-none"
                             animate={{
                                 left: activeArchitecture === 'cloud' ? '6px' : 'calc(50% + 0px)',
-                                backgroundColor: 'rgba(255,255,255,0.1)'
+                                backgroundColor: 'rgba(0,0,0,0.05)'
                             }}
                             transition={{ type: "spring", stiffness: 300, damping: 25 }}
                         />
 
                         <button
                             onClick={() => setActiveArchitecture('cloud')}
-                            className={`relative z-10 flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold transition-colors ${activeArchitecture === 'cloud' ? 'text-white' : 'text-gray-500 hover:text-white'}`}
+                            className={`relative z-10 flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold transition-colors ${activeArchitecture === 'cloud' ? 'text-[#1a1a1a]' : 'text-[#6b7280] hover:text-[#1a1a1a]'}`}
                         >
                             <Database size={18} className={activeArchitecture === 'cloud' ? 'text-[#8B5CF6]' : ''} />
                             Dedicated Cloud (VPC)
                         </button>
                         <button
                             onClick={() => setActiveArchitecture('on-premise')}
-                            className={`relative z-10 flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold transition-colors ${activeArchitecture === 'on-premise' ? 'text-white' : 'text-gray-500 hover:text-white'}`}
+                            className={`relative z-10 flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold transition-colors ${activeArchitecture === 'on-premise' ? 'text-[#1a1a1a]' : 'text-[#6b7280] hover:text-[#1a1a1a]'}`}
                         >
                             <Cpu size={18} className={activeArchitecture === 'on-premise' ? 'text-[#FF6B00]' : ''} />
                             Air-Gapped On-Premise
@@ -193,10 +190,10 @@ export default function PricingPage() {
                                 className="relative flex flex-col h-full group"
                             >
                                 <div
-                                    className={`relative z-10 flex flex-col h-full bg-black/40 backdrop-blur-xl rounded-[2.5rem] p-10 border transition-all duration-300 ease-out flex-grow
+                                    className={`relative z-10 flex flex-col h-full bg-white rounded-[2.5rem] p-10 border transition-all duration-300 ease-out flex-grow
                                         ${tier.highlight
-                                            ? 'border-white/20 -translate-y-2 bg-gradient-to-b from-white/5 to-transparent'
-                                            : hoveredCard === tier.id ? 'border-white/10 -translate-y-2' : 'border-white/5'}
+                                            ? 'border-black/10 -translate-y-2 shadow-lg'
+                                            : hoveredCard === tier.id ? 'border-black/10 -translate-y-2 shadow-md' : 'border-black/5 shadow-sm'}
                                     `}
                                     style={{
                                         boxShadow: tier.highlight ? `0 20px 50px ${tier.color}15` : (hoveredCard === tier.id ? `0 20px 40px ${tier.color}10` : 'none'),
@@ -222,25 +219,25 @@ export default function PricingPage() {
                                     )}
 
                                     <div className="mb-8 relative z-10 flex-shrink-0">
-                                        <h3 className="text-2xl font-bold mb-3 text-white">
+                                        <h3 className="text-2xl font-bold mb-3 text-[#1a1a1a]">
                                             {tier.name}
                                         </h3>
-                                        <p className="text-gray-400 text-sm leading-relaxed min-h-[40px] font-medium">{tier.description}</p>
+                                        <p className="text-[#6b7280] text-sm leading-relaxed min-h-[40px] font-medium">{tier.description}</p>
                                     </div>
 
-                                    <div className="mb-8 pb-8 border-b border-white/10 relative z-10 flex-shrink-0">
+                                    <div className="mb-8 pb-8 border-b border-black/5 relative z-10 flex-shrink-0">
                                         <div className="flex items-end gap-1">
-                                            <span className="text-5xl font-black text-white tracking-tight">
+                                            <span className="text-5xl font-black text-[#1a1a1a] tracking-tight">
                                                 {tier.price}
                                             </span>
-                                            <span className="text-gray-500 font-bold tracking-wide uppercase text-sm mb-2 ml-1">{tier.period}</span>
+                                            <span className="text-[#6b7280] font-bold tracking-wide uppercase text-sm mb-2 ml-1">{tier.period}</span>
                                         </div>
                                     </div>
 
                                     {/* Features List (Flex Grow Region) */}
                                     <div className="space-y-4 mb-10 flex-grow relative z-10">
                                         {tier.features.map((feature, fIdx) => (
-                                            <div key={fIdx} className="flex items-start gap-4 text-sm text-gray-300 font-medium">
+                                            <div key={fIdx} className="flex items-start gap-4 text-sm text-[#4b5563] font-medium">
                                                 <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: `${tier.color}20` }}>
                                                     <Check className="w-3 h-3" style={{ color: tier.color }} strokeWidth={4} />
                                                 </div>
@@ -253,7 +250,7 @@ export default function PricingPage() {
                                     <Link
                                         to={tier.ctaLink}
                                         className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl text-sm font-bold transition-all relative z-10 flex-shrink-0
-                                            ${tier.highlight ? 'text-white' : 'bg-white/5 text-white hover:bg-white/10'}
+                                            ${tier.highlight ? 'text-white' : 'bg-black/5 text-[#1a1a1a] hover:bg-black/10'}
                                         `}
                                         style={tier.highlight ? { backgroundColor: tier.color, boxShadow: `0 10px 30px ${tier.color}40` } : {}}
                                     >
@@ -269,9 +266,9 @@ export default function PricingPage() {
 
                 {/* Final Security Trust Marker */}
                 <div className="mt-24 text-center">
-                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                        <Lock size={16} className="text-gray-400" />
-                        <span className="text-sm font-medium text-gray-400">All pricing tiers require execution of a rigid Mutual Non-Disclosure Agreement (MNDA) prior to technical deep dives.</span>
+                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white border border-black/5 shadow-sm">
+                        <Lock size={16} className="text-[#6b7280]" />
+                        <span className="text-sm font-medium text-[#6b7280]">All pricing tiers require execution of a rigid Mutual Non-Disclosure Agreement (MNDA) prior to technical deep dives.</span>
                     </div>
                 </div>
 

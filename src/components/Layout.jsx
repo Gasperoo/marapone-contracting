@@ -24,16 +24,12 @@ export default function Layout({ children }) {
     { name: 'CustomLLM', url: '/custom-llm', icon: Brain },
   ];
 
-  const isGasperPage = location.pathname === '/gasper' || location.pathname.startsWith('/gasper/');
-
   return (
     <div style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* TubelightNavbar - Fixed overlay, hidden on Gasper Tool */}
-      {!isGasperPage && (
-        <TubelightNavbar
-          items={navItems}
-        />
-      )}
+      {/* TubelightNavbar - Fixed overlay */}
+      <TubelightNavbar
+        items={navItems}
+      />
 
       {/* Page content */}
       <div style={{ flex: 1 }}>
@@ -41,7 +37,7 @@ export default function Layout({ children }) {
       </div>
 
       {/* Footer */}
-      {!isGasperPage && <StackedCircularFooter />}
+      <StackedCircularFooter />
     </div>
   );
 }

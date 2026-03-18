@@ -5,7 +5,7 @@ import { cn } from '../../lib/utils';
 
 export function Badge({ children, variant = "default", className, ...props }) {
     return (
-        <span className={cn("gasper-badge", variant, className)} {...props}>
+        <span className={cn("marapone-badge", variant, className)} {...props}>
             {children}
         </span>
     );

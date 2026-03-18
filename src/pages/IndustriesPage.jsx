@@ -13,7 +13,7 @@ const IndustrySection = ({ industry, index }) => {
     const isEven = index % 2 === 0;
 
     return (
-        <div className={`py-16 md:py-32 relative ${isEven ? 'bg-white/5 border-y border-white/5' : 'bg-transparent'}`}>
+        <div className={`py-16 md:py-32 relative ${isEven ? 'bg-white/5 border-y border-white/10' : 'bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
                     
@@ -24,8 +24,8 @@ const IndustrySection = ({ industry, index }) => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-10%" }}
-                                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-[2rem] flex items-center justify-center mb-6 md:mb-8 shadow-sm border border-black/5"
-                                style={{ backgroundColor: `${industry.color}15`, color: industry.color }}
+                                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-[2rem] flex items-center justify-center mb-6 md:mb-8 shadow-sm border border-white/10 bg-white/5"
+                                style={{ color: industry.color }}
                             >
                                 {industry.icon}
                             </motion.div>
@@ -55,57 +55,52 @@ const IndustrySection = ({ industry, index }) => {
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-10%" }}
-                            className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                            className="bg-white/5 rounded-2xl md:rounded-3xl p-6 md:p-10 border border-white/10 shadow-sm"
                         >
                             <div className="flex items-center gap-3 mb-4 md:mb-5">
                                 <AlertTriangle size={24} className="text-[#EF4444]" />
                                 <h3 className="text-xl font-bold text-white">The Challenge</h3>
                             </div>
-                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
+                            <p className="text-base md:text-lg text-gray-400 leading-relaxed font-medium">
                                 {industry.challenge}
                             </p>
                         </motion.div>
 
-                        {/* The Marapone Solution */}
+                        {/* The Solution */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-10%" }}
                             transition={{ delay: 0.1 }}
-                            className="bg-[#1a1a1a] rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-[0_20px_40px_rgb(0,0,0,0.15)] relative overflow-hidden"
+                            className="bg-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden border border-white/10"
                         >
                             <div className="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-white/5 rounded-bl-full pointer-events-none" />
                             <div className="flex items-center gap-3 mb-4 md:mb-5 relative z-10">
-                                <Layers size={24} className="text-white" />
-                                <h3 className="text-xl font-bold text-white">The Marapone Solution</h3>
+                                <Layers size={24} className="text-[#FF6B00]" />
+                                <h3 className="text-xl font-bold text-white">The Practical AI Solution</h3>
                             </div>
-                            <p className="text-base md:text-lg text-gray-300 leading-relaxed font-medium relative z-10">
+                            <p className="text-base md:text-lg text-gray-200 leading-relaxed font-medium relative z-10">
                                 {industry.solution}
                             </p>
                         </motion.div>
 
-                        {/* GasperAI Use Case */}
+                        {/* Use Case */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-10%" }}
                             transition={{ delay: 0.2 }}
-                            className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden group"
-                            style={{ borderColor: `${industry.color}20` }}
+                            className="bg-gradient-to-br from-[#FF6B00]/10 to-[#8B5CF6]/10 rounded-2xl md:rounded-3xl p-6 md:p-10 border border-white/20 shadow-sm relative overflow-hidden group"
                         >
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                                style={{ background: `radial-gradient(circle at top right, ${industry.color}10, transparent 60%)` }} />
-                            
                             <div className="flex items-center justify-between mb-6 md:mb-8 relative z-10">
-                                <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border text-[10px] md:text-xs font-bold uppercase tracking-widest bg-white shadow-sm"
-                                    style={{ borderColor: `${industry.color}30`, color: industry.color }}>
-                                    <Cpu size={14} /> Marapone Case Study
+                                <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border text-[10px] md:text-xs font-bold uppercase tracking-widest bg-white/5 border-white/20 text-[#FF6B00]">
+                                    <Cpu size={14} /> Proven Results
                                 </div>
                             </div>
                             <h3 className="text-xl md:text-2xl font-black text-white mb-4 md:mb-5 relative z-10">
                                 {industry.useCaseTitle}
                             </h3>
-                            <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium relative z-10">
+                            <p className="text-base md:text-lg text-gray-300 leading-relaxed font-medium relative z-10">
                                 {industry.useCaseDesc}
                             </p>
                         </motion.div>
@@ -172,7 +167,7 @@ export default function IndustriesPage() {
 
     // Filter to only include the industries the user specified
     const targetIndustries = verticals.filter(v => 
-        ['construction', 'logistics', 'general-contracting'].includes(v.id)
+        ['construction', 'logistics'].includes(v.id)
     );
 
     return (
@@ -214,7 +209,7 @@ export default function IndustriesPage() {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-gray-400 leading-[1.7] font-medium mx-auto max-w-3xl"
                     >
-                        Discover how the world's most complex industries are deploying fully sovereign Marapone large language models to turn operational chaos into structural clarity.
+                        Industrial results, not AI hype. I build custom, private tools that bridge the gap between complex data and the builders who keep the country moving.
                     </motion.p>
                 </div>
             </div>

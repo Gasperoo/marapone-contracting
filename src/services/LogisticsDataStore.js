@@ -3,7 +3,7 @@
  * Uses localStorage for persistence. Call seed() on first run to populate demo data.
  */
 
-const STORAGE_KEY = 'gasper_logistics_data';
+const STORAGE_KEY = 'marapone_logistics_data';
 
 // ─────────────────────────────────────────────
 //  CORE CRUD

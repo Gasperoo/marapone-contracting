@@ -50,7 +50,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 font-medium leading-relaxed max-w-3xl mx-auto"
           >
-            Headquartered in Canada & Italy with international operations. We deploy private, air-gapped language models and AI tools for the world's most complex industrial & construction environments.
+            Marapone is a solo-led AI consultancy built for the industrial sectors that keep Canada moving. I build private, secure AI tools for construction GCs and logistics operators who are tired of manual delays and expensive oversight.
           </motion.p>
         </motion.div>
       </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
               className="text-center mb-12"
             >
               <span className="text-xs font-bold tracking-widest text-[#8B5CF6] uppercase">Enterprise Scale</span>
-              <h2 className="text-3xl font-bold text-[#1a1a1a] mt-3">Uncompromising Performance</h2>
+              <h2 className="text-3xl font-bold text-white mt-3">Uncompromising Performance</h2>
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -85,10 +85,10 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: stat.delay }}
                   viewport={{ once: true }}
-                  className="text-center p-8 rounded-3xl border border-black/5 bg-white shadow-sm hover:shadow-lg transition-all duration-300 group"
+                  className="text-center p-8 rounded-3xl border border-white/10 bg-white/5 shadow-sm hover:shadow-lg transition-all duration-300 group"
                 >
-                  <div className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-2 group-hover:text-[#8B5CF6] transition-colors">{stat.value}</div>
-                  <div className="text-sm font-bold text-[#6b7280] tracking-wide uppercase">{stat.label}</div>
+                  <div className="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-[#FF6B00] transition-colors">{stat.value}</div>
+                  <div className="text-sm font-bold text-gray-400 tracking-wide uppercase">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -109,7 +109,7 @@ export default function AboutPage() {
                   The SaaS era taught enterprises to rent their tools and outsource their data. In the age of AI, this model is fundamentally broken. Sending your proprietary supply chain data, blueprints, financial burns, and strategic communications to public API endpoints is a critical security failure.
                 </p>
                 <p className="text-lg text-[#4b5563] leading-relaxed font-medium">
-                  Founded with a vision to securely empower traditional industries, Marapone believes an enterprise's most valuable asset is its corporate memory. We build sovereign intelligence: deploying bespoke foundation models entirely within your isolated cloud environments. Our Marapone Engine ensures your data stays yours.
+                  I started Marapone because I saw how traditional industries were being left behind by "SaaS" AI that doesn't respect operational reality. You shouldn't have to send your blueprints or shipping manifests to a public cloud just to get a report done. I build sovereign intelligence that stays on your servers.
                 </p>
               </div>
 
@@ -168,43 +168,43 @@ export default function AboutPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white p-10 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
-                <div className="w-14 h-14 bg-[#1a1a1a] rounded-2xl flex items-center justify-center text-white mb-6">
+              <div className="bg-white/5 p-10 rounded-[2rem] border border-white/10 shadow-sm hover:border-white/20 transition-all">
+                <div className="w-14 h-14 bg-[#FF6B00]/20 rounded-2xl flex items-center justify-center text-[#FF6B00] mb-6">
                   <Fingerprint size={28} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Identity-Aware Retrieval</h3>
-                <p className="text-[#6b7280] font-medium leading-relaxed">
-                  Our LLMs natively respect your existing Role-Based Access Control (RBAC). The AI will only synthesize answers using documents and data the querying user actually has permission to see.
+                <h3 className="text-2xl font-bold text-white mb-4">Ownership of Results</h3>
+                <p className="text-gray-400 font-medium leading-relaxed">
+                  You don't lease your excavators or your trucks by the minute—you shouldn't lease your AI either. Once I build your tool, you own the code and the prompts. No per-seat tax, no subscription gatekeepers.
                 </p>
               </div>
 
-              <div className="bg-white p-10 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
-                <div className="w-14 h-14 bg-[#8B5CF6]/10 border border-[#8B5CF6]/20 rounded-2xl flex items-center justify-center text-[#8B5CF6] mb-6">
+              <div className="bg-white/5 p-10 rounded-[2rem] border border-white/10 shadow-sm hover:border-white/20 transition-all">
+                <div className="w-14 h-14 bg-[#0EA5E9]/20 rounded-2xl flex items-center justify-center text-[#0EA5E9] mb-6">
                   <SearchCode size={28} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Deterministic Output</h3>
-                <p className="text-[#6b7280] font-medium leading-relaxed">
-                  We eliminate hallucinations in critical environments. Every generated insight, summary, or predictive alert comes with explicit citations linking back to the exact source document in your database.
+                <h3 className="text-2xl font-bold text-white mb-4">No Hallucinations</h3>
+                <p className="text-gray-400 font-medium leading-relaxed">
+                  In construction and logistics, "close enough" isn't good enough. My tools use Retrieval-Augmented Generation (RAG) to ensure every answer is backed by your actual documents, with clear links to the source file.
                 </p>
               </div>
 
-              <div className="bg-white p-10 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
-                <div className="w-14 h-14 bg-[#FF6B00]/10 border border-[#FF6B00]/20 rounded-2xl flex items-center justify-center text-[#FF6B00] mb-6">
+              <div className="bg-white/5 p-10 rounded-[2rem] border border-white/10 shadow-sm hover:border-white/20 transition-all">
+                <div className="w-14 h-14 bg-[#8B5CF6]/20 rounded-2xl flex items-center justify-center text-[#8B5CF6] mb-6">
                   <Globe size={28} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Any Cloud, Any OS</h3>
-                <p className="text-[#6b7280] font-medium leading-relaxed">
-                  Integrate seamlessly on Windows, Mac, or Linux. We create custom local LLMs tailored to your business, deploying directly on the operating system that fits your infrastructure needs.
+                <h3 className="text-2xl font-bold text-white mb-4">Private Deployment</h3>
+                <p className="text-gray-400 font-medium leading-relaxed">
+                  Your sensitive data never leaves your environment. Whether on-premise or a secure private VPC, your blueprints, contracts, and financial burns stay completely under your control.
                 </p>
               </div>
 
-              <div className="bg-white p-10 rounded-[2rem] border border-black/5 shadow-sm hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all">
-                <div className="w-14 h-14 bg-[#10B981]/10 border border-[#10B981]/20 rounded-2xl flex items-center justify-center text-[#10B981] mb-6">
+              <div className="bg-white/5 p-10 rounded-[2rem] border border-white/10 shadow-sm hover:border-white/20 transition-all">
+                <div className="w-14 h-14 bg-[#10B981]/20 rounded-2xl flex items-center justify-center text-[#10B981] mb-6">
                   <Banknote size={28} />
                 </div>
-                <h3 className="text-2xl font-bold text-[#1a1a1a] mb-4">Deflationary Scaling</h3>
-                <p className="text-[#6b7280] font-medium leading-relaxed">
-                  Paying per-token to external API providers creates an artificial tax on enterprise scaling. By owning the model, your inference cost drops deterministically, allowing unbounded queries without budget fears.
+                <h3 className="text-2xl font-bold text-white mb-4">Fixed-Price Value</h3>
+                <p className="text-gray-400 font-medium leading-relaxed">
+                  Every engagement is a scoped project with a one-time fee. I partner with you to solve a specific problem, handover the results, and leave you with a permanent asset that saves you money daily.
                 </p>
               </div>
             </div>
@@ -240,29 +240,15 @@ export default function AboutPage() {
                   <div className="w-10 h-10 rounded-full bg-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00] mb-4">
                     <HardHat size={20} />
                   </div>
-                  <h4 className="font-bold text-white mb-2">Heavy Construction</h4>
-                  <p className="text-sm text-gray-400">AI-powered site monitoring, BIM analysis, and cash flow forecasting.</p>
+                  <h4 className="font-bold text-white mb-2">Construction</h4>
+                  <p className="text-sm text-gray-400">Automated blueprint auditing, daily log analysis, and cost risk detection.</p>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm mt-0 sm:mt-8">
                   <div className="w-10 h-10 rounded-full bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9] mb-4">
-                    <Plane size={20} />
+                    <Truck size={20} />
                   </div>
-                  <h4 className="font-bold text-white mb-2">Import/Export & Logistics</h4>
-                  <p className="text-sm text-gray-400">Multi-modal freight intelligence across ocean, air, and land corridors.</p>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                  <div className="w-10 h-10 rounded-full bg-[#8B5CF6]/20 flex items-center justify-center text-[#8B5CF6] mb-4">
-                    <Briefcase size={20} />
-                  </div>
-                  <h4 className="font-bold text-white mb-2">General Contracting</h4>
-                  <p className="text-sm text-gray-400">Intelligent bid analysis, subcontractor coordination, and margin protection.</p>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm mt-0 sm:mt-8">
-                  <div className="w-10 h-10 rounded-full bg-[#10B981]/20 flex items-center justify-center text-[#10B981] mb-4">
-                    <ShoppingCart size={20} />
-                  </div>
-                  <h4 className="font-bold text-white mb-2">E-Commerce & Digital</h4>
-                  <p className="text-sm text-gray-400">Autonomous pricing engines and inventory optimization across marketplaces.</p>
+                  <h4 className="font-bold text-white mb-2">Logistics</h4>
+                  <p className="text-sm text-gray-400">Shipment delay prediction, customs doc automation, and routing optimization.</p>
                 </div>
               </div>
             </div>
@@ -286,39 +272,27 @@ export default function AboutPage() {
                 { icon: <HeartHandshake size={28} />, title: 'Post-Launch Support', desc: 'Our partnership doesn\'t end at deployment. We provide full training, documentation, and ongoing technical support.', color: '#0EA5E9' },
               ].map((item, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="bg-white p-8 rounded-3xl border border-black/5 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 group">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border border-black/5 group-hover:scale-110 transition-transform" style={{ backgroundColor: `${item.color}10`, color: item.color }}>
+                  className="bg-white/5 p-8 rounded-3xl border border-white/10 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 group">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border border-white/10 group-hover:scale-110 transition-transform" style={{ backgroundColor: `${item.color}10`, color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">{item.title}</h3>
-                  <p className="text-[#6b7280] leading-relaxed font-medium">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                  <p className="text-gray-400 leading-relaxed font-medium">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
           </section>
           <section className="text-center max-w-4xl mx-auto">
-            <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">04 // Company Vision</span>
-            <h2 className="text-4xl font-black text-white mb-8">Empowering The <br />Builders & Makers</h2>
+            <span className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-white">04 // Vision</span>
+            <h2 className="text-4xl font-black text-white mb-8">Empowering The <br />Builders of Canada</h2>
             <p className="text-xl text-gray-300 leading-relaxed font-medium mb-12 max-w-3xl mx-auto">
-              We bridge the gap between cutting-edge AI and the heavy industries that build our world. From our dual headquarters in Canada and Italy, our international team operates with a singular focus: delivering clarity and security to complex, data-heavy operations.
+              I bridge the gap between complex AI and the industrial sectors that keep the country running. No hype, just high-ROI tools that solve real operational friction.
             </p>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
               <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10 shadow-xl flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
                 <img src="/logo.png" alt="Marapone Logo" className="h-[75px] w-auto mb-4 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                <div className="text-sm font-bold text-white uppercase tracking-widest">Enterprise Platform</div>
-              </div>
-            </div>
-
-            <div className="inline-flex items-center gap-6 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl shadow-sm">
-              <div className="flex -space-x-3">
-                <div className="w-12 h-12 rounded-full bg-[#1a1a1a] border-2 border-white flex items-center justify-center text-white font-bold text-xs">CA</div>
-                <div className="w-12 h-12 rounded-full bg-[#8B5CF6] border-2 border-white flex items-center justify-center text-white font-bold text-xs">IT</div>
-                <div className="w-12 h-12 rounded-full bg-[#FF6B00] border-2 border-white flex items-center justify-center text-white font-bold text-xs">GL</div>
-              </div>
-              <div className="text-left">
-                <div className="text-sm font-bold text-white">International Operations</div>
-                <div className="text-xs text-gray-500">Deployed across multiple continents</div>
+                <div className="text-sm font-bold text-white uppercase tracking-widest">Industrial AI Platform</div>
               </div>
             </div>
           </section>

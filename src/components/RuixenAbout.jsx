@@ -16,10 +16,10 @@ export default function RuixenAbout() {
                             Unified Platform
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                            Two Engines. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#FF6B00]">One Vision.</span>
+                            One Expert. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#FF6B00]">Total Control.</span>
                         </h2>
                         <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                            Marapone unifies supply chain intelligence and construction AI under a single architecture — purpose-built for industries that move and build the physical world.
+                            I don't build generic software. I build specialized AI systems for the companies that build our infrastructure and move our goods.
                         </p>
                     </div>
 
@@ -35,9 +35,9 @@ export default function RuixenAbout() {
                             <div className="p-3 rounded-xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 inline-flex mb-6">
                                 <Ship className="text-[#0EA5E9] w-7 h-7" />
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-3">Logistics OS</h3>
+                            <h3 className="text-2xl font-bold text-white mb-3">Logistics Intelligence</h3>
                             <p className="text-gray-400 mb-6 leading-relaxed">
-                                Real-time vessel tracking, predictive route optimization, automated HS code classification, and freight rate intelligence — all unified in one digital twin.
+                                Avoid demurrage and port delays. I build tools that automate customs documentation and predict shipment bottlenecks before they cost you money.
                             </p>
                             <div className="space-y-3 mb-8">
                                 {['Global AIS Vessel Tracking', 'AI-Powered Risk Screening', 'Multi-Modal Visibility'].map((item, i) => (
@@ -64,11 +64,11 @@ export default function RuixenAbout() {
                             </div>
                             <h3 className="text-2xl font-bold text-white mb-3">Construction AI</h3>
                             <p className="text-gray-400 mb-6 leading-relaxed">
-                                Blueprint intelligence, automated takeoffs, generative design, cash flow forecasting, and real-time site security — end-to-end project command.
+                                Stop the manual oversight. I build systems for blueprint auditing, daily log synthesis, and cash flow risk detection tailored to GCs.
                             </p>
                             <div className="space-y-3 mb-8">
-                                {['Automated Blueprint Takeoffs', 'Predictive Cash Flow Engine', 'AI Site Security Monitoring'].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3 text-sm text-[#4b5563]">
+                                {['Automated Blueprint Auditing', 'Predictive Cash Flow Engine', 'Daily Log Synthesis'].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3 text-sm text-gray-400">
                                         <div className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
                                         {item}
                                     </div>
@@ -97,9 +97,9 @@ export default function RuixenAbout() {
 
                         <div className="relative z-10">
                             <Zap size={28} className="text-[#FF6B00] mx-auto mb-4" />
-                            <h3 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Operations?</h3>
+                            <h3 className="text-3xl font-bold text-white mb-4">Ready to Fix Your Manual Processes?</h3>
                             <p className="text-lg text-gray-400 max-w-xl mx-auto mb-8">
-                                Whether you're moving cargo across oceans or building skyscrapers, Marapone's AI platform delivers the intelligence edge you need.
+                                Whether you're moving cargo or pouring concrete, I can build the AI tools you need to stay ahead.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Link to="/contact" className="inline-flex items-center justify-center px-10 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] shadow-[0_8px_25px_rgba(255,107,0,0.25)] hover:-translate-y-1 transition-all">

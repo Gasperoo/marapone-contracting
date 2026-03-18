@@ -12,107 +12,107 @@ import Particles from '../components/Particles/Particles';
 import { getOptimizedSettings } from '../utils/detectWindows';
 
 export function BusinessIntegrationPanel() {
-    const industries = [
-        {
-            id: 'construction',
-            icon: <HardHat size={28} />,
-            label: 'Construction',
-            desc: 'Automate blueprint analysis & supply chain logistics.',
-            color: '#FF6B00',
-            bgGlow: 'rgba(255,107,0,0.15)'
-        },
-        {
-            id: 'logistics',
-            icon: <Truck size={28} />,
-            label: 'Logistics',
-            desc: 'Predictive routing and dynamic inventory forecasting.',
-            color: '#0EA5E9',
-            bgGlow: 'rgba(14,165,233,0.15)'
-        },
-    ];
+  const industries = [
+    {
+      id: 'construction',
+      icon: <HardHat size={28} />,
+      label: 'Construction',
+      desc: 'Automate blueprint analysis & supply chain logistics.',
+      color: '#FF6B00',
+      bgGlow: 'rgba(255,107,0,0.15)'
+    },
+    {
+      id: 'logistics',
+      icon: <Truck size={28} />,
+      label: 'Logistics',
+      desc: 'Predictive routing and dynamic inventory forecasting.',
+      color: '#0EA5E9',
+      bgGlow: 'rgba(14,165,233,0.15)'
+    },
+  ];
 
-    return (
-        <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }} className="w-full max-w-5xl mx-auto my-16 px-6 relative z-10">
+  return (
+    <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }} className="w-full max-w-5xl mx-auto my-16 px-6 relative z-10">
 
-            {/* Ambient Background Glows */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-gradient-to-r from-[#FF6B00]/10 via-[#8B5CF6]/10 to-[#0EA5E9]/10 blur-[80px] -z-10 pointer-events-none rounded-full" />
+      {/* Ambient Background Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-gradient-to-r from-[#FF6B00]/10 via-[#8B5CF6]/10 to-[#0EA5E9]/10 blur-[80px] -z-10 pointer-events-none rounded-full" />
 
-            <div className="relative rounded-[2.5rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.3)] overflow-hidden">
-                {/* Header section with gradient border base */}
-                <div className="px-8 py-8 md:px-12 md:py-10 border-b border-white/5 relative overflow-hidden">
-                    <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/5 to-transparent" />
+      <div className="relative rounded-[2.5rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.3)] overflow-hidden">
+        {/* Header section with gradient border base */}
+        <div className="px-8 py-8 md:px-12 md:py-10 border-b border-white/5 relative overflow-hidden">
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/5 to-transparent" />
 
-                    <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                        <div className="flex items-center gap-5">
-                            <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] shadow-[0_8px_20px_rgba(0,0,0,0.2)]">
-                                <div className="absolute inset-0 rounded-2xl border border-white/20 p-[1px]">
-                                    <div className="w-full h-full rounded-[15px] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
-                                </div>
-                                <Layers size={28} className="text-[#FF6B00] filter drop-shadow-[0_0_8px_rgba(255,107,0,0.4)]" />
-                            </div>
-                            <div>
-                                <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-1">
-                                    Enterprise AI Integrations
-                                </h2>
-                                <p className="text-[15px] text-gray-400 font-medium tracking-wide">
-                                    Bespoke autonomous systems across 4 primary sectors
-                                </p>
-                            </div>
-                        </div>
-                        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 shadow-sm backdrop-blur-md self-start md:self-auto">
-                            <span className="relative flex h-2.5 w-2.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#10b981]"></span>
-                            </span>
-                            <span className="text-[13px] font-bold text-[#10b981] uppercase tracking-wider">Systems Online</span>
-                        </div>
-                    </div>
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="flex items-center gap-5">
+              <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] shadow-[0_8px_20px_rgba(0,0,0,0.2)]">
+                <div className="absolute inset-0 rounded-2xl border border-white/20 p-[1px]">
+                  <div className="w-full h-full rounded-[15px] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
                 </div>
-
-                {/* Grid Content */}
-                <div className="p-8 md:p-12 relative bg-transparent">
-                    <div className="absolute inset-0 bg-grid-slate-100/[0.4] bg-[bottom_1px_center] z-0" />
-
-                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {industries.map((ind, i) => (
-                            <Link to={`/industries/${ind.id}`} key={i} className="block w-full h-full">
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.2 + i * 0.1, duration: 0.7 }}
-                                    className="group relative rounded-[2rem] p-6 lg:p-8 transition-all duration-500 cursor-pointer overflow-hidden z-20 flex flex-col h-full bg-white/5 border border-white/10 shadow-sm hover:shadow-lg hover:-translate-y-1"
-                                >
-                                    {/* Hover background effect */}
-                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(circle at 100% 100%, ${ind.bgGlow}, transparent 70%)` }} />
-
-                                    <div className="absolute top-0 right-0 w-32 h-32 transform translate-x-12 -translate-y-12 rounded-full opacity-0 blur-[30px] transition-all duration-700 group-hover:opacity-20 group-hover:scale-150" style={{ background: ind.color }} />
-
-                                    <div className="relative z-10 flex flex-col h-full">
-                                        <div className="flex items-center justify-between mb-8">
-                                            <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-sm border border-white" style={{ background: `${ind.color}15`, color: ind.color, boxShadow: `0 8px 20px ${ind.bgGlow}` }}>
-                                                {ind.icon}
-                                            </div>
-                                            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 group-hover:bg-white/10 group-hover:text-white group-hover:-rotate-45 transition-all duration-300 shadow-sm">
-                                                <ArrowRight size={18} />
-                                            </div>
-                                        </div>
-
-                                        <h3 className="text-white font-extrabold text-xl mb-3 transition-colors duration-300" style={{ '--hover-color': ind.color }} onMouseEnter={e => e.currentTarget.style.color = ind.color} onMouseLeave={e => e.currentTarget.style.color = '#ffffff'}>
-                                            {ind.label}
-                                        </h3>
-                                        <p className="text-[15px] font-medium leading-[1.7] text-gray-400 group-hover:text-gray-200 transition-colors">
-                                            {ind.desc}
-                                        </p>
-                                    </div>
-                                </motion.div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
+                <Layers size={28} className="text-[#FF6B00] filter drop-shadow-[0_0_8px_rgba(255,107,0,0.4)]" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-1">
+                  Enterprise AI Integrations
+                </h2>
+                <p className="text-[15px] text-gray-400 font-medium tracking-wide">
+                  Bespoke autonomous systems across 4 primary sectors
+                </p>
+              </div>
             </div>
-        </motion.div>
-    );
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 shadow-sm backdrop-blur-md self-start md:self-auto">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#10b981]"></span>
+              </span>
+              <span className="text-[13px] font-bold text-[#10b981] uppercase tracking-wider">Systems Online</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Grid Content */}
+        <div className="p-8 md:p-12 relative bg-transparent">
+          <div className="absolute inset-0 bg-grid-slate-100/[0.4] bg-[bottom_1px_center] z-0" />
+
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {industries.map((ind, i) => (
+              <Link to={`/industries/${ind.id}`} key={i} className="block w-full h-full">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.1, duration: 0.7 }}
+                  className="group relative rounded-[2rem] p-6 lg:p-8 transition-all duration-500 cursor-pointer overflow-hidden z-20 flex flex-col h-full bg-white/5 border border-white/10 shadow-sm hover:shadow-lg hover:-translate-y-1"
+                >
+                  {/* Hover background effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(circle at 100% 100%, ${ind.bgGlow}, transparent 70%)` }} />
+
+                  <div className="absolute top-0 right-0 w-32 h-32 transform translate-x-12 -translate-y-12 rounded-full opacity-0 blur-[30px] transition-all duration-700 group-hover:opacity-20 group-hover:scale-150" style={{ background: ind.color }} />
+
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-8">
+                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-sm border border-white" style={{ background: `${ind.color}15`, color: ind.color, boxShadow: `0 8px 20px ${ind.bgGlow}` }}>
+                        {ind.icon}
+                      </div>
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 group-hover:bg-white/10 group-hover:text-white group-hover:-rotate-45 transition-all duration-300 shadow-sm">
+                        <ArrowRight size={18} />
+                      </div>
+                    </div>
+
+                    <h3 className="text-white font-extrabold text-xl mb-3 transition-colors duration-300" style={{ '--hover-color': ind.color }} onMouseEnter={e => e.currentTarget.style.color = ind.color} onMouseLeave={e => e.currentTarget.style.color = '#ffffff'}>
+                      {ind.label}
+                    </h3>
+                    <p className="text-[15px] font-medium leading-[1.7] text-gray-400 group-hover:text-gray-200 transition-colors">
+                      {ind.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
 
 export default function HomePage() {
@@ -332,11 +332,11 @@ export default function HomePage() {
                   </motion.div>
                 </div>
 
-                  <div className="text-center mt-12">
-                    <Link to="/industries" className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/15 text-white border border-white/20 rounded-xl font-bold transition-all backdrop-blur-md group">
-                      Learn About Our Solutions <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
+                <div className="text-center mt-12">
+                  <Link to="/industries" className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/15 text-white border border-white/20 rounded-xl font-bold transition-all backdrop-blur-md group">
+                    Learn About Our Solutions <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

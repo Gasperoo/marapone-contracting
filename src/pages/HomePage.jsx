@@ -48,7 +48,7 @@ export default function HomePage() {
             />
             {/* Logo Image */}
             <motion.img
-              src="/logo.png"
+              src="/images/gasper-logo-g.png"
               alt="Marapone Logo"
               className="w-56 md:w-72 lg:w-[22rem] relative z-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
               animate={{

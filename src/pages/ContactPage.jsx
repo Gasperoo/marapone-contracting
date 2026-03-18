@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Shield, Server, Box, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { ArrowRight, Shield, Server, Box, CheckCircle2, ShieldAlert, PhoneCall, ClipboardCheck, Lock } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -56,58 +56,58 @@ export default function ContactPage() {
 
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#8B5CF6]/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#FF6B00]/10 rounded-full blur-[120px] animate-pulse delay-700" />
+        <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#8B5CF6]/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#FF6B00]/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
         {/* Left Side: Copy & Info */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 shadow-sm">
-            <span className="text-xs font-bold tracking-widest text-white uppercase">Engineering Review</span>
+            <span className="text-xs font-bold tracking-widest text-[#FF6B00] uppercase">Direct Consultation</span>
           </div>
 
           <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
-            Request Architecture Evaluation
+            Stop Guessing. <br />Fix Your Ops.
           </h1>
 
           <p className="text-gray-300 text-lg mb-12 leading-relaxed font-medium">
-            Connect with our core engineering team. We do not offer standard demos. We conduct rigorous evaluations of your data infrastructure to determine readiness for a sovereign custom LLM deployment.
+            I don't do generic demos. I conduct direct operational audits to see if your data structure is ready for a private AI engine. Book a 15-30 minute discovery call to get started.
           </p>
 
           <div className="space-y-8">
             <div className="flex gap-4 items-start">
-              <div className="w-12 h-12 rounded-xl bg-white border border-black/5 shadow-sm flex items-center justify-center text-[#1a1a1a] shrink-0">
-                <Server size={24} />
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#FF6B00] shrink-0">
+                <ClipboardCheck size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white mb-1">Infrastructure Assessment</h3>
-                <p className="text-[#6b7280] text-sm leading-relaxed">Evaluation of your current VPCs, on-prem hardware, and data lakes for localized inference readiness.</p>
+                <h3 className="text-lg font-bold text-white mb-1">Operational Audit</h3>
+                <p className="text-[#6b7280] text-sm leading-relaxed font-medium">We'll review your current data silos—accounting, site logs, or manifests—to pinpoint exactly where AI can cut your costs.</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <div className="w-12 h-12 rounded-xl bg-white border border-black/5 shadow-sm flex items-center justify-center text-[#8B5CF6] shrink-0">
-                <Shield size={24} />
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#FF6B00] shrink-0">
+                <Lock size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white mb-1">Security & Sovereignty Review</h3>
-                <p className="text-[#6b7280] text-sm leading-relaxed">Mapping your compliance requirements (ITAR, HIPAA, GDPR) to our air-gapped system isolation protocols.</p>
+                <h3 className="text-lg font-bold text-white mb-1">Privacy & Ownership</h3>
+                <p className="text-[#6b7280] text-sm leading-relaxed font-medium">Everything we build is private. Your sensitive operational data never leaves your control during or after the build.</p>
               </div>
             </div>
 
             <div className="flex gap-4 items-start">
-              <div className="w-12 h-12 rounded-xl bg-white border border-black/5 shadow-sm flex items-center justify-center text-[#FF6B00] shrink-0">
-                <Box size={24} />
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#FF6B00] shrink-0">
+                <PhoneCall size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white mb-1">Proof of Concept Scoping</h3>
-                <p className="text-[#6b7280] text-sm leading-relaxed">Identifying high-impact vertical use cases to test the deterministic accuracy of a locally fine-tuned model.</p>
+                <h3 className="text-lg font-bold text-white mb-1">No-BS Discovery Call</h3>
+                <p className="text-[#6b7280] text-sm leading-relaxed font-medium">A quick, direct conversation to determine if your project is a fit for our fixed-price ownership model.</p>
               </div>
             </div>
           </div>
@@ -115,36 +115,36 @@ export default function ContactPage() {
 
         {/* Right Side: Form */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.3)] relative overflow-hidden"
         >
           {/* Subtle top border glow */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#8B5CF6] via-[#1a1a1a] to-[#FF6B00]" />
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]" />
 
-          <h2 className="text-2xl font-bold text-white mb-8">Initiate Conversation</h2>
+          <h2 className="text-2xl font-bold text-white mb-8">Schedule a Consultation</h2>
 
           {isSuccess ? (
             <div className="h-full flex flex-col items-center justify-center text-center py-10">
                 <div className="w-20 h-20 bg-[#10B981]/20 rounded-full flex items-center justify-center mb-6 border border-[#10B981]/50 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
                     <CheckCircle2 size={40} className="text-[#10B981]" />
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-4">Transmission Successful</h3>
-                <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-sm">
-                    Your inquiry has been securely routed. Our engineering team will review your requirements and respond shortly.
+                <h3 className="text-3xl font-bold text-white mb-4">Message Received</h3>
+                <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-sm font-medium">
+                    I'll review your details and reach out within 24 hours to schedule our discovery call.
                 </p>
                 <button
                     onClick={() => setIsSuccess(false)}
-                    className="px-8 py-3 bg-white hover:bg-gray-100 text-black rounded-xl font-bold transition-colors shadow-sm"
+                    className="px-8 py-3 bg-[#FF6B00] hover:bg-[#ea580c] text-white rounded-xl font-bold transition-all shadow-sm"
                 >
-                    Send Another Message
+                    Send Another Inquiry
                 </button>
             </div>
           ) : (
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-                <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-600 text-sm font-medium flex items-start gap-3">
+                <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-500 text-sm font-bold flex items-start gap-3">
                     <ShieldAlert size={20} className="shrink-0 mt-0.5" />
                     <span>{error}</span>
                 </div>
@@ -159,13 +159,13 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:bg-white/10 focus:border-white/20 transition-all font-medium"
                   placeholder="John Doe"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="email" className="text-xs font-bold tracking-wider uppercase text-gray-500">Corporate Email</label>
+                <label htmlFor="email" className="text-xs font-bold tracking-wider uppercase text-gray-500">Business Email</label>
                 <input
                   type="email"
                   id="email"
@@ -173,15 +173,15 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
-                  placeholder="john@enterprise.com"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:bg-white/10 focus:border-white/20 transition-all font-medium"
+                  placeholder="john@company.ca"
                 />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label htmlFor="role" className="text-xs font-bold tracking-wider uppercase text-gray-500">Job Role</label>
+                <label htmlFor="role" className="text-xs font-bold tracking-wider uppercase text-gray-500">Role</label>
                 <input
                   type="text"
                   id="role"
@@ -189,13 +189,13 @@ export default function ContactPage() {
                   value={formData.role}
                   onChange={handleChange}
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
-                  placeholder="Director of Operations"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:bg-white/10 focus:border-white/20 transition-all font-medium"
+                  placeholder="Project Manager / Ops Lead"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="company" className="text-xs font-bold tracking-wider uppercase text-gray-500">Organization</label>
+                <label htmlFor="company" className="text-xs font-bold tracking-wider uppercase text-gray-500">Company</label>
                 <input
                   type="text"
                   id="company"
@@ -203,36 +203,36 @@ export default function ContactPage() {
                   value={formData.company}
                   onChange={handleChange}
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
-                  placeholder="Company GmbH"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:bg-white/10 focus:border-white/20 transition-all font-medium"
+                  placeholder="Enterprise Logistics Inc."
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-xs font-bold tracking-wider uppercase text-gray-500">Evaluation Goals (Optional)</label>
+              <label htmlFor="message" className="text-xs font-bold tracking-wider uppercase text-gray-500">How can I help?</label>
               <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all resize-none"
-                placeholder="Briefly describe your use case or data environment..."
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:bg-white/10 focus:border-white/20 transition-all resize-none font-medium"
+                placeholder="Briefly describe your operational friction..."
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-white hover:bg-gray-100 text-black font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+              className="w-full bg-[#FF6B00] hover:bg-[#ea580c] text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Transmitting...' : 'Submit Request'} 
+              {isSubmitting ? 'Transmitting...' : 'Send Inquiry'} 
               {!isSubmitting && <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />}
             </button>
 
-            <p className="text-xs text-center text-[#9ca3af] mt-4">
-              By submitting, you agree to our strict enterprise non-disclosure policy.
+            <p className="text-[10px] text-center text-gray-500 font-bold uppercase tracking-widest mt-4">
+              Direct consultation. No Sales Fluff.
             </p>
           </form>
           )}

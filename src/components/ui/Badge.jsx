@@ -1,6 +1,7 @@
 import React from 'react';
 import { cn } from '../../lib/utils';
-import '../GasperTool/GasperTool.css'; // Ensure CSS is available
+// CSS should be imported in a main layout or use global styles
+
 
 export function Badge({ children, variant = "default", className, ...props }) {
     return (

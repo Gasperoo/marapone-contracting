@@ -1424,3 +1424,45 @@ html {
     display: none;
     /* Chrome, Safari and Opera */
 }
+/* Gasper Badge Component Styles */
+.gasper-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+}
+
+.gasper-badge.default {
+    background: rgba(0, 0, 0, 0.04);
+    color: #4b5563;
+}
+
+.gasper-badge.outline {
+    background: transparent;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.gasper-badge.success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.gasper-badge.warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: #F59E0B;
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+.gasper-badge.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+    border-color: rgba(239, 68, 68, 0.2);
+}

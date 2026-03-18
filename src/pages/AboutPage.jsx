@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Globe, Shield, Cpu, Lock, Network, SearchCode, Fingerprint, Banknote } from 'lucide-react';
+import { Globe, Shield, Cpu, Lock, Network, SearchCode, Fingerprint, Banknote, HardHat, Briefcase, ShoppingCart, Plane, Users, Handshake, Award, HeartHandshake } from 'lucide-react';
 import RuixenAbout from '../components/RuixenAbout';
 import '../components/LandingPage/LandingPage.css';
 
@@ -238,38 +238,65 @@ export default function AboutPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                  <div className="w-10 h-10 rounded-full bg-[#10B981]/20 flex items-center justify-center text-[#10B981] mb-4">
-                    <Shield size={20} />
+                  <div className="w-10 h-10 rounded-full bg-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00] mb-4">
+                    <HardHat size={20} />
                   </div>
-                  <h4 className="font-bold text-white mb-2">Defense/Aero</h4>
-                  <p className="text-sm text-gray-400">Air-gapped models for ITAR-compliant schematics generation.</p>
+                  <h4 className="font-bold text-white mb-2">Heavy Construction</h4>
+                  <p className="text-sm text-gray-400">AI-powered site monitoring, BIM analysis, and cash flow forecasting.</p>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm mt-0 sm:mt-8">
-                  <div className="w-10 h-10 rounded-full bg-[#8B5CF6]/20 flex items-center justify-center text-[#8B5CF6] mb-4">
-                    <Globe size={20} />
+                  <div className="w-10 h-10 rounded-full bg-[#0EA5E9]/20 flex items-center justify-center text-[#0EA5E9] mb-4">
+                    <Plane size={20} />
                   </div>
-                  <h4 className="font-bold text-white mb-2">Maritime Logistics</h4>
-                  <p className="text-sm text-gray-400">Edge inference on cargo vessels lacking satellite uplink.</p>
+                  <h4 className="font-bold text-white mb-2">Import/Export & Logistics</h4>
+                  <p className="text-sm text-gray-400">Multi-modal freight intelligence across ocean, air, and land corridors.</p>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
-                  <div className="w-10 h-10 rounded-full bg-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00] mb-4">
-                    <Network size={20} />
+                  <div className="w-10 h-10 rounded-full bg-[#8B5CF6]/20 flex items-center justify-center text-[#8B5CF6] mb-4">
+                    <Briefcase size={20} />
                   </div>
-                  <h4 className="font-bold text-white mb-2">Grid Infrastructure</h4>
-                  <p className="text-sm text-gray-400">Sub-second anomalous readings routing via private networks.</p>
+                  <h4 className="font-bold text-white mb-2">General Contracting</h4>
+                  <p className="text-sm text-gray-400">Intelligent bid analysis, subcontractor coordination, and margin protection.</p>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm mt-0 sm:mt-8">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white mb-4">
-                    <Lock size={20} />
+                  <div className="w-10 h-10 rounded-full bg-[#10B981]/20 flex items-center justify-center text-[#10B981] mb-4">
+                    <ShoppingCart size={20} />
                   </div>
-                  <h4 className="font-bold text-white mb-2">Finance</h4>
-                  <p className="text-sm text-gray-400">On-premise contract vectorization for merger negotiations.</p>
+                  <h4 className="font-bold text-white mb-2">E-Commerce & Digital</h4>
+                  <p className="text-sm text-gray-400">Autonomous pricing engines and inventory optimization across marketplaces.</p>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Philosophy Section */}
+          {/* Why Work With Marapone */}
+          <section>
+            <div className="text-center mb-16">
+              <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">Our Commitment</span>
+              <h2 className="text-4xl font-black text-[#1a1a1a] mt-3">Why Work With Marapone</h2>
+              <p className="text-lg text-[#4b5563] max-w-2xl mx-auto mt-4 leading-relaxed font-medium">
+                We're not just a technology vendor — we're a strategic partner invested in your long-term success.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: <Users size={28} />, title: 'Dedicated Teams', desc: 'Every client gets an assigned project team with a direct communication channel — no support tickets, no chatbots.', color: '#FF6B00' },
+                { icon: <Award size={28} />, title: 'Transparent Pricing', desc: 'No hidden fees, no surprise invoices. Our fixed-scope engagements mean you know exactly what you\'re paying for upfront.', color: '#8B5CF6' },
+                { icon: <Shield size={28} />, title: 'On-Time Delivery', desc: 'We commit to milestones and deliver. Our structured engagement process ensures projects stay on track and on budget.', color: '#10B981' },
+                { icon: <HeartHandshake size={28} />, title: 'Post-Launch Support', desc: 'Our partnership doesn\'t end at deployment. We provide full training, documentation, and ongoing technical support.', color: '#0EA5E9' },
+              ].map((item, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                  className="bg-white p-8 rounded-3xl border border-black/5 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 group">
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border border-black/5 group-hover:scale-110 transition-transform" style={{ backgroundColor: `${item.color}10`, color: item.color }}>
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">{item.title}</h3>
+                  <p className="text-[#6b7280] leading-relaxed font-medium">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
           <section className="text-center max-w-4xl mx-auto">
             <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">04 // Company Vision</span>
             <h2 className="text-4xl font-black text-[#1a1a1a] mb-8">Empowering The <br />Builders & Makers</h2>

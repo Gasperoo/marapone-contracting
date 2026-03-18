@@ -188,7 +188,7 @@ export default function HomePage() {
             transition={{ delay: 0.25 }}
             className="text-xl md:text-2xl text-[#4b5563] max-w-3xl mx-auto leading-relaxed mb-12 font-medium"
           >
-            We build custom AI systems that simplify the most complex operations in construction, logistics, and heavy industry — so your team can make better decisions, faster.
+            At Marapone Contracting Inc. we build custom AI systems that simplify the most complex operations in construction, logistics, and heavy industry — so you and your team can make better decisions, faster. Reducing costs and increasing profits.
           </motion.p>
         </section>
 

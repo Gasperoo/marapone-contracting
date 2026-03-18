@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TubelightNavbar } from './TubelightNavbar';
 import { StackedCircularFooter } from './StackedCircularFooter';
-import { Home, Zap, HelpCircle, Factory, CreditCard, Info, Mail, Brain } from 'lucide-react';
+import { Home, Zap, HelpCircle, Factory, CreditCard, Info, Mail, Brain, Bot } from 'lucide-react';
 
 export default function Layout({ children }) {
   const location = useLocation();
@@ -20,7 +20,8 @@ export default function Layout({ children }) {
     { name: 'Pricing', url: '/pricing', icon: CreditCard },
     { name: 'About', url: '/about', icon: Info },
     { name: 'Contact', url: '/contact', icon: Mail },
-    { name: 'Custom LLM', url: '/custom-llm', icon: Brain },
+    { name: 'GasperAI', url: '/gasper', icon: Bot },
+    { name: 'CustomLLM', url: '/custom-llm', icon: Brain },
   ];
 
   const isGasperPage = location.pathname === '/gasper' || location.pathname.startsWith('/gasper/');

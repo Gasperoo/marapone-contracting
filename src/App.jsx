@@ -7,6 +7,7 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import CustomLLMPage from './pages/CustomLLMPage';
+import GasperPage from './pages/GasperPage';
 import PricingPage from './pages/PricingPage';
 import FeaturesPage from './pages/FeaturesPage';
 import HowItWorksPage from './pages/HowItWorksPage';
@@ -49,6 +50,7 @@ function App() {
                     <Route path="/industries/logistics" element={<LogisticsPage />} />
                     <Route path="/industries/marketing" element={<MarketingPage />} />
                     <Route path="/industries/ecommerce" element={<EcommercePage />} />
+                    <Route path="/gasper" element={<GasperPage />} />
                     <Route path="/custom-llm" element={<CustomLLMPage />} />
                     <Route path="/pricing" element={<PricingPage />} />
                     <Route path="/contact" element={<ContactPage />} />

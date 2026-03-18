@@ -190,20 +190,6 @@ export default function HomePage() {
           >
             We build custom AI systems that simplify the most complex operations in construction, logistics, and heavy industry — so your team can make better decisions, faster.
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-          >
-            <Link to="/features" className="px-8 py-4 bg-[#FF6B00] hover:bg-[#ea580c] text-white rounded-xl font-bold text-lg shadow-[0_10px_30px_rgba(255,107,0,0.3)] hover:-translate-y-1 transition-all flex items-center justify-center group">
-              Explore Platform <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link to="/contact" className="px-8 py-4 bg-white border border-black/10 hover:bg-black/5 text-[#1a1a1a] rounded-xl font-bold text-lg shadow-sm transition-all flex items-center justify-center">
-              Get in Touch
-            </Link>
-          </motion.div>
         </section>
 
         {/* ═══════════════════════ TRUST BAR ═══════════════════════ */}
@@ -404,23 +390,6 @@ export default function HomePage() {
               </motion.div>
             ))}
           </div>
-        </section>
-
-        {/* ═══════════════════════ GASPER LOGO SECTION ═══════════════════════ */}
-        <section className="py-16 px-6 max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center gap-4"
-          >
-            <div className="inline-flex items-center gap-4 px-8 py-4 rounded-2xl bg-white border border-black/5 shadow-sm">
-              <img src="/images/gasper-logo-g.png" alt="Gasper" className="h-10 w-auto" />
-              <div className="h-8 w-px bg-black/10" />
-              <img src="/logo.png" alt="Marapone" className="h-10 w-auto" />
-            </div>
-            <p className="text-sm text-[#6b7280] font-medium">GasperAI — A Marapone Product</p>
-          </motion.div>
         </section>
 
         {/* ═══════════════════════ ENTERPRISE CAPABILITIES ═══════════════════════ */}

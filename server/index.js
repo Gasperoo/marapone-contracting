@@ -20,6 +20,8 @@ import {
   updateOrder
 } from './supabase.js';
 import waitlistHandler from '../api/send-waitlist-email.js';
+import contactHandler from '../api/send-contact-email.js';
+import bookingHandler from '../api/send-booking-email.js';
 
 // Load environment variables
 dotenv.config();
@@ -157,8 +159,10 @@ app.use(express.json());
 
 app.use('/api/account', accountRoutes);
 
-// Waitlist email endpoint
+// Email endpoints mapped so they work natively in local dev (Vite proxy => Express)
 app.post('/api/send-waitlist-email', waitlistHandler);
+app.post('/api/send-contact-email', contactHandler);
+app.post('/api/send-booking-email', bookingHandler);
 
 // Create Stripe checkout session
 app.post('/api/stripe/create-checkout-session', async (req, res) => {

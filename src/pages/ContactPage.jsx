@@ -18,7 +18,12 @@ export default function ContactPage() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [bookingStep, setBookingStep] = useState('time'); // 'time' | 'details' | 'success'
+  
+  // Booking Form State
+  const [bookingDetails, setBookingDetails] = useState({ name: '', email: '', phone: '' });
+  const [isBookingSubmitting, setIsBookingSubmitting] = useState(false);
+  const [bookingError, setBookingError] = useState(null);
 
   // Calendar Helpers
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
@@ -43,6 +48,42 @@ export default function ContactPage() {
     "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM",
     "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM"
   ];
+  
+  const handleFinalizeBooking = async () => {
+    setIsBookingSubmitting(true);
+    setBookingError(null);
+
+    try {
+      const response = await fetch('/api/send-booking-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: bookingDetails.name,
+          email: bookingDetails.email,
+          phone: bookingDetails.phone,
+          date: selectedDate.toLocaleDateString(),
+          time: selectedTime
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to book appointment');
+      }
+
+      setBookingStep('success');
+      setBookingDetails({ name: '', email: '', phone: '' });
+    } catch (err) {
+      console.error('Booking error:', err);
+      setBookingError(err.message || 'Something went wrong. Please email us directly.');
+    } finally {
+      setIsBookingSubmitting(false);
+    }
+  };
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -321,7 +362,7 @@ export default function ContactPage() {
                   <button
                     key={day}
                     disabled={isPast || isWeekend}
-                    onClick={() => { setSelectedDate(dateObj); setSelectedTime(null); setBookingSuccess(false); }}
+                    onClick={() => { setSelectedDate(dateObj); setSelectedTime(null); setBookingStep('time'); setBookingError(null); }}
                     className={`
                       aspect-square rounded-2xl flex items-center justify-center text-lg font-bold transition-all relative
                       ${isPast || isWeekend ? 'opacity-30 cursor-not-allowed text-gray-600' : 'hover:bg-white/10 hover:-translate-y-1 cursor-pointer'}
@@ -342,7 +383,7 @@ export default function ContactPage() {
               {selectedDate ? selectedDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) : 'Select a Date'}
             </h3>
 
-            {bookingSuccess ? (
+            {bookingStep === 'success' ? (
               <div className="flex-grow flex flex-col items-center justify-center text-center p-6 bg-black/20 rounded-3xl border border-white/5 mt-4">
                 <div className="w-16 h-16 bg-[#10B981]/20 rounded-full flex items-center justify-center mb-4 border border-[#10B981]/50">
                   <CheckCircle2 size={32} className="text-[#10B981]" />
@@ -352,11 +393,71 @@ export default function ContactPage() {
                   You are scheduled for {selectedDate?.toLocaleDateString()} at {selectedTime}. A calendar invite has been sent.
                 </p>
                 <button
-                  onClick={() => { setBookingSuccess(false); setSelectedDate(null); setSelectedTime(null); }}
+                  onClick={() => { setBookingStep('time'); setSelectedDate(null); setSelectedTime(null); }}
                   className="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold transition-colors text-sm"
                 >
                   Book Another Time
                 </button>
+              </div>
+            ) : bookingStep === 'details' ? (
+              <div className="flex-grow flex flex-col justify-center">
+                <button onClick={() => setBookingStep('time')} className="text-gray-400 hover:text-white text-sm font-bold flex items-center gap-1 mb-6 transition-colors self-start">
+                  <ChevronLeft size={16} /> Back to Times
+                </button>
+
+                <h4 className="text-2xl font-bold text-white mb-2">Your Details</h4>
+                <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                  Please provide your contact information to finalize your appointment for <strong className="text-white">{selectedDate.toLocaleDateString()} at {selectedTime}</strong>.
+                </p>
+
+                {bookingError && (
+                    <div className="p-4 mb-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-500 text-sm font-bold">
+                        {bookingError}
+                    </div>
+                )}
+
+                <div className="space-y-4">
+                  <div>
+                    <label className="text-xs font-bold tracking-wider uppercase text-gray-500 mb-1 block">Full Name</label>
+                    <input
+                      type="text"
+                      value={bookingDetails.name}
+                      onChange={(e) => setBookingDetails({...bookingDetails, name: e.target.value})}
+                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#FF6B00]/50 transition-all font-medium"
+                      placeholder="Jane Doe"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold tracking-wider uppercase text-gray-500 mb-1 block">Business Email</label>
+                    <input
+                      type="email"
+                      value={bookingDetails.email}
+                      onChange={(e) => setBookingDetails({...bookingDetails, email: e.target.value})}
+                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#FF6B00]/50 transition-all font-medium"
+                      placeholder="jane@company.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold tracking-wider uppercase text-gray-500 mb-1 block">Phone Number</label>
+                    <input
+                      type="tel"
+                      value={bookingDetails.phone}
+                      onChange={(e) => setBookingDetails({...bookingDetails, phone: e.target.value})}
+                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#FF6B00]/50 transition-all font-medium"
+                      placeholder="(555) 123-4567"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-white/10">
+                  <button
+                    disabled={!bookingDetails.name || !bookingDetails.email || !bookingDetails.phone || isBookingSubmitting}
+                    onClick={handleFinalizeBooking}
+                    className="w-full bg-[#FF6B00] hover:bg-[#ea580c] text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isBookingSubmitting ? 'Confirming...' : 'Finalize Booking'}
+                  </button>
+                </div>
               </div>
             ) : (
               <>
@@ -385,10 +486,10 @@ export default function ContactPage() {
                 <div className="pt-6 mt-6 border-t border-white/10">
                   <button
                     disabled={!selectedDate || !selectedTime}
-                    onClick={() => setBookingSuccess(true)}
+                    onClick={() => setBookingStep('details')}
                     className="w-full bg-[#FF6B00] hover:bg-[#ea580c] text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
                   >
-                    Confirm Selection
+                    Continue
                     <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>

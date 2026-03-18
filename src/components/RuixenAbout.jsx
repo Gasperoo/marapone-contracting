@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Zap, Ship, HardHat, Brain, Shield, BarChart3, Layers } from 'lucide-react';
-import '../components/LandingPage/LandingPage.css';
 
 export default function RuixenAbout() {
     return (

@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Globe, Shield, Cpu, Lock, Network, SearchCode, Fingerprint, Banknote, HardHat, Briefcase, ShoppingCart, Plane, Users, Handshake, Award, HeartHandshake } from 'lucide-react';
 import RuixenAbout from '../components/RuixenAbout';
-import '../components/LandingPage/LandingPage.css';
 
 export default function AboutPage() {
   const containerRef = useRef(null);

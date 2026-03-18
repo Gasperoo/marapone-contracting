@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Shield, Server, Box, CheckCircle2, ShieldAlert } from 'lucide-react';
-import '../components/LandingPage/LandingPage.css';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

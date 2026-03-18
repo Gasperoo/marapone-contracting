@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import './LandingPage/LandingPage.css';
 
 /**
  * Simple layout for legal pages - no navbar, just a back button

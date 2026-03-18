@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TubelightNavbar } from './TubelightNavbar';
 import { StackedCircularFooter } from './StackedCircularFooter';
@@ -6,6 +6,11 @@ import { Home, Zap, HelpCircle, Factory, CreditCard, Info, Mail, Brain } from 'l
 
 export default function Layout({ children }) {
   const location = useLocation();
+
+  // Scroll to top on every route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const navItems = [
     { name: 'Home', url: '/', icon: Home },

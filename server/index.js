@@ -233,8 +233,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: 'Something went wrong. Please try again.' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-  console.log(`Supabase configured: ${!!process.env.SUPABASE_URL}`);
-  console.log(`Stripe configured: ${!!process.env.STRIPE_SECRET_KEY}`);
-});
+if (process.env.NODE_ENV !== 'production' && process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Supabase configured: ${!!process.env.SUPABASE_URL}`);
+    console.log(`Stripe configured: ${!!process.env.STRIPE_SECRET_KEY}`);
+  });
+}
+
+export default app;

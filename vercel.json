@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/account/(.*)",
+      "destination": "/api/express"
+    },
+    {
+      "source": "/api/stripe/(.*)",
+      "destination": "/api/express"
+    },
+    {
+      "source": "/api/health",
+      "destination": "/api/express"
+    }
+  ]
+}

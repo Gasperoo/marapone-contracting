@@ -48,7 +48,7 @@ export default function HomePage() {
             transition={{ delay: 0.3 }}
             className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12"
           >
-            I build custom, private AI systems for Canadian construction GCs and logistics operators who are tired of manual delays, expensive oversight, and vendor lock-in. One-time project fee. Full code ownership. No subscriptions.
+            Marapone builds custom, private AI systems for Canadian construction GCs and logistics operators who are tired of manual delays, expensive oversight, and vendor lock-in. One-time project fee. Full code ownership. No subscriptions.
           </motion.p>
 
           <motion.div
@@ -67,7 +67,7 @@ export default function HomePage() {
               to="/industries" 
               className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/20 rounded-xl font-bold text-lg transition-all backdrop-blur-md"
             >
-              See What I Build
+              See What Marapone Builds
             </Link>
           </motion.div>
         </div>
@@ -83,11 +83,11 @@ export default function HomePage() {
               </h2>
               <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
                 <p>
-                  Generic AI tools are built for office work, not for construction sites or port terminals. I fix the gap between your operational reality and the data you need to make decisions.
+                  Generic AI tools are built for office work, not for construction sites or port terminals. Marapone fixes the gap between your operational reality and the data you need to make decisions.
                 </p>
                 <div className="flex gap-4 p-6 bg-black/30 rounded-2xl border border-white/10 border-l-[#FF6B00] border-l-4">
                   <p className="italic font-medium text-gray-300">
-                    "I build tools that take your messy blueprints, shipping manifests, and financial burns, and turn them into an engine you own forever."
+                    "Marapone builds tools that take your messy blueprints, shipping manifests, and financial burns, and turn them into an engine you own forever."
                   </p>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black mb-4">Built on the Best.</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              I leverage world-class APIs and secure integrations to build your private engine.
+              Marapone leverages world-class APIs and secure integrations to build your private engine.
             </p>
           </div>
           
@@ -213,7 +213,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-black mb-4 uppercase tracking-tighter text-[#FF6B00]">One-Time Fee.</h2>
               <p className="text-gray-500 font-bold uppercase tracking-widest text-xs mb-8">Permanent Assets.</p>
               <p className="text-gray-400 leading-relaxed">
-                I don't sell subscriptions. I build custom competitive moats that you own forever.
+                Marapone doesn't sell subscriptions. Marapone builds custom competitive moats that you own forever.
               </p>
             </div>
             

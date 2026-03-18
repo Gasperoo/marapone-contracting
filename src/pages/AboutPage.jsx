@@ -49,7 +49,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 font-medium leading-relaxed max-w-3xl mx-auto"
           >
-            Marapone is a solo-led AI consultancy built for the sectors that keep Canada moving. I bridge the gap between complex data and operational reality.
+            Marapone is a solo-led AI consultancy built for the sectors that keep Canada moving. Marapone bridges the gap between complex data and operational reality.
           </motion.p>
         </motion.div>
       </div>
@@ -69,10 +69,10 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-6 text-gray-300 text-lg leading-relaxed font-medium">
                   <p>
-                    I founded Marapone to fix what's broken in the AI industry. Most vendors want to sell you a subscription and trap your data on their servers. 
+                    Marapone was founded to fix what's broken in the AI industry. Most vendors want to sell you a subscription and trap your data on their servers. 
                   </p>
                   <p>
-                    I don't do that. I build custom, private AI engines that you own. Once the project is done, I hand over the keys. No seat taxes, no forced updates, and no vendor lock-in.
+                    Marapone doesn't do that. Marapone builds custom, private AI engines that you own. Once the project is done, Marapone hands over the keys. No seat taxes, no forced updates, and no vendor lock-in.
                   </p>
                 </div>
               </div>
@@ -106,9 +106,9 @@ export default function AboutPage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { icon: <Users size={28} />, title: "One-on-One", desc: "You work directly with me. No junior account managers. No support tickets.", color: "#FF6B00" },
+                { icon: <Users size={28} />, title: "One-on-One", desc: "You work directly with Marapone. No junior account managers. No support tickets.", color: "#FF6B00" },
                 { icon: <Banknote size={28} />, title: "Fixed Price", desc: "You know the cost upfront. No surprise invoices or scope creep bills.", color: "#8B5CF6" },
-                { icon: <Award size={28} />, title: "Industrial Focus", desc: "I know construction and logistics. I speak the language of ops.", color: "#10B981" },
+                { icon: <Award size={28} />, title: "Industrial Focus", desc: "Marapone knows construction and logistics. Marapone speaks the language of ops.", color: "#10B981" },
                 { icon: <HeartHandshake size={28} />, title: "Full Handover", desc: "Proprietary code and weights are yours forever at completion.", color: "#0EA5E9" },
               ].map((item, i) => (
                 <div key={i} className="bg-white/5 p-8 rounded-3xl border border-white/10 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 group">
@@ -128,7 +128,7 @@ export default function AboutPage() {
           <section className="text-center pb-32">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-8">Empowering The Builders.</h2>
             <p className="text-xl text-gray-400 leading-relaxed mb-12 max-w-3xl mx-auto">
-              I focus on the foundational sectors that keep Canada running. No hype, just high-ROI results for the companies that move our cargo and build our infrastructure.
+              Marapone focuses on the foundational sectors that keep Canada running. No hype, just high-ROI results for the companies that move our cargo and build our infrastructure.
             </p>
             <Link 
               to="/contact" 

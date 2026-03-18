@@ -88,7 +88,7 @@ export default function IndustriesPage() {
             icon: <HardHat size={40} />,
             color: '#FF6B00',
             challenge: 'Subcontractors, site logs, and blueprints are often disconnected. Manual oversight leads to rework, schedule slippage, and cost overruns that aren\'t detected until the budget is already burned.',
-            solution: 'I build localized AI engines that ingest daily site logs and RFI data to identify structural deviations against your BIM or original blueprints. The system predicts cash flow risk and flags coordination issues before they become expensive mistakes.',
+            solution: 'Marapone builds localized AI engines that ingest daily site logs and RFI data to identify structural deviations against your BIM or original blueprints. The system predicts cash flow risk and flags coordination issues before they become expensive mistakes.',
             results: [
                 "Reduction in structural rework costs",
                 "Automated Daily Log synthesis for PMs",
@@ -102,7 +102,7 @@ export default function IndustriesPage() {
             icon: <Truck size={40} />,
             color: '#0EA5E9',
             challenge: 'Fragmented data from ocean, air, and land coupled with messy customs documentation. Reliance on manual tracking leads to unpredicted demurrage fees and terminal bottlenecks.',
-            solution: 'I deploy multimodal agents that process unstructured shipping documentation (BoL, Customs declarations) and correlate it with real-time AIS/Tracking data. This allows for automated delay prediction and pre-clearance orchestration.',
+            solution: 'Marapone deploys multimodal agents that process unstructured shipping documentation (BoL, Customs declarations) and correlate it with real-time AIS/Tracking data. This allows for automated delay prediction and pre-clearance orchestration.',
             results: [
                 "Automated customs doc processing",
                 "Vessel-to-Port bottleneck prediction",
@@ -133,14 +133,14 @@ export default function IndustriesPage() {
                 </motion.div>
 
                 <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tight">
-                    Sectors I <br />
+                    Sectors Marapone <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#0EA5E9]">
                         Specialize In.
                     </span>
                 </h1>
                 
                 <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                    I don't build generic automation. I build high-precision AI for the physical industries that demand certainty.
+                    Marapone doesn't build generic automation. Marapone builds high-precision AI for the physical industries that demand certainty.
                 </p>
             </div>
 
@@ -155,7 +155,7 @@ export default function IndustriesPage() {
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className="text-4xl font-black mb-6">Own Your Intelligence.</h2>
                     <p className="text-xl text-gray-400 mb-12">
-                        Whether you're managing a port or a skyscraper, my one-time build model ensures your AI tools are permanent, private assets.
+                        Whether you're managing a port or a skyscraper, Marapone's one-time build model ensures your AI tools are permanent, private assets.
                     </p>
                     <Link to="/contact" className="inline-flex items-center gap-2 px-10 py-5 bg-[#FF6B00] hover:bg-[#ea580c] text-white rounded-xl font-bold text-xl shadow-lg transition-all hover:-translate-y-1 group">
                         Book a Discovery Call <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

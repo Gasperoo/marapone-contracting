@@ -19,7 +19,7 @@ export default function RuixenAbout() {
                             One Expert. <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0EA5E9] to-[#FF6B00]">Total Control.</span>
                         </h2>
                         <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                            I don't build generic software. I build specialized AI systems for the companies that build our infrastructure and move our goods.
+                            Marapone doesn't build generic software. Marapone builds specialized AI systems for the companies that build our infrastructure and move our goods.
                         </p>
                     </div>
 
@@ -37,7 +37,7 @@ export default function RuixenAbout() {
                             </div>
                             <h3 className="text-2xl font-bold text-white mb-3">Logistics Intelligence</h3>
                             <p className="text-gray-400 mb-6 leading-relaxed">
-                                Avoid demurrage and port delays. I build tools that automate customs documentation and predict shipment bottlenecks before they cost you money.
+                                Avoid demurrage and port delays. Marapone builds tools that automate customs documentation and predict shipment bottlenecks before they cost you money.
                             </p>
                             <div className="space-y-3 mb-8">
                                 {['Global AIS Vessel Tracking', 'AI-Powered Risk Screening', 'Multi-Modal Visibility'].map((item, i) => (
@@ -64,7 +64,7 @@ export default function RuixenAbout() {
                             </div>
                             <h3 className="text-2xl font-bold text-white mb-3">Construction AI</h3>
                             <p className="text-gray-400 mb-6 leading-relaxed">
-                                Stop the manual oversight. I build systems for blueprint auditing, daily log synthesis, and cash flow risk detection tailored to GCs.
+                                Stop the manual oversight. Marapone builds systems for blueprint auditing, daily log synthesis, and cash flow risk detection tailored to GCs.
                             </p>
                             <div className="space-y-3 mb-8">
                                 {['Automated Blueprint Auditing', 'Predictive Cash Flow Engine', 'Daily Log Synthesis'].map((item, i) => (
@@ -99,7 +99,7 @@ export default function RuixenAbout() {
                             <Zap size={28} className="text-[#FF6B00] mx-auto mb-4" />
                             <h3 className="text-3xl font-bold text-white mb-4">Ready to Fix Your Manual Processes?</h3>
                             <p className="text-lg text-gray-400 max-w-xl mx-auto mb-8">
-                                Whether you're moving cargo or pouring concrete, I can build the AI tools you need to stay ahead.
+                                Whether you're moving cargo or pouring concrete, Marapone can build the AI tools you need to stay ahead.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Link to="/contact" className="inline-flex items-center justify-center px-10 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#FF6B00] to-[#F59E0B] shadow-[0_8px_25px_rgba(255,107,0,0.25)] hover:-translate-y-1 transition-all">

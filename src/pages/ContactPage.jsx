@@ -77,7 +77,7 @@ export default function ContactPage() {
           </h1>
 
           <p className="text-gray-300 text-lg mb-12 leading-relaxed font-medium">
-            I don't do generic demos. I conduct direct operational audits to see if your data structure is ready for a private AI engine. Book a 15-30 minute discovery call to get started.
+            Marapone doesn't do generic demos. Marapone conducts direct operational audits to see if your data structure is ready for a private AI engine. Book a 15-30 minute discovery call to get started.
           </p>
 
           <div className="space-y-8">
@@ -132,7 +132,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-4">Message Received</h3>
                 <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-sm font-medium">
-                    I'll review your details and reach out within 24 hours to schedule our discovery call.
+                    Marapone will review your details and reach out within 24 hours to schedule our discovery call.
                 </p>
                 <button
                     onClick={() => setIsSuccess(false)}
@@ -210,7 +210,7 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-xs font-bold tracking-wider uppercase text-gray-500">How can I help?</label>
+              <label htmlFor="message" className="text-xs font-bold tracking-wider uppercase text-gray-500">How can Marapone help?</label>
               <textarea
                 id="message"
                 name="message"

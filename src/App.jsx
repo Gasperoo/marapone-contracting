@@ -6,21 +6,9 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import CustomLLMPage from './pages/CustomLLMPage';
-import GasperPage from './pages/GasperPage';
-import PricingPage from './pages/PricingPage';
-import FeaturesPage from './pages/FeaturesPage';
-import HowItWorksPage from './pages/HowItWorksPage';
 import IndustriesPage from './pages/IndustriesPage';
-import ConstructionPage from './pages/ConstructionPage';
-import LogisticsPage from './pages/LogisticsPage';
-import MarketingPage from './pages/MarketingPage';
-import EcommercePage from './pages/EcommercePage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
-import TermsOfServicePage from './pages/TermsOfServicePage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import CookiePolicyPage from './pages/CookiePolicyPage';
 
 function App() {
   return (
@@ -29,13 +17,7 @@ function App() {
         <AuthProvider>
           <CurrencyProvider>
             <Routes>
-              {/* Legal pages - no Layout wrapper (no navbar) */}
-              <Route path="/terms" element={<TermsOfServicePage />} />
-              <Route path="/privacy" element={<PrivacyPolicyPage />} />
-              <Route path="/cookies" element={<CookiePolicyPage />} />
-              <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-              <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+              {/* No legal pages in root for now as they are being removed from footer/nav */}
 
               {/* All other pages - with Layout wrapper (includes navbar) */}
               <Route path="*" element={
@@ -43,16 +25,7 @@ function App() {
                   <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />
-                    <Route path="/features" element={<FeaturesPage />} />
-                    <Route path="/how-it-works" element={<HowItWorksPage />} />
                     <Route path="/industries" element={<IndustriesPage />} />
-                    <Route path="/industries/construction" element={<ConstructionPage />} />
-                    <Route path="/industries/logistics" element={<LogisticsPage />} />
-                    <Route path="/industries/marketing" element={<MarketingPage />} />
-                    <Route path="/industries/ecommerce" element={<EcommercePage />} />
-                    <Route path="/gasper" element={<GasperPage />} />
-                    <Route path="/custom-llm" element={<CustomLLMPage />} />
-                    <Route path="/pricing" element={<PricingPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                   </Routes>

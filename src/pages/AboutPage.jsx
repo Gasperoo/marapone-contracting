@@ -17,7 +17,7 @@ export default function AboutPage() {
   const timelineScale = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
   return (
-    <div className="min-h-screen relative overflow-hidden text-[#1a1a1a]" style={{ backgroundColor: '#F5F5F5' }} ref={containerRef}>
+    <div className="min-h-screen relative overflow-hidden text-white" style={{ backgroundColor: '#0a0e1a' }} ref={containerRef}>
 
       {/* Hero Section (Sticky & Parallax) */}
       <div className="h-screen sticky top-0 flex items-center justify-center p-6 z-10 pointer-events-none">
@@ -29,17 +29,17 @@ export default function AboutPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="inline-flex items-center justify-center p-4 rounded-full bg-black/5 border border-black/10 mb-8 w-24 h-24 shadow-xl relative backdrop-blur-md"
+            className="inline-flex items-center justify-center p-4 rounded-full bg-white/5 border border-white/10 mb-8 w-24 h-24 shadow-xl relative backdrop-blur-md"
           >
-            <Shield size={40} className="text-[#1a1a1a] relative z-10" />
-            <div className="absolute inset-0 blur-2xl opacity-20 bg-[#1a1a1a]" />
+            <Shield size={40} className="text-white relative z-10" />
+            <div className="absolute inset-0 blur-2xl opacity-20 bg-white" />
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-8xl font-black tracking-tight text-[#1a1a1a] mb-8 leading-[1.05]"
+            className="text-5xl md:text-8xl font-black tracking-tight text-white mb-8 leading-[1.05]"
           >
             We Are <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#FF6B00]">Marapone</span>
@@ -49,7 +49,7 @@ export default function AboutPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-[#4b5563] font-medium leading-relaxed max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-gray-300 font-medium leading-relaxed max-w-3xl mx-auto"
           >
             Headquartered in Canada & Italy with international operations. We deploy private, air-gapped language models and AI tools for the world's most complex industrial & construction environments.
           </motion.p>
@@ -57,10 +57,10 @@ export default function AboutPage() {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-20 bg-[#F5F5F5] border-t border-black/5">
+      <div className="relative z-20 bg-[#0a0e1a] border-t border-white/5">
 
         {/* By the Numbers */}
-        <div className="border-b border-black/5 bg-white/50 backdrop-blur-xl">
+        <div className="border-b border-white/5 bg-white/5 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-6 py-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -103,14 +103,14 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
                 <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">01 // The Paradigm Shift</span>
-                <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-8 leading-tight">
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-8 leading-tight">
                   Stop Leasing. Start Owning.
                 </h2>
-                <p className="text-lg text-[#4b5563] leading-relaxed mb-6 font-medium">
+                <p className="text-lg text-gray-300 leading-relaxed mb-6 font-medium">
                   The SaaS era taught enterprises to rent their tools and outsource their data. In the age of AI, this model is fundamentally broken. Sending your proprietary supply chain data, blueprints, financial burns, and strategic communications to public API endpoints is a critical security failure.
                 </p>
                 <p className="text-lg text-[#4b5563] leading-relaxed font-medium">
-                  Founded with a vision to securely empower traditional industries, Marapone believes an enterprise's most valuable asset is its corporate memory. We build sovereign intelligence: deploying bespoke foundation models entirely within your isolated cloud environments. Our Gasper Engine ensures your data stays yours.
+                  Founded with a vision to securely empower traditional industries, Marapone believes an enterprise's most valuable asset is its corporate memory. We build sovereign intelligence: deploying bespoke foundation models entirely within your isolated cloud environments. Our Marapone Engine ensures your data stays yours.
                 </p>
               </div>
 
@@ -272,9 +272,9 @@ export default function AboutPage() {
           {/* Why Work With Marapone */}
           <section>
             <div className="text-center mb-16">
-              <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">Our Commitment</span>
-              <h2 className="text-4xl font-black text-[#1a1a1a] mt-3">Why Work With Marapone</h2>
-              <p className="text-lg text-[#4b5563] max-w-2xl mx-auto mt-4 leading-relaxed font-medium">
+              <span className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-white">Our Commitment</span>
+              <h2 className="text-4xl font-black text-white mt-3">Why Work With Marapone</h2>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-4 leading-relaxed font-medium">
                 We're not just a technology vendor — we're a strategic partner invested in your long-term success.
               </p>
             </div>
@@ -299,36 +299,27 @@ export default function AboutPage() {
           </section>
           <section className="text-center max-w-4xl mx-auto">
             <span className="px-4 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-bold tracking-widest uppercase mb-6 inline-block text-[#1a1a1a]">04 // Company Vision</span>
-            <h2 className="text-4xl font-black text-[#1a1a1a] mb-8">Empowering The <br />Builders & Makers</h2>
-            <p className="text-xl text-[#4b5563] leading-relaxed font-medium mb-12 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-black text-white mb-8">Empowering The <br />Builders & Makers</h2>
+            <p className="text-xl text-gray-300 leading-relaxed font-medium mb-12 max-w-3xl mx-auto">
               We bridge the gap between cutting-edge AI and the heavy industries that build our world. From our dual headquarters in Canada and Italy, our international team operates with a singular focus: delivering clarity and security to complex, data-heavy operations.
             </p>
-            
+
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
-                <div className="bg-[#1a1a1a] p-8 rounded-[2rem] border border-white/5 shadow-xl flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
-                    <img src="/logo.png" alt="Marapone Logo" className="h-[75px] w-auto mb-4 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                    <div className="text-sm font-bold text-white uppercase tracking-widest">Enterprise Platform</div>
-                </div>
-                
-                <div className="w-12 h-12 rounded-full bg-black/5 hidden md:flex items-center justify-center">
-                    <Globe size={20} className="text-[#8B5CF6]" />
-                </div>
-                
-                <div className="bg-[#1a1a1a] p-8 rounded-[2rem] border border-white/5 shadow-xl flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
-                    <img src="/images/gasper-logo-g.png" alt="Gasper Logo" className="h-[120px] w-auto mb-4 object-contain opacity-90 hover:opacity-100 transition-opacity" />
-                    <div className="text-sm font-bold text-white uppercase tracking-widest mt-2">Core AI Engine</div>
-                </div>
+              <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10 shadow-xl flex flex-col items-center justify-center min-w-[250px] transition-transform hover:-translate-y-2">
+                <img src="/logo.png" alt="Marapone Logo" className="h-[75px] w-auto mb-4 object-contain opacity-90 hover:opacity-100 transition-opacity" />
+                <div className="text-sm font-bold text-white uppercase tracking-widest">Enterprise Platform</div>
+              </div>
             </div>
 
-            <div className="inline-flex items-center gap-6 px-8 py-5 bg-white border border-black/5 rounded-2xl shadow-sm">
+            <div className="inline-flex items-center gap-6 px-8 py-5 bg-white/5 border border-white/10 rounded-2xl shadow-sm">
               <div className="flex -space-x-3">
                 <div className="w-12 h-12 rounded-full bg-[#1a1a1a] border-2 border-white flex items-center justify-center text-white font-bold text-xs">CA</div>
                 <div className="w-12 h-12 rounded-full bg-[#8B5CF6] border-2 border-white flex items-center justify-center text-white font-bold text-xs">IT</div>
                 <div className="w-12 h-12 rounded-full bg-[#FF6B00] border-2 border-white flex items-center justify-center text-white font-bold text-xs">GL</div>
               </div>
               <div className="text-left">
-                <div className="text-sm font-bold text-[#1a1a1a]">International Operations</div>
-                <div className="text-xs text-[#6b7280]">Deployed across multiple continents</div>
+                <div className="text-sm font-bold text-white">International Operations</div>
+                <div className="text-xs text-gray-500">Deployed across multiple continents</div>
               </div>
             </div>
           </section>

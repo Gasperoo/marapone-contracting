@@ -29,22 +29,6 @@ export function BusinessIntegrationPanel() {
             color: '#0EA5E9',
             bgGlow: 'rgba(14,165,233,0.15)'
         },
-        {
-            id: 'marketing',
-            icon: <TrendingUp size={28} />,
-            label: 'Marketing',
-            desc: 'Generative campaigns with hyper-targeted segmentation.',
-            color: '#F59E0B',
-            bgGlow: 'rgba(245,158,11,0.15)'
-        },
-        {
-            id: 'ecommerce',
-            icon: <Package size={28} />,
-            label: 'E-Commerce',
-            desc: 'Autonomous pricing agents and customer experience.',
-            color: '#8B5CF6',
-            bgGlow: 'rgba(139,92,246,0.15)'
-        },
     ];
 
     return (
@@ -53,10 +37,10 @@ export function BusinessIntegrationPanel() {
             {/* Ambient Background Glows */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-gradient-to-r from-[#FF6B00]/10 via-[#8B5CF6]/10 to-[#0EA5E9]/10 blur-[80px] -z-10 pointer-events-none rounded-full" />
 
-            <div className="relative rounded-[2.5rem] bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_30px_60px_rgba(0,0,0,0.08)] overflow-hidden">
+            <div className="relative rounded-[2.5rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.3)] overflow-hidden">
                 {/* Header section with gradient border base */}
-                <div className="px-8 py-8 md:px-12 md:py-10 border-b border-black/[0.04] relative overflow-hidden">
-                    <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/90 to-gray-50/50" />
+                <div className="px-8 py-8 md:px-12 md:py-10 border-b border-white/5 relative overflow-hidden">
+                    <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/5 to-transparent" />
 
                     <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                         <div className="flex items-center gap-5">
@@ -67,15 +51,15 @@ export function BusinessIntegrationPanel() {
                                 <Layers size={28} className="text-[#FF6B00] filter drop-shadow-[0_0_8px_rgba(255,107,0,0.4)]" />
                             </div>
                             <div>
-                                <h2 className="text-2xl md:text-3xl font-black text-[#1a1a1a] tracking-tight mb-1">
+                                <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-1">
                                     Enterprise AI Integrations
                                 </h2>
-                                <p className="text-[15px] text-gray-500 font-medium tracking-wide">
+                                <p className="text-[15px] text-gray-400 font-medium tracking-wide">
                                     Bespoke autonomous systems across 4 primary sectors
                                 </p>
                             </div>
                         </div>
-                        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/80 border border-black/5 shadow-sm backdrop-blur-md self-start md:self-auto">
+                        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 shadow-sm backdrop-blur-md self-start md:self-auto">
                             <span className="relative flex h-2.5 w-2.5">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#10b981]"></span>
@@ -86,7 +70,7 @@ export function BusinessIntegrationPanel() {
                 </div>
 
                 {/* Grid Content */}
-                <div className="p-8 md:p-12 relative bg-white/50">
+                <div className="p-8 md:p-12 relative bg-transparent">
                     <div className="absolute inset-0 bg-grid-slate-100/[0.4] bg-[bottom_1px_center] z-0" />
 
                     <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -97,7 +81,7 @@ export function BusinessIntegrationPanel() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.2 + i * 0.1, duration: 0.7 }}
-                                    className="group relative rounded-[2rem] p-6 lg:p-8 transition-all duration-500 cursor-pointer overflow-hidden z-20 flex flex-col h-full bg-white/95 border border-black/[0.04] shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1"
+                                    className="group relative rounded-[2rem] p-6 lg:p-8 transition-all duration-500 cursor-pointer overflow-hidden z-20 flex flex-col h-full bg-white/5 border border-white/10 shadow-sm hover:shadow-lg hover:-translate-y-1"
                                 >
                                     {/* Hover background effect */}
                                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(circle at 100% 100%, ${ind.bgGlow}, transparent 70%)` }} />
@@ -109,15 +93,15 @@ export function BusinessIntegrationPanel() {
                                             <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-sm border border-white" style={{ background: `${ind.color}15`, color: ind.color, boxShadow: `0 8px 20px ${ind.bgGlow}` }}>
                                                 {ind.icon}
                                             </div>
-                                            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 border border-black/[0.04] text-gray-400 group-hover:bg-[#1a1a1a] group-hover:text-white group-hover:-rotate-45 transition-all duration-300 shadow-sm">
+                                            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 group-hover:bg-white/10 group-hover:text-white group-hover:-rotate-45 transition-all duration-300 shadow-sm">
                                                 <ArrowRight size={18} />
                                             </div>
                                         </div>
 
-                                        <h3 className="text-[#1a1a1a] font-extrabold text-xl mb-3 transition-colors duration-300" style={{ '--hover-color': ind.color }} onMouseEnter={e => e.currentTarget.style.color = ind.color} onMouseLeave={e => e.currentTarget.style.color = '#1a1a1a'}>
+                                        <h3 className="text-white font-extrabold text-xl mb-3 transition-colors duration-300" style={{ '--hover-color': ind.color }} onMouseEnter={e => e.currentTarget.style.color = ind.color} onMouseLeave={e => e.currentTarget.style.color = '#ffffff'}>
                                             {ind.label}
                                         </h3>
-                                        <p className="text-[15px] font-medium leading-[1.7] text-gray-500 group-hover:text-gray-700 transition-colors">
+                                        <p className="text-[15px] font-medium leading-[1.7] text-gray-400 group-hover:text-gray-200 transition-colors">
                                             {ind.desc}
                                         </p>
                                     </div>
@@ -140,7 +124,7 @@ export default function HomePage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] overflow-hidden text-[#1a1a1a] font-sans">
+    <div className="min-h-screen bg-[#0a0e1a] overflow-hidden text-[#ffffff] font-sans">
       {/* Dynamic Background */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-50">
         <Particles
@@ -164,7 +148,7 @@ export default function HomePage() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-black/10 bg-white/70 backdrop-blur-md mb-10 shadow-sm"
+            className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-10 shadow-sm"
           >
             <img src="/logo.png" alt="Marapone" className="h-6 w-auto" />
             <span className="text-xs font-bold tracking-widest text-[#FF6B00] uppercase">Enterprise AI Solutions</span>
@@ -174,7 +158,7 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-black text-[#1a1a1a] tracking-tight mb-8 leading-[1.05]"
+            className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tight mb-8 leading-[1.05]"
           >
             Turning{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">CHAOS</span>
@@ -186,7 +170,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.25 }}
-            className="text-xl md:text-2xl text-[#4b5563] max-w-3xl mx-auto leading-relaxed mb-12 font-medium"
+            className="text-xl md:text-2xl text-[#e0e0e0] max-w-3xl mx-auto leading-relaxed mb-12 font-medium"
           >
             At Marapone Contracting Inc. we build custom AI systems that simplify the most complex operations in construction, logistics, and heavy industry — so you and your team can make better decisions, faster. Reducing costs and increasing profits.
           </motion.p>
@@ -198,15 +182,15 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 py-6 px-8 rounded-2xl bg-white/60 backdrop-blur-md border border-black/5 shadow-sm"
+            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 py-6 px-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-sm"
           >
-            <div className="flex items-center gap-2 text-sm font-bold text-[#4b5563]">
+            <div className="flex items-center gap-2 text-sm font-bold text-[#e0e0e0]">
               <ShieldCheck size={18} className="text-[#10B981]" /> SOC2 Compliant
             </div>
-            <div className="flex items-center gap-2 text-sm font-bold text-[#4b5563]">
+            <div className="flex items-center gap-2 text-sm font-bold text-[#e0e0e0]">
               <Lock size={18} className="text-[#8B5CF6]" /> End-to-End Encryption
             </div>
-            <div className="flex items-center gap-2 text-sm font-bold text-[#4b5563]">
+            <div className="flex items-center gap-2 text-sm font-bold text-[#e0e0e0]">
               <Globe size={18} className="text-[#0EA5E9]" /> International Operations
             </div>
             <div className="flex items-center gap-2 text-sm font-bold text-[#4b5563]">
@@ -230,7 +214,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight"
+              className="text-4xl md:text-5xl font-black text-white tracking-tight"
             >
               AI That Actually <span className="text-[#FF6B00]">Works</span> For You
             </motion.h2>
@@ -259,14 +243,14 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="group p-8 rounded-3xl bg-white border border-black/5 hover:border-transparent hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden"
+                className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 hover:shadow-[0_10px_40px_rgba(0,0,0,0.3)] transition-all duration-300 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 rounded-bl-full -z-0 transition-transform duration-500 group-hover:scale-125 opacity-10" style={{ backgroundColor: f.color }} />
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-sm" style={{ backgroundColor: `${f.color}12`, color: f.color, border: `1px solid ${f.color}25` }}>
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-sm bg-white/5" style={{ color: f.color, border: `1px solid ${f.color}25` }}>
                   {f.icon}
                 </div>
-                <h4 className="text-xl font-bold text-[#1a1a1a] mb-3 relative z-10">{f.title}</h4>
-                <p className="text-[#6b7280] leading-relaxed relative z-10">{f.desc}</p>
+                <h4 className="text-xl font-bold text-white mb-3 relative z-10">{f.title}</h4>
+                <p className="text-gray-400 leading-relaxed relative z-10">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -295,7 +279,7 @@ export default function HomePage() {
                     Built on the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] to-[#FF6B00]">Best Foundations</span>
                   </h2>
                   <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                    GasperAI combines the world's most advanced AI models to deliver unmatched accuracy, speed, and reliability for your industry.
+                    Marapone's AI solutions combine the world's most advanced AI models to deliver unmatched accuracy, speed, and reliability for your industry.
                   </p>
                 </div>
 
@@ -348,11 +332,11 @@ export default function HomePage() {
                   </motion.div>
                 </div>
 
-                <div className="text-center mt-12">
-                  <Link to="/custom-llm" className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/15 text-white border border-white/20 rounded-xl font-bold transition-all backdrop-blur-md group">
-                    Learn About GasperAI <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
+                  <div className="text-center mt-12">
+                    <Link to="/industries" className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/15 text-white border border-white/20 rounded-xl font-bold transition-all backdrop-blur-md group">
+                      Learn About Our Solutions <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
               </div>
             </div>
           </div>
@@ -362,7 +346,7 @@ export default function HomePage() {
         <section className="py-24 px-6 max-w-7xl mx-auto relative border-t border-black/5">
           <div className="text-center mb-16">
             <h2 className="text-sm font-bold tracking-widest text-[#8B5CF6] uppercase mb-4">Core Technology</h2>
-            <h3 className="text-4xl font-black text-[#1a1a1a]">Enterprise-Grade Infrastructure</h3>
+            <h3 className="text-4xl font-black text-white">Enterprise-Grade Infrastructure</h3>
             <p className="text-lg text-[#6b7280] max-w-2xl mx-auto mt-4 leading-relaxed">
               Everything we build is designed for the highest security and reliability standards your business demands.
             </p>
@@ -380,12 +364,12 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white border border-black/5 hover:border-[#8B5CF6]/20 transition-colors shadow-sm hover:shadow-md"
+                className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-[#8B5CF6]/20 transition-colors shadow-sm hover:shadow-md"
               >
-                <div className={`w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center mb-6 shadow-sm border border-black/5 ${f.color}`}>
+                <div className={`w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 shadow-sm border border-white/10 ${f.color}`}>
                   {f.icon}
                 </div>
-                <h4 className="text-xl font-bold text-[#1a1a1a] mb-3">{f.title}</h4>
+                <h4 className="text-xl font-bold text-white mb-3">{f.title}</h4>
                 <p className="text-[#6b7280] leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
@@ -397,15 +381,15 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-                className="inline-flex items-center px-4 py-1.5 rounded-full border border-black/5 bg-white/80 text-xs font-bold tracking-widest uppercase mb-6 text-[#1a1a1a] shadow-sm">
+                className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-widest uppercase mb-6 text-white shadow-sm">
                 <Shield size={12} className="mr-2 text-[#FF6B00]" /> Enterprise Capabilities
               </motion.span>
               <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight">
+                className="text-4xl md:text-5xl font-black text-white tracking-tight">
                 Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Competitive Moats</span> with AI
               </motion.h2>
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-                className="text-lg text-[#6b7280] max-w-2xl mx-auto mt-4 leading-relaxed">
+                className="text-lg text-gray-400 max-w-2xl mx-auto mt-4 leading-relaxed">
                 We don't sell software. We partner with industry leaders to engineer tailored AI solutions that operate as an extension of your existing workforce.
               </motion.p>
             </div>
@@ -418,11 +402,11 @@ export default function HomePage() {
                 { icon: <Activity size={24} />, title: "Autonomous Workflow Agents", desc: "Deploy specialized AI agents that execute complex multi-day workflows as instant background processes.", color: "#0EA5E9" },
               ].map((f, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="group p-8 rounded-3xl bg-white border border-black/5 hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1">
+                  className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:shadow-[0_10px_40px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-1">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-black/5 shadow-sm transition-transform group-hover:scale-110" style={{ backgroundColor: `${f.color}10`, color: f.color }}>
                     {f.icon}
                   </div>
-                  <h4 className="text-lg font-bold text-[#1a1a1a] mb-3">{f.title}</h4>
+                  <h4 className="text-lg font-bold text-white mb-3">{f.title}</h4>
                   <p className="text-[#6b7280] leading-relaxed text-sm">{f.desc}</p>
                 </motion.div>
               ))}
@@ -438,7 +422,7 @@ export default function HomePage() {
               <Award size={14} className="mr-2" /> The Marapone Advantage
             </motion.span>
             <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight">
+              className="text-4xl md:text-5xl font-black text-white tracking-tight">
               Why Enterprises <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#F59E0B]">Partner With Us</span>
             </motion.h2>
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
@@ -458,8 +442,8 @@ export default function HomePage() {
                 <div className="w-14 h-14 rounded-2xl mx-auto mb-6 flex items-center justify-center bg-[#FF6B00]/5 text-[#FF6B00] border border-black/5 group-hover:scale-110 transition-transform">
                   {m.icon}
                 </div>
-                <div className="text-4xl font-black text-[#1a1a1a] mb-2">{m.value}</div>
-                <div className="text-lg font-bold text-[#1a1a1a] mb-3">{m.label}</div>
+                <div className="text-4xl font-black text-white mb-2">{m.value}</div>
+                <div className="text-lg font-bold text-white mb-3">{m.label}</div>
                 <p className="text-sm text-[#6b7280] leading-relaxed">{m.desc}</p>
               </motion.div>
             ))}
@@ -470,7 +454,7 @@ export default function HomePage() {
         <section className="py-24 px-6 max-w-7xl mx-auto border-t border-black/5">
           <div className="text-center mb-16">
             <motion.h2 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight">Our Engagement Process</motion.h2>
+              className="text-4xl md:text-5xl font-black text-white tracking-tight">Our Engagement Process</motion.h2>
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
               className="text-lg text-[#6b7280] max-w-xl mx-auto mt-4 leading-relaxed">
               From initial audit to final deployment, we build tailored AI engines as an extension of your technical team.
@@ -489,7 +473,7 @@ export default function HomePage() {
                 <div className="w-14 h-14 rounded-2xl mx-auto mb-6 flex items-center justify-center bg-[#FF6B00]/5 text-[#FF6B00] border border-black/5 group-hover:scale-110 transition-transform">
                   {b.icon}
                 </div>
-                <h3 className="text-lg font-bold text-[#1a1a1a] mb-3">{b.title}</h3>
+                <h3 className="text-lg font-bold text-white mb-3">{b.title}</h3>
                 <p className="text-sm text-[#6b7280] leading-relaxed">{b.desc}</p>
               </motion.div>
             ))}
@@ -504,7 +488,7 @@ export default function HomePage() {
 
         {/* ═══════════════════════ CTA FOOTER ═══════════════════════ */}
         <section className="py-32 px-6 relative text-center">
-          <div className="absolute inset-0 bg-[#1a1a1a] transform -skew-y-2 -z-10 origin-top-left" />
+          <div className="absolute inset-0 bg-white/5 transform -skew-y-2 -z-10 origin-top-left" />
           <div className="max-w-4xl mx-auto relative z-10 py-12">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Ready to Simplify Your Operations?</h2>
             <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
@@ -514,7 +498,7 @@ export default function HomePage() {
               <Link to="/contact" className="px-8 py-4 bg-[#FF6B00] hover:bg-[#ea580c] text-white rounded-xl font-bold text-lg transition-colors shadow-lg shadow-[#FF6B00]/20">
                 Get in Touch
               </Link>
-              <Link to="/about" className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl font-bold text-lg transition-colors backdrop-blur-md">
+              <Link to="/about" className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/20 rounded-xl font-bold text-lg transition-colors backdrop-blur-md">
                 Learn About Us
               </Link>
             </div>

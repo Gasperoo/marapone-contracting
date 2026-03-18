@@ -13,7 +13,7 @@ const IndustrySection = ({ industry, index }) => {
     const isEven = index % 2 === 0;
 
     return (
-        <div className={`py-16 md:py-32 relative ${isEven ? 'bg-white/40 border-y border-black/5' : 'bg-transparent'}`}>
+        <div className={`py-16 md:py-32 relative ${isEven ? 'bg-white/5 border-y border-white/5' : 'bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
                     
@@ -33,7 +33,7 @@ const IndustrySection = ({ industry, index }) => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-10%" }}
-                                className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-4 md:mb-6 tracking-tight leading-[1.1]"
+                                className="text-3xl md:text-5xl font-black text-white mb-4 md:mb-6 tracking-tight leading-[1.1]"
                             >
                                 {industry.title}
                             </motion.h2>
@@ -59,7 +59,7 @@ const IndustrySection = ({ industry, index }) => {
                         >
                             <div className="flex items-center gap-3 mb-4 md:mb-5">
                                 <AlertTriangle size={24} className="text-[#EF4444]" />
-                                <h3 className="text-xl font-bold text-[#1a1a1a]">The Challenge</h3>
+                                <h3 className="text-xl font-bold text-white">The Challenge</h3>
                             </div>
                             <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium">
                                 {industry.challenge}
@@ -99,10 +99,10 @@ const IndustrySection = ({ industry, index }) => {
                             <div className="flex items-center justify-between mb-6 md:mb-8 relative z-10">
                                 <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border text-[10px] md:text-xs font-bold uppercase tracking-widest bg-white shadow-sm"
                                     style={{ borderColor: `${industry.color}30`, color: industry.color }}>
-                                    <Cpu size={14} /> GasperAI Use Case
+                                    <Cpu size={14} /> Marapone Case Study
                                 </div>
                             </div>
-                            <h3 className="text-xl md:text-2xl font-black text-[#1a1a1a] mb-4 md:mb-5 relative z-10">
+                            <h3 className="text-xl md:text-2xl font-black text-white mb-4 md:mb-5 relative z-10">
                                 {industry.useCaseTitle}
                             </h3>
                             <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium relative z-10">
@@ -136,7 +136,7 @@ export default function IndustriesPage() {
             challenge: 'Global trade relies on millions of unstructured, multi-language documents—Bills of Lading, Customs Declarations, Air Waybills, and Commercial Invoices—coupled with volatile routing across ocean, air, and land. This fragmentation leads to severe supply chain blind spots, unpredicted demurrage fees, and costly delays at ports and borders.',
             solution: 'We deploy specialized multimodal agents that ingest raw, unstructured shipping documentation alongside live tracking data across all transport modes. The AI normalizes these disparate inputs into a unified intelligence graph, predicting logistical crises before they manifest across any freight corridor.',
             useCaseTitle: 'Multi-Modal Freight Intelligence & Customs AI',
-            useCaseDesc: 'By analyzing incoming freight documentation against real-time vessel, aircraft, and truck tracking data, the Gasper engine predicts port, airport, and border delays days in advance. It autonomously routes exception alerts to operators and pre-generates the required customs clearance documentation to aggressively cut dwell times and avoid costly penalties.'
+            useCaseDesc: 'By analyzing incoming freight documentation against real-time vessel, aircraft, and truck tracking data, the Marapone engine predicts port, airport, and border delays days in advance. It autonomously routes exception alerts to operators and pre-generates the required customs clearance documentation to aggressively cut dwell times and avoid costly penalties.'
         },
         {
             id: 'general-contracting',
@@ -170,8 +170,13 @@ export default function IndustriesPage() {
         }
     ];
 
+    // Filter to only include the industries the user specified
+    const targetIndustries = verticals.filter(v => 
+        ['construction', 'logistics', 'general-contracting'].includes(v.id)
+    );
+
     return (
-        <div className="min-h-screen pt-32 pb-0 relative overflow-hidden bg-[#F5F5F5] text-[#1a1a1a]">
+        <div className="min-h-screen pt-32 pb-0 relative overflow-hidden bg-[#0a0e1a] text-[#ffffff]">
             {/* Ambient Background */}
             <div className="fixed inset-0 z-0 pointer-events-none" style={{ willChange: 'transform' }}>
                 <Particles
@@ -187,7 +192,7 @@ export default function IndustriesPage() {
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[var(--color-primary)]/10 bg-[var(--color-primary)]/5 text-[var(--color-primary)] shadow-sm mb-8"
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 text-white shadow-sm mb-8"
                     >
                         <Globe size={16} className="text-[#8B5CF6]" />
                         <span className="text-sm font-bold tracking-[0.15em] uppercase">Enterprise Verticals</span>
@@ -197,7 +202,7 @@ export default function IndustriesPage() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-black tracking-tight text-[#1a1a1a] mb-8 leading-[1.05]"
+                        className="text-5xl md:text-7xl font-black tracking-tight text-white mb-8 leading-[1.05]"
                     >
                         Intelligence For <br className="hidden md:block" />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B5CF6] via-[#1a1a1a] to-[#FF6B00]">Physical Operations</span>
@@ -207,7 +212,7 @@ export default function IndustriesPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-gray-500 leading-[1.7] font-medium mx-auto max-w-3xl"
+                        className="text-xl text-gray-400 leading-[1.7] font-medium mx-auto max-w-3xl"
                     >
                         Discover how the world's most complex industries are deploying fully sovereign Marapone large language models to turn operational chaos into structural clarity.
                     </motion.p>
@@ -216,21 +221,21 @@ export default function IndustriesPage() {
 
             {/* Verticals List */}
             <div className="relative z-10 mt-12">
-                {verticals.map((industry, index) => (
+                {targetIndustries.map((industry, index) => (
                     <IndustrySection key={industry.id} industry={industry} index={index} />
                 ))}
             </div>
 
             {/* Bottom Global CTA */}
-            <div className="relative z-10 bg-white py-32 border-t border-black/5">
+            <div className="relative z-10 bg-[#0a0e1a] py-32 border-t border-white/5">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="max-w-4xl mx-auto text-center px-6"
                 >
-                    <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6 tracking-tight">Don't see your specific sector?</h2>
-                    <p className="text-xl text-gray-500 mb-12 font-medium leading-[1.7]">
+                    <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Don't see your specific sector?</h2>
+                    <p className="text-xl text-gray-400 mb-12 font-medium leading-[1.7]">
                         Our foundational models are domain-agnostic before they are trained on your unique data. We can architect a specialized intelligence solution for any complex enterprise operation.
                     </p>
                     <div className="flex justify-center">

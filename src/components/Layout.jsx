@@ -14,14 +14,9 @@ export default function Layout({ children }) {
 
   const navItems = [
     { name: 'Home', url: '/', icon: Home },
-    { name: 'Features', url: '/features', icon: Zap },
-    { name: 'Mechanics', url: '/how-it-works', icon: HelpCircle },
     { name: 'Industries', url: '/industries', icon: Factory },
-    { name: 'Pricing', url: '/pricing', icon: CreditCard },
     { name: 'About', url: '/about', icon: Info },
     { name: 'Contact', url: '/contact', icon: Mail },
-    { name: 'GasperAI', url: '/gasper', icon: Bot },
-    { name: 'CustomLLM', url: '/custom-llm', icon: Brain },
   ];
 
   return (

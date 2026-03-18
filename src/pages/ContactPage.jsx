@@ -53,7 +53,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="landing-container pt-32 pb-24 min-h-screen relative overflow-hidden bg-[#F5F5F5]">
+    <div className="landing-container pt-32 pb-24 min-h-screen relative overflow-hidden bg-[#0a0e1a]">
 
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -69,15 +69,15 @@ export default function ContactPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-black/10 bg-white/60 backdrop-blur-md mb-8 shadow-sm">
-            <span className="text-xs font-bold tracking-widest text-[#1a1a1a] uppercase">Engineering Review</span>
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 shadow-sm">
+            <span className="text-xs font-bold tracking-widest text-white uppercase">Engineering Review</span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-6 leading-tight tracking-tight">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
             Request Architecture Evaluation
           </h1>
 
-          <p className="text-[#4b5563] text-lg mb-12 leading-relaxed font-medium">
+          <p className="text-gray-300 text-lg mb-12 leading-relaxed font-medium">
             Connect with our core engineering team. We do not offer standard demos. We conduct rigorous evaluations of your data infrastructure to determine readiness for a sovereign custom LLM deployment.
           </p>
 
@@ -87,7 +87,7 @@ export default function ContactPage() {
                 <Server size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">Infrastructure Assessment</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Infrastructure Assessment</h3>
                 <p className="text-[#6b7280] text-sm leading-relaxed">Evaluation of your current VPCs, on-prem hardware, and data lakes for localized inference readiness.</p>
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function ContactPage() {
                 <Shield size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">Security & Sovereignty Review</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Security & Sovereignty Review</h3>
                 <p className="text-[#6b7280] text-sm leading-relaxed">Mapping your compliance requirements (ITAR, HIPAA, GDPR) to our air-gapped system isolation protocols.</p>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function ContactPage() {
                 <Box size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">Proof of Concept Scoping</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Proof of Concept Scoping</h3>
                 <p className="text-[#6b7280] text-sm leading-relaxed">Identifying high-impact vertical use cases to test the deterministic accuracy of a locally fine-tuned model.</p>
               </div>
             </div>
@@ -119,19 +119,19 @@ export default function ContactPage() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white/80 backdrop-blur-xl border border-black/5 rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.05)] relative overflow-hidden"
+          className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.3)] relative overflow-hidden"
         >
           {/* Subtle top border glow */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#8B5CF6] via-[#1a1a1a] to-[#FF6B00]" />
 
-          <h2 className="text-2xl font-bold text-[#1a1a1a] mb-8">Initiate Conversation</h2>
+          <h2 className="text-2xl font-bold text-white mb-8">Initiate Conversation</h2>
 
           {isSuccess ? (
             <div className="h-full flex flex-col items-center justify-center text-center py-10">
                 <div className="w-20 h-20 bg-[#10B981]/20 rounded-full flex items-center justify-center mb-6 border border-[#10B981]/50 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
                     <CheckCircle2 size={40} className="text-[#10B981]" />
                 </div>
-                <h3 className="text-3xl font-bold text-[#1a1a1a] mb-4">Transmission Successful</h3>
+                <h3 className="text-3xl font-bold text-white mb-4">Transmission Successful</h3>
                 <p className="text-[#6b7280] text-lg leading-relaxed mb-8 max-w-sm">
                     Your inquiry has been securely routed. Our engineering team will review your requirements and respond shortly.
                 </p>
@@ -150,9 +150,8 @@ export default function ContactPage() {
                     <span>{error}</span>
                 </div>
             )}
-            <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label htmlFor="name" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Name</label>
+                <label htmlFor="name" className="text-xs font-bold tracking-wider uppercase text-gray-500">Name</label>
                 <input
                   type="text"
                   id="name"
@@ -160,7 +159,7 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#f9fafb] border border-black/10 rounded-xl px-4 py-3 text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:bg-white focus:border-[#1a1a1a] focus:ring-1 focus:ring-[#1a1a1a] transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
                   placeholder="John Doe"
                 />
               </div>
@@ -174,7 +173,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#f9fafb] border border-black/10 rounded-xl px-4 py-3 text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:bg-white focus:border-[#1a1a1a] focus:ring-1 focus:ring-[#1a1a1a] transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
                   placeholder="john@enterprise.com"
                 />
               </div>
@@ -190,7 +189,7 @@ export default function ContactPage() {
                   value={formData.role}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#f9fafb] border border-black/10 rounded-xl px-4 py-3 text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:bg-white focus:border-[#1a1a1a] focus:ring-1 focus:ring-[#1a1a1a] transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
                   placeholder="Director of Operations"
                 />
               </div>
@@ -204,21 +203,21 @@ export default function ContactPage() {
                   value={formData.company}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#f9fafb] border border-black/10 rounded-xl px-4 py-3 text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:bg-white focus:border-[#1a1a1a] focus:ring-1 focus:ring-[#1a1a1a] transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all"
                   placeholder="Company GmbH"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Evaluation Goals (Optional)</label>
+              <label htmlFor="message" className="text-xs font-bold tracking-wider uppercase text-gray-500">Evaluation Goals (Optional)</label>
               <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
-                className="w-full bg-[#f9fafb] border border-black/10 rounded-xl px-4 py-3 text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:bg-white focus:border-[#1a1a1a] focus:ring-1 focus:ring-[#1a1a1a] transition-all resize-none"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:bg-white/10 focus:border-white/20 focus:ring-1 focus:ring-white/20 transition-all resize-none"
                 placeholder="Briefly describe your use case or data environment..."
               />
             </div>
@@ -226,7 +225,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#1a1a1a] hover:bg-black text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+              className="w-full bg-white hover:bg-gray-100 text-black font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Transmitting...' : 'Submit Request'} 
               {!isSubmitting && <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />}

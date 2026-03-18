@@ -1,4 +1,4 @@
-// Simulated tracking service for Gasper Tool
+// Simulated tracking service for Marapone engine
 // Generates realistic movement for Ships, Planes, Trains, and Trucks
 
 const VEHICLE_TYPES = {

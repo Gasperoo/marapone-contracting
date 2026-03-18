@@ -20,11 +20,11 @@ html {
 
 body {
     font-family: 'Arial', 'Helvetica', sans-serif;
-    background: #F5F5F5;
+    background: var(--bg-dark);
     background-attachment: fixed;
-    color: #1a1a1a;
+    color: var(--text-white);
     min-height: 100vh;
-    padding: 0;
+    padding: 20px;
     overflow-x: hidden;
     display: flex;
     justify-content: center;

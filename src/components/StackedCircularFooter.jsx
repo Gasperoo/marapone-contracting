@@ -48,33 +48,13 @@ export function StackedCircularFooter() {
           <div className="footer-col-links">
             <h4 className="footer-nav-title">Platform</h4>
             <ul className="footer-nav-list">
-              <li><Link to="/features" className="footer-link">Core Features</Link></li>
-              <li><Link to="/how-it-works" className="footer-link">How It Works</Link></li>
-              <li><Link to="/custom-llm" className="footer-link">GasperAI Engine</Link></li>
               <li><Link to="/industries" className="footer-link">Industries</Link></li>
-              <li><Link to="/pricing" className="footer-link">Enterprise Pricing</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Company */}
-          <div className="footer-col-links">
-            <h4 className="footer-nav-title">Company</h4>
-            <ul className="footer-nav-list">
               <li><Link to="/about" className="footer-link">About Us</Link></li>
               <li><Link to="/contact" className="footer-link">Contact Sales</Link></li>
               <li><a href="mailto:general@marapone.com" className="footer-link">Support</a></li>
             </ul>
           </div>
 
-          {/* Column 4: Legal */}
-          <div className="footer-col-links">
-            <h4 className="footer-nav-title">Legal & Privacy</h4>
-            <ul className="footer-nav-list">
-              <li><Link to="/terms" className="footer-link">Terms of Service</Link></li>
-              <li><Link to="/privacy" className="footer-link">Privacy Policy</Link></li>
-              <li><Link to="/cookies" className="footer-link">Cookie Policy</Link></li>
-            </ul>
-          </div>
 
         </div>
 
@@ -82,8 +62,6 @@ export function StackedCircularFooter() {
         <div className="premium-footer-bottom">
           <div className="footer-copyright">
             © {currentYear} Marapone Contracting Inc. All rights reserved.
-            <br />
-            © {currentYear} GasperAI. All rights reserved.
           </div>
           
           <div className="footer-socials">

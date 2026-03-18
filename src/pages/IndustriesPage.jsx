@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import {
     Anchor, ShieldCheck, Zap, ArrowRight,
     HardHat, Globe, Cpu, BarChart3,
-    AlertTriangle, Layers
+    AlertTriangle, Layers, Briefcase, Megaphone, ShoppingCart, Plane
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Particles from '../components/Particles/Particles';
@@ -129,44 +129,44 @@ export default function IndustriesPage() {
             useCaseDesc: 'The system autonomously identifies structural deviations from blueprints by analyzing regular drone footage. When a discrepancy is detected, it calculates the associated schedule delay, updates financial cash flow forecasts, and automatically drafts Request For Information (RFI) alerts to the architects before costly rework is required.'
         },
         {
-            id: 'maritime',
-            title: 'Maritime Logistics',
-            icon: <Anchor size={40} />,
+            id: 'logistics',
+            title: 'Import/Export & Logistics',
+            icon: <Plane size={40} />,
             color: '#0EA5E9',
-            challenge: 'Global shipping relies on millions of unstructured, multi-language documents—Bills of Lading, Customs Declarations, and Manifests—coupled with volatile satellite routing telemetry. This fragmentation leads to severe supply chain blind spots, unpredicted demurrage fees, and inefficient exception management.',
-            solution: 'We deploy specialized multimodal agents that ingest raw, unstructured shipping manifests alongside live Global Information System (GIS) data. The AI normalizes these disparate inputs into a unified intelligence graph, bringing dark data into the light and predicting logistical crises before they manifest.',
-            useCaseTitle: 'Global Digital Twin & Customs AI',
-            useCaseDesc: 'By analyzing incoming maritime manifests against real-time satellite ship tracking, the Gasper engine predicts port dock delays days in advance. It autonomously routes exception alerts to operators and pre-generates the required customs clearance documentation to aggressively cut dwell times.'
+            challenge: 'Global trade relies on millions of unstructured, multi-language documents—Bills of Lading, Customs Declarations, Air Waybills, and Commercial Invoices—coupled with volatile routing across ocean, air, and land. This fragmentation leads to severe supply chain blind spots, unpredicted demurrage fees, and costly delays at ports and borders.',
+            solution: 'We deploy specialized multimodal agents that ingest raw, unstructured shipping documentation alongside live tracking data across all transport modes. The AI normalizes these disparate inputs into a unified intelligence graph, predicting logistical crises before they manifest across any freight corridor.',
+            useCaseTitle: 'Multi-Modal Freight Intelligence & Customs AI',
+            useCaseDesc: 'By analyzing incoming freight documentation against real-time vessel, aircraft, and truck tracking data, the Gasper engine predicts port, airport, and border delays days in advance. It autonomously routes exception alerts to operators and pre-generates the required customs clearance documentation to aggressively cut dwell times and avoid costly penalties.'
         },
         {
-            id: 'finance',
-            title: 'Finance & Procurement',
-            icon: <BarChart3 size={40} />,
+            id: 'general-contracting',
+            title: 'General Contracting',
+            icon: <Briefcase size={40} />,
             color: '#8B5CF6',
-            challenge: 'Enterprise procurement divisions manually reconcile massive volumes of complex vendor contracts against shifting Service Level Agreements (SLAs) and volatile raw material pricing. Human analysts cannot monitor every invoice for subtle compliance deviations, leading to millions in uncaptured revenue leakage.',
-            solution: 'Our neural networks natively integrate with major ERP systems (SAP, Oracle) via secure connectors. The bespoke LLM acts as an autonomous auditor, constantly reading vendor performance reports, macro-economic indicators, and the exact legal text of thousands of active contracts.',
-            useCaseTitle: 'Autonomous Contract Reconciliation',
-            useCaseDesc: 'Ingesting 10,000+ vendor invoices monthly, the AI cross-references every line item against the specific contractual SLAs and current market index pricing. It automatically flags non-compliant charges, routes them for procurement review, and drafts negotiation emails to the offending vendors.'
+            challenge: 'General contractors juggle dozens of active projects, subcontractor schedules, change orders, and compliance requirements simultaneously. Bid management is manual, progress tracking is fragmented across spreadsheets and phone calls, and margin erosion from scope creep often goes undetected until it\'s too late.',
+            solution: 'Marapone deploys an AI-powered project command center that unifies bid management, subcontractor coordination, and real-time progress tracking into a single intelligent platform. Our models learn from your historical project data to improve cost estimations and identify risk patterns unique to your operations.',
+            useCaseTitle: 'Intelligent Bid Analysis & Margin Protection',
+            useCaseDesc: 'The AI analyzes incoming RFPs against your historical win rates, subcontractor performance data, and current resource capacity. It generates competitive bid recommendations, flags projects with high margin-erosion risk, and continuously monitors active contracts for scope creep—automatically alerting project managers and drafting change order documentation before profits are lost.'
         },
         {
-            id: 'grid',
-            title: 'Grid Infrastructure',
-            icon: <Zap size={40} />,
+            id: 'marketing',
+            title: 'Marketing & Brand Strategy',
+            icon: <Megaphone size={40} />,
             color: '#F59E0B',
-            challenge: 'Modernizing legacy power grids requires analyzing decades of handwritten maintenance logs, localized micro-weather patterns, and real-time IoT load data across entirely disconnected utility systems. The volume of data overwhelms human operators, shifting maintenance from predictive to purely reactive.',
-            solution: 'The Gasper framework bridges the analog and digital divide. It synthesizes historical field maintenance records with live, high-frequency sensor telemetry to create predictive health models. We integrate these models directly into enterprise asset management (EAM) systems.',
-            useCaseTitle: 'Predictive Load & Maintenance Orchestration',
-            useCaseDesc: 'The AI continuously synthesizes unstructured field technician reports with IoT transformer temperatures. It identifies microscopic anomalies and predicts localized grid failures 48 hours in advance, automatically drafting work orders and dispatching field teams before an emergency repair is necessary.'
+            challenge: 'Marketing teams waste significant budgets on broad, untargeted campaigns while struggling to measure true ROI. Creative production is slow, audience segmentation is surface-level, and the gap between marketing spend and actual revenue attribution remains a black box for most organizations.',
+            solution: 'Our AI models integrate directly with your CRM, ad platforms, and analytics tools to build a complete picture of your customer journey. We deploy generative AI agents that create hyper-targeted campaigns while our attribution models trace every dollar of spend to measurable business outcomes.',
+            useCaseTitle: 'AI-Driven Campaign Generation & ROI Attribution',
+            useCaseDesc: 'The system autonomously segments your audience based on behavioral patterns and purchase history, generates personalized creative variations for each micro-segment, and deploys them across channels. Real-time attribution modeling tracks conversion paths from first touch to closed deal, automatically reallocating budget to highest-performing channels.'
         },
         {
-            id: 'defense',
-            title: 'Defense & Aerospace',
-            icon: <ShieldCheck size={40} />,
+            id: 'ecommerce',
+            title: 'E-Commerce & Digital Operations',
+            icon: <ShoppingCart size={40} />,
             color: '#10B981',
-            challenge: 'Handling highly sensitive, compartmentalized technical data (CUI/ITAR) across air-gapped networks. Legacy parsers cannot ingest complex engineering blueprints or defense procurement schematics without severe security exposure. Data silos lead to critical bottlenecks in manufacturing and supply chain coordination.',
-            solution: 'Marapone engineers completely isolated, on-premise LLM environments. Our zero-trust ingestion pipeline securely processes hundreds of gigabytes of raw military schematics, technical manuals, and procurement histories offline, allowing defense contractors to maintain absolute data sovereignty while modernizing their intelligence capabilities.',
-            useCaseTitle: 'ITAR-Compliant Schematic Inference',
-            useCaseDesc: 'The system automatically cross-references incoming multi-page Request For Proposals (RFPs) against historical engineering parameters and authorized, cleared vendor lists. The autonomous agent flags supply chain vulnerabilities and generates initial compliance reports without the source data ever leaving the secure facility.'
+            challenge: 'E-commerce operators face razor-thin margins while managing complex pricing across multiple marketplaces, unpredictable demand patterns that lead to stockouts or excess inventory, and customer expectations for instant, personalized experiences—all while competitors can undercut prices within hours.',
+            solution: 'Marapone builds autonomous pricing and inventory intelligence agents that operate 24/7 across all your sales channels. Our AI monitors competitor activity, demand signals, and supply chain conditions in real-time to optimize every aspect of your digital operations.',
+            useCaseTitle: 'Autonomous Dynamic Pricing & Inventory Optimization',
+            useCaseDesc: 'The AI continuously monitors competitor pricing across all marketplaces, correlates it with your inventory levels, supplier lead times, and historical demand curves. It autonomously adjusts pricing to maximize margin while maintaining competitiveness, predicts stockout risks weeks in advance, and auto-generates purchase orders to maintain optimal inventory levels.'
         }
     ];
 

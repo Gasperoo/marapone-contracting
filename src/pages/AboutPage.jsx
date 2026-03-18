@@ -50,7 +50,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 font-medium leading-relaxed max-w-3xl mx-auto"
           >
-            Marapone is a solo-led AI consultancy built for the sectors that keep Canada moving. Marapone bridges the gap between complex data and operational reality.
+            Marapone is a AI consultancy built for the sectors that keep Canada moving. Marapone bridges the gap between complex data and operational reality.
           </motion.p>
         </motion.div>
       </div>

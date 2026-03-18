@@ -132,12 +132,12 @@ export default function ContactPage() {
                     <CheckCircle2 size={40} className="text-[#10B981]" />
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-4">Transmission Successful</h3>
-                <p className="text-[#6b7280] text-lg leading-relaxed mb-8 max-w-sm">
+                <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-sm">
                     Your inquiry has been securely routed. Our engineering team will review your requirements and respond shortly.
                 </p>
                 <button
                     onClick={() => setIsSuccess(false)}
-                    className="px-8 py-3 bg-[#1a1a1a] hover:bg-black text-white rounded-xl font-bold transition-colors shadow-sm"
+                    className="px-8 py-3 bg-white hover:bg-gray-100 text-black rounded-xl font-bold transition-colors shadow-sm"
                 >
                     Send Another Message
                 </button>
@@ -150,6 +150,7 @@ export default function ContactPage() {
                     <span>{error}</span>
                 </div>
             )}
+            <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-xs font-bold tracking-wider uppercase text-gray-500">Name</label>
                 <input
@@ -165,7 +166,7 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="email" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Corporate Email</label>
+                <label htmlFor="email" className="text-xs font-bold tracking-wider uppercase text-gray-500">Corporate Email</label>
                 <input
                   type="email"
                   id="email"
@@ -181,7 +182,7 @@ export default function ContactPage() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label htmlFor="role" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Job Role</label>
+                <label htmlFor="role" className="text-xs font-bold tracking-wider uppercase text-gray-500">Job Role</label>
                 <input
                   type="text"
                   id="role"
@@ -195,7 +196,7 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="company" className="text-xs font-bold tracking-wider uppercase text-[#6b7280]">Organization</label>
+                <label htmlFor="company" className="text-xs font-bold tracking-wider uppercase text-gray-500">Organization</label>
                 <input
                   type="text"
                   id="company"

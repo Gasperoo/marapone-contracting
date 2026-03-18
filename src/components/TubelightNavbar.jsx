@@ -29,11 +29,15 @@ export function TubelightNavbar({ items, className }) {
     return (
         <div
             className={cn(
-                "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-[100] mb-6 sm:pt-4 pointer-events-none",
+                "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-[100] mb-6 sm:pt-4 pointer-events-none w-full max-w-[95vw] sm:w-auto flex justify-center",
                 className,
             )}
         >
-            <div className="flex items-center gap-3 bg-white/70 border border-black/5 backdrop-blur-lg py-0.5 px-1 rounded-full shadow-lg pointer-events-auto">
+            <style dangerouslySetInnerHTML={{__html: `
+                .hide-nav-scrollbar::-webkit-scrollbar { display: none; }
+                .hide-nav-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            `}} />
+            <div className="flex items-center gap-1 sm:gap-3 bg-white/70 border border-black/5 backdrop-blur-lg py-1 sm:py-0.5 px-1 rounded-full shadow-lg pointer-events-auto overflow-x-auto hide-nav-scrollbar w-full sm:w-auto">
                 {items.map((item) => {
                     const Icon = item.icon
                     const isActive = activeTab === item.name
@@ -47,7 +51,7 @@ export function TubelightNavbar({ items, className }) {
                                 if (item.onClick) item.onClick()
                             }}
                             className={cn(
-                                "relative cursor-pointer text-sm font-semibold px-6 py-1.5 rounded-full transition-colors",
+                                "relative cursor-pointer text-sm font-semibold px-4 sm:px-6 py-1.5 sm:py-1.5 rounded-full transition-colors flex-shrink-0",
                                 "text-[#4b5563] hover:text-[#FF6B00]",
                                 "flex items-center justify-center gap-2",
                                 isActive && "bg-black/5 text-[#FF6B00]",

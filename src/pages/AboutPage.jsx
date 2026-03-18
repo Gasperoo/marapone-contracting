@@ -102,7 +102,7 @@ export default function AboutPage() {
           <section>
             <div className="text-center mb-16">
               <span className="text-xs font-bold tracking-widest text-[#FF6B00] uppercase block mb-4">02 // The Approach</span>
-              <h2 className="text-4xl font-black text-white">Why Work With Me</h2>
+              <h2 className="text-4xl font-black text-white">Why Marapone</h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

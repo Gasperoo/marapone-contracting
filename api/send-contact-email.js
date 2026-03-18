@@ -21,8 +21,8 @@ export default async function handler(req, res) {
   const { name, email, role, company, message } = req.body;
 
   // Validate input
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Missing required fields' });
+  if (!name || !email) {
+    return res.status(400).json({ error: 'Missing required fields (name and email are required)' });
   }
 
   // Basic email validation

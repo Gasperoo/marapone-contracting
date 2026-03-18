@@ -28,11 +28,7 @@ export default function ContactPage() {
     setError(null);
 
     try {
-        const baseUrl = window.location.hostname === 'localhost' 
-            ? 'http://localhost:3000' 
-            : window.location.origin;
-
-        const response = await fetch(`${baseUrl}/api/send-contact-email`, {
+        const response = await fetch('/api/send-contact-email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

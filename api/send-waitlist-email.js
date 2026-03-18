@@ -18,7 +18,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email, role, companySize } = req.body;
+  const email = req.body.email?.trim();
+  const role = req.body.role?.trim();
+  const companySize = req.body.companySize?.trim();
 
   // Validate input
   if (!email || !role || !companySize) {
@@ -44,7 +46,7 @@ export default async function handler(req, res) {
     const data = await resend.emails.send({
       from: 'Gasper Waitlist <gasper@marapone.com>',
       to: ['gasper@marapone.com'],
-      replyTo: email,
+      reply_to: email,
       subject: 'New Waitlist Request - Gasper Access',
       html: `
         <!DOCTYPE html>
@@ -107,7 +109,9 @@ export default async function handler(req, res) {
     console.error('Email send error:', error);
     return res.status(500).json({
       error: 'Failed to send email',
-      message: error.message
+      message: error.message === 'The string did not match the expected pattern.' 
+        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.' 
+        : error.message
     });
   }
 }

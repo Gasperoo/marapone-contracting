@@ -18,7 +18,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone, date, time } = req.body;
+  const name = req.body.name?.trim();
+  const email = req.body.email?.trim();
+  const phone = req.body.phone?.trim();
+  const date = req.body.date?.trim();
+  const time = req.body.time?.trim();
 
   // Validate input
   if (!name || !email || !phone || !date || !time) {
@@ -45,7 +49,7 @@ export default async function handler(req, res) {
     const maraponeEmail = resend.emails.send({
       from: 'Marapone Bookings <gasper@marapone.com>',
       to: ['general@marapone.com'],
-      replyTo: email,
+      reply_to: email,
       subject: `New Discovery Call Booking: ${name} at ${time}`,
       html: `
         <!DOCTYPE html>
@@ -135,7 +139,9 @@ export default async function handler(req, res) {
     console.error('Email send error:', error);
     return res.status(500).json({
       error: 'Failed to send emails',
-      message: error.message
+      message: error.message === 'The string did not match the expected pattern.' 
+        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.' 
+        : error.message
     });
   }
 }

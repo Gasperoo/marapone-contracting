@@ -18,7 +18,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, role, company, message } = req.body;
+  const name = req.body.name?.trim();
+  const email = req.body.email?.trim();
+  const role = req.body.role?.trim();
+  const company = req.body.company?.trim();
+  const message = req.body.message?.trim();
 
   // Validate input
   if (!name || !email) {
@@ -44,7 +48,7 @@ export default async function handler(req, res) {
     const data = await resend.emails.send({
       from: 'Marapone Contact Form <gasper@marapone.com>', // The verified sender domain usually has to match the from email
       to: ['general@marapone.com'],
-      replyTo: email,
+      reply_to: email, // use reply_to instead of replyTo to strictly match Resend schema
       subject: `New Enterprise Inquiry from ${name} at ${company || 'Unknown Company'}`,
       html: `
         <!DOCTYPE html>
@@ -106,7 +110,9 @@ ${message}
     console.error('Email send error:', error);
     return res.status(500).json({
       error: 'Failed to send email',
-      message: error.message
+      message: error.message === 'The string did not match the expected pattern.' 
+        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.' 
+        : error.message
     });
   }
 }

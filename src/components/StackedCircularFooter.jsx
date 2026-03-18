@@ -9,6 +9,12 @@ const XIcon = ({ size = 18, className = "" }) => (
   </svg>
 );
 
+const WhatsAppIcon = ({ size = 18, className = "" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.878-.788-1.47-1.761-1.643-2.06-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347Zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884Zm8.513-18.397A11.97 11.97 0 0 0 12.052 0C5.434 0 .046 5.385.045 12.003c0 2.115.551 4.182 1.599 6.007L0 24l6.15-1.611a11.96 11.96 0 0 0 5.901 1.551h.005c6.616 0 12.004-5.386 12.005-12.004a11.95 11.95 0 0 0-3.497-8.498Z"/>
+  </svg>
+);
+
 export function StackedCircularFooter() {
   const currentYear = new Date().getFullYear();
 
@@ -83,6 +89,9 @@ export function StackedCircularFooter() {
           <div className="footer-socials">
             <a href="https://instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
               <Instagram size={18} />
+            </a>
+            <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="WhatsApp">
+              <WhatsAppIcon size={18} />
             </a>
             <a href="#" className="social-link" aria-label="X">
               <XIcon size={18} />

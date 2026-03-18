@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Shield, Cpu, Lock, Network, Search, Fingerprint, Banknote, HardHat, Truck, Link as LinkIcon, Users, Award, HeartHandshake } from 'lucide-react';
+import { Shield, Cpu, Lock, Network, Search, Fingerprint, Banknote, HardHat, Truck, Link as LinkIcon, Users, Award, HeartHandshake, ArrowRight } from 'lucide-react';
 import RuixenAbout from '../components/RuixenAbout';
 
 export default function AboutPage() {

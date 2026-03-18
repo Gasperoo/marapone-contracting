@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { HardHat, Ruler, TrendingUp, Eye, ArrowRight, CheckCircle2, Activity, ArrowUpRight } from 'lucide-react';
+import { HardHat, Ruler, TrendingUp, Eye, ArrowRight, CheckCircle2, Activity, ArrowUpRight, Clock, ShieldCheck, DollarSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SimulatorToggle = ({ active, onClick, label, metric, color }) => (
@@ -332,10 +332,107 @@ const ConstructionPage = () => {
                 </div>
             </div>
             
-            <div className="max-w-7xl mx-auto px-6 mt-16 text-center">
-                <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[#1a1a1a] text-white font-bold rounded-xl hover:-translate-y-1 transition-transform shadow-[0_10px_20px_rgba(0,0,0,0.1)]">
-                    Evaluate GasperAI for Construction <ArrowRight size={18} />
-                </Link>
+            {/* Why GasperAI Metrics */}
+            <div className="bg-white border-y border-black/5 mt-24 py-24">
+                <div className="max-w-7xl mx-auto px-6 sm:px-8">
+                    <div className="text-center mb-16">
+                        <span className="text-sm font-bold tracking-widest text-[#FF6B00] uppercase mb-4 block">Proven Impact</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-6">Built For The Bottom Line</h2>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            { icon: <Clock size={32} />, stat: "85%", label: "Faster Takeoff Cycles", desc: "Reduce estimation time from weeks to hours with intelligent PDF parsing." },
+                            { icon: <ShieldCheck size={32} />, stat: "99.9%", label: "Compliance Accuracy", desc: "Automate OSHA logging and safety monitoring with zero-latency computer vision." },
+                            { icon: <DollarSign size={32} />, stat: "2.4x", label: "Margin Protection", desc: "Identify budget variances and schedule deviations before they compound." }
+                        ].map((metric, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="p-8 rounded-3xl bg-[#F8FAFC] border border-black/5 text-center hover:shadow-lg transition-all duration-300">
+                                <div className="w-16 h-16 mx-auto bg-white rounded-2xl shadow-sm flex items-center justify-center text-[#FF6B00] mb-6 border border-black/5">
+                                    {metric.icon}
+                                </div>
+                                <div className="text-5xl font-black text-[#1a1a1a] mb-2">{metric.stat}</div>
+                                <div className="text-lg font-bold text-[#1a1a1a] mb-3">{metric.label}</div>
+                                <p className="text-gray-500 font-medium leading-relaxed">{metric.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Case Study Section */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-24">
+                <div className="bg-[#1a1a1a] rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
+                    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#FF6B00]/20 to-transparent rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
+                    
+                    <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span className="inline-block px-3 py-1 rounded-full bg-[#FF6B00]/20 border border-[#FF6B00]/30 text-[#FF6B00] text-xs font-bold tracking-widest uppercase mb-6">Enterprise Deployment</span>
+                            <h2 className="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">"GasperAI recovered $1.2M in disputed change orders on a single mega-project."</h2>
+                            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                                A Top 50 ENR General Contractor deployed Marapone's sovereign LLM into their private cloud. By vectorizing 10 years of historical contracts, RFIs, and daily logs, the AI autonomously cross-referenced subcontractor claims against original scope boundaries in seconds.
+                            </p>
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white font-bold">VP</div>
+                                <div>
+                                    <div className="text-white font-bold">VP of Preconstruction</div>
+                                    <div className="text-gray-500 text-sm">Tier 1 Commercial Builder</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black/50 border border-white/10 rounded-2xl p-6 backdrop-blur-md">
+                            <div className="text-white font-mono text-sm mb-4 border-b border-white/10 pb-4">
+                                &gt; query_sovereign_db("analyze subcontractor scope creep vs initial bid package 4A")
+                            </div>
+                            <div className="space-y-4">
+                                <div className="p-4 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20">
+                                    <div className="flex items-center gap-2 mb-2 text-[#FF6B00] font-bold text-sm">
+                                        <CheckCircle2 size={16} /> Discrepancy Found
+                                    </div>
+                                    <div className="text-gray-300 text-sm leading-relaxed">
+                                        Subcontractor electrical run routing deviates from architectural plans (Sheet E-201). Scope addition requested was included in base contractual language (Clause 4.1.2).
+                                    </div>
+                                </div>
+                                <div className="text-[#10B981] font-mono text-xs">Successfully generated formal RFI response based on contract precedent.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* How It Works Steps */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-32 mb-16">
+                 <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-black text-[#1a1a1a] mb-6">Deployment Pipeline</h2>
+                    <p className="text-xl text-gray-500 font-medium max-w-2xl mx-auto">From signed NDA to fully operational sovereign intelligence in weeks.</p>
+                </div>
+                
+                <div className="grid md:grid-cols-4 gap-8 relative">
+                    {/* Progression Line */}
+                    <div className="hidden md:block absolute top-8 left-12 right-12 h-0.5 bg-black/5 z-0" />
+                    
+                    {[
+                        { step: "01", title: "Infrastructure Audit", desc: "We evaluate your current data silos, camera networks, and ERP systems to map the intelligence architecture." },
+                        { step: "02", title: "Secure Deployment", desc: "GasperAI is deployed directly into your isolated VPC or on-premise hardware. No public APIs." },
+                        { step: "03", title: "Corpus Training", desc: "The model is fine-tuned locally on your historical blueprints, contracts, and scheduling data." },
+                        { step: "04", title: "Field Operations", desc: "Rollout copilots to PMs, estimators, and superintendents for immediate ROI generation." }
+                    ].map((phase, i) => (
+                        <div key={i} className="relative z-10 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none border border-black/5 md:border-none shadow-sm md:shadow-none">
+                            <div className="w-16 h-16 rounded-2xl bg-white border border-[#FF6B00]/20 shadow-md flex items-center justify-center text-[#FF6B00] font-black text-xl mb-6 mx-auto md:mx-0 relative">
+                                {phase.step}
+                            </div>
+                            <h3 className="font-bold text-[#1a1a1a] text-xl mb-3 text-center md:text-left">{phase.title}</h3>
+                            <p className="text-gray-500 leading-relaxed font-medium text-center md:text-left">{phase.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            
+            <div className="max-w-7xl mx-auto px-6 mt-32 mb-16 text-center">
+                <div className="inline-block p-1 rounded-2xl bg-gradient-to-b from-black/5 to-transparent">
+                    <Link to="/contact" className="inline-flex items-center gap-2 px-10 py-5 bg-[#1a1a1a] text-white font-bold rounded-xl hover:bg-black hover:shadow-xl transition-all">
+                        Request Technical Briefing <ArrowRight size={18} />
+                    </Link>
+                </div>
             </div>
         </div>
     );

@@ -16,11 +16,11 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#0a0e1a] text-white font-sans selection:bg-[#FF6B00]/30">
-      
+
       {/* ═══════════════════════ HERO SECTION ═══════════════════════ */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-[#1a1a1a] to-transparent pointer-events-none -z-10" />
-        
+
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -85,14 +85,14 @@ export default function HomePage() {
             transition={{ delay: 0.5 }}
             className="flex flex-col sm:flex-row justify-center gap-4"
           >
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="px-8 py-4 bg-[#FF6B00] hover:bg-[#ea580c] text-white rounded-xl font-bold text-lg transition-all shadow-lg shadow-[#FF6B00]/20 flex items-center justify-center gap-2"
             >
               Book a Free Discovery Call <ArrowRight size={20} />
             </Link>
-            <Link 
-              to="/industries" 
+            <Link
+              to="/industries"
               className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/20 rounded-xl font-bold text-lg transition-all backdrop-blur-md"
             >
               See What Marapone Builds
@@ -120,7 +120,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
                 { title: "GC Operations", desc: "Automate blueprint auditing and daily log synthesis to catch rework before it starts." },
@@ -147,7 +147,7 @@ export default function HomePage() {
               Marapone leverages world-class APIs and secure integrations to build your private engine.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { icon: <Brain />, name: "Claude (Anthropic)", desc: "Advanced reasoning for complex contract review and blueprint analysis." },
@@ -171,7 +171,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Construction */}
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
               className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-[#FF6B00]/30 transition-all flex flex-col h-full"
             >
@@ -201,7 +201,7 @@ export default function HomePage() {
             </motion.div>
 
             {/* Logistics */}
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
               className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-[#0EA5E9]/30 transition-all flex flex-col h-full"
             >
@@ -244,7 +244,7 @@ export default function HomePage() {
                 Marapone doesn't sell subscriptions. Marapone builds custom competitive moats that you own forever.
               </p>
             </div>
-            
+
             <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
               {[
                 { icon: <Lock />, title: "Data Sovereignty", desc: "Private deployments on your own servers. Your sensitive data never leaves your control." },
@@ -270,7 +270,7 @@ export default function HomePage() {
       {/* ═══════════════════════ CTA FOOTER ═══════════════════════ */}
       <section className="py-32 px-6 text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#FF6B00]/5 blur-[120px] pointer-events-none" />
-        
+
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
             Fix Your Ops. <br />
@@ -280,8 +280,8 @@ export default function HomePage() {
             Let's cut through the noise. Book a 15-30 minute discovery call to see if your data is ready for a private engine.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="px-10 py-5 bg-[#FF6B00] hover:bg-[#ea580c] text-white rounded-xl font-bold text-xl transition-all shadow-xl shadow-[#FF6B00]/20"
             >
               Book My Discovery Call

@@ -79,11 +79,11 @@
         <a href="#audit" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors">Free Audit →</a>
       </div>
       <!-- Mobile menu button -->
-      <button class="md:hidden text-fog" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+      <button class="md:hidden text-fog" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex flex-col gap-3 text-sm font-medium">
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
       <a href="index-new.html" class="text-chalk pt-3">Home</a>
       <a href="how-it-works-new.html" class="text-fog hover:text-chalk">How It Works</a>
       <a href="pricing-new.html" class="text-fog hover:text-chalk">Pricing</a>

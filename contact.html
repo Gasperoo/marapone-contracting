@@ -259,7 +259,7 @@
                 };
 
                 try {
-                  const res = await fetch('https://marapone-contracting.vercel.app/api/send-contact-email', {
+                  const res = await fetch('/api/send-contact-email', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body),

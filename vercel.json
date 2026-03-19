@@ -17,6 +17,10 @@
       "destination": "/how-it-works.html"
     },
     {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
       "source": "/api/account/(.*)",
       "destination": "/api/express"
     },

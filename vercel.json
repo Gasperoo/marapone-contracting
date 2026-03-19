@@ -2,19 +2,19 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/index-new.html"
+      "destination": "/index.html"
     },
     {
       "source": "/about",
-      "destination": "/about-new.html"
+      "destination": "/about.html"
     },
     {
       "source": "/pricing",
-      "destination": "/pricing-new.html"
+      "destination": "/pricing.html"
     },
     {
       "source": "/how-it-works",
-      "destination": "/how-it-works-new.html"
+      "destination": "/how-it-works.html"
     },
     {
       "source": "/api/account/(.*)",

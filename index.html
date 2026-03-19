@@ -1,36 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Marapone Contracting Inc. - Professional contracting services">
-    <title>Marapone Contracting Inc.</title>
-    <link rel="icon" type="image/png" href="/logo.png">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Single Page Apps for GitHub Pages -->
-    <!-- https://github.com/rafgraph/spa-github-pages -->
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // This script checks to see if a redirect is present in the query string,
-      // converts it back into the correct url and adds it to the
-      // browser's history using window.history.replaceState(...),
-      // which won't cause the browser to attempt to load the new url.
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
+    <title>Marapone – Private AI for Ontario Construction GCs | Own Your Blueprint Auditor</title>
+    <meta name="description" content="Stop renting your AI. Marapone builds private, local AI auditors for Ontario GCs. Own your code, own your data, and save 10+ hours a month on manual blueprint reviews and RFIs.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-construction { background-color: #09090b; }
+        .text-hi-vis { color: #f97316; }
+        .bg-hi-vis { background-color: #f97316; }
+        .border-zinc-800 { border-color: #27272a; }
+    </style>
 </head>
-<body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+<body class="bg-construction text-zinc-400 antialiased selection:bg-orange-500/30">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 border-b border-zinc-800 bg-construction/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <span class="text-white font-extrabold text-2xl tracking-tighter">MARAPONE</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="index.html" class="text-white">Home</a>
+                    <a href="how-it-works.html" class="hover:text-white transition-colors">How It Works</a>
+                    <a href="pricing.html" class="hover:text-white transition-colors">Pricing</a>
+                    <a href="about.html" class="hover:text-white transition-colors">About</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="#audit" class="bg-hi-vis text-black px-4 py-2 rounded-md text-sm font-bold hover:bg-orange-500 transition-all">Free Audit</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
+                Stop Renting Your AI.<br class="hidden sm:block"> <span class="text-hi-vis">Own The Engine.</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-zinc-400 mb-10 leading-relaxed">
+                I build private AI auditors for Ontario GCs that read blueprints, synthesize messy daily logs, and flag RFI risks before they cost you six figures. No subscriptions. No vendor lock-in. Full source code included.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-20">
+                <a href="#audit" class="w-full sm:w-auto bg-hi-vis text-black px-8 py-4 rounded-lg text-lg font-bold hover:scale-105 transition-transform shadow-lg shadow-orange-600/20">
+                    Get Your Free 24h Blueprint Audit
+                </a>
+                <a href="how-it-works.html" class="w-full sm:w-auto bg-zinc-900 border border-zinc-700 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-zinc-800 transition-colors">
+                    See How It Works
+                </a>
+            </div>
+
+            <!-- Loom Placeholder -->
+            <div class="max-w-4xl mx-auto border border-zinc-800 rounded-2xl overflow-hidden bg-zinc-900 shadow-2xl relative aspect-video group">
+                <!-- Replace this comment with your Loom embed code -->
+                <div class="absolute inset-0 flex items-center justify-center bg-zinc-900/50 backdrop-blur-sm group-hover:bg-zinc-900/30 transition-all">
+                    <div class="w-20 h-20 bg-hi-vis/20 rounded-full flex items-center justify-center border border-hi-vis/50">
+                        <svg class="w-8 h-8 text-hi-vis fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                </div>
+                <div class="absolute bottom-4 left-6 text-sm text-zinc-500 font-mono italic">
+                    [ 60-second Loom demo: Watch how we audit a 40-page blueprint in 3 mins ]
+                </div>
+            </div>
+        </div>
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-0 opacity-20 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-600/20 blur-[120px] rounded-full"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-zinc-600/10 blur-[120px] rounded-full"></div>
+        </div>
+    </header>
+
+    <!-- Benefits Section -->
+    <section class="py-24 bg-zinc-900/30 border-y border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-8">
+                        The "Private AI" advantage for Ontario GCs
+                    </h2>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-hi-vis/10 border border-hi-vis flex items-center justify-center mt-1">
+                                <svg class="w-3 h-3 text-hi-vis" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg mb-1">Blueprint Chaos Solved</h3>
+                                <p class="text-zinc-500 text-sm">Automated cross-referencing between architectural and structural sets. Never miss a discrepency again.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-hi-vis/10 border border-hi-vis flex items-center justify-center mt-1">
+                                <svg class="w-3 h-3 text-hi-vis" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg mb-1">RFI Risk Detection</h3>
+                                <p class="text-zinc-500 text-sm">AI flags potential delays hidden in sub-consultant responses before they hit your critical path.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-hi-vis/10 border border-hi-vis flex items-center justify-center mt-1">
+                                <svg class="w-3 h-3 text-hi-vis" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg mb-1">Daily Log Synthesis</h3>
+                                <p class="text-zinc-500 text-sm">Turn 50 scattered PDFs and emails into a single, structured summary of project health every night.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-hi-vis/10 border border-hi-vis flex items-center justify-center mt-1">
+                                <svg class="w-3 h-3 text-hi-vis" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg mb-1">Cash Flow Signals</h3>
+                                <p class="text-zinc-500 text-sm">Predictive impact reports on material delays and labor shortages based on your site data.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Secondary focus box -->
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-600/10 text-hi-vis border border-orange-600/20 text-xs font-bold uppercase tracking-widest mb-4">
+                        Also For Logistics
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Construction-tied Logistics</h3>
+                    <p class="text-zinc-400 mb-6 leading-relaxed">
+                        If your supply chain is the bottleneck, we apply the same "Private AI" model to material delivery trackers, customs hold-ups, and port data. Predict when that curtain wall is *actually* arriving so your site teams aren't standing around.
+                    </p>
+                    <a href="how-it-works.html#logistics" class="text-hi-vis hover:underline text-sm font-bold flex items-center gap-2">
+                        Learn more about logistics tie-ins
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-white text-center mb-16">Trusted by Ontario Builders</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-xl italic text-zinc-400">
+                    "The blueprint auditor caught a structural discrepancy in our Toronto condo project that would've cost us $40k in re-works. It paid for itself in two weeks."
+                    <div class="mt-6 flex items-center gap-4 not-italic">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-500 font-bold">JD</div>
+                        <div>
+                            <p class="text-white text-sm font-bold">John D.</p>
+                            <p class="text-zinc-600 text-xs text-nowrap">Project Director, GTA High-Rise</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-xl italic text-zinc-400">
+                    "Finally, an AI that doesn't require a monthly subscription. I own the tool, it's on our local server, and it works even when site WiFi is spotty."
+                    <div class="mt-6 flex items-center gap-4 not-italic">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-500 font-bold">MS</div>
+                        <div>
+                            <p class="text-white text-sm font-bold">Mike S.</p>
+                            <p class="text-zinc-600 text-xs">Principal GC, Hamilton Regional</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-xl italic text-zinc-400">
+                    "Marapone's daily log synthesis saves our foremen an hour every night. No more hunting through 4 different apps to see what happened on site."
+                    <div class="mt-6 flex items-center gap-4 not-italic">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-500 font-bold">RA</div>
+                        <div>
+                            <p class="text-white text-sm font-bold">Robert A.</p>
+                            <p class="text-zinc-600 text-xs">Site Superintendent, Ottawa Dev</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works (Short) -->
+    <section class="py-24 bg-zinc-950 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-white mb-4">One Build. One Price. You Own It.</h2>
+                <p class="text-zinc-500">How I work with you from start to handover.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-hi-vis/10 border border-hi-vis text-hi-vis rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">1</div>
+                    <h3 class="text-white font-bold mb-2">Discovery</h3>
+                    <p class="text-sm text-zinc-500">I look at your project files and tell you exactly what AI can automate today.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-hi-vis/10 border border-hi-vis text-hi-vis rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">2</div>
+                    <h3 class="text-white font-bold mb-2">Build & Tune</h3>
+                    <p class="text-sm text-zinc-500">I fine-tune a local model on your blueprints, specs, and past RFIs.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-hi-vis/10 border border-hi-vis text-hi-vis rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">3</div>
+                    <h3 class="text-white font-bold mb-2">Handover</h3>
+                    <p class="text-sm text-zinc-500">You get the source code, weights, and the app running on your hardware.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-hi-vis/10 border border-hi-vis text-hi-vis rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">4</div>
+                    <h3 class="text-white font-bold mb-2">Total Control</h3>
+                    <p class="text-sm text-zinc-500">No monthly bills. No vendor locked-in. It's your property now.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Reversal Section -->
+    <section class="py-16 bg-hi-vis text-black">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-nowrap">
+            <h2 class="text-2xl sm:text-4xl font-extrabold mb-4">No-Risk Performance Guarantee</h2>
+            <p class="text-lg sm:text-2xl font-medium opacity-90">
+                If it doesn't save you at least 10 hours in the first 30 days of use,<br class="hidden sm:block text-nowrap"> 
+                <span class="underline decoration-4">full refund — no questions asked</span>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Lead Magnet Form Placeholder -->
+    <section id="audit" class="py-24 border-t border-zinc-800 relative overflow-hidden">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">Start with a Free 24h Blueprint Audit</h2>
+            <p class="text-lg text-zinc-400 mb-10">
+                Upload one PDF (blueprint, RFI set, or site log) and I'll manually run it through our AI core. You'll get a detailed report + short video walkthrough showing exactly what it found.
+            </p>
+            
+            <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl text-left shadow-2xl">
+                <!-- Replace this comment with Tally or Typeform embed code -->
+                <div class="space-y-4">
+                    <div class="p-12 border-2 border-dashed border-zinc-800 rounded-xl text-center hover:border-hi-vis/50 transition-colors cursor-pointer group">
+                        <svg class="w-12 h-12 text-zinc-700 group-hover:text-hi-vis mx-auto mb-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        <p class="text-white font-bold mb-1 group-hover:text-hi-vis transition-colors">Click to upload your sample PDF</p>
+                        <p class="text-zinc-500 text-xs">Blueprints, RFIs, or Daily Logs only (Max 50MB)</p>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-6 text-zinc-500 text-sm italic">
+                I do these audits personally. One per GC, please correctly identify your company.
+            </p>
+        </div>
+        <!-- Background Decor -->
+        <div class="absolute inset-0 bg-zinc-900/20 -z-0">
+             <div class="absolute top-0 right-0 w-64 h-64 bg-orange-600/10 blur-[100px] rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="text-white font-extrabold text-xl tracking-tighter">MARAPONE</span>
+                <p class="text-xs text-zinc-600 mt-2">Built & run by one guy in Willowdale, Ontario | No fluff, just tools you own</p>
+            </div>
+            <div class="flex space-x-6 text-zinc-500 text-sm">
+                <a href="pricing.html" class="hover:text-white">Pricing</a>
+                <a href="how-it-works.html" class="hover:text-white">How It Works</a>
+                <a href="about.html" class="hover:text-white">About</a>
+                <a href="mailto:g@marapone.com" class="hover:text-white">Contact</a>
+            </div>
+            <div class="text-zinc-600 text-[10px] uppercase tracking-widest font-bold">
+                © 2024 MARAPONE | LOCAL PRIVATE AI
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

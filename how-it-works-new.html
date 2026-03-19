@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works – Marapone | Private AI Blueprint Auditor for Ontario Construction GCs</title>
+  <meta name="description" content="Detailed breakdown of how Marapone's private AI blueprint auditor works — reads PDFs, flags RFI risks, synthesizes daily logs, predicts cash-flow impacts. Runs on your machine. No cloud." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#1a1a1a', gunmetal: '#232323', steel: '#2e2e2e',
+            plate: '#3a3a3a', hiviz: '#f97316', hiviz2: '#fb923c',
+            chalk: '#e8e8e8', fog: '#a0a0a0',
+          },
+          fontFamily: {
+            display: ['Bebas Neue', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+            mono: ['DM Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    .screen-placeholder { background: #232323; border: 1px solid #3a3a3a; border-radius: 8px; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index-new.html" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <div class="hidden md:flex items-center gap-8 font-body text-sm font-medium text-fog">
+        <a href="index-new.html" class="hover:text-chalk transition-colors">Home</a>
+        <a href="how-it-works-new.html" class="text-chalk">How It Works</a>
+        <a href="pricing-new.html" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="about-new.html" class="hover:text-chalk transition-colors">About</a>
+        <a href="index-new.html#audit" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors">Free Audit →</a>
+      </div>
+      <button class="md:hidden text-fog" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex flex-col gap-3 text-sm font-medium">
+      <a href="index-new.html" class="text-fog pt-3 hover:text-chalk">Home</a>
+      <a href="how-it-works-new.html" class="text-chalk">How It Works</a>
+      <a href="pricing-new.html" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="about-new.html" class="text-fog hover:text-chalk">About</a>
+      <a href="index-new.html#audit" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Free Audit →</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="grid-dot py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-sm mb-3">// No black boxes</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-4">HOW THE<br/><span class="text-hiviz">TOOL WORKS</span></h1>
+      <p class="text-fog max-w-2xl mx-auto leading-relaxed">This isn't a generic chatbot you throw documents at. It's a private, fine-tuned AI trained on your specific doc formats — blueprints, RFIs, daily logs — built to do one job well: save your project team hours of document review every week.</p>
+    </div>
+  </section>
+
+  <!-- MODULE 1: Blueprint Auditor -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">01</div>
+            <p class="font-mono text-hiviz text-sm">BLUEPRINT AUDITOR</p>
+          </div>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">YOUR 300-PAGE<br/>BLUEPRINT,<br/><span class="text-hiviz">ACTUALLY READ</span></h2>
+          <p class="text-fog leading-relaxed mb-6">
+            You drop in a PDF — could be architectural drawings, structural plans, mechanical/electrical specs, any combination. The AI reads the entire thing, not just the text layer, and returns a structured audit report.
+          </p>
+          <div class="space-y-4">
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Scope extraction</p>
+              <p class="text-fog text-sm">Pulls out key scope items: floor areas, structural elements, material specs, phasing notes — listed clearly, not buried in page 247.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Conflict detection</p>
+              <p class="text-fog text-sm">Flags when the architectural drawings say one thing and the structural specs say another. The kind of thing that causes $40k change orders if you miss it in bid.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Ambiguity flagging</p>
+              <p class="text-fog text-sm">Identifies vague or underspecified items that need clarification before you mobilize trades. Stops assumptions from becoming delays.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Construction example</p>
+              <p class="text-fog text-sm italic">"Structural drawing S3.2 specifies W250×89 beams for grid line 4. Architectural A2.1 shows a depth of 200mm at the same location — dimensional conflict requiring RFI."</p>
+            </div>
+          </div>
+        </div>
+        <!-- Screenshot placeholder -->
+        <div>
+          <div class="screen-placeholder">
+            <div class="text-center p-6">
+              <p class="font-mono text-xs text-fog mb-2">[ SCREENSHOT PLACEHOLDER ]</p>
+              <p class="font-mono text-xs text-plate"><!-- upload your real demo screenshot here --></p>
+              <p class="text-fog text-sm mt-2">Blueprint audit output example</p>
+            </div>
+          </div>
+          <p class="text-xs font-mono text-fog mt-2">Sample output: blueprint conflict report</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 2: RFI Tracker -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Screenshot first on desktop -->
+        <div class="order-2 lg:order-1">
+          <div class="screen-placeholder">
+            <div class="text-center p-6">
+              <p class="font-mono text-xs text-fog mb-2">[ SCREENSHOT PLACEHOLDER ]</p>
+              <p class="font-mono text-xs text-plate"><!-- upload your RFI tracking demo screenshot here --></p>
+              <p class="text-fog text-sm mt-2">RFI risk matrix example</p>
+            </div>
+          </div>
+          <p class="text-xs font-mono text-fog mt-2">Sample output: RFI priority + critical path flags</p>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">02</div>
+            <p class="font-mono text-hiviz text-sm">RFI AUDITOR</p>
+          </div>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">YOUR RFI LOG,<br/><span class="text-hiviz">ACTUALLY MANAGED</span></h2>
+          <p class="text-fog leading-relaxed mb-6">
+            Feed it your full RFI backlog — sent, received, answered, unanswered. It reads every one, cross-references against the blueprints, and tells you exactly what's at risk.
+          </p>
+          <div class="space-y-4">
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Critical path mapping</p>
+              <p class="text-fog text-sm">Which open RFIs are sitting on your critical path? The AI tells you specifically, based on the trade sequence in your specs.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Response status tracking</p>
+              <p class="text-fog text-sm">Identifies which RFIs have been unanswered longest and flags aging items before they become formal delay claims.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Construction example</p>
+              <p class="text-fog text-sm italic">"RFI #42 (masonry window lintel spec) submitted 18 days ago. No response received. Framing for Level 3 windows cannot proceed without answer. Critical path impact: est. 3–5 days if not resolved by week-end."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 3: Daily Log Synthesis -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">03</div>
+            <p class="font-mono text-hiviz text-sm">DAILY LOG SYNTHESIS</p>
+          </div>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WEEKS OF LOGS,<br/><span class="text-hiviz">ONE CLEAR REPORT</span></h2>
+          <p class="text-fog leading-relaxed mb-6">
+            Your site super files a daily log every day. That's 20+ logs a month per project. Nobody reads all of them. The AI does — and surfaces what matters.
+          </p>
+          <div class="space-y-4">
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Weekly rollup</p>
+              <p class="text-fog text-sm">Turns 5 days of daily logs into one clean summary: manpower counts, weather delays, deficiency notes, and anything that looks like a pattern.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Delay pattern detection</p>
+              <p class="text-fog text-sm">If the same trade is consistently logging short crew sizes on Mondays, or if a supplier is mentioned in delay notes three weeks running — it connects those dots.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Claims protection</p>
+              <p class="text-fog text-sm">If it ever comes to a dispute, having your delay events systematically documented and cross-referenced is worth a lot. This builds that record automatically.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="screen-placeholder">
+            <div class="text-center p-6">
+              <p class="font-mono text-xs text-fog mb-2">[ SCREENSHOT PLACEHOLDER ]</p>
+              <p class="font-mono text-xs text-plate"><!-- upload your daily log synthesis demo screenshot here --></p>
+              <p class="text-fog text-sm mt-2">Daily log weekly rollup example</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4: Cash Flow + Risk Signals -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="order-2 lg:order-1">
+          <div class="screen-placeholder">
+            <div class="text-center p-6">
+              <p class="font-mono text-xs text-fog mb-2">[ SCREENSHOT PLACEHOLDER ]</p>
+              <p class="font-mono text-xs text-plate"><!-- upload your cash-flow signal demo screenshot here --></p>
+              <p class="text-fog text-sm mt-2">Cash-flow signal output example</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">04</div>
+            <p class="font-mono text-hiviz text-sm">DELAY & CASH-FLOW SIGNALS</p>
+          </div>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WARNINGS BEFORE<br/><span class="text-hiviz">THEY'RE EMERGENCIES</span></h2>
+          <p class="text-fog leading-relaxed mb-6">
+            Not an accounting system. Not a scheduling tool. Just simple, early signals from your docs: when your draw schedule is at risk, and why.
+          </p>
+          <div class="space-y-4">
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Delay cluster analysis</p>
+              <p class="text-fog text-sm">When 3+ delay events cluster in the same phase, it flags the potential draw impact before you're having that conversation with the bank.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Risk summary per phase</p>
+              <p class="text-fog text-sm">Each phase of the project gets a simple risk score: low / medium / high, based on what's in your RFIs, logs, and blueprint conflicts.</p>
+            </div>
+            <div class="tape-line">
+              <p class="text-chalk font-semibold text-sm mb-1">Logistics tie-in</p>
+              <p class="text-fog text-sm">Predicts delays from port/customs docs that impact material arrival on site — useful if supplier lead times or delivery confirmations are part of your doc set.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT'S NOT -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-3">// Honest limitations</p>
+      <h2 class="font-display text-4xl text-chalk mb-8">WHAT THIS IS <span class="text-hiviz">NOT</span></h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-steel border border-plate rounded p-4 flex items-start gap-3">
+          <span class="text-plate text-lg mt-0.5">✗</span>
+          <div>
+            <p class="text-chalk text-sm font-semibold">Not a full scheduling tool</p>
+            <p class="text-fog text-xs mt-1">It reads your schedules and flags risks, but it doesn't replace Procore or your P6/MS Project if you're using those.</p>
+          </div>
+        </div>
+        <div class="bg-steel border border-plate rounded p-4 flex items-start gap-3">
+          <span class="text-plate text-lg mt-0.5">✗</span>
+          <div>
+            <p class="text-chalk text-sm font-semibold">Not an accounting system</p>
+            <p class="text-fog text-xs mt-1">Cash-flow signals are early warnings from doc patterns, not a real-time ledger or draw management system.</p>
+          </div>
+        </div>
+        <div class="bg-steel border border-plate rounded p-4 flex items-start gap-3">
+          <span class="text-plate text-lg mt-0.5">✗</span>
+          <div>
+            <p class="text-chalk text-sm font-semibold">Not an AI chatbot</p>
+            <p class="text-fog text-xs mt-1">It doesn't hallucinate answers to vague questions. It reads specific docs and returns structured outputs based on what's actually in them.</p>
+          </div>
+        </div>
+        <div class="bg-steel border border-plate rounded p-4 flex items-start gap-3">
+          <span class="text-plate text-lg mt-0.5">✗</span>
+          <div>
+            <p class="text-chalk text-sm font-semibold">Not a cloud SaaS product</p>
+            <p class="text-fog text-xs mt-1">No logins. No dashboard. No subscription. It's a local tool that runs on your hardware and produces reports. Built once, runs forever.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WANT TO SEE IT ON<br/><span class="text-hiviz">YOUR ACTUAL DOCS?</span></h2>
+      <p class="text-fog mb-8 leading-relaxed">The free 24h audit is the best way to see if this is worth your time. Send us one real PDF. We'll run it, and you'll get back a real report — no demo data, no made-up output.</p>
+      <a href="index-new.html#audit" class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
+        Get Your Free 24h Blueprint Audit →
+      </a>
+      <p class="text-xs font-mono text-fog mt-4">Usually back to you within 24 hours. One client at a time.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="index-new.html" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex gap-6 text-sm text-fog font-body">
+          <a href="index-new.html" class="hover:text-chalk">Home</a>
+          <a href="how-it-works-new.html" class="hover:text-chalk">How It Works</a>
+          <a href="pricing-new.html" class="hover:text-chalk">Pricing</a>
+          <a href="about-new.html" class="hover:text-chalk">About</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">Built & run by the Marapone team in Willowdale, Ontario<br/>No fluff, just tools you own</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

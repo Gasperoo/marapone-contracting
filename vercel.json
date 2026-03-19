@@ -1,6 +1,22 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/index-new.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about-new.html"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/pricing-new.html"
+    },
+    {
+      "source": "/how-it-works",
+      "destination": "/how-it-works-new.html"
+    },
+    {
       "source": "/api/account/(.*)",
       "destination": "/api/express"
     },

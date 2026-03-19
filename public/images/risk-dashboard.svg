@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="hG2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="600" fill="#1a1a1a" rx="8"/>
+  <rect width="960" height="3" fill="#f97316"/>
+
+  <!-- Title bar -->
+  <rect y="3" width="960" height="42" fill="url(#hG2)"/>
+  <rect y="44" width="960" height="1" fill="#3a3a3a"/>
+  <circle cx="22" cy="24" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="40" cy="24" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="58" cy="24" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="480" y="20" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="11" text-anchor="middle">MARAPONE AI  ·  Delay &amp; Cash-Flow Risk Engine  ·  v2.4.1</text>
+  <text x="480" y="35" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="12" text-anchor="middle" font-weight="bold">TOWER WEST  ·  Risk Signal Dashboard  ·  As of Mar 14, 2026</text>
+
+  <!-- ---- PHASE RISK CARDS ---- -->
+  <text x="16" y="64" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">◈  PHASE RISK SCORES  —  derived from RFI log, daily logs, blueprint conflicts, and supplier delays</text>
+
+  <!-- Phase 1: Sitework & Foundations -->
+  <rect x="16" y="72" width="216" height="110" fill="#1a2414" rx="4" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="16" y="72" width="216" height="28" fill="#1e2e1a" rx="4"/>
+  <rect x="16" y="96" width="216" height="4" fill="#1e2e1a"/>
+  <text x="26" y="90" fill="#22c55e" font-family="'Courier New',monospace" font-size="9" font-weight="bold">PHASE 1  ·  SITEWORK &amp; FOUNDATIONS</text>
+  <text x="26" y="112" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="11">Status: COMPLETE</text>
+  <rect x="26" y="120" width="52" height="20" fill="#22c55e" rx="3"/>
+  <text x="52" y="134" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" font-weight="bold">LOW</text>
+  <text x="26" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Open RFIs: 0  ·  Conflicts: 0</text>
+  <text x="26" y="170" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Final draw: Submitted  ·  No exposure</text>
+
+  <!-- Phase 2: Structural Frame -->
+  <rect x="244" y="72" width="216" height="110" fill="#231e14" rx="4" stroke="#eab308" stroke-width="1.5"/>
+  <rect x="244" y="72" width="216" height="28" fill="#2a2414" rx="4"/>
+  <rect x="244" y="96" width="216" height="4" fill="#2a2414"/>
+  <text x="254" y="90" fill="#eab308" font-family="'Courier New',monospace" font-size="9" font-weight="bold">PHASE 2  ·  STRUCTURAL FRAME</text>
+  <text x="254" y="112" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="11">Status: IN PROGRESS  (L1–L5 done)</text>
+  <rect x="254" y="120" width="52" height="20" fill="#eab308" rx="3"/>
+  <text x="280" y="134" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" font-weight="bold">MED</text>
+  <text x="254" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Open RFIs: 3  ·  Conflicts: 2 (resolved)</text>
+  <text x="254" y="170" fill="#eab308" font-family="'Courier New',monospace" font-size="9">Steel delivery delays impacting L6 steel</text>
+
+  <!-- Phase 3: Envelope & Exterior -->
+  <rect x="472" y="72" width="216" height="110" fill="#231a1a" rx="4" stroke="#ef4444" stroke-width="2"/>
+  <rect x="472" y="72" width="216" height="28" fill="#2e1a1a" rx="4"/>
+  <rect x="472" y="96" width="216" height="4" fill="#2e1a1a"/>
+  <text x="482" y="90" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">PHASE 3  ·  ENVELOPE &amp; EXTERIOR  ⚡</text>
+  <text x="482" y="112" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="11">Status: NOT STARTED</text>
+  <rect x="482" y="120" width="52" height="20" fill="#ef4444" rx="3"/>
+  <text x="508" y="134" fill="#ffffff" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" font-weight="bold">HIGH</text>
+  <text x="482" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Open RFIs: 4  ·  Conflicts: 3 (unresolved)</text>
+  <text x="482" y="170" fill="#ef4444" font-family="'Courier New',monospace" font-size="9">Glazing spec &amp; lintel conflicts block start</text>
+
+  <!-- Phase 4: MEP Rough-in -->
+  <rect x="700" y="72" width="244" height="110" fill="#231e14" rx="4" stroke="#eab308" stroke-width="1.5"/>
+  <rect x="700" y="72" width="244" height="28" fill="#2a2414" rx="4"/>
+  <rect x="700" y="96" width="244" height="4" fill="#2a2414"/>
+  <text x="710" y="90" fill="#eab308" font-family="'Courier New',monospace" font-size="9" font-weight="bold">PHASE 4  ·  MEP ROUGH-IN</text>
+  <text x="710" y="112" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="11">Status: PARTIAL  (mechanical only)</text>
+  <rect x="710" y="120" width="52" height="20" fill="#eab308" rx="3"/>
+  <text x="736" y="134" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" font-weight="bold">MED</text>
+  <text x="710" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Open RFIs: 5  ·  Duct/beam conflict pending</text>
+  <text x="710" y="170" fill="#eab308" font-family="'Courier New',monospace" font-size="9">Ceiling height RFI may cascade to finishes</text>
+
+  <!-- ---- DELAY CLUSTER TIMELINE ---- -->
+  <rect y="196" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="216" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚠  DELAY CLUSTER ANALYSIS  —  events grouped by phase and time window</text>
+
+  <!-- Timeline area -->
+  <rect x="16" y="222" width="928" height="120" fill="#232323" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+
+  <!-- Timeline baseline -->
+  <line x1="80" y1="310" x2="930" y2="310" stroke="#3a3a3a" stroke-width="1.5"/>
+
+  <!-- Month markers -->
+  <text x="90" y="325" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">JAN</text>
+  <line x1="120" y1="306" x2="120" y2="314" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="256" y="325" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">FEB</text>
+  <line x1="280" y1="306" x2="280" y2="314" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="420" y="325" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">MAR (now)</text>
+  <line x1="440" y1="306" x2="440" y2="314" stroke="#f97316" stroke-width="1.5"/>
+  <text x="578" y="325" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">APR (proj)</text>
+  <line x1="600" y1="306" x2="600" y2="314" stroke="#3a3a3a" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="738" y="325" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">MAY (proj)</text>
+  <line x1="760" y1="306" x2="760" y2="314" stroke="#3a3a3a" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Delay clusters -->
+  <!-- Jan cluster (weather) -->
+  <rect x="130" y="276" width="60" height="28" fill="#3b82f6" rx="3" opacity="0.8"/>
+  <text x="160" y="294" fill="#ffffff" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">Weather ×3</text>
+  <line x1="160" y1="304" x2="160" y2="310" stroke="#3b82f6" stroke-width="1.5"/>
+
+  <!-- Feb cluster (material) -->
+  <rect x="288" y="260" width="80" height="28" fill="#eab308" rx="3" opacity="0.8"/>
+  <text x="328" y="278" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">Steel delivery ×3</text>
+  <line x1="328" y1="288" x2="328" y2="310" stroke="#eab308" stroke-width="1.5"/>
+
+  <!-- Mar cluster (RFI + blueprint conflicts) -->
+  <rect x="380" y="244" width="110" height="28" fill="#ef4444" rx="3" opacity="0.9"/>
+  <text x="435" y="262" fill="#ffffff" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">RFI block + conflicts ×5</text>
+  <line x1="435" y1="272" x2="435" y2="310" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="435" y="240" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">⚠ CLUSTER RISK</text>
+
+  <!-- Labels left -->
+  <text x="26" y="242" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">Phase 2</text>
+  <text x="26" y="270" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">Phase 3</text>
+  <text x="26" y="298" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">Phase 1</text>
+
+  <!-- ---- DRAW IMPACT SECTION ---- -->
+  <rect y="356" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="375" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">◈  DRAW SCHEDULE IMPACT  —  based on current delay cluster analysis</text>
+
+  <!-- Draw cards -->
+  <rect x="16" y="382" width="218" height="80" fill="#232323" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="26" y="398" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">DRAW #4  ·  Foundation Complete</text>
+  <text x="26" y="416" fill="#22c55e" font-family="'Courier New',monospace" font-size="13" font-weight="bold">SUBMITTED</text>
+  <text x="26" y="432" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Amount: $840,000</text>
+  <text x="26" y="448" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">Risk: None  ·  Approved</text>
+
+  <rect x="250" y="382" width="218" height="80" fill="#232323" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="260" y="398" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">DRAW #5  ·  Frame L1–L5</text>
+  <text x="260" y="416" fill="#22c55e" font-family="'Courier New',monospace" font-size="13" font-weight="bold">SUBMITTED</text>
+  <text x="260" y="432" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Amount: $1,240,000</text>
+  <text x="260" y="448" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">Risk: None  ·  Approved</text>
+
+  <rect x="484" y="382" width="218" height="80" fill="#231e14" rx="4" stroke="#eab308" stroke-width="1.5"/>
+  <text x="494" y="398" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">DRAW #6  ·  Frame L6–L8 + Roof</text>
+  <text x="494" y="416" fill="#eab308" font-family="'Courier New',monospace" font-size="13" font-weight="bold">AT RISK</text>
+  <text x="494" y="432" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Amount: $980,000  ·  Target: Apr 30</text>
+  <text x="494" y="448" fill="#eab308" font-family="'Courier New',monospace" font-size="9">Steel delays may push to May 14  (+14d)</text>
+
+  <rect x="718" y="382" width="226" height="80" fill="#231a1a" rx="4" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="728" y="398" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">DRAW #7  ·  Envelope Complete</text>
+  <text x="728" y="416" fill="#ef4444" font-family="'Courier New',monospace" font-size="13" font-weight="bold">HIGH RISK</text>
+  <text x="728" y="432" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Amount: $1,650,000  ·  Target: Jun 30</text>
+  <text x="728" y="448" fill="#ef4444" font-family="'Courier New',monospace" font-size="9">3 unresolved conflicts must clear first</text>
+
+  <!-- Supply chain section -->
+  <rect y="474" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="475" width="960" height="65" fill="#1e1a14"/>
+  <text x="16" y="494" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚡  SUPPLY CHAIN FLAGS  —  material delivery risk signals from supplier communications</text>
+  <text x="16" y="512" fill="#ef4444" font-family="'Courier New',monospace" font-size="9">Stelco Transport (steel):  3 of last 5 deliveries late  ·  Avg delay: 3.2h  ·  Recommendation: issue formal notice or replace for L6–L8 steel run</text>
+  <text x="16" y="527" fill="#eab308" font-family="'Courier New',monospace" font-size="9">Curtainwall fabricator:  Confirmed 6-week lead time  ·  Order must be placed by Apr 2 to hit Phase 3 start without delay</text>
+  <text x="16" y="542" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">Ready-mix concrete (replacement supplier):  Confirmed available  ·  Pricing within 2% of current  ·  Test delivery recommended</text>
+
+  <!-- Bottom bar -->
+  <rect y="540" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="541" width="960" height="59" fill="#232323"/>
+  <text x="16" y="558" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Marapone Risk Signal Engine  ·  inputs: 62 RFIs, 77 daily logs, 312-page blueprint set, 18 supplier comms  ·  on-premise  ·  no cloud</text>
+  <text x="16" y="574" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">IMMEDIATE ACTION:  Resolve Phase 3 conflicts (RFIs #042, #038) before Apr 2 or Draw #7 will slip to Q4. Est. exposure: $1.65M draw delay + liquidated damages clause.</text>
+  <text x="16" y="590" fill="#3a3a3a" font-family="'Courier New',monospace" font-size="9">risk_report_id: RR-2026-0314-TW  ·  confidence: 96.1%  ·  private_inference_only</text>
+</svg>

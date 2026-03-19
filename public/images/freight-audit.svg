@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="hG4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="600" fill="#1a1a1a" rx="8"/>
+  <rect width="960" height="3" fill="#f97316"/>
+
+  <!-- Title bar -->
+  <rect y="3" width="960" height="42" fill="url(#hG4)"/>
+  <rect y="44" width="960" height="1" fill="#3a3a3a"/>
+  <circle cx="22" cy="24" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="40" cy="24" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="58" cy="24" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="480" y="20" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="11" text-anchor="middle">MARAPONE AI  ·  Freight Invoice Audit Engine  ·  v2.4.1</text>
+  <text x="480" y="35" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="12" text-anchor="middle" font-weight="bold">Monthly Freight Audit  ·  Feb 2026  ·  28 invoices  ·  5 carriers  ·  processed Mar 1, 2026</text>
+
+  <!-- Summary metrics -->
+  <rect y="45" width="960" height="68" fill="#232323"/>
+  <rect y="112" width="960" height="1" fill="#3a3a3a"/>
+
+  <rect x="16" y="57" width="140" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="86" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">INVOICES AUDITED</text>
+  <text x="86" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">28</text>
+
+  <rect x="168" y="57" width="140" height="44" fill="#2e2e2e" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="238" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DISCREPANCIES</text>
+  <text x="238" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">9</text>
+
+  <rect x="320" y="57" width="140" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="390" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DUPLICATES</text>
+  <text x="390" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">2</text>
+
+  <rect x="472" y="57" width="180" height="44" fill="#2e1a1a" rx="4" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="562" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">TOTAL OVERCHARGES</text>
+  <text x="562" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">$8,240</text>
+
+  <rect x="664" y="57" width="140" height="44" fill="#232323" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="734" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">TOTAL BILLED</text>
+  <text x="734" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="18" text-anchor="middle" font-weight="bold">$142,800</text>
+
+  <rect x="816" y="57" width="128" height="44" fill="#1e2514" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">RECOVERY RATE</text>
+  <text x="880" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">5.8%</text>
+
+  <!-- Invoice audit table -->
+  <text x="16" y="132" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚠  FLAGGED INVOICES  —  rate discrepancies, accessorial overcharges, and duplicate billing</text>
+
+  <!-- Table header -->
+  <rect y="140" width="960" height="24" fill="#2e2e2e"/>
+  <rect y="163" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">INVOICE #</text>
+  <text x="120" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">CARRIER</text>
+  <text x="240" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">LANE</text>
+  <text x="380" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">ISSUE TYPE</text>
+  <text x="540" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">BILLED</text>
+  <text x="620" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">CONTRACT</text>
+  <text x="710" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">OVERCHARGE</text>
+  <text x="800" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">SEVERITY</text>
+  <text x="888" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">ACTION</text>
+
+  <!-- Row 1 — Fuel surcharge -->
+  <rect y="164" width="960" height="30" fill="#231a1a"/>
+  <rect x="0" y="164" width="3" height="30" fill="#ef4444"/>
+  <rect y="193" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="183" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">INV-2847</text>
+  <text x="120" y="183" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Apex Freight</text>
+  <text x="240" y="183" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Toronto → Vancouver</text>
+  <rect x="374" y="169" width="108" height="16" fill="#2e1a1a" rx="2" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="428" y="181" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">Fuel surcharge overcharge</text>
+  <text x="540" y="183" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">$1,840</text>
+  <text x="620" y="183" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">$1,528</text>
+  <text x="710" y="183" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">+$312</text>
+  <rect x="795" y="169" width="52" height="16" fill="#ef4444" rx="2"/>
+  <text x="821" y="181" fill="#ffffff" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">HIGH</text>
+  <text x="886" y="183" fill="#f97316" font-family="'Courier New',monospace" font-size="8">Dispute →</text>
+
+  <!-- Row 2 — Duplicate -->
+  <rect y="194" width="960" height="30" fill="#1a1a1a"/>
+  <rect x="0" y="194" width="3" height="30" fill="#ef4444"/>
+  <rect y="223" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="213" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">INV-2851</text>
+  <text x="120" y="213" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Apex Freight</text>
+  <text x="240" y="213" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Toronto → Vancouver</text>
+  <rect x="374" y="199" width="84" height="16" fill="#2e1a1a" rx="2" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="416" y="211" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">DUPLICATE BILLING</text>
+  <text x="540" y="213" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">$2,340</text>
+  <text x="620" y="213" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">ALREADY PAID</text>
+  <text x="710" y="213" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">+$2,340</text>
+  <rect x="795" y="199" width="52" height="16" fill="#ef4444" rx="2"/>
+  <text x="821" y="211" fill="#ffffff" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">HIGH</text>
+  <text x="886" y="213" fill="#ef4444" font-family="'Courier New',monospace" font-size="8">DO NOT PAY</text>
+
+  <!-- Row 3 — Detention -->
+  <rect y="224" width="960" height="30" fill="#231e14"/>
+  <rect x="0" y="224" width="3" height="30" fill="#eab308"/>
+  <rect y="253" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="243" fill="#eab308" font-family="'Courier New',monospace" font-size="9" font-weight="bold">INV-2863</text>
+  <text x="120" y="243" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">FastLane Logistics</text>
+  <text x="240" y="243" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Montreal → Calgary</text>
+  <rect x="374" y="229" width="108" height="16" fill="#2a2414" rx="2" stroke="#eab308" stroke-width="0.5"/>
+  <text x="428" y="241" fill="#eab308" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">Detention exceeds cap</text>
+  <text x="540" y="243" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">$780</text>
+  <text x="620" y="243" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">$440 cap</text>
+  <text x="710" y="243" fill="#eab308" font-family="'Courier New',monospace" font-size="9" font-weight="bold">+$340</text>
+  <rect x="795" y="229" width="52" height="16" fill="#eab308" rx="2"/>
+  <text x="821" y="241" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">MED</text>
+  <text x="886" y="243" fill="#f97316" font-family="'Courier New',monospace" font-size="8">Dispute →</text>
+
+  <!-- Row 4 — Accessorial -->
+  <rect y="254" width="960" height="30" fill="#1a1a1a"/>
+  <rect x="0" y="254" width="3" height="30" fill="#eab308"/>
+  <rect y="283" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="273" fill="#eab308" font-family="'Courier New',monospace" font-size="9" font-weight="bold">INV-2871</text>
+  <text x="120" y="273" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">NorthStar Trans.</text>
+  <text x="240" y="273" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Toronto → Edmonton</text>
+  <rect x="374" y="259" width="108" height="16" fill="#2a2414" rx="2" stroke="#eab308" stroke-width="0.5"/>
+  <text x="428" y="271" fill="#eab308" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">Residential fee applied</text>
+  <text x="540" y="273" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">$1,460</text>
+  <text x="620" y="273" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">$1,200</text>
+  <text x="710" y="273" fill="#eab308" font-family="'Courier New',monospace" font-size="9" font-weight="bold">+$260</text>
+  <rect x="795" y="259" width="52" height="16" fill="#eab308" rx="2"/>
+  <text x="821" y="271" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">MED</text>
+  <text x="886" y="273" fill="#f97316" font-family="'Courier New',monospace" font-size="8">Review →</text>
+
+  <!-- Row 5 — Duplicate 2 -->
+  <rect y="284" width="960" height="30" fill="#231a1a"/>
+  <rect x="0" y="284" width="3" height="30" fill="#ef4444"/>
+  <rect y="313" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="303" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">INV-2878</text>
+  <text x="120" y="303" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">FastLane Logistics</text>
+  <text x="240" y="303" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Vancouver → Toronto</text>
+  <rect x="374" y="289" width="84" height="16" fill="#2e1a1a" rx="2" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="416" y="301" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">DUPLICATE BILLING</text>
+  <text x="540" y="303" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">$3,100</text>
+  <text x="620" y="303" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">ALREADY PAID</text>
+  <text x="710" y="303" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">+$3,100</text>
+  <rect x="795" y="289" width="52" height="16" fill="#ef4444" rx="2"/>
+  <text x="821" y="301" fill="#ffffff" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">HIGH</text>
+  <text x="886" y="303" fill="#ef4444" font-family="'Courier New',monospace" font-size="8">DO NOT PAY</text>
+
+  <!-- Row 6 - Pass examples -->
+  <rect y="314" width="960" height="30" fill="#1a1a1a"/>
+  <rect x="0" y="314" width="3" height="30" fill="#22c55e"/>
+  <rect y="343" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="333" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">INV-2855</text>
+  <text x="120" y="333" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Westpac Carriers</text>
+  <text x="240" y="333" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Calgary → Halifax</text>
+  <text x="374" y="333" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">No issues</text>
+  <text x="540" y="333" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">$2,880</text>
+  <text x="620" y="333" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">$2,880</text>
+  <text x="710" y="333" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">$0</text>
+  <rect x="795" y="319" width="52" height="16" fill="#1a2414" rx="2" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="821" y="331" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">✓ PASS</text>
+  <text x="886" y="333" fill="#22c55e" font-family="'Courier New',monospace" font-size="8">Approve</text>
+
+  <text x="16" y="364" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-style="italic">+ 19 additional invoices  ·  17 passed  ·  2 flagged  ·  view all →</text>
+
+  <!-- Carrier scorecard section -->
+  <rect y="374" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="394" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">◈  CARRIER ACCURACY SCORECARD  —  Feb 2026  ·  based on 28 invoices across 5 carriers</text>
+
+  <!-- Carrier cards -->
+  <rect x="16" y="400" width="176" height="80" fill="#231a1a" rx="4" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="26" y="416" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">APEX FREIGHT</text>
+  <text x="26" y="434" fill="#ef4444" font-family="'Courier New',monospace" font-size="18" font-weight="bold">62%</text>
+  <text x="26" y="450" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">accuracy  ·  3 invoices audited</text>
+  <text x="26" y="465" fill="#ef4444" font-family="'Courier New',monospace" font-size="8">2 overcharges  ·  1 duplicate</text>
+  <rect x="26" y="470" width="48" height="6" fill="#2e2e2e" rx="2"/>
+  <rect x="26" y="470" width="30" height="6" fill="#ef4444" rx="2"/>
+
+  <rect x="204" y="400" width="176" height="80" fill="#231e14" rx="4" stroke="#eab308" stroke-width="1"/>
+  <text x="214" y="416" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">FASTLANE LOGISTICS</text>
+  <text x="214" y="434" fill="#eab308" font-family="'Courier New',monospace" font-size="18" font-weight="bold">74%</text>
+  <text x="214" y="450" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">accuracy  ·  7 invoices audited</text>
+  <text x="214" y="465" fill="#eab308" font-family="'Courier New',monospace" font-size="8">2 overcharges  ·  1 duplicate</text>
+  <rect x="214" y="470" width="48" height="6" fill="#2e2e2e" rx="2"/>
+  <rect x="214" y="470" width="36" height="6" fill="#eab308" rx="2"/>
+
+  <rect x="392" y="400" width="176" height="80" fill="#231e14" rx="4" stroke="#eab308" stroke-width="1"/>
+  <text x="402" y="416" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">NORTHSTAR TRANS.</text>
+  <text x="402" y="434" fill="#eab308" font-family="'Courier New',monospace" font-size="18" font-weight="bold">83%</text>
+  <text x="402" y="450" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">accuracy  ·  6 invoices audited</text>
+  <text x="402" y="465" fill="#eab308" font-family="'Courier New',monospace" font-size="8">1 overcharge  ·  0 duplicates</text>
+  <rect x="402" y="470" width="48" height="6" fill="#2e2e2e" rx="2"/>
+  <rect x="402" y="470" width="40" height="6" fill="#eab308" rx="2"/>
+
+  <rect x="580" y="400" width="176" height="80" fill="#1a2414" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="590" y="416" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">WESTPAC CARRIERS</text>
+  <text x="590" y="434" fill="#22c55e" font-family="'Courier New',monospace" font-size="18" font-weight="bold">97%</text>
+  <text x="590" y="450" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">accuracy  ·  8 invoices audited</text>
+  <text x="590" y="465" fill="#22c55e" font-family="'Courier New',monospace" font-size="8">0 overcharges  ·  0 duplicates</text>
+  <rect x="590" y="470" width="48" height="6" fill="#2e2e2e" rx="2"/>
+  <rect x="590" y="470" width="47" height="6" fill="#22c55e" rx="2"/>
+
+  <rect x="768" y="400" width="176" height="80" fill="#1a2414" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="778" y="416" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">CANPAR FREIGHT</text>
+  <text x="778" y="434" fill="#22c55e" font-family="'Courier New',monospace" font-size="18" font-weight="bold">100%</text>
+  <text x="778" y="450" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">accuracy  ·  4 invoices audited</text>
+  <text x="778" y="465" fill="#22c55e" font-family="'Courier New',monospace" font-size="8">0 overcharges  ·  0 duplicates</text>
+  <rect x="778" y="470" width="48" height="6" fill="#2e2e2e" rx="2"/>
+  <rect x="778" y="470" width="48" height="6" fill="#22c55e" rx="2"/>
+
+  <!-- Bottom section -->
+  <rect y="492" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="493" width="960" height="107" fill="#232323"/>
+  <text x="16" y="512" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Marapone Freight Invoice Audit  ·  28 invoices  ·  inputs: carrier contracts + rate tables + invoice PDFs  ·  on-premise  ·  no cloud</text>
+  <text x="16" y="530" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">DISPUTE SUMMARY:  $5,752 in confirmed overcharges (excl. duplicates)  ·  $5,440 in duplicate billings  ·  Total recovery target: $8,240</text>
+  <text x="16" y="548" fill="#eab308" font-family="'Courier New',monospace" font-size="9">⚠  CARRIER RECOMMENDATION:  Apex Freight accuracy 62% over 3 months. Consider rate renegotiation or carrier switch. Contact escalation recommended.</text>
+
+  <!-- Recovery bar -->
+  <text x="16" y="568" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">MONTHLY FREIGHT SPEND  vs  IDENTIFIED OVERCHARGES</text>
+  <rect x="16" y="574" width="700" height="12" fill="#2e2e2e" rx="3"/>
+  <rect x="16" y="574" width="700" height="12" fill="#3b82f6" rx="3" opacity="0.6"/>
+  <rect x="16" y="574" width="40" height="12" fill="#ef4444" rx="3"/>
+  <text x="726" y="584" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">$142,800 billed  ·  $8,240 disputed (5.8%)</text>
+  <text x="16" y="596" fill="#3a3a3a" font-family="'Courier New',monospace" font-size="8">audit_id: FA-2026-02-MONTHLY  ·  model: freight-audit-v2  ·  confidence: 99.1%  ·  private_inference_only</text>
+</svg>

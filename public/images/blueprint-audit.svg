@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Main background -->
+  <rect width="960" height="600" fill="#1a1a1a" rx="8"/>
+
+  <!-- Orange top accent line -->
+  <rect width="960" height="3" fill="#f97316" rx="0"/>
+
+  <!-- Title bar -->
+  <rect y="3" width="960" height="42" fill="url(#headerGrad)"/>
+  <rect y="44" width="960" height="1" fill="#3a3a3a"/>
+
+  <!-- Window controls -->
+  <circle cx="22" cy="24" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="40" cy="24" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="58" cy="24" r="5.5" fill="#22c55e" opacity="0.8"/>
+
+  <!-- Title bar text -->
+  <text x="480" y="20" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="11" text-anchor="middle">MARAPONE AI  ·  Blueprint Audit Engine  ·  v2.4.1</text>
+  <text x="480" y="35" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="12" text-anchor="middle" font-weight="bold">tower_west_cd_rev3.pdf  ·  312 pages  ·  analysed 14 Mar 2026  10:42</text>
+
+  <!-- Summary metrics strip -->
+  <rect y="45" width="960" height="68" fill="#232323"/>
+  <rect y="112" width="960" height="1" fill="#3a3a3a"/>
+
+  <!-- Metric cards -->
+  <!-- Pages -->
+  <rect x="16" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="90" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">PAGES PROCESSED</text>
+  <text x="90" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">312</text>
+
+  <!-- Conflicts -->
+  <rect x="172" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="246" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">CONFLICTS FOUND</text>
+  <text x="246" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">7</text>
+
+  <!-- Ambiguities -->
+  <rect x="328" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#eab308" stroke-width="1"/>
+  <text x="402" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">AMBIGUITY FLAGS</text>
+  <text x="402" y="93" fill="#eab308" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">23</text>
+
+  <!-- Scope items -->
+  <rect x="484" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="558" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">SCOPE ITEMS</text>
+  <text x="558" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">84</text>
+
+  <!-- Drawings -->
+  <rect x="640" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="714" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">DRAWING SETS</text>
+  <text x="714" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">18</text>
+
+  <!-- Status -->
+  <rect x="796" y="57" width="148" height="44" fill="#1e2e1e" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="870" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">STATUS</text>
+  <text x="870" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="14" text-anchor="middle" font-weight="bold">COMPLETE</text>
+
+  <!-- ---- CONFLICTS TABLE ---- -->
+  <text x="16" y="134" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚠  CONFLICTS DETECTED  (7 items require resolution before bid submission)</text>
+
+  <!-- Table header -->
+  <rect y="142" width="960" height="24" fill="#2e2e2e"/>
+  <rect y="165" width="960" height="1" fill="#3a3a3a"/>
+  <text x="24" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-weight="bold">SEV</text>
+  <text x="78" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-weight="bold">DRAWING REF A</text>
+  <text x="222" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-weight="bold">DRAWING REF B</text>
+  <text x="366" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-weight="bold">CONFLICT DESCRIPTION</text>
+  <text x="730" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-weight="bold">TRADE IMPACT</text>
+  <text x="890" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-weight="bold">RFI REQ</text>
+
+  <!-- Row 1 - HIGH -->
+  <rect y="166" width="960" height="30" fill="#231818"/>
+  <rect y="196" width="960" height="1" fill="#3a3a3a"/>
+  <rect x="16" y="171" width="46" height="18" fill="#ef4444" rx="3"/>
+  <text x="39" y="184" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">HIGH</text>
+  <text x="78" y="185" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">S3.2 (grid 4, lvl 3)</text>
+  <text x="222" y="185" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">A2.1 (same location)</text>
+  <text x="366" y="185" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Structural beam W250×89 vs arch. 200mm depth — 50mm conflict</text>
+  <text x="730" y="185" fill="#ef4444" font-family="'Courier New',monospace" font-size="10">Structural / Arch</text>
+  <rect x="890" y="171" width="42" height="18" fill="#ef4444" rx="3"/>
+  <text x="911" y="184" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">YES</text>
+
+  <!-- Row 2 - HIGH -->
+  <rect y="197" width="960" height="30" fill="#1a1a1a"/>
+  <rect y="227" width="960" height="1" fill="#3a3a3a"/>
+  <rect x="16" y="202" width="46" height="18" fill="#ef4444" rx="3"/>
+  <text x="39" y="215" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">HIGH</text>
+  <text x="78" y="216" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">M4.1 (HVAC duct run)</text>
+  <text x="222" y="216" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">S2.8 (sec. beam grid)</text>
+  <text x="366" y="216" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">400mm duct routed through secondary beam web — clearance 0mm</text>
+  <text x="730" y="216" fill="#ef4444" font-family="'Courier New',monospace" font-size="10">Mechanical / Struct</text>
+  <rect x="890" y="202" width="42" height="18" fill="#ef4444" rx="3"/>
+  <text x="911" y="215" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">YES</text>
+
+  <!-- Row 3 - MED -->
+  <rect y="228" width="960" height="30" fill="#231818"/>
+  <rect y="258" width="960" height="1" fill="#3a3a3a"/>
+  <rect x="16" y="233" width="46" height="18" fill="#eab308" rx="3"/>
+  <text x="39" y="246" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">MED</text>
+  <text x="78" y="247" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">A5.3 (reflected ceil.)</text>
+  <text x="222" y="247" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">E1.2 (electrical panel)</text>
+  <text x="366" y="247" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Finished ceiling ht. 2700mm conflicts w/ panel clearance req.</text>
+  <text x="730" y="247" fill="#eab308" font-family="'Courier New',monospace" font-size="10">Electrical / Arch</text>
+  <rect x="890" y="233" width="42" height="18" fill="#eab308" rx="3"/>
+  <text x="911" y="246" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">YES</text>
+
+  <!-- Row 4 - MED -->
+  <rect y="259" width="960" height="30" fill="#1a1a1a"/>
+  <rect y="289" width="960" height="1" fill="#3a3a3a"/>
+  <rect x="16" y="264" width="46" height="18" fill="#eab308" rx="3"/>
+  <text x="39" y="277" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">MED</text>
+  <text x="78" y="278" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">P3.4 (plumbing risers)</text>
+  <text x="222" y="278" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">S4.1 (core wall detail)</text>
+  <text x="366" y="278" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Riser shaft location overlaps shear wall reinforcement zone</text>
+  <text x="730" y="278" fill="#eab308" font-family="'Courier New',monospace" font-size="10">Plumbing / Struct</text>
+  <rect x="890" y="264" width="42" height="18" fill="#eab308" rx="3"/>
+  <text x="911" y="277" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">YES</text>
+
+  <!-- Row 5 - LOW -->
+  <rect y="290" width="960" height="30" fill="#231818"/>
+  <rect y="320" width="960" height="1" fill="#3a3a3a"/>
+  <rect x="16" y="295" width="46" height="18" fill="#3b82f6" rx="3"/>
+  <text x="39" y="308" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">LOW</text>
+  <text x="78" y="309" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">A8.2 (door schedule)</text>
+  <text x="222" y="309" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">F1.1 (fire egress plan)</text>
+  <text x="366" y="309" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Door D-14 listed as 900mm wide; fire egress shows 800mm</text>
+  <text x="730" y="309" fill="#3b82f6" font-family="'Courier New',monospace" font-size="10">Doors / Fire</text>
+  <rect x="890" y="295" width="42" height="18" fill="#3b82f6" rx="3"/>
+  <text x="911" y="308" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">YES</text>
+
+  <!-- ---- SCOPE EXTRACTION ---- -->
+  <rect y="330" width="960" height="1" fill="#f97316" opacity="0.4"/>
+  <text x="16" y="352" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">◈  SCOPE EXTRACTION  —  84 items extracted across 6 categories</text>
+
+  <!-- Scope grid - 3 columns -->
+  <!-- Col 1 -->
+  <rect x="16" y="360" width="294" height="100" fill="#232323" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <rect x="16" y="360" width="294" height="24" fill="#2e2e2e" rx="4"/>
+  <rect x="16" y="380" width="294" height="4" fill="#2e2e2e"/>
+  <text x="30" y="376" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">BUILDING DIMENSIONS</text>
+  <text x="30" y="394" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Total GFA:  4,280 m²</text>
+  <text x="30" y="409" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Levels:  B1, B2, L1 – L8, Roof</text>
+  <text x="30" y="424" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Floor-to-floor:  3,800mm (typ.)</text>
+  <text x="30" y="439" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Basement slab: -6,200mm FFL</text>
+  <text x="30" y="454" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">+ 3 more items</text>
+
+  <!-- Col 2 -->
+  <rect x="334" y="360" width="294" height="100" fill="#232323" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <rect x="334" y="360" width="294" height="24" fill="#2e2e2e" rx="4"/>
+  <rect x="334" y="380" width="294" height="4" fill="#2e2e2e"/>
+  <text x="348" y="376" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">STRUCTURAL SPECIFICATIONS</text>
+  <text x="348" y="394" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Primary frame:  W-series steel</text>
+  <text x="348" y="409" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Concrete grade:  C30 / C40 (core)</text>
+  <text x="348" y="424" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Rebar:  400W, min 15M grade</text>
+  <text x="348" y="439" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Footing type:  Spread + caisson</text>
+  <text x="348" y="454" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">+ 7 more items</text>
+
+  <!-- Col 3 -->
+  <rect x="652" y="360" width="294" height="100" fill="#232323" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <rect x="652" y="360" width="294" height="24" fill="#2e2e2e" rx="4"/>
+  <rect x="652" y="380" width="294" height="4" fill="#2e2e2e"/>
+  <text x="666" y="376" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">MATERIAL SPECIFICATIONS</text>
+  <text x="666" y="394" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Exterior glazing:  Triple IGU, low-e</text>
+  <text x="666" y="409" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Cladding:  Aluminum composite panel</text>
+  <text x="666" y="424" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Roofing:  TPO membrane, R-30</text>
+  <text x="666" y="439" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Interior partitions:  Metal stud, 3 5/8"</text>
+  <text x="666" y="454" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">+ 5 more items</text>
+
+  <!-- ---- AMBIGUITY FLAGS ---- -->
+  <rect y="472" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="473" width="960" height="48" fill="#1e1a14"/>
+  <text x="16" y="492" fill="#eab308" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚡  23 AMBIGUITY FLAGS  —  items requiring clarification before trade mobilization</text>
+  <text x="16" y="510" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Top flags:  Window lintel spec underspecified (A4.2)  ·  Waterproofing membrane thickness not specified (P1.8)  ·  Fire rating for corridor walls not confirmed (F2.3)  +20 more</text>
+
+  <!-- Bottom bar -->
+  <rect y="521" width="960" height="79" fill="#232323"/>
+  <rect y="521" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="540" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Report generated by Marapone Blueprint Audit Engine  ·  Model: construction-audit-v2  ·  Confidence: 98.4%  ·  Runs on-premise, no cloud transfer</text>
+  <text x="16" y="558" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">RECOMMENDED ACTION:  Resolve 7 HIGH/MED conflicts via RFI before issuing bid documents. Estimated risk if unresolved: $40,000–$120,000 in change orders.</text>
+  <text x="16" y="576" fill="#3a3a3a" font-family="'Courier New',monospace" font-size="9">audit_id: BA-2026-0314-TW3  ·  processing_time: 4m 22s  ·  pages_ocr: 312/312  ·  drawings_indexed: 18  ·  private_inference_only</text>
+
+  <!-- Bottom right export buttons -->
+  <rect x="756" y="530" width="88" height="24" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="800" y="546" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Export PDF</text>
+  <rect x="856" y="530" width="88" height="24" fill="#f97316" rx="4"/>
+  <text x="900" y="546" fill="#ffffff" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Export CSV</text>
+</svg>

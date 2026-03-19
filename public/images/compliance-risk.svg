@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="hG5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="600" fill="#1a1a1a" rx="8"/>
+  <rect width="960" height="3" fill="#f97316"/>
+
+  <!-- Title bar -->
+  <rect y="3" width="960" height="42" fill="url(#hG5)"/>
+  <rect y="44" width="960" height="1" fill="#3a3a3a"/>
+  <circle cx="22" cy="24" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="40" cy="24" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="58" cy="24" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="480" y="20" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="11" text-anchor="middle">MARAPONE AI  ·  Compliance &amp; Supply Chain Risk Engine  ·  v2.4.1</text>
+  <text x="480" y="35" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="12" text-anchor="middle" font-weight="bold">Inbound Risk Report  ·  Week of Mar 10–14, 2026  ·  12 active shipments</text>
+
+  <!-- Metrics strip -->
+  <rect y="45" width="960" height="68" fill="#232323"/>
+  <rect y="112" width="960" height="1" fill="#3a3a3a"/>
+
+  <rect x="16" y="57" width="140" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="86" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">SHIPMENTS TRACKED</text>
+  <text x="86" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">12</text>
+
+  <rect x="168" y="57" width="140" height="44" fill="#231a1a" rx="4" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="238" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">HIGH RISK</text>
+  <text x="238" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">3</text>
+
+  <rect x="320" y="57" width="140" height="44" fill="#231e14" rx="4" stroke="#eab308" stroke-width="1"/>
+  <text x="390" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">MEDIUM RISK</text>
+  <text x="390" y="93" fill="#eab308" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">4</text>
+
+  <rect x="472" y="57" width="140" height="44" fill="#1a2414" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="542" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">LOW RISK</text>
+  <text x="542" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">5</text>
+
+  <rect x="624" y="57" width="140" height="44" fill="#231a1a" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="694" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">COMPLIANCE GAPS</text>
+  <text x="694" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">5</text>
+
+  <rect x="776" y="57" width="168" height="44" fill="#2e1a1a" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="860" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">EST. DUTY EXPOSURE</text>
+  <text x="860" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="18" text-anchor="middle" font-weight="bold">$18,400</text>
+
+  <!-- Shipment risk table -->
+  <text x="16" y="132" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">◈  SHIPMENT RISK PROFILES  —  compliance, delivery confidence, and documentation quality</text>
+
+  <!-- Table header -->
+  <rect y="140" width="960" height="24" fill="#2e2e2e"/>
+  <rect y="163" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">SHP #</text>
+  <text x="94" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">ORIGIN</text>
+  <text x="194" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">COMMODITY  /  HS</text>
+  <text x="370" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">ETA</text>
+  <text x="440" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">COMPLIANCE</text>
+  <text x="560" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">DELIVERY CONF.</text>
+  <text x="680" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">DOC QUALITY</text>
+  <text x="790" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">RISK SCORE</text>
+  <text x="886" y="156" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">FLAG</text>
+
+  <!-- SHP-441 HIGH -->
+  <rect y="164" width="960" height="30" fill="#231a1a"/>
+  <rect x="0" y="164" width="3" height="30" fill="#ef4444"/>
+  <rect y="193" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="183" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">SHP-441</text>
+  <text x="94" y="183" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Guangzhou, CN</text>
+  <text x="194" y="183" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Machinery Parts  /  8484.20</text>
+  <text x="370" y="183" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Apr 12</text>
+  <rect x="434" y="169" width="88" height="16" fill="#2e1a1a" rx="2" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="478" y="181" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">CERT MISSING</text>
+  <rect x="554" y="169" width="80" height="16" fill="#2a2414" rx="2" stroke="#eab308" stroke-width="0.5"/>
+  <text x="594" y="181" fill="#eab308" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">74%  — AT RISK</text>
+  <rect x="674" y="169" width="72" height="16" fill="#1a2414" rx="2" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="710" y="181" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">92%  GOOD</text>
+  <rect x="784" y="169" width="68" height="16" fill="#ef4444" rx="2"/>
+  <text x="818" y="181" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">HIGH</text>
+  <text x="886" y="183" fill="#ef4444" font-family="'Courier New',monospace" font-size="8">CoO missing ⚡</text>
+
+  <!-- SHP-438 HIGH -->
+  <rect y="194" width="960" height="30" fill="#1a1a1a"/>
+  <rect x="0" y="194" width="3" height="30" fill="#ef4444"/>
+  <rect y="223" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="213" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">SHP-438</text>
+  <text x="94" y="213" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Shenzhen, CN</text>
+  <text x="194" y="213" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Electronic Components  /  8542.31</text>
+  <text x="370" y="213" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Apr 8</text>
+  <rect x="434" y="199" width="88" height="16" fill="#2e1a1a" rx="2" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="478" y="211" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">GAPS DETECTED</text>
+  <rect x="554" y="199" width="80" height="16" fill="#2e1a1a" rx="2" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="594" y="211" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">51%  — HIGH RISK</text>
+  <rect x="674" y="199" width="72" height="16" fill="#2a2414" rx="2" stroke="#eab308" stroke-width="0.5"/>
+  <text x="710" y="211" fill="#eab308" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">78%  FAIR</text>
+  <rect x="784" y="199" width="68" height="16" fill="#ef4444" rx="2"/>
+  <text x="818" y="211" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">HIGH</text>
+  <text x="886" y="213" fill="#ef4444" font-family="'Courier New',monospace" font-size="8">Supplier delay ⚡</text>
+
+  <!-- SHP-445 HIGH -->
+  <rect y="224" width="960" height="30" fill="#231a1a"/>
+  <rect x="0" y="224" width="3" height="30" fill="#ef4444"/>
+  <rect y="253" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="243" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">SHP-445</text>
+  <text x="94" y="243" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Taipei, TW</text>
+  <text x="194" y="243" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Plastic Resins  /  3904.10</text>
+  <text x="370" y="243" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Apr 19</text>
+  <rect x="434" y="229" width="88" height="16" fill="#2e1a1a" rx="2" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="478" y="241" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">GAPS DETECTED</text>
+  <rect x="554" y="229" width="80" height="16" fill="#2a2414" rx="2" stroke="#eab308" stroke-width="0.5"/>
+  <text x="594" y="241" fill="#eab308" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">68%  — AT RISK</text>
+  <rect x="674" y="229" width="72" height="16" fill="#2e1a1a" rx="2" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="710" y="241" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">61%  POOR</text>
+  <rect x="784" y="229" width="68" height="16" fill="#ef4444" rx="2"/>
+  <text x="818" y="241" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">HIGH</text>
+  <text x="886" y="243" fill="#ef4444" font-family="'Courier New',monospace" font-size="8">REACH regs ⚡</text>
+
+  <!-- SHP-443 MED -->
+  <rect y="254" width="960" height="30" fill="#1a1a1a"/>
+  <rect x="0" y="254" width="3" height="30" fill="#eab308"/>
+  <rect y="283" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="273" fill="#eab308" font-family="'Courier New',monospace" font-size="9" font-weight="bold">SHP-443</text>
+  <text x="94" y="273" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Busan, KR</text>
+  <text x="194" y="273" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Steel Coils  /  7209.18</text>
+  <text x="370" y="273" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Apr 22</text>
+  <rect x="434" y="259" width="88" height="16" fill="#1a2414" rx="2" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="478" y="271" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">COMPLETE</text>
+  <rect x="554" y="259" width="80" height="16" fill="#2a2414" rx="2" stroke="#eab308" stroke-width="0.5"/>
+  <text x="594" y="271" fill="#eab308" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">72%  — AT RISK</text>
+  <rect x="674" y="259" width="72" height="16" fill="#1a2414" rx="2" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="710" y="271" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">95%  GOOD</text>
+  <rect x="784" y="259" width="68" height="16" fill="#eab308" rx="2"/>
+  <text x="818" y="271" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">MED</text>
+  <text x="886" y="273" fill="#eab308" font-family="'Courier New',monospace" font-size="8">Carrier delay</text>
+
+  <!-- SHP-440 LOW -->
+  <rect y="284" width="960" height="30" fill="#231a1a"/>
+  <rect x="0" y="284" width="3" height="30" fill="#22c55e"/>
+  <rect y="313" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="303" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">SHP-440</text>
+  <text x="94" y="303" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Hamburg, DE</text>
+  <text x="194" y="303" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Automotive Parts  /  8708.99</text>
+  <text x="370" y="303" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Apr 5</text>
+  <rect x="434" y="289" width="88" height="16" fill="#1a2414" rx="2" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="478" y="301" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">COMPLETE</text>
+  <rect x="554" y="289" width="80" height="16" fill="#1a2414" rx="2" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="594" y="301" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">94%  — ON TRACK</text>
+  <rect x="674" y="289" width="72" height="16" fill="#1a2414" rx="2" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="710" y="301" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">98%  EXCELLENT</text>
+  <rect x="784" y="289" width="68" height="16" fill="#1a2414" rx="2" stroke="#22c55e" stroke-width="1"/>
+  <text x="818" y="301" fill="#22c55e" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">LOW</text>
+  <text x="886" y="303" fill="#22c55e" font-family="'Courier New',monospace" font-size="8">✓ Clear</text>
+
+  <text x="16" y="332" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-style="italic">+ 7 more shipments  ·  3 medium risk  ·  4 low risk  ·  view all →</text>
+
+  <!-- Detail panel for SHP-441 -->
+  <rect y="346" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="366" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚡  COMPLIANCE DETAIL  —  SHP-441  (highest priority)</text>
+
+  <rect x="16" y="374" width="455" height="136" fill="#232323" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <rect x="16" y="374" width="455" height="26" fill="#2e1a1a" rx="4"/>
+  <rect x="16" y="396" width="455" height="4" fill="#2e1a1a"/>
+  <text x="26" y="390" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">SHP-441  ·  COMPLIANCE CHECKLIST  ·  Guangzhou → Toronto</text>
+  <text x="26" y="412" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">✓  Bill of Lading  —  Complete, all fields validated</text>
+  <text x="26" y="428" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">✓  Commercial Invoice  —  Complete (qty discrepancy noted separately)</text>
+  <text x="26" y="444" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">✓  Packing List  —  Present (line 3 qty to be corrected)</text>
+  <text x="26" y="460" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">✓  Customs Entry Form (B3)  —  Draft complete, not yet filed</text>
+  <text x="26" y="476" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">✗  Certificate of Origin  —  NOT RECEIVED from supplier</text>
+  <text x="26" y="492" fill="#eab308" font-family="'Courier New',monospace" font-size="9">⚠  Phytosanitary cert  —  May be required for wood packaging (confirm)</text>
+  <text x="26" y="504" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">Filing without CoO = MFN duty rate  ·  Est. additional cost vs CPTPP preference: $4,200</text>
+
+  <!-- Supplier panel -->
+  <rect x="487" y="374" width="457" height="136" fill="#232323" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <rect x="487" y="374" width="457" height="26" fill="#2e2e2e" rx="4"/>
+  <rect x="487" y="396" width="457" height="4" fill="#2e2e2e"/>
+  <text x="497" y="390" fill="#f97316" font-family="'Courier New',monospace" font-size="9" font-weight="bold">SUPPLIER COMMUNICATION ANALYSIS  ·  week of Mar 10–14</text>
+
+  <text x="497" y="412" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Supplier: Guangzhou Precision Parts Co.  ·  3 communications read</text>
+  <rect x="497" y="418" width="6" height="6" fill="#eab308" rx="1"/>
+  <text x="508" y="424" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Mar 10: Booking confirmation — vessel delay, ETD shifted Mar 18 → Mar 20</text>
+  <rect x="497" y="432" width="6" height="6" fill="#ef4444" rx="1"/>
+  <text x="508" y="438" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Mar 12: CoO requested by buyer — supplier confirms "in process, 3–5 days"</text>
+  <rect x="497" y="446" width="6" height="6" fill="#eab308" rx="1"/>
+  <text x="508" y="452" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Mar 14: Revised packing list provided — line 3 qty updated to 450 (confirm)</text>
+
+  <line x1="497" y1="460" x2="934" y2="460" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="497" y="474" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Risk signal: ETD delay of 2 days reduces customs processing window</text>
+  <text x="497" y="490" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">CoO expected by Mar 17 — monitor; escalate if not received by Mar 18</text>
+  <text x="497" y="506" fill="#eab308" font-family="'Courier New',monospace" font-size="9">⚠ If CoO misses vessel, consider filing under MFN + seeking CPTPP refund post-entry</text>
+
+  <!-- Bottom bar -->
+  <rect y="520" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="521" width="960" height="79" fill="#232323"/>
+  <text x="16" y="540" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Marapone Compliance &amp; Supply Chain Risk Engine  ·  12 shipments  ·  34 supplier comms read  ·  on-premise  ·  no cloud transfer</text>
+
+  <!-- Risk score legend -->
+  <text x="16" y="560" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">PORTFOLIO RISK DISTRIBUTION</text>
+  <rect x="16" y="566" width="160" height="12" fill="#2e2e2e" rx="3"/>
+  <rect x="16" y="566" width="40" height="12" fill="#ef4444" rx="3" opacity="0.85"/>
+  <rect x="56" y="566" width="53" height="12" fill="#eab308" opacity="0.7"/>
+  <rect x="109" y="566" width="67" height="12" fill="#22c55e" rx="3" opacity="0.7"/>
+  <text x="200" y="576" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">3 HIGH  ·  4 MED  ·  5 LOW  across 12 shipments</text>
+
+  <text x="16" y="594" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">PRIORITY ACTION:  Obtain CoO from Guangzhou Precision for SHP-441 by Mar 18 or pay $4,200 additional duty. Contact supplier now.</text>
+
+  <rect x="756" y="536" width="88" height="24" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="800" y="552" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Export PDF</text>
+  <rect x="856" y="536" width="88" height="24" fill="#f97316" rx="4"/>
+  <text x="900" y="552" fill="#ffffff" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Export CSV</text>
+  <text x="756" y="594" fill="#3a3a3a" font-family="'Courier New',monospace" font-size="8">risk_report_id: CR-2026-W11  ·  model: compliance-risk-v2  ·  private_inference_only</text>
+</svg>

@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="hG3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="600" fill="#1a1a1a" rx="8"/>
+  <rect width="960" height="3" fill="#f97316"/>
+
+  <!-- Title bar -->
+  <rect y="3" width="960" height="42" fill="url(#hG3)"/>
+  <rect y="44" width="960" height="1" fill="#3a3a3a"/>
+  <circle cx="22" cy="24" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="40" cy="24" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="58" cy="24" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="480" y="20" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="11" text-anchor="middle">MARAPONE AI  ·  Trade Document Processor  ·  v2.4.1</text>
+  <text x="480" y="35" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="12" text-anchor="middle" font-weight="bold">Shipment Package  ·  SHP-2026-441  ·  6 documents processed  ·  Mar 14, 2026</text>
+
+  <!-- Metrics strip -->
+  <rect y="45" width="960" height="68" fill="#232323"/>
+  <rect y="112" width="960" height="1" fill="#3a3a3a"/>
+
+  <rect x="16" y="57" width="140" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="86" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DOCS PROCESSED</text>
+  <text x="86" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">6</text>
+
+  <rect x="168" y="57" width="140" height="44" fill="#2e2e2e" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="238" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DISCREPANCIES</text>
+  <text x="238" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">3</text>
+
+  <rect x="320" y="57" width="140" height="44" fill="#2e2e2e" rx="4" stroke="#eab308" stroke-width="1"/>
+  <text x="390" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">MISSING FIELDS</text>
+  <text x="390" y="93" fill="#eab308" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">2</text>
+
+  <rect x="472" y="57" width="140" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="542" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">FIELDS VALIDATED</text>
+  <text x="542" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">142</text>
+
+  <rect x="624" y="57" width="140" height="44" fill="#231a1a" rx="4" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="694" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">CUSTOMS STATUS</text>
+  <text x="694" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="13" text-anchor="middle" font-weight="bold">HOLD — DO NOT FILE</text>
+
+  <rect x="776" y="57" width="168" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="860" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">SHIPMENT VALUE</text>
+  <text x="860" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="18" text-anchor="middle" font-weight="bold">USD 284,500</text>
+
+  <!-- Shipment Summary -->
+  <text x="16" y="132" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">◈  SHIPMENT SUMMARY  —  extracted from 6-document package</text>
+
+  <rect x="16" y="140" width="928" height="56" fill="#232323" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <!-- Summary grid -->
+  <text x="30" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">ORIGIN</text>
+  <text x="30" y="172" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Guangzhou, CN</text>
+  <text x="30" y="185" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">CNFZ Port</text>
+
+  <line x1="148" y1="144" x2="148" y2="192" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="162" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">DESTINATION</text>
+  <text x="162" y="172" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Toronto, CA</text>
+  <text x="162" y="185" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Port of Vancouver + rail</text>
+
+  <line x1="300" y1="144" x2="300" y2="192" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="314" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">COMMODITY</text>
+  <text x="314" y="172" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Industrial Machinery Parts</text>
+  <text x="314" y="185" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">HS: 8484.20.0000</text>
+
+  <line x1="500" y1="144" x2="500" y2="192" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="514" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">CARRIER</text>
+  <text x="514" y="172" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">COSCO Shipping</text>
+  <text x="514" y="185" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">BL: COSU6482019440</text>
+
+  <line x1="650" y1="144" x2="650" y2="192" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="664" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">ETD / ETA</text>
+  <text x="664" y="172" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Mar 18 → Apr 12, 2026</text>
+  <text x="664" y="185" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">25 transit days</text>
+
+  <line x1="800" y1="144" x2="800" y2="192" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="814" y="158" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">CONTAINERS</text>
+  <text x="814" y="172" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">2×40' HQ</text>
+  <text x="814" y="185" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Weight: 18,400 kg</text>
+
+  <!-- Cross-doc validation table -->
+  <text x="16" y="212" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚠  CROSS-DOCUMENT VALIDATION  —  field-by-field comparison across all 6 documents</text>
+
+  <!-- Table header -->
+  <rect y="220" width="960" height="24" fill="#2e2e2e"/>
+  <rect y="243" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="236" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">FIELD</text>
+  <text x="180" y="236" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">BILL OF LADING</text>
+  <text x="340" y="236" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">COMMERCIAL INVOICE</text>
+  <text x="530" y="236" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">PACKING LIST</text>
+  <text x="690" y="236" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">CERT OF ORIGIN</text>
+  <text x="840" y="236" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">STATUS</text>
+
+  <!-- Row 1 — Description: PASS -->
+  <rect y="244" width="960" height="28" fill="#1a1a1a"/>
+  <rect y="271" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="262" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Item description</text>
+  <text x="180" y="262" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Ind. Machinery Parts</text>
+  <text x="340" y="262" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Ind. Machinery Parts</text>
+  <text x="530" y="262" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Ind. Machinery Parts</text>
+  <text x="690" y="262" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Machinery Parts</text>
+  <rect x="836" y="249" width="52" height="16" fill="#1a2414" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="862" y="261" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">✓ PASS</text>
+
+  <!-- Row 2 — Quantity: FAIL -->
+  <rect y="272" width="960" height="28" fill="#231a1a"/>
+  <rect y="299" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="290" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9" font-weight="bold">Line 3 quantity</text>
+  <text x="180" y="290" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">450 cartons</text>
+  <rect x="332" y="276" width="2" height="16" fill="#ef4444"/>
+  <text x="340" y="290" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">450 units</text>
+  <rect x="522" y="276" width="2" height="16" fill="#ef4444"/>
+  <text x="530" y="290" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">430 units  ⚠</text>
+  <text x="690" y="290" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">N/A</text>
+  <rect x="836" y="277" width="68" height="16" fill="#2e1a1a" rx="3" stroke="#ef4444" stroke-width="1"/>
+  <text x="870" y="289" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">✗ MISMATCH</text>
+  <text x="16" y="298" fill="#ef4444" font-family="'Courier New',monospace" font-size="7" font-style="italic">  → Packing list shows 430, BL + invoice show 450. Discrepancy of 20 units. Must reconcile before filing.</text>
+
+  <!-- Row 3 — Weight: PASS -->
+  <rect y="300" width="960" height="28" fill="#1a1a1a"/>
+  <rect y="327" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="318" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Gross weight</text>
+  <text x="180" y="318" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">18,400 kg</text>
+  <text x="340" y="318" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">18,400 kg</text>
+  <text x="530" y="318" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">18,390 kg  (+10kg tolerance)</text>
+  <text x="690" y="318" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">N/A</text>
+  <rect x="836" y="305" width="52" height="16" fill="#1a2414" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="862" y="317" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">✓ PASS</text>
+
+  <!-- Row 4 — Declared value: WARN -->
+  <rect y="328" width="960" height="28" fill="#231e14"/>
+  <rect y="355" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="346" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9" font-weight="bold">Declared value</text>
+  <text x="180" y="346" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">USD 284,500</text>
+  <rect x="332" y="332" width="2" height="16" fill="#eab308"/>
+  <text x="340" y="346" fill="#eab308" font-family="'Courier New',monospace" font-size="9">USD 284,500</text>
+  <text x="530" y="346" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">N/A</text>
+  <text x="690" y="346" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">N/A</text>
+  <rect x="836" y="333" width="68" height="16" fill="#2a2414" rx="3" stroke="#eab308" stroke-width="1"/>
+  <text x="870" y="345" fill="#eab308" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">⚠ REVIEW</text>
+
+  <!-- Row 5 — Cert of origin: FAIL -->
+  <rect y="356" width="960" height="28" fill="#231a1a"/>
+  <rect y="383" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="374" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9" font-weight="bold">Certificate of origin</text>
+  <text x="180" y="374" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Not required on BL</text>
+  <text x="340" y="374" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">CN origin stated</text>
+  <text x="530" y="374" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">—</text>
+  <text x="690" y="374" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">MISSING ⚠</text>
+  <rect x="836" y="361" width="68" height="16" fill="#2e1a1a" rx="3" stroke="#ef4444" stroke-width="1"/>
+  <text x="870" y="373" fill="#ef4444" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">✗ MISSING</text>
+
+  <!-- Row 6 — HS Code: PASS -->
+  <rect y="384" width="960" height="28" fill="#1a1a1a"/>
+  <rect y="411" width="960" height="1" fill="#3a3a3a"/>
+  <text x="16" y="402" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">HS tariff code</text>
+  <text x="180" y="402" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">8484.20.0000</text>
+  <text x="340" y="402" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">8484.20.0000</text>
+  <text x="530" y="402" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">—</text>
+  <text x="690" y="402" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">8484.20</text>
+  <rect x="836" y="389" width="52" height="16" fill="#1a2414" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="862" y="401" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle">✓ PASS</text>
+
+  <!-- Alert box -->
+  <rect y="421" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="422" width="960" height="68" fill="#1e1a14"/>
+  <text x="16" y="442" fill="#ef4444" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⛔  DO NOT FILE FOR CUSTOMS — 2 issues require resolution:</text>
+  <text x="16" y="460" fill="#ef4444" font-family="'Courier New',monospace" font-size="9">1.  Line 3 quantity discrepancy (Packing List vs BL/Invoice). Confirm actual unit count with supplier and correct packing list before filing. Risk: customs query or hold.</text>
+  <text x="16" y="476" fill="#eab308" font-family="'Courier New',monospace" font-size="9">2.  Certificate of Origin not received. Required for CA-CN tariff preference claim (CPTPP). Without it, standard MFN duty rate applies. Est. additional cost: $4,200.</text>
+
+  <!-- Bottom bar -->
+  <rect y="490" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="491" width="960" height="109" fill="#232323"/>
+  <text x="16" y="510" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Marapone Trade Document Processor  ·  6 docs / 142 fields validated  ·  on-premise  ·  no cloud transfer</text>
+
+  <!-- Validation summary bars -->
+  <text x="16" y="530" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">FIELD VALIDATION SUMMARY</text>
+  <!-- Pass bar -->
+  <rect x="16" y="538" width="700" height="14" fill="#2e2e2e" rx="3"/>
+  <rect x="16" y="538" width="617" height="14" fill="#22c55e" rx="3" opacity="0.8"/>
+  <text x="722" y="549" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">137/142 PASS (96.5%)</text>
+
+  <rect x="16" y="556" width="700" height="14" fill="#2e2e2e" rx="3"/>
+  <rect x="16" y="556" width="21" height="14" fill="#ef4444" rx="3" opacity="0.8"/>
+  <text x="722" y="567" fill="#ef4444" font-family="'Courier New',monospace" font-size="9">3 FAIL  ·  2 MISSING</text>
+
+  <text x="16" y="588" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">doc_validation_id: TDV-2026-0314-441  ·  model: trade-doc-v2  ·  private_inference_only</text>
+  <rect x="756" y="558" width="88" height="24" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="800" y="574" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Export PDF</text>
+  <rect x="856" y="558" width="88" height="24" fill="#f97316" rx="4"/>
+  <text x="900" y="574" fill="#ffffff" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Export CSV</text>
+</svg>

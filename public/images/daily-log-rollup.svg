@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="hG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="600" fill="#1a1a1a" rx="8"/>
+  <rect width="960" height="3" fill="#f97316"/>
+
+  <!-- Title bar -->
+  <rect y="3" width="960" height="42" fill="url(#hG)"/>
+  <rect y="44" width="960" height="1" fill="#3a3a3a"/>
+  <circle cx="22" cy="24" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="40" cy="24" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="58" cy="24" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="480" y="20" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="11" text-anchor="middle">MARAPONE AI  ·  Daily Log Synthesis Engine  ·  v2.4.1</text>
+  <text x="480" y="35" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="12" text-anchor="middle" font-weight="bold">TOWER WEST  ·  Week 11 Rollup  ·  Mar 10–14, 2026  ·  5 logs processed</text>
+
+  <!-- Metrics strip -->
+  <rect y="45" width="960" height="68" fill="#232323"/>
+  <rect y="112" width="960" height="1" fill="#3a3a3a"/>
+
+  <rect x="16" y="57" width="120" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="76" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">AVG DAILY CREW</text>
+  <text x="76" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">38</text>
+
+  <rect x="148" y="57" width="120" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="208" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">WEATHER DELAYS</text>
+  <text x="208" y="93" fill="#eab308" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">2 days</text>
+
+  <rect x="280" y="57" width="120" height="44" fill="#2e2e2e" rx="4" stroke="#eab308" stroke-width="1"/>
+  <text x="340" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DEFICIENCIES</text>
+  <text x="340" y="93" fill="#eab308" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">4 new</text>
+
+  <rect x="412" y="57" width="120" height="44" fill="#2e2e2e" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="472" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DELAY EVENTS</text>
+  <text x="472" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">3</text>
+
+  <rect x="544" y="57" width="120" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="604" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DELIVERIES</text>
+  <text x="604" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">7</text>
+
+  <rect x="676" y="57" width="120" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="736" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">INCIDENTS</text>
+  <text x="736" y="93" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">0</text>
+
+  <rect x="808" y="57" width="136" height="44" fill="#1e2514" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="876" y="72" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">COMPLETION TREND</text>
+  <text x="876" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="14" text-anchor="middle" font-weight="bold">ON SCHEDULE</text>
+
+  <!-- ---- MANPOWER CHART ---- -->
+  <text x="16" y="132" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">◈  DAILY MANPOWER  —  headcount by trade, week of Mar 10–14</text>
+
+  <!-- Chart area -->
+  <rect x="16" y="140" width="580" height="180" fill="#232323" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+
+  <!-- Y axis lines -->
+  <line x1="56" y1="145" x2="56" y2="310" stroke="#3a3a3a" stroke-width="1"/>
+  <line x1="56" y1="150" x2="590" y2="150" stroke="#3a3a3a" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="56" y1="180" x2="590" y2="180" stroke="#3a3a3a" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="56" y1="210" x2="590" y2="210" stroke="#3a3a3a" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="56" y1="240" x2="590" y2="240" stroke="#3a3a3a" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="56" y1="270" x2="590" y2="270" stroke="#3a3a3a" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="56" y1="300" x2="590" y2="300" stroke="#3a3a3a" stroke-width="0.5"/>
+
+  <!-- Y axis labels -->
+  <text x="50" y="153" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="end">60</text>
+  <text x="50" y="183" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="end">48</text>
+  <text x="50" y="213" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="end">36</text>
+  <text x="50" y="243" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="end">24</text>
+  <text x="50" y="273" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="end">12</text>
+  <text x="50" y="303" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="end">0</text>
+
+  <!-- Monday bars — crew: 42 -->
+  <rect x="72" y="195" width="18" height="105" fill="#f97316" rx="2" opacity="0.9"/>
+  <rect x="92" y="218" width="18" height="82" fill="#3b82f6" rx="2" opacity="0.8"/>
+  <rect x="112" y="252" width="18" height="48" fill="#22c55e" rx="2" opacity="0.8"/>
+  <text x="116" y="312" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">MON</text>
+  <text x="116" y="323" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">42</text>
+
+  <!-- Tuesday — 44 -->
+  <rect x="170" y="190" width="18" height="110" fill="#f97316" rx="2" opacity="0.9"/>
+  <rect x="190" y="214" width="18" height="86" fill="#3b82f6" rx="2" opacity="0.8"/>
+  <rect x="210" y="248" width="18" height="52" fill="#22c55e" rx="2" opacity="0.8"/>
+  <text x="204" y="312" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">TUE</text>
+  <text x="204" y="323" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">44</text>
+
+  <!-- Wednesday — weather delay, short crew 24 -->
+  <rect x="262" y="250" width="18" height="50" fill="#f97316" rx="2" opacity="0.5"/>
+  <rect x="282" y="268" width="18" height="32" fill="#3b82f6" rx="2" opacity="0.4"/>
+  <rect x="302" y="280" width="18" height="20" fill="#22c55e" rx="2" opacity="0.4"/>
+  <text x="296" y="312" fill="#eab308" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">WED ⛈</text>
+  <text x="296" y="323" fill="#eab308" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">24</text>
+  <!-- weather annotation -->
+  <text x="262" y="244" fill="#eab308" font-family="'Courier New',monospace" font-size="8">Weather delay</text>
+
+  <!-- Thursday — 40 -->
+  <rect x="356" y="200" width="18" height="100" fill="#f97316" rx="2" opacity="0.9"/>
+  <rect x="376" y="222" width="18" height="78" fill="#3b82f6" rx="2" opacity="0.8"/>
+  <rect x="396" y="254" width="18" height="46" fill="#22c55e" rx="2" opacity="0.8"/>
+  <text x="390" y="312" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">THU</text>
+  <text x="390" y="323" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">40</text>
+
+  <!-- Friday — 38 -->
+  <rect x="448" y="205" width="18" height="95" fill="#f97316" rx="2" opacity="0.9"/>
+  <rect x="468" y="228" width="18" height="72" fill="#3b82f6" rx="2" opacity="0.8"/>
+  <rect x="488" y="260" width="18" height="40" fill="#22c55e" rx="2" opacity="0.8"/>
+  <text x="482" y="312" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">FRI</text>
+  <text x="482" y="323" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">38</text>
+
+  <!-- Legend -->
+  <rect x="530" y="196" width="10" height="10" fill="#f97316" rx="2"/>
+  <text x="544" y="205" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Concrete</text>
+  <rect x="530" y="214" width="10" height="10" fill="#3b82f6" rx="2"/>
+  <text x="544" y="223" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Steel / Iron</text>
+  <rect x="530" y="232" width="10" height="10" fill="#22c55e" rx="2"/>
+  <text x="544" y="241" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Mechanical</text>
+
+  <!-- Right panel: Delay Events & Deficiencies -->
+  <rect x="612" y="140" width="332" height="180" fill="#232323" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <rect x="612" y="140" width="332" height="28" fill="#2e2e2e" rx="4"/>
+  <rect x="612" y="164" width="332" height="4" fill="#2e2e2e"/>
+  <text x="626" y="158" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">DELAY EVENTS THIS WEEK</text>
+
+  <rect x="622" y="175" width="8" height="8" fill="#eab308" rx="1"/>
+  <text x="636" y="183" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Mon AM — Concrete pump late (2.5h)</text>
+  <text x="636" y="195" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">Supplier: Redi-Mix Toronto  ·  Affected: slab pour L4</text>
+
+  <rect x="622" y="205" width="8" height="8" fill="#eab308" rx="1"/>
+  <text x="636" y="213" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Wed — Weather (heavy rain, 70% of day)</text>
+  <text x="636" y="225" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">Lost: ~8 crew-hours formwork  ·  3rd weather event in 4 weeks</text>
+
+  <rect x="622" y="235" width="8" height="8" fill="#ef4444" rx="1"/>
+  <text x="636" y="243" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Thu PM — Steel delivery 3h late (grid B)</text>
+  <text x="636" y="255" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">Carrier: Stelco Transport  ·  3rd late delivery this supplier</text>
+
+  <line x1="622" y1="264" x2="934" y2="264" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="626" y="278" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">NEW DEFICIENCIES  (4)</text>
+  <text x="626" y="293" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">D-88  Formwork tie holes not grouted, L3 east wall</text>
+  <text x="626" y="307" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">D-89  Slab edge chamfer inconsistent — grid C4–C7</text>
+
+  <!-- Pattern Detection section -->
+  <rect y="330" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="331" width="960" height="130" fill="#1e1a14"/>
+  <text x="16" y="352" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚡  PATTERN DETECTION  —  AI-identified recurring issues across 11 weeks of logs</text>
+
+  <!-- Pattern cards -->
+  <rect x="16" y="360" width="290" height="88" fill="#232323" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="24" y="376" fill="#ef4444" font-family="'Courier New',monospace" font-size="9" font-weight="bold">PATTERN  ·  CONCRETE SUPPLIER</text>
+  <text x="24" y="392" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Redi-Mix Toronto late deliveries:</text>
+  <text x="24" y="408" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">7 of last 14 pours  (50% rate)</text>
+  <text x="24" y="424" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">First noted: Wk 6  ·  Worsening trend</text>
+  <text x="24" y="440" fill="#ef4444" font-family="'Courier New',monospace" font-size="9">→ Consider backup supplier or penalty clause</text>
+
+  <rect x="322" y="360" width="290" height="88" fill="#232323" rx="4" stroke="#eab308" stroke-width="1"/>
+  <text x="330" y="376" fill="#eab308" font-family="'Courier New',monospace" font-size="9" font-weight="bold">PATTERN  ·  MONDAY CREW SHORTAGE</text>
+  <text x="330" y="392" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Concrete trade avg Monday crew:</text>
+  <text x="330" y="408" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">14.2  vs  18.6 Tue–Fri average</text>
+  <text x="330" y="424" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Pattern detected: 8 consecutive Mondays</text>
+  <text x="330" y="440" fill="#eab308" font-family="'Courier New',monospace" font-size="9">→ Notify super — raise with trade foreman</text>
+
+  <rect x="628" y="360" width="316" height="88" fill="#232323" rx="4" stroke="#3b82f6" stroke-width="1"/>
+  <text x="636" y="376" fill="#3b82f6" font-family="'Courier New',monospace" font-size="9" font-weight="bold">PATTERN  ·  WEATHER FREQUENCY</text>
+  <text x="636" y="392" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Significant weather delays:</text>
+  <text x="636" y="408" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">3 events in last 4 weeks  (7.5 crew-days)</text>
+  <text x="636" y="424" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Each event documented + cross-referenced to schedule</text>
+  <text x="636" y="440" fill="#3b82f6" font-family="'Courier New',monospace" font-size="9">→ Weather delay record ready for extension of time claim</text>
+
+  <!-- Bottom bar -->
+  <rect y="461" width="960" height="1" fill="#3a3a3a"/>
+  <rect y="462" width="960" height="138" fill="#232323"/>
+  <text x="16" y="480" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Marapone Daily Log Synthesis  ·  5 logs processed  ·  OCR + NLP extraction  ·  on-premise  ·  no cloud transfer</text>
+
+  <!-- Mini weekly trend line -->
+  <text x="16" y="500" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">11-WEEK MANPOWER TREND</text>
+  <polyline points="16,560 72,548 128,545 184,550 240,542 296,555 352,546 408,549 464,544 520,547 576,538" fill="none" stroke="#f97316" stroke-width="2" stroke-linejoin="round"/>
+  <polyline points="16,560 72,548 128,545 184,550 240,542 296,555 352,546 408,549 464,544 520,547 576,538" fill="none" stroke="#f97316" stroke-width="8" stroke-linejoin="round" opacity="0.08"/>
+  <line x1="16" y1="565" x2="590" y2="565" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="16" y="580" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">WK1</text>
+  <text x="108" y="580" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">WK3</text>
+  <text x="200" y="580" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">WK5</text>
+  <text x="292" y="580" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">WK7</text>
+  <text x="384" y="580" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="8">WK9</text>
+  <text x="548" y="580" fill="#f97316" font-family="'Courier New',monospace" font-size="8" font-weight="bold">NOW</text>
+  <circle cx="576" cy="538" r="4" fill="#f97316"/>
+
+  <!-- Claims notice -->
+  <text x="620" y="500" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">CLAIMS DOCUMENTATION STATUS</text>
+  <text x="620" y="518" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">✓  Weather events: 3 logged with timestamps + crew counts</text>
+  <text x="620" y="533" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">✓  Supplier delays: 8 events documented with delivery records</text>
+  <text x="620" y="548" fill="#22c55e" font-family="'Courier New',monospace" font-size="9">✓  Deficiency log: 89 items tracked, 71 resolved with dates</text>
+  <text x="620" y="563" fill="#eab308" font-family="'Courier New',monospace" font-size="9">⚠  Owner-directed changes: 2 undocumented — action required</text>
+  <text x="620" y="585" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">rollup_id: DL-2026-W11-TW  ·  on-premise inference  ·  model: log-synth-v2</text>
+</svg>

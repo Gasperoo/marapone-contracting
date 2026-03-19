@@ -57,6 +57,7 @@ export default defineConfig({
         pricing: path.resolve(__dirname, 'pricing.html'),
         'pricing-new': path.resolve(__dirname, 'pricing-new.html'),
         contact: path.resolve(__dirname, 'contact.html'),
+        services: path.resolve(__dirname, 'services.html'),
       },
       output: {
         manualChunks: {

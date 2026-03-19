@@ -14,6 +14,7 @@ export default defineConfig({
           '/pricing': '/pricing.html',
           '/how-it-works': '/how-it-works.html',
           '/contact': '/contact.html',
+          '/services': '/services.html',
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];

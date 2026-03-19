@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – Marapone | AI Solutions for Construction, Logistics & Marketing</title>
+  <meta name="description" content="Marapone's private AI services for construction companies, import/export and logistics operators, and B2B marketing. Real use cases explained simply. No tech background needed." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#1a1a1a', gunmetal: '#232323', steel: '#2e2e2e',
+            plate: '#3a3a3a', hiviz: '#f97316', hiviz2: '#fb923c',
+            chalk: '#e8e8e8', fog: '#a0a0a0',
+          },
+          fontFamily: {
+            display: ['Bebas Neue', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+            mono: ['DM Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    .use-case-card { transition: border-color 0.2s, transform 0.2s; }
+    .use-case-card:hover { border-color: rgba(249,115,22,0.5); transform: translateY(-2px); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="index.html" class="hover:text-chalk transition-colors">Home</a>
+        <a href="how-it-works.html" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="services.html" class="text-chalk">Services</a>
+        <a href="pricing.html" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="about.html" class="hover:text-chalk transition-colors">About</a>
+        <a href="contact.html" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="contact.html" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment →</a>
+      </div>
+      <button class="md:hidden text-fog" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="index.html" class="text-fog pt-3 hover:text-chalk">Home</a>
+      <a href="how-it-works.html" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="services.html" class="text-chalk">Services</a>
+      <a href="pricing.html" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="about.html" class="text-fog hover:text-chalk">About</a>
+      <a href="contact.html" class="text-fog hover:text-chalk">Contact</a>
+      <a href="contact.html" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment →</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="grid-dot py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-sm mb-3">// What we actually build — no jargon</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-4">OUR <span class="text-hiviz">SERVICES</span></h1>
+      <p class="text-fog max-w-2xl mx-auto leading-relaxed">We build private AI tools that solve real, specific problems for construction companies, logistics and import/export businesses, and growing B2B companies. No tech background required to understand what's on this page — or to use what we build.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm font-mono">
+        <a href="#construction" class="border border-hiviz text-hiviz px-5 py-2 rounded hover:bg-hiviz hover:text-white transition-colors">🏗️ Construction</a>
+        <a href="#logistics" class="border border-plate text-fog px-5 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">🚢 Logistics & Trade</a>
+        <a href="#marketing" class="border border-plate text-fog px-5 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">📣 Marketing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONSTRUCTION ==================== -->
+  <section id="construction" class="py-16 lg:py-24 scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <div class="flex items-center gap-4 mb-3">
+        <div class="w-10 h-10 hiviz-gradient rounded-lg flex items-center justify-center text-xl flex-shrink-0">🏗️</div>
+        <p class="font-mono text-hiviz text-sm uppercase tracking-wider">For Construction Companies</p>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-3">CONSTRUCTION <span class="text-hiviz">AI SERVICES</span></h2>
+      <p class="text-fog max-w-3xl mb-12 leading-relaxed">These are tools built for general contractors, developers, and project managers. Each one targets a specific problem that currently eats hours of your team's time every week. No technical setup required on your end — we build it, deploy it, you use it.</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- UC1 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">📐</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 01</p>
+              <h3 class="font-display text-xl text-chalk">Blueprint Review Before You Bid</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">You receive a 200-page PDF blueprint before a bid is due. Instead of your team spending days reading it, the AI reads the entire thing in minutes and gives you a plain-language summary: what's in scope, what's missing, what's contradictory, and what questions you need answered before you commit to a number.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: catching scope gaps before they become a $40,000 change order you can't recover.</p>
+          </div>
+        </div>
+
+        <!-- UC2 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">📋</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 02</p>
+              <h3 class="font-display text-xl text-chalk">RFI Backlog — Cleared in Hours</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Got 50, 70, 100+ open RFIs piling up? The AI reads every single one, checks them against your blueprints, and tells you which ones are blocking trades right now, which are aging too long, and which answers actually changed something critical. Your team stops firefighting and starts managing.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: nobody on your team has time to manage the RFI log properly — so things slip until they're emergencies.</p>
+          </div>
+        </div>
+
+        <!-- UC3 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">📓</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 03</p>
+              <h3 class="font-display text-xl text-chalk">Daily Logs → One Weekly Report</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Your superintendent files a daily log every single day. That's 20+ logs a month, per project. Nobody reads all of them — until there's a dispute and suddenly you need to prove exactly when a delay started and who caused it. The AI reads all of them and sends a weekly summary: manpower trends, weather impacts, recurring delays, and anything that could matter in a claim.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: losing disputes because the evidence was in the logs — but nobody was reading them.</p>
+          </div>
+        </div>
+
+        <!-- UC4 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🔍</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 04</p>
+              <h3 class="font-display text-xl text-chalk">Subcontractor Scope Gap Finder</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">You've got scope letters from five different subs. The AI compares each one against the full spec and drawings to find items that everyone assumes someone else is doing — but nobody actually priced. These gaps are what cause finger-pointing and cost overruns after mobilization.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: "I thought that was in your scope" conversations that cost real money.</p>
+          </div>
+        </div>
+
+        <!-- UC5 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">📝</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 05</p>
+              <h3 class="font-display text-xl text-chalk">Tender Package Risk Scanner</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Before you submit a bid, run the entire tender package through the AI. It flags ambiguous specifications, one-sided contract clauses, items that need clarification from the owner, and anything that's unusual compared to standard project documents. You go into every tender with eyes open.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: signing contracts with traps in them that only become visible six months into construction.</p>
+          </div>
+        </div>
+
+        <!-- UC6 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">⚠️</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 06</p>
+              <h3 class="font-display text-xl text-chalk">Change Order Risk Tracker</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Feed in your change order log and the AI reviews each one for cost exposure, missing scope detail, unapproved items, and changes that could create downstream conflicts with other trades. You know which COs need more documentation before they go to billing — and which ones are clean.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: change orders that get disputed at close-out because the documentation wasn't there.</p>
+          </div>
+        </div>
+
+        <!-- UC7 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🗓️</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 07</p>
+              <h3 class="font-display text-xl text-chalk">Meeting Minutes Action Tracker</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Upload your site meeting minutes, progress reports, or owner's meeting notes. The AI extracts every action item, who owns it, and what was promised — and flags anything that was discussed verbally but not documented properly. No more "that's not what was said in the meeting" surprises.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: verbal commitments that disappear because nobody wrote them down properly.</p>
+          </div>
+        </div>
+
+        <!-- UC8 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🏁</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 08</p>
+              <h3 class="font-display text-xl text-chalk">Deficiency List Management</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Got multiple inspection reports with overlapping deficiency lists? The AI consolidates them, removes duplicates, tracks what's been closed, what's still open, and what keeps appearing repeatedly — pointing at a deeper problem. Close-out moves faster when you know exactly where you stand.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: close-out delays caused by nobody having a complete, current picture of outstanding deficiencies.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOGISTICS ==================== -->
+  <section id="logistics" class="py-16 lg:py-24 bg-gunmetal border-t border-b border-plate scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <div class="flex items-center gap-4 mb-3">
+        <div class="w-10 h-10 hiviz-gradient rounded-lg flex items-center justify-center text-xl flex-shrink-0">🚢</div>
+        <p class="font-mono text-hiviz text-sm uppercase tracking-wider">For Logistics & Import/Export Companies</p>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-3">LOGISTICS & TRADE <span class="text-hiviz">AI SERVICES</span></h2>
+      <p class="text-fog max-w-3xl mb-12 leading-relaxed">These tools are built for importers, exporters, freight brokers, customs brokers, and supply chain teams. International trade generates enormous document volume. Every document is a potential error, a compliance risk, or a billing mistake. We make the AI read them so your team doesn't have to.</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- UC9 -->
+        <div class="use-case-card bg-steel border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🗂️</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 01</p>
+              <h3 class="font-display text-xl text-chalk">Shipment Document Audit</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Before filing customs, run your full shipment package through the AI — bill of lading, commercial invoice, packing list, certificate of origin. It checks that all the numbers, weights, quantities, and descriptions match across every document. Mismatches get flagged before they cause a customs hold or a penalty.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: a $200 data entry mistake on an invoice turning into a 2-week customs delay on a $400,000 shipment.</p>
+          </div>
+        </div>
+
+        <!-- UC10 -->
+        <div class="use-case-card bg-steel border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">💸</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 02</p>
+              <h3 class="font-display text-xl text-chalk">Freight Invoice Verification</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Upload your carrier invoices alongside your rate agreements. The AI compares what was charged against what was contracted — line by line. It catches overcharges on freight rates, fuel surcharges above your agreed cap, duplicate billing, and extra fees that appear on shipments that shouldn't carry them.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: paying for freight errors you'd only find if someone had time to check every invoice — which nobody does.</p>
+          </div>
+        </div>
+
+        <!-- UC11 -->
+        <div class="use-case-card bg-steel border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🛃</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 03</p>
+              <h3 class="font-display text-xl text-chalk">Customs Entry Review</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Before submitting a customs entry, the AI checks your commodity classifications, declared values, country of origin, and required certificates against your actual shipping documents. It flags what's missing, what's inconsistent, and what might trigger a review — before the filing, not after.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: customs exams and penalties that stem from preventable documentation errors.</p>
+          </div>
+        </div>
+
+        <!-- UC12 -->
+        <div class="use-case-card bg-steel border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">📡</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 04</p>
+              <h3 class="font-display text-xl text-chalk">Supplier Communication Digest</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Every week, dozens of supplier and carrier emails come in — booking confirmations, status updates, exception notices, rate changes. The AI reads them all and produces a single weekly digest: what shipments are on track, what's delayed, what needs a decision from you, and what's been promised but not confirmed.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: critical supplier updates getting buried in email threads until it's too late to act.</p>
+          </div>
+        </div>
+
+        <!-- UC13 -->
+        <div class="use-case-card bg-steel border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">📊</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 05</p>
+              <h3 class="font-display text-xl text-chalk">Trade Lane Performance Report</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Feed in your historical invoices and shipment records across your trade lanes. The AI summarizes which lanes are performing well, which carriers are consistently slow or overbilling, and where you're paying above-market rates. Gives you the data you need to renegotiate contracts or switch carriers with evidence behind you.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: renewing carrier contracts without actually knowing how the carrier performed.</p>
+          </div>
+        </div>
+
+        <!-- UC14 -->
+        <div class="use-case-card bg-steel border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">⚖️</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 06</p>
+              <h3 class="font-display text-xl text-chalk">Import/Export Compliance Check</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Trade regulations change. Tariff classifications get updated. Licensing requirements shift. The AI reviews your trade documents against the applicable rules for your specific commodities and trade corridors, and flags potential compliance gaps before they become fines, license suspensions, or shipment seizures.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: regulatory changes that your team didn't catch because nobody had time to track them.</p>
+          </div>
+        </div>
+
+        <!-- UC15 -->
+        <div class="use-case-card bg-steel border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🚨</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Use Case 07</p>
+              <h3 class="font-display text-xl text-chalk">Inbound Shipment Risk Scoring</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">Every week, get a scored risk summary of your active inbound shipments — which ones have documentation problems, which carriers have a pattern of delays on this lane, and which shipments are most likely to be short, held, or late. Your team stops reacting to problems and starts preventing them.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">The problem it solves: supply chain disruptions that were visible in the data — if anyone had time to look at it.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MARKETING ==================== -->
+  <section id="marketing" class="py-16 lg:py-24 border-b border-plate scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <div class="flex items-center gap-4 mb-3">
+        <div class="w-10 h-10 hiviz-gradient rounded-lg flex items-center justify-center text-xl flex-shrink-0">📣</div>
+        <p class="font-mono text-hiviz text-sm uppercase tracking-wider">For B2B Companies That Need to Grow</p>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-3">MARKETING <span class="text-hiviz">AI SERVICES</span></h2>
+      <p class="text-fog max-w-3xl mb-4 leading-relaxed">We also build private AI tools and content systems that help B2B companies generate more visibility, attract qualified leads, and automate the parts of marketing that currently take your team the most time. Every marketing engagement comes with a <strong class="text-chalk">30-day guarantee</strong> — measurable increases in views, impressions, and leads, or your money back.</p>
+
+      <!-- Guarantee Banner -->
+      <div class="bg-gunmetal border-2 border-hiviz rounded-xl p-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div class="text-3xl flex-shrink-0">🛡️</div>
+        <div>
+          <p class="font-display text-xl text-chalk">30-DAY RESULTS GUARANTEE</p>
+          <p class="text-fog text-sm mt-1">Every marketing package is backed by a 30-day guarantee. If you don't see measurable improvement in views, impressions, and leads within 30 days of delivery — we refund you in full. No hoops. No fine print.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- M1 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🔍</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Marketing 01</p>
+              <h3 class="font-display text-xl text-chalk">AI-Powered SEO Content</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">We use AI trained on your industry to produce high-quality blog posts, service pages, and website copy that ranks on Google. Not generic content — written in your brand's voice, targeting the exact search terms your customers use when they're looking for what you do.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">Result: more organic traffic, more qualified people finding you without paid ads.</p>
+          </div>
+        </div>
+
+        <!-- M2 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">✉️</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Marketing 02</p>
+              <h3 class="font-display text-xl text-chalk">Automated Lead Follow-Up</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">When a lead fills out a form, requests a quote, or attends a demo — the AI follows up automatically with the right message at the right time. Personalized sequences that sound human, handle common objections, and keep the conversation moving until they're ready to buy or clearly not interested.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">Result: fewer leads going cold because your team was too busy to follow up fast enough.</p>
+          </div>
+        </div>
+
+        <!-- M3 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">📢</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Marketing 03</p>
+              <h3 class="font-display text-xl text-chalk">Ad Copy & Campaign Creation</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">AI-generated ad copy for Google, LinkedIn, Meta, and industry-specific platforms — multiple variations tested against each other so you know which message converts, not which one someone in a meeting thought sounded good. We also build the campaign structure so it's ready to run.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">Result: lower cost per lead because the right message is reaching the right people.</p>
+          </div>
+        </div>
+
+        <!-- M4 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">📅</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Marketing 04</p>
+              <h3 class="font-display text-xl text-chalk">Social Media Content Calendar</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">We build an AI system that generates your social media content calendar — posts, captions, graphics briefs, and scheduling — for 90 days at a time, in your brand voice. You review and approve. The AI does the drafting. Consistent posting without it taking up hours of your week.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">Result: a consistent brand presence that builds trust with prospects over time — without the grind.</p>
+          </div>
+        </div>
+
+        <!-- M5 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🕵️</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Marketing 05</p>
+              <h3 class="font-display text-xl text-chalk">Competitor Analysis Report</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">We run your top competitors' websites, ads, and content through an AI analysis and deliver a report showing where they're positioning, what keywords they're targeting, what messaging they're using, and where the gaps are that you can own. Strategy backed by data, not gut feel.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">Result: a clear picture of where to position yourself so you're not just shouting into the same noise everyone else is.</p>
+          </div>
+        </div>
+
+        <!-- M6 -->
+        <div class="use-case-card bg-gunmetal border border-plate rounded-xl p-6">
+          <div class="flex items-start gap-3 mb-4">
+            <span class="text-2xl mt-0.5">🤖</span>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase mb-1">Marketing 06</p>
+              <h3 class="font-display text-xl text-chalk">Custom Brand Voice AI</h3>
+            </div>
+          </div>
+          <p class="text-fog text-sm leading-relaxed mb-4">We fine-tune an AI model on your existing content, your brand guidelines, and your best-performing communications. The result is a private AI assistant that writes in your voice — for emails, proposals, posts, and campaigns — that you can use internally forever. You own it. No subscription to any writing tool.</p>
+          <div class="tape-line">
+            <p class="text-xs text-fog font-mono">Result: consistent, on-brand content at volume — without adding headcount or paying per-word to a SaaS platform.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S SHARED ACROSS EVERYTHING -->
+  <section class="py-16 lg:py-20 bg-gunmetal border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-3 text-center">// No matter which service you choose</p>
+      <h2 class="font-display text-4xl text-chalk mb-10 text-center">WHAT YOU ALWAYS <span class="text-hiviz">GET</span></h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="flex items-start gap-3">
+          <span class="text-hiviz text-xl mt-0.5 flex-shrink-0">✓</span>
+          <div>
+            <p class="text-chalk font-semibold text-sm">Full ownership</p>
+            <p class="text-fog text-xs mt-1 leading-relaxed">Every AI system we build is yours. You receive the source code, the trained model, and the documentation. No ongoing licence from us.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-hiviz text-xl mt-0.5 flex-shrink-0">✓</span>
+          <div>
+            <p class="text-chalk font-semibold text-sm">Private deployment</p>
+            <p class="text-fog text-xs mt-1 leading-relaxed">Your data never leaves your network. Everything runs on your machine or your server. Nothing gets sent to an external AI service.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-hiviz text-xl mt-0.5 flex-shrink-0">✓</span>
+          <div>
+            <p class="text-chalk font-semibold text-sm">One-time price</p>
+            <p class="text-fog text-xs mt-1 leading-relaxed">You pay once. The tool runs forever. No monthly fee, no per-use charge, no subscription that doubles when you scale.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-hiviz text-xl mt-0.5 flex-shrink-0">✓</span>
+          <div>
+            <p class="text-chalk font-semibold text-sm">Trained on your data</p>
+            <p class="text-fog text-xs mt-1 leading-relaxed">We fine-tune the model on your actual documents, your industry, your terminology. It's not a generic tool — it's built for your specific workflow.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-hiviz text-xl mt-0.5 flex-shrink-0">✓</span>
+          <div>
+            <p class="text-chalk font-semibold text-sm">Free assessment first</p>
+            <p class="text-fog text-xs mt-1 leading-relaxed">We analyze one of your real documents for free, send back a report, and tell you honestly whether the tool makes sense for you — before you spend anything.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-hiviz text-xl mt-0.5 flex-shrink-0">✓</span>
+          <div>
+            <p class="text-chalk font-semibold text-sm">30-day guarantee</p>
+            <p class="text-fog text-xs mt-1 leading-relaxed">If the tool doesn't deliver measurable value in the first 30 days — we refund you. No conditions designed to make that hard. Just send us an email.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">NOT SURE WHICH<br/><span class="text-hiviz">SERVICE YOU NEED?</span></h2>
+      <p class="text-fog mb-8 leading-relaxed max-w-xl mx-auto">Start with the free assessment. Send us one document from your workflow. We'll tell you exactly what the AI can do with it — and what would make the most sense to build first.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="contact.html" class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
+          Get Your Free Assessment →
+        </a>
+        <a href="pricing.html" class="border border-plate text-chalk font-medium px-10 py-5 rounded text-lg inline-block hover:bg-steel transition-colors">
+          See Pricing →
+        </a>
+      </div>
+      <p class="text-xs font-mono text-fog mt-5">One client at a time. Full attention on every build.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="index.html" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-fog font-body justify-center">
+          <a href="index.html" class="hover:text-chalk">Home</a>
+          <a href="how-it-works.html" class="hover:text-chalk">How It Works</a>
+          <a href="services.html" class="hover:text-chalk">Services</a>
+          <a href="pricing.html" class="hover:text-chalk">Pricing</a>
+          <a href="about.html" class="hover:text-chalk">About</a>
+          <a href="contact.html" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

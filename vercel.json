@@ -21,6 +21,10 @@
       "destination": "/contact.html"
     },
     {
+      "source": "/services",
+      "destination": "/services.html"
+    },
+    {
       "source": "/api/account/(.*)",
       "destination": "/api/express"
     },

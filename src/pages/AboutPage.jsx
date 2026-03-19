@@ -70,7 +70,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-6 text-gray-300 text-lg leading-relaxed font-medium">
                   <p>
-                    Marapone was founded to fix what's broken in the AI industry. Most vendors want to sell you a subscription and trap your data on their servers. 
+                    Marapone was founded to fix what's broken in the AI industry. Most vendors want to sell you a subscription and trap your data on their servers.
                   </p>
                   <p>
                     Marapone doesn't do that. Marapone builds custom, private AI engines that you own. Once the project is done, Marapone hands over the keys. No seat taxes, no forced updates, and no vendor lock-in.
@@ -131,8 +131,8 @@ export default function AboutPage() {
             <p className="text-xl text-gray-400 leading-relaxed mb-12 max-w-3xl mx-auto">
               Marapone focuses on the foundational sectors that keep Canada running. No hype, just high-ROI results for the companies that move our cargo and build our infrastructure.
             </p>
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="inline-flex items-center gap-2 px-10 py-5 bg-[#FF6B00] hover:bg-[#ea580c] text-white rounded-xl font-bold text-xl transition-all shadow-xl shadow-[#FF6B00]/20"
             >
               Start Your Evaluation <ArrowRight size={20} />

@@ -15,6 +15,9 @@ export default defineConfig({
           '/how-it-works': '/how-it-works.html',
           '/contact': '/contact.html',
           '/services': '/services.html',
+          '/privacy': '/privacy.html',
+          '/terms': '/terms.html',
+          '/cookies': '/cookies.html',
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];
@@ -58,6 +61,9 @@ export default defineConfig({
         'pricing-new': path.resolve(__dirname, 'pricing-new.html'),
         contact: path.resolve(__dirname, 'contact.html'),
         services: path.resolve(__dirname, 'services.html'),
+        privacy: path.resolve(__dirname, 'privacy.html'),
+        terms: path.resolve(__dirname, 'terms.html'),
+        cookies: path.resolve(__dirname, 'cookies.html'),
       },
       output: {
         manualChunks: {

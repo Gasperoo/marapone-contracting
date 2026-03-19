@@ -55,6 +55,16 @@ export function StackedCircularFooter() {
             </ul>
           </div>
 
+          {/* Column 3: Legal */}
+          <div className="footer-col-links">
+            <h4 className="footer-nav-title">Legal</h4>
+            <ul className="footer-nav-list">
+              <li><Link to="/privacy" className="footer-link">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="footer-link">Terms of Service</Link></li>
+              <li><Link to="/cookies" className="footer-link">Cookie Policy</Link></li>
+            </ul>
+          </div>
+
 
         </div>
 

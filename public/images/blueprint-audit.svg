@@ -64,7 +64,7 @@
   <text x="870" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">STATUS</text>
   <text x="870" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="14" text-anchor="middle" font-weight="bold">COMPLETE</text>
 
-  <!-- ---- CONFLICTS TABLE ---- -->
+  <!-- CONFLICTS TABLE -->
   <text x="16" y="134" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚠  CONFLICTS DETECTED  (7 items require resolution before bid submission)</text>
 
   <!-- Table header -->
@@ -137,7 +137,7 @@
   <rect x="890" y="295" width="42" height="18" fill="#3b82f6" rx="3"/>
   <text x="911" y="308" fill="#ffffff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">YES</text>
 
-  <!-- ---- SCOPE EXTRACTION ---- -->
+  <!-- SCOPE EXTRACTION -->
   <rect y="330" width="960" height="1" fill="#f97316" opacity="0.4"/>
   <text x="16" y="352" fill="#f97316" font-family="'Courier New',monospace" font-size="11" font-weight="bold">◈  SCOPE EXTRACTION  —  84 items extracted across 6 categories</text>
 
@@ -175,7 +175,7 @@
   <text x="666" y="439" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Interior partitions:  Metal stud, 3 5/8"</text>
   <text x="666" y="454" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">+ 5 more items</text>
 
-  <!-- ---- AMBIGUITY FLAGS ---- -->
+  <!-- AMBIGUITY FLAGS -->
   <rect y="472" width="960" height="1" fill="#3a3a3a"/>
   <rect y="473" width="960" height="48" fill="#1e1a14"/>
   <text x="16" y="492" fill="#eab308" font-family="'Courier New',monospace" font-size="11" font-weight="bold">⚡  23 AMBIGUITY FLAGS  —  items requiring clarification before trade mobilization</text>

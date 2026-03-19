@@ -32,3 +32,4 @@ dist/
 
 # iOS App Wrapper
 gasper-ios-app/
+.vercel

@@ -149,7 +149,14 @@
             <div class="absolute top-0 left-0 w-full h-1 bg-hiviz rounded-t-xl hidden"></div>
             <p class="font-mono text-hiviz text-xs mb-6">// Fill this out and we'll be in touch</p>
 
-            <form action="mailto:general@marapone.com" method="POST" enctype="text/plain" class="space-y-5">
+            <div id="form-success" class="hidden text-center py-10">
+              <div class="w-14 h-14 rounded-full hiviz-gradient flex items-center justify-center mx-auto mb-4">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p class="font-display text-2xl text-chalk mb-2">REQUEST SENT</p>
+              <p class="text-fog text-sm">We'll have your assessment back within 24 hours.</p>
+            </div>
+            <form id="contact-form" class="space-y-5">
               <div class="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label for="name">Your name</label>
@@ -218,12 +225,61 @@
               </div>
 
               <div class="pt-2">
-                <button type="submit" class="hiviz-gradient w-full text-white font-semibold py-4 rounded text-base hover:opacity-90 transition-opacity">
-                  Send Request → We'll Be in Touch Within 24h
+                <button id="submit-btn" type="submit" class="hiviz-gradient w-full text-white font-semibold py-4 rounded text-base hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                  <span id="submit-label">Send Request → We'll Be in Touch Within 24h</span>
+                  <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
                 </button>
+                <p id="form-error" class="hidden text-xs font-mono text-red-400 text-center mt-3"></p>
                 <p class="text-xs font-mono text-fog text-center mt-3">Or email us directly at <a href="mailto:general@marapone.com" class="text-hiviz hover:underline">general@marapone.com</a></p>
               </div>
             </form>
+
+            <script>
+              document.getElementById('contact-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const btn = document.getElementById('submit-btn');
+                const label = document.getElementById('submit-label');
+                const spinner = document.getElementById('submit-spinner');
+                const errorEl = document.getElementById('form-error');
+
+                btn.disabled = true;
+                label.textContent = 'Sending...';
+                spinner.classList.remove('hidden');
+                errorEl.classList.add('hidden');
+
+                const body = {
+                  name: form.name.value,
+                  email: form.email.value,
+                  company: form.company.value,
+                  phone: form.phone.value,
+                  industry: form.industry.value,
+                  doc_type: form.doc_type.value,
+                  message: form.message.value,
+                };
+
+                try {
+                  const res = await fetch('/api/send-contact-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body),
+                  });
+                  const data = await res.json();
+                  if (res.ok && data.success) {
+                    form.classList.add('hidden');
+                    document.getElementById('form-success').classList.remove('hidden');
+                  } else {
+                    throw new Error(data.message || data.error || 'Something went wrong.');
+                  }
+                } catch (err) {
+                  errorEl.textContent = err.message || 'Failed to send. Please email us directly.';
+                  errorEl.classList.remove('hidden');
+                  btn.disabled = false;
+                  label.textContent = 'Send Request → We\'ll Be in Touch Within 24h';
+                  spinner.classList.add('hidden');
+                }
+              });
+            </script>
           </div>
         </div>
 

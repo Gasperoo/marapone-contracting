@@ -35,6 +35,10 @@
     {
       "source": "/api/health",
       "destination": "/api/express"
+    },
+    {
+      "source": "/api/send-contact-email",
+      "destination": "/api/send-contact-email"
     }
   ]
 }

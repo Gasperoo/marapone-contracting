@@ -3,39 +3,35 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
-  // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Handle preflight request
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const name = req.body.name?.trim();
   const email = req.body.email?.trim();
-  const role = req.body.role?.trim();
   const company = req.body.company?.trim();
+  const phone = req.body.phone?.trim();
+  const industry = req.body.industry?.trim();
+  const doc_type = req.body.doc_type?.trim();
   const message = req.body.message?.trim();
 
-  // Validate input
   if (!name || !email) {
     return res.status(400).json({ error: 'Missing required fields (name and email are required)' });
   }
 
-  // Basic email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ error: 'Invalid email format' });
   }
 
-  // Check if Resend API key is configured
   if (!process.env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY is not configured');
     return res.status(500).json({
@@ -44,59 +40,94 @@ export default async function handler(req, res) {
     });
   }
 
+  const industryLabel = {
+    residential: 'Residential construction',
+    ici: 'ICI (Industrial / Commercial / Institutional)',
+    mixed: 'Mixed use development',
+    construction_other: 'Other construction',
+    import_export: 'Import / Export',
+    freight_broker: 'Freight brokerage',
+    '3pl': 'Third-party logistics (3PL)',
+    customs: 'Customs brokerage',
+    supply_chain: 'Supply chain / procurement',
+    logistics_other: 'Other logistics / trade',
+  }[industry] || industry || 'Not provided';
+
+  const docTypeLabel = {
+    blueprints: 'Blueprints / drawings',
+    rfis: 'RFI log or package',
+    daily_logs: 'Site daily logs',
+    specs: 'Spec package / tender docs',
+    trade_docs: 'Bills of lading / commercial invoices',
+    freight_invoices: 'Freight carrier invoices',
+    customs_docs: 'Customs declarations / entry summaries',
+    supplier_comms: 'Supplier communications / shipment packages',
+    mix: 'Mix of the above',
+  }[doc_type] || doc_type || 'Not provided';
+
   try {
     const data = await resend.emails.send({
-      from: 'Marapone Contact Form <gasper@marapone.com>', // The verified sender domain usually has to match the from email
+      from: 'Marapone Contact Form <info@marapone.com>',
       to: ['general@marapone.com'],
-      reply_to: email, // use reply_to instead of replyTo to strictly match Resend schema
-      subject: `New Enterprise Inquiry from ${name} at ${company || 'Unknown Company'}`,
+      reply_to: email,
+      subject: `New Assessment Request from ${name}${company ? ' at ' + company : ''}`,
       html: `
         <!DOCTYPE html>
         <html>
         <head>
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
             .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-            .header { background: linear-gradient(135deg, #1a1a1a 0%, #FF6B00 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
-            .content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; }
-            .info-row { margin: 15px 0; padding: 12px; background: white; border-left: 4px solid #FF6B00; border-radius: 4px; }
-            .label { font-weight: bold; color: #1a1a1a; }
-            .message-box { margin-top: 20px; padding: 15px; background: white; border: 1px solid #e5e7eb; border-radius: 4px; white-space: pre-wrap; }
-            .footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+            .header { background: linear-gradient(135deg, #1a1a1a 0%, #f97316 100%); color: white; padding: 24px; border-radius: 8px 8px 0 0; }
+            .header h2 { margin: 0; font-size: 22px; }
+            .header p { margin: 6px 0 0; font-size: 13px; opacity: 0.8; }
+            .content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e5e7eb; border-top: none; }
+            .info-row { margin: 10px 0; padding: 12px 16px; background: white; border-left: 4px solid #f97316; border-radius: 4px; }
+            .label { font-weight: bold; color: #1a1a1a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 2px; }
+            .value { color: #374151; font-size: 14px; }
+            .message-box { margin-top: 20px; padding: 16px; background: white; border: 1px solid #e5e7eb; border-radius: 4px; white-space: pre-wrap; font-size: 14px; color: #374151; }
+            .footer { margin-top: 20px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 12px; color: #6b7280; }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <h2 style="margin: 0;">🏢 New Enterprise Inquiry</h2>
+              <h2>New Assessment Request</h2>
+              <p>Submitted via marapone.com/contact</p>
             </div>
             <div class="content">
-              <p>A new contact form submission was received on marapone.com:</p>
-              
               <div class="info-row">
-                <span class="label">Name:</span> ${name}
+                <span class="label">Name</span>
+                <span class="value">${name}</span>
               </div>
-              
               <div class="info-row">
-                <span class="label">Email:</span> ${email}
+                <span class="label">Email</span>
+                <span class="value">${email}</span>
               </div>
-              
               <div class="info-row">
-                <span class="label">Company:</span> ${company || 'Not provided'}
+                <span class="label">Company</span>
+                <span class="value">${company || 'Not provided'}</span>
               </div>
-              
               <div class="info-row">
-                <span class="label">Role:</span> ${role || 'Not provided'}
+                <span class="label">Phone</span>
+                <span class="value">${phone || 'Not provided'}</span>
               </div>
-              
-              <h3 style="margin-top: 30px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px;">Message Content</h3>
-              <div class="message-box">
-${message}
+              <div class="info-row">
+                <span class="label">Industry</span>
+                <span class="value">${industryLabel}</span>
               </div>
-              
+              <div class="info-row">
+                <span class="label">Document Type</span>
+                <span class="value">${docTypeLabel}</span>
+              </div>
+              ${message ? `
+              <div>
+                <p style="font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #1a1a1a; margin-top: 20px; margin-bottom: 8px;">Additional Notes</p>
+                <div class="message-box">${message}</div>
+              </div>` : ''}
               <div class="footer">
                 <p>Submitted: ${new Date().toLocaleString('en-US', { timeZoneName: 'short' })}</p>
-                <p>Reply to this email to respond directly to ${name} (${email}).</p>
+                <p>Reply to this email to respond directly to ${name} at ${email}.</p>
               </div>
             </div>
           </div>
@@ -110,9 +141,7 @@ ${message}
     console.error('Email send error:', error);
     return res.status(500).json({
       error: 'Failed to send email',
-      message: error.message === 'The string did not match the expected pattern.' 
-        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.' 
-        : error.message
+      message: error.message
     });
   }
 }

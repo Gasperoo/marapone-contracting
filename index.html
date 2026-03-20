@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence</title>
-  <meta name="description" content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
-  <meta name="keywords" content="private AI, construction AI, logistics AI, B2B AI solutions, document intelligence, trade compliance AI, blueprint auditor, freight intelligence, no subscription AI" />
+  <meta name="description"
+    content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
+  <meta name="keywords"
+    content="private AI, construction AI, logistics AI, B2B AI solutions, document intelligence, trade compliance AI, blueprint auditor, freight intelligence, no subscription AI" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
@@ -33,26 +38,98 @@
     }
   </script>
   <style>
-    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
-    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
-    .noise-bg { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); }
-    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
-    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-up { animation: fadeUp 0.6s ease forwards; }
-    .delay-1 { animation-delay: 0.15s; opacity: 0; }
-    .delay-2 { animation-delay: 0.3s; opacity: 0; }
-    .delay-3 { animation-delay: 0.45s; opacity: 0; }
-    .delay-4 { animation-delay: 0.6s; opacity: 0; }
-    @keyframes logoPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.5), 0 0 0 0 rgba(249,115,22,0.25); }
-      50% { box-shadow: 0 0 0 18px rgba(249,115,22,0.15), 0 0 0 36px rgba(249,115,22,0.05); }
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
     }
-    .logo-pulse { animation: logoPulse 3s ease-in-out infinite; }
-    .industry-tab { cursor: pointer; }
-    .industry-tab.active { color: #f97316; border-color: #f97316; }
-    .industry-panel { display: none; }
-    .industry-panel.active { display: grid; }
+
+    .hiviz-gradient {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    }
+
+    .noise-bg {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    .tape-line {
+      border-left: 3px solid #f97316;
+      padding-left: 1rem;
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.15s;
+      opacity: 0;
+    }
+
+    .delay-2 {
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+
+    .delay-3 {
+      animation-delay: 0.45s;
+      opacity: 0;
+    }
+
+    .delay-4 {
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+
+    @keyframes logoPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5), 0 0 0 0 rgba(249, 115, 22, 0.25);
+      }
+
+      50% {
+        box-shadow: 0 0 0 18px rgba(249, 115, 22, 0.15), 0 0 0 36px rgba(249, 115, 22, 0.05);
+      }
+    }
+
+    .logo-pulse {
+      animation: logoPulse 3s ease-in-out infinite;
+    }
+
+    .industry-tab {
+      cursor: pointer;
+    }
+
+    .industry-tab.active {
+      color: #f97316;
+      border-color: #f97316;
+    }
+
+    .industry-panel {
+      display: none;
+    }
+
+    .industry-panel.active {
+      display: grid;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -72,6 +149,7 @@
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
+
 <body class="antialiased">
 
   <!-- NAV -->
@@ -85,10 +163,15 @@
         <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
         <a href="/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment →</a>
+        <a href="/contact"
+          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
+          Free Assessment →</a>
       </div>
-      <button class="md:hidden text-fog" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button class="md:hidden text-fog"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
@@ -97,7 +180,8 @@
       <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
       <a href="/about" class="text-fog hover:text-chalk">About</a>
       <a href="/contact" class="text-fog hover:text-chalk">Contact</a>
-      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment →</a>
+      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment
+        →</a>
     </div>
   </nav>
 
@@ -109,22 +193,27 @@
         <!-- Left: Copy -->
         <div>
           <h1 class="fade-up font-display text-6xl lg:text-8xl leading-none text-chalk mb-4">
-            STOP RENTING<br/>YOUR <span class="text-hiviz">AI.</span><br/>OWN THE<br/>ENGINE.
+            STOP RENTING<br />YOUR <span class="text-hiviz">AI.</span><br />OWN THE<br />ENGINE.
           </h1>
           <p class="fade-up delay-1 font-body text-lg text-fog max-w-xl mt-6 mb-8 leading-relaxed">
-            Marapone builds private AI systems for construction and logistics companies — deployed on your infrastructure, trained on your documents, handed to you permanently. No subscriptions. No data sharing. No monthly fees. Ever.
+            Marapone builds private AI systems for construction and logistics companies — deployed on your
+            infrastructure, trained on your documents, handed to you permanently. No subscriptions. No data sharing. No
+            monthly fees. Ever.
           </p>
           <div class="fade-up delay-2 flex flex-col sm:flex-row gap-4">
-            <a href="/contact" class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-center text-lg hover:opacity-90 transition-opacity">
+            <a href="/contact"
+              class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-center text-lg hover:opacity-90 transition-opacity">
               Get Your Free AI Assessment →
             </a>
-            <a href="/how-it-works" class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
+            <a href="/how-it-works"
+              class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
               See How It Works
             </a>
           </div>
           <div class="fade-up delay-3 mt-8 tape-line">
             <p class="text-sm font-mono text-fog">
-              <span class="text-hiviz font-semibold">Risk-free guarantee:</span> If it doesn't save you at least 10 hours in the first 30 days of use — full refund, no questions asked.
+              <span class="text-hiviz font-semibold">Risk-free guarantee:</span> If it doesn't save you at least 10
+              hours in the first 30 days of use — full refund, no questions asked.
             </p>
           </div>
         </div>
@@ -132,10 +221,12 @@
         <div class="fade-up delay-1 flex flex-col items-center justify-center">
           <div class="relative flex items-center justify-center p-8">
             <div class="logo-pulse rounded-full p-2">
-              <img src="MaraponeLogo-1.png" alt="Marapone Contracting" class="w-72 lg:w-96 object-contain drop-shadow-2xl" />
+              <img src="MaraponeLogo-1.png" alt="Marapone Contracting"
+                class="w-72 lg:w-96 object-contain drop-shadow-2xl" />
             </div>
           </div>
-          <p class="text-xs text-fog font-mono mt-2 text-center tracking-widest uppercase">Private AI for Construction &amp; Logistics</p>
+          <p class="text-xs text-fog font-mono mt-2 text-center tracking-widest uppercase">Private AI for Construction
+            &amp; Logistics</p>
         </div>
       </div>
     </div>
@@ -145,15 +236,20 @@
   <section class="bg-steel border-t border-b border-plate py-5">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-wrap items-center justify-center gap-8 text-xs font-mono text-fog">
-        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> One-time price — no subscriptions</span>
+        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> One-time price — no
+          subscriptions</span>
         <span class="text-plate hidden sm:inline">|</span>
-        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> Full source code handover</span>
+        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> Full source code
+          handover</span>
         <span class="text-plate hidden sm:inline">|</span>
-        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> Deployed on your infrastructure</span>
+        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> Deployed on your
+          infrastructure</span>
         <span class="text-plate hidden sm:inline">|</span>
-        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> Canada &amp; Italy — Global remote</span>
+        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> Canada &amp; Italy — Global
+          remote</span>
         <span class="text-plate hidden sm:inline">|</span>
-        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> Your data never leaves your network</span>
+        <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> Your data never leaves your
+          network</span>
       </div>
     </div>
   </section>
@@ -163,8 +259,11 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center mb-12">
         <p class="font-mono text-hiviz text-sm mb-2">// B2B AI solutions</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">TWO INDUSTRIES.<br/><span class="text-hiviz">ONE APPROACH.</span></h2>
-        <p class="text-fog mt-4 max-w-2xl mx-auto leading-relaxed">We don't sell generic AI. We build private, fine-tuned intelligence systems tailored to your documents, your workflows, and your team — then hand you everything and walk away.</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">TWO INDUSTRIES.<br /><span class="text-hiviz">ONE
+            APPROACH.</span></h2>
+        <p class="text-fog mt-4 max-w-2xl mx-auto leading-relaxed">We don't sell generic AI. We build private,
+          fine-tuned intelligence systems tailored to your documents, your workflows, and your team — then hand you
+          everything and walk away.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-6">
         <!-- Construction -->
@@ -176,12 +275,18 @@
               <h3 class="font-display text-2xl text-chalk">CONSTRUCTION INTELLIGENCE</h3>
             </div>
           </div>
-          <p class="text-fog text-sm leading-relaxed mb-6">General contractors, developers, and project managers dealing with blueprint complexity, RFI backlogs, site documentation, and delay risk. We turn your document chaos into structured intelligence.</p>
+          <p class="text-fog text-sm leading-relaxed mb-6">General contractors, developers, and project managers dealing
+            with blueprint complexity, RFI backlogs, site documentation, and delay risk. We turn your document chaos
+            into structured intelligence.</p>
           <ul class="space-y-2 text-sm">
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Blueprint & specification auditing</span></li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">RFI tracking & critical path analysis</span></li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Daily log synthesis & delay detection</span></li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Cash-flow risk signals from document patterns</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span
+                class="text-chalk">Blueprint & specification auditing</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">RFI
+                tracking & critical path analysis</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Daily
+                log synthesis & delay detection</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span
+                class="text-chalk">Cash-flow risk signals from document patterns</span></li>
           </ul>
           <div class="mt-6 pt-6 border-t border-plate">
             <p class="font-mono text-xs text-fog">Best for: GCs, developers, PMs on $500k–$50M projects</p>
@@ -196,15 +301,22 @@
               <h3 class="font-display text-2xl text-chalk">LOGISTICS INTELLIGENCE</h3>
             </div>
           </div>
-          <p class="text-fog text-sm leading-relaxed mb-6">Importers, exporters, freight brokers, and 3PLs buried under trade documents, compliance requirements, carrier communications, and supply chain risk. We build AI that reads what you don't have time to read.</p>
+          <p class="text-fog text-sm leading-relaxed mb-6">Importers, exporters, freight brokers, and 3PLs buried under
+            trade documents, compliance requirements, carrier communications, and supply chain risk. We build AI that
+            reads what you don't have time to read.</p>
           <ul class="space-y-2 text-sm">
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Trade document processing & validation</span></li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Freight invoice auditing & discrepancy flagging</span></li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Compliance & customs documentation review</span></li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Carrier & supplier performance tracking</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Trade
+                document processing & validation</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Freight
+                invoice auditing & discrepancy flagging</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span
+                class="text-chalk">Compliance & customs documentation review</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">→</span><span class="text-chalk">Carrier
+                & supplier performance tracking</span></li>
           </ul>
           <div class="mt-6 pt-6 border-t border-plate">
-            <p class="font-mono text-xs text-fog">Best for: importers, exporters, freight brokers, 3PLs, supply chain teams</p>
+            <p class="font-mono text-xs text-fog">Best for: importers, exporters, freight brokers, 3PLs, supply chain
+              teams</p>
           </div>
         </div>
       </div>
@@ -216,7 +328,8 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="mb-10">
         <p class="font-mono text-hiviz text-sm mb-2">// What we build</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">AI SOLUTIONS THAT<br/><span class="text-hiviz">SOLVE REAL PROBLEMS</span></h2>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">AI SOLUTIONS THAT<br /><span class="text-hiviz">SOLVE
+            REAL PROBLEMS</span></h2>
       </div>
 
       <!-- Construction Solutions -->
@@ -227,23 +340,31 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
             <div class="text-2xl mb-3">📐</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Blueprint Auditor</h3>
-            <p class="text-fog text-xs leading-relaxed">Drop in a 300-page PDF. Get back a structured audit — scope, conflicts, ambiguities, spec mismatches. Minutes, not hours.</p>
+            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Blueprint Auditor
+            </h3>
+            <p class="text-fog text-xs leading-relaxed">Drop in a 300-page PDF. Get back a structured audit — scope,
+              conflicts, ambiguities, spec mismatches. Minutes, not hours.</p>
           </div>
           <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
             <div class="text-2xl mb-3">📋</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">RFI Intelligence</h3>
-            <p class="text-fog text-xs leading-relaxed">Feed it your RFI backlog. It cross-references blueprints, identifies critical-path blockers, and flags aging items before they become claims.</p>
+            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">RFI Intelligence
+            </h3>
+            <p class="text-fog text-xs leading-relaxed">Feed it your RFI backlog. It cross-references blueprints,
+              identifies critical-path blockers, and flags aging items before they become claims.</p>
           </div>
           <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
             <div class="text-2xl mb-3">📓</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Daily Log Synthesis</h3>
-            <p class="text-fog text-xs leading-relaxed">Weeks of site logs turned into a clean report — manpower trends, delay patterns, and anything that could become a dispute down the line.</p>
+            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Daily Log
+              Synthesis</h3>
+            <p class="text-fog text-xs leading-relaxed">Weeks of site logs turned into a clean report — manpower trends,
+              delay patterns, and anything that could become a dispute down the line.</p>
           </div>
           <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
             <div class="text-2xl mb-3">⚠️</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Risk & Delay Signals</h3>
-            <p class="text-fog text-xs leading-relaxed">Connects dots across all your docs — flags delay clusters, predicts draw schedule risk, and tells you which phase is in trouble before it surfaces on site.</p>
+            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Risk & Delay
+              Signals</h3>
+            <p class="text-fog text-xs leading-relaxed">Connects dots across all your docs — flags delay clusters,
+              predicts draw schedule risk, and tells you which phase is in trouble before it surfaces on site.</p>
           </div>
         </div>
       </div>
@@ -256,23 +377,30 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
             <div class="text-2xl mb-3">🗂️</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Trade Doc Processor</h3>
-            <p class="text-fog text-xs leading-relaxed">Bills of lading, customs declarations, commercial invoices — the AI reads them all, validates fields, flags errors, and surfaces what needs action.</p>
+            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Trade Doc
+              Processor</h3>
+            <p class="text-fog text-xs leading-relaxed">Bills of lading, customs declarations, commercial invoices — the
+              AI reads them all, validates fields, flags errors, and surfaces what needs action.</p>
           </div>
           <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
             <div class="text-2xl mb-3">💸</div>
             <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Freight Audit</h3>
-            <p class="text-fog text-xs leading-relaxed">Carrier invoices audited against contracted rates automatically. Catches billing discrepancies, duplicate charges, and accessorial surprises before payment.</p>
+            <p class="text-fog text-xs leading-relaxed">Carrier invoices audited against contracted rates automatically.
+              Catches billing discrepancies, duplicate charges, and accessorial surprises before payment.</p>
           </div>
           <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
             <div class="text-2xl mb-3">🛃</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Compliance Monitor</h3>
-            <p class="text-fog text-xs leading-relaxed">Flags missing or inconsistent data across import/export documentation before it becomes a customs hold. Reads your specific commodity and lane requirements.</p>
+            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Compliance Monitor
+            </h3>
+            <p class="text-fog text-xs leading-relaxed">Flags missing or inconsistent data across import/export
+              documentation before it becomes a customs hold. Reads your specific commodity and lane requirements.</p>
           </div>
           <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
             <div class="text-2xl mb-3">📡</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Supply Chain Risk</h3>
-            <p class="text-fog text-xs leading-relaxed">Reads carrier updates, supplier communications, and shipment docs to surface delivery risk and lead-time threats before they disrupt your operations.</p>
+            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Supply Chain Risk
+            </h3>
+            <p class="text-fog text-xs leading-relaxed">Reads carrier updates, supplier communications, and shipment
+              docs to surface delivery risk and lead-time threats before they disrupt your operations.</p>
           </div>
         </div>
       </div>
@@ -285,12 +413,15 @@
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <p class="font-mono text-hiviz text-sm mb-2">// Why not just use ChatGPT or another SaaS?</p>
-          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE PROBLEM WITH<br/><span class="text-hiviz">RENTED AI</span></h2>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE PROBLEM WITH<br /><span
+              class="text-hiviz">RENTED AI</span></h2>
           <div class="space-y-5 text-fog leading-relaxed">
-            <p>Every SaaS AI tool you're looking at right now is going to cost you $400–$2,000/month, store your sensitive documents on someone else's server, and disappear when the VC funding runs dry.</p>
+            <p>Every SaaS AI tool you're looking at right now is going to cost you $400–$2,000/month, store your
+              sensitive documents on someone else's server, and disappear when the VC funding runs dry.</p>
             <p>That's not a tool. That's a liability with a monthly invoice attached to it.</p>
             <div class="tape-line">
-              <p class="text-chalk font-medium">Your blueprints, your trade documents, your logistics data — these are competitive assets. They shouldn't live in someone else's cloud.</p>
+              <p class="text-chalk font-medium">Your blueprints, your trade documents, your logistics data — these are
+                competitive assets. They shouldn't live in someone else's cloud.</p>
             </div>
           </div>
         </div>
@@ -321,38 +452,51 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="mb-12">
         <p class="font-mono text-hiviz text-sm mb-2">// Process</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">HOW THIS ACTUALLY <span class="text-hiviz">WORKS</span></h2>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">HOW THIS ACTUALLY <span class="text-hiviz">WORKS</span>
+        </h2>
       </div>
       <div class="grid md:grid-cols-4 gap-0">
         <div class="relative">
           <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
           <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div class="w-16 h-16 rounded bg-steel border-2 border-hiviz flex items-center justify-center mb-4 font-display text-2xl text-hiviz">01</div>
+            <div
+              class="w-16 h-16 rounded bg-steel border-2 border-hiviz flex items-center justify-center mb-4 font-display text-2xl text-hiviz">
+              01</div>
             <h3 class="font-display text-lg text-chalk mb-2">FREE ASSESSMENT</h3>
-            <p class="text-sm text-fog">Send us a real document from your workflow. We analyze it and return a report + video walkthrough. No pitch, no strings.</p>
+            <p class="text-sm text-fog">Send us a real document from your workflow. We analyze it and return a report +
+              video walkthrough. No pitch, no strings.</p>
           </div>
         </div>
         <div class="relative mt-8 md:mt-0">
           <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
           <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div class="w-16 h-16 rounded bg-steel border-2 border-plate flex items-center justify-center mb-4 font-display text-2xl text-fog">02</div>
+            <div
+              class="w-16 h-16 rounded bg-steel border-2 border-plate flex items-center justify-center mb-4 font-display text-2xl text-fog">
+              02</div>
             <h3 class="font-display text-lg text-chalk mb-2">DISCOVERY CALL</h3>
-            <p class="text-sm text-fog">30-minute call to understand your document stack, your biggest time drains, and whether a custom AI build makes sense for you right now.</p>
+            <p class="text-sm text-fog">30-minute call to understand your document stack, your biggest time drains, and
+              whether a custom AI build makes sense for you right now.</p>
           </div>
         </div>
         <div class="relative mt-8 md:mt-0">
           <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
           <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div class="w-16 h-16 rounded bg-steel border-2 border-plate flex items-center justify-center mb-4 font-display text-2xl text-fog">03</div>
+            <div
+              class="w-16 h-16 rounded bg-steel border-2 border-plate flex items-center justify-center mb-4 font-display text-2xl text-fog">
+              03</div>
             <h3 class="font-display text-lg text-chalk mb-2">WE BUILD IT</h3>
-            <p class="text-sm text-fog">We fine-tune the model on your actual documents, build the local app, and deploy on your machine or server. Built for your data, your workflow, your team.</p>
+            <p class="text-sm text-fog">We fine-tune the model on your actual documents, build the local app, and deploy
+              on your machine or server. Built for your data, your workflow, your team.</p>
           </div>
         </div>
         <div class="relative mt-8 md:mt-0">
           <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
-            <div class="w-16 h-16 rounded bg-hiviz flex items-center justify-center mb-4 font-display text-2xl text-white">04</div>
+            <div
+              class="w-16 h-16 rounded bg-hiviz flex items-center justify-center mb-4 font-display text-2xl text-white">
+              04</div>
             <h3 class="font-display text-lg text-chalk mb-2">YOU OWN IT</h3>
-            <p class="text-sm text-fog">Full source code. Fine-tuned model weights. Install guide. It's yours. Runs offline. No API keys. No monthly bill. No vendor ever again.</p>
+            <p class="text-sm text-fog">Full source code. Fine-tuned model weights. Install guide. It's yours. Runs
+              offline. No API keys. No monthly bill. No vendor ever again.</p>
           </div>
         </div>
       </div>
@@ -367,186 +511,193 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="mb-12">
         <p class="font-mono text-hiviz text-sm mb-2">// Early clients</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">WHAT CLIENTS ARE <span class="text-hiviz">SAYING</span></h2>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">WHAT CLIENTS ARE <span class="text-hiviz">SAYING</span>
+        </h2>
       </div>
       <div id="reviews-grid" class="grid md:grid-cols-3 gap-6" style="transition: opacity 0.2s ease;"></div>
       <div class="flex items-center justify-between mt-8">
-        <button id="reviews-prev" aria-label="Previous reviews" class="flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        <button id="reviews-prev" aria-label="Previous reviews"
+          class="flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
           PREV
         </button>
         <div id="reviews-dots" class="flex gap-2"></div>
-        <button id="reviews-next" aria-label="Next reviews" class="flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
+        <button id="reviews-next" aria-label="Next reviews"
+          class="flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
           NEXT
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
     </div>
   </section>
   <script>
-    (function () {
-      var reviews = [
-        {
-          q: "We had 60+ open RFIs on a school build and no one had time to cross-reference them against the drawings. The AI found 7 that were directly on our critical path. That saved us from a nasty conversation with the owner.",
-          n: "Project Manager",
-          c: "Commercial GC \u2014 $3.2M ICI project"
-        },
-        {
-          q: "I run a two-person operation. I was skeptical a tool like this would be sized for someone like me, but the starter package fit what I actually needed. I use it to review drawings before I walk a site. It\u2019s not magic \u2014 but it catches things I\u2019d miss when I\u2019m moving fast.",
-          n: "GC Owner",
-          c: "Sole proprietor \u2014 small residential renovation"
-        },
-        {
-          q: "Carrier invoice auditing manually wasn\u2019t feasible at the volume we\u2019re moving. The system flags variances between the rate we were quoted and what we\u2019re actually billed. First quarter it was running, it caught overcharges we\u2019d have never found going line by line. The numbers made the decision easy.",
-          n: "Freight Operations Manager",
-          c: "International freight forwarder \u2014 regional 3PL operation"
-        },
-        {
-          q: "I was spending 4\u20136 hours reviewing blueprints before every subcontractor meeting. This cut that to under an hour. I don\u2019t understand how it works but I don\u2019t need to \u2014 it runs on my laptop and it\u2019s mine.",
-          n: "GC Owner",
-          c: "Mid-size residential/ICI \u2014 2 active projects"
-        },
-        {
-          q: "We process maybe 30 documents a month. Not a big operation. But errors were still costing us \u2014 one bad customs declaration held a shipment for 11 days. The tool we got wasn\u2019t expensive and it does exactly one thing: checks the document before it goes to the broker. Worth it.",
-          n: "Owner",
-          c: "Small importer \u2014 seasonal consumer goods"
-        },
-        {
-          q: "We had a hospital wing tender \u2014 600 pages of drawings, 10-day submission window. There was no realistic way to get through the full spec review manually. Marapone ran it, flagged the conflicts and the items I needed to price separately. We submitted on time and came in competitive.",
-          n: "Senior Estimator",
-          c: "Commercial GC \u2014 $480K institutional fit-out"
-        },
-        {
-          q: "My job is to catch what the GC misses before it becomes an issue. The daily log summaries made that manageable. I was working through 50 pages of logs a week; now I get a two-page digest with the flagged items pulled out. Saves me a meaningful amount of time every week.",
-          n: "Owner\u2019s Representative",
-          c: "Owners\u2019 rep \u2014 $320K residential development oversight"
-        },
-        {
-          q: "I needed content for my website and a LinkedIn template I could actually maintain myself. What I got was a system, not a service. One fixed fee, no monthly anything. I\u2019ve updated it three times since the handover and never needed to call anyone.",
-          n: "Trade Contractor",
-          c: "Solo electrician \u2014 brand and content starter"
-        },
-        {
-          q: "Our HTS classification errors were showing up on duty reclaims and slowing customs clearance. Marapone built something that cross-references our commercial invoices against our product database before they go to the broker. It doesn\u2019t replace the broker \u2014 it just means the package arriving is clean. We\u2019ve had one audit since and there were no issues.",
-          n: "Trade Compliance Lead",
-          c: "Importer \u2014 electronics and industrial goods, $650K annual duty exposure"
-        },
-        {
-          q: "I\u2019ve been in construction for 22 years. I told them upfront I was skeptical. They ran the free assessment on a set of our drawings and identified two coordination issues in the mechanical/structural overlay that had already cost us a week of delay. I didn\u2019t need further convincing after that.",
-          n: "Principal / GC Owner",
-          c: "ICI general contractor \u2014 $780K renovation project"
-        },
-        {
-          q: "Small job, straightforward deliverable. They built a basic log summary tool for my foreman. He enters notes, the tool formats it and flags anything that reads like an issue. I don\u2019t have the budget for a full system \u2014 but this fit and it works.",
-          n: "GC Owner",
-          c: "Two-person residential GC \u2014 site log tool"
-        },
-        {
-          q: "Bills of lading, packing lists, certificates of origin \u2014 we process hundreds per month and errors compound fast. The tool flags discrepancies before anything reaches the customs broker. Our broker actually mentioned our package quality had improved. I thought that was a telling sign.",
-          n: "Import/Export Coordinator",
-          c: "Industrial distributor \u2014 $820K annual import volume"
-        },
-        {
-          q: "We kept getting hit with back-charges for work that was clearly covered in our RFI responses \u2014 nobody had time to go back and prove it. Now the system pulls the relevant documentation automatically. We\u2019ve recovered two back-charges already that we\u2019d have just absorbed.",
-          n: "Operations Manager",
-          c: "Mechanical subcontractor \u2014 $215K ICI fit-out"
-        },
-        {
-          q: "I used to screenshot RFIs and email them one by one. The tool batches and cross-references them against the relevant drawing section. For the size of project I typically run, it\u2019s more than enough and the price wasn\u2019t a barrier.",
-          n: "Project Superintendent",
-          c: "Small commercial GC \u2014 RFI tracking starter"
-        },
-        {
-          q: "We had two people whose main job was manually checking trade documents. The system handles the first pass now \u2014 they work the exceptions. Nobody was let go; both moved to work that actually requires human judgment. The throughput improvement was immediate.",
-          n: "Director of Operations",
-          c: "Regional logistics company \u2014 cross-border trade operations"
-        },
-        {
-          q: "I came onto a project mid-build with two years of disorganized documentation behind it. I asked the system about the status of the elevator scope and it pulled the relevant drawings, RFIs, and emails in under a minute. That was the moment I understood what this actually does.",
-          n: "Project Coordinator",
-          c: "Commercial GC \u2014 mixed-use development, $540K scope"
-        },
-        {
-          q: "The free audit they ran on my blueprint was what convinced me. They found a coordination issue in the mechanical rough-in that my architect had missed. When I saw what the full tool could do, the decision was easy \u2014 especially at the price point.",
-          n: "Renovation Contractor",
-          c: "Owner-operator \u2014 single-family residential reno"
-        },
-        {
-          q: "We hadn\u2019t touched our marketing since 2018. New website copy, case study templates, LinkedIn content \u2014 nothing existed and we had no bandwidth to build it. Marapone delivered the full package in under three weeks. The copy sounds like our company, which wasn\u2019t something I expected. Most agencies hand you something generic and charge you to revise it. This wasn\u2019t that.",
-          n: "Marketing Manager",
-          c: "Mid-size construction firm \u2014 marketing system overhaul"
-        },
-        {
-          q: "The free audit alone was worth it. Marapone sent back a report showing three issues in my blueprint I\u2019d completely missed. No upsell, no BS. Just \u2018here\u2019s what we found.\u2019 Hired them after that.",
-          n: "GC Owner",
-          c: "Residential GC \u2014 townhouse development"
-        },
-        {
-          q: "We do cross-border freight but at a fraction of the volume a 3PL runs. I couldn\u2019t justify a big investment. The starter package checks our BOL and packing list against each other before they go out. Simple, but it\u2019s eliminated the type of errors that were causing re-inspection requests.",
-          n: "Freight Broker",
-          c: "Independent freight broker \u2014 cross-border LTL"
-        },
-        {
-          q: "I\u2019m not a technology person and I didn\u2019t want to become one. It runs off a laptop, doesn\u2019t need the internet, and my PM had it set up in half a day. I read the daily log summary every morning and flag anything that needs attention. That\u2019s the full extent of my involvement.",
-          n: "Site Superintendent",
-          c: "ICI general contractor \u2014 $175K commercial tenant fit-out"
-        },
-        {
-          q: "I don\u2019t have a marketing team. I have a business to run. I needed a system that generates consistent content without requiring my attention every week. That\u2019s what they built. They handed it over, walked me through it, and I haven\u2019t needed to contact them since. Three months in and it\u2019s still running the same way.",
-          n: "Owner / Director",
-          c: "Specialty trade contractor \u2014 brand and content system build"
-        }
-      ];
+      (function () {
+        var reviews = [
+          {
+            q: "We had 60+ open RFIs on a school build and no one had time to cross-reference them against the drawings. The AI found 7 that were directly on our critical path. That saved us from a nasty conversation with the owner.",
+            n: "Project Manager",
+            c: "Commercial GC \u2014 $3.2M ICI project"
+          },
+          {
+            q: "I run a two-person operation. I was skeptical a tool like this would be sized for someone like me, but the starter package fit what I actually needed. I use it to review drawings before I walk a site. It\u2019s not magic \u2014 but it catches things I\u2019d miss when I\u2019m moving fast.",
+            n: "GC Owner",
+            c: "Sole proprietor \u2014 small residential renovation"
+          },
+          {
+            q: "Carrier invoice auditing manually wasn\u2019t feasible at the volume we\u2019re moving. The system flags variances between the rate we were quoted and what we\u2019re actually billed. First quarter it was running, it caught overcharges we\u2019d have never found going line by line. The numbers made the decision easy.",
+            n: "Freight Operations Manager",
+            c: "International freight forwarder \u2014 regional 3PL operation"
+          },
+          {
+            q: "I was spending 4\u20136 hours reviewing blueprints before every subcontractor meeting. This cut that to under an hour. I don\u2019t understand how it works but I don\u2019t need to \u2014 it runs on my laptop and it\u2019s mine.",
+            n: "GC Owner",
+            c: "Mid-size residential/ICI \u2014 2 active projects"
+          },
+          {
+            q: "We process maybe 30 documents a month. Not a big operation. But errors were still costing us \u2014 one bad customs declaration held a shipment for 11 days. The tool we got wasn\u2019t expensive and it does exactly one thing: checks the document before it goes to the broker. Worth it.",
+            n: "Owner",
+            c: "Small importer \u2014 seasonal consumer goods"
+          },
+          {
+            q: "We had a hospital wing tender \u2014 600 pages of drawings, 10-day submission window. There was no realistic way to get through the full spec review manually. Marapone ran it, flagged the conflicts and the items I needed to price separately. We submitted on time and came in competitive.",
+            n: "Senior Estimator",
+            c: "Commercial GC \u2014 $480K institutional fit-out"
+          },
+          {
+            q: "My job is to catch what the GC misses before it becomes an issue. The daily log summaries made that manageable. I was working through 50 pages of logs a week; now I get a two-page digest with the flagged items pulled out. Saves me a meaningful amount of time every week.",
+            n: "Owner\u2019s Representative",
+            c: "Owners\u2019 rep \u2014 $320K residential development oversight"
+          },
+          {
+            q: "I needed content for my website and a LinkedIn template I could actually maintain myself. What I got was a system, not a service. One fixed fee, no monthly anything. I\u2019ve updated it three times since the handover and never needed to call anyone.",
+            n: "Trade Contractor",
+            c: "Solo electrician \u2014 brand and content starter"
+          },
+          {
+            q: "Our HTS classification errors were showing up on duty reclaims and slowing customs clearance. Marapone built something that cross-references our commercial invoices against our product database before they go to the broker. It doesn\u2019t replace the broker \u2014 it just means the package arriving is clean. We\u2019ve had one audit since and there were no issues.",
+            n: "Trade Compliance Lead",
+            c: "Importer \u2014 electronics and industrial goods, $650K annual duty exposure"
+          },
+          {
+            q: "I\u2019ve been in construction for 22 years. I told them upfront I was skeptical. They ran the free assessment on a set of our drawings and identified two coordination issues in the mechanical/structural overlay that had already cost us a week of delay. I didn\u2019t need further convincing after that.",
+            n: "Principal / GC Owner",
+            c: "ICI general contractor \u2014 $780K renovation project"
+          },
+          {
+            q: "Small job, straightforward deliverable. They built a basic log summary tool for my foreman. He enters notes, the tool formats it and flags anything that reads like an issue. I don\u2019t have the budget for a full system \u2014 but this fit and it works.",
+            n: "GC Owner",
+            c: "Two-person residential GC \u2014 site log tool"
+          },
+          {
+            q: "Bills of lading, packing lists, certificates of origin \u2014 we process hundreds per month and errors compound fast. The tool flags discrepancies before anything reaches the customs broker. Our broker actually mentioned our package quality had improved. I thought that was a telling sign.",
+            n: "Import/Export Coordinator",
+            c: "Industrial distributor \u2014 $820K annual import volume"
+          },
+          {
+            q: "We kept getting hit with back-charges for work that was clearly covered in our RFI responses \u2014 nobody had time to go back and prove it. Now the system pulls the relevant documentation automatically. We\u2019ve recovered two back-charges already that we\u2019d have just absorbed.",
+            n: "Operations Manager",
+            c: "Mechanical subcontractor \u2014 $215K ICI fit-out"
+          },
+          {
+            q: "I used to screenshot RFIs and email them one by one. The tool batches and cross-references them against the relevant drawing section. For the size of project I typically run, it\u2019s more than enough and the price wasn\u2019t a barrier.",
+            n: "Project Superintendent",
+            c: "Small commercial GC \u2014 RFI tracking starter"
+          },
+          {
+            q: "We had two people whose main job was manually checking trade documents. The system handles the first pass now \u2014 they work the exceptions. Nobody was let go; both moved to work that actually requires human judgment. The throughput improvement was immediate.",
+            n: "Director of Operations",
+            c: "Regional logistics company \u2014 cross-border trade operations"
+          },
+          {
+            q: "I came onto a project mid-build with two years of disorganized documentation behind it. I asked the system about the status of the elevator scope and it pulled the relevant drawings, RFIs, and emails in under a minute. That was the moment I understood what this actually does.",
+            n: "Project Coordinator",
+            c: "Commercial GC \u2014 mixed-use development, $540K scope"
+          },
+          {
+            q: "The free audit they ran on my blueprint was what convinced me. They found a coordination issue in the mechanical rough-in that my architect had missed. When I saw what the full tool could do, the decision was easy \u2014 especially at the price point.",
+            n: "Renovation Contractor",
+            c: "Owner-operator \u2014 single-family residential reno"
+          },
+          {
+            q: "We hadn\u2019t touched our marketing since 2018. New website copy, case study templates, LinkedIn content \u2014 nothing existed and we had no bandwidth to build it. Marapone delivered the full package in under three weeks. The copy sounds like our company, which wasn\u2019t something I expected. Most agencies hand you something generic and charge you to revise it. This wasn\u2019t that.",
+            n: "Marketing Manager",
+            c: "Mid-size construction firm \u2014 marketing system overhaul"
+          },
+          {
+            q: "The free audit alone was worth it. Marapone sent back a report showing three issues in my blueprint I\u2019d completely missed. No upsell, no BS. Just \u2018here\u2019s what we found.\u2019 Hired them after that.",
+            n: "GC Owner",
+            c: "Residential GC \u2014 townhouse development"
+          },
+          {
+            q: "We do cross-border freight but at a fraction of the volume a 3PL runs. I couldn\u2019t justify a big investment. The starter package checks our BOL and packing list against each other before they go out. Simple, but it\u2019s eliminated the type of errors that were causing re-inspection requests.",
+            n: "Freight Broker",
+            c: "Independent freight broker \u2014 cross-border LTL"
+          },
+          {
+            q: "I\u2019m not a technology person and I didn\u2019t want to become one. It runs off a laptop, doesn\u2019t need the internet, and my PM had it set up in half a day. I read the daily log summary every morning and flag anything that needs attention. That\u2019s the full extent of my involvement.",
+            n: "Site Superintendent",
+            c: "ICI general contractor \u2014 $175K commercial tenant fit-out"
+          },
+          {
+            q: "I don\u2019t have a marketing team. I have a business to run. I needed a system that generates consistent content without requiring my attention every week. That\u2019s what they built. They handed it over, walked me through it, and I haven\u2019t needed to contact them since. Three months in and it\u2019s still running the same way.",
+            n: "Owner / Director",
+            c: "Specialty trade contractor \u2014 brand and content system build"
+          }
+        ];
 
-      var page = 0;
-      var perPage = 3;
-      var totalPages = Math.ceil(reviews.length / perPage);
-      var grid = document.getElementById('reviews-grid');
-      var dotsEl = document.getElementById('reviews-dots');
-      var prevBtn = document.getElementById('reviews-prev');
-      var nextBtn = document.getElementById('reviews-next');
+        var page = 0;
+        var perPage = 3;
+        var totalPages = Math.ceil(reviews.length / perPage);
+        var grid = document.getElementById('reviews-grid');
+        var dotsEl = document.getElementById('reviews-dots');
+        var prevBtn = document.getElementById('reviews-prev');
+        var nextBtn = document.getElementById('reviews-next');
 
-      function cardHTML(r) {
-        return '<div class="bg-steel border border-plate rounded-lg p-6 flex flex-col">' +
-          '<div class="flex mb-4"><span class="text-hiviz text-xl">\u2605\u2605\u2605\u2605\u2605</span></div>' +
-          '<blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">\u201c' + r.q + '\u201d</blockquote>' +
-          '<div class="border-t border-plate pt-4">' +
-          '<p class="font-semibold text-chalk text-sm">' + r.n + '</p>' +
-          '<p class="text-fog text-xs">' + r.c + '</p>' +
-          '</div></div>';
-      }
-
-      function render() {
-        var start = page * perPage;
-        var slice = reviews.slice(start, start + perPage);
-        grid.style.opacity = '0';
-        setTimeout(function () {
-          grid.innerHTML = slice.map(cardHTML).join('');
-          grid.style.opacity = '1';
-        }, 200);
-
-        dotsEl.innerHTML = '';
-        for (var i = 0; i < totalPages; i++) {
-          var dot = document.createElement('button');
-          dot.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;transition:background 0.2s;background:' + (i === page ? '#f97316' : '#3a3a3a');
-          dot.setAttribute('aria-label', 'Page ' + (i + 1));
-          (function (idx) {
-            dot.addEventListener('click', function () { page = idx; render(); });
-          })(i);
-          dotsEl.appendChild(dot);
+        function cardHTML(r) {
+          return '<div class="bg-steel border border-plate rounded-lg p-6 flex flex-col">' +
+            '<div class="flex mb-4"><span class="text-hiviz text-xl">\u2605\u2605\u2605\u2605\u2605</span></div>' +
+            '<blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">\u201c' + r.q + '\u201d</blockquote>' +
+            '<div class="border-t border-plate pt-4">' +
+            '<p class="font-semibold text-chalk text-sm">' + r.n + '</p>' +
+            '<p class="text-fog text-xs">' + r.c + '</p>' +
+            '</div></div>';
         }
 
-        prevBtn.style.opacity = page === 0 ? '0.3' : '1';
-        prevBtn.style.pointerEvents = page === 0 ? 'none' : 'auto';
-        nextBtn.style.opacity = page === totalPages - 1 ? '0.3' : '1';
-        nextBtn.style.pointerEvents = page === totalPages - 1 ? 'none' : 'auto';
-      }
+        function render() {
+          var start = page * perPage;
+          var slice = reviews.slice(start, start + perPage);
+          grid.style.opacity = '0';
+          setTimeout(function () {
+            grid.innerHTML = slice.map(cardHTML).join('');
+            grid.style.opacity = '1';
+          }, 200);
 
-      prevBtn.addEventListener('click', function () { if (page > 0) { page--; render(); } });
-      nextBtn.addEventListener('click', function () { if (page < totalPages - 1) { page++; render(); } });
+          dotsEl.innerHTML = '';
+          for (var i = 0; i < totalPages; i++) {
+            var dot = document.createElement('button');
+            dot.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;transition:background 0.2s;background:' + (i === page ? '#f97316' : '#3a3a3a');
+            dot.setAttribute('aria-label', 'Page ' + (i + 1));
+            (function (idx) {
+              dot.addEventListener('click', function () { page = idx; render(); });
+            })(i);
+            dotsEl.appendChild(dot);
+          }
 
-      render();
-    })();
+          prevBtn.style.opacity = page === 0 ? '0.3' : '1';
+          prevBtn.style.pointerEvents = page === 0 ? 'none' : 'auto';
+          nextBtn.style.opacity = page === totalPages - 1 ? '0.3' : '1';
+          nextBtn.style.pointerEvents = page === totalPages - 1 ? 'none' : 'auto';
+        }
+
+        prevBtn.addEventListener('click', function () { if (page > 0) { page--; render(); } });
+        nextBtn.addEventListener('click', function () { if (page < totalPages - 1) { page++; render(); } });
+
+        render();
+      })();
   </script>
 
   <!-- FREE ASSESSMENT CTA -->
@@ -557,19 +708,27 @@
         <div class="grid-dot absolute inset-0 opacity-30"></div>
         <div class="relative">
           <p class="font-mono text-hiviz text-sm mb-4">// No pitch. No strings. Just results.</p>
-          <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-4">FREE 24-HOUR<br/><span class="text-hiviz">AI ASSESSMENT</span></h2>
+          <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-4">FREE 24-HOUR<br /><span class="text-hiviz">AI
+              ASSESSMENT</span></h2>
           <p class="text-fog max-w-xl mx-auto mb-8 leading-relaxed">
-            Send us one real document from your workflow — a blueprint, an RFI package, a customs declaration, a freight invoice. We'll analyze it, review the output personally, and send back a written report + short video. Usually within 24 hours.
+            Send us one real document from your workflow — a blueprint, an RFI package, a customs declaration, a freight
+            invoice. We'll analyze it, review the output personally, and send back a written report + short video.
+            Usually within 24 hours.
           </p>
           <ul class="text-sm text-fog text-left max-w-md mx-auto mb-8 space-y-2">
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span>Real analysis on your actual documents — not a demo</li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span>You get a written report, not a sales deck</li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span>Zero obligation. The report is yours regardless.</li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span>Real analysis on your actual
+              documents — not a demo</li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span>You get a written report, not a
+              sales deck</li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span>Zero obligation. The report is
+              yours regardless.</li>
           </ul>
-          <a href="/contact" class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
+          <a href="/contact"
+            class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
             Request Your Free Assessment →
           </a>
-          <p class="text-xs font-mono text-fog mt-4">We keep our project load small to ensure every client gets our full focus and a high-quality result. Currently accepting new assessment requests.</p>
+          <p class="text-xs font-mono text-fog mt-4">We keep our project load small to ensure every client gets our full
+            focus and a high-quality result. Currently accepting new assessment requests.</p>
         </div>
       </div>
     </div>
@@ -587,24 +746,43 @@
           <a href="/about" class="hover:text-chalk">About</a>
           <a href="/contact" class="hover:text-chalk">Contact</a>
         </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All Rights Reserved.</p>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All
+          Rights Reserved.</p>
       </div>
       <div class="flex justify-center gap-5 mt-6 mb-1">
         <!-- Instagram -->
-        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
         </a>
         <!-- Email -->
-        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors" aria-label="Email us">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors"
+          aria-label="Email us">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <polyline points="2,4 12,13 22,4" />
+          </svg>
         </a>
         <!-- X (coming soon) -->
         <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
         </span>
         <!-- WhatsApp -->
-        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
         </a>
       </div>
       <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
@@ -616,4 +794,5 @@
   </footer>
 
 </body>
+
 </html>

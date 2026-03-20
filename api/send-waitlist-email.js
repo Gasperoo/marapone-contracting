@@ -2,51 +2,92 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// --- Rate limiting ---
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const ipRequestMap = new Map();
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = ipRequestMap.get(ip);
+  if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
+    ipRequestMap.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+  if (entry.count >= RATE_LIMIT_MAX) return true;
+  entry.count += 1;
+  return false;
+}
+
+// --- HTML escaping ---
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
+// --- Input length limits ---
+const LIMITS = { email: 254, role: 100, companySize: 100 };
+
 export default async function handler(req, res) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const allowedOrigin = 'https://marapone.com';
+  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Vary', 'Origin');
 
-  // Handle preflight request
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  // Rate limiting
+  const ip =
+    req.headers['x-forwarded-for']?.split(',')[0].trim() ||
+    req.socket?.remoteAddress ||
+    'unknown';
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many requests. Please wait a moment and try again.' });
   }
 
-  // Only allow POST requests
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  const rawEmail       = req.body.email?.trim();
+  const rawRole        = req.body.role?.trim();
+  const rawCompanySize = req.body.companySize?.trim();
 
-  const email = req.body.email?.trim();
-  const role = req.body.role?.trim();
-  const companySize = req.body.companySize?.trim();
-
-  // Validate input
-  if (!email || !role || !companySize) {
+  if (!rawEmail || !rawRole || !rawCompanySize) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Basic email validation
+  if (rawEmail.length       > LIMITS.email)       return res.status(400).json({ error: 'Email is too long.' });
+  if (rawRole.length        > LIMITS.role)        return res.status(400).json({ error: 'Role value is too long.' });
+  if (rawCompanySize.length > LIMITS.companySize) return res.status(400).json({ error: 'Company size value is too long.' });
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(rawEmail)) {
     return res.status(400).json({ error: 'Invalid email format' });
   }
 
-  // Check if Resend API key is configured
   if (!process.env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY is not configured');
     return res.status(500).json({
       error: 'Email service not configured',
-      message: 'Please contact us directly at gasper@marapone.com'
+      message: 'Please contact us directly at general@marapone.com'
     });
   }
 
+  // Escape all user input before inserting into HTML
+  const email       = escapeHtml(rawEmail);
+  const role        = escapeHtml(rawRole);
+  const companySize = escapeHtml(rawCompanySize);
+  const fromEmail   = process.env.FROM_EMAIL || 'gasper@marapone.com';
+
   try {
     const data = await resend.emails.send({
-      from: 'Gasper Waitlist <gasper@marapone.com>',
-      to: ['gasper@marapone.com'],
-      reply_to: email,
+      from: `Gasper Waitlist <${fromEmail}>`,
+      to: [fromEmail],
+      reply_to: rawEmail,
       subject: 'New Waitlist Request - Gasper Access',
       html: `
         <!DOCTYPE html>
@@ -65,34 +106,19 @@ export default async function handler(req, res) {
         <body>
           <div class="container">
             <div class="header">
-              <h2 style="margin: 0;">⚡ New Waitlist Request</h2>
+              <h2 style="margin: 0;">New Waitlist Request</h2>
             </div>
             <div class="content">
               <p>A new user has requested access to Gasper:</p>
-              
-              <div class="info-row">
-                <span class="label">Email:</span> ${email}
-              </div>
-              
-              <div class="info-row">
-                <span class="label">Role:</span> ${role}
-              </div>
-              
-              <div class="info-row">
-                <span class="label">Company Size:</span> ${companySize}
-              </div>
-              
+              <div class="info-row"><span class="label">Email:</span> ${email}</div>
+              <div class="info-row"><span class="label">Role:</span> ${role}</div>
+              <div class="info-row"><span class="label">Company Size:</span> ${companySize}</div>
               <div class="info-row">
                 <span class="label">Submitted:</span> ${new Date().toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZoneName: 'short'
-      })}
+                  year: 'numeric', month: 'long', day: 'numeric',
+                  hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+                })}
               </div>
-              
               <div class="footer">
                 <p>This is an automated message from the Gasper Coming Soon landing page.</p>
                 <p>Reply to this email to respond directly to ${email}</p>
@@ -109,8 +135,8 @@ export default async function handler(req, res) {
     console.error('Email send error:', error);
     return res.status(500).json({
       error: 'Failed to send email',
-      message: error.message === 'The string did not match the expected pattern.' 
-        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.' 
+      message: error.message === 'The string did not match the expected pattern.'
+        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.'
         : error.message
     });
   }

@@ -2,40 +2,77 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// --- Rate limiting ---
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const ipRequestMap = new Map();
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = ipRequestMap.get(ip);
+  if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
+    ipRequestMap.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+  if (entry.count >= RATE_LIMIT_MAX) return true;
+  entry.count += 1;
+  return false;
+}
+
+// --- HTML escaping ---
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
+// --- Input length limits ---
+const LIMITS = { name: 100, email: 254, phone: 30, date: 20, time: 10 };
+
 export default async function handler(req, res) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const allowedOrigin = 'https://marapone.com';
+  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Vary', 'Origin');
 
-  // Handle preflight request
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  // Rate limiting
+  const ip =
+    req.headers['x-forwarded-for']?.split(',')[0].trim() ||
+    req.socket?.remoteAddress ||
+    'unknown';
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many requests. Please wait a moment and try again.' });
   }
 
-  // Only allow POST requests
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  const rawName  = req.body.name?.trim();
+  const rawEmail = req.body.email?.trim();
+  const rawPhone = req.body.phone?.trim();
+  const rawDate  = req.body.date?.trim();
+  const rawTime  = req.body.time?.trim();
 
-  const name = req.body.name?.trim();
-  const email = req.body.email?.trim();
-  const phone = req.body.phone?.trim();
-  const date = req.body.date?.trim();
-  const time = req.body.time?.trim();
-
-  // Validate input
-  if (!name || !email || !phone || !date || !time) {
+  if (!rawName || !rawEmail || !rawPhone || !rawDate || !rawTime) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Basic email validation
+  if (rawName.length  > LIMITS.name)  return res.status(400).json({ error: 'Name is too long.' });
+  if (rawEmail.length > LIMITS.email) return res.status(400).json({ error: 'Email is too long.' });
+  if (rawPhone.length > LIMITS.phone) return res.status(400).json({ error: 'Phone number is too long.' });
+  if (rawDate.length  > LIMITS.date)  return res.status(400).json({ error: 'Date value is too long.' });
+  if (rawTime.length  > LIMITS.time)  return res.status(400).json({ error: 'Time value is too long.' });
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(rawEmail)) {
     return res.status(400).json({ error: 'Invalid email format' });
   }
 
-  // Check if Resend API key is configured
   if (!process.env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY is not configured');
     return res.status(500).json({
@@ -44,12 +81,20 @@ export default async function handler(req, res) {
     });
   }
 
+  // Escape all user input before inserting into HTML
+  const name      = escapeHtml(rawName);
+  const email     = escapeHtml(rawEmail);
+  const phone     = escapeHtml(rawPhone);
+  const date      = escapeHtml(rawDate);
+  const time      = escapeHtml(rawTime);
+  const firstName = escapeHtml(rawName.split(' ')[0]);
+  const fromEmail = process.env.FROM_EMAIL || 'gasper@marapone.com';
+
   try {
-    // 1. Email to Marapone Internal
     const maraponeEmail = resend.emails.send({
-      from: 'Marapone Bookings <gasper@marapone.com>',
+      from: `Marapone Bookings <${fromEmail}>`,
       to: ['general@marapone.com'],
-      reply_to: email,
+      reply_to: rawEmail,
       subject: `New Discovery Call Booking: ${name} at ${time}`,
       html: `
         <!DOCTYPE html>
@@ -67,11 +112,10 @@ export default async function handler(req, res) {
         <body>
           <div class="container">
             <div class="header">
-              <h2 style="margin: 0;">📅 New Discovery Call Booked</h2>
+              <h2 style="margin: 0;">New Discovery Call Booked</h2>
             </div>
             <div class="content">
               <p>A new discovery call has been booked on marapone.com:</p>
-              
               <div class="info-row"><span class="label">Name:</span> ${name}</div>
               <div class="info-row"><span class="label">Email:</span> ${email}</div>
               <div class="info-row"><span class="label">Phone:</span> ${phone}</div>
@@ -84,10 +128,9 @@ export default async function handler(req, res) {
       `
     });
 
-    // 2. Email to the Client
     const clientEmail = resend.emails.send({
-      from: 'Marapone Contracting <gasper@marapone.com>',
-      to: [email],
+      from: `Marapone Contracting <${fromEmail}>`,
+      to: [rawEmail],
       subject: `Booking Confirmed: Discovery Call with Marapone`,
       html: `
         <!DOCTYPE html>
@@ -109,17 +152,14 @@ export default async function handler(req, res) {
               <h2 style="margin: 0;">Marapone Contracting</h2>
             </div>
             <div class="content">
-              <p>Hi ${name.split(' ')[0]},</p>
+              <p>Hi ${firstName},</p>
               <p>Thank you for booking a discovery call with Marapone. Your appointment is confirmed.</p>
-              
               <div class="detail-box">
                 <p style="margin: 0; color: #6b7280; font-weight: bold; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Appointment Details</p>
                 <div class="time">${time}</div>
                 <div style="font-weight: bold; font-size: 18px;">${date}</div>
               </div>
-              
               <p>I will give you a call at <strong>${phone}</strong> at the scheduled time. If you need to reschedule or have any questions beforehand, please reply directly to this email.</p>
-              
               <p>Best regards,<br/><strong>Gasper</strong><br/>Marapone Contracting Inc.</p>
             </div>
             <div class="footer">
@@ -131,16 +171,14 @@ export default async function handler(req, res) {
       `
     });
 
-    // Await both promises to complete
     await Promise.all([maraponeEmail, clientEmail]);
-
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error('Email send error:', error);
     return res.status(500).json({
       error: 'Failed to send emails',
-      message: error.message === 'The string did not match the expected pattern.' 
-        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.' 
+      message: error.message === 'The string did not match the expected pattern.'
+        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.'
         : error.message
     });
   }

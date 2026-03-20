@@ -37,24 +37,27 @@ export default function HomePage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.1 }}
           >
-            {/* Background Glow Pulse */}
+            {/* Inner ring */}
             <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-[#FF6B00]/30 rounded-full blur-[80px]"
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [0.4, 0.8, 0.4]
-              }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full border border-white/[0.07]"
+              animate={{ opacity: [0.3, 1, 0.3] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
+            {/* Outer ring */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[26rem] md:h-[26rem] rounded-full border border-[#FF6B00]/[0.08]"
+              animate={{ opacity: [0.15, 0.5, 0.15] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            />
+            {/* Soft ambient glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 rounded-full bg-[#FF6B00]/[0.06] blur-[60px]" />
             {/* Logo Image */}
             <motion.img
               src="/MaraponeLogo-1.png"
               alt="Marapone Logo"
-              className="w-56 md:w-72 lg:w-[22rem] relative z-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-              animate={{
-                scale: [1, 1.03, 1],
-              }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-56 md:w-72 lg:w-[22rem] relative z-10"
+              animate={{ opacity: [0.9, 1, 0.9] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
 

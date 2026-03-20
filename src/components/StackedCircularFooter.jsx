@@ -28,7 +28,7 @@ export function StackedCircularFooter() {
           {/* Column 1: Brand & Info */}
           <div className="footer-col-brand">
             <Link to="/" className="footer-brand-link">
-              <img src="/logo.png" alt="Marapone" className="footer-logo" />
+              <img src="/MaraponeLogo-1.png" alt="Marapone" className="footer-logo" />
               <span className="footer-brand-name">Marapone</span>
             </Link>
             <p className="footer-description">

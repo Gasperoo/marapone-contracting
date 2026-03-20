@@ -31,40 +31,10 @@
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
     .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
     @keyframes logoPulse {
-      0%, 100% { opacity: 0.88; filter: brightness(0.97) drop-shadow(0 0 0px rgba(249,115,22,0)); }
-      50% { opacity: 1; filter: brightness(1.03) drop-shadow(0 0 28px rgba(249,115,22,0.10)); }
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
     }
-    .logo-pulse { animation: logoPulse 6s ease-in-out infinite; }
-    .logo-ring {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .logo-ring::before,
-    .logo-ring::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      animation: ringPulse 6s ease-in-out infinite;
-      pointer-events: none;
-    }
-    .logo-ring::before {
-      width: 90%; height: 90%;
-      border-color: rgba(255,255,255,0.07);
-    }
-    .logo-ring::after {
-      width: 110%; height: 110%;
-      border-color: rgba(249,115,22,0.08);
-      animation-delay: 1.5s;
-    }
-    @keyframes ringPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
+    .logo-pulse { animation: logoPulse 4s ease-in-out infinite; }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -105,8 +75,8 @@
         <!-- Logo -->
         <div class="lg:col-span-1">
           <div class="rounded-lg aspect-square flex items-center justify-center p-6">
-            <div class="logo-ring logo-pulse p-2">
-              <img src="MaraponeLogo-1.png" alt="Marapone Contracting" class="w-full object-contain" />
+            <div class="p-2">
+              <img src="MaraponeLogo-1.png" alt="Marapone Contracting" class="w-full object-contain logo-pulse" />
             </div>
           </div>
           <div class="mt-5 space-y-3">

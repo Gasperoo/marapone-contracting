@@ -2,10 +2,56 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// --- Rate limiting (in-memory, resets on cold start) ---
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX = 5; // max requests per IP per window
+const ipRequestMap = new Map();
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = ipRequestMap.get(ip);
+
+  if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
+    ipRequestMap.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX) {
+    return true;
+  }
+
+  entry.count += 1;
+  return false;
+}
+
+// --- HTML escaping (prevents XSS in email body) ---
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
+// --- Input length limits ---
+const LIMITS = {
+  name: 100,
+  email: 254,
+  company: 150,
+  phone: 30,
+  industry: 50,
+  doc_type: 50,
+  message: 2000,
+};
+
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const allowedOrigin = 'https://marapone.com';
+  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Vary', 'Origin');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -15,20 +61,44 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const name = req.body.name?.trim();
-  const email = req.body.email?.trim();
-  const company = req.body.company?.trim();
-  const phone = req.body.phone?.trim();
-  const industry = req.body.industry?.trim();
-  const doc_type = req.body.doc_type?.trim();
-  const message = req.body.message?.trim();
+  // Rate limiting
+  const ip =
+    req.headers['x-forwarded-for']?.split(',')[0].trim() ||
+    req.socket?.remoteAddress ||
+    'unknown';
 
-  if (!name || !email) {
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many requests. Please wait a moment and try again.' });
+  }
+
+  // Server-side honeypot check
+  const honeypot = req.body.website;
+  if (honeypot && String(honeypot).trim() !== '') {
+    console.warn(`Honeypot triggered from IP: ${ip}`);
+    return res.status(200).json({ success: true }); // Silent fake success
+  }
+
+  // Extract and enforce length limits
+  const rawName     = req.body.name?.trim();
+  const rawEmail    = req.body.email?.trim();
+  const rawCompany  = req.body.company?.trim();
+  const rawPhone    = req.body.phone?.trim();
+  const rawIndustry = req.body.industry?.trim();
+  const rawDocType  = req.body.doc_type?.trim();
+  const rawMessage  = req.body.message?.trim();
+
+  if (!rawName || !rawEmail) {
     return res.status(400).json({ error: 'Missing required fields (name and email are required)' });
   }
 
+  if (rawName.length > LIMITS.name)       return res.status(400).json({ error: 'Name is too long.' });
+  if (rawEmail.length > LIMITS.email)     return res.status(400).json({ error: 'Email is too long.' });
+  if (rawCompany?.length > LIMITS.company) return res.status(400).json({ error: 'Company name is too long.' });
+  if (rawPhone?.length > LIMITS.phone)    return res.status(400).json({ error: 'Phone number is too long.' });
+  if (rawMessage?.length > LIMITS.message) return res.status(400).json({ error: 'Message is too long (max 2000 characters).' });
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(rawEmail)) {
     return res.status(400).json({ error: 'Invalid email format' });
   }
 
@@ -40,7 +110,14 @@ export default async function handler(req, res) {
     });
   }
 
-  const industryLabel = {
+  // Escape all user input before inserting into HTML email
+  const name     = escapeHtml(rawName);
+  const email    = escapeHtml(rawEmail);
+  const company  = escapeHtml(rawCompany);
+  const phone    = escapeHtml(rawPhone);
+  const message  = escapeHtml(rawMessage);
+
+  const industryLabel = escapeHtml({
     residential: 'Residential construction',
     ici: 'ICI (Industrial / Commercial / Institutional)',
     mixed: 'Mixed use development',
@@ -51,9 +128,9 @@ export default async function handler(req, res) {
     customs: 'Customs brokerage',
     supply_chain: 'Supply chain / procurement',
     logistics_other: 'Other logistics / trade',
-  }[industry] || industry || 'Not provided';
+  }[rawIndustry] || rawIndustry || 'Not provided');
 
-  const docTypeLabel = {
+  const docTypeLabel = escapeHtml({
     blueprints: 'Blueprints / drawings',
     rfis: 'RFI log or package',
     daily_logs: 'Site daily logs',
@@ -63,13 +140,13 @@ export default async function handler(req, res) {
     customs_docs: 'Customs declarations / entry summaries',
     supplier_comms: 'Supplier communications / shipment packages',
     mix: 'Mix of the above',
-  }[doc_type] || doc_type || 'Not provided';
+  }[rawDocType] || rawDocType || 'Not provided');
 
   try {
     const data = await resend.emails.send({
       from: 'Marapone Contact Form <info@marapone.com>',
       to: ['general@marapone.com'],
-      reply_to: email,
+      reply_to: rawEmail,
       subject: `New Assessment Request from ${name}${company ? ' at ' + company : ''}`,
       html: `
         <!DOCTYPE html>

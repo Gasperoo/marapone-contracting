@@ -99,19 +99,12 @@
     }
 
     @keyframes logoPulse {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5), 0 0 0 0 rgba(249, 115, 22, 0.25);
-      }
-
-      50% {
-        box-shadow: 0 0 0 18px rgba(249, 115, 22, 0.15), 0 0 0 36px rgba(249, 115, 22, 0.05);
-      }
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
     }
 
     .logo-pulse {
-      animation: logoPulse 3s ease-in-out infinite;
+      animation: logoPulse 4s ease-in-out infinite;
     }
 
     .industry-tab {
@@ -220,9 +213,9 @@
         <!-- Right: Logo with pulse -->
         <div class="fade-up delay-1 flex flex-col items-center justify-center">
           <div class="relative flex items-center justify-center p-8">
-            <div class="logo-pulse rounded-full p-2">
+            <div class="p-2">
               <img src="MaraponeLogo-1.png" alt="Marapone Contracting"
-                class="w-72 lg:w-96 object-contain drop-shadow-2xl" />
+                class="w-72 lg:w-96 object-contain logo-pulse" />
             </div>
           </div>
           <p class="text-xs text-fog font-mono mt-2 text-center tracking-widest uppercase">Private AI for Construction

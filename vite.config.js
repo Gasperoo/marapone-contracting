@@ -52,24 +52,14 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        'index-new': path.resolve(__dirname, 'index-new.html'),
         about: path.resolve(__dirname, 'about.html'),
-        'about-new': path.resolve(__dirname, 'about-new.html'),
         'how-it-works': path.resolve(__dirname, 'how-it-works.html'),
-        'how-it-works-new': path.resolve(__dirname, 'how-it-works-new.html'),
         pricing: path.resolve(__dirname, 'pricing.html'),
-        'pricing-new': path.resolve(__dirname, 'pricing-new.html'),
         contact: path.resolve(__dirname, 'contact.html'),
         services: path.resolve(__dirname, 'services.html'),
         privacy: path.resolve(__dirname, 'privacy.html'),
         terms: path.resolve(__dirname, 'terms.html'),
         cookies: path.resolve(__dirname, 'cookies.html'),
-      },
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'three-vendor': ['three'],
-        },
       },
     },
   },

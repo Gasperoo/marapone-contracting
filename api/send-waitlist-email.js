@@ -81,7 +81,10 @@ export default async function handler(req, res) {
   const email       = escapeHtml(rawEmail);
   const role        = escapeHtml(rawRole);
   const companySize = escapeHtml(rawCompanySize);
-  const fromEmail   = process.env.FROM_EMAIL || 'gasper@marapone.com';
+  const fromEmail = process.env.FROM_EMAIL;
+  if (!fromEmail) {
+    return res.status(500).json({ error: 'Email service misconfigured.' });
+  }
 
   try {
     const data = await resend.emails.send({

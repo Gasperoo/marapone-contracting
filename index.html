@@ -650,14 +650,38 @@
         var prevBtn = document.getElementById('reviews-prev');
         var nextBtn = document.getElementById('reviews-next');
 
-        function cardHTML(r) {
-          return '<div class="bg-steel border border-plate rounded-lg p-6 flex flex-col">' +
-            '<div class="flex mb-4"><span class="text-hiviz text-xl">\u2605\u2605\u2605\u2605\u2605</span></div>' +
-            '<blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">\u201c' + r.q + '\u201d</blockquote>' +
-            '<div class="border-t border-plate pt-4">' +
-            '<p class="font-semibold text-chalk text-sm">' + r.n + '</p>' +
-            '<p class="text-fog text-xs">' + r.c + '</p>' +
-            '</div></div>';
+        function createCard(r) {
+          var card = document.createElement('div');
+          card.className = 'bg-steel border border-plate rounded-lg p-6 flex flex-col';
+
+          var stars = document.createElement('div');
+          stars.className = 'flex mb-4';
+          var starSpan = document.createElement('span');
+          starSpan.className = 'text-hiviz text-xl';
+          starSpan.textContent = '\u2605\u2605\u2605\u2605\u2605';
+          stars.appendChild(starSpan);
+
+          var quote = document.createElement('blockquote');
+          quote.className = 'text-chalk text-sm leading-relaxed mb-6 flex-1';
+          quote.textContent = '\u201c' + r.q + '\u201d';
+
+          var border = document.createElement('div');
+          border.className = 'border-t border-plate pt-4';
+
+          var name = document.createElement('p');
+          name.className = 'font-semibold text-chalk text-sm';
+          name.textContent = r.n;
+
+          var company = document.createElement('p');
+          company.className = 'text-fog text-xs';
+          company.textContent = r.c;
+
+          border.appendChild(name);
+          border.appendChild(company);
+          card.appendChild(stars);
+          card.appendChild(quote);
+          card.appendChild(border);
+          return card;
         }
 
         function render() {
@@ -665,7 +689,8 @@
           var slice = reviews.slice(start, start + perPage);
           grid.style.opacity = '0';
           setTimeout(function () {
-            grid.innerHTML = slice.map(cardHTML).join('');
+            grid.innerHTML = '';
+            slice.forEach(function (r) { grid.appendChild(createCard(r)); });
             grid.style.opacity = '1';
           }, 200);
 

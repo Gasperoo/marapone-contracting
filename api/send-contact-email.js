@@ -1,5 +1,14 @@
 import { Resend } from 'resend';
 
+// Increase Vercel body size limit to handle base64-encoded file attachments
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '8mb',
+    },
+  },
+};
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // --- Rate limiting (in-memory, resets on cold start) ---
@@ -33,6 +42,24 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#x27;');
+}
+
+// --- File attachment validation ---
+const ALLOWED_EXTENSIONS = new Set(['pdf', 'docx', 'png', 'jpg', 'jpeg']);
+const MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024; // 5 MB
+
+function sanitizeFilename(raw) {
+  // Strip any path components, then allow only safe characters
+  const base = String(raw).split(/[/\\]/).pop();
+  return base.replace(/[^a-zA-Z0-9 ._-]/g, '_').slice(0, 200);
+}
+
+function checkMagicBytes(buf, ext) {
+  if (ext === 'pdf')  return buf[0]===0x25 && buf[1]===0x50 && buf[2]===0x44 && buf[3]===0x46;
+  if (ext === 'png')  return buf[0]===0x89 && buf[1]===0x50 && buf[2]===0x4E && buf[3]===0x47;
+  if (ext === 'jpg' || ext === 'jpeg') return buf[0]===0xFF && buf[1]===0xD8 && buf[2]===0xFF;
+  if (ext === 'docx') return buf[0]===0x50 && buf[1]===0x4B && buf[2]===0x03 && buf[3]===0x04;
+  return false;
 }
 
 // --- Input length limits ---
@@ -142,12 +169,49 @@ export default async function handler(req, res) {
     mix: 'Mix of the above',
   }[rawDocType] || rawDocType || 'Not provided');
 
+  // --- Attachment validation (server-side, never stored to disk) ---
+  let emailAttachments = [];
+  const rawAttachment = req.body.attachment;
+  if (rawAttachment) {
+    const rawName = rawAttachment.name;
+    const rawBase64 = rawAttachment.base64;
+
+    if (typeof rawName !== 'string' || typeof rawBase64 !== 'string') {
+      return res.status(400).json({ error: 'Invalid attachment format.' });
+    }
+
+    const safeFilename = sanitizeFilename(rawName);
+    const ext = safeFilename.split('.').pop().toLowerCase();
+
+    if (!ALLOWED_EXTENSIONS.has(ext)) {
+      return res.status(400).json({ error: 'Attachment type not allowed. Use PDF, DOCX, PNG, JPG, or JPEG.' });
+    }
+
+    let fileBuffer;
+    try {
+      fileBuffer = Buffer.from(rawBase64, 'base64');
+    } catch {
+      return res.status(400).json({ error: 'Attachment could not be decoded.' });
+    }
+
+    if (fileBuffer.length > MAX_ATTACHMENT_BYTES) {
+      return res.status(400).json({ error: 'Attachment exceeds 5 MB limit.' });
+    }
+
+    if (!checkMagicBytes(fileBuffer, ext)) {
+      return res.status(400).json({ error: 'Attachment content does not match its file type.' });
+    }
+
+    emailAttachments = [{ filename: safeFilename, content: fileBuffer }];
+  }
+
   try {
-    const data = await resend.emails.send({
+    const emailPayload = {
       from: 'Marapone Contact Form <info@marapone.com>',
       to: ['general@marapone.com'],
       reply_to: rawEmail,
       subject: `New Assessment Request from ${name}${company ? ' at ' + company : ''}`,
+      attachments: emailAttachments,
       html: `
         <!DOCTYPE html>
         <html>
@@ -211,7 +275,9 @@ export default async function handler(req, res) {
         </body>
         </html>
       `
-    });
+    };
+
+    const data = await resend.emails.send(emailPayload);
 
     return res.status(200).json({ success: true, id: data.id });
   } catch (error) {

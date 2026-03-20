@@ -158,6 +158,19 @@
               <p class="text-fog text-sm">We'll have your assessment back within 24 hours.</p>
             </div>
             <form id="contact-form" class="space-y-5">
+
+              <!-- HONEYPOT - Invisible trap for spam bots (real users never see it) -->
+              <div style="position: absolute; left: -9999px; top: -9999px; overflow: hidden; height: 0;">
+                <label for="website" style="display:none;">Website (leave blank)</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  autocomplete="off"
+                  tabindex="-1"
+                  placeholder="Leave this field empty">
+              </div>
+
               <div class="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label for="name">Your name</label>
@@ -239,6 +252,20 @@
               document.getElementById('contact-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const form = e.target;
+
+                // Block if honeypot is filled (spam bot!)
+                const honeypot = document.getElementById('website');
+                if (honeypot && honeypot.value.trim() !== '') {
+                  console.warn('Spam attempt blocked by honeypot');
+                  return false; // Silent block - no alert for users
+                }
+
+                // Basic client-side email validation (prevents obvious bad data)
+                const emailField = form.querySelector('input[type="email"]');
+                if (emailField && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim())) {
+                  alert('Please enter a valid email address.');
+                  return false;
+                }
                 const btn = document.getElementById('submit-btn');
                 const label = document.getElementById('submit-label');
                 const spinner = document.getElementById('submit-spinner');

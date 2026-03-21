@@ -1,4 +1,6 @@
 import { Resend } from 'resend';
+import { createClient } from '@supabase/supabase-js';
+import crypto from 'crypto';
 
 // Increase Vercel body size limit to handle base64-encoded file attachments
 export const config = {
@@ -12,23 +14,18 @@ export const config = {
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // --- Rate limiting (in-memory, resets on cold start) ---
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const RATE_LIMIT_MAX = 5; // max requests per IP per window
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 5;
 const ipRequestMap = new Map();
 
 function isRateLimited(ip) {
   const now = Date.now();
   const entry = ipRequestMap.get(ip);
-
   if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
     ipRequestMap.set(ip, { count: 1, windowStart: now });
     return false;
   }
-
-  if (entry.count >= RATE_LIMIT_MAX) {
-    return true;
-  }
-
+  if (entry.count >= RATE_LIMIT_MAX) return true;
   entry.count += 1;
   return false;
 }
@@ -44,12 +41,18 @@ function escapeHtml(str) {
     .replace(/'/g, '&#x27;');
 }
 
-// --- File attachment validation ---
+// --- File validation ---
 const ALLOWED_EXTENSIONS = new Set(['pdf', 'docx', 'png', 'jpg', 'jpeg']);
-const MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024; // 5 MB
+const MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024;
+const MIME_TYPES = {
+  pdf: 'application/pdf',
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+};
 
 function sanitizeFilename(raw) {
-  // Strip any path components, then allow only safe characters
   const base = String(raw).split(/[/\\]/).pop();
   return base.replace(/[^a-zA-Z0-9 ._-]/g, '_').slice(0, 200);
 }
@@ -64,14 +67,133 @@ function checkMagicBytes(buf, ext) {
 
 // --- Input length limits ---
 const LIMITS = {
-  name: 100,
-  email: 254,
-  company: 150,
-  phone: 30,
-  industry: 50,
-  doc_type: 50,
-  message: 2000,
+  name: 100, email: 254, company: 150, phone: 30,
+  industry: 50, doc_type: 50, message: 2000,
 };
+
+// --- Step 1: Supabase Storage quarantine ---
+async function quarantineFile(fileBuffer, safeFilename, ext) {
+  const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+
+  const uid = crypto.randomBytes(8).toString('hex');
+  const storagePath = `submissions/${Date.now()}-${uid}/${safeFilename}`;
+
+  const { error: uploadError } = await supabase.storage
+    .from('contact-quarantine')
+    .upload(storagePath, fileBuffer, {
+      contentType: MIME_TYPES[ext] || 'application/octet-stream',
+      upsert: false,
+    });
+
+  if (uploadError) throw new Error(`Supabase upload failed: ${uploadError.message}`);
+
+  const { data: signedUrlData, error: urlError } = await supabase.storage
+    .from('contact-quarantine')
+    .createSignedUrl(storagePath, 60 * 60 * 24 * 7); // 7-day expiry
+
+  if (urlError) throw new Error(`Signed URL generation failed: ${urlError.message}`);
+
+  return signedUrlData.signedUrl;
+}
+
+// --- Step 2: VirusTotal scanning ---
+async function scanWithVirusTotal(fileBuffer, safeFilename) {
+  const apiKey = process.env.VIRUSTOTAL_API_KEY;
+  if (!apiKey) return { status: 'skipped' };
+
+  const hash = crypto.createHash('sha256').update(fileBuffer).digest('hex');
+
+  // Check if this file hash is already known to VirusTotal (instant)
+  try {
+    const hashRes = await fetch(`https://www.virustotal.com/api/v3/files/${hash}`, {
+      headers: { 'x-apikey': apiKey },
+    });
+    if (hashRes.ok) {
+      const data = await hashRes.json();
+      const stats = data.data?.attributes?.last_analysis_stats;
+      if (stats) {
+        if (stats.malicious > 0 || stats.suspicious > 0) return { status: 'malicious', stats };
+        return { status: 'clean', stats };
+      }
+    }
+  } catch {
+    // Hash lookup failed — fall through to upload
+  }
+
+  // File not in VT database — submit for a fresh scan
+  let analysisId;
+  try {
+    const formData = new FormData();
+    formData.append('file', new Blob([fileBuffer]), safeFilename);
+
+    const uploadRes = await fetch('https://www.virustotal.com/api/v3/files', {
+      method: 'POST',
+      headers: { 'x-apikey': apiKey },
+      body: formData,
+    });
+
+    if (!uploadRes.ok) return { status: 'pending' };
+    const uploadData = await uploadRes.json();
+    analysisId = uploadData.data?.id;
+  } catch {
+    return { status: 'pending' };
+  }
+
+  if (!analysisId) return { status: 'pending' };
+
+  // Poll for results — max 5 attempts × 3s = 15s
+  for (let i = 0; i < 5; i++) {
+    await new Promise(r => setTimeout(r, 3000));
+    try {
+      const analysisRes = await fetch(`https://www.virustotal.com/api/v3/analyses/${analysisId}`, {
+        headers: { 'x-apikey': apiKey },
+      });
+      if (!analysisRes.ok) continue;
+      const analysisData = await analysisRes.json();
+      const attrs = analysisData.data?.attributes;
+      if (attrs?.status === 'completed') {
+        const stats = attrs.stats;
+        if (stats.malicious > 0 || stats.suspicious > 0) return { status: 'malicious', stats };
+        return { status: 'clean', stats };
+      }
+    } catch {
+      // Continue polling
+    }
+  }
+
+  return { status: 'pending' }; // Scan did not complete in time
+}
+
+// --- Step 3: Akismet spam detection ---
+async function checkAkismet(ip, name, email, message) {
+  const apiKey = process.env.AKISMET_API_KEY;
+  if (!apiKey) return false; // Not configured — do not block
+
+  try {
+    const body = new URLSearchParams({
+      blog: 'https://marapone.com',
+      user_ip: ip,
+      comment_type: 'contact-form',
+      comment_author: name,
+      comment_author_email: email,
+      comment_content: message || '',
+    });
+
+    const res = await fetch(`https://${apiKey}.rest.akismet.com/1.1/comment-check`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+    });
+
+    const result = await res.text();
+    return result.trim() === 'true'; // 'true' = spam, 'false' = ham
+  } catch {
+    return false; // If Akismet is unreachable, do not block
+  }
+}
 
 export default async function handler(req, res) {
   const allowedOrigin = 'https://marapone.com';
@@ -80,13 +202,8 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Vary', 'Origin');
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   // Rate limiting
   const ip =
@@ -102,7 +219,7 @@ export default async function handler(req, res) {
   const honeypot = req.body.website;
   if (honeypot && String(honeypot).trim() !== '') {
     console.warn(`Honeypot triggered from IP: ${ip}`);
-    return res.status(200).json({ success: true }); // Silent fake success
+    return res.status(200).json({ success: true });
   }
 
   // Extract and enforce length limits
@@ -118,11 +235,11 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields (name and email are required)' });
   }
 
-  if (rawName.length > LIMITS.name)       return res.status(400).json({ error: 'Name is too long.' });
-  if (rawEmail.length > LIMITS.email)     return res.status(400).json({ error: 'Email is too long.' });
-  if (rawCompany?.length > LIMITS.company) return res.status(400).json({ error: 'Company name is too long.' });
-  if (rawPhone?.length > LIMITS.phone)    return res.status(400).json({ error: 'Phone number is too long.' });
-  if (rawMessage?.length > LIMITS.message) return res.status(400).json({ error: 'Message is too long (max 2000 characters).' });
+  if (rawName.length > LIMITS.name)            return res.status(400).json({ error: 'Name is too long.' });
+  if (rawEmail.length > LIMITS.email)          return res.status(400).json({ error: 'Email is too long.' });
+  if (rawCompany?.length > LIMITS.company)     return res.status(400).json({ error: 'Company name is too long.' });
+  if (rawPhone?.length > LIMITS.phone)         return res.status(400).json({ error: 'Phone number is too long.' });
+  if (rawMessage?.length > LIMITS.message)     return res.status(400).json({ error: 'Message is too long (max 2000 characters).' });
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(rawEmail)) {
@@ -130,10 +247,9 @@ export default async function handler(req, res) {
   }
 
   if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is not configured');
     return res.status(500).json({
       error: 'Email service not configured',
-      message: 'Please contact us directly at general@marapone.com'
+      message: 'Please contact us directly at general@marapone.com',
     });
   }
 
@@ -169,18 +285,27 @@ export default async function handler(req, res) {
     mix: 'Mix of the above',
   }[rawDocType] || rawDocType || 'Not provided');
 
-  // --- Attachment validation (server-side, never stored to disk) ---
-  let emailAttachments = [];
+  // --- Step 3: Akismet spam check (no attachment dependency — run early) ---
+  const isSpam = await checkAkismet(ip, rawName, rawEmail, rawMessage);
+  if (isSpam) {
+    console.warn(`Spam submission silently discarded from IP: ${ip}`);
+    return res.status(200).json({ success: true });
+  }
+
+  // --- Steps 1 & 2: Quarantine attachment + VirusTotal scan ---
+  let attachmentSignedUrl = null;
+  let vtResult = null;
+
   const rawAttachment = req.body.attachment;
   if (rawAttachment) {
-    const rawName = rawAttachment.name;
-    const rawBase64 = rawAttachment.base64;
+    const attachName = rawAttachment.name;
+    const rawBase64  = rawAttachment.base64;
 
-    if (typeof rawName !== 'string' || typeof rawBase64 !== 'string') {
+    if (typeof attachName !== 'string' || typeof rawBase64 !== 'string') {
       return res.status(400).json({ error: 'Invalid attachment format.' });
     }
 
-    const safeFilename = sanitizeFilename(rawName);
+    const safeFilename = sanitizeFilename(attachName);
     const ext = safeFilename.split('.').pop().toLowerCase();
 
     if (!ALLOWED_EXTENSIONS.has(ext)) {
@@ -202,16 +327,49 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Attachment content does not match its file type.' });
     }
 
-    emailAttachments = [{ filename: safeFilename, content: fileBuffer }];
+    // Step 1 — quarantine in Supabase Storage (file never attached to email)
+    try {
+      attachmentSignedUrl = await quarantineFile(fileBuffer, safeFilename, ext);
+    } catch (err) {
+      console.error('Supabase quarantine error:', err.message);
+      return res.status(500).json({ error: 'Could not process attachment. Please try again.' });
+    }
+
+    // Step 2 — VirusTotal scan
+    vtResult = await scanWithVirusTotal(fileBuffer, safeFilename);
+
+    if (vtResult.status === 'malicious') {
+      console.warn(`Malicious attachment blocked and discarded from IP ${ip}: ${safeFilename}`);
+      return res.status(200).json({ success: true }); // Silent discard
+    }
+  }
+
+  // --- Step 4: Build and send email (clean submissions only) ---
+
+  // Attachment section: signed URL with scan badge (never a direct attachment)
+  let attachmentSection = '';
+  if (attachmentSignedUrl) {
+    const badge = vtResult?.status === 'clean'
+      ? `<span style="display:inline-block;background:#16a34a;color:white;padding:2px 10px;border-radius:4px;font-size:11px;font-family:monospace;letter-spacing:0.05em;">✓ VIRUSTOTAL CLEAN</span>`
+      : `<span style="display:inline-block;background:#d97706;color:white;padding:2px 10px;border-radius:4px;font-size:11px;font-family:monospace;letter-spacing:0.05em;">⚠ SCAN PENDING — verify before opening</span>`;
+
+    attachmentSection = `
+      <div style="margin-top:20px;padding:16px 20px;background:#1c1c1c;border:1px solid #f97316;border-radius:6px;">
+        <p style="margin:0 0 10px;font-weight:bold;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#f97316;">Attachment</p>
+        <p style="margin:0 0 10px;">${badge}</p>
+        <p style="margin:0;font-size:14px;">
+          <a href="${attachmentSignedUrl}" style="color:#f97316;font-weight:bold;" target="_blank">View secure attachment ↗</a>
+          &nbsp;&nbsp;<span style="color:#6b7280;font-size:12px;">Expires in 7 days · stored in quarantine</span>
+        </p>
+      </div>`;
   }
 
   try {
-    const emailPayload = {
+    await resend.emails.send({
       from: 'Marapone Contact Form <info@marapone.com>',
       to: ['general@marapone.com'],
       reply_to: rawEmail,
       subject: `New Assessment Request from ${name}${company ? ' at ' + company : ''}`,
-      attachments: emailAttachments,
       html: `
         <!DOCTYPE html>
         <html>
@@ -266,6 +424,7 @@ export default async function handler(req, res) {
                 <p style="font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #1a1a1a; margin-top: 20px; margin-bottom: 8px;">Additional Notes</p>
                 <div class="message-box">${message}</div>
               </div>` : ''}
+              ${attachmentSection}
               <div class="footer">
                 <p>Submitted: ${new Date().toLocaleString('en-US', { timeZoneName: 'short' })}</p>
                 <p>Reply to this email to respond directly to ${name} at ${email}.</p>
@@ -274,17 +433,15 @@ export default async function handler(req, res) {
           </div>
         </body>
         </html>
-      `
-    };
+      `,
+    });
 
-    const data = await resend.emails.send(emailPayload);
-
-    return res.status(200).json({ success: true, id: data.id });
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.error('Email send error:', error);
     return res.status(500).json({
       error: 'Failed to send email',
-      message: error.message
+      message: error.message,
     });
   }
 }

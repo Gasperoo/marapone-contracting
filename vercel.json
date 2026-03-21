@@ -30,6 +30,11 @@
       ]
     }
   ],
+  "functions": {
+    "api/send-contact-email.js": {
+      "maxDuration": 30
+    }
+  },
   "rewrites": [
     {
       "source": "/",

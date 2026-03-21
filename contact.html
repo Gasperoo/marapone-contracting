@@ -364,8 +364,14 @@
                   return;
                 }
 
-                // Convert to base64 for JSON transport
-                const base64 = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+                // Convert to base64 for JSON transport (chunked to avoid call stack overflow on large files)
+                const bytes = new Uint8Array(arrayBuffer);
+                let binary = '';
+                const chunkSize = 8192;
+                for (let i = 0; i < bytes.length; i += chunkSize) {
+                  binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+                }
+                const base64 = btoa(binary);
                 attachedFile = { name: file.name, base64, type: file.type || '' };
                 showFilePreview(file.name);
               }

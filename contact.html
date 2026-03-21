@@ -77,27 +77,27 @@
         <!-- LEFT: What to expect -->
         <div class="lg:col-span-2 space-y-8">
           <div>
-            <p class="font-mono text-hiviz text-xs uppercase mb-4">What you'll get back</p>
+            <p class="font-mono text-hiviz text-xs uppercase mb-4">How it works</p>
             <ul class="space-y-4">
               <li class="flex items-start gap-3">
                 <span class="w-8 h-8 rounded hiviz-gradient flex items-center justify-center text-white font-display text-sm flex-shrink-0 mt-0.5">01</span>
                 <div>
-                  <p class="text-chalk font-semibold text-sm">Written assessment report</p>
-                  <p class="text-fog text-xs mt-1 leading-relaxed">A structured summary of what the AI found — conflicts, risks, discrepancies, open items, flags.</p>
+                  <p class="text-chalk font-semibold text-sm">Submit your request</p>
+                  <p class="text-fog text-xs mt-1 leading-relaxed">Fill out the form and attach a document from your workflow — blueprint, invoice, RFI, anything real.</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <span class="w-8 h-8 rounded bg-steel border border-plate flex items-center justify-center text-fog font-display text-sm flex-shrink-0 mt-0.5">02</span>
+                <span class="w-8 h-8 rounded hiviz-gradient flex items-center justify-center text-white font-display text-sm flex-shrink-0 mt-0.5">02</span>
                 <div>
-                  <p class="text-chalk font-semibold text-sm">Short video walkthrough</p>
-                  <p class="text-fog text-xs mt-1 leading-relaxed">We walk through the findings on screen so you can see exactly how the tool reads your docs.</p>
+                  <p class="text-chalk font-semibold text-sm">We confirm your details</p>
+                  <p class="text-fog text-xs mt-1 leading-relaxed">A member of our team will reach out to verify your submission before work begins. This keeps every assessment focused on serious, qualified requests.</p>
                 </div>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-8 h-8 rounded bg-steel border border-plate flex items-center justify-center text-fog font-display text-sm flex-shrink-0 mt-0.5">03</span>
                 <div>
-                  <p class="text-chalk font-semibold text-sm">Honest assessment</p>
-                  <p class="text-fog text-xs mt-1 leading-relaxed">If the tool isn't right for your use case, we'll say so. No upsell. No pressure.</p>
+                  <p class="text-chalk font-semibold text-sm">Written report + video walkthrough</p>
+                  <p class="text-fog text-xs mt-1 leading-relaxed">Once confirmed, we analyze your document and return a structured written report plus a screen walkthrough of the findings. No pitch. No obligation.</p>
                 </div>
               </li>
             </ul>
@@ -122,7 +122,7 @@
           </div>
 
           <div class="tape-line">
-            <p class="text-sm font-mono text-fog">Usually back to you within 24 hours. We keep our workload intentionally small — when we're reviewing your docs, you have our full attention.</p>
+            <p class="text-sm font-mono text-fog">We keep our workload intentionally small. Every assessment is reviewed personally — which is why we confirm each request before starting. If you're a real business with real documents, you'll hear from us fast.</p>
           </div>
         </div>
 
@@ -136,8 +136,8 @@
               <div class="w-14 h-14 rounded-full hiviz-gradient flex items-center justify-center mx-auto mb-4">
                 <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
               </div>
-              <p class="font-display text-2xl text-chalk mb-2">REQUEST SENT</p>
-              <p class="text-fog text-sm">We'll have your assessment back within 24 hours.</p>
+              <p class="font-display text-2xl text-chalk mb-2">REQUEST RECEIVED</p>
+              <p class="text-fog text-sm max-w-sm mx-auto leading-relaxed">A member of our team will contact you shortly to confirm your details. Once verified, your free assessment will be underway — typically delivered within 24 hours of confirmation.</p>
             </div>
             <form id="contact-form" class="space-y-5">
 
@@ -264,8 +264,13 @@
               </div>
 
               <div class="pt-2">
+                <!-- Verification notice -->
+                <div class="flex items-start gap-3 bg-steel border border-plate rounded-lg px-4 py-3 mb-4">
+                  <svg class="w-4 h-4 text-hiviz flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <p class="text-xs font-mono text-fog leading-relaxed"><span class="text-chalk">Heads up:</span> After submitting, we'll reach out to briefly confirm your request before your assessment begins. This ensures every assessment we deliver gets our full attention — and that our time is spent on real projects.</p>
+                </div>
                 <button id="submit-btn" type="submit" class="hiviz-gradient w-full text-white font-semibold py-4 rounded text-base hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-                  <span id="submit-label">Send Request → We'll Be in Touch Within 24h</span>
+                  <span id="submit-label">Submit Assessment Request →</span>
                   <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
                 </button>
                 <p id="form-error" class="hidden text-xs font-mono text-red-400 text-center mt-3"></p>
@@ -445,7 +450,7 @@
                   errorEl.textContent = err.message || 'Failed to send. Please email us directly.';
                   errorEl.classList.remove('hidden');
                   btn.disabled = false;
-                  label.textContent = 'Send Request → We\'ll Be in Touch Within 24h';
+                  label.textContent = 'Submit Assessment Request →';
                   spinner.classList.add('hidden');
                 }
               });
@@ -463,7 +468,7 @@
       <div class="grid md:grid-cols-3 gap-6 text-center">
         <div>
           <p class="font-display text-2xl text-hiviz mb-1">24 HOURS</p>
-          <p class="text-fog text-sm">Typical turnaround from submission to report in your inbox</p>
+          <p class="text-fog text-sm">Typical turnaround from verification to report in your inbox</p>
         </div>
         <div>
           <p class="font-display text-2xl text-hiviz mb-1">ZERO OBLIGATION</p>

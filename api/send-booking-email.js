@@ -45,6 +45,7 @@ export default async function handler(req, res) {
 
   // Rate limiting
   const ip =
+    req.headers['x-real-ip'] ||
     req.headers['x-forwarded-for']?.split(',')[0].trim() ||
     req.socket?.remoteAddress ||
     'unknown';
@@ -180,9 +181,7 @@ export default async function handler(req, res) {
     console.error('Email send error:', error);
     return res.status(500).json({
       error: 'Failed to send emails',
-      message: error.message === 'The string did not match the expected pattern.'
-        ? 'Invalid input format detected. Please ensure your email is correct and contains no unknown characters.'
-        : error.message
+      message: 'Please try again or contact us directly at general@marapone.com',
     });
   }
 }

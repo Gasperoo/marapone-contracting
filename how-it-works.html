@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How It Works – Marapone | Private AI for Construction & Logistics Companies</title>
-  <meta name="description" content="Detailed breakdown of Marapone's private AI systems for construction and logistics — blueprint auditing, RFI tracking, trade document processing, freight intelligence. Runs on your infrastructure. No cloud." />
+  <meta name="description"
+    content="Detailed breakdown of Marapone's private AI systems for construction and logistics — blueprint auditing, RFI tracking, trade document processing, freight intelligence. Runs on your infrastructure. No cloud." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
@@ -26,15 +30,44 @@
     }
   </script>
   <style>
-    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
-    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
-    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
-    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
-    .screen-placeholder { background: #232323; border: 1px solid #3a3a3a; border-radius: 8px; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; }
-    .section-divider { border-top: 1px solid #3a3a3a; margin: 0; }
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .hiviz-gradient {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .tape-line {
+      border-left: 3px solid #f97316;
+      padding-left: 1rem;
+    }
+
+    .screen-placeholder {
+      background: #232323;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-divider {
+      border-top: 1px solid #3a3a3a;
+      margin: 0;
+    }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
+
 <body class="antialiased">
 
   <!-- NAV -->
@@ -48,10 +81,15 @@
         <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
         <a href="/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment →</a>
+        <a href="/contact"
+          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
+          Free Assessment →</a>
       </div>
-      <button class="md:hidden text-fog" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button class="md:hidden text-fog"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
@@ -61,7 +99,8 @@
       <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
       <a href="/about" class="text-fog hover:text-chalk">About</a>
       <a href="/contact" class="text-fog hover:text-chalk">Contact</a>
-      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment →</a>
+      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment
+        →</a>
     </div>
   </nav>
 
@@ -69,11 +108,18 @@
   <section class="grid-dot py-16 lg:py-20 border-b border-plate">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <p class="font-mono text-hiviz text-sm mb-3">// No black boxes. Full clarity.</p>
-      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-4">HOW THE<br/><span class="text-hiviz">SYSTEM WORKS</span></h1>
-      <p class="text-fog max-w-2xl mx-auto leading-relaxed">Every system we build is a private, fine-tuned AI trained on your specific documents — not a generic chatbot you throw files at. It's built to do one job well: save your team hours of document review every week, on your hardware, with zero external dependencies.</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-4">HOW THE<br /><span class="text-hiviz">SYSTEM
+          WORKS</span></h1>
+      <p class="text-fog max-w-2xl mx-auto leading-relaxed">Every system we build is a private, fine-tuned AI trained on
+        your specific documents — not a generic chatbot you throw files at. It's built to do one job well: save your
+        team hours of document review every week, on your hardware, with zero external dependencies.</p>
       <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <a href="#construction" class="font-mono text-sm border border-hiviz text-hiviz px-5 py-2 rounded hover:bg-hiviz hover:text-white transition-colors">Construction Solutions</a>
-        <a href="#logistics" class="font-mono text-sm border border-plate text-fog px-5 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Logistics Solutions</a>
+        <a href="#construction"
+          class="font-mono text-sm border border-hiviz text-hiviz px-5 py-2 rounded hover:bg-hiviz hover:text-white transition-colors">Construction
+          Solutions</a>
+        <a href="#logistics"
+          class="font-mono text-sm border border-plate text-fog px-5 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Logistics
+          Solutions</a>
       </div>
     </div>
   </section>
@@ -93,35 +139,47 @@
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">C1</div>
+              <div
+                class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
+                C1</div>
               <p class="font-mono text-hiviz text-sm">BLUEPRINT AUDITOR</p>
             </div>
-            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">YOUR 300-PAGE<br/>BLUEPRINT,<br/><span class="text-hiviz">ACTUALLY READ</span></h2>
+            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">YOUR 300-PAGE<br />BLUEPRINT,<br /><span
+                class="text-hiviz">ACTUALLY READ</span></h2>
             <p class="text-fog leading-relaxed mb-6">
-              Drop in a PDF — architectural drawings, structural plans, mechanical/electrical specs, or any combination. The AI reads the entire document, not just the text layer, and returns a structured audit report with real findings.
+              Drop in a PDF — architectural drawings, structural plans, mechanical/electrical specs, or any combination.
+              The AI reads the entire document, not just the text layer, and returns a structured audit report with real
+              findings.
             </p>
             <div class="space-y-4">
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Scope extraction</p>
-                <p class="text-fog text-sm">Pulls out key scope items: floor areas, structural elements, material specs, phasing notes — listed clearly, not buried in page 247.</p>
+                <p class="text-fog text-sm">Pulls out key scope items: floor areas, structural elements, material specs,
+                  phasing notes — listed clearly, not buried in page 247.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Conflict detection</p>
-                <p class="text-fog text-sm">Flags when architectural drawings say one thing and structural specs say another — the kind of thing that causes $40k change orders if missed in bid.</p>
+                <p class="text-fog text-sm">Flags when architectural drawings say one thing and structural specs say
+                  another — the kind of thing that causes $40k change orders if missed in bid.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Ambiguity flagging</p>
-                <p class="text-fog text-sm">Identifies vague or underspecified items that need clarification before you mobilize trades. Stops assumptions from becoming delays.</p>
+                <p class="text-fog text-sm">Identifies vague or underspecified items that need clarification before you
+                  mobilize trades. Stops assumptions from becoming delays.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Example output</p>
-                <p class="text-fog text-sm italic">"Structural drawing S3.2 specifies W250×89 beams for grid line 4. Architectural A2.1 shows a depth of 200mm at the same location — dimensional conflict requiring RFI."</p>
+                <p class="text-fog text-sm italic">"Structural drawing S3.2 specifies W250×89 beams for grid line 4.
+                  Architectural A2.1 shows a depth of 200mm at the same location — dimensional conflict requiring RFI."
+                </p>
               </div>
             </div>
           </div>
           <div>
             <div class="rounded-lg overflow-hidden border border-plate" style="aspect-ratio:16/10;">
-              <img src="public/images/blueprint-audit.svg" alt="Blueprint audit output showing conflict report, scope summary and ambiguity flags" class="w-full h-full object-cover"/>
+              <img src="public/images/blueprint-audit.svg"
+                alt="Blueprint audit output showing conflict report, scope summary and ambiguity flags"
+                class="w-full h-full object-cover" />
             </div>
             <p class="text-xs font-mono text-fog mt-2">Sample output: blueprint conflict report</p>
           </div>
@@ -135,31 +193,41 @@
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div class="order-2 lg:order-1">
             <div class="rounded-lg overflow-hidden border border-plate" style="aspect-ratio:16/10;">
-              <img src="public/images/rfi-matrix.svg" alt="RFI risk matrix showing critical path flags, aging tracker and response status" class="w-full h-full object-cover"/>
+              <img src="public/images/rfi-matrix.svg"
+                alt="RFI risk matrix showing critical path flags, aging tracker and response status"
+                class="w-full h-full object-cover" />
             </div>
             <p class="text-xs font-mono text-fog mt-2">Sample output: RFI priority + critical path flags</p>
           </div>
           <div class="order-1 lg:order-2">
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">C2</div>
+              <div
+                class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
+                C2</div>
               <p class="font-mono text-hiviz text-sm">RFI INTELLIGENCE</p>
             </div>
-            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">YOUR RFI LOG,<br/><span class="text-hiviz">ACTUALLY MANAGED</span></h2>
+            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">YOUR RFI LOG,<br /><span
+                class="text-hiviz">ACTUALLY MANAGED</span></h2>
             <p class="text-fog leading-relaxed mb-6">
-              Feed it your full RFI backlog — sent, received, answered, unanswered. It reads every one, cross-references against the blueprints, and tells you exactly what's at risk.
+              Feed it your full RFI backlog — sent, received, answered, unanswered. It reads every one, cross-references
+              against the blueprints, and tells you exactly what's at risk.
             </p>
             <div class="space-y-4">
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Critical path mapping</p>
-                <p class="text-fog text-sm">Which open RFIs are sitting on your critical path? The AI identifies them specifically, based on the trade sequence in your specs.</p>
+                <p class="text-fog text-sm">Which open RFIs are sitting on your critical path? The AI identifies them
+                  specifically, based on the trade sequence in your specs.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Response status tracking</p>
-                <p class="text-fog text-sm">Identifies which RFIs have been unanswered longest and flags aging items before they become formal delay claims.</p>
+                <p class="text-fog text-sm">Identifies which RFIs have been unanswered longest and flags aging items
+                  before they become formal delay claims.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Example output</p>
-                <p class="text-fog text-sm italic">"RFI #42 (masonry window lintel spec) submitted 18 days ago. No response received. Framing for Level 3 windows cannot proceed without answer. Critical path impact: est. 3–5 days if not resolved by week-end."</p>
+                <p class="text-fog text-sm italic">"RFI #42 (masonry window lintel spec) submitted 18 days ago. No
+                  response received. Framing for Level 3 windows cannot proceed without answer. Critical path impact:
+                  est. 3–5 days if not resolved by week-end."</p>
               </div>
             </div>
           </div>
@@ -173,31 +241,40 @@
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">C3</div>
+              <div
+                class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
+                C3</div>
               <p class="font-mono text-hiviz text-sm">DAILY LOG SYNTHESIS</p>
             </div>
-            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WEEKS OF LOGS,<br/><span class="text-hiviz">ONE CLEAR REPORT</span></h2>
+            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WEEKS OF LOGS,<br /><span
+                class="text-hiviz">ONE CLEAR REPORT</span></h2>
             <p class="text-fog leading-relaxed mb-6">
-              Your site super files a daily log every day. That's 20+ logs a month per project. Nobody reads all of them. The AI does — and surfaces what matters.
+              Your site super files a daily log every day. That's 20+ logs a month per project. Nobody reads all of
+              them. The AI does — and surfaces what matters.
             </p>
             <div class="space-y-4">
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Weekly rollup</p>
-                <p class="text-fog text-sm">Turns 5 days of daily logs into one clean summary: manpower counts, weather delays, deficiency notes, and anything that looks like a pattern.</p>
+                <p class="text-fog text-sm">Turns 5 days of daily logs into one clean summary: manpower counts, weather
+                  delays, deficiency notes, and anything that looks like a pattern.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Delay pattern detection</p>
-                <p class="text-fog text-sm">If the same trade is consistently logging short crew sizes on Mondays, or a supplier is mentioned in delay notes three weeks running — it connects those dots.</p>
+                <p class="text-fog text-sm">If the same trade is consistently logging short crew sizes on Mondays, or a
+                  supplier is mentioned in delay notes three weeks running — it connects those dots.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Claims protection</p>
-                <p class="text-fog text-sm">If it comes to a dispute, having delay events systematically documented and cross-referenced is worth a great deal. This builds that record automatically.</p>
+                <p class="text-fog text-sm">If it comes to a dispute, having delay events systematically documented and
+                  cross-referenced is worth a great deal. This builds that record automatically.</p>
               </div>
             </div>
           </div>
           <div>
             <div class="rounded-lg overflow-hidden border border-plate" style="aspect-ratio:16/10;">
-              <img src="public/images/daily-log-rollup.svg" alt="Daily log weekly rollup showing manpower trends, delay patterns and site events" class="w-full h-full object-cover"/>
+              <img src="public/images/daily-log-rollup.svg"
+                alt="Daily log weekly rollup showing manpower trends, delay patterns and site events"
+                class="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -210,30 +287,39 @@
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div class="order-2 lg:order-1">
             <div class="rounded-lg overflow-hidden border border-plate" style="aspect-ratio:16/10;">
-              <img src="public/images/risk-dashboard.svg" alt="Risk signal dashboard showing phase risk scores, delay cluster flags and draw impact" class="w-full h-full object-cover"/>
+              <img src="public/images/risk-dashboard.svg"
+                alt="Risk signal dashboard showing phase risk scores, delay cluster flags and draw impact"
+                class="w-full h-full object-cover" />
             </div>
           </div>
           <div class="order-1 lg:order-2">
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">C4</div>
+              <div
+                class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
+                C4</div>
               <p class="font-mono text-hiviz text-sm">DELAY & CASH-FLOW SIGNALS</p>
             </div>
-            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WARNINGS BEFORE<br/><span class="text-hiviz">THEY'RE EMERGENCIES</span></h2>
+            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WARNINGS BEFORE<br /><span
+                class="text-hiviz">THEY'RE EMERGENCIES</span></h2>
             <p class="text-fog leading-relaxed mb-6">
-              Not an accounting system. Not a scheduling tool. Just simple, early signals from your docs — when your draw schedule is at risk and why, before it becomes a conversation you're not prepared for.
+              Not an accounting system. Not a scheduling tool. Just simple, early signals from your docs — when your
+              draw schedule is at risk and why, before it becomes a conversation you're not prepared for.
             </p>
             <div class="space-y-4">
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Delay cluster analysis</p>
-                <p class="text-fog text-sm">When 3+ delay events cluster in the same phase, it flags the potential draw impact before you're having that conversation with the bank.</p>
+                <p class="text-fog text-sm">When 3+ delay events cluster in the same phase, it flags the potential draw
+                  impact before you're having that conversation with the bank.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Risk summary per phase</p>
-                <p class="text-fog text-sm">Each project phase gets a simple risk score — low / medium / high — based on what's in your RFIs, logs, and blueprint conflicts combined.</p>
+                <p class="text-fog text-sm">Each project phase gets a simple risk score — low / medium / high — based on
+                  what's in your RFIs, logs, and blueprint conflicts combined.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Supply chain tie-in</p>
-                <p class="text-fog text-sm">Reads delivery confirmation delays, customs hold notifications, and supplier communications that impact material arrival and site schedule.</p>
+                <p class="text-fog text-sm">Reads delivery confirmation delays, customs hold notifications, and supplier
+                  communications that impact material arrival and site schedule.</p>
               </div>
             </div>
           </div>
@@ -257,35 +343,47 @@
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">L1</div>
+              <div
+                class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
+                L1</div>
               <p class="font-mono text-hiviz text-sm">TRADE DOCUMENT PROCESSOR</p>
             </div>
-            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">YOUR TRADE DOCS,<br/><span class="text-hiviz">VALIDATED & CLEAR</span></h2>
+            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">YOUR TRADE DOCS,<br /><span
+                class="text-hiviz">VALIDATED & CLEAR</span></h2>
             <p class="text-fog leading-relaxed mb-6">
-              Bills of lading, commercial invoices, packing lists, certificates of origin, customs declarations — the AI reads every document in your shipment package, validates fields against each other, and flags errors before they become customs problems.
+              Bills of lading, commercial invoices, packing lists, certificates of origin, customs declarations — the AI
+              reads every document in your shipment package, validates fields against each other, and flags errors
+              before they become customs problems.
             </p>
             <div class="space-y-4">
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Cross-document validation</p>
-                <p class="text-fog text-sm">Checks that quantity, weight, value, and description data is consistent across your BL, commercial invoice, and packing list. Catches mismatches before they cause holds.</p>
+                <p class="text-fog text-sm">Checks that quantity, weight, value, and description data is consistent
+                  across your BL, commercial invoice, and packing list. Catches mismatches before they cause holds.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Missing field detection</p>
-                <p class="text-fog text-sm">Flags required fields that are blank, inconsistent, or using non-standard formats for your specific lane and commodity type.</p>
+                <p class="text-fog text-sm">Flags required fields that are blank, inconsistent, or using non-standard
+                  formats for your specific lane and commodity type.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Shipment summary</p>
-                <p class="text-fog text-sm">Extracts a clean summary of each shipment — origin, destination, commodity, value, carrier, ETD/ETA — without manually reading every page of every doc.</p>
+                <p class="text-fog text-sm">Extracts a clean summary of each shipment — origin, destination, commodity,
+                  value, carrier, ETD/ETA — without manually reading every page of every doc.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Example output</p>
-                <p class="text-fog text-sm italic">"Commercial invoice line 3 shows 450 units. Packing list shows 430 units for same line. Bill of lading shows 450 cartons. Discrepancy on packing list — confirm before customs filing."</p>
+                <p class="text-fog text-sm italic">"Commercial invoice line 3 shows 450 units. Packing list shows 430
+                  units for same line. Bill of lading shows 450 cartons. Discrepancy on packing list — confirm before
+                  customs filing."</p>
               </div>
             </div>
           </div>
           <div>
             <div class="rounded-lg overflow-hidden border border-plate" style="aspect-ratio:16/10;">
-              <img src="public/images/trade-doc-validation.svg" alt="Trade doc validation output showing discrepancy flags, field validation and shipment summary" class="w-full h-full object-cover"/>
+              <img src="public/images/trade-doc-validation.svg"
+                alt="Trade doc validation output showing discrepancy flags, field validation and shipment summary"
+                class="w-full h-full object-cover" />
             </div>
             <p class="text-xs font-mono text-fog mt-2">Sample output: trade document validation report</p>
           </div>
@@ -299,35 +397,46 @@
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div class="order-2 lg:order-1">
             <div class="rounded-lg overflow-hidden border border-plate" style="aspect-ratio:16/10;">
-              <img src="public/images/freight-audit.svg" alt="Freight audit report showing rate discrepancies, duplicate charges and accessorial flags" class="w-full h-full object-cover"/>
+              <img src="public/images/freight-audit.svg"
+                alt="Freight audit report showing rate discrepancies, duplicate charges and accessorial flags"
+                class="w-full h-full object-cover" />
             </div>
             <p class="text-xs font-mono text-fog mt-2">Sample output: freight invoice audit summary</p>
           </div>
           <div class="order-1 lg:order-2">
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">L2</div>
+              <div
+                class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
+                L2</div>
               <p class="font-mono text-hiviz text-sm">FREIGHT INVOICE AUDIT</p>
             </div>
-            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">CARRIER INVOICES,<br/><span class="text-hiviz">ACTUALLY CHECKED</span></h2>
+            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">CARRIER INVOICES,<br /><span
+                class="text-hiviz">ACTUALLY CHECKED</span></h2>
             <p class="text-fog leading-relaxed mb-6">
-              Most freight invoices go unpaid for weeks and unchecked indefinitely. The AI reads every carrier invoice against your contracted rates, flags billing discrepancies, and surfaces duplicate charges before you pay them.
+              Most freight invoices go unpaid for weeks and unchecked indefinitely. The AI reads every carrier invoice
+              against your contracted rates, flags billing discrepancies, and surfaces duplicate charges before you pay
+              them.
             </p>
             <div class="space-y-4">
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Rate vs contract audit</p>
-                <p class="text-fog text-sm">Compares charged rates to your agreed tariffs, spot quotes, and contracts. Flags any lane where the invoice differs from what was quoted.</p>
+                <p class="text-fog text-sm">Compares charged rates to your agreed tariffs, spot quotes, and contracts.
+                  Flags any lane where the invoice differs from what was quoted.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Accessorial charge review</p>
-                <p class="text-fog text-sm">Identifies detention, fuel surcharge, and accessorial line items that exceed contracted caps or appear on shipments that shouldn't carry them.</p>
+                <p class="text-fog text-sm">Identifies detention, fuel surcharge, and accessorial line items that exceed
+                  contracted caps or appear on shipments that shouldn't carry them.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Duplicate detection</p>
-                <p class="text-fog text-sm">Catches the same shipment being invoiced twice across a carrier's billing cycle — a surprisingly common source of freight spend leakage.</p>
+                <p class="text-fog text-sm">Catches the same shipment being invoiced twice across a carrier's billing
+                  cycle — a surprisingly common source of freight spend leakage.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Example output</p>
-                <p class="text-fog text-sm italic">"Invoice #INV-2847 — fuel surcharge applied at 24.5%. Contracted rate for this lane: 18.2%. Overcharge of $312 on this shipment. Flag for carrier dispute."</p>
+                <p class="text-fog text-sm italic">"Invoice #INV-2847 — fuel surcharge applied at 24.5%. Contracted rate
+                  for this lane: 18.2%. Overcharge of $312 on this shipment. Flag for carrier dispute."</p>
               </div>
             </div>
           </div>
@@ -341,35 +450,47 @@
         <div class="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">L3</div>
+              <div
+                class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
+                L3</div>
               <p class="font-mono text-hiviz text-sm">COMPLIANCE & SUPPLY CHAIN RISK</p>
             </div>
-            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">RISK SIGNALS,<br/><span class="text-hiviz">BEFORE THEY LAND</span></h2>
+            <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">RISK SIGNALS,<br /><span
+                class="text-hiviz">BEFORE THEY LAND</span></h2>
             <p class="text-fog leading-relaxed mb-6">
-              Customs holds, compliance failures, and supplier delivery problems don't come out of nowhere — they're readable in your documents before they happen. This module reads across your inbound doc set and surfaces what's at risk.
+              Customs holds, compliance failures, and supplier delivery problems don't come out of nowhere — they're
+              readable in your documents before they happen. This module reads across your inbound doc set and surfaces
+              what's at risk.
             </p>
             <div class="space-y-4">
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Compliance document monitoring</p>
-                <p class="text-fog text-sm">Reviews import/export documentation for your specific commodity classifications, country of origin rules, and regulatory requirements. Flags gaps before filing.</p>
+                <p class="text-fog text-sm">Reviews import/export documentation for your specific commodity
+                  classifications, country of origin rules, and regulatory requirements. Flags gaps before filing.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Supplier communication analysis</p>
-                <p class="text-fog text-sm">Reads supplier emails, booking confirmations, and shipment status messages to surface lead-time risk and delivery threats early — before your operations feel the impact.</p>
+                <p class="text-fog text-sm">Reads supplier emails, booking confirmations, and shipment status messages
+                  to surface lead-time risk and delivery threats early — before your operations feel the impact.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Shipment risk scoring</p>
-                <p class="text-fog text-sm">Each inbound shipment gets a risk profile: compliance completeness, delivery confidence, and documentation quality — so your team knows where to focus attention.</p>
+                <p class="text-fog text-sm">Each inbound shipment gets a risk profile: compliance completeness, delivery
+                  confidence, and documentation quality — so your team knows where to focus attention.</p>
               </div>
               <div class="tape-line">
                 <p class="text-chalk font-semibold text-sm mb-1">Example output</p>
-                <p class="text-fog text-sm italic">"Shipment #SHP-441 — certificate of origin missing for CA-US preferential tariff claim. Filing without it will result in standard duty rate. Est. additional cost: $4,200. Action required before customs entry."</p>
+                <p class="text-fog text-sm italic">"Shipment #SHP-441 — certificate of origin missing for CA-US
+                  preferential tariff claim. Filing without it will result in standard duty rate. Est. additional cost:
+                  $4,200. Action required before customs entry."</p>
               </div>
             </div>
           </div>
           <div>
             <div class="rounded-lg overflow-hidden border border-plate" style="aspect-ratio:16/10;">
-              <img src="public/images/compliance-risk.svg" alt="Compliance risk report showing shipment risk scores, compliance gaps and supplier flags" class="w-full h-full object-cover"/>
+              <img src="public/images/compliance-risk.svg"
+                alt="Compliance risk report showing shipment risk scores, compliance gaps and supplier flags"
+                class="w-full h-full object-cover" />
             </div>
             <p class="text-xs font-mono text-fog mt-2">Sample output: supply chain risk summary</p>
           </div>
@@ -388,28 +509,32 @@
           <span class="text-plate text-lg mt-0.5">✗</span>
           <div>
             <p class="text-chalk text-sm font-semibold">Not a full ERP or TMS</p>
-            <p class="text-fog text-xs mt-1">It reads your documents and flags issues. It doesn't replace your project management system, your accounting platform, or your transportation management system.</p>
+            <p class="text-fog text-xs mt-1">It reads your documents and flags issues. It doesn't replace your project
+              management system, your accounting platform, or your transportation management system.</p>
           </div>
         </div>
         <div class="bg-steel border border-plate rounded p-4 flex items-start gap-3">
           <span class="text-plate text-lg mt-0.5">✗</span>
           <div>
             <p class="text-chalk text-sm font-semibold">Not a live data connector</p>
-            <p class="text-fog text-xs mt-1">It processes documents you feed it — PDFs, spreadsheets, emails. It doesn't pull live data from carrier APIs or port systems in real time.</p>
+            <p class="text-fog text-xs mt-1">It processes documents you feed it — PDFs, spreadsheets, emails. It doesn't
+              pull live data from carrier APIs or port systems in real time.</p>
           </div>
         </div>
         <div class="bg-steel border border-plate rounded p-4 flex items-start gap-3">
           <span class="text-plate text-lg mt-0.5">✗</span>
           <div>
             <p class="text-chalk text-sm font-semibold">Not a generic AI chatbot</p>
-            <p class="text-fog text-xs mt-1">It doesn't answer vague questions or hallucinate answers. It reads specific documents and returns structured outputs based on what's actually in them.</p>
+            <p class="text-fog text-xs mt-1">It doesn't answer vague questions or hallucinate answers. It reads specific
+              documents and returns structured outputs based on what's actually in them.</p>
           </div>
         </div>
         <div class="bg-steel border border-plate rounded p-4 flex items-start gap-3">
           <span class="text-plate text-lg mt-0.5">✗</span>
           <div>
             <p class="text-chalk text-sm font-semibold">Not a cloud SaaS subscription</p>
-            <p class="text-fog text-xs mt-1">No logins. No monthly fee. No dashboard you rent. It's a local application that runs on your hardware and produces structured reports. Built once, runs indefinitely.</p>
+            <p class="text-fog text-xs mt-1">No logins. No monthly fee. No dashboard you rent. It's a local application
+              that runs on your hardware and produces structured reports. Built once, runs indefinitely.</p>
           </div>
         </div>
       </div>
@@ -419,12 +544,17 @@
   <!-- CTA -->
   <section class="py-16 lg:py-24">
     <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WANT TO SEE IT ON<br/><span class="text-hiviz">YOUR ACTUAL DOCS?</span></h2>
-      <p class="text-fog mb-8 leading-relaxed">The free 24h assessment is the best way to see if this is worth your time. Send us one real document. We'll run it, and you'll get back a real report — your data, real findings, no demo output.</p>
-      <a href="/contact" class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WANT TO SEE IT ON<br /><span class="text-hiviz">YOUR
+          ACTUAL DOCS?</span></h2>
+      <p class="text-fog mb-8 leading-relaxed">The free 24h assessment is the best way to see if this is worth your
+        time. Send us one real document. We'll run it, and you'll get back a real report — your data, real findings, no
+        demo output.</p>
+      <a href="/contact"
+        class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
         Get Your Free 24h Assessment →
       </a>
-      <p class="text-xs font-mono text-fog mt-4">Usually back to you within 24 hours. We keep our workload small to ensure every client gets our full attention.</p>
+      <p class="text-xs font-mono text-fog mt-4">Usually back to you within 24 hours. We keep our workload small to
+        ensure every client gets our full attention.</p>
     </div>
   </section>
 
@@ -440,24 +570,43 @@
           <a href="/about" class="hover:text-chalk">About</a>
           <a href="/contact" class="hover:text-chalk">Contact</a>
         </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All Rights Reserved.</p>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All
+          Rights Reserved.</p>
       </div>
       <div class="flex justify-center gap-5 mt-6 mb-1">
         <!-- Instagram -->
-        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
         </a>
         <!-- Email -->
-        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors" aria-label="Email us">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors"
+          aria-label="Email us">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <polyline points="2,4 12,13 22,4" />
+          </svg>
         </a>
         <!-- X (coming soon) -->
         <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
         </span>
         <!-- WhatsApp -->
-        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
         </a>
       </div>
       <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
@@ -469,4 +618,5 @@
   </footer>
 
 </body>
+
 </html>

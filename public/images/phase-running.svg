@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="hdrG4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="600" fill="#1a1a1a" rx="8"/>
+  <rect width="960" height="3" fill="#f97316"/>
+
+  <!-- Title bar -->
+  <rect y="3" width="960" height="42" fill="url(#hdrG4)"/>
+  <rect y="44" width="960" height="1" fill="#3a3a3a"/>
+  <circle cx="22" cy="24" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="40" cy="24" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="58" cy="24" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="480" y="20" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="11" text-anchor="middle">MARAPONE AI  ·  System Status  ·  client_server_rack_01  ·  Running On-Premise</text>
+  <text x="480" y="35" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="12" text-anchor="middle" font-weight="bold">Northfield Construction Ltd.  ·  Live as of 07 Apr 2026  ·  Status check: 25 Mar 2027  09:00</text>
+
+  <!-- Metrics strip -->
+  <rect y="45" width="960" height="68" fill="#232323"/>
+  <rect y="112" width="960" height="1" fill="#3a3a3a"/>
+
+  <rect x="16" y="57" width="180" height="44" fill="#1e2618" rx="4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="106" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">SYSTEM STATUS</text>
+  <text x="106" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="16" text-anchor="middle" font-weight="bold">● OPERATIONAL</text>
+
+  <rect x="204" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="278" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">UPTIME</text>
+  <text x="278" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="17" text-anchor="middle" font-weight="bold">352 days</text>
+
+  <rect x="360" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="434" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DOCS PROCESSED</text>
+  <text x="434" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">4,812</text>
+
+  <rect x="516" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="590" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">THIS MONTH</text>
+  <text x="590" y="93" fill="#f97316" font-family="'Courier New',monospace" font-size="22" text-anchor="middle" font-weight="bold">318</text>
+
+  <rect x="672" y="57" width="148" height="44" fill="#2e2e2e" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="746" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">OUTBOUND CALLS</text>
+  <text x="746" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">ZERO</text>
+
+  <rect x="828" y="57" width="116" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="886" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">MONTHLY FEES</text>
+  <text x="886" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">$0</text>
+
+  <!-- Section: Activity log (left) + Connection status (right) -->
+  <rect x="16" y="120" width="580" height="26" fill="#2e2e2e"/>
+  <rect x="16" y="145" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="137" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">◈  RECENT ACTIVITY LOG</text>
+
+  <rect x="612" y="120" width="332" height="26" fill="#2e2e2e"/>
+  <rect x="612" y="145" width="332" height="1" fill="#3a3a3a"/>
+  <text x="628" y="137" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">◈  SYSTEM HEALTH</text>
+
+  <!-- Divider -->
+  <rect x="600" y="120" width="1" height="358" fill="#3a3a3a"/>
+
+  <!-- LEFT: Activity log header -->
+  <rect x="16" y="146" width="580" height="20" fill="#1e1e1e"/>
+  <rect x="16" y="165" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="159" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">TIMESTAMP    MODULE              DOCUMENT                         RESULT</text>
+
+  <!-- Activity rows -->
+  <rect x="16" y="166" width="580" height="26" fill="#1f1f1f"/>
+  <rect x="16" y="191" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="183" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">08:54</text>
+  <text x="100" y="183" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Blueprint Audit</text>
+  <text x="252" y="183" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">site_b_phase2_rev5.pdf</text>
+  <rect x="504" y="171" width="78" height="14" fill="#22c55e" rx="2"/>
+  <text x="543" y="182" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">3 conflicts</text>
+
+  <rect x="16" y="192" width="580" height="26" fill="#232323"/>
+  <rect x="16" y="217" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="209" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">08:41</text>
+  <text x="100" y="209" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">RFI Intelligence</text>
+  <text x="252" y="209" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">rfi_log_march_wk4.xlsx</text>
+  <rect x="504" y="197" width="78" height="14" fill="#eab308" rx="2"/>
+  <text x="543" y="208" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">2 critical</text>
+
+  <rect x="16" y="218" width="580" height="26" fill="#1f1f1f"/>
+  <rect x="16" y="243" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="235" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">08:15</text>
+  <text x="100" y="235" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Log Synthesis</text>
+  <text x="252" y="235" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">daily_logs_mar17_21.zip</text>
+  <rect x="504" y="223" width="78" height="14" fill="#22c55e" rx="2"/>
+  <text x="543" y="234" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">Weekly report</text>
+
+  <rect x="16" y="244" width="580" height="26" fill="#232323"/>
+  <rect x="16" y="269" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="261" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Tue 08:02</text>
+  <text x="100" y="261" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Blueprint Audit</text>
+  <text x="252" y="261" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">mechanical_addendum_4.pdf</text>
+  <rect x="504" y="249" width="78" height="14" fill="#22c55e" rx="2"/>
+  <text x="543" y="260" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">Clean</text>
+
+  <rect x="16" y="270" width="580" height="26" fill="#1f1f1f"/>
+  <rect x="16" y="295" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="287" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Mon 14:30</text>
+  <text x="100" y="287" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Risk Signals</text>
+  <text x="252" y="287" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">co_log_site_a_q1.xlsx</text>
+  <rect x="504" y="275" width="78" height="14" fill="#ef4444" rx="2"/>
+  <text x="543" y="286" fill="#fff" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">1 high risk</text>
+
+  <rect x="16" y="296" width="580" height="26" fill="#232323"/>
+  <rect x="16" y="321" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="313" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Mon 11:18</text>
+  <text x="100" y="313" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">RFI Intelligence</text>
+  <text x="252" y="313" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">rfi_log_march_wk3.xlsx</text>
+  <rect x="504" y="301" width="78" height="14" fill="#22c55e" rx="2"/>
+  <text x="543" y="312" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">All resolved</text>
+
+  <rect x="16" y="322" width="580" height="26" fill="#1f1f1f"/>
+  <rect x="16" y="347" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="339" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Fri 15:05</text>
+  <text x="100" y="339" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Log Synthesis</text>
+  <text x="252" y="339" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">daily_logs_mar10_14.zip</text>
+  <rect x="504" y="327" width="78" height="14" fill="#22c55e" rx="2"/>
+  <text x="543" y="338" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">Weekly report</text>
+
+  <rect x="16" y="348" width="580" height="26" fill="#232323"/>
+  <rect x="16" y="373" width="580" height="1" fill="#3a3a3a"/>
+  <text x="32" y="365" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Fri 09:22</text>
+  <text x="100" y="365" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="9">Blueprint Audit</text>
+  <text x="252" y="365" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">structural_rev8_final.pdf</text>
+  <rect x="504" y="353" width="78" height="14" fill="#eab308" rx="2"/>
+  <text x="543" y="364" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">1 conflict</text>
+
+  <text x="32" y="402" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-style="italic">4,804 previous runs in full log  →</text>
+  <text x="32" y="418" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Avg. processing time: 2m 44s / document  ·  All runs on-premise  ·  No external API calls</text>
+  <text x="32" y="436" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Hours saved this month (est.): 47h  ·  This year (est.): 580h</text>
+
+  <!-- RIGHT: System health panels -->
+  <rect x="612" y="148" width="332" height="36" fill="#1e2618" rx="0"/>
+  <rect x="612" y="148" width="3" height="36" fill="#22c55e"/>
+  <rect x="612" y="183" width="332" height="1" fill="#3a3a3a"/>
+  <text x="628" y="162" fill="#22c55e" font-family="'Courier New',monospace" font-size="10" font-weight="bold">● ALL SYSTEMS OPERATIONAL</text>
+  <text x="628" y="178" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">No errors in last 30 days  ·  No maintenance required</text>
+
+  <rect x="612" y="184" width="332" height="1" fill="#3a3a3a"/>
+  <text x="628" y="206" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">CONNECTIVITY</text>
+  <text x="628" y="224" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">External internet</text>
+  <rect x="830" y="212" width="100" height="16" fill="#2e2e2e" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="223" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">BLOCKED</text>
+  <text x="628" y="244" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Cloud API calls</text>
+  <rect x="830" y="232" width="100" height="16" fill="#2e2e2e" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="243" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">NONE</text>
+  <text x="628" y="264" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Vendor access</text>
+  <rect x="830" y="252" width="100" height="16" fill="#2e2e2e" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="263" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">NONE</text>
+  <text x="628" y="284" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Data exfiltration</text>
+  <rect x="830" y="272" width="100" height="16" fill="#2e2e2e" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="283" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">ZERO BYTES</text>
+
+  <rect x="612" y="298" width="332" height="1" fill="#3a3a3a"/>
+  <text x="628" y="318" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" font-weight="bold">MODULE STATUS</text>
+  <text x="628" y="338" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Blueprint Auditor</text>
+  <rect x="830" y="326" width="100" height="16" fill="#1e2618" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="337" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">RUNNING</text>
+  <text x="628" y="358" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">RFI Intelligence</text>
+  <rect x="830" y="346" width="100" height="16" fill="#1e2618" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="357" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">RUNNING</text>
+  <text x="628" y="378" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Log Synthesis</text>
+  <rect x="830" y="366" width="100" height="16" fill="#1e2618" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="377" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">RUNNING</text>
+  <text x="628" y="398" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Risk Signals</text>
+  <rect x="830" y="386" width="100" height="16" fill="#1e2618" rx="3" stroke="#22c55e" stroke-width="1"/>
+  <text x="880" y="397" fill="#22c55e" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" font-weight="bold">RUNNING</text>
+
+  <rect x="612" y="412" width="332" height="1" fill="#3a3a3a"/>
+  <text x="628" y="432" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Last Marapone support call:  11 Apr 2026</text>
+  <text x="628" y="448" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Next scheduled contact:  Client request only</text>
+
+  <!-- Bottom bar -->
+  <rect y="480" width="960" height="1" fill="#f97316" opacity="0.4"/>
+  <rect y="481" width="960" height="119" fill="#232323"/>
+  <text x="16" y="502" fill="#22c55e" font-family="'Courier New',monospace" font-size="11" font-weight="bold">● RUNNING  ·  352 days live  ·  4,812 documents processed  ·  $0/month  ·  0 bytes transferred externally</text>
+  <text x="16" y="520" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">System operates fully autonomously on client hardware.  No login required.  No SaaS subscription.  No vendor dependency.</text>
+  <text x="16" y="538" fill="#3a3a3a" font-family="'Courier New',monospace" font-size="9">system_id: SYS-NFC-2026  ·  build: v1.0  ·  uptime: 352d 1h 0m  ·  inference_mode: local_only  ·  cloud_connected: false</text>
+
+  <rect x="16" y="548" width="500" height="36" fill="#161e16" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="32" y="563" fill="#22c55e" font-family="'Courier New',monospace" font-size="10" font-weight="bold">OWNERSHIP:</text>
+  <text x="124" y="563" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">This system belongs to Northfield Construction Ltd.</text>
+  <text x="32" y="578" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Built once.  Owned outright.  Runs indefinitely.  No recurring cost.  No dependency on Marapone.</text>
+
+  <rect x="758" y="548" width="88" height="24" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="802" y="564" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">View Logs</text>
+  <rect x="858" y="548" width="88" height="24" fill="#f97316" rx="4"/>
+  <text x="902" y="564" fill="#ffffff" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Run Report</text>
+</svg>

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="hdrG1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1e1e1e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="600" fill="#1a1a1a" rx="8"/>
+  <rect width="960" height="3" fill="#f97316"/>
+
+  <!-- Title bar -->
+  <rect y="3" width="960" height="42" fill="url(#hdrG1)"/>
+  <rect y="44" width="960" height="1" fill="#3a3a3a"/>
+  <circle cx="22" cy="24" r="5.5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="40" cy="24" r="5.5" fill="#eab308" opacity="0.8"/>
+  <circle cx="58" cy="24" r="5.5" fill="#22c55e" opacity="0.8"/>
+  <text x="480" y="20" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="11" text-anchor="middle">MARAPONE AI  ·  Free Assessment Engine  ·  v2.4.1</text>
+  <text x="480" y="35" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="12" text-anchor="middle" font-weight="bold">northfield_mixed_use_cd_set.pdf  ·  submitted 15 Mar 2026  09:14  ·  delivered 09:38</text>
+
+  <!-- Metrics strip -->
+  <rect y="45" width="960" height="68" fill="#232323"/>
+  <rect y="112" width="960" height="1" fill="#3a3a3a"/>
+
+  <rect x="16" y="57" width="120" height="44" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="76" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">PAGES SCANNED</text>
+  <text x="76" y="93" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="22" text-anchor="middle" font-weight="bold">248</text>
+
+  <rect x="144" y="57" width="156" height="44" fill="#2e2e2e" rx="4" stroke="#f97316" stroke-width="1"/>
+  <text x="222" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">DOCUMENT TYPE</text>
+  <text x="222" y="93" fill="#f97316" font-family="'Courier New',monospace" font-size="13" text-anchor="middle" font-weight="bold">BLUEPRINT SET (CD)</text>
+
+  <rect x="308" y="57" width="120" height="44" fill="#2e2e2e" rx="4" stroke="#ef4444" stroke-width="1"/>
+  <text x="368" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">FINDINGS</text>
+  <text x="368" y="93" fill="#ef4444" font-family="'Courier New',monospace" font-size="22" text-anchor="middle" font-weight="bold">14</text>
+
+  <rect x="436" y="57" width="180" height="44" fill="#2e2e2e" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="526" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">TURNAROUND TIME</text>
+  <text x="526" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="20" text-anchor="middle" font-weight="bold">24 minutes</text>
+
+  <rect x="624" y="57" width="320" height="44" fill="#1e2e1e" rx="4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="784" y="73" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9" text-anchor="middle">ASSESSMENT STATUS</text>
+  <text x="784" y="93" fill="#22c55e" font-family="'Courier New',monospace" font-size="14" text-anchor="middle" font-weight="bold">✓  DELIVERED — ZERO COMMITMENT</text>
+
+  <!-- Left column header -->
+  <rect x="16" y="120" width="452" height="26" fill="#2e2e2e"/>
+  <rect x="16" y="145" width="452" height="1" fill="#3a3a3a"/>
+  <text x="32" y="137" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-weight="bold">SUBMITTED DOCUMENT</text>
+
+  <!-- Right column header -->
+  <rect x="492" y="120" width="452" height="26" fill="#2e2e2e"/>
+  <rect x="492" y="145" width="452" height="1" fill="#3a3a3a"/>
+  <text x="508" y="137" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">⚠  KEY FINDINGS  (14 items · sorted by severity)</text>
+
+  <!-- Divider -->
+  <rect x="472" y="120" width="1" height="360" fill="#3a3a3a"/>
+
+  <!-- LEFT: Document info -->
+  <text x="32" y="166" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">File name</text>
+  <text x="200" y="166" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">northfield_mixed_use_cd_set.pdf</text>
+  <text x="32" y="186" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Document type</text>
+  <text x="200" y="186" fill="#f97316" font-family="'Courier New',monospace" font-size="10">Construction Drawing Set (CD)</text>
+  <text x="32" y="206" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Total pages</text>
+  <text x="200" y="206" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">248  (A: 88, S: 62, M+E+C+P: 98)</text>
+  <text x="32" y="226" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Drawing sets</text>
+  <text x="200" y="226" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">A, S, M, E, C, P  (6 disciplines)</text>
+  <text x="32" y="246" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Project type</text>
+  <text x="200" y="246" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Mixed-use residential + retail · 12 storeys</text>
+
+  <rect x="16" y="258" width="452" height="1" fill="#3a3a3a"/>
+  <text x="32" y="276" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">SCOPE EXTRACTED</text>
+
+  <text x="32" y="298" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Gross floor area</text>
+  <text x="200" y="298" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">6,840 m²</text>
+  <text x="32" y="316" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Levels</text>
+  <text x="200" y="316" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">B2, B1, L1–L10, Penthouse, Roof</text>
+  <text x="32" y="334" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Structural system</text>
+  <text x="200" y="334" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Post-tensioned concrete + steel transfer</text>
+  <text x="32" y="352" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Spec sections</text>
+  <text x="200" y="352" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">62 sections extracted across all divisions</text>
+  <text x="32" y="370" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10">Trade packages</text>
+  <text x="200" y="370" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">Concrete, Steel, Masonry, Glazing, HVAC, Elec</text>
+
+  <text x="32" y="408" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">⚙  Analysed on-premise  ·  no data transferred  ·  private inference only</text>
+
+  <!-- RIGHT: Findings -->
+  <rect x="492" y="150" width="452" height="36" fill="#231818"/>
+  <rect x="492" y="185" width="452" height="1" fill="#3a3a3a"/>
+  <rect x="492" y="150" width="3" height="36" fill="#ef4444"/>
+  <rect x="504" y="156" width="40" height="18" fill="#ef4444" rx="3"/>
+  <text x="524" y="169" fill="#fff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">HIGH</text>
+  <text x="554" y="162" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Structural conflict — S4.1 vs A3.2</text>
+  <text x="554" y="178" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Transfer beam depth 850mm conflicts with arch. soffit at L3. RFI required before framing.</text>
+
+  <rect x="492" y="186" width="452" height="36" fill="#1a1a1a"/>
+  <rect x="492" y="221" width="452" height="1" fill="#3a3a3a"/>
+  <rect x="492" y="186" width="3" height="36" fill="#ef4444"/>
+  <rect x="504" y="192" width="40" height="18" fill="#ef4444" rx="3"/>
+  <text x="524" y="205" fill="#fff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">HIGH</text>
+  <text x="554" y="198" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">HVAC duct clearance — M2.4 vs S3.8</text>
+  <text x="554" y="214" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">600mm supply duct routed through secondary beam web. Zero clearance. Reroute required.</text>
+
+  <rect x="492" y="222" width="452" height="36" fill="#231818"/>
+  <rect x="492" y="257" width="452" height="1" fill="#3a3a3a"/>
+  <rect x="492" y="222" width="3" height="36" fill="#eab308"/>
+  <rect x="504" y="228" width="40" height="18" fill="#eab308" rx="3"/>
+  <text x="524" y="241" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">MED</text>
+  <text x="554" y="234" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Below-grade waterproofing — P1.2 incomplete</text>
+  <text x="554" y="250" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Membrane thickness unspecified. Affects procurement and subcontractor pricing.</text>
+
+  <rect x="492" y="258" width="452" height="36" fill="#1a1a1a"/>
+  <rect x="492" y="293" width="452" height="1" fill="#3a3a3a"/>
+  <rect x="492" y="258" width="3" height="36" fill="#eab308"/>
+  <rect x="504" y="264" width="40" height="18" fill="#eab308" rx="3"/>
+  <text x="524" y="277" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">MED</text>
+  <text x="554" y="270" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Ceiling height conflict — A6.1 vs E2.3</text>
+  <text x="554" y="286" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Finished ceiling 2700mm at L4 conflicts with electrical panel clearance requirement.</text>
+
+  <rect x="492" y="294" width="452" height="36" fill="#231818"/>
+  <rect x="492" y="329" width="452" height="1" fill="#3a3a3a"/>
+  <rect x="492" y="294" width="3" height="36" fill="#eab308"/>
+  <rect x="504" y="300" width="40" height="18" fill="#eab308" rx="3"/>
+  <text x="524" y="313" fill="#1a1a1a" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">MED</text>
+  <text x="554" y="306" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Fire separation — F2.1 corridor walls</text>
+  <text x="554" y="322" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Fire rating for L1–L2 corridor partitions unconfirmed. OBC compliance at risk.</text>
+
+  <rect x="492" y="330" width="452" height="36" fill="#1a1a1a"/>
+  <rect x="492" y="365" width="452" height="1" fill="#3a3a3a"/>
+  <rect x="492" y="330" width="3" height="36" fill="#3b82f6"/>
+  <rect x="504" y="336" width="40" height="18" fill="#3b82f6" rx="3"/>
+  <text x="524" y="349" fill="#fff" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" font-weight="bold">LOW</text>
+  <text x="554" y="342" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10" font-weight="bold">Door schedule inconsistency — D-22</text>
+  <text x="554" y="358" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">Door D-22: 900mm on A4.3 vs 800mm on fire egress plan F1.1. Confirm before ordering.</text>
+
+  <text x="508" y="392" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" font-style="italic">+ 8 more findings in full report  (4 LOW · 4 INFO)  →</text>
+
+  <!-- Bottom bar -->
+  <rect y="480" width="960" height="1" fill="#f97316" opacity="0.4"/>
+  <rect y="481" width="960" height="119" fill="#232323"/>
+  <text x="16" y="502" fill="#f97316" font-family="'Courier New',monospace" font-size="10" font-weight="bold">RECOMMENDED ACTION:  Raise RFIs on 2 HIGH conflicts before bid documents are released. Estimated risk if unresolved: $60,000–$150,000 in change orders.</text>
+  <text x="16" y="520" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">This is your free 24h assessment — built from your submitted document. No demo data, no template output. Your project, your findings.</text>
+  <text x="16" y="538" fill="#3a3a3a" font-family="'Courier New',monospace" font-size="9">assessment_id: FA-2026-0315-001  ·  model: construction-audit-v2  ·  processing_time: 3m 47s  ·  private_inference_only  ·  no_cloud_transfer</text>
+
+  <rect x="16" y="548" width="700" height="36" fill="#1e2618" rx="4" stroke="#22c55e" stroke-width="1"/>
+  <text x="32" y="563" fill="#22c55e" font-family="'Courier New',monospace" font-size="10" font-weight="bold">NEXT STEP:</text>
+  <text x="116" y="563" fill="#e8e8e8" font-family="'Courier New',monospace" font-size="10">If this is useful, we scope the full build around your complete document operation.</text>
+  <text x="32" y="578" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="9">No commitment required from this assessment. Proceed only if the findings add value to your team.</text>
+
+  <rect x="758" y="554" width="88" height="24" fill="#2e2e2e" rx="4" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="802" y="570" fill="#a0a0a0" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Export PDF</text>
+  <rect x="858" y="554" width="88" height="24" fill="#f97316" rx="4"/>
+  <text x="902" y="570" fill="#ffffff" font-family="'Courier New',monospace" font-size="10" text-anchor="middle">Export CSV</text>
+</svg>

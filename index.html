@@ -302,87 +302,151 @@
     </div>
   </section>
 
-  <!-- SOLUTIONS GRID -->
+  <!-- SOLUTIONS LIST -->
   <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-10">
+      <div class="mb-12">
         <p class="font-mono text-hiviz text-sm mb-2">// What we build</p>
         <h2 class="font-display text-4xl lg:text-5xl text-chalk">AI SOLUTIONS THAT<br /><span class="text-hiviz">SOLVE
             REAL PROBLEMS</span></h2>
       </div>
 
-      <!-- Construction Solutions -->
-      <div class="mb-8">
-        <p class="font-mono text-xs text-fog uppercase tracking-widest mb-4 flex items-center gap-3">
-          <span class="w-6 h-px bg-plate inline-block"></span>Construction
-        </p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="text-2xl mb-3">📐</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Blueprint Auditor
-            </h3>
-            <p class="text-fog text-xs leading-relaxed">Drop in a 300-page PDF. Get back a structured audit — scope,
-              conflicts, ambiguities, spec mismatches. Minutes, not hours.</p>
-          </div>
-          <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="text-2xl mb-3">📋</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">RFI Intelligence
-            </h3>
-            <p class="text-fog text-xs leading-relaxed">Feed it your RFI backlog. It cross-references blueprints,
-              identifies critical-path blockers, and flags aging items before they become claims.</p>
-          </div>
-          <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="text-2xl mb-3">📓</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Daily Log
-              Synthesis</h3>
-            <p class="text-fog text-xs leading-relaxed">Weeks of site logs turned into a clean report — manpower trends,
-              delay patterns, and anything that could become a dispute down the line.</p>
-          </div>
-          <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="text-2xl mb-3">⚠️</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Risk & Delay
-              Signals</h3>
-            <p class="text-fog text-xs leading-relaxed">Connects dots across all your docs — flags delay clusters,
-              predicts draw schedule risk, and tells you which phase is in trouble before it surfaces on site.</p>
-          </div>
+      <!-- Construction Category Label -->
+      <div class="flex items-center gap-4 mb-0 pb-3 border-b border-plate">
+        <span class="font-mono text-xs text-fog uppercase tracking-widest">Construction</span>
+        <span class="flex-1 h-px bg-plate"></span>
+        <span class="font-mono text-xs text-plate">01 — 04</span>
+      </div>
+
+      <!-- Construction Rows -->
+      <div class="group/row relative flex items-start gap-6 lg:gap-10 py-5 border-b border-plate hover:bg-hiviz/[0.04] hover:pl-3 transition-all duration-200 cursor-default solution-row">
+        <span class="font-display text-4xl lg:text-5xl text-plate/40 leading-none w-12 shrink-0 pt-1">01</span>
+        <div class="w-5 shrink-0 mt-1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-plate group-hover/row:text-hiviz transition-colors duration-200 w-5 h-5"><rect x="3" y="3" width="14" height="14" rx="1"/><path d="M7 7h6M7 10h6M7 13h4"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display text-xl lg:text-2xl text-chalk group-hover/row:text-hiviz transition-colors duration-200 mb-1">Blueprint Auditor</h3>
+          <p class="font-mono text-xs text-fog/60 uppercase tracking-widest mb-2">Construction</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Drop in a 300-page PDF. Get back a structured audit — scope, conflicts, ambiguities, spec mismatches. Minutes, not hours.</p>
+        </div>
+        <div class="shrink-0 text-right hidden lg:block pt-1">
+          <span class="font-mono text-xs text-hiviz">→ Minutes, not hours</span>
         </div>
       </div>
 
-      <!-- Logistics Solutions -->
-      <div>
-        <p class="font-mono text-xs text-fog uppercase tracking-widest mb-4 flex items-center gap-3">
-          <span class="w-6 h-px bg-plate inline-block"></span>Logistics &amp; Trade
-        </p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="text-2xl mb-3">🗂️</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Trade Doc
-              Processor</h3>
-            <p class="text-fog text-xs leading-relaxed">Bills of lading, customs declarations, commercial invoices — the
-              AI reads them all, validates fields, flags errors, and surfaces what needs action.</p>
-          </div>
-          <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="text-2xl mb-3">💸</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Freight Audit</h3>
-            <p class="text-fog text-xs leading-relaxed">Carrier invoices audited against contracted rates automatically.
-              Catches billing discrepancies, duplicate charges, and accessorial surprises before payment.</p>
-          </div>
-          <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="text-2xl mb-3">🛃</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Compliance Monitor
-            </h3>
-            <p class="text-fog text-xs leading-relaxed">Flags missing or inconsistent data across import/export
-              documentation before it becomes a customs hold. Reads your specific commodity and lane requirements.</p>
-          </div>
-          <div class="bg-steel border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="text-2xl mb-3">📡</div>
-            <h3 class="font-display text-lg text-chalk mb-2 group-hover:text-hiviz transition-colors">Supply Chain Risk
-            </h3>
-            <p class="text-fog text-xs leading-relaxed">Reads carrier updates, supplier communications, and shipment
-              docs to surface delivery risk and lead-time threats before they disrupt your operations.</p>
-          </div>
+      <div class="group/row relative flex items-start gap-6 lg:gap-10 py-5 border-b border-plate hover:bg-hiviz/[0.04] hover:pl-3 transition-all duration-200 cursor-default solution-row">
+        <span class="font-display text-4xl lg:text-5xl text-plate/40 leading-none w-12 shrink-0 pt-1">02</span>
+        <div class="w-5 shrink-0 mt-1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-plate group-hover/row:text-hiviz transition-colors duration-200 w-5 h-5"><path d="M4 4h12M4 8h8M4 12h10M4 16h6"/><circle cx="16" cy="14" r="3"/><path d="M16 13v2M15 14h2"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display text-xl lg:text-2xl text-chalk group-hover/row:text-hiviz transition-colors duration-200 mb-1">RFI Intelligence</h3>
+          <p class="font-mono text-xs text-fog/60 uppercase tracking-widest mb-2">Construction</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Feed it your RFI backlog. It cross-references blueprints, identifies critical-path blockers, and flags aging items before they become claims.</p>
+        </div>
+        <div class="shrink-0 text-right hidden lg:block pt-1">
+          <span class="font-mono text-xs text-hiviz">→ Zero missed blockers</span>
         </div>
       </div>
+
+      <div class="group/row relative flex items-start gap-6 lg:gap-10 py-5 border-b border-plate hover:bg-hiviz/[0.04] hover:pl-3 transition-all duration-200 cursor-default solution-row">
+        <span class="font-display text-4xl lg:text-5xl text-plate/40 leading-none w-12 shrink-0 pt-1">03</span>
+        <div class="w-5 shrink-0 mt-1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-plate group-hover/row:text-hiviz transition-colors duration-200 w-5 h-5"><path d="M4 16V6l4-3 4 3v10"/><path d="M8 16v-4h4v4"/><path d="M4 10h12"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display text-xl lg:text-2xl text-chalk group-hover/row:text-hiviz transition-colors duration-200 mb-1">Daily Log Synthesis</h3>
+          <p class="font-mono text-xs text-fog/60 uppercase tracking-widest mb-2">Construction</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Weeks of site logs turned into a clean report — manpower trends, delay patterns, and anything that could become a dispute down the line.</p>
+        </div>
+        <div class="shrink-0 text-right hidden lg:block pt-1">
+          <span class="font-mono text-xs text-hiviz">→ Dispute-ready records</span>
+        </div>
+      </div>
+
+      <div class="group/row relative flex items-start gap-6 lg:gap-10 py-5 border-b border-plate hover:bg-hiviz/[0.04] hover:pl-3 transition-all duration-200 cursor-default solution-row">
+        <span class="font-display text-4xl lg:text-5xl text-plate/40 leading-none w-12 shrink-0 pt-1">04</span>
+        <div class="w-5 shrink-0 mt-1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-plate group-hover/row:text-hiviz transition-colors duration-200 w-5 h-5"><path d="M10 3v4M10 13v4M3 10h4M13 10h4"/><circle cx="10" cy="10" r="3"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display text-xl lg:text-2xl text-chalk group-hover/row:text-hiviz transition-colors duration-200 mb-1">Risk & Delay Signals</h3>
+          <p class="font-mono text-xs text-fog/60 uppercase tracking-widest mb-2">Construction</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Connects dots across all your docs — flags delay clusters, predicts draw schedule risk, and tells you which phase is in trouble before it surfaces on site.</p>
+        </div>
+        <div class="shrink-0 text-right hidden lg:block pt-1">
+          <span class="font-mono text-xs text-hiviz">→ Early warning, every time</span>
+        </div>
+      </div>
+
+      <!-- Logistics & Trade Category Label -->
+      <div class="flex items-center gap-4 mt-10 mb-0 pb-3 border-b border-plate">
+        <span class="font-mono text-xs text-fog uppercase tracking-widest">Logistics &amp; Trade</span>
+        <span class="flex-1 h-px bg-plate"></span>
+        <span class="font-mono text-xs text-plate">05 — 08</span>
+      </div>
+
+      <!-- Logistics Rows -->
+      <div class="group/row relative flex items-start gap-6 lg:gap-10 py-5 border-b border-plate hover:bg-hiviz/[0.04] hover:pl-3 transition-all duration-200 cursor-default solution-row">
+        <span class="font-display text-4xl lg:text-5xl text-plate/40 leading-none w-12 shrink-0 pt-1">05</span>
+        <div class="w-5 shrink-0 mt-1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-plate group-hover/row:text-hiviz transition-colors duration-200 w-5 h-5"><path d="M3 5h14v11H3z"/><path d="M3 8h14"/><path d="M7 5V3M13 5V3"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display text-xl lg:text-2xl text-chalk group-hover/row:text-hiviz transition-colors duration-200 mb-1">Trade Doc Processor</h3>
+          <p class="font-mono text-xs text-fog/60 uppercase tracking-widest mb-2">Logistics &amp; Trade</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Bills of lading, customs declarations, commercial invoices — the AI reads them all, validates fields, flags errors, and surfaces what needs action.</p>
+        </div>
+        <div class="shrink-0 text-right hidden lg:block pt-1">
+          <span class="font-mono text-xs text-hiviz">→ Nothing slips through</span>
+        </div>
+      </div>
+
+      <div class="group/row relative flex items-start gap-6 lg:gap-10 py-5 border-b border-plate hover:bg-hiviz/[0.04] hover:pl-3 transition-all duration-200 cursor-default solution-row">
+        <span class="font-display text-4xl lg:text-5xl text-plate/40 leading-none w-12 shrink-0 pt-1">06</span>
+        <div class="w-5 shrink-0 mt-1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-plate group-hover/row:text-hiviz transition-colors duration-200 w-5 h-5"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 3"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display text-xl lg:text-2xl text-chalk group-hover/row:text-hiviz transition-colors duration-200 mb-1">Freight Audit</h3>
+          <p class="font-mono text-xs text-fog/60 uppercase tracking-widest mb-2">Logistics &amp; Trade</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Carrier invoices audited against contracted rates automatically. Catches billing discrepancies, duplicate charges, and accessorial surprises before payment.</p>
+        </div>
+        <div class="shrink-0 text-right hidden lg:block pt-1">
+          <span class="font-mono text-xs text-hiviz">→ Overpayments recovered</span>
+        </div>
+      </div>
+
+      <div class="group/row relative flex items-start gap-6 lg:gap-10 py-5 border-b border-plate hover:bg-hiviz/[0.04] hover:pl-3 transition-all duration-200 cursor-default solution-row">
+        <span class="font-display text-4xl lg:text-5xl text-plate/40 leading-none w-12 shrink-0 pt-1">07</span>
+        <div class="w-5 shrink-0 mt-1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-plate group-hover/row:text-hiviz transition-colors duration-200 w-5 h-5"><path d="M9 11l3 3 6-6"/><path d="M4 4h8v4H4z"/><path d="M4 12h5"/><path d="M4 16h3"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display text-xl lg:text-2xl text-chalk group-hover/row:text-hiviz transition-colors duration-200 mb-1">Compliance Monitor</h3>
+          <p class="font-mono text-xs text-fog/60 uppercase tracking-widest mb-2">Logistics &amp; Trade</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Flags missing or inconsistent data across import/export documentation before it becomes a customs hold. Reads your specific commodity and lane requirements.</p>
+        </div>
+        <div class="shrink-0 text-right hidden lg:block pt-1">
+          <span class="font-mono text-xs text-hiviz">→ No customs holds</span>
+        </div>
+      </div>
+
+      <div class="group/row relative flex items-start gap-6 lg:gap-10 py-5 border-b border-plate hover:bg-hiviz/[0.04] hover:pl-3 transition-all duration-200 cursor-default solution-row">
+        <span class="font-display text-4xl lg:text-5xl text-plate/40 leading-none w-12 shrink-0 pt-1">08</span>
+        <div class="w-5 shrink-0 mt-1.5">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="text-plate group-hover/row:text-hiviz transition-colors duration-200 w-5 h-5"><circle cx="10" cy="10" r="2"/><path d="M10 3a7 7 0 0 1 7 7"/><path d="M10 3a7 7 0 0 0-7 7"/><path d="M3 10a7 7 0 0 0 7 7"/><path d="M17 10a7 7 0 0 1-7 7"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display text-xl lg:text-2xl text-chalk group-hover/row:text-hiviz transition-colors duration-200 mb-1">Supply Chain Risk</h3>
+          <p class="font-mono text-xs text-fog/60 uppercase tracking-widest mb-2">Logistics &amp; Trade</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Reads carrier updates, supplier communications, and shipment docs to surface delivery risk and lead-time threats before they disrupt your operations.</p>
+        </div>
+        <div class="shrink-0 text-right hidden lg:block pt-1">
+          <span class="font-mono text-xs text-hiviz">→ Disruptions pre-empted</span>
+        </div>
+      </div>
+
     </div>
   </section>
 

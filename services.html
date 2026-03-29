@@ -92,6 +92,63 @@
     .guarantee-item:hover {
       border-color: rgba(249,115,22,0.3);
     }
+
+    /* Flip cards */
+    .flip-card {
+      perspective: 1000px;
+      cursor: pointer;
+      height: 264px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border: 1px solid #3a3a3a;
+      border-radius: 0.75rem;
+      transition: border-color 0.2s;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      overflow-y: auto;
+    }
+    .flip-card:not(.flipped):hover .flip-card-front,
+    .flip-card.flipped:hover .flip-card-back {
+      border-color: rgba(249,115,22,0.5);
+    }
+    .flip-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(58,58,58,0.5);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: #3a3a3a;
+      transition: color 0.2s;
+    }
+    .flip-card:not(.flipped):hover .flip-hint {
+      color: rgba(249,115,22,0.5);
+    }
+    .flip-card.flipped:hover .flip-hint {
+      color: rgba(249,115,22,0.5);
+    }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -206,180 +263,220 @@
       </div>
 
       <!-- Cards grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 
         <!-- UC1 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Catch scope gaps before they become a $40,000 change order.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 01</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Blueprint Review Before You Bid</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 01</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Blueprint Review Before You Bid</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Catch scope gaps before they become a $40,000 change order.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">You receive a 200-page PDF blueprint before a bid is due. Instead of your team spending days reading it, the AI reads the entire thing in minutes and gives you a plain-language summary: what's in scope, what's missing, what's contradictory, and what questions you need answered before you commit to a number.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: catching scope gaps before they become a $40,000 change order you can't recover.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Blueprint Review</p>
+              <p class="text-fog text-xs leading-relaxed">You receive a 200-page PDF blueprint before a bid is due. Instead of your team spending days reading it, the AI reads the entire thing in minutes — giving you a plain-language summary: what's in scope, what's missing, what's contradictory, and what questions to ask before you commit to a number.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Catching scope gaps before they become a $40,000 change order you can't recover.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC2 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">50, 70, 100+ open RFIs — prioritised and actioned before they block trades.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 02</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">RFI Backlog — Cleared in Hours</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 02</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">RFI Backlog — Cleared in Hours</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">50, 70, 100+ open RFIs — prioritised and actioned before they block trades.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Got 50, 70, 100+ open RFIs piling up? The AI reads every single one, checks them against your blueprints, and tells you which ones are blocking trades right now, which are aging too long, and which answers actually changed something critical. Your team stops firefighting and starts managing.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: nobody on your team has time to manage the RFI log properly — so things slip until they're emergencies.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">RFI Intelligence</p>
+              <p class="text-fog text-xs leading-relaxed">Got 50, 70, 100+ open RFIs piling up? The AI reads every single one, checks them against your blueprints, and tells you which are blocking trades right now, which are aging too long, and which answers actually changed something critical. Your team stops firefighting and starts managing.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Nobody on your team has time to manage the RFI log properly — so things slip until they're emergencies.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC3 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Turn 20+ monthly site logs into one clear weekly intelligence brief.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 03</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Daily Logs → One Weekly Report</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 03</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Daily Logs → One Weekly Report</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Turn 20+ monthly site logs into one clear weekly intelligence brief.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Your superintendent files a daily log every single day. That's 20+ logs a month, per project. Nobody reads all of them — until there's a dispute and suddenly you need to prove exactly when a delay started and who caused it. The AI reads all of them and sends a weekly summary: manpower trends, weather impacts, recurring delays, and anything that could matter in a claim.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: losing disputes because the evidence was in the logs — but nobody was reading them.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Daily Log Synthesis</p>
+              <p class="text-fog text-xs leading-relaxed">20+ logs a month, per project. Nobody reads all of them — until there's a dispute and you need to prove exactly when a delay started and who caused it. The AI reads all of them and sends a weekly summary: manpower trends, weather impacts, recurring delays, and anything that could matter in a claim.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Losing disputes because the evidence was in the logs — but nobody was reading them.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC4 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Find the items nobody priced — before mobilisation, not after.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 04</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Subcontractor Scope Gap Finder</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 04</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Subcontractor Scope Gap Finder</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Find the items nobody priced — before mobilisation, not after.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">You've got scope letters from five different subs. The AI compares each one against the full spec and drawings to find items that everyone assumes someone else is doing — but nobody actually priced. These gaps are what cause finger-pointing and cost overruns after mobilization.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: "I thought that was in your scope" conversations that cost real money.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Scope Gap Finder</p>
+              <p class="text-fog text-xs leading-relaxed">You've got scope letters from five different subs. The AI compares each one against the full spec and drawings to find items that everyone assumes someone else is doing — but nobody actually priced. These gaps are what cause finger-pointing and cost overruns after mobilization.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">"I thought that was in your scope" conversations that cost real money.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC5 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Enter every tender with eyes open — ambiguous clauses flagged before you sign.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 05</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Tender Package Risk Scanner</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 05</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Tender Package Risk Scanner</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Enter every tender with eyes open — ambiguous clauses flagged before you sign.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Before you submit a bid, run the entire tender package through the AI. It flags ambiguous specifications, one-sided contract clauses, items that need clarification from the owner, and anything that's unusual compared to standard project documents. You go into every tender with eyes open.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: signing contracts with traps in them that only become visible six months into construction.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Risk Scanner</p>
+              <p class="text-fog text-xs leading-relaxed">Before you submit a bid, run the entire tender package through the AI. It flags ambiguous specifications, one-sided contract clauses, items that need clarification from the owner, and anything that's unusual compared to standard project documents. You go into every tender with eyes open.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Signing contracts with traps in them that only become visible six months into construction.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC6 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Know which COs need more documentation before they go to billing.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 06</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Change Order Risk Tracker</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 06</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Change Order Risk Tracker</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Know which COs need more documentation before they go to billing.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Feed in your change order log and the AI reviews each one for cost exposure, missing scope detail, unapproved items, and changes that could create downstream conflicts with other trades. You know which COs need more documentation before they go to billing — and which ones are clean.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: change orders that get disputed at close-out because the documentation wasn't there.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Change Order Tracker</p>
+              <p class="text-fog text-xs leading-relaxed">Feed in your change order log and the AI reviews each one for cost exposure, missing scope detail, unapproved items, and changes that could create downstream conflicts with other trades. You know which COs need more documentation before billing — and which ones are clean.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Change orders that get disputed at close-out because the documentation wasn't there.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC7 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Every verbal commitment captured — before "that's not what was said" costs you.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 07</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Meeting Minutes Action Tracker</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 07</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Meeting Minutes Action Tracker</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Every verbal commitment captured — before "that's not what was said" costs you.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Upload your site meeting minutes, progress reports, or owner's meeting notes. The AI extracts every action item, who owns it, and what was promised — and flags anything that was discussed verbally but not documented properly. No more "that's not what was said in the meeting" surprises.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: verbal commitments that disappear because nobody wrote them down properly.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Action Tracker</p>
+              <p class="text-fog text-xs leading-relaxed">Upload your site meeting minutes, progress reports, or owner's meeting notes. The AI extracts every action item, who owns it, and what was promised — and flags anything discussed verbally but not documented properly. No more "that's not what was said" surprises.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Verbal commitments that disappear because nobody wrote them down properly.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC8 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Complete, current picture of every outstanding deficiency — close-out accelerated.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 08</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Deficiency List Management</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 08</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Deficiency List Management</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Complete, current picture of every outstanding deficiency — close-out accelerated.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Got multiple inspection reports with overlapping deficiency lists? The AI consolidates them, removes duplicates, tracks what's been closed, what's still open, and what keeps appearing repeatedly — pointing at a deeper problem. Close-out moves faster when you know exactly where you stand.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: close-out delays caused by nobody having a complete, current picture of outstanding deficiencies.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Deficiency Management</p>
+              <p class="text-fog text-xs leading-relaxed">Got multiple inspection reports with overlapping deficiency lists? The AI consolidates them, removes duplicates, tracks what's been closed, what's still open, and what keeps appearing repeatedly — pointing at a deeper problem. Close-out moves faster when you know exactly where you stand.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Close-out delays caused by nobody having a complete, current picture of outstanding deficiencies.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
@@ -401,158 +498,193 @@
       </div>
 
       <!-- Cards grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 
         <!-- UC9 -->
-        <div class="service-card rounded-xl flex flex-col" style="background-color: #232323;">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">One data entry mistake on an invoice should never cause a 2-week customs hold.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front" style="background-color: #232323;">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 01</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Shipment Document Audit</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 01</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Shipment Document Audit</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">One data entry mistake should never cause a 2-week customs hold.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Before filing customs, run your full shipment package through the AI — bill of lading, commercial invoice, packing list, certificate of origin. It checks that all the numbers, weights, quantities, and descriptions match across every document. Mismatches get flagged before they cause a customs hold or a penalty.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: a $200 data entry mistake on an invoice turning into a 2-week customs delay on a $400,000 shipment.</p>
+            <div class="flip-card-back" style="background-color: #232323;">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Document Audit</p>
+              <p class="text-fog text-xs leading-relaxed">Before filing customs, run your full shipment package through the AI — bill of lading, commercial invoice, packing list, certificate of origin. It checks that all numbers, weights, quantities, and descriptions match across every document. Mismatches flagged before they cause a hold or penalty.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">A $200 data entry mistake turning into a 2-week customs delay on a $400,000 shipment.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC10 -->
-        <div class="service-card rounded-xl flex flex-col" style="background-color: #232323;">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Every overcharge, duplicate, and above-cap surcharge — caught line by line.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front" style="background-color: #232323;">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 02</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Freight Invoice Verification</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 02</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Freight Invoice Verification</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Every overcharge, duplicate, and above-cap surcharge — caught line by line.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Upload your carrier invoices alongside your rate agreements. The AI compares what was charged against what was contracted — line by line. It catches overcharges on freight rates, fuel surcharges above your agreed cap, duplicate billing, and extra fees that appear on shipments that shouldn't carry them.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: paying for freight errors you'd only find if someone had time to check every invoice — which nobody does.</p>
+            <div class="flip-card-back" style="background-color: #232323;">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Invoice Verification</p>
+              <p class="text-fog text-xs leading-relaxed">Upload carrier invoices alongside your rate agreements. The AI compares what was charged against what was contracted — line by line. Catches overcharges on freight rates, fuel surcharges above your agreed cap, duplicate billing, and extra fees on shipments that shouldn't carry them.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Paying for freight errors you'd only find if someone had time to check every invoice — which nobody does.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC11 -->
-        <div class="service-card rounded-xl flex flex-col" style="background-color: #232323;">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Flag every inconsistency before the filing — not after the customs exam.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front" style="background-color: #232323;">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 03</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Customs Entry Review</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 03</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Customs Entry Review</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Flag every inconsistency before the filing — not after the customs exam.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Before submitting a customs entry, the AI checks your commodity classifications, declared values, country of origin, and required certificates against your actual shipping documents. It flags what's missing, what's inconsistent, and what might trigger a review — before the filing, not after.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: customs exams and penalties that stem from preventable documentation errors.</p>
+            <div class="flip-card-back" style="background-color: #232323;">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Customs Review</p>
+              <p class="text-fog text-xs leading-relaxed">Before submitting a customs entry, the AI checks commodity classifications, declared values, country of origin, and required certificates against your actual shipping documents. It flags what's missing, what's inconsistent, and what might trigger a review — before the filing, not after.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Customs exams and penalties that stem from preventable documentation errors.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC12 -->
-        <div class="service-card rounded-xl flex flex-col" style="background-color: #232323;">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Critical supplier updates never buried in email threads again.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front" style="background-color: #232323;">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 04</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Supplier Communication Digest</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 04</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Supplier Communication Digest</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Critical supplier updates never buried in email threads again.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Every week, dozens of supplier and carrier emails come in — booking confirmations, status updates, exception notices, rate changes. The AI reads them all and produces a single weekly digest: what shipments are on track, what's delayed, what needs a decision from you, and what's been promised but not confirmed.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: critical supplier updates getting buried in email threads until it's too late to act.</p>
+            <div class="flip-card-back" style="background-color: #232323;">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Supplier Digest</p>
+              <p class="text-fog text-xs leading-relaxed">Every week, dozens of supplier and carrier emails come in. The AI reads them all and produces a single weekly digest: what shipments are on track, what's delayed, what needs a decision from you, and what's been promised but not confirmed in writing.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Critical supplier updates getting buried in email threads until it's too late to act.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC13 -->
-        <div class="service-card rounded-xl flex flex-col" style="background-color: #232323;">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Renegotiate carrier contracts with evidence — not gut feel.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front" style="background-color: #232323;">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 05</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Trade Lane Performance Report</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 05</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Trade Lane Performance Report</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Renegotiate carrier contracts with evidence — not gut feel.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Feed in your historical invoices and shipment records across your trade lanes. The AI summarizes which lanes are performing well, which carriers are consistently slow or overbilling, and where you're paying above-market rates. Gives you the data you need to renegotiate contracts or switch carriers with evidence behind you.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: renewing carrier contracts without actually knowing how the carrier performed.</p>
+            <div class="flip-card-back" style="background-color: #232323;">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Lane Performance</p>
+              <p class="text-fog text-xs leading-relaxed">Feed in historical invoices and shipment records across your trade lanes. The AI summarizes which lanes are performing well, which carriers are consistently slow or overbilling, and where you're paying above-market rates. The data you need to renegotiate contracts with evidence behind you.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Renewing carrier contracts without actually knowing how the carrier performed.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC14 -->
-        <div class="service-card rounded-xl flex flex-col" style="background-color: #232323;">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Catch regulatory gaps before they become fines, suspensions, or seizures.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front" style="background-color: #232323;">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 06</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Import/Export Compliance Check</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 06</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Import/Export Compliance Check</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Catch regulatory gaps before they become fines, suspensions, or seizures.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Trade regulations change. Tariff classifications get updated. Licensing requirements shift. The AI reviews your trade documents against the applicable rules for your specific commodities and trade corridors, and flags potential compliance gaps before they become fines, license suspensions, or shipment seizures.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: regulatory changes that your team didn't catch because nobody had time to track them.</p>
+            <div class="flip-card-back" style="background-color: #232323;">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Compliance Check</p>
+              <p class="text-fog text-xs leading-relaxed">Trade regulations change. Tariff classifications get updated. Licensing requirements shift. The AI reviews your trade documents against applicable rules for your specific commodities and corridors, flagging compliance gaps before they become fines, license suspensions, or shipment seizures.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Regulatory changes your team didn't catch because nobody had time to track them.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- UC15 -->
-        <div class="service-card rounded-xl flex flex-col" style="background-color: #232323;">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Stop reacting to supply chain disruptions — start preventing them.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front" style="background-color: #232323;">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 07</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Inbound Shipment Risk Scoring</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 07</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Inbound Shipment Risk Scoring</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Stop reacting to supply chain disruptions — start preventing them.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">Every week, get a scored risk summary of your active inbound shipments — which ones have documentation problems, which carriers have a pattern of delays on this lane, and which shipments are most likely to be short, held, or late. Your team stops reacting to problems and starts preventing them.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">The problem it solves: supply chain disruptions that were visible in the data — if anyone had time to look at it.</p>
+            <div class="flip-card-back" style="background-color: #232323;">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Risk Scoring</p>
+              <p class="text-fog text-xs leading-relaxed">Every week, get a scored risk summary of your active inbound shipments — which ones have documentation problems, which carriers have a pattern of delays on this lane, and which are most likely to be short, held, or late. Your team stops reacting to problems and starts preventing them.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Supply chain disruptions that were visible in the data — if anyone had time to look at it.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
@@ -588,133 +720,163 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
         <!-- M1 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">More organic traffic — qualified people finding you without paid ads.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 01</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">AI-Powered SEO Content</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 01</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">AI-Powered SEO Content</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">More organic traffic — qualified people finding you without paid ads.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">We use AI trained on your industry to produce high-quality blog posts, service pages, and website copy that ranks on Google. Not generic content — written in your brand's voice, targeting the exact search terms your customers use when they're looking for what you do.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">Result: more organic traffic, more qualified people finding you without paid ads.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">SEO Content</p>
+              <p class="text-fog text-xs leading-relaxed">We use AI trained on your industry to produce high-quality blog posts, service pages, and website copy that ranks on Google. Not generic content — written in your brand's voice, targeting the exact search terms your customers use when they're looking for what you do.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">More organic traffic, more qualified people finding you without paid ads.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- M2 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Fewer leads going cold — the right message, at the right time, automatically.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/><polyline points="8 14 4 18"/><polyline points="16 14 20 18"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/><polyline points="8 14 4 18"/><polyline points="16 14 20 18"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 02</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Automated Lead Follow-Up</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 02</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Automated Lead Follow-Up</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Fewer leads going cold — the right message, at the right time, automatically.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">When a lead fills out a form, requests a quote, or attends a demo — the AI follows up automatically with the right message at the right time. Personalized sequences that sound human, handle common objections, and keep the conversation moving until they're ready to buy or clearly not interested.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">Result: fewer leads going cold because your team was too busy to follow up fast enough.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Lead Follow-Up</p>
+              <p class="text-fog text-xs leading-relaxed">When a lead fills out a form, requests a quote, or attends a demo — the AI follows up automatically with the right message at the right time. Personalized sequences that sound human, handle common objections, and keep the conversation moving until they're ready to buy or clearly not interested.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Fewer leads going cold because your team was too busy to follow up fast enough.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- M3 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Lower cost per lead — the right message reaching the right people.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 03</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Ad Copy & Campaign Creation</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 03</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Ad Copy & Campaign Creation</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Lower cost per lead — the right message reaching the right people.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">AI-generated ad copy for Google, LinkedIn, Meta, and industry-specific platforms — multiple variations tested against each other so you know which message converts, not which one someone in a meeting thought sounded good. We also build the campaign structure so it's ready to run.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">Result: lower cost per lead because the right message is reaching the right people.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Ad Campaigns</p>
+              <p class="text-fog text-xs leading-relaxed">AI-generated ad copy for Google, LinkedIn, Meta, and industry-specific platforms — multiple variations tested against each other so you know which message converts, not which one someone in a meeting thought sounded good. Campaign structure built and ready to run.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Lower cost per lead because the right message is reaching the right people.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- M4 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Consistent brand presence without hours of weekly grind.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 04</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Social Media Content Calendar</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 04</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Social Media Content Calendar</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Consistent brand presence without hours of weekly grind.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">We build an AI system that generates your social media content calendar — posts, captions, graphics briefs, and scheduling — for 90 days at a time, in your brand voice. You review and approve. The AI does the drafting. Consistent posting without it taking up hours of your week.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">Result: a consistent brand presence that builds trust with prospects over time — without the grind.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Content Calendar</p>
+              <p class="text-fog text-xs leading-relaxed">We build an AI system that generates your social media content calendar — posts, captions, graphics briefs, and scheduling — for 90 days at a time, in your brand voice. You review and approve. The AI does the drafting. Consistent posting without it consuming hours of your week.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">A consistent brand presence that builds trust with prospects over time — without the grind.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- M5 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">Position where competitors aren't — backed by data, not gut feel.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 05</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Competitor Analysis Report</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 05</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Competitor Analysis Report</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">Position where competitors aren't — backed by data, not gut feel.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">We run your top competitors' websites, ads, and content through an AI analysis and deliver a report showing where they're positioning, what keywords they're targeting, what messaging they're using, and where the gaps are that you can own. Strategy backed by data, not gut feel.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">Result: a clear picture of where to position yourself so you're not just shouting into the same noise everyone else is.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Competitor Analysis</p>
+              <p class="text-fog text-xs leading-relaxed">We run your top competitors' websites, ads, and content through AI analysis and deliver a report: where they're positioning, what keywords they're targeting, what messaging they use, and where the gaps are that you can own. Strategy backed by data, not gut feel.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">A clear picture of where to position yourself so you're not shouting into the same noise as everyone else.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>
 
         <!-- M6 -->
-        <div class="service-card bg-gunmetal rounded-xl flex flex-col">
-          <div class="impact-strip px-5 py-3">
-            <p class="font-mono text-hiviz text-xs leading-snug">On-brand content at volume — no headcount added, no per-word SaaS fees.</p>
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(249,115,22,0.12);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gunmetal">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: rgba(249,115,22,0.12);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                </div>
+                <div>
+                  <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 06</p>
+                  <h3 class="font-display text-xl text-chalk leading-tight">Custom Brand Voice AI</h3>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 06</p>
-                <h3 class="font-display text-xl text-chalk leading-tight">Custom Brand Voice AI</h3>
-              </div>
+              <p class="font-mono text-hiviz text-xs leading-snug mt-auto">On-brand content at volume — no headcount added, no per-word SaaS fees.</p>
+              <div class="flip-hint">Tap to explore <span class="text-hiviz/50">→</span></div>
             </div>
-            <p class="text-fog text-sm leading-relaxed mb-4 flex-1">We fine-tune an AI model on your existing content, your brand guidelines, and your best-performing communications. The result is a private AI assistant that writes in your voice — for emails, proposals, posts, and campaigns — that you can use internally forever. You own it. No subscription to any writing tool.</p>
-            <div class="tape-line mt-auto">
-              <p class="text-xs text-fog font-mono leading-relaxed">Result: consistent, on-brand content at volume — without adding headcount or paying per-word to a SaaS platform.</p>
+            <div class="flip-card-back bg-gunmetal">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">Brand Voice AI</p>
+              <p class="text-fog text-xs leading-relaxed">We fine-tune an AI model on your existing content, brand guidelines, and best-performing communications. The result is a private AI assistant that writes in your voice — for emails, proposals, posts, and campaigns — that you use internally forever. You own it outright. No subscription to any writing tool.</p>
+              <div class="tape-line mt-3">
+                <p class="text-xs text-fog font-mono leading-relaxed">Consistent, on-brand content at volume — without adding headcount or paying per-word to a SaaS platform.</p>
+              </div>
+              <div class="flip-hint">← Tap to close</div>
             </div>
           </div>
         </div>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work – Marapone | Private AI Case Studies | Construction & Logistics</title>
+  <meta name="description"
+    content="Real private AI systems built and deployed for construction and logistics companies. See what Marapone has built, what problems were solved, and what the results looked like." />
+  <link rel="stylesheet" href="./src/tailwind.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .hiviz-gradient {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .tape-line {
+      border-left: 3px solid #f97316;
+      padding-left: 1rem;
+    }
+
+    .case-card {
+      background: #232323;
+      border: 1px solid #3a3a3a;
+      border-radius: 0.5rem;
+    }
+
+    .stat-pill {
+      background: #2e2e2e;
+      border: 1px solid #3a3a3a;
+      border-radius: 0.375rem;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.25rem;
+      border: 1px solid #3a3a3a;
+      color: #a0a0a0;
+    }
+
+    .tag-orange {
+      border-color: #f97316;
+      color: #f97316;
+    }
+  </style>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/work" class="text-chalk">Work</a>
+        <a href="/faq" class="hover:text-chalk transition-colors">FAQ</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/contact"
+          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
+          Free Assessment →</a>
+      </div>
+      <button class="md:hidden text-fog"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu"
+      class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="text-fog pt-3 hover:text-chalk">Home</a>
+      <a href="/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/work" class="text-chalk">Work</a>
+      <a href="/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment
+        →</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="grid-dot py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-sm mb-4">// Selected Projects</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-6">WHAT WE'VE<br /><span class="text-hiviz">ACTUALLY
+          BUILT</span></h1>
+      <p class="text-fog max-w-2xl mx-auto leading-relaxed">Three engagements. Three different operations. Every system
+        designed around the client's real documents, installed on their hardware, and handed over completely.
+        Client details are anonymized by agreement — the problems and results are real.</p>
+      <div class="flex items-center justify-center gap-6 mt-10 flex-wrap">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-hiviz"></div>
+          <p class="font-mono text-fog text-xs">3 deployments</p>
+        </div>
+        <div class="w-px h-4 bg-plate"></div>
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-hiviz"></div>
+          <p class="font-mono text-fog text-xs">Construction & Logistics</p>
+        </div>
+        <div class="w-px h-4 bg-plate"></div>
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-hiviz"></div>
+          <p class="font-mono text-fog text-xs">Canada & Italy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 01 -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <!-- Label row -->
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg shrink-0">01</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-orange">Construction</span>
+          <span class="tag">Ontario, Canada</span>
+          <span class="tag">Pilot Build</span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Text side -->
+        <div>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">BLUEPRINT AUDITOR<br /><span
+              class="text-hiviz">FOR A RESIDENTIAL GC</span></h2>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">The problem</p>
+            <p class="text-fog text-sm leading-relaxed">A residential general contractor managing 12–18 active projects
+              at a time was losing 6–8 hours per week manually cross-referencing blueprint revisions against active
+              scopes of work. Revision conflicts were catching them after trade mobilization — at cost. They needed
+              something that could flag scope drift and dimension conflicts before the crews showed up.</p>
+          </div>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">What was built</p>
+            <p class="text-fog text-sm leading-relaxed">A private Blueprint Auditor system, installed on a dedicated
+              machine at their office. The system ingests PDF blueprints, extracts dimension data, room specs, and scope
+              indicators, then cross-references revisions to flag conflicts and changes. Output is a structured audit
+              report — specific page, specific conflict, specific delta — formatted for their project coordinator to act
+              on directly.</p>
+          </div>
+          <div class="tape-line">
+            <p class="text-chalk font-semibold text-sm mb-1">How it runs today</p>
+            <p class="text-fog text-sm leading-relaxed">Their project coordinator drops blueprints into a watched folder
+              and the report lands in their shared drive within minutes. No login, no cloud upload, no monthly invoice
+              from us. The system has been running independently for seven months.</p>
+          </div>
+        </div>
+
+        <!-- Stats side -->
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-hiviz mb-1">6–8h</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Per week recovered from manual blueprint review</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">7mo</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Running independently without needing us</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">12d</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">From first assessment to full system handover</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">$0</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Monthly cost after purchase. No subscriptions.</p>
+            </div>
+          </div>
+          <!-- Quote -->
+          <div class="case-card p-6 mt-2">
+            <p class="text-fog text-sm leading-relaxed italic mb-4">"We caught a structural beam conflict on a revision
+              in the first week. That would have been a very expensive conversation with our framing sub if it had made
+              it to site."</p>
+            <p class="font-mono text-hiviz text-xs">— Project Coordinator, Residential GC, Ontario</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 02 -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <!-- Label row -->
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg shrink-0">02</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-orange">Logistics</span>
+          <span class="tag">British Columbia, Canada</span>
+          <span class="tag">Starter Build</span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Stats side (left on desktop) -->
+        <div class="order-2 lg:order-1 space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-hiviz mb-1">340+</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Freight invoices processed per month automatically</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">4.5h</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Per week recovered from manual invoice validation</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">97%</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Accuracy on charge code extraction vs. manual baseline</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">9d</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">From scoping call to live system in production</p>
+            </div>
+          </div>
+          <!-- Quote -->
+          <div class="case-card p-6 mt-2">
+            <p class="text-fog text-sm leading-relaxed italic mb-4">"The variance flagging alone paid for the build in
+              the first two months. We were getting overbilled on fuel surcharges and not catching it manually."</p>
+            <p class="font-mono text-hiviz text-xs">— Operations Manager, Freight Brokerage, BC</p>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div class="order-1 lg:order-2">
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">FREIGHT INVOICE<br /><span
+              class="text-hiviz">INTELLIGENCE SYSTEM</span></h2>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">The problem</p>
+            <p class="text-fog text-sm leading-relaxed">A domestic freight broker processing 300–400 carrier invoices
+              per month was manually validating each one against rate confirmations. Their ops team was spending nearly
+              five hours a week just on validation — and still missing overcharges. A billing error from a carrier had
+              gone undetected for three months before they caught it in a quarterly audit.</p>
+          </div>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">What was built</p>
+            <p class="text-fog text-sm leading-relaxed">A Freight Invoice Intelligence system that reads incoming
+              carrier invoices (PDF and EDI exports), extracts charge line items, and cross-references them against rate
+              confirmations stored in their local drive. Discrepancies are flagged in a structured exceptions report with
+              exact variance amounts. The system runs on a dedicated machine in their office — carrier invoices never
+              leave the premises.</p>
+          </div>
+          <div class="tape-line">
+            <p class="text-chalk font-semibold text-sm mb-1">How it runs today</p>
+            <p class="text-fog text-sm leading-relaxed">Invoices land in a watched folder, the exceptions report is
+              ready within two minutes. Their ops team reviews flags instead of reading every line. Running for five
+              months with one retainer call to add a new carrier template.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 03 -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <!-- Label row -->
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg shrink-0">03</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-orange">Trade & Logistics</span>
+          <span class="tag">Northern Italy</span>
+          <span class="tag">Professional Build</span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Text side -->
+        <div>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">CUSTOMS COMPLIANCE<br /><span
+              class="text-hiviz">DOCUMENT VALIDATOR</span></h2>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">The problem</p>
+            <p class="text-fog text-sm leading-relaxed">A mid-size Italian trading company managing cross-border
+              shipments into and out of the EU was dealing with compliance errors on customs packages — wrong HS codes,
+              missing certificate references, mismatches between commercial invoices and packing lists. Errors weren't
+              caught until broker submission, causing delays and re-filing costs. Their compliance team was reviewing
+              packages manually, and documents were sometimes in three different languages.</p>
+          </div>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">What was built</p>
+            <p class="text-fog text-sm leading-relaxed">A multilingual Customs Document Validator, handling Italian,
+              English, and German source documents. The system reads complete customs packages — commercial invoice,
+              packing list, certificate of origin, CMR — and validates them for internal consistency, required field
+              presence, and HS code plausibility. Errors are returned as a structured pre-submission checklist before
+              the package goes to their broker.</p>
+          </div>
+          <div class="tape-line">
+            <p class="text-chalk font-semibold text-sm mb-1">How it runs today</p>
+            <p class="text-fog text-sm leading-relaxed">Their compliance officer runs packages through the system before
+              broker submission. Re-filing incidents dropped significantly in the first quarter. The system is deployed
+              on their internal server and handles the full document volume without external API calls or cloud
+              processing.</p>
+          </div>
+        </div>
+
+        <!-- Stats side -->
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-hiviz mb-1">3</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Languages handled: Italian, English, German</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">−78%</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Reduction in pre-submission errors, first quarter</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">5</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Document types validated per shipment package</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-5xl text-chalk mb-1">Local</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">No cloud. No external API. All processing on-site.</p>
+            </div>
+          </div>
+          <!-- Quote -->
+          <div class="case-card p-6 mt-2">
+            <p class="text-fog text-sm leading-relaxed italic mb-4">"We had a reoccurring issue with packing list
+              quantity mismatches that our team kept missing. The system flagged it in the first batch we ran. It hadn't
+              been on anyone's checklist."</p>
+            <p class="font-mono text-hiviz text-xs">— Compliance Director, Trading Company, Italy</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT EVERY BUILD HAS IN COMMON -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-3">// Across every project</p>
+      <h2 class="font-display text-4xl text-chalk mb-10">WHAT EVERY<br /><span class="text-hiviz">BUILD SHARES</span>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="tape-line">
+          <p class="text-chalk font-semibold text-sm mb-1">Built around real documents</p>
+          <p class="text-fog text-sm">No synthetic test data. Every system is fine-tuned on actual documents from the
+            client's operation before handover.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold text-sm mb-1">Installed on client hardware</p>
+          <p class="text-fog text-sm">Nothing runs in the cloud. No external API calls during operation. Data stays
+            exactly where it is.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold text-sm mb-1">Handed over completely</p>
+          <p class="text-fog text-sm">Full source code, full documentation, full team training. Every client can run and
+            maintain their system independently.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold text-sm mb-1">One-time price</p>
+          <p class="text-fog text-sm">No subscription. No monthly fee. No vendor relationship you're locked into. The
+            system is an asset you own outright.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WANT TO SEE IT ON<br /><span
+          class="text-hiviz">YOUR ACTUAL DOCS?</span></h2>
+      <p class="text-fog mb-8 leading-relaxed">Send us one document from your operation. We'll run it through a test
+        system and return a real report — your data, real findings — within 24 hours. No charge, no commitment.</p>
+      <a href="/contact"
+        class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
+        Get Your Free 24h Assessment →
+      </a>
+      <p class="text-xs font-mono text-fog mt-4">Usually back to you within 24 hours. We keep our workload small to
+        ensure every client gets our full attention.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex gap-6 text-sm text-fog font-body">
+          <a href="/" class="hover:text-chalk">Home</a>
+          <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/work" class="hover:text-chalk">Work</a>
+          <a href="/about" class="hover:text-chalk">About</a>
+          <a href="/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All
+          Rights Reserved.</p>
+      </div>
+      <div class="flex justify-center gap-5 mt-6 mb-1">
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors"
+          aria-label="Email us">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <polyline points="2,4 12,13 22,4" />
+          </svg>
+        </a>
+        <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </span>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank"
+          rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

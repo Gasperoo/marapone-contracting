@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ – Marapone | Private AI for Construction & Logistics</title>
+  <meta name="description"
+    content="Answers to common questions about Marapone's private AI systems — what we build, how ownership works, pricing, data privacy, hardware requirements, and how to get started." />
+  <link rel="stylesheet" href="./src/tailwind.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .hiviz-gradient {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .tape-line {
+      border-left: 3px solid #f97316;
+      padding-left: 1rem;
+    }
+
+    /* Accordion */
+    .faq-item {
+      border-bottom: 1px solid #3a3a3a;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid #3a3a3a;
+    }
+
+    .faq-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      text-align: left;
+    }
+
+    .faq-trigger:hover .faq-question {
+      color: #e8e8e8;
+    }
+
+    .faq-question {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: #c8c8c8;
+      transition: color 0.2s;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #f97316;
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-item.open .faq-question {
+      color: #e8e8e8;
+    }
+
+    .faq-body {
+      display: none;
+      padding-bottom: 1.25rem;
+    }
+
+    .faq-item.open .faq-body {
+      display: block;
+    }
+
+    .faq-body p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: #a0a0a0;
+    }
+
+    .faq-body a {
+      color: #f97316;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f97316;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/faq" class="text-chalk">FAQ</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/contact"
+          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
+          Free Assessment →</a>
+      </div>
+      <button class="md:hidden text-fog"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="text-fog pt-3 hover:text-chalk">Home</a>
+      <a href="/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/faq" class="text-chalk">FAQ</a>
+      <a href="/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment
+        →</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="grid-dot py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-sm mb-4">// Common Questions</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-6">QUESTIONS<br /><span class="text-hiviz">WE GET
+          ASKED</span></h1>
+      <p class="text-fog max-w-xl mx-auto leading-relaxed">Straight answers to the things prospects ask before they
+        reach out. If something isn't covered here, the contact form takes two minutes.</p>
+    </div>
+  </section>
+
+  <!-- FAQ CONTENT -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 space-y-16">
+
+      <!-- GROUP 1: What we build -->
+      <div>
+        <p class="section-label">// What we build</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What exactly does a Marapone system do?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>It reads your documents and returns structured output. You feed it a blueprint, a freight invoice, a
+              customs package, a set of daily site reports — and it extracts the relevant data, cross-references it
+              against other documents or internal rules, and flags issues. The output is a formatted report your team
+              can act on directly. It doesn't replace your project management system or TMS — it handles the document
+              intelligence layer your team is currently doing manually.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">Is this a generic AI tool or something custom-built?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>Custom-built for your operation. Every system starts from a discovery session where we map the specific
+              document types you work with — your blueprints, your freight invoices, your customs formats. The model is
+              fine-tuned on your actual documents, not trained on generic data. A residential GC and an industrial
+              contractor get different builds. A freight broker and a 3PL get different builds. There's no template
+              being reskinned — it's built around what you actually do.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What document types can it handle?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>PDFs (including scanned), spreadsheets (Excel, CSV), Word documents, and plain text. For construction:
+              blueprints, RFI logs, scope of work documents, daily site reports, subcontractor agreements. For
+              logistics: freight invoices, bills of lading, customs packages (commercial invoice, packing list,
+              certificates of origin, CMR), rate confirmations, carrier statements. If you have document types that
+              aren't listed — send us one in the free assessment and we'll tell you exactly what the system can extract
+              from it.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What does it not do?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>It doesn't replace your ERP, TMS, or project management system. It doesn't connect to live data feeds or
+              carrier APIs in real time. It doesn't answer open-ended questions or function as a general-purpose
+              chatbot. It processes documents you feed it and returns structured findings. It's a document intelligence
+              layer — not an all-in-one platform. If you're looking for a full operations suite, this isn't it.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROUP 2: Ownership & Pricing -->
+      <div>
+        <p class="section-label">// Ownership & Pricing</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What does "you own it" actually mean?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>You receive the full source code, all model weights, the full system documentation, and a handover
+              session with your team. You are not buying a licence to use software we retain. You own the build
+              outright — the same way you own any other piece of equipment or software asset your company acquires. If
+              Marapone shut down tomorrow, your system would keep running exactly as it does today. You can modify it,
+              extend it, or have another developer work on it. There are no usage restrictions post-purchase.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">Why is it a one-time price instead of a subscription?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>Because a subscription model requires us to keep the system running in our infrastructure — which means
+              your data routes through our servers, you're dependent on us staying in business, and you're paying
+              indefinitely for something you never fully own. We build it, install it on your hardware, and hand it
+              over. There's no reason to keep billing you after that. The retainer support option exists if your
+              workflow changes or you want new modules — but that's your choice to make, not a recurring line item.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What are the pricing tiers?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>Three tiers: Starter ($4,500 CAD), Pilot ($9,500 CAD), and Professional ($18,000 CAD). Starter is a
+              single-module system for one document type. Pilot covers two to three modules for operations with more
+              document complexity. Professional is a full multi-module build for companies with significant document
+              volume and workflow integration needs. Full details, including what's included in each tier, are on the
+              <a href="/pricing">Pricing page</a>.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">Are there any ongoing costs after the build?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>No mandatory ongoing costs. The system runs on your hardware with no external dependencies — no API
+              keys, no cloud subscription, no usage fees. If you want ongoing support — new modules, updates when your
+              document formats change, or a new document type enters your operation — retainer support is available at
+              $1,800 CAD/month (Starter/Pilot) or $3,200 CAD/month (Professional). Most clients go three to six months
+              before engaging the retainer, if they use it at all.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROUP 3: Data & Security -->
+      <div>
+        <p class="section-label">// Data & Security</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">Where does my data go when I use the system?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>Nowhere. The system runs entirely on your hardware. Documents are processed locally — no data leaves
+              your premises during operation. There are no external API calls made when the system is processing your
+              documents. Your blueprints, freight invoices, customs documents, and client data stay exactly where they
+              are. This is one of the core reasons clients in construction and logistics choose this model — these
+              industries deal with sensitive project data, client contracts, and regulatory documents that shouldn't be
+              routed through third-party servers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">Does Marapone have access to my data or my system after handover?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>No. Once the system is installed and handed over, we have no access to your machine, your network, or
+              the documents you run through the system. There's no telemetry, no usage reporting, no backdoor. The
+              system operates entirely offline. If you bring us in for retainer support, that's a separate engagement
+              where you explicitly grant access for a specific scope of work.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What happens to the documents I send during the free assessment?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>The document you send is used to run the assessment and generate your report. It's held securely during
+              that process and deleted after the report is delivered. We don't retain client documents, use them for
+              model training beyond the assessment, or share them with third parties. If you're concerned about
+              sensitivity, we can discuss anonymizing or redacting the document before you send it — the system can
+              still produce meaningful results from a partially redacted document in most cases.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROUP 4: Hardware & Setup -->
+      <div>
+        <p class="section-label">// Hardware & Setup</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">Do I need to have a server or special hardware already?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>No. If you don't have hardware capable of running a local AI system, we handle it. For Starter and Pilot
+              builds, we can source, configure, and ship a dedicated machine pre-loaded with your build for a flat
+              $1,000 CAD hardware add-on — the machine is yours to keep. For Professional builds requiring multi-GPU
+              systems, we locate parts, assemble, and configure the rig — hardware cost is covered in the project
+              deposit. We'll spec the hardware requirements after the free assessment so there are no surprises.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">How long does the build take?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>One to three weeks from signed scope to system handover, depending on the tier and complexity. Starter
+              builds typically run one week. Pilot builds run one to two weeks. Professional builds run two to three
+              weeks. The timeline starts after the scoping call and written specification are agreed on — the
+              assessment and scoping phase before that runs separately and typically takes three to five business days
+              total.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What does the handover look like? Will my team be able to run it?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>Yes — that's the point. We don't hand over something your IT team needs to figure out. The handover
+              session walks your team through exactly how to use the system: where to put documents, how to read the
+              output reports, and what to do if something looks off. We also provide written documentation. The system
+              is designed to be operated by whoever currently handles your document workflow — not by a developer. Most
+              clients are running independently within the first day.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROUP 5: Getting Started -->
+      <div>
+        <p class="section-label">// Getting Started</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">How do I know if this is worth it before committing?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>That's what the free 24-hour assessment is for. Send us one real document from your operation — a
+              blueprint, an invoice, a customs package, whatever is most relevant. We run it through a test system and
+              return a real report: your data, actual findings, no demo output. You'll see exactly what the system
+              extracts and flags from your own document before any conversation about a build. If it doesn't produce
+              something useful, there's nothing to talk about — and you've spent nothing finding that out.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">Do you work with companies outside Canada and Italy?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>We're based in Canada and Italy, and most of our clients are in those markets — but the work is not
+              geographically restricted. We've scoped builds remotely and can ship hardware internationally when needed.
+              If you're outside our primary markets, reach out and we'll assess fit directly. The free assessment works
+              regardless of location.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">How many clients do you take on at a time?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>We intentionally keep our active build count small — typically two to three projects at a time. We're a
+              boutique operation, not a software factory. This isn't a limitation we're trying to scale past — it's how
+              we ensure every build gets the attention it requires. If our pipeline is full when you reach out, we'll
+              tell you directly and give you an honest timeline.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What's the first step if I want to get started?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>The free 24-hour assessment. Go to the <a href="/contact">contact page</a>, fill out the form, and
+              attach one document from your operation. We'll run it through a test system and get a real report back to
+              you within 24 hours. No sales call, no pitch deck, no commitment. If the report is useful, we talk. If
+              it's not, you've spent nothing.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STILL HAVE QUESTIONS -->
+  <section class="py-16 lg:py-20 border-t border-plate bg-gunmetal">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="font-mono text-hiviz text-sm mb-3">// Still have questions?</p>
+          <h2 class="font-display text-4xl text-chalk mb-4">DIDN'T FIND<br /><span class="text-hiviz">WHAT YOU
+              NEEDED?</span></h2>
+          <p class="text-fog text-sm leading-relaxed">The contact form takes two minutes. Ask directly — we give
+            straight answers, not sales replies.</p>
+        </div>
+        <div class="space-y-4">
+          <a href="/contact"
+            class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-base w-full text-center block hover:opacity-90 transition-opacity">
+            Ask Us Directly →
+          </a>
+          <a href="/contact"
+            class="block w-full text-center border border-plate text-fog font-semibold px-8 py-4 rounded text-base hover:text-chalk hover:border-fog transition-colors">
+            Get Free 24h Assessment →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex gap-6 text-sm text-fog font-body">
+          <a href="/" class="hover:text-chalk">Home</a>
+          <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/about" class="hover:text-chalk">About</a>
+          <a href="/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All
+          Rights Reserved.</p>
+      </div>
+      <div class="flex justify-center gap-5 mt-6 mb-1">
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors"
+          aria-label="Email us">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <polyline points="2,4 12,13 22,4" />
+          </svg>
+        </a>
+        <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </span>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
+        </a>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(trigger) {
+      const item = trigger.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      // Open this one if it wasn't already open
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+</body>
+
+</html>

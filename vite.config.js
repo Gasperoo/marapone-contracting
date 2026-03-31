@@ -18,6 +18,8 @@ export default defineConfig({
           '/privacy': '/privacy.html',
           '/terms': '/terms.html',
           '/cookies': '/cookies.html',
+          '/work': '/work.html',
+          '/faq': '/faq.html',
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];
@@ -60,6 +62,8 @@ export default defineConfig({
         privacy: path.resolve(__dirname, 'privacy.html'),
         terms: path.resolve(__dirname, 'terms.html'),
         cookies: path.resolve(__dirname, 'cookies.html'),
+        work: path.resolve(__dirname, 'work.html'),
+        faq: path.resolve(__dirname, 'faq.html'),
       },
     },
   },

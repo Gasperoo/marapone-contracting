@@ -81,6 +81,14 @@
       "destination": "/cookies.html"
     },
     {
+      "source": "/work",
+      "destination": "/work.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq.html"
+    },
+    {
       "source": "/api/account/(.*)",
       "destination": "/api/express"
     },

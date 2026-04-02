@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact – Marapone | Free 24h AI Assessment for Construction & Logistics Companies</title>
   <meta name="description" content="Request your free 24-hour AI assessment. Send us one real document — blueprint, RFI package, trade docs, freight invoice — and we'll send back a real report. No obligation, no pitch." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Contact – Marapone | Free 24h AI Assessment for Construction & Logistics Companies" />
+  <meta property="og:description" content="Request your free 24-hour AI assessment. Send us one real document — blueprint, RFI package, trade docs, freight invoice — and we'll send back a real report. No obligation, no pitch." />
+  <meta property="og:url" content="https://marapone.com/contact" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact – Marapone | Free 24h AI Assessment for Construction & Logistics Companies" />
+  <meta name="twitter:description" content="Request your free 24-hour AI assessment. Send us one real document — blueprint, RFI package, trade docs, freight invoice — and we'll send back a real report. No obligation, no pitch." />
+  <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
   <link rel="stylesheet" href="./src/tailwind.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
@@ -29,9 +39,20 @@
     select option { background-color: #2e2e2e; }
     label { display: block; font-size: 0.75rem; font-family: 'DM Mono', monospace; color: #a0a0a0; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
   </style>
+  <!-- Google Analytics (G-J31Z05DB01) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J31Z05DB01');
+  </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="antialiased">
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
 
   <!-- NAV -->
   <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
@@ -48,7 +69,7 @@
         <a href="/contact" class="text-chalk">Contact</a>
         <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment →</a>
       </div>
-      <button class="md:hidden text-fog" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
@@ -65,7 +86,7 @@
   </nav>
 
   <!-- HEADER -->
-  <section class="grid-dot py-16 lg:py-20 border-b border-plate">
+  <section id="main-content" class="grid-dot py-16 lg:py-20 border-b border-plate">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <p class="font-mono text-hiviz text-sm mb-3">// No pitch. No strings. Just results.</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-4">GET YOUR<br/><span class="text-hiviz">FREE 24H ASSESSMENT</span></h1>

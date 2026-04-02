@@ -9,6 +9,16 @@
     content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
   <meta name="keywords"
     content="private AI, construction AI, logistics AI, B2B AI solutions, document intelligence, trade compliance AI, blueprint auditor, freight intelligence, no subscription AI" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence" />
+  <meta property="og:description" content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
+  <meta property="og:url" content="https://marapone.com/" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence" />
+  <meta name="twitter:description" content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
+  <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
   <link rel="stylesheet" href="./src/tailwind.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
@@ -126,10 +136,21 @@
     "priceRange": "$4,900 – $15,000"
   }
   </script>
+  <!-- Google Analytics (G-J31Z05DB01) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J31Z05DB01');
+  </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body class="antialiased">
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
 
   <!-- NAV -->
   <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
@@ -148,8 +169,8 @@
           class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
           Free Assessment →</a>
       </div>
-      <button class="md:hidden text-fog"
-        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -170,7 +191,7 @@
   </nav>
 
   <!-- HERO -->
-  <section class="relative overflow-hidden grid-dot min-h-[90vh] flex items-center">
+  <section id="main-content" class="relative overflow-hidden grid-dot min-h-[90vh] flex items-center">
     <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block"></div>
     <div class="max-w-6xl mx-auto px-4 py-20 lg:py-32 w-full">
       <div class="grid lg:grid-cols-2 gap-12 items-center">

@@ -25,7 +25,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://vitals.vercel-insights.com; object-src 'none'; worker-src 'none'; child-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; object-src 'none'; worker-src 'none'; child-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
         },
         {
           "key": "Cross-Origin-Opener-Policy",
@@ -89,16 +89,8 @@
       "destination": "/faq.html"
     },
     {
-      "source": "/api/account/(.*)",
-      "destination": "/api/express"
-    },
-    {
-      "source": "/api/stripe/(.*)",
-      "destination": "/api/express"
-    },
-    {
-      "source": "/api/health",
-      "destination": "/api/express"
+      "source": "/security",
+      "destination": "/security.html"
     },
     {
       "source": "/api/send-contact-email",

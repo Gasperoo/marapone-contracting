@@ -20,6 +20,7 @@ export default defineConfig({
           '/cookies': '/cookies.html',
           '/work': '/work.html',
           '/faq': '/faq.html',
+          '/security': '/security.html',
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];
@@ -64,6 +65,7 @@ export default defineConfig({
         cookies: path.resolve(__dirname, 'cookies.html'),
         work: path.resolve(__dirname, 'work.html'),
         faq: path.resolve(__dirname, 'faq.html'),
+        security: path.resolve(__dirname, 'security.html'),
       },
     },
   },

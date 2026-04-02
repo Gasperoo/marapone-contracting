@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security & Data Handling – Marapone | Private AI for Construction & Logistics</title>
+  <meta name="description" content="How Marapone handles your data, files, and documents — before, during, and after your build. Local-only processing, no cloud dependency, no telemetry." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Security & Data Handling – Marapone | Private AI for Construction & Logistics" />
+  <meta property="og:description" content="How Marapone handles your data, files, and documents — before, during, and after your build. Local-only processing, no cloud dependency, no telemetry." />
+  <meta property="og:url" content="https://marapone.com/security" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Security & Data Handling – Marapone | Private AI for Construction & Logistics" />
+  <meta name="twitter:description" content="How Marapone handles your data, files, and documents — before, during, and after your build. Local-only processing, no cloud dependency, no telemetry." />
+  <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <link rel="stylesheet" href="./src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    .section-num { font-family: 'DM Mono', monospace; color: #f97316; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .policy-section { border-bottom: 1px solid #3a3a3a; padding-bottom: 2.5rem; margin-bottom: 2.5rem; }
+    .policy-section:last-child { border-bottom: none; }
+    .check-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem; }
+    .check-item svg { flex-shrink: 0; margin-top: 2px; }
+  </style>
+  <!-- Google Analytics (G-J31Z05DB01) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J31Z05DB01');
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body class="antialiased">
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/faq" class="hover:text-chalk transition-colors">FAQ</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment →</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); const open=m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !open)">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="text-fog pt-3 hover:text-chalk">Home</a>
+      <a href="/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment →</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="grid-dot py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-sm mb-4">// Data & Security</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-6">SECURITY &<br /><span class="text-hiviz">DATA HANDLING</span></h1>
+      <p class="text-fog max-w-xl mx-auto leading-relaxed">How your data is handled at every stage — from the free assessment through the build and long after handover. Plain answers, no legal fog.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main id="main-content">
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <!-- THE SHORT VERSION -->
+      <div class="bg-gunmetal border border-hiviz/30 rounded-xl p-8 mb-16">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// The short version</p>
+        <p class="text-chalk text-lg leading-relaxed font-medium mb-6">Once your system is built and installed, your data never leaves your premises. The system runs on your hardware, processes documents locally, and makes no outbound connections during operation. Marapone has no access to your network, your documents, or your system after handover.</p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-fog text-sm">Local-only processing — no external API calls</span>
+          </div>
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-fog text-sm">No telemetry, no usage reporting</span>
+          </div>
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-fog text-sm">No cloud dependency post-handover</span>
+          </div>
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-fog text-sm">Marapone has zero post-handover access</span>
+          </div>
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-fog text-sm">No backdoor, no remote access</span>
+          </div>
+          <div class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-fog text-sm">Operates fully offline if needed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 1 -->
+      <div class="policy-section">
+        <p class="section-num">01</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">THE FREE ASSESSMENT</h2>
+        <p class="text-fog leading-relaxed mb-4">When you submit the free 24-hour assessment, you send us one document. Here is exactly what happens to it:</p>
+        <ul class="space-y-3 text-fog leading-relaxed text-sm">
+          <li class="tape-line">The file is transmitted over HTTPS and held in a secure, isolated storage environment (Supabase Storage). It is not emailed directly — it is scanned for malware via VirusTotal before any human reviews it.</li>
+          <li class="tape-line">The document is used only to generate your assessment report. It is not used to train any model, shared with any third party, or retained after the report is delivered.</li>
+          <li class="tape-line">If you are concerned about sensitivity, you can redact or anonymize the document before sending. The system can extract meaningful findings from partially redacted documents in most cases.</li>
+          <li class="tape-line">Signed access URLs for stored files expire after 7 days. Files are deleted after the assessment is complete.</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="policy-section">
+        <p class="section-num">02</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">DURING THE BUILD</h2>
+        <p class="text-fog leading-relaxed mb-4">During the scoping and build phase, you provide sample documents so we can fine-tune the model to your specific document formats. These are handled the same way as assessment documents — secure transfer, no retention beyond the project, no third-party sharing.</p>
+        <p class="text-fog leading-relaxed mb-4">All communication about your build — scope documents, specifications, technical details — is kept confidential under the non-disclosure terms in our engagement agreement.</p>
+        <div class="tape-line mt-6">
+          <p class="text-sm text-fog font-mono leading-relaxed">We operate on a strict need-to-know basis during builds. Only the people directly working on your system have access to your documents.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="policy-section">
+        <p class="section-num">03</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">AFTER HANDOVER</h2>
+        <p class="text-fog leading-relaxed mb-4">After handover, Marapone has no access to your system whatsoever. The system runs on hardware you own, in a location you control. There are no outbound connections made during document processing — your documents are never transmitted anywhere.</p>
+        <p class="text-fog leading-relaxed mb-4">Specifically:</p>
+        <ul class="space-y-3 text-fog leading-relaxed text-sm">
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">No telemetry.</strong> The system does not report usage statistics, error logs, or performance metrics to Marapone.</span>
+          </li>
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">No remote access.</strong> There is no remote login capability, no SSH access, no VPN tunnel retained by Marapone.</span>
+          </li>
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">No dependency on Marapone's infrastructure.</strong> If Marapone ceased to exist tomorrow, your system would continue operating exactly as it does today.</span>
+          </li>
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">Air-gapped deployment available.</strong> For clients with strict network isolation requirements, the Plus tier supports fully air-gapped installations with no internet connectivity required.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="policy-section">
+        <p class="section-num">04</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">RETAINER SUPPORT</h2>
+        <p class="text-fog leading-relaxed mb-4">If you engage the optional retainer support after handover, any access to your system is scoped explicitly to the work agreed upon. We will clearly define what access is needed, for how long, and for what purpose — in writing — before any support work begins.</p>
+        <p class="text-fog leading-relaxed">You can revoke access at any time. No persistent access is maintained between retainer engagements.</p>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="policy-section">
+        <p class="section-num">05</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">THIS WEBSITE</h2>
+        <p class="text-fog leading-relaxed mb-4">This website (marapone.com) collects minimal data. We use session cookies required for the site to function and Vercel's anonymous web analytics to measure page traffic. We do not use advertising cookies, third-party tracking pixels, or behavioural profiling tools.</p>
+        <p class="text-fog leading-relaxed mb-4">Form submissions (assessment requests) collect only what you provide — name, email, company, industry, and an optional file. This is used solely to process your request. See our <a href="/privacy" class="text-hiviz hover:underline">Privacy Policy</a> for full details.</p>
+        <p class="text-fog leading-relaxed">See our <a href="/cookies" class="text-hiviz hover:underline">Cookie Policy</a> for a complete breakdown of the cookies we set and why.</p>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="policy-section">
+        <p class="section-num">06</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">QUESTIONS OR CONCERNS</h2>
+        <p class="text-fog leading-relaxed mb-4">If you have specific security requirements — compliance documentation, NDA before assessment, custom data handling agreements, or air-gapped deployment requirements — reach out before submitting your assessment. We deal with these regularly.</p>
+        <p class="text-fog leading-relaxed">Contact: <a href="mailto:general@marapone.com" class="text-hiviz hover:underline">general@marapone.com</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-20 border-t border-plate bg-gunmetal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-sm mb-4">// Ready to start</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">YOUR DATA.<br /><span class="text-hiviz">YOUR SYSTEM.</span></h2>
+      <p class="text-fog max-w-lg mx-auto leading-relaxed mb-8">Send one document. Get a real report back in 24 hours. No commitment, no sales call, no cloud.</p>
+      <a href="/contact" class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-base inline-block hover:opacity-90 transition-opacity">Get Free Assessment →</a>
+    </div>
+  </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex gap-6 text-sm text-fog font-body">
+          <a href="/" class="hover:text-chalk">Home</a>
+          <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/services" class="hover:text-chalk">Services</a>
+          <a href="/work" class="hover:text-chalk">Work</a>
+          <a href="/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/about" class="hover:text-chalk">About</a>
+          <a href="/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="flex justify-center gap-5 mt-6 mb-1">
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors" aria-label="Email us">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+        </a>
+        <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </span>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+      </div>
+      <div class="flex justify-center gap-5 mt-4">
+        <a href="/terms" class="text-xs text-plate hover:text-fog font-mono transition-colors">Terms</a>
+        <a href="/privacy" class="text-xs text-plate hover:text-fog font-mono transition-colors">Privacy</a>
+        <a href="/cookies" class="text-xs text-plate hover:text-fog font-mono transition-colors">Cookies</a>
+        <a href="/security" class="text-xs text-hiviz font-mono transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

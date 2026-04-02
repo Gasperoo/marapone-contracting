@@ -7,6 +7,16 @@
   <title>Pricing – Marapone | One-Time Price, No Subscriptions | Private B2B AI for Construction & Logistics</title>
   <meta name="description"
     content="Simple, honest pricing for private AI systems — construction, logistics, and marketing. One-time fee, full source code + model handover. Starter $1,500 · Pilot $4,900 · Full Build $9,500 · Plus $15,000. No subscriptions ever." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Pricing – Marapone | One-Time Price, No Subscriptions | Private B2B AI for Construction & Logistics" />
+  <meta property="og:description" content="Simple, honest pricing for private AI systems — construction, logistics, and marketing. One-time fee, full source code + model handover. Starter $1,500 · Pilot $4,900 · Full Build $9,500 · Plus $15,000. No subscriptions ever." />
+  <meta property="og:url" content="https://marapone.com/pricing" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pricing – Marapone | One-Time Price, No Subscriptions | Private B2B AI for Construction & Logistics" />
+  <meta name="twitter:description" content="Simple, honest pricing for private AI systems — construction, logistics, and marketing. One-time fee, full source code + model handover. Starter $1,500 · Pilot $4,900 · Full Build $9,500 · Plus $15,000. No subscriptions ever." />
+  <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
   <link rel="stylesheet" href="./src/tailwind.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
@@ -64,10 +74,21 @@
       display: block;
     }
   </style>
+  <!-- Google Analytics (G-J31Z05DB01) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J31Z05DB01');
+  </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body class="antialiased">
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
 
   <!-- NAV -->
   <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
@@ -86,8 +107,8 @@
           class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
           Free Assessment →</a>
       </div>
-      <button class="md:hidden text-fog"
-        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex')">
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -108,7 +129,7 @@
   </nav>
 
   <!-- HEADER -->
-  <section class="grid-dot py-16 lg:py-20 border-b border-plate">
+  <section id="main-content" class="grid-dot py-16 lg:py-20 border-b border-plate">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <p class="font-mono text-hiviz text-sm mb-3">// Simple pricing. No tricks.</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-4">PAY ONCE.<br /><span class="text-hiviz">OWN

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Built with Marapone – Badge</title>
+  <meta name="description" content="Embed the 'Built with Marapone' badge on your site or internal tool to show your system was built by Marapone." />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="./src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .code-block {
+      background: #111;
+      border: 1px solid #3a3a3a;
+      border-radius: 0.5rem;
+      padding: 1.25rem 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: #a0a0a0;
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.7;
+    }
+    .copy-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 0.25rem;
+      border: 1px solid #3a3a3a;
+      color: #a0a0a0;
+      background: transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .copy-btn:hover { border-color: #f97316; color: #f97316; }
+    .copy-btn.copied { border-color: #22c55e; color: #22c55e; }
+  </style>
+  <!-- Google Analytics (G-J31Z05DB01) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J31Z05DB01');
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body class="antialiased">
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/faq" class="hover:text-chalk transition-colors">FAQ</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment →</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="text-fog pt-3 hover:text-chalk">Home</a>
+      <a href="/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment →</a>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// For Marapone clients</p>
+      <h1 class="font-display text-5xl lg:text-6xl text-chalk mb-6">BUILT WITH<br /><span class="text-hiviz">MARAPONE</span></h1>
+      <p class="text-fog leading-relaxed mb-12">If Marapone built your system, you're welcome to display this badge on your internal tools, dashboards, or website. It's optional — but it helps others in your industry find what you found.</p>
+
+      <!-- Badge previews -->
+      <div class="mb-12">
+        <p class="font-mono text-fog text-xs mb-5 uppercase tracking-widest">// Preview</p>
+        <div class="flex flex-wrap items-start gap-8">
+          <!-- Light bg preview -->
+          <div>
+            <p class="font-mono text-xs text-plate mb-3">On dark</p>
+            <div class="bg-charcoal p-6 rounded inline-block">
+              <a href="https://marapone.com" target="_blank" rel="noopener noreferrer" aria-label="Built with Marapone">
+                <img src="/built-with-marapone.svg" alt="Built with Marapone" width="180" height="32" />
+              </a>
+            </div>
+          </div>
+          <!-- Dark bg preview -->
+          <div>
+            <p class="font-mono text-xs text-plate mb-3">On light</p>
+            <div class="bg-white p-6 rounded inline-block">
+              <a href="https://marapone.com" target="_blank" rel="noopener noreferrer" aria-label="Built with Marapone">
+                <img src="/built-with-marapone.svg" alt="Built with Marapone" width="180" height="32" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Embed snippets -->
+      <div class="space-y-8">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <p class="font-mono text-chalk text-xs uppercase tracking-widest">HTML</p>
+            <button class="copy-btn" onclick="copyCode(this, 'code-html')">Copy</button>
+          </div>
+          <div id="code-html" class="code-block">&lt;a href="https://marapone.com" target="_blank" rel="noopener noreferrer"&gt;
+  &lt;img src="https://marapone.com/built-with-marapone.svg"
+       alt="Built with Marapone" width="180" height="32" /&gt;
+&lt;/a&gt;</div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <p class="font-mono text-chalk text-xs uppercase tracking-widest">Markdown</p>
+            <button class="copy-btn" onclick="copyCode(this, 'code-md')">Copy</button>
+          </div>
+          <div id="code-md" class="code-block">[![Built with Marapone](https://marapone.com/built-with-marapone.svg)](https://marapone.com)</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex gap-6 text-sm text-fog font-body">
+          <a href="/" class="hover:text-chalk">Home</a>
+          <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/services" class="hover:text-chalk">Services</a>
+          <a href="/work" class="hover:text-chalk">Work</a>
+          <a href="/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/about" class="hover:text-chalk">About</a>
+          <a href="/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026. Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function copyCode(btn, id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>

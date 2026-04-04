@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="32" role="img" aria-label="Built with Marapone">
+  <title>Built with Marapone</title>
+  <rect width="180" height="32" rx="4" fill="#1a1a1a"/>
+  <rect width="32" height="32" rx="4" fill="#f97316"/>
+  <rect x="28" width="4" height="32" fill="#f97316"/>
+  <text x="16" y="21" font-family="monospace" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">M</text>
+  <text x="107" y="13" font-family="monospace" font-size="7" fill="#a0a0a0" text-anchor="middle" letter-spacing="1">BUILT WITH</text>
+  <text x="107" y="25" font-family="monospace" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">MARAPONE</text>
+</svg>

@@ -441,8 +441,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Email send error:', error);
     return res.status(500).json({
-      error: 'Failed to send email',
-      message: error.message,
+      error: 'Failed to send email. Please contact us directly at general@marapone.com',
     });
   }
 }

@@ -21,6 +21,7 @@ export default defineConfig({
           '/work': '/work.html',
           '/faq': '/faq.html',
           '/security': '/security.html',
+          '/badge': '/badge.html',
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];
@@ -66,6 +67,7 @@ export default defineConfig({
         work: path.resolve(__dirname, 'work.html'),
         faq: path.resolve(__dirname, 'faq.html'),
         security: path.resolve(__dirname, 'security.html'),
+        badge: path.resolve(__dirname, 'badge.html'),
       },
     },
   },

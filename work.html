@@ -197,29 +197,64 @@
               class="text-hiviz">FOR A RESIDENTIAL GC</span></h2>
           <div class="tape-line mb-8">
             <p class="text-chalk font-semibold text-sm mb-1">The problem</p>
-            <p class="text-fog text-sm leading-relaxed">A residential general contractor managing 12–18 active projects
-              at a time was losing 6–8 hours per week manually cross-referencing blueprint revisions against active
-              scopes of work. Revision conflicts were catching them after trade mobilization — at cost. They needed
-              something that could flag scope drift and dimension conflicts before the crews showed up.</p>
+            <p class="text-fog text-sm leading-relaxed">A residential GC with 12–18 active projects was losing 6–8 hours per week manually cross-referencing blueprint revisions. Conflicts weren't caught until after trade mobilization — at cost.</p>
           </div>
           <div class="tape-line mb-8">
             <p class="text-chalk font-semibold text-sm mb-1">What was built</p>
-            <p class="text-fog text-sm leading-relaxed">A private Blueprint Auditor system, installed on a dedicated
-              machine at their office. The system ingests PDF blueprints, extracts dimension data, room specs, and scope
-              indicators, then cross-references revisions to flag conflicts and changes. Output is a structured audit
-              report — specific page, specific conflict, specific delta — formatted for their project coordinator to act
-              on directly.</p>
+            <p class="text-fog text-sm leading-relaxed">A private Blueprint Auditor installed on a dedicated office machine. Ingests PDF blueprints, extracts dimension and scope data, cross-references revisions, and outputs a structured audit report — specific page, specific conflict, specific delta.</p>
           </div>
           <div class="tape-line">
             <p class="text-chalk font-semibold text-sm mb-1">How it runs today</p>
-            <p class="text-fog text-sm leading-relaxed">Their project coordinator drops blueprints into a watched folder
-              and the report lands in their shared drive within minutes. No login, no cloud upload, no monthly invoice
-              from us. The system has been running independently for seven months.</p>
+            <p class="text-fog text-sm leading-relaxed">Project coordinator drops blueprints into a watched folder — report in shared drive within minutes. No cloud upload. Running independently for seven months.</p>
           </div>
         </div>
 
         <!-- Stats side -->
         <div class="space-y-4">
+
+          <!-- Document preview: Blueprint Auditor -->
+          <div class="bg-charcoal border border-plate rounded-xl overflow-hidden">
+            <div class="bg-steel border-b border-plate px-4 py-3 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-fog flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="font-mono text-xs text-fog truncate">Blueprint_SiteA_Rev4.pdf</span>
+              </div>
+              <span class="font-mono text-xs text-hiviz bg-hiviz/10 border border-hiviz/20 px-2 py-0.5 rounded-full whitespace-nowrap">AUDIT COMPLETE</span>
+            </div>
+            <div class="px-4 py-3 border-b border-plate space-y-1.5">
+              <div class="h-2 bg-plate/40 rounded w-full"></div>
+              <div class="h-2 bg-plate/40 rounded w-5/6"></div>
+              <div class="relative">
+                <div class="h-2 bg-hiviz/30 border border-hiviz/40 rounded w-4/5"></div>
+                <span class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-red-400"></span>
+              </div>
+              <div class="h-2 bg-plate/40 rounded w-full"></div>
+              <div class="relative">
+                <div class="h-2 bg-hiviz/30 border border-hiviz/40 rounded w-3/5"></div>
+                <span class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-amber-400"></span>
+              </div>
+              <div class="h-2 bg-plate/40 rounded w-full"></div>
+            </div>
+            <div class="px-4 py-3 space-y-2">
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-red-900/50 border border-red-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">Structural beam conflict — Rev.4 vs Rev.2</p><p class="font-mono text-xs text-fog">Grid line C7 — framing vs mechanical overlay</p></div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-amber-900/50 border border-amber-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">3 dimension deltas flagged</p><p class="font-mono text-xs text-fog">Scope drift on revised room specs</p></div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-green-900/50 border border-green-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">Scope summary generated</p><p class="font-mono text-xs text-fog">187 pages → 2-page audit report</p></div>
+              </div>
+            </div>
+            <div class="bg-charcoal/60 border-t border-plate px-4 py-2.5 flex items-center justify-between">
+              <span class="font-mono text-xs text-fog">Processed in <span class="text-chalk font-semibold">9 min</span></span>
+              <span class="font-mono text-xs text-plate">was 6–8 hrs manually</span>
+            </div>
+          </div>
+
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
               <p class="font-display text-5xl text-hiviz mb-1">6–8h</p>
@@ -271,6 +306,49 @@
 
         <!-- Stats side (left on desktop) -->
         <div class="order-2 lg:order-1 space-y-4">
+
+          <!-- Document preview: Freight Invoice Intelligence -->
+          <div class="bg-charcoal border border-plate rounded-xl overflow-hidden">
+            <div class="bg-steel border-b border-plate px-4 py-3 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-fog flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="font-mono text-xs text-fog truncate">Invoice_FastFreight_Nov24.pdf</span>
+              </div>
+              <span class="font-mono text-xs text-red-400 bg-red-900/20 border border-red-500/30 px-2 py-0.5 rounded-full whitespace-nowrap">2 EXCEPTIONS</span>
+            </div>
+            <div class="px-4 py-3 border-b border-plate space-y-1.5">
+              <div class="h-2 bg-plate/40 rounded w-full"></div>
+              <div class="relative">
+                <div class="h-2 bg-red-500/25 border border-red-500/40 rounded w-5/6"></div>
+                <span class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-red-400"></span>
+              </div>
+              <div class="h-2 bg-plate/40 rounded w-full"></div>
+              <div class="relative">
+                <div class="h-2 bg-red-500/25 border border-red-500/40 rounded w-4/5"></div>
+                <span class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-red-400"></span>
+              </div>
+              <div class="h-2 bg-plate/40 rounded w-3/4"></div>
+            </div>
+            <div class="px-4 py-3 space-y-2">
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-red-900/50 border border-red-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">Fuel surcharge 18.4% — contract cap 15%</p><p class="font-mono text-xs text-fog">Overcharge: +$340 on shipment #4821</p></div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-red-900/50 border border-red-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">LTL pickup fee billed twice</p><p class="font-mono text-xs text-fog">Duplicate line item — $85 recoverable</p></div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-green-900/50 border border-green-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">312 line items validated</p><p class="font-mono text-xs text-fog">2 exceptions flagged — remainder clean</p></div>
+              </div>
+            </div>
+            <div class="bg-charcoal/60 border-t border-plate px-4 py-2.5 flex items-center justify-between">
+              <span class="font-mono text-xs text-fog">Processed in <span class="text-chalk font-semibold">2 min</span></span>
+              <span class="font-mono text-xs text-plate">340+ invoices/month</span>
+            </div>
+          </div>
+
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
               <p class="font-display text-5xl text-hiviz mb-1">340+</p>
@@ -305,24 +383,15 @@
               class="text-hiviz">INTELLIGENCE SYSTEM</span></h2>
           <div class="tape-line mb-8">
             <p class="text-chalk font-semibold text-sm mb-1">The problem</p>
-            <p class="text-fog text-sm leading-relaxed">A domestic freight broker processing 300–400 carrier invoices
-              per month was manually validating each one against rate confirmations. Their ops team was spending nearly
-              five hours a week just on validation — and still missing overcharges. A billing error from a carrier had
-              gone undetected for three months before they caught it in a quarterly audit.</p>
+            <p class="text-fog text-sm leading-relaxed">A freight broker processing 300–400 invoices per month was spending five hours a week on manual validation — and still missing overcharges. One billing error went undetected for three months.</p>
           </div>
           <div class="tape-line mb-8">
             <p class="text-chalk font-semibold text-sm mb-1">What was built</p>
-            <p class="text-fog text-sm leading-relaxed">A Freight Invoice Intelligence system that reads incoming
-              carrier invoices (PDF and EDI exports), extracts charge line items, and cross-references them against rate
-              confirmations stored in their local drive. Discrepancies are flagged in a structured exceptions report with
-              exact variance amounts. The system runs on a dedicated machine in their office — carrier invoices never
-              leave the premises.</p>
+            <p class="text-fog text-sm leading-relaxed">A Freight Invoice Intelligence system reading PDF and EDI invoices, extracting charge line items, and cross-referencing against rate confirmations. Discrepancies flagged in an exceptions report with exact variance amounts. Invoices never leave the premises.</p>
           </div>
           <div class="tape-line">
             <p class="text-chalk font-semibold text-sm mb-1">How it runs today</p>
-            <p class="text-fog text-sm leading-relaxed">Invoices land in a watched folder, the exceptions report is
-              ready within two minutes. Their ops team reviews flags instead of reading every line. Running for five
-              months with one retainer call to add a new carrier template.</p>
+            <p class="text-fog text-sm leading-relaxed">Invoices land in a watched folder — exceptions report ready in two minutes. Ops team reviews flags, not every line. Running five months.</p>
           </div>
         </div>
 
@@ -352,31 +421,63 @@
               class="text-hiviz">DOCUMENT VALIDATOR</span></h2>
           <div class="tape-line mb-8">
             <p class="text-chalk font-semibold text-sm mb-1">The problem</p>
-            <p class="text-fog text-sm leading-relaxed">A mid-size Italian trading company managing cross-border
-              shipments into and out of the EU was dealing with compliance errors on customs packages — wrong HS codes,
-              missing certificate references, mismatches between commercial invoices and packing lists. Errors weren't
-              caught until broker submission, causing delays and re-filing costs. Their compliance team was reviewing
-              packages manually, and documents were sometimes in three different languages.</p>
+            <p class="text-fog text-sm leading-relaxed">An Italian trading company had recurring compliance errors on EU customs packages — wrong HS codes, missing certificates, invoice/packing list mismatches. Errors weren't caught until broker submission, with documents sometimes in three different languages.</p>
           </div>
           <div class="tape-line mb-8">
             <p class="text-chalk font-semibold text-sm mb-1">What was built</p>
-            <p class="text-fog text-sm leading-relaxed">A multilingual Customs Document Validator, handling Italian,
-              English, and German source documents. The system reads complete customs packages — commercial invoice,
-              packing list, certificate of origin, CMR — and validates them for internal consistency, required field
-              presence, and HS code plausibility. Errors are returned as a structured pre-submission checklist before
-              the package goes to their broker.</p>
+            <p class="text-fog text-sm leading-relaxed">A multilingual Customs Document Validator (Italian, English, German). Reads complete customs packages and validates for consistency, required fields, and HS code plausibility. Errors returned as a pre-submission checklist before anything goes to the broker.</p>
           </div>
           <div class="tape-line">
             <p class="text-chalk font-semibold text-sm mb-1">How it runs today</p>
-            <p class="text-fog text-sm leading-relaxed">Their compliance officer runs packages through the system before
-              broker submission. Re-filing incidents dropped significantly in the first quarter. The system is deployed
-              on their internal server and handles the full document volume without external API calls or cloud
-              processing.</p>
+            <p class="text-fog text-sm leading-relaxed">Compliance officer runs packages before broker submission. Re-filing incidents dropped −78% in the first quarter. Deployed on internal server — no external API calls.</p>
           </div>
         </div>
 
         <!-- Stats side -->
         <div class="space-y-4">
+
+          <!-- Document preview: Customs Compliance Validator -->
+          <div class="bg-charcoal border border-plate rounded-xl overflow-hidden">
+            <div class="bg-steel border-b border-plate px-4 py-3 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-fog flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="font-mono text-xs text-fog truncate">ShipmentPkg_DE-IT_2024.pdf</span>
+              </div>
+              <span class="font-mono text-xs text-amber-400 bg-amber-900/20 border border-amber-500/30 px-2 py-0.5 rounded-full whitespace-nowrap">2 CORRECTIONS NEEDED</span>
+            </div>
+            <div class="px-4 py-3 border-b border-plate space-y-1.5">
+              <div class="h-2 bg-plate/40 rounded w-full"></div>
+              <div class="h-2 bg-plate/40 rounded w-5/6"></div>
+              <div class="relative">
+                <div class="h-2 bg-red-500/25 border border-red-500/40 rounded w-4/5"></div>
+                <span class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-red-400"></span>
+              </div>
+              <div class="relative">
+                <div class="h-2 bg-amber-500/25 border border-amber-500/40 rounded w-3/5"></div>
+                <span class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-amber-400"></span>
+              </div>
+              <div class="h-2 bg-plate/40 rounded w-full"></div>
+            </div>
+            <div class="px-4 py-3 space-y-2">
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-red-900/50 border border-red-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">HS code mismatch — 8471.30 vs 8471.49</p><p class="font-mono text-xs text-fog">Commercial invoice vs packing list conflict</p></div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-amber-900/50 border border-amber-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">Certificate of origin missing — Line 4</p><p class="font-mono text-xs text-fog">Required for DE-IT corridor, commodity type</p></div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-4 h-4 rounded-full bg-green-900/50 border border-green-500/50 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span></span>
+                <div><p class="font-mono text-xs text-chalk leading-tight">5 document types validated</p><p class="font-mono text-xs text-fog">IT / EN / DE — 2 items require correction</p></div>
+              </div>
+            </div>
+            <div class="bg-charcoal/60 border-t border-plate px-4 py-2.5 flex items-center justify-between">
+              <span class="font-mono text-xs text-fog">Pre-submission check <span class="text-chalk font-semibold">complete</span></span>
+              <span class="font-mono text-xs text-plate">All processing on-site</span>
+            </div>
+          </div>
+
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
               <p class="font-display text-5xl text-hiviz mb-1">3</p>

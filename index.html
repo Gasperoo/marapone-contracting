@@ -202,6 +202,9 @@
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left: Copy -->
         <div>
+          <div class="fade-up mb-5">
+            <img src="MaraponeLogo-1.png" alt="Marapone" class="h-10 lg:h-12 object-contain opacity-80" />
+          </div>
           <h1 class="fade-up font-display text-6xl lg:text-8xl leading-none text-chalk mb-4">
             STOP RENTING<br />YOUR <span class="text-hiviz">AI.</span><br />OWN THE<br />ENGINE.
           </h1>
@@ -234,15 +237,85 @@
             <span class="text-xs font-mono text-plate">No questions asked.</span>
           </div>
         </div>
-        <!-- Right: Logo with pulse -->
+        <!-- Right: AI output mockup -->
         <div class="fade-up delay-1 flex flex-col items-center justify-center">
-          <div class="relative flex items-center justify-center p-8">
-            <div class="p-2">
-              <img src="MaraponeLogo-1.png" alt="Marapone Contracting" class="w-72 lg:w-96 object-contain logo-pulse" />
+          <div class="relative w-full max-w-sm mx-auto select-none">
+
+            <!-- Background card: raw document -->
+            <div class="absolute inset-0 translate-x-4 translate-y-4 bg-gunmetal border border-plate rounded-xl opacity-70"></div>
+
+            <!-- Mid card: slight offset -->
+            <div class="absolute inset-0 translate-x-2 translate-y-2 bg-gunmetal border border-plate rounded-xl opacity-50"></div>
+
+            <!-- Foreground card: AI report -->
+            <div class="relative bg-steel border border-plate rounded-xl overflow-hidden">
+
+              <!-- Card header -->
+              <div class="bg-charcoal border-b border-plate px-4 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-fog" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <span class="font-mono text-xs text-fog truncate">Blueprint_SiteA_Rev3.pdf</span>
+                </div>
+                <span class="font-mono text-xs text-hiviz bg-hiviz/10 border border-hiviz/20 px-2 py-0.5 rounded-full whitespace-nowrap">AI AUDIT COMPLETE</span>
+              </div>
+
+              <!-- Fake document preview with highlights -->
+              <div class="px-4 py-3 border-b border-plate space-y-1.5">
+                <div class="h-2 bg-plate/40 rounded w-full"></div>
+                <div class="h-2 bg-plate/40 rounded w-5/6"></div>
+                <div class="relative">
+                  <div class="h-2 bg-hiviz/30 border border-hiviz/40 rounded w-4/5"></div>
+                  <span class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-hiviz"></span>
+                </div>
+                <div class="h-2 bg-plate/40 rounded w-full"></div>
+                <div class="relative">
+                  <div class="h-2 bg-hiviz/30 border border-hiviz/40 rounded w-3/5"></div>
+                  <span class="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-hiviz"></span>
+                </div>
+                <div class="h-2 bg-plate/40 rounded w-full"></div>
+                <div class="h-2 bg-plate/40 rounded w-2/3"></div>
+              </div>
+
+              <!-- Findings list -->
+              <div class="px-4 py-3 space-y-2">
+                <div class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-red-900/50 border border-red-500/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                  </span>
+                  <div>
+                    <p class="font-mono text-xs text-chalk leading-tight">2 critical-path conflicts</p>
+                    <p class="font-mono text-xs text-fog">Structural vs. mechanical overlay</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-amber-900/50 border border-amber-500/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                  </span>
+                  <div>
+                    <p class="font-mono text-xs text-chalk leading-tight">5 spec ambiguities flagged</p>
+                    <p class="font-mono text-xs text-fog">Require clarification before tender</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-green-900/50 border border-green-500/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                  </span>
+                  <div>
+                    <p class="font-mono text-xs text-chalk leading-tight">Scope summary generated</p>
+                    <p class="font-mono text-xs text-fog">312 pages → 2-page digest</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card footer -->
+              <div class="bg-charcoal/60 border-t border-plate px-4 py-2.5 flex items-center justify-between">
+                <span class="font-mono text-xs text-fog">Processed in <span class="text-chalk font-semibold">8 min</span></span>
+                <span class="font-mono text-xs text-plate">was 4+ hrs manually</span>
+              </div>
+
             </div>
           </div>
-          <p class="text-xs text-fog font-mono mt-2 text-center tracking-widest uppercase">Private AI for Construction
-            &amp; Logistics</p>
+          <p class="text-xs text-fog font-mono mt-6 text-center tracking-widest uppercase opacity-60">Sample AI audit output</p>
         </div>
       </div>
     </div>

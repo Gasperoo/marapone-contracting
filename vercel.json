@@ -41,6 +41,9 @@
   "functions": {
     "api/send-contact-email.js": {
       "maxDuration": 30
+    },
+    "api/send-discovery-email.js": {
+      "maxDuration": 10
     }
   },
   "rewrites": [
@@ -97,8 +100,16 @@
       "destination": "/badge.html"
     },
     {
+      "source": "/discovery",
+      "destination": "/discovery.html"
+    },
+    {
       "source": "/api/send-contact-email",
       "destination": "/api/send-contact-email"
+    },
+    {
+      "source": "/api/send-discovery-email",
+      "destination": "/api/send-discovery-email"
     }
   ]
 }

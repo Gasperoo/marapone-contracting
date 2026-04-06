@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="./src/tailwind.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
     .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
     .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
@@ -209,11 +209,11 @@
 
   <!-- STICKY SECTION NAV -->
   <div id="section-nav" class="fixed top-[65px] left-0 right-0 z-40 border-b border-plate" style="background-color: rgba(26,26,26,0.97); backdrop-filter: blur(8px);">
-    <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center gap-3 overflow-x-auto">
-      <span class="font-mono text-xs text-plate mr-1 flex-shrink-0">Jump to:</span>
-      <a href="#construction" class="section-pill flex-shrink-0">Construction <span class="opacity-50">/ 8 tools</span></a>
-      <a href="#logistics" class="section-pill flex-shrink-0">Logistics & Trade <span class="opacity-50">/ 7 tools</span></a>
-      <a href="#marketing" class="section-pill flex-shrink-0">Marketing <span class="opacity-50">/ 6 tools</span></a>
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-2 sm:py-2.5 flex items-center gap-2 sm:gap-3">
+      <span class="font-mono text-xs text-plate mr-1 flex-shrink-0 hidden sm:inline">Jump to:</span>
+      <a href="#construction" class="section-pill flex-shrink-0">Construction <span class="opacity-50 hidden sm:inline">/ 8 tools</span></a>
+      <a href="#logistics" class="section-pill flex-shrink-0">Logistics<span class="hidden sm:inline"> &amp; Trade</span> <span class="opacity-50 hidden sm:inline">/ 7 tools</span></a>
+      <a href="#marketing" class="section-pill flex-shrink-0">Marketing <span class="opacity-50 hidden sm:inline">/ 6 tools</span></a>
     </div>
   </div>
 
@@ -222,7 +222,7 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="max-w-3xl mb-12">
         <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// What we actually build</p>
-        <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-5">PRIVATE AI<br/><span class="text-hiviz">SERVICES</span></h1>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl text-chalk leading-none mb-5">PRIVATE AI<br/><span class="text-hiviz">SERVICES</span></h1>
         <p class="text-fog leading-relaxed max-w-xl">We build private AI tools that solve real, specific problems for construction companies, logistics and import/export businesses, and B2B companies. No tech background required — for any of it.</p>
       </div>
 
@@ -230,7 +230,7 @@
       <div class="grid md:grid-cols-3 gap-4">
 
         <!-- Construction tile -->
-        <a href="#construction" class="industry-tile bg-gunmetal rounded-xl p-7">
+        <a href="#construction" class="industry-tile bg-gunmetal rounded-xl p-5 sm:p-7">
           <div class="w-10 h-10 rounded-lg hiviz-gradient flex items-center justify-center mb-5 flex-shrink-0">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
@@ -244,7 +244,7 @@
         </a>
 
         <!-- Logistics tile -->
-        <a href="#logistics" class="industry-tile bg-gunmetal rounded-xl p-7">
+        <a href="#logistics" class="industry-tile bg-gunmetal rounded-xl p-5 sm:p-7">
           <div class="w-10 h-10 rounded-lg hiviz-gradient flex items-center justify-center mb-5 flex-shrink-0">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           </div>
@@ -258,7 +258,7 @@
         </a>
 
         <!-- Marketing tile -->
-        <a href="#marketing" class="industry-tile bg-gunmetal rounded-xl p-7">
+        <a href="#marketing" class="industry-tile bg-gunmetal rounded-xl p-5 sm:p-7">
           <div class="w-10 h-10 rounded-lg hiviz-gradient flex items-center justify-center mb-5 flex-shrink-0">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           </div>
@@ -283,7 +283,7 @@
       <div class="relative mb-12 pb-8 border-b border-plate overflow-hidden">
         <span class="section-num">01</span>
         <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">For Construction Companies</p>
-        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-4">CONSTRUCTION <span class="text-hiviz">AI SERVICES</span></h2>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-6xl text-chalk mb-4">CONSTRUCTION <span class="text-hiviz">AI SERVICES</span></h2>
         <p class="text-fog max-w-2xl leading-relaxed relative z-10">Eight tools for GCs, developers, and project managers — each targeting a specific problem that currently eats hours every week. We build it, deploy it, hand it over.</p>
       </div>
 
@@ -518,7 +518,7 @@
       <div class="relative mb-12 pb-8 border-b border-plate overflow-hidden">
         <span class="section-num">02</span>
         <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">For Logistics & Import/Export Companies</p>
-        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-4">LOGISTICS & TRADE <span class="text-hiviz">AI SERVICES</span></h2>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-6xl text-chalk mb-4">LOGISTICS & TRADE <span class="text-hiviz">AI SERVICES</span></h2>
         <p class="text-fog max-w-2xl leading-relaxed relative z-10">Seven tools for importers, freight brokers, and 3PLs — built to catch the errors your team doesn't have time to find.</p>
       </div>
 
@@ -755,7 +755,7 @@
       <div class="relative mb-12 pb-8 border-b border-plate overflow-hidden">
         <span class="section-num">03</span>
         <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">Custom Content for Modern Platforms</p>
-        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-4">MARKETING <span class="text-hiviz">CONTENT SERVICES</span></h2>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-6xl text-chalk mb-4">MARKETING <span class="text-hiviz">CONTENT SERVICES</span></h2>
         <p class="text-fog max-w-2xl leading-relaxed relative z-10">Custom posts, reels, scripts, and content calendars — built around your brand and the platforms where your audience actually lives. Every engagement backed by a <strong class="text-chalk">30-day guarantee</strong>.</p>
       </div>
 
@@ -1058,7 +1058,7 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
-        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-fog font-body justify-center">
+        <div class="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2 text-sm text-fog font-body justify-center">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
           <a href="/services" class="hover:text-chalk">Services</a>

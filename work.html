@@ -26,6 +26,7 @@
       background-color: #1a1a1a;
       color: #e8e8e8;
       font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
     }
 
     .hiviz-gradient {
@@ -52,7 +53,10 @@
       background: #2e2e2e;
       border: 1px solid #3a3a3a;
       border-radius: 0.375rem;
-      padding: 1.25rem 1.5rem;
+      padding: 1rem;
+    }
+    @media (min-width: 640px) {
+      .stat-pill { padding: 1.25rem 1.5rem; }
     }
 
     .tag {
@@ -131,8 +135,7 @@
   <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <p class="font-mono text-hiviz text-sm mb-4">// Selected Projects</p>
-      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-6">WHAT WE'VE<br /><span class="text-hiviz">ACTUALLY
-          BUILT</span></h1>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl text-chalk mb-6">WHAT WE'VE<br /><span class="text-hiviz">ACTUALLY BUILT</span></h1>
       <p class="text-fog max-w-2xl mx-auto leading-relaxed">Three engagements. Three different operations. Every system
         designed around the client's real documents, installed on their hardware, and handed over completely.
         Client details are anonymized by agreement — the problems and results are real.</p>
@@ -257,21 +260,21 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
-              <p class="font-display text-5xl text-hiviz mb-1">6–8h</p>
+              <p class="font-display text-3xl sm:text-5xl text-hiviz mb-1">6–8h</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Per week recovered from manual blueprint review</p>
             </div>
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">7mo</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">7mo</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Running independently without needing us</p>
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">12d</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">12d</p>
               <p class="font-mono text-fog text-xs leading-relaxed">From first assessment to full system handover</p>
             </div>
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">$0</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">$0</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Monthly cost after purchase. No subscriptions.</p>
             </div>
           </div>
@@ -351,21 +354,21 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
-              <p class="font-display text-5xl text-hiviz mb-1">340+</p>
+              <p class="font-display text-3xl sm:text-5xl text-hiviz mb-1">340+</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Freight invoices processed per month automatically</p>
             </div>
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">4.5h</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">4.5h</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Per week recovered from manual invoice validation</p>
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">97%</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">97%</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Accuracy on charge code extraction vs. manual baseline</p>
             </div>
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">9d</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">9d</p>
               <p class="font-mono text-fog text-xs leading-relaxed">From scoping call to live system in production</p>
             </div>
           </div>
@@ -480,21 +483,21 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
-              <p class="font-display text-5xl text-hiviz mb-1">3</p>
+              <p class="font-display text-3xl sm:text-5xl text-hiviz mb-1">3</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Languages handled: Italian, English, German</p>
             </div>
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">−78%</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">−78%</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Reduction in pre-submission errors, first quarter</p>
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">5</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">5</p>
               <p class="font-mono text-fog text-xs leading-relaxed">Document types validated per shipment package</p>
             </div>
             <div class="stat-pill">
-              <p class="font-display text-5xl text-chalk mb-1">Local</p>
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">Local</p>
               <p class="font-mono text-fog text-xs leading-relaxed">No cloud. No external API. All processing on-site.</p>
             </div>
           </div>
@@ -545,8 +548,7 @@
   <!-- CTA -->
   <section class="py-16 lg:py-24">
     <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">WANT TO SEE IT ON<br /><span
-          class="text-hiviz">YOUR ACTUAL DOCS?</span></h2>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl text-chalk mb-6">WANT TO SEE IT ON<br /><span class="text-hiviz">YOUR ACTUAL DOCS?</span></h2>
       <p class="text-fog mb-8 leading-relaxed">Send us one document from your operation. We'll run it through a test
         system and return a real report — your data, real findings — within 24 hours. No charge, no commitment.</p>
       <a href="/contact"
@@ -563,14 +565,13 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
-        <div class="flex gap-6 text-sm text-fog font-body">
+        <div class="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-sm text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
           <a href="/services" class="hover:text-chalk">Services</a>
           <a href="/work" class="hover:text-chalk">Work</a>
           <a href="/faq" class="hover:text-chalk">FAQ</a>
           <a href="/pricing" class="hover:text-chalk">Pricing</a>
-          <a href="/work" class="hover:text-chalk">Work</a>
           <a href="/about" class="hover:text-chalk">About</a>
           <a href="/contact" class="hover:text-chalk">Contact</a>
         </div>

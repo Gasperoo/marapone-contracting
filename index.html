@@ -29,6 +29,7 @@
       background-color: #1a1a1a;
       color: #e8e8e8;
       font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
     }
 
     .hiviz-gradient {
@@ -201,7 +202,7 @@
           <div class="fade-up mb-5">
             <img src="MaraponeLogo-1.png" alt="Marapone" class="h-10 lg:h-12 object-contain opacity-80" />
           </div>
-          <h1 class="fade-up font-display text-6xl lg:text-8xl leading-none text-chalk mb-4">
+          <h1 class="fade-up font-display text-5xl sm:text-6xl lg:text-8xl leading-none text-chalk mb-4">
             STOP RENTING<br />YOUR <span class="text-hiviz">AI.</span><br />OWN THE<br />ENGINE.
           </h1>
           <p class="fade-up delay-1 font-body text-lg text-fog max-w-xl mt-6 mb-8 leading-relaxed">
@@ -226,7 +227,7 @@
             </a>
           </div>
           <div class="fade-up delay-3 mt-6 flex items-center gap-3">
-            <span class="inline-flex items-center gap-1.5 bg-steel border border-plate rounded-full px-3 py-1.5 text-xs font-mono text-fog whitespace-nowrap">
+            <span class="inline-flex items-center gap-1.5 bg-steel border border-plate rounded-full px-3 py-1.5 text-xs font-mono text-fog">
               <svg class="w-3.5 h-3.5 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
               30-day full refund guarantee
             </span>
@@ -320,7 +321,7 @@
   <!-- TRUST STRIP -->
   <section class="bg-steel border-t border-b border-plate py-5">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-wrap items-center justify-center gap-8 text-xs font-mono text-fog">
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs font-mono text-fog">
         <span class="flex items-center gap-2"><span class="text-hiviz text-base">✓</span> One-time price — no
           subscriptions</span>
         <span class="text-plate hidden sm:inline">|</span>
@@ -549,8 +550,8 @@
       </div>
       <!-- Table + stat cards side by side, top-aligned -->
       <div class="grid lg:grid-cols-2 gap-8 items-start">
-        <div class="overflow-hidden rounded-lg border border-plate">
-          <table class="w-full text-sm font-mono">
+        <div class="overflow-x-auto rounded-lg border border-plate">
+          <table class="w-full text-sm font-mono min-w-[280px]">
             <thead>
               <tr class="bg-charcoal border-b border-plate">
                 <th class="text-left px-4 py-3 text-fog font-medium"></th>
@@ -865,8 +866,7 @@
         <div class="grid-dot absolute inset-0 opacity-30"></div>
         <div class="relative">
           <p class="font-mono text-hiviz text-sm mb-4">// No pitch. No strings. Just results.</p>
-          <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-4">FREE 24-HOUR<br /><span class="text-hiviz">AI
-              ASSESSMENT</span></h2>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-6xl text-chalk mb-4">FREE 24-HOUR<br /><span class="text-hiviz">AI ASSESSMENT</span></h2>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-0 mb-10 max-w-lg mx-auto">
             <div class="flex flex-col items-center text-center px-5">
               <div class="w-12 h-12 bg-gunmetal border border-hiviz/40 rounded-full flex items-center justify-center mb-3">
@@ -893,7 +893,7 @@
             </div>
           </div>
           <a href="/contact"
-            class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
+            class="hiviz-gradient text-white font-semibold px-6 sm:px-10 py-4 sm:py-5 rounded text-base sm:text-lg inline-block hover:opacity-90 transition-opacity w-full sm:w-auto">
             Request Your Free Assessment →
           </a>
           <div class="mt-4">
@@ -914,7 +914,7 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
-        <div class="flex gap-6 text-sm text-fog font-body">
+        <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
           <a href="/services" class="hover:text-chalk">Services</a>

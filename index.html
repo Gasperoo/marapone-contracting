@@ -162,6 +162,15 @@
     .float-card{animation:floatCard 5s ease-in-out infinite;}
     @keyframes gradPulse{0%,100%{opacity:.18;}50%{opacity:.32;}}
     .hero-glow{position:absolute;top:-10%;left:-5%;width:70%;height:120%;background:radial-gradient(ellipse at 30% 40%,#f97316 0%,transparent 60%);filter:blur(80px);animation:gradPulse 4s ease-in-out infinite;pointer-events:none;z-index:0;}
+    .hero-section{
+      background-color:#1a1a1a;
+      background-image:
+        radial-gradient(circle, rgba(58,58,58,0.45) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(26,26,26,0.80) 0%, rgba(26,26,26,0.72) 45%, rgba(26,26,26,0.90) 100%),
+        url('/images/hero-bg.jpg');
+      background-size: 28px 28px, cover, cover;
+      background-position: center, center, 65% center;
+    }
   </style>
 </head>
 
@@ -211,7 +220,7 @@
 
 
   <!-- HERO -->
-  <section id="main-content" class="relative overflow-hidden grid-dot min-h-[90vh] flex items-center">
+  <section id="main-content" class="hero-section relative overflow-hidden min-h-[90vh] flex items-center">
     <div class="hero-glow"></div>
     <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block"></div>
     <div class="max-w-6xl mx-auto px-4 py-20 lg:py-32 w-full relative z-10">

@@ -37,8 +37,21 @@
     gtag('config', 'G-J31Z05DB01');
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    #nav-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:#f97316;z-index:9999;pointer-events:none;transition:width .08s linear;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-d1{transition-delay:.1s;}
+    .reveal-d2{transition-delay:.2s;}
+    .reveal-d3{transition-delay:.3s;}
+    .reveal-d4{transition-delay:.4s;}
+  </style>
 </head>
 <body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
 
   <!-- SKIP TO CONTENT -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
@@ -88,27 +101,27 @@
           </div>
           <div class="mt-5 space-y-3">
             <div class="flex items-center gap-3 text-sm text-fog">
-              <span class="text-hiviz text-base">📍</span>
+              <span class="text-hiviz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
               <span>Toronto, Canada &amp; Rome, Italy</span>
             </div>
             <div class="flex items-center gap-3 text-sm text-fog">
-              <span class="text-hiviz text-base">🏗️</span>
+              <span class="text-hiviz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg></span>
               <span>Construction AI</span>
             </div>
             <div class="flex items-center gap-3 text-sm text-fog">
-              <span class="text-hiviz text-base">🚢</span>
+              <span class="text-hiviz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
               <span>Logistics &amp; Trade AI</span>
             </div>
             <div class="flex items-center gap-3 text-sm text-fog">
-              <span class="text-hiviz text-base">🔧</span>
+              <span class="text-hiviz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span>
               <span>10+ years in construction &amp; logistics</span>
             </div>
             <div class="flex items-center gap-3 text-sm text-fog">
-              <span class="text-hiviz text-base">👤</span>
+              <span class="text-hiviz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
               <span>Small project load, high-quality results</span>
             </div>
             <div class="flex items-center gap-3 text-sm text-fog">
-              <span class="text-hiviz text-base">🔑</span>
+              <span class="text-hiviz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span>
               <span>Full source code — always</span>
             </div>
           </div>
@@ -143,6 +156,90 @@
     </div>
   </section>
 
+  <!-- CREDIBILITY TIMELINE -->
+  <section class="py-16 lg:py-24 border-b border-plate overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="mb-10 reveal">
+        <p class="font-mono text-hiviz text-sm mb-2">// How we got here</p>
+        <h2 class="font-display text-4xl text-chalk">THE PATH TO <span class="text-hiviz">MARAPONE</span></h2>
+      </div>
+      <div class="relative">
+        <!-- Spine line (hidden on mobile) -->
+        <div class="hidden md:block absolute left-[120px] top-4 bottom-4 w-px bg-plate"></div>
+        <div class="space-y-8">
+
+          <div class="flex items-start gap-6 reveal reveal-d1">
+            <div class="flex-shrink-0 w-[108px] text-right">
+              <span class="font-mono text-xs text-fog">2014</span>
+            </div>
+            <div class="hidden md:flex items-center justify-center w-6 flex-shrink-0 mt-0.5">
+              <div class="w-3 h-3 rounded-full bg-plate border-2 border-plate"></div>
+            </div>
+            <div class="flex-1 pb-2">
+              <p class="font-semibold text-chalk text-sm">First day on a construction site</p>
+              <p class="text-fog text-xs leading-relaxed mt-1">Hands-on work in construction begins — blueprints, RFIs, site coordination. Learning how document overload creates real project risk.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6 reveal reveal-d2">
+            <div class="flex-shrink-0 w-[108px] text-right">
+              <span class="font-mono text-xs text-fog">2017</span>
+            </div>
+            <div class="hidden md:flex items-center justify-center w-6 flex-shrink-0 mt-0.5">
+              <div class="w-3 h-3 rounded-full bg-plate border-2 border-plate"></div>
+            </div>
+            <div class="flex-1 pb-2">
+              <p class="font-semibold text-chalk text-sm">Logistics & trade operations</p>
+              <p class="text-fog text-xs leading-relaxed mt-1">Entry into freight and import/export operations. Firsthand experience with customs documentation errors, invoice discrepancies, and compliance gaps at scale.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6 reveal reveal-d3">
+            <div class="flex-shrink-0 w-[108px] text-right">
+              <span class="font-mono text-xs text-fog">2021</span>
+            </div>
+            <div class="hidden md:flex items-center justify-center w-6 flex-shrink-0 mt-0.5">
+              <div class="w-3 h-3 rounded-full bg-plate border-2 border-plate"></div>
+            </div>
+            <div class="flex-1 pb-2">
+              <p class="font-semibold text-chalk text-sm">Italy operations established</p>
+              <p class="text-fog text-xs leading-relaxed mt-1">Mediterranean trade corridor work expands the logistics knowledge base. European compliance requirements and cross-border documentation become a specialty.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6 reveal reveal-d4">
+            <div class="flex-shrink-0 w-[108px] text-right">
+              <span class="font-mono text-xs text-fog">2024</span>
+            </div>
+            <div class="hidden md:flex items-center justify-center w-6 flex-shrink-0 mt-0.5">
+              <div class="w-3 h-3 rounded-full bg-hiviz border-2 border-hiviz/50"></div>
+            </div>
+            <div class="flex-1 pb-2">
+              <p class="font-semibold text-chalk text-sm">First private AI deployments</p>
+              <p class="text-fog text-xs leading-relaxed mt-1">Blueprint Auditor and Freight Invoice Intelligence systems built and deployed for early clients. On-premise, source code included. Zero subscriptions.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-6 reveal">
+            <div class="flex-shrink-0 w-[108px] text-right">
+              <span class="font-mono text-xs text-hiviz font-semibold">Now</span>
+            </div>
+            <div class="hidden md:flex items-center justify-center w-6 flex-shrink-0 mt-0.5">
+              <div class="w-4 h-4 rounded-full hiviz-gradient flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+              </div>
+            </div>
+            <div class="flex-1 bg-hiviz/5 border border-hiviz/20 rounded-lg p-4">
+              <p class="font-semibold text-hiviz text-sm">Marapone — accepting new projects</p>
+              <p class="text-fog text-xs leading-relaxed mt-1">Private AI for construction and logistics. Small project load, full attention, complete handover. Toronto & Rome. Currently open for new assessments.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- WHAT WE DO -->
   <section class="py-16 lg:py-24 bg-gunmetal border-b border-plate">
     <div class="max-w-5xl mx-auto px-4">
@@ -153,7 +250,7 @@
         <!-- Construction -->
         <div class="border border-plate rounded-xl p-7 bg-steel">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 hiviz-gradient rounded-lg flex items-center justify-center text-xl">🏗️</div>
+            <div class="w-10 h-10 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg></div>
             <h3 class="font-display text-2xl text-chalk">CONSTRUCTION</h3>
           </div>
           <div class="space-y-3 text-fog text-sm leading-relaxed">
@@ -168,7 +265,7 @@
         <!-- Logistics -->
         <div class="border border-plate rounded-xl p-7 bg-steel">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 hiviz-gradient rounded-lg flex items-center justify-center text-xl">🚢</div>
+            <div class="w-10 h-10 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
             <h3 class="font-display text-2xl text-chalk">LOGISTICS & TRADE</h3>
           </div>
           <div class="space-y-3 text-fog text-sm leading-relaxed">
@@ -250,7 +347,14 @@
   <footer class="bg-charcoal border-t border-plate py-8">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <p class="font-mono text-xs text-fog leading-snug">Boutique AI for the trades.</p>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
         <div class="flex gap-6 text-sm text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
@@ -333,6 +437,13 @@
         sessionStorage.setItem('ctaDismissed', '1');
       });
     })();
+  </script>
+  <script>
+  (function(){
+    if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+    var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
+    if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+  })();
   </script>
 
 </body>

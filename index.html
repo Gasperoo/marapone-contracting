@@ -146,9 +146,27 @@
     gtag('config', 'G-J31Z05DB01');
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Lenis smooth scroll + GSAP ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    #nav-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:#f97316;z-index:9999;pointer-events:none;transition:width .08s linear;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-d1{transition-delay:.1s;}
+    .reveal-d2{transition-delay:.2s;}
+    .reveal-d3{transition-delay:.3s;}
+    .reveal-d4{transition-delay:.4s;}
+    @keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+    .float-card{animation:floatCard 5s ease-in-out infinite;}
+    @keyframes gradPulse{0%,100%{opacity:.18;}50%{opacity:.32;}}
+    .hero-glow{position:absolute;top:-10%;left:-5%;width:70%;height:120%;background:radial-gradient(ellipse at 30% 40%,#f97316 0%,transparent 60%);filter:blur(80px);animation:gradPulse 4s ease-in-out infinite;pointer-events:none;z-index:0;}
+  </style>
 </head>
 
 <body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
 
   <!-- SKIP TO CONTENT -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
@@ -194,15 +212,16 @@
 
   <!-- HERO -->
   <section id="main-content" class="relative overflow-hidden grid-dot min-h-[90vh] flex items-center">
+    <div class="hero-glow"></div>
     <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block"></div>
-    <div class="max-w-6xl mx-auto px-4 py-20 lg:py-32 w-full">
+    <div class="max-w-6xl mx-auto px-4 py-20 lg:py-32 w-full relative z-10">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left: Copy -->
         <div>
           <div class="fade-up mb-5">
             <img src="MaraponeLogo-1.png" alt="Marapone" class="h-10 lg:h-12 object-contain opacity-80" />
           </div>
-          <h1 class="fade-up font-display text-5xl sm:text-6xl lg:text-8xl leading-none text-chalk mb-4">
+          <h1 class="fade-up font-display text-5xl sm:text-7xl lg:text-9xl leading-none text-chalk mb-4">
             STOP RENTING<br />YOUR <span class="text-hiviz">AI.</span><br />OWN THE<br />ENGINE.
           </h1>
           <p class="fade-up delay-1 font-body text-lg text-fog max-w-xl mt-6 mb-8 leading-relaxed">
@@ -236,7 +255,7 @@
         </div>
         <!-- Right: AI output mockup -->
         <div class="fade-up delay-1 flex flex-col items-center justify-center">
-          <div class="relative w-full max-w-sm mx-auto select-none">
+          <div class="relative w-full max-w-sm mx-auto select-none float-card">
 
             <!-- Background card: raw document -->
             <div class="absolute inset-0 translate-x-4 translate-y-4 bg-gunmetal border border-plate rounded-xl opacity-70"></div>
@@ -375,15 +394,15 @@
       </div>
       <!-- Industry tab buttons -->
       <div class="flex flex-wrap justify-center gap-3 mb-8">
-        <button class="industry-tab active font-mono text-sm border border-plate rounded px-5 py-2.5 transition-colors hover:border-hiviz/50" onclick="switchIndustry('construction', this)">🏗️ Construction</button>
-        <button class="industry-tab font-mono text-sm border border-plate rounded px-5 py-2.5 text-fog transition-colors hover:border-hiviz/50" onclick="switchIndustry('logistics', this)">🚢 Logistics &amp; Trade</button>
-        <button class="industry-tab font-mono text-sm border border-plate rounded px-5 py-2.5 text-fog transition-colors hover:border-hiviz/50" onclick="switchIndustry('marketing', this)">📣 B2B Marketing</button>
+        <button class="industry-tab active font-mono text-sm border border-plate rounded px-5 py-2.5 transition-colors hover:border-hiviz/50" onclick="switchIndustry('construction', this)"><span class="inline-flex items-center gap-1.5"><svg class="inline-block" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg>Construction</span></button>
+        <button class="industry-tab font-mono text-sm border border-plate rounded px-5 py-2.5 text-fog transition-colors hover:border-hiviz/50" onclick="switchIndustry('logistics', this)"><span class="inline-flex items-center gap-1.5"><svg class="inline-block" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Logistics &amp; Trade</span></button>
+        <button class="industry-tab font-mono text-sm border border-plate rounded px-5 py-2.5 text-fog transition-colors hover:border-hiviz/50" onclick="switchIndustry('marketing', this)"><span class="inline-flex items-center gap-1.5"><svg class="inline-block" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>B2B Marketing</span></button>
       </div>
       <!-- Construction Panel -->
       <div id="industry-construction" class="industry-panel active">
         <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors">
           <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center text-2xl">🏗️</div>
+            <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg></div>
             <div>
               <p class="font-mono text-hiviz text-xs uppercase tracking-wider">For Construction Companies</p>
               <h3 class="font-display text-2xl text-chalk">CONSTRUCTION INTELLIGENCE</h3>
@@ -402,7 +421,7 @@
       <div id="industry-logistics" class="industry-panel">
         <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors">
           <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center text-2xl">🚢</div>
+            <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
             <div>
               <p class="font-mono text-hiviz text-xs uppercase tracking-wider">For Logistics & Trade Companies</p>
               <h3 class="font-display text-2xl text-chalk">LOGISTICS INTELLIGENCE</h3>
@@ -421,7 +440,7 @@
       <div id="industry-marketing" class="industry-panel">
         <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors">
           <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center text-2xl">📣</div>
+            <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></div>
             <div>
               <p class="font-mono text-hiviz text-xs uppercase tracking-wider">For B2B Operations & Sales Teams</p>
               <h3 class="font-display text-2xl text-chalk">B2B MARKETING INTELLIGENCE</h3>
@@ -451,32 +470,39 @@
   <!-- SOLUTIONS LIST -->
   <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-12">
+      <div class="mb-12 reveal">
         <p class="font-mono text-hiviz text-sm mb-2">// What we build</p>
         <h2 class="font-display text-4xl lg:text-5xl text-chalk">AI SOLUTIONS THAT<br /><span class="text-hiviz">SOLVE
             REAL PROBLEMS</span></h2>
       </div>
 
-      <!-- Construction -->
+      <!-- Construction Bento -->
       <div class="mb-10">
         <div class="flex items-center gap-4 mb-6">
           <span class="font-mono text-xs text-fog uppercase tracking-widest">Construction</span>
           <span class="flex-1 h-px bg-plate"></span>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
-          <div class="bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <rect x="3" y="3" width="14" height="14" rx="1" />
-                <path d="M7 7h6M7 10h6M7 13h4" />
-              </svg>
+          <!-- Featured: Blueprint Auditor -->
+          <div class="sm:col-span-2 bg-charcoal border border-hiviz/25 rounded-xl p-6 hover:border-hiviz/50 transition-colors relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-hiviz/6 to-transparent pointer-events-none"></div>
+            <div class="relative z-10 flex flex-col h-full">
+              <div class="flex items-start justify-between mb-4">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
+                  <rect x="3" y="3" width="14" height="14" rx="1" />
+                  <path d="M7 7h6M7 10h6M7 13h4" />
+                </svg>
+                <span class="font-mono text-xs text-plate">01</span>
+              </div>
+              <p class="font-display text-hiviz text-3xl lg:text-4xl leading-tight mb-1">4 HRS → 8 MIN</p>
+              <h3 class="font-semibold text-chalk">Blueprint Auditor</h3>
+              <p class="text-fog text-xs mt-2 font-mono leading-relaxed">AI reviews your full spec set for scope gaps, ambiguities, and conflicts — before you mobilize.</p>
             </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">4 HRS → 8 MIN</p>
-            <h3 class="font-semibold text-chalk text-sm">Blueprint Auditor</h3>
           </div>
 
-          <div class="bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
+          <!-- RFI Intelligence -->
+          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
             <div class="mb-4">
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
                 <path d="M4 4h12M4 8h8M4 12h10M4 16h6" />
@@ -488,7 +514,8 @@
             <h3 class="font-semibold text-chalk text-sm">RFI Intelligence</h3>
           </div>
 
-          <div class="bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
+          <!-- Daily Log Synthesis -->
+          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
             <div class="mb-4">
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
                 <path d="M4 16V6l4-3 4 3v10" />
@@ -500,29 +527,34 @@
             <h3 class="font-semibold text-chalk text-sm">Daily Log Synthesis</h3>
           </div>
 
-          <div class="bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
+          <!-- Risk & Delay Signals (wide, horizontal layout) -->
+          <div class="sm:col-span-2 bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10 text-hiviz flex-shrink-0">
                 <path d="M10 3v4M10 13v4M3 10h4M13 10h4" />
                 <circle cx="10" cy="10" r="3" />
               </svg>
+              <div>
+                <p class="font-display text-hiviz text-xl leading-tight mb-0.5">EARLY WARNING</p>
+                <h3 class="font-semibold text-chalk text-sm">Risk & Delay Signals</h3>
+                <p class="text-fog text-xs mt-1 font-mono">Pattern recognition across your project documents surfaces cash-flow risks before they become disputes.</p>
+              </div>
             </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">EARLY WARNING</p>
-            <h3 class="font-semibold text-chalk text-sm">Risk & Delay Signals</h3>
           </div>
 
         </div>
       </div>
 
-      <!-- Logistics & Trade -->
+      <!-- Logistics Bento -->
       <div>
         <div class="flex items-center gap-4 mb-6">
           <span class="font-mono text-xs text-fog uppercase tracking-widest">Logistics &amp; Trade</span>
           <span class="flex-1 h-px bg-plate"></span>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
-          <div class="bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
+          <!-- Trade Doc Processor -->
+          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
             <div class="mb-4">
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
                 <path d="M3 5h14v11H3z" />
@@ -534,31 +566,42 @@
             <h3 class="font-semibold text-chalk text-sm">Trade Doc Processor</h3>
           </div>
 
-          <div class="bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <circle cx="10" cy="10" r="7" />
-                <path d="M10 6v4l3 3" />
-              </svg>
+          <!-- Featured: Freight Audit -->
+          <div class="sm:col-span-2 bg-charcoal border border-hiviz/25 rounded-xl p-6 hover:border-hiviz/50 transition-colors relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-bl from-hiviz/6 to-transparent pointer-events-none"></div>
+            <div class="relative z-10 flex flex-col h-full">
+              <div class="flex items-start justify-between mb-4">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
+                  <circle cx="10" cy="10" r="7" />
+                  <path d="M10 6v4l3 3" />
+                </svg>
+                <span class="font-mono text-xs text-plate">05</span>
+              </div>
+              <p class="font-display text-hiviz text-3xl lg:text-4xl leading-tight mb-1">OVERPAYMENTS RECOVERED</p>
+              <h3 class="font-semibold text-chalk">Freight Audit</h3>
+              <p class="text-fog text-xs mt-2 font-mono leading-relaxed">Every invoice cross-referenced against your contracts and rate cards — discrepancies flagged before payment.</p>
             </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">OVERPAYMENTS RECOVERED</p>
-            <h3 class="font-semibold text-chalk text-sm">Freight Audit</h3>
           </div>
 
-          <div class="bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
+          <!-- Compliance Monitor (wide, horizontal) -->
+          <div class="sm:col-span-2 bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10 text-hiviz flex-shrink-0">
                 <path d="M9 11l3 3 6-6" />
                 <path d="M4 4h8v4H4z" />
                 <path d="M4 12h5" />
                 <path d="M4 16h3" />
               </svg>
+              <div>
+                <p class="font-display text-hiviz text-xl leading-tight mb-0.5">NO CUSTOMS HOLDS</p>
+                <h3 class="font-semibold text-chalk text-sm">Compliance Monitor</h3>
+                <p class="text-fog text-xs mt-1 font-mono">Documentation validated against your specific trade lanes and commodity requirements before filing.</p>
+              </div>
             </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">NO CUSTOMS HOLDS</p>
-            <h3 class="font-semibold text-chalk text-sm">Compliance Monitor</h3>
           </div>
 
-          <div class="bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz/50 transition-colors group">
+          <!-- Supply Chain Risk -->
+          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
             <div class="mb-4">
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
                 <circle cx="10" cy="10" r="2" />
@@ -582,7 +625,7 @@
   <section class="py-16 lg:py-24 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
       <!-- Heading row -->
-      <div class="mb-8">
+      <div class="mb-8 reveal">
         <p class="font-mono text-hiviz text-sm mb-2">// Why not just use ChatGPT or another SaaS?</p>
         <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">THE PROBLEM WITH<br /><span class="text-hiviz">RENTED AI</span></h2>
         <p class="text-fog leading-relaxed max-w-xl">SaaS AI charges monthly, keeps your data on their servers, and disappears when the funding dries up. That's a liability, not a tool.</p>
@@ -619,10 +662,15 @@
                 <td class="px-4 py-3 text-center text-hiviz">✓</td>
                 <td class="px-4 py-3 text-center text-plate">✗</td>
               </tr>
-              <tr>
+              <tr class="border-b border-plate bg-gunmetal/40">
                 <td class="px-4 py-3 text-fog">Vendor dependency</td>
                 <td class="px-4 py-3 text-center text-hiviz font-semibold">None</td>
                 <td class="px-4 py-3 text-center text-fog">Forever</td>
+              </tr>
+              <tr class="bg-hiviz/5 border-t-2 border-hiviz/30">
+                <td class="px-4 py-3 text-chalk font-semibold">Total cost after 2 years</td>
+                <td class="px-4 py-3 text-center text-hiviz font-bold">One-time fee</td>
+                <td class="px-4 py-3 text-center text-fog">$9,600–$48,000</td>
               </tr>
             </tbody>
           </table>
@@ -652,7 +700,7 @@
   <!-- HOW IT WORKS -->
   <section class="py-16 lg:py-24 bg-gunmetal border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-12">
+      <div class="mb-12 reveal">
         <p class="font-mono text-hiviz text-sm mb-2">// Process</p>
         <h2 class="font-display text-4xl lg:text-5xl text-chalk">HOW THIS ACTUALLY <span class="text-hiviz">WORKS</span>
         </h2>
@@ -740,12 +788,12 @@
   <!-- SOCIAL PROOF / TESTIMONIALS -->
   <section class="py-16 lg:py-24 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-12">
+      <div class="mb-12 reveal">
         <p class="font-mono text-hiviz text-sm mb-2">// Early clients</p>
         <h2 class="font-display text-4xl lg:text-5xl text-chalk">WHAT CLIENTS ARE <span class="text-hiviz">SAYING</span>
         </h2>
       </div>
-      <div id="reviews-grid" class="grid md:grid-cols-3 gap-6" style="transition: opacity 0.2s ease;"></div>
+      <div id="reviews-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style="transition: opacity 0.2s ease;"></div>
       <div class="flex items-center justify-between mt-8">
         <button id="reviews-prev" aria-label="Previous reviews"
           class="flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
@@ -846,7 +894,8 @@
       ];
 
       var page = 0;
-      var perPage = 3;
+      function getPerPage(){return window.innerWidth>=1024?3:window.innerWidth>=640?2:1;}
+      var perPage = getPerPage();
       var totalPages = Math.ceil(reviews.length / perPage);
       var grid = document.getElementById('reviews-grid');
       var dotsEl = document.getElementById('reviews-dots');
@@ -922,12 +971,17 @@
       prevBtn.addEventListener('click', function () { if (page > 0) { page--; render(); } });
       nextBtn.addEventListener('click', function () { if (page < totalPages - 1) { page++; render(); } });
 
+      window.addEventListener('resize', function(){
+        var newPP=getPerPage();
+        if(newPP!==perPage){perPage=newPP;totalPages=Math.ceil(reviews.length/perPage);page=0;render();}
+      });
+
       render();
     })();
   </script>
 
   <!-- BUILT BY INDUSTRY INSIDERS -->
-  <section class="bg-gunmetal border-t border-b border-plate py-12 lg:py-16">
+  <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <div>
@@ -1017,7 +1071,14 @@
   <footer class="bg-charcoal border-t border-plate py-8">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <p class="font-mono text-xs text-fog leading-snug">Boutique AI for the trades.</p>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
         <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
@@ -1124,6 +1185,35 @@
         sessionStorage.setItem('ctaDismissed', '1');
       });
     })();
+  </script>
+  <script>
+  (function(){
+    // Lenis smooth scroll
+    if(typeof Lenis!=='undefined'){
+      var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});
+      function raf(t){lenis.raf(t);requestAnimationFrame(raf);}
+      requestAnimationFrame(raf);
+    }
+    // Nav progress bar
+    var bar=document.getElementById('nav-progress');
+    if(bar){
+      window.addEventListener('scroll',function(){
+        var d=document.documentElement;
+        var st=d.scrollTop||window.scrollY;
+        var h=d.scrollHeight-d.clientHeight;
+        if(h>0) bar.style.width=(st/h*100)+'%';
+      },{passive:true});
+    }
+    // Reveal on scroll
+    if('IntersectionObserver' in window){
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+      },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+      document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+    } else {
+      document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});
+    }
+  })();
   </script>
 
 </body>

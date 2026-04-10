@@ -68,10 +68,13 @@
 
     .pricing-panel {
       display: none;
+      opacity: 0;
+      transition: opacity .2s ease;
     }
 
     .pricing-panel.active {
       display: block;
+      opacity: 1;
     }
   </style>
   <!-- Google Analytics (G-J31Z05DB01) -->
@@ -83,9 +86,19 @@
     gtag('config', 'G-J31Z05DB01');
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    #nav-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:#f97316;z-index:9999;pointer-events:none;transition:width .08s linear;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .tab-panel{transition:opacity .2s ease;}
+  </style>
 </head>
 
 <body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
 
   <!-- SKIP TO CONTENT -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
@@ -129,7 +142,7 @@
   </nav>
 
   <!-- HEADER -->
-  <section id="main-content" class="grid-dot py-16 lg:py-20 border-b border-plate">
+  <section id="main-content" class="grid-dot py-16 lg:py-24 border-b border-plate">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <p class="font-mono text-hiviz text-sm mb-3">// Simple pricing. No tricks.</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-4">PAY ONCE.<br /><span class="text-hiviz">OWN
@@ -144,9 +157,9 @@
   <section class="py-10 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-wrap justify-center gap-3">
-        <button class="tab-btn active" onclick="switchTab('construction')">Construction</button>
-        <button class="tab-btn" onclick="switchTab('logistics')">Logistics</button>
-        <button class="tab-btn" onclick="switchTab('marketing')">Marketing</button>
+        <button class="tab-btn active" onclick="switchTab('construction',this)">Construction</button>
+        <button class="tab-btn" onclick="switchTab('logistics',this)">Logistics</button>
+        <button class="tab-btn" onclick="switchTab('marketing',this)">Marketing</button>
       </div>
       <p class="text-center text-xs font-mono text-fog mt-3">// Select your category to see the relevant pricing tiers
       </p>
@@ -812,12 +825,112 @@
     </div>
   </section>
 
+  <!-- BREAK-EVEN CALCULATOR -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="mb-8 reveal">
+        <p class="font-mono text-hiviz text-sm mb-2">// The math is on your side</p>
+        <h2 class="font-display text-4xl text-chalk">WHEN DOES MARAPONE <span class="text-hiviz">PAY FOR ITSELF?</span></h2>
+        <p class="text-fog text-sm mt-3 leading-relaxed">Move the slider to match your current or expected SaaS AI monthly spend. See how fast a one-time build breaks even.</p>
+      </div>
+      <div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8 reveal">
+        <div class="mb-6">
+          <label class="font-mono text-xs text-fog uppercase tracking-wider block mb-3">Monthly SaaS AI cost (CAD)</label>
+          <div class="flex items-center gap-4">
+            <input id="saas-slider" type="range" min="200" max="5000" step="50" value="800"
+              class="flex-1 accent-hiviz cursor-pointer h-2"
+              oninput="updateCalc()" />
+            <div class="bg-steel border border-plate rounded px-3 py-1.5 min-w-[80px] text-center">
+              <span id="saas-display" class="font-display text-hiviz text-xl">$800</span>
+              <span class="font-mono text-fog text-xs">/mo</span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-6">
+          <label class="font-mono text-xs text-fog uppercase tracking-wider block mb-3">Marapone build investment (based on Pilot tier)</label>
+          <div class="flex gap-3 flex-wrap">
+            <button class="build-btn font-mono text-xs px-3 py-1.5 rounded border border-hiviz text-hiviz bg-hiviz/10" onclick="setBuild(4900,this)">$4,900 Pilot</button>
+            <button class="build-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog" onclick="setBuild(9500,this)">$9,500 Full Build</button>
+            <button class="build-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog" onclick="setBuild(15000,this)">$15,000 Plus</button>
+          </div>
+        </div>
+        <!-- Bar comparison -->
+        <div class="space-y-4 mb-6">
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <span class="font-mono text-xs text-fog">SaaS cost over <span id="yr-label">2 years</span></span>
+              <span id="saas-total" class="font-mono text-xs text-chalk">$19,200</span>
+            </div>
+            <div class="h-5 bg-plate rounded overflow-hidden">
+              <div id="saas-bar" class="h-full bg-red-500/60 rounded transition-all duration-500" style="width:100%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <span class="font-mono text-xs text-fog">Marapone one-time investment</span>
+              <span id="build-total" class="font-mono text-xs text-chalk">$4,900</span>
+            </div>
+            <div class="h-5 bg-plate rounded overflow-hidden">
+              <div id="build-bar" class="h-full bg-hiviz rounded transition-all duration-500" style="width:25%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg px-5 py-4 flex flex-wrap gap-4 justify-between">
+          <div class="text-center">
+            <p class="font-display text-3xl text-hiviz" id="break-even-months">7</p>
+            <p class="font-mono text-xs text-fog">months to break even</p>
+          </div>
+          <div class="text-center">
+            <p class="font-display text-3xl text-chalk" id="two-yr-savings">$14,300</p>
+            <p class="font-mono text-xs text-fog">saved over 2 years</p>
+          </div>
+          <div class="text-center">
+            <p class="font-display text-3xl text-chalk" id="five-yr-savings">$43,100</p>
+            <p class="font-mono text-xs text-fog">saved over 5 years</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    var calcBuild = 4900;
+    function setBuild(v, btn) {
+      calcBuild = v;
+      document.querySelectorAll('.build-btn').forEach(function(b){
+        b.className = 'build-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog';
+      });
+      btn.className = 'build-btn font-mono text-xs px-3 py-1.5 rounded border border-hiviz text-hiviz bg-hiviz/10';
+      updateCalc();
+    }
+    function updateCalc() {
+      var monthly = parseInt(document.getElementById('saas-slider').value);
+      document.getElementById('saas-display').textContent = '$' + monthly.toLocaleString();
+      var saas2 = monthly * 24;
+      var saas5 = monthly * 60;
+      var savings2 = saas2 - calcBuild;
+      var savings5 = saas5 - calcBuild;
+      var breakEven = Math.ceil(calcBuild / monthly);
+      var yrs = breakEven > 12 ? Math.ceil(breakEven/12) + ' years' : breakEven + ' months';
+      document.getElementById('yr-label').textContent = '2 years';
+      document.getElementById('saas-total').textContent = '$' + saas2.toLocaleString();
+      document.getElementById('build-total').textContent = '$' + calcBuild.toLocaleString();
+      document.getElementById('break-even-months').textContent = breakEven <= 12 ? breakEven : Math.ceil(breakEven/12) + 'yr';
+      document.getElementById('two-yr-savings').textContent = savings2 > 0 ? '+$' + savings2.toLocaleString() : '-$' + Math.abs(savings2).toLocaleString();
+      document.getElementById('five-yr-savings').textContent = savings5 > 0 ? '+$' + savings5.toLocaleString() : '-$' + Math.abs(savings5).toLocaleString();
+      // Bar widths
+      var maxVal = Math.max(saas2, calcBuild);
+      document.getElementById('saas-bar').style.width = (saas2/maxVal*100) + '%';
+      document.getElementById('build-bar').style.width = (calcBuild/maxVal*100) + '%';
+    }
+    updateCalc();
+  </script>
+
   <!-- WE FIX IT FOR FREE -->
   <section class="pb-16 lg:pb-0">
     <div class="max-w-4xl mx-auto px-4">
       <div class="bg-gunmetal border border-plate rounded-xl overflow-hidden">
         <div class="bg-steel border-b border-plate px-8 py-5 flex items-center gap-3">
-          <span class="text-2xl">🔧</span>
+          <span class="text-hiviz"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span>
           <div>
             <p class="font-mono text-hiviz text-xs uppercase mb-0.5">Post-delivery support policy</p>
             <h2 class="font-display text-2xl text-chalk">WE FIX IT FOR FREE — IF IT'S NOT YOUR ERROR</h2>
@@ -1083,7 +1196,14 @@
   <footer class="bg-charcoal border-t border-plate py-8">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <p class="font-mono text-xs text-fog leading-snug">Boutique AI for the trades.</p>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
         <div class="flex gap-6 text-sm text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
@@ -1160,17 +1280,32 @@
   </footer>
 
   <script>
-    function switchTab(tab) {
+    function switchTab(tab, btn) {
+      var activePanel = document.querySelector('.pricing-panel.active');
+      var nextPanel = document.getElementById('panel-' + tab);
+      if (!nextPanel || activePanel === nextPanel) return;
       // Update buttons
-      document.querySelectorAll('.tab-btn').forEach(function (btn) {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
-      // Update panels
-      document.querySelectorAll('.pricing-panel').forEach(function (panel) {
-        panel.classList.remove('active');
-      });
-      document.getElementById('panel-' + tab).classList.add('active');
+      document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+      (btn || event.target).classList.add('active');
+      // Fade out → swap → fade in
+      if (activePanel) {
+        activePanel.style.opacity = '0';
+        setTimeout(function () {
+          activePanel.classList.remove('active');
+          activePanel.style.display = 'none';
+          nextPanel.style.display = 'block';
+          nextPanel.style.opacity = '0';
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              nextPanel.classList.add('active');
+              nextPanel.style.opacity = '1';
+            });
+          });
+        }, 180);
+      } else {
+        nextPanel.classList.add('active');
+        nextPanel.style.opacity = '1';
+      }
     }
   </script>
 
@@ -1201,6 +1336,13 @@
         sessionStorage.setItem('ctaDismissed', '1');
       });
     })();
+  </script>
+  <script>
+  (function(){
+    if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+    var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
+    if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+  })();
   </script>
 
 </body>

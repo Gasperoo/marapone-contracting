@@ -74,9 +74,24 @@
     gtag('config', 'G-J31Z05DB01');
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    #nav-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:#f97316;z-index:9999;pointer-events:none;transition:width .08s linear;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-d1{transition-delay:.1s;}
+    .reveal-d2{transition-delay:.2s;}
+    .reveal-d3{transition-delay:.3s;}
+    .reveal-d4{transition-delay:.4s;}
+    /* Timeline spine */
+    .timeline-spine{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#3a3a3a 0%,#f97316 var(--fill,0%),#3a3a3a var(--fill,0%));transform:translateX(-50%);}
+  </style>
 </head>
 
 <body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
 
   <!-- SKIP TO CONTENT -->
   <a href="#main-content"
@@ -134,33 +149,31 @@
 
       <!-- Phase progress strip -->
       <div class="mt-14 max-w-sm mx-auto">
-        <div class="flex items-start">
-          <div class="flex flex-col items-center">
-            <div
-              class="w-10 h-10 rounded-full hiviz-gradient flex items-center justify-center font-display text-white text-base">
-              01</div>
-            <p class="font-mono text-hiviz text-xs mt-2">Assess</p>
+        <div class="flex items-start" id="phase-strip">
+          <div class="flex flex-col items-center phase-dot" data-phase="1">
+            <div class="w-10 h-10 rounded-full hiviz-gradient flex items-center justify-center font-display text-white text-base phase-circle transition-all duration-300">01</div>
+            <p class="font-mono text-hiviz text-xs mt-2 phase-label">Assess</p>
           </div>
-          <div class="phase-connector"></div>
-          <div class="flex flex-col items-center">
-            <div
-              class="w-10 h-10 rounded-full border border-plate flex items-center justify-center font-display text-fog text-base"
-              style="background-color:#1a1a1a;">02</div>
-            <p class="font-mono text-fog text-xs mt-2">Scope</p>
+          <div class="phase-connector flex-1 h-0.5 mt-5 bg-plate relative overflow-hidden">
+            <div class="phase-line-fill h-full bg-hiviz transition-all duration-500" style="width:0%"></div>
           </div>
-          <div class="phase-connector"></div>
-          <div class="flex flex-col items-center">
-            <div
-              class="w-10 h-10 rounded-full border border-plate flex items-center justify-center font-display text-fog text-base"
-              style="background-color:#1a1a1a;">03</div>
-            <p class="font-mono text-fog text-xs mt-2">Build</p>
+          <div class="flex flex-col items-center phase-dot" data-phase="2">
+            <div class="w-10 h-10 rounded-full border border-plate flex items-center justify-center font-display text-fog text-base phase-circle transition-all duration-300" style="background-color:#1a1a1a;">02</div>
+            <p class="font-mono text-fog text-xs mt-2 phase-label">Scope</p>
           </div>
-          <div class="phase-connector"></div>
-          <div class="flex flex-col items-center">
-            <div
-              class="w-10 h-10 rounded-full border border-plate flex items-center justify-center font-display text-fog text-base"
-              style="background-color:#1a1a1a;">04</div>
-            <p class="font-mono text-fog text-xs mt-2">Yours</p>
+          <div class="phase-connector flex-1 h-0.5 mt-5 bg-plate relative overflow-hidden">
+            <div class="phase-line-fill h-full bg-hiviz transition-all duration-500" style="width:0%"></div>
+          </div>
+          <div class="flex flex-col items-center phase-dot" data-phase="3">
+            <div class="w-10 h-10 rounded-full border border-plate flex items-center justify-center font-display text-fog text-base phase-circle transition-all duration-300" style="background-color:#1a1a1a;">03</div>
+            <p class="font-mono text-fog text-xs mt-2 phase-label">Build</p>
+          </div>
+          <div class="phase-connector flex-1 h-0.5 mt-5 bg-plate relative overflow-hidden">
+            <div class="phase-line-fill h-full bg-hiviz transition-all duration-500" style="width:0%"></div>
+          </div>
+          <div class="flex flex-col items-center phase-dot" data-phase="4">
+            <div class="w-10 h-10 rounded-full border border-plate flex items-center justify-center font-display text-fog text-base phase-circle transition-all duration-300" style="background-color:#1a1a1a;">04</div>
+            <p class="font-mono text-fog text-xs mt-2 phase-label">Yours</p>
           </div>
         </div>
       </div>
@@ -168,12 +181,12 @@
   </section>
 
   <!-- PHASE 01: FREE ASSESSMENT -->
-  <section class="py-16 lg:py-24 border-b border-plate">
+  <section class="py-16 lg:py-24 border-b border-plate" data-phase-section data-phase="1">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
 
         <!-- Text side -->
-        <div>
+        <div class="reveal">
           <div class="flex items-center gap-3 mb-6">
             <div
               class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
@@ -238,7 +251,7 @@
   </section>
 
   <!-- PHASE 02: SCOPING & SYSTEM DESIGN -->
-  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal" data-phase-section data-phase="2">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
 
@@ -271,7 +284,7 @@
         </div>
 
         <!-- Text side -->
-        <div class="order-1 lg:order-2">
+        <div class="order-1 lg:order-2 reveal">
           <div class="flex items-center gap-3 mb-6">
             <div
               class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
@@ -310,12 +323,12 @@
   </section>
 
   <!-- PHASE 03: BUILD & INSTALLATION -->
-  <section class="py-16 lg:py-24 border-b border-plate">
+  <section class="py-16 lg:py-24 border-b border-plate" data-phase-section data-phase="3">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
 
         <!-- Text side -->
-        <div>
+        <div class="reveal">
           <div class="flex items-center gap-3 mb-6">
             <div
               class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
@@ -393,7 +406,7 @@
   </section>
 
   <!-- PHASE 04: YOURS TO RUN -->
-  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal" data-phase-section data-phase="4">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
 
@@ -426,7 +439,7 @@
         </div>
 
         <!-- Text side -->
-        <div class="order-1 lg:order-2">
+        <div class="order-1 lg:order-2 reveal">
           <div class="flex items-center gap-3 mb-6">
             <div
               class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg">
@@ -536,7 +549,14 @@
   <footer class="bg-charcoal border-t border-plate py-8">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <p class="font-mono text-xs text-fog leading-snug">Boutique AI for the trades.</p>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
         <div class="flex gap-6 text-sm text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
@@ -643,6 +663,40 @@
         sessionStorage.setItem('ctaDismissed', '1');
       });
     })();
+  </script>
+  <script>
+  (function(){
+    if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+    var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
+    if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+    // Phase strip scroll activation
+    var phaseSections=[document.getElementById('phase-01'),document.getElementById('phase-02'),document.getElementById('phase-03'),document.getElementById('phase-04')];
+    // Fallback: use section index by getting all phase sections
+    var allSections=document.querySelectorAll('section[id^="phase-"],section.phase-section');
+    var phaseDots=document.querySelectorAll('.phase-dot .phase-circle');
+    var phaseLabels=document.querySelectorAll('.phase-dot .phase-label');
+    var linesFills=document.querySelectorAll('.phase-line-fill');
+    function activatePhase(n){
+      phaseDots.forEach(function(d,i){
+        var isActive=i<n;
+        d.style.background=isActive?'linear-gradient(135deg,#f97316,#ea580c)':'';
+        d.style.borderColor=isActive?'#f97316':'';
+        d.style.color=isActive?'white':'';
+      });
+      phaseLabels.forEach(function(l,i){l.style.color=i<n?'#f97316':'#a0a0a0';});
+      linesFills.forEach(function(f,i){f.style.width=i<n-1?'100%':'0%';});
+    }
+    // Use IntersectionObserver on phase sections
+    var phaseObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var ph=parseInt(e.target.getAttribute('data-phase')||'0');
+          if(ph) activatePhase(ph);
+        }
+      });
+    },{threshold:0.3});
+    document.querySelectorAll('[data-phase-section]').forEach(function(s){phaseObs.observe(s);});
+  })();
   </script>
 
 </body>

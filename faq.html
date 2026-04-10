@@ -121,6 +121,11 @@
       text-transform: uppercase;
       color: #f97316;
       margin-bottom: 1.5rem;
+      display: inline-block;
+      border-left: 3px solid #f97316;
+      padding: 0.35rem 0.75rem;
+      background: rgba(249, 115, 22, 0.07);
+      border-radius: 0 0.25rem 0.25rem 0;
     }
   </style>
   <script type="application/ld+json">
@@ -252,9 +257,18 @@
     gtag('config', 'G-J31Z05DB01');
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    #nav-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:#f97316;z-index:9999;pointer-events:none;transition:width .08s linear;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+  </style>
 </head>
 
 <body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
 
   <!-- SKIP TO CONTENT -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
@@ -705,7 +719,7 @@
   </section>
 
   <!-- STILL HAVE QUESTIONS -->
-  <section class="py-16 lg:py-20 border-t border-plate bg-gunmetal">
+  <section class="py-16 lg:py-24 border-t border-plate bg-gunmetal">
     <div class="max-w-3xl mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <div>
@@ -733,7 +747,14 @@
   <footer class="bg-charcoal border-t border-plate py-8">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <p class="font-mono text-xs text-fog leading-snug">Boutique AI for the trades.</p>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
         <div class="flex gap-6 text-sm text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
@@ -841,6 +862,13 @@
         sessionStorage.setItem('ctaDismissed', '1');
       });
     })();
+  </script>
+  <script>
+  (function(){
+    if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+    var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
+    if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+  })();
   </script>
 
 </body>

@@ -612,6 +612,39 @@
     </div>
   </footer>
 
+  <!-- STICKY FLOATING CTA -->
+  <div id="sticky-cta" class="fixed bottom-6 right-6 z-50 hidden">
+    <div class="flex items-center gap-2 hiviz-gradient rounded-lg shadow-lg shadow-black/40 overflow-hidden">
+      <a href="/contact"
+        class="text-white font-semibold text-sm px-5 py-3 hover:opacity-90 transition-opacity whitespace-nowrap">
+        Get Free Assessment →
+      </a>
+      <button id="sticky-cta-close" aria-label="Dismiss"
+        class="pr-3 pl-1 py-3 text-white/70 hover:text-white transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var cta = document.getElementById('sticky-cta');
+      var closeBtn = document.getElementById('sticky-cta-close');
+      if (!cta || !closeBtn) return;
+      if (sessionStorage.getItem('ctaDismissed')) return;
+      var shown = false;
+      window.addEventListener('scroll', function () {
+        if (sessionStorage.getItem('ctaDismissed')) return;
+        if (window.scrollY > 400 && !shown) { cta.classList.remove('hidden'); shown = true; }
+      }, { passive: true });
+      closeBtn.addEventListener('click', function () {
+        cta.classList.add('hidden');
+        sessionStorage.setItem('ctaDismissed', '1');
+      });
+    })();
+  </script>
+
 </body>
 
 </html>

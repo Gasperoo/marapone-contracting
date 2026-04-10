@@ -500,7 +500,48 @@
         </div>
       </div>
 
-      <!-- GROUP 4: Hardware & Setup -->
+      <!-- GROUP 4: Common Objections -->
+      <div>
+        <p class="section-label">// Common Objections</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">How is this different from just using ChatGPT or another AI tool?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>ChatGPT and similar tools are general-purpose assistants. They're not trained on your documents, they don't understand your specific workflows, and every document you feed them leaves your premises and goes through a third-party server. What we build is a private, fine-tuned system that runs entirely on your hardware, trained on your actual documents, and returns structured output for your specific use case — not a generic answer to a prompt. It's not a chatbot. It's an AI that does one thing extremely well for your operation, with no external data exposure.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What if the AI misses something important?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>No system catches everything — and we won't claim otherwise. What the system does is dramatically reduce what slips through compared to manual review, and do it consistently, without getting tired or distracted. The system is built as a first-pass intelligence layer, not a replacement for human judgment. Your team still reviews the output and makes the final call. The goal is that by the time something reaches your desk, the AI has already eliminated 90%+ of the noise and surfaced what actually needs attention. The free assessment lets you evaluate the accuracy directly on your own documents before committing to anything.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What if I need changes or updates after the system is delivered?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>Because you own the source code, you're not locked into us. You can have any developer work on it. If you want us to handle updates — new modules, changes when your document formats evolve, or adding a new workflow — retainer support is available at $499 CAD/month or $3,500 CAD/year. Most clients don't need this for the first six months; the system is built to run stably on the document types it was trained on. When you need it, it's there. When you don't, you're paying nothing.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROUP 5: Hardware & Setup -->
       <div>
         <p class="section-label">// Hardware & Setup</p>
 
@@ -771,6 +812,35 @@
       // Open this one if it wasn't already open
       if (!isOpen) item.classList.add('open');
     }
+  </script>
+
+  <!-- STICKY FLOATING CTA -->
+  <div id="sticky-cta" class="fixed bottom-6 right-6 z-50 hidden">
+    <div class="flex items-center gap-2 hiviz-gradient rounded-lg shadow-lg shadow-black/40 overflow-hidden">
+      <a href="/contact" class="text-white font-semibold text-sm px-5 py-3 hover:opacity-90 transition-opacity whitespace-nowrap">
+        Get Free Assessment →
+      </a>
+      <button id="sticky-cta-close" aria-label="Dismiss" class="pr-3 pl-1 py-3 text-white/70 hover:text-white transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var cta = document.getElementById('sticky-cta');
+      var closeBtn = document.getElementById('sticky-cta-close');
+      if (!cta || !closeBtn) return;
+      if (sessionStorage.getItem('ctaDismissed')) return;
+      var shown = false;
+      window.addEventListener('scroll', function () {
+        if (sessionStorage.getItem('ctaDismissed')) return;
+        if (window.scrollY > 400 && !shown) { cta.classList.remove('hidden'); shown = true; }
+      }, { passive: true });
+      closeBtn.addEventListener('click', function () {
+        cta.classList.add('hidden');
+        sessionStorage.setItem('ctaDismissed', '1');
+      });
+    })();
   </script>
 
 </body>

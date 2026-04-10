@@ -340,17 +340,48 @@
     </div>
   </section>
 
+  <!-- INDUSTRY STRIP -->
+  <section class="bg-charcoal border-b border-plate py-4">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-mono text-fog">
+        <span class="text-plate hidden sm:inline">// Built for:</span>
+        <span class="hover:text-chalk transition-colors cursor-default">General Contractors</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default">Commercial GCs</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default">Freight Brokers</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default">Import/Export Operators</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default">3PLs</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default">Project Managers</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default">ICI Builders</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default">Customs Brokers</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default">Trading Companies</span>
+      </div>
+    </div>
+  </section>
+
   <!-- WHO WE BUILD FOR -->
   <section class="py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-12">
+      <div class="text-center mb-10">
         <p class="font-mono text-hiviz text-sm mb-2">// B2B AI solutions</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">TWO INDUSTRIES.<br /><span class="text-hiviz">ONE
-            APPROACH.</span></h2>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">THREE INDUSTRIES.<br /><span class="text-hiviz">ONE APPROACH.</span></h2>
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <!-- Construction -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors group">
+      <!-- Industry tab buttons -->
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button class="industry-tab active font-mono text-sm border border-plate rounded px-5 py-2.5 transition-colors hover:border-hiviz/50" onclick="switchIndustry('construction', this)">🏗️ Construction</button>
+        <button class="industry-tab font-mono text-sm border border-plate rounded px-5 py-2.5 text-fog transition-colors hover:border-hiviz/50" onclick="switchIndustry('logistics', this)">🚢 Logistics &amp; Trade</button>
+        <button class="industry-tab font-mono text-sm border border-plate rounded px-5 py-2.5 text-fog transition-colors hover:border-hiviz/50" onclick="switchIndustry('marketing', this)">📣 B2B Marketing</button>
+      </div>
+      <!-- Construction Panel -->
+      <div id="industry-construction" class="industry-panel active">
+        <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors">
           <div class="flex items-center gap-4 mb-6">
             <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center text-2xl">🏗️</div>
             <div>
@@ -358,27 +389,18 @@
               <h3 class="font-display text-2xl text-chalk">CONSTRUCTION INTELLIGENCE</h3>
             </div>
           </div>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              <span class="text-chalk">Blueprint & specification auditing</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-              <span class="text-chalk">RFI tracking & critical path analysis</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-              <span class="text-chalk">Daily log synthesis & delay detection</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-              <span class="text-chalk">Cash-flow risk signals from document patterns</span>
-            </li>
+          <ul class="space-y-3 text-sm mb-6">
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span class="text-chalk">Blueprint & specification auditing</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg><span class="text-chalk">RFI tracking & critical path analysis</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="text-chalk">Daily log synthesis & delay detection</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg><span class="text-chalk">Cash-flow risk signals from document patterns</span></li>
           </ul>
+          <a href="/services" class="font-mono text-hiviz text-sm hover:underline">See Construction AI →</a>
         </div>
-        <!-- Logistics -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors group">
+      </div>
+      <!-- Logistics Panel -->
+      <div id="industry-logistics" class="industry-panel">
+        <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors">
           <div class="flex items-center gap-4 mb-6">
             <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center text-2xl">🚢</div>
             <div>
@@ -386,28 +408,45 @@
               <h3 class="font-display text-2xl text-chalk">LOGISTICS INTELLIGENCE</h3>
             </div>
           </div>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              <span class="text-chalk">Trade document processing & validation</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <span class="text-chalk">Freight invoice auditing & discrepancy flagging</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-              <span class="text-chalk">Compliance & customs documentation review</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              <span class="text-chalk">Carrier & supplier performance tracking</span>
-            </li>
+          <ul class="space-y-3 text-sm mb-6">
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span class="text-chalk">Trade document processing & validation</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-chalk">Freight invoice auditing & discrepancy flagging</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><span class="text-chalk">Compliance & customs documentation review</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span class="text-chalk">Carrier & supplier performance tracking</span></li>
           </ul>
+          <a href="/services" class="font-mono text-hiviz text-sm hover:underline">See Logistics AI →</a>
+        </div>
+      </div>
+      <!-- Marketing Panel -->
+      <div id="industry-marketing" class="industry-panel">
+        <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center text-2xl">📣</div>
+            <div>
+              <p class="font-mono text-hiviz text-xs uppercase tracking-wider">For B2B Operations & Sales Teams</p>
+              <h3 class="font-display text-2xl text-chalk">B2B MARKETING INTELLIGENCE</h3>
+            </div>
+          </div>
+          <ul class="space-y-3 text-sm mb-6">
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg><span class="text-chalk">Prospect research & qualification at scale</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span class="text-chalk">Personalized outreach content generation</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span class="text-chalk">CRM data enrichment & pipeline analysis</span></li>
+            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span class="text-chalk">Competitive intelligence & market monitoring</span></li>
+          </ul>
+          <a href="/services" class="font-mono text-hiviz text-sm hover:underline">See Marketing AI →</a>
         </div>
       </div>
     </div>
   </section>
+  <script>
+    function switchIndustry(tab, btn) {
+      document.querySelectorAll('.industry-tab').forEach(function(el) { el.classList.remove('active'); });
+      document.querySelectorAll('.industry-panel').forEach(function(el) { el.classList.remove('active'); });
+      btn.classList.add('active');
+      var panel = document.getElementById('industry-' + tab);
+      if (panel) panel.classList.add('active');
+    }
+  </script>
 
   <!-- SOLUTIONS LIST -->
   <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-24">
@@ -669,6 +708,35 @@
     </div>
   </section>
 
+  <!-- OUTCOMES STRIP -->
+  <section class="bg-steel border-t border-b border-plate py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <p class="font-mono text-hiviz text-sm mb-1">// Results from live deployments</p>
+        <h2 class="font-display text-3xl text-chalk">WHAT ACTUALLY <span class="text-hiviz">HAPPENS</span></h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-plate rounded overflow-hidden">
+        <div class="bg-steel px-6 py-6 text-center">
+          <p class="font-display text-4xl lg:text-5xl text-hiviz mb-1">6–8h</p>
+          <p class="font-mono text-fog text-xs mt-1 leading-snug">staff hours recovered<br/>per week, per client</p>
+        </div>
+        <div class="bg-steel px-6 py-6 text-center">
+          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">97%</p>
+          <p class="font-mono text-fog text-xs mt-1 leading-snug">document extraction<br/>accuracy vs. manual</p>
+        </div>
+        <div class="bg-steel px-6 py-6 text-center">
+          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">−78%</p>
+          <p class="font-mono text-fog text-xs mt-1 leading-snug">compliance errors<br/>in first quarter</p>
+        </div>
+        <div class="bg-steel px-6 py-6 text-center">
+          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">&lt;2wk</p>
+          <p class="font-mono text-fog text-xs mt-1 leading-snug">scoping to full<br/>system handover</p>
+        </div>
+      </div>
+      <p class="text-center font-mono text-fog text-xs mt-4">Based on live client deployments. <a href="/work" class="text-hiviz hover:underline">See the full case studies →</a></p>
+    </div>
+  </section>
+
   <!-- SOCIAL PROOF / TESTIMONIALS -->
   <section class="py-16 lg:py-24 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
@@ -857,6 +925,42 @@
       render();
     })();
   </script>
+
+  <!-- BUILT BY INDUSTRY INSIDERS -->
+  <section class="bg-gunmetal border-t border-b border-plate py-12 lg:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="font-mono text-hiviz text-sm mb-3">// The team behind this</p>
+          <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-4">BUILT BY PEOPLE WHO'VE<br/><span class="text-hiviz">WORKED IN THESE FIELDS</span></h2>
+          <p class="text-fog leading-relaxed text-sm mb-5">Marapone was founded with over 10 years of hands-on experience inside construction and logistics — not consultants hired to study the industries from the outside. We didn't need to guess at the pain points. We've lived them. That's why the systems we build reflect how these industries actually operate.</p>
+          <a href="/about" class="inline-flex items-center gap-2 font-mono text-hiviz text-sm hover:underline">Learn more about the team →</a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-charcoal border border-plate rounded-lg p-5">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Background</p>
+            <p class="text-chalk font-semibold text-sm">10+ years</p>
+            <p class="text-fog text-xs mt-1">Construction & logistics operations, not theory</p>
+          </div>
+          <div class="bg-charcoal border border-plate rounded-lg p-5">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Project Load</p>
+            <p class="text-chalk font-semibold text-sm">Small by design</p>
+            <p class="text-fog text-xs mt-1">Every client gets our full, direct attention</p>
+          </div>
+          <div class="bg-charcoal border border-plate rounded-lg p-5">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Presence</p>
+            <p class="text-chalk font-semibold text-sm">Canada &amp; Italy</p>
+            <p class="text-fog text-xs mt-1">Toronto + Rome. Remote-first. Global reach.</p>
+          </div>
+          <div class="bg-charcoal border border-plate rounded-lg p-5">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Policy</p>
+            <p class="text-chalk font-semibold text-sm">Radical transparency</p>
+            <p class="text-fog text-xs mt-1">We tell you what we can't do before you pay</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FREE ASSESSMENT CTA -->
   <section id="audit" class="py-16 lg:py-24">

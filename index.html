@@ -404,7 +404,9 @@
       </div>
       <!-- Construction Panel -->
       <div id="industry-construction" class="industry-panel active">
-        <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors">
+        <div class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors relative overflow-hidden">
+          <img src="stock-photo-surveyor-inside-large-building-site.jpeg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none" style="z-index:0;" />
+          <div style="position:relative;z-index:1;">
           <div class="flex items-center gap-4 mb-6">
             <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg></div>
             <div>
@@ -419,6 +421,7 @@
             <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg><span class="text-chalk">Cash-flow risk signals from document patterns</span></li>
           </ul>
           <a href="/services" class="font-mono text-hiviz text-sm hover:underline">See Construction AI →</a>
+          </div>
         </div>
       </div>
       <!-- Logistics Panel -->

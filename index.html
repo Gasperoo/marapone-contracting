@@ -175,119 +175,25 @@
       background-size: 28px 28px, cover, cover;
       background-position: center, center, 65% center;
     }
-    /* iPad demo device frame */
-    .demo-device-wrap {
-      position: relative;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .demo-device-glow {
-      position: absolute;
-      top: 5%; left: 5%; right: 5%; bottom: 5%;
-      background: radial-gradient(ellipse at center, rgba(249,115,22,0.22) 0%, transparent 65%);
-      filter: blur(50px);
-      z-index: 0;
-      pointer-events: none;
-      border-radius: 50%;
-    }
-    .ipad-frame {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      background: #1c1c1e;
-      border-radius: 3rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow:
-        0 40px 100px rgba(0,0,0,0.95),
-        0 0 0 1px rgba(255,255,255,0.04),
-        inset 0 1px 0 rgba(255,255,255,0.07);
-    }
-    .ipad-top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 0 10px;
-    }
-    .ipad-camera {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #2c2c2e;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
-    }
-    .ipad-screen {
-      margin: 0 18px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #000;
-      position: relative;
-      aspect-ratio: 1120/848;
-    }
-    .ipad-screen video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .ipad-screen-glare {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%);
-      pointer-events: none;
-      border-radius: 16px;
-    }
-    .ipad-home-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 0 18px;
-    }
-    .ipad-home-indicator {
-      width: 60px;
-      height: 5px;
-      border-radius: 3px;
-      background: #2c2c2e;
-    }
-    .device-badges {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .device-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: #6b7280;
-      opacity: 0.65;
-    }
-    .device-badge svg { flex-shrink: 0; color: #f97316; }
-    /* Hero grid: single column mobile, 1fr/1.5fr desktop */
+    /* Hero demo video */
     #hero-grid {
       grid-template-columns: 1fr;
     }
     @media (min-width: 1024px) {
       #hero-grid {
-        grid-template-columns: 1fr 1.5fr;
+        grid-template-columns: 1fr 1.4fr;
         gap: 3rem;
       }
     }
-    @media (max-width: 1023px) {
-      .ipad-frame { max-width: 520px; margin: 0 auto; }
+    #hero-demo-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.7);
     }
-    @media (max-width: 640px) {
-      .ipad-frame {
-        max-width: 360px;
-        border-radius: 2rem;
-      }
-      .ipad-screen { margin: 0 10px; border-radius: 11px; }
-      .ipad-screen-glare { border-radius: 11px; }
-      .ipad-top-bar { padding: 10px 0 7px; }
-      .ipad-home-bar { padding: 7px 0 13px; }
+    @media (max-width: 1023px) {
+      #hero-demo-video { max-width: 560px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -380,53 +286,17 @@
             <span class="text-xs font-mono text-plate">No questions asked.</span>
           </div>
         </div>
-        <!-- Right: iPad Demo Video -->
-        <div class="fade-up delay-1 flex flex-col justify-center w-full">
-          <div class="demo-device-wrap select-none">
-            <div class="demo-device-glow"></div>
-            <!-- iPad frame -->
-            <div class="ipad-frame">
-              <!-- Top bar with front camera -->
-              <div class="ipad-top-bar">
-                <div class="ipad-camera"></div>
-              </div>
-              <!-- Screen with video -->
-              <div class="ipad-screen">
-                <video
-                  id="hero-demo-video"
-                  autoplay
-                  muted
-                  playsinline
-                  preload="auto"
-                >
-                  <source src="/ipad_demo.mp4" type="video/mp4" />
-                </video>
-                <div class="ipad-screen-glare"></div>
-              </div>
-              <!-- Home indicator -->
-              <div class="ipad-home-bar">
-                <div class="ipad-home-indicator"></div>
-              </div>
-            </div>
-          </div>
-          <!-- Works on any device -->
-          <div class="device-badges">
-            <span class="device-badge">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              Phone
-            </span>
-            <span class="text-plate text-xs">·</span>
-            <span class="device-badge">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="12" y1="19" x2="12.01" y2="19"/></svg>
-              Tablet
-            </span>
-            <span class="text-plate text-xs">·</span>
-            <span class="device-badge">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
-              Desktop
-            </span>
-          </div>
-          <p class="text-xs text-fog font-mono mt-2 text-center tracking-widest uppercase opacity-50">Blueprint Auditor — Live Demo</p>
+        <!-- Right: Demo Video -->
+        <div class="fade-up delay-1 flex items-center justify-center">
+          <video
+            id="hero-demo-video"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+          >
+            <source src="/ipad_demo.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
     </div>

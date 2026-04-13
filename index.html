@@ -175,16 +175,37 @@
       background-size: 28px 28px, cover, cover;
       background-position: center, center, 65% center;
     }
-    /* Hero demo video */
+    /* Hero full-bleed layout */
+    #hero-outer {
+      /* Left padding aligns text with rest of site (max-w-6xl mx-auto px-4) */
+      padding-left: max(1rem, calc((100vw - 72rem) / 2 + 1rem));
+      padding-right: 0;
+    }
     #hero-grid {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    #hero-text {
+      padding-right: 1rem;
     }
     @media (min-width: 1024px) {
       #hero-grid {
-        grid-template-columns: 1fr 1.4fr;
-        gap: 3rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+      }
+      #hero-text {
+        flex: 0 0 auto;
+        width: 460px;
+        padding-right: 3rem;
+      }
+      #hero-video-col {
+        flex: 1;
+        min-width: 0;
       }
     }
+    /* Video wrap */
     .hero-video-wrap {
       position: relative;
       width: 100%;
@@ -211,7 +232,8 @@
         0 4px 20px rgba(0,0,0,0.5);
     }
     @media (max-width: 1023px) {
-      .hero-video-wrap { max-width: 580px; margin: 0 auto; }
+      #hero-outer { padding-right: 1rem; }
+      .hero-video-wrap { max-width: 600px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -265,10 +287,10 @@
   <section id="main-content" class="hero-section relative overflow-hidden min-h-[90vh] flex items-center">
     <div class="hero-glow"></div>
     <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block"></div>
-    <div class="max-w-6xl mx-auto px-4 py-20 lg:py-32 w-full relative z-10">
-      <div class="grid gap-8 items-center" id="hero-grid">
+    <div class="w-full py-20 lg:py-24 relative z-10" id="hero-outer">
+      <div id="hero-grid">
         <!-- Left: Copy -->
-        <div>
+        <div id="hero-text">
           <div class="fade-up mb-5">
             <img src="MaraponeLogo-1.png" alt="Marapone" class="h-10 lg:h-12 object-contain opacity-80" />
           </div>
@@ -305,7 +327,7 @@
           </div>
         </div>
         <!-- Right: Demo Video -->
-        <div class="fade-up delay-1 flex items-center justify-center">
+        <div class="fade-up delay-1" id="hero-video-col">
           <div class="hero-video-wrap">
             <div class="hero-video-glow"></div>
             <video

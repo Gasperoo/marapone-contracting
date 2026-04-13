@@ -178,15 +178,16 @@
     /* iPad demo device frame */
     .demo-device-wrap {
       position: relative;
-      display: inline-flex;
+      width: 100%;
+      display: flex;
       flex-direction: column;
       align-items: center;
     }
     .demo-device-glow {
       position: absolute;
-      top: 10%; left: 10%; right: 10%; bottom: 10%;
-      background: radial-gradient(ellipse at center, rgba(249,115,22,0.28) 0%, transparent 68%);
-      filter: blur(36px);
+      top: 5%; left: 5%; right: 5%; bottom: 5%;
+      background: radial-gradient(ellipse at center, rgba(249,115,22,0.22) 0%, transparent 65%);
+      filter: blur(50px);
       z-index: 0;
       pointer-events: none;
       border-radius: 50%;
@@ -194,37 +195,35 @@
     .ipad-frame {
       position: relative;
       z-index: 1;
-      width: 400px;
-      max-width: calc(100vw - 2rem);
+      width: 100%;
       background: #1c1c1e;
-      border-radius: 2.5rem;
-      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 3rem;
+      border: 1px solid rgba(255,255,255,0.08);
       box-shadow:
-        0 32px 80px rgba(0,0,0,0.9),
+        0 40px 100px rgba(0,0,0,0.95),
         0 0 0 1px rgba(255,255,255,0.04),
-        inset 0 1px 0 rgba(255,255,255,0.06);
-      padding: 0;
+        inset 0 1px 0 rgba(255,255,255,0.07);
     }
     .ipad-top-bar {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 0 8px;
+      padding: 16px 0 10px;
     }
     .ipad-camera {
-      width: 9px;
-      height: 9px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: #2c2c2e;
       box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
     }
     .ipad-screen {
-      margin: 0 14px;
-      border-radius: 14px;
+      margin: 0 18px;
+      border-radius: 16px;
       overflow: hidden;
       background: #000;
       position: relative;
-      aspect-ratio: 4/3;
+      aspect-ratio: 1120/848;
     }
     .ipad-screen video {
       width: 100%;
@@ -235,27 +234,27 @@
     .ipad-screen-glare {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 45%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%);
       pointer-events: none;
-      border-radius: 14px;
+      border-radius: 16px;
     }
     .ipad-home-bar {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 0 14px;
+      padding: 10px 0 18px;
     }
     .ipad-home-indicator {
-      width: 52px;
-      height: 4px;
-      border-radius: 2px;
+      width: 60px;
+      height: 5px;
+      border-radius: 3px;
       background: #2c2c2e;
     }
     .device-badges {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
     .device-badge {
       display: inline-flex;
@@ -267,14 +266,19 @@
       opacity: 0.65;
     }
     .device-badge svg { flex-shrink: 0; color: #f97316; }
+    @media (max-width: 1024px) {
+      .ipad-frame { max-width: 480px; }
+      .demo-device-wrap { align-items: center; }
+    }
     @media (max-width: 640px) {
       .ipad-frame {
-        width: 100%;
-        max-width: 300px;
-        border-radius: 1.75rem;
+        max-width: 380px;
+        border-radius: 2rem;
       }
-      .ipad-screen { margin: 0 10px; border-radius: 10px; }
-      .ipad-screen-glare { border-radius: 10px; }
+      .ipad-screen { margin: 0 12px; border-radius: 12px; }
+      .ipad-screen-glare { border-radius: 12px; }
+      .ipad-top-bar { padding: 12px 0 8px; }
+      .ipad-home-bar { padding: 8px 0 14px; }
     }
   </style>
 </head>
@@ -329,7 +333,7 @@
     <div class="hero-glow"></div>
     <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block"></div>
     <div class="max-w-6xl mx-auto px-4 py-20 lg:py-32 w-full relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16 items-center">
         <!-- Left: Copy -->
         <div>
           <div class="fade-up mb-5">
@@ -368,7 +372,7 @@
           </div>
         </div>
         <!-- Right: iPad Demo Video -->
-        <div class="fade-up delay-1 flex flex-col items-center justify-center">
+        <div class="fade-up delay-1 flex flex-col justify-center w-full">
           <div class="demo-device-wrap select-none">
             <div class="demo-device-glow"></div>
             <!-- iPad frame -->

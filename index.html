@@ -266,19 +266,28 @@
       opacity: 0.65;
     }
     .device-badge svg { flex-shrink: 0; color: #f97316; }
-    @media (max-width: 1024px) {
-      .ipad-frame { max-width: 480px; }
-      .demo-device-wrap { align-items: center; }
+    /* Hero grid: single column mobile, 1fr/1.5fr desktop */
+    #hero-grid {
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 1024px) {
+      #hero-grid {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 3rem;
+      }
+    }
+    @media (max-width: 1023px) {
+      .ipad-frame { max-width: 520px; margin: 0 auto; }
     }
     @media (max-width: 640px) {
       .ipad-frame {
-        max-width: 380px;
+        max-width: 360px;
         border-radius: 2rem;
       }
-      .ipad-screen { margin: 0 12px; border-radius: 12px; }
-      .ipad-screen-glare { border-radius: 12px; }
-      .ipad-top-bar { padding: 12px 0 8px; }
-      .ipad-home-bar { padding: 8px 0 14px; }
+      .ipad-screen { margin: 0 10px; border-radius: 11px; }
+      .ipad-screen-glare { border-radius: 11px; }
+      .ipad-top-bar { padding: 10px 0 7px; }
+      .ipad-home-bar { padding: 7px 0 13px; }
     }
   </style>
 </head>
@@ -333,7 +342,7 @@
     <div class="hero-glow"></div>
     <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block"></div>
     <div class="max-w-6xl mx-auto px-4 py-20 lg:py-32 w-full relative z-10">
-      <div class="grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16 items-center">
+      <div class="grid gap-8 items-center" id="hero-grid">
         <!-- Left: Copy -->
         <div>
           <div class="fade-up mb-5">
@@ -387,7 +396,6 @@
                   id="hero-demo-video"
                   autoplay
                   muted
-                  loop
                   playsinline
                   preload="auto"
                 >
@@ -1308,10 +1316,12 @@
   })();
   </script>
   <script>
-  // Hero demo video — pause when scrolled out of view, auto-resume when back in frame
+  // Hero demo video — autoplay on load; pause when scrolled out; resume when back in view
   (function(){
     var video = document.getElementById('hero-demo-video');
     if (!video) return;
+    // Attempt immediate autoplay (muted videos allowed in all modern browsers)
+    video.play().catch(function(){});
     if ('IntersectionObserver' in window) {
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -1321,7 +1331,7 @@
             video.pause();
           }
         });
-      }, { threshold: 0.25 });
+      }, { threshold: 0.2 });
       obs.observe(video);
     }
   })();

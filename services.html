@@ -178,7 +178,7 @@
   <div id="section-nav" class="fixed top-[65px] left-0 right-0 z-40 border-b border-plate" style="background-color: rgba(26,26,26,0.97); backdrop-filter: blur(8px);">
     <div class="max-w-6xl mx-auto px-3 sm:px-4 py-2 sm:py-2.5 flex items-center gap-2 sm:gap-3">
       <span class="font-mono text-xs text-plate mr-1 flex-shrink-0 hidden sm:inline">Jump to:</span>
-      <a href="#construction" class="section-pill flex-shrink-0">Construction <span class="opacity-50 hidden sm:inline">/ 8 tools</span></a>
+      <a href="#construction" class="section-pill flex-shrink-0">Construction <span class="opacity-50 hidden sm:inline">/ 9 tools</span></a>
       <a href="#logistics" class="section-pill flex-shrink-0">Logistics<span class="hidden sm:inline"> &amp; Trade</span> <span class="opacity-50 hidden sm:inline">/ 8 tools</span></a>
       <a href="#marketing" class="section-pill flex-shrink-0">Marketing <span class="opacity-50 hidden sm:inline">/ 6 tools</span></a>
     </div>
@@ -251,7 +251,7 @@
         <span class="section-num">01</span>
         <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">For Construction Companies</p>
         <h2 class="font-display text-3xl sm:text-4xl lg:text-6xl text-chalk mb-4">CONSTRUCTION <span class="text-hiviz">AI SERVICES</span></h2>
-        <p class="text-fog max-w-2xl leading-relaxed relative z-10">Eight tools for GCs, developers, and project managers — each targeting a specific problem that currently eats hours every week. We build it, deploy it, hand it over.</p>
+        <p class="text-fog max-w-2xl leading-relaxed relative z-10">Nine tools for GCs, developers, and project managers — each targeting a specific problem that currently eats hours every week. We build it, deploy it, hand it over.</p>
       </div>
 
       <!-- Cards grid -->
@@ -422,6 +422,49 @@
           <div class="exp-body" hidden><div class="px-5 pb-5">
             <p class="text-fog text-sm leading-relaxed">All inspection reports consolidated — duplicates removed, open items tracked, recurring patterns surfaced for close-out.</p>
             <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Close-out delays caused by nobody having a complete, current picture of outstanding deficiencies.</p></div>
+          </div></div>
+        </div>
+
+        <!-- UC9 — Live Takeoff & Cost Intelligence (featured, full-width) -->
+        <div class="sm:col-span-2 exp-card relative overflow-hidden" style="border-color: rgba(249,115,22,0.3); background: rgba(249,115,22,0.04);" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
+          <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,115,22,0.5),transparent);"></div>
+          <div class="flex items-start justify-between gap-3 p-5 lg:p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.15);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/><line x1="12" y1="7" x2="12" y2="7.01"/><polyline points="9 17 12 14 15 17"/></svg>
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <p class="font-mono text-plate text-xs uppercase">Use Case 09</p>
+                  <span class="font-mono text-xs px-2 py-0.5 rounded-full" style="background:rgba(249,115,22,0.12);color:#f97316;border:1px solid rgba(249,115,22,0.25);">Advanced</span>
+                </div>
+                <h3 class="font-display text-2xl text-chalk leading-tight">Live Takeoff &amp; Cost Intelligence</h3>
+                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Real quantities from your drawings. Live market prices. Accurate bids — every time.</p>
+              </div>
+            </div>
+            <svg class="exp-chevron w-4 h-4 text-fog mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+          <div class="exp-body" hidden><div class="px-5 pb-6 lg:px-6">
+            <p class="text-fog text-sm leading-relaxed mb-5">An AI-powered takeoff and estimating engine that reads your blueprints, extracts quantities automatically, and prices them against live market data — all integrated directly into your existing project management platform. No manual counting, no stale spreadsheet rates, no double entry. The number you bring to bid reflects what materials and labour actually cost on the day you submit.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+              <div class="rounded-lg p-3" style="background:rgba(0,0,0,0.2);border:1px solid rgba(58,58,58,0.6);">
+                <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-1.5">Automated Takeoff</p>
+                <p class="text-fog text-xs leading-relaxed">AI reads blueprints and extracts quantities directly — structural, mechanical, electrical, and finishes — no manual counting required.</p>
+              </div>
+              <div class="rounded-lg p-3" style="background:rgba(0,0,0,0.2);border:1px solid rgba(58,58,58,0.6);">
+                <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-1.5">Live Material Pricing</p>
+                <p class="text-fog text-xs leading-relaxed">Real-time price feeds for lumber, steel, concrete, MEP materials, and hardware — estimates always reflect current market costs, not last quarter's rates.</p>
+              </div>
+              <div class="rounded-lg p-3" style="background:rgba(0,0,0,0.2);border:1px solid rgba(58,58,58,0.6);">
+                <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-1.5">PM Platform Integration</p>
+                <p class="text-fog text-xs leading-relaxed">Connects directly to Procore, Buildertrend, PlanGrid, and others. Takeoff data, cost updates, and schedule impacts flow both ways — no double entry.</p>
+              </div>
+              <div class="rounded-lg p-3" style="background:rgba(0,0,0,0.2);border:1px solid rgba(58,58,58,0.6);">
+                <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-1.5">Labour &amp; Sub Benchmarks</p>
+                <p class="text-fog text-xs leading-relaxed">Regional labour rates and subcontractor benchmarks pulled from live market data — incoming sub quotes automatically compared against current going rates.</p>
+              </div>
+            </div>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">The margin you lose on a bid is rarely from bad work — it's from material costs that moved between estimate and mobilisation, or quantities that were missed in a manual count. This closes both gaps, running privately on your infrastructure with no third-party access to your project data.</p></div>
           </div></div>
         </div>
 

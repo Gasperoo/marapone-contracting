@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#111111"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="ctabtn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fb923c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Diagonal accent lines bottom right -->
+  <line x1="700" y1="1080" x2="1080" y2="700" stroke="#f97316" stroke-width="1" opacity="0.06"/>
+  <line x1="760" y1="1080" x2="1080" y2="760" stroke="#f97316" stroke-width="1" opacity="0.05"/>
+  <line x1="820" y1="1080" x2="1080" y2="820" stroke="#f97316" stroke-width="1" opacity="0.04"/>
+  <line x1="880" y1="1080" x2="1080" y2="880" stroke="#f97316" stroke-width="1" opacity="0.03"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="8" fill="#f97316"/>
+
+  <!-- Top label -->
+  <text x="540" y="68" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" text-anchor="middle" letter-spacing="4">// IT'S TIME TO ACT</text>
+
+  <!-- Main headline -->
+  <text x="540" y="196" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="80" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">IF YOU'RE READING</text>
+  <text x="540" y="276" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="80" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">THIS, IT'S TIME</text>
+  <text x="540" y="356" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="80" fill="#f97316" text-anchor="middle" letter-spacing="3">TO ACT.</text>
+
+  <!-- Rule -->
+  <rect x="190" y="378" width="700" height="2" fill="#2e2e2e"/>
+
+  <!-- Body text -->
+  <text x="540" y="430" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#a0a0a0" text-anchor="middle">Your competitors are adopting AI.</text>
+  <text x="540" y="464" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#a0a0a0" text-anchor="middle">The difference is whether they own it</text>
+  <text x="540" y="498" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#e8e8e8" text-anchor="middle">or rent it.</text>
+
+  <!-- Offer box -->
+  <rect x="190" y="530" width="700" height="100" rx="8" fill="#2e2e2e"/>
+  <rect x="190" y="530" width="6" height="100" fill="#f97316" rx="3"/>
+  <text x="548" y="572" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#e8e8e8" text-anchor="middle">We give you 24 hours to see what AI</text>
+  <text x="548" y="606" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#f97316" text-anchor="middle">finds in your documents — for free.</text>
+
+  <!-- CTA Button visual -->
+  <rect x="140" y="664" width="800" height="100" rx="8" fill="url(#ctabtn)"/>
+  <text x="540" y="710" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="50" fill="#1a1a1a" text-anchor="middle" letter-spacing="4">→ START WITH FREE ASSESSMENT</text>
+  <text x="540" y="748" font-family="'DM Mono', 'Courier New', monospace" font-size="18" fill="#1a1a1a" text-anchor="middle" letter-spacing="2">24-hour turnaround · No pitch · Real results</text>
+
+  <!-- Rule -->
+  <rect x="190" y="798" width="700" height="2" fill="#2e2e2e"/>
+
+  <!-- URL and handle row -->
+  <text x="540" y="856" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#f97316" text-anchor="middle" letter-spacing="3">marapone.com/contact</text>
+
+  <!-- Bottom tagline -->
+  <rect x="140" y="892" width="800" height="64" rx="4" fill="#2e2e2e"/>
+  <text x="540" y="932" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="36" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">STOP RENTING YOUR AI. OWN THE ENGINE.</text>
+
+  <!-- Handle -->
+  <text x="1008" y="1040" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+</svg>

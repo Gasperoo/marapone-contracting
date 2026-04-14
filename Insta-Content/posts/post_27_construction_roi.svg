@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#222222"/>
+    </linearGradient>
+    <radialGradient id="numberglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="8" fill="#f97316"/>
+
+  <!-- Top label -->
+  <text x="540" y="68" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" text-anchor="middle" letter-spacing="4">// CONSTRUCTION ROI — THE MATH</text>
+
+  <!-- Main headline -->
+  <text x="540" y="158" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="80" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">THE MATH ON</text>
+  <text x="540" y="238" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="80" fill="#f97316" text-anchor="middle" letter-spacing="3">CONSTRUCTION AI.</text>
+
+  <!-- Rule -->
+  <rect x="190" y="258" width="700" height="3" fill="#f97316" rx="1.5"/>
+
+  <!-- Math cards -->
+  <!-- Card 1: Problem cost -->
+  <rect x="72" y="286" width="936" height="140" rx="8" fill="#2e2e2e"/>
+  <rect x="72" y="286" width="5" height="140" fill="#c0392b" rx="3"/>
+  <text x="110" y="326" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#c0392b" letter-spacing="3">THE RISK</text>
+  <text x="110" y="368" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#e8e8e8" letter-spacing="2">1 MISSED SPEC</text>
+  <text x="550" y="368" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32" fill="#a0a0a0" letter-spacing="2"> on a $2M project</text>
+  <text x="110" y="404" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#c0392b" letter-spacing="2">$40,000 – $150,000</text>
+  <text x="620" y="404" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="20" fill="#a0a0a0"> in change orders</text>
+
+  <!-- Arrow divider -->
+  <text x="540" y="466" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="36" fill="#f97316" text-anchor="middle">↓</text>
+
+  <!-- Card 2: Marapone cost -->
+  <rect x="72" y="488" width="936" height="140" rx="8" fill="#2e2e2e"/>
+  <rect x="72" y="488" width="5" height="140" fill="#f97316" rx="3"/>
+  <text x="110" y="528" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" letter-spacing="3">THE SOLUTION</text>
+  <text x="110" y="570" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#e8e8e8" letter-spacing="2">MARAPONE FULL BUILD</text>
+  <text x="110" y="608" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="60" fill="#f97316" letter-spacing="3">$9,500 CAD</text>
+  <text x="590" y="608" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="20" fill="#a0a0a0"> one-time investment</text>
+
+  <!-- Arrow divider -->
+  <text x="540" y="668" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="36" fill="#f97316" text-anchor="middle">↓</text>
+
+  <!-- Card 3: Result -->
+  <rect x="72" y="690" width="936" height="120" rx="8" fill="#f97316" opacity="0.1"/>
+  <rect x="72" y="690" width="5" height="120" fill="#f97316" rx="3"/>
+  <rect x="72" y="690" width="936" height="120" rx="8" fill="none" stroke="#f97316" stroke-width="1.5" opacity="0.4"/>
+  <text x="110" y="730" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" letter-spacing="3">THE RETURN</text>
+  <text x="540" y="788" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="42" fill="#f97316" text-anchor="middle" letter-spacing="2">THAT'S ONE PREVENTED MISTAKE</text>
+
+  <!-- Big final line -->
+  <rect x="72" y="840" width="936" height="100" rx="8" fill="#f97316"/>
+  <text x="540" y="880" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="44" fill="#1a1a1a" text-anchor="middle" letter-spacing="2">PAYING FOR THE SYSTEM</text>
+  <text x="540" y="924" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="44" fill="#1a1a1a" text-anchor="middle" letter-spacing="2">10 TIMES OVER.</text>
+
+  <!-- Handle -->
+  <text x="1008" y="1024" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+  <text x="72" y="1024" font-family="'DM Mono', 'Courier New', monospace" font-size="15" fill="#a0a0a0" letter-spacing="2">MARAPONE.COM</text>
+</svg>

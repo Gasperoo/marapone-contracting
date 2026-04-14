@@ -1,0 +1,329 @@
+══════════════════════════════════════════════════════════════════════
+MARAPONE CONTRACTING — PAID AD COPY (ADS 01–04)
+30-Day Instagram/Facebook Campaign
+@maraponehq | marapone.com
+Platform: Meta Ads (Instagram + Facebook placements)
+══════════════════════════════════════════════════════════════════════
+
+AD STRATEGY OVERVIEW:
+- AD 01: Awareness — Construction audience (cold traffic, GCs/PMs)
+- AD 02: Awareness — Logistics audience (cold traffic, freight/import)
+- AD 03: Retargeting — Warm traffic (visited site or engaged with posts)
+- AD 04: Conversion — Hot traffic (visited /contact or /pricing page)
+
+All ads: run in conjunction with organic campaign, starting Week 2
+Recommended minimum run period: 14 days per ad before significant optimization
+
+
+────────────────────────────────────────────────────────────────────
+AD 01 — AWARENESS: CONSTRUCTION
+────────────────────────────────────────────────────────────────────
+
+PRIMARY TEXT (what appears above the image in feed):
+Blueprint review is taking your best people 4–6 hours a set. That's not a skill problem. That's a volume problem.
+
+We build private AI systems for construction companies that do the same cross-reference in under 20 minutes — and catch the coordination conflicts your manual review misses when it's up against a deadline.
+
+One-time cost. Deployed on your infrastructure. Full source code handed to you. Zero ongoing fees.
+
+Free 24-hour assessment — submit your documents, get AI findings in 24 hours.
+
+No subscription starts after the assessment. No commitment required.
+
+---
+
+HEADLINE: "Own Your AI. Stop Renting."
+
+DESCRIPTION: Private AI for GCs — blueprint review, RFI analysis, risk signals. One-time cost. Full ownership. Free 24-hour assessment.
+
+CTA BUTTON TEXT: "Learn More" (direct to marapone.com/contact)
+
+---
+
+AUDIENCE TARGETING SUGGESTIONS:
+
+Primary targeting:
+- Job titles: General Contractor, Project Manager, Senior Estimator, Construction Manager, VP Operations, Director of Construction, Preconstruction Manager, Owner/Operator
+- Industries: Construction, Commercial Construction, Residential Construction, Engineering and Construction
+- Company size: 10–500 employees (excludes solopreneur and very large enterprise — focuses on operational mid-market)
+- Interests: Construction management software, Procore, Bluebeam, BuildingConnected, Estimating software, Blueprint software
+
+Geographic: Canada (ON, BC, AB, QC priority), United States (TX, FL, CA, NY, AZ construction markets)
+
+Lookalike: 1–3% lookalike of website visitors (after pixel has accumulated data) OR email list lookalike if available
+
+Exclusions: Exclude current followers, existing leads, job titles in residential/consumer construction
+
+---
+
+BUDGET RECOMMENDATION (STARTER):
+$15–$25 CAD/day
+Minimum 14-day run before optimization
+Optimize for: Link clicks (first 7 days), then switch to Landing Page Views once volume builds
+
+---
+
+A/B TEST VARIANTS:
+
+VARIANT A (Control — listed above)
+Headline: "Own Your AI. Stop Renting."
+CTA: Learn More
+
+VARIANT B:
+Primary text opens with: "One coordination conflict caught in pre-construction saves $40,000–$150,000 in field change orders. How confident are you in your current review process?"
+Headline: "AI Blueprint Review — Free 24hr Assessment"
+CTA: "Get Free Assessment"
+
+VARIANT C:
+Primary text opens with: "Every month you pay for AI software, you're building someone else's revenue — not your own capability."
+Headline: "Private AI for Construction. One-Time Cost."
+CTA: "See How It Works"
+
+TEST GUIDANCE: Run A/B as even split for first 7 days. The variant with lower cost-per-link-click wins. After 14 days, evaluate cost-per-assessment-form-submission as primary metric.
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+AD 02 — AWARENESS: LOGISTICS
+────────────────────────────────────────────────────────────────────
+
+PRIMARY TEXT:
+The industry average for freight invoice discrepancies is 12–15%. On $500K in annual freight spend, that's $60,000–$75,000 in potential overcharges paid without dispute.
+
+Manual invoice verification at volume doesn't catch everything. It can't — there's not enough time to check every invoice at the line level against every contracted rate, accessorial cap, and fuel surcharge table.
+
+We build private AI systems that do exactly that, automatically, for every invoice. Trained on your specific carrier agreements. Deployed on your infrastructure. Owned by you permanently. No monthly fees.
+
+Free 24-hour assessment — send us a sample of your invoices, get AI findings within 24 hours.
+
+---
+
+HEADLINE: "Freight Overbilling: Your AI Catches It."
+
+DESCRIPTION: Private AI invoice verification for freight brokers and importers. Trained on your contracts. One-time cost. Free 24-hour assessment.
+
+CTA BUTTON TEXT: "Get Free Assessment" (direct to marapone.com/contact)
+
+---
+
+AUDIENCE TARGETING SUGGESTIONS:
+
+Primary targeting:
+- Job titles: Freight Broker, Import/Export Manager, Customs Broker, Logistics Manager, Supply Chain Manager, VP Logistics, Director of Operations, Trade Compliance Manager, 3PL Operations Manager, Importer, Exporter
+- Industries: Transportation and Warehousing, Import/Export, Freight Brokerage, Supply Chain and Logistics, International Trade
+- Company size: 5–250 employees
+- Interests: Freight brokerage software, TMS (transportation management systems), Customs compliance, Global trade, ShipBob, Flexport, SAP TM, Oracle TMS
+
+Geographic: Canada (BC, ON, AB — major trade/port markets), United States (CA, WA, TX, NY, FL — major port states)
+
+Lookalike: 1–3% lookalike of website visitors or email list
+
+Exclusions: Exclude construction-only companies, residential logistics, consumer retail
+
+---
+
+BUDGET RECOMMENDATION (STARTER):
+$15–$20 CAD/day
+Logistics audience is smaller and more targeted — lower volume but higher intent
+Minimum 14-day run before optimization
+
+---
+
+A/B TEST VARIANTS:
+
+VARIANT A (Control — listed above)
+Headline: "Freight Overbilling: Your AI Catches It."
+CTA: "Get Free Assessment"
+
+VARIANT B:
+Primary text opens with: "A regional freight broker recovered $18,400 in overcharges in their first month with private AI invoice verification. Here's what the system found."
+Headline: "$18,400. Month One. Here's How."
+CTA: "See the Case Study" (links to marapone.com/contact with note about assessment)
+
+VARIANT C:
+Primary text opens with: "Your customs entry goes through next Tuesday. Has anyone checked the classification? The valuation? The origin documentation?"
+Headline: "Private AI for Customs and Freight Compliance"
+CTA: "Learn More"
+
+TEST GUIDANCE: The case study variant (B) typically performs well for logistics audiences who are numbers-driven. Test for 14 days, optimize on cost-per-form-submission.
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+AD 03 — RETARGETING
+Audience: Warm traffic (engaged with posts, visited website, viewed video content)
+────────────────────────────────────────────────────────────────────
+
+PRIMARY TEXT:
+You've seen what we build. Here's what the free assessment actually looks like.
+
+You send us a sample of your documents — blueprints, freight invoices, RFIs, trade docs. We run them through AI analysis and come back to you within 24 hours with written findings. What the system found. What it would catch in your ongoing workflow.
+
+Not a demo. Not a simulated environment. Your actual documents, analyzed, findings returned.
+
+If the results are useful, we'll scope a build. If they're not — you've gotten a free document audit and we part on good terms.
+
+No cost. No commitment. No sales pitch if the value isn't there.
+
+Your documents are sitting there. This is the step.
+
+---
+
+HEADLINE: "Free 24hr AI Assessment — Your Documents."
+
+DESCRIPTION: Send us your blueprints or freight invoices. Get specific AI findings in 24 hours. No cost, no commitment, no obligation.
+
+CTA BUTTON TEXT: "Book Free Assessment" (direct to marapone.com/contact)
+
+---
+
+AUDIENCE TARGETING SUGGESTIONS:
+
+Custom audiences (retargeting — Meta Pixel required):
+- Website visitors: All visitors in the past 30 days who did NOT complete the contact form
+- Instagram/Facebook engagers: Anyone who engaged with your posts, visited your profile, or watched 50%+ of any video in the past 30 days
+- Video viewers: Anyone who watched 75%+ of any of your campaign videos in the past 14 days
+
+Exclusion:
+- Exclude users who have already submitted the contact form (existing leads)
+- Exclude existing clients (if you have a customer list to upload)
+
+---
+
+BUDGET RECOMMENDATION (STARTER):
+$10–$15 CAD/day
+Retargeting audiences are smaller — lower budget needed, higher conversion rate expected
+Run continuously through campaign duration (not time-limited)
+
+---
+
+A/B TEST VARIANTS:
+
+VARIANT A (Control — listed above)
+Headline: "Free 24hr AI Assessment — Your Documents."
+
+VARIANT B:
+Primary text opens with: "We're not going to try to convince you. We're going to show you."
+Then delivers same offer language.
+Headline: "Show, Don't Sell. Free Assessment."
+CTA: "Get Findings"
+
+VARIANT C (Social proof version):
+Primary text opens with:
+"One of our GC clients said it this way: 'The AI caught something we didn't. That's enough.' That's the whole pitch."
+Then delivers the assessment offer.
+Headline: "One Catch. One System. One-Time Cost."
+
+TEST GUIDANCE: For retargeting, the social proof variant (C) often outperforms because the audience has already seen the product — they need trust confirmation, not education.
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+AD 04 — CONVERSION
+Audience: Hot traffic (visited /contact or /pricing page but did not submit)
+────────────────────────────────────────────────────────────────────
+
+PRIMARY TEXT:
+You looked at the pricing page. Here's the honest summary:
+
+The assessment is free. You pay nothing to find out what AI would catch in your documents.
+
+The builds start at $1,500 CAD for a single document review and go up from there based on scope. Every tier includes full source code, model weights, local deployment, and zero recurring fees. There is no subscription that starts after delivery.
+
+The most common thing we hear from clients after delivery: "I should have done this sooner."
+
+If you've been on the fence — the assessment is the right next step. You see specific findings from your actual documents before you spend anything.
+
+Three minutes to fill out the form. Findings in 24 hours.
+
+---
+
+HEADLINE: "Zero Monthly Fees. Full Ownership. Free Assessment."
+
+DESCRIPTION: Private AI for construction and logistics. One-time cost. Complete source code handover. Free 24-hour assessment — no commitment required.
+
+CTA BUTTON TEXT: "Book Assessment Now" (direct to marapone.com/contact)
+
+---
+
+AUDIENCE TARGETING SUGGESTIONS:
+
+Custom audiences (conversion retargeting):
+- Website visitors who viewed /pricing in past 14 days and did NOT submit contact form
+- Website visitors who viewed /contact in past 7 days and did NOT submit contact form
+- Website visitors with 2+ page views in past 14 days (high intent signal)
+
+Exclusion:
+- Exclude all users who have already completed the contact form
+- Exclude existing clients
+
+---
+
+BUDGET RECOMMENDATION (STARTER):
+$8–$12 CAD/day
+This is the smallest audience — high value, high intent
+Even small spend can generate meaningful returns on this segment
+Run continuously through campaign
+
+---
+
+A/B TEST VARIANTS:
+
+VARIANT A (Control — listed above)
+Headline: "Zero Monthly Fees. Full Ownership. Free Assessment."
+Primary text: Addresses pricing page visit directly.
+
+VARIANT B (Objection handling — for users who saw the pricing page):
+Primary text:
+"The most common hesitation we hear: 'We're not sure we're big enough for this.' Here's the honest answer: we've built for 4-person import operations and multi-project GCs. The scope adjusts to the operation. The architecture and the ownership model don't change."
+Headline: "Private AI for Operations of Any Size"
+CTA: "See What We'd Build for You"
+
+VARIANT C (Urgency without false scarcity):
+Primary text:
+"We take on a limited number of builds at a time. Not as a marketing tactic — as a practical quality control decision. If you're considering the assessment, sooner is better than later."
+Headline: "Limited Projects. Free Assessment. Book Now."
+CTA: "Book Assessment Now"
+
+TEST GUIDANCE: Conversion ads to high-intent audiences benefit from directness. The control (A) typically outperforms. Test B for smaller operations audience segment. C works well toward end of month when urgency is naturally higher.
+
+---
+
+══════════════════════════════════════════════════════════════════════
+AD CAMPAIGN NOTES
+══════════════════════════════════════════════════════════════════════
+
+PIXEL SETUP (required before running):
+Install Meta Pixel on marapone.com. Set up conversion events for:
+- Contact form view (/contact page view)
+- Form submission (lead event)
+- Pricing page view (/pricing page view)
+Without pixel data, retargeting (AD 03) and conversion (AD 04) audiences will be limited.
+
+CREATIVE GUIDANCE:
+- Use existing brand imagery from campaign (dark backgrounds, orange accents)
+- Blueprint/document imagery performs well for construction audience
+- Clean number-forward graphics ($18,400, $0.00) perform well for logistics audience
+- Avoid stock photos of smiling people in hard hats — too generic for this audience
+- Video ads (even 15–30 second clips) typically outperform static for awareness objectives
+
+CAMPAIGN STRUCTURE RECOMMENDATION:
+Campaign 1: Awareness (AD 01 + AD 02 in separate ad sets by audience)
+Campaign 2: Retargeting (AD 03)
+Campaign 3: Conversion (AD 04)
+
+Separate campaigns allow independent budget control and cleaner performance data.
+
+REPORTING METRICS TO TRACK (weekly):
+- Cost per link click (Awareness)
+- Cost per landing page view (Awareness)
+- Cost per form submission/lead (Retargeting + Conversion)
+- Frequency (keep below 3 for Awareness; up to 5–7 for Retargeting is acceptable)
+
+══════════════════════════════════════════════════════════════════════
+END OF AD COPY
+marapone.com · @maraponehq · general@marapone.com
+══════════════════════════════════════════════════════════════════════

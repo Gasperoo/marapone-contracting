@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.04"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#111111"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <radialGradient id="quoteglow" cx="85%" cy="35%" r="40%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.07"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+  <rect width="1080" height="1080" fill="url(#quoteglow)"/>
+
+  <!-- Right accent bar -->
+  <rect x="1072" y="0" width="8" height="1080" fill="#f97316"/>
+
+  <!-- Stars at top -->
+  <text x="540" y="80" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="36" fill="#f97316" text-anchor="middle">★★★★★</text>
+
+  <!-- Top label -->
+  <text x="540" y="128" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#a0a0a0" text-anchor="middle" letter-spacing="4">// CLIENT RESULT — LOGISTICS</text>
+
+  <!-- Large quote mark -->
+  <text x="980" y="340" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="280" fill="#f97316" opacity="0.1" text-anchor="end">"</text>
+
+  <!-- Quote headline - bold and impactful -->
+  <text x="540" y="224" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="50" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">I RUN A 2-PERSON IMPORT</text>
+  <text x="540" y="290" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="50" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">OPERATION AND THIS TOOL</text>
+  <text x="540" y="356" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="50" fill="#f97316" text-anchor="middle" letter-spacing="2">DOES THE WORK OF A</text>
+  <text x="540" y="422" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="50" fill="#f97316" text-anchor="middle" letter-spacing="2">COMPLIANCE TEAM.</text>
+
+  <!-- Rule -->
+  <rect x="190" y="446" width="700" height="2" fill="#2e2e2e"/>
+
+  <!-- Attribution -->
+  <rect x="190" y="470" width="700" height="100" rx="6" fill="#2e2e2e"/>
+  <rect x="190" y="470" width="6" height="100" fill="#f97316" rx="3"/>
+  <text x="216" y="510" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#e8e8e8" letter-spacing="2">SOLO IMPORTER</text>
+  <text x="216" y="538" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="17" fill="#f97316">$820K Annual Import Volume</text>
+  <text x="216" y="558" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#a0a0a0" letter-spacing="1">Compliance AI + Invoice Verifier — Marapone Logistics</text>
+
+  <!-- Quote body -->
+  <text x="540" y="626" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="21" fill="#a0a0a0" text-anchor="middle">"Customs compliance used to keep me up at night.</text>
+  <text x="540" y="656" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="21" fill="#a0a0a0" text-anchor="middle">Now the system checks every entry before I file.</text>
+  <text x="540" y="686" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="21" fill="#a0a0a0" text-anchor="middle">Haven't had a flag in 4 months."</text>
+
+  <!-- Stats row -->
+  <rect x="72" y="730" width="936" height="2" fill="#2e2e2e"/>
+
+  <text x="260" y="794" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#f97316" text-anchor="middle" letter-spacing="2">4 MONTHS</text>
+  <text x="260" y="828" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="17" fill="#a0a0a0" text-anchor="middle">zero compliance flags</text>
+
+  <rect x="518" y="752" width="4" height="100" fill="#2e2e2e" rx="2"/>
+
+  <text x="760" y="794" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#f97316" text-anchor="middle" letter-spacing="2">2 PEOPLE</text>
+  <text x="760" y="828" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="17" fill="#a0a0a0" text-anchor="middle">running enterprise-grade AI</text>
+
+  <rect x="72" y="856" width="936" height="2" fill="#2e2e2e"/>
+
+  <!-- Bottom CTA -->
+  <rect x="72" y="876" width="936" height="72" rx="6" fill="#f97316" opacity="0.1"/>
+  <rect x="72" y="876" width="6" height="72" fill="#f97316" rx="3"/>
+  <text x="110" y="908" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="30" fill="#e8e8e8" letter-spacing="2">GET YOUR FREE ASSESSMENT →</text>
+  <text x="110" y="935" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" letter-spacing="2">MARAPONE.COM/CONTACT</text>
+
+  <!-- Handle -->
+  <text x="1044" y="1040" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+</svg>

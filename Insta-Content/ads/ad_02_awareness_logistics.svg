@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#232323"/>
+    </linearGradient>
+    <radialGradient id="orangeGlow" cx="50%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ctaBtn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+    </linearGradient>
+    <pattern id="dotGrid" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="1.2" fill="#3a3a3a"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bgGrad)"/>
+  <rect width="1080" height="1080" fill="url(#dotGrid)" opacity="0.35"/>
+  <ellipse cx="540" cy="280" rx="500" ry="280" fill="url(#orangeGlow)"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="80" fill="#1a1a1a" opacity="0.9"/>
+  <text x="54" y="50" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#f97316" letter-spacing="2">MARAPONE CONTRACTING</text>
+  <text x="1026" y="50" text-anchor="end" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#a0a0a0">@maraponehq</text>
+  <rect x="0" y="78" width="1080" height="2" fill="#f97316" opacity="0.4"/>
+
+  <!-- Main question headline -->
+  <text x="54" y="186" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="88" fill="#e8e8e8" letter-spacing="2">STILL MANUALLY</text>
+  <text x="54" y="280" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="88" fill="#e8e8e8" letter-spacing="2">CHECKING</text>
+  <text x="54" y="374" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="88" fill="#f97316" letter-spacing="2">FREIGHT INVOICES?</text>
+
+  <!-- Sub -->
+  <text x="54" y="428" font-family="'DM Sans', system-ui, sans-serif" font-size="27" fill="#a0a0a0">AI catches overcharges, compliance errors, and document</text>
+  <text x="54" y="462" font-family="'DM Sans', system-ui, sans-serif" font-size="27" fill="#a0a0a0">gaps in minutes — not days.</text>
+
+  <!-- Orange divider -->
+  <rect x="54" y="490" width="140" height="4" rx="2" fill="#f97316"/>
+
+  <!-- Stats grid - 2x2 -->
+  <rect x="54" y="520" width="468" height="144" rx="14" fill="#2e2e2e" stroke="#f97316" stroke-width="2"/>
+  <text x="288" y="572" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="21" fill="#f97316" letter-spacing="1">AVG. OVERBILLING RATE</text>
+  <text x="288" y="638" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="68" fill="#e8e8e8">12–15%</text>
+
+  <rect x="558" y="520" width="468" height="144" rx="14" fill="#2e2e2e" stroke="#3a3a3a" stroke-width="1.5"/>
+  <text x="792" y="572" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="21" fill="#f97316" letter-spacing="1">AI REVIEW TIME</text>
+  <text x="792" y="638" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="68" fill="#e8e8e8">UNDER 2 HRS</text>
+
+  <rect x="54" y="682" width="468" height="144" rx="14" fill="#2e2e2e" stroke="#3a3a3a" stroke-width="1.5"/>
+  <text x="288" y="734" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="21" fill="#f97316" letter-spacing="1">COST TO GET STARTED</text>
+  <text x="288" y="800" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="68" fill="#e8e8e8">$1,500 CAD</text>
+
+  <rect x="558" y="682" width="468" height="144" rx="14" fill="#2e2e2e" stroke="#f97316" stroke-width="2"/>
+  <text x="792" y="734" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="21" fill="#f97316" letter-spacing="1">MONTHLY SUBSCRIPTION</text>
+  <text x="792" y="800" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="68" fill="#f97316">$0.00</text>
+
+  <!-- CTA Button -->
+  <rect x="54" y="868" width="972" height="130" rx="18" fill="url(#ctaBtn)"/>
+  <text x="540" y="924" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#1a1a1a" letter-spacing="2">FREE 24-HOUR TURNAROUND</text>
+  <text x="540" y="976" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="58" fill="#1a1a1a" letter-spacing="3">START WITH A FREE ASSESSMENT →</text>
+
+  <!-- URL underline -->
+  <text x="540" y="1046" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="24" fill="#a0a0a0">marapone.com · @maraponehq</text>
+</svg>

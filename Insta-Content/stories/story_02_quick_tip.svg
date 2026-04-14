@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#232323"/>
+    </linearGradient>
+    <pattern id="dotGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.2" fill="#3a3a3a"/>
+    </pattern>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#2e2e2e" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+  <rect width="1080" height="1920" fill="url(#dotGrid)" opacity="0.35"/>
+
+  <!-- Subtle orange accent glow -->
+  <ellipse cx="100" cy="900" rx="200" ry="500" fill="#f97316" opacity="0.04"/>
+
+  <!-- Top header bar -->
+  <rect x="0" y="0" width="1080" height="180" fill="#1a1a1a" opacity="0.95"/>
+
+  <!-- Story progress bar -->
+  <rect x="40" y="52" width="980" height="3" rx="2" fill="#3a3a3a"/>
+  <rect x="40" y="52" width="650" height="3" rx="2" fill="#f97316"/>
+
+  <!-- Profile avatar -->
+  <circle cx="72" cy="110" r="34" fill="#2e2e2e" stroke="#f97316" stroke-width="2.5"/>
+  <text x="72" y="117" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316">MC</text>
+
+  <text x="118" y="104" font-family="'DM Sans', system-ui, sans-serif" font-size="28" font-weight="700" fill="#e8e8e8">maraponehq</text>
+  <text x="118" y="130" font-family="'DM Sans', system-ui, sans-serif" font-size="22" fill="#a0a0a0">Marapone Contracting Inc.</text>
+  <text x="1020" y="118" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="32" fill="#a0a0a0">✕</text>
+
+  <!-- TIP label -->
+  <text x="80" y="290" font-family="'DM Mono', 'Courier New', monospace" font-size="26" fill="#f97316" letter-spacing="3">// TIP 01</text>
+
+  <!-- Horizontal rule -->
+  <rect x="80" y="308" width="920" height="1.5" fill="#3a3a3a"/>
+
+  <!-- TITLE -->
+  <text x="80" y="400" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="96" fill="#e8e8e8" letter-spacing="3">QUICK TIP</text>
+
+  <!-- Orange accent underline -->
+  <rect x="80" y="418" width="460" height="5" rx="2" fill="#f97316"/>
+
+  <!-- Main tip card with orange left border -->
+  <rect x="80" y="470" width="920" height="420" rx="12" fill="#2e2e2e"/>
+  <rect x="80" y="470" width="8" height="420" rx="4" fill="#f97316"/>
+  <rect x="80" y="470" width="920" height="420" rx="12" fill="url(#cardGrad)"/>
+
+  <!-- Tip headline inside card -->
+  <text x="118" y="550" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="56" fill="#f97316" letter-spacing="2">ALWAYS UPLOAD YOUR</text>
+  <text x="118" y="616" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="56" fill="#f97316" letter-spacing="2">RFI LOG ALONGSIDE</text>
+  <text x="118" y="682" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="56" fill="#f97316" letter-spacing="2">BLUEPRINTS.</text>
+
+  <!-- Body text inside card -->
+  <text x="118" y="744" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#a0a0a0">Cross-referencing both documents is where</text>
+  <text x="118" y="782" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#a0a0a0">AI catches the most coordination gaps.</text>
+
+  <!-- Second paragraph -->
+  <text x="118" y="840" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#3a3a3a" opacity="0.8" fill-opacity="1">Most teams don't do this manually</text>
+  <text x="118" y="872" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#a0a0a0" opacity="0.75">— it takes too long.</text>
+
+  <!-- Why this matters section -->
+  <rect x="80" y="940" width="920" height="180" rx="12" fill="#232323" stroke="#3a3a3a" stroke-width="1.5"/>
+  <text x="118" y="990" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#f97316" letter-spacing="2">WHY IT MATTERS</text>
+  <text x="118" y="1030" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#e8e8e8">Coordination gaps are the #1 source of</text>
+  <text x="118" y="1066" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#e8e8e8">construction cost overruns.</text>
+  <text x="118" y="1100" font-family="'DM Sans', system-ui, sans-serif" font-size="26" fill="#a0a0a0">AI finds them in minutes, not days.</text>
+
+  <!-- Checklist items -->
+  <rect x="80" y="1170" width="14" height="14" rx="3" fill="#f97316"/>
+  <text x="112" y="1183" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#e8e8e8">Upload blueprints</text>
+
+  <rect x="80" y="1222" width="14" height="14" rx="3" fill="#f97316"/>
+  <text x="112" y="1235" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#e8e8e8">Upload RFI log alongside</text>
+
+  <rect x="80" y="1274" width="14" height="14" rx="3" fill="#f97316"/>
+  <text x="112" y="1287" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#e8e8e8">Let AI cross-reference both</text>
+
+  <rect x="80" y="1326" width="14" height="14" rx="3" fill="#a0a0a0" opacity="0.4"/>
+  <text x="112" y="1339" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#a0a0a0">Get report in &lt;2 hours ✓</text>
+
+  <!-- Divider -->
+  <rect x="80" y="1400" width="920" height="1" fill="#3a3a3a"/>
+
+  <!-- Bottom CTA -->
+  <rect x="80" y="1440" width="920" height="190" rx="16" fill="#2e2e2e" stroke="#f97316" stroke-width="2"/>
+  <text x="540" y="1508" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#a0a0a0" letter-spacing="2">SEE WHAT FREE ASSESSMENT CATCHES</text>
+  <text x="540" y="1565" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#f97316" letter-spacing="3">→ marapone.com/contact</text>
+  <text x="540" y="1606" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="24" fill="#a0a0a0">Free · 24 hours · Zero obligation</text>
+
+  <!-- Bottom nav simulation -->
+  <rect x="0" y="1820" width="1080" height="100" fill="#1a1a1a" opacity="0.98"/>
+  <rect x="420" y="1870" width="240" height="4" rx="2" fill="#e8e8e8" opacity="0.4"/>
+
+  <!-- Watermark -->
+  <text x="540" y="1800" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#3a3a3a">@maraponehq</text>
+</svg>

@@ -1,0 +1,373 @@
+══════════════════════════════════════════════════════════════════════
+MARAPONE CONTRACTING — WEEK 3 CAPTIONS (POSTS 15–21)
+30-Day Instagram/Facebook Campaign
+@maraponehq | marapone.com
+══════════════════════════════════════════════════════════════════════
+
+
+────────────────────────────────────────────────────────────────────
+POST 15 — TESTIMONIAL GC
+Day 29 | Theme: Blueprint Coordination Error Avoidance
+────────────────────────────────────────────────────────────────────
+
+Caption:
+$320,000. That's what a blueprint coordination error would have cost one of our clients — if it had made it to the field.
+
+It didn't. Because the AI system caught it in pre-con.
+
+The conflict was between the mechanical drawings and the structural framing. The HVAC routing shown on M-series drawings ran directly through a beam that wasn't visible from that drawing set. Standard manual review missed it. The AI cross-referenced the structural drawings automatically and flagged the conflict before the subcontractor was on site.
+
+The remediation in pre-con was a design revision. The remediation in the field would have been a structural modification, scope dispute, and delay claim.
+
+"We'd been doing manual blueprint review for 20 years. It works — until it doesn't. The AI caught something we didn't. That's enough."
+— GC client, Ontario
+
+Free assessment at marapone.com/contact
+
+Hashtags:
+#ConstructionAI #BlueprintReview #GeneralContractor #ChangeOrderPrevention #ConstructionTech #RealResults #AIForContractors #ProjectManagement #ConstructionManagement #CoordinationConflicts #MEPCoordination #StructuralConflict #PreconAI #PrivateAI #OwnYourAI #Marapone #MarginProtection #ConstructionRisk #BlueprintAudit #BidSmart #FieldOperations #SubcontractorManagement #ConstructionSafety #DelayPrevention #SpecReview #ConstructionInnovation #AITestimonial #RealClients #BuildSmart #NoSaaS
+
+Facebook Copy:
+$320,000. That's the estimated cost of a single blueprint coordination conflict — if it had reached the field instead of being caught in pre-construction.
+
+It was caught in pre-construction. Because the AI system cross-referenced the mechanical and structural drawings automatically, something a manual review under time pressure missed.
+
+The conflict was specific: the HVAC routing shown on the M-series mechanical drawings ran through a structural beam that was only clearly visible on the structural framing plans. When you're doing a manual review across a 60-sheet set under bid deadline pressure, cross-referencing every MEP element against every structural member is the kind of thoroughness that gets compressed when time runs short.
+
+The AI doesn't have time pressure. It cross-referenced the full document set in 22 minutes and flagged the conflict with the relevant sheet references on both the mechanical and structural drawings.
+
+Pre-construction resolution: a design revision. A conversation between the mechanical engineer and structural engineer, documented in a revised drawing and an addendum. Cost: essentially nothing beyond the engineering time.
+
+Field resolution: structural modification, HVAC rerouting, potential schedule delay, and a scope dispute with the mechanical sub about who carries the cost. The client's project manager estimated the claim risk at $280,000–$320,000.
+
+The client is a GC in Ontario who had been doing manual blueprint review for two decades. Here's what they said:
+
+"We'd been doing manual blueprint review for 20 years. It works — until it doesn't. The AI caught something we didn't. That's enough for me."
+
+That's the honest summary of what this technology does. It doesn't replace experienced people. It catches what experienced people miss when they're working fast against a deadline.
+
+The free 24-hour assessment uses your actual documents to show you what it would find in your projects.
+
+Book at: marapone.com/contact
+
+Best Time to Post: Tuesday, 7:30–9:00 AM (GCs and PMs starting their week with planning)
+
+CTA: See what AI finds in your blueprints — free 24-hour assessment: marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+POST 16 — CASE STUDY FREIGHT
+Day 31 | Theme: Freight Broker Recovery
+────────────────────────────────────────────────────────────────────
+
+Caption:
+A regional freight broker recovered $18,400 in month one. Here's exactly how.
+
+The business was processing around 340 freight invoices per month across 6 carriers. Manual verification against contracted rates was happening — but not comprehensively. There wasn't enough team bandwidth to check every invoice at the line level.
+
+We deployed a private invoice verification system trained on their specific carrier contracts. In the first 30 days, it flagged 47 invoices with discrepancies. The categories: accessorial charges applied outside contractual scope, fuel surcharges calculated above the agreed cap, and dimensional weight billed incorrectly on 11 shipments.
+
+Total recovered after dispute resolution: $18,400. In one month.
+
+The overcharges had been accumulating for over a year before the system was in place.
+
+Free assessment — we'll run your invoices and show you what's there: marapone.com/contact
+
+Hashtags:
+#FreightBroker #FreightAudit #InvoiceRecovery #LogisticsAI #SupplyChainTech #FreightTech #CarrierBilling #Overbilling #AccessorialCharges #FuelSurcharge #InvoiceVerification #FreightInvoice #3PL #ImportExport #PrivateAI #OwnYourAI #Marapone #LogisticsEfficiency #FreightManagement #RateVerification #CaseStudy #RealResults #AIForLogistics #SupplyChain #FreightOperations #LogisticsTech #B2BAI #DisputeResolution #CarrierContracts #NoSaaS
+
+Facebook Copy:
+A regional freight broker recovered $18,400 in their first 30 days with a private AI invoice verification system. Here's exactly what happened.
+
+The business context: mid-sized freight brokerage, processing approximately 340 invoices per month across 6 active carriers. They had a manual invoice review process — an operations team member spot-checking invoices against contracted rates. But "spot-checking" at 340 invoices per month meant full line-level verification wasn't happening consistently. There wasn't enough bandwidth.
+
+What we built: a private invoice verification system trained specifically on their carrier contracts — the actual rate schedules, accessorial charge provisions, fuel surcharge tables, and dimensional weight rules negotiated with each of their 6 carriers. The system processes every invoice against the relevant contract automatically.
+
+Month one findings (47 flagged invoices):
+
+Accessorial charges applied outside contractual scope — carriers billing for services (liftgate, residential delivery, extended area) that contractually required prior authorization or were not applicable to the shipment type. 19 invoices.
+
+Fuel surcharges calculated above the agreed percentage cap — carrier applying the current published rate rather than the contracted capped rate. 17 invoices.
+
+Dimensional weight billed incorrectly — carrier applying dimensional weight calculations to shipments that fell below the contractual threshold for DIM billing. 11 invoices.
+
+Total flagged: $22,100 in potential overcharges. Total recovered after dispute resolution with carriers: $18,400. Timeline: within the first 30 days of deployment.
+
+The follow-up: a review of the prior 14 months of invoices from the same carriers identified an additional $94,000 in overcharges. Partial recovery was pursued through retroactive dispute filings.
+
+The overcharges weren't intentional fraud. They were systematic billing errors that manual spot-checking at volume simply couldn't catch consistently.
+
+The free 24-hour assessment runs a sample of your invoices through an initial analysis. No cost, no commitment — you see what the system finds in your actual freight documents.
+
+Book at: marapone.com/contact
+
+Best Time to Post: Wednesday, 8:00–10:00 AM (logistics and operations teams, numbers-focused mindset)
+
+CTA: Free assessment — run your invoices and see what's there: marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+POST 17 — BEFORE / AFTER
+Day 33 | Theme: Same Documents, Different Outcomes
+────────────────────────────────────────────────────────────────────
+
+Caption:
+Same 47 pages. Two different outcomes.
+
+Manual review — 5 hours, 45 minutes. 3 issues flagged. Submitted.
+
+AI review — 18 minutes. 11 issues flagged. 2 scope ambiguities identified. 1 spec conflict with cost implications. Submitted with full visibility.
+
+The issues the AI found were in the original document set the whole time. They didn't appear after the manual review. They were present during it. They just weren't caught — because human attention has limits, and 47 pages in under deadline pressure with three other jobs running is genuinely hard.
+
+This isn't about replacing your senior estimator. It's about giving them a second pass that doesn't cost them 5 more hours.
+
+See what the second pass finds in your documents: marapone.com/contact
+
+Hashtags:
+#BeforeAndAfter #BlueprintReview #ConstructionAI #GeneralContractor #ProjectManagement #AIForContractors #ConstructionTech #AIEfficiency #BlueprintAudit #ChangeOrderPrevention #ManualVsAI #DocumentReview #ConstructionManagement #ScopeManagement #SpecReview #PrivateAI #OwnYourAI #Marapone #BuildSmart #EstimatingAI #PreconAI #MarginProtection #ConstructionRisk #ConstructionEfficiency #RFIPrevention #RealResults #AIResults #DocumentAnalysis #ConstructionInnovation #NoSaaS
+
+Facebook Copy:
+Same 47 pages. Same project. Two different outcomes.
+
+Here's the comparison from an actual client blueprint review:
+
+Manual review:
+— Performed by: senior estimator, 12 years experience
+— Time: 5 hours, 45 minutes
+— Coordination conflicts flagged: 3
+— Scope ambiguities identified: 0
+— Spec/drawing inconsistencies: 0
+— Bid submitted
+
+AI-assisted review (same document set, same day):
+— Time: 18 minutes
+— Coordination conflicts flagged: 11
+— Scope ambiguities identified: 2 (areas where spec language was open to interpretation)
+— Spec/drawing inconsistencies: 1 (specification called for one mechanical system, drawing showed a different configuration)
+— Bid submitted with complete visibility into document-level risk
+
+The 8 coordination conflicts the manual review missed were present in the original drawing set. They didn't appear after the manual review was completed. They were there during it. The senior estimator doing the review is experienced, thorough, and good at their job — but 47 pages under deadline pressure with three other projects competing for attention means some things don't get flagged.
+
+The spec/drawing inconsistency had direct cost implications. The specification called for a higher-specification mechanical system than what was drawn. If the project was built to the drawing, the spec would have generated a change order. If it was built to the spec, the cost was different from what was bid. Either way, the inconsistency was a problem — and it was invisible until the AI surfaced it.
+
+This isn't about replacing experienced estimators. Experienced estimators make judgments that AI doesn't. It's about giving them a second pass that is thorough, fast, and doesn't cost five additional hours.
+
+The free 24-hour assessment does exactly that with your next set.
+
+Book at: marapone.com/contact
+
+Best Time to Post: Thursday, 7:30–9:00 AM (pre-deadline mindset)
+
+CTA: Get the second pass on your next set — free 24-hour assessment: marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+POST 18 — $0 PER MONTH
+Day 35 | Theme: Zero Monthly AI Cost
+────────────────────────────────────────────────────────────────────
+
+Caption:
+$0.00. That's the monthly AI cost for every client we've delivered to.
+
+Not a promotional rate. Not a first-year discount. Not "contact us for pricing."
+
+Zero. Every month. Permanently.
+
+They paid once for a system built specifically for their operation. That system runs on their infrastructure. It processes their documents. It catches what their manual process misses. And it costs them nothing beyond the electricity to run it.
+
+That's what ownership looks like. You build equity in a tool instead of building someone else's subscription revenue.
+
+Every business we work with pays once. Then it's theirs. No exceptions. No asterisks.
+
+Free assessment at marapone.com/contact — find out what a one-time build looks like for your operation.
+
+Hashtags:
+#ZeroMonthlyFee #AIOwnership #OwnYourAI #NoSubscriptions #OneTimePayment #PrivateAI #NoSaaS #AIForBusiness #B2BAI #ConstructionAI #LogisticsAI #FreightTech #ConstructionTech #AIInvestment #TechROI #DigitalTransformation #Marapone #FullHandover #SourceCode #BuildEquity #SaaSAlternative #VendorFree #AIStrategy #NoRecurringFees #BusinessOwnership #SmartInvestment #FreightBroker #GeneralContractor #ImportExport #PermanentOwnership
+
+Facebook Copy:
+$0.00. That's the monthly AI cost for every client we've delivered to.
+
+Not a promotional introductory rate. Not a first-year discount structure. Not a "contact us for enterprise pricing" situation where the number changes based on negotiation leverage. Zero. Every month. For as long as they use the system.
+
+Here's why: the businesses we build for paid once, upfront, for a system built specifically for their documents, their workflows, and their operation. That system lives on their infrastructure. It runs on their hardware. When they want to analyze a document, the processing happens inside their own network.
+
+There are no API calls to external services with per-token pricing. No cloud compute fees. No user license counts. No support tier subscriptions. No "premium features" gated behind an upgraded plan.
+
+The system runs. Their documents get analyzed. The findings come back. Nothing gets charged.
+
+The math on this is straightforward. A mid-range SaaS AI tool at $350/month costs $4,200 per year. Over five years, that's $21,000 — and you own nothing at the end. The one-time cost of a private build for a construction or logistics operation sits well below the five-year SaaS equivalent for most clients. And at the end of the build, they own the complete system with permanent zero monthly operating cost.
+
+Equity in a tool, not a contribution to someone else's ARR.
+
+The free 24-hour assessment will give you a realistic picture of what a build for your specific operation would involve and what it would cost.
+
+Book at: marapone.com/contact
+
+Best Time to Post: Friday, 12:00–1:30 PM (end-of-week, financial decision-making mindset)
+
+CTA: Find out what a one-time build looks like — free assessment: marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+POST 19 — LOGISTICS TESTIMONIAL / SMALL BUSINESS ANGLE
+Day 37 | Theme: Enterprise AI Without Enterprise Budget
+────────────────────────────────────────────────────────────────────
+
+Caption:
+Running a small import operation doesn't mean you can't have enterprise-grade AI. It means you can't afford enterprise-grade pricing.
+
+Those aren't the same problem.
+
+The AI systems we build for smaller logistics operations are functionally identical to what we'd build for a large 3PL. Same private deployment model. Same fine-tuning process on your documents. Same source code handover. The scope is sized to the volume — but the architecture and the quality don't change.
+
+"I assumed this kind of technology was for the big players. It's not. We're a 4-person import operation and our AI catches invoice discrepancies every single week."
+— Importer, British Columbia
+
+If your operation is running lean, that's exactly when accurate invoice verification and compliant customs documentation matters most. You don't have the margin to absorb the overcharges the bigger players just write off.
+
+Free assessment: marapone.com/contact
+
+Hashtags:
+#SmallBusinessAI #ImportExport #FreightBroker #LogisticsAI #SmallImporter #SupplyChainTech #FreightTech #AIForSmallBusiness #PrivateAI #OwnYourAI #Marapone #InvoiceAudit #CustomsCompliance #TradeCompliance #FreightAudit #3PL #LogisticsEfficiency #B2BAI #SmallBusiness #InboundLogistics #CarrierBilling #FreightInvoice #AccessorialCharges #ImportCompliance #AIForLogistics #AffordableAI #ScalableAI #EnterpriseAI #OwnerOperator #NoSaaS
+
+Facebook Copy:
+Running a small import operation doesn't mean you can't have enterprise-grade AI. It means you can't afford enterprise-grade pricing. Those aren't the same problem.
+
+The businesses most of the big SaaS AI platforms are designed for are enterprises — large 3PLs, global freight forwarders, importers with hundreds of containers per month. The pricing reflects that. Seat licenses, enterprise contracts, implementation fees layered on top of subscription costs. For a small or mid-sized importer, that pricing is simply not viable.
+
+But the problems are the same. A 4-person import operation paying overcharged freight invoices is losing proportionally more to those overcharges than a large logistics firm. A small broker handling 80 shipments per month dealing with a customs hold from a documentation error doesn't have the cash flow cushion to absorb it the way a large freight forwarder does.
+
+The private AI systems we build are sized to the operation. The technology doesn't change — the scope, training data, and deployment footprint are calibrated to your volume and document complexity. The architecture is the same. Private deployment. Full source code ownership. One-time payment. Zero monthly fees.
+
+One of our clients — a 4-person import operation in British Columbia — told us something that stuck: "I assumed this kind of technology was for the big players. It's not. We're a small shop and our AI catches invoice discrepancies every single week."
+
+That's the point. The businesses that can least afford to absorb overcharges, documentation errors, and compliance exposure are the ones that benefit most from automated verification.
+
+The free 24-hour assessment works for operations of any size. Send us your documents and we'll tell you exactly what we'd find.
+
+Book at: marapone.com/contact
+
+Best Time to Post: Wednesday, 5:00–7:00 PM (small business owners working late)
+
+CTA: Free assessment — works for operations of any size: marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+POST 20 — WHO WE ARE
+Day 39 | Theme: Brand Authenticity
+────────────────────────────────────────────────────────────────────
+
+Caption:
+We're not a consulting firm. We're not an agency. We build AI and hand it over.
+
+That's the whole description.
+
+No retainers. No ongoing management fees. No "AI strategy roadmap" that takes six months and produces a presentation instead of a product. We build a specific system for a specific operation, deploy it, hand it over completely, and we're done.
+
+The team is small. Canada and Italy. We've worked in and around construction and logistics for over a decade, which means we understand the documents before we train a model on them. We know what a spec conflict looks like. We know what an accessorial charge dispute involves. We build for industries we actually understand.
+
+We take on a limited number of projects so the work stays quality-focused. If we're not the right fit, we'll tell you that before you spend any money.
+
+Start with the free assessment: marapone.com/contact
+
+Hashtags:
+#WhoWeAre #BrandAuthenticity #Marapone #PrivateAI #AIOwnership #B2BAI #ConstructionAI #LogisticsAI #NoBS #RadicalHonesty #BoutiqueAI #SmallTeam #CanadianBusiness #AIForBusiness #FullHandover #OwnYourAI #NoRetainers #NoConsulting #RealBuilders #AIBuilders #ConstructionTech #FreightTech #LogisticsTech #HonestAI #Transparency #DirectBusiness #ExperiencedTeam #IndustryExperts #QualityFirst #NoSaaS
+
+Facebook Copy:
+We're not a consulting firm. We're not an agency. We're not a SaaS company. We build AI systems and hand them over. That's the whole description.
+
+Here's what that means practically:
+
+No retainers. When we finish a project, we're finished. You don't receive an invoice next month. Or the month after. The engagement ends when we hand over the complete system, and it ends completely.
+
+No strategy presentations. We don't take six months and $40,000 to produce a roadmap document that tells you what you could build. We build it. The deliverable is a functioning AI system, not a slide deck about one.
+
+No ongoing management. The system we hand over runs on your infrastructure. You control it. We designed it to run without us — because the point of building it was for you to own it, not to create a support dependency.
+
+The team is small — Canada and Italy — and most of us have spent significant time working in or adjacent to construction and logistics before we started building AI for those industries. That background matters. We understand the documents we're training models on. We know what a coordination conflict looks like in a drawing set. We know what an accessorial charge dispute involves. We understand why customs classification errors are expensive.
+
+We take on a limited number of projects. That's not manufactured scarcity — it's the practical constraint of maintaining quality on builds that require real attention to your specific documents and your specific operation.
+
+If we're not the right fit for your situation, we'll tell you that in the free assessment conversation. We'd rather have that conversation early than take on work that isn't a good match.
+
+Book at: marapone.com/contact
+
+Best Time to Post: Saturday, 9:00–11:00 AM (relaxed weekend reading, brand affinity building)
+
+CTA: Start the conversation — free assessment at marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+POST 21 — BY THE NUMBERS
+Day 41 | Theme: Stats Showcase
+────────────────────────────────────────────────────────────────────
+
+Caption:
+By the numbers: what Marapone clients actually experience.
+
+18 min — Average AI blueprint review time vs. 4–6 hours manual
+11 — Average coordination conflicts flagged per 40-50 sheet set
+12–15% — Freight invoice discrepancy rate caught by verification AI
+$18,400 — Freight overcharges recovered by one client in month one
+$0.00 — Monthly AI operating cost for every client we've delivered to
+24 hrs — Time from document submission to assessment findings
+100% — Projects with full source code and model weight handover
+
+These aren't industry benchmarks. They're from the actual projects we've completed.
+
+The free 24-hour assessment adds your numbers to that list. marapone.com/contact
+
+Hashtags:
+#ByTheNumbers #AIStats #RealResults #ConstructionAI #LogisticsAI #BlueprintReview #FreightAudit #InvoiceRecovery #PrivateAI #OwnYourAI #Marapone #AIOwnership #ConstructionTech #FreightTech #LogisticsTech #AIForBusiness #B2BAI #DataDriven #ROI #AIResults #FreightBroker #GeneralContractor #ImportExport #3PL #ChangeOrderPrevention #InvoiceVerification #ZeroMonthlyFee #OneTimePayment #FullHandover #NoSaaS
+
+Facebook Copy:
+By the numbers — what Marapone clients actually experience. Not projections. Not industry averages. Figures from completed projects.
+
+18 minutes
+Average AI blueprint review time on a 40–55 sheet drawing set. The equivalent manual review by a senior estimator averages 4–6 hours.
+
+11 coordination conflicts
+Average number of conflicts flagged per set on the projects we've reviewed. Manual review on the same sets averaged 3–4. The discrepancy reflects human cognitive load over time, not skill level.
+
+12–15%
+Average freight invoice discrepancy rate on accounts we've audited. Consistent with broader industry benchmarks, but the exact overcharge categories vary by carrier relationship and contract structure.
+
+$18,400
+Freight overcharges recovered by a regional freight broker in their first 30 days with a private invoice verification system. Follow-up retroactive review identified an additional $94,000 in prior overcharges.
+
+$0.00
+Monthly AI operating cost for every client we've delivered to. The system runs on their hardware. No external API costs. No subscription fees. No cloud compute billing.
+
+24 hours
+Turnaround time from document submission to written assessment findings. You send us documents, we return findings — not a sales pitch, specific findings about your specific documents.
+
+100%
+Percentage of completed projects that include full source code and fine-tuned model weight handover to the client. Every project. No exceptions.
+
+The free assessment is step one toward adding your numbers to this list.
+
+Book at: marapone.com/contact
+
+Best Time to Post: Tuesday, 7:00–8:30 AM (data-minded professionals starting their week)
+
+CTA: Add your numbers — free 24-hour assessment at marapone.com/contact
+
+---
+
+══════════════════════════════════════════════════════════════════════
+END OF WEEK 3 CAPTIONS
+Next file: captions_week4_posts.txt
+══════════════════════════════════════════════════════════════════════

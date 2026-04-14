@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#1e1e1e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Warning stripe bottom -->
+  <rect x="0" y="1072" width="1080" height="8" fill="#f97316"/>
+
+  <!-- Top label -->
+  <text x="72" y="80" font-family="'DM Mono', 'Courier New', monospace" font-size="18" fill="#f97316" letter-spacing="4">// LOGISTICS INTELLIGENCE</text>
+
+  <!-- Alert icon area -->
+  <polygon points="72,130 120,130 96,100" fill="none" stroke="#f97316" stroke-width="2.5"/>
+  <text x="96" y="127" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" text-anchor="middle">!</text>
+
+  <!-- Main headline -->
+  <text x="140" y="120" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="56" fill="#e8e8e8" letter-spacing="2">YOUR FREIGHT INVOICES</text>
+  <text x="140" y="176" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="56" fill="#f97316" letter-spacing="2">ARE BEING OVERBILLED.</text>
+
+  <!-- Substat box -->
+  <rect x="72" y="210" width="936" height="100" rx="6" fill="#2e2e2e"/>
+  <text x="540" y="255" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="72" fill="#f97316" text-anchor="middle" letter-spacing="3">12–15%</text>
+  <text x="540" y="290" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="20" fill="#a0a0a0" text-anchor="middle" letter-spacing="1">of freight invoices are overpaid by the average importer</text>
+
+  <!-- Three points with orange arrows -->
+  <!-- Point 1 -->
+  <rect x="72" y="336" width="920" height="100" rx="6" fill="#2e2e2e"/>
+  <rect x="72" y="336" width="5" height="100" fill="#f97316" rx="3"/>
+  <text x="110" y="370" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32" fill="#f97316" letter-spacing="2">→ INCORRECT WEIGHT CLASSIFICATIONS</text>
+  <text x="110" y="402" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0">Carrier billing errors that go unchallenged add up fast</text>
+  <text x="950" y="388" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#f97316" opacity="0.3" text-anchor="middle">01</text>
+
+  <!-- Point 2 -->
+  <rect x="72" y="454" width="920" height="100" rx="6" fill="#2e2e2e"/>
+  <rect x="72" y="454" width="5" height="100" fill="#f97316" rx="3"/>
+  <text x="110" y="488" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32" fill="#f97316" letter-spacing="2">→ DUPLICATE LINE ITEMS</text>
+  <text x="110" y="520" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0">Billed twice for accessorials your team never catches</text>
+  <text x="950" y="508" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#f97316" opacity="0.3" text-anchor="middle">02</text>
+
+  <!-- Point 3 -->
+  <rect x="72" y="572" width="920" height="100" rx="6" fill="#2e2e2e"/>
+  <rect x="72" y="572" width="5" height="100" fill="#f97316" rx="3"/>
+  <text x="110" y="606" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32" fill="#f97316" letter-spacing="2">→ WRONG TRADE LANE RATES</text>
+  <text x="110" y="638" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0">Applied at the wrong rate tier, never audited</text>
+  <text x="950" y="622" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#f97316" opacity="0.3" text-anchor="middle">03</text>
+
+  <!-- Insight box -->
+  <rect x="72" y="700" width="936" height="120" rx="6" fill="#f97316" opacity="0.08"/>
+  <rect x="72" y="700" width="6" height="120" fill="#f97316" rx="3"/>
+  <text x="110" y="746" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#e8e8e8" letter-spacing="2">AI CATCHES WHAT</text>
+  <text x="110" y="800" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#f97316" letter-spacing="2">SPREADSHEETS MISS.</text>
+
+  <!-- Divider -->
+  <rect x="72" y="848" width="936" height="1" fill="#2e2e2e"/>
+
+  <!-- Bottom info -->
+  <text x="72" y="890" font-family="'DM Mono', 'Courier New', monospace" font-size="15" fill="#a0a0a0" letter-spacing="2">MARAPONE CONTRACTING INC.</text>
+  <text x="72" y="914" font-family="'DM Mono', 'Courier New', monospace" font-size="15" fill="#a0a0a0" letter-spacing="2">PRIVATE AI — FREIGHT INVOICE AUDITOR</text>
+
+  <!-- CTA -->
+  <rect x="72" y="940" width="500" height="56" rx="4" fill="#f97316"/>
+  <text x="322" y="975" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="30" fill="#1a1a1a" text-anchor="middle" letter-spacing="3">GET FREE ASSESSMENT</text>
+
+  <!-- Handle -->
+  <text x="1008" y="975" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+</svg>

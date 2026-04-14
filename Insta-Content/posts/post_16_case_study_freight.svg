@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#222222"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="8" fill="#f97316"/>
+
+  <!-- Label -->
+  <text x="540" y="68" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" text-anchor="middle" letter-spacing="4">// CASE STUDY — LOGISTICS</text>
+
+  <!-- Big number -->
+  <text x="540" y="200" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">HOW A REGIONAL FREIGHT BROKER</text>
+  <text x="540" y="276" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">RECOVERED</text>
+  <text x="540" y="380" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="140" fill="#f97316" text-anchor="middle" letter-spacing="3">$18,400</text>
+  <text x="540" y="444" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">IN 30 DAYS.</text>
+
+  <!-- Orange rule -->
+  <rect x="190" y="468" width="700" height="3" fill="#f97316" rx="1.5"/>
+
+  <!-- Case study card -->
+  <rect x="72" y="494" width="936" height="340" rx="8" fill="#2e2e2e"/>
+  <rect x="72" y="494" width="8" height="340" fill="#f97316" rx="4"/>
+
+  <!-- Three rows -->
+  <rect x="80" y="494" width="920" height="1" fill="#3a3a3a" opacity="0"/>
+
+  <!-- Problem -->
+  <rect x="100" y="514" width="100" height="30" rx="15" fill="#c0392b" opacity="0.2"/>
+  <text x="150" y="534" font-family="'DM Mono', 'Courier New', monospace" font-size="12" fill="#c0392b" text-anchor="middle" letter-spacing="2">PROBLEM</text>
+  <text x="220" y="534" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="20" fill="#a0a0a0">Overbilled freight invoices across 3 carrier lanes</text>
+
+  <rect x="100" y="558" width="936" height="1" fill="#3a3a3a"/>
+
+  <!-- Solution -->
+  <rect x="100" y="580" width="106" height="30" rx="15" fill="#f97316" opacity="0.2"/>
+  <text x="153" y="600" font-family="'DM Mono', 'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle" letter-spacing="2">SOLUTION</text>
+  <text x="226" y="600" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="20" fill="#a0a0a0">Marapone freight invoice AI deployed locally</text>
+
+  <rect x="100" y="624" width="936" height="1" fill="#3a3a3a"/>
+
+  <!-- Result -->
+  <rect x="100" y="646" width="86" height="30" rx="15" fill="#22c55e" opacity="0.2"/>
+  <text x="143" y="666" font-family="'DM Mono', 'Courier New', monospace" font-size="12" fill="#22c55e" text-anchor="middle" letter-spacing="2">RESULT</text>
+  <text x="206" y="666" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="20" fill="#e8e8e8">$18,400 recovered in first month</text>
+
+  <rect x="100" y="690" width="936" height="1" fill="#3a3a3a"/>
+
+  <!-- Status -->
+  <rect x="100" y="712" width="86" height="30" rx="15" fill="#3b82f6" opacity="0.2"/>
+  <text x="143" y="732" font-family="'DM Mono', 'Courier New', monospace" font-size="12" fill="#3b82f6" text-anchor="middle" letter-spacing="2">STATUS</text>
+  <text x="206" y="732" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="20" fill="#a0a0a0">System still running today. No ongoing cost.</text>
+
+  <!-- Key metric cards in card -->
+  <rect x="100" y="764" width="200" height="52" rx="4" fill="#232323"/>
+  <text x="200" y="786" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316" text-anchor="middle">$0/MONTH</text>
+  <text x="200" y="806" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="13" fill="#a0a0a0" text-anchor="middle">ongoing cost</text>
+
+  <rect x="320" y="764" width="200" height="52" rx="4" fill="#232323"/>
+  <text x="420" y="786" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316" text-anchor="middle">30 DAYS</text>
+  <text x="420" y="806" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="13" fill="#a0a0a0" text-anchor="middle">to first recovery</text>
+
+  <rect x="540" y="764" width="200" height="52" rx="4" fill="#232323"/>
+  <text x="640" y="786" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316" text-anchor="middle">3 LANES</text>
+  <text x="640" y="806" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="13" fill="#a0a0a0" text-anchor="middle">audited simultaneously</text>
+
+  <!-- Bottom CTA -->
+  <rect x="72" y="858" width="936" height="72" rx="6" fill="#f97316" opacity="0.1"/>
+  <rect x="72" y="858" width="6" height="72" fill="#f97316" rx="3"/>
+  <text x="110" y="888" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="36" fill="#e8e8e8" letter-spacing="2">ONE-TIME BUILD. ZERO MONTHLY COST.</text>
+  <text x="110" y="916" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" letter-spacing="2">MARAPONE.COM/CONTACT</text>
+
+  <!-- Handle -->
+  <text x="1008" y="1040" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+</svg>

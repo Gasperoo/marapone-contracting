@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#222222"/>
+    </linearGradient>
+    <linearGradient id="leftbg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#242424"/>
+    </linearGradient>
+    <linearGradient id="rightbg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e2010"/>
+      <stop offset="100%" style="stop-color:#252515"/>
+    </linearGradient>
+    <filter id="orangeglow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Left panel - Subscription (dark) -->
+  <rect x="0" y="0" width="520" height="1080" fill="url(#leftbg)"/>
+
+  <!-- Right panel - Marapone (orange glow) -->
+  <rect x="520" y="0" width="560" height="1080" fill="url(#rightbg)"/>
+
+  <!-- Divider line -->
+  <rect x="518" y="0" width="4" height="1080" fill="#f97316"/>
+
+  <!-- Top labels -->
+  <text x="260" y="68" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32" fill="#a0a0a0" text-anchor="middle" letter-spacing="4">SUBSCRIPTION AI</text>
+  <rect x="40" y="78" width="440" height="2" fill="#2e2e2e"/>
+
+  <text x="800" y="68" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32" fill="#f97316" text-anchor="middle" letter-spacing="4">MARAPONE</text>
+  <rect x="540" y="78" width="500" height="2" fill="#f97316" opacity="0.5"/>
+
+  <!-- Left items -->
+  <text x="260" y="170" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="58" fill="#6e6e6e" text-anchor="middle" letter-spacing="2">$299/MO</text>
+  <text x="260" y="204" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#6e6e6e" text-anchor="middle">forever. it never stops.</text>
+
+  <rect x="40" y="228" width="440" height="1" fill="#2e2e2e"/>
+
+  <text x="70" y="284" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#6e6e6e">✗  Data on their servers</text>
+  <text x="70" y="334" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#6e6e6e">✗  Cancel = lose everything</text>
+  <text x="70" y="384" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#6e6e6e">✗  Price increases yearly</text>
+  <text x="70" y="434" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#6e6e6e">✗  Generic, untrained model</text>
+  <text x="70" y="484" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#6e6e6e">✗  You never own the code</text>
+  <text x="70" y="534" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#6e6e6e">✗  Dependent on their uptime</text>
+
+  <!-- Left bottom label -->
+  <rect x="40" y="600" width="440" height="56" rx="4" fill="#232323"/>
+  <text x="260" y="635" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#6e6e6e" text-anchor="middle" letter-spacing="3">RENTING</text>
+
+  <!-- Right items -->
+  <text x="800" y="170" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="58" fill="#f97316" text-anchor="middle" letter-spacing="2" filter="url(#orangeglow)">PAY ONCE</text>
+  <text x="800" y="204" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">then it's yours. forever.</text>
+
+  <rect x="540" y="228" width="500" height="1" fill="#3a3a3a"/>
+
+  <text x="566" y="284" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#e8e8e8">✓  Runs locally</text>
+  <text x="566" y="334" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#e8e8e8">✓  Own the source code</text>
+  <text x="566" y="384" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#e8e8e8">✓  No dependencies</text>
+  <text x="566" y="434" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#e8e8e8">✓  Fine-tuned on your docs</text>
+  <text x="566" y="484" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#e8e8e8">✓  Full model weights</text>
+  <text x="566" y="534" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#e8e8e8">✓  Works offline, always</text>
+
+  <!-- Right bottom label -->
+  <rect x="540" y="600" width="500" height="56" rx="4" fill="#f97316" opacity="0.15"/>
+  <rect x="540" y="600" width="4" height="56" fill="#f97316" rx="2"/>
+  <text x="800" y="635" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#f97316" text-anchor="middle" letter-spacing="3">OWNING</text>
+
+  <!-- Bottom full-width section -->
+  <rect x="0" y="690" width="1080" height="2" fill="#2e2e2e"/>
+
+  <text x="540" y="800" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="96" fill="#e8e8e8" text-anchor="middle" letter-spacing="4">OWN IT.</text>
+  <text x="540" y="896" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="96" fill="#f97316" text-anchor="middle" letter-spacing="4">DON'T RENT IT.</text>
+
+  <rect x="0" y="932" width="1080" height="2" fill="#2e2e2e"/>
+
+  <!-- Handle -->
+  <text x="1008" y="980" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+  <text x="72" y="980" font-family="'DM Mono', 'Courier New', monospace" font-size="15" fill="#a0a0a0" letter-spacing="2">MARAPONE.COM</text>
+</svg>

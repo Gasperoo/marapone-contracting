@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#232323"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="8" fill="#f97316"/>
+
+  <!-- Geometric shapes -->
+  <polygon points="1008,80 1080,80 1080,152" fill="#f97316" opacity="0.1"/>
+  <polygon points="0,928 72,1080 0,1080" fill="#f97316" opacity="0.08"/>
+
+  <!-- Top label -->
+  <text x="540" y="70" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" text-anchor="middle" letter-spacing="4">// ABOUT MARAPONE</text>
+
+  <!-- Main headline -->
+  <text x="72" y="170" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="90" fill="#e8e8e8" letter-spacing="3">WE'RE NOT A</text>
+  <text x="72" y="258" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="90" fill="#e8e8e8" letter-spacing="3">CONSULTING FIRM.</text>
+  <text x="72" y="346" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="90" fill="#f97316" letter-spacing="3">WE BUILD AND</text>
+  <text x="72" y="434" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="90" fill="#f97316" letter-spacing="3">HAND OVER.</text>
+
+  <!-- Orange rule -->
+  <rect x="72" y="454" width="600" height="3" fill="#f97316" rx="1.5"/>
+
+  <!-- Body text -->
+  <text x="72" y="506" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#a0a0a0">10+ years in construction and logistics.</text>
+  <text x="72" y="542" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#a0a0a0">We've worked the sites. We've moved the freight.</text>
+  <text x="72" y="578" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#a0a0a0">We built these tools because we needed them.</text>
+  <text x="72" y="614" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#e8e8e8">Now we build them for you.</text>
+
+  <!-- Divider -->
+  <rect x="72" y="650" width="936" height="2" fill="#2e2e2e"/>
+
+  <!-- Values row -->
+  <rect x="72" y="672" width="280" height="100" rx="6" fill="#2e2e2e"/>
+  <text x="212" y="714" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#f97316" text-anchor="middle" letter-spacing="2">SMALL TEAM</text>
+  <text x="212" y="744" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="middle">Direct access. No layers.</text>
+
+  <rect x="400" y="672" width="280" height="100" rx="6" fill="#2e2e2e"/>
+  <text x="540" y="714" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#f97316" text-anchor="middle" letter-spacing="2">HIGH STANDARDS</text>
+  <text x="540" y="744" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="middle">We won't ship bad work.</text>
+
+  <rect x="728" y="672" width="280" height="100" rx="6" fill="#2e2e2e"/>
+  <text x="868" y="714" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#f97316" text-anchor="middle" letter-spacing="2">FULL HANDOVER</text>
+  <text x="868" y="744" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="middle">Everything. No asterisks.</text>
+
+  <!-- Flag badges / locations -->
+  <rect x="72" y="806" width="936" height="80" rx="6" fill="#232323"/>
+  <text x="110" y="840" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" letter-spacing="3">BASED IN:</text>
+  <text x="230" y="840" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#e8e8e8" letter-spacing="2">  🇨🇦 CANADA  ·  🇮🇹 ITALY</text>
+  <text x="110" y="868" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#a0a0a0" letter-spacing="2">SERVING: NORTH AMERICA · EUROPE · GLOBAL TRADE</text>
+
+  <!-- Bottom tagline card -->
+  <rect x="72" y="912" width="936" height="56" rx="4" fill="#f97316" opacity="0.1"/>
+  <rect x="72" y="912" width="4" height="56" fill="#f97316" rx="2"/>
+  <text x="100" y="948" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32" fill="#f97316" letter-spacing="3">STOP RENTING YOUR AI. OWN THE ENGINE.</text>
+
+  <!-- Handle -->
+  <text x="1008" y="1024" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+</svg>

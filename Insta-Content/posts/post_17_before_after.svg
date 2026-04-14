@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="leftbg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a1010"/>
+      <stop offset="100%" style="stop-color:#221a1a"/>
+    </linearGradient>
+    <linearGradient id="rightbg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e1a10"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="topbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#232323"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#topbg)"/>
+
+  <!-- Left panel -->
+  <rect x="0" y="0" width="524" height="1080" fill="url(#leftbg)"/>
+  <!-- Right panel -->
+  <rect x="556" y="0" width="524" height="1080" fill="url(#rightbg)"/>
+
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Divider -->
+  <rect x="518" y="0" width="44" height="1080" fill="#1a1a1a"/>
+  <rect x="538" y="0" width="4" height="1080" fill="#f97316"/>
+
+  <!-- Top label -->
+  <text x="540" y="66" font-family="'DM Mono', 'Courier New', monospace" font-size="15" fill="#f97316" text-anchor="middle" letter-spacing="4">// BEFORE / AFTER</text>
+  <rect x="72" y="76" width="936" height="2" fill="#2e2e2e"/>
+
+  <!-- Main headline -->
+  <text x="540" y="140" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="60" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">THIS IS WHAT DOCUMENT REVIEW</text>
+  <text x="540" y="196" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="60" fill="#f97316" text-anchor="middle" letter-spacing="3">LOOKS LIKE NOW.</text>
+  <rect x="72" y="212" width="936" height="2" fill="#2e2e2e"/>
+
+  <!-- LEFT - BEFORE header -->
+  <text x="260" y="268" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#c0392b" text-anchor="middle" letter-spacing="4">BEFORE</text>
+  <rect x="36" y="282" width="448" height="2" fill="#c0392b" opacity="0.4"/>
+
+  <!-- Left scenario -->
+  <text x="260" y="340" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#a0a0a0" text-anchor="middle" letter-spacing="2">MONDAY MORNING</text>
+  <text x="260" y="406" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="64" fill="#c0392b" text-anchor="middle" letter-spacing="2">47</text>
+  <text x="260" y="444" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">pages of drawings</text>
+
+  <rect x="80" y="470" width="360" height="1" fill="#2e2e2e"/>
+
+  <text x="260" y="516" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="48" fill="#c0392b" text-anchor="middle">3 PEOPLE</text>
+  <text x="260" y="556" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">assigned to the job</text>
+
+  <rect x="80" y="574" width="360" height="1" fill="#2e2e2e"/>
+
+  <text x="260" y="620" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="48" fill="#c0392b" text-anchor="middle">5 HOURS</text>
+  <text x="260" y="660" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">lost to manual review</text>
+
+  <rect x="80" y="678" width="360" height="1" fill="#2e2e2e"/>
+
+  <text x="260" y="724" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="48" fill="#c0392b" text-anchor="middle">2 MISSED</text>
+  <text x="260" y="764" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">critical items in the bid</text>
+
+  <!-- RIGHT - AFTER header -->
+  <text x="820" y="268" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#f97316" text-anchor="middle" letter-spacing="4">AFTER</text>
+  <rect x="596" y="282" width="448" height="2" fill="#f97316" opacity="0.6"/>
+
+  <!-- Right scenario -->
+  <text x="820" y="340" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#a0a0a0" text-anchor="middle" letter-spacing="2">MONDAY MORNING</text>
+  <text x="820" y="406" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="64" fill="#f97316" text-anchor="middle" letter-spacing="2">47</text>
+  <text x="820" y="444" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">same pages of drawings</text>
+
+  <rect x="600" y="470" width="360" height="1" fill="#2e2e2e"/>
+
+  <text x="820" y="516" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="48" fill="#f97316" text-anchor="middle">1 UPLOAD</text>
+  <text x="820" y="556" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">to the AI system</text>
+
+  <rect x="600" y="574" width="360" height="1" fill="#2e2e2e"/>
+
+  <text x="820" y="620" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="48" fill="#f97316" text-anchor="middle">54 MINUTES</text>
+  <text x="820" y="660" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">full review complete</text>
+
+  <rect x="600" y="678" width="360" height="1" fill="#2e2e2e"/>
+
+  <text x="820" y="724" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="48" fill="#f97316" text-anchor="middle">ZERO</text>
+  <text x="820" y="764" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="18" fill="#a0a0a0" text-anchor="middle">missed items</text>
+
+  <!-- Bottom tagline -->
+  <rect x="0" y="820" width="1080" height="100" fill="#232323"/>
+  <text x="540" y="866" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">SAME DOCUMENTS.</text>
+  <text x="540" y="910" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#f97316" text-anchor="middle" letter-spacing="3">DIFFERENT INTELLIGENCE.</text>
+
+  <!-- Handle -->
+  <text x="1008" y="980" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+  <text x="72" y="980" font-family="'DM Mono', 'Courier New', monospace" font-size="15" fill="#a0a0a0" letter-spacing="2">MARAPONE.COM</text>
+</svg>

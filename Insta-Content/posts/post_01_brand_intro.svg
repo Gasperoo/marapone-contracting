@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.06"/>
+    </pattern>
+    <linearGradient id="bggrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#232323;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="orangeglow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#fb923c;stop-opacity:0.6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bggrad)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Left orange accent bar -->
+  <rect x="72" y="80" width="6" height="920" fill="url(#orangeglow)" rx="3"/>
+
+  <!-- Top label -->
+  <text x="100" y="118" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#f97316" letter-spacing="3">// WHO WE ARE</text>
+
+  <!-- Decorative corner lines top right -->
+  <line x1="900" y1="80" x2="1008" y2="80" stroke="#f97316" stroke-width="1.5" opacity="0.4"/>
+  <line x1="1008" y1="80" x2="1008" y2="188" stroke="#f97316" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Decorative corner lines bottom left -->
+  <line x1="72" y1="1000" x2="180" y2="1000" stroke="#f97316" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Geometric orange accent shapes -->
+  <polygon points="950,200 1008,200 1008,258" fill="#f97316" opacity="0.15"/>
+  <rect x="880" y="480" width="80" height="4" fill="#f97316" opacity="0.3" rx="2"/>
+  <rect x="880" y="500" width="50" height="4" fill="#f97316" opacity="0.2" rx="2"/>
+  <rect x="880" y="520" width="65" height="4" fill="#f97316" opacity="0.15" rx="2"/>
+
+  <!-- Circle accent -->
+  <circle cx="970" cy="700" r="120" fill="none" stroke="#f97316" stroke-width="1" opacity="0.08"/>
+  <circle cx="970" cy="700" r="80" fill="none" stroke="#f97316" stroke-width="1" opacity="0.12"/>
+
+  <!-- Main headline: MEET MARAPONE. -->
+  <text x="100" y="260" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-weight="400" font-size="148" fill="#e8e8e8" letter-spacing="4">MEET</text>
+  <text x="100" y="410" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-weight="400" font-size="148" fill="#f97316" letter-spacing="4">MARAPONE.</text>
+
+  <!-- Orange rule -->
+  <rect x="100" y="435" width="600" height="3" fill="#f97316" rx="1.5"/>
+
+  <!-- Subtitle -->
+  <text x="100" y="490" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="30" fill="#a0a0a0" letter-spacing="1">Private AI for Construction &amp; Logistics.</text>
+
+  <!-- Body text -->
+  <text x="100" y="580" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="28" fill="#e8e8e8" letter-spacing="0.5">We build AI systems you actually own.</text>
+  <text x="100" y="622" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="28" fill="#a0a0a0" letter-spacing="0.5">No subscriptions. No data sharing.</text>
+  <text x="100" y="664" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="28" fill="#a0a0a0" letter-spacing="0.5">No monthly fees. Just results.</text>
+
+  <!-- Divider -->
+  <rect x="100" y="710" width="200" height="2" fill="#2e2e2e" rx="1"/>
+
+  <!-- Bottom logo area -->
+  <rect x="100" y="750" width="280" height="60" rx="4" fill="#2e2e2e"/>
+  <rect x="104" y="754" width="6" height="52" fill="#f97316" rx="2"/>
+  <text x="124" y="779" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#e8e8e8" letter-spacing="3">MARAPONE</text>
+  <text x="124" y="798" font-family="'DM Mono', 'Courier New', monospace" font-size="11" fill="#f97316" letter-spacing="2">CONTRACTING INC.</text>
+
+  <!-- Tag line badge -->
+  <rect x="100" y="838" width="620" height="44" rx="4" fill="#2e2e2e"/>
+  <text x="124" y="866" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" letter-spacing="2">Stop Renting Your AI. Own the Engine.</text>
+
+  <!-- Handle -->
+  <text x="980" y="1020" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+
+  <!-- Bottom right decorative -->
+  <line x1="900" y1="1000" x2="1008" y2="1000" stroke="#f97316" stroke-width="1.5" opacity="0.4"/>
+  <line x1="1008" y1="892" x2="1008" y2="1000" stroke="#f97316" stroke-width="1.5" opacity="0.4"/>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.04"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <radialGradient id="orangeglow" cx="50%" cy="42%" r="45%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.22"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="finalbar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="50%" style="stop-color:#fb923c"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+  <rect width="1080" height="1080" fill="url(#orangeglow)"/>
+
+  <!-- Concentric ring glow behind headline -->
+  <circle cx="540" cy="430" r="420" fill="none" stroke="#f97316" stroke-width="1" opacity="0.03"/>
+  <circle cx="540" cy="430" r="360" fill="none" stroke="#f97316" stroke-width="1" opacity="0.04"/>
+  <circle cx="540" cy="430" r="300" fill="none" stroke="#f97316" stroke-width="1" opacity="0.05"/>
+  <circle cx="540" cy="430" r="240" fill="none" stroke="#f97316" stroke-width="1" opacity="0.06"/>
+
+  <!-- Top bars -->
+  <rect x="0" y="0" width="1080" height="6" fill="url(#finalbar)"/>
+
+  <!-- Top label -->
+  <text x="540" y="66" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" text-anchor="middle" letter-spacing="5">// 30 DAYS. ONE MESSAGE.</text>
+  <rect x="190" y="78" width="700" height="1.5" fill="#f97316" opacity="0.3"/>
+
+  <!-- Day count badge -->
+  <rect x="440" y="98" width="200" height="48" rx="24" fill="#f97316" opacity="0.12"/>
+  <rect x="440" y="98" width="200" height="48" rx="24" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="540" y="130" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="26" fill="#f97316" text-anchor="middle" letter-spacing="4">DAY 30</text>
+
+  <!-- MAIN HEADLINE - large with glow -->
+  <text x="540" y="268" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="66" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">STOP RENTING</text>
+  <text x="540" y="374" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="66" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">YOUR</text>
+  <text x="540" y="480" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="130" fill="#f97316" text-anchor="middle" letter-spacing="4" filter="url(#glow)">INTELLIGENCE.</text>
+
+  <!-- Rule -->
+  <rect x="190" y="508" width="700" height="2" fill="url(#finalbar)"/>
+
+  <!-- Industries row -->
+  <text x="540" y="556" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="middle" letter-spacing="1">Construction Firms  ·  Logistics Operations  ·  B2B Companies</text>
+
+  <!-- Key message -->
+  <rect x="190" y="578" width="700" height="2" fill="#2e2e2e"/>
+
+  <text x="540" y="630" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#e8e8e8" text-anchor="middle">The AI you own outperforms</text>
+  <text x="540" y="664" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="24" fill="#e8e8e8" text-anchor="middle">the AI you rent — every time.</text>
+
+  <!-- Three value pillars -->
+  <rect x="72" y="704" width="284" height="80" rx="6" fill="#2e2e2e"/>
+  <text x="214" y="738" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316" text-anchor="middle" letter-spacing="2">FREE</text>
+  <text x="214" y="762" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="15" fill="#a0a0a0" text-anchor="middle">24-hour assessment</text>
+
+  <rect x="398" y="704" width="284" height="80" rx="6" fill="#2e2e2e"/>
+  <text x="540" y="738" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316" text-anchor="middle" letter-spacing="2">NO OBLIGATIONS</text>
+  <text x="540" y="762" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="15" fill="#a0a0a0" text-anchor="middle">no pitch, no pressure</text>
+
+  <rect x="724" y="704" width="284" height="80" rx="6" fill="#2e2e2e"/>
+  <text x="866" y="738" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316" text-anchor="middle" letter-spacing="2">REAL RESULTS</text>
+  <text x="866" y="762" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="15" fill="#a0a0a0" text-anchor="middle">see it before you commit</text>
+
+  <!-- Final CTA -->
+  <rect x="72" y="816" width="936" height="100" rx="8" fill="url(#finalbar)"/>
+  <text x="540" y="862" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="56" fill="#0a0a0a" text-anchor="middle" letter-spacing="4">MARAPONE.COM</text>
+  <text x="540" y="902" font-family="'DM Mono', 'Courier New', monospace" font-size="18" fill="#0a0a0a" text-anchor="middle" letter-spacing="3">FREE ASSESSMENT · marapone.com/contact</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="1074" width="1080" height="6" fill="url(#finalbar)"/>
+
+  <!-- Handle -->
+  <text x="1008" y="970" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+  <text x="72" y="970" font-family="'DM Mono', 'Courier New', monospace" font-size="15" fill="#a0a0a0" letter-spacing="2">MARAPONE CONTRACTING INC.</text>
+</svg>

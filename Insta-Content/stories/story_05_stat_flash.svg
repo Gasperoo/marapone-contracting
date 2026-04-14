@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <radialGradient id="statGlow" cx="50%" cy="42%" r="35%">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dotGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.2" fill="#2e2e2e"/>
+    </pattern>
+  </defs>
+
+  <!-- Dark background -->
+  <rect width="1080" height="1920" fill="#1a1a1a"/>
+  <rect width="1080" height="1920" fill="url(#dotGrid)" opacity="0.6"/>
+
+  <!-- Glow -->
+  <ellipse cx="540" cy="820" rx="480" ry="340" fill="url(#statGlow)"/>
+
+  <!-- Top header bar -->
+  <rect x="0" y="0" width="1080" height="180" fill="#1a1a1a" opacity="0.98"/>
+  <rect x="40" y="52" width="980" height="3" rx="2" fill="#2e2e2e"/>
+  <rect x="40" y="52" width="520" height="3" rx="2" fill="#f97316"/>
+
+  <!-- Profile -->
+  <circle cx="72" cy="110" r="34" fill="#232323" stroke="#f97316" stroke-width="2.5"/>
+  <text x="72" y="117" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316">MC</text>
+  <text x="118" y="104" font-family="'DM Sans', system-ui, sans-serif" font-size="28" font-weight="700" fill="#e8e8e8">maraponehq</text>
+  <text x="118" y="130" font-family="'DM Sans', system-ui, sans-serif" font-size="22" fill="#a0a0a0">Marapone Contracting Inc.</text>
+  <text x="1020" y="118" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="32" fill="#a0a0a0">✕</text>
+
+  <!-- Label -->
+  <text x="540" y="310" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="28" fill="#f97316" letter-spacing="4">// DID YOU KNOW</text>
+
+  <!-- Thin line decoration -->
+  <rect x="340" y="328" width="400" height="1.5" fill="#2e2e2e"/>
+
+  <!-- Massive $0 stat -->
+  <text x="540" y="680" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="380" fill="#f97316" letter-spacing="-5">$0</text>
+
+  <!-- PER MONTH label -->
+  <text x="540" y="760" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="80" fill="#e8e8e8" letter-spacing="8">PER MONTH</text>
+
+  <!-- Orange rule -->
+  <rect x="200" y="800" width="680" height="3" rx="1.5" fill="#f97316" opacity="0.5"/>
+
+  <!-- Explanatory line -->
+  <text x="540" y="876" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="34" fill="#e8e8e8">is what Marapone clients pay</text>
+  <text x="540" y="920" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="34" fill="#e8e8e8">in AI subscriptions.</text>
+
+  <text x="540" y="992" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="32" font-weight="600" fill="#f97316">Because they own their system outright.</text>
+
+  <!-- Comparison card -->
+  <rect x="80" y="1060" width="920" height="180" rx="16" fill="#232323" stroke="#2e2e2e" stroke-width="2"/>
+  <text x="540" y="1116" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#a0a0a0" letter-spacing="2">COMPARE</text>
+  <text x="540" y="1168" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#a0a0a0">Most SaaS AI tools charge</text>
+  <text x="540" y="1212" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#a0a0a0"><tspan font-weight="700" fill="#e8e8e8">$200–$500/month.</tspan> Forever.</text>
+
+  <!-- Two comparison blocks -->
+  <rect x="80" y="1290" width="440" height="160" rx="14" fill="#232323" stroke="#2e2e2e" stroke-width="1.5"/>
+  <text x="300" y="1348" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="20" fill="#a0a0a0">SAAS AI</text>
+  <text x="300" y="1402" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#a0a0a0">$4,800/YR</text>
+  <text x="300" y="1432" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="22" fill="#a0a0a0">avg. forever</text>
+
+  <rect x="560" y="1290" width="440" height="160" rx="14" fill="#232323" stroke="#f97316" stroke-width="2"/>
+  <text x="780" y="1348" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="20" fill="#f97316">MARAPONE</text>
+  <text x="780" y="1402" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#f97316">$0/MONTH</text>
+  <text x="780" y="1432" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="22" fill="#a0a0a0">after one-time cost</text>
+
+  <!-- CTA -->
+  <rect x="80" y="1506" width="920" height="160" rx="20" fill="#f97316"/>
+  <text x="540" y="1566" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="24" fill="#1a1a1a" letter-spacing="2">OWN YOURS</text>
+  <text x="540" y="1634" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="58" fill="#1a1a1a" letter-spacing="3">→ marapone.com</text>
+
+  <!-- Tagline -->
+  <text x="540" y="1720" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="24" fill="#3a3a3a" letter-spacing="2">NO SUBSCRIPTIONS. EVER.</text>
+
+  <!-- Bottom nav -->
+  <rect x="0" y="1820" width="1080" height="100" fill="#1a1a1a" opacity="0.98"/>
+  <rect x="420" y="1870" width="240" height="4" rx="2" fill="#e8e8e8" opacity="0.4"/>
+
+  <text x="540" y="1800" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#3a3a3a">@maraponehq</text>
+</svg>

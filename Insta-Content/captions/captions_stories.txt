@@ -1,0 +1,346 @@
+══════════════════════════════════════════════════════════════════════
+MARAPONE CONTRACTING — STORIES COPY (STORIES 01–07)
+30-Day Instagram/Facebook Campaign
+@maraponehq | marapone.com
+══════════════════════════════════════════════════════════════════════
+
+NOTES ON STORIES FORMAT:
+- Each story is a single full-screen frame or 2–3 frame sequence
+- Text overlays should be large enough to read without sound
+- All stories include a swipe-up / link sticker to marapone.com/contact
+- Stories run during Week 1–2 of campaign for warm-up, then repeat rotations during Weeks 3–4
+- Recommended posting time: 7:00–9:00 AM for max opening, or 5:00–7:00 PM for evening engagement
+
+
+────────────────────────────────────────────────────────────────────
+STORY 01 — POLL STORY
+Purpose: Engagement / Audience qualification
+Frame count: 2 frames
+────────────────────────────────────────────────────────────────────
+
+FRAME 1 — Question setup
+
+Background: Dark industrial tone (match brand palette — charcoal/black with orange accent)
+
+TEXT OVERLAY (large, centered):
+"Quick question for the GCs and freight ops in here:"
+
+SUBTEXT (slightly smaller):
+"How does your team currently review documents — blueprints, invoices, RFIs?"
+
+INTERACTIVE ELEMENT: Instagram Poll Sticker
+
+Poll option A: "Manual — our team does it"
+Poll option B: "Mix of manual + tools"
+
+Position poll sticker center-bottom.
+
+STORY LINK STICKER: "See the alternative →" → marapone.com/contact
+
+
+FRAME 2 — Follow-up (post results, post 24 hours)
+
+TEXT OVERLAY:
+"[X]% of you said manual. That makes sense."
+
+SUBTEXT:
+"Most construction and logistics teams do. The question is: what's it costing in time and catches missed?"
+
+CTA TEXT: "Find out with a free 24-hour assessment."
+
+STORY LINK STICKER: "Book the assessment →" → marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+STORY 02 — QUICK TIP
+Purpose: Value delivery / Credibility building
+Frame count: 3 frames (swipe through)
+────────────────────────────────────────────────────────────────────
+
+FRAME 1 — Hook
+
+Background: Dark, clean. Small "QUICK TIP" label top-left in orange.
+
+TEXT OVERLAY (bold, large):
+"Before your next blueprint review — do this one thing."
+
+SUBTEXT: "Swipe →"
+
+
+FRAME 2 — The tip
+
+TEXT OVERLAY:
+"Before reviewing any drawing set manually:"
+
+LIST (clean, line-by-line, each item fades in):
+"01. Pull the full spec book alongside the drawings"
+"02. Start with mechanical and structural on the same screen"
+"03. Flag any element that appears on one without a matching callout on the other"
+
+SUBTEXT (smaller):
+"That single habit catches 60–70% of the coordination conflicts that generate field RFIs."
+
+SMALL TEXT bottom:
+"Or: let AI do this cross-reference in 18 minutes."
+
+
+FRAME 3 — CTA
+
+TEXT OVERLAY (bold):
+"Want to see what AI finds in your next set?"
+
+SUBTEXT:
+"Free 24-hour assessment. Your documents. Real findings."
+
+STORY LINK STICKER: "Get the assessment →" → marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+STORY 03 — PROCESS WALKTHROUGH
+Purpose: Education / Demystify private AI
+Frame count: 4 frames
+────────────────────────────────────────────────────────────────────
+
+FRAME 1 — Intro
+
+Background: Clean dark with orange accent line.
+
+LABEL: "HOW IT WORKS" (orange, small caps, top)
+
+TEXT OVERLAY (large):
+"Private AI in 4 steps."
+
+SUBTEXT: "Swipe to see the full process →"
+
+
+FRAME 2 — Steps 1–2
+
+STEP 1 label (orange):
+"FINE-TUNE"
+TEXT: "We train a private model on your actual documents. Your blueprints, your freight agreements, your project history. The model learns your document types — not generic patterns."
+
+[spacer line]
+
+STEP 2 label (orange):
+"LOCAL DEPLOY"
+TEXT: "The trained model installs on your infrastructure. Your server, your private cloud, your facility. It runs inside your network."
+
+
+FRAME 3 — Steps 3–4
+
+STEP 3 label (orange):
+"NO EXTERNAL CALLS"
+TEXT: "Every analysis runs inside your network. No data sent out. No internet dependency. Your documents never leave."
+
+[spacer line]
+
+STEP 4 label (orange):
+"YOU OWN IT"
+TEXT: "Full source code + model weights handed to you. We walk away. Your AI keeps running — forever, with zero monthly fees."
+
+
+FRAME 4 — CTA
+
+TEXT OVERLAY (bold, large):
+"That's private AI."
+
+SUBTEXT:
+"Want to see what it looks like for your operation?"
+
+STORY LINK STICKER: "Book free assessment →" → marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+STORY 04 — TESTIMONIAL STORY
+Purpose: Social proof / Trust
+Frame count: 2 frames
+────────────────────────────────────────────────────────────────────
+
+FRAME 1 — Quote
+
+Background: Dark. Single quote, large, centered. No clutter.
+
+LABEL: "CLIENT | GC, ONTARIO" (small, orange, top)
+
+QUOTE (large, white, serif or clean sans):
+"We'd been doing manual blueprint review for 20 years.
+It works — until it doesn't.
+The AI caught something we didn't.
+That's enough."
+
+SMALL TEXT (bottom):
+"Coordination conflict caught in pre-construction."
+"Estimated field remediation avoided: $320,000"
+
+
+FRAME 2 — Context + CTA
+
+TEXT (bold):
+"One catch. One system. One-time cost."
+
+SUBTEXT:
+"Private AI built for their project documents. Full source code handover. Zero monthly fees since delivery."
+
+CTA TEXT:
+"See what it catches in your documents."
+
+STORY LINK STICKER: "Free 24hr assessment →" → marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+STORY 05 — $0 STAT FLASH
+Purpose: Pattern interrupt / Bold claim
+Frame count: 1 frame (single high-impact story)
+────────────────────────────────────────────────────────────────────
+
+FRAME 1 — The Stat
+
+Background: Solid dark charcoal or black. Maximum contrast.
+
+LARGE NUMBER (centered, massive, orange or white):
+"$0.00"
+
+SUBTEXT BELOW (clean, white):
+"Monthly AI cost for every client we've delivered to."
+
+SMALL TEXT (bottom, subtle):
+"One-time payment. Full ownership. No ongoing fees. Ever."
+
+BRAND TAG (bottom right, small):
+"@maraponehq"
+
+STORY LINK STICKER: "How? →" → marapone.com/contact
+
+Interactive element suggestion: Add a Question Sticker below the stat:
+Question: "What are you currently paying for AI tools monthly?"
+(Engagement driver — responses show audience size of the problem)
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+STORY 06 — BEHIND THE SCENES
+Purpose: Authenticity / Brand humanity
+Frame count: 3 frames
+────────────────────────────────────────────────────────────────────
+
+FRAME 1 — Setup
+
+LABEL: "BEHIND THE BUILD" (orange, small caps)
+
+TEXT:
+"Here's what we actually spend most of our time on before a single line of code is written:"
+
+SUBTEXT: "Swipe →"
+
+
+FRAME 2 — The Process
+
+TEXT (list format, each line clean):
+
+"Reading documents.
+
+Not skimming — actually reading. A full drawing set. A carrier's rate schedule. A project's spec book. A year of freight invoices.
+
+Because you can't train a model on documents you don't understand. And you can't build something useful if you're guessing at what the documents mean."
+
+SMALL TEXT (italic, bottom):
+"Most builds: 30–40% of total time is document analysis before training begins."
+
+
+FRAME 3 — Why it matters + CTA
+
+TEXT:
+"The difference between AI that works and AI that almost works is whether the people building it understood your documents before they trained on them."
+
+SUBTEXT:
+"We come from construction and logistics. We read the documents first."
+
+STORY LINK STICKER: "See what we'd find in yours →" → marapone.com/contact
+
+---
+
+
+────────────────────────────────────────────────────────────────────
+STORY 07 — FINAL CTA
+Purpose: Conversion / Direct response
+Frame count: 2 frames
+────────────────────────────────────────────────────────────────────
+
+FRAME 1 — The Offer
+
+Background: Dark, bold. Maximum impact.
+
+LABEL: "FREE 24-HOUR ASSESSMENT" (orange, top)
+
+TEXT (large, bold):
+"Send us your documents.
+Get findings in 24 hours.
+Pay nothing."
+
+SUBTEXT:
+"Blueprints, freight invoices, RFIs, trade documents — whatever your operation works with daily."
+
+SMALL TEXT:
+"We run them through AI analysis. You get a written report of what we found. Real findings. Your actual documents. No fabricated demo environment."
+
+
+FRAME 2 — Direct CTA
+
+TEXT:
+"Three possible outcomes:"
+
+LIST:
+"01. The findings are useful — we scope a build."
+"02. The findings are marginal — you got a free document audit."
+"03. We're not the right fit — we tell you that honestly."
+
+BOLD TEXT (centered, large):
+"Any of those is fine with us."
+
+CTA TEXT (orange, prominent):
+"Start at marapone.com/contact"
+
+STORY LINK STICKER: "Book now →" → marapone.com/contact
+
+Interactive element: Countdown sticker set to end of current month
+Label: "Assessment spots available this month"
+(Creates soft urgency without false scarcity)
+
+---
+
+══════════════════════════════════════════════════════════════════════
+STORIES POSTING SCHEDULE RECOMMENDATION
+══════════════════════════════════════════════════════════════════════
+
+Week 1:
+- Story 01 (Poll) — Day 2 or 3
+- Story 02 (Quick Tip) — Day 5 or 6
+
+Week 2:
+- Story 03 (Process Walkthrough) — Day 9 or 10
+- Story 05 ($0 Flash) — Day 12 or 13
+
+Week 3:
+- Story 04 (Testimonial) — Day 17 or 18
+- Story 06 (Behind the Scenes) — Day 21 or 22
+
+Week 4:
+- Story 07 (Final CTA) — Day 25 and again Day 28–29
+- Repeat Story 01 (Poll) as a re-engagement check — Day 27
+
+All stories: post between 7:00–9:00 AM for maximum opens,
+or 5:30–7:30 PM for evening engagement window.
+
+══════════════════════════════════════════════════════════════════════
+END OF STORIES COPY
+marapone.com · @maraponehq · general@marapone.com
+══════════════════════════════════════════════════════════════════════

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#1e1e1e"/>
+    </linearGradient>
+    <linearGradient id="cardgrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2e2e2e"/>
+      <stop offset="100%" style="stop-color:#262626"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Orange diagonal slash accent -->
+  <polygon points="0,0 200,0 0,200" fill="#f97316" opacity="0.05"/>
+  <polygon points="1080,880 1080,1080 880,1080" fill="#f97316" opacity="0.05"/>
+
+  <!-- Top stripe -->
+  <rect x="0" y="0" width="1080" height="8" fill="#f97316"/>
+
+  <!-- Warning tag -->
+  <rect x="72" y="60" width="200" height="36" rx="4" fill="#f97316" opacity="0.12"/>
+  <rect x="72" y="60" width="4" height="36" fill="#f97316" rx="2"/>
+  <text x="88" y="84" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" letter-spacing="3">ATTENTION</text>
+
+  <!-- Main headline -->
+  <text x="72" y="200" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="116" fill="#e8e8e8" letter-spacing="3">YOU'RE RENTING</text>
+  <text x="72" y="316" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="116" fill="#e8e8e8" letter-spacing="3">YOUR</text>
+  <text x="72" y="432" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="116" fill="#f97316" letter-spacing="3">INTELLIGENCE.</text>
+
+  <!-- Subheadline -->
+  <text x="72" y="504" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" letter-spacing="0.3">Every month you pay for AI tools, you're funding someone else's</text>
+  <text x="72" y="532" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" letter-spacing="0.3">business — not building yours.</text>
+
+  <!-- Divider line -->
+  <rect x="72" y="562" width="936" height="1.5" fill="#2e2e2e"/>
+
+  <!-- Bullet points with orange dots -->
+  <circle cx="88" cy="617" r="7" fill="#f97316"/>
+  <text x="114" y="625" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="26" fill="#e8e8e8" letter-spacing="0.3">Your data trains their models</text>
+
+  <circle cx="88" cy="681" r="7" fill="#f97316"/>
+  <text x="114" y="689" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="26" fill="#e8e8e8" letter-spacing="0.3">Cancel anytime means lose everything</text>
+
+  <circle cx="88" cy="745" r="7" fill="#f97316"/>
+  <text x="114" y="753" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="26" fill="#e8e8e8" letter-spacing="0.3">Prices go up. Control goes down.</text>
+
+  <!-- Divider -->
+  <rect x="72" y="792" width="936" height="1.5" fill="#2e2e2e"/>
+
+  <!-- CTA -->
+  <rect x="72" y="820" width="680" height="80" rx="6" fill="#2e2e2e"/>
+  <rect x="72" y="820" width="8" height="80" fill="#f97316" rx="4"/>
+  <text x="100" y="858" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="42" fill="#f97316" letter-spacing="3">THERE'S A BETTER WAY.</text>
+  <text x="100" y="886" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#a0a0a0" letter-spacing="2">MARAPONE.COM</text>
+
+  <!-- Geometric accents -->
+  <rect x="900" y="820" width="108" height="80" rx="6" fill="#f97316" opacity="0.08"/>
+  <text x="954" y="857" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="18" fill="#f97316" text-anchor="middle" letter-spacing="2">OWN</text>
+  <text x="954" y="879" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="18" fill="#f97316" text-anchor="middle" letter-spacing="2">IT</text>
+
+  <!-- Handle -->
+  <text x="1008" y="1040" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+
+  <!-- Right side decorative vertical line -->
+  <rect x="1004" y="120" width="2" height="660" fill="#f97316" opacity="0.08" rx="1"/>
+</svg>

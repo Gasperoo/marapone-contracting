@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#232323"/>
+    </linearGradient>
+    <radialGradient id="orangeGlow" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ctaBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#232323"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <pattern id="dotGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.2" fill="#3a3a3a"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+  <rect width="1080" height="1920" fill="url(#dotGrid)" opacity="0.3"/>
+
+  <!-- Orange glow behind quote -->
+  <ellipse cx="540" cy="800" rx="500" ry="400" fill="url(#orangeGlow)"/>
+
+  <!-- Top header bar -->
+  <rect x="0" y="0" width="1080" height="180" fill="#1a1a1a" opacity="0.95"/>
+  <rect x="40" y="52" width="980" height="3" rx="2" fill="#3a3a3a"/>
+  <rect x="40" y="52" width="780" height="3" rx="2" fill="#f97316"/>
+
+  <!-- Profile -->
+  <circle cx="72" cy="110" r="34" fill="#2e2e2e" stroke="#f97316" stroke-width="2.5"/>
+  <text x="72" y="117" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316">MC</text>
+  <text x="118" y="104" font-family="'DM Sans', system-ui, sans-serif" font-size="28" font-weight="700" fill="#e8e8e8">maraponehq</text>
+  <text x="118" y="130" font-family="'DM Sans', system-ui, sans-serif" font-size="22" fill="#a0a0a0">Marapone Contracting Inc.</text>
+  <text x="1020" y="118" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="32" fill="#a0a0a0">✕</text>
+
+  <!-- Label -->
+  <text x="540" y="280" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="24" fill="#f97316" letter-spacing="3">// CLIENT RESULT</text>
+
+  <!-- Large decorative quote marks -->
+  <text x="80" y="440" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="220" fill="#f97316" opacity="0.18">"</text>
+  <text x="820" y="1020" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="220" fill="#f97316" opacity="0.18">"</text>
+
+  <!-- Quote card -->
+  <rect x="60" y="350" width="960" height="600" rx="20" fill="#2e2e2e" stroke="#3a3a3a" stroke-width="1.5"/>
+  <rect x="60" y="350" width="8" height="600" rx="4" fill="#f97316"/>
+
+  <!-- Quote text -->
+  <text x="104" y="436" font-family="'DM Sans', system-ui, sans-serif" font-size="34" font-weight="600" fill="#e8e8e8">"I submitted 3 months of freight</text>
+  <text x="104" y="484" font-family="'DM Sans', system-ui, sans-serif" font-size="34" font-weight="600" fill="#e8e8e8">invoices. The AI found</text>
+  <text x="104" y="556" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="100" fill="#f97316" letter-spacing="2">$12,000</text>
+  <text x="104" y="618" font-family="'DM Sans', system-ui, sans-serif" font-size="34" font-weight="600" fill="#e8e8e8">in overcharges in under 2 hours.</text>
+
+  <rect x="104" y="650" width="60" height="2" fill="#3a3a3a"/>
+
+  <text x="104" y="700" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#a0a0a0">My team would have taken</text>
+  <text x="104" y="742" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#a0a0a0">a week to find the same."</text>
+
+  <!-- Attribution -->
+  <text x="104" y="806" font-family="'DM Mono', 'Courier New', monospace" font-size="26" fill="#f97316">— Freight Broker, Regional Operations</text>
+  <text x="104" y="842" font-family="'DM Sans', system-ui, sans-serif" font-size="24" fill="#a0a0a0">Verified assessment client, 2025</text>
+
+  <!-- Stars -->
+  <text x="540" y="1020" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="52" fill="#f97316">★★★★★</text>
+  <text x="540" y="1068" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="24" fill="#a0a0a0">5.0 · Verified result</text>
+
+  <!-- Divider -->
+  <rect x="80" y="1110" width="920" height="1.5" fill="#3a3a3a"/>
+
+  <!-- MARAPONE logo area -->
+  <text x="540" y="1196" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#e8e8e8" letter-spacing="6">MARAPONE</text>
+  <text x="540" y="1240" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#a0a0a0" letter-spacing="4">CONTRACTING INC.</text>
+
+  <!-- CTA bottom half -->
+  <rect x="60" y="1300" width="960" height="220" rx="20" fill="#232323" stroke="#f97316" stroke-width="2.5"/>
+  <text x="540" y="1372" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#a0a0a0" letter-spacing="2">YOUR RESULT IS WAITING</text>
+  <text x="540" y="1438" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="64" fill="#f97316" letter-spacing="2">FREE ASSESSMENT</text>
+  <text x="540" y="1494" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#a0a0a0">marapone.com/contact</text>
+
+  <!-- Result stats row -->
+  <rect x="60" y="1558" width="455" height="120" rx="14" fill="#2e2e2e"/>
+  <text x="287" y="1610" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#f97316">$12K</text>
+  <text x="287" y="1648" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="24" fill="#a0a0a0">Found in overcharges</text>
+
+  <rect x="565" y="1558" width="455" height="120" rx="14" fill="#2e2e2e"/>
+  <text x="792" y="1610" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#f97316">&lt;2 HRS</text>
+  <text x="792" y="1648" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="24" fill="#a0a0a0">vs. 1 week manually</text>
+
+  <!-- Bottom nav -->
+  <rect x="0" y="1820" width="1080" height="100" fill="#1a1a1a" opacity="0.98"/>
+  <rect x="420" y="1870" width="240" height="4" rx="2" fill="#e8e8e8" opacity="0.4"/>
+
+  <text x="540" y="1800" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#3a3a3a">@maraponehq</text>
+</svg>

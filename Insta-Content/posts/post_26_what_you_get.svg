@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#222222"/>
+    </linearGradient>
+    <linearGradient id="ctabtn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fb923c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Left accent bar -->
+  <rect x="0" y="0" width="8" height="1080" fill="#f97316"/>
+
+  <!-- Top label -->
+  <text x="36" y="72" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" letter-spacing="4">// DELIVERABLES — WHAT YOU RECEIVE</text>
+
+  <!-- Main headline -->
+  <text x="36" y="178" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="88" fill="#e8e8e8" letter-spacing="3">HERE'S EXACTLY</text>
+  <text x="36" y="266" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="88" fill="#f97316" letter-spacing="3">WHAT YOU RECEIVE.</text>
+
+  <!-- Rule -->
+  <rect x="36" y="286" width="700" height="3" fill="#f97316" rx="1.5"/>
+
+  <!-- Checklist items -->
+  <!-- Item 1 -->
+  <rect x="36" y="310" width="936" height="68" rx="4" fill="#2e2e2e"/>
+  <circle cx="76" cy="344" r="16" fill="#f97316" opacity="0.2"/>
+  <circle cx="76" cy="344" r="16" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="76" y="350" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" text-anchor="middle">✓</text>
+  <text x="110" y="340" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#e8e8e8" letter-spacing="2">Fine-tuned AI model</text>
+  <text x="110" y="364" font-family="'DM Mono', 'Courier New', monospace" font-size="13" fill="#a0a0a0" letter-spacing="1">Model weights included — runs on your hardware</text>
+
+  <!-- Item 2 -->
+  <rect x="36" y="392" width="936" height="68" rx="4" fill="#2e2e2e"/>
+  <circle cx="76" cy="426" r="16" fill="#f97316" opacity="0.2"/>
+  <circle cx="76" cy="426" r="16" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="76" y="432" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" text-anchor="middle">✓</text>
+  <text x="110" y="422" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#e8e8e8" letter-spacing="2">Full source code</text>
+  <text x="110" y="446" font-family="'DM Mono', 'Courier New', monospace" font-size="13" fill="#a0a0a0" letter-spacing="1">No black boxes. No obfuscation. All yours.</text>
+
+  <!-- Item 3 -->
+  <rect x="36" y="474" width="936" height="68" rx="4" fill="#2e2e2e"/>
+  <circle cx="76" cy="508" r="16" fill="#f97316" opacity="0.2"/>
+  <circle cx="76" cy="508" r="16" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="76" y="514" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" text-anchor="middle">✓</text>
+  <text x="110" y="504" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#e8e8e8" letter-spacing="2">Deployment to your machine/server</text>
+  <text x="110" y="528" font-family="'DM Mono', 'Courier New', monospace" font-size="13" fill="#a0a0a0" letter-spacing="1">We set it up and make sure it runs</text>
+
+  <!-- Item 4 -->
+  <rect x="36" y="556" width="936" height="68" rx="4" fill="#2e2e2e"/>
+  <circle cx="76" cy="590" r="16" fill="#f97316" opacity="0.2"/>
+  <circle cx="76" cy="590" r="16" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="76" y="596" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" text-anchor="middle">✓</text>
+  <text x="110" y="586" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#e8e8e8" letter-spacing="2">Documentation and training</text>
+  <text x="110" y="610" font-family="'DM Mono', 'Courier New', monospace" font-size="13" fill="#a0a0a0" letter-spacing="1">Written docs + video walkthroughs for your team</text>
+
+  <!-- Item 5 -->
+  <rect x="36" y="638" width="936" height="68" rx="4" fill="#2e2e2e"/>
+  <circle cx="76" cy="672" r="16" fill="#f97316" opacity="0.2"/>
+  <circle cx="76" cy="672" r="16" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="76" y="678" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" text-anchor="middle">✓</text>
+  <text x="110" y="668" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#e8e8e8" letter-spacing="2">Walkthrough calls</text>
+  <text x="110" y="692" font-family="'DM Mono', 'Courier New', monospace" font-size="13" fill="#a0a0a0" letter-spacing="1">Live sessions to review the system with your team</text>
+
+  <!-- Item 6 -->
+  <rect x="36" y="720" width="936" height="68" rx="4" fill="#2e2e2e"/>
+  <circle cx="76" cy="754" r="16" fill="#f97316" opacity="0.2"/>
+  <circle cx="76" cy="754" r="16" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <text x="76" y="760" font-family="'DM Mono', 'Courier New', monospace" font-size="14" fill="#f97316" text-anchor="middle">✓</text>
+  <text x="110" y="750" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="28" fill="#e8e8e8" letter-spacing="2">30-day support window</text>
+  <text x="110" y="774" font-family="'DM Mono', 'Courier New', monospace" font-size="13" fill="#a0a0a0" letter-spacing="1">Included with every build. 90-day on Plus tier.</text>
+
+  <!-- Everything no asterisks -->
+  <rect x="36" y="818" width="936" height="60" rx="4" fill="#f97316" opacity="0.1"/>
+  <rect x="36" y="818" width="4" height="60" fill="#f97316" rx="2"/>
+  <text x="540" y="855" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="38" fill="#f97316" text-anchor="middle" letter-spacing="3">EVERYTHING. NO ASTERISKS.</text>
+
+  <!-- Pricing -->
+  <rect x="36" y="900" width="936" height="72" rx="6" fill="#2e2e2e"/>
+  <text x="110" y="942" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="36" fill="#e8e8e8" letter-spacing="2">STARTING FROM $1,500 CAD</text>
+  <text x="720" y="942" font-family="'DM Mono', 'Courier New', monospace" font-size="18" fill="#f97316" letter-spacing="2">ONE-TIME</text>
+
+  <!-- Handle -->
+  <text x="1008" y="1024" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+  <text x="36" y="1024" font-family="'DM Mono', 'Courier New', monospace" font-size="15" fill="#a0a0a0" letter-spacing="2">MARAPONE.COM</text>
+</svg>

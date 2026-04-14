@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#232323"/>
+    </linearGradient>
+    <linearGradient id="warmGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dotGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.2" fill="#3a3a3a"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+  <rect width="1080" height="1920" fill="url(#dotGrid)" opacity="0.3"/>
+  <rect width="1080" height="1920" fill="url(#warmGlow)"/>
+
+  <!-- Warm top corner glow -->
+  <ellipse cx="180" cy="600" rx="300" ry="400" fill="#f97316" opacity="0.04"/>
+
+  <!-- Top header bar -->
+  <rect x="0" y="0" width="1080" height="180" fill="#1a1a1a" opacity="0.95"/>
+  <rect x="40" y="52" width="980" height="3" rx="2" fill="#3a3a3a"/>
+  <rect x="40" y="52" width="880" height="3" rx="2" fill="#f97316"/>
+
+  <!-- Profile -->
+  <circle cx="72" cy="110" r="34" fill="#2e2e2e" stroke="#f97316" stroke-width="2.5"/>
+  <text x="72" y="117" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="22" fill="#f97316">MC</text>
+  <text x="118" y="104" font-family="'DM Sans', system-ui, sans-serif" font-size="28" font-weight="700" fill="#e8e8e8">maraponehq</text>
+  <text x="118" y="130" font-family="'DM Sans', system-ui, sans-serif" font-size="22" fill="#a0a0a0">Marapone Contracting Inc.</text>
+  <text x="1020" y="118" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="32" fill="#a0a0a0">✕</text>
+
+  <!-- Label -->
+  <text x="80" y="284" font-family="'DM Mono', 'Courier New', monospace" font-size="26" fill="#f97316" letter-spacing="3">// BEHIND THE WORK</text>
+  <rect x="80" y="302" width="920" height="1.5" fill="#3a3a3a"/>
+
+  <!-- Main headline -->
+  <text x="80" y="394" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="86" fill="#e8e8e8" letter-spacing="2">BUILT BY PEOPLE</text>
+  <text x="80" y="480" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="86" fill="#e8e8e8" letter-spacing="2">WHO'VE BEEN</text>
+  <text x="80" y="566" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="86" fill="#f97316" letter-spacing="2">ON SITES.</text>
+
+  <!-- Orange accent left bar on paragraph card -->
+  <rect x="80" y="620" width="920" height="360" rx="14" fill="#2e2e2e"/>
+  <rect x="80" y="620" width="6" height="360" rx="3" fill="#f97316"/>
+
+  <text x="110" y="678" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#e8e8e8">Our team has worked in construction</text>
+  <text x="110" y="720" font-family="'DM Sans', system-ui, sans-serif" font-size="30" fill="#e8e8e8">and logistics — not just coded for it.</text>
+
+  <text x="110" y="790" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#a0a0a0">We understand what 4am site starts mean.</text>
+  <text x="110" y="832" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#a0a0a0">What a missed blueprint coordination costs.</text>
+  <text x="110" y="874" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#a0a0a0">What it feels like to chase down invoices.</text>
+
+  <rect x="110" y="916" width="60" height="2" fill="#3a3a3a"/>
+
+  <text x="110" y="956" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#a0a0a0" font-style="italic">That's experience. Not just research.</text>
+
+  <!-- Second statement -->
+  <rect x="80" y="1022" width="920" height="160" rx="14" fill="#232323" stroke="#3a3a3a" stroke-width="1.5"/>
+  <text x="540" y="1090" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="56" fill="#e8e8e8" letter-spacing="1">THAT'S WHY WE BUILT</text>
+  <text x="540" y="1158" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="56" fill="#f97316" letter-spacing="1">WHAT WE WISHED WE HAD.</text>
+
+  <!-- Values grid -->
+  <rect x="80" y="1226" width="440" height="120" rx="12" fill="#2e2e2e"/>
+  <text x="300" y="1278" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="20" fill="#f97316" letter-spacing="1">FOUNDED</text>
+  <text x="300" y="1324" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#e8e8e8">IN THE FIELD</text>
+
+  <rect x="560" y="1226" width="440" height="120" rx="12" fill="#2e2e2e"/>
+  <text x="780" y="1278" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="20" fill="#f97316" letter-spacing="1">BUILT FOR</text>
+  <text x="780" y="1324" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="46" fill="#e8e8e8">YOUR OPS</text>
+
+  <!-- Divider -->
+  <rect x="80" y="1392" width="920" height="1" fill="#3a3a3a"/>
+
+  <!-- Logo + CTA -->
+  <text x="540" y="1466" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#e8e8e8" letter-spacing="6">MARAPONE</text>
+  <text x="540" y="1510" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#a0a0a0" letter-spacing="4">CONTRACTING INC.</text>
+
+  <!-- Bottom CTA -->
+  <rect x="80" y="1560" width="920" height="180" rx="20" fill="#2e2e2e" stroke="#f97316" stroke-width="2"/>
+  <text x="540" y="1624" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="32" fill="#e8e8e8" font-weight="600">Book a free assessment</text>
+  <text x="540" y="1678" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="50" fill="#f97316" letter-spacing="2">→ marapone.com</text>
+  <text x="540" y="1716" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="24" fill="#a0a0a0">24-hour turnaround · No obligation</text>
+
+  <!-- Bottom nav -->
+  <rect x="0" y="1820" width="1080" height="100" fill="#1a1a1a" opacity="0.98"/>
+  <rect x="420" y="1870" width="240" height="4" rx="2" fill="#e8e8e8" opacity="0.4"/>
+
+  <text x="540" y="1800" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#3a3a3a">@maraponehq</text>
+</svg>

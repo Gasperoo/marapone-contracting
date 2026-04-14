@@ -1,0 +1,1332 @@
+══════════════════════════════════════════════════════════════════════════════
+MARAPONE CONTRACTING INC.
+30-DAY MARKETING STRATEGY
+Private AI Systems for Construction and Logistics
+══════════════════════════════════════════════════════════════════════════════
+Instagram: @maraponehq  |  Website: marapone.com  |  Email: general@marapone.com
+Strategy Period: 30 Days from Launch
+Primary Goal: Land 1 paying client. Minimum $1,500 CAD. Target $4,900+ CAD.
+══════════════════════════════════════════════════════════════════════════════
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 1 — EXECUTIVE SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WHAT THIS STRATEGY IS
+
+This document is a comprehensive 30-day go-to-market plan for Marapone Contracting
+Inc. to establish brand presence on Instagram and Facebook, build a qualified audience
+of potential clients in the construction and logistics sectors, and convert at least one
+prospect into a paying engagement within 30 days.
+
+The strategy covers organic content, paid advertising, direct outreach, and lead
+conversion — each channel working together toward a single defined outcome: one client,
+one project, real revenue.
+
+WHO IT IS FOR
+
+The immediate target is the person writing the cheque: general contractors (GCs),
+project managers on active commercial projects, freight brokers, 3PL operators,
+importers, and B2B operators who manage document-heavy workflows and are currently
+losing time or money to manual review processes.
+
+WHY THIS APPROACH
+
+Marapone's strongest asset is its clarity of offer. One-time payment. Full source code.
+Private deployment. No subscriptions. This is a positioning that almost no competitor
+can match cleanly, and it is the kind of offer that resonates immediately with operators
+who have been burned by SaaS subscription costs or cloud data exposure risks.
+
+The approach leverages that positioning as the central message across every channel.
+Rather than trying to compete on awareness volume against well-funded SaaS competitors,
+this strategy focuses on depth of message and precision of targeting — reaching the
+right 1,000 people with a message that lands, rather than the wrong 100,000 people with
+a message that doesn't.
+
+The free 24-hour AI assessment is the keystone conversion mechanism. It removes all
+financial risk from the first interaction, demonstrates concrete value before asking for
+a dollar, and gives Marapone a legitimate reason to contact every prospect who submits
+documents.
+
+WHY NOW
+
+AI adoption in construction and logistics is accelerating. Operators who have been
+reluctant are beginning to evaluate tools seriously. The SaaS AI market is simultaneously
+over-promising and under-delivering, creating meaningful differentiation for a company
+that can demonstrate real, specific results quickly. This is the optimal window to
+establish positioning before the space becomes crowded with better-funded imitators.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 2 — MARKET OPPORTUNITY ANALYSIS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CONSTRUCTION AI MARKET
+
+Pain Points (Decision-Maker Level):
+- Blueprint review for complex commercial sets consumes 4–6 hours of senior staff time
+  per project, at exactly the moment when that staff is most needed for bid strategy
+- RFI backlog is endemic on multi-trade commercial projects; a 48–72 hour response
+  cycle is considered normal, despite most answers existing in the original documents
+- Change orders caused by pre-construction coordination failures are the single largest
+  contributor to margin erosion on fixed-price contracts
+- Daily log compilation and progress reporting are time sinks with low direct value
+- Manual document review degrades with fatigue, creating inconsistent quality at volume
+
+Budget Availability:
+- Commercial GCs operating at 5–15% margin on projects ranging from $500K–$50M have
+  meaningful budget authority for tools that demonstrably protect margin
+- A $4,900–$9,500 tool purchase is a line item that most project managers or VP-level
+  operators can approve without board sign-off
+- The ROI case is exceptionally strong: a single caught coordination conflict that would
+  have become a $40,000–$300,000 field change order justifies the entire build cost
+
+Decision Makers:
+- Owner/operator at firms with 5–50 employees (direct budget authority)
+- VP of Construction or Director of Preconstruction at mid-size firms (50–200 employees)
+- Senior estimator with PM responsibility (influence, sometimes authority)
+- IT/operations manager at firms beginning to evaluate AI formally
+
+LOGISTICS AND FREIGHT AI MARKET
+
+Pain Points:
+- Freight invoice discrepancy rates averaging 12–15% across the industry mean most
+  brokers and importers are paying overcharges as a cost of doing business
+- Manual verification at volume (50–500 invoices/month) is not economically feasible
+- Customs entry errors create compliance exposure and retroactive duty liability
+- Carrier contract complexity (accessorial tables, fuel surcharge matrices, zone charts)
+  makes line-level verification prohibitive without automated tooling
+- Trade documentation errors — commercial invoice, packing list, bill of lading
+  discrepancies — are common and expensive when they result in holds or re-filings
+
+Budget Availability:
+- A regional freight broker or 3PL moving $500K–$5M in annual freight spend is losing
+  $60K–$750K annually to undetected overcharges at the 12–15% industry average
+- A system recovering even 25% of that exposure pays for itself in weeks
+- Small importers ($500K–$2M freight spend) will see this as a cost-reduction tool
+  rather than a technology investment — which is a much easier budget conversation
+
+Decision Makers:
+- Owner/operator at small-mid freight brokerages and import operations
+- VP or Director of Logistics and Operations
+- Finance lead at companies with high invoice volume
+
+WHY THE TIMING IS RIGHT
+
+1. SaaS AI Fatigue: Businesses that adopted ChatGPT-based tools in 2023–2024 are
+   beginning to see the limits of generic models on their specific documents. Appetite
+   for purpose-built, private alternatives is growing.
+
+2. Data Privacy Concerns: Enterprise-level conversations about cloud AI data exposure
+   are filtering down to mid-market operators. The question "where does our data go?"
+   is now being asked before adoption, not after a breach.
+
+3. Subscription Cost Pressure: In a tighter economic environment, recurring SaaS costs
+   are under scrutiny. A one-time ownership model has genuine appeal against a backdrop
+   of subscription fatigue.
+
+4. Lack of Competition in Private Deployment: Very few firms offer the specific
+   combination of private deployment, full source code handover, industry-specific
+   fine-tuning, and boutique service that Marapone provides.
+
+COMPETITOR LANDSCAPE
+
+Tier 1 — General AI Platforms (ChatGPT, Microsoft Copilot, Google Gemini):
+- Cheap or free, widely known, but generic; not fine-tuned for construction or logistics
+- Cloud-based: data privacy concerns significant for sensitive project documents
+- No ownership; subscriptions; no customization for specific workflows
+- NOT a direct competitor for qualified buyers — they've already tried these tools
+
+Tier 2 — Construction-Specific SaaS AI (Procore AI, Autodesk AI, PlanGrid AI):
+- Deep integration with project management platforms some GCs already use
+- Expensive: typically enterprise-tier pricing with per-seat or per-project billing
+- Shared cloud infrastructure; no private deployment option
+- Positioned as integrated add-ons, not standalone AI systems
+
+Tier 3 — Freight and Logistics SaaS AI (Flexport AI, Transplace AI):
+- Large enterprise focus; pricing and onboarding unsuitable for small-mid operators
+- SaaS model with ongoing subscription dependency
+- Generic freight intelligence, not contract-specific audit tools
+
+Tier 4 — Independent AI Consultancies:
+- Build custom models but typically require ongoing consulting retainer
+- No clean handover; creates dependency on the consultancy
+- Higher cost, longer timeline, unclear ownership model
+
+MARAPONE'S UNIQUE POSITIONING AND COMPETITIVE ADVANTAGES
+
+1. Ownership Model: The only sustainable differentiator at this price point. No
+   competitor in the addressable mid-market offers full source code handover plus
+   fine-tuned model weights at $4,900–$15,000 all-in.
+
+2. No Recurring Fees: This is a direct financial argument, not just a positioning
+   claim. The math against SaaS alternatives over 3–5 years is definitively in
+   Marapone's favour.
+
+3. Industry Specificity: Fine-tuned models trained on construction and logistics
+   documents outperform generic AI on domain-specific tasks. This is demonstrable.
+
+4. The Free Assessment: A risk-free first step that creates a concrete, tangible
+   deliverable before any money changes hands. Most competitors require demo calls,
+   trial signups, or upfront commitments. Marapone delivers real findings on real
+   documents with zero financial risk.
+
+5. Radical Transparency: No fake case studies, no enterprise client logos never
+   worked with, honest about team size and capacity. In an industry full of
+   over-promise, this is a trust-building advantage.
+
+6. Speed: 2–4 week builds vs. 3–6 month enterprise implementation timelines.
+
+7. Canadian Roots, B2B Trust: Small team, direct communication, no layers of sales
+   process between prospect and the people actually doing the work.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 3 — TARGET AUDIENCE PROFILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PERSONA 1 — "THE GC" (General Contractor / Project Manager)
+
+Demographics:
+- Age: 38–58
+- Role: Owner/operator or VP of Construction at a firm with 5–50 employees
+- Location: Urban or suburban markets — Toronto, Vancouver, Calgary, Edmonton, or
+  major US construction markets (Texas, Florida, California)
+- Annual revenue: $2M–$25M project value under management
+- Technology usage: Uses Procore, Bluebeam, or similar; has tried ChatGPT but found
+  it too generic; email-first communicator; on LinkedIn and Instagram (professional use)
+
+Pain Points (Specific):
+- Blueprint reviews for multi-trade commercial sets take 4–6 hours per project
+- Has experienced at least one change order that traced back to a pre-con document error
+- RFI backlog is a perennial problem; response times are 2–3 days on routine questions
+- Senior staff are being paid to process documents instead of managing work
+- Worried about competitors who are "using AI" but unclear what that actually means
+- Concerned about project data being uploaded to cloud AI tools that might expose
+  bid pricing or project details to competitors
+
+Objections:
+- "We already use Procore/Bluebeam — isn't AI built into those?"
+  (Answer: Generic integration vs. fine-tuned model on your specific documents)
+- "What if it misses something? We can't have AI making decisions."
+  (Answer: AI flags, humans decide. This adds a review layer, not replaces it.)
+- "We're not big enough for custom AI."
+  (Answer: Pilot tier at $4,900 was designed for this exact operation size.)
+- "What if your company shuts down?"
+  (Answer: Full source code handover — the system runs independently of Marapone.)
+
+What They're Searching For Online:
+- "AI for blueprint review"
+- "construction document automation"
+- "RFI management software"
+- "how to speed up preconstruction document review"
+- "AI tools for general contractors"
+
+How They Make Decisions:
+- Risk-averse; will not adopt something new without seeing it work first
+- Peer recommendation carries significant weight (industry is small and networked)
+- Will evaluate on ROI — specific dollar savings or hours recovered, not feature lists
+- Typically short purchase cycles once convinced (days, not months)
+- Prefer direct conversations with the people doing the work, not sales reps
+
+Budget Authority: Full authority at the $4,900–$9,500 range. May involve a business
+partner at $15,000. No procurement committee below $25,000.
+
+Best Channels to Reach: Instagram (business/industry content), Facebook groups
+(construction industry groups), LinkedIn (professional), direct cold email/outreach.
+
+
+PERSONA 2 — "THE FREIGHT BROKER" (Logistics Operator / 3PL / Importer)
+
+Demographics:
+- Age: 32–55
+- Role: Owner/operator or Operations Director at a regional freight brokerage,
+  3PL, or import/export operation
+- Annual freight spend managed: $500K–$5M
+- Location: BC, Ontario, Alberta (Canada); California, Texas, Florida, New York (US)
+- Technology usage: Uses TMS software, spreadsheets for invoice tracking; has heard
+  of AI but skeptical of claims; email and phone primary; LinkedIn active
+
+Pain Points (Specific):
+- Processing 50–500 invoices per month against carrier contracts manually
+- Has found overcharges but only after payment; knows more exist but can't prove it
+- Fuel surcharge and accessorial charge calculations are complex and error-prone
+- Customs classification and entry review is a bottleneck and compliance risk
+- Staff bandwidth is consumed by document processing rather than relationship management
+- Concerned about sending carrier rate agreements and contract terms to cloud AI tools
+
+Objections:
+- "We have someone who already checks invoices."
+  (Answer: They can check most; AI checks every one, every line, against your
+  actual contracts. These are complementary, not competing.)
+- "How accurate is it? I can't dispute carriers on bad data."
+  (Answer: System is trained on your specific contracts. Flags are specific and
+  documented with the relevant contract clause.)
+- "What does implementation look like? We're not a tech company."
+  (Answer: We deploy it, set it up, and hand it over with training. You don't need
+  a tech team to run it.)
+- "Is $4,900 worth it if we're a small operation?"
+  (Answer: On $500K freight spend at a 12% discrepancy rate, potential exposure is
+  $60,000/year. The assessment will show you what your actual invoices reveal.)
+
+What They're Searching For Online:
+- "freight invoice audit software"
+- "how to catch freight invoice overcharges"
+- "carrier billing verification"
+- "customs entry review software"
+- "3PL document automation"
+
+How They Make Decisions:
+- Numbers-first: Will respond to specific ROI cases and dollar figures
+- Skeptical of technology vendors who overpromise — will probe hard on specifics
+- Fast decision cycle once ROI is clear and risk is removed
+- Values service quality and responsiveness (will test with the free assessment)
+- Word of mouth from other brokers and trade associations carries weight
+
+Budget Authority: Full authority at all pricing tiers. May validate with a business
+partner at $9,500+.
+
+Best Channels: Instagram, LinkedIn, industry-specific Facebook groups, cold email,
+industry trade events and associations.
+
+
+PERSONA 3 — "THE B2B OPERATOR" (Business Owner Needing AI-Powered Marketing or Ops)
+
+Demographics:
+- Age: 28–50
+- Role: Founder or CEO of a small-to-mid B2B company (professional services,
+  staffing, equipment rental, specialty trade, wholesale)
+- Annual revenue: $500K–$5M
+- Technology usage: Uses standard business software; has explored AI but not
+  implemented anything meaningful; LinkedIn active; Instagram present
+
+Pain Points (Specific):
+- Paying $2,000–$8,000/month to a marketing agency for mediocre results
+- Has tried generic AI tools for content/lead gen but output is too generic
+- Needs consistent B2B outreach but doesn't have the internal capacity to do it
+- Wants AI to handle document processing (proposals, contracts, compliance) but
+  doesn't know what the actual solution looks like
+- Concerned about data privacy when using cloud AI for business documents
+
+Objections:
+- "How is this different from hiring a marketing agency?"
+  (Answer: You own the system. It runs permanently on your infrastructure without
+  an ongoing retainer.)
+- "Is this actually AI or just automations?"
+  (Answer: Fine-tuned language model, not if/then automations. Qualitative
+  document understanding, not rule-based triggers.)
+- "Do I need technical staff to maintain it?"
+  (Answer: No. Deployed and handed over with documentation. As durable as your
+  existing software.)
+
+Budget Authority: Full authority. Decisions made quickly when ROI is clear.
+
+Best Channels: Instagram, LinkedIn, cold email, referral from existing clients.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 4 — BRAND POSITIONING STRATEGY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THE CORE NARRATIVE: OWNERSHIP VS. RENTAL
+
+The central positioning of Marapone is not about AI. It is about ownership.
+
+Every SaaS AI company on the market is renting operators their intelligence back to
+them on a monthly basis. Marapone builds the intelligence and hands it over permanently.
+This is a fundamentally different value proposition — and it has clear, specific financial
+implications that make it easy to reason about.
+
+The narrative is: "Every month you pay for AI software, you're building someone else's
+revenue. We build something that belongs to you."
+
+This narrative:
+- Is instantly understandable to any business operator
+- Creates a competitive moat (few competitors can credibly match it)
+- Generates a clear financial comparison (SaaS cost over 5 years vs. one-time build)
+- Appeals to operators' sense of autonomy and risk management
+- Works across all three personas without modification
+
+EXECUTION: The ownership narrative should appear in some form in every piece of
+content — post captions, stories, ad copy, DM outreach, email subject lines. It is the
+brand's North Star and should be consistent enough that the audience can articulate it
+on their own after 2 weeks of exposure.
+
+TRUST-BUILDING STRATEGY FOR A NEW BRAND
+
+A new brand selling a high-value service ($1,500–$15,000) into a conservative,
+relationship-driven industry (construction) must earn trust before it can earn revenue.
+Trust is built through:
+
+1. Specificity over generality: Specific numbers, specific outcomes, specific document
+   types. "Catches freight invoice discrepancies" is vague. "$18,400 recovered in month
+   one from 47 flagged invoices" is credible.
+
+2. Transparency about limitations: Explicitly acknowledge what the system does not do.
+   ("AI flags, humans decide." / "We don't do residential.") Counterintuitively, these
+   admissions build more trust than avoiding them.
+
+3. The free assessment as proof of quality: Every prospect who submits documents gets
+   a real deliverable. If the findings are useful, the work speaks. If they are not,
+   acknowledge it honestly. The assessment is not a sales tool; it is a demonstration.
+
+4. Consistent, professional content quality: The visual brand — dark backgrounds, orange
+   accents, clean typography — is already strong. Maintaining that quality standard
+   across every post signals that this is a serious operation.
+
+5. Radical transparency about team and process: The "who we are" narrative (small team,
+   Canada and Italy, 10+ years industry experience, no fake enterprise logos) is a
+   differentiator, not a liability. Lead with it.
+
+THE FREE ASSESSMENT AS CONVERSION MECHANISM
+
+The free 24-hour AI assessment is the most important marketing asset in the strategy.
+It should be the CTA on virtually every piece of content.
+
+Why it works:
+- Zero financial risk eliminates the primary objection
+- The 24-hour turnaround creates urgency and demonstrates capability
+- Real documents, real findings — this is a demonstration of product quality, not a
+  demo in a controlled environment
+- Creates a legitimate, welcome reason to follow up with the prospect
+- Starts the sales relationship with Marapone in a position of having already
+  provided value
+
+How to communicate it consistently:
+- Lead with what the prospect will receive: specific findings on their documents
+- Clarify the non-salesy nature: "No commitment required. No sales call at the end
+  unless you want one."
+- Reinforce the 24-hour timeline: this signals speed and responsiveness
+- Vary the framing each week without changing the offer itself
+
+CONTENT PILLARS AND RATIONALE
+
+Four content pillars, each serving a specific audience function:
+
+PILLAR 1 — THE PROBLEM (25% of content)
+Articulate the pain points that Marapone solves. Speak directly to the day-to-day
+frustrations of GCs, freight brokers, and B2B operators. No product mention needed —
+just accurate pain articulation that makes the right prospect feel seen.
+Rationale: People follow accounts that understand their world. This builds audience
+before it builds pipeline.
+
+PILLAR 2 — THE EDUCATION (30% of content)
+Explain how private AI works, why ownership matters, what the build process looks like,
+how fine-tuning differs from generic AI. Make the audience smarter about the category
+without being condescending.
+Rationale: Educated prospects close faster and with fewer objections. Education content
+also performs well with shares and saves — signals that feed the algorithm.
+
+PILLAR 3 — THE PROOF (25% of content)
+Case studies, testimonials, specific outcomes, before/after comparisons. Numbers where
+possible. Real client quotes. The case for Marapone made by results rather than claims.
+Rationale: This is the content that converts skeptics and gives warm leads the final
+push they need. Also the content most likely to be shared with a decision-maker by
+someone who saw it.
+
+PILLAR 4 — THE OFFER (20% of content)
+Direct calls to action for the free assessment. Urgency framing, offer reinforcement,
+objection handling. The explicit ask.
+Rationale: Content that never asks for anything never gets anything. The offer pillar
+ensures every follower who is ready to take a step knows exactly what that step is.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 5 — 30-DAY CONTENT STRATEGY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WEEK 1 (DAYS 1–7) — AWARENESS PHASE: "You're Renting Your AI"
+
+Strategic Goal:
+Establish the brand's existence, introduce the core problem/ownership narrative, and
+build the initial follower base. The goal is not conversions this week — it is planting
+the ownership message in the minds of the right audience.
+
+Audience Goal: First 100 followers, predominantly target-adjacent professionals.
+
+Content Schedule:
+- Day 1 (Tuesday AM): Post 01 — Brand Intro (post_01_brand_intro.svg + caption)
+  The flagship first post. Introduces Marapone, establishes the ownership positioning,
+  sets the tone. Post at 7:30–8:15 AM local time.
+
+- Day 2: No post. Focus entirely on engagement: comment meaningfully on 10–15
+  accounts in the construction and logistics niche. This is not optional.
+
+- Day 3 (Thursday lunch): Post 02 — The Renting Problem (post_02_renting_problem.svg)
+  The subscription math post. Specific numbers, clear financial argument. Post at
+  12:00–1:00 PM to catch lunch-scroll decision-makers.
+
+- Day 4: Stories only. Repurpose Post 01 to story. Add a "What industry are you in?"
+  poll sticker. This builds engagement signals and audience data.
+
+- Day 5 (Monday AM): Post 03 — Construction Pain (post_03_construction_pain.svg)
+  GC-targeted post on blueprint review time. Posted early AM to catch pre-site-morning
+  scrolling. This starts the vertical segmentation of the audience.
+
+- Day 6 (Saturday): Post 06 — The Guarantee (post_06_guarantee.svg)
+  The guarantee post reduces risk and gives fence-sitters a reason to trust.
+  Weekend posts reach a different segment (owners doing strategic thinking).
+
+- Day 7 (Sunday): Stories only. Screenshot engagement from the week. Share a quote
+  from the guarantee post as a story. Add a "Have you ever had an undetected freight
+  overcharge?" question sticker (logistics audience).
+
+Engagement Strategy (Week 1):
+- Identify 20–30 construction and logistics accounts to follow and engage with daily
+- Leave substantive comments (3–5 sentences, not generic compliments) on posts by
+  GCs, project managers, freight broker accounts, and logistics influencers
+- Do not comment "Great post!" — add information, a counterpoint, or a question
+- DM 5–10 warm accounts (people who liked your posts) with a genuine, non-salesy note
+
+Hashtag Rotation (Week 1):
+Use 20–25 hashtags per post, rotating from these categories:
+- Industry: #GeneralContractor #FreightBroker #ConstructionManagement #3PL #ImportExport
+- Technology: #ConstructionAI #LogisticsAI #PrivateAI #AIOwnership #NoSubscriptions
+- Pain: #BlueprintReview #FreightInvoice #RFIManagement #DocumentReview
+- Brand: #Marapone #OwnYourAI #FullHandover #AIForBusiness
+
+
+WEEK 2 (DAYS 8–14) — EDUCATION PHASE: "Here's How Private AI Works"
+
+Strategic Goal:
+Move the audience from awareness to understanding. This week explains the technology,
+the architecture, the ownership model, and the specific applications — in plain language
+that a non-technical GC or freight broker can fully understand. Paid advertising also
+launches on Day 8.
+
+Audience Goal: 150–200 followers. First assessment submissions.
+
+Content Schedule:
+- Day 8 (Tuesday AM): Post 04 — Construction AI Systems (post_04_construction_pain.svg)
+  Deep dive on what the construction AI system actually does. Blueprint review,
+  RFI processing, change order risk. Specific and technical. 7:30 AM post.
+
+- Day 8: LAUNCH PAID ADS. Start Ad 01 (Construction Awareness) and Ad 02 (Logistics
+  Awareness) at $15–$20 CAD/day each. These will run for the duration of the campaign.
+
+- Day 9: Stories. Behind-the-scenes of the assessment process (describe what happens
+  when a client submits documents). Make it concrete and process-oriented.
+
+- Day 10 (Thursday): Post 05 — Logistics AI Systems (post_05_logistics.svg)
+  Logistics-focused parallel to Day 8's construction post. Freight invoice audit,
+  customs review, trade document analysis. 8:00 AM post.
+
+- Day 11: Post 09 — One-Time vs Subscriptions (post_09_one_time_vs_subs.svg)
+  The direct comparison post. Rental model vs. ownership model. Clear, specific,
+  no hedging. 7:00 AM Tuesday post.
+
+- Day 12: Stories. Repost the subscription math from Week 1 with a "Save this for
+  the next time someone pitches you a SaaS AI tool" caption.
+
+- Day 13: Post 08 — How Private AI Works (post_08_how_private_ai_works.svg)
+  Technical explainer. Four steps: Fine-tune → Local run → No external calls →
+  You own it. This is the architecture post — important for educated prospects.
+  Saturday post reaches weekend strategic thinkers.
+
+- Day 14: Stories + engagement. Check ad performance. Respond to every comment on
+  posts from this week. Check if any assessment submissions have come in.
+
+Community Building (Week 2):
+- Find 3–5 active construction or logistics Facebook groups; join and participate
+  (do not spam the group with Marapone content — provide genuine answers to questions
+  and let the profile speak)
+- LinkedIn cross-post: Adapt Post 04 or Post 09 for a LinkedIn article or post.
+  LinkedIn has better organic reach for B2B content than Instagram, especially for
+  the GC and freight broker personas.
+- Identify any trade associations or industry forums active in your target market and
+  plan future participation
+
+Education Content Principles for Week 2:
+- Use specific numbers: "under 20 minutes" vs. "4–6 hours"
+- Explain the WHY behind every claim: why private deployment matters, why fine-tuning
+  outperforms generic AI on domain-specific documents
+- Anticipate objections and address them preemptively in the caption body
+- Every education post ends with a soft CTA to the free assessment
+
+
+WEEK 3 (DAYS 15–21) — PROOF PHASE: "Real Results from Real Clients"
+
+Strategic Goal:
+Convert skeptics. Week 3 introduces social proof — case studies, testimonials,
+before/after comparisons, and specific outcome numbers. This is the content that
+turns warm followers into leads who are ready to submit documents.
+
+Audience Goal: 200–300 followers. 3–5 assessment submissions.
+
+Testimonial Strategy:
+- Testimonials in Week 3 are written as composite case studies based on the kinds of
+  results the Marapone system produces (if real client results are available, use those
+  with permission; if not, frame as "results our system is designed to catch" or write
+  them as illustrative scenarios attributed clearly as such)
+- Use specific numbers: $320,000 blueprint conflict cost avoided; $18,400 freight
+  overcharge recovered in month one
+- Include direct quotes in the client's voice — first person, plain language, honest
+  about both what worked and what their skepticism was before
+
+Content Schedule:
+- Day 15 (Tuesday): Post 15 — Testimonial GC (post_15_testimonial_gc.svg)
+  The $320,000 blueprint conflict story. Specific, technical, credible.
+  This is the highest-impact single post in the campaign.
+
+- Day 16: Stories. Quote card from the GC testimonial. "We'd been doing manual
+  blueprint review for 20 years. The AI caught something we didn't. That's enough."
+  — GC client, Ontario. Ask "Have you had a change order from a pre-con miss?"
+
+- Day 17 (Thursday): Post 16 — Case Study Freight (post_16_case_study_freight.svg)
+  The $18,400 freight overcharge recovery story. Numbers-forward, specific on the
+  categories of discrepancies found (accessorial charges, fuel surcharge caps,
+  dimensional weight errors).
+
+- Day 18: Post 17 — Before/After (post_17_before_after.svg)
+  Visual comparison of manual review vs. AI review. Time, thoroughness, fatigue
+  factor, cost. This is the post most likely to be saved and shared.
+
+- Day 19: Post 21 — Numbers (post_21_numbers.svg)
+  The data post. Industry benchmarks that validate the problem: 12–15% freight
+  invoice discrepancy rate, 4–6 hours per blueprint set, RFI response times, etc.
+  Data-forward posts perform well with a professional audience.
+
+- Day 20 (Friday): Post 18 — Zero Per Month (post_18_zero_per_month.svg)
+  The financial comparison post. $0/month subscription vs. one-time cost. Clean,
+  direct, memorable. Good end-of-week post that people share with decision-making
+  colleagues over the weekend.
+
+- Day 21: Stories. "DM us 'ASSESSMENT' if you want to submit documents this week."
+  This is a soft but direct call to action that self-selects qualified leads.
+
+Conversion Escalation (Week 3):
+- For anyone who commented positively on Week 1 or 2 posts, send a genuine DM:
+  "Hey [name] — noticed you've been following the construction AI content. Happy to
+  run a quick free assessment on your documents if that's useful. No commitment."
+- For anyone who clicked through to marapone.com (via pixel data if available),
+  the retargeting ad (Ad 03) should now be running — reinforce with retargeting spend
+
+DM Outreach Script (Week 3 — for engaged followers):
+"Hi [name], saw you've been engaging with the [construction/logistics] AI content.
+We're running free 24-hour assessments this month — you send us a sample of your
+[blueprints/freight invoices/trade docs] and we return specific AI findings within
+24 hours. No cost, no commitment. Would that be useful to you?"
+
+Keep it short. No pitch, no pressure. The offer is the pitch.
+
+
+WEEK 4 (DAYS 22–30) — CONVERSION PHASE: "Now Is the Time"
+
+Strategic Goal:
+Direct response. Every piece of content in Week 4 has a clear, specific call to action.
+The audience has been educated, shown proof, and understands the offer. This week asks
+for the action. Assessment submissions are the primary metric.
+
+Audience Goal: 300–500 followers. 5–10 assessment submissions. 1 paying client.
+
+Content Schedule:
+- Day 22 (Monday AM): Post 22 — Free Assessment Push (post_22_free_assessment_push.svg)
+  The strongest CTA post of the campaign. "Your documents are sitting there. Send them."
+  Direct, specific, removes all remaining friction.
+
+- Day 23: Post 23 — Limited Capacity (post_23_limited_capacity.svg)
+  The scarcity post — but honest scarcity. "We take on a limited number of projects
+  at a time. Not as a marketing tactic." This is true and should be stated that way.
+
+- Day 24 (Thursday): Post 24 — Objections Handled (post_24_objections.svg)
+  The objection-handling post. Addresses the top 3–4 objections directly. "Not big
+  enough for custom AI?" "Already have someone checking invoices?" Handle them here.
+
+- Day 25: Post 25 — Vs. Competitors (post_25_vs_competitors.svg)
+  Marapone vs. SaaS AI vs. generic AI vs. doing it manually. Clean comparison.
+  No disparagement — just an honest feature/outcome comparison.
+
+- Day 26: Post 26 — What You Get (post_26_what_you_get.svg)
+  Everything included at each pricing tier. The transparency post. This is for
+  prospects who are close to deciding but want to confirm the value.
+
+- Day 27: Post 27 — Construction ROI (post_27_construction_roi.svg)
+  A ROI calculation specifically for GCs. One caught coordination conflict vs. the
+  cost of the build. The math should be explicit and conservative.
+
+- Day 28 (Monday): Post 28 — Urgency CTA (post_28_urgency_cta.svg)
+  "We have [X] assessment slots remaining this month." Reinforce the limited capacity
+  with a specific number. If you have had real submissions, reference them honestly.
+
+- Day 29: Post 29 — Ownership Manifesto (post_29_ownership_manifesto.svg)
+  A values post. Why Marapone exists. What ownership of your AI actually means.
+  This is the emotional close — for people who are intellectually convinced but
+  need a final values alignment moment.
+
+- Day 30 (Final): Post 30 — Day 30 Finale (post_30_day30_finale.svg)
+  Campaign wrap-up. What was covered. What the assessment delivers. Final CTA.
+  Mark the end of the first 30 days as a moment, not just another post.
+
+CTA Escalation (Week 4):
+- Stories: Daily "assessment open" story with direct link sticker to marapone.com/contact
+- Every post caption ends with a clear, specific CTA (not just "link in bio")
+- DM every person who has saved, shared, or meaningfully commented this week with
+  the assessment offer
+- Escalate ad spend by 20–30% in Week 4 on the retargeting and conversion ad sets
+  (Ad 03 and Ad 04) — these are now hitting warm audiences with 3 weeks of exposure
+
+Paid Ad Escalation (Week 4):
+- Increase Ad 03 (Retargeting) budget to $15–$20/day
+- Increase Ad 04 (Conversion) budget to $12–$18/day
+- Awareness ads maintain same budget but can begin optimization based on 3 weeks of data
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 6 — PAID ADVERTISING STRATEGY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WHEN TO START PAID ADS
+
+Launch on Day 8 (beginning of Week 2). Rationale: The first 7 days of organic content
+establish a baseline of 5–10 posts on the profile. A cold prospect who sees an ad and
+visits the profile needs to see enough content to establish credibility and intent.
+Running ads to an empty profile wastes budget and undermines trust.
+
+Do NOT wait for Week 3. Every day of delay on paid ads is a day the pixel is not
+accumulating data, which limits the effectiveness of retargeting.
+
+CAMPAIGN STRUCTURE
+
+Campaign 1 — AWARENESS (Cold Audiences)
+- Ad Set 1: Construction audience (Ad 01 copy)
+- Ad Set 2: Logistics audience (Ad 02 copy)
+- Objective: Traffic (link clicks / landing page views)
+- Budget: $15–$20 CAD/day per ad set
+- Run period: Days 8–30
+
+Campaign 2 — RETARGETING (Warm Audiences)
+- Ad Set 1: Website visitors (past 30 days, did not submit form)
+- Ad Set 2: Post engagers and profile visitors (past 30 days)
+- Objective: Conversions (form submissions) or Traffic
+- Budget: $10–$15 CAD/day (increase to $15–$20 in Week 4)
+- Run period: Days 8–30 (audience size will be small early; grows over time)
+
+Campaign 3 — CONVERSION (Hot Audiences)
+- Ad Set 1: Visited /contact or /pricing in past 14 days, did not submit
+- Ad Set 2: 2+ page views in past 14 days (high-intent signal)
+- Objective: Conversions (form submission)
+- Budget: $8–$12 CAD/day (increase to $12–$18 in Week 4)
+- Run period: Days 8–30 (audience populates as campaign runs)
+
+TOTAL BUDGET BREAKDOWN (30-DAY PERIOD)
+
+Days 1–7: $0 (organic only)
+Days 8–21 (14 days):
+  - Campaign 1: $35–$40/day × 14 days = $490–$560
+  - Campaign 2: $10–$15/day × 14 days = $140–$210
+  - Campaign 3: $8–$12/day × 14 days = $112–$168
+  Subtotal Days 8–21: ~$742–$938
+
+Days 22–30 (9 days, escalated):
+  - Campaign 1: $35–$40/day × 9 days = $315–$360
+  - Campaign 2: $15–$20/day × 9 days = $135–$180
+  - Campaign 3: $12–$18/day × 9 days = $108–$162
+  Subtotal Days 22–30: ~$558–$702
+
+TOTAL 30-DAY AD SPEND: approximately $1,300–$1,640 CAD
+
+BUDGET NOTE: If working with a tighter budget, prioritize Campaign 1 (Awareness)
+for the first two weeks to build the retargeting pool, then shift budget to Campaigns
+2 and 3 in Weeks 3–4. The minimum effective daily budget per campaign is $10 CAD.
+
+AD CREATIVE GUIDANCE
+
+- Use the existing SVG post graphics as the primary ad creative — they are already
+  formatted to brand standard and professionally designed
+- The dark background + orange accent visual identity is distinctive and will stand
+  out in feed against typical blue/white corporate tech imagery
+- For video: Even a 15–30 second clip of the assessment process, overlaid with the
+  key benefit statement and a CTA, will significantly outperform static for the
+  awareness objective. blueprint-analysis-demo.mp4 is the right asset for this.
+- Do not use stock photography of people in hard hats — this audience recognizes and
+  dismisses generic construction imagery immediately
+- Number-forward graphics ($18,400, $0/month, 20 minutes vs. 6 hours) consistently
+  perform well for both audiences
+
+FACEBOOK VS. INSTAGRAM ALLOCATION
+
+Meta Ads Manager will optimize placement automatically across Facebook and Instagram
+if "Advantage+ Placements" is selected. For this campaign:
+- Construction audience: Will likely see better engagement on Facebook (older
+  demographic, longer-form content habit, active in Facebook groups)
+- Logistics audience: Split relatively evenly; test both
+- Retargeting: Let Meta optimize — follow the audience wherever they are most active
+
+Manually set placements if you want to test channel effectiveness separately after
+the first 14 days of data.
+
+META PIXEL SETUP (REQUIRED BEFORE RUNNING ADS)
+
+Install the Meta Pixel on marapone.com before launching any paid ads. Set up the
+following custom conversion events:
+1. Contact form view (/contact page view) — tracking intent
+2. Form submission (Standard Event: Lead) — tracking actual assessment requests
+3. Pricing page view (/pricing page view) — tracking commercial intent
+4. Any "thank you" page after submission — confirming conversion
+
+Without these events, retargeting and conversion campaigns will not have the data
+they need to optimize, and you will not be able to accurately track cost per lead.
+
+TRACKING ROAS
+
+ROAS (Return on Ad Spend) should be tracked at the campaign level:
+- Primary metric: Cost per form submission (lead)
+- Secondary metric: Cost per link click
+- Tertiary metric: Reach and frequency (avoid frequency above 3 for cold audiences)
+
+A single $4,900 client acquired through a $1,500 total ad spend is a 3.3x ROAS —
+exceptional for B2B. A $9,500 client on the same spend is 6.3x. Track this.
+
+Google Analytics or Meta's own reporting will show cost per form submission if the
+pixel is installed and conversion events are configured correctly.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 7 — ORGANIC GROWTH STRATEGY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HASHTAG STRATEGY
+
+Hashtag research should cover three tiers:
+- Macro (1M+ posts): Used for reach — #Construction, #Logistics, #AI, #SupplyChain
+  (2–3 per post; these are competitive but contribute to reach)
+- Mid-tier (50K–500K posts): Best engagement-to-competition ratio — #ConstructionAI,
+  #FreightTech, #LogisticsAI, #GeneralContractor, #ProjectManagement
+  (8–10 per post; this is where your content will rank)
+- Niche (5K–50K posts): Community-specific, high-intent — #BlueprintReview,
+  #FreightInvoice, #RFIManagement, #PrivateAI, #OwnYourAI, #AIForContractors
+  (8–12 per post; these will attract exactly the right audience)
+
+Rotate hashtag sets every 2–3 posts. Instagram's algorithm can interpret identical
+hashtag sets on every post as spam behavior. Prepare 3–4 hashtag clusters and rotate.
+
+ENGAGEMENT STRATEGY (10–15 min/day minimum)
+
+Target accounts to engage with daily (build a list of 30–50):
+- GC accounts posting about projects, estimates, document challenges
+- Project management accounts discussing construction challenges
+- Freight broker accounts posting about carrier relationships, volumes
+- Logistics and supply chain accounts discussing operational challenges
+- Industry influencers and trade journalists in construction/logistics technology
+
+Engagement rules:
+- Comments must be substantive (not "Great post!" or emoji-only)
+- Add a fact, a perspective, a question, or a relevant counterpoint
+- Do not mention Marapone in comments unless directly relevant and natural
+- Engage before posting your own content (warms the algorithm)
+- Respond to every comment on your own posts within 2–4 hours
+
+LINKEDIN CROSS-POSTING
+
+LinkedIn is a high-value secondary channel for the B2B personas:
+- Adapt the Week 2 education posts (How Private AI Works, One-Time vs. Subscriptions)
+  as LinkedIn articles — these perform well organically with the professional audience
+- Post shorter LinkedIn updates (200–400 words) with the key insight from each
+  Instagram post + a link to the full assessment at marapone.com/contact
+- Connect with GCs, freight brokers, logistics managers, and operations directors
+  in your target geographic markets; engage with their content before pitching
+- LinkedIn cold outreach is covered in Section 9 (Email/Outreach Strategy)
+
+STORY ENGAGEMENT TACTICS
+
+Stories are critical for the algorithm signal (views and replies affect feed distribution):
+- Post at least one story per day, even on days without a feed post
+- Use interactive elements on every story: poll, question box, quiz, slider
+- Story poll ideas: "Do you currently use AI tools in your operation?" /
+  "How long does your blueprint review process take?" /
+  "Do you verify freight invoices line-by-line?"
+- Save strong story engagement data — people who respond to polls and questions are
+  your warmest prospects
+- Share each new feed post to story on the day it goes live
+
+DM OUTREACH STRATEGY
+
+Warm prospects (people who engaged with your content) are the highest-value outreach
+targets. The DM sequence:
+
+Trigger: Someone likes 2+ posts, saves a post, or leaves a substantive comment.
+Wait: 24–48 hours after the trigger.
+Message:
+  "Hey [name] — noticed you've been following the [construction/logistics] AI content.
+  We're doing free 24-hour assessments this month. You send us a sample of your
+  documents, we run AI analysis and return specific findings within 24 hours.
+  No cost, no commitment. Is that something that would be useful for you?"
+
+Rules for DM outreach:
+- Maximum 10–15 DMs per day (Instagram enforces limits)
+- Never lead with a pitch; lead with an observation about their content/situation
+- Do not follow up more than once if no response within 5 days
+- Always personalize (at minimum, reference what they do or what post they engaged with)
+
+Cold DM outreach (people who haven't yet engaged but are in the target profile):
+- Use more sparingly (5–10 per day maximum)
+- Research the account first; reference something specific
+- This is for Week 3–4 when building pipeline is urgent
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 8 — LEAD CONVERSION FUNNEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THE FUNNEL STAGES
+
+Stage 1 — STRANGER
+Definition: Target-profile individual who has not encountered Marapone.
+Action: Organic content distribution, paid awareness ads, hashtag reach, engagement
+on industry accounts. They discover Marapone through content, ad, or comment.
+Conversion trigger: First exposure to the "you're renting your AI" message.
+Goal: Follow or profile visit.
+
+Stage 2 — FOLLOWER
+Definition: Has followed @maraponehq or visited the website.
+Action: Content quality must validate their decision to follow. Week 1–2 content
+establishes the narrative and begins building trust.
+Conversion trigger: A post that directly articulates their specific pain point.
+Goal: Save a post, share content, leave a comment.
+
+Stage 3 — ENGAGER
+Definition: Has liked multiple posts, left a comment, saved content, or clicked a link.
+Action: This is the DM outreach trigger. The warm prospect outreach script applies here.
+Retargeting ads also activate for this audience.
+Conversion trigger: Retargeting ad or direct DM with the free assessment offer.
+Goal: Visit marapone.com/contact.
+
+Stage 4 — LEAD
+Definition: Has visited the contact or pricing page.
+Action: Conversion retargeting ad (Ad 04) activates. Direct follow-up if they came
+via a tracked link and you have their contact information.
+Conversion trigger: Ad 04 copy addressing their specific hesitation directly.
+Goal: Submit the free assessment form.
+
+Stage 5 — ASSESSMENT
+Definition: Has submitted documents and is awaiting findings.
+Action: Deliver findings within 24 hours. Quality of findings is the entire sales pitch.
+Findings should be: specific, referenced to their actual documents, non-generic,
+honest about what would and wouldn't be addressed in a build.
+Conversion trigger: Specific, valuable findings create the natural "what would a full
+system look like?" question.
+Goal: Follow-up call booked.
+
+Stage 6 — CLIENT
+Definition: Has agreed to move forward with a paid engagement.
+Action: Scope confirmation, pricing agreement, contract and payment.
+Conversion trigger: Clear proposal with defined scope, timeline, and outcome.
+Goal: Signed agreement and deposit received.
+
+POST-ASSESSMENT FOLLOW-UP SEQUENCE
+
+Within 24 hours of submission:
+Send findings. Email (or via the method they provided). Be specific. Reference their
+actual documents. Do not use boilerplate language. State clearly what a full system
+would catch and what tier would be appropriate.
+
+Day 2 (if no reply to findings):
+"Hi [name], just wanted to confirm you received the assessment findings — let me know
+if any questions came up reviewing them."
+
+Day 5 (if still no reply):
+"Hi [name], I know these decisions take time. Happy to answer any questions about what
+a build would look like for your operation — no pressure on timing."
+
+Day 10:
+"[Name] — leaving this thread open in case the assessment findings are useful in the
+future. Happy to pick up whenever it makes sense for you."
+
+Do not follow up beyond Day 10 without a specific new reason (new case study,
+relevant news, their situation has changed).
+
+ASSESSMENT TO SALE CONVERSION TACTICS
+
+1. Make the findings specific and impressive: Generic AI observations won't convert.
+   Specific findings referenced to their actual documents will.
+
+2. End the findings report with a clear next step: "Based on what we found, I'd suggest
+   the [Pilot / Full Build] tier. Here's what that would cover and what it would cost."
+
+3. Offer a brief follow-up call: "Happy to walk through the findings on a 20-minute
+   call if that's useful." No pressure — just an offer. Most interested prospects
+   will take it.
+
+4. During the follow-up call: Ask questions before pitching. Understand their current
+   workflow, their current costs, their primary constraint. Build the proposal around
+   their specific answer, not a generic scope.
+
+5. The proposal: Keep it short (one page). Define scope, timeline, price, and what they
+   receive at handover. Include the guarantee. Ask for a decision on the call or within
+   48 hours.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 9 — EMAIL AND OUTREACH STRATEGY (SUPPLEMENTAL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LINKEDIN OUTREACH (GCs AND FREIGHT COMPANIES)
+
+Connection request note (for GC targets):
+"Hi [name], I've been following [company]'s work — you're working on some interesting
+commercial projects. I build private AI systems for GCs (blueprint review, RFI analysis,
+zero subscriptions). Thought your operation might be worth a conversation."
+
+Connection request note (for freight/logistics targets):
+"Hi [name], your work in [freight brokerage/3PL/imports] caught my attention. We build
+private AI invoice verification systems for freight operations — trained on your carrier
+contracts, zero ongoing fees. Worth a quick look?"
+
+Follow-up after connection (Day 3):
+"Thanks for connecting, [name]. We're running free 24-hour AI assessments this month —
+you send us a sample of your [blueprints/freight invoices] and we return specific AI
+findings within 24 hours. No commitment required. Happy to share details if useful."
+
+COLD EMAIL TEMPLATES
+
+CONSTRUCTION TARGET:
+
+Subject: AI blueprint review — free 24hr assessment for [Company Name]
+
+"Hi [name],
+
+One question: how much time does your team spend on manual blueprint review per set?
+
+We build private AI systems for GCs that run the same cross-reference in under 20
+minutes — flagging coordination conflicts, spec inconsistencies, and scope gaps. One-time
+cost. Full source code. Deployed on your infrastructure. No subscriptions.
+
+We're offering a free 24-hour assessment: you send us a sample set of drawings, we
+return specific AI findings within 24 hours. No cost, no commitment.
+
+Worth a look? I'll send the details if so.
+
+[Name]
+Marapone Contracting
+marapone.com"
+
+LOGISTICS TARGET:
+
+Subject: Freight invoice audit — your carrier agreements, our AI
+
+"Hi [name],
+
+Industry data puts freight invoice discrepancy rates at 12–15%. On $500K in freight
+spend, that's $60,000–$75,000 in potential annual overcharges.
+
+We build private AI systems for freight brokers and importers that verify every invoice
+against your specific carrier contracts — not generic industry rates. One-time cost.
+Full source code. No subscriptions.
+
+Free 24-hour assessment: send us a sample of your invoices and we'll return specific
+AI findings within 24 hours. No cost, no commitment.
+
+Worth looking at?
+
+[Name]
+Marapone Contracting
+marapone.com"
+
+SUBJECT LINES THAT WORK
+
+- "AI blueprint review — [X] hours vs. 20 minutes"
+- "Freight overcharges: what your invoices actually contain"
+- "Free AI assessment for [Company Name]"
+- "You're probably paying for AI you don't own"
+- "One-time AI. No subscriptions. Here's how."
+- "The math on SaaS AI over 5 years (not what they show you)"
+- "[Specific pain point] — free 24-hour AI assessment"
+
+FOLLOW-UP SEQUENCE
+
+Email 1 (Day 1): Initial outreach (templates above)
+Email 2 (Day 4): Short follow-up — "Circling back on this — did it land?"
+Email 3 (Day 10): New angle — share the relevant case study (GC or freight)
+Email 4 (Day 17): Final attempt — "Last one. If this doesn't land now, I'll leave
+you alone and you can reach out if timing changes."
+
+Never send more than 4 emails in a cold sequence without a reply. Respect inbox.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 10 — CONTENT PRODUCTION WORKFLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DAILY TIME COMMITMENT ESTIMATE
+
+Minimum (posting day): 30–45 minutes
+  - 10 min: Post + caption scheduling
+  - 10–15 min: Engagement on target accounts
+  - 5–10 min: Stories
+  - 5–10 min: Analytics + DM check
+
+Non-posting days: 15–20 minutes
+  - 10–15 min: Engagement on target accounts
+  - 5 min: DM check and responses
+
+Batch production days (once per week): 2–3 hours
+  - Review and finalize all posts for the upcoming week
+  - Adapt captions as needed based on performance feedback from prior week
+  - Schedule content in the scheduling tool
+  - Review ad performance and make budget/copy adjustments
+
+BATCHING APPROACH
+
+Batch by week, not by the full 30 days. Review what performed well in Week 1 before
+finalizing Week 2 captions. The SVG post files are already produced — caption
+adaptation and scheduling is the primary production task.
+
+Recommended batch schedule:
+- End of Week 1 (Day 7): Review Week 1 performance; finalize and schedule Week 2 posts
+- End of Week 2 (Day 14): Review; finalize and schedule Week 3 posts
+- End of Week 3 (Day 21): Review; finalize and schedule Week 4 posts (adjust CTAs
+  based on how many assessment submissions have come in)
+
+TOOLS REQUIRED
+
+Scheduling: Meta Business Suite (free) is the simplest option and manages both
+Instagram and Facebook from one interface. Later or Buffer are good alternatives
+with better visual calendar views.
+
+Design: The SVG post files are production-ready. Export to PNG at 1080×1080 for
+standard feed posts. Canva Pro allows easy SVG import and resizing for stories
+(1080×1920) if story-formatted versions are needed.
+
+Video: CapCut (free) for any short-form Reel editing. blueprint-analysis-demo.mp4
+can be trimmed, captioned, and exported for Reels directly.
+
+Analytics: Instagram Insights (built-in), Meta Business Suite dashboard.
+For tracking website traffic from social, Google Analytics 4 with UTM parameters
+on all marapone.com links in bio and posts.
+
+CRM: A simple Google Sheets or Notion database is sufficient for 30 days.
+Track: Prospect Name, Company, Industry, Contact Date, Method, Stage, Notes.
+
+Link in Bio: Linktree (free tier) or a direct link to marapone.com/contact.
+If using Linktree, include 3 links maximum: Free Assessment, Pricing, How It Works.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 11 — SUCCESS METRICS AND KPIs
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WEEK 1 TARGETS (Days 1–7)
+- Followers: 50–100 (target), 25 (minimum acceptable)
+- Profile visits: 200+ (from hashtag + outreach)
+- Website link clicks from bio: 30+
+- Post saves: 15+ (signals that content is worth keeping)
+- Comments (non-generic): 10+
+- Outreach DMs sent: 20–30
+- Assessment submissions: 0–1 (not expected this week, but excellent if it happens)
+
+WEEK 2 TARGETS (Days 8–14)
+- Followers: 100–200
+- Post saves + shares: 30+
+- Website visits from social: 75+
+- Contact page visits: 20+
+- Ad link clicks: 100+ (combined campaigns)
+- Cost per link click: Under $2.50 CAD
+- Assessment submissions: 1–3
+- LinkedIn connections in target profile: 25+
+
+WEEK 3 TARGETS (Days 15–21)
+- Followers: 200–300
+- Engagement rate on proof posts: 3–5%+ (this content should perform above average)
+- Contact page visits: 50+
+- Assessment submissions: 3–5 (minimum 2 to be on track for Week 4 close)
+- DM conversations with qualified prospects: 5–10
+- Cost per form submission (paid ads): Under $75 CAD
+- Follow-up calls booked from assessments: 1–2
+
+WEEK 4 TARGETS (Days 22–30)
+- Followers: 300–500
+- Assessment submissions: 5–10 cumulative total
+- Follow-up calls completed: 2–4
+- Proposals sent: 1–3
+- Client closed: 1 minimum (goal: $4,900+)
+- Total ad spend: Under $1,600 CAD
+- Cost per client acquired (if $4,900 client): Under $1,600 (3x ROAS minimum)
+
+WHAT SUCCESS LOOKS LIKE AT EACH CHECKPOINT
+
+Day 7: Brand established on Instagram with at least 50 engaged followers in target
+niche. Ownership narrative is the consistent message across all posts. First engagement
+with target-profile accounts has begun. Zero paid ads running yet.
+
+Day 14: Paid ads generating link clicks under $2.50/click. Contact page seeing daily
+traffic. At least 1–2 assessment submissions received. Retargeting audience beginning
+to build. 100–150 followers, engagement rate above 3%.
+
+Day 21: At least 3–5 assessment submissions received. At least 1 follow-up call
+completed. One proposal either sent or in progress. Organic content is generating
+comments from GCs, freight brokers, or logistics professionals specifically.
+
+Day 30: 1 paying client at minimum $1,500 CAD. Target: $4,900+. Total follower count
+300–500. Assessment pipeline of 5–10 prospects in various stages. Paid ads returning
+identifiable leads at a cost per lead under $100 CAD.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 12 — RISK FACTORS AND CONTINGENCY PLANS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RISK 1: LOW ORGANIC ENGAGEMENT IN WEEK 1–2
+
+Trigger: Under 50 followers by Day 7 and/or under 10 meaningful comments in first 2 weeks.
+
+Response:
+1. Audit the content quality and posting times. If using the existing SVG files and
+   captions, quality is not the likely issue — distribution is.
+2. Double the engagement effort on target accounts. The algorithm rewards accounts
+   that engage first.
+3. Increase the paid awareness ad budget by $10–$15/day earlier (Day 5 instead of Day 8).
+4. Share content to LinkedIn and ask your existing network to engage (even 20 genuine
+   reactions from real people can signal the algorithm positively).
+5. Evaluate hashtag effectiveness: if no hashtag reach is showing in Insights, the
+   hashtag sets may be too large (too competitive) — shift to more niche sets.
+
+RISK 2: NO ASSESSMENT SUBMISSIONS BY DAY 14
+
+Trigger: Zero submissions through the contact form by the end of Week 2.
+
+Response:
+1. Check the contact page: Is the form functional? Is the link in bio pointing to the
+   correct URL? Check this first — form submission failures are a common technical issue.
+2. Immediately activate direct outreach. Do not wait for content to generate inbound.
+   Identify 10–15 target companies (GCs or freight brokers in your market) and send
+   the cold email template from Section 9. This should generate at least 1–2 responses.
+3. Lower the friction on the assessment. If the form asks for too much information,
+   simplify it — the only thing needed to start an assessment is a document and an
+   email address.
+4. Shift Week 3 content earlier: Move proof/case study posts to Days 11–14 rather
+   than waiting for Week 3. The social proof content tends to trigger assessment
+   submissions more directly than education content.
+5. Offer the assessment via DM, not just via the website form. Some prospects will
+   find it easier to share documents in a conversation.
+
+RISK 3: ASSESSMENTS DELIVERED BUT NOT CONVERTING TO SALES
+
+Trigger: 3+ assessments delivered with findings but no paid engagement proposed or
+agreed to by Day 21.
+
+Response:
+1. Audit the findings quality. Are they specific enough? Are they referencing the
+   prospect's actual documents with specific issues found? If findings are generic,
+   they won't create urgency.
+2. Review the follow-up sequence. Are follow-ups being sent within 24 hours? Is the
+   next step being proposed explicitly in the findings document?
+3. Consider a temporary introductory offer for first clients: "For our first two builds
+   this quarter, we're offering the Pilot tier at $3,900 CAD (regular $4,900). This is
+   to allow us to gather specific performance data to share publicly." This reduces
+   price resistance without permanent discounting.
+4. Shift the CTA in follow-ups from "book a call" to "let me answer any questions by
+   email first." Some prospects are not ready for a call but will engage in text.
+5. Ask for honest feedback: "What's the main hesitation?" Most prospects who don't
+   convert will tell you if asked directly and respectfully.
+
+RISK 4: PAID ADS NOT GENERATING QUALIFIED TRAFFIC
+
+Trigger: Ads running but cost per link click above $4–5 CAD, or clicks not converting
+to contact form views.
+
+Response:
+1. Test the ad creative — switch to the video asset (blueprint-analysis-demo.mp4)
+   instead of static graphics. Video typically has lower CPCs.
+2. Narrow the audience targeting: reduce geographic scope, tighten job title targeting.
+3. Test the landing page: if clicks are not becoming page views or form visits, the
+   landing page (marapone.com/contact) may have a friction issue. Simplify the above-
+   the-fold message or add a direct testimonial near the form.
+4. Pause the underperforming ad variant and allocate the budget to the variant showing
+   better click-through rates. Do not continue running both if one is clearly weaker
+   after 7 days of data.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 13 — FIRST CLIENT ACQUISITION STRATEGY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THE FASTEST PATH TO A BOOKED CALL
+
+The fastest route to a first client is not waiting for inbound — it is identifying
+5–10 specific target companies and reaching out directly in parallel with the
+organic and paid campaign.
+
+How to find direct outreach targets:
+- LinkedIn: Search "General Contractor Toronto" (or your primary market). Filter by
+  company size (11–200 employees), sort by activity. Look for decision-makers with
+  recent posts about project activity, document challenges, or technology.
+- Google: "[City] general contractor commercial" — visit company websites, identify
+  the owner or VP of operations, find their email (often on the contact page or
+  discoverable via LinkedIn).
+- Freight/Logistics: Search "freight broker [city]" or "3PL [city]" on LinkedIn
+  and Google. Industry associations (CIFFA in Canada, TIA in the US) have member
+  directories.
+- Trade shows and associations: Canadian Construction Association, OGCA, BCCA
+  have member directories. The Canadian International Freight Forwarders Association
+  (CIFFA) is another.
+- Instagram and Facebook: Construction and logistics accounts posting about their
+  operations are your warmest outreach targets. They're already on your platform.
+
+The direct outreach sequence:
+Day 1: Follow the target on Instagram. Like or comment genuinely on 1–2 posts.
+Day 3: Send connection request on LinkedIn with the outreach note from Section 9.
+Day 5: Cold email (template from Section 9).
+Day 8: LinkedIn follow-up message.
+
+This is the most compressed path to a first engagement. Do not wait for inbound
+to generate the first client.
+
+PRICING STRATEGY FOR THE FIRST ENGAGEMENT
+
+Do not discount the first client as a standard offer. The pricing reflects real value
+and should not be undercut preemptively. If a prospect objects to price, use the
+ROI argument (a single caught coordination conflict or a month of recovered freight
+overcharges justifies the cost) before considering any adjustment.
+
+If price remains the sticking point after the ROI conversation:
+- Offer the Starter tier ($1,500 CAD) as a paid proof-of-concept: one detailed
+  document review, written findings, video walkthrough. This positions the lower
+  tier as a pilot, not a discount.
+- Offer a structured payment: 50% on project start, 50% on handover. This reduces
+  upfront risk without reducing the total price.
+- Do not offer more than 15% off any tier, and frame it explicitly as a first-client
+  introduction offer, not a permanent price point.
+
+CLOSING STRATEGY
+
+1. Before the close: Confirm that the decision-maker is on the call. If you've been
+   talking to someone who needs to get approval, ask directly: "Is there anyone else
+   involved in this decision we should loop in for the next conversation?"
+
+2. On the close call: Summarize the assessment findings, confirm their specific problem,
+   state the recommended tier and its scope, quote the price, and ask for the decision.
+   "Based on what we found in your documents and what we've discussed, I'd recommend
+   the [Pilot / Full Build]. That's [price]. Does that work for you?"
+
+3. If they need time: Set a specific follow-up time. "Happy to give you a few days to
+   think on it — should we schedule a 15-minute call Thursday to pick this back up?"
+   Vague "I'll get back to you" follow-ups lose deals.
+
+4. When the deal is agreed: Send the scope and invoice within 24 hours. Momentum is
+   fragile — delays between verbal agreement and written confirmation lose clients.
+
+HOW TO LEVERAGE THE FIRST CLIENT FOR FUTURE MARKETING
+
+1. Get specific results in writing: After the build, ask the client for specific
+   performance data — hours saved per week, overcharges recovered, specific issues
+   caught. These numbers become the case study content for Month 2.
+
+2. Get a testimonial on record: Ask for a written quote (or a 2-minute video if they're
+   comfortable). The quote in their own words, referencing a specific outcome, is worth
+   more than any ad creative you'll ever run.
+
+3. Ask for referrals: The construction and logistics industries are highly networked.
+   "Is there anyone in your network — another GC, a freight broker you work with —
+   who might benefit from what we built for you?" One satisfied client in the right
+   network can generate 2–3 additional leads.
+
+4. Make them a permanent case study: With permission, build a named or anonymized case
+   study post for Week 3 of your next 30-day campaign. The more specific, the better.
+
+
+══════════════════════════════════════════════════════════════════════════════
+END OF 30-DAY MARKETING STRATEGY
+Marapone Contracting Inc. | @maraponehq | marapone.com | general@marapone.com
+This document is confidential and intended for internal use only.
+══════════════════════════════════════════════════════════════════════════════

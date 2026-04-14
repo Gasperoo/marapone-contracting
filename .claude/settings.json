@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/gasper/Documents/AntiGravity/marapone-contracting status)",
+      "Bash(git -C /Users/gasper/Documents/AntiGravity/marapone-contracting log --oneline -5)",
+      "Bash(git -C /Users/gasper/Documents/AntiGravity/marapone-contracting add index.html about.html contact.html how-it-works.html pricing.html services.html work.html faq.html terms.html privacy.html cookies.html)",
+      "Bash(git -C:*)",
+      "Bash(git -C /Users/gasper/Documents/AntiGravity/marapone-contracting push)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:ai.google.dev)",
+      "Bash(grep -n -i \"price\\\\|pricing\\\\|$\\\\|cost\\\\|tier\\\\|month\\\\|annual\\\\|per \" /Users/gasper/Documents/AntiGravity/marapone-contracting/pricing.html)",
+      "Bash(grep -n -i \"price\\\\|pricing\\\\|$\\\\|cost\\\\|tier\\\\|month\\\\|annual\\\\|per \" /Users/gasper/Documents/AntiGravity/marapone-contracting/faq.html)",
+      "Bash(grep -r \"og:title\\\\|og:description\\\\|og:image\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(grep -h \"case studies\\\\|testimonial\\\\|review\\\\|success story\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(ls /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(sed -i '' 's/G-XXXXXXXXXX/G-J31Z05DB01/g' index.html about.html contact.html cookies.html faq.html how-it-works.html pricing.html privacy.html services.html terms.html work.html security.html)",
+      "Bash(grep -l \"G-J31Z05DB01\" *.html)",
+      "Bash(grep -c \"G-J31Z05DB01\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(grep -rn \"eval\\\\|innerHTML\\\\|document\\\\.write\\\\|dangerouslySetInner\\\\|__html\\\\|sanitize\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html /Users/gasper/Documents/AntiGravity/marapone-contracting/api/)",
+      "Bash(grep -rn \"RESEND\\\\|SUPABASE\\\\|STRIPE\\\\|VIRUSTOTAL\\\\|AKISMET\\\\|SECRET\\\\|KEY\\\\|TOKEN\\\\|PASSWORD\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html /Users/gasper/Documents/AntiGravity/marapone-contracting/*.js)",
+      "Bash(grep -rn \"sk_\\\\|rk_\\\\|pk_\\\\|eyJ\\\\|xoxb\\\\|AIza\\\\|ya29\\\\.\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html /Users/gasper/Documents/AntiGravity/marapone-contracting/api/)",
+      "WebFetch(domain:www.marapone.com)",
+      "Bash(grep -rn \"href.*contact\\\\|Book a\\\\|discovery\\\\|calendly\\\\|cal\\\\.com\\\\|schedule\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(grep -rn \"discovery call\\\\|15-min\\\\|15 min\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(grep -rn 'href=\"/discovery\"' /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(grep -n \"1,500\\\\|3,500\\\\|5,000\\\\|8,500\\\\|15,000\\\\|price\\\\|Price\\\\|\\\\$\" /Users/gasper/Documents/AntiGravity/marapone-contracting/pricing.html)",
+      "Read(//Users/gasper/Documents/AntiGravity/marapone-contracting/**)",
+      "WebFetch(domain:panelai.app)",
+      "Bash(grep -E \"\\\\.\\(html|css|js|json\\)$\")",
+      "Bash(grep -l \"gsap\\\\|ScrollTrigger\\\\|three\\\\.js\\\\|lenis\" *.html)",
+      "Bash(grep -rn \"🏗\\\\|🚢\\\\|📣\" /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(grep -l 'font-display text-xl tracking-wider text-chalk.*MARA' /Users/gasper/Documents/AntiGravity/marapone-contracting/*.html)",
+      "Bash(ls /Users/gasper/Documents/AntiGravity/marapone-contracting/*.jpg /Users/gasper/Documents/AntiGravity/marapone-contracting/*.png /Users/gasper/Documents/AntiGravity/marapone-contracting/*.webp)",
+      "Bash(grep -n \"base\\\\|publicDir\\\\|outDir\" /Users/gasper/Documents/AntiGravity/marapone-contracting/vite.config.*)"
+    ],
+    "additionalDirectories": [
+      "/Users/gasper/Documents/AntiGravity/marapone-contracting"
+    ]
+  }
+}

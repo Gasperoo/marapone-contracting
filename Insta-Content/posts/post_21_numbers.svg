@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <pattern id="dotgrid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#232323"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#dotgrid)"/>
+
+  <!-- Corner accents -->
+  <line x1="72" y1="72" x2="200" y2="72" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+  <line x1="72" y1="72" x2="72" y2="200" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+  <line x1="1008" y1="72" x2="880" y2="72" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+  <line x1="1008" y1="72" x2="1008" y2="200" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+  <line x1="72" y1="1008" x2="200" y2="1008" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+  <line x1="72" y1="1008" x2="72" y2="880" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+  <line x1="1008" y1="1008" x2="880" y2="1008" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+  <line x1="1008" y1="1008" x2="1008" y2="880" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Top label -->
+  <text x="540" y="112" font-family="'DM Mono', 'Courier New', monospace" font-size="16" fill="#f97316" text-anchor="middle" letter-spacing="4">// SOCIAL PROOF — THE NUMBERS</text>
+
+  <!-- Main headline -->
+  <text x="540" y="198" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="86" fill="#e8e8e8" text-anchor="middle" letter-spacing="3">THE NUMBERS</text>
+  <text x="540" y="280" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="86" fill="#f97316" text-anchor="middle" letter-spacing="3">BEHIND THE WORK.</text>
+
+  <!-- Rule -->
+  <rect x="190" y="300" width="700" height="3" fill="#f97316" rx="1.5"/>
+
+  <!-- 5 stat blocks in grid -->
+  <!-- Row 1: stats 1 and 2 side by side -->
+  <rect x="72" y="328" width="444" height="160" rx="8" fill="#2e2e2e"/>
+  <rect x="72" y="328" width="5" height="160" fill="#f97316" rx="3"/>
+  <text x="310" y="400" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="72" fill="#f97316" text-anchor="middle" letter-spacing="3">21</text>
+  <text x="310" y="436" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="26" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">CLIENTS</text>
+  <text x="310" y="468" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="middle">Across construction &amp; logistics</text>
+
+  <rect x="564" y="328" width="444" height="160" rx="8" fill="#2e2e2e"/>
+  <rect x="564" y="328" width="5" height="160" fill="#f97316" rx="3"/>
+  <text x="800" y="400" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="72" fill="#f97316" text-anchor="middle" letter-spacing="3">$320K</text>
+  <text x="800" y="436" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="26" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">CAUGHT</text>
+  <text x="800" y="468" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="middle">Largest single oversight found</text>
+
+  <!-- Orange divider -->
+  <rect x="72" y="510" width="936" height="2" fill="#f97316" opacity="0.3"/>
+
+  <!-- Row 2: stats 3 and 4 -->
+  <rect x="72" y="534" width="444" height="160" rx="8" fill="#2e2e2e"/>
+  <rect x="72" y="534" width="5" height="160" fill="#f97316" rx="3"/>
+  <text x="310" y="604" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="72" fill="#f97316" text-anchor="middle" letter-spacing="3">58 MIN</text>
+  <text x="310" y="640" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="26" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">REVIEW TIME</text>
+  <text x="310" y="674" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="middle">vs. 4-6 hours manually</text>
+
+  <rect x="564" y="534" width="444" height="160" rx="8" fill="#2e2e2e"/>
+  <rect x="564" y="534" width="5" height="160" fill="#f97316" rx="3"/>
+  <text x="800" y="604" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="72" fill="#f97316" text-anchor="middle" letter-spacing="3">$0/MO</text>
+  <text x="800" y="640" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="26" fill="#e8e8e8" text-anchor="middle" letter-spacing="2">FOREVER</text>
+  <text x="800" y="674" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="16" fill="#a0a0a0" text-anchor="middle">What clients pay after delivery</text>
+
+  <!-- Orange divider -->
+  <rect x="72" y="716" width="936" height="2" fill="#f97316" opacity="0.3"/>
+
+  <!-- Row 3: stat 5 full width -->
+  <rect x="72" y="740" width="936" height="120" rx="8" fill="#2e2e2e"/>
+  <rect x="72" y="740" width="5" height="120" fill="#f97316" rx="3"/>
+  <text x="540" y="796" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="72" fill="#f97316" text-anchor="middle" letter-spacing="4">24 HOURS</text>
+  <text x="540" y="836" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="20" fill="#a0a0a0" text-anchor="middle">Free assessment turnaround — blueprints, BOLs, RFI logs, customs docs</text>
+
+  <!-- Bottom CTA -->
+  <rect x="72" y="890" width="936" height="72" rx="6" fill="#f97316" opacity="0.1"/>
+  <rect x="72" y="890" width="6" height="72" fill="#f97316" rx="3"/>
+  <text x="110" y="926" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32" fill="#e8e8e8" letter-spacing="2">FREE ASSESSMENT → MARAPONE.COM/CONTACT</text>
+
+  <!-- Handle -->
+  <text x="1008" y="1040" font-family="'DM Sans', 'Inter', system-ui, sans-serif" font-size="22" fill="#a0a0a0" text-anchor="end" letter-spacing="1">@maraponehq</text>
+</svg>

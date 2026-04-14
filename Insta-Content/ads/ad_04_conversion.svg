@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#232323"/>
+    </linearGradient>
+    <radialGradient id="priceGlow" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ctaBtn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+    </linearGradient>
+    <pattern id="dotGrid" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="1.2" fill="#3a3a3a"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bgGrad)"/>
+  <rect width="1080" height="1080" fill="url(#dotGrid)" opacity="0.35"/>
+  <ellipse cx="540" cy="400" rx="460" ry="300" fill="url(#priceGlow)"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="80" fill="#1a1a1a" opacity="0.9"/>
+  <text x="54" y="50" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#f97316" letter-spacing="2">MARAPONE CONTRACTING</text>
+  <text x="1026" y="50" text-anchor="end" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#a0a0a0">@maraponehq</text>
+  <rect x="0" y="78" width="1080" height="2" fill="#f97316" opacity="0.4"/>
+
+  <!-- Headline -->
+  <text x="540" y="174" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="86" fill="#e8e8e8" letter-spacing="3">ONE-TIME PRICE.</text>
+  <text x="540" y="264" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="86" fill="#f97316" letter-spacing="3">LIFETIME OWNERSHIP.</text>
+
+  <!-- Divider -->
+  <rect x="340" y="286" width="400" height="3" rx="1.5" fill="#f97316" opacity="0.5"/>
+
+  <!-- Price display -->
+  <rect x="54" y="310" width="972" height="200" rx="20" fill="#2e2e2e" stroke="#f97316" stroke-width="3"/>
+  <text x="540" y="368" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="26" fill="#a0a0a0" letter-spacing="3">STARTING FROM</text>
+  <text x="540" y="486" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="148" fill="#f97316" letter-spacing="2">$1,500 CAD</text>
+
+  <!-- Description -->
+  <text x="540" y="554" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#e8e8e8">For a custom AI that runs on your hardware,</text>
+  <text x="540" y="592" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#e8e8e8">trained on your documents, with full source code.</text>
+
+  <!-- Comparison blocks -->
+  <rect x="54" y="628" width="468" height="130" rx="14" fill="#232323" stroke="#2e2e2e" stroke-width="1.5"/>
+  <text x="288" y="674" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="20" fill="#a0a0a0" letter-spacing="1">SAAS SUBSCRIPTIONS</text>
+  <text x="288" y="726" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#a0a0a0">$3,588/YEAR</text>
+  <!-- Strikethrough line -->
+  <rect x="130" y="723" width="316" height="3" rx="1.5" fill="#a0a0a0" opacity="0.5"/>
+
+  <rect x="558" y="628" width="468" height="130" rx="14" fill="#232323" stroke="#f97316" stroke-width="2"/>
+  <text x="792" y="674" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="20" fill="#f97316" letter-spacing="1">AFTER YOU OWN IT</text>
+  <text x="792" y="726" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="52" fill="#f97316">$0/MONTH</text>
+
+  <!-- Stars + Social proof -->
+  <text x="54" y="808" font-family="'DM Sans', system-ui, sans-serif" font-size="40" fill="#f97316">★★★★★</text>
+  <text x="290" y="808" font-family="'DM Sans', system-ui, sans-serif" font-size="28" fill="#a0a0a0">21 verified clients · 5.0 rating</text>
+
+  <!-- CTA button -->
+  <rect x="54" y="842" width="972" height="130" rx="18" fill="url(#ctaBtn)"/>
+  <text x="540" y="898" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="22" fill="#1a1a1a" letter-spacing="2">ONE PAYMENT. FULL OWNERSHIP.</text>
+  <text x="540" y="950" text-anchor="middle" font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="62" fill="#1a1a1a" letter-spacing="3">GET STARTED TODAY →</text>
+
+  <!-- URL -->
+  <text x="540" y="1024" text-anchor="middle" font-family="'DM Mono', 'Courier New', monospace" font-size="24" fill="#a0a0a0">marapone.com/pricing · @maraponehq</text>
+</svg>

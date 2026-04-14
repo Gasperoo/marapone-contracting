@@ -825,104 +825,196 @@
     </div>
   </section>
 
-  <!-- BREAK-EVEN CALCULATOR -->
+  <!-- ROI SCENARIO CALCULATOR -->
   <section class="py-16 lg:py-24 border-b border-plate">
-    <div class="max-w-3xl mx-auto px-4">
-      <div class="mb-8 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// The math is on your side</p>
-        <h2 class="font-display text-4xl text-chalk">WHEN DOES MARAPONE <span class="text-hiviz">PAY FOR ITSELF?</span></h2>
-        <p class="text-fog text-sm mt-3 leading-relaxed">Move the slider to match your current or expected SaaS AI monthly spend. See how fast a one-time build breaks even.</p>
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-10 reveal">
+        <p class="font-mono text-hiviz text-sm mb-2">// One prevented mistake</p>
+        <h2 class="font-display text-4xl text-chalk">THE MATH YOUR <span class="text-hiviz">CFO CARES ABOUT</span></h2>
+        <p class="text-fog text-sm mt-3 leading-relaxed max-w-2xl">Real-world errors in construction and logistics don't cost $50/month. They cost tens of thousands — per incident. Marapone catches them before they happen.</p>
       </div>
-      <div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8 reveal">
-        <div class="mb-6">
-          <label class="font-mono text-xs text-fog uppercase tracking-wider block mb-3">Monthly SaaS AI cost (CAD)</label>
-          <div class="flex items-center gap-4">
-            <input id="saas-slider" type="range" min="200" max="5000" step="50" value="800"
-              class="flex-1 accent-hiviz cursor-pointer h-2"
-              oninput="updateCalc()" />
-            <div class="bg-steel border border-plate rounded px-3 py-1.5 min-w-[80px] text-center">
-              <span id="saas-display" class="font-display text-hiviz text-xl">$800</span>
-              <span class="font-mono text-fog text-xs">/mo</span>
+
+      <!-- Scenario Tabs -->
+      <div class="flex flex-wrap gap-2 mb-6 reveal">
+        <button class="scenario-btn font-mono text-xs px-4 py-2 rounded border border-hiviz text-hiviz bg-hiviz/10" onclick="setScenario(0,this)">Subcontract Review</button>
+        <button class="scenario-btn font-mono text-xs px-4 py-2 rounded border border-plate text-fog" onclick="setScenario(1,this)">Blueprint Audit</button>
+        <button class="scenario-btn font-mono text-xs px-4 py-2 rounded border border-plate text-fog" onclick="setScenario(2,this)">Freight Compliance</button>
+        <button class="scenario-btn font-mono text-xs px-4 py-2 rounded border border-plate text-fog" onclick="setScenario(3,this)">Trade Documentation</button>
+      </div>
+
+      <!-- Main Card -->
+      <div class="bg-gunmetal border border-plate rounded-xl overflow-hidden reveal">
+
+        <!-- Top: scenario detail + stat blocks -->
+        <div class="p-6 lg:p-8 border-b border-plate">
+          <div class="grid md:grid-cols-2 gap-8 items-start">
+            <div>
+              <p id="roi-tag" class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Construction Risk</p>
+              <h3 id="roi-title" class="font-display text-2xl text-chalk mb-3">Missed Subcontract Clause</h3>
+              <p id="roi-desc" class="text-fog text-sm leading-relaxed mb-4">An indemnity gap, ambiguous scope language, or flawed payment term buried in a 60-page subcontract. Easy to miss under deadline pressure. Near-impossible to fix after signing.</p>
+              <div id="roi-catches" class="space-y-2"></div>
+            </div>
+            <div class="space-y-3">
+              <div class="bg-steel border border-plate rounded-lg p-4">
+                <p class="font-mono text-xs text-fog uppercase tracking-wider mb-1">Industry avg. cost per incident</p>
+                <p id="roi-incident-cost" class="font-display text-4xl text-red-400">$22,000</p>
+                <p id="roi-incident-range" class="font-mono text-xs text-fog mt-1">Range: $8,000 – $80,000+</p>
+              </div>
+              <div class="bg-steel border border-plate rounded-lg p-4">
+                <p class="font-mono text-xs text-fog uppercase tracking-wider mb-1">Your Marapone investment</p>
+                <p id="roi-build-display" class="font-display text-4xl text-hiviz">$4,900</p>
+                <p class="font-mono text-xs text-fog mt-1">One-time. Full source code. Yours forever.</p>
+              </div>
+              <div class="bg-hiviz/10 border border-hiviz rounded-lg p-4">
+                <p class="font-mono text-xs text-hiviz uppercase tracking-wider mb-1">Break-even point</p>
+                <p id="roi-breakeven" class="font-display text-3xl text-chalk">1 caught incident</p>
+                <p id="roi-ratio" class="font-mono text-xs text-hiviz mt-1">→ $22,000 saved on a $4,900 build = 4.5× ROI</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="mb-6">
-          <label class="font-mono text-xs text-fog uppercase tracking-wider block mb-3">Marapone build investment (based on Pilot tier)</label>
-          <div class="flex gap-3 flex-wrap">
-            <button class="build-btn font-mono text-xs px-3 py-1.5 rounded border border-hiviz text-hiviz bg-hiviz/10" onclick="setBuild(4900,this)">$4,900 Pilot</button>
-            <button class="build-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog" onclick="setBuild(9500,this)">$9,500 Full Build</button>
-            <button class="build-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog" onclick="setBuild(15000,this)">$15,000 Plus</button>
-          </div>
-        </div>
-        <!-- Bar comparison -->
-        <div class="space-y-4 mb-6">
-          <div>
-            <div class="flex justify-between items-center mb-1.5">
-              <span class="font-mono text-xs text-fog">SaaS cost over <span id="yr-label">2 years</span></span>
-              <span id="saas-total" class="font-mono text-xs text-chalk">$19,200</span>
-            </div>
-            <div class="h-5 bg-plate rounded overflow-hidden">
-              <div id="saas-bar" class="h-full bg-red-500/60 rounded transition-all duration-500" style="width:100%"></div>
+
+        <!-- Bottom: tier selector + projection grid -->
+        <div class="p-6 lg:p-8">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+            <p class="font-mono text-xs text-fog uppercase tracking-wider shrink-0">Your build tier:</p>
+            <div class="flex gap-2 flex-wrap">
+              <button class="roi-tier-btn font-mono text-xs px-3 py-1.5 rounded border border-hiviz text-hiviz bg-hiviz/10" onclick="setRoiTier(4900,this)">$4,900 Pilot</button>
+              <button class="roi-tier-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog" onclick="setRoiTier(9500,this)">$9,500 Full Build</button>
+              <button class="roi-tier-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog" onclick="setRoiTier(15000,this)">$15,000 Plus</button>
             </div>
           </div>
-          <div>
-            <div class="flex justify-between items-center mb-1.5">
-              <span class="font-mono text-xs text-fog">Marapone one-time investment</span>
-              <span id="build-total" class="font-mono text-xs text-chalk">$4,900</span>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+            <div class="bg-steel border border-plate rounded-lg p-3 text-center">
+              <p class="font-display text-2xl text-chalk" id="proj-incidents">1</p>
+              <p class="font-mono text-xs text-fog">incidents to break even</p>
             </div>
-            <div class="h-5 bg-plate rounded overflow-hidden">
-              <div id="build-bar" class="h-full bg-hiviz rounded transition-all duration-500" style="width:25%"></div>
+            <div class="bg-steel border border-plate rounded-lg p-3 text-center">
+              <p class="font-display text-2xl text-hiviz" id="proj-1yr">+$39,100</p>
+              <p class="font-mono text-xs text-fog">net gain if 3 caught/yr</p>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-3 text-center">
+              <p class="font-display text-2xl text-chalk" id="proj-3yr">+$193,100</p>
+              <p class="font-mono text-xs text-fog">net gain over 3 years</p>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-3 text-center">
+              <p class="font-display text-2xl text-chalk" id="proj-roi">13.5×</p>
+              <p class="font-mono text-xs text-fog">3-year return</p>
             </div>
           </div>
-        </div>
-        <div class="bg-steel border border-plate rounded-lg px-5 py-4 flex flex-wrap gap-4 justify-between">
-          <div class="text-center">
-            <p class="font-display text-3xl text-hiviz" id="break-even-months">7</p>
-            <p class="font-mono text-xs text-fog">months to break even</p>
-          </div>
-          <div class="text-center">
-            <p class="font-display text-3xl text-chalk" id="two-yr-savings">$14,300</p>
-            <p class="font-mono text-xs text-fog">saved over 2 years</p>
-          </div>
-          <div class="text-center">
-            <p class="font-display text-3xl text-chalk" id="five-yr-savings">$43,100</p>
-            <p class="font-mono text-xs text-fog">saved over 5 years</p>
-          </div>
+          <p class="font-mono text-xs text-fog">* Projections assume 3 caught incidents per year at the selected scenario's average industry cost. Actual results depend on your document volume and project complexity.</p>
         </div>
       </div>
     </div>
   </section>
   <script>
-    var calcBuild = 4900;
-    function setBuild(v, btn) {
-      calcBuild = v;
-      document.querySelectorAll('.build-btn').forEach(function(b){
-        b.className = 'build-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog';
+    var roiScenarios = [
+      {
+        tag: 'Construction Risk',
+        title: 'Missed Subcontract Clause',
+        desc: 'An indemnity gap, ambiguous scope language, or flawed payment term buried in a 60-page subcontract. Easy to miss under deadline pressure. Near-impossible to fix after signing.',
+        catches: [
+          'Ambiguous scope language that fuels change order disputes',
+          'Indemnity gaps that expose you to uncapped liability',
+          'Incorrect payment milestone or retention terms',
+          'Liquidated damages thresholds buried in appendices'
+        ],
+        avgCost: 22000,
+        range: 'Range: $8,000 – $80,000+'
+      },
+      {
+        tag: 'Construction Risk',
+        title: 'Blueprint Specification Error',
+        desc: 'A misread dimension, wrong spec version, or code non-compliance caught only after materials are ordered or concrete is poured. Rework at that stage doesn\'t cost thousands — it costs projects.',
+        catches: [
+          'Dimension discrepancies between architectural and structural sets',
+          'Outdated spec version referenced in tender documents',
+          'Building code requirements missing from the scope package',
+          'Conflicting details across drawing sets that reach the field'
+        ],
+        avgCost: 38000,
+        range: 'Range: $12,000 – $150,000+'
+      },
+      {
+        tag: 'Logistics Risk',
+        title: 'Freight Compliance Failure',
+        desc: 'A HazMat mislabel, a carrier liability gap, or a missing certificate of conformity on a time-sensitive shipment. Regulators don\'t offer second chances — they issue fines and detain cargo.',
+        catches: [
+          'HazMat classification and labeling errors before dispatch',
+          'Carrier contract gaps that void liability coverage',
+          'Missing or incorrect safety data sheets',
+          'Regulatory changes affecting existing freight agreements'
+        ],
+        avgCost: 28000,
+        range: 'Range: $10,000 – $100,000+'
+      },
+      {
+        tag: 'Logistics Risk',
+        title: 'Trade Documentation Error',
+        desc: 'An incorrect HS code, a misclassified duty rate, or a certificate of origin that doesn\'t match the declared country. Customs holds your shipment. Your client is waiting. The clock is running.',
+        catches: [
+          'HS code misclassification before customs filing',
+          'Preferential duty rate eligibility errors',
+          'Certificate of origin inconsistencies across document sets',
+          'Incoterms mismatches between invoice and bill of lading'
+        ],
+        avgCost: 19000,
+        range: 'Range: $5,000 – $60,000+'
+      }
+    ];
+
+    var roiTier = 4900;
+    var roiScenarioIdx = 0;
+
+    function setScenario(idx, btn) {
+      roiScenarioIdx = idx;
+      document.querySelectorAll('.scenario-btn').forEach(function(b) {
+        b.className = 'scenario-btn font-mono text-xs px-4 py-2 rounded border border-plate text-fog';
       });
-      btn.className = 'build-btn font-mono text-xs px-3 py-1.5 rounded border border-hiviz text-hiviz bg-hiviz/10';
-      updateCalc();
+      btn.className = 'scenario-btn font-mono text-xs px-4 py-2 rounded border border-hiviz text-hiviz bg-hiviz/10';
+      renderRoi();
     }
-    function updateCalc() {
-      var monthly = parseInt(document.getElementById('saas-slider').value);
-      document.getElementById('saas-display').textContent = '$' + monthly.toLocaleString();
-      var saas2 = monthly * 24;
-      var saas5 = monthly * 60;
-      var savings2 = saas2 - calcBuild;
-      var savings5 = saas5 - calcBuild;
-      var breakEven = Math.ceil(calcBuild / monthly);
-      var yrs = breakEven > 12 ? Math.ceil(breakEven/12) + ' years' : breakEven + ' months';
-      document.getElementById('yr-label').textContent = '2 years';
-      document.getElementById('saas-total').textContent = '$' + saas2.toLocaleString();
-      document.getElementById('build-total').textContent = '$' + calcBuild.toLocaleString();
-      document.getElementById('break-even-months').textContent = breakEven <= 12 ? breakEven : Math.ceil(breakEven/12) + 'yr';
-      document.getElementById('two-yr-savings').textContent = savings2 > 0 ? '+$' + savings2.toLocaleString() : '-$' + Math.abs(savings2).toLocaleString();
-      document.getElementById('five-yr-savings').textContent = savings5 > 0 ? '+$' + savings5.toLocaleString() : '-$' + Math.abs(savings5).toLocaleString();
-      // Bar widths
-      var maxVal = Math.max(saas2, calcBuild);
-      document.getElementById('saas-bar').style.width = (saas2/maxVal*100) + '%';
-      document.getElementById('build-bar').style.width = (calcBuild/maxVal*100) + '%';
+
+    function setRoiTier(v, btn) {
+      roiTier = v;
+      document.querySelectorAll('.roi-tier-btn').forEach(function(b) {
+        b.className = 'roi-tier-btn font-mono text-xs px-3 py-1.5 rounded border border-plate text-fog';
+      });
+      btn.className = 'roi-tier-btn font-mono text-xs px-3 py-1.5 rounded border border-hiviz text-hiviz bg-hiviz/10';
+      renderRoi();
     }
-    updateCalc();
+
+    function renderRoi() {
+      var s = roiScenarios[roiScenarioIdx];
+      document.getElementById('roi-tag').textContent = s.tag;
+      document.getElementById('roi-title').textContent = s.title;
+      document.getElementById('roi-desc').textContent = s.desc;
+      document.getElementById('roi-incident-cost').textContent = '$' + s.avgCost.toLocaleString();
+      document.getElementById('roi-incident-range').textContent = s.range;
+      document.getElementById('roi-build-display').textContent = '$' + roiTier.toLocaleString();
+
+      var catchesEl = document.getElementById('roi-catches');
+      catchesEl.innerHTML = s.catches.map(function(c) {
+        return '<div class="flex items-start gap-2"><span class="text-hiviz text-sm mt-0.5 shrink-0">✓</span><span class="text-chalk text-xs leading-snug">' + c + '</span></div>';
+      }).join('');
+
+      var incidentsNeeded = Math.ceil(roiTier / s.avgCost);
+      var incidentLabel = incidentsNeeded === 1 ? 'caught incident' : 'caught incidents';
+      document.getElementById('roi-breakeven').textContent = incidentsNeeded + ' ' + incidentLabel;
+      var roiRatio = (s.avgCost / roiTier).toFixed(1);
+      document.getElementById('roi-ratio').textContent = '→ $' + s.avgCost.toLocaleString() + ' saved on a $' + roiTier.toLocaleString() + ' build = ' + roiRatio + '× ROI';
+
+      var perYr = 3;
+      var yr1Net = (s.avgCost * perYr) - roiTier;
+      var yr3Net = (s.avgCost * perYr * 3) - roiTier;
+      var roiMultiple = ((s.avgCost * perYr * 3) / roiTier).toFixed(1);
+      document.getElementById('proj-incidents').textContent = incidentsNeeded;
+      document.getElementById('proj-1yr').textContent = (yr1Net >= 0 ? '+$' : '-$') + Math.abs(yr1Net).toLocaleString();
+      document.getElementById('proj-3yr').textContent = (yr3Net >= 0 ? '+$' : '-$') + Math.abs(yr3Net).toLocaleString();
+      document.getElementById('proj-roi').textContent = roiMultiple + '×';
+    }
+
+    renderRoi();
   </script>
 
   <!-- WE FIX IT FOR FREE -->

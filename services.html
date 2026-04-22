@@ -103,20 +103,18 @@
       border-color: rgba(249,115,22,0.3);
     }
 
-    /* Expandable cards */
-    .exp-card {
-      cursor: pointer;
+    /* Service cards — static, no expand */
+    .svc-card {
       border: 1px solid #3a3a3a;
       border-radius: 0.75rem;
       overflow: hidden;
       transition: border-color 0.2s, box-shadow 0.2s;
       background-color: #232323;
+      display: flex;
+      flex-direction: column;
     }
-    .exp-card:hover { border-color: rgba(249,115,22,0.45); }
-    .exp-card.open { border-color: rgba(249,115,22,0.55); box-shadow: 0 0 0 1px rgba(249,115,22,0.15); }
-    .exp-body { border-top: 1px solid #3a3a3a; }
-    .exp-chevron { transition: transform 0.3s ease; flex-shrink: 0; }
-    .exp-card.open .exp-chevron { transform: rotate(180deg); }
+    .svc-card:hover { border-color: rgba(249,115,22,0.45); }
+    .svc-card-img { border-top: 1px solid #3a3a3a; margin-top: auto; }
   </style>
   <!-- Google Analytics (G-J31Z05DB01) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
@@ -258,199 +256,180 @@
       <div class="grid sm:grid-cols-2 gap-4">
 
         <!-- UC1 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 01</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 01</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Blueprint Review Before You Bid</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Catch scope gaps before they become a $40,000 change order.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Catch scope gaps before they become a $40,000 change order.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">The AI reads the full PDF in minutes — scope, conflicts, and spec contradictions flagged before you bid.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Catching scope gaps before they become a $40,000 change order you can't recover.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">The AI reads the full PDF in minutes — scope, conflicts, and spec contradictions flagged before you bid.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Catching scope gaps before they become a $40,000 change order you can't recover.</p></div>
-          </div></div>
+          <div class="svc-card-img px-5 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
+              <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
+            </div>
+          </div>
         </div>
 
         <!-- UC2 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 02</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 02</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">RFI Backlog — Cleared in Hours</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">50, 70, 100+ open RFIs — prioritised and actioned before they block trades.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">50, 70, 100+ open RFIs — prioritised and actioned before they block trades.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Every open RFI checked against your blueprints — critical path blockers identified before they stop trades.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Nobody on your team has time to manage the RFI log properly — so things slip until they're emergencies.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Every open RFI checked against your blueprints — critical path blockers identified before they stop trades.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Nobody on your team has time to manage the RFI log properly — so things slip until they're emergencies.</p></div>
-            <div class="mt-4 rounded-lg overflow-hidden" style="border:1px solid rgba(58,58,58,0.6);max-height:190px;">
-              <img src="/images/01_rfi_backlog.jpg" alt="RFI Backlog tool preview" style="display:block;width:100%;object-fit:cover;object-position:top;">
-            </div>
-          </div></div>
+          <div class="svc-card-img">
+            <img src="/images/01_rfi_backlog.jpg" alt="RFI Backlog tool preview" style="display:block;width:100%;height:180px;object-fit:cover;object-position:top;">
+          </div>
         </div>
 
         <!-- UC3 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 03</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 03</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Daily Logs → One Weekly Report</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Turn 20+ monthly site logs into one clear weekly intelligence brief.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Turn 20+ monthly site logs into one clear weekly intelligence brief.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">All site logs read weekly — manpower trends, delay patterns, and dispute-ready flagged items in one report.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Losing disputes because the evidence was in the logs — but nobody was reading them.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">All site logs read weekly — manpower trends, delay patterns, and dispute-ready flagged items in one report.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Losing disputes because the evidence was in the logs — but nobody was reading them.</p></div>
-            <div class="mt-4 rounded-lg overflow-hidden" style="border:1px solid rgba(58,58,58,0.6);max-height:190px;">
-              <img src="/images/02_daily_logs.jpg" alt="Daily Logs tool preview" style="display:block;width:100%;object-fit:cover;object-position:top;">
-            </div>
-          </div></div>
+          <div class="svc-card-img">
+            <img src="/images/02_daily_logs.jpg" alt="Daily Logs tool preview" style="display:block;width:100%;height:180px;object-fit:cover;object-position:top;">
+          </div>
         </div>
 
         <!-- UC4 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 04</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 04</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Subcontractor Scope Gap Finder</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Find the items nobody priced — before mobilisation, not after.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Find the items nobody priced — before mobilisation, not after.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Every sub's scope letter compared against spec and drawings — unpriced items found before mobilisation.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">"I thought that was in your scope" conversations that cost real money.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Every sub's scope letter compared against spec and drawings — unpriced items found before mobilisation.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">"I thought that was in your scope" conversations that cost real money.</p></div>
-            <div class="mt-4 rounded-lg overflow-hidden" style="border:1px solid rgba(58,58,58,0.6);max-height:190px;">
-              <img src="/images/03_scope_gap_finder.jpg" alt="Subcontractor Scope Gap Finder tool preview" style="display:block;width:100%;object-fit:cover;object-position:top;">
-            </div>
-          </div></div>
+          <div class="svc-card-img">
+            <img src="/images/03_scope_gap_finder.jpg" alt="Subcontractor Scope Gap Finder tool preview" style="display:block;width:100%;height:180px;object-fit:cover;object-position:top;">
+          </div>
         </div>
 
         <!-- UC5 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 05</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 05</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Tender Package Risk Scanner</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Enter every tender with eyes open — ambiguous clauses flagged before you sign.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Enter every tender with eyes open — ambiguous clauses flagged before you sign.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Full tender package reviewed before you bid — ambiguous specs, one-sided clauses, and owner clarification items flagged.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Signing contracts with traps in them that only become visible six months into construction.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Full tender package reviewed before you bid — ambiguous specs, one-sided clauses, and owner clarification items flagged.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Signing contracts with traps in them that only become visible six months into construction.</p></div>
-            <div class="mt-4 rounded-lg overflow-hidden" style="border:1px solid rgba(58,58,58,0.6);max-height:190px;">
-              <img src="/images/04_tender_risk_scanner.jpg" alt="Tender Package Risk Scanner tool preview" style="display:block;width:100%;object-fit:cover;object-position:top;">
-            </div>
-          </div></div>
+          <div class="svc-card-img">
+            <img src="/images/04_tender_risk_scanner.jpg" alt="Tender Package Risk Scanner tool preview" style="display:block;width:100%;height:180px;object-fit:cover;object-position:top;">
+          </div>
         </div>
 
         <!-- UC6 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 06</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 06</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Change Order Risk Tracker</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Know which COs need more documentation before they go to billing.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Know which COs need more documentation before they go to billing.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Every change order reviewed for cost exposure, missing detail, and unapproved items — before it goes to billing.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Change orders that get disputed at close-out because the documentation wasn't there.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Every change order reviewed for cost exposure, missing detail, and unapproved items — before it goes to billing.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Change orders that get disputed at close-out because the documentation wasn't there.</p></div>
-            <div class="mt-4 rounded-lg overflow-hidden" style="border:1px solid rgba(58,58,58,0.6);max-height:190px;">
-              <img src="/images/05_change_order_risk_tracker.jpg" alt="Change Order Risk Tracker tool preview" style="display:block;width:100%;object-fit:cover;object-position:top;">
-            </div>
-          </div></div>
+          <div class="svc-card-img">
+            <img src="/images/05_change_order_risk_tracker.jpg" alt="Change Order Risk Tracker tool preview" style="display:block;width:100%;height:180px;object-fit:cover;object-position:top;">
+          </div>
         </div>
 
         <!-- UC7 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 07</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 07</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Meeting Minutes Action Tracker</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Every verbal commitment captured — before "that's not what was said" costs you.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Every verbal commitment captured — before "that's not what was said" costs you.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Every action item, owner, and verbal commitment extracted from meeting notes — nothing left undocumented.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Verbal commitments that disappear because nobody wrote them down properly.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Every action item, owner, and verbal commitment extracted from meeting notes — nothing left undocumented.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Verbal commitments that disappear because nobody wrote them down properly.</p></div>
-            <div class="mt-4 rounded-lg overflow-hidden" style="border:1px solid rgba(58,58,58,0.6);max-height:190px;">
-              <img src="/images/06_meeting_minutes_tracker.jpg" alt="Meeting Minutes Action Tracker tool preview" style="display:block;width:100%;object-fit:cover;object-position:top;">
-            </div>
-          </div></div>
+          <div class="svc-card-img">
+            <img src="/images/06_meeting_minutes_tracker.jpg" alt="Meeting Minutes Action Tracker tool preview" style="display:block;width:100%;height:180px;object-fit:cover;object-position:top;">
+          </div>
         </div>
 
         <!-- UC8 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 08</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 08</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Deficiency List Management</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Complete, current picture of every outstanding deficiency — close-out accelerated.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Complete, current picture of every outstanding deficiency — close-out accelerated.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">All inspection reports consolidated — duplicates removed, open items tracked, recurring patterns surfaced for close-out.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Close-out delays caused by nobody having a complete, current picture of outstanding deficiencies.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">All inspection reports consolidated — duplicates removed, open items tracked, recurring patterns surfaced for close-out.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Close-out delays caused by nobody having a complete, current picture of outstanding deficiencies.</p></div>
-            <div class="mt-4 rounded-lg overflow-hidden" style="border:1px solid rgba(58,58,58,0.6);max-height:190px;">
-              <img src="/images/07_deficiency_list.jpg" alt="Deficiency List Management tool preview" style="display:block;width:100%;object-fit:cover;object-position:top;">
-            </div>
-          </div></div>
+          <div class="svc-card-img">
+            <img src="/images/07_deficiency_list.jpg" alt="Deficiency List Management tool preview" style="display:block;width:100%;height:180px;object-fit:cover;object-position:top;">
+          </div>
         </div>
 
         <!-- UC9 — Live Takeoff & Cost Intelligence (featured, full-width) -->
-        <div class="sm:col-span-2 exp-card relative overflow-hidden" style="border-color: rgba(249,115,22,0.3); background: rgba(249,115,22,0.04);" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
+        <div class="sm:col-span-2 svc-card relative overflow-hidden" style="border-color: rgba(249,115,22,0.3); background: rgba(249,115,22,0.04);">
           <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,115,22,0.5),transparent);"></div>
-          <div class="flex items-start justify-between gap-3 p-5 lg:p-6">
-            <div class="flex items-start gap-4">
+          <div class="p-5 lg:p-6">
+            <div class="flex items-start gap-4 mb-4">
               <div class="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.15);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/><line x1="12" y1="7" x2="12" y2="7.01"/><polyline points="9 17 12 14 15 17"/></svg>
               </div>
@@ -463,9 +442,6 @@
                 <p class="font-mono text-hiviz text-xs leading-snug mt-2">Real quantities from your drawings. Live market prices. Accurate bids — every time.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
-          <div class="exp-body" hidden><div class="px-5 pb-6 lg:px-6">
             <p class="text-fog text-sm leading-relaxed mb-5">An AI-powered takeoff and estimating engine that reads your blueprints, extracts quantities automatically, and prices them against live market data — all integrated directly into your existing project management platform. No manual counting, no stale spreadsheet rates, no double entry. The number you bring to bid reflects what materials and labour actually cost on the day you submit.</p>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
               <div class="rounded-lg p-3" style="background:rgba(0,0,0,0.2);border:1px solid rgba(58,58,58,0.6);">
@@ -485,12 +461,17 @@
                 <p class="text-fog text-xs leading-relaxed">Regional labour rates and subcontractor benchmarks pulled from live market data — incoming sub quotes automatically compared against current going rates.</p>
               </div>
             </div>
-            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">The margin you lose on a bid is rarely from bad work — it's from material costs that moved between estimate and mobilisation, or quantities that were missed in a manual count. This closes both gaps, running privately on your infrastructure with no third-party access to your project data.</p></div>
-            <div class="mt-4 flex items-center gap-2 font-mono text-xs rounded-lg px-3 py-2.5" style="background:rgba(249,115,22,0.07);border:1px solid rgba(249,115,22,0.2);color:rgba(249,115,22,0.85);">
+            <div class="tape-line mb-4"><p class="text-xs text-fog font-mono leading-relaxed">The margin you lose on a bid is rarely from bad work — it's from material costs that moved between estimate and mobilisation, or quantities that were missed in a manual count. This closes both gaps, running privately on your infrastructure with no third-party access to your project data.</p></div>
+            <div class="flex items-center gap-2 font-mono text-xs rounded-lg px-3 py-2.5" style="background:rgba(249,115,22,0.07);border:1px solid rgba(249,115,22,0.2);color:rgba(249,115,22,0.85);">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
               This advanced tool is available on <strong style="color:#f97316;">Full Build ($9,500)</strong> and <strong style="color:#f97316;">Plus ($15,000)</strong> tiers only. &nbsp;<a href="/pricing" style="text-decoration:underline;opacity:0.75;">View pricing →</a>
             </div>
-          </div></div>
+          </div>
+          <div class="svc-card-img px-5 lg:px-6 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
+              <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -512,179 +493,172 @@
       <!-- Cards grid -->
       <div class="grid sm:grid-cols-2 gap-4">
 
-        <!-- UC9 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <!-- UC1 (Logistics) -->
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 01</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 01</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Shipment Document Audit</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">One data entry mistake should never cause a 2-week customs hold.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">One data entry mistake should never cause a 2-week customs hold.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Full shipment package cross-checked — BOL, invoice, packing list, and certificate of origin — before customs filing.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">A $200 data entry mistake turning into a 2-week customs delay on a $400,000 shipment.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Full shipment package cross-checked — BOL, invoice, packing list, and certificate of origin — before customs filing.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">A $200 data entry mistake turning into a 2-week customs delay on a $400,000 shipment.</p></div>
-            <div class="mt-4 rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:100px;background:rgba(0,0,0,0.15);">
+          <div class="svc-card-img px-5 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
               <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
             </div>
-          </div></div>
+          </div>
         </div>
 
-        <!-- UC10 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <!-- UC2 (Logistics) -->
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 02</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 02</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Freight Invoice Verification</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Every overcharge, duplicate, and above-cap surcharge — caught line by line.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Every overcharge, duplicate, and above-cap surcharge — caught line by line.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Every carrier invoice checked against contracted rates — overcharges, above-cap surcharges, and duplicates flagged line by line.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Paying for freight errors you'd only find if someone had time to check every invoice — which nobody does.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Every carrier invoice checked against contracted rates — overcharges, above-cap surcharges, and duplicates flagged line by line.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Paying for freight errors you'd only find if someone had time to check every invoice — which nobody does.</p></div>
-            <div class="mt-4 rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:100px;background:rgba(0,0,0,0.15);">
+          <div class="svc-card-img px-5 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
               <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
             </div>
-          </div></div>
+          </div>
         </div>
 
-        <!-- UC11 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <!-- UC3 (Logistics) -->
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 03</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 03</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Customs Entry Review</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Flag every inconsistency before the filing — not after the customs exam.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Flag every inconsistency before the filing — not after the customs exam.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Classifications, declared values, and required certificates checked against your shipping docs — before the filing, not after.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Customs exams and penalties that stem from preventable documentation errors.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Classifications, declared values, and required certificates checked against your shipping docs — before the filing, not after.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Customs exams and penalties that stem from preventable documentation errors.</p></div>
-            <div class="mt-4 rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:100px;background:rgba(0,0,0,0.15);">
+          <div class="svc-card-img px-5 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
               <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
             </div>
-          </div></div>
+          </div>
         </div>
 
-        <!-- UC12 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <!-- UC4 (Logistics) -->
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 04</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 04</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Supplier Communication Digest</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Critical supplier updates never buried in email threads again.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Critical supplier updates never buried in email threads again.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">All supplier and carrier emails distilled weekly — on track, delayed, and unconfirmed commitments surfaced in one read.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Critical supplier updates getting buried in email threads until it's too late to act.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">All supplier and carrier emails distilled weekly — on track, delayed, and unconfirmed commitments surfaced in one read.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Critical supplier updates getting buried in email threads until it's too late to act.</p></div>
-            <div class="mt-4 rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:100px;background:rgba(0,0,0,0.15);">
+          <div class="svc-card-img px-5 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
               <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
             </div>
-          </div></div>
+          </div>
         </div>
 
-        <!-- UC13 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <!-- UC5 (Logistics) -->
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 05</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 05</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Trade Lane Performance Report</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Renegotiate carrier contracts with evidence — not gut feel.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Renegotiate carrier contracts with evidence — not gut feel.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Historical invoices and shipment records analysed — underperforming lanes and overbilling carriers identified with evidence.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Renewing carrier contracts without actually knowing how the carrier performed.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Historical invoices and shipment records analysed — underperforming lanes and overbilling carriers identified with evidence.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Renewing carrier contracts without actually knowing how the carrier performed.</p></div>
-            <div class="mt-4 rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:100px;background:rgba(0,0,0,0.15);">
+          <div class="svc-card-img px-5 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
               <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
             </div>
-          </div></div>
+          </div>
         </div>
 
-        <!-- UC14 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <!-- UC6 (Logistics) -->
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 06</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 06</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Import/Export Compliance Check</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Catch regulatory gaps before they become fines, suspensions, or seizures.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Catch regulatory gaps before they become fines, suspensions, or seizures.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Your trade documents reviewed against current regulations — compliance gaps flagged before they become fines or seizures.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Regulatory changes your team didn't catch because nobody had time to track them.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Your trade documents reviewed against current regulations — compliance gaps flagged before they become fines or seizures.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Regulatory changes your team didn't catch because nobody had time to track them.</p></div>
-            <div class="mt-4 rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:100px;background:rgba(0,0,0,0.15);">
+          <div class="svc-card-img px-5 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
               <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
             </div>
-          </div></div>
+          </div>
         </div>
 
-        <!-- UC15 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <!-- UC7 (Logistics) -->
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Use Case 07</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Use Case 07</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Inbound Shipment Risk Scoring</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Stop reacting to supply chain disruptions — start preventing them.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Stop reacting to supply chain disruptions — start preventing them.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Scored weekly summary of all active inbound shipments — documentation issues and delay risk surfaced before they hit.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Supply chain disruptions that were visible in the data — if anyone had time to look at it.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Scored weekly summary of all active inbound shipments — documentation issues and delay risk surfaced before they hit.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Supply chain disruptions that were visible in the data — if anyone had time to look at it.</p></div>
-            <div class="mt-4 rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:100px;background:rgba(0,0,0,0.15);">
+          <div class="svc-card-img px-5 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
               <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
             </div>
-          </div></div>
+          </div>
         </div>
 
-        <!-- UC16 — Live Supply Chain Twin (featured, full-width) -->
-        <div class="sm:col-span-2 exp-card relative overflow-hidden" style="border-color: rgba(249,115,22,0.3); background: rgba(249,115,22,0.04);" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
+        <!-- UC8 (Logistics) — Live Supply Chain Twin (featured, full-width) -->
+        <div class="sm:col-span-2 svc-card relative overflow-hidden" style="border-color: rgba(249,115,22,0.3); background: rgba(249,115,22,0.04);">
           <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,115,22,0.5),transparent);"></div>
-          <div class="flex items-start justify-between gap-3 p-5 lg:p-6">
-            <div class="flex items-start gap-4">
+          <div class="p-5 lg:p-6">
+            <div class="flex items-start gap-4 mb-4">
               <div class="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.15);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/><path d="M12 6l3 6-3 6-3-6z" opacity=".4"/></svg>
               </div>
@@ -697,9 +671,6 @@
                 <p class="font-mono text-hiviz text-xs leading-snug mt-2">Detects disruptions within seconds — and recalculates routes before they cost you.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
-          <div class="exp-body" hidden><div class="px-5 pb-6 lg:px-6">
             <p class="text-fog text-sm leading-relaxed mb-5">A real-time digital replica of your supply chain, built on live API feeds from carrier networks, port authorities, and global data sources. Every active shipment is tracked continuously. When anything changes — a port congestion event, a weather disruption, a carrier failure — the system detects it within seconds and immediately calculates alternative routing options. You're notified before the delay becomes a problem, not after.</p>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
               <div class="rounded-lg p-3" style="background:rgba(0,0,0,0.2);border:1px solid rgba(58,58,58,0.6);">
@@ -719,12 +690,17 @@
                 <p class="text-fog text-xs leading-relaxed">Disruptions detected in seconds. Alternative routing calculated automatically and presented with cost and time trade-offs.</p>
               </div>
             </div>
-            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">By the time most teams learn about a disruption, the window to reroute has already closed. This closes that gap completely — running privately on your own infrastructure, with no third-party exposure of your shipment data.</p></div>
-            <div class="mt-4 flex items-center gap-2 font-mono text-xs rounded-lg px-3 py-2.5" style="background:rgba(249,115,22,0.07);border:1px solid rgba(249,115,22,0.2);color:rgba(249,115,22,0.85);">
+            <div class="tape-line mb-4"><p class="text-xs text-fog font-mono leading-relaxed">By the time most teams learn about a disruption, the window to reroute has already closed. This closes that gap completely — running privately on your own infrastructure, with no third-party exposure of your shipment data.</p></div>
+            <div class="flex items-center gap-2 font-mono text-xs rounded-lg px-3 py-2.5" style="background:rgba(249,115,22,0.07);border:1px solid rgba(249,115,22,0.2);color:rgba(249,115,22,0.85);">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
               This advanced tool is available on <strong style="color:#f97316;">Full Build ($9,500)</strong> and <strong style="color:#f97316;">Plus ($15,000)</strong> tiers only. &nbsp;<a href="/pricing" style="text-decoration:underline;opacity:0.75;">View pricing →</a>
             </div>
-          </div></div>
+          </div>
+          <div class="svc-card-img px-5 lg:px-6 py-4">
+            <div class="rounded-lg flex items-center justify-center" style="border:1px dashed rgba(58,58,58,0.8);height:80px;background:rgba(0,0,0,0.15);">
+              <span class="font-mono text-xs" style="color:rgba(160,160,160,0.35);">— preview image coming soon —</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -800,129 +776,111 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
         <!-- M1 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 01</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Marketing 01</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Short-Form Video Scripts</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Reels, TikToks, and Shorts — scripted, directed, and ready to film.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Reels, TikToks, and Shorts — scripted, directed, and ready to film.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Scripts, hooks, and direction notes ready to film — formatted for Reels, TikTok, and YouTube Shorts.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Show up where your audience already is — with content built to stop the scroll.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Scripts, hooks, and direction notes ready to film — formatted for Reels, TikTok, and YouTube Shorts.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Show up where your audience already is — with content built to stop the scroll.</p></div>
-          </div></div>
         </div>
 
         <!-- M2 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 02</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Marketing 02</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Custom Posts & Captions</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Your brand voice, every post — consistent and ready to publish.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Your brand voice, every post — consistent and ready to publish.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Custom posts and captions in your brand voice — tailored to your industry and audience, ready to publish.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">A consistent presence that builds trust over time — without the hours of writing every week.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Custom posts and captions in your brand voice — tailored to your industry and audience, ready to publish.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">A consistent presence that builds trust over time — without the hours of writing every week.</p></div>
-          </div></div>
         </div>
 
         <!-- M3 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 03</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Marketing 03</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Long-Form Content</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Deeper content that builds authority and keeps people watching longer.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Deeper content that builds authority and keeps people watching longer.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Video scripts, LinkedIn articles, and in-depth posts — scripted and structured for platforms where depth builds authority.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Build real authority in your space with content that goes beyond the surface.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Video scripts, LinkedIn articles, and in-depth posts — scripted and structured for platforms where depth builds authority.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Build real authority in your space with content that goes beyond the surface.</p></div>
-          </div></div>
         </div>
 
         <!-- M4 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 04</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Marketing 04</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Social Media Content Calendar</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Short form, long form, and video — planned and ready to execute.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Short form, long form, and video — planned and ready to execute.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">30–90 day calendar covering every format and platform — what to post, when, and in what format. No guesswork.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Show up consistently without spending hours figuring out what to say.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">30–90 day calendar covering every format and platform — what to post, when, and in what format. No guesswork.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Show up consistently without spending hours figuring out what to say.</p></div>
-          </div></div>
         </div>
 
         <!-- M5 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 05</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Marketing 05</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Competitor Analysis Report</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">Position where competitors aren't — backed by data, not gut feel.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">Position where competitors aren't — backed by data, not gut feel.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">Competitors' formats, engagement, and content gaps analysed — position where they're not, backed by data.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Position yourself where competitors aren't — backed by what the data actually shows.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">Competitors' formats, engagement, and content gaps analysed — position where they're not, backed by data.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Position yourself where competitors aren't — backed by what the data actually shows.</p></div>
-          </div></div>
         </div>
 
         <!-- M6 -->
-        <div class="exp-card" tabindex="0" role="button" aria-expanded="false" onclick="toggleCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCard(this)}">
-          <div class="flex items-start justify-between gap-3 p-5">
-            <div class="flex items-start gap-3">
+        <div class="svc-card">
+          <div class="p-5 flex-1">
+            <div class="flex items-start gap-3 mb-3">
               <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-hiviz/10">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
               </div>
               <div>
-                <p class="font-mono text-plate text-xs uppercase mb-1">Marketing 06</p>
+                <p class="font-mono text-plate text-xs uppercase mb-0.5">Marketing 06</p>
                 <h3 class="font-display text-xl text-chalk leading-tight">Custom Brand Voice AI</h3>
-                <p class="font-mono text-hiviz text-xs leading-snug mt-2">On-brand content at volume — no headcount added, no per-word SaaS fees.</p>
               </div>
             </div>
-            <svg class="exp-chevron w-4 h-4 text-fog mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <p class="font-mono text-hiviz text-xs leading-snug mb-3">On-brand content at volume — no headcount added, no per-word SaaS fees.</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">A private AI fine-tuned on your content — writes in your voice for emails, posts, and campaigns. You own it outright.</p>
+            <div class="tape-line"><p class="text-xs text-fog font-mono leading-relaxed">Consistent, on-brand content at volume — without adding headcount or paying per-word to a SaaS platform.</p></div>
           </div>
-          <div class="exp-body" hidden><div class="px-5 pb-5">
-            <p class="text-fog text-sm leading-relaxed">A private AI fine-tuned on your content — writes in your voice for emails, posts, and campaigns. You own it outright.</p>
-            <div class="tape-line mt-3"><p class="text-xs text-fog font-mono leading-relaxed">Consistent, on-brand content at volume — without adding headcount or paying per-word to a SaaS platform.</p></div>
-          </div></div>
         </div>
 
       </div>
@@ -1104,15 +1062,6 @@
     </div>
   </footer>
 
-  <script>
-    function toggleCard(card) {
-      var body = card.querySelector('.exp-body');
-      var isOpen = card.classList.contains('open');
-      card.classList.toggle('open', !isOpen);
-      card.setAttribute('aria-expanded', !isOpen);
-      if (isOpen) { body.hidden = true; } else { body.hidden = false; }
-    }
-  </script>
   <script>
     const hero = document.getElementById('hero');
     const sectionNav = document.getElementById('section-nav');

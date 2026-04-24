@@ -104,6 +104,62 @@
       "destination": "/discovery.html"
     },
     {
+      "source": "/construction",
+      "destination": "/construction/index.html"
+    },
+    {
+      "source": "/construction/how-it-works",
+      "destination": "/construction/how-it-works.html"
+    },
+    {
+      "source": "/construction/services",
+      "destination": "/construction/services.html"
+    },
+    {
+      "source": "/construction/work",
+      "destination": "/construction/work.html"
+    },
+    {
+      "source": "/construction/faq",
+      "destination": "/construction/faq.html"
+    },
+    {
+      "source": "/construction/contact",
+      "destination": "/construction/contact.html"
+    },
+    {
+      "source": "/construction/discovery",
+      "destination": "/construction/discovery.html"
+    },
+    {
+      "source": "/logistics",
+      "destination": "/logistics/index.html"
+    },
+    {
+      "source": "/logistics/how-it-works",
+      "destination": "/logistics/how-it-works.html"
+    },
+    {
+      "source": "/logistics/services",
+      "destination": "/logistics/services.html"
+    },
+    {
+      "source": "/logistics/work",
+      "destination": "/logistics/work.html"
+    },
+    {
+      "source": "/logistics/faq",
+      "destination": "/logistics/faq.html"
+    },
+    {
+      "source": "/logistics/contact",
+      "destination": "/logistics/contact.html"
+    },
+    {
+      "source": "/logistics/discovery",
+      "destination": "/logistics/discovery.html"
+    },
+    {
       "source": "/api/send-contact-email",
       "destination": "/api/send-contact-email"
     },

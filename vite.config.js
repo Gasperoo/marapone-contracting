@@ -72,8 +72,7 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       input: {
-        // Root pages
-        landing: path.resolve(__dirname, 'landing.html'),
+        // Root pages (index.html is the landing/chooser page)
         main: path.resolve(__dirname, 'index.html'),
         about: path.resolve(__dirname, 'about.html'),
         'how-it-works': path.resolve(__dirname, 'how-it-works.html'),

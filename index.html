@@ -1,1793 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <title>Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence</title>
-  <meta name="description"
-    content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
-  <meta name="keywords"
-    content="private AI, construction AI, logistics AI, B2B AI solutions, document intelligence, trade compliance AI, blueprint auditor, freight intelligence, no subscription AI" />
+  <title>Marapone – Private AI for Construction & Logistics | Choose Your Industry</title>
+  <meta name="description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code. Deployed on your infrastructure. Choose your industry to get started." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Marapone" />
-  <meta property="og:title"
-    content="Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence" />
-  <meta property="og:description"
-    content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
+  <meta property="og:title" content="Marapone – Private AI for Construction & Logistics" />
+  <meta property="og:description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code. Deployed on your infrastructure." />
   <meta property="og:url" content="https://marapone.com/" />
   <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title"
-    content="Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence" />
-  <meta name="twitter:description"
-    content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
+  <meta name="twitter:title" content="Marapone – Private AI for Construction & Logistics" />
+  <meta name="twitter:description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code." />
   <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
-  <link rel="stylesheet" href="./src/tailwind.css" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
-    html {
-      overflow-x: hidden;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      background-color: #1a1a1a;
-      color: #e8e8e8;
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0f0f0f;
       font-family: 'DM Sans', sans-serif;
-      overflow-x: hidden;
     }
 
-    .hiviz-gradient {
-      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    @media (max-width: 767px) {
+      html, body { overflow: auto; }
     }
 
-    .noise-bg {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    /* ── Noise overlay ── */
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
     }
 
-    .tape-line {
-      border-left: 3px solid #f97316;
-      padding-left: 1rem;
-    }
-
-    .grid-dot {
-      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+    /* ── Grid dot background ── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(58,58,58,0.5) 1px, transparent 1px);
       background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* ── Main split layout ── */
+    .split-container {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
     }
 
-    .fade-up {
-      animation: fadeUp 0.6s ease forwards;
-    }
-
-    .delay-1 {
-      animation-delay: 0.15s;
-      opacity: 0;
-    }
-
-    .delay-2 {
-      animation-delay: 0.3s;
-      opacity: 0;
-    }
-
-    .delay-3 {
-      animation-delay: 0.45s;
-      opacity: 0;
-    }
-
-    .delay-4 {
-      animation-delay: 0.6s;
-      opacity: 0;
-    }
-
-    @keyframes logoPulse {
-
-      0%,
-      100% {
-        opacity: 0.7;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 1;
-        transform: scale(1.04);
+    @media (max-width: 767px) {
+      .split-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100svh;
       }
     }
 
-    .logo-pulse {
-      animation: logoPulse 4s ease-in-out infinite;
-    }
-
-    .industry-tab {
+    /* ── Panels ── */
+    .panel {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
+      text-decoration: none;
     }
 
-    .industry-tab.active {
-      color: #f97316;
+    .split-container:hover .panel { flex: 0.65; }
+    .split-container:hover .panel:hover { flex: 1.35; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .panel { transition: none; }
+    }
+
+    @media (max-width: 767px) {
+      .panel {
+        flex: none !important;
+        width: 100%;
+        min-height: 50svh;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    /* ── Construction panel (left) ── */
+    .panel-construction {
+      background: #111111;
+      justify-content: flex-start;
+    }
+
+    .panel-construction .panel-glow {
+      position: absolute;
+      top: -20%;
+      left: -15%;
+      width: 70%;
+      height: 120%;
+      background: radial-gradient(ellipse at 25% 40%, rgba(249,115,22,0.22) 0%, transparent 65%);
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .panel-construction:hover .panel-glow {
+      opacity: 1.4;
+    }
+
+    /* ── Logistics panel (right) ── */
+    .panel-logistics {
+      background: #0e1210;
+      justify-content: flex-end;
+    }
+
+    .panel-logistics .panel-glow {
+      position: absolute;
+      top: -20%;
+      right: -15%;
+      width: 70%;
+      height: 120%;
+      background: radial-gradient(ellipse at 75% 40%, rgba(82,183,136,0.20) 0%, transparent 65%);
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .panel-logistics:hover .panel-glow {
+      opacity: 1.4;
+    }
+
+    /* ── Panel inner content ── */
+    .panel-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 3rem 4rem;
+      max-width: 380px;
+    }
+
+    .panel-construction .panel-inner {
+      margin-left: 4%;
+    }
+
+    .panel-logistics .panel-inner {
+      margin-right: 4%;
+      text-align: right;
+      align-items: flex-end;
+    }
+
+    @media (max-width: 1199px) {
+      .panel-inner { padding: 2.5rem 2.5rem; max-width: 320px; }
+      .panel-construction .panel-inner { margin-left: 2%; }
+      .panel-logistics .panel-inner { margin-right: 2%; }
+    }
+
+    @media (max-width: 767px) {
+      .panel-inner {
+        padding: 2.5rem 1.75rem;
+        max-width: 100%;
+        width: 100%;
+        margin: 0 !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+      }
+    }
+
+    .panel-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      color: #e8e8e8;
+    }
+
+    .panel-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+    }
+
+    .panel-construction .panel-title { color: #f97316; }
+    .panel-logistics .panel-title { color: #52b788; }
+
+    .panel-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: #a0a0a0;
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    @media (max-width: 767px) {
+      .panel-desc { max-width: 100%; }
+    }
+
+    .panel-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid;
+      transition: background 0.25s ease, color 0.25s ease;
+      text-decoration: none;
+      pointer-events: none; /* parent <a> handles click */
+    }
+
+    .panel-construction .panel-cta {
       border-color: #f97316;
+      color: #f97316;
+    }
+    .panel-construction:hover .panel-cta {
+      background: rgba(249,115,22,0.12);
     }
 
-    .industry-panel {
-      display: none;
+    .panel-logistics .panel-cta {
+      border-color: #52b788;
+      color: #52b788;
+    }
+    .panel-logistics:hover .panel-cta {
+      background: rgba(82,183,136,0.12);
     }
 
-    .industry-panel.active {
-      display: grid;
+    /* ── Divider ── */
+    .divider {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.06);
+      z-index: 10;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .divider::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 30%;
+      background: linear-gradient(to bottom, transparent, rgba(249,115,22,0.6), rgba(82,183,136,0.6), transparent);
+      animation: dividerShimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes dividerShimmer {
+      0%   { top: -30%; opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .divider::after { animation: none; opacity: 0.5; top: 35%; height: 30%; }
+    }
+
+    @media (max-width: 767px) {
+      .divider {
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: auto;
+        width: 100%;
+        height: 1px;
+        transform: translateY(-50%);
+      }
+      .divider::after {
+        top: 0;
+        width: 30%;
+        height: 1px;
+        left: 0;
+        background: linear-gradient(to right, transparent, rgba(249,115,22,0.6), rgba(82,183,136,0.6), transparent);
+        animation: dividerShimmerH 3s ease-in-out infinite;
+      }
+      @keyframes dividerShimmerH {
+        0%   { left: -30%; opacity: 0; }
+        20%  { opacity: 1; }
+        80%  { opacity: 1; }
+        100% { left: 100%; opacity: 0; }
+      }
+    }
+
+    /* ── Center logo ── */
+    .center-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      width: 88px;
+      height: 88px;
+      pointer-events: none;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .center-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.7));
+      opacity: 0.92;
+    }
+
+    .center-logo-ring {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 70%);
+    }
+
+    @media (max-width: 767px) {
+      .center-logo {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 64px;
+        height: 64px;
+        margin: 1.5rem auto;
+        order: -1;
+      }
+      .split-container { position: relative; }
+    }
+
+    /* ── Bottom tagline ── */
+    .tagline {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: #3a3a3a;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    @media (max-width: 767px) {
+      .tagline {
+        position: static;
+        padding: 1.25rem 1rem 2rem;
+        color: #3a3a3a;
+      }
+    }
+
+    /* ── Hover state: panel content fade in stronger ── */
+    .panel-inner {
+      opacity: 0.7;
+      transition: opacity 0.4s ease;
+    }
+    .panel:hover .panel-inner { opacity: 1; }
+
+    @media (max-width: 767px) {
+      .panel-inner { opacity: 1; }
+    }
+
+    /* ── Focus ring for accessibility ── */
+    .panel:focus-visible {
+      outline: 2px solid #e8e8e8;
+      outline-offset: -4px;
+    }
+
+    /* ── Decorative corner lines ── */
+    .corner-lines {
+      position: absolute;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .panel-construction .corner-lines {
+      top: 2rem; left: 2rem;
+    }
+
+    .panel-logistics .corner-lines {
+      top: 2rem; right: 2rem;
+    }
+
+    .corner-line-h {
+      width: 32px; height: 1px;
+      background: currentColor;
+      opacity: 0.15;
+    }
+
+    .corner-line-v {
+      width: 1px; height: 32px;
+      background: currentColor;
+      opacity: 0.15;
+    }
+
+    .panel-construction .corner-lines { color: #f97316; }
+    .panel-logistics .corner-lines { color: #52b788; }
+
+    @media (max-width: 767px) {
+      .corner-lines { display: none; }
+    }
+
+    /* ── Industry tag chip ── */
+    .industry-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 0.25rem;
+      border: 1px solid;
+      opacity: 0.6;
+    }
+
+    .panel-construction .industry-chip {
+      border-color: rgba(249,115,22,0.35);
+      color: #f97316;
+      background: rgba(249,115,22,0.06);
+    }
+
+    .panel-logistics .industry-chip {
+      border-color: rgba(82,183,136,0.35);
+      color: #52b788;
+      background: rgba(82,183,136,0.06);
+    }
+
+    .chip-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
     }
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Marapone",
-    "description": "Private AI systems for construction and logistics companies. One-time price, full source code handover. Deployed on your infrastructure.",
-    "url": "https://marapone.com",
-    "serviceArea": {
-      "@type": "GeoShape",
-      "description": "Canada, Italy, and global remote"
-    },
-    "founder": "Marapone Team",
-    "priceRange": "$4,900 – $15,000"
-  }
-  </script>
-  <!-- Google Analytics (G-J31Z05DB01) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-J31Z05DB01');
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <!-- Lenis smooth scroll + GSAP ScrollTrigger -->
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"
-    integrity="sha384-4EgXbGZLDwcPHcRGrHOxm1OvumWUqhr/ts6eapdZnak6ORZAsSE3fMd0niykaSkw"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-    integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
-    integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d"
-    crossorigin="anonymous"></script>
-  <style>
-    #nav-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 2px;
-      width: 0%;
-      background: #f97316;
-      z-index: 9999;
-      pointer-events: none;
-      transition: width .08s linear;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-d1 {
-      transition-delay: .1s;
-    }
-
-    .reveal-d2 {
-      transition-delay: .2s;
-    }
-
-    .reveal-d3 {
-      transition-delay: .3s;
-    }
-
-    .reveal-d4 {
-      transition-delay: .4s;
-    }
-
-    @keyframes floatCard {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .float-card {
-      animation: floatCard 5s ease-in-out infinite;
-    }
-
-    @keyframes gradPulse {
-
-      0%,
-      100% {
-        opacity: .18;
-      }
-
-      50% {
-        opacity: .32;
-      }
-    }
-
-    .hero-glow {
-      position: absolute;
-      top: -10%;
-      left: -5%;
-      width: 70%;
-      height: 120%;
-      background: radial-gradient(ellipse at 30% 40%, #f97316 0%, transparent 60%);
-      filter: blur(80px);
-      animation: gradPulse 4s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hero-section {
-      background-color: #1a1a1a;
-      background-image:
-        radial-gradient(circle, rgba(58, 58, 58, 0.45) 1px, transparent 1px),
-        linear-gradient(135deg, rgba(26, 26, 26, 0.80) 0%, rgba(26, 26, 26, 0.72) 45%, rgba(26, 26, 26, 0.90) 100%),
-        url('/images/hero-bg.jpg');
-      background-size: 28px 28px, cover, cover;
-      background-position: center, center, 65% center;
-    }
-
-    /* Hero full-bleed layout */
-    #hero-outer {
-      /* Left padding aligns text with rest of site (max-w-6xl mx-auto px-4) */
-      padding-left: max(1rem, calc((100vw - 72rem) / 2 + 1rem));
-      padding-right: 0;
-    }
-
-    #hero-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-    }
-
-    #hero-text {
-      padding-right: 1rem;
-    }
-
-    @media (min-width: 1024px) {
-      #hero-grid {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 0;
-      }
-
-      #hero-text {
-        flex: 0 0 auto;
-        width: 460px;
-        padding-right: 3rem;
-      }
-
-      #hero-video-col {
-        flex: 1;
-        min-width: 0;
-        /* Pull video up to align with the logo/top of the text block */
-        padding-top: 0.5rem;
-      }
-    }
-
-    /* Video wrap */
-    .hero-video-wrap {
-      position: relative;
-      width: 100%;
-    }
-
-    .hero-video-glow {
-      position: absolute;
-      inset: -10% -5%;
-      background: radial-gradient(ellipse at 50% 60%, rgba(249, 115, 22, 0.18) 0%, transparent 65%);
-      filter: blur(40px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    #hero-demo-video {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow:
-        0 0 0 1px rgba(249, 115, 22, 0.08),
-        0 30px 80px rgba(0, 0, 0, 0.8),
-        0 4px 20px rgba(0, 0, 0, 0.5);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-
-    #hero-demo-video:hover {
-      transform: scale(1.012) translateY(-3px);
-      box-shadow:
-        0 0 0 1px rgba(249, 115, 22, 0.22),
-        0 40px 100px rgba(0, 0, 0, 0.85),
-        0 8px 30px rgba(249, 115, 22, 0.12);
-      border-color: rgba(249, 115, 22, 0.18);
-    }
-
-    /* ── Mobile optimizations ── */
-    @media (max-width: 1023px) {
-
-      /* Remove vertical centering — let content start from top */
-      section#main-content {
-        min-height: auto;
-        display: block;
-        padding-top: 0;
-      }
-
-      #hero-outer {
-        padding-right: 1rem;
-      }
-
-      .hero-video-wrap {
-        max-width: 560px;
-        margin: 0 auto;
-      }
-
-      /* Softer shadow on mobile (performance) */
-      #hero-demo-video {
-        box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.08), 0 12px 40px rgba(0, 0, 0, 0.7);
-        border-radius: 10px;
-      }
-    }
-
-    /* Disable hover lift on touch screens — avoids sticky hover after tap */
-    @media (hover: none) {
-      #hero-demo-video:hover {
-        transform: none;
-        box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.08), 0 30px 80px rgba(0, 0, 0, 0.8), 0 4px 20px rgba(0, 0, 0, 0.5);
-        border-color: rgba(255, 255, 255, 0.06);
-      }
-    }
-
-    /* Hide scrollbar on trust strip (mobile horizontal scroll) */
-    .trust-strip-row {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .trust-strip-row::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* ── Stack integrations marquee ── */
-    @keyframes marquee-left {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    @keyframes marquee-right {
-      from {
-        transform: translateX(-50%);
-      }
-
-      to {
-        transform: translateX(0);
-      }
-    }
-
-    .stack-marquee-outer {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .stack-marquee-outer::before,
-    .stack-marquee-outer::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100px;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .stack-marquee-outer::before {
-      left: 0;
-      background: linear-gradient(to right, #1a1a1a, transparent);
-    }
-
-    .stack-marquee-outer::after {
-      right: 0;
-      background: linear-gradient(to left, #1a1a1a, transparent);
-    }
-
-    .stack-track {
-      display: flex;
-      width: max-content;
-      animation: marquee-left 50s linear infinite;
-    }
-
-    .stack-track-r {
-      display: flex;
-      width: max-content;
-      animation: marquee-right 45s linear infinite;
-    }
-
-    .stack-track:hover,
-    .stack-track-r:hover {
-      animation-play-state: paused;
-    }
-
-    .stack-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      white-space: nowrap;
-      border: 1px solid rgba(58, 58, 58, 0.9);
-      border-radius: 0.5rem;
-      padding: 0.45rem 1rem;
-      margin: 0 0.4rem;
-      background: #222222;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: rgba(232, 232, 232, 0.55);
-      transition: border-color 0.2s, color 0.2s;
-      cursor: default;
-    }
-
-    .stack-chip:hover {
-      border-color: rgba(249, 115, 22, 0.35);
-      color: rgba(232, 232, 232, 0.9);
-    }
-
-    .stack-chip-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      background: rgba(249, 115, 22, 0.55);
-    }
-  </style>
 </head>
+<body>
 
-<body class="antialiased">
-  <div id="nav-progress" aria-hidden="true"></div>
+  <!-- Noise texture overlay -->
+  <div class="noise" aria-hidden="true"></div>
+  <!-- Grid dot background -->
+  <div class="grid-bg" aria-hidden="true"></div>
 
-  <!-- SKIP TO CONTENT -->
-  <a href="#main-content"
-    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip
-    to content</a>
+  <!-- Skip to content -->
+  <a href="#construction-panel" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to Construction</a>
 
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
-      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
-        <a href="/" class="text-chalk">Home</a>
-        <a href="/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
-        <a href="/services" class="hover:text-chalk transition-colors">Services</a>
-        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
-        <a href="/work" class="hover:text-chalk transition-colors">Work</a>
-        <a href="/faq" class="hover:text-chalk transition-colors">FAQ</a>
-        <a href="/about" class="hover:text-chalk transition-colors">About</a>
-        <a href="/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/contact"
-          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
-          Free Assessment →</a>
+  <!-- MAIN SPLIT LAYOUT -->
+  <main>
+    <div class="split-container" role="navigation" aria-label="Industry selection">
+
+      <!-- CENTER LOGO (desktop) -->
+      <div class="center-logo" aria-hidden="true">
+        <div class="center-logo-ring"></div>
+        <img src="/MaraponeLogo-1.png" alt="Marapone" />
       </div>
-      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
-        aria-label="Toggle navigation"
-        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
-      <a href="/" class="text-chalk pt-3">Home</a>
-      <a href="/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
-      <a href="/services" class="text-fog hover:text-chalk">Services</a>
-      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <a href="/work" class="text-fog hover:text-chalk">Work</a>
-      <a href="/faq" class="text-fog hover:text-chalk">FAQ</a>
-      <a href="/about" class="text-fog hover:text-chalk">About</a>
-      <a href="/contact" class="text-fog hover:text-chalk">Contact</a>
-      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment
-        →</a>
-    </div>
-  </nav>
 
+      <!-- DIVIDER -->
+      <div class="divider" aria-hidden="true"></div>
 
-  <!-- HERO -->
-  <section id="main-content" class="hero-section relative overflow-hidden min-h-[90vh] flex items-center">
-    <div class="hero-glow"></div>
-    <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block"></div>
-    <div class="w-full py-10 lg:py-24 relative z-10" id="hero-outer">
-      <div id="hero-grid">
-        <!-- Left: Copy -->
-        <div id="hero-text">
-          <div class="fade-up mb-5">
-            <img src="MaraponeLogo-1.png" alt="Marapone" class="h-10 lg:h-12 object-contain opacity-80" />
-          </div>
-          <h1 class="fade-up font-display text-5xl sm:text-7xl lg:text-9xl leading-none text-chalk mb-4">
-            STOP RENTING<br />YOUR <span class="text-hiviz">AI.</span><br />OWN THE<br />ENGINE.
-          </h1>
-          <p class="fade-up delay-1 font-body text-lg text-fog max-w-xl mt-6 mb-8 leading-relaxed">
-            Marapone builds private AI systems for construction and logistics companies — deployed on your
-            infrastructure, trained on your documents, handed to you permanently. No subscriptions. No data sharing. No
-            monthly fees. Ever.
-          </p>
-          <div class="fade-up delay-2 flex flex-col sm:flex-row gap-4">
-            <a href="/contact"
-              class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-center text-lg hover:opacity-90 transition-opacity">
-              Get Your Free AI Assessment →
-            </a>
-            <a href="/how-it-works"
-              class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
-              See How It Works
-            </a>
-          </div>
-          <div class="fade-up delay-2 mt-3">
-            <a href="/discovery"
-              class="inline-flex items-center gap-2 text-sm text-fog hover:text-chalk transition-colors font-mono">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              Or book a 15-min discovery call →
-            </a>
-          </div>
-          <div class="fade-up delay-3 mt-6 flex items-center gap-3">
-            <span
-              class="inline-flex items-center gap-1.5 bg-steel border border-plate rounded-full px-3 py-1.5 text-xs font-mono text-fog">
-              <svg class="w-3.5 h-3.5 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              30-day full refund guarantee
-            </span>
-            <span class="text-xs font-mono text-plate">No questions asked.</span>
-          </div>
+      <!-- LEFT PANEL: CONSTRUCTION -->
+      <a id="construction-panel"
+        href="/construction/"
+        class="panel panel-construction"
+        aria-label="Enter Construction — Private AI for general contractors and project teams">
+
+        <div class="panel-glow" aria-hidden="true"></div>
+
+        <!-- Corner accent -->
+        <div class="corner-lines" aria-hidden="true">
+          <div class="corner-line-h"></div>
+          <div class="corner-line-v" style="margin-top:0;position:absolute;top:0;left:0;"></div>
         </div>
-        <!-- Right: Demo Video -->
-        <div class="fade-up delay-1" id="hero-video-col">
-          <div class="hero-video-wrap">
-            <div class="hero-video-glow"></div>
-            <video id="hero-demo-video" autoplay muted loop playsinline webkit-playsinline preload="auto"
-              x-webkit-airplay="deny">
-              <source src="/ipad_demo.mp4" type="video/mp4" />
-            </video>
+
+        <div class="panel-inner">
+          <div class="industry-chip">
+            <span class="chip-dot"></span>
+            Private AI
           </div>
-          <p class="text-center text-xs text-fog mt-2 tracking-wide">Demo from our Blueprint Auditor service</p>
+          <div class="panel-title">CONSTRUC&shy;TION</div>
+          <p class="panel-desc">Private AI for general contractors &amp; project teams — document intelligence, risk analysis, and workflow automation.</p>
+          <span class="panel-cta" aria-hidden="true">Enter →</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST STRIP -->
-  <section class="bg-steel border-t border-b border-plate py-5">
-    <div class="max-w-6xl mx-auto px-4">
-      <div
-        class="trust-strip-row flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-3 gap-y-2 text-xs font-mono text-fog">
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> One-time
-          price</span>
-        <span class="text-plate hidden lg:inline">|</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Full
-          source code</span>
-        <span class="text-plate hidden lg:inline">|</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Your
-          infrastructure</span>
-        <span class="text-plate hidden lg:inline">|</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Canada
-          &amp; Italy</span>
-        <span class="text-plate hidden lg:inline">|</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Your data
-          stays private</span>
-        <span class="text-plate hidden lg:inline">|</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Phone,
-          tablet &amp; desktop</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- INDUSTRY STRIP -->
-  <section class="bg-charcoal border-b border-plate py-4">
-    <div class="max-w-6xl mx-auto px-4">
-      <div
-        class="flex flex-nowrap items-center justify-center lg:justify-evenly gap-x-3 text-xs font-mono text-fog overflow-x-auto">
-        <span class="text-plate hidden lg:inline">// Built for:</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">General Contractors</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Commercial GCs</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Freight Brokers</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Import/Export Operators</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">3PLs</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Project Managers</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">ICI Builders</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Customs Brokers</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Trading Companies</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO WE BUILD FOR -->
-  <section class="py-16 lg:py-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <p class="font-mono text-hiviz text-sm mb-2">// B2B AI solutions</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">THREE INDUSTRIES.<br /><span class="text-hiviz">ONE
-            APPROACH.</span></h2>
-      </div>
-      <!-- Industry tab buttons -->
-      <div class="flex flex-wrap justify-center gap-3 mb-8">
-        <button
-          class="industry-tab active font-mono text-sm border border-plate rounded px-5 py-2.5 transition-colors hover:border-hiviz/50"
-          onclick="switchIndustry('construction', this)"><span class="inline-flex items-center gap-1.5"><svg
-              class="inline-block" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 19h20" />
-              <path d="M5 19V11h14v8" />
-              <path d="M9 11V7a3 3 0 016 0v4" />
-            </svg>Construction</span></button>
-        <button
-          class="industry-tab font-mono text-sm border border-plate rounded px-5 py-2.5 text-fog transition-colors hover:border-hiviz/50"
-          onclick="switchIndustry('logistics', this)"><span class="inline-flex items-center gap-1.5"><svg
-              class="inline-block" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="3" width="15" height="13" />
-              <path d="M16 8h4l3 4v5h-7z" />
-              <circle cx="5.5" cy="18.5" r="2.5" />
-              <circle cx="18.5" cy="18.5" r="2.5" />
-            </svg>Logistics &amp; Trade</span></button>
-        <button
-          class="industry-tab font-mono text-sm border border-plate rounded px-5 py-2.5 text-fog transition-colors hover:border-hiviz/50"
-          onclick="switchIndustry('marketing', this)"><span class="inline-flex items-center gap-1.5"><svg
-              class="inline-block" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-              <path d="M19.07 4.93a10 10 0 010 14.14" />
-              <path d="M15.54 8.46a5 5 0 010 7.07" />
-            </svg>B2B Marketing</span></button>
-      </div>
-      <!-- Construction Panel -->
-      <div id="industry-construction" class="industry-panel active">
-        <div
-          class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors relative overflow-hidden">
-          <img src="construction-workers-looking-up-at-crane-8yehx0ze4t4tno03.jpg" alt="" aria-hidden="true"
-            class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none"
-            style="z-index:0;object-position:center 60%;" />
-          <div style="position:relative;z-index:1;">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="24"
-                  height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M2 19h20" />
-                  <path d="M5 19V11h14v8" />
-                  <path d="M9 11V7a3 3 0 016 0v4" />
-                </svg></div>
-              <div>
-                <p class="font-mono text-hiviz text-xs uppercase tracking-wider">For Construction Companies</p>
-                <h3 class="font-display text-2xl text-chalk">CONSTRUCTION INTELLIGENCE</h3>
-              </div>
-            </div>
-            <ul class="space-y-3 text-sm mb-6">
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg><span class="text-chalk">Blueprint & specification auditing</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg><span class="text-chalk">RFI tracking & critical path analysis</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg><span class="text-chalk">Daily log synthesis & delay detection</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg><span class="text-chalk">Cash-flow risk signals from document patterns</span></li>
-            </ul>
-            <a href="/services" class="font-mono text-hiviz text-sm hover:underline">See Construction AI →</a>
-          </div>
-        </div>
-      </div>
-      <!-- Logistics Panel -->
-      <div id="industry-logistics" class="industry-panel">
-        <div
-          class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors relative overflow-hidden">
-          <img src="wp7571943.jpg" alt="" aria-hidden="true"
-            class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none"
-            style="z-index:0;" />
-          <div style="position:relative;z-index:1;">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="24"
-                  height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <rect x="1" y="3" width="15" height="13" />
-                  <path d="M16 8h4l3 4v5h-7z" />
-                  <circle cx="5.5" cy="18.5" r="2.5" />
-                  <circle cx="18.5" cy="18.5" r="2.5" />
-                </svg></div>
-              <div>
-                <p class="font-mono text-hiviz text-xs uppercase tracking-wider">For Logistics & Trade Companies</p>
-                <h3 class="font-display text-2xl text-chalk">LOGISTICS INTELLIGENCE</h3>
-              </div>
-            </div>
-            <ul class="space-y-3 text-sm mb-6">
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg><span class="text-chalk">Trade document processing & validation</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg><span class="text-chalk">Freight invoice auditing & discrepancy flagging</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg><span class="text-chalk">Compliance & customs documentation review</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg><span class="text-chalk">Carrier & supplier performance tracking</span></li>
-            </ul>
-            <a href="/services" class="font-mono text-hiviz text-sm hover:underline">See Logistics AI →</a>
-          </div>
-        </div>
-      </div>
-      <!-- Marketing Panel -->
-      <div id="industry-marketing" class="industry-panel">
-        <div
-          class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors relative overflow-hidden">
-          <img src="map-lying-wooden-table.jpg" alt="" aria-hidden="true"
-            class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none"
-            style="z-index:0;" />
-          <div style="position:relative;z-index:1;">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="24"
-                  height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                  <path d="M19.07 4.93a10 10 0 010 14.14" />
-                  <path d="M15.54 8.46a5 5 0 010 7.07" />
-                </svg></div>
-              <div>
-                <p class="font-mono text-hiviz text-xs uppercase tracking-wider">For B2B Operations & Sales Teams</p>
-                <h3 class="font-display text-2xl text-chalk">B2B MARKETING INTELLIGENCE</h3>
-              </div>
-            </div>
-            <ul class="space-y-3 text-sm mb-6">
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg><span class="text-chalk">Prospect research & qualification at scale</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg><span class="text-chalk">Personalized outreach content generation</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg><span class="text-chalk">CRM data enrichment & pipeline analysis</span></li>
-              <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg><span class="text-chalk">Competitive intelligence & market monitoring</span></li>
-            </ul>
-            <a href="/services" class="font-mono text-hiviz text-sm hover:underline">See Marketing AI →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script>
-    function switchIndustry(tab, btn) {
-      document.querySelectorAll('.industry-tab').forEach(function (el) { el.classList.remove('active'); });
-      document.querySelectorAll('.industry-panel').forEach(function (el) { el.classList.remove('active'); });
-      btn.classList.add('active');
-      var panel = document.getElementById('industry-' + tab);
-      if (panel) panel.classList.add('active');
-    }
-  </script>
-
-  <!-- SOLUTIONS LIST -->
-  <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-12 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// What we build</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">AI SOLUTIONS THAT<br /><span class="text-hiviz">SOLVE
-            REAL PROBLEMS</span></h2>
-      </div>
-
-      <!-- Construction Bento -->
-      <div class="mb-10">
-        <div class="flex items-center gap-4 mb-6">
-          <span class="font-mono text-xs text-fog uppercase tracking-widest">Construction</span>
-          <span class="flex-1 h-px bg-plate"></span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-
-          <!-- Featured: Blueprint Auditor -->
-          <div
-            class="sm:col-span-2 bg-charcoal border border-hiviz/25 rounded-xl p-6 hover:border-hiviz/50 transition-colors relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-hiviz/6 to-transparent pointer-events-none"></div>
-            <div class="relative z-10 flex flex-col h-full">
-              <div class="flex items-start justify-between mb-4">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  class="w-9 h-9 text-hiviz">
-                  <rect x="3" y="3" width="14" height="14" rx="1" />
-                  <path d="M7 7h6M7 10h6M7 13h4" />
-                </svg>
-                <span class="font-mono text-xs text-plate">01</span>
-              </div>
-              <p class="font-display text-hiviz text-3xl lg:text-4xl leading-tight mb-1">4 HRS → 8 MIN</p>
-              <h3 class="font-semibold text-chalk">Blueprint Auditor</h3>
-              <p class="text-fog text-xs mt-2 font-mono leading-relaxed">AI reviews your full spec set for scope gaps,
-                ambiguities, and conflicts — before you mobilize.</p>
-            </div>
-          </div>
-
-          <!-- RFI Intelligence -->
-          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <path d="M4 4h12M4 8h8M4 12h10M4 16h6" />
-                <circle cx="16" cy="14" r="3" />
-                <path d="M16 13v2M15 14h2" />
-              </svg>
-            </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">ZERO MISSED BLOCKERS</p>
-            <h3 class="font-semibold text-chalk text-sm">RFI Intelligence</h3>
-          </div>
-
-          <!-- Daily Log Synthesis -->
-          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <path d="M4 16V6l4-3 4 3v10" />
-                <path d="M8 16v-4h4v4" />
-                <path d="M4 10h12" />
-              </svg>
-            </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">DISPUTE-READY RECORDS</p>
-            <h3 class="font-semibold text-chalk text-sm">Daily Log Synthesis</h3>
-          </div>
-
-          <!-- Risk & Delay Signals (wide, horizontal layout) -->
-          <div
-            class="sm:col-span-2 bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                class="w-10 h-10 text-hiviz flex-shrink-0">
-                <path d="M10 3v4M10 13v4M3 10h4M13 10h4" />
-                <circle cx="10" cy="10" r="3" />
-              </svg>
-              <div>
-                <p class="font-display text-hiviz text-xl leading-tight mb-0.5">EARLY WARNING</p>
-                <h3 class="font-semibold text-chalk text-sm">Risk & Delay Signals</h3>
-                <p class="text-fog text-xs mt-1 font-mono">Pattern recognition across your project documents surfaces
-                  cash-flow risks before they become disputes.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Logistics Bento -->
-      <div>
-        <div class="flex items-center gap-4 mb-6">
-          <span class="font-mono text-xs text-fog uppercase tracking-widest">Logistics &amp; Trade</span>
-          <span class="flex-1 h-px bg-plate"></span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-
-          <!-- Trade Doc Processor -->
-          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <path d="M3 5h14v11H3z" />
-                <path d="M3 8h14" />
-                <path d="M7 5V3M13 5V3" />
-              </svg>
-            </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">NOTHING SLIPS THROUGH</p>
-            <h3 class="font-semibold text-chalk text-sm">Trade Doc Processor</h3>
-          </div>
-
-          <!-- Featured: Freight Audit -->
-          <div
-            class="sm:col-span-2 bg-charcoal border border-hiviz/25 rounded-xl p-6 hover:border-hiviz/50 transition-colors relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-bl from-hiviz/6 to-transparent pointer-events-none"></div>
-            <div class="relative z-10 flex flex-col h-full">
-              <div class="flex items-start justify-between mb-4">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  class="w-9 h-9 text-hiviz">
-                  <circle cx="10" cy="10" r="7" />
-                  <path d="M10 6v4l3 3" />
-                </svg>
-                <span class="font-mono text-xs text-plate">05</span>
-              </div>
-              <p class="font-display text-hiviz text-3xl lg:text-4xl leading-tight mb-1">OVERPAYMENTS RECOVERED</p>
-              <h3 class="font-semibold text-chalk">Freight Audit</h3>
-              <p class="text-fog text-xs mt-2 font-mono leading-relaxed">Every invoice cross-referenced against your
-                contracts and rate cards — discrepancies flagged before payment.</p>
-            </div>
-          </div>
-
-          <!-- Compliance Monitor (wide, horizontal) -->
-          <div
-            class="sm:col-span-2 bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                class="w-10 h-10 text-hiviz flex-shrink-0">
-                <path d="M9 11l3 3 6-6" />
-                <path d="M4 4h8v4H4z" />
-                <path d="M4 12h5" />
-                <path d="M4 16h3" />
-              </svg>
-              <div>
-                <p class="font-display text-hiviz text-xl leading-tight mb-0.5">NO CUSTOMS HOLDS</p>
-                <h3 class="font-semibold text-chalk text-sm">Compliance Monitor</h3>
-                <p class="text-fog text-xs mt-1 font-mono">Documentation validated against your specific trade lanes and
-                  commodity requirements before filing.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Supply Chain Risk -->
-          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <circle cx="10" cy="10" r="2" />
-                <path d="M10 3a7 7 0 0 1 7 7" />
-                <path d="M10 3a7 7 0 0 0-7 7" />
-                <path d="M3 10a7 7 0 0 0 7 7" />
-                <path d="M17 10a7 7 0 0 1-7 7" />
-              </svg>
-            </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">DISRUPTIONS PRE-EMPTED</p>
-            <h3 class="font-semibold text-chalk text-sm">Supply Chain Risk</h3>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- THE MARAPONE DIFFERENCE -->
-  <section class="py-16 lg:py-24 border-b border-plate">
-    <div class="max-w-6xl mx-auto px-4">
-      <!-- Heading row -->
-      <div class="mb-8 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// Why not just use ChatGPT or another SaaS?</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">THE PROBLEM WITH<br /><span
-            class="text-hiviz">RENTED AI</span></h2>
-        <p class="text-fog leading-relaxed max-w-xl">SaaS AI charges monthly, keeps your data on their servers, and
-          disappears when the funding dries up. That's a liability, not a tool.</p>
-      </div>
-      <!-- Table + stat cards side by side, top-aligned -->
-      <div class="grid lg:grid-cols-2 gap-8 items-start">
-        <div class="overflow-x-auto rounded-lg border border-plate">
-          <table class="w-full text-sm font-mono min-w-[280px]">
-            <thead>
-              <tr class="bg-charcoal border-b border-plate">
-                <th class="text-left px-4 py-3 text-fog font-medium"></th>
-                <th class="text-center px-4 py-3 text-hiviz font-semibold">Marapone</th>
-                <th class="text-center px-4 py-3 text-fog font-medium">SaaS AI</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-plate">
-                <td class="px-4 py-3 text-fog">Monthly fees</td>
-                <td class="px-4 py-3 text-center text-hiviz font-semibold">$0</td>
-                <td class="px-4 py-3 text-center text-fog">$400–$2,000/mo</td>
-              </tr>
-              <tr class="border-b border-plate bg-gunmetal/40">
-                <td class="px-4 py-3 text-fog">Data stays on your servers</td>
-                <td class="px-4 py-3 text-center text-hiviz">✓</td>
-                <td class="px-4 py-3 text-center text-plate">✗</td>
-              </tr>
-              <tr class="border-b border-plate">
-                <td class="px-4 py-3 text-fog">Full source code ownership</td>
-                <td class="px-4 py-3 text-center text-hiviz">✓</td>
-                <td class="px-4 py-3 text-center text-plate">✗</td>
-              </tr>
-              <tr class="border-b border-plate bg-gunmetal/40">
-                <td class="px-4 py-3 text-fog">Runs offline</td>
-                <td class="px-4 py-3 text-center text-hiviz">✓</td>
-                <td class="px-4 py-3 text-center text-plate">✗</td>
-              </tr>
-              <tr class="border-b border-plate bg-gunmetal/40">
-                <td class="px-4 py-3 text-fog">Vendor dependency</td>
-                <td class="px-4 py-3 text-center text-hiviz font-semibold">None</td>
-                <td class="px-4 py-3 text-center text-fog">Forever</td>
-              </tr>
-              <tr class="bg-hiviz/5 border-t-2 border-hiviz/30">
-                <td class="px-4 py-3 text-chalk font-semibold">Total cost after 2 years</td>
-                <td class="px-4 py-3 text-center text-hiviz font-bold">One-time fee</td>
-                <td class="px-4 py-3 text-center text-fog">$9,600–$48,000</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-gunmetal border border-plate rounded-lg p-5 text-center">
-            <p class="font-display text-4xl text-hiviz mb-1">$0</p>
-            <p class="font-mono text-xs text-fog">Monthly fees after delivery</p>
-          </div>
-          <div class="bg-gunmetal border border-plate rounded-lg p-5 text-center">
-            <p class="font-display text-4xl text-hiviz mb-1">100%</p>
-            <p class="font-mono text-xs text-fog">Source code ownership</p>
-          </div>
-          <div class="bg-gunmetal border border-plate rounded-lg p-5 text-center">
-            <p class="font-display text-4xl text-hiviz mb-1">0</p>
-            <p class="font-mono text-xs text-fog">Data sent to external servers</p>
-          </div>
-          <div class="bg-gunmetal border border-plate rounded-lg p-5 text-center">
-            <p class="font-display text-4xl text-hiviz mb-1">∞</p>
-            <p class="font-mono text-xs text-fog">Useful life — runs forever</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="py-16 lg:py-24 bg-gunmetal border-b border-plate">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-12 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// Process</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">HOW THIS ACTUALLY <span class="text-hiviz">WORKS</span>
-        </h2>
-      </div>
-      <div class="grid md:grid-cols-4 gap-0">
-        <div class="relative">
-          <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
-          <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div
-              class="w-16 h-16 rounded bg-steel border-2 border-hiviz flex items-center justify-center mb-4 font-display text-2xl text-hiviz">
-              01</div>
-            <h3 class="font-display text-lg text-chalk mb-2">FREE ASSESSMENT</h3>
-            <p class="text-sm text-fog">Send us a real document from your workflow. We analyze it and return a report +
-              video walkthrough. No pitch, no strings.</p>
-          </div>
-        </div>
-        <div class="relative mt-8 md:mt-0">
-          <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
-          <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div
-              class="w-16 h-16 rounded bg-steel border-2 border-plate flex items-center justify-center mb-4 font-display text-2xl text-fog">
-              02</div>
-            <h3 class="font-display text-lg text-chalk mb-2">DISCOVERY CALL</h3>
-            <p class="text-sm text-fog">30-minute call to understand your document stack, your biggest time drains, and
-              whether a custom AI build makes sense for you right now.</p>
-          </div>
-        </div>
-        <div class="relative mt-8 md:mt-0">
-          <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
-          <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div
-              class="w-16 h-16 rounded bg-steel border-2 border-plate flex items-center justify-center mb-4 font-display text-2xl text-fog">
-              03</div>
-            <h3 class="font-display text-lg text-chalk mb-2">WE BUILD IT</h3>
-            <p class="text-sm text-fog">We fine-tune the model on your actual documents, build the local app, and deploy
-              on your machine or server. Built for your data, your workflow, your team.</p>
-          </div>
-        </div>
-        <div class="relative mt-8 md:mt-0">
-          <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
-            <div
-              class="w-16 h-16 rounded bg-hiviz flex items-center justify-center mb-4 font-display text-2xl text-white">
-              04</div>
-            <h3 class="font-display text-lg text-chalk mb-2">YOU OWN IT</h3>
-            <p class="text-sm text-fog">Full source code. Fine-tuned model weights. Install guide. It's yours. Runs
-              offline. No API keys. No monthly bill. No vendor ever again.</p>
-          </div>
-        </div>
-      </div>
-      <div class="mt-12 text-center">
-        <a href="/how-it-works" class="font-mono text-hiviz text-sm hover:underline">Full technical breakdown →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- OUTCOMES STRIP -->
-  <section class="bg-steel border-t border-b border-plate py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <p class="font-mono text-hiviz text-sm mb-1">// Results from live deployments</p>
-        <h2 class="font-display text-3xl text-chalk">WHAT ACTUALLY <span class="text-hiviz">HAPPENS</span></h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-plate rounded overflow-hidden">
-        <div class="bg-steel px-6 py-6 text-center">
-          <p class="font-display text-4xl lg:text-5xl text-hiviz mb-1">6–8h</p>
-          <p class="font-mono text-fog text-xs mt-1 leading-snug">staff hours recovered<br />per week, per client</p>
-        </div>
-        <div class="bg-steel px-6 py-6 text-center">
-          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">97%</p>
-          <p class="font-mono text-fog text-xs mt-1 leading-snug">document extraction<br />accuracy vs. manual</p>
-        </div>
-        <div class="bg-steel px-6 py-6 text-center">
-          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">−78%</p>
-          <p class="font-mono text-fog text-xs mt-1 leading-snug">compliance errors<br />in first quarter</p>
-        </div>
-        <div class="bg-steel px-6 py-6 text-center">
-          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">&lt;2wk</p>
-          <p class="font-mono text-fog text-xs mt-1 leading-snug">scoping to full<br />system handover</p>
-        </div>
-      </div>
-      <p class="text-center font-mono text-fog text-xs mt-4">Based on live client deployments. <a href="/work"
-          class="text-hiviz hover:underline">See the full case studies →</a></p>
-    </div>
-  </section>
-
-  <!-- SOCIAL PROOF / TESTIMONIALS -->
-  <section class="py-16 lg:py-24 border-b border-plate">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-12 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// Early clients</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">WHAT CLIENTS ARE <span class="text-hiviz">SAYING</span>
-        </h2>
-      </div>
-      <div id="reviews-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style="transition: opacity 0.3s ease;">
-      </div>
-      <div class="flex items-center justify-center mt-8">
-        <div id="reviews-dots" class="flex gap-2"></div>
-      </div>
-    </div>
-  </section>
-  <script>
-    (function () {
-      var reviews = [
-        {
-          q: "We had 60+ open RFIs on a school build and no one had time to cross-reference them against the drawings. The AI found 7 that were directly on our critical path. That saved us from a nasty conversation with the owner.",
-          n: "Project Manager",
-          c: "Commercial GC \u2014 $3.2M ICI project"
-        },
-        {
-          q: "Carrier invoice auditing manually wasn\u2019t feasible at the volume we\u2019re moving. The system flags variances between the rate we were quoted and what we\u2019re actually billed. First quarter it was running, it caught overcharges we\u2019d have never found going line by line. The numbers made the decision easy.",
-          n: "Freight Operations Manager",
-          c: "International freight forwarder \u2014 regional 3PL operation"
-        },
-        {
-          q: "I was spending 4\u20136 hours reviewing blueprints before every subcontractor meeting. This cut that to under an hour. I don\u2019t understand how it works but I don\u2019t need to \u2014 it runs on my laptop and it\u2019s mine.",
-          n: "GC Owner",
-          c: "Mid-size residential/ICI \u2014 2 active projects"
-        },
-        {
-          q: "We process maybe 30 documents a month. Not a big operation. But errors were still costing us \u2014 one bad customs declaration held a shipment for 11 days. The tool we got wasn\u2019t expensive and it does exactly one thing: checks the document before it goes to the broker. Worth it.",
-          n: "Owner",
-          c: "Small importer \u2014 seasonal consumer goods"
-        },
-        {
-          q: "We had a hospital wing tender \u2014 600 pages of drawings, 10-day submission window. There was no realistic way to get through the full spec review manually. Marapone ran it, flagged the conflicts and the items I needed to price separately. We submitted on time and came in competitive.",
-          n: "Senior Estimator",
-          c: "Commercial GC \u2014 $480K institutional fit-out"
-        },
-        {
-          q: "My job is to catch what the GC misses before it becomes an issue. The daily log summaries made that manageable. I was working through 50 pages of logs a week; now I get a two-page digest with the flagged items pulled out. Saves me a meaningful amount of time every week.",
-          n: "Owner\u2019s Representative",
-          c: "Owners\u2019 rep \u2014 $320K residential development oversight"
-        },
-        {
-          q: "Our HTS classification errors were showing up on duty reclaims and slowing customs clearance. Marapone built something that cross-references our commercial invoices against our product database before they go to the broker. It doesn\u2019t replace the broker \u2014 it just means the package arriving is clean. We\u2019ve had one audit since and there were no issues.",
-          n: "Trade Compliance Lead",
-          c: "Importer \u2014 electronics and industrial goods, $650K annual duty exposure"
-        },
-        {
-          q: "I\u2019ve been in construction for 22 years. I told them upfront I was skeptical. They ran the free assessment on a set of our drawings and identified two coordination issues in the mechanical/structural overlay that had already cost us a week of delay. I didn\u2019t need further convincing after that.",
-          n: "Principal / GC Owner",
-          c: "ICI general contractor \u2014 $780K renovation project"
-        },
-        {
-          q: "Bills of lading, packing lists, certificates of origin \u2014 we process hundreds per month and errors compound fast. The tool flags discrepancies before anything reaches the customs broker. Our broker actually mentioned our package quality had improved. I thought that was a telling sign.",
-          n: "Import/Export Coordinator",
-          c: "Industrial distributor \u2014 $820K annual import volume"
-        },
-        {
-          q: "We kept getting hit with back-charges for work that was clearly covered in our RFI responses \u2014 nobody had time to go back and prove it. Now the system pulls the relevant documentation automatically. We\u2019ve recovered two back-charges already that we\u2019d have just absorbed.",
-          n: "Operations Manager",
-          c: "Mechanical subcontractor \u2014 $215K ICI fit-out"
-        },
-        {
-          q: "We had two people whose main job was manually checking trade documents. The system handles the first pass now \u2014 they work the exceptions. Nobody was let go; both moved to work that actually requires human judgment. The throughput improvement was immediate.",
-          n: "Director of Operations",
-          c: "Regional logistics company \u2014 cross-border trade operations"
-        },
-        {
-          q: "I came onto a project mid-build with two years of disorganized documentation behind it. I asked the system about the status of the elevator scope and it pulled the relevant drawings, RFIs, and emails in under a minute. That was the moment I understood what this actually does.",
-          n: "Project Coordinator",
-          c: "Commercial GC \u2014 mixed-use development, $540K scope"
-        },
-        {
-          q: "The free audit alone was worth it. Marapone sent back a report showing three issues in my blueprint I\u2019d completely missed. No upsell, no BS. Just \u2018here\u2019s what we found.\u2019 Hired them after that.",
-          n: "GC Owner",
-          c: "Residential GC \u2014 townhouse development"
-        },
-        {
-          q: "We do cross-border freight but at a fraction of the volume a 3PL runs. I couldn\u2019t justify a big investment. The starter package checks our BOL and packing list against each other before they go out. Simple, but it\u2019s eliminated the type of errors that were causing re-inspection requests.",
-          n: "Freight Broker",
-          c: "Independent freight broker \u2014 cross-border LTL"
-        },
-        {
-          q: "I\u2019m not a technology person and I didn\u2019t want to become one. It runs off a laptop, doesn\u2019t need the internet, and my PM had it set up in half a day. I read the daily log summary every morning and flag anything that needs attention. That\u2019s the full extent of my involvement.",
-          n: "Site Superintendent",
-          c: "ICI general contractor \u2014 $175K commercial tenant fit-out"
-        }
-      ];
-
-      var page = 0;
-      var autoTimer = null;
-      function getPerPage() { return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1; }
-      var perPage = getPerPage();
-      var totalPages = Math.ceil(reviews.length / perPage);
-      var grid = document.getElementById('reviews-grid');
-      var dotsEl = document.getElementById('reviews-dots');
-
-      function createCard(r) {
-        var card = document.createElement('div');
-        card.className = 'bg-steel border-l-2 border-l-hiviz border border-plate rounded-lg p-6 flex flex-col';
-
-        // Stars
-        var stars = document.createElement('div');
-        stars.className = 'flex gap-0.5 mb-4';
-        for (var s = 0; s < 5; s++) {
-          var star = document.createElement('svg');
-          star.setAttribute('class', 'w-5 h-5 text-hiviz flex-shrink-0');
-          star.setAttribute('fill', 'currentColor');
-          star.setAttribute('viewBox', '0 0 20 20');
-          star.innerHTML = '<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>';
-          stars.appendChild(star);
-        }
-
-        var quote = document.createElement('blockquote');
-        quote.className = 'text-chalk text-sm leading-relaxed mb-6 flex-1';
-        quote.textContent = '\u201c' + r.q + '\u201d';
-
-        var border = document.createElement('div');
-        border.className = 'border-t border-plate pt-4';
-
-        var name = document.createElement('p');
-        name.className = 'font-semibold text-chalk text-sm';
-        name.textContent = r.n;
-
-        var company = document.createElement('p');
-        company.className = 'text-hiviz text-xs font-mono mt-0.5';
-        company.textContent = r.c;
-
-        border.appendChild(name);
-        border.appendChild(company);
-        card.appendChild(stars);
-        card.appendChild(quote);
-        card.appendChild(border);
-        return card;
-      }
-
-      function render() {
-        var start = page * perPage;
-        var slice = reviews.slice(start, start + perPage);
-        grid.style.opacity = '0';
-        setTimeout(function () {
-          grid.innerHTML = '';
-          slice.forEach(function (r) { grid.appendChild(createCard(r)); });
-          grid.style.opacity = '1';
-        }, 300);
-
-        dotsEl.innerHTML = '';
-        for (var i = 0; i < totalPages; i++) {
-          var dot = document.createElement('button');
-          dot.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;transition:background 0.3s,transform 0.3s;background:' + (i === page ? '#f97316' : '#3a3a3a') + ';transform:' + (i === page ? 'scale(1.35)' : 'scale(1)');
-          dot.setAttribute('aria-label', 'Page ' + (i + 1));
-          (function (idx) {
-            dot.addEventListener('click', function () { page = idx; render(); restartTimer(); });
-          })(i);
-          dotsEl.appendChild(dot);
-        }
-      }
-
-      function advance() { page = (page + 1) % totalPages; render(); }
-
-      function startTimer() { if (!autoTimer) { autoTimer = setInterval(advance, 3000); } }
-      function stopTimer() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
-      function restartTimer() { stopTimer(); startTimer(); }
-
-      window.addEventListener('resize', function () {
-        var newPP = getPerPage();
-        if (newPP !== perPage) { perPage = newPP; totalPages = Math.ceil(reviews.length / perPage); page = 0; render(); restartTimer(); }
-      });
-
-      if ('IntersectionObserver' in window) {
-        var reviewsSection = grid.closest('section');
-        if (reviewsSection) {
-          new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { if (e.isIntersecting) { startTimer(); } else { stopTimer(); } });
-          }, { threshold: 0.1 }).observe(reviewsSection);
-        }
-      } else {
-        startTimer();
-      }
-
-      render();
-    })();
-  </script>
-
-  <!-- BUILT BY INDUSTRY INSIDERS -->
-  <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="font-mono text-hiviz text-sm mb-3">// The team behind this</p>
-          <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-4">BUILT BY PEOPLE WHO'VE<br /><span
-              class="text-hiviz">WORKED IN THESE FIELDS</span></h2>
-          <p class="text-fog leading-relaxed text-sm mb-5">Marapone was founded with over 10 years of hands-on
-            experience inside construction and logistics — not consultants hired to study the industries from the
-            outside. We didn't need to guess at the pain points. We've lived them. That's why the systems we build
-            reflect how these industries actually operate.</p>
-          <a href="/about" class="inline-flex items-center gap-2 font-mono text-hiviz text-sm hover:underline">Learn
-            more about the team →</a>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-charcoal border border-plate rounded-lg p-5">
-            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Background</p>
-            <p class="text-chalk font-semibold text-sm">10+ years</p>
-            <p class="text-fog text-xs mt-1">Construction & logistics operations, not theory</p>
-          </div>
-          <div class="bg-charcoal border border-plate rounded-lg p-5">
-            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Project Load</p>
-            <p class="text-chalk font-semibold text-sm">Small by design</p>
-            <p class="text-fog text-xs mt-1">Every client gets our full, direct attention</p>
-          </div>
-          <div class="bg-charcoal border border-plate rounded-lg p-5">
-            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Presence</p>
-            <p class="text-chalk font-semibold text-sm">Canada &amp; Italy</p>
-            <p class="text-fog text-xs mt-1">Operating out of Toronto &amp; Rome. Serving both North America and Europe.
-            </p>
-          </div>
-          <div class="bg-charcoal border border-plate rounded-lg p-5">
-            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-2">Policy</p>
-            <p class="text-chalk font-semibold text-sm">Radical transparency</p>
-            <p class="text-fog text-xs mt-1">We tell you what we can't do before you pay</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INTEGRATIONS / STACK CAROUSEL -->
-  <section class="py-14 lg:py-20 bg-charcoal border-t border-b border-plate overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 mb-10 text-center reveal">
-      <p class="font-mono text-hiviz text-sm mb-2">// Works with your stack</p>
-      <h2 class="font-display text-3xl lg:text-5xl text-chalk">INTEGRATES WITH <span class="text-hiviz">WHAT YOU ALREADY
-          USE</span></h2>
-      <p class="text-fog text-sm mt-3 max-w-xl mx-auto leading-relaxed">We build around your existing infrastructure —
-        cloud, on-prem, or hybrid. No rip-and-replace. No new vendor lock-in.</p>
-    </div>
-
-    <!-- Row 1 — scrolls left (AI / ML / Frameworks) -->
-    <div class="stack-marquee-outer mb-3">
-      <div class="stack-track">
-        <!-- set 1 -->
-        <span class="stack-chip"><span class="stack-chip-dot"></span>OpenAI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Anthropic Claude</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Mistral AI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Llama 3</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Ollama</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LangChain</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LlamaIndex</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Hugging Face</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LangGraph</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft Azure</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Google Cloud</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Docker</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Kubernetes</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Python</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>FastAPI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Node.js</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>REST API</span>
-        <!-- set 2 — exact duplicate for seamless loop -->
-        <span class="stack-chip"><span class="stack-chip-dot"></span>OpenAI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Anthropic Claude</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Mistral AI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Llama 3</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Ollama</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LangChain</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LlamaIndex</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Hugging Face</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LangGraph</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft Azure</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Google Cloud</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Docker</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Kubernetes</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Python</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>FastAPI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Node.js</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>REST API</span>
-      </div>
-    </div>
-
-    <!-- Row 2 — scrolls right (Data / Business / Domain tools) -->
-    <div class="stack-marquee-outer">
-      <div class="stack-track-r">
-        <!-- set 1 -->
-        <span class="stack-chip"><span class="stack-chip-dot"></span>PostgreSQL</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>MongoDB</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Redis</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>SQLite</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Pinecone</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Weaviate</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>ChromaDB</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Qdrant</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS Textract</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Tesseract OCR</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Procore</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Bluebeam</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Buildertrend</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft 365</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>SharePoint</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>QuickBooks</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Sage</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Linux</span>
-        <!-- set 2 — exact duplicate for seamless loop -->
-        <span class="stack-chip"><span class="stack-chip-dot"></span>PostgreSQL</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>MongoDB</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Redis</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>SQLite</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Pinecone</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Weaviate</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>ChromaDB</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Qdrant</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS Textract</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Tesseract OCR</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Procore</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Bluebeam</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Buildertrend</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft 365</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>SharePoint</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>QuickBooks</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Sage</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Linux</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- FREE ASSESSMENT CTA -->
-  <section id="audit" class="py-16 lg:py-24">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <div class="bg-steel border border-plate rounded-xl p-10 lg:p-16 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-hiviz"></div>
-        <div class="grid-dot absolute inset-0 opacity-30"></div>
-        <div class="relative">
-          <p class="font-mono text-hiviz text-sm mb-4">// No pitch. No strings. Just results.</p>
-          <h2 class="font-display text-3xl sm:text-4xl lg:text-6xl text-chalk mb-4">FREE 24-HOUR<br /><span
-              class="text-hiviz">AI ASSESSMENT</span></h2>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-0 mb-10 max-w-lg mx-auto">
-            <div class="flex flex-col items-center text-center px-5">
-              <div
-                class="w-12 h-12 bg-gunmetal border border-hiviz/40 rounded-full flex items-center justify-center mb-3">
-                <svg class="w-5 h-5 text-hiviz" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                </svg>
-              </div>
-              <p class="font-mono text-xs text-chalk font-semibold">Send a doc</p>
-              <p class="font-mono text-xs text-fog mt-1">Blueprint, invoice,<br />or declaration</p>
-            </div>
-            <div class="text-plate font-mono text-xl hidden sm:block mx-1 mb-6">→</div>
-            <div class="flex flex-col items-center text-center px-5">
-              <div
-                class="w-12 h-12 bg-gunmetal border border-hiviz/40 rounded-full flex items-center justify-center mb-3">
-                <svg class="w-5 h-5 text-hiviz" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <p class="font-mono text-xs text-chalk font-semibold">Get the report</p>
-              <p class="font-mono text-xs text-fog mt-1">Written findings + video.<br />Within 24 hours.</p>
-            </div>
-            <div class="text-plate font-mono text-xl hidden sm:block mx-1 mb-6">→</div>
-            <div class="flex flex-col items-center text-center px-5">
-              <div
-                class="w-12 h-12 bg-gunmetal border border-hiviz/40 rounded-full flex items-center justify-center mb-3">
-                <svg class="w-5 h-5 text-hiviz" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <p class="font-mono text-xs text-chalk font-semibold">Keep it. No strings.</p>
-              <p class="font-mono text-xs text-fog mt-1">The report is yours<br />regardless.</p>
-            </div>
-          </div>
-          <a href="/contact"
-            class="hiviz-gradient text-white font-semibold px-6 sm:px-10 py-4 sm:py-5 rounded text-base sm:text-lg inline-block hover:opacity-90 transition-opacity w-full sm:w-auto">
-            Request Your Free Assessment →
-          </a>
-          <div class="mt-4">
-            <a href="/discovery"
-              class="inline-flex items-center gap-2 text-sm text-fog hover:text-chalk transition-colors font-mono">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              Prefer a quick call first? Book 15 minutes →
-            </a>
-          </div>
-          <p class="text-xs font-mono text-fog mt-4">We keep our project load small to ensure every client gets our full
-            focus and a high-quality result. Currently accepting new assessment requests.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-charcoal border-t border-plate py-8">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex flex-col items-center md:items-start gap-1">
-          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span
-              class="text-hiviz">PONE</span></a>
-          <div class="flex gap-2 mt-1">
-            <span
-              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
-                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>Toronto</span>
-            <span
-              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
-                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>Rome</span>
-          </div>
-          <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
-            <address class="not-italic">
-              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B
-                6K5<br />Canada</p>
-            </address>
-            <address class="not-italic">
-              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
-            </address>
-          </div>
-        </div>
-        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
-          <a href="/" class="hover:text-chalk">Home</a>
-          <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
-          <a href="/services" class="hover:text-chalk">Services</a>
-          <a href="/work" class="hover:text-chalk">Work</a>
-          <a href="/faq" class="hover:text-chalk">FAQ</a>
-          <a href="/pricing" class="hover:text-chalk">Pricing</a>
-          <a href="/about" class="hover:text-chalk">About</a>
-          <a href="/contact" class="hover:text-chalk">Contact</a>
-        </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All
-          Rights Reserved.</p>
-      </div>
-      <div class="flex justify-center gap-5 mt-6 mb-1">
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer"
-          class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-          </svg>
-        </a>
-        <!-- Email -->
-        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors"
-          aria-label="Email us">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <polyline points="2,4 12,13 22,4" />
-          </svg>
-        </a>
-        <!-- X (coming soon) -->
-        <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </span>
-        <!-- WhatsApp -->
-        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer"
-          class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-          </svg>
-        </a>
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
-          class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-          </svg>
-        </a>
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D"
-          target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors"
-          aria-label="LinkedIn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        </a>
-      </div>
-      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
-        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
-        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
-        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
-        <a href="/security" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
-        <a href="/badge" class="text-xs font-mono text-plate hover:text-fog transition-colors">Badge</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- STICKY FLOATING CTA -->
-  <div id="sticky-cta" class="fixed bottom-6 right-6 z-50 hidden">
-    <div class="flex items-center gap-2 hiviz-gradient rounded-lg shadow-lg shadow-black/40 overflow-hidden">
-      <a href="/contact"
-        class="text-white font-semibold text-sm px-5 py-3 hover:opacity-90 transition-opacity whitespace-nowrap">
-        Get Free Assessment →
       </a>
-      <button id="sticky-cta-close" aria-label="Dismiss"
-        class="pr-3 pl-1 py-3 text-white/70 hover:text-white transition-colors">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+
+      <!-- RIGHT PANEL: LOGISTICS -->
+      <a id="logistics-panel"
+        href="/logistics/"
+        class="panel panel-logistics"
+        aria-label="Enter Logistics — Private AI for freight, import/export and trade compliance">
+
+        <div class="panel-glow" aria-hidden="true"></div>
+
+        <!-- Corner accent -->
+        <div class="corner-lines" aria-hidden="true" style="left:auto;">
+          <div class="corner-line-h" style="float:right;"></div>
+          <div class="corner-line-v" style="margin-top:0;position:absolute;top:0;right:0;"></div>
+        </div>
+
+        <div class="panel-inner">
+          <div class="industry-chip">
+            <span class="chip-dot"></span>
+            Private AI
+          </div>
+          <div class="panel-title">LOGIS&shy;TICS</div>
+          <p class="panel-desc">Private AI for freight, import/export &amp; trade compliance — document processing, invoice auditing, and customs intelligence.</p>
+          <span class="panel-cta" aria-hidden="true">Enter →</span>
+        </div>
+      </a>
+
     </div>
-  </div>
+
+    <!-- BOTTOM TAGLINE -->
+    <p class="tagline">Marapone &mdash; Private AI. Two industries. One standard.</p>
+  </main>
+
   <script>
     (function () {
-      var cta = document.getElementById('sticky-cta');
-      var closeBtn = document.getElementById('sticky-cta-close');
-      if (!cta || !closeBtn) return;
-      if (sessionStorage.getItem('ctaDismissed')) return;
-
-      var shown = false;
-      window.addEventListener('scroll', function () {
-        if (sessionStorage.getItem('ctaDismissed')) return;
-        if (window.scrollY > 400 && !shown) {
-          cta.classList.remove('hidden');
-          shown = true;
-        }
-      }, { passive: true });
-
-      closeBtn.addEventListener('click', function () {
-        cta.classList.add('hidden');
-        sessionStorage.setItem('ctaDismissed', '1');
+      // Keyboard navigation
+      document.querySelectorAll('.panel').forEach(function(panel) {
+        panel.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.location.href = panel.href;
+          }
+        });
       });
-    })();
-  </script>
-  <script>
-    (function () {
-      // Lenis smooth scroll
-      if (typeof Lenis !== 'undefined') {
-        var lenis = new Lenis({ duration: 1.2, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
-        function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-      }
-      // Nav progress bar
-      var bar = document.getElementById('nav-progress');
-      if (bar) {
-        window.addEventListener('scroll', function () {
-          var d = document.documentElement;
-          var st = d.scrollTop || window.scrollY;
-          var h = d.scrollHeight - d.clientHeight;
-          if (h > 0) bar.style.width = (st / h * 100) + '%';
-        }, { passive: true });
-      }
-      // Reveal on scroll
-      if ('IntersectionObserver' in window) {
-        var obs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
-      } else {
-        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
-      }
-    })();
-  </script>
-  <script>
-    // Hero demo video — loops; restarts on page load and on scroll-back-into-view.
-    // Works on desktop and mobile (muted autoplay is allowed on all modern browsers).
-    (function () {
-      var video = document.getElementById('hero-demo-video');
-      if (!video) return;
 
-      function tryPlay() {
-        video.play().catch(function () { });
-      }
-
-      // Restart from beginning on every page load / navigation
-      video.currentTime = 0;
-
-      // Attempt play immediately (works if video data is ready)
-      tryPlay();
-
-      // Also attempt once enough data has loaded (important on mobile/slow connections)
-      video.addEventListener('canplay', function () {
-        if (video.paused) tryPlay();
-      }, { once: true });
-
-      if ('IntersectionObserver' in window) {
-        var wasHidden = false;
-        var obs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              if (wasHidden) {
-                // Scrolled back up — restart from the beginning
-                video.currentTime = 0;
-                wasHidden = false;
-              }
-              tryPlay();
-            } else {
-              video.pause();
-              wasHidden = true;
-            }
-          });
-          // Lower threshold (0.1) so it fires earlier — critical on mobile where
-          // the video starts below the fold and needs to play as soon as it peeks in
-        }, { threshold: 0.1 });
-        obs.observe(video);
-      }
+      // Preload construction and logistics pages on hover for snappy navigation
+      var preloaded = {};
+      document.querySelectorAll('.panel').forEach(function(panel) {
+        panel.addEventListener('mouseenter', function() {
+          var href = panel.getAttribute('href');
+          if (href && !preloaded[href]) {
+            preloaded[href] = true;
+            var link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = href;
+            document.head.appendChild(link);
+          }
+        }, { once: true });
+      });
     })();
   </script>
 
 </body>
-
 </html>

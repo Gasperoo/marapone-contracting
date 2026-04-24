@@ -132,6 +132,14 @@
       "destination": "/construction/discovery.html"
     },
     {
+      "source": "/construction/about",
+      "destination": "/construction/about.html"
+    },
+    {
+      "source": "/construction/pricing",
+      "destination": "/construction/pricing.html"
+    },
+    {
       "source": "/logistics",
       "destination": "/logistics/index.html"
     },
@@ -158,6 +166,14 @@
     {
       "source": "/logistics/discovery",
       "destination": "/logistics/discovery.html"
+    },
+    {
+      "source": "/logistics/about",
+      "destination": "/logistics/about.html"
+    },
+    {
+      "source": "/logistics/pricing",
+      "destination": "/logistics/pricing.html"
     },
     {
       "source": "/api/send-contact-email",

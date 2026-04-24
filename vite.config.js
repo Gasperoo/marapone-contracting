@@ -31,6 +31,8 @@ export default defineConfig({
           '/construction/faq': '/construction/faq.html',
           '/construction/contact': '/construction/contact.html',
           '/construction/discovery': '/construction/discovery.html',
+          '/construction/about': '/construction/about.html',
+          '/construction/pricing': '/construction/pricing.html',
           // logistics subdirectory
           '/logistics': '/logistics/index.html',
           '/logistics/how-it-works': '/logistics/how-it-works.html',
@@ -39,6 +41,8 @@ export default defineConfig({
           '/logistics/faq': '/logistics/faq.html',
           '/logistics/contact': '/logistics/contact.html',
           '/logistics/discovery': '/logistics/discovery.html',
+          '/logistics/about': '/logistics/about.html',
+          '/logistics/pricing': '/logistics/pricing.html',
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];
@@ -95,6 +99,8 @@ export default defineConfig({
         'construction-faq': path.resolve(__dirname, 'construction/faq.html'),
         'construction-contact': path.resolve(__dirname, 'construction/contact.html'),
         'construction-discovery': path.resolve(__dirname, 'construction/discovery.html'),
+        'construction-about': path.resolve(__dirname, 'construction/about.html'),
+        'construction-pricing': path.resolve(__dirname, 'construction/pricing.html'),
         // Logistics subdirectory
         'logistics-index': path.resolve(__dirname, 'logistics/index.html'),
         'logistics-how-it-works': path.resolve(__dirname, 'logistics/how-it-works.html'),
@@ -103,6 +109,8 @@ export default defineConfig({
         'logistics-faq': path.resolve(__dirname, 'logistics/faq.html'),
         'logistics-contact': path.resolve(__dirname, 'logistics/contact.html'),
         'logistics-discovery': path.resolve(__dirname, 'logistics/discovery.html'),
+        'logistics-about': path.resolve(__dirname, 'logistics/about.html'),
+        'logistics-pricing': path.resolve(__dirname, 'logistics/pricing.html'),
       },
     },
   },

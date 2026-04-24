@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MaraponeLogo-1.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+      <title>About – Marapone | Private B2B AI | Canada & Italy | Construction & Logistics</title>
+  <meta name="description" content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="About – Marapone | Private B2B AI | Canada & Italy | Construction & Logistics" />
+  <meta property="og:description" content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
+  <meta property="og:url" content="https://marapone.com/construction/about" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About – Marapone | Private B2B AI | Canada & Italy | Construction & Logistics" />
+  <meta name="twitter:description" content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
+  <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    @keyframes logoPulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+    .logo-pulse { animation: logoPulse 4s ease-in-out infinite; }
+
+    /* ── Premium ambient elements ── */
+    .hero-glow {
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 640px; height: 560px;
+      background: radial-gradient(ellipse at 60% 40%, rgba(249,115,22,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-glow-left {
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 360px; height: 360px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .section-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── Eyebrow pill badge ── */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f97316;
+      background: rgba(249,115,22,0.08);
+      border: 1px solid rgba(249,115,22,0.22);
+      border-radius: 999px;
+      padding: 0.28rem 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #f97316;
+      flex-shrink: 0;
+    }
+
+    /* ── Hero stat chips ── */
+    .stat-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      background: rgba(36,36,36,0.8);
+      border: 1px solid rgba(58,58,58,0.9);
+      border-radius: 0.6rem;
+      padding: 0.6rem 0.85rem;
+      transition: border-color 0.25s;
+    }
+    .stat-chip:hover { border-color: rgba(249,115,22,0.3); }
+
+    /* ── Timeline cards ── */
+    .tl-card {
+      position: relative;
+      border: 1px solid rgba(58,58,58,0.9);
+      border-radius: 0.85rem;
+      padding: 1.75rem;
+      background: #222222;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .tl-card:hover {
+      border-color: rgba(249,115,22,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 0 transparent;
+    }
+    .tl-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0), transparent);
+      transition: background 0.3s;
+    }
+    .tl-card:hover::before {
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.45), transparent);
+    }
+
+    /* ── Now card ── */
+    .now-card {
+      position: relative;
+      border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 0.85rem;
+      overflow: hidden;
+      background: rgba(249,115,22,0.05);
+    }
+    .now-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.5), transparent);
+    }
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(249,115,22,0); }
+      100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+    }
+    .pulse-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #f97316;
+      animation: pulseRing 2s ease-out infinite;
+    }
+
+    /* ── Domain expertise cards ── */
+    .domain-card {
+      position: relative;
+      border: 1px solid rgba(58,58,58,0.9);
+      border-radius: 0.85rem;
+      padding: 1.85rem;
+      background: #222222;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .domain-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 100%;
+      background: linear-gradient(to bottom, #f97316, rgba(249,115,22,0.1));
+    }
+    .domain-card:hover { border-color: rgba(249,115,22,0.3); }
+    .serve-pill {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(232,232,232,0.5);
+      background: rgba(58,58,58,0.5);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin: 0.15rem 0.1rem;
+    }
+
+    /* ── Values cards ── */
+    .value-card {
+      position: relative;
+      border: 1px solid rgba(58,58,58,0.9);
+      border-radius: 0.85rem;
+      padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+      background: #222222;
+      overflow: hidden;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .value-card:hover {
+      border-color: rgba(249,115,22,0.28);
+      background: #242424;
+    }
+    .value-num {
+      position: absolute;
+      bottom: -1rem; right: 0.25rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 7rem;
+      line-height: 1;
+      color: rgba(232,232,232,0.03);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── Quote block ── */
+    .quote-block {
+      position: relative;
+      border-left: 2px solid #f97316;
+      padding: 1.1rem 1.4rem;
+      background: rgba(249,115,22,0.04);
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    /* ── CTA glow ── */
+    .cta-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 350px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* ── Horizontal rule accent ── */
+    .hr-accent {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.3), transparent);
+      border: none;
+      margin: 0;
+    }
+  </style>
+  <!-- Google Analytics (G-J31Z05DB01) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J31Z05DB01');
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js" integrity="sha384-4EgXbGZLDwcPHcRGrHOxm1OvumWUqhr/ts6eapdZnak6ORZAsSE3fMd0niykaSkw" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+  <style>
+    #nav-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:#f97316;z-index:9999;pointer-events:none;transition:width .08s linear;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-d1{transition-delay:.1s;}
+    .reveal-d2{transition-delay:.2s;}
+    .reveal-d3{transition-delay:.3s;}
+    .reveal-d4{transition-delay:.4s;}
+  </style>
+</head>
+<body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap" aria-label="Back to industry selection">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/construction/about" class="text-chalk">About</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/about" class="text-chalk">About</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section id="main-content" class="relative overflow-hidden grid-dot py-20 lg:py-32 border-b border-plate">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-left"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+      <div class="grid lg:grid-cols-5 gap-14 items-start">
+
+        <!-- Left: Logo + stat chips -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center justify-center lg:justify-start mb-8">
+            <div class="relative">
+              <!-- subtle glow ring behind logo -->
+              <div class="absolute inset-0 rounded-full" style="background:radial-gradient(ellipse, rgba(249,115,22,0.15) 0%, transparent 70%); transform:scale(1.4);"></div>
+              <img src="MaraponeLogo-1.png" alt="Marapone Contracting" class="relative w-40 lg:w-48 object-contain logo-pulse" />
+            </div>
+          </div>
+
+          <!-- Stat chips grid -->
+          <div class="grid grid-cols-1 gap-2.5">
+            <div class="stat-chip">
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="font-mono text-xs text-fog">Toronto, Canada &amp; Rome, Italy</span>
+            </div>
+            <div class="stat-chip">
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg></span>
+              <span class="font-mono text-xs text-fog">Construction AI</span>
+            </div>
+            <div class="stat-chip">
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+              <span class="font-mono text-xs text-fog">Logistics &amp; Trade AI</span>
+            </div>
+            <div class="stat-chip">
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span>
+              <span class="font-mono text-xs text-fog">10+ years in construction &amp; logistics</span>
+            </div>
+            <div class="stat-chip">
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+              <span class="font-mono text-xs text-fog">Small project load, high-quality results</span>
+            </div>
+            <div class="stat-chip">
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span>
+              <span class="font-mono text-xs text-fog">Full source code — always</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Story -->
+        <div class="lg:col-span-3">
+          <span class="eyebrow">Who's behind this</span>
+          <h1 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk mb-8 leading-none">WE ARE<br/>MARAPONE.<br/><span class="text-hiviz">THIS IS THE DEAL.</span></h1>
+          <div class="space-y-5 text-fog leading-relaxed text-sm lg:text-base">
+            <p>
+              Marapone is a B2B AI company based in Canada and Italy, operating globally. We are not a construction company. We are not a venture-backed AI startup burning investor cash on a SaaS dashboard. We are a focused, technical team that builds private AI systems and sells them directly to the businesses that need them.
+            </p>
+            <p>
+              We operate across two industries because document intelligence has the same fundamental problem in both: critical information buried in hundreds of pages that no one has time to read properly. In construction, it's blueprints, RFIs, and site logs. In logistics, it's trade documents, freight invoices, and compliance filings. The problem is the same. The solution — a private, fine-tuned AI that runs on your own infrastructure — is the same.
+            </p>
+            <p>
+              Our Canada base gives us deep roots in North American construction and trade. Our Italy presence connects us to European logistics networks and Mediterranean trade corridors. The work itself is remote-first, which means your location isn't a barrier and neither is ours.
+            </p>
+            <p>
+              Marapone was founded by people with over 10 years of hands-on experience inside construction and logistics — not consultants hired to study the industries from the outside, but people who have worked in them directly. That background matters. It means we already understand the real problems companies in these industries face: the document overload, the coordination failures, the costly assumptions made because no one had time to read page 247 of a blueprint. We didn't need to guess at the pain points. We've lived them.
+            </p>
+            <div class="quote-block">
+              <p class="text-chalk font-medium leading-relaxed">We don't take on many projects at once. When we're building your system, you have our full attention — not a shared project manager and a ticketing queue. Us, directly, focused entirely on your build and making sure it works perfectly.</p>
+            </div>
+            <p>
+              We got tired of watching serious businesses get locked into expensive subscription AI that stores their sensitive documents on someone else's servers, then charges them more every month for the privilege. That model benefits the vendor, not the client. We built Marapone to flip that — you pay once, you own everything, we walk away. That's the whole business model.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-accent" />
+
+  <!-- ════════════════════════════════════════
+       CREDIBILITY TIMELINE
+  ════════════════════════════════════════ -->
+  <section class="relative py-20 lg:py-32 border-b border-plate overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+      <div class="mb-16 reveal">
+        <span class="eyebrow">How we got here</span>
+        <h2 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk leading-none">THE PATH TO <span class="text-hiviz">MARAPONE</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+
+        <!-- 2014 -->
+        <div class="tl-card reveal reveal-d1">
+          <div class="absolute -top-3 -right-3 font-display leading-none select-none pointer-events-none" style="font-size:7rem;color:rgba(232,232,232,0.045);">2014</div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-9 h-9 rounded-full hiviz-gradient flex items-center justify-center flex-shrink-0 shadow-lg" style="box-shadow:0 4px 16px rgba(249,115,22,0.3);">
+                <span class="font-mono text-xs text-white font-bold">01</span>
+              </div>
+              <span class="font-mono text-hiviz text-xs tracking-widest">2014</span>
+            </div>
+            <h3 class="font-display text-xl text-chalk mb-2">First day on a construction site</h3>
+            <p class="text-fog text-sm leading-relaxed">Hands-on work in construction begins — blueprints, RFIs, site coordination. Learning how document overload creates real project risk.</p>
+          </div>
+        </div>
+
+        <!-- 2017 -->
+        <div class="tl-card reveal reveal-d2">
+          <div class="absolute -top-3 -right-3 font-display leading-none select-none pointer-events-none" style="font-size:7rem;color:rgba(232,232,232,0.045);">2017</div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-9 h-9 rounded-full hiviz-gradient flex items-center justify-center flex-shrink-0 shadow-lg" style="box-shadow:0 4px 16px rgba(249,115,22,0.3);">
+                <span class="font-mono text-xs text-white font-bold">02</span>
+              </div>
+              <span class="font-mono text-hiviz text-xs tracking-widest">2017</span>
+            </div>
+            <h3 class="font-display text-xl text-chalk mb-2">Logistics &amp; trade operations</h3>
+            <p class="text-fog text-sm leading-relaxed">Entry into freight and import/export operations. Firsthand experience with customs documentation errors, invoice discrepancies, and compliance gaps at scale.</p>
+          </div>
+        </div>
+
+        <!-- 2021 -->
+        <div class="tl-card reveal reveal-d3">
+          <div class="absolute -top-3 -right-3 font-display leading-none select-none pointer-events-none" style="font-size:7rem;color:rgba(232,232,232,0.045);">2021</div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-9 h-9 rounded-full hiviz-gradient flex items-center justify-center flex-shrink-0 shadow-lg" style="box-shadow:0 4px 16px rgba(249,115,22,0.3);">
+                <span class="font-mono text-xs text-white font-bold">03</span>
+              </div>
+              <span class="font-mono text-hiviz text-xs tracking-widest">2021</span>
+            </div>
+            <h3 class="font-display text-xl text-chalk mb-2">Italy operations established</h3>
+            <p class="text-fog text-sm leading-relaxed">Mediterranean trade corridor work expands the logistics knowledge base. European compliance requirements and cross-border documentation become a specialty.</p>
+          </div>
+        </div>
+
+        <!-- 2024 -->
+        <div class="tl-card reveal reveal-d4">
+          <div class="absolute -top-3 -right-3 font-display leading-none select-none pointer-events-none" style="font-size:7rem;color:rgba(232,232,232,0.045);">2024</div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-9 h-9 rounded-full hiviz-gradient flex items-center justify-center flex-shrink-0 shadow-lg" style="box-shadow:0 4px 16px rgba(249,115,22,0.3);">
+                <span class="font-mono text-xs text-white font-bold">04</span>
+              </div>
+              <span class="font-mono text-hiviz text-xs tracking-widest">2024</span>
+            </div>
+            <h3 class="font-display text-xl text-chalk mb-2">First private AI deployments</h3>
+            <p class="text-fog text-sm leading-relaxed">Blueprint Auditor and Freight Invoice Intelligence systems built and deployed for early clients. On-premise, source code included. Zero subscriptions.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- NOW — full-width highlight card -->
+      <div class="now-card reveal">
+        <div class="absolute -top-6 -right-4 font-display leading-none select-none pointer-events-none" style="font-size:10rem;color:rgba(249,115,22,0.07);">NOW</div>
+        <div class="relative z-10 p-8 lg:p-10">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-full hiviz-gradient flex items-center justify-center flex-shrink-0" style="box-shadow:0 4px 20px rgba(249,115,22,0.4);">
+              <div class="pulse-dot"></div>
+            </div>
+            <span class="font-mono text-hiviz text-xs tracking-widest font-semibold">NOW — OPEN FOR NEW PROJECTS</span>
+          </div>
+          <h3 class="font-display text-2xl lg:text-4xl text-chalk mb-3">Marapone — accepting new projects</h3>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Private AI for construction and logistics. Small project load, full attention, complete handover. Toronto &amp; Rome. Currently open for new assessments.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="hr-accent" />
+
+  <!-- ════════════════════════════════════════
+       WHAT WE DO
+  ════════════════════════════════════════ -->
+  <section class="relative py-20 lg:py-28 bg-gunmetal border-b border-plate overflow-hidden">
+    <div class="section-glow"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+      <span class="eyebrow reveal">Our domain expertise</span>
+      <h2 class="font-display text-5xl lg:text-6xl text-chalk mb-4 reveal leading-none">WHAT WE ACTUALLY <span class="text-hiviz">KNOW</span></h2>
+      <p class="text-fog leading-relaxed mb-12 max-w-2xl text-sm lg:text-base reveal reveal-d1">With over 10 years of extensive, hands-on experience across construction and logistics, the people behind Marapone understand these industries from the inside. The systems we build reflect that — they're designed around the real workflows, real documents, and real failure points that companies in these fields deal with every day.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Construction -->
+        <div class="domain-card reveal reveal-d2">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 hiviz-gradient rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow:0 6px 24px rgba(249,115,22,0.3);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg>
+            </div>
+            <h3 class="font-display text-2xl lg:text-3xl text-chalk">CONSTRUCTION</h3>
+          </div>
+          <div class="space-y-3 text-fog text-sm leading-relaxed">
+            <p>We understand the document lifecycle on a construction project — from IFB and tender packages through to RFIs, submittals, daily logs, change orders, and close-out packages. We know what a critical path looks like in a spec, and what an ambiguity in a structural drawing costs when you mobilize trades on wrong assumptions.</p>
+            <p>We build AI that reads these documents the way an experienced superintendent would — with context, with consequence, and with an eye for what matters in a dispute.</p>
+            <div class="mt-5 pt-4 border-t border-plate">
+              <p class="font-mono text-xs text-hiviz uppercase mb-2 tracking-wider">We serve</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="serve-pill">General contractors</span>
+                <span class="serve-pill">Commercial developers</span>
+                <span class="serve-pill">Project managers</span>
+                <span class="serve-pill">Construction consultants</span>
+                <span class="serve-pill">ICI builders</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logistics -->
+        <div class="domain-card reveal reveal-d3">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 hiviz-gradient rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow:0 6px 24px rgba(249,115,22,0.3);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3 class="font-display text-2xl lg:text-3xl text-chalk">LOGISTICS &amp; TRADE</h3>
+          </div>
+          <div class="space-y-3 text-fog text-sm leading-relaxed">
+            <p>International trade generates enormous document volume — bills of lading, commercial invoices, packing lists, certificates of origin, customs entries, freight quotes, carrier confirmations. Each one is a potential error point, a compliance risk, or a billing discrepancy waiting to be discovered too late.</p>
+            <p>We build AI that processes these documents at scale, validates them against your specific trade lanes and commodity requirements, and surfaces problems before they become customs holds, chargebacks, or delivery failures.</p>
+            <div class="mt-5 pt-4 border-t border-plate">
+              <p class="font-mono text-xs text-hiviz uppercase mb-2 tracking-wider">We serve</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="serve-pill">Importers &amp; exporters</span>
+                <span class="serve-pill">Freight brokers</span>
+                <span class="serve-pill">3PLs</span>
+                <span class="serve-pill">Customs brokers</span>
+                <span class="serve-pill">Supply chain teams</span>
+                <span class="serve-pill">Trading companies</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-accent" />
+
+  <!-- ════════════════════════════════════════
+       VALUES / HOW WE WORK
+  ════════════════════════════════════════ -->
+  <section class="relative py-20 lg:py-28 border-b border-plate overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+      <span class="eyebrow reveal">How we operate</span>
+      <h2 class="font-display text-5xl lg:text-6xl text-chalk mb-12 reveal leading-none">THE WAY WE WORK</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <div class="value-card reveal reveal-d1">
+          <span class="value-num">01</span>
+          <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">RADICAL TRANSPARENCY</h3>
+          <p class="text-fog leading-relaxed text-sm relative z-10">We tell you exactly what we're building, how it works, and what it can't do. If something won't work for your use case, we'll tell you before you pay — not after. We'd rather lose the deal than waste your time.</p>
+        </div>
+
+        <div class="value-card reveal reveal-d2">
+          <span class="value-num">02</span>
+          <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">FULL HANDOVER, ALWAYS</h3>
+          <p class="text-fog leading-relaxed text-sm relative z-10">Every engagement ends with you owning everything. Source code. Model weights. Documentation. We keep nothing back. The goal is for you to never need us again after delivery — that's how we know we did the job right.</p>
+        </div>
+
+        <div class="value-card reveal reveal-d3">
+          <span class="value-num">03</span>
+          <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">QUALITY OVER QUANTITY</h3>
+          <p class="text-fog leading-relaxed text-sm relative z-10">We don't take on many projects at once. Every build gets our full attention and is completed to the highest standard before we move on. Quality isn't negotiable — every client deserves a product that works perfectly.</p>
+        </div>
+
+        <div class="value-card reveal reveal-d1">
+          <span class="value-num">04</span>
+          <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">PRIVATE BY DEFAULT</h3>
+          <p class="text-fog leading-relaxed text-sm relative z-10">Everything we build runs on your infrastructure. Your documents stay in your network. We never store, log, or transmit your data. Privacy isn't a feature tier — it's the architecture. Every build, every time.</p>
+        </div>
+
+        <div class="value-card reveal reveal-d2">
+          <span class="value-num">05</span>
+          <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">NO FAKE STATS</h3>
+          <p class="text-fog leading-relaxed text-sm relative z-10">No "12+ agents deployed." No "over $5B in projects managed." No stock photo team. This is a real team doing real builds. We'll let the work speak rather than pad the pitch with numbers we can't back up.</p>
+        </div>
+
+        <div class="value-card reveal reveal-d3">
+          <span class="value-num">06</span>
+          <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">REMOTE-FIRST, GLOBALLY</h3>
+          <p class="text-fog leading-relaxed text-sm relative z-10">We work with clients across time zones. The work is delivered digitally — no on-site visits required. If you're in North America, Europe, or anywhere else, we can build for you. Location is not a constraint.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-accent" />
+
+  <!-- ════════════════════════════════════════
+       HONEST ABOUT LIMITS
+  ════════════════════════════════════════ -->
+  <section class="relative py-20 lg:py-28 border-b border-plate bg-gunmetal overflow-hidden">
+    <div class="section-glow"></div>
+    <div class="max-w-3xl mx-auto px-4 relative z-10">
+      <span class="eyebrow reveal">Important limits to know</span>
+      <h2 class="font-display text-5xl lg:text-6xl text-chalk mb-10 reveal leading-none">WHAT WE CAN'T DO<br/><span class="text-hiviz">(AND WON'T PRETEND TO)</span></h2>
+      <div class="space-y-5 text-fog text-sm leading-relaxed reveal reveal-d1">
+        <p>We are not a construction company and we are not a logistics operator. We don't know your specific trade, your specific lane, or your local building codes better than you do. What we know is how to build AI systems that read your documents accurately and surface information you'd otherwise miss or find too slowly.</p>
+        <p>We can't guarantee the AI catches every single issue in every document — no system can, and anyone who claims otherwise is selling you something. What we can guarantee is that it dramatically reduces what slips through, and it does it consistently, without getting tired or distracted.</p>
+        <p>We are a small, focused team — not a 24/7 support operation. We work during normal hours across our time zones. If you need around-the-clock live support with SLAs, we are not the right fit. We'd rather be honest about that upfront than write you a contract we can't honour.</p>
+        <div class="quote-block">
+          <p class="text-chalk font-medium leading-relaxed">What we are: a technically rigorous, honest, international team who will give your build genuine attention and deliver something that actually works in your real workflow. That's the whole pitch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-accent" />
+
+  <!-- ════════════════════════════════════════
+       CTA
+  ════════════════════════════════════════ -->
+  <section class="relative py-24 lg:py-36 overflow-hidden">
+    <div class="cta-glow"></div>
+    <!-- subtle dot grid overlay -->
+    <div class="absolute inset-0 grid-dot opacity-30 pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+      <span class="eyebrow justify-center reveal">Ready to start</span>
+      <h2 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk mb-6 reveal leading-none">WANT TO SEE IF<br/><span class="text-hiviz">WE'RE A FIT?</span></h2>
+      <p class="text-fog mb-10 leading-relaxed max-w-xl mx-auto text-sm lg:text-base reveal reveal-d1">Start with the free assessment. Send us one real document from your workflow. We'll analyze it and send back a written report + video walkthrough — no obligation, no pitch on the other end.</p>
+      <div class="reveal reveal-d2">
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-10 py-4 rounded-lg text-base inline-block hover:opacity-90 transition-opacity shadow-lg" style="box-shadow:0 8px 32px rgba(249,115,22,0.3);">
+          Request Your Free 24h Assessment →
+        </a>
+        <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span class="text-hiviz">general@marapone.com</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br/>Etobicoke, ON M9B 6K5<br/>Canada</p>
+            </address>
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br/>Rome, 00193<br/>Italy</p>
+            </address>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="flex justify-center gap-5 mt-6 mb-1">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <!-- Email -->
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors" aria-label="Email us">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        </a>
+        <!-- X (coming soon) -->
+        <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </span>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+        <a href="/badge" class="text-xs font-mono text-plate hover:text-fog transition-colors">Badge</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY FLOATING CTA -->
+  <div id="sticky-cta" class="fixed bottom-6 right-6 z-50 hidden">
+    <div class="flex items-center gap-2 hiviz-gradient rounded-lg shadow-lg shadow-black/40 overflow-hidden">
+      <a href="/construction/contact" class="text-white font-semibold text-sm px-5 py-3 hover:opacity-90 transition-opacity whitespace-nowrap">
+        Get Free Assessment →
+      </a>
+      <button id="sticky-cta-close" aria-label="Dismiss" class="pr-3 pl-1 py-3 text-white/70 hover:text-white transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var cta = document.getElementById('sticky-cta');
+      var closeBtn = document.getElementById('sticky-cta-close');
+      if (!cta || !closeBtn) return;
+      if (sessionStorage.getItem('ctaDismissed')) return;
+      var shown = false;
+      window.addEventListener('scroll', function () {
+        if (sessionStorage.getItem('ctaDismissed')) return;
+        if (window.scrollY > 400 && !shown) { cta.classList.remove('hidden'); shown = true; }
+      }, { passive: true });
+      closeBtn.addEventListener('click', function () {
+        cta.classList.add('hidden');
+        sessionStorage.setItem('ctaDismissed', '1');
+      });
+    })();
+  </script>
+  <script>
+  (function(){
+    if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+    var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
+    if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+  })();
+  </script>
+
+</body>
+</html>

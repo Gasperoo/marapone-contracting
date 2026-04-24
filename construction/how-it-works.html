@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How It Works – Marapone | Private AI for Construction & Logistics Companies</title>
   <meta name="description"
     content="How Marapone designs, builds, and installs private AI systems for construction and logistics companies — on your hardware, around your documents, with a full handover and no cloud dependency." />
@@ -22,7 +22,7 @@
   <meta name="twitter:description"
     content="How Marapone designs, builds, and installs private AI systems for construction and logistics companies — on your hardware, around your documents, with a full handover and no cloud dependency." />
   <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
-  <link rel="stylesheet" href="./src/tailwind.css" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
@@ -150,39 +150,36 @@
   <!-- NAV -->
   <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
-      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
-        <a href="/" class="hover:text-chalk transition-colors">Home</a>
-        <a href="/how-it-works" class="text-chalk">How It Works</a>
-        <a href="/services" class="hover:text-chalk transition-colors">Services</a>
-        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
-        <a href="/work" class="hover:text-chalk transition-colors">Work</a>
-        <a href="/faq" class="hover:text-chalk transition-colors">FAQ</a>
-        <a href="/about" class="hover:text-chalk transition-colors">About</a>
-        <a href="/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/contact"
-          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
-          Free Assessment →</a>
+      <div class="flex items-center gap-5">
+        <a href="/construction/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap" aria-label="Back to industry selection">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
       </div>
-      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
-        aria-label="Toggle navigation"
-        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/construction/how-it-works" class="text-chalk">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/construction/faq" class="hover:text-chalk transition-colors">FAQ</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
-      <a href="/" class="text-fog pt-3 hover:text-chalk">Home</a>
-      <a href="/how-it-works" class="text-chalk">How It Works</a>
-      <a href="/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
       <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <a href="/work" class="text-fog hover:text-chalk">Work</a>
-      <a href="/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/faq" class="text-fog hover:text-chalk">FAQ</a>
       <a href="/about" class="text-fog hover:text-chalk">About</a>
-      <a href="/contact" class="text-fog hover:text-chalk">Contact</a>
-      <a href="/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment
-        →</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
     </div>
   </nav>
 
@@ -623,12 +620,12 @@
       <p class="text-fog mb-8 leading-relaxed">The free 24h assessment is the best way to see if this is worth your
         time. Send us one real document. We'll run it, and you'll get back a real report — your data, real findings, no
         demo output.</p>
-      <a href="/contact"
+      <a href="/construction/contact"
         class="hiviz-gradient text-white font-semibold px-10 py-5 rounded text-lg inline-block hover:opacity-90 transition-opacity">
         Get Your Free 24h Assessment →
       </a>
       <div class="mt-4">
-        <a href="/discovery"
+        <a href="/construction/discovery"
           class="inline-flex items-center gap-2 text-sm text-fog hover:text-chalk transition-colors font-mono">
           <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -647,96 +644,35 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <div class="flex flex-col items-center md:items-start gap-1">
-          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span
-              class="text-hiviz">PONE</span></a>
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
           <div class="flex gap-2 mt-1">
-            <span
-              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
-                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>Toronto</span>
-            <span
-              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
-                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>Rome</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
           </div>
           <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
-            <address class="not-italic">
-              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br/>Etobicoke, ON M9B 6K5<br/>Canada</p>
-            </address>
-            <address class="not-italic">
-              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br/>Rome, 00193<br/>Italy</p>
-            </address>
+            <address class="not-italic"><p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br/>Etobicoke, ON M9B 6K5<br/>Canada</p></address>
+            <address class="not-italic"><p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br/>Rome, 00193<br/>Italy</p></address>
           </div>
         </div>
         <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
-          <a href="/" class="hover:text-chalk">Home</a>
-          <a href="/how-it-works" class="hover:text-chalk">How It Works</a>
-          <a href="/services" class="hover:text-chalk">Services</a>
-          <a href="/work" class="hover:text-chalk">Work</a>
-          <a href="/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
           <a href="/pricing" class="hover:text-chalk">Pricing</a>
           <a href="/about" class="hover:text-chalk">About</a>
-          <a href="/contact" class="hover:text-chalk">Contact</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
         </div>
         <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
       </div>
       <div class="flex justify-center gap-5 mt-6 mb-1">
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer"
-          class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-          </svg>
-        </a>
-        <!-- Email -->
-        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors"
-          aria-label="Email us">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <polyline points="2,4 12,13 22,4" />
-          </svg>
-        </a>
-        <!-- X (coming soon) -->
-        <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </span>
-        <!-- WhatsApp -->
-        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer"
-          class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-          </svg>
-        </a>
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
-          class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-          </svg>
-        </a>
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D"
-          target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors"
-          aria-label="LinkedIn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        </a>
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors" aria-label="Email us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+        <span class="text-plate opacity-30 cursor-default" aria-label="X &mdash; coming soon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
       </div>
       <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
         <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
@@ -751,7 +687,7 @@
   <!-- STICKY FLOATING CTA -->
   <div id="sticky-cta" class="fixed bottom-6 right-6 z-50 hidden">
     <div class="flex items-center gap-2 hiviz-gradient rounded-lg shadow-lg shadow-black/40 overflow-hidden">
-      <a href="/contact"
+      <a href="/construction/contact"
         class="text-white font-semibold text-sm px-5 py-3 hover:opacity-90 transition-opacity whitespace-nowrap">
         Get Free Assessment →
       </a>

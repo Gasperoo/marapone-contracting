@@ -2,6 +2,8 @@
 export default {
     content: [
         './*.html',
+        './construction/**/*.html',
+        './logistics/**/*.html',
         './src/**/*.{js,ts,jsx,tsx,html}',
     ],
     theme: {
@@ -15,6 +17,9 @@ export default {
                 hiviz2: '#fb923c',
                 chalk: '#e8e8e8',
                 fog: '#a0a0a0',
+                marine: '#52b788',
+                'marine-dark': '#2d6a4f',
+                'marine-light': '#74c69d',
             },
             fontFamily: {
                 display: ['Bebas Neue', 'sans-serif'],

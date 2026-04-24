@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marapone – Private AI for Construction & Logistics | Choose Your Industry</title>
+  <meta name="description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code. Deployed on your infrastructure. Choose your industry to get started." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Marapone – Private AI for Construction & Logistics" />
+  <meta property="og:description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code. Deployed on your infrastructure." />
+  <meta property="og:url" content="https://marapone.com/" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marapone – Private AI for Construction & Logistics" />
+  <meta name="twitter:description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code." />
+  <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0f0f0f;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    @media (max-width: 767px) {
+      html, body { overflow: auto; }
+    }
+
+    /* ── Noise overlay ── */
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* ── Grid dot background ── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(58,58,58,0.5) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Main split layout ── */
+    .split-container {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    @media (max-width: 767px) {
+      .split-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100svh;
+      }
+    }
+
+    /* ── Panels ── */
+    .panel {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .split-container:hover .panel { flex: 0.65; }
+    .split-container:hover .panel:hover { flex: 1.35; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .panel { transition: none; }
+    }
+
+    @media (max-width: 767px) {
+      .panel {
+        flex: none !important;
+        width: 100%;
+        min-height: 50svh;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    /* ── Construction panel (left) ── */
+    .panel-construction {
+      background: #111111;
+      justify-content: flex-start;
+    }
+
+    .panel-construction .panel-glow {
+      position: absolute;
+      top: -20%;
+      left: -15%;
+      width: 70%;
+      height: 120%;
+      background: radial-gradient(ellipse at 25% 40%, rgba(249,115,22,0.22) 0%, transparent 65%);
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .panel-construction:hover .panel-glow {
+      opacity: 1.4;
+    }
+
+    /* ── Logistics panel (right) ── */
+    .panel-logistics {
+      background: #0e1210;
+      justify-content: flex-end;
+    }
+
+    .panel-logistics .panel-glow {
+      position: absolute;
+      top: -20%;
+      right: -15%;
+      width: 70%;
+      height: 120%;
+      background: radial-gradient(ellipse at 75% 40%, rgba(82,183,136,0.20) 0%, transparent 65%);
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .panel-logistics:hover .panel-glow {
+      opacity: 1.4;
+    }
+
+    /* ── Panel inner content ── */
+    .panel-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 3rem 4rem;
+      max-width: 380px;
+    }
+
+    .panel-construction .panel-inner {
+      margin-left: 4%;
+    }
+
+    .panel-logistics .panel-inner {
+      margin-right: 4%;
+      text-align: right;
+      align-items: flex-end;
+    }
+
+    @media (max-width: 1199px) {
+      .panel-inner { padding: 2.5rem 2.5rem; max-width: 320px; }
+      .panel-construction .panel-inner { margin-left: 2%; }
+      .panel-logistics .panel-inner { margin-right: 2%; }
+    }
+
+    @media (max-width: 767px) {
+      .panel-inner {
+        padding: 2.5rem 1.75rem;
+        max-width: 100%;
+        width: 100%;
+        margin: 0 !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+      }
+    }
+
+    .panel-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      color: #e8e8e8;
+    }
+
+    .panel-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+    }
+
+    .panel-construction .panel-title { color: #f97316; }
+    .panel-logistics .panel-title { color: #52b788; }
+
+    .panel-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: #a0a0a0;
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    @media (max-width: 767px) {
+      .panel-desc { max-width: 100%; }
+    }
+
+    .panel-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid;
+      transition: background 0.25s ease, color 0.25s ease;
+      text-decoration: none;
+      pointer-events: none; /* parent <a> handles click */
+    }
+
+    .panel-construction .panel-cta {
+      border-color: #f97316;
+      color: #f97316;
+    }
+    .panel-construction:hover .panel-cta {
+      background: rgba(249,115,22,0.12);
+    }
+
+    .panel-logistics .panel-cta {
+      border-color: #52b788;
+      color: #52b788;
+    }
+    .panel-logistics:hover .panel-cta {
+      background: rgba(82,183,136,0.12);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.06);
+      z-index: 10;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .divider::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 30%;
+      background: linear-gradient(to bottom, transparent, rgba(249,115,22,0.6), rgba(82,183,136,0.6), transparent);
+      animation: dividerShimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes dividerShimmer {
+      0%   { top: -30%; opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .divider::after { animation: none; opacity: 0.5; top: 35%; height: 30%; }
+    }
+
+    @media (max-width: 767px) {
+      .divider {
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: auto;
+        width: 100%;
+        height: 1px;
+        transform: translateY(-50%);
+      }
+      .divider::after {
+        top: 0;
+        width: 30%;
+        height: 1px;
+        left: 0;
+        background: linear-gradient(to right, transparent, rgba(249,115,22,0.6), rgba(82,183,136,0.6), transparent);
+        animation: dividerShimmerH 3s ease-in-out infinite;
+      }
+      @keyframes dividerShimmerH {
+        0%   { left: -30%; opacity: 0; }
+        20%  { opacity: 1; }
+        80%  { opacity: 1; }
+        100% { left: 100%; opacity: 0; }
+      }
+    }
+
+    /* ── Center logo ── */
+    .center-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      width: 88px;
+      height: 88px;
+      pointer-events: none;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .center-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.7));
+      opacity: 0.92;
+    }
+
+    .center-logo-ring {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 70%);
+    }
+
+    @media (max-width: 767px) {
+      .center-logo {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 64px;
+        height: 64px;
+        margin: 1.5rem auto;
+        order: -1;
+      }
+      .split-container { position: relative; }
+    }
+
+    /* ── Bottom tagline ── */
+    .tagline {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: #3a3a3a;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    @media (max-width: 767px) {
+      .tagline {
+        position: static;
+        padding: 1.25rem 1rem 2rem;
+        color: #3a3a3a;
+      }
+    }
+
+    /* ── Hover state: panel content fade in stronger ── */
+    .panel-inner {
+      opacity: 0.7;
+      transition: opacity 0.4s ease;
+    }
+    .panel:hover .panel-inner { opacity: 1; }
+
+    @media (max-width: 767px) {
+      .panel-inner { opacity: 1; }
+    }
+
+    /* ── Focus ring for accessibility ── */
+    .panel:focus-visible {
+      outline: 2px solid #e8e8e8;
+      outline-offset: -4px;
+    }
+
+    /* ── Decorative corner lines ── */
+    .corner-lines {
+      position: absolute;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .panel-construction .corner-lines {
+      top: 2rem; left: 2rem;
+    }
+
+    .panel-logistics .corner-lines {
+      top: 2rem; right: 2rem;
+    }
+
+    .corner-line-h {
+      width: 32px; height: 1px;
+      background: currentColor;
+      opacity: 0.15;
+    }
+
+    .corner-line-v {
+      width: 1px; height: 32px;
+      background: currentColor;
+      opacity: 0.15;
+    }
+
+    .panel-construction .corner-lines { color: #f97316; }
+    .panel-logistics .corner-lines { color: #52b788; }
+
+    @media (max-width: 767px) {
+      .corner-lines { display: none; }
+    }
+
+    /* ── Industry tag chip ── */
+    .industry-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 0.25rem;
+      border: 1px solid;
+      opacity: 0.6;
+    }
+
+    .panel-construction .industry-chip {
+      border-color: rgba(249,115,22,0.35);
+      color: #f97316;
+      background: rgba(249,115,22,0.06);
+    }
+
+    .panel-logistics .industry-chip {
+      border-color: rgba(82,183,136,0.35);
+      color: #52b788;
+      background: rgba(82,183,136,0.06);
+    }
+
+    .chip-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J31Z05DB01');
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+  <!-- Noise texture overlay -->
+  <div class="noise" aria-hidden="true"></div>
+  <!-- Grid dot background -->
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- Skip to content -->
+  <a href="#construction-panel" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to Construction</a>
+
+  <!-- MAIN SPLIT LAYOUT -->
+  <main>
+    <div class="split-container" role="navigation" aria-label="Industry selection">
+
+      <!-- CENTER LOGO (desktop) -->
+      <div class="center-logo" aria-hidden="true">
+        <div class="center-logo-ring"></div>
+        <img src="/MaraponeLogo-1.png" alt="Marapone" />
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="divider" aria-hidden="true"></div>
+
+      <!-- LEFT PANEL: CONSTRUCTION -->
+      <a id="construction-panel"
+        href="/construction/"
+        class="panel panel-construction"
+        aria-label="Enter Construction — Private AI for general contractors and project teams">
+
+        <div class="panel-glow" aria-hidden="true"></div>
+
+        <!-- Corner accent -->
+        <div class="corner-lines" aria-hidden="true">
+          <div class="corner-line-h"></div>
+          <div class="corner-line-v" style="margin-top:0;position:absolute;top:0;left:0;"></div>
+        </div>
+
+        <div class="panel-inner">
+          <div class="industry-chip">
+            <span class="chip-dot"></span>
+            Private AI
+          </div>
+          <div class="panel-title">CONSTRUC&shy;TION</div>
+          <p class="panel-desc">Private AI for general contractors &amp; project teams — document intelligence, risk analysis, and workflow automation.</p>
+          <span class="panel-cta" aria-hidden="true">Enter →</span>
+        </div>
+      </a>
+
+      <!-- RIGHT PANEL: LOGISTICS -->
+      <a id="logistics-panel"
+        href="/logistics/"
+        class="panel panel-logistics"
+        aria-label="Enter Logistics — Private AI for freight, import/export and trade compliance">
+
+        <div class="panel-glow" aria-hidden="true"></div>
+
+        <!-- Corner accent -->
+        <div class="corner-lines" aria-hidden="true" style="left:auto;">
+          <div class="corner-line-h" style="float:right;"></div>
+          <div class="corner-line-v" style="margin-top:0;position:absolute;top:0;right:0;"></div>
+        </div>
+
+        <div class="panel-inner">
+          <div class="industry-chip">
+            <span class="chip-dot"></span>
+            Private AI
+          </div>
+          <div class="panel-title">LOGIS&shy;TICS</div>
+          <p class="panel-desc">Private AI for freight, import/export &amp; trade compliance — document processing, invoice auditing, and customs intelligence.</p>
+          <span class="panel-cta" aria-hidden="true">Enter →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- BOTTOM TAGLINE -->
+    <p class="tagline">Marapone &mdash; Private AI. Two industries. One standard.</p>
+  </main>
+
+  <script>
+    (function () {
+      // Keyboard navigation
+      document.querySelectorAll('.panel').forEach(function(panel) {
+        panel.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.location.href = panel.href;
+          }
+        });
+      });
+
+      // Preload construction and logistics pages on hover for snappy navigation
+      var preloaded = {};
+      document.querySelectorAll('.panel').forEach(function(panel) {
+        panel.addEventListener('mouseenter', function() {
+          var href = panel.getAttribute('href');
+          if (href && !preloaded[href]) {
+            preloaded[href] = true;
+            var link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = href;
+            document.head.appendChild(link);
+          }
+        }, { once: true });
+      });
+    })();
+  </script>
+
+</body>
+</html>

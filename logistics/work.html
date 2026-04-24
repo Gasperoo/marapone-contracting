@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Work – Marapone Logistics | Private AI Case Studies for Freight & Trade Operations</title>
+  <meta name="description" content="Real private AI systems built and deployed for logistics and trade companies. See what Marapone has built, what problems were solved, and what the results looked like." />
+  <meta property="og:url" content="https://marapone.com/logistics/work" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #52b788; padding-left: 1rem; }
+    #nav-progress { position:fixed;top:0;left:0;height:2px;width:0%;background:#52b788;z-index:9999;pointer-events:none;transition:width .08s linear; }
+    .reveal { opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease; }
+    .reveal.visible { opacity:1;transform:translateY(0); }
+    .reveal-d1 { transition-delay:.1s; } .reveal-d2 { transition-delay:.2s; } .reveal-d3 { transition-delay:.3s; } .reveal-d4 { transition-delay:.4s; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity:1;transform:none;transition:none; } }
+  </style>
+  <style>
+    .case-card { background:#232323;border:1px solid #3a3a3a;border-radius:.5rem; }
+    .stat-pill { background:#2e2e2e;border:1px solid #3a3a3a;border-radius:.375rem;padding:1rem 1.25rem; }
+    .tag { display:inline-block;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .6rem;border-radius:.25rem;border:1px solid #3a3a3a;color:#a0a0a0; }
+    .tag-marine { border-color:#52b788;color:#52b788; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js" integrity="sha384-4EgXbGZLDwcPHcRGrHOxm1OvumWUqhr/ts6eapdZnak6ORZAsSE3fMd0niykaSkw" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+</head>
+<body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded focus:font-semibold" style="background:#52b788;color:white">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/logistics/work" class="text-chalk">Work</a>
+        <a href="/logistics/faq" class="hover:text-chalk transition-colors">FAQ</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/logistics/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/logistics/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/logistics/work" class="text-chalk">Work</a>
+      <a href="/logistics/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="font-mono text-sm mb-4" style="color:#52b788">// Selected Logistics Projects</p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl text-chalk mb-6">WHAT WE'VE<br /><span style="color:#52b788">ACTUALLY BUILT</span></h1>
+      <p class="text-fog max-w-2xl mx-auto leading-relaxed">Real systems built for real operations. Every build was designed around the client's actual trade documents, installed on their infrastructure, and handed over completely. Client details are anonymized by agreement — the problems and results are real.</p>
+      <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-plate rounded overflow-hidden max-w-3xl mx-auto">
+        <div class="bg-charcoal px-6 py-5 text-center">
+          <p class="font-display text-4xl" style="color:#52b788">10h+</p>
+          <p class="font-mono text-fog text-xs mt-1 leading-snug">staff hours recovered<br/>per week, per client</p>
+        </div>
+        <div class="bg-charcoal px-6 py-5 text-center">
+          <p class="font-display text-4xl text-chalk">−78%</p>
+          <p class="font-mono text-fog text-xs mt-1 leading-snug">compliance errors<br/>in first quarter</p>
+        </div>
+        <div class="bg-charcoal px-6 py-5 text-center">
+          <p class="font-display text-4xl text-chalk">97%</p>
+          <p class="font-mono text-fog text-xs mt-1 leading-snug">extraction accuracy<br/>vs. manual baseline</p>
+        </div>
+        <div class="bg-charcoal px-6 py-5 text-center">
+          <p class="font-display text-4xl text-chalk">&lt;2wk</p>
+          <p class="font-mono text-fog text-xs mt-1 leading-snug">average build time<br/>scoping to handover</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 01 -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 rounded flex items-center justify-center text-white font-display text-lg shrink-0" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">01</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-marine">Freight Brokerage</span>
+          <span class="tag">Ontario, Canada</span>
+          <span class="tag">Invoice Audit + Carrier Performance</span>
+        </div>
+      </div>
+      <div class="case-card p-8 lg:p-10 reveal">
+        <div class="grid lg:grid-cols-2 gap-10">
+          <div>
+            <h2 class="font-display text-2xl lg:text-3xl text-chalk mb-4">FREIGHT BROKERAGE — INVOICE AUDIT SYSTEM</h2>
+            <div class="tape-line mb-6"><p class="text-sm text-fog leading-relaxed">A mid-size freight brokerage processing 400+ carrier invoices per week was spending 12 hours of staff time per week on manual invoice verification. Discrepancies were being caught inconsistently — and often only after payment had already run.</p></div>
+            <div class="space-y-4">
+              <div>
+                <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">The problem</p>
+                <p class="text-fog text-sm leading-relaxed">Carrier invoices arrived in multiple PDF formats. Staff were manually comparing them to rate confirmations in a separate TMS. Accessorial charges were being accepted without verification because there was no practical way to check them all at volume. Duplicate billing was going undetected.</p>
+              </div>
+              <div>
+                <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">What we built</p>
+                <p class="text-fog text-sm leading-relaxed">A private Invoice Auditor fine-tuned on their specific carrier invoice formats — covering 14 carriers across their network. The system was integrated into their existing TMS workflow via a simple file drop. Each invoice is processed in under 3 seconds, with a structured discrepancy report generated automatically.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-xs uppercase tracking-wider mb-4" style="color:#52b788">Results after 30 days</p>
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="stat-pill">
+                <p class="font-display text-3xl" style="color:#52b788">−94%</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">billing discrepancies<br/>reaching payment</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl text-chalk">12h</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">staff hours recovered<br/>per week</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl text-chalk">$38k</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">in overbilling recovered<br/>in first 60 days</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl" style="color:#52b788">&lt;3s</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">per invoice<br/>processing time</p>
+              </div>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Build specs</p>
+              <p class="text-fog text-xs leading-relaxed">Invoice Auditor + Carrier Performance module. Installed on their existing Windows server. Full source code handover. Build time: 8 business days from scoping to deployment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 02 -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 rounded flex items-center justify-center text-white font-display text-lg shrink-0" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">02</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-marine">Import/Export</span>
+          <span class="tag">Rome, Italy</span>
+          <span class="tag">Trade Document Processing</span>
+        </div>
+      </div>
+      <div class="case-card p-8 lg:p-10 reveal">
+        <div class="grid lg:grid-cols-2 gap-10">
+          <div>
+            <h2 class="font-display text-2xl lg:text-3xl text-chalk mb-4">MEDITERRANEAN IMPORTER — TRADE DOCUMENT ENGINE</h2>
+            <div class="tape-line mb-6"><p class="text-sm text-fog leading-relaxed">An Italian import operation handling mixed-commodity shipments from Asia and North Africa was managing 200+ trade document packages per month. Document inconsistencies causing customs holds were costing them an average of €4,200 per incident in delay costs and fines.</p></div>
+            <div class="space-y-4">
+              <div>
+                <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">The problem</p>
+                <p class="text-fog text-sm leading-relaxed">Commercial invoices, packing lists, and certificates of origin were being prepared by multiple parties — the exporter, the freight forwarder, and the local agent. Discrepancies in HS codes, declared values, and quantity descriptions were only found during customs clearance, resulting in holds that delayed delivery by 5–10 days.</p>
+              </div>
+              <div>
+                <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">What we built</p>
+                <p class="text-fog text-sm leading-relaxed">A Trade Doc Engine fine-tuned on their specific commodity types and EU customs entry formats, with multi-language support for supplier documents arriving in English, Italian, and Mandarin. Processes the full document set in under 60 seconds and flags discrepancies before the package is submitted to customs.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-xs uppercase tracking-wider mb-4" style="color:#52b788">Results after 60 days</p>
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="stat-pill">
+                <p class="font-display text-3xl" style="color:#52b788">−91%</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">customs holds<br/>in first two months</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl text-chalk">8h</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">staff hours saved<br/>per week</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl text-chalk">€47k</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">estimated savings<br/>in delay cost avoidance</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl" style="color:#52b788">3</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">languages handled<br/>without manual translation</p>
+              </div>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Build specs</p>
+              <p class="text-fog text-xs leading-relaxed">Trade Doc Engine + Compliance Guard modules. Deployed on their on-premise server in Rome. Multi-language (EN/IT/ZH). Build time: 11 business days. Full source code handover.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 03 -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 rounded flex items-center justify-center text-white font-display text-lg shrink-0" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">03</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-marine">3PL / Supply Chain</span>
+          <span class="tag">Toronto, Canada</span>
+          <span class="tag">Carrier Performance + Rate Intelligence</span>
+        </div>
+      </div>
+      <div class="case-card p-8 lg:p-10 reveal">
+        <div class="grid lg:grid-cols-2 gap-10">
+          <div>
+            <h2 class="font-display text-2xl lg:text-3xl text-chalk mb-4">CANADIAN 3PL — CARRIER INTELLIGENCE PLATFORM</h2>
+            <div class="tape-line mb-6"><p class="text-sm text-fog leading-relaxed">A Toronto-based third-party logistics provider managing 30+ carrier relationships was doing quarterly carrier reviews manually — pulling exception data from their TMS, building spreadsheets, and comparing rates in Excel. The process took 3 days per quarter and was consistently missing high-performing and underperforming patterns between quarterly reviews.</p></div>
+            <div class="space-y-4">
+              <div>
+                <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">The problem</p>
+                <p class="text-fog text-sm leading-relaxed">No systematic visibility into carrier performance between quarterly reviews. Rate negotiation conversations were happening without lane-level benchmark data. Claim rate patterns were being identified too late — usually only after a shipper complaint prompted a manual audit.</p>
+              </div>
+              <div>
+                <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">What we built</p>
+                <p class="text-fog text-sm leading-relaxed">A Carrier Tracker + Freight Rate AI system that ingests POD documents, exception reports, and carrier rate quotes from their existing TMS export. Generates automated weekly carrier performance reports, flags emerging performance issues before they affect shippers, and produces all-in rate comparisons across contracted lanes.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-xs uppercase tracking-wider mb-4" style="color:#52b788">Results after 90 days</p>
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="stat-pill">
+                <p class="font-display text-3xl" style="color:#52b788">18%</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">improvement in<br/>on-time delivery rate</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl text-chalk">3d</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">quarterly review time<br/>reduced to 45 minutes</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl text-chalk">−62%</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">claim rate for<br/>flagged carriers</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl" style="color:#52b788">$21k</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">annual rate savings<br/>from renegotiation data</p>
+              </div>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Build specs</p>
+              <p class="text-fog text-xs leading-relaxed">Carrier Tracker + Freight Rate AI modules. Integrated with their existing TMS via file export. Deployed on their on-premise server. Build time: 10 business days. Full source code handover.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-gunmetal border-t border-plate py-16">
+    <div class="max-w-3xl mx-auto px-4 text-center reveal">
+      <p class="font-mono text-xs uppercase tracking-wider mb-4" style="color:#52b788">// Your operation next</p>
+      <h2 class="font-display text-4xl text-chalk mb-4">WANT TO SEE WHAT<br /><span style="color:#52b788">WE CAN DO WITH YOUR DOCS?</span></h2>
+      <p class="text-fog text-sm max-w-lg mx-auto leading-relaxed mb-8">Send us one real document. We'll show you exactly what the AI can surface from it within 24 hours — written report, no obligation, no pitch on the other end.</p>
+      <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white font-semibold px-10 py-4 rounded-lg text-base inline-block hover:opacity-90 transition-opacity">Request Your Free 24h Assessment &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a>
+          <a href="/logistics/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/logistics/services" class="hover:text-chalk">Services</a>
+          <a href="/logistics/work" class="hover:text-chalk">Work</a>
+          <a href="/logistics/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/about" class="hover:text-chalk">About</a>
+          <a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="flex justify-center gap-5 mt-6 mb-1">
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-chalk transition-colors" aria-label="Email us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function(){
+      if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+      var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
+      if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+    })();
+  </script>
+</body>
+</html>

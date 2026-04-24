@@ -23,6 +23,22 @@ export default defineConfig({
           '/security': '/security.html',
           '/badge': '/badge.html',
           '/discovery': '/discovery.html',
+          // construction subdirectory
+          '/construction': '/construction/index.html',
+          '/construction/how-it-works': '/construction/how-it-works.html',
+          '/construction/services': '/construction/services.html',
+          '/construction/work': '/construction/work.html',
+          '/construction/faq': '/construction/faq.html',
+          '/construction/contact': '/construction/contact.html',
+          '/construction/discovery': '/construction/discovery.html',
+          // logistics subdirectory
+          '/logistics': '/logistics/index.html',
+          '/logistics/how-it-works': '/logistics/how-it-works.html',
+          '/logistics/services': '/logistics/services.html',
+          '/logistics/work': '/logistics/work.html',
+          '/logistics/faq': '/logistics/faq.html',
+          '/logistics/contact': '/logistics/contact.html',
+          '/logistics/discovery': '/logistics/discovery.html',
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];
@@ -56,6 +72,8 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       input: {
+        // Root pages
+        landing: path.resolve(__dirname, 'landing.html'),
         main: path.resolve(__dirname, 'index.html'),
         about: path.resolve(__dirname, 'about.html'),
         'how-it-works': path.resolve(__dirname, 'how-it-works.html'),
@@ -70,6 +88,22 @@ export default defineConfig({
         security: path.resolve(__dirname, 'security.html'),
         badge: path.resolve(__dirname, 'badge.html'),
         discovery: path.resolve(__dirname, 'discovery.html'),
+        // Construction subdirectory
+        'construction-index': path.resolve(__dirname, 'construction/index.html'),
+        'construction-how-it-works': path.resolve(__dirname, 'construction/how-it-works.html'),
+        'construction-services': path.resolve(__dirname, 'construction/services.html'),
+        'construction-work': path.resolve(__dirname, 'construction/work.html'),
+        'construction-faq': path.resolve(__dirname, 'construction/faq.html'),
+        'construction-contact': path.resolve(__dirname, 'construction/contact.html'),
+        'construction-discovery': path.resolve(__dirname, 'construction/discovery.html'),
+        // Logistics subdirectory
+        'logistics-index': path.resolve(__dirname, 'logistics/index.html'),
+        'logistics-how-it-works': path.resolve(__dirname, 'logistics/how-it-works.html'),
+        'logistics-services': path.resolve(__dirname, 'logistics/services.html'),
+        'logistics-work': path.resolve(__dirname, 'logistics/work.html'),
+        'logistics-faq': path.resolve(__dirname, 'logistics/faq.html'),
+        'logistics-contact': path.resolve(__dirname, 'logistics/contact.html'),
+        'logistics-discovery': path.resolve(__dirname, 'logistics/discovery.html'),
       },
     },
   },

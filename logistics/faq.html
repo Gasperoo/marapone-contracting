@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>FAQ – Marapone Logistics | Private AI for Freight & Trade Operations</title>
+  <meta name="description" content="Answers to common questions about Marapone's private logistics AI systems — what we build, how ownership works, pricing, data privacy, and how to get started." />
+  <meta property="og:url" content="https://marapone.com/logistics/faq" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #52b788; padding-left: 1rem; }
+    #nav-progress { position:fixed;top:0;left:0;height:2px;width:0%;background:#52b788;z-index:9999;pointer-events:none;transition:width .08s linear; }
+    .reveal { opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease; }
+    .reveal.visible { opacity:1;transform:translateY(0); }
+    .reveal-d1 { transition-delay:.1s; } .reveal-d2 { transition-delay:.2s; } .reveal-d3 { transition-delay:.3s; } .reveal-d4 { transition-delay:.4s; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity:1;transform:none;transition:none; } }
+  </style>
+  <style>
+    .faq-item { border-bottom:1px solid #3a3a3a; }
+    .faq-item:first-child { border-top:1px solid #3a3a3a; }
+    .faq-trigger { width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0;cursor:pointer;background:transparent;border:none;text-align:left; }
+    .faq-trigger:hover .faq-question { color:#e8e8e8; }
+    .faq-question { font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9375rem;color:#c8c8c8;transition:color .2s; }
+    .faq-icon { flex-shrink:0;width:1.25rem;height:1.25rem;color:#52b788;transition:transform .25s ease; }
+    .faq-item.open .faq-icon { transform:rotate(45deg); }
+    .faq-item.open .faq-question { color:#e8e8e8; }
+    .faq-body { display:none;padding-bottom:1.25rem; }
+    .faq-item.open .faq-body { display:block; }
+    .faq-body p { font-family:'DM Sans',sans-serif;font-size:.875rem;line-height:1.75;color:#a0a0a0; }
+    .faq-body a { color:#52b788;text-decoration:underline;text-underline-offset:3px; }
+    .section-label { font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#52b788;margin-bottom:1.5rem;display:inline-block;border-left:3px solid #52b788;padding:.35rem .75rem;background:rgba(82,183,136,.07);border-radius:0 .25rem .25rem 0; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js" integrity="sha384-4EgXbGZLDwcPHcRGrHOxm1OvumWUqhr/ts6eapdZnak6ORZAsSE3fMd0niykaSkw" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+</head>
+<body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded focus:font-semibold" style="background:#52b788;color:white">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/logistics/faq" class="text-chalk">FAQ</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/logistics/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/logistics/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/logistics/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/logistics/faq" class="text-chalk">FAQ</a>
+      <a href="/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="font-mono text-sm mb-4" style="color:#52b788">// Logistics AI — Common Questions</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-6">ANSWERS TO<br /><span style="color:#52b788">THE REAL QUESTIONS</span></h1>
+      <p class="text-fog max-w-2xl mx-auto leading-relaxed">Straight answers about what the AI does, how ownership works, what your data goes through, and what this costs. No marketing language.</p>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="grid lg:grid-cols-4 gap-12">
+
+        <div class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+            <div>
+              <p class="section-label">Categories</p>
+              <div class="space-y-2 text-sm text-fog font-mono">
+                <p class="hover:text-chalk cursor-default transition-colors">What it does</p>
+                <p class="hover:text-chalk cursor-default transition-colors">Ownership</p>
+                <p class="hover:text-chalk cursor-default transition-colors">Pricing</p>
+                <p class="hover:text-chalk cursor-default transition-colors">Data & Privacy</p>
+                <p class="hover:text-chalk cursor-default transition-colors">Technical</p>
+              </div>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="font-mono text-xs mb-2" style="color:#52b788">// Still have questions?</p>
+              <p class="text-fog text-xs leading-relaxed mb-3">Book a 15-min call and we'll answer everything directly.</p>
+              <a href="/logistics/discovery" class="font-mono text-xs hover:text-chalk transition-colors" style="color:#52b788">Book discovery call &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3">
+          <p class="section-label">What it does</p>
+          <div class="space-y-0">
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What exactly does a Marapone logistics system do?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>It reads your trade documents and returns structured output. Feed it a carrier invoice, bill of lading, customs entry package, or rate quote — and it extracts the relevant data, cross-references documents against each other and against your contracts, and flags issues. The output is a structured report your team can act on. It handles the document intelligence layer your team is currently doing manually.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">Is this a generic logistics platform or something custom-built for my operation?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Custom-built for your operation. Every system starts from a discovery session where we map your specific document types — your carrier invoice formats, your trade lanes, your commodity codes. The model is fine-tuned on your actual documents, not trained on generic freight industry data. A freight broker and a 3PL get different builds. An importer moving consumer goods and an industrial materials exporter get different builds. There's no template being reskinned.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What document formats can it process?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>PDFs (including scanned documents), Excel and CSV files, Word documents, and plain text. For logistics: freight invoices, bills of lading, commercial invoices, packing lists, certificates of origin, customs entries (commercial invoice, packing list, CMR, SAD), rate confirmations, carrier statements, booking confirmations. Multi-language support is included for operations handling supplier documents in languages other than English.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">Does it connect to my TMS or freight management platform?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Integration approach depends on your TMS. For most platforms, we build a simple file-drop workflow — documents exported from your TMS are placed in a watched folder, the AI processes them, and the report goes back into the same folder or an output location your team uses. Direct API integration is available for systems with accessible APIs. We establish the integration method during the discovery session.</p></div>
+            </div>
+          </div>
+
+          <p class="section-label mt-10">Ownership & Pricing</p>
+          <div class="space-y-0">
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What does "you own it" mean in practice?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>You receive the full source code, all model weights, the complete system documentation, and a handover session with your team. You are not buying a licence to use software we retain. You own the build outright. If Marapone shut down tomorrow, your system keeps running exactly as it does today. You can modify it, extend it, or have another developer work on it. There are no usage restrictions after purchase.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What does it cost?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Four tiers: Starter ($1,500 CAD), Pilot ($4,900 CAD), Full Build ($9,500 CAD), and Plus ($15,000 CAD). Starter covers one workflow module. Pilot covers two modules. Full Build is the complete suite. Plus adds server/air-gapped deployment, extended team onboarding, and priority support. Exact scope and price confirmed after the free assessment. See <a href="/pricing">the full pricing page</a> for a detailed breakdown.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">Are there ongoing costs after the build?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>No mandatory ongoing costs. The system runs on your hardware with no external dependencies — no API keys, no cloud subscription, no usage fees. Optional support retainer is available at $499 CAD/month or $3,500 CAD/year for updates when your document formats or trade lanes change.</p></div>
+            </div>
+          </div>
+
+          <p class="section-label mt-10">Data & Privacy</p>
+          <div class="space-y-0">
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What happens to my trade documents during the build?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Documents you send for fine-tuning are processed in our secure build environment and deleted after the build is verified and handed over. They are never stored long-term, never used to train other clients' systems, and never transmitted to third parties. Once deployed, the system runs on your hardware — documents you feed into it after deployment never leave your network.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What hardware does my operation need?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>For most logistics builds, a modern business workstation or server is sufficient. Specific requirements depend on your document volume and the number of modules. We confirm hardware requirements during the scoping session. Most operations don't need dedicated GPU servers — logistics document processing runs efficiently on standard server hardware. Air-gapped deployment is available for high-security environments.</p></div>
+            </div>
+          </div>
+
+          <div class="mt-12 bg-steel border border-plate rounded-xl p-6">
+            <p class="font-mono text-xs uppercase tracking-wider mb-3" style="color:#52b788">// Still have questions?</p>
+            <p class="text-fog text-sm leading-relaxed mb-4">The fastest path to answers is the free 24h assessment — send us a document, see what the AI does with it, and ask any remaining questions from a position of having seen the output firsthand.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white font-semibold px-6 py-3 rounded text-center hover:opacity-90 transition-opacity text-sm">Get Free 24h Assessment</a>
+              <a href="/logistics/discovery" class="border border-plate text-chalk font-medium px-6 py-3 rounded text-center hover:bg-steel transition-colors text-sm">Book a 15-Min Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a>
+          <a href="/logistics/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/logistics/services" class="hover:text-chalk">Services</a>
+          <a href="/logistics/work" class="hover:text-chalk">Work</a>
+          <a href="/logistics/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/about" class="hover:text-chalk">About</a>
+          <a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="flex justify-center gap-5 mt-6 mb-1">
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-chalk transition-colors" aria-label="Email us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.faq-trigger').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+      });
+    });
+  </script>
+  <script>
+    (function(){
+      if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+      var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
+      if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+    })();
+  </script>
+</body>
+</html>

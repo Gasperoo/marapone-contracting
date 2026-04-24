@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Marapone Logistics – Private AI for Freight, Import/Export & Trade Compliance</title>
+  <meta name="description" content="Marapone builds private AI systems for freight, logistics, and trade companies. Document intelligence, invoice auditing, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
+  <meta name="keywords" content="private AI logistics, freight AI, trade compliance AI, import export AI, customs AI, freight invoice AI, bill of lading AI, private AI no subscription" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Marapone Logistics – Private AI for Freight, Import/Export & Trade Compliance" />
+  <meta property="og:description" content="Marapone builds private AI systems for freight, logistics, and trade companies. Document intelligence, invoice auditing, trade compliance — deployed on your infrastructure." />
+  <meta property="og:url" content="https://marapone.com/logistics/" />
+  <meta property="og:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marapone Logistics – Private AI for Freight, Import/Export & Trade Compliance" />
+  <meta name="twitter:description" content="Marapone builds private AI systems for freight, logistics, and trade companies. One-time price. Full source code. You own it." />
+  <meta name="twitter:image" content="https://marapone.com/maraponecontracting-logo-main.png" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    html { overflow-x: hidden; }
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
+    .noise-bg { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); }
+    .tape-line { border-left: 3px solid #52b788; padding-left: 1rem; }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    .fade-up { animation: fadeUp 0.6s ease forwards; }
+    .delay-1 { animation-delay: 0.15s; opacity: 0; }
+    .delay-2 { animation-delay: 0.3s; opacity: 0; }
+    .delay-3 { animation-delay: 0.45s; opacity: 0; }
+    @media (prefers-reduced-motion: reduce) { .fade-up, .delay-1, .delay-2, .delay-3 { animation: none; opacity: 1; } }
+    #nav-progress { position:fixed;top:0;left:0;height:2px;width:0%;background:#52b788;z-index:9999;pointer-events:none;transition:width .08s linear; }
+    .reveal { opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease; }
+    .reveal.visible { opacity:1;transform:translateY(0); }
+    .reveal-d1 { transition-delay:.1s; }
+    .reveal-d2 { transition-delay:.2s; }
+    .reveal-d3 { transition-delay:.3s; }
+    .reveal-d4 { transition-delay:.4s; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity:1;transform:none;transition:none; } }
+    @keyframes gradPulse { 0%,100%{opacity:.18;} 50%{opacity:.32;} }
+    .hero-glow {
+      position:absolute; top:-10%; left:-5%;
+      width:70%; height:120%;
+      background:radial-gradient(ellipse at 30% 40%, #52b788 0%, transparent 60%);
+      filter:blur(80px);
+      animation:gradPulse 4s ease-in-out infinite;
+      pointer-events:none; z-index:0;
+    }
+    @media (prefers-reduced-motion: reduce) { .hero-glow { animation:none; } }
+    .hero-section {
+      background-color: #0e1210;
+      background-image:
+        radial-gradient(circle, rgba(58,58,58,0.45) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(14,18,16,0.80) 0%, rgba(14,18,16,0.72) 45%, rgba(14,18,16,0.90) 100%);
+      background-size: 28px 28px, cover;
+    }
+    #hero-outer { padding-left: max(1rem, calc((100vw - 72rem) / 2 + 1rem)); padding-right:0; }
+    #hero-grid { display:flex; flex-direction:column; gap:2.5rem; }
+    #hero-text { padding-right:1rem; }
+    @media (min-width:1024px) {
+      #hero-grid { flex-direction:row; align-items:flex-start; gap:0; }
+      #hero-text { flex:0 0 auto; width:460px; padding-right:3rem; }
+      #hero-video-col { flex:1; min-width:0; padding-top:0.5rem; }
+    }
+    @media (max-width:1023px) {
+      section#main-content { min-height:auto; display:block; padding-top:0; }
+      #hero-outer { padding-right:1rem; }
+    }
+    .stack-marquee-outer { overflow:hidden; position:relative; }
+    .stack-marquee-outer::before,.stack-marquee-outer::after { content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none; }
+    .stack-marquee-outer::before { left:0;background:linear-gradient(to right,#1a1a1a,transparent); }
+    .stack-marquee-outer::after { right:0;background:linear-gradient(to left,#1a1a1a,transparent); }
+    @keyframes marquee-left { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+    @keyframes marquee-right { from{transform:translateX(-50%);} to{transform:translateX(0);} }
+    .stack-track { display:flex;width:max-content;animation:marquee-left 50s linear infinite; }
+    .stack-track-r { display:flex;width:max-content;animation:marquee-right 45s linear infinite; }
+    .stack-track:hover,.stack-track-r:hover { animation-play-state:paused; }
+    @media (prefers-reduced-motion:reduce) { .stack-track,.stack-track-r { animation:none; } }
+    .stack-chip { display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;border:1px solid rgba(58,58,58,.9);border-radius:.5rem;padding:.45rem 1rem;margin:0 .4rem;background:#222;font-family:'DM Mono',monospace;font-size:.72rem;color:rgba(232,232,232,.55);transition:border-color .2s,color .2s;cursor:default; }
+    .stack-chip:hover { border-color:rgba(82,183,136,.35);color:rgba(232,232,232,.9); }
+    .stack-chip-dot { width:5px;height:5px;border-radius:50%;flex-shrink:0;background:rgba(82,183,136,.55); }
+    .trust-strip-row { scrollbar-width:none; -ms-overflow-style:none; }
+    .trust-strip-row::-webkit-scrollbar { display:none; }
+    .industry-tab.active { color:#52b788; border-color:#52b788; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Marapone",
+    "description": "Private AI systems for logistics and trade companies. One-time price, full source code handover. Deployed on your infrastructure.",
+    "url": "https://marapone.com/logistics",
+    "serviceArea": { "@type": "GeoShape", "description": "Canada, Italy, and global remote" },
+    "priceRange": "$1,500 – $15,000"
+  }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js" integrity="sha384-4EgXbGZLDwcPHcRGrHOxm1OvumWUqhr/ts6eapdZnak6ORZAsSE3fMd0niykaSkw" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+</head>
+<body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded focus:font-semibold" style="background:#52b788;color:white">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap" aria-label="Back to industry selection">&larr; All Industries</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/logistics/" class="text-chalk">Home</a>
+        <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/logistics/faq" class="hover:text-chalk transition-colors">FAQ</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/logistics/" class="text-chalk">Home</a>
+      <a href="/logistics/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/logistics/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/logistics/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/logistics/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="hero-section relative overflow-hidden min-h-[90vh] flex items-center">
+    <div class="hero-glow"></div>
+    <div class="absolute top-0 left-0 w-1 h-full hidden lg:block" style="background:#52b788"></div>
+    <div class="w-full py-10 lg:py-24 relative z-10" id="hero-outer">
+      <div id="hero-grid">
+        <div id="hero-text">
+          <div class="fade-up mb-5">
+            <img src="/MaraponeLogo-1.png" alt="Marapone" class="h-10 lg:h-12 object-contain opacity-80" />
+          </div>
+          <h1 class="fade-up font-display text-5xl sm:text-7xl lg:text-9xl leading-none text-chalk mb-4">
+            STOP RENTING<br />YOUR <span style="color:#52b788">AI.</span><br />OWN THE<br />ENGINE.
+          </h1>
+          <p class="fade-up delay-1 font-body text-lg text-fog max-w-xl mt-6 mb-8 leading-relaxed">
+            Marapone builds private AI systems for freight brokers, importers, exporters, 3PLs, and customs teams — deployed on your infrastructure, trained on your trade documents, handed to you permanently. No subscriptions. No data sharing. No monthly fees. Ever.
+          </p>
+          <div class="fade-up delay-2 flex flex-col sm:flex-row gap-4">
+            <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white font-semibold px-8 py-4 rounded text-center text-lg hover:opacity-90 transition-opacity">
+              Get Your Free AI Assessment &rarr;
+            </a>
+            <a href="/logistics/how-it-works" class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
+              See How It Works
+            </a>
+          </div>
+          <div class="fade-up delay-2 mt-3">
+            <a href="/logistics/discovery" class="inline-flex items-center gap-2 text-sm text-fog hover:text-chalk transition-colors font-mono">
+              <svg class="w-4 h-4 flex-shrink-0" style="color:#52b788" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              Or book a 15-min discovery call &rarr;
+            </a>
+          </div>
+          <div class="fade-up delay-3 mt-6 flex items-center gap-3">
+            <span class="inline-flex items-center gap-1.5 bg-steel border border-plate rounded-full px-3 py-1.5 text-xs font-mono text-fog">
+              <svg class="w-3.5 h-3.5 flex-shrink-0" style="color:#52b788" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              30-day full refund guarantee
+            </span>
+            <span class="text-xs font-mono text-plate">No questions asked.</span>
+          </div>
+        </div>
+        <!-- Right: Stats visual -->
+        <div class="fade-up delay-1" id="hero-video-col">
+          <div class="relative w-full max-w-lg mx-auto lg:mx-0">
+            <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 60%, rgba(82,183,136,0.12) 0%, transparent 65%);filter:blur(40px);"></div>
+            <div class="relative z-10 space-y-3 pt-4 lg:pt-0">
+              <!-- Stat cards that represent logistics AI value -->
+              <div class="bg-gunmetal border border-plate rounded-xl p-5 reveal" style="border-color:rgba(82,183,136,0.15)">
+                <div class="flex items-center justify-between mb-3">
+                  <p class="font-mono text-xs" style="color:#52b788">// Invoice Audit · Live</p>
+                  <span class="w-2 h-2 rounded-full" style="background:#52b788;box-shadow:0 0 6px #52b788"></span>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                  <div class="bg-steel rounded-lg p-3 text-center">
+                    <p class="font-display text-2xl" style="color:#52b788">340</p>
+                    <p class="font-mono text-fog text-xs mt-1">invoices/hr</p>
+                  </div>
+                  <div class="bg-steel rounded-lg p-3 text-center">
+                    <p class="font-display text-2xl text-chalk">−94%</p>
+                    <p class="font-mono text-fog text-xs mt-1">billing errors</p>
+                  </div>
+                  <div class="bg-steel rounded-lg p-3 text-center">
+                    <p class="font-display text-2xl text-chalk">&lt;2s</p>
+                    <p class="font-mono text-fog text-xs mt-1">per document</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gunmetal border border-plate rounded-xl p-5 reveal reveal-d1" style="border-color:rgba(82,183,136,0.15)">
+                <p class="font-mono text-xs mb-3" style="color:#52b788">// Customs Risk Check</p>
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-mono text-fog">HS Code validation</span>
+                    <span class="font-mono" style="color:#52b788">✓ PASS</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-mono text-fog">Declared value cross-check</span>
+                    <span class="font-mono" style="color:#52b788">✓ PASS</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-mono text-fog">Certificate of origin</span>
+                    <span class="font-mono text-red-400">⚠ FLAG — mismatch</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-mono text-fog">Packing list vs. invoice</span>
+                    <span class="font-mono" style="color:#52b788">✓ PASS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gunmetal border border-plate rounded-xl p-5 reveal reveal-d2" style="border-color:rgba(82,183,136,0.15)">
+                <div class="flex items-center justify-between mb-2">
+                  <p class="font-mono text-xs" style="color:#52b788">// Carrier Performance · Q2</p>
+                </div>
+                <div class="flex gap-2 items-end h-14">
+                  <div class="flex-1 rounded-sm" style="height:45%;background:rgba(82,183,136,0.25)"></div>
+                  <div class="flex-1 rounded-sm" style="height:60%;background:rgba(82,183,136,0.35)"></div>
+                  <div class="flex-1 rounded-sm" style="height:80%;background:rgba(82,183,136,0.5)"></div>
+                  <div class="flex-1 rounded-sm" style="height:55%;background:rgba(82,183,136,0.3)"></div>
+                  <div class="flex-1 rounded-sm" style="height:90%;background:#52b788"></div>
+                  <div class="flex-1 rounded-sm" style="height:70%;background:rgba(82,183,136,0.45)"></div>
+                </div>
+                <p class="font-mono text-fog text-xs mt-2">On-time delivery rate trending up 18% since AI deployment</p>
+              </div>
+            </div>
+          </div>
+          <p class="text-center text-xs text-fog mt-3 tracking-wide font-mono">Live output from Marapone Freight Intelligence</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="bg-steel border-t border-b border-plate py-5">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="trust-strip-row flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-3 gap-y-2 text-xs font-mono text-fog">
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-base" style="color:#52b788">✓</span> One-time price</span>
+        <span class="text-plate hidden lg:inline">|</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-base" style="color:#52b788">✓</span> Full source code</span>
+        <span class="text-plate hidden lg:inline">|</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-base" style="color:#52b788">✓</span> Your infrastructure</span>
+        <span class="text-plate hidden lg:inline">|</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-base" style="color:#52b788">✓</span> Canada &amp; Italy</span>
+        <span class="text-plate hidden lg:inline">|</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-base" style="color:#52b788">✓</span> Your trade data stays private</span>
+        <span class="text-plate hidden lg:inline">|</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-base" style="color:#52b788">✓</span> No cloud dependency</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRY STRIP -->
+  <section class="bg-charcoal border-b border-plate py-4">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-nowrap items-center justify-center lg:justify-evenly gap-x-3 text-xs font-mono text-fog overflow-x-auto">
+        <span class="text-plate hidden lg:inline">// Built for:</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Freight Brokers</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Import/Export Operators</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">3PLs</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Customs Brokers</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Supply Chain Teams</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Trading Companies</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Forwarding Agents</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BUILD FOR LOGISTICS -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10 reveal">
+        <p class="font-mono text-sm mb-2" style="color:#52b788">// Logistics AI solutions</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">SIX AI SYSTEMS.<br /><span style="color:#52b788">ONE APPROACH.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mt-4 text-sm leading-relaxed">Every system is built around your specific documents — your trade lanes, your commodity codes, your carrier network. Not a generic platform. Not a dashboard you rent. A private AI that belongs to you.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Freight Invoice Intelligence -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 hover:border-opacity-50 transition-colors reveal reveal-d1" style="--tw-border-opacity:1;border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'" onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Freight Invoice Intelligence</p>
+          <h3 class="font-display text-xl text-chalk mb-3">INVOICE AUDITOR</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Automatically cross-references carrier invoices against rate confirmations, accessorial charges, and contracted rates. Flags billing discrepancies before you pay them — not after.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Accessorial charge validation</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Rate vs. contract comparison</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Duplicate shipment detection</li>
+          </ul>
+        </div>
+
+        <!-- Trade Document Processor -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2" style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'" onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Import/Export Document Processing</p>
+          <h3 class="font-display text-xl text-chalk mb-3">TRADE DOC ENGINE</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Reads bills of lading, commercial invoices, packing lists, and certificates of origin — extracts structured data, validates cross-document consistency, and flags discrepancies before they reach customs.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Multi-document cross-validation</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>HS code consistency check</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Structured data extraction</li>
+          </ul>
+        </div>
+
+        <!-- Customs Risk Scanner -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3" style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'" onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Customs Risk Scanner</p>
+          <h3 class="font-display text-xl text-chalk mb-3">COMPLIANCE GUARD</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Scans customs entry packages for compliance risks — misclassified goods, undervaluation signals, origin document gaps, and permit/license requirements — before filing, not after a hold.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Tariff classification review</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Valuation consistency check</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Permit & license flag</li>
+          </ul>
+        </div>
+
+        <!-- Rate Comparison Engine -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1" style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'" onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Rate Comparison Engine</p>
+          <h3 class="font-display text-xl text-chalk mb-3">FREIGHT RATE AI</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Parses carrier rate quotes and spot rates from any format — PDF, email, spreadsheet — normalizes them against your contracted lanes, and identifies overcharges and negotiation opportunities automatically.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Multi-carrier rate normalization</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Lane-by-lane comparison</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Historical benchmark analysis</li>
+          </ul>
+        </div>
+
+        <!-- Carrier Performance Analytics -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2" style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'" onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Carrier Performance Analytics</p>
+          <h3 class="font-display text-xl text-chalk mb-3">CARRIER TRACKER</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Aggregates delivery confirmation data, POD documents, and exception reports across your carrier base. Generates automated scorecards, on-time performance trends, and claim rate analytics for carrier reviews.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Automated carrier scorecards</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Claim rate tracking</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Exception pattern analysis</li>
+          </ul>
+        </div>
+
+        <!-- Supplier Communication Intelligence -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3" style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'" onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Supplier Communication Intelligence</p>
+          <h3 class="font-display text-xl text-chalk mb-3">SUPPLIER INTEL</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Processes supplier confirmations, shipment notices, and order acknowledgements — extracts key dates, quantities, and commitments, flags deviations from POs, and builds a structured shipment timeline automatically.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>PO deviation detection</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Shipment timeline extraction</li>
+            <li class="flex items-center gap-2"><span style="color:#52b788">✓</span>Multi-language document support</li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="text-center mt-10">
+        <a href="/logistics/services" class="inline-flex items-center gap-2 font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">See all logistics AI tools &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS STRIP -->
+  <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12 reveal">
+        <p class="font-mono text-xs uppercase tracking-wider mb-3" style="color:#52b788">// No SaaS. No cloud. No subscriptions.</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">YOU OWN THE AI.<br /><span style="color:#52b788">PERMANENTLY.</span></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="text-center reveal reveal-d1">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">01</div>
+          <h3 class="font-display text-xl text-chalk mb-2">FREE ASSESSMENT</h3>
+          <p class="text-fog text-sm leading-relaxed">Send us one real document — a carrier invoice, bill of lading, or customs package. We return a written report within 24 hours showing exactly what AI can do with your documents.</p>
+        </div>
+        <div class="text-center reveal reveal-d2">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">02</div>
+          <h3 class="font-display text-xl text-chalk mb-2">CUSTOM BUILD</h3>
+          <p class="text-fog text-sm leading-relaxed">We design and build a private AI system around your specific trade lanes, document formats, and compliance requirements. Your data never leaves your network during training or deployment.</p>
+        </div>
+        <div class="text-center reveal reveal-d3">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">03</div>
+          <h3 class="font-display text-xl text-chalk mb-2">FULL HANDOVER</h3>
+          <p class="text-fog text-sm leading-relaxed">Source code, model weights, documentation, and a team onboarding session. You own it outright. No subscriptions. No usage fees. No dependency on Marapone's servers. Ever.</p>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="/logistics/how-it-works" class="font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">Full technical breakdown &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS STRIP -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-10 reveal">
+        <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">// Based on live client deployments</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">REAL RESULTS.<br /><span style="color:#52b788">REAL OPERATIONS.</span></h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-plate rounded overflow-hidden">
+        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d1">
+          <p class="font-display text-5xl" style="color:#52b788">10h+</p>
+          <p class="font-mono text-fog text-xs mt-2 leading-snug">staff hours recovered<br/>per week, per operation</p>
+        </div>
+        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d2">
+          <p class="font-display text-5xl text-chalk">−78%</p>
+          <p class="font-mono text-fog text-xs mt-2 leading-snug">compliance errors<br/>in first quarter</p>
+        </div>
+        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d3">
+          <p class="font-display text-5xl text-chalk">97%</p>
+          <p class="font-mono text-fog text-xs mt-2 leading-snug">extraction accuracy<br/>vs. manual baseline</p>
+        </div>
+        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d4">
+          <p class="font-display text-5xl text-chalk">&lt;2wk</p>
+          <p class="font-mono text-fog text-xs mt-2 leading-snug">average build time<br/>scoping to handover</p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="/logistics/work" class="font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">See the case studies &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING HOOK -->
+  <section class="py-16 lg:py-20 bg-gunmetal border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="reveal">
+        <p class="font-mono text-xs uppercase tracking-wider mb-3" style="color:#52b788">// One-time price. No subscriptions. Ever.</p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-6">STARTER BUILDS<br /><span style="color:#52b788">FROM $1,500</span></h2>
+        <p class="text-fog max-w-2xl mx-auto leading-relaxed mb-8 text-sm">Most logistics clients land in the $4,900–$9,500 range for a full trade document intelligence suite. Larger multi-lane, multi-workflow systems from $15,000. All one-time. Exact scope and price confirmed after the free assessment.</p>
+        <a href="/pricing" class="inline-flex items-center gap-2 font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">See full pricing breakdown &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="relative py-24 lg:py-36 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 50%, rgba(82,183,136,0.07) 0%, transparent 65%)"></div>
+    <div class="absolute inset-0 grid-dot opacity-30 pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+      <p class="font-mono text-xs uppercase tracking-wider mb-4" style="color:#52b788">// Ready to start</p>
+      <h2 class="font-display text-5xl lg:text-7xl text-chalk mb-6 leading-none reveal">WANT TO SEE IF<br /><span style="color:#52b788">WE'RE A FIT?</span></h2>
+      <p class="text-fog mb-10 leading-relaxed max-w-xl mx-auto text-sm lg:text-base reveal reveal-d1">Start with the free assessment. Send us one real document from your operation — a carrier invoice, bill of lading, customs entry, anything. We'll analyze it and return a written report + video walkthrough within 24 hours. No obligation.</p>
+      <div class="reveal reveal-d2">
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%);box-shadow:0 8px 32px rgba(82,183,136,0.25)" class="text-white font-semibold px-10 py-4 rounded-lg text-base inline-block hover:opacity-90 transition-opacity">
+          Request Your Free 24h Assessment &rarr;
+        </a>
+        <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span style="color:#52b788">general@marapone.com</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
+            <address class="not-italic"><p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br/>Etobicoke, ON M9B 6K5<br/>Canada</p></address>
+            <address class="not-italic"><p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br/>Rome, 00193<br/>Italy</p></address>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a>
+          <a href="/logistics/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/logistics/services" class="hover:text-chalk">Services</a>
+          <a href="/logistics/work" class="hover:text-chalk">Work</a>
+          <a href="/logistics/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/about" class="hover:text-chalk">About</a>
+          <a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="flex justify-center gap-5 mt-6 mb-1">
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-chalk transition-colors" aria-label="Email us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+        <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-chalk transition-colors" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+        <a href="/badge" class="text-xs font-mono text-plate hover:text-fog transition-colors">Badge</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY CTA -->
+  <div id="sticky-cta" class="fixed bottom-6 right-6 z-50 hidden">
+    <div class="flex items-center gap-2 rounded-lg shadow-lg shadow-black/40 overflow-hidden" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
+      <a href="/logistics/contact" class="text-white font-semibold text-sm px-5 py-3 hover:opacity-90 transition-opacity whitespace-nowrap">
+        Get Free Assessment &rarr;
+      </a>
+      <button id="sticky-cta-close" aria-label="Dismiss" class="pr-3 pl-1 py-3 text-white/70 hover:text-white transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var cta=document.getElementById('sticky-cta');
+      var closeBtn=document.getElementById('sticky-cta-close');
+      if(!cta||!closeBtn)return;
+      if(sessionStorage.getItem('ctaDismissed'))return;
+      var shown=false;
+      window.addEventListener('scroll',function(){
+        if(sessionStorage.getItem('ctaDismissed'))return;
+        if(window.scrollY>400&&!shown){cta.classList.remove('hidden');shown=true;}
+      },{passive:true});
+      closeBtn.addEventListener('click',function(){
+        cta.classList.add('hidden');
+        sessionStorage.setItem('ctaDismissed','1');
+      });
+    })();
+    (function(){
+      if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+      var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
+      if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+    })();
+  </script>
+</body>
+</html>

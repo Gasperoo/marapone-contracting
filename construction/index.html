@@ -18,13 +18,13 @@
   <meta property="og:description"
     content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
   <meta property="og:url" content="https://marapone.com/" />
-  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <meta property="og:image" content="https://marapone.com/construction-workers-looking-up-at-crane-8yehx0ze4t4tno03.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title"
     content="Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence" />
   <meta name="twitter:description"
     content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
-  <meta name="twitter:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <meta name="twitter:image" content="https://marapone.com/construction-workers-looking-up-at-crane-8yehx0ze4t4tno03.jpg" />
   <link rel="stylesheet" href="../src/tailwind.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
@@ -267,6 +267,10 @@
     }
 
     /* Prevent hero heading overflow on very small phones */
+
+    /* Service card hover — replaces inline onmouseover/onmouseout */
+    .service-card { border-color: #3a3a3a; }
+    .service-card:hover { border-color: rgba(249,115,22,0.4) !important; }
     @media (max-width: 380px) {
       #main-content h1 {
         font-size: 2.5rem !important;
@@ -640,19 +644,17 @@
         <span class="text-plate">·</span>
         <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Commercial GCs</span>
         <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Freight Brokers</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Import/Export Operators</span>
-        <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">3PLs</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">ICI Builders</span>
         <span class="text-plate">·</span>
         <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Project Managers</span>
         <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">ICI Builders</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Estimators</span>
         <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Customs Brokers</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Site Superintendents</span>
         <span class="text-plate">·</span>
-        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Trading Companies</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Subcontractors</span>
+        <span class="text-plate">·</span>
+        <span class="hover:text-chalk transition-colors cursor-default whitespace-nowrap">Owners&rsquo; Reps</span>
       </div>
     </div>
   </section>
@@ -668,9 +670,8 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
         <!-- Blueprint Auditor -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -687,9 +688,8 @@
         </div>
 
         <!-- RFI Intelligence -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
@@ -706,9 +706,8 @@
         </div>
 
         <!-- Daily Log Synthesis -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
@@ -725,9 +724,8 @@
         </div>
 
         <!-- Risk & Delay Signals -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -744,9 +742,8 @@
         </div>
 
         <!-- Change Order AI -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
@@ -763,9 +760,8 @@
         </div>
 
         <!-- Scope Gap Finder -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>

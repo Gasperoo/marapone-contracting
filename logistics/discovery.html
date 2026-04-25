@@ -253,8 +253,7 @@
                   });
                   const data = await res.json();
                   if (res.ok && data.success) {
-                    form.classList.add('hidden');
-                    document.getElementById('form-success').classList.remove('hidden');
+                    window.location.href = '/logistics/contact';
                   } else {
                     throw new Error(data.message || data.error || 'Something went wrong.');
                   }

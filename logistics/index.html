@@ -105,6 +105,10 @@
     }
 
     /* Prevent hero heading overflow on very small phones */
+
+    /* Service card hover — replaces inline onmouseover/onmouseout */
+    .service-card { border-color: #3a3a3a; }
+    .service-card:hover { border-color: rgba(82,183,136,0.4) !important; }
     @media (max-width: 380px) {
       #main-content h1 {
         font-size: 2.5rem !important;
@@ -504,7 +508,7 @@
                   <p class="font-mono text-xs" style="color:#52b788">// Invoice Audit · Live</p>
                   <span class="w-2 h-2 rounded-full" style="background:#52b788;box-shadow:0 0 6px #52b788"></span>
                 </div>
-                <div class="grid grid-cols-3 gap-3">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   <div class="bg-steel rounded-lg p-3 text-center">
                     <p class="font-display text-2xl" style="color:#52b788">340</p>
                     <p class="font-mono text-fog text-xs mt-1">invoices/hr</p>
@@ -629,9 +633,8 @@
 
         <!-- Freight Invoice Intelligence -->
         <div
-          class="bg-gunmetal border border-plate rounded-xl p-6 hover:border-opacity-50 transition-colors reveal reveal-d1"
-          style="--tw-border-opacity:1;border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+          class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
             style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
@@ -654,9 +657,8 @@
         </div>
 
         <!-- Trade Document Processor -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
             style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
@@ -679,9 +681,8 @@
         </div>
 
         <!-- Customs Risk Scanner -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
             style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
@@ -703,9 +704,8 @@
         </div>
 
         <!-- Rate Comparison Engine -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
             style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
@@ -728,9 +728,8 @@
         </div>
 
         <!-- Carrier Performance Analytics -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
             style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
@@ -755,9 +754,8 @@
         </div>
 
         <!-- Supplier Communication Intelligence -->
-        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
-          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(82,183,136,0.4)'"
-          onmouseout="this.style.borderColor='#3a3a3a'">
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
+>
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
             style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"

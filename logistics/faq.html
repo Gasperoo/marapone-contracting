@@ -193,6 +193,38 @@
             </div>
           </div>
 
+          <p class="section-label mt-10">Technical</p>
+          <div class="space-y-0">
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">Does the AI run locally or does it call an external API?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Locally. The model runs entirely on your hardware with no external network calls after deployment. There are no API keys, no cloud endpoints, and no usage-based billing. The system is fully self-contained — it processes documents on your machine or server and returns output to your local environment. Internet access is not required for operation.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">Can it handle scanned or image-based documents?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Yes. Scanned PDFs and image files (JPG, PNG, TIFF) are processed using an embedded OCR layer — Tesseract and AWS Textract (on-prem or private cloud) depending on your infrastructure preference. Output accuracy on clean scans is comparable to native PDF processing. Very low-quality or heavily degraded scans may require a pre-processing step, which we flag during scoping.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What does the handover package include exactly?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Full source code (Python/FastAPI backend, any frontend we build), fine-tuned model weights in standard format (GGUF or safetensors), a complete technical README covering setup, configuration, and operation, and a live onboarding session with your team. If we build custom integrations (file-watch scripts, TMS bridges, email parsers), those are included. Everything needed to run, modify, and maintain the system without us.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">Can the system be updated after the initial build?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Yes. If your trade lanes, document formats, or compliance rules change, the model can be re-fine-tuned. You can do this yourself using the training scripts we include, or engage us for an update under the optional support retainer ($499 CAD/month or $3,500 CAD/year). Most operations go 12–18 months before needing a material update; minor format changes are handled by prompt adjustments without re-training.</p></div>
+            </div>
+          </div>
+
           <div class="mt-12 bg-steel border border-plate rounded-xl p-6">
             <p class="font-mono text-xs uppercase tracking-wider mb-3" style="color:#52b788">// Still have questions?</p>
             <p class="text-fog text-sm leading-relaxed mb-4">The fastest path to answers is the free 24h assessment — send us a document, see what the AI does with it, and ask any remaining questions from a position of having seen the output firsthand.</p>

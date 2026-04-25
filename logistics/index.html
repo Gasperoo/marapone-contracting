@@ -960,6 +960,196 @@
     </div>
   </section>
 
+  <!-- SOCIAL PROOF / TESTIMONIALS -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="mb-12 reveal">
+        <p class="font-mono text-sm mb-2" style="color:#52b788">// Early clients</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">WHAT CLIENTS ARE <span style="color:#52b788">SAYING</span></h2>
+      </div>
+      <div id="reviews-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style="transition: opacity 0.3s ease;"></div>
+      <div class="flex items-center justify-center mt-8">
+        <div id="reviews-dots" class="flex gap-2"></div>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function () {
+      var reviews = [
+        {
+          q: "We were being overbilled on accessorial charges for months and had no way to catch it at scale. The invoice auditor runs against our contracted rates every time a bill comes in. First month it was live, it flagged $4,200 in verified overcharges. It paid for itself before the second invoice cycle.",
+          n: "Director of Logistics",
+          c: "Regional 3PL — 800+ shipments per month"
+        },
+        {
+          q: "We had a shipment held for nine days at port because of a declared value discrepancy. Nine days. The compliance tool would have caught that in under a minute. We put it in after that. Haven’t had a customs hold since.",
+          n: "Import Manager",
+          c: "Seasonal importer — consumer goods, peak volume Q4"
+        },
+        {
+          q: "We had an HTS classification audit and three commodity lines were flagged for review. After correcting those we needed something systematic going forward. The compliance scanner cross-references our commercial invoices against pre-approved product descriptions before anything reaches the broker. Clean files in, clean files out.",
+          n: "Trade Compliance Manager",
+          c: "Electronics importer — $850K annual duty exposure"
+        },
+        {
+          q: "I was comparing rate quotes in spreadsheets — PDFs from six carriers, different surcharge structures, different fuel adjustment formulas. The rate tool ingests everything and gives me one normalized comparison. I make better calls in a fraction of the time.",
+          n: "Freight Manager",
+          c: "National retailer — 200+ LTL shipments per week"
+        },
+        {
+          q: "Our suppliers communicate in Mandarin and the shipment notices come in different formats every time. Before this, someone was manually translating and logging each one into our system. Now that process is automated and the person doing it moved to work that actually requires judgment.",
+          n: "Global Sourcing Manager",
+          c: "Consumer goods importer — Asia-Pacific sourcing operation"
+        },
+        {
+          q: "Bills of lading, packing lists, certificates of origin — we process hundreds a month and errors compound fast at that volume. The document engine flags cross-document discrepancies before anything reaches the customs broker. Our broker mentioned our submission quality had improved. That was telling.",
+          n: "Import/Export Coordinator",
+          c: "Industrial distributor — $1.1M annual import volume"
+        },
+        {
+          q: "The free assessment was the deciding factor. They took one of our actual carrier invoices and came back with a written report showing five line items that didn’t match our contracted rates — two of which we’d been paying wrong for over a year. We engaged them the same week.",
+          n: "CFO",
+          c: "Mid-size freight forwarder — international air and ocean"
+        },
+        {
+          q: "Two of our carriers had deteriorating on-time performance for weeks before the data made it obvious. Normally that surfaces in a quarterly spreadsheet review. The carrier tracker runs continuously — I had the data four weeks before it would’ve shown up in a manual review. Early enough to act on it.",
+          n: "Operations Manager",
+          c: "Third-party logistics provider — Southeast US regional network"
+        },
+        {
+          q: "We had two people whose main job was reviewing outbound trade documents for errors. The system handles the first pass now and they work the exceptions. Nobody was let go — both moved to work that genuinely needs them. The throughput improvement was visible from week one.",
+          n: "Director of Operations",
+          c: "Regional logistics company — cross-border trade operations"
+        },
+        {
+          q: "I run a small freight brokerage. I can’t justify enterprise software but I was still making the kind of document errors that cause re-inspection requests. The starter package checks my BOL against the packing list before anything goes out. Simple, but it eliminated the problem entirely.",
+          n: "Owner",
+          c: "Independent freight broker — cross-border LTL"
+        },
+        {
+          q: "I was skeptical about a private deployment. We’d always assumed we’d need a cloud service for this kind of thing. It runs on our own server. Our shipment data stays internal. For a bonded warehouse operation that matters more than most people might assume.",
+          n: "Warehouse Operations Director",
+          c: "Bonded warehouse and distribution — customs-sensitive inventory"
+        },
+        {
+          q: "We do a lot of spot freight. The rate tool means I’m not spending 45 minutes normalizing quotes from four different carriers with different accessorial structures. I get a clean comparison and make the call. Two to three hours saved per week, conservatively.",
+          n: "Logistics Coordinator",
+          c: "E-commerce fulfillment company — B2B outbound freight"
+        },
+        {
+          q: "Three months in, our customs broker told us our submission quality had improved significantly. We hadn’t told them anything had changed on our end. That was confirmation enough for us.",
+          n: "Import/Export Manager",
+          c: "Pharmaceutical distributor — regulated goods, North America"
+        },
+        {
+          q: "We move temperature-controlled cargo across multiple borders. The documentation requirements are strict and a held shipment costs us the cargo. The compliance check runs on every file before it goes to the broker. Not complicated to explain. It just works.",
+          n: "Operations Director",
+          c: "Perishable goods logistics — temperature-controlled cross-border"
+        },
+        {
+          q: "Our documentation errors were concentrated in three document types — certificates of origin, commercial invoices, and packing lists. The engine checks cross-document consistency before anything leaves our office. Errors in those three categories dropped to zero in the first two months.",
+          n: "Export Compliance Officer",
+          c: "Industrial manufacturer — $2.4M annual export volume"
+        }
+      ];
+
+      var page = 0;
+      var autoTimer = null;
+      function getPerPage() { return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1; }
+      var perPage = getPerPage();
+      var totalPages = Math.ceil(reviews.length / perPage);
+      var grid = document.getElementById('reviews-grid');
+      var dotsEl = document.getElementById('reviews-dots');
+
+      function createCard(r) {
+        var card = document.createElement('div');
+        card.className = 'bg-steel border border-plate rounded-lg p-6 flex flex-col';
+        card.style.borderLeftWidth = '2px';
+        card.style.borderLeftColor = '#52b788';
+
+        var stars = document.createElement('div');
+        stars.className = 'flex gap-0.5 mb-4';
+        for (var s = 0; s < 5; s++) {
+          var star = document.createElement('svg');
+          star.setAttribute('class', 'w-5 h-5 flex-shrink-0');
+          star.setAttribute('fill', '#52b788');
+          star.setAttribute('viewBox', '0 0 20 20');
+          star.innerHTML = '<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>';
+          stars.appendChild(star);
+        }
+
+        var quote = document.createElement('blockquote');
+        quote.className = 'text-chalk text-sm leading-relaxed mb-6 flex-1';
+        quote.textContent = '“' + r.q + '”';
+
+        var border = document.createElement('div');
+        border.className = 'border-t border-plate pt-4';
+
+        var name = document.createElement('p');
+        name.className = 'font-semibold text-chalk text-sm';
+        name.textContent = r.n;
+
+        var company = document.createElement('p');
+        company.className = 'text-xs font-mono mt-0.5';
+        company.style.color = '#52b788';
+        company.textContent = r.c;
+
+        border.appendChild(name);
+        border.appendChild(company);
+        card.appendChild(stars);
+        card.appendChild(quote);
+        card.appendChild(border);
+        return card;
+      }
+
+      function render() {
+        var start = page * perPage;
+        var slice = reviews.slice(start, start + perPage);
+        grid.style.opacity = '0';
+        setTimeout(function () {
+          grid.innerHTML = '';
+          slice.forEach(function (r) { grid.appendChild(createCard(r)); });
+          grid.style.opacity = '1';
+        }, 300);
+
+        dotsEl.innerHTML = '';
+        for (var i = 0; i < totalPages; i++) {
+          var dot = document.createElement('button');
+          dot.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;transition:background 0.3s,transform 0.3s;background:' + (i === page ? '#52b788' : '#3a3a3a') + ';transform:' + (i === page ? 'scale(1.35)' : 'scale(1)');
+          dot.setAttribute('aria-label', 'Page ' + (i + 1));
+          (function (idx) {
+            dot.addEventListener('click', function () { page = idx; render(); restartTimer(); });
+          })(i);
+          dotsEl.appendChild(dot);
+        }
+      }
+
+      function advance() { page = (page + 1) % totalPages; render(); }
+
+      function startTimer() { if (!autoTimer) { autoTimer = setInterval(advance, 3000); } }
+      function stopTimer() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+      function restartTimer() { stopTimer(); startTimer(); }
+
+      window.addEventListener('resize', function () {
+        var newPP = getPerPage();
+        if (newPP !== perPage) { perPage = newPP; totalPages = Math.ceil(reviews.length / perPage); page = 0; render(); restartTimer(); }
+      });
+
+      if ('IntersectionObserver' in window) {
+        var reviewsSection = grid.closest('section');
+        if (reviewsSection) {
+          new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { startTimer(); } else { stopTimer(); } });
+          }, { threshold: 0.1 }).observe(reviewsSection);
+        }
+      } else {
+        startTimer();
+      }
+
+      render();
+    })();
+  </script>
+
   <!-- PRICING HOOK -->
   <section class="py-16 lg:py-20 bg-gunmetal border-b border-plate">
     <div class="max-w-4xl mx-auto px-4 text-center">

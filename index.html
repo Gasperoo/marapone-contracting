@@ -452,6 +452,67 @@
       background: currentColor;
       flex-shrink: 0;
     }
+
+    /* ── Panel video backgrounds ── */
+    .panel-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+
+    .panel:hover .panel-video {
+      opacity: 1;
+    }
+
+    .panel-video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+
+    .panel:hover .panel-video-overlay {
+      opacity: 1;
+    }
+
+    /* Dark gradient toward the text side + subtle brand colour on far side */
+    .panel-construction .panel-video-overlay {
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.68) 15%,
+        rgba(12, 5, 0, 0.42) 50%,
+        rgba(249, 115, 22, 0.18) 100%
+      );
+    }
+
+    .panel-logistics .panel-video-overlay {
+      background: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 0.68) 15%,
+        rgba(0, 10, 5, 0.42) 50%,
+        rgba(82, 183, 136, 0.16) 100%
+      );
+    }
+
+    /* Disable video on mobile and for reduced-motion users */
+    @media (max-width: 767px) {
+      .panel-video,
+      .panel-video-overlay { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .panel-video,
+      .panel-video-overlay { display: none; }
+    }
   </style>
 
   <!-- Google Analytics -->
@@ -491,6 +552,10 @@
         class="panel panel-construction"
         aria-label="Enter Construction — Private AI for general contractors and project teams">
 
+        <video id="construction-video" class="panel-video" src="/Construction-Vid.mp4"
+          muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        <div class="panel-video-overlay" aria-hidden="true"></div>
+
         <div class="panel-glow" aria-hidden="true"></div>
 
         <!-- Corner accent -->
@@ -515,6 +580,10 @@
         href="/logistics/"
         class="panel panel-logistics"
         aria-label="Enter Logistics — Private AI for freight, import/export and trade compliance">
+
+        <video id="logistics-video" class="panel-video" src="/logistics-vid2.mp4"
+          muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        <div class="panel-video-overlay" aria-hidden="true"></div>
 
         <div class="panel-glow" aria-hidden="true"></div>
 
@@ -567,6 +636,28 @@
           }
         }, { once: true });
       });
+
+      // Video backgrounds — play on hover, pause on leave
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduceMotion) {
+        function setupVideoHover(panelEl, videoEl) {
+          if (!panelEl || !videoEl) return;
+          panelEl.addEventListener('mouseenter', function() {
+            videoEl.play().catch(function() {});
+          });
+          panelEl.addEventListener('mouseleave', function() {
+            videoEl.pause();
+          });
+        }
+        setupVideoHover(
+          document.getElementById('construction-panel'),
+          document.getElementById('construction-video')
+        );
+        setupVideoHover(
+          document.getElementById('logistics-panel'),
+          document.getElementById('logistics-video')
+        );
+      }
     })();
   </script>
 

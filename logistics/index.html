@@ -31,6 +31,8 @@
   <style>
     html {
       overflow-x: hidden;
+      overscroll-behavior-x: none;
+      max-width: 100%;
     }
 
     body {
@@ -38,6 +40,8 @@
       color: #e8e8e8;
       font-family: 'DM Sans', sans-serif;
       overflow-x: hidden;
+      overscroll-behavior-x: none;
+      max-width: 100%;
     }
 
     .marine-gradient {
@@ -97,6 +101,14 @@
       .delay-3 {
         animation: none;
         opacity: 1;
+      }
+    }
+
+    /* Prevent hero heading overflow on very small phones */
+    @media (max-width: 380px) {
+      #main-content h1 {
+        font-size: 2.5rem !important;
+        line-height: 0.95;
       }
     }
 
@@ -850,6 +862,101 @@
       <div class="text-center mt-8">
         <a href="/logistics/work" class="font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">See
           the case studies &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS / STACK CAROUSEL -->
+  <section class="py-14 lg:py-20 bg-charcoal border-t border-b border-plate overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 mb-10 text-center reveal">
+      <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">// Works with your stack</p>
+      <h2 class="font-display text-3xl lg:text-5xl text-chalk">INTEGRATES WITH <span style="color:#52b788">WHAT YOU ALREADY USE</span></h2>
+      <p class="text-fog text-sm mt-3 max-w-xl mx-auto leading-relaxed">We build around your existing freight and trade infrastructure — TMS, WMS, ERP, or custom systems. No rip-and-replace. No new vendor lock-in.</p>
+    </div>
+
+    <!-- Row 1 — scrolls left (AI / Freight / Logistics platforms) -->
+    <div class="stack-marquee-outer mb-3">
+      <div class="stack-track">
+        <span class="stack-chip"><span class="stack-chip-dot"></span>OpenAI</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Anthropic Claude</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Mistral AI</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Llama 3</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Ollama</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>LangChain</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>LlamaIndex</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Hugging Face</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft Azure</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Google Cloud</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Docker</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Kubernetes</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Python</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>FastAPI</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Node.js</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>REST API</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>LangGraph</span>
+        <!-- duplicate for seamless loop -->
+        <span class="stack-chip"><span class="stack-chip-dot"></span>OpenAI</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Anthropic Claude</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Mistral AI</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Llama 3</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Ollama</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>LangChain</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>LlamaIndex</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Hugging Face</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft Azure</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Google Cloud</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Docker</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Kubernetes</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Python</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>FastAPI</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Node.js</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>REST API</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>LangGraph</span>
+      </div>
+    </div>
+
+    <!-- Row 2 — scrolls right (Trade / Freight / Compliance tools) -->
+    <div class="stack-marquee-outer">
+      <div class="stack-track-r">
+        <span class="stack-chip"><span class="stack-chip-dot"></span>SAP TM</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Oracle TMS</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>MercuryGate</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Descartes</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>BluJay</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Flexport</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS Textract</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Tesseract OCR</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>PostgreSQL</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>MongoDB</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Pinecone</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>ChromaDB</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft 365</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>SharePoint</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>QuickBooks</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>SAP ERP</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Linux</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Customs Connect</span>
+        <!-- duplicate for seamless loop -->
+        <span class="stack-chip"><span class="stack-chip-dot"></span>SAP TM</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Oracle TMS</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>MercuryGate</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Descartes</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>BluJay</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Flexport</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS Textract</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Tesseract OCR</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>PostgreSQL</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>MongoDB</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Pinecone</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>ChromaDB</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft 365</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>SharePoint</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>QuickBooks</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>SAP ERP</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Linux</span>
+        <span class="stack-chip"><span class="stack-chip-dot"></span>Customs Connect</span>
       </div>
     </div>
   </section>

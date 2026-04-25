@@ -27,12 +27,18 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      overscroll-behavior: none;
       background: #0f0f0f;
       font-family: 'DM Sans', sans-serif;
     }
 
     @media (max-width: 767px) {
-      html, body { overflow: auto; }
+      html, body {
+        overflow: auto;
+        overflow-x: hidden;
+        overscroll-behavior-x: none;
+        max-width: 100%;
+      }
     }
 
     /* ── Noise overlay ── */
@@ -308,10 +314,13 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
+      /* +7px Y nudges the container down so the logo's optical centre
+         (the circle element) aligns with the divider line; the PNG has
+         extra visual weight at the bottom from the arrow + text. */
+      transform: translate(-50%, calc(-50% + 7px));
       z-index: 20;
-      width: 88px;
-      height: 88px;
+      width: 92px;
+      height: 92px;
       pointer-events: none;
       transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -320,6 +329,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      object-position: center center;
       filter: drop-shadow(0 4px 24px rgba(0,0,0,0.7));
       opacity: 0.92;
     }

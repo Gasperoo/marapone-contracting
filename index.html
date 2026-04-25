@@ -310,26 +310,34 @@
     }
 
     /* ── Center logo ── */
+    /* PNG analysis: content centre is 44px right (2.148%) and bottom tip
+       at 82.0% down from image top. Tip anchored to viewport centre.
+       transform-origin set to the tip so the breath pulse radiates upward. */
+    @keyframes logoBreath {
+      0%, 100% { transform: translate(calc(-50% - 2.148%), -82.0%) scale(1); }
+      50%       { transform: translate(calc(-50% - 2.148%), -82.0%) scale(1.06); }
+    }
+    @keyframes logoBreathMobile {
+      0%, 100% { transform: translateX(-2.148%) scale(1); }
+      50%       { transform: translateX(-2.148%) scale(1.06); }
+    }
+
     .center-logo {
       position: absolute;
       left: 50%;
       top: 50%;
-      /* +7px Y nudges the container down so the logo's optical centre
-         (the circle element) aligns with the divider line; the PNG has
-         extra visual weight at the bottom from the arrow + text. */
-      transform: translate(-50%, calc(-50% + 7px));
       z-index: 20;
-      width: 92px;
-      height: 92px;
+      width: 230px;
+      height: 230px;
       pointer-events: none;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: 52.148% 82.0%;
+      animation: logoBreath 4s ease-in-out infinite;
     }
 
     .center-logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      object-position: center center;
       filter: drop-shadow(0 4px 24px rgba(0,0,0,0.7));
       opacity: 0.92;
     }
@@ -346,13 +354,20 @@
         position: relative;
         left: auto;
         top: auto;
-        transform: none;
-        width: 64px;
-        height: 64px;
+        width: 160px;
+        height: 160px;
         margin: 1.5rem auto;
         order: -1;
+        animation: logoBreathMobile 4s ease-in-out infinite;
       }
       .split-container { position: relative; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .center-logo {
+        animation: none;
+        transform: translate(calc(-50% - 2.148%), -82.0%);
+      }
     }
 
     /* ── Bottom tagline ── */

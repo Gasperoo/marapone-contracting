@@ -251,10 +251,15 @@
       background-color: #1a1a1a;
       background-image:
         radial-gradient(circle, rgba(58, 58, 58, 0.45) 1px, transparent 1px),
-        linear-gradient(135deg, rgba(26, 26, 26, 0.80) 0%, rgba(26, 26, 26, 0.72) 45%, rgba(26, 26, 26, 0.90) 100%),
-        url('/images/hero-bg.jpg');
-      background-size: 28px 28px, cover, cover;
-      background-position: center, center, 65% center;
+        linear-gradient(135deg, rgba(26, 26, 26, 0.80) 0%, rgba(26, 26, 26, 0.72) 45%, rgba(26, 26, 26, 0.90) 100%);
+      background-size: 28px 28px, cover;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .delay-1, .delay-2, .delay-3, .delay-4 {
+        animation: none;
+        opacity: 1;
+      }
     }
 
     /* Hero full-bleed layout */
@@ -640,223 +645,134 @@
     </div>
   </section>
 
-  <!-- WHO WE BUILD FOR -->
+  <!-- CONSTRUCTION AI SERVICES -->
   <section class="py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <p class="font-mono text-hiviz text-sm mb-2">// What Marapone builds for construction</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">ONE AI SYSTEM.<br /><span class="text-hiviz">EVERY DOCUMENT ON YOUR PROJECT.</span></h2>
+      <div class="text-center mb-10 reveal">
+        <p class="font-mono text-hiviz text-sm mb-2">// Construction AI solutions</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">SIX AI SYSTEMS.<br /><span class="text-hiviz">ONE APPROACH.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mt-4 text-sm leading-relaxed">Every system is built around your specific documents — your blueprints, your RFIs, your project records. Not a generic platform. Not a dashboard you rent. A private AI that belongs to you.</p>
       </div>
-      <div
-        class="bg-gunmetal border border-plate rounded-xl p-8 hover:border-hiviz/50 transition-colors relative overflow-hidden">
-        <img src="/construction-workers-looking-up-at-crane-8yehx0ze4t4tno03.jpg" alt="" aria-hidden="true"
-          class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none"
-          style="z-index:0;object-position:center 60%;" />
-        <div style="position:relative;z-index:1;">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 hiviz-gradient rounded-lg flex items-center justify-center"><svg width="24"
-                height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M2 19h20" />
-                <path d="M5 19V11h14v8" />
-                <path d="M9 11V7a3 3 0 016 0v4" />
-              </svg></div>
-            <div>
-              <p class="font-mono text-hiviz text-xs uppercase tracking-wider">Private AI · Deployed on your infrastructure</p>
-              <h3 class="font-display text-2xl text-chalk">CONSTRUCTION INTELLIGENCE</h3>
-            </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Blueprint Auditor -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
+          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
+          onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
           </div>
-          <ul class="space-y-3 text-sm mb-6">
-            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg><span class="text-chalk">Blueprint & specification auditing</span></li>
-            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-              </svg><span class="text-chalk">RFI tracking & critical path analysis</span></li>
-            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg><span class="text-chalk">Daily log synthesis & delay detection</span></li>
-            <li class="flex items-center gap-3"><svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none"
-                stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg><span class="text-chalk">Cash-flow risk signals from document patterns</span></li>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Blueprint &amp; Spec Review</p>
+          <h3 class="font-display text-xl text-chalk mb-3">BLUEPRINT AUDITOR</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">AI reviews your full spec set for scope gaps, ambiguities, and coordination conflicts — before you mobilize. Turns a 4-hour manual review into 8 minutes.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Scope gap detection</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Coordination conflict flags</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Spec ambiguity identification</li>
           </ul>
-          <a href="/construction/services" class="font-mono text-hiviz text-sm hover:underline">See all Construction AI tools →</a>
         </div>
+
+        <!-- RFI Intelligence -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
+          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
+          onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+            </svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">RFI Tracking &amp; Management</p>
+          <h3 class="font-display text-xl text-chalk mb-3">RFI INTELLIGENCE</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Tracks every open RFI against your drawings and critical path. Automatically surfaces blockers before they stop your project cold.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Critical path impact analysis</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Blocker prioritization</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Cross-reference against drawings</li>
+          </ul>
+        </div>
+
+        <!-- Daily Log Synthesis -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
+          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
+          onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Site Documentation</p>
+          <h3 class="font-display text-xl text-chalk mb-3">LOG SYNTHESIZER</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Processes daily site logs and field reports — extracts delays, resource issues, and key events. Generates dispute-ready documentation automatically.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Delay detection and dating</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Resource conflict flagging</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Dispute-ready record generation</li>
+          </ul>
+        </div>
+
+        <!-- Risk & Delay Signals -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
+          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
+          onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Risk Management</p>
+          <h3 class="font-display text-xl text-chalk mb-3">RISK SIGNALS</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Pattern recognition across your project documents surfaces cash-flow risks, delay indicators, and scope creep before they become disputes.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Cash-flow risk patterns</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Delay trend detection</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Scope creep indicators</li>
+          </ul>
+        </div>
+
+        <!-- Change Order AI -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
+          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
+          onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Change Management</p>
+          <h3 class="font-display text-xl text-chalk mb-3">CHANGE ORDER AI</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Tracks all change orders against original scope, flags pricing gaps, and ensures every variation is documented and approved before execution.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Scope vs. change order comparison</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Pricing gap identification</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Approval status tracking</li>
+          </ul>
+        </div>
+
+        <!-- Scope Gap Finder -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
+          style="border-color:#3a3a3a" onmouseover="this.style.borderColor='rgba(249,115,22,0.4)'"
+          onmouseout="this.style.borderColor='#3a3a3a'">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Pre-Tender Analysis</p>
+          <h3 class="font-display text-xl text-chalk mb-3">SCOPE GAP FINDER</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Scans tender documents, specifications, and drawings for gaps that will cost you at execution. Find the holes before you price them into a losing bid.</p>
+          <ul class="space-y-1.5 text-xs text-fog">
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Pre-tender spec review</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Cost exposure identification</li>
+            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Ambiguity flagging</li>
+          </ul>
+        </div>
+
       </div>
-    </div>
-  </section>
-
-  <!-- SOLUTIONS LIST -->
-  <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-12 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// What we build</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">AI SOLUTIONS THAT<br /><span class="text-hiviz">SOLVE
-            REAL PROBLEMS</span></h2>
+      <div class="text-center mt-10">
+        <a href="/construction/services" class="inline-flex items-center gap-2 font-mono text-hiviz text-sm hover:underline">See all construction AI tools →</a>
       </div>
-
-      <!-- Construction Bento -->
-      <div class="mb-10">
-        <div class="flex items-center gap-4 mb-6">
-          <span class="font-mono text-xs text-fog uppercase tracking-widest">Construction</span>
-          <span class="flex-1 h-px bg-plate"></span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-
-          <!-- Featured: Blueprint Auditor -->
-          <div
-            class="sm:col-span-2 bg-charcoal border border-hiviz/25 rounded-xl p-6 hover:border-hiviz/50 transition-colors relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-hiviz/6 to-transparent pointer-events-none"></div>
-            <div class="relative z-10 flex flex-col h-full">
-              <div class="flex items-start justify-between mb-4">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  class="w-9 h-9 text-hiviz">
-                  <rect x="3" y="3" width="14" height="14" rx="1" />
-                  <path d="M7 7h6M7 10h6M7 13h4" />
-                </svg>
-                <span class="font-mono text-xs text-plate">01</span>
-              </div>
-              <p class="font-display text-hiviz text-3xl lg:text-4xl leading-tight mb-1">4 HRS → 8 MIN</p>
-              <h3 class="font-semibold text-chalk">Blueprint Auditor</h3>
-              <p class="text-fog text-xs mt-2 font-mono leading-relaxed">AI reviews your full spec set for scope gaps,
-                ambiguities, and conflicts — before you mobilize.</p>
-            </div>
-          </div>
-
-          <!-- RFI Intelligence -->
-          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <path d="M4 4h12M4 8h8M4 12h10M4 16h6" />
-                <circle cx="16" cy="14" r="3" />
-                <path d="M16 13v2M15 14h2" />
-              </svg>
-            </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">ZERO MISSED BLOCKERS</p>
-            <h3 class="font-semibold text-chalk text-sm">RFI Intelligence</h3>
-          </div>
-
-          <!-- Daily Log Synthesis -->
-          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <path d="M4 16V6l4-3 4 3v10" />
-                <path d="M8 16v-4h4v4" />
-                <path d="M4 10h12" />
-              </svg>
-            </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">DISPUTE-READY RECORDS</p>
-            <h3 class="font-semibold text-chalk text-sm">Daily Log Synthesis</h3>
-          </div>
-
-          <!-- Risk & Delay Signals (wide, horizontal layout) -->
-          <div
-            class="sm:col-span-2 bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                class="w-10 h-10 text-hiviz flex-shrink-0">
-                <path d="M10 3v4M10 13v4M3 10h4M13 10h4" />
-                <circle cx="10" cy="10" r="3" />
-              </svg>
-              <div>
-                <p class="font-display text-hiviz text-xl leading-tight mb-0.5">EARLY WARNING</p>
-                <h3 class="font-semibold text-chalk text-sm">Risk & Delay Signals</h3>
-                <p class="text-fog text-xs mt-1 font-mono">Pattern recognition across your project documents surfaces
-                  cash-flow risks before they become disputes.</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Logistics Bento -->
-      <div>
-        <div class="flex items-center gap-4 mb-6">
-          <span class="font-mono text-xs text-fog uppercase tracking-widest">Logistics &amp; Trade</span>
-          <span class="flex-1 h-px bg-plate"></span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-
-          <!-- Trade Doc Processor -->
-          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <path d="M3 5h14v11H3z" />
-                <path d="M3 8h14" />
-                <path d="M7 5V3M13 5V3" />
-              </svg>
-            </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">NOTHING SLIPS THROUGH</p>
-            <h3 class="font-semibold text-chalk text-sm">Trade Doc Processor</h3>
-          </div>
-
-          <!-- Featured: Freight Audit -->
-          <div
-            class="sm:col-span-2 bg-charcoal border border-hiviz/25 rounded-xl p-6 hover:border-hiviz/50 transition-colors relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-bl from-hiviz/6 to-transparent pointer-events-none"></div>
-            <div class="relative z-10 flex flex-col h-full">
-              <div class="flex items-start justify-between mb-4">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                  class="w-9 h-9 text-hiviz">
-                  <circle cx="10" cy="10" r="7" />
-                  <path d="M10 6v4l3 3" />
-                </svg>
-                <span class="font-mono text-xs text-plate">05</span>
-              </div>
-              <p class="font-display text-hiviz text-3xl lg:text-4xl leading-tight mb-1">OVERPAYMENTS RECOVERED</p>
-              <h3 class="font-semibold text-chalk">Freight Audit</h3>
-              <p class="text-fog text-xs mt-2 font-mono leading-relaxed">Every invoice cross-referenced against your
-                contracts and rate cards — discrepancies flagged before payment.</p>
-            </div>
-          </div>
-
-          <!-- Compliance Monitor (wide, horizontal) -->
-          <div
-            class="sm:col-span-2 bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-                class="w-10 h-10 text-hiviz flex-shrink-0">
-                <path d="M9 11l3 3 6-6" />
-                <path d="M4 4h8v4H4z" />
-                <path d="M4 12h5" />
-                <path d="M4 16h3" />
-              </svg>
-              <div>
-                <p class="font-display text-hiviz text-xl leading-tight mb-0.5">NO CUSTOMS HOLDS</p>
-                <h3 class="font-semibold text-chalk text-sm">Compliance Monitor</h3>
-                <p class="text-fog text-xs mt-1 font-mono">Documentation validated against your specific trade lanes and
-                  commodity requirements before filing.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Supply Chain Risk -->
-          <div class="bg-charcoal border border-plate rounded-xl p-5 hover:border-hiviz/50 transition-colors">
-            <div class="mb-4">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" class="w-9 h-9 text-hiviz">
-                <circle cx="10" cy="10" r="2" />
-                <path d="M10 3a7 7 0 0 1 7 7" />
-                <path d="M10 3a7 7 0 0 0-7 7" />
-                <path d="M3 10a7 7 0 0 0 7 7" />
-                <path d="M17 10a7 7 0 0 1-7 7" />
-              </svg>
-            </div>
-            <p class="font-display text-hiviz text-xl leading-tight mb-1">DISRUPTIONS PRE-EMPTED</p>
-            <h3 class="font-semibold text-chalk text-sm">Supply Chain Risk</h3>
-          </div>
-
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -939,91 +855,63 @@
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="py-16 lg:py-24 bg-gunmetal border-b border-plate">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="mb-12 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// Process</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">HOW THIS ACTUALLY <span class="text-hiviz">WORKS</span>
-        </h2>
+  <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12 reveal">
+        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-3">// No SaaS. No cloud. No subscriptions.</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">YOU OWN THE AI.<br /><span class="text-hiviz">PERMANENTLY.</span></h2>
       </div>
-      <div class="grid md:grid-cols-4 gap-0">
-        <div class="relative">
-          <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
-          <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div
-              class="w-16 h-16 rounded bg-steel border-2 border-hiviz flex items-center justify-center mb-4 font-display text-2xl text-hiviz">
-              01</div>
-            <h3 class="font-display text-lg text-chalk mb-2">FREE ASSESSMENT</h3>
-            <p class="text-sm text-fog">Send us a real document from your workflow. We analyze it and return a report +
-              video walkthrough. No pitch, no strings.</p>
-          </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="text-center reveal reveal-d1">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">01</div>
+          <h3 class="font-display text-xl text-chalk mb-2">FREE ASSESSMENT</h3>
+          <p class="text-fog text-sm leading-relaxed">Send us one real document — a blueprint, RFI, or change order package. We return a written report within 24 hours showing exactly what AI can do with your construction documents.</p>
         </div>
-        <div class="relative mt-8 md:mt-0">
-          <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
-          <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div
-              class="w-16 h-16 rounded bg-steel border-2 border-plate flex items-center justify-center mb-4 font-display text-2xl text-fog">
-              02</div>
-            <h3 class="font-display text-lg text-chalk mb-2">DISCOVERY CALL</h3>
-            <p class="text-sm text-fog">30-minute call to understand your document stack, your biggest time drains, and
-              whether a custom AI build makes sense for you right now.</p>
-          </div>
+        <div class="text-center reveal reveal-d2">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">02</div>
+          <h3 class="font-display text-xl text-chalk mb-2">CUSTOM BUILD</h3>
+          <p class="text-fog text-sm leading-relaxed">We design and build a private AI system around your specific project workflows, document formats, and compliance requirements. Your data never leaves your network during training or deployment.</p>
         </div>
-        <div class="relative mt-8 md:mt-0">
-          <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-plate z-0"></div>
-          <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left pr-8">
-            <div
-              class="w-16 h-16 rounded bg-steel border-2 border-plate flex items-center justify-center mb-4 font-display text-2xl text-fog">
-              03</div>
-            <h3 class="font-display text-lg text-chalk mb-2">WE BUILD IT</h3>
-            <p class="text-sm text-fog">We fine-tune the model on your actual documents, build the local app, and deploy
-              on your machine or server. Built for your data, your workflow, your team.</p>
-          </div>
-        </div>
-        <div class="relative mt-8 md:mt-0">
-          <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
-            <div
-              class="w-16 h-16 rounded bg-hiviz flex items-center justify-center mb-4 font-display text-2xl text-white">
-              04</div>
-            <h3 class="font-display text-lg text-chalk mb-2">YOU OWN IT</h3>
-            <p class="text-sm text-fog">Full source code. Fine-tuned model weights. Install guide. It's yours. Runs
-              offline. No API keys. No monthly bill. No vendor ever again.</p>
-          </div>
+        <div class="text-center reveal reveal-d3">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">03</div>
+          <h3 class="font-display text-xl text-chalk mb-2">FULL HANDOVER</h3>
+          <p class="text-fog text-sm leading-relaxed">Source code, model weights, documentation, and a team onboarding session. You own it outright. No subscriptions. No usage fees. No dependency on Marapone's servers. Ever.</p>
         </div>
       </div>
-      <div class="mt-12 text-center">
-        <a href="/construction/how-it-works" class="font-mono text-hiviz text-sm hover:underline">Full technical breakdown →</a>
+      <div class="text-center mt-10">
+        <a href="/construction/how-it-works" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">Full technical breakdown &rarr;</a>
       </div>
     </div>
   </section>
 
   <!-- OUTCOMES STRIP -->
-  <section class="bg-steel border-t border-b border-plate py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <p class="font-mono text-hiviz text-sm mb-1">// Results from live deployments</p>
-        <h2 class="font-display text-3xl text-chalk">WHAT ACTUALLY <span class="text-hiviz">HAPPENS</span></h2>
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-10 reveal">
+        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-2">// Based on live client deployments</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">REAL RESULTS.<br /><span class="text-hiviz">REAL PROJECTS.</span></h2>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-plate rounded overflow-hidden">
-        <div class="bg-steel px-6 py-6 text-center">
-          <p class="font-display text-4xl lg:text-5xl text-hiviz mb-1">6–8h</p>
-          <p class="font-mono text-fog text-xs mt-1 leading-snug">staff hours recovered<br />per week, per client</p>
+        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d1">
+          <p class="font-display text-5xl text-hiviz">6–8h</p>
+          <p class="font-mono text-fog text-xs mt-2 leading-snug">staff hours recovered<br />per week, per project</p>
         </div>
-        <div class="bg-steel px-6 py-6 text-center">
-          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">97%</p>
-          <p class="font-mono text-fog text-xs mt-1 leading-snug">document extraction<br />accuracy vs. manual</p>
+        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d2">
+          <p class="font-display text-5xl text-chalk">97%</p>
+          <p class="font-mono text-fog text-xs mt-2 leading-snug">document extraction<br />accuracy vs. manual</p>
         </div>
-        <div class="bg-steel px-6 py-6 text-center">
-          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">−78%</p>
-          <p class="font-mono text-fog text-xs mt-1 leading-snug">compliance errors<br />in first quarter</p>
+        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d3">
+          <p class="font-display text-5xl text-chalk">−65%</p>
+          <p class="font-mono text-fog text-xs mt-2 leading-snug">RFI response time<br />reduction on average</p>
         </div>
-        <div class="bg-steel px-6 py-6 text-center">
-          <p class="font-display text-4xl lg:text-5xl text-chalk mb-1">&lt;2wk</p>
-          <p class="font-mono text-fog text-xs mt-1 leading-snug">scoping to full<br />system handover</p>
+        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d4">
+          <p class="font-display text-5xl text-chalk">&lt;2wk</p>
+          <p class="font-mono text-fog text-xs mt-2 leading-snug">average build time<br />scoping to handover</p>
         </div>
       </div>
-      <p class="text-center font-mono text-fog text-xs mt-4">Based on live client deployments. <a href="/construction/work"
-          class="text-hiviz hover:underline">See the full case studies →</a></p>
+      <div class="text-center mt-8">
+        <a href="/construction/work" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">See the case studies &rarr;</a>
+      </div>
     </div>
   </section>
 
@@ -1358,69 +1246,33 @@
     </div>
   </section>
 
-  <!-- FREE ASSESSMENT CTA -->
-  <section id="audit" class="py-16 lg:py-24">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <div class="bg-steel border border-plate rounded-xl p-10 lg:p-16 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-hiviz"></div>
-        <div class="grid-dot absolute inset-0 opacity-30"></div>
-        <div class="relative">
-          <p class="font-mono text-hiviz text-sm mb-4">// No pitch. No strings. Just results.</p>
-          <h2 class="font-display text-3xl sm:text-4xl lg:text-6xl text-chalk mb-4">FREE 24-HOUR<br /><span
-              class="text-hiviz">AI ASSESSMENT</span></h2>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-0 mb-10 max-w-lg mx-auto">
-            <div class="flex flex-col items-center text-center px-5">
-              <div
-                class="w-12 h-12 bg-gunmetal border border-hiviz/40 rounded-full flex items-center justify-center mb-3">
-                <svg class="w-5 h-5 text-hiviz" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                </svg>
-              </div>
-              <p class="font-mono text-xs text-chalk font-semibold">Send a doc</p>
-              <p class="font-mono text-xs text-fog mt-1">Blueprint, invoice,<br />or declaration</p>
-            </div>
-            <div class="text-plate font-mono text-xl hidden sm:block mx-1 mb-6">→</div>
-            <div class="flex flex-col items-center text-center px-5">
-              <div
-                class="w-12 h-12 bg-gunmetal border border-hiviz/40 rounded-full flex items-center justify-center mb-3">
-                <svg class="w-5 h-5 text-hiviz" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <p class="font-mono text-xs text-chalk font-semibold">Get the report</p>
-              <p class="font-mono text-xs text-fog mt-1">Written findings + video.<br />Within 24 hours.</p>
-            </div>
-            <div class="text-plate font-mono text-xl hidden sm:block mx-1 mb-6">→</div>
-            <div class="flex flex-col items-center text-center px-5">
-              <div
-                class="w-12 h-12 bg-gunmetal border border-hiviz/40 rounded-full flex items-center justify-center mb-3">
-                <svg class="w-5 h-5 text-hiviz" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <p class="font-mono text-xs text-chalk font-semibold">Keep it. No strings.</p>
-              <p class="font-mono text-xs text-fog mt-1">The report is yours<br />regardless.</p>
-            </div>
-          </div>
-          <a href="/construction/contact"
-            class="hiviz-gradient text-white font-semibold px-6 sm:px-10 py-4 sm:py-5 rounded text-base sm:text-lg inline-block hover:opacity-90 transition-opacity w-full sm:w-auto">
-            Request Your Free Assessment →
-          </a>
-          <div class="mt-4">
-            <a href="/construction/discovery"
-              class="inline-flex items-center gap-2 text-sm text-fog hover:text-chalk transition-colors font-mono">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              Prefer a quick call first? Book 15 minutes →
-            </a>
-          </div>
-          <p class="text-xs font-mono text-fog mt-4">We keep our project load small to ensure every client gets our full
-            focus and a high-quality result. Currently accepting new assessment requests.</p>
-        </div>
+  <!-- PRICING HOOK -->
+  <section class="py-16 lg:py-20 bg-gunmetal border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="reveal">
+        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-3">// One-time price. No subscriptions. Ever.</p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-6">STARTER BUILDS<br /><span class="text-hiviz">FROM $1,500</span></h2>
+        <p class="text-fog max-w-2xl mx-auto leading-relaxed mb-8 text-sm">Most construction clients land in the $4,900–$9,500 range for a full document intelligence suite covering blueprints, RFIs, and change orders. Larger multi-site, multi-workflow systems from $15,000. All one-time. Exact scope and price confirmed after the free assessment.</p>
+        <a href="/construction/pricing" class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-chalk transition-colors">See full pricing breakdown &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section id="audit" class="relative py-24 lg:py-36 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 65%)"></div>
+    <div class="absolute inset-0 grid-dot opacity-30 pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+      <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-4">// Ready to start</p>
+      <h2 class="font-display text-5xl lg:text-7xl text-chalk mb-6 leading-none reveal">WANT TO SEE IF<br /><span class="text-hiviz">WE'RE A FIT?</span></h2>
+      <p class="text-fog mb-10 leading-relaxed max-w-xl mx-auto text-sm lg:text-base reveal reveal-d1">Start with the free assessment. Send us one real document from your site — a blueprint, RFI, change order, anything. We'll analyze it and return a written report + video walkthrough within 24 hours. No obligation.</p>
+      <div class="reveal reveal-d2">
+        <a href="/construction/contact"
+          class="text-white font-semibold px-10 py-4 rounded-lg text-base inline-block hover:opacity-90 transition-opacity hiviz-gradient"
+          style="box-shadow:0 8px 32px rgba(249,115,22,0.25)">
+          Request Your Free 24h Assessment &rarr;
+        </a>
+        <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span class="text-hiviz">general@marapone.com</span></p>
       </div>
     </div>
   </section>

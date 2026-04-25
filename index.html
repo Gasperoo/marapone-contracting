@@ -216,6 +216,8 @@
 
     @media (max-width: 767px) {
       .panel-desc { max-width: 100%; }
+      .panel-title { white-space: normal; text-shadow: 0 2px 16px rgba(0,0,0,0.95); }
+      .panel-desc { text-shadow: 0 1px 8px rgba(0,0,0,0.85); color: #c8c8c8; }
     }
 
     .panel-cta {
@@ -529,10 +531,24 @@
       );
     }
 
-    /* Disable video on mobile and for reduced-motion users */
+    /* Mobile: show video, dim it, and use a strong bottom gradient so text stays legible */
     @media (max-width: 767px) {
-      .panel-video,
-      .panel-video-overlay { display: none; }
+      .panel-video { opacity: 0.45; }
+      .panel-video-overlay { opacity: 1; }
+      .panel-construction .panel-video-overlay {
+        background: linear-gradient(to bottom,
+          rgba(0,0,0,0.08) 0%,
+          rgba(0,0,0,0.52) 48%,
+          rgba(0,0,0,0.78) 100%
+        );
+      }
+      .panel-logistics .panel-video-overlay {
+        background: linear-gradient(to bottom,
+          rgba(0,0,0,0.08) 0%,
+          rgba(0,0,0,0.52) 48%,
+          rgba(0,0,0,0.78) 100%
+        );
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -683,6 +699,14 @@
           document.getElementById('logistics-panel'),
           document.getElementById('logistics-video')
         );
+
+        // Mobile: autoplay both videos as ambient background (muted — browser permits without gesture)
+        if (window.matchMedia('(max-width: 767px)').matches) {
+          var cVid = document.getElementById('construction-video');
+          var lVid = document.getElementById('logistics-video');
+          if (cVid) cVid.play().catch(function() {});
+          if (lVid) lVid.play().catch(function() {});
+        }
       }
     })();
   </script>

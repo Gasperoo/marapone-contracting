@@ -34,9 +34,7 @@
 
     @media (max-width: 767px) {
       html, body {
-        overflow: auto;
-        overflow-x: hidden;
-        overscroll-behavior-x: none;
+        overflow: hidden;
         max-width: 100%;
       }
     }
@@ -72,8 +70,7 @@
     @media (max-width: 767px) {
       .split-container {
         flex-direction: column;
-        height: auto;
-        min-height: 100svh;
+        height: 100svh;
       }
     }
 
@@ -100,10 +97,10 @@
       .panel {
         flex: none !important;
         width: 100%;
-        min-height: 50svh;
-        align-items: center;
-        justify-content: center;
+        height: 50svh;
       }
+      .panel-construction { align-items: flex-start; }
+      .panel-logistics { align-items: flex-end; }
     }
 
     /* ── Construction panel (left) ── */
@@ -354,16 +351,15 @@
 
     @media (max-width: 767px) {
       .center-logo {
-        position: relative;
-        left: auto;
-        top: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
         width: 112px;
         height: 112px;
-        margin: 1.5rem auto;
-        order: -1;
-        animation: logoBreathMobile 4s ease-in-out infinite;
+        margin: 0;
+        order: 0;
+        animation: logoBreath 4s ease-in-out infinite;
       }
-      .split-container { position: relative; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -389,11 +385,7 @@
     }
 
     @media (max-width: 767px) {
-      .tagline {
-        position: static;
-        padding: 1.25rem 1rem 2rem;
-        color: #3a3a3a;
-      }
+      .tagline { display: none; }
     }
 
     /* ── Hover state: panel content fade in stronger ── */
@@ -533,20 +525,22 @@
 
     /* Mobile: show video, dim it, and use a strong bottom gradient so text stays legible */
     @media (max-width: 767px) {
-      .panel-video { opacity: 0.45; }
+      .panel-video { opacity: 0.55; }
       .panel-video-overlay { opacity: 1; }
+      /* construction text is at the top — darken the top, open up near the divider */
       .panel-construction .panel-video-overlay {
         background: linear-gradient(to bottom,
-          rgba(0,0,0,0.08) 0%,
-          rgba(0,0,0,0.52) 48%,
-          rgba(0,0,0,0.78) 100%
+          rgba(0,0,0,0.75) 0%,
+          rgba(0,0,0,0.28) 60%,
+          rgba(0,0,0,0.04) 100%
         );
       }
+      /* logistics text is at the bottom — open near the divider, darken the bottom */
       .panel-logistics .panel-video-overlay {
         background: linear-gradient(to bottom,
-          rgba(0,0,0,0.08) 0%,
-          rgba(0,0,0,0.52) 48%,
-          rgba(0,0,0,0.78) 100%
+          rgba(0,0,0,0.04) 0%,
+          rgba(0,0,0,0.28) 40%,
+          rgba(0,0,0,0.75) 100%
         );
       }
     }

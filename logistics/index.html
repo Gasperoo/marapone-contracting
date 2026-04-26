@@ -243,6 +243,44 @@
       }
     }
 
+    .hero-video-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .hero-video-glow {
+      position: absolute;
+      inset: -10% -5%;
+      background: radial-gradient(ellipse at 50% 60%, rgba(82, 183, 136, 0.15) 0%, transparent 65%);
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #hero-demo-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow:
+        0 0 0 1px rgba(82, 183, 136, 0.08),
+        0 30px 80px rgba(0, 0, 0, 0.8),
+        0 4px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    #hero-demo-img:hover {
+      transform: scale(1.012) translateY(-3px);
+      box-shadow:
+        0 0 0 1px rgba(82, 183, 136, 0.22),
+        0 40px 100px rgba(0, 0, 0, 0.85),
+        0 8px 30px rgba(82, 183, 136, 0.12);
+      border-color: rgba(82, 183, 136, 0.18);
+    }
+
     @media (max-width:1023px) {
       section#main-content {
         min-height: auto;
@@ -502,74 +540,11 @@
         </div>
         <!-- Right: Stats visual -->
         <div class="fade-up delay-1" id="hero-video-col">
-          <div class="relative w-full max-w-lg mx-auto lg:mx-0">
-            <div class="absolute inset-0 pointer-events-none"
-              style="background:radial-gradient(ellipse at 50% 60%, rgba(82,183,136,0.12) 0%, transparent 65%);filter:blur(40px);">
-            </div>
-            <div class="relative z-10 space-y-3 pt-4 lg:pt-0">
-              <!-- Stat cards that represent logistics AI value -->
-              <div class="bg-gunmetal border border-plate rounded-xl p-5 reveal"
-                style="border-color:rgba(82,183,136,0.15)">
-                <div class="flex items-center justify-between mb-3">
-                  <p class="font-mono text-xs" style="color:#52b788">// Invoice Audit · Live</p>
-                  <span class="w-2 h-2 rounded-full" style="background:#52b788;box-shadow:0 0 6px #52b788"></span>
-                </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  <div class="bg-steel rounded-lg p-3 text-center">
-                    <p class="font-display text-2xl" style="color:#52b788">340</p>
-                    <p class="font-mono text-fog text-xs mt-1">invoices/hr</p>
-                  </div>
-                  <div class="bg-steel rounded-lg p-3 text-center">
-                    <p class="font-display text-2xl text-chalk">−94%</p>
-                    <p class="font-mono text-fog text-xs mt-1">billing errors</p>
-                  </div>
-                  <div class="bg-steel rounded-lg p-3 text-center">
-                    <p class="font-display text-2xl text-chalk">&lt;2s</p>
-                    <p class="font-mono text-fog text-xs mt-1">per document</p>
-                  </div>
-                </div>
-              </div>
-              <div class="bg-gunmetal border border-plate rounded-xl p-5 reveal reveal-d1"
-                style="border-color:rgba(82,183,136,0.15)">
-                <p class="font-mono text-xs mb-3" style="color:#52b788">// Customs Risk Check</p>
-                <div class="space-y-2">
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="font-mono text-fog">HS Code validation</span>
-                    <span class="font-mono" style="color:#52b788">✓ PASS</span>
-                  </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="font-mono text-fog">Declared value cross-check</span>
-                    <span class="font-mono" style="color:#52b788">✓ PASS</span>
-                  </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="font-mono text-fog">Certificate of origin</span>
-                    <span class="font-mono text-red-400">⚠ FLAG — mismatch</span>
-                  </div>
-                  <div class="flex items-center justify-between text-xs">
-                    <span class="font-mono text-fog">Packing list vs. invoice</span>
-                    <span class="font-mono" style="color:#52b788">✓ PASS</span>
-                  </div>
-                </div>
-              </div>
-              <div class="bg-gunmetal border border-plate rounded-xl p-5 reveal reveal-d2"
-                style="border-color:rgba(82,183,136,0.15)">
-                <div class="flex items-center justify-between mb-2">
-                  <p class="font-mono text-xs" style="color:#52b788">// Carrier Performance · Q2</p>
-                </div>
-                <div class="flex gap-2 items-end h-14">
-                  <div class="flex-1 rounded-sm" style="height:45%;background:rgba(82,183,136,0.25)"></div>
-                  <div class="flex-1 rounded-sm" style="height:60%;background:rgba(82,183,136,0.35)"></div>
-                  <div class="flex-1 rounded-sm" style="height:80%;background:rgba(82,183,136,0.5)"></div>
-                  <div class="flex-1 rounded-sm" style="height:55%;background:rgba(82,183,136,0.3)"></div>
-                  <div class="flex-1 rounded-sm" style="height:90%;background:#52b788"></div>
-                  <div class="flex-1 rounded-sm" style="height:70%;background:rgba(82,183,136,0.45)"></div>
-                </div>
-                <p class="font-mono text-fog text-xs mt-2">On-time delivery rate trending up 18% since AI deployment</p>
-              </div>
-            </div>
+          <div class="hero-video-wrap">
+            <div class="hero-video-glow"></div>
+            <img id="hero-demo-img" src="/Dashboard2.png" alt="Marapone Freight Intelligence dashboard" />
           </div>
-          <p class="text-center text-xs text-fog mt-3 tracking-wide font-mono">Live output from Marapone Freight
-            Intelligence</p>
+          <p class="text-center text-xs text-fog mt-2 tracking-wide">Demo from our Freight Intelligence service</p>
         </div>
       </div>
     </div>

@@ -45,7 +45,14 @@
     }
     .copy-btn:hover { border-color: #f97316; color: #f97316; }
     .copy-btn.copied { border-color: #22c55e; color: #22c55e; }
+    :root { --accent: #f97316; --accent-end: #ea580c; }
+    .text-hiviz { color: var(--accent) !important; }
+    .hiviz-gradient { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-end) 100%) !important; }
+    .bg-hiviz { background-color: var(--accent) !important; }
+    .hover\:text-hiviz:hover { color: var(--accent) !important; }
+    .copy-btn:hover { border-color: var(--accent) !important; color: var(--accent) !important; }
   </style>
+  <script>(function(){var p=new URLSearchParams(location.search).get('from');if(p==='logistics'){var r=document.documentElement;r.style.setProperty('--accent','#52b788');r.style.setProperty('--accent-end','#2d9d6a');}})();</script>
   <!-- Google Analytics (G-J31Z05DB01) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>

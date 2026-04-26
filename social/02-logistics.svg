@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+<defs>
+  <style><![CDATA[@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');]]></style>
+  <pattern id="d" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1.1" fill="#1a2020"/>
+  </pattern>
+</defs>
+
+<!-- Background -->
+<rect width="1080" height="1080" fill="#0f1212"/>
+<rect width="1080" height="1080" fill="url(#d)"/>
+
+<!-- Top bar -->
+<rect width="1080" height="8" fill="#52b788"/>
+<!-- Bottom bar -->
+<rect y="1072" width="1080" height="8" fill="#52b788"/>
+
+<!-- Corner brackets TL -->
+<line x1="60" y1="60" x2="190" y2="60" stroke="#52b788" stroke-width="2" stroke-opacity="0.35"/>
+<line x1="60" y1="60" x2="60" y2="190" stroke="#52b788" stroke-width="2" stroke-opacity="0.35"/>
+<!-- TR -->
+<line x1="890" y1="60" x2="1020" y2="60" stroke="#52b788" stroke-width="2" stroke-opacity="0.35"/>
+<line x1="1020" y1="60" x2="1020" y2="190" stroke="#52b788" stroke-width="2" stroke-opacity="0.35"/>
+<!-- BL -->
+<line x1="60" y1="1020" x2="190" y2="1020" stroke="#52b788" stroke-width="2" stroke-opacity="0.35"/>
+<line x1="60" y1="890" x2="60" y2="1020" stroke="#52b788" stroke-width="2" stroke-opacity="0.35"/>
+<!-- BR -->
+<line x1="890" y1="1020" x2="1020" y2="1020" stroke="#52b788" stroke-width="2" stroke-opacity="0.35"/>
+<line x1="1020" y1="890" x2="1020" y2="1020" stroke="#52b788" stroke-width="2" stroke-opacity="0.35"/>
+
+<!-- Category label -->
+<text x="540" y="118"
+  font-family="'DM Mono', 'Courier New', monospace"
+  font-size="16" fill="#52b788" text-anchor="middle" letter-spacing="5">// LOGISTICS &amp; TRADE AI //</text>
+
+<!-- Headline line 1 -->
+<text x="540" y="278"
+  font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif"
+  font-size="165" fill="#e8e8e8" text-anchor="middle" letter-spacing="6">FREIGHT</text>
+
+<!-- Headline line 2 -->
+<text x="540" y="415"
+  font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif"
+  font-size="124" fill="#52b788" text-anchor="middle" letter-spacing="4">INTELLIGENCE</text>
+
+<!-- Subhead -->
+<text x="540" y="474"
+  font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif"
+  font-size="22" fill="#5a6a62" text-anchor="middle">Your data stays private. Your routes stay yours. Forever.</text>
+
+<!-- Accent divider -->
+<rect x="290" y="500" width="500" height="2" fill="#52b788" rx="1" fill-opacity="0.5"/>
+
+<!-- Feature Card 1 -->
+<rect x="160" y="522" width="760" height="82" rx="6" fill="#131918" stroke="#1e2b24" stroke-width="1"/>
+<text x="208" y="569"
+  font-family="'DM Mono', monospace" font-size="22" fill="#52b788">✓</text>
+<text x="248" y="563"
+  font-family="'DM Sans', Arial, sans-serif" font-size="21" font-weight="600" fill="#e2e2e2">Invoice Auditing</text>
+<text x="248" y="587"
+  font-family="'DM Sans', Arial, sans-serif" font-size="16" fill="#4a5e53">Catch billing errors and overcharges before you pay them</text>
+
+<!-- Feature Card 2 -->
+<rect x="160" y="616" width="760" height="82" rx="6" fill="#131918" stroke="#1e2b24" stroke-width="1"/>
+<text x="208" y="663"
+  font-family="'DM Mono', monospace" font-size="22" fill="#52b788">✓</text>
+<text x="248" y="657"
+  font-family="'DM Sans', Arial, sans-serif" font-size="21" font-weight="600" fill="#e2e2e2">Customs Risk Analysis</text>
+<text x="248" y="681"
+  font-family="'DM Sans', Arial, sans-serif" font-size="16" fill="#4a5e53">Flag duty violations and compliance issues at document intake</text>
+
+<!-- Feature Card 3 -->
+<rect x="160" y="710" width="760" height="82" rx="6" fill="#131918" stroke="#1e2b24" stroke-width="1"/>
+<text x="208" y="757"
+  font-family="'DM Mono', monospace" font-size="22" fill="#52b788">✓</text>
+<text x="248" y="751"
+  font-family="'DM Sans', Arial, sans-serif" font-size="21" font-weight="600" fill="#e2e2e2">Carrier Performance</text>
+<text x="248" y="775"
+  font-family="'DM Sans', Arial, sans-serif" font-size="16" fill="#4a5e53">Benchmark every carrier against your own shipment history</text>
+
+<!-- Logo wordmark -->
+<text x="540" y="904"
+  font-family="'Bebas Neue', Impact, sans-serif"
+  font-size="58" fill="#e2e2e2" text-anchor="middle" letter-spacing="8">MARA<tspan fill="#52b788">PONE</tspan></text>
+<text x="540" y="934"
+  font-family="'DM Mono', monospace"
+  font-size="13" fill="#2e3d35" text-anchor="middle" letter-spacing="5">CONTRACTING INC.</text>
+
+<!-- Thin rule -->
+<rect x="430" y="954" width="220" height="1" fill="#1e2b24"/>
+
+<!-- URL -->
+<text x="540" y="991"
+  font-family="'DM Mono', monospace"
+  font-size="20" fill="#52b788" text-anchor="middle" letter-spacing="2">marapone.com</text>
+
+<!-- Locations -->
+<text x="540" y="1026"
+  font-family="'DM Mono', monospace"
+  font-size="13" fill="#2e3d35" text-anchor="middle" letter-spacing="4">TORONTO · ROME</text>
+
+</svg>

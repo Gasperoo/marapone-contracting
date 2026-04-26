@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="180" height="32" role="img" aria-label="Built with Marapone">
-  <title>Built with Marapone</title>
-  <rect width="180" height="32" rx="4" fill="#1a1a1a"/>
-  <rect width="32" height="32" rx="4" fill="#f97316"/>
-  <rect x="28" width="4" height="32" fill="#f97316"/>
-  <text x="16" y="21" font-family="monospace" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">M</text>
-  <text x="107" y="13" font-family="monospace" font-size="7" fill="#a0a0a0" text-anchor="middle" letter-spacing="1">BUILT WITH</text>
-  <text x="107" y="25" font-family="monospace" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">MARAPONE</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="192" height="36" role="img" aria-label="Built by Marapone">
+  <title>Built by Marapone</title>
+  <rect width="192" height="36" rx="5" fill="#1a1a1a"/>
+  <text x="10" y="21" font-family="monospace" font-size="9" fill="#777777" letter-spacing="0.5">built by</text>
+  <line x1="63" y1="8" x2="63" y2="28" stroke="#333333" stroke-width="1"/>
+  <image x="69" y="4" width="28" height="28" href="https://marapone.com/MARACON-WHITE.png" xlink:href="https://marapone.com/MARACON-WHITE.png"/>
+  <text x="101" y="23" font-family="monospace" font-size="13" font-weight="700" fill="#e8e8e8" letter-spacing="2">MARA</text>
+  <text x="142" y="23" font-family="monospace" font-size="13" font-weight="700" fill="#f97316" letter-spacing="2">PONE</text>
 </svg>

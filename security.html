@@ -29,7 +29,16 @@
     .policy-section:last-child { border-bottom: none; }
     .check-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem; }
     .check-item svg { flex-shrink: 0; margin-top: 2px; }
+    :root { --accent: #f97316; --accent-end: #ea580c; }
+    .text-hiviz { color: var(--accent) !important; }
+    .hiviz-gradient { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-end) 100%) !important; }
+    .tape-line { border-left-color: var(--accent) !important; }
+    .section-num { color: var(--accent) !important; }
+    .bg-hiviz { background-color: var(--accent) !important; }
+    .hover\:text-hiviz:hover { color: var(--accent) !important; }
+    [stroke="#f97316"] { stroke: var(--accent) !important; }
   </style>
+  <script>(function(){var p=new URLSearchParams(location.search).get('from');if(p==='logistics'){var r=document.documentElement;r.style.setProperty('--accent','#52b788');r.style.setProperty('--accent-end','#2d9d6a');}})();</script>
   <!-- Google Analytics (G-J31Z05DB01) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>
@@ -189,7 +198,7 @@
       <div class="policy-section">
         <p class="section-num">05</p>
         <h2 class="font-display text-3xl text-chalk mb-4">THIS WEBSITE</h2>
-        <p class="text-fog leading-relaxed mb-4">This website (marapone.com) collects minimal data. We use session cookies required for the site to function and Vercel's anonymous web analytics to measure page traffic. We do not use advertising cookies, third-party tracking pixels, or behavioural profiling tools.</p>
+        <p class="text-fog leading-relaxed mb-4">This website (marapone.com) collects minimal data. We use session cookies required for the site to function, Vercel's anonymous web analytics, and Google Analytics (GA4) to measure aggregate page traffic. Google Analytics does not identify visitors personally and is not used for advertising or behavioural profiling. We do not use advertising cookies, third-party tracking pixels, or behavioural surveillance tools.</p>
         <p class="text-fog leading-relaxed mb-4">Form submissions (assessment requests) collect only what you provide — name, email, company, industry, and an optional file. This is used solely to process your request. See our <a href="/privacy" class="text-hiviz hover:underline">Privacy Policy</a> for full details.</p>
         <p class="text-fog leading-relaxed">See our <a href="/cookies" class="text-hiviz hover:underline">Cookie Policy</a> for a complete breakdown of the cookies we set and why.</p>
       </div>

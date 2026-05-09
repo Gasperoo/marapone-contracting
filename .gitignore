@@ -34,3 +34,16 @@ dist/
 gasper-ios-app/
 .vercel
 social/
+
+# Local media assets (not needed by site — originals/exports kept local only)
+*-original.mp4
+Insta-Demo.mp4
+Screenshot*.png
+carbon.jpg
+dashboard.jpg
+markets.jpg
+"air cargo.jpg"
+air cargo.jpg
+news.jpg
+risksim.jpg
+routes.jpg

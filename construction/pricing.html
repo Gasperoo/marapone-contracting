@@ -95,6 +95,7 @@
     .reveal.visible{opacity:1;transform:translateY(0);}
     .tab-panel{transition:opacity .2s ease;}
   </style>
+  <script defer src="/widgets.js"></script>
 </head>
 
 <body class="antialiased">
@@ -151,15 +152,21 @@
     </div>
   </section>
 
-  <!-- SECTION JUMP NAV -->
+  <!-- SECTION JUMP NAV + CURRENCY TOGGLE -->
   <section class="py-6 border-b border-plate">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-wrap justify-center gap-3 text-sm font-mono">
+    <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex flex-wrap gap-3 text-sm font-mono">
         <a href="#construction-builds" class="text-hiviz hover:text-chalk transition-colors">↓ Construction Builds</a>
         <span class="text-plate">·</span>
         <a href="#marketing-addon" class="text-fog hover:text-chalk transition-colors">↓ Marketing Add-on</a>
         <span class="text-plate">·</span>
         <a href="/logistics/pricing" class="text-fog hover:text-chalk transition-colors">→ Logistics pricing</a>
+      </div>
+      <div class="flex items-center gap-1.5 text-xs font-mono" role="tablist" aria-label="Currency">
+        <span class="text-plate mr-1">// Currency:</span>
+        <button type="button" data-curr="CAD" class="curr-btn px-2.5 py-1 rounded border border-hiviz text-hiviz bg-hiviz/10" aria-pressed="true">CAD</button>
+        <button type="button" data-curr="USD" class="curr-btn px-2.5 py-1 rounded border border-plate text-fog hover:text-chalk transition-colors" aria-pressed="false">USD</button>
+        <button type="button" data-curr="EUR" class="curr-btn px-2.5 py-1 rounded border border-plate text-fog hover:text-chalk transition-colors" aria-pressed="false">EUR</button>
       </div>
     </div>
   </section>
@@ -180,8 +187,8 @@
               <p class="font-mono text-hiviz text-xs mb-2">TIER 01</p>
               <h2 class="font-display text-2xl text-chalk mb-1">STARTER</h2>
               <div class="flex items-end gap-2 mt-3">
-                <span class="font-display text-4xl text-chalk">$1,500</span>
-                <span class="text-fog font-mono text-xs mb-1.5">CAD · one time · +HST</span>
+                <span class="font-display text-4xl text-chalk" data-price-cad="1500">$1,500</span>
+                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · +HST</span>
               </div>
               <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you want a working AI tool built around a single
                 workflow — fine-tuned on your project documents and ready to run from day one.</p>
@@ -228,8 +235,8 @@
               <p class="font-mono text-hiviz text-xs mb-2">TIER 02</p>
               <h2 class="font-display text-2xl text-chalk mb-1">PILOT</h2>
               <div class="flex items-end gap-2 mt-3">
-                <span class="font-display text-4xl text-chalk">$4,900</span>
-                <span class="text-fog font-mono text-xs mb-1.5">CAD · one time · +HST</span>
+                <span class="font-display text-4xl text-chalk" data-price-cad="4900">$4,900</span>
+                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · +HST</span>
               </div>
               <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you want a deeply customised AI system for 1–2
                 project workflows before committing to the full suite.</p>
@@ -280,8 +287,8 @@
               <p class="font-mono text-hiviz text-xs mb-2">TIER 03</p>
               <h2 class="font-display text-2xl text-chalk mb-1">FULL BUILD</h2>
               <div class="flex items-end gap-2 mt-3">
-                <span class="font-display text-4xl text-chalk">$9,500</span>
-                <span class="text-fog font-mono text-xs mb-1.5">CAD · one time · +HST</span>
+                <span class="font-display text-4xl text-chalk" data-price-cad="9500">$9,500</span>
+                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · +HST</span>
               </div>
               <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you need the complete construction intelligence
                 suite — all four modules, unlimited use, and 90 days of backup support.</p>
@@ -330,8 +337,8 @@
               <p class="font-mono text-hiviz text-xs mb-2">TIER 04</p>
               <h2 class="font-display text-2xl text-chalk mb-1">PLUS</h2>
               <div class="flex items-end gap-2 mt-3">
-                <span class="font-display text-4xl text-chalk">$15,000</span>
-                <span class="text-fog font-mono text-xs mb-1.5">CAD · one time · +HST</span>
+                <span class="font-display text-4xl text-chalk" data-price-cad="15000">$15,000</span>
+                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · +HST</span>
               </div>
               <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you need the full suite on your own server or
                 air-gapped environment, with extended team onboarding and priority support.</p>
@@ -650,6 +657,17 @@
             </div>
           </div>
           <p class="font-mono text-xs text-fog">* Projections assume 3 caught incidents per year at the selected scenario's average industry cost. Actual results depend on your document volume and project complexity.</p>
+
+          <!-- ROI email gate -->
+          <div class="mt-6 pt-5 border-t border-plate" id="roi-gate">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Save this projection</p>
+            <p class="text-fog text-sm mb-3">Email me this scenario plus the matching ROI worksheet (PDF).</p>
+            <form id="roi-gate-form" class="flex flex-wrap gap-2 max-w-md" novalidate>
+              <input type="email" name="email" required placeholder="you@yourcompany.com" autocomplete="email" class="flex-1 min-w-[200px] bg-steel border border-plate rounded text-chalk px-3 py-2 text-sm outline-none focus:border-hiviz transition-colors" />
+              <button type="submit" class="hiviz-gradient text-white font-semibold px-4 py-2 rounded text-sm hover:opacity-90 transition-opacity">Email me this →</button>
+            </form>
+            <p id="roi-gate-msg" class="font-mono text-xs text-fog mt-2">One email. Unsubscribe with a click.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1158,6 +1176,64 @@
     var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
     if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
   })();
+  </script>
+
+  <!-- Currency toggle + ROI email gate -->
+  <script>
+    (function(){
+      // Approximate rates — refreshed annually
+      var RATES = { CAD: 1, USD: 0.73, EUR: 0.68 };
+      var SYMBOL = { CAD: '$', USD: '$', EUR: '€' };
+      var SUFFIX = { CAD: 'CAD · one time · +HST', USD: 'USD · one time', EUR: 'EUR · one time · approx' };
+      function setCurrency(c) {
+        if (!RATES[c]) c = 'CAD';
+        document.querySelectorAll('[data-price-cad]').forEach(function(el){
+          var cad = parseInt(el.getAttribute('data-price-cad'), 10);
+          var v = Math.round(cad * RATES[c]);
+          el.textContent = SYMBOL[c] + v.toLocaleString();
+        });
+        document.querySelectorAll('[data-curr-suffix]').forEach(function(el){ el.textContent = SUFFIX[c]; });
+        document.querySelectorAll('.curr-btn').forEach(function(b){
+          var active = b.getAttribute('data-curr') === c;
+          b.setAttribute('aria-pressed', active);
+          if (active) { b.classList.remove('border-plate', 'text-fog'); b.classList.add('border-hiviz', 'text-hiviz', 'bg-hiviz/10'); }
+          else { b.classList.remove('border-hiviz', 'text-hiviz', 'bg-hiviz/10'); b.classList.add('border-plate', 'text-fog'); }
+        });
+        try { localStorage.setItem('mp_currency', c); } catch(_) {}
+      }
+      document.querySelectorAll('.curr-btn').forEach(function(b){
+        b.addEventListener('click', function(){ setCurrency(this.getAttribute('data-curr')); });
+      });
+      var saved = null;
+      try { saved = localStorage.getItem('mp_currency'); } catch(_) {}
+      if (saved && saved !== 'CAD') setCurrency(saved);
+
+      // ROI email gate
+      var roiForm = document.getElementById('roi-gate-form');
+      var roiMsg = document.getElementById('roi-gate-msg');
+      if (roiForm && roiMsg) {
+        roiForm.addEventListener('submit', function(e){
+          e.preventDefault();
+          var email = (roiForm.email.value || '').trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { roiMsg.textContent = 'Please enter a valid email.'; return; }
+          var btn = roiForm.querySelector('button');
+          btn.disabled = true; btn.textContent = 'Sending…';
+          var roiTierEl = document.getElementById('roi-build-display');
+          var scenarioTag = document.getElementById('roi-tag') ? document.getElementById('roi-tag').textContent : '';
+          fetch('/api/newsletter-signup', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, source: 'roi_calc:' + scenarioTag, vertical: 'construction' })
+          }).then(function(r){ return r.json().catch(function(){return {};}); }).then(function(){
+            roiForm.style.display = 'none';
+            roiMsg.style.color = '#f97316';
+            roiMsg.textContent = '✓ Sent. Check your inbox shortly.';
+          }).catch(function(){
+            btn.disabled = false; btn.textContent = 'Try again →';
+            roiMsg.textContent = 'Something went wrong. Email general@marapone.com.';
+          });
+        });
+      }
+    })();
   </script>
 
 </body>

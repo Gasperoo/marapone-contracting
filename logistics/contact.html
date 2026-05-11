@@ -50,6 +50,7 @@
     gtag('config', 'G-J31Z05DB01');
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
 </head>
 <body class="antialiased">
 
@@ -254,6 +255,44 @@
                 </select>
               </div>
 
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="budget">Budget range <span class="text-plate">(rough)</span></label>
+                  <select id="budget" name="budget">
+                    <option value="" selected>Select…</option>
+                    <option value="under_5k">Under $5,000</option>
+                    <option value="5_10k">$5,000 – $10,000</option>
+                    <option value="10_20k">$10,000 – $20,000</option>
+                    <option value="20k_plus">$20,000+</option>
+                    <option value="not_sure">Not sure yet</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="timeline">Timeline</label>
+                  <select id="timeline" name="timeline">
+                    <option value="" selected>Select…</option>
+                    <option value="asap">ASAP / already a problem</option>
+                    <option value="30d">Next 30 days</option>
+                    <option value="60_90d">30–90 days</option>
+                    <option value="q">This quarter</option>
+                    <option value="exploring">Just exploring</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="source">How did you hear about us? <span class="text-plate">(optional)</span></label>
+                <select id="source" name="source">
+                  <option value="" selected>Select…</option>
+                  <option value="google">Google search</option>
+                  <option value="linkedin">LinkedIn</option>
+                  <option value="referral">Referral from someone</option>
+                  <option value="industry">Industry event / publication</option>
+                  <option value="podcast">Podcast / YouTube</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
               <div>
                 <label for="message">Anything else we should know?</label>
                 <textarea id="message" name="message" rows="4" placeholder="Tell us about your operation, the biggest document headaches you're dealing with, or anything else that's useful context."></textarea>
@@ -286,7 +325,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
                     <p class="text-fog text-sm">Drag & drop or <span style="color:#52b788">click to browse</span></p>
-                    <p class="text-fog text-xs mt-1">PDF, DOCX, PNG, JPG — max 5 MB</p>
+                    <p class="text-fog text-xs mt-1">PDF, DOCX, PNG, JPG — max 10 MB</p>
                   </div>
                   <div id="file-preview" class="hidden items-center justify-between gap-3 bg-steel px-4 py-3 rounded-lg">
                     <div class="flex items-center gap-3 min-w-0">
@@ -331,7 +370,7 @@
                 'image/png',
                 'image/jpeg',
               ];
-              const MAX_FILE_BYTES = 5 * 1024 * 1024;
+              const MAX_FILE_BYTES = 10 * 1024 * 1024;
 
               function checkMagicBytes(bytes, ext) {
                 const b = new Uint8Array(bytes);
@@ -386,7 +425,7 @@
                   return;
                 }
                 if (file.size > MAX_FILE_BYTES) {
-                  showFileError('File is too large. Maximum size is 5 MB.');
+                  showFileError('File is too large. Maximum size is 10 MB.');
                   clearFile();
                   return;
                 }
@@ -453,6 +492,9 @@
                   phone: form.phone.value,
                   industry: form.industry.value,
                   doc_type: form.doc_type.value,
+                  budget: form.budget?.value || '',
+                  timeline: form.timeline?.value || '',
+                  source: form.source?.value || '',
                   message: form.message.value,
                   attachment: attachedFile,
                 };

@@ -44,6 +44,9 @@
     },
     "api/send-discovery-email.js": {
       "maxDuration": 10
+    },
+    "api/newsletter-signup.js": {
+      "maxDuration": 10
     }
   },
   "rewrites": [
@@ -211,6 +214,7 @@
     { "source": "/logistics/resources/private-tms-integrated-ai", "destination": "/logistics/resources/private-tms-integrated-ai.html" },
     { "source": "/logistics/resources/what-owning-the-model-means", "destination": "/logistics/resources/what-owning-the-model-means.html" },
     { "source": "/logistics/resources/sample-carrier-scorecard", "destination": "/logistics/resources/sample-carrier-scorecard.html" },
+    { "source": "/api/newsletter-signup", "destination": "/api/newsletter-signup" },
     {
       "source": "/api/send-contact-email",
       "destination": "/api/send-contact-email"

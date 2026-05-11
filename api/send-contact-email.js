@@ -6,7 +6,7 @@ import crypto from 'crypto';
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: '8mb',
+      sizeLimit: '16mb',
     },
   },
 };
@@ -43,7 +43,7 @@ function escapeHtml(str) {
 
 // --- File validation ---
 const ALLOWED_EXTENSIONS = new Set(['pdf', 'docx', 'png', 'jpg', 'jpeg']);
-const MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024;
+const MAX_ATTACHMENT_BYTES = 10 * 1024 * 1024;
 const MIME_TYPES = {
   pdf: 'application/pdf',
   docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -69,6 +69,7 @@ function checkMagicBytes(buf, ext) {
 const LIMITS = {
   name: 100, email: 254, company: 150, phone: 30,
   industry: 50, doc_type: 50, message: 2000,
+  budget: 50, timeline: 50, source: 80,
 };
 
 // --- Step 1: Supabase Storage quarantine ---
@@ -231,6 +232,9 @@ export default async function handler(req, res) {
   const rawIndustry = req.body.industry?.trim();
   const rawDocType  = req.body.doc_type?.trim();
   const rawMessage  = req.body.message?.trim();
+  const rawBudget   = req.body.budget?.trim();
+  const rawTimeline = req.body.timeline?.trim();
+  const rawSource   = req.body.source?.trim();
 
   if (!rawName || !rawEmail) {
     return res.status(400).json({ error: 'Missing required fields (name and email are required)' });
@@ -241,6 +245,9 @@ export default async function handler(req, res) {
   if (rawCompany?.length > LIMITS.company)     return res.status(400).json({ error: 'Company name is too long.' });
   if (rawPhone?.length > LIMITS.phone)         return res.status(400).json({ error: 'Phone number is too long.' });
   if (rawMessage?.length > LIMITS.message)     return res.status(400).json({ error: 'Message is too long (max 2000 characters).' });
+  if (rawBudget?.length > LIMITS.budget)       return res.status(400).json({ error: 'Budget value too long.' });
+  if (rawTimeline?.length > LIMITS.timeline)   return res.status(400).json({ error: 'Timeline value too long.' });
+  if (rawSource?.length > LIMITS.source)       return res.status(400).json({ error: 'Source value too long.' });
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(rawEmail)) {
@@ -260,6 +267,31 @@ export default async function handler(req, res) {
   const company  = escapeHtml(rawCompany);
   const phone    = escapeHtml(rawPhone);
   const message  = escapeHtml(rawMessage);
+
+  const budgetLabel = escapeHtml({
+    under_5k:  'Under $5,000 CAD',
+    '5_10k':   '$5,000 – $10,000 CAD',
+    '10_20k':  '$10,000 – $20,000 CAD',
+    '20k_plus':'$20,000+ CAD',
+    not_sure:  'Not sure yet',
+  }[rawBudget] || rawBudget || 'Not provided');
+
+  const timelineLabel = escapeHtml({
+    asap:      'ASAP / Already a problem',
+    '30d':     'Next 30 days',
+    '60_90d':  '30–90 days',
+    'q':       'This quarter',
+    exploring: 'Just exploring',
+  }[rawTimeline] || rawTimeline || 'Not provided');
+
+  const sourceLabel = escapeHtml({
+    google:    'Google search',
+    linkedin:  'LinkedIn',
+    referral:  'Referral from someone',
+    industry:  'Industry event / publication',
+    podcast:   'Podcast / YouTube',
+    other:     'Other',
+  }[rawSource] || rawSource || 'Not provided');
 
   const industryLabel = escapeHtml({
     residential: 'Residential construction',
@@ -321,7 +353,7 @@ export default async function handler(req, res) {
     }
 
     if (fileBuffer.length > MAX_ATTACHMENT_BYTES) {
-      return res.status(400).json({ error: 'Attachment exceeds 5 MB limit.' });
+      return res.status(400).json({ error: 'Attachment exceeds 10 MB limit.' });
     }
 
     if (!checkMagicBytes(fileBuffer, ext)) {
@@ -419,6 +451,18 @@ export default async function handler(req, res) {
               <div class="info-row">
                 <span class="label">Document Type</span>
                 <span class="value">${docTypeLabel}</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Budget</span>
+                <span class="value">${budgetLabel}</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Timeline</span>
+                <span class="value">${timelineLabel}</span>
+              </div>
+              <div class="info-row">
+                <span class="label">How they heard about us</span>
+                <span class="value">${sourceLabel}</span>
               </div>
               ${message ? `
               <div>

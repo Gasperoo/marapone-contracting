@@ -267,6 +267,7 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
   </style>
+  <script defer src="/widgets.js"></script>
 </head>
 
 <body class="antialiased">
@@ -323,11 +324,38 @@
 
   <!-- FAQ CONTENT -->
   <section class="py-16 lg:py-24">
-    <div class="max-w-3xl mx-auto px-4 space-y-16">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <!-- Search + jump-to nav -->
+      <div class="mb-10">
+        <div class="relative">
+          <label for="faq-search" class="sr-only">Search the FAQ</label>
+          <input id="faq-search" type="search" placeholder="Search the FAQ…" autocomplete="off" class="w-full bg-steel border border-plate rounded-md text-chalk px-10 py-3 text-sm font-body outline-none focus:border-hiviz transition-colors" />
+          <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-fog pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M16 11a5 5 0 11-10 0 5 5 0 0110 0z"/></svg>
+        </div>
+        <p id="faq-empty" class="hidden mt-3 text-xs font-mono text-fog">No matches. Try another phrase or <a href="/construction/contact" class="text-hiviz hover:underline">ask us directly →</a></p>
+        <div class="flex flex-wrap gap-x-3 gap-y-2 mt-4 text-xs font-mono text-fog">
+          <a href="#what-we-build" class="hover:text-hiviz transition-colors">What we build</a>
+          <span class="text-plate">·</span>
+          <a href="#ownership-pricing" class="hover:text-hiviz transition-colors">Ownership &amp; Pricing</a>
+          <span class="text-plate">·</span>
+          <a href="#data-security" class="hover:text-hiviz transition-colors">Data &amp; Security</a>
+          <span class="text-plate">·</span>
+          <a href="#objections" class="hover:text-hiviz transition-colors">Objections</a>
+          <span class="text-plate">·</span>
+          <a href="#hardware" class="hover:text-hiviz transition-colors">Hardware</a>
+          <span class="text-plate">·</span>
+          <a href="#marketing" class="hover:text-hiviz transition-colors">Marketing</a>
+          <span class="text-plate">·</span>
+          <a href="#getting-started" class="hover:text-hiviz transition-colors">Getting Started</a>
+        </div>
+      </div>
+
+      <div class="space-y-16">
 
       <!-- GROUP 1: What we build -->
       <div>
-        <p class="section-label">// What we build</p>
+        <p id="what-we-build" class="section-label" style="scroll-margin-top:80px">// What we build</p>
 
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
@@ -396,7 +424,7 @@
 
       <!-- GROUP 2: Ownership & Pricing -->
       <div>
-        <p class="section-label">// Ownership & Pricing</p>
+        <p id="ownership-pricing" class="section-label" style="scroll-margin-top:80px">// Ownership &amp; Pricing</p>
 
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
@@ -463,7 +491,7 @@
 
       <!-- GROUP 3: Data & Security -->
       <div>
-        <p class="section-label">// Data & Security</p>
+        <p id="data-security" class="section-label" style="scroll-margin-top:80px">// Data &amp; Security</p>
 
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
@@ -516,7 +544,7 @@
 
       <!-- GROUP 4: Common Objections -->
       <div>
-        <p class="section-label">// Common Objections</p>
+        <p id="objections" class="section-label" style="scroll-margin-top:80px">// Common Objections</p>
 
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
@@ -557,7 +585,7 @@
 
       <!-- GROUP 5: Hardware & Setup -->
       <div>
-        <p class="section-label">// Hardware & Setup</p>
+        <p id="hardware" class="section-label" style="scroll-margin-top:80px">// Hardware &amp; Setup</p>
 
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
@@ -608,9 +636,9 @@
         </div>
       </div>
 
-      <!-- GROUP 5: Marketing -->
+      <!-- GROUP 6: Marketing -->
       <div>
-        <p class="section-label">// Marketing</p>
+        <p id="marketing" class="section-label" style="scroll-margin-top:80px">// Marketing</p>
 
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
@@ -649,9 +677,9 @@
         </div>
       </div>
 
-      <!-- GROUP 6: Getting Started -->
+      <!-- GROUP 7: Getting Started -->
       <div>
-        <p class="section-label">// Getting Started</p>
+        <p id="getting-started" class="section-label" style="scroll-margin-top:80px">// Getting Started</p>
 
         <div class="faq-item">
           <button class="faq-trigger" onclick="toggleFaq(this)">
@@ -714,6 +742,7 @@
           </div>
         </div>
 
+      </div>
       </div>
     </div>
   </section>
@@ -789,14 +818,55 @@
   </footer>
 
   <script>
+    // Single-open accordion behaviour, retained for backward compatibility
     function toggleFaq(trigger) {
       const item = trigger.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      // Close all
       document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      // Open this one if it wasn't already open
-      if (!isOpen) item.classList.add('open');
+      if (!isOpen) {
+        item.classList.add('open');
+        if (item.id) history.replaceState(null, '', '#' + item.id);
+      }
     }
+    // Enhancements: slug-IDs, search filter, URL hash deep-link
+    (function(){
+      document.querySelectorAll('.faq-item').forEach(function(item){
+        var q = item.querySelector('.faq-question');
+        if (q && !item.id) {
+          var slug = q.textContent.trim().toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '')
+            .replace(/\s+/g, '-').replace(/-+/g, '-').slice(0, 60);
+          item.id = 'q-' + slug;
+        }
+      });
+      function openFromHash(){
+        if (!location.hash || location.hash.length < 2) return;
+        var t = document.querySelector(location.hash);
+        if (t && t.classList && t.classList.contains('faq-item')) {
+          document.querySelectorAll('.faq-item.open').forEach(function(el){ el.classList.remove('open'); });
+          t.classList.add('open');
+          setTimeout(function(){ t.scrollIntoView({behavior:'smooth', block:'center'}); }, 80);
+        }
+      }
+      openFromHash();
+      window.addEventListener('hashchange', openFromHash);
+      var search = document.getElementById('faq-search');
+      var empty = document.getElementById('faq-empty');
+      if (search) {
+        search.addEventListener('input', function(){
+          var q = this.value.trim().toLowerCase();
+          var anyVisible = false;
+          document.querySelectorAll('.faq-item').forEach(function(item){
+            var match = !q || item.textContent.toLowerCase().includes(q);
+            item.style.display = match ? '' : 'none';
+            if (match) anyVisible = true;
+            if (match && q) item.classList.add('open');
+            else if (!q) item.classList.remove('open');
+          });
+          if (empty) empty.classList.toggle('hidden', anyVisible);
+        });
+      }
+    })();
   </script>
 
   <!-- STICKY FLOATING CTA -->

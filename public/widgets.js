@@ -12,6 +12,7 @@
 
   var path = location.pathname || '';
   var isLogistics = path.indexOf('/logistics') === 0;
+  var isRootLanding = path === '/' || path === '/index.html' || path === '/landing' || path === '/landing.html';
   var accent = isLogistics ? '#52b788' : '#f97316';
   var accentDark = isLogistics ? '#2d6a4f' : '#ea580c';
   var contactUrl = isLogistics ? '/logistics/contact' : '/construction/contact';
@@ -209,7 +210,7 @@
       document.body.classList.add('mp-no-stickycta');
     }
 
-    document.body.appendChild(wa);
+    if (!isRootLanding) document.body.appendChild(wa);
     document.body.appendChild(exit);
     exit.querySelector('.close').addEventListener('click', closeExit);
     exit.addEventListener('click', function (e) { if (e.target === exit) closeExit(); });

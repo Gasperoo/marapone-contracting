@@ -235,6 +235,7 @@ export default async function handler(req, res) {
   const rawBudget   = req.body.budget?.trim();
   const rawTimeline = req.body.timeline?.trim();
   const rawSource   = req.body.source?.trim();
+  const rawRegion   = req.body.region?.trim();
 
   if (!rawName || !rawEmail) {
     return res.status(400).json({ error: 'Missing required fields (name and email are required)' });
@@ -292,6 +293,15 @@ export default async function handler(req, res) {
     podcast:   'Podcast / YouTube',
     other:     'Other',
   }[rawSource] || rawSource || 'Not provided');
+
+  const regionLabel = escapeHtml({
+    north_america: 'North America (US / Canada)',
+    europe:        'Europe / Mediterranean',
+    asia_pacific:  'Asia-Pacific',
+    middle_east:   'Middle East / Africa',
+    latin_america: 'Latin America',
+    global:        'Global / multi-region',
+  }[rawRegion] || rawRegion || '');
 
   const industryLabel = escapeHtml({
     residential: 'Residential construction',
@@ -464,6 +474,7 @@ export default async function handler(req, res) {
                 <span class="label">How they heard about us</span>
                 <span class="value">${sourceLabel}</span>
               </div>
+              ${regionLabel ? `<div class="info-row"><span class="label">Operating region</span><span class="value">${regionLabel}</span></div>` : ''}
               ${message ? `
               <div>
                 <p style="font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #1a1a1a; margin-top: 20px; margin-bottom: 8px;">Additional Notes</p>

@@ -201,6 +201,41 @@
               </button>
               <div class="faq-body"><p>For most logistics builds, a modern business workstation or server is sufficient. Specific requirements depend on your document volume and the number of modules. We confirm hardware requirements during the scoping session. Most operations don't need dedicated GPU servers — logistics document processing runs efficiently on standard server hardware. Air-gapped deployment is available for high-security environments.</p></div>
             </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">Are you GDPR-compliant for EU operations?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Yes, by design. Because the system runs on your infrastructure with no third-party data calls, GDPR compliance becomes a question of <em>your</em> hardware and <em>your</em> data-handling policies — not a vendor's. We can deploy with EU-resident processing only (our Rome office handles EU builds end to end), provide a Data Processing Agreement (DPA), and the system supports right-to-be-forgotten via standard file-system controls. We've shipped builds for clients with strict GDPR posture; details vary, so we cover specifics during scoping.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">Where is my data processed during the build phase?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>You choose. Default is Canadian processing via our Toronto build environment. EU clients can require Rome-only processing — documents you send for fine-tuning never leave EU jurisdiction. For sensitive operations (defence, regulated commodities, classified shipments), we offer on-prem build sessions where Marapone engineers work inside your network and no documents are exported. After handover, processing location is whatever <em>you</em> choose — usually your own server.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What gets logged? Is there an audit trail?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>The system writes structured logs locally: timestamp, document hash, module invoked, output summary, user who ran it. Logs stay on your machine — they never leave your network. Retention is configurable (default: 12 months, then rolling deletion). For SOC 2 or ISO-aligned operations, we ship the build with logging hooks compatible with Splunk, Datadog, or your existing SIEM. The audit trail is yours to query, forward, or purge.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">How do you handle customs and tariff data — CBSA, CBP, EU NCTS?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Customs documents (entry summaries, B3s, EU NCTS declarations, broker filings) are treated as your most sensitive data class. The model is fine-tuned on your customs operation's actual filings; the model weights live on your hardware; no part of the customs corpus is ever transmitted off your network after deployment. For brokers regulated under CBSA's CARM, CBP's ACE, or EU NCTS, the system is configurable to mirror your retention and access-control requirements (typically 6 years for CA/US, varies in EU).</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-trigger" onclick="this.closest('.faq-item').classList.toggle('open')" aria-expanded="false">
+                <span class="faq-question">What's your retention and deletion policy for fine-tuning data?</span>
+                <svg class="faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div class="faq-body"><p>Documents you send for fine-tuning during the build are deleted from our environment within 30 days of system handover — verified by signed checksum. You can request immediate deletion (within 24 hours of handover) by email and we'll send a deletion confirmation. The fine-tuned model itself doesn't memorize specific documents — it learns the <em>patterns</em> of your document language. If you ever discover a document was sent in error, we re-run the deletion process and confirm in writing.</p></div>
+            </div>
           </div>
 
           <p id="technical" class="section-label mt-10" style="scroll-margin-top:80px">Technical</p>

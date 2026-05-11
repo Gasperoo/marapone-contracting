@@ -243,6 +243,19 @@
               </div>
 
               <div>
+                <label for="region">Operating region <span class="text-plate">(for routing your build)</span></label>
+                <select id="region" name="region">
+                  <option value="" selected>Select…</option>
+                  <option value="north_america">North America (US / Canada)</option>
+                  <option value="europe">Europe / Mediterranean</option>
+                  <option value="asia_pacific">Asia-Pacific</option>
+                  <option value="middle_east">Middle East / Africa</option>
+                  <option value="latin_america">Latin America</option>
+                  <option value="global">Global / multi-region</option>
+                </select>
+              </div>
+
+              <div>
                 <label for="doc_type">What are you sending us?</label>
                 <select id="doc_type" name="doc_type">
                   <option value="" disabled selected>Select one...</option>
@@ -491,6 +504,7 @@
                   company: form.company.value,
                   phone: form.phone.value,
                   industry: form.industry.value,
+                  region: form.region?.value || '',
                   doc_type: form.doc_type.value,
                   budget: form.budget?.value || '',
                   timeline: form.timeline?.value || '',

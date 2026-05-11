@@ -99,7 +99,104 @@
     exit.classList.add('open');
   }
 
+  // ===== "MORE" NAV DROPDOWN =====
+  // Inject a "More" item into the vertical nav (Resources / Architecture / Integrations / Trust)
+  function injectMoreDropdown() {
+    // Only on /construction/* or /logistics/* pages
+    var v = isLogistics ? 'logistics' : 'construction';
+    if (path.indexOf('/' + v) !== 0) return;
+
+    var items = [
+      { label: 'Resources',    href: '/' + v + '/resources' },
+      { label: 'Architecture', href: '/' + v + '/architecture' },
+      { label: 'Integrations', href: '/' + v + '/integrations' },
+      { label: 'Trust',        href: '/' + v + '/trust' },
+    ];
+
+    // ---- DESKTOP: insert dropdown into nav before the About link ----
+    document.querySelectorAll('nav .md\\:flex').forEach(function (navRow) {
+      if (navRow.querySelector('[data-mp-more]')) return;
+      var aboutLink = null;
+      navRow.querySelectorAll('a').forEach(function (a) {
+        if (a.getAttribute('href') === '/' + v + '/about' &&
+            !a.className.includes('bg-hiviz') &&
+            !(a.getAttribute('style') || '').includes('background:linear-gradient')) {
+          aboutLink = a;
+        }
+      });
+      if (!aboutLink) return;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'relative';
+      wrap.setAttribute('data-mp-more', '');
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium';
+      btn.setAttribute('aria-haspopup', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = 'More<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7"/></svg>';
+
+      var menu = document.createElement('div');
+      menu.className = 'absolute right-0 mt-2 border border-plate rounded-md py-2 z-50';
+      menu.style.cssText = 'top:100%;min-width:190px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,0.55);display:none';
+      items.forEach(function (i) {
+        var a = document.createElement('a');
+        a.href = i.href;
+        a.textContent = i.label;
+        a.className = 'block px-4 py-2 text-sm text-fog transition-colors';
+        a.addEventListener('mouseover', function () { a.style.color = accent; a.style.background = '#232323'; });
+        a.addEventListener('mouseout',  function () { a.style.color = '';      a.style.background = ''; });
+        menu.appendChild(a);
+      });
+
+      function close() {
+        menu.style.display = 'none';
+        btn.setAttribute('aria-expanded', 'false');
+        var chev = btn.querySelector('.mp-chev'); if (chev) chev.style.transform = '';
+      }
+      function toggle(e) {
+        e.stopPropagation();
+        var open = menu.style.display === 'block';
+        if (open) return close();
+        menu.style.display = 'block';
+        btn.setAttribute('aria-expanded', 'true');
+        var chev = btn.querySelector('.mp-chev'); if (chev) chev.style.transform = 'rotate(180deg)';
+      }
+      btn.addEventListener('click', toggle);
+      document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+      wrap.appendChild(btn);
+      wrap.appendChild(menu);
+      aboutLink.parentNode.insertBefore(wrap, aboutLink);
+    });
+
+    // ---- MOBILE: append items into #mobile-menu before the About link ----
+    document.querySelectorAll('#mobile-menu').forEach(function (mob) {
+      if (mob.querySelector('[data-mp-more-mobile]')) return;
+      var aboutLink = mob.querySelector('a[href="/' + v + '/about"]');
+      if (!aboutLink) return;
+
+      var label = document.createElement('p');
+      label.setAttribute('data-mp-more-mobile', '');
+      label.className = 'font-mono text-xs text-plate pt-3';
+      label.textContent = '// More';
+      aboutLink.parentNode.insertBefore(label, aboutLink);
+
+      items.forEach(function (i) {
+        var a = document.createElement('a');
+        a.href = i.href;
+        a.textContent = i.label;
+        a.className = 'text-fog hover:text-chalk';
+        a.style.paddingLeft = '0.75rem';
+        aboutLink.parentNode.insertBefore(a, aboutLink);
+      });
+    });
+  }
+
   function attach() {
+    injectMoreDropdown();
     document.body.appendChild(wa);
     document.body.appendChild(exit);
     exit.querySelector('.close').addEventListener('click', closeExit);

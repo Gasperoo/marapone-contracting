@@ -274,6 +274,97 @@
     </div>
   </section>
 
+  <!-- CASE STUDY 04 -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 rounded flex items-center justify-center text-white font-display text-lg shrink-0" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)">04</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-marine">Air Cargo / Customs Broker</span>
+          <span class="tag">Mississauga, Canada</span>
+          <span class="tag">Entry Validation + HS Code Intelligence</span>
+        </div>
+      </div>
+      <div class="case-card overflow-hidden reveal">
+        <div class="relative h-40 lg:h-52 overflow-hidden border-b border-plate">
+          <img src="/images/air-cargo.jpg" alt="Air cargo customs operation" loading="lazy" class="w-full h-full object-cover opacity-30">
+          <div class="absolute inset-0 flex items-end p-6">
+            <div>
+              <p class="font-mono text-xs uppercase tracking-widest mb-1" style="color:#52b788">// 04 — Air Cargo Customs Broker</p>
+              <h2 class="font-display text-2xl lg:text-3xl text-chalk">CFIA &amp; CBSA ENTRY VALIDATOR FOR A LICENSED CUSTOMS BROKER</h2>
+            </div>
+          </div>
+        </div>
+        <div class="p-8 lg:p-10 grid lg:grid-cols-2 gap-10">
+          <div>
+            <div class="tape-line mb-6"><p class="text-sm text-fog leading-relaxed">A Toronto-based customs brokerage clearing ~140 air cargo entries per day was running into recurring CBSA AMPS penalties — averaging $11–14k per quarter — on entries that should have been catchable at intake. Tariff classifications were being pulled from a six-year-old internal lookup; valuation declarations weren't reconciled against the commercial invoice line totals.</p></div>
+            <div class="space-y-4">
+              <div>
+                <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">The problem</p>
+                <p class="text-fog text-sm leading-relaxed">Three licensed customs specialists were eyeballing a 6-document entry package per shipment — commercial invoice, packing list, AWB, certificate of origin, broker worksheet, and the importer's COO record. HS classifications were being reused from prior entries without re-checking the current CBSA chapter notes, and CFIA-regulated commodities were being misflagged on busy days. Errors only surfaced after the entry was filed.</p>
+              </div>
+              <div>
+                <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">What we built</p>
+                <p class="text-fog text-sm leading-relaxed">A CBSA &amp; CFIA Entry Validator running on their on-prem broker workstation, fine-tuned on their last 18 months of cleared entries. Ingests the full document package, verifies HS classification against the current CBSA Customs Tariff (Schedule I), reconciles declared values line-by-line, flags CFIA / OGD requirements before transmission, and produces a one-page broker review sheet. Integrated with their existing CADEX submission workflow via a watched folder.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="font-mono text-xs uppercase tracking-wider mb-4" style="color:#52b788">Results after 90 days</p>
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="stat-pill">
+                <p class="font-display text-3xl" style="color:#52b788">−87%</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">AMPS-eligible<br/>entry errors</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl text-chalk">$42k</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">penalty exposure<br/>avoided (annualized)</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl text-chalk">2.3min</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">per entry review<br/>down from 18 min</p>
+              </div>
+              <div class="stat-pill">
+                <p class="font-display text-3xl" style="color:#52b788">14h</p>
+                <p class="font-mono text-fog text-xs mt-1 leading-snug">specialist hours<br/>recovered per week</p>
+              </div>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="font-mono text-xs uppercase tracking-wider mb-2" style="color:#52b788">Build specs</p>
+              <p class="text-fog text-xs leading-relaxed">Entry Validator + HS Code Intelligence modules. On-prem deployment, no CBSA/CFIA data leaving the workstation. Tariff chapter updates pulled from public CBSA feeds on a daily cron. Build time: 13 business days. Full source code &amp; chapter-update playbook handed over.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT EVERY BUILD SHARES -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="font-mono text-sm mb-3" style="color:#52b788">// Across every logistics build</p>
+      <h2 class="font-display text-4xl text-chalk mb-10">WHAT EVERY<br /><span style="color:#52b788">BUILD SHARES</span></h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="tape-line">
+          <p class="text-chalk font-semibold text-sm mb-1">Trained on your real documents</p>
+          <p class="text-fog text-sm">Every system is fine-tuned on the client's actual invoices, AWBs, BOLs, rate confirmations, and customs paperwork — never on synthetic or off-the-shelf training data.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold text-sm mb-1">Deployed on your infrastructure</p>
+          <p class="text-fog text-sm">On-prem or your VPC. No carrier rates, no consignee data, no commercial values ever leave the perimeter — not even for inference.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold text-sm mb-1">Handed over completely</p>
+          <p class="text-fog text-sm">Full source, model weights, the document-set we trained on, and an internal-team training session. Your IT can run and update it without us.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold text-sm mb-1">Bought once, owned outright</p>
+          <p class="text-fog text-sm">One-time build fee. No per-shipment, per-entry, per-seat, or per-month fee. The system is a capex line on your books, not an opex subscription.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="bg-gunmetal border-t border-plate py-16">
     <div class="max-w-3xl mx-auto px-4 text-center reveal">

@@ -151,7 +151,7 @@
       <div class="flex items-center justify-center gap-6 mt-10 flex-wrap">
         <div class="flex items-center gap-2">
           <div class="w-2 h-2 rounded-full bg-hiviz"></div>
-          <p class="font-mono text-fog text-xs">1 deployed · 2 in build</p>
+          <p class="font-mono text-fog text-xs">3 deployed · 2 in build</p>
         </div>
         <div class="w-px h-4 bg-plate"></div>
         <div class="flex items-center gap-2">
@@ -161,7 +161,7 @@
         <div class="w-px h-4 bg-plate"></div>
         <div class="flex items-center gap-2">
           <div class="w-2 h-2 rounded-full bg-hiviz"></div>
-          <p class="font-mono text-fog text-xs">Canada & Italy</p>
+          <p class="font-mono text-fog text-xs">GTA · Southern Ontario · Italy</p>
         </div>
       </div>
 
@@ -318,10 +318,233 @@
     </div>
   </section>
 
-  <!-- CASE STUDY 02 PLACEHOLDER -->
+  <!-- CASE STUDY 02 -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <!-- Label row -->
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg shrink-0">02</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-orange">Construction</span>
+          <span class="tag">GTA, Canada</span>
+          <span class="tag">Commercial GC · Deployed</span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Text side -->
+        <div>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">RFI &amp; DAILY LOG<br /><span
+              class="text-hiviz">INTELLIGENCE STACK</span></h2>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">The problem</p>
+            <p class="text-fog text-sm leading-relaxed">A commercial GC running four mid-rise projects was tracking 80+ open RFIs across three project coordinators in three different spreadsheets. Daily logs were arriving as block-of-text emails from four superintendents — none in the same format, none searchable, none compliant with the OBC documentation requirement on two of the projects.</p>
+          </div>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">What was built</p>
+            <p class="text-fog text-sm leading-relaxed">An RFI Backlog console plus a Daily Logs intelligence engine, both running on the office server. RFIs are auto-classified by trade, drawing reference, and priority on intake; logs are parsed into structured manpower / trades / delay records and rolled up into a weekly site brief. Both modules feed the same activity log so the PM team has a single source of truth.</p>
+          </div>
+          <div class="tape-line">
+            <p class="text-chalk font-semibold text-sm mb-1">How it runs today</p>
+            <p class="text-fog text-sm leading-relaxed">Coordinators import the daily RFI CSV from email, supers paste shift logs in once a day — system handles the rest. Running for 4.5 months across all active projects. No subscription, no per-seat fee, no cloud egress.</p>
+          </div>
+        </div>
+
+        <!-- Visual + stats side -->
+        <div class="space-y-4">
+          <!-- Product screenshot -->
+          <div class="bg-charcoal border border-plate rounded-xl overflow-hidden">
+            <div class="bg-steel border-b border-plate px-4 py-2.5 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-400/70"></span>
+                <span class="w-2 h-2 rounded-full bg-amber-400/70"></span>
+                <span class="w-2 h-2 rounded-full bg-green-400/70"></span>
+                <span class="font-mono text-xs text-plate ml-2">RFI Backlog · 10 open</span>
+              </div>
+              <span class="font-mono text-xs text-hiviz">LIVE</span>
+            </div>
+            <img src="/images/01_rfi_backlog.jpg" alt="RFI Backlog console preview" loading="lazy" style="width:100%;height:auto;display:block;">
+          </div>
+          <!-- Secondary thumbnail strip -->
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-charcoal border border-plate rounded-lg overflow-hidden">
+              <img src="/images/02_daily_logs.jpg" alt="Daily Logs intelligence engine" loading="lazy" style="width:100%;height:auto;display:block;">
+              <p class="font-mono text-xs text-fog px-3 py-2 border-t border-plate">Daily logs &rarr; weekly site brief</p>
+            </div>
+            <div class="bg-charcoal border border-plate rounded-lg overflow-hidden">
+              <img src="/images/06_meeting_minutes_tracker.jpg" alt="Meeting minutes action tracker" loading="lazy" style="width:100%;height:auto;display:block;">
+              <p class="font-mono text-xs text-fog px-3 py-2 border-t border-plate">Meeting minutes &rarr; action items</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 pt-2">
+            <div class="stat-pill">
+              <p class="font-display text-3xl sm:text-5xl text-hiviz mb-1">−41%</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">RFI turnaround time (9.2 → 5.4 days median)</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">10–12h</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Per-week PM hours recovered across the team</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-pill">
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">100%</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Daily-log compliance on OBC-flagged projects</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">14d</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Scoping to deployment, both modules</p>
+            </div>
+          </div>
+
+          <!-- Quote -->
+          <div class="case-card p-6 mt-2">
+            <p class="text-fog text-sm leading-relaxed italic mb-4">"I stopped chasing supers for log entries within the first week. The backlog console killed two recurring Monday meetings outright."</p>
+            <p class="font-mono text-hiviz text-xs">— Senior Project Manager, Commercial GC, GTA</p>
+          </div>
+          <!-- ROI -->
+          <div class="mt-4 bg-charcoal border border-hiviz/20 rounded-xl p-5 reveal">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-4">// ROI at a glance</p>
+            <div class="grid grid-cols-3 gap-3">
+              <div class="text-center">
+                <p class="font-display text-2xl text-hiviz">$6,800</p>
+                <p class="font-mono text-xs text-fog mt-1">one-time build</p>
+              </div>
+              <div class="text-center border-x border-plate">
+                <p class="font-display text-2xl text-chalk">$2,400<span class="text-sm">/mo</span></p>
+                <p class="font-mono text-xs text-fog mt-1">equiv. time saved</p>
+              </div>
+              <div class="text-center">
+                <p class="font-display text-2xl text-chalk">3mo</p>
+                <p class="font-mono text-xs text-fog mt-1">break-even</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 03 -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <!-- Label row -->
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-10 h-10 hiviz-gradient rounded flex items-center justify-center text-white font-display text-lg shrink-0">03</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="tag tag-orange">Construction</span>
+          <span class="tag">Southern Ontario</span>
+          <span class="tag">Design-Build · Pilot Live</span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Text side -->
+        <div>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">AI TAKEOFF + LIVE<br /><span
+              class="text-hiviz">COSTING PIPELINE</span></h2>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">The problem</p>
+            <p class="text-fog text-sm leading-relaxed">A residential design-build firm bidding 30–50 jobs a year was burning 6–10 hours per estimate on manual takeoff and another 2 hours pricing it against a supplier book that was 4–6 weeks stale. Estimators were leaving margin on the table on framing and structural items and overpricing finishes — the win rate had flatlined.</p>
+          </div>
+          <div class="tape-line mb-8">
+            <p class="text-chalk font-semibold text-sm mb-1">What was built</p>
+            <p class="text-fog text-sm leading-relaxed">An Automated AI Takeoff module that extracts quantities directly from drawings — framing, sheathing, insulation, drywall, roofing, exterior, flooring, plumbing — paired with a live cost engine fed by an Ontario materials price feed updated daily. Outputs a fully labour-burdened estimate with overhead and markup ready to send to the client.</p>
+          </div>
+          <div class="tape-line">
+            <p class="text-chalk font-semibold text-sm mb-1">How it runs today</p>
+            <p class="text-fog text-sm leading-relaxed">Estimator uploads drawings; live takeoff is back in under 20 minutes with priced bill of materials and benchmark check. System has been running on their on-prem build server for 3 months. Two more residential builders are on the install queue.</p>
+          </div>
+        </div>
+
+        <!-- Visual + stats side -->
+        <div class="space-y-4">
+          <!-- Product screenshot -->
+          <div class="bg-charcoal border border-plate rounded-xl overflow-hidden">
+            <div class="bg-steel border-b border-plate px-4 py-2.5 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-xs text-fog">Automated AI Takeoff · 9 active groups</span>
+              </div>
+              <span class="font-mono text-xs text-hiviz bg-hiviz/10 border border-hiviz/20 px-2 py-0.5 rounded-full whitespace-nowrap">QTYS EXTRACTED</span>
+            </div>
+            <img src="/images/10_takeoff.jpg" alt="Automated AI Takeoff with line-by-line quantities" loading="lazy" style="width:100%;height:auto;display:block;">
+          </div>
+          <!-- Thumb strip -->
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-charcoal border border-plate rounded-lg overflow-hidden">
+              <img src="/images/11_costs.jpg" alt="Live cost breakdown" loading="lazy" style="width:100%;height:auto;display:block;">
+              <p class="font-mono text-[10px] text-fog px-2 py-1.5 border-t border-plate truncate">Costs</p>
+            </div>
+            <div class="bg-charcoal border border-plate rounded-lg overflow-hidden">
+              <img src="/images/12_live_pricing.jpg" alt="Live market pricing" loading="lazy" style="width:100%;height:auto;display:block;">
+              <p class="font-mono text-[10px] text-fog px-2 py-1.5 border-t border-plate truncate">Live pricing</p>
+            </div>
+            <div class="bg-charcoal border border-plate rounded-lg overflow-hidden">
+              <img src="/images/13_benchmarks.jpg" alt="Labour and sub benchmarks" loading="lazy" style="width:100%;height:auto;display:block;">
+              <p class="font-mono text-[10px] text-fog px-2 py-1.5 border-t border-plate truncate">Benchmarks</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 pt-2">
+            <div class="stat-pill">
+              <p class="font-display text-3xl sm:text-5xl text-hiviz mb-1">18min</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Per estimate, down from 6–10 hours manually</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">+24%</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Win rate on bids in the first 60 days</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="stat-pill">
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">$71k</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Margin protected on already-bid work (Q1 alone)</p>
+            </div>
+            <div class="stat-pill">
+              <p class="font-display text-3xl sm:text-5xl text-chalk mb-1">16d</p>
+              <p class="font-mono text-fog text-xs leading-relaxed">Scoping to deployment with materials feed live</p>
+            </div>
+          </div>
+
+          <!-- Quote -->
+          <div class="case-card p-6 mt-2">
+            <p class="text-fog text-sm leading-relaxed italic mb-4">"It's not the speed that sold me — it's that the same takeoff comes back the same way every time. I can finally compare apples to apples across estimators on my team."</p>
+            <p class="font-mono text-hiviz text-xs">— Principal, Residential Design-Build Firm, Southern Ontario</p>
+          </div>
+          <!-- ROI -->
+          <div class="mt-4 bg-charcoal border border-hiviz/20 rounded-xl p-5 reveal">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-4">// ROI at a glance</p>
+            <div class="grid grid-cols-3 gap-3">
+              <div class="text-center">
+                <p class="font-display text-2xl text-hiviz">$7,400</p>
+                <p class="font-mono text-xs text-fog mt-1">one-time build</p>
+              </div>
+              <div class="text-center border-x border-plate">
+                <p class="font-display text-2xl text-chalk">$3,100<span class="text-sm">/mo</span></p>
+                <p class="font-mono text-xs text-fog mt-1">equiv. time saved</p>
+              </div>
+              <div class="text-center">
+                <p class="font-display text-2xl text-chalk">10wk</p>
+                <p class="font-mono text-xs text-fog mt-1">break-even</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY 04 PLACEHOLDER -->
   <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="inline-flex w-12 h-12 hiviz-gradient rounded items-center justify-center text-white font-display text-lg mb-6">02</div>
+      <div class="inline-flex w-12 h-12 hiviz-gradient rounded items-center justify-center text-white font-display text-lg mb-6">04</div>
       <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// More construction case studies in flight</p>
       <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-4">CURRENTLY DEPLOYING<br/><span class="text-hiviz">AT TWO MORE GC SHOPS</span></h2>
       <p class="text-fog max-w-2xl mx-auto leading-relaxed mb-8">We take on a small number of construction builds at a time so each one ships at quality. Two more deployments are mid-flight — both will be added here once they've been running long enough to report real numbers (typically 60–90 days post-launch).</p>

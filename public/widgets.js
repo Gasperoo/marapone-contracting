@@ -111,6 +111,9 @@
       { label: 'Architecture', href: '/' + v + '/architecture' },
       { label: 'Integrations', href: '/' + v + '/integrations' },
       { label: 'Trust',        href: '/' + v + '/trust' },
+      isLogistics
+        ? { label: 'vs Project44', href: '/logistics/vs/project44' }
+        : { label: 'vs Procore',   href: '/construction/vs/procore' },
     ];
 
     // ---- DESKTOP: insert dropdown into nav before the About link ----

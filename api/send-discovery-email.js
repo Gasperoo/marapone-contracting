@@ -36,7 +36,14 @@ const LIMITS = {
   email: 254,
   phone: 30,
   message: 1000,
+  timezone: 64,
+  slot: 80,
+  region: 32,
 };
+
+// Validate ISO-ish date (YYYY-MM-DD) and time (HH:MM)
+function isValidDate(s) { return /^\d{4}-\d{2}-\d{2}$/.test(s); }
+function isValidTime(s) { return /^\d{2}:\d{2}$/.test(s); }
 
 // --- Akismet spam detection ---
 async function checkAkismet(ip, name, email, message) {
@@ -95,10 +102,15 @@ export default async function handler(req, res) {
   }
 
   // Extract fields
-  const rawName    = req.body.name?.trim();
-  const rawEmail   = req.body.email?.trim();
-  const rawPhone   = req.body.phone?.trim();
-  const rawMessage = req.body.message?.trim();
+  const rawName     = req.body.name?.trim();
+  const rawEmail    = req.body.email?.trim();
+  const rawPhone    = req.body.phone?.trim();
+  const rawMessage  = req.body.message?.trim();
+  const rawTimezone = req.body.timezone?.trim();
+  const rawRegion   = req.body.region?.trim();
+  const rawVertical = req.body.vertical?.trim();
+  // Up to 3 preferred slots, each {date: 'YYYY-MM-DD', time: 'HH:MM'}
+  const rawSlots = Array.isArray(req.body.preferred_slots) ? req.body.preferred_slots.slice(0, 3) : [];
 
   // Required field check
   if (!rawName || !rawEmail) {
@@ -106,10 +118,18 @@ export default async function handler(req, res) {
   }
 
   // Length limits
-  if (rawName.length > LIMITS.name)       return res.status(400).json({ error: 'Name is too long.' });
-  if (rawEmail.length > LIMITS.email)     return res.status(400).json({ error: 'Email is too long.' });
-  if (rawPhone?.length > LIMITS.phone)    return res.status(400).json({ error: 'Phone number is too long.' });
+  if (rawName.length > LIMITS.name)        return res.status(400).json({ error: 'Name is too long.' });
+  if (rawEmail.length > LIMITS.email)      return res.status(400).json({ error: 'Email is too long.' });
+  if (rawPhone?.length > LIMITS.phone)     return res.status(400).json({ error: 'Phone number is too long.' });
   if (rawMessage?.length > LIMITS.message) return res.status(400).json({ error: 'Message is too long (max 1000 characters).' });
+  if (rawTimezone?.length > LIMITS.timezone) return res.status(400).json({ error: 'Invalid timezone.' });
+  if (rawRegion?.length > LIMITS.region)   return res.status(400).json({ error: 'Invalid region.' });
+
+  // Validate slot shape (silently drop malformed entries rather than rejecting whole request)
+  const validSlots = rawSlots
+    .filter(s => s && typeof s === 'object')
+    .filter(s => isValidDate(String(s.date || '')) && isValidTime(String(s.time || '')))
+    .slice(0, 3);
 
   // Email format validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -137,10 +157,22 @@ export default async function handler(req, res) {
   }
 
   // Escape all user input before inserting into HTML
-  const name    = escapeHtml(rawName);
-  const email   = escapeHtml(rawEmail);
-  const phone   = escapeHtml(rawPhone);
-  const message = escapeHtml(rawMessage);
+  const name     = escapeHtml(rawName);
+  const email    = escapeHtml(rawEmail);
+  const phone    = escapeHtml(rawPhone);
+  const message  = escapeHtml(rawMessage);
+  const timezone = escapeHtml(rawTimezone);
+  const region   = escapeHtml(rawRegion);
+  const vertical = escapeHtml(rawVertical);
+
+  // Format slots for display in email
+  const slotsHtml = validSlots.length
+    ? validSlots.map((s, i) => {
+        const date = escapeHtml(s.date);
+        const time = escapeHtml(s.time);
+        return `<div class="info-row"><span class="label">Preferred slot ${i + 1}</span><span class="value">${date} at ${time}${timezone ? ` (${timezone})` : ''}</span></div>`;
+      }).join('')
+    : '';
 
   try {
     await resend.emails.send({
@@ -187,6 +219,10 @@ export default async function handler(req, res) {
                 <span class="label">Phone</span>
                 <span class="value">${phone || 'Not provided'}</span>
               </div>
+              ${vertical ? `<div class="info-row"><span class="label">Vertical</span><span class="value">${vertical}</span></div>` : ''}
+              ${region ? `<div class="info-row"><span class="label">Region</span><span class="value">${region}</span></div>` : ''}
+              ${timezone ? `<div class="info-row"><span class="label">Timezone</span><span class="value">${timezone}</span></div>` : ''}
+              ${slotsHtml}
               ${message ? `
               <div>
                 <p style="font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #1a1a1a; margin-top: 20px; margin-bottom: 8px;">Message</p>

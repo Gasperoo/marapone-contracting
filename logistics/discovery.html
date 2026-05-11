@@ -24,7 +24,7 @@
     body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
     .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
-    input, textarea {
+    input, textarea, select {
       background-color: #2e2e2e;
       border: 1px solid #3a3a3a;
       color: #e8e8e8;
@@ -36,9 +36,16 @@
       transition: border-color 0.15s;
       outline: none;
     }
-    input:focus, textarea:focus { border-color: #52b788; }
+    input:focus, textarea:focus, select:focus { border-color: #52b788; }
     input::placeholder, textarea::placeholder { color: #a0a0a0; }
+    select option { background-color: #2e2e2e; }
     label { display: block; font-size: 0.75rem; font-family: 'DM Mono', monospace; color: #a0a0a0; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    /* Native date/time picker styling for dark theme */
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.7) sepia(1) saturate(8) hue-rotate(85deg); cursor: pointer; }
+    /* Cal.com inline embed container */
+    #cal-inline-embed { min-height: 660px; }
+    #cal-inline-embed:empty::before { content: ''; display: block; }
   </style>
   <!-- Google Analytics (G-J31Z05DB01) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
@@ -159,16 +166,23 @@
           </div>
         </div>
 
-        <!-- RIGHT: Form -->
+        <!-- RIGHT: Booking widget -->
         <div class="lg:col-span-3">
-          <div class="bg-steel border border-plate rounded-xl p-8">
+
+          <!-- Cal.com inline embed (only renders if CAL_NAMESPACE is configured below) -->
+          <div id="cal-embed-wrapper" class="hidden bg-steel border border-plate rounded-xl overflow-hidden">
+            <div id="cal-inline-embed" aria-label="Booking calendar"></div>
+          </div>
+
+          <!-- Native booking form (default) -->
+          <div id="booking-form-wrapper" class="bg-steel border border-plate rounded-xl p-8">
 
             <div id="form-success" class="hidden text-center py-10">
               <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background:rgba(82,183,136,0.15);border:1px solid rgba(82,183,136,0.4)">
                 <svg class="w-8 h-8" style="color:#52b788" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               </div>
-              <h2 class="font-display text-2xl text-chalk mb-2">REQUEST RECEIVED</h2>
-              <p class="text-fog text-sm leading-relaxed max-w-sm mx-auto">We'll confirm a time with you by email within one business day. Talk soon.</p>
+              <h2 class="font-display text-2xl text-chalk mb-2">CALL REQUESTED</h2>
+              <p class="text-fog text-sm leading-relaxed max-w-sm mx-auto">We'll confirm one of your preferred slots by email within one business day. Talk soon.</p>
               <a href="/logistics/" class="inline-block mt-6 text-sm font-mono hover:text-chalk transition-colors" style="color:#52b788">← Back to home</a>
             </div>
 
@@ -180,24 +194,95 @@
                 <input type="text" id="website-discovery" name="website" tabindex="-1" autocomplete="off" />
               </div>
 
-              <div>
-                <label for="name">Full name <span style="color:#52b788">*</span></label>
-                <input type="text" id="name" name="name" placeholder="John Smith" required autocomplete="name" />
+              <p class="font-mono text-xs uppercase tracking-widest mb-1" style="color:#52b788">// Pick the times that work for you</p>
+
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="name">Full name <span style="color:#52b788">*</span></label>
+                  <input type="text" id="name" name="name" placeholder="John Smith" required autocomplete="name" />
+                </div>
+                <div>
+                  <label for="email">Email <span style="color:#52b788">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="you@yourcompany.com" required autocomplete="email" />
+                </div>
               </div>
 
-              <div>
-                <label for="email">Email address <span style="color:#52b788">*</span></label>
-                <input type="email" id="email" name="email" placeholder="you@yourcompany.com" required autocomplete="email" />
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="phone">Phone <span style="color:#52b788">*</span></label>
+                  <input type="tel" id="phone" name="phone" placeholder="+1 (416) 555-0123" autocomplete="tel" required />
+                </div>
+                <div>
+                  <label for="timezone">Your timezone</label>
+                  <select id="timezone" name="timezone"></select>
+                </div>
               </div>
 
+              <!-- Region selector (logistics-specific) -->
               <div>
-                <label for="phone">Phone number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+1 (416) 555-0123" autocomplete="tel" required />
+                <label for="region">Operating region</label>
+                <select id="region" name="region">
+                  <option value="" selected>Auto / no preference</option>
+                  <option value="north_america">North America</option>
+                  <option value="europe">Europe / Mediterranean</option>
+                  <option value="asia_pacific">Asia-Pacific</option>
+                  <option value="middle_east">Middle East / Africa</option>
+                  <option value="latin_america">Latin America</option>
+                </select>
               </div>
 
-              <div>
+              <!-- Slot picker -->
+              <div class="border-t border-plate pt-5 mt-2">
+                <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Preferred call times <span class="text-plate normal-case">— at least one</span></p>
+
+                <!-- Slot 1 -->
+                <div class="grid sm:grid-cols-2 gap-4 mb-3">
+                  <div>
+                    <label for="slot1-date">Slot 1 — Date <span style="color:#52b788">*</span></label>
+                    <input type="date" id="slot1-date" name="slot1-date" required />
+                  </div>
+                  <div>
+                    <label for="slot1-time">Slot 1 — Time <span style="color:#52b788">*</span></label>
+                    <select id="slot1-time" name="slot1-time" required>
+                      <option value="" disabled selected>Pick a time...</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Slot 2 -->
+                <div id="slot2-row" class="grid sm:grid-cols-2 gap-4 mb-3" style="display:none">
+                  <div>
+                    <label for="slot2-date">Slot 2 — Date <span class="text-plate">(backup)</span></label>
+                    <input type="date" id="slot2-date" name="slot2-date" />
+                  </div>
+                  <div>
+                    <label for="slot2-time">Slot 2 — Time</label>
+                    <select id="slot2-time" name="slot2-time">
+                      <option value="" selected>Pick a time...</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Slot 3 -->
+                <div id="slot3-row" class="grid sm:grid-cols-2 gap-4 mb-3" style="display:none">
+                  <div>
+                    <label for="slot3-date">Slot 3 — Date <span class="text-plate">(backup)</span></label>
+                    <input type="date" id="slot3-date" name="slot3-date" />
+                  </div>
+                  <div>
+                    <label for="slot3-time">Slot 3 — Time</label>
+                    <select id="slot3-time" name="slot3-time">
+                      <option value="" selected>Pick a time...</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="button" id="add-slot-btn" class="text-xs font-mono hover:text-chalk transition-colors mt-1" style="color:#52b788">+ Add another preferred time</button>
+              </div>
+
+              <div class="border-t border-plate pt-5">
                 <label for="message">What are you trying to solve? <span class="text-plate">(optional)</span></label>
-                <textarea id="message" name="message" rows="4" placeholder="Tell us what's slowing you down — the documents, the workflows, the volume. Freight invoices? Customs holds? Carrier rate comparisons? The more specific, the more useful the call will be."></textarea>
+                <textarea id="message" name="message" rows="3" placeholder="Tell us what's slowing you down — freight invoices, customs holds, carrier rate comparisons, supplier docs. The more specific, the more useful the call will be."></textarea>
               </div>
 
               <p id="form-error" class="hidden text-xs font-mono text-red-400 text-center"></p>
@@ -210,20 +295,121 @@
               <p class="text-xs font-mono text-fog text-center mt-3">Or email us directly at <a href="mailto:general@marapone.com" class="hover:underline" style="color:#52b788">general@marapone.com</a></p>
 
             </form>
+          </div>
 
-            <script>
-              document.getElementById('discovery-form').addEventListener('submit', async function(e) {
+          <script>
+            // ============================================================
+            // DISCOVERY BOOKING WIDGET (logistics)
+            // See construction/discovery.html for full setup notes.
+            // ============================================================
+            const CAL_NAMESPACE = '';        // <- set to enable Cal.com embed (e.g. 'marapone/discovery-15min')
+            const CAL_BRAND_HEX = '52b788';  // logistics marine green (no leading #)
+
+            function initCalEmbed(namespace) {
+              document.getElementById('cal-embed-wrapper').classList.remove('hidden');
+              document.getElementById('booking-form-wrapper').classList.add('hidden');
+
+              (function (C, A, L) {
+                let p = function (a, ar) { a.q.push(ar); };
+                let d = C.document;
+                C.Cal = C.Cal || function () {
+                  let cal = C.Cal; let ar = arguments;
+                  if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+                  if (ar[0] === L) {
+                    const api = function () { p(api, arguments); };
+                    const ns = ar[1]; api.q = api.q || [];
+                    if (typeof ns === "string") { cal.ns[ns] = cal.ns[ns] || api; p(cal.ns[ns], ar); p(cal, ["initNamespace", ns]); }
+                    else p(cal, ar);
+                    return;
+                  }
+                  p(cal, ar);
+                };
+              })(window, "https://app.cal.com/embed/embed.js", "init");
+
+              Cal("init", "discovery", { origin: "https://cal.com" });
+              Cal.ns.discovery("inline", { elementOrSelector: "#cal-inline-embed", calLink: namespace, layout: "month_view" });
+              Cal.ns.discovery("ui", {
+                theme: "dark",
+                cssVarsPerTheme: { dark: { "cal-brand": "#" + CAL_BRAND_HEX } },
+                hideEventTypeDetails: false,
+                layout: "month_view"
+              });
+            }
+
+            function populateTimezones() {
+              const sel = document.getElementById('timezone');
+              if (!sel) return;
+              let detected = 'America/Toronto';
+              try { detected = Intl.DateTimeFormat().resolvedOptions().timeZone || detected; } catch (_) {}
+              const common = [
+                'America/Toronto', 'America/Vancouver', 'America/New_York', 'America/Chicago', 'America/Los_Angeles',
+                'Europe/Rome', 'Europe/London', 'Europe/Berlin', 'Europe/Madrid',
+                'Asia/Dubai', 'Asia/Singapore', 'Asia/Tokyo', 'Asia/Shanghai', 'Asia/Hong_Kong',
+                'Australia/Sydney'
+              ];
+              if (!common.includes(detected)) common.unshift(detected);
+              common.forEach(tz => {
+                const opt = document.createElement('option');
+                opt.value = tz; opt.textContent = tz.replace('_', ' ');
+                if (tz === detected) opt.selected = true;
+                sel.appendChild(opt);
+              });
+            }
+
+            function populateTimeSlots() {
+              const slots = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00'];
+              ['slot1-time', 'slot2-time', 'slot3-time'].forEach(id => {
+                const sel = document.getElementById(id);
+                if (!sel) return;
+                slots.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; sel.appendChild(o); });
+              });
+            }
+
+            function setMinDates() {
+              const d = new Date(); d.setDate(d.getDate() + 1);
+              if (d.getDay() === 0) d.setDate(d.getDate() + 1);
+              if (d.getDay() === 6) d.setDate(d.getDate() + 2);
+              const minStr = d.toISOString().slice(0, 10);
+              ['slot1-date','slot2-date','slot3-date'].forEach(id => {
+                const el = document.getElementById(id); if (!el) return;
+                el.setAttribute('min', minStr);
+                if (id === 'slot1-date') el.value = minStr;
+              });
+            }
+
+            function wireAddSlot() {
+              const btn = document.getElementById('add-slot-btn');
+              btn.addEventListener('click', () => {
+                const r2 = document.getElementById('slot2-row');
+                const r3 = document.getElementById('slot3-row');
+                if (r2.style.display === 'none') { r2.style.display = ''; }
+                else if (r3.style.display === 'none') { r3.style.display = ''; btn.classList.add('hidden'); }
+              });
+            }
+
+            function wireSubmit() {
+              document.getElementById('discovery-form').addEventListener('submit', async function (e) {
                 e.preventDefault();
                 const form = e.target;
 
                 const honeypot = document.getElementById('website-discovery');
-                if (honeypot && honeypot.value.trim() !== '') {
-                  return false;
-                }
+                if (honeypot && honeypot.value.trim() !== '') return false;
 
                 const emailField = form.querySelector('input[type="email"]');
                 if (emailField && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim())) {
                   document.getElementById('form-error').textContent = 'Please enter a valid email address.';
+                  document.getElementById('form-error').classList.remove('hidden');
+                  return false;
+                }
+
+                const slots = [];
+                for (let i = 1; i <= 3; i++) {
+                  const date = form[`slot${i}-date`]?.value?.trim();
+                  const time = form[`slot${i}-time`]?.value?.trim();
+                  if (date && time) slots.push({ date, time });
+                }
+                if (slots.length === 0) {
+                  document.getElementById('form-error').textContent = 'Please pick at least one preferred time.';
                   document.getElementById('form-error').classList.remove('hidden');
                   return false;
                 }
@@ -243,6 +429,10 @@
                   email: form.email.value,
                   phone: form.phone.value,
                   message: form.message.value,
+                  timezone: form.timezone.value,
+                  region: form.region.value,
+                  vertical: 'logistics',
+                  preferred_slots: slots,
                 };
 
                 try {
@@ -253,7 +443,8 @@
                   });
                   const data = await res.json();
                   if (res.ok && data.success) {
-                    window.location.href = '/logistics/contact';
+                    document.getElementById('discovery-form').classList.add('hidden');
+                    document.getElementById('form-success').classList.remove('hidden');
                   } else {
                     throw new Error(data.message || data.error || 'Something went wrong.');
                   }
@@ -265,8 +456,18 @@
                   spinner.classList.add('hidden');
                 }
               });
-            </script>
-          </div>
+            }
+
+            (function () {
+              if (CAL_NAMESPACE) { initCalEmbed(CAL_NAMESPACE); return; }
+              populateTimezones();
+              populateTimeSlots();
+              setMinDates();
+              wireAddSlot();
+              wireSubmit();
+            })();
+          </script>
+
         </div>
 
       </div>

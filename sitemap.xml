@@ -14,6 +14,11 @@
   <url><loc>https://marapone.com/construction/about</loc><priority>0.6</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://marapone.com/construction/contact</loc><priority>0.8</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://marapone.com/construction/discovery</loc><priority>0.7</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://marapone.com/construction/for/general-contractors</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/for/ici</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/for/estimators</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/for/owners-reps</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/for/subcontractors</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 
   <!-- Logistics -->
   <url><loc>https://marapone.com/logistics/</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
@@ -25,6 +30,11 @@
   <url><loc>https://marapone.com/logistics/about</loc><priority>0.6</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://marapone.com/logistics/contact</loc><priority>0.8</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://marapone.com/logistics/discovery</loc><priority>0.7</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/for/freight-brokers</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/for/3pls</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/for/customs-brokers</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/for/importers</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/for/forwarders</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 
   <!-- Legal / misc -->
   <url><loc>https://marapone.com/terms</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>

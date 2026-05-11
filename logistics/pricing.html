@@ -6,17 +6,17 @@
   <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-      <title>Pricing – Marapone | One-Time Price, No Subscriptions | Private B2B AI for Construction & Logistics</title>
+      <title>Logistics Pricing – Marapone | One-Time Price, No Subscriptions | Private AI for Freight, Customs &amp; 3PLs</title>
   <meta name="description"
     content="Simple, honest pricing for private AI systems — construction, logistics, and marketing. One-time fee, full source code + model handover. Starter $1,500 · Pilot $4,900 · Full Build $9,500 · Plus $15,000. No subscriptions ever." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Marapone" />
-  <meta property="og:title" content="Pricing – Marapone | One-Time Price, No Subscriptions | Private B2B AI for Construction & Logistics" />
+  <meta property="og:title" content="Logistics Pricing – Marapone | One-Time Price, No Subscriptions | Private AI for Freight, Customs &amp; 3PLs" />
   <meta property="og:description" content="Simple, honest pricing for private AI systems — construction, logistics, and marketing. One-time fee, full source code + model handover. Starter $1,500 · Pilot $4,900 · Full Build $9,500 · Plus $15,000. No subscriptions ever." />
   <meta property="og:url" content="https://marapone.com/logistics/pricing" />
   <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Pricing – Marapone | One-Time Price, No Subscriptions | Private B2B AI for Construction & Logistics" />
+  <meta name="twitter:title" content="Logistics Pricing – Marapone | One-Time Price, No Subscriptions | Private AI for Freight, Customs &amp; 3PLs" />
   <meta name="twitter:description" content="Simple, honest pricing for private AI systems — construction, logistics, and marketing. One-time fee, full source code + model handover. Starter $1,500 · Pilot $4,900 · Full Build $9,500 · Plus $15,000. No subscriptions ever." />
   <meta name="twitter:image" content="https://marapone.com/MARACON-WHITE.png" />
   <link rel="stylesheet" href="../src/tailwind.css" />
@@ -69,15 +69,13 @@
     }
 
     .pricing-panel {
-      display: none;
-      opacity: 0;
-      transition: opacity .2s ease;
-    }
-
-    .pricing-panel.active {
       display: block;
       opacity: 1;
+      transition: opacity .2s ease;
     }
+    .pricing-panel.active { display: block; opacity: 1; }
+    html { scroll-behavior: smooth; }
+    [id="logistics-builds"], [id="marketing-addon"] { scroll-margin-top: 80px; }
   </style>
   <!-- Google Analytics (G-J31Z05DB01) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
@@ -162,15 +160,15 @@
   </section>
 
   <!-- TAB SWITCHER -->
-  <section class="py-10 border-b border-plate">
+  <section class="py-6 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-wrap justify-center gap-3">
-        <button class="tab-btn" onclick="switchTab('construction',this)">Construction</button>
-        <button class="tab-btn active" onclick="switchTab('logistics',this)">Logistics</button>
-        <button class="tab-btn" onclick="switchTab('marketing',this)">Marketing</button>
+      <div class="flex flex-wrap justify-center gap-3 text-sm font-mono">
+        <a href="#logistics-builds" class="hover:text-chalk transition-colors" style="color:#52b788">↓ Logistics Builds</a>
+        <span class="text-plate">·</span>
+        <a href="#marketing-addon" class="text-fog hover:text-chalk transition-colors">↓ Marketing Add-on</a>
+        <span class="text-plate">·</span>
+        <a href="/construction/pricing" class="text-fog hover:text-chalk transition-colors">→ Construction pricing</a>
       </div>
-      <p class="text-center text-xs font-mono text-fog mt-3">// Select your category to see the relevant pricing tiers
-      </p>
     </div>
   </section>
 
@@ -178,256 +176,9 @@
   <section class="py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">
 
-      <!-- ===== CONSTRUCTION PANEL ===== -->
-      <div id="panel-construction" class="pricing-panel">
-        <p class="font-mono text-hiviz text-xs uppercase text-center mb-10">Construction — Private AI for project
-          document intelligence</p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
-          <!-- Starter -->
-          <div class="bg-gunmetal border border-plate rounded-xl p-6 flex flex-col">
-            <div class="mb-5">
-              <p class="font-mono text-hiviz text-xs mb-2">TIER 01</p>
-              <h2 class="font-display text-2xl text-chalk mb-1">STARTER</h2>
-              <div class="flex items-end gap-2 mt-3">
-                <span class="font-display text-4xl text-chalk">$1,500</span>
-                <span class="text-fog font-mono text-xs mb-1.5">CAD · one time · +HST</span>
-              </div>
-              <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you want a working AI tool built around a single
-                workflow — fine-tuned on your project documents and ready to run from day one.</p>
-            </div>
-            <div class="border-t border-plate pt-5 flex-1">
-              <p class="font-mono text-xs text-fog uppercase mb-3">What's included</p>
-              <ul class="space-y-2.5 text-xs">
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">One
-                    private AI system — <strong>choose 1 workflow</strong> (e.g. Blueprint Auditor or RFI
-                    Intelligence)</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>Unlimited use</strong> on your chosen workflow — no volume caps, no
-                    per-run fees</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Fine-tuned on your project documents</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Basic local deployment — runs on your machine, no internet required</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Full
-                    source code + model weights handover</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>30-day support</strong> — setup questions, bug fixes, and
-                    guidance</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Install guide + 1 walkthrough call</span></li>
-              </ul>
-              <p class="font-mono text-xs text-fog uppercase mt-5 mb-2">What's not included</p>
-              <ul class="space-y-1.5 text-xs text-fog">
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Full 4-module suite (upgrade
-                  to Pilot or Full Build)</li>
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Server or air-gapped
-                  deployment</li>
-              </ul>
-            </div>
-            <div class="mt-6">
-              <a href="/logistics/contact"
-                class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Get
-                Started →</a>
-            </div>
-          </div>
-
-          <!-- Pilot -->
-          <div class="bg-gunmetal border border-plate rounded-xl p-6 flex flex-col">
-            <div class="mb-5">
-              <p class="font-mono text-hiviz text-xs mb-2">TIER 02</p>
-              <h2 class="font-display text-2xl text-chalk mb-1">PILOT</h2>
-              <div class="flex items-end gap-2 mt-3">
-                <span class="font-display text-4xl text-chalk">$4,900</span>
-                <span class="text-fog font-mono text-xs mb-1.5">CAD · one time · +HST</span>
-              </div>
-              <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you want a deeply customised AI system for 1–2
-                project workflows before committing to the full suite.</p>
-            </div>
-            <div class="border-t border-plate pt-5 flex-1">
-              <p class="font-mono text-xs text-fog uppercase mb-3">What's included</p>
-              <ul class="space-y-2.5 text-xs">
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">One
-                    AI system — <strong>choose 2 modules</strong> (Blueprint Auditor, RFI
-                    Intelligence, or Daily Log Synthesis)</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>Unlimited use</strong> on your selected modules — process as many
-                    documents as your project requires</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Custom fine-tune on <strong>1–2 real project doc sets</strong></span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Local app deployment — runs privately on your machine</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Full
-                    source code + model weights handover</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>30-day support</strong> — bug fixes, questions, and team
-                    onboarding</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Install guide + 1 walkthrough call</span></li>
-              </ul>
-              <p class="font-mono text-xs text-fog uppercase mt-5 mb-2">What's not included</p>
-              <ul class="space-y-1.5 text-xs text-fog">
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Full 4-module suite
-                  (Blueprint + RFI + Logs + Delay Signals)</li>
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Server or air-gapped
-                  deployment</li>
-              </ul>
-            </div>
-            <div class="mt-6">
-              <a href="/logistics/contact"
-                class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Get
-                Started →</a>
-            </div>
-          </div>
-
-          <!-- Full Build — FEATURED -->
-          <div class="bg-steel border-2 border-hiviz rounded-xl p-6 flex flex-col relative">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <span class="hiviz-gradient text-white font-mono text-xs px-4 py-1 rounded-full whitespace-nowrap">MOST
-                POPULAR</span>
-            </div>
-            <div class="mb-5">
-              <p class="font-mono text-hiviz text-xs mb-2">TIER 03</p>
-              <h2 class="font-display text-2xl text-chalk mb-1">FULL BUILD</h2>
-              <div class="flex items-end gap-2 mt-3">
-                <span class="font-display text-4xl text-chalk">$9,500</span>
-                <span class="text-fog font-mono text-xs mb-1.5">CAD · one time · +HST</span>
-              </div>
-              <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you need the complete construction intelligence
-                suite — all four modules, unlimited use, and 90 days of backup support.</p>
-            </div>
-            <div class="border-t border-plate pt-5 flex-1">
-              <p class="font-mono text-xs text-fog uppercase mb-3">What's included</p>
-              <ul class="space-y-2.5 text-xs">
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>Complete 4-module suite</strong> — Blueprint Auditor, RFI Intelligence,
-                    Daily Log Synthesis & Delay/Cash-Flow Signals</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>Unlimited use</strong> — no document volume caps for one active
-                    project</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Custom fine-tune on your real project documents</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Delay & risk flagging across all project phases</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Cash-flow impact signals tied to your draw schedule</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Full
-                    source code + fine-tuned model handover</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>90-day support</strong> — bug fixes, questions, team guidance</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">2
-                    walkthrough calls + detailed install guide</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>1 Advanced tool included</strong> — Live Takeoff &amp; Cost Intelligence</span></li>
-              </ul>
-              <p class="font-mono text-xs text-fog uppercase mt-5 mb-2">What's not included</p>
-              <ul class="space-y-1.5 text-xs text-fog">
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Server or air-gapped
-                  deployment (upgrade to Plus)</li>
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Multi-project or multi-site
-                  configuration</li>
-              </ul>
-            </div>
-            <div class="mt-6">
-              <a href="/logistics/contact"
-                class="hiviz-gradient block text-white font-semibold py-2.5 rounded text-center text-sm hover:opacity-90 transition-opacity">Get
-                Started →</a>
-            </div>
-          </div>
-
-          <!-- Plus -->
-          <div class="bg-gunmetal border border-plate rounded-xl p-6 flex flex-col">
-            <div class="mb-5">
-              <p class="font-mono text-hiviz text-xs mb-2">TIER 04</p>
-              <h2 class="font-display text-2xl text-chalk mb-1">PLUS</h2>
-              <div class="flex items-end gap-2 mt-3">
-                <span class="font-display text-4xl text-chalk">$15,000</span>
-                <span class="text-fog font-mono text-xs mb-1.5">CAD · one time · +HST</span>
-              </div>
-              <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you need the full suite on your own server or
-                air-gapped environment, with extended team onboarding and priority support.</p>
-            </div>
-            <div class="border-t border-plate pt-5 flex-1">
-              <p class="font-mono text-xs text-fog uppercase mb-3">What's included</p>
-              <ul class="space-y-2.5 text-xs">
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>Everything in Full Build</strong> — all 4 modules, unlimited use,
-                    fine-tuned on your docs</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>90-day support</strong> — bug fixes, questions, and team
-                    guidance</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Private server or air-gapped deployment setup</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Up
-                    to 4 team training calls</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Offline / no-internet configuration</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Multi-project or multi-site configuration support</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>2 Advanced tools included</strong> — Live Takeoff &amp; Cost Intelligence + Live Supply Chain Twin</span></li>
-              </ul>
-              <p class="font-mono text-xs text-fog uppercase mt-5 mb-2">What's not included</p>
-              <ul class="space-y-1.5 text-xs text-fog">
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Ongoing retainer post-90 days
-                  (see support plans below)</li>
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Multiple simultaneous project
-                  builds</li>
-              </ul>
-            </div>
-            <div class="mt-6">
-              <a href="/logistics/contact"
-                class="block border border-plate text-chalk font-semibold py-2.5 rounded text-center text-sm hover:border-hiviz hover:text-hiviz transition-colors">Get
-                Started →</a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Hardware Add-On -->
-        <div class="mt-6 border border-plate rounded-lg p-5 bg-steel">
-          <div class="flex flex-col sm:flex-row sm:items-start gap-4">
-            <div class="flex-1">
-              <p class="font-mono text-hiviz text-xs uppercase mb-1">Optional Add-On · Starter &amp; Pilot Only</p>
-              <p class="text-chalk font-semibold text-sm">Dedicated Local Machine — <span
-                  class="text-hiviz font-mono">+$1,000 CAD · no tax · setup included</span></p>
-              <p class="text-fog text-xs mt-2 leading-relaxed">If your organisation does not have hardware capable of
-                running a local AI system, we can source, configure, and deliver a dedicated machine — pre-loaded with
-                your build and ready to deploy on arrival. Configuration and initial setup are included in the flat
-                price. The machine is yours to keep with no ongoing costs. Available exclusively as an add-on alongside
-                a Starter or Pilot engagement. This add-on is extended as a courtesy to returning clients —
-                organisations that have previously completed a project with us.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Always Included Strip -->
-        <div class="mt-8 bg-steel border border-plate rounded-lg p-5 grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          <div>
-            <p class="font-mono text-hiviz text-xs mb-1">ALWAYS INCLUDED</p>
-            <p class="text-chalk font-semibold">Full source code</p>
-            <p class="text-fog text-xs">Every tier. No exceptions.</p>
-          </div>
-          <div>
-            <p class="font-mono text-xs text-fog mb-1">—</p>
-            <p class="text-chalk font-semibold">Fine-tuned model weights</p>
-            <p class="text-fog text-xs">Trained on your docs. Yours to keep.</p>
-          </div>
-          <div>
-            <p class="font-mono text-xs text-fog mb-1">—</p>
-            <p class="text-chalk font-semibold">Runs locally</p>
-            <p class="text-fog text-xs">No API keys, no internet required.</p>
-          </div>
-          <div>
-            <p class="font-mono text-xs text-fog mb-1">—</p>
-            <p class="text-chalk font-semibold">No subscriptions ever</p>
-            <p class="text-fog text-xs">Pay once, use forever.</p>
-          </div>
-        </div>
-      </div>
-
       <!-- ===== LOGISTICS PANEL ===== -->
-      <div id="panel-logistics" class="pricing-panel active">
-        <p class="font-mono text-hiviz text-xs uppercase text-center mb-10">Logistics & Trade — Private AI for shipment,
-          customs & freight intelligence</p>
+      <div id="logistics-builds" class="pricing-panel active">
+        <p class="font-mono text-xs uppercase text-center mb-10" style="color:#52b788">Logistics &amp; Trade — Private AI for shipment, customs &amp; freight intelligence</p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
           <!-- Starter -->
@@ -682,8 +433,8 @@
         </div>
       </div>
 
-      <!-- ===== MARKETING PANEL ===== -->
-      <div id="panel-marketing" class="pricing-panel">
+      <!-- ===== MARKETING ADD-ON PANEL ===== -->
+      <div id="marketing-addon" class="pricing-panel active mt-20 pt-12 border-t border-plate">
 
         <!-- Results guarantee banner -->
         <div
@@ -1187,9 +938,9 @@
             <svg class="w-3.5 h-3.5 text-hiviz" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
             <svg class="w-3.5 h-3.5 text-hiviz" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           </div>
-          <blockquote class="text-chalk text-sm leading-relaxed mb-4">"I was spending 4–6 hours reviewing blueprints before every subcontractor meeting. This cut that to under an hour. I don't understand how it works but I don't need to — it runs on my laptop and it's mine."</blockquote>
-          <p class="font-semibold text-chalk text-xs">GC Owner</p>
-          <p class="text-fog text-xs">Mid-size residential/ICI — 2 active projects</p>
+          <blockquote class="text-chalk text-sm leading-relaxed mb-4">"I was spending 4–6 hours every Monday reconciling carrier invoices against the rate sheet. This cut that to under an hour, and the variance report catches charges I used to miss. It runs on my own server and the numbers are mine."</blockquote>
+          <p class="font-semibold text-chalk text-xs">Operations Director</p>
+          <p class="text-fog text-xs">Asset-light freight broker — North America panel</p>
         </div>
         <div class="bg-steel border border-plate rounded-lg p-6">
           <div class="flex gap-0.5 mb-4">
@@ -1211,9 +962,9 @@
             <svg class="w-3.5 h-3.5 text-hiviz" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
             <svg class="w-3.5 h-3.5 text-hiviz" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           </div>
-          <blockquote class="text-chalk text-sm leading-relaxed mb-4">"The free audit alone was worth it. Marapone sent back a report showing three issues in my blueprint I'd completely missed. No upsell, no BS. Just 'here's what we found.' Hired them after that."</blockquote>
-          <p class="font-semibold text-chalk text-xs">GC Owner</p>
-          <p class="text-fog text-xs">Residential GC — townhouse development</p>
+          <blockquote class="text-chalk text-sm leading-relaxed mb-4">"The free audit alone was worth it. Marapone sent back a report showing three classification errors in our trade doc set we'd completely missed. No upsell, no BS. Just 'here's what we found.' Hired them after that."</blockquote>
+          <p class="font-semibold text-chalk text-xs">Trade Compliance Lead</p>
+          <p class="text-fog text-xs">Italian importer — EU customs operations</p>
         </div>
       </div>
     </div>
@@ -1261,7 +1012,7 @@
       <h2 class="font-display text-4xl text-chalk mb-10">THINGS PEOPLE ASK</h2>
       <div class="space-y-6">
         <div class="border-b border-plate pb-6">
-          <h3 class="font-semibold text-chalk mb-2">Does the AI send my blueprints or trade docs anywhere?</h3>
+          <h3 class="font-semibold text-chalk mb-2">Does the AI send my trade docs or carrier data anywhere?</h3>
           <p class="text-fog text-sm leading-relaxed">No. The model runs locally on your machine or your server. Your
             documents never leave your network. That's literally the point.</p>
         </div>
@@ -1389,36 +1140,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    function switchTab(tab, btn) {
-      var activePanel = document.querySelector('.pricing-panel.active');
-      var nextPanel = document.getElementById('panel-' + tab);
-      if (!nextPanel || activePanel === nextPanel) return;
-      // Update buttons
-      document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
-      (btn || event.target).classList.add('active');
-      // Fade out → swap → fade in
-      if (activePanel) {
-        activePanel.style.opacity = '0';
-        setTimeout(function () {
-          activePanel.classList.remove('active');
-          activePanel.style.display = 'none';
-          nextPanel.style.display = 'block';
-          nextPanel.style.opacity = '0';
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () {
-              nextPanel.classList.add('active');
-              nextPanel.style.opacity = '1';
-            });
-          });
-        }, 180);
-      } else {
-        nextPanel.classList.add('active');
-        nextPanel.style.opacity = '1';
-      }
-    }
-  </script>
 
   <!-- STICKY FLOATING CTA -->
   <div id="sticky-cta" class="fixed bottom-6 right-6 z-50 hidden">

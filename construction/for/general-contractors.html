@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI for General Contractors – RFI Triage, Daily Logs, Change Orders | Marapone</title>
+  <meta name="description" content="Private AI built for general contractors. Resolve RFI backlogs faster, write deeper daily logs in minutes, catch change-order risk before it costs you. One-time price. You own the model and the source." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="AI for General Contractors – Marapone Construction" />
+  <meta property="og:description" content="Private AI for GCs. RFI triage, daily logs, change-order risk. One-time price. You own it." />
+  <meta property="og:url" content="https://marapone.com/construction/for/general-contractors" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/for/general-contractors" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk">Work</a>
+        <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+        <a href="/construction/about" class="hover:text-chalk">About</a>
+        <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// For general contractors</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">RFI BACKLOGS,<br/><span class="text-hiviz">RESOLVED OVERNIGHT.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">You're running three sites, four trade meetings a week, and an inbox full of RFIs that are eight days old. Marapone builds private AI that triages your RFIs, writes your daily logs, and flags change-order risk before it shows up in a claim. You own the model. You own the data. No subscription.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Free 24h Assessment &rarr;</a>
+        <a href="/construction/discovery" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Book a 15-Min Call</a>
+      </div>
+      <p class="font-mono text-xs text-plate mt-6">Built for ICI and residential GCs running concurrent jobs · Toronto + Rome</p>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// The four things that eat your week</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">WHERE THE TIME GOES</h2>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PAIN 01</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">RFIs sit for 8+ days</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Your team forwards the same drawing question three times. The architect responds in fragments. By the time you have a clean answer, the trade is back-charging delays.</p>
+          <p class="font-mono text-xs text-fog"><span class="text-hiviz">→ FIX:</span> RFI Intelligence reads the question, the relevant drawing region, and prior responses, then drafts a structured answer pack you forward in one click.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PAIN 02</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Daily logs are 3 lines, all weather</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Supers hate logs because they're 20 minutes of typing for no obvious benefit. So they write nothing — until you need a defensible record for a claim and there isn't one.</p>
+          <p class="font-mono text-xs text-fog"><span class="text-hiviz">→ FIX:</span> Daily Log Synthesizer turns a 90-second voice memo into a structured log with crew counts, deliveries, blockers, and photo captions.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PAIN 03</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Change orders turn into disputes</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Three months in, you're chasing the email that proves the owner agreed to the scope shift. The PM left. The PE thinks it was verbal. The trade is invoicing anyway.</p>
+          <p class="font-mono text-xs text-fog"><span class="text-hiviz">→ FIX:</span> Change Order Risk Tracker continuously scans your email, RFIs, and meeting minutes for scope drift and pre-builds the paper trail.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PAIN 04</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Closeout deficiencies pile up</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Substantial completion is a moving target because the deficiency list is in someone's notebook, plus a punch app, plus three emails from the consultant.</p>
+          <p class="font-mono text-xs text-fog"><span class="text-hiviz">→ FIX:</span> Deficiency List AI consolidates every photo, note, and consultant report into one ranked list — and re-checks itself as items are closed.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE BUILDS -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// What we build for GCs</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-3">THREE SYSTEMS, ONE BUILD.</h2>
+      <p class="text-fog max-w-2xl mb-12">Most GC builds bundle these three modules. Each one is trained on your projects, your templates, your standards. Not a generic chatbot.</p>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <article class="bg-gunmetal border border-plate rounded-lg overflow-hidden">
+          <div class="bg-steel border-b border-plate aspect-video flex items-center justify-center">
+            <img src="/02_daily_logs.jpg" alt="RFI Intelligence" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">BUILD 01</p>
+            <h3 class="font-display text-2xl text-chalk mb-2">RFI Intelligence</h3>
+            <p class="text-fog text-sm leading-relaxed">Auto-tags incoming RFIs by trade, urgency, and drawing reference. Drafts a structured response from the spec book and prior answers. Cuts triage time by ~65%.</p>
+          </div>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg overflow-hidden">
+          <div class="bg-steel border-b border-plate aspect-video flex items-center justify-center">
+            <img src="/02_daily_logs.jpg" alt="Daily Log Synthesizer" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">BUILD 02</p>
+            <h3 class="font-display text-2xl text-chalk mb-2">Daily Log Synthesizer</h3>
+            <p class="text-fog text-sm leading-relaxed">A super talks for 90 seconds. The system writes the log: crews on site, weather, deliveries, blockers, photos. Defensible. Searchable. Done before they leave the trailer.</p>
+          </div>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg overflow-hidden">
+          <div class="bg-steel border-b border-plate aspect-video flex items-center justify-center">
+            <img src="/05_change_order_risk_tracker.jpg" alt="Change Order Risk Tracker" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">BUILD 03</p>
+            <h3 class="font-display text-2xl text-chalk mb-2">Change Order Risk Tracker</h3>
+            <p class="text-fog text-sm leading-relaxed">Watches for scope drift across email, RFIs, meeting minutes, and field reports. Surfaces the moments where a CO is justified and the proof is already on file.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/construction/services" class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-chalk transition-colors">See all 9 construction modules &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY IN THE LIFE -->
+  <section class="py-16 lg:py-20 border-b border-plate bg-gunmetal">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// A day in the life</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">HOW IT SHOWS UP IN YOUR WEEK</h2>
+
+      <div class="space-y-6">
+        <div class="grid md:grid-cols-12 gap-6 items-start">
+          <div class="md:col-span-2">
+            <p class="font-mono text-hiviz text-xs uppercase">07:14 AM</p>
+          </div>
+          <div class="md:col-span-10 tape-line">
+            <p class="text-chalk font-semibold mb-1">Inbox check, coffee in hand.</p>
+            <p class="text-fog text-sm leading-relaxed">Overnight, four RFIs landed from the mech sub. The system has already classified them by priority, attached the relevant drawing details, and drafted a response for two. You approve, edit one, and bounce the fourth back with a one-line clarification — all before your second sip.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6 items-start">
+          <div class="md:col-span-2">
+            <p class="font-mono text-hiviz text-xs uppercase">11:30 AM</p>
+          </div>
+          <div class="md:col-span-10 tape-line">
+            <p class="text-chalk font-semibold mb-1">Owner meeting flagged.</p>
+            <p class="text-fog text-sm leading-relaxed">Yesterday's owner walkthrough notes get parsed automatically. The system flags one comment that quietly expands scope on the lobby finish — "let's go with the upgraded oak" — and pre-builds a draft change order with the relevant spec page and pricing block ready to send.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6 items-start">
+          <div class="md:col-span-2">
+            <p class="font-mono text-hiviz text-xs uppercase">04:55 PM</p>
+          </div>
+          <div class="md:col-span-10 tape-line">
+            <p class="text-chalk font-semibold mb-1">Three sites, three logs, no typing.</p>
+            <p class="text-fog text-sm leading-relaxed">Each super sends a voice memo from the truck. Two minutes later, three structured daily logs are in your project folder. Photos auto-captioned. Crew counts pulled from the gate scan. You read them in five minutes instead of chasing them for two days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// What GCs say after the build</p>
+      <blockquote class="border-l-4 border-hiviz pl-6">
+        <p class="font-display text-2xl lg:text-3xl text-chalk leading-tight mb-4">"The RFI tool alone saved my PE about a day a week. We close them in two days now instead of eight. We didn't have to change anything about how we already worked — it just plugged into our existing email and drawings."</p>
+        <footer class="font-mono text-xs text-fog">
+          <span class="text-hiviz">// </span>Project executive · Mid-size GC · Greater Toronto Area · 14-month project · Anonymized
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- OTHER INDUSTRIES -->
+  <section class="py-16 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-6">// Not a GC? We build for these too:</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <a href="/construction/for/ici" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-lg text-chalk mb-1">ICI Builders</p>
+          <p class="text-fog text-xs">Industrial / Commercial / Institutional</p>
+        </a>
+        <a href="/construction/for/estimators" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-lg text-chalk mb-1">Estimators</p>
+          <p class="text-fog text-xs">Takeoffs, scope gaps, tender risk</p>
+        </a>
+        <a href="/construction/for/owners-reps" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-lg text-chalk mb-1">Owner's Reps</p>
+          <p class="text-fog text-xs">Oversight, reporting, risk audits</p>
+        </a>
+        <a href="/construction/for/subcontractors" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-lg text-chalk mb-1">Subcontractors</p>
+          <p class="text-fog text-xs">RFI tracking, delivery logs, claims</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-24 grid-dot">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Free, real, no obligation</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">SEND ONE RFI LOG.<br/><span class="text-hiviz">GET A REAL REPORT BACK.</span></h2>
+      <p class="text-fog max-w-xl mx-auto mb-8">Pick one open RFI batch from your project. We'll run it through the same system we'd build for you and send back a written report plus a short walkthrough — usually within 24 hours.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Free Assessment &rarr;</a>
+        <a href="/construction/discovery" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Book a 15-Min Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

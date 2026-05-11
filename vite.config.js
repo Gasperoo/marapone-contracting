@@ -43,6 +43,18 @@ export default defineConfig({
           '/logistics/discovery': '/logistics/discovery.html',
           '/logistics/about': '/logistics/about.html',
           '/logistics/pricing': '/logistics/pricing.html',
+          // Construction industry sub-pages
+          '/construction/for/general-contractors': '/construction/for/general-contractors.html',
+          '/construction/for/ici': '/construction/for/ici.html',
+          '/construction/for/estimators': '/construction/for/estimators.html',
+          '/construction/for/owners-reps': '/construction/for/owners-reps.html',
+          '/construction/for/subcontractors': '/construction/for/subcontractors.html',
+          // Logistics industry sub-pages
+          '/logistics/for/freight-brokers': '/logistics/for/freight-brokers.html',
+          '/logistics/for/3pls': '/logistics/for/3pls.html',
+          '/logistics/for/customs-brokers': '/logistics/for/customs-brokers.html',
+          '/logistics/for/importers': '/logistics/for/importers.html',
+          '/logistics/for/forwarders': '/logistics/for/forwarders.html',
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];
@@ -111,6 +123,18 @@ export default defineConfig({
         'logistics-discovery': path.resolve(__dirname, 'logistics/discovery.html'),
         'logistics-about': path.resolve(__dirname, 'logistics/about.html'),
         'logistics-pricing': path.resolve(__dirname, 'logistics/pricing.html'),
+        // Construction industry sub-pages
+        'construction-for-gc':         path.resolve(__dirname, 'construction/for/general-contractors.html'),
+        'construction-for-ici':        path.resolve(__dirname, 'construction/for/ici.html'),
+        'construction-for-est':        path.resolve(__dirname, 'construction/for/estimators.html'),
+        'construction-for-or':         path.resolve(__dirname, 'construction/for/owners-reps.html'),
+        'construction-for-sub':        path.resolve(__dirname, 'construction/for/subcontractors.html'),
+        // Logistics industry sub-pages
+        'logistics-for-fb':            path.resolve(__dirname, 'logistics/for/freight-brokers.html'),
+        'logistics-for-3pl':           path.resolve(__dirname, 'logistics/for/3pls.html'),
+        'logistics-for-cb':            path.resolve(__dirname, 'logistics/for/customs-brokers.html'),
+        'logistics-for-imp':           path.resolve(__dirname, 'logistics/for/importers.html'),
+        'logistics-for-fwd':           path.resolve(__dirname, 'logistics/for/forwarders.html'),
       },
     },
   },

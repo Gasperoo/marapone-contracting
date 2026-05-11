@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI for Estimators – Faster Takeoffs, Tighter Bids | Marapone Construction</title>
+  <meta name="description" content="Private AI built for estimators and estimating teams. Live takeoffs from drawings, scope gap detection across sub quotes, and full tender risk reads in hours instead of weeks. One-time price. You own the model and the source." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="AI for Estimators – Marapone Construction" />
+  <meta property="og:description" content="Private AI for estimators. Takeoffs, scope gap finder, tender risk scanner. One-time price. You own it." />
+  <meta property="og:url" content="https://marapone.com/construction/for/estimators" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/for/estimators" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk">Work</a>
+        <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+        <a href="/construction/about" class="hover:text-chalk">About</a>
+        <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// For estimators</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">TWO-WEEK BIDS,<br/><span class="text-hiviz">PRICED IN FOUR DAYS.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">You're carrying four open tenders, three close this week, and the youngest takeoff just missed a whole section of curtain wall. Marapone builds private AI that does live takeoffs from your drawings, levels sub quotes apples-to-apples, and reads the spec for the clauses that bury margin. You own the model. You own the data. No subscription.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Free 24h Assessment &rarr;</a>
+        <a href="/construction/discovery" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Book a 15-Min Call</a>
+      </div>
+      <p class="font-mono text-xs text-plate mt-6">Built for in-house estimating teams and independent estimators on ICI and high-end residential · Toronto + Rome</p>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// The four things that eat your tender week</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">WHERE THE HOURS GO</h2>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PAIN 01</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Hand takeoffs eat 60% of the bid</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Three days clicking through PDFs to count fixtures, measure runs, tally door schedules. By the time you have quantities, you've spent the budget for actually thinking about the bid.</p>
+          <p class="font-mono text-xs text-fog"><span class="text-hiviz">→ FIX:</span> Live Takeoff &amp; Cost Intelligence reads the drawings, runs the takeoff, and pulls live unit costs from your historical jobs and supplier data.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PAIN 02</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Five sub quotes, none comparable</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Mech sub A excludes controls, mech sub B includes them but assumes a different sequence, mech sub C didn't read the addendum. You spend an afternoon trying to make them apples-to-apples and you still miss something.</p>
+          <p class="font-mono text-xs text-fog"><span class="text-hiviz">→ FIX:</span> Subcontractor Scope Gap Finder normalizes every quote against the spec, marks every inclusion and exclusion, and shows you the real comparison.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PAIN 03</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Spec page 380 ate your margin</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">An onerous warranty clause, a custom liquidated damages provision, an unusual schedule sequence — buried where nobody read. You won the job. Then you found it. Then the contingency was gone before mobilization.</p>
+          <p class="font-mono text-xs text-fog"><span class="text-hiviz">→ FIX:</span> Tender Package Risk Scanner reads the entire spec and flags every clause that deviates from your standard baseline, ranked by exposure.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PAIN 04</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Addenda land 48 hours before close</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">Addendum 4 changes three sections, deletes one, adds a new spec for the lobby. You have to re-do the takeoff, re-issue to subs, re-level. You barely make submission with a number you don't fully trust.</p>
+          <p class="font-mono text-xs text-fog"><span class="text-hiviz">→ FIX:</span> The build re-runs the affected takeoff regions and re-levels the impacted scopes automatically, so addenda are minutes not hours.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE BUILDS -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// What we build for estimators</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-3">THREE SYSTEMS, ONE BUILD.</h2>
+      <p class="text-fog max-w-2xl mb-12">Most estimating builds bundle these three modules. Trained on your historical jobs, your unit cost library, and your trade quote templates. Not a generic chatbot.</p>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <article class="bg-gunmetal border border-plate rounded-lg overflow-hidden">
+          <div class="bg-steel border-b border-plate aspect-video flex items-center justify-center">
+            <img src="/01_rfi_backlog.jpg" alt="Live Takeoff and Cost Intelligence" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">BUILD 01</p>
+            <h3 class="font-display text-2xl text-chalk mb-2">Live Takeoff &amp; Cost Intelligence</h3>
+            <p class="text-fog text-sm leading-relaxed">Reads the drawings, generates the takeoff, and ties each line to a live unit cost from your historical jobs and supplier sheets. The estimator's three-day click-counting becomes a half-day review of a structured first pass.</p>
+          </div>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg overflow-hidden">
+          <div class="bg-steel border-b border-plate aspect-video flex items-center justify-center">
+            <img src="/03_scope_gap_finder.jpg" alt="Scope Gap Finder" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">BUILD 02</p>
+            <h3 class="font-display text-2xl text-chalk mb-2">Subcontractor Scope Gap Finder</h3>
+            <p class="text-fog text-sm leading-relaxed">Normalizes every sub quote against the spec, surfaces inclusions, exclusions, and conflicting assumptions, and gives you a true levelling sheet. No more pricing the same scope twice or missing it entirely.</p>
+          </div>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg overflow-hidden">
+          <div class="bg-steel border-b border-plate aspect-video flex items-center justify-center">
+            <img src="/04_tender_risk_scanner.jpg" alt="Tender Package Risk Scanner" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">BUILD 03</p>
+            <h3 class="font-display text-2xl text-chalk mb-2">Tender Package Risk Scanner</h3>
+            <p class="text-fog text-sm leading-relaxed">Reads the full spec — every page — and surfaces non-standard clauses ranked by dollar exposure. You walk into the bid review knowing exactly where the contingency needs to sit.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/construction/services" class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-chalk transition-colors">See all 9 construction modules &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY IN THE LIFE -->
+  <section class="py-16 lg:py-20 border-b border-plate bg-gunmetal">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// A day in the life</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">HOW IT SHOWS UP IN YOUR WEEK</h2>
+
+      <div class="space-y-6">
+        <div class="grid md:grid-cols-12 gap-6 items-start">
+          <div class="md:col-span-2">
+            <p class="font-mono text-hiviz text-xs uppercase">08:00 AM</p>
+          </div>
+          <div class="md:col-span-10 tape-line">
+            <p class="text-chalk font-semibold mb-1">First-pass takeoff already done.</p>
+            <p class="text-fog text-sm leading-relaxed">A new tender came in yesterday afternoon. By the time you sit down with coffee, the system has read the drawings and produced a structured takeoff with priced quantities. You spend the morning reviewing edge cases and unusual assemblies instead of clicking through PDFs.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6 items-start">
+          <div class="md:col-span-2">
+            <p class="font-mono text-hiviz text-xs uppercase">02:15 PM</p>
+          </div>
+          <div class="md:col-span-10 tape-line">
+            <p class="text-chalk font-semibold mb-1">Sub quotes levelled while you eat lunch.</p>
+            <p class="text-fog text-sm leading-relaxed">Five mech quotes hit your inbox over the morning. By 2:15 the system has normalized each against the spec, flagged that two excluded the controls scope, and shown the real spread is $180k tighter than the raw numbers suggest. You pick the carrier with confidence.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-12 gap-6 items-start">
+          <div class="md:col-span-2">
+            <p class="font-mono text-hiviz text-xs uppercase">05:20 PM</p>
+          </div>
+          <div class="md:col-span-10 tape-line">
+            <p class="text-chalk font-semibold mb-1">Risk read on tomorrow's bid.</p>
+            <p class="text-fog text-sm leading-relaxed">Tomorrow's tender close has a 480-page spec. The risk report sits in your folder: nine clauses flagged, one onerous schedule sequence, two non-standard warranties. You add the contingency in the right place instead of guessing — and go home at six.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// What estimators say after the build</p>
+      <blockquote class="border-l-4 border-hiviz pl-6">
+        <p class="font-display text-2xl lg:text-3xl text-chalk leading-tight mb-4">"Our chief estimator used to do hand takeoffs for three days. Now she reviews a structured first pass in half a day and spends the saved time actually thinking about strategy. We've cut bid-to-submit time roughly in half on commercial work."</p>
+        <footer class="font-mono text-xs text-fog">
+          <span class="text-hiviz">// </span>Director of preconstruction · ICI/commercial GC · Greater Toronto Area · Anonymized
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- OTHER INDUSTRIES -->
+  <section class="py-16 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-6">// Not estimating? We build for these too:</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <a href="/construction/for/general-contractors" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-lg text-chalk mb-1">General Contractors</p>
+          <p class="text-fog text-xs">RFIs, daily logs, change orders</p>
+        </a>
+        <a href="/construction/for/ici" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-lg text-chalk mb-1">ICI Builders</p>
+          <p class="text-fog text-xs">Industrial / Commercial / Institutional</p>
+        </a>
+        <a href="/construction/for/owners-reps" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-lg text-chalk mb-1">Owner's Reps</p>
+          <p class="text-fog text-xs">Oversight, reporting, risk audits</p>
+        </a>
+        <a href="/construction/for/subcontractors" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-lg text-chalk mb-1">Subcontractors</p>
+          <p class="text-fog text-xs">RFI tracking, delivery logs, claims</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-24 grid-dot">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Free, real, no obligation</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">SEND ONE BID PACKAGE.<br/><span class="text-hiviz">GET A REAL TAKEOFF + RISK READ.</span></h2>
+      <p class="text-fog max-w-xl mx-auto mb-8">Pick one tender — open or recently closed. We'll run the drawings and the spec through the same system we'd build for you and send back a takeoff sample plus a written risk report, usually within 24 hours.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Free Assessment &rarr;</a>
+        <a href="/construction/discovery" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Book a 15-Min Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

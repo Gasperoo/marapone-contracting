@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RFI AI vs Procore AI: Honest Comparison | Marapone Construction</title>
+  <meta name="description" content="A field-side comparison of how Procore's RFI AI handles real PE workflows versus what a custom build does. Where each one shines, where each one stalls." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="RFI AI vs Procore AI: Honest Comparison" />
+  <meta property="og:description" content="Where each tool wins, where each loses." />
+  <meta property="og:url" content="https://marapone.com/construction/resources/rfi-ai-vs-procore-ai" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/resources/rfi-ai-vs-procore-ai" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    .article p { line-height: 1.7; }
+    .article h2 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .callout { background:#0f0f0f; border:1px solid #2b2b2b; border-left:3px solid #f97316; padding:1.25rem; border-radius:0.25rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/construction/resources" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; Resources</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a><a href="/construction/services" class="hover:text-chalk">Services</a><a href="/construction/pricing" class="hover:text-chalk">Pricing</a><a href="/construction/work" class="hover:text-chalk">Work</a><a href="/construction/about" class="hover:text-chalk">About</a><a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/construction/resources" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; Resources</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a><a href="/construction/services" class="text-fog hover:text-chalk">Services</a><a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a><a href="/construction/work" class="text-fog hover:text-chalk">Work</a><a href="/construction/about" class="text-fog hover:text-chalk">About</a><a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+    </div>
+  </nav>
+
+  <article id="main-content" class="article">
+    <header class="grid-dot border-b border-plate py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto px-4">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Comparison &middot; 9 min read</p>
+        <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-tight mb-6">RFI AI vs PROCORE AI: <span class="text-hiviz">HONEST COMPARISON.</span></h1>
+        <p class="text-fog text-lg leading-relaxed">Both tools claim to slash RFI turnaround. We get asked the difference on almost every discovery call, so here's the version we'd give over coffee — without the marketing.</p>
+        <p class="font-mono text-xs text-plate mt-6">By the Marapone team &middot; Updated 2026</p>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-16 space-y-10 text-fog">
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">What each one actually does</h2>
+        <p>Procore's RFI AI is a feature inside the Procore platform. It reads RFIs that already live in your Procore project, suggests responses based on similar past RFIs and the spec book you've uploaded, and helps you route the question to the right consultant. It's good. It works the day you turn it on.</p>
+        <p>A custom Marapone RFI build does similar work, but starts from a different premise: the RFI workflow doesn't actually live cleanly in Procore for most GCs. It lives partly in email, partly in attached drawing markups, partly in voicemails from the super, and partly in the spec book PDF the consultant hasn't loaded yet. Marapone ingests across all of those and reasons over the whole pile.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Where Procore AI wins</h2>
+        <p>If your shop is Procore-native — every RFI is opened in the Procore module, every consultant logs in to respond, every drawing reference is hyperlinked — Procore AI wins on speed-to-value. There's nothing to deploy. There's nothing to integrate. You toggle it on and it starts suggesting drafts.</p>
+        <p>It also wins on consultant-side adoption. If your structural and mech consultants are also in Procore, the AI's suggested responses sit in a workflow they already know. They click "approve" or edit; nobody has to be retrained.</p>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-1">Quick test:</p>
+          <p class="text-sm">Open your last 50 RFIs. If 90%+ of them were created and answered without anyone leaving Procore, Procore AI is probably the right tool.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Where Procore AI stalls</h2>
+        <p>Three patterns we see consistently:</p>
+        <p><strong class="text-chalk">1. Drawings live elsewhere.</strong> Many GCs use Bluebeam Studio or shared SharePoint folders for the working drawing set. The consultant marks up the PDF in Bluebeam, then emails it back. Procore AI doesn't see those markups unless someone manually re-uploads them — and they rarely do.</p>
+        <p><strong class="text-chalk">2. The spec book is huge and unindexed.</strong> A 4,200-page commercial spec book is hard to search, and Procore AI's retrieval is opinionated about how the spec is structured. Sections out of order or non-CSI numbering trips it up.</p>
+        <p><strong class="text-chalk">3. Email is where the real Q&amp;A happens.</strong> The official RFI is the third email in a six-email thread between the PE and the architect. Procore AI sees the RFI; it doesn't see the threading.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Where a custom build wins</h2>
+        <p>A Marapone-style build wins when the RFI workflow crosses tools. Specifically:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>Drawings ingested directly from Bluebeam, AutoCAD, and SharePoint with markup awareness.</li>
+          <li>Spec book ingested once and indexed by section, regardless of CSI numbering.</li>
+          <li>Email mailbox monitored for the implicit RFIs that never get formalized.</li>
+          <li>Per-trade response templates trained on your past RFIs, not a generic library.</li>
+          <li>Output written back to Procore as the RFI response so the official record stays clean.</li>
+        </ul>
+        <p>The result is the same kind of "draft response in your inbox" experience as Procore AI — but trained on the messy reality of how RFIs actually move through your shop, not the clean theory of how they should.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Honest cost comparison</h2>
+        <p>Procore AI is bundled into your existing Procore tier or sold as a per-seat add-on. The economics scale with headcount; that's fine for a 10-PE shop and gets uncomfortable around 30-50 users.</p>
+        <p>A custom build is a one-time fee — typically $9,500 for the bundled three-module build — with no per-seat cost. If you have 30+ users, the math flips before year two.</p>
+        <p>The right framing isn't "which is cheaper." It's "which is cheaper at <em>your</em> headcount, over five years, given you'll either pay subscription forever or pay once and own it."</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">When you should use both</h2>
+        <p>This isn't a binary choice. Several Marapone clients run Procore AI inside Procore for the consultant-facing workflow, and a Marapone build for the email/Bluebeam/spec-book layer. The Marapone build writes the official response back to Procore, so the system of record stays clean.</p>
+        <p>If you're already paying for Procore Copilot and the workflow gaps above are familiar, you don't have to rip anything out — you can layer.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The decision in two questions</h2>
+        <ol class="space-y-2 ml-5 list-decimal">
+          <li>Does 80%+ of your RFI traffic happen inside Procore today?</li>
+          <li>Are you OK with a per-seat subscription that grows with headcount?</li>
+        </ol>
+        <p>Two yeses: stick with Procore AI, you'll be fine. Any no: a custom build is worth the conversation.</p>
+      </section>
+
+    </div>
+
+    <section class="border-t border-b border-plate py-12 bg-gunmetal">
+      <div class="max-w-5xl mx-auto px-4">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Related reading</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="/construction/resources/own-vs-rent-ai-for-gcs" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Owning vs Renting AI</p>
+            <p class="text-fog text-xs">Reality check for GCs.</p>
+          </a>
+          <a href="/construction/resources/scope-a-blueprint-auditor" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Scoping a Blueprint Auditor</p>
+            <p class="text-fog text-xs">Four questions to answer first.</p>
+          </a>
+          <a href="/construction/vs/procore" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Marapone vs Procore (full)</p>
+            <p class="text-fog text-xs">The whole-platform comparison.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 grid-dot">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display text-4xl text-chalk mb-3">SEND ONE RFI BATCH.<br/><span class="text-hiviz">GET A WRITTEN COMPARISON.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">We'll run a real RFI batch through both approaches and write you a side-by-side report — usually within 24 hours.</p>
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Get the Comparison &rarr;</a>
+      </div>
+    </section>
+  </article>
+
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1"><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a><a href="/construction/services" class="hover:text-chalk">Services</a><a href="/construction/pricing" class="hover:text-chalk">Pricing</a><a href="/construction/resources" class="hover:text-chalk">Resources</a><a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

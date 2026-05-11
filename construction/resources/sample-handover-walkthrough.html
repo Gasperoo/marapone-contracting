@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inside a Marapone Handover: What You Get on Day 14 | Marapone Construction</title>
+  <meta name="description" content="A walkthrough of the actual folder structure, runbooks, and code we ship at handover. The real artifacts a GC team can use, not a slide deck." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Inside a Marapone Handover" />
+  <meta property="og:description" content="What you get on day 14." />
+  <meta property="og:url" content="https://marapone.com/construction/resources/sample-handover-walkthrough" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/resources/sample-handover-walkthrough" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    .article p { line-height: 1.7; }
+    .article h2 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .callout { background:#0f0f0f; border:1px solid #2b2b2b; border-left:3px solid #f97316; padding:1.25rem; border-radius:0.25rem; }
+    pre.codebox { background:#0f0f0f; color:#e8e8e8; padding:1rem; border:1px solid #2b2b2b; border-radius:0.5rem; overflow-x:auto; font-family:'DM Mono',monospace; font-size:0.78rem; line-height:1.55; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/construction/resources" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; Resources</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a><a href="/construction/services" class="hover:text-chalk">Services</a><a href="/construction/pricing" class="hover:text-chalk">Pricing</a><a href="/construction/work" class="hover:text-chalk">Work</a><a href="/construction/about" class="hover:text-chalk">About</a><a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/construction/resources" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; Resources</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a><a href="/construction/services" class="text-fog hover:text-chalk">Services</a><a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a><a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+    </div>
+  </nav>
+
+  <article id="main-content" class="article">
+    <header class="grid-dot border-b border-plate py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto px-4">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Walkthrough &middot; 8 min read</p>
+        <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-tight mb-6">INSIDE A MARAPONE HANDOVER: <span class="text-hiviz">WHAT YOU GET ON DAY 14.</span></h1>
+        <p class="text-fog text-lg leading-relaxed">"You own the source code" only means something if the source code is actually usable by a normal IT generalist. Here's what's in the box at handover, walked through one folder at a time.</p>
+        <p class="font-mono text-xs text-plate mt-6">By the Marapone team &middot; Updated 2026</p>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-16 space-y-10 text-fog">
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Day 14, 9am: a single Git repo lands in your account</h2>
+        <p>The handover is a Git repository — pushed to whichever Git host you already use (GitHub, GitLab, Bitbucket, or your self-hosted Gitea). One repo, one commit history, one README that reads top-to-bottom.</p>
+        <p>The folder structure is opinionated and boring on purpose:</p>
+
+<pre class="codebox">your-marapone-build/
+&boxvr;&boxh;&boxh; README.md
+&boxvr;&boxh;&boxh; LICENSE
+&boxvr;&boxh;&boxh; docker-compose.yml
+&boxvr;&boxh;&boxh; .env.example
+&boxvr;&boxh;&boxh; models/
+&boxvr;&boxh;&boxh; data/
+&boxvr;&boxh;&boxh; src/
+&boxur;&boxh;&boxh; runbooks/
+</pre>
+
+        <p>Eight top-level entries. Anything else lives below those. The point of the structure is that an IT generalist who's never seen the system can find anything within thirty seconds.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">README.md — the one document that matters</h2>
+        <p>Not a marketing page. The README is roughly 200 lines and answers exactly:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>What this system does, in one paragraph.</li>
+          <li>How to install it from scratch, in numbered steps.</li>
+          <li>How to ingest a new project's documents.</li>
+          <li>Where the runbooks live for everything else.</li>
+          <li>Who to call if something is on fire.</li>
+        </ul>
+        <p>If your IT lead can't be productive within 30 minutes of reading the README, we wrote a bad README. We rewrite until they can.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">docker-compose.yml — the entire system in one file</h2>
+        <p>The full stack starts with one command: <code class="font-mono text-hiviz text-sm">docker compose up</code>. The compose file declares every service: the inference server, the API, the Postgres database, the vector store, the UI, the reverse proxy. No Kubernetes, no Helm charts, no operator pattern. Boring containers. By design.</p>
+        <p>If you outgrow Docker Compose, swapping to Kubernetes is documented in a runbook, but you almost certainly won't need it.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">models/ — your weights, on your disk</h2>
+        <p>The base open-weight models (Llama 3.1, Qwen 2.5) plus any fine-tunes we trained for your shop. Every fine-tune ships with:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>The training script that produced it.</li>
+          <li>The dataset that trained it (or instructions to regenerate it from your data).</li>
+          <li>An eval set with expected outputs.</li>
+          <li>A version tag and a changelog.</li>
+        </ul>
+        <p>If a future model release outperforms the one you're running, you can swap it without losing your customizations.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">data/ — segregated by project, by default</h2>
+        <p>Every project ingested into the system gets its own subfolder. Documents stay in their original format alongside the parsed text and embeddings. If you ever need to delete a project, it's one folder removal — not a database migration.</p>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-1">Why this matters:</p>
+          <p class="text-sm">When a project ends or a tenant leaves, "right to deletion" is a real obligation. With this structure, fulfilling it is one shell command.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">src/ — three subdirectories, no surprises</h2>
+        <p><strong class="text-chalk">src/api/</strong> — the FastAPI service. Routers per workflow (rfi.py, daily_log.py, change_order.py). Pydantic models for every request/response. Pytest suite for every router.</p>
+        <p><strong class="text-chalk">src/ingest/</strong> — the OCR and chunking pipeline. One module per source type (Procore, Bluebeam, SharePoint, email). Clean interfaces; you can add a new source in a few hundred lines.</p>
+        <p><strong class="text-chalk">src/ui/</strong> — the Next.js app. Standard app-router layout. Tailwind already configured. If you have a frontend developer, they'll feel at home immediately.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">runbooks/ — the operations binder, in Markdown</h2>
+        <p>Five files that cover the operational lifecycle:</p>
+        <ol class="space-y-2 ml-5 list-decimal">
+          <li><strong class="text-chalk">01_install.md</strong> — fresh install, hardware to running system.</li>
+          <li><strong class="text-chalk">02_ingest_new_project.md</strong> — add a new project's drawings, RFIs, and emails.</li>
+          <li><strong class="text-chalk">03_retrain_classifier.md</strong> — improve the RFI classifier on new examples.</li>
+          <li><strong class="text-chalk">04_backup_restore.md</strong> — backup strategy and restore drill.</li>
+          <li><strong class="text-chalk">05_incident_playbook.md</strong> — what to do when something is on fire.</li>
+        </ol>
+        <p>Every runbook is tested by us before handover. If a step is wrong, we fix the docs.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Day 14, 2pm: a 60-minute walkthrough call</h2>
+        <p>We screen-share the running system and talk through the repo with your team. Your IT lead, your PE champion, and (if you want) your CIO sit in. We answer every "wait, what's that?" question in the call. By the end, the team can independently take a step they didn't know they could.</p>
+        <p>Then we leave you alone, with a Slack channel open in case you need us. That's the whole handover.</p>
+      </section>
+
+    </div>
+
+    <section class="border-t border-b border-plate py-12 bg-gunmetal">
+      <div class="max-w-5xl mx-auto px-4">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Related reading</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="/construction/architecture" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Architecture</p>
+            <p class="text-fog text-xs">The full stack diagram.</p>
+          </a>
+          <a href="/construction/resources/cost-of-private-llm-stack-2026" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Cost of a Private LLM Stack</p>
+            <p class="text-fog text-xs">Real numbers for 2026.</p>
+          </a>
+          <a href="/construction/resources/scope-a-blueprint-auditor" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Scoping a Blueprint Auditor</p>
+            <p class="text-fog text-xs">Four questions to answer first.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 grid-dot">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display text-4xl text-chalk mb-3">WANT THE WALKTHROUGH<br/><span class="text-hiviz">ON A REAL REPO?</span></h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">We'll screen-share an anonymized client repo so you can see the structure end-to-end before any commitment.</p>
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Request the Walkthrough &rarr;</a>
+      </div>
+    </section>
+  </article>
+
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1"><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a><a href="/construction/services" class="hover:text-chalk">Services</a><a href="/construction/pricing" class="hover:text-chalk">Pricing</a><a href="/construction/resources" class="hover:text-chalk">Resources</a><a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

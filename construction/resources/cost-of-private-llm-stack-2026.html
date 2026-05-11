@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What a Private LLM Stack Actually Costs in 2026 | Marapone Construction</title>
+  <meta name="description" content="Hardware, models, ingest, ops. Honest numbers for what a private LLM stack runs in 2026 — capex, opex, and the lines vendors hide." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="What a Private LLM Stack Actually Costs in 2026" />
+  <meta property="og:description" content="Real numbers, no fluff." />
+  <meta property="og:url" content="https://marapone.com/construction/resources/cost-of-private-llm-stack-2026" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/resources/cost-of-private-llm-stack-2026" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    .article p { line-height: 1.7; }
+    .article h2 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .callout { background:#0f0f0f; border:1px solid #2b2b2b; border-left:3px solid #f97316; padding:1.25rem; border-radius:0.25rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/construction/resources" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; Resources</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a><a href="/construction/services" class="hover:text-chalk">Services</a><a href="/construction/pricing" class="hover:text-chalk">Pricing</a><a href="/construction/work" class="hover:text-chalk">Work</a><a href="/construction/about" class="hover:text-chalk">About</a><a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/construction/resources" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; Resources</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a><a href="/construction/services" class="text-fog hover:text-chalk">Services</a><a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a><a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+    </div>
+  </nav>
+
+  <article id="main-content" class="article">
+    <header class="grid-dot border-b border-plate py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto px-4">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Cost &middot; 10 min read</p>
+        <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-tight mb-6">WHAT A PRIVATE LLM STACK<br/><span class="text-hiviz">ACTUALLY COSTS IN 2026.</span></h1>
+        <p class="text-fog text-lg leading-relaxed">There's a wide gulf between vendor pricing decks and what a private LLM stack really costs to stand up. We've shipped enough of these to write the unsentimental version. All numbers in USD; multiply by 1.35 for CAD or by 0.92 for EUR.</p>
+        <p class="font-mono text-xs text-plate mt-6">By the Marapone team &middot; Updated 2026</p>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-16 space-y-10 text-fog">
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The four cost buckets nobody itemizes</h2>
+        <p>Most "AI cost" estimates collapse into a single line. The honest decomposition has four:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li><strong class="text-chalk">Hardware</strong> — the box that runs the model.</li>
+          <li><strong class="text-chalk">Build</strong> — engineering time to ingest your data, fit the workflows, ship the UI.</li>
+          <li><strong class="text-chalk">Ongoing ops</strong> — backups, model updates, occasional troubleshooting.</li>
+          <li><strong class="text-chalk">Optional services</strong> — retainer for upgrades, training, new modules.</li>
+        </ul>
+        <p>Each one has a real number in 2026. Here they are.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">1. Hardware: $0 to $25k, depending on scale</h2>
+        <p><strong class="text-chalk">Workstation deployment ($0 - $5k).</strong> A MacBook Pro M3 Max with 64GB unified memory runs a quantized 70B model adequately for one user. If you already own the laptop, the marginal cost is $0. If you don't, $4-5k.</p>
+        <p><strong class="text-chalk">On-prem server ($15-25k).</strong> A single tower or 2U server with two RTX 6000 Ada cards (96GB total VRAM), 256GB system RAM, 8TB NVMe storage. This runs the whole stack for a 30-50 person office with comfortable headroom. About a one-day install.</p>
+        <p><strong class="text-chalk">Cloud option ($1-3/hour active GPU time).</strong> If you'd rather not buy hardware, an A100/H100 cloud instance runs ~$2/hour. For an office of 30, average ~6 hours/day of active inference, that's about $360/month. Cheaper than buying for the first 18-24 months; more expensive over five years.</p>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-1">A common surprise:</p>
+          <p class="text-sm">Open-weight models in late 2025 are good enough that you don't need an H100 for most construction workflows. A used dual-RTX-3090 rig for $3-4k handles RFI triage, daily logs, and most retrieval-heavy work just fine.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">2. Build: $9k to $25k for a focused scope</h2>
+        <p>This is the line vendors compete on. The Marapone three-module construction bundle (RFI, daily logs, change-order risk) is $9,500 one-time. A bespoke build with custom integrations into Procore, Bluebeam, and Outlook lands around $15-20k. A multi-module enterprise scope can hit $25k.</p>
+        <p>What makes builds expensive isn't model selection. It's:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>OCR pipelines for messy drawing scans.</li>
+          <li>Custom ingest from PM tools that don't have clean APIs.</li>
+          <li>Per-trade rule fitting against your specific risk register.</li>
+          <li>UI customization for your branding or existing portal.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">3. Ongoing ops: $50-$300/month</h2>
+        <p>Most of this is electricity and minor cloud spend. Concrete numbers:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>On-prem server power: ~$30-60/month at typical inference load.</li>
+          <li>Backups (offsite encrypted): $20-100/month depending on data volume.</li>
+          <li>Domain + TLS certs (if exposed externally): negligible.</li>
+          <li>Occasional minor upgrades when an open-weight model upgrade ships: zero direct cost.</li>
+        </ul>
+        <p>If you skip backups, ops cost is essentially the electricity. Don't skip backups.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">4. Optional retainer: $500-$2,000/month</h2>
+        <p>This buys you us being on call: model swaps when better open-weight models drop, new module add-ons, occasional incident support. Not required — every Marapone build ships with self-serve runbooks — but it exists for shops that prefer a phone number.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Five-year worked example</h2>
+        <p>A 30-person GC adopts the Marapone three-module bundle on an on-prem server. Indicative five-year stack:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>Hardware: $20,000 once.</li>
+          <li>Build: $9,500 once.</li>
+          <li>Ops: ~$2,400/year &times; 5 = $12,000.</li>
+          <li>Optional retainer (assume yes, $1,000/mo): $60,000.</li>
+        </ul>
+        <p><strong class="text-chalk">Five-year total: ~$101,500</strong> with full retainer support, or <strong class="text-chalk">~$41,500</strong> without.</p>
+        <p>Comparison: 30 users at $50/seat/month for the same five years = $90,000 in pure SaaS, with no asset on your balance sheet at the end and continued payments thereafter.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The lines that aren't on this page</h2>
+        <p>Three costs people sometimes worry about that turn out small:</p>
+        <p><strong class="text-chalk">Model licensing.</strong> Llama 3.1 and Qwen 2.5 are free for commercial use under their open-weight licences. Verify your scale fits within Llama's enterprise threshold; for any reasonable construction shop, it does.</p>
+        <p><strong class="text-chalk">Token costs.</strong> Zero. The model runs on your hardware. There's no per-token bill from anyone.</p>
+        <p><strong class="text-chalk">Data egress.</strong> Zero. Documents never leave your network.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">When the numbers don't work</h2>
+        <p>Honest cases where a private stack is the wrong answer:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>You're under 5 users — SaaS pencils out and the build cost amortizes too slowly.</li>
+          <li>You only need general writing/Q&amp;A, not workflow automation — ChatGPT Enterprise wins.</li>
+          <li>You don't have anyone who can babysit a server, even a little — stick with SaaS.</li>
+        </ul>
+        <p>Outside those, the math usually favours owning. The exact crossover depends on your headcount and SaaS pricing.</p>
+      </section>
+
+    </div>
+
+    <section class="border-t border-b border-plate py-12 bg-gunmetal">
+      <div class="max-w-5xl mx-auto px-4">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Related reading</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="/construction/resources/own-vs-rent-ai-for-gcs" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Owning vs Renting AI</p>
+            <p class="text-fog text-xs">Reality check for GCs.</p>
+          </a>
+          <a href="/construction/architecture" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">The Architecture</p>
+            <p class="text-fog text-xs">What's inside the build.</p>
+          </a>
+          <a href="/construction/resources/sample-handover-walkthrough" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Inside a Marapone Handover</p>
+            <p class="text-fog text-xs">What ships on day 14.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 grid-dot">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display text-4xl text-chalk mb-3">WANT YOUR REAL NUMBERS?<br/><span class="text-hiviz">WE'LL QUOTE THE WHOLE STACK.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">Tell us your headcount, sources, and target workflows. We'll write back a line-by-line cost estimate.</p>
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Get a Quote &rarr;</a>
+      </div>
+    </section>
+  </article>
+
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1"><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a><a href="/construction/services" class="hover:text-chalk">Services</a><a href="/construction/pricing" class="hover:text-chalk">Pricing</a><a href="/construction/resources" class="hover:text-chalk">Resources</a><a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

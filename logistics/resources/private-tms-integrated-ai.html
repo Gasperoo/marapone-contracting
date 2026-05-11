@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private AI That Plugs Into Your TMS | Marapone Logistics</title>
+  <meta name="description" content="How to add a private AI layer to MercuryGate, McLeod, SAP TM, or Oracle OTM without ripping anything out. The integration patterns that actually work in production." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Private AI That Plugs Into Your TMS" />
+  <meta property="og:description" content="Integration patterns that work in production." />
+  <meta property="og:url" content="https://marapone.com/logistics/resources/private-tms-integrated-ai" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/logistics/resources/private-tms-integrated-ai" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #52b788; padding-left: 1rem; }
+    .article p { line-height: 1.7; }
+    .article h2 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .callout { background:#0f0f0f; border:1px solid #2b2b2b; border-left:3px solid #52b788; padding:1.25rem; border-radius:0.25rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-chalk focus:text-charcoal focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/logistics/resources" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; Resources</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a><a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a><a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a><a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a><a href="/logistics/about" class="hover:text-chalk transition-colors">About</a><a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/logistics/resources" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; Resources</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a><a href="/logistics/services" class="text-fog hover:text-chalk">Services</a><a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+    </div>
+  </nav>
+
+  <article id="main-content" class="article">
+    <header class="grid-dot border-b border-plate py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto px-4">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Integration &middot; 10 min read</p>
+        <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-tight mb-6">PRIVATE AI <span style="color:#52b788">THAT PLUGS INTO YOUR TMS.</span></h1>
+        <p class="text-fog text-lg leading-relaxed">Most ops directors hear "private AI" and assume it means yanking out their TMS. It doesn't. The integration patterns we use add a private AI layer alongside your TMS — reading what's there, writing back where it's safe, never replacing it. Here are the patterns that work.</p>
+        <p class="font-mono text-xs text-plate mt-6">By the Marapone team &middot; Updated 2026</p>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-16 space-y-10 text-fog">
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The four roles AI plays alongside a TMS</h2>
+        <p>Across MercuryGate, McLeod, SAP TM, Oracle OTM, BluJay, and the long tail of regional TMS platforms, the AI layer plays one of four roles. Pick the right one and the integration is straightforward.</p>
+        <p><strong class="text-chalk">1. Reader.</strong> AI ingests TMS data, reasons over it, surfaces insights in its own UI. The TMS is unchanged. Lowest integration risk.</p>
+        <p><strong class="text-chalk">2. Annotator.</strong> AI reads, then writes back notes, flags, or status fields that the TMS understands. Operators see annotations inside the TMS they already use.</p>
+        <p><strong class="text-chalk">3. Pre-filler.</strong> AI drafts records (e.g. invoice dispute documents, carrier scorecards) and writes them as drafts into the TMS for human approval.</p>
+        <p><strong class="text-chalk">4. Trigger.</strong> AI watches TMS events and kicks off workflows in the AI layer (e.g. invoice arrived &rarr; audit; carrier on-time slipped &rarr; alert).</p>
+        <p>The integration cost goes from 1 to 4 in roughly that order. Most useful AI layers do roles 1 and 4 with optional 2.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">MercuryGate</h2>
+        <p>MercuryGate's REST API is mature and well-documented. We typically ingest shipments, quotes, invoices, and POD records via standard endpoints with an OAuth-scoped service account. Write-back of audit notes goes through the shipment annotation API.</p>
+        <p>Common gotcha: the rate-limit on bulk shipment fetch is conservative for older accounts. Use the delta endpoints, not full-table polls, or you'll spend a week arguing with your account manager.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">McLeod (LoadMaster, PowerBroker)</h2>
+        <p>McLeod's preferred path is direct database access via a read-only SQL Server view layer that their integration partners can spin up. We've also done it via their REST API where exposed.</p>
+        <p>Most North-American brokerages running McLeod can get to a working ingest pipeline in 2-3 days, including the read-only DB user and the schema mapping. Write-back is typically into the freight notes table, scoped to a specific user account that's clearly marked as the AI service.</p>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-1">Tip:</p>
+          <p class="text-sm">Stamp every AI-written note with a tag like <code class="font-mono text-sm" style="color:#52b788">[ai-audit]</code> at the start. Operators can filter for them, and you'll never wonder which notes were human and which weren't.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">SAP TM</h2>
+        <p>SAP TM is the heaviest of the bunch. The cleanest pattern is OData services exposed via the SAP Gateway, with shipment, freight order, and freight settlement data flowing out and audit results flowing back into Forwarding Charge Documents (FCDs) as draft adjustments.</p>
+        <p>In practice the integration takes 2-3 weeks for a SAP-native shop with an experienced Basis admin who can authorize the OData services. The SAP side moves slower than ours, so book the joint working session early.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Oracle TMS (OTM)</h2>
+        <p>OTM exposes integration via standard XML web services and a flexible event subscription model. Shipment, rate, and invoice ingest is straightforward. Write-back into shipment status updates is supported and well-documented.</p>
+        <p>The thing to watch for: OTM environments are often heavily customized. Don't assume your tenant matches the documented schema. Our pattern is to ingest first, then layer the customizations as they're discovered.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">BluJay (E2open)</h2>
+        <p>Tender + invoice ingest is achievable via their REST endpoints, but each tenant tends to require a small amount of custom work because the data model is configurable. Plan for 1-2 weeks of integration work, mostly in the schema-mapping layer.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The pattern that works for all of them</h2>
+        <p>Regardless of TMS:</p>
+        <ol class="space-y-2 ml-5 list-decimal">
+          <li><strong class="text-chalk">Read-only first.</strong> Ingest a representative sample. Validate the AI output offline.</li>
+          <li><strong class="text-chalk">Then a UI-only AI surface.</strong> Operators see AI output in our UI; nothing writes back to the TMS yet.</li>
+          <li><strong class="text-chalk">Then optional write-back, scoped tightly.</strong> Specific fields, specific records, clearly tagged as AI-authored.</li>
+          <li><strong class="text-chalk">Eventually, automation triggers.</strong> Once trust is established, the AI layer can act on TMS events without human prompting.</li>
+        </ol>
+        <p>Skipping a step is the most common cause of stalled integrations. Going from "no AI" to "writes invoices into the TMS" without the intermediate stages turns into a six-month change-management problem.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">When the TMS doesn't have an API</h2>
+        <p>Some smaller or regional TMS platforms still don't expose APIs cleanly. Two practical workarounds:</p>
+        <p><strong class="text-chalk">Email-based ingest.</strong> Most TMS can email reports on a schedule. We pull from a dedicated mailbox and parse. Slower, less elegant, works.</p>
+        <p><strong class="text-chalk">Database read replicas.</strong> If you have a SQL-accessible TMS, a read-only replica is often the lowest-friction path even if the TMS technically has an API.</p>
+      </section>
+
+    </div>
+
+    <section class="border-t border-b border-plate py-12 bg-gunmetal">
+      <div class="max-w-5xl mx-auto px-4">
+        <p class="font-mono text-xs uppercase tracking-widest mb-4" style="color:#52b788">// Related reading</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="/logistics/integrations" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Full Integrations List</p>
+            <p class="text-fog text-xs">Built / custom / roadmap.</p>
+          </a>
+          <a href="/logistics/architecture" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Architecture</p>
+            <p class="text-fog text-xs">The full stack diagram.</p>
+          </a>
+          <a href="/logistics/resources/invoice-audit-build-vs-buy" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Invoice Audit: Build vs Buy</p>
+            <p class="text-fog text-xs">The decision frame.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 grid-dot">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display text-4xl text-chalk mb-3">TELL US YOUR TMS.<br/><span style="color:#52b788">WE'LL MAP THE INTEGRATION.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">Send us the platform you run and your top 3 workflows. We'll write back a one-page integration plan within 24 hours.</p>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Get an Integration Plan &rarr;</a>
+      </div>
+    </section>
+  </article>
+
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+          <div class="flex gap-2 mt-1"><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a><a href="/logistics/services" class="hover:text-chalk">Services</a><a href="/logistics/pricing" class="hover:text-chalk">Pricing</a><a href="/logistics/resources" class="hover:text-chalk">Resources</a><a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

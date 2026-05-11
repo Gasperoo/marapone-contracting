@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What "Owning the Model" Actually Means | Marapone Logistics</title>
+  <meta name="description" content="Vendors throw 'you own the AI' around without precision. Here's what actually transfers — weights, vector store, source code, runbooks — and what doesn't." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="What 'Owning the Model' Actually Means" />
+  <meta property="og:description" content="What actually transfers." />
+  <meta property="og:url" content="https://marapone.com/logistics/resources/what-owning-the-model-means" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/logistics/resources/what-owning-the-model-means" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #52b788; padding-left: 1rem; }
+    .article p { line-height: 1.7; }
+    .article h2 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .callout { background:#0f0f0f; border:1px solid #2b2b2b; border-left:3px solid #52b788; padding:1.25rem; border-radius:0.25rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-chalk focus:text-charcoal focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/logistics/resources" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; Resources</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a><a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a><a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a><a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a><a href="/logistics/about" class="hover:text-chalk transition-colors">About</a><a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/logistics/resources" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; Resources</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a><a href="/logistics/services" class="text-fog hover:text-chalk">Services</a><a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+    </div>
+  </nav>
+
+  <article id="main-content" class="article">
+    <header class="grid-dot border-b border-plate py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto px-4">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Pillar &middot; 9 min read</p>
+        <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-tight mb-6">WHAT "OWNING THE MODEL" <span style="color:#52b788">ACTUALLY MEANS.</span></h1>
+        <p class="text-fog text-lg leading-relaxed">Every AI vendor's marketing page now says some version of "you own your AI." It usually doesn't survive five minutes of scrutiny. Here's the unsentimental version: what actually transfers in a real handover, what stays with the vendor, and what to ask before signing anything.</p>
+        <p class="font-mono text-xs text-plate mt-6">By the Marapone team &middot; Updated 2026</p>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-16 space-y-10 text-fog">
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The five layers of "the model"</h2>
+        <p>"The model" is shorthand for at least five distinct artifacts. Ownership claims have to be precise about which layer they cover.</p>
+        <ol class="space-y-2 ml-5 list-decimal">
+          <li><strong class="text-chalk">Base model weights</strong> — the open-weight Llama or Qwen file.</li>
+          <li><strong class="text-chalk">Fine-tune deltas</strong> — the LoRA or full fine-tune trained on your data.</li>
+          <li><strong class="text-chalk">Vector store</strong> — the embedded representation of your documents.</li>
+          <li><strong class="text-chalk">Application code</strong> — the API services, ingest pipelines, UI.</li>
+          <li><strong class="text-chalk">Runbooks</strong> — the operational documentation.</li>
+        </ol>
+        <p>"You own your AI" usually means item 3 or 4 only. A real handover covers all five.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Layer 1: Base model weights</h2>
+        <p>If the system uses an open-weight model (Llama 3.1, Qwen 2.5, Mistral), the weights are already free under their respective licences. "Owning" them means they're on disk in your environment, not pulled from someone else's API at inference time. That's a meaningful distinction — air-gap support depends on it.</p>
+        <p>If the system uses a closed-weight API (GPT-4, Claude, Gemini), no vendor can transfer the weights to you. They're not theirs to transfer. Any claim of "you own the model" in that context is shorthand for "you own your account."</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Layer 2: Fine-tune deltas</h2>
+        <p>If the system was customized by training a LoRA adapter or doing a full fine-tune on your data, that artifact is the most operationally valuable thing in the build. It encodes everything specific to your business.</p>
+        <p>Ownership of the fine-tune means three things, all of which should be in writing:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>The weights themselves are on your disk in a portable format (not stuck in a vendor tenant).</li>
+          <li>The training script and dataset are yours, so you can retrain when needed.</li>
+          <li>The vendor cannot deploy your fine-tune for any other client.</li>
+        </ul>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-1">A surprising omission:</p>
+          <p class="text-sm">Some vendors hand over the fine-tuned weights but not the training script. Without the script, you can't retrain when carrier formats or shipper contracts change. Ask for both.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Layer 3: Vector store</h2>
+        <p>The vector store contains numerical representations of your documents — invoices, contracts, BOLs, customs declarations. From an ownership perspective, the question is whether you can export the embeddings and the index in a portable format.</p>
+        <p>If the vector store is ChromaDB, Qdrant, Weaviate, or any standard open-source option, the answer is yes — the data files on disk are portable. If it's a vendor-proprietary store, the answer is "we'll see."</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Layer 4: Application code</h2>
+        <p>This is the API layer, the ingest pipelines, the UI. Ownership means you have the source code in a Git repository in your account, under a licence that lets you modify and redistribute.</p>
+        <p>Three honest tiers:</p>
+        <p><strong class="text-chalk">A:</strong> Full source under a permissive licence (MIT, Apache 2.0). You can fork, modify, host elsewhere. This is what we ship.</p>
+        <p><strong class="text-chalk">B:</strong> Source available, internal use only. You can read it, modify it for your own use, but not redistribute. Common in enterprise contracts.</p>
+        <p><strong class="text-chalk">C:</strong> No source, hosted only. You have an account on a vendor platform. "Ownership" is a marketing word.</p>
+        <p>Ask which tier you're getting before believing the ownership claim.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Layer 5: Runbooks</h2>
+        <p>If the application code arrives but no one knows how to install, back up, or extend it, it's a brick. Real handovers include operational documentation:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>Install runbook (fresh-system to running).</li>
+          <li>Ingest runbook (add a new shipper or carrier).</li>
+          <li>Retraining runbook (improve the model on new examples).</li>
+          <li>Backup &amp; restore runbook.</li>
+          <li>Incident playbook.</li>
+        </ul>
+        <p>Without runbooks, the source code is theoretical ownership. With them, it's practical.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">What stays with the vendor (honestly)</h2>
+        <p>Even in a real handover, two things stay with the vendor:</p>
+        <p><strong class="text-chalk">Trade-craft.</strong> The vendor's experience of how to ingest from MercuryGate vs SAP TM, how to tune embeddings for invoice OCR, the dozen heuristics they apply by default. You get the resulting system but not the training that produced the choices.</p>
+        <p><strong class="text-chalk">Future model upgrades.</strong> If a better open-weight model ships next year, you can swap it yourself with the runbooks, but if you'd rather have help, the vendor is still the natural party to call. That's why a retainer exists — it's not lock-in, it's optional access.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The seven questions to ask before signing</h2>
+        <ol class="space-y-2 ml-5 list-decimal">
+          <li>Are you using open-weight or closed-weight models for inference?</li>
+          <li>Do I receive the fine-tune weights and the training script?</li>
+          <li>Is the vector store portable (ChromaDB, Qdrant, etc.) or proprietary?</li>
+          <li>Do I get full source code in my Git account under a permissive licence?</li>
+          <li>Do I get install, ingest, retraining, backup, and incident runbooks?</li>
+          <li>If I cancel any retainer, does the system continue to run?</li>
+          <li>Can I redeploy the system to a different cloud or on-prem location without your involvement?</li>
+        </ol>
+        <p>If any answer is no or "let me check with our legal team," the ownership claim is partial.</p>
+      </section>
+
+    </div>
+
+    <section class="border-t border-b border-plate py-12 bg-gunmetal">
+      <div class="max-w-5xl mx-auto px-4">
+        <p class="font-mono text-xs uppercase tracking-widest mb-4" style="color:#52b788">// Related reading</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="/logistics/architecture" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Architecture</p>
+            <p class="text-fog text-xs">The full stack diagram.</p>
+          </a>
+          <a href="/logistics/resources/invoice-audit-build-vs-buy" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Invoice Audit: Build vs Buy</p>
+            <p class="text-fog text-xs">The decision frame.</p>
+          </a>
+          <a href="/logistics/resources/private-tms-integrated-ai" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Private AI + Your TMS</p>
+            <p class="text-fog text-xs">Integration patterns.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 grid-dot">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display text-4xl text-chalk mb-3">WANT TO SEE A REAL HANDOVER?<br/><span style="color:#52b788">WE'LL SCREEN-SHARE THE REPO.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">Anonymized walkthrough of an actual client codebase, runbooks, and configs. No NDA needed for the walkthrough.</p>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Request the Walkthrough &rarr;</a>
+      </div>
+    </section>
+  </article>
+
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+          <div class="flex gap-2 mt-1"><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a><a href="/logistics/services" class="hover:text-chalk">Services</a><a href="/logistics/pricing" class="hover:text-chalk">Pricing</a><a href="/logistics/resources" class="hover:text-chalk">Resources</a><a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

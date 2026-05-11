@@ -19,6 +19,19 @@
   <url><loc>https://marapone.com/construction/for/estimators</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/for/owners-reps</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/for/subcontractors</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/architecture</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/integrations</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/trust</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/vs/procore</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/vs/autodesk</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/vs/document-crunch</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/vs/chatgpt</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources/rfi-ai-vs-procore-ai</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources/scope-a-blueprint-auditor</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources/own-vs-rent-ai-for-gcs</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources/cost-of-private-llm-stack-2026</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources/sample-handover-walkthrough</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 
   <!-- Logistics -->
   <url><loc>https://marapone.com/logistics/</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
@@ -35,6 +48,19 @@
   <url><loc>https://marapone.com/logistics/for/customs-brokers</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/for/importers</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/for/forwarders</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/architecture</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/integrations</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/trust</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/vs/project44</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/vs/descartes</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/vs/flexport</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/vs/in-house-build</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/resources</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/resources/invoice-audit-build-vs-buy</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/resources/gdpr-safe-ai-for-eu-customs</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/resources/private-tms-integrated-ai</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/resources/what-owning-the-model-means</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/resources/sample-carrier-scorecard</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 
   <!-- Legal / misc -->
   <url><loc>https://marapone.com/terms</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>

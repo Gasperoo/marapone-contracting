@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Scope a Custom Blueprint Auditor | Marapone Construction</title>
+  <meta name="description" content="The four questions to answer before anyone writes a line of code. A practical guide to scoping a private AI blueprint auditor for your GC shop." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="How to Scope a Custom Blueprint Auditor" />
+  <meta property="og:description" content="The four questions to answer first." />
+  <meta property="og:url" content="https://marapone.com/construction/resources/scope-a-blueprint-auditor" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/resources/scope-a-blueprint-auditor" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    .article p { line-height: 1.7; }
+    .article h2 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .callout { background:#0f0f0f; border:1px solid #2b2b2b; border-left:3px solid #f97316; padding:1.25rem; border-radius:0.25rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/construction/resources" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; Resources</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a><a href="/construction/services" class="hover:text-chalk">Services</a><a href="/construction/pricing" class="hover:text-chalk">Pricing</a><a href="/construction/work" class="hover:text-chalk">Work</a><a href="/construction/about" class="hover:text-chalk">About</a><a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/construction/resources" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; Resources</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a><a href="/construction/services" class="text-fog hover:text-chalk">Services</a><a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a><a href="/construction/work" class="text-fog hover:text-chalk">Work</a><a href="/construction/about" class="text-fog hover:text-chalk">About</a><a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+    </div>
+  </nav>
+
+  <article id="main-content" class="article">
+    <header class="grid-dot border-b border-plate py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto px-4">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Process &middot; 11 min read</p>
+        <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-tight mb-6">HOW TO SCOPE A <span class="text-hiviz">CUSTOM BLUEPRINT AUDITOR.</span></h1>
+        <p class="text-fog text-lg leading-relaxed">Most "AI blueprint review" projects fail because they start with the wrong question. They start with "what model should we use?" The right question comes earlier — and the answers determine whether you'll have a working system in two weeks or a 2026 New Year's resolution.</p>
+        <p class="font-mono text-xs text-plate mt-6">By the Marapone team &middot; Updated 2026</p>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-16 space-y-10 text-fog">
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Question 1: What does "audit" actually mean here?</h2>
+        <p>Almost everyone uses the word "audit" differently. Pinning it down is the single most useful hour you'll spend before scoping. The four common interpretations:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li><strong class="text-chalk">Conformity check</strong> — does the drawing match the spec book section it references?</li>
+          <li><strong class="text-chalk">Code check</strong> — does the drawing comply with the applicable building code?</li>
+          <li><strong class="text-chalk">Constructability review</strong> — can the trade actually build what's drawn given site realities?</li>
+          <li><strong class="text-chalk">Coordination check</strong> — do the architectural, structural, and mech drawings agree at intersections?</li>
+        </ul>
+        <p>These are four different products. A constructability reviewer needs trade-by-trade rules of thumb; a code checker needs the local code as a structured input. Pick one to start.</p>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-1">Reality check:</p>
+          <p class="text-sm">If your scope is "all four," it's a 12-month project with a 50% chance of stalling. Pick one. Ship it. Add the next one.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Question 2: What inputs are actually available?</h2>
+        <p>Drawings come in many shapes: vector PDFs, raster scans of marked-up plots, native DWG, Revit models. Each one needs different ingest. A pipeline that works on clean vector PDFs falls over on a 600-DPI scan with handwritten markup.</p>
+        <p>Make a list of the last ten projects' drawing-set formats. Be honest about which ones are messy. The auditor's accuracy will be capped by the worst-format set you need it to handle.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Question 3: Who acts on the output?</h2>
+        <p>This sounds obvious until you realize different consumers want very different things:</p>
+        <p><strong class="text-chalk">A PE</strong> wants a ranked punch list of issues with one-sentence summaries and links to the affected drawing region.</p>
+        <p><strong class="text-chalk">An estimator</strong> wants the issues categorized by trade and quantity-of-impact.</p>
+        <p><strong class="text-chalk">An owner's rep</strong> wants a formal report with the methodology footnoted, suitable for sharing with the design team.</p>
+        <p>Same underlying analysis; three different outputs. Pick the primary user and design backwards from their workflow.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Question 4: What does "good enough" look like?</h2>
+        <p>The honest acceptance criterion for v1 isn't "catches everything a senior PE would catch." That's an unfair bar — most senior PEs disagree with each other. The real bar is:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>Catches 80% of issues a competent PE would catch.</li>
+          <li>False-positive rate low enough that the PE still trusts the output after a week.</li>
+          <li>Saves enough time per drawing review that the PE prefers the assisted workflow over the manual one.</li>
+        </ul>
+        <p>Define those numbers before you start. They become the test set.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The three artifacts you need before code</h2>
+        <p>Before any modeling work begins, three artifacts should exist:</p>
+        <ol class="space-y-3 ml-5 list-decimal">
+          <li><strong class="text-chalk">A test set of 20-30 real drawings</strong> with a senior PE's annotations of what they consider issues. This is what you measure against.</li>
+          <li><strong class="text-chalk">A one-page output spec</strong> showing the exact format the auditor's report will take. Stakeholders sign off on this before you start.</li>
+          <li><strong class="text-chalk">A one-page rules document</strong> describing the categories of issue you want flagged and any explicit exclusions.</li>
+        </ol>
+        <p>Skipping any of these three is the most common failure mode. The model is the easy part. The scoping is what kills projects.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">A 14-day build plan that actually works</h2>
+        <p>Once those four questions are answered:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li><strong class="text-chalk">Days 1-3:</strong> ingest pipeline for your drawing format, baseline retrieval against the spec book.</li>
+          <li><strong class="text-chalk">Days 4-7:</strong> first-pass auditor running against your test set; iterate on prompts and rules.</li>
+          <li><strong class="text-chalk">Days 8-11:</strong> output formatter, integrations into wherever the PE works (Bluebeam, Procore, email).</li>
+          <li><strong class="text-chalk">Days 12-14:</strong> measurement against acceptance criteria, runbook handover, training.</li>
+        </ul>
+        <p>That's the cadence. It works because the hard work happened before day 1.</p>
+      </section>
+
+    </div>
+
+    <section class="border-t border-b border-plate py-12 bg-gunmetal">
+      <div class="max-w-5xl mx-auto px-4">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Related reading</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="/construction/resources/sample-handover-walkthrough" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Handover Walkthrough</p>
+            <p class="text-fog text-xs">What ships on day 14.</p>
+          </a>
+          <a href="/construction/resources/cost-of-private-llm-stack-2026" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">Cost of a Private LLM Stack</p>
+            <p class="text-fog text-xs">Real numbers for 2026.</p>
+          </a>
+          <a href="/construction/resources/rfi-ai-vs-procore-ai" class="block bg-steel border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+            <p class="text-chalk font-semibold mb-1">RFI AI vs Procore AI</p>
+            <p class="text-fog text-xs">Honest comparison.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 grid-dot">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display text-4xl text-chalk mb-3">WANT US TO SCOPE YOURS?<br/><span class="text-hiviz">SEND ONE PROJECT'S DRAWINGS.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">We'll write you a one-page scoping document and a 14-day build plan based on your real drawings — no charge.</p>
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Get a Scoping Plan &rarr;</a>
+      </div>
+    </section>
+  </article>
+
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1"><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a><a href="/construction/services" class="hover:text-chalk">Services</a><a href="/construction/pricing" class="hover:text-chalk">Pricing</a><a href="/construction/resources" class="hover:text-chalk">Resources</a><a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

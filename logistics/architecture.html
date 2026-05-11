@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture – What You Actually Own | Marapone Logistics</title>
+  <meta name="description"
+    content="The exact stack inside a Marapone logistics build. Open-source models, local vector store, your own API and UI. Deployed on a laptop, on-prem server, or your private cloud." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Architecture – What You Actually Own | Marapone Logistics" />
+  <meta property="og:description" content="The exact stack inside a Marapone logistics build. You own every layer." />
+  <meta property="og:url" content="https://marapone.com/logistics/architecture" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/logistics/architecture" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .marine-gradient {
+      background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%);
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .tape-line {
+      border-left: 3px solid #52b788;
+      padding-left: 1rem;
+    }
+
+    pre.codebox {
+      background: #0f0f0f;
+      color: #e8e8e8;
+      padding: 1.25rem;
+      border: 1px solid #2b2b2b;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body class="antialiased">
+
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-chalk focus:text-charcoal focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip
+    to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/"
+          class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr;
+          All Industries</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span
+            style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/logistics/faq" class="hover:text-chalk transition-colors">FAQ</a>
+        <a href="/logistics/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
+          class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get
+          Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/logistics/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/logistics/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/logistics/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/logistics/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/logistics/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/logistics/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
+        class="text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-sm mb-4" style="color:#52b788">// Architecture</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">UNDER THE HOOD —<br /><span
+          style="color:#52b788">WHAT YOU ACTUALLY OWN.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">Most "AI for logistics" pages stop at the marketing
+        layer. This one doesn't. Here is the exact stack we ship — the models, the vector store, the API, the UI, the
+        infra. All of it open-source where it matters. All of it handed over on day 14 with the source code, weights,
+        and runbooks.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
+          class="text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get the Stack
+          Walkthrough &rarr;</a>
+        <a href="/logistics/services"
+          class="border border-plate text-chalk font-semibold px-6 py-3 rounded transition-colors"
+          onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'"
+          onmouseout="this.style.borderColor='';this.style.color=''">See What We Build</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK DIAGRAM -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// The full pipeline</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">FIVE LAYERS, NO BLACK BOXES.</h2>
+
+      <div class="space-y-3">
+        <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">LAYER 01 · INGEST</p>
+            <p class="text-chalk font-semibold">Document ingest</p>
+            <p class="text-fog text-sm">Carrier invoices, BOLs, customs docs, rate sheets, EDI 210/214, email &rarr; OCR
+              &rarr; structured rows + line items</p>
+          </div>
+          <span class="font-mono text-2xl hidden md:inline" style="color:#52b788">&darr;</span>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">LAYER 02 · MODELS</p>
+            <p class="text-chalk font-semibold">Local LLM layer</p>
+            <p class="text-fog text-sm">Llama 3.1 70B (general), Qwen 2.5 14B (fast), domain fine-tunes (e.g. <code
+                class="font-mono text-xs" style="color:#52b788">invoice_extractor</code>)</p>
+          </div>
+          <span class="font-mono text-2xl hidden md:inline" style="color:#52b788">&darr;</span>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">LAYER 03 · MEMORY</p>
+            <p class="text-chalk font-semibold">Embeddings + vector store</p>
+            <p class="text-fog text-sm">BAAI/bge-m3 embeddings &rarr; ChromaDB or Qdrant &rarr; Postgres for structured
+              shipment + rate metadata</p>
+          </div>
+          <span class="font-mono text-2xl hidden md:inline" style="color:#52b788">&darr;</span>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">LAYER 04 · APP</p>
+            <p class="text-chalk font-semibold">Application layer</p>
+            <p class="text-fog text-sm">FastAPI services for rate quoting, invoice audit, carrier scoring, customs
+              compliance checks</p>
+          </div>
+          <span class="font-mono text-2xl hidden md:inline" style="color:#52b788">&darr;</span>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-5">
+          <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">LAYER 05 · UI</p>
+          <p class="text-chalk font-semibold">Web UI</p>
+          <p class="text-fog text-sm">Next.js + Tailwind. Hosted on your domain or behind your VPN. SSO via your
+            existing identity provider.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER BREAKDOWN -->
+  <section class="py-16 lg:py-20 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Layer breakdown</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">EVERY COMPONENT, NAMED.</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">MODELS</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">Open-weight LLMs</h3>
+          <ul class="text-fog text-sm space-y-1.5">
+            <li>&middot; Llama 3.1 70B Instruct</li>
+            <li>&middot; Qwen 2.5 14B Instruct (fast lane)</li>
+            <li>&middot; Mistral 7B (legacy support)</li>
+            <li>&middot; LoRA fine-tunes per workflow</li>
+          </ul>
+          <p class="font-mono text-xs text-plate mt-4">Weights live on your hardware. Inference via vLLM or llama.cpp.
+          </p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">VECTOR STORE</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">Embeddings + retrieval</h3>
+          <ul class="text-fog text-sm space-y-1.5">
+            <li>&middot; ChromaDB (default) or Qdrant</li>
+            <li>&middot; BAAI/bge-m3 embeddings</li>
+            <li>&middot; Hybrid search (BM25 + dense)</li>
+            <li>&middot; Per-shipper namespace isolation</li>
+          </ul>
+          <p class="font-mono text-xs text-plate mt-4">All vectors stay on your disk. No external embedding APIs.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">API LAYER</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">FastAPI services</h3>
+          <ul class="text-fog text-sm space-y-1.5">
+            <li>&middot; FastAPI + Pydantic</li>
+            <li>&middot; Celery + Redis for async jobs</li>
+            <li>&middot; OAuth2 / SSO ready</li>
+            <li>&middot; OpenAPI spec generated</li>
+          </ul>
+          <p class="font-mono text-xs text-plate mt-4">Stateless services. Easy to scale or replace one module without
+            touching the others.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">UI</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">Web interface</h3>
+          <ul class="text-fog text-sm space-y-1.5">
+            <li>&middot; Next.js 14 (app router)</li>
+            <li>&middot; Tailwind CSS</li>
+            <li>&middot; React Query for state</li>
+            <li>&middot; Mobile-friendly for ops desks</li>
+          </ul>
+          <p class="font-mono text-xs text-plate mt-4">Yours to brand. Yours to extend. Source ships in the handover.
+          </p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">INFRA</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">Runtime</h3>
+          <ul class="text-fog text-sm space-y-1.5">
+            <li>&middot; Docker Compose (single-host)</li>
+            <li>&middot; Postgres 16 for metadata</li>
+            <li>&middot; MinIO or local FS for blobs</li>
+            <li>&middot; Caddy or nginx as reverse proxy</li>
+          </ul>
+          <p class="font-mono text-xs text-plate mt-4">No Kubernetes unless you ask. Boring tech is the point.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-6">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">OBSERVABILITY</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">What broke and why</h3>
+          <ul class="text-fog text-sm space-y-1.5">
+            <li>&middot; Structured logs (JSON)</li>
+            <li>&middot; Prometheus metrics</li>
+            <li>&middot; Grafana dashboards (optional)</li>
+            <li>&middot; Per-request audit trail</li>
+          </ul>
+          <p class="font-mono text-xs text-plate mt-4">Your IT team can answer "what happened" without calling us.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPLOYMENT OPTIONS -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Where it runs</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">THREE DEPLOYMENT OPTIONS.</h2>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">OPTION 01</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Workstation</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">A single MacBook Pro M3 Max or a workstation with a 24GB GPU.
+            Good for one ops manager running invoice audit and rate quoting.</p>
+          <p class="font-mono text-xs text-plate">~$5k hardware · 1 user · No IT lift.</p>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg p-6" style="border-color:#52b788">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">OPTION 02 · COMMON</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">On-prem server</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">A single tower or 2U rack server in your office, dual-RTX or
+            A6000-class GPU. Runs the full stack for a 10-50 person brokerage or 3PL.</p>
+          <p class="font-mono text-xs text-plate">~$15-25k hardware · Whole office · One IT day to install.</p>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-xs uppercase mb-2" style="color:#52b788">OPTION 03</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Your private cloud</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">Your AWS / Azure / GCP tenant, your VPC, your IAM. We deploy
+            via Terraform. Documents never leave your cloud account. EU-region option for GDPR.</p>
+          <p class="font-mono text-xs text-plate">Hourly GPU billing · Multi-site · Your existing cloud governance
+            applies.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HANDOVER FOLDER -->
+  <section class="py-16 lg:py-20 border-b border-plate bg-gunmetal">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// What you get on day 14</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE HANDOVER FOLDER.</h2>
+      <p class="text-fog max-w-2xl mb-8">A real, opinionated folder structure ships with every build. Everything is
+        versioned, documented, and reproducible. Here's what lands in your repo:</p>
+
+      <pre class="codebox">your-marapone-build/
+├── README.md
+├── LICENSE
+├── docker-compose.yml
+├── .env.example
+├── models/
+│   ├── llama-3.1-70b-instruct.gguf
+│   ├── qwen2.5-14b-instruct.gguf
+│   └── lora/
+│       ├── invoice_extractor/
+│       └── carrier_scoring/
+├── data/
+│   ├── ingested/
+│   │   ├── invoices/
+│   │   └── rate_sheets/
+│   ├── embeddings/
+│   │   └── carrier_rates.parquet
+│   └── chroma/
+├── src/
+│   ├── api/
+│   │   ├── main.py
+│   │   ├── routers/
+│   │   │   ├── rate_quote.py
+│   │   │   ├── invoice_audit.py
+│   │   │   └── carrier_score.py
+│   │   └── services/
+│   ├── ingest/
+│   │   ├── ocr_pipeline.py
+│   │   ├── edi_parser.py
+│   │   └── chunkers/
+│   └── ui/                      # Next.js app
+├── runbooks/
+│   ├── 01_install.md
+│   ├── 02_ingest_new_carrier.md
+│   ├── 03_retrain_extractor.md
+│   ├── 04_backup_restore.md
+│   └── 05_incident_playbook.md
+├── tests/
+└── infra/
+    ├── terraform/               # if cloud deploy
+    └── scripts/
+</pre>
+
+      <p class="text-fog text-sm mt-6 max-w-2xl">Every file is yours under your license. Want to change the model? Edit
+        one config. Want to fork the UI? It's already a clean Next.js app. Want to swap ChromaDB for Qdrant? One
+        docker-compose line.</p>
+    </div>
+  </section>
+
+  <!-- MAINTENANCE -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Maintenance &amp; upgrades
+      </p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-8">YOU OWN IT. WE'RE STILL THERE IF YOU WANT US.</h2>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="tape-line">
+          <p class="text-chalk font-semibold mb-1">Self-serve by default</p>
+          <p class="text-fog text-sm leading-relaxed">Every runbook is in plain Markdown. Backups, model updates,
+            retraining the invoice extractor on a new carrier's format — all documented step by step. A competent IT
+            generalist can run it.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold mb-1">Optional retainer</p>
+          <p class="text-fog text-sm leading-relaxed">If you want us on call, we offer a flat monthly retainer for
+            upgrades, model swaps as new open-weight releases drop, and incident support. No required subscription.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold mb-1">Open-weight upgrades</p>
+          <p class="text-fog text-sm leading-relaxed">When Llama 4 or the next Qwen ships and outperforms what you have,
+            you can swap it. Your fine-tunes and pipelines are model-agnostic on purpose.</p>
+        </div>
+        <div class="tape-line">
+          <p class="text-chalk font-semibold mb-1">No phone-home</p>
+          <p class="text-fog text-sm leading-relaxed">The system never calls back to us. No telemetry, no usage pings.
+            If your network is air-gapped, the system runs anyway.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY DEFAULTS -->
+  <section class="py-12 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-xs uppercase tracking-widest mb-6" style="color:#52b788">// Security defaults shipped on
+        day one</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">ENCRYPTION</p>
+          <p class="text-chalk text-sm">At-rest (LUKS/AES-256), in-transit (TLS 1.3)</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">AUTH</p>
+          <p class="text-chalk text-sm">SSO-ready, role-based access, audit log</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">NETWORK</p>
+          <p class="text-chalk text-sm">Bind-localhost default, VPN/private subnet for remote</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-xs uppercase mb-1" style="color:#52b788">EGRESS</p>
+          <p class="text-chalk text-sm">No outbound API calls. Air-gap supported.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-24 grid-dot">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Want to read the actual code?
+      </p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">WE'LL WALK YOU THROUGH<br /><span
+          style="color:#52b788">A REAL HANDOVER REPO.</span></h2>
+      <p class="text-fog max-w-xl mx-auto mb-8">Book a 30-minute call and we'll screen-share an anonymized client repo:
+        the API, the runbooks, the model configs. No NDA needed for the walkthrough.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
+          class="text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Request the Walkthrough
+          &rarr;</a>
+        <a href="/logistics/trust"
+          class="border border-plate text-chalk font-semibold px-6 py-3 rounded transition-colors"
+          onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'"
+          onmouseout="this.style.borderColor='';this.style.color=''">See Security Posture</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span
+              style="color:#52b788">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span
+              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span>
+            <span
+              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a>
+          <a href="/logistics/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/logistics/services" class="hover:text-chalk">Services</a>
+          <a href="/logistics/work" class="hover:text-chalk">Work</a>
+          <a href="/logistics/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/logistics/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/logistics/about" class="hover:text-chalk">About</a>
+          <a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All
+          Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=logistics" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of
+          Service</a>
+        <a href="/privacy?from=logistics" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy
+          Policy</a>
+        <a href="/cookies?from=logistics" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie
+          Policy</a>
+        <a href="/security?from=logistics"
+          class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

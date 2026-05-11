@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrations – Tools We Plug Into | Marapone Construction</title>
+  <meta name="description" content="The construction stack we work with. Procore, Autodesk, Bluebeam, Outlook, SharePoint and more. Built, custom-build, or roadmap status for each." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Integrations – Marapone Construction" />
+  <meta property="og:description" content="The construction stack we plug into. Built, custom, or roadmap." />
+  <meta property="og:url" content="https://marapone.com/construction/integrations" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/integrations" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .badge-built { color:#22c55e; }
+    .badge-custom { color:#f97316; }
+    .badge-roadmap { color:#9ca3af; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk">Work</a>
+        <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+        <a href="/construction/about" class="hover:text-chalk">About</a>
+        <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// Integrations</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">STACK WE WORK WITH —<br/><span class="text-hiviz">BUILT, CUSTOM, OR ROADMAP.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">We don't replace the tools your crews already use. We sit alongside them, read what's there, and write back where it makes sense. Below: every construction tool we've connected to, with an honest status. If yours isn't here, ask.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Request an Integration &rarr;</a>
+        <a href="/construction/architecture" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">See the Architecture</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGEND -->
+  <section class="py-10 border-b border-plate bg-gunmetal">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Status legend</p>
+      <div class="grid sm:grid-cols-3 gap-3">
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-sm"><span class="badge-built">&#9679;</span> <span class="text-chalk font-semibold">Built</span></p>
+          <p class="text-fog text-xs mt-1">Production-ready connector ships with the build.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-sm"><span class="badge-custom">&#9680;</span> <span class="text-chalk font-semibold">Custom Build</span></p>
+          <p class="text-fog text-xs mt-1">We've done it before, but each integration is sized to your tenant.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-sm"><span class="badge-roadmap">&#9675;</span> <span class="text-chalk font-semibold">Roadmap</span></p>
+          <p class="text-fog text-xs mt-1">Not yet shipped. Scope on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT MANAGEMENT -->
+  <section class="py-12 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Project Management</p>
+      <h2 class="font-display text-3xl text-chalk mb-6">PM PLATFORMS</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Procore</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="text-fog text-sm">Read RFIs, drawings, daily logs. Write back AI drafts as RFI responses or comments.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Autodesk Construction Cloud</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="text-fog text-sm">Reads RFIs, sheets, issues. Writes responses and issue notes back via the BIM 360 API.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Buildertrend</h3>
+            <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only / Write</p>
+          <p class="text-fog text-sm">Daily log + change order ingest. Write-back via webhook scoped per project.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Newforma</h3>
+            <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">Email + transmittal ingest. We pull the project mailbox, classify, and surface inside our UI.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">CMiC</h3>
+            <span class="font-mono text-sm"><span class="badge-roadmap">&#9675;</span> Roadmap</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">N/A</p>
+          <p class="text-fog text-sm">DB-direct ingest possible on request. Two clients have asked.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Sage 300 CRE</h3>
+            <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">Cost code + commitment data ingest. We've done it twice; sized per install.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN / BIM -->
+  <section class="py-12 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Design / BIM</p>
+      <h2 class="font-display text-3xl text-chalk mb-6">DRAWINGS &amp; MODELS</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Revit</h3>
+            <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">Model + sheet metadata extraction via Forge / Revit API. We surface element data, not the model itself.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Bluebeam Revu</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">Reads PDF markup + measurement data. Pulls drawing references for RFIs and deficiencies.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">AutoCAD</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">DWG ingest via ODA File Converter. Sheet/layer extraction for blueprint Q&amp;A.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNICATION -->
+  <section class="py-12 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Communication</p>
+      <h2 class="font-display text-3xl text-chalk mb-6">EMAIL &amp; CHAT</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Outlook / M365</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="text-fog text-sm">Project mailbox ingest via Graph API. Drafts replies in your sent folder.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Gmail / Workspace</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="text-fog text-sm">Service account or OAuth ingest. Same write-back pattern as Outlook.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Slack</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="text-fog text-sm">Channel ingest, slash-command interface for super log uploads.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">MS Teams</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="text-fog text-sm">Channel + meeting transcript ingest. Bot for in-Teams Q&amp;A.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORAGE -->
+  <section class="py-12 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Storage</p>
+      <h2 class="font-display text-3xl text-chalk mb-6">DOCUMENT REPOSITORIES</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">SharePoint</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">Sites, libraries, document sets. Respects existing permissions.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Google Drive</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">Shared drive ingest. Honors Drive ACLs at retrieval time.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Dropbox</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">Team folder ingest with delta sync.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Box</h3>
+            <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="text-fog text-sm">Enterprise tenant ingest. Sized per scope, fast install.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICE -->
+  <section class="py-12 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Office</p>
+      <h2 class="font-display text-3xl text-chalk mb-6">SPREADSHEETS &amp; DOCS</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Excel</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="text-fog text-sm">Reads schedules, takeoffs, cost reports. Writes structured exports back as .xlsx.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Word</h3>
+            <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="text-fog text-sm">Spec book ingest. Generates change-order narratives and meeting minutes.</p>
+        </article>
+
+        <article class="bg-steel border border-plate rounded-lg p-5">
+          <div class="flex items-start justify-between mb-2">
+            <h3 class="font-display text-xl text-chalk">Smartsheet</h3>
+            <span class="font-mono text-sm"><span class="badge-roadmap">&#9675;</span> Roadmap</span>
+          </div>
+          <p class="font-mono text-xs text-plate mb-2">N/A</p>
+          <p class="text-fog text-sm">Sheet/grid ingest planned. Talk to us if you need it scoped.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DON'T SEE YOURS -->
+  <section class="py-16 lg:py-20 border-b border-plate bg-gunmetal">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Don't see your tool?</p>
+      <h2 class="font-display text-4xl text-chalk mb-4">IF IT HAS AN API OR A DB, WE CAN PROBABLY READ IT.</h2>
+      <p class="text-fog max-w-xl mx-auto mb-6">Procore-priced AI vendors will tell you "not supported" and move on. We'll quote you a custom connector — usually 1-3 days of work — or tell you straight up if it's not feasible.</p>
+      <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Request an Integration &rarr;</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-24 grid-dot">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// See it work on your stack</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">SHOW US WHAT YOU USE.<br/><span class="text-hiviz">WE'LL MAP THE INTEGRATION.</span></h2>
+      <p class="text-fog max-w-xl mx-auto mb-8">Tell us your current PM platform, drawing tool, and where docs live. We'll send back an honest connector plan — usually within 24 hours.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Integration Plan &rarr;</a>
+        <a href="/construction/discovery" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Book a 15-Min Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice Audit AI: Build vs Buy | Marapone Logistics</title>
+  <meta name="description" content="Should you buy a vendor invoice-audit tool, build it in-house, or commission a custom build? The honest framing for freight brokers and 3PLs in 2026." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Invoice Audit AI: Build vs Buy" />
+  <meta property="og:description" content="The honest framing for brokers and 3PLs." />
+  <meta property="og:url" content="https://marapone.com/logistics/resources/invoice-audit-build-vs-buy" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/logistics/resources/invoice-audit-build-vs-buy" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #52b788; padding-left: 1rem; }
+    .article p { line-height: 1.7; }
+    .article h2 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .callout { background:#0f0f0f; border:1px solid #2b2b2b; border-left:3px solid #52b788; padding:1.25rem; border-radius:0.25rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-chalk focus:text-charcoal focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/logistics/resources" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; Resources</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a><a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a><a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a><a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a><a href="/logistics/about" class="hover:text-chalk transition-colors">About</a><a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/logistics/resources" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; Resources</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a><a href="/logistics/services" class="text-fog hover:text-chalk">Services</a><a href="/logistics/pricing" class="text-fog hover:text-chalk">Pricing</a><a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+    </div>
+  </nav>
+
+  <article id="main-content" class="article">
+    <header class="grid-dot border-b border-plate py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto px-4">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Pillar &middot; 12 min read</p>
+        <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-tight mb-6">INVOICE AUDIT AI: <span style="color:#52b788">BUILD vs BUY.</span></h1>
+        <p class="text-fog text-lg leading-relaxed">Most freight brokers leak 3-5% on uncaught carrier-invoice errors. The market for fixing that has matured into three distinct shapes: vendor SaaS, in-house engineering, and custom builds. Each one is a real answer; only one is right for any given shop.</p>
+        <p class="font-mono text-xs text-plate mt-6">By the Marapone team &middot; Updated 2026</p>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-16 space-y-10 text-fog">
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The 3-5% leak, in concrete numbers</h2>
+        <p>Take a brokerage moving $20M of freight a year. Industry studies put uncaught invoice errors at 3-5% of carrier spend — call it a midpoint of 4%. That's $800,000 a year you're paying that you didn't owe. Even if your number is half that, the leak funds an entire FTE.</p>
+        <p>The errors aren't random. They cluster around fuel surcharge miscalculation, duplicate accessorial charges, missed volume discounts, invalid detention claims, and reweighs that don't match your origin documents. A pattern-detection problem the moment you frame it that way.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Option 1: Vendor SaaS</h2>
+        <p>Multiple vendors offer hosted invoice-audit platforms. The pitch is straightforward: feed them your invoices and contracts, they flag discrepancies, you dispute them.</p>
+        <p><strong class="text-chalk">Where it wins:</strong> fast onboarding (days, not weeks), no engineering required, the rules library is mature, and recovery is often share-of-savings so the up-front spend is small.</p>
+        <p><strong class="text-chalk">Where it stalls:</strong> your invoices and your shipper contracts leave your network. The vendor's rules library may not match your specific carriers' surcharge logic. You're locked into their dispute workflow and reporting format. Recovery rates that look like 10% in the demo land at 3-4% in practice.</p>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-1">Honest test:</p>
+          <p class="text-sm">Ask the vendor for the median customer's actual recovery rate over 12 months, not the demo number. The gap between those two is your honest expected value.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Option 2: In-house build</h2>
+        <p>If your engineering team is strong and has bandwidth, building it yourself is feasible. The architecture isn't exotic: an invoice OCR pipeline, a rules engine, a UI for ops to review flags.</p>
+        <p><strong class="text-chalk">Where it wins:</strong> the rules can be tuned exactly to your contracts and your dispute style. You own everything. Your team learns the domain deeply.</p>
+        <p><strong class="text-chalk">Where it stalls:</strong> realistic calendar is 3-6 months for v1, and it competes with every other priority your team has. ML expertise is a hire if you don't have it. Maintenance becomes a permanent line item — surcharge tables change, carriers change formats, accessorial codes evolve.</p>
+        <p>The honest cost framing: 1-2 senior engineers for ~4 months at fully loaded comp. Roughly $80-150k in opportunity cost. Plus ongoing maintenance.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Option 3: Custom build (Marapone-style)</h2>
+        <p>The third path: a vendor builds you a private system, hands over the source, and you own it. Same end result as in-house, faster calendar, lower up-front cost.</p>
+        <p><strong class="text-chalk">Where it wins:</strong> ~2 weeks to v1 (vs 3-6 months in-house). $9,500 one-time vs $80-150k loaded engineering. Source code shipped so your team can extend later. Your data never leaves your network. No share-of-savings — you keep 100% of recoveries.</p>
+        <p><strong class="text-chalk">Where it stalls:</strong> requires a vendor relationship for the build. Less flexibility than building in-house if your needs are highly unusual. Not the right answer for under 5-10 users where SaaS is cheaper than the build cost amortized.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">A decision matrix that actually helps</h2>
+        <p>Three questions sort most decisions cleanly:</p>
+        <ol class="space-y-3 ml-5 list-decimal">
+          <li><strong class="text-chalk">Is your annual invoice volume above ~5,000?</strong> Below that, vendor SaaS pencils out. Above it, the share-of-savings adds up to the cost of a build very quickly.</li>
+          <li><strong class="text-chalk">Are your shipper contracts unusual (custom accessorials, non-standard fuel formulas, FTA-specific terms)?</strong> If yes, custom rule fitting matters and a generic vendor's library will miss errors. Custom build wins.</li>
+          <li><strong class="text-chalk">Do you have a senior engineering team with bandwidth?</strong> If yes, in-house is feasible. If no, custom build wins on calendar alone.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The recovery-rate question</h2>
+        <p>Vendors sell on recovery. Honest framing: a well-tuned rules engine, regardless of who builds it, recovers 80-90% of the dollar value of errors that exist in your invoices. The variance between "vendor SaaS" and "custom build" on recovery rate is small. The variance is in cost, ownership, and how well the rules match your specific business.</p>
+        <p>The real recovery-rate question isn't "vendor vs build." It's "are we auditing at all?" Most brokers under 50 employees aren't, and the leak is real.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">A worked five-year comparison</h2>
+        <p>$20M annual freight spend, ~10,000 invoices/year, 3.5% uncaught error rate (so $700k annual leak, recovery ceiling).</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li><strong class="text-chalk">SaaS at 25% share-of-savings:</strong> recovers ~$560k/yr, vendor takes $140k/yr. 5-yr cost: $700k. Recovered net: $2.1M.</li>
+          <li><strong class="text-chalk">Custom build:</strong> $9,500 one-time + ~$10k/yr ops &amp; retainer. Recovers ~$560k/yr. 5-yr cost: $59,500. Recovered net: $2.74M.</li>
+          <li><strong class="text-chalk">In-house build:</strong> $120k loaded engineering + ~$30k/yr ongoing. Recovers ~$560k/yr. 5-yr cost: $270k. Recovered net: $2.53M.</li>
+        </ul>
+        <p>For this shape of brokerage, custom build wins on net recovery by $640k over five years vs SaaS, and by $200k vs in-house. Your numbers will differ; the structure will not.</p>
+      </section>
+
+    </div>
+
+    <section class="border-t border-b border-plate py-12 bg-gunmetal">
+      <div class="max-w-5xl mx-auto px-4">
+        <p class="font-mono text-xs uppercase tracking-widest mb-4" style="color:#52b788">// Related reading</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="/logistics/resources/private-tms-integrated-ai" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Private AI + Your TMS</p>
+            <p class="text-fog text-xs">How integration actually works.</p>
+          </a>
+          <a href="/logistics/resources/what-owning-the-model-means" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">What Owning the Model Means</p>
+            <p class="text-fog text-xs">Weights, code, runbooks.</p>
+          </a>
+          <a href="/logistics/resources/sample-carrier-scorecard" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Sample Carrier Scorecard</p>
+            <p class="text-fog text-xs">An anonymized output.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 grid-dot">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display text-4xl text-chalk mb-3">SEND ONE WEEK OF INVOICES.<br/><span style="color:#52b788">GET A REAL AUDIT REPORT.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">We'll run them through our audit pipeline and send back a written discrepancy report — usually within 24 hours.</p>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Get the Audit Report &rarr;</a>
+      </div>
+    </section>
+  </article>
+
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+          <div class="flex gap-2 mt-1"><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a><a href="/logistics/services" class="hover:text-chalk">Services</a><a href="/logistics/pricing" class="hover:text-chalk">Pricing</a><a href="/logistics/resources" class="hover:text-chalk">Resources</a><a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

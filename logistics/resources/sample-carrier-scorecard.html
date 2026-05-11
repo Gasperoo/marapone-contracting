@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inside a Carrier Scorecard: A Sample Output | Marapone Logistics</title>
+  <meta name="description" content="An anonymized look at the actual carrier scorecard a Marapone build produces, with the source data behind each line. The report a brokerage VP would actually use." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Inside a Carrier Scorecard: A Sample Output" />
+  <meta property="og:description" content="The real output, anonymized." />
+  <meta property="og:url" content="https://marapone.com/logistics/resources/sample-carrier-scorecard" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/logistics/resources/sample-carrier-scorecard" />
+  <link rel="stylesheet" href="../../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .tape-line { border-left: 3px solid #52b788; padding-left: 1rem; }
+    .article p { line-height: 1.7; }
+    .article h2 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+    .callout { background:#0f0f0f; border:1px solid #2b2b2b; border-left:3px solid #52b788; padding:1.25rem; border-radius:0.25rem; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-chalk focus:text-charcoal focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/logistics/resources" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; Resources</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a><a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a><a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a><a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a><a href="/logistics/about" class="hover:text-chalk transition-colors">About</a><a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/logistics/resources" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; Resources</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a><a href="/logistics/services" class="text-fog hover:text-chalk">Services</a><a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+    </div>
+  </nav>
+
+  <article id="main-content" class="article">
+    <header class="grid-dot border-b border-plate py-16 lg:py-24">
+      <div class="max-w-3xl mx-auto px-4">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Walkthrough &middot; 8 min read</p>
+        <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-tight mb-6">INSIDE A CARRIER SCORECARD: <span style="color:#52b788">A SAMPLE OUTPUT.</span></h1>
+        <p class="text-fog text-lg leading-relaxed">"AI-driven carrier scorecard" is a vague phrase. Here is the actual output a Marapone build produces, anonymized from a real brokerage deployment, with the source data behind every line so you can see exactly where each number comes from.</p>
+        <p class="font-mono text-xs text-plate mt-6">By the Marapone team &middot; Updated 2026</p>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 py-16 space-y-10 text-fog">
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The shape of the report</h2>
+        <p>A working carrier scorecard isn't a dashboard. It's a weekly written document that an ops VP reads on Monday morning and acts on the same week. Three sections:</p>
+        <ol class="space-y-2 ml-5 list-decimal">
+          <li><strong class="text-chalk">Top-line summary</strong> — five carriers, ranked, with one-sentence reasons.</li>
+          <li><strong class="text-chalk">Movement alerts</strong> — carriers whose performance changed materially in the last 30 days.</li>
+          <li><strong class="text-chalk">Per-carrier detail</strong> — the metrics behind the rank, by region and lane.</li>
+        </ol>
+        <p>The scorecard is delivered as a PDF and as a structured row in the brokerage's database. Both formats produced from the same underlying numbers; no copy-paste.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Anonymized top-line: Q3 2025, mid-size brokerage</h2>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-2">Top 5 carriers, weighted score (0-100):</p>
+          <ol class="space-y-1 text-sm font-mono ml-4">
+            <li>1. Carrier A &mdash; 91.2 (consistent on-time, billing accuracy 99.4%)</li>
+            <li>2. Carrier B &mdash; 88.7 (best lane coverage, slight detention slip)</li>
+            <li>3. Carrier C &mdash; 84.3 (recovered from Q2 dip; trending up)</li>
+            <li>4. Carrier D &mdash; 81.0 (good price, weakening on-time on Memphis lanes)</li>
+            <li>5. Carrier E &mdash; 76.8 (high reweigh disputes; investigate)</li>
+          </ol>
+        </div>
+        <p>Each score is a weighted aggregate of seven inputs: on-time pickup, on-time delivery, billing accuracy, accessorial dispute rate, claim frequency, tender acceptance, and POD compliance. Weights are configurable per brokerage; the defaults reflect what most ops VPs actually care about.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Where each number comes from</h2>
+        <p>Take Carrier B's score above (88.7). The component sources:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li><strong class="text-chalk">On-time pickup (96.2%):</strong> from EDI 214 status messages compared to scheduled pickup window in the TMS.</li>
+          <li><strong class="text-chalk">On-time delivery (94.1%):</strong> Project44 milestone events vs scheduled delivery window.</li>
+          <li><strong class="text-chalk">Billing accuracy (98.8%):</strong> from the Marapone audit module — invoiced vs quoted.</li>
+          <li><strong class="text-chalk">Accessorial dispute rate (1.2%):</strong> from the dispute log in the TMS.</li>
+          <li><strong class="text-chalk">Claim frequency (0.18%):</strong> from claims module in TMS.</li>
+          <li><strong class="text-chalk">Tender acceptance (87.3%):</strong> from EDI 990 responses.</li>
+          <li><strong class="text-chalk">POD compliance (99.1%):</strong> POD upload within 48hrs of delivery.</li>
+        </ul>
+        <p>Every number traces back to a specific event in a specific source system, with a timestamp. If anyone disputes a score, the audit trail is one click away.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">The movement alerts section</h2>
+        <p>This is the section the VP actually acts on. Anonymized example:</p>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-2">Movement alerts (last 30 days):</p>
+          <ul class="space-y-2 text-sm">
+            <li>&bull; <strong class="text-chalk">Carrier D, Memphis lane:</strong> on-time delivery dropped from 94% to 79%. Eight late-by-2hr+ events in two weeks. Suggested action: call carrier rep before next shipper QBR.</li>
+            <li>&bull; <strong class="text-chalk">Carrier E, US Northeast:</strong> reweigh disputes up 4&times; vs prior 90-day baseline. Pattern: 12 out of 18 disputes are origin scale calibration off by &gt;200lbs. Suggested action: validate origin scale at the affected DC.</li>
+            <li>&bull; <strong class="text-chalk">Carrier A, all lanes:</strong> tender acceptance dropped from 94% to 87%. Coincides with their fleet reduction announcement Q3. Suggested action: diversify backup carriers on top 5 Carrier A lanes.</li>
+          </ul>
+        </div>
+        <p>The model surfaces the pattern. A human decides what to do about it. The scorecard never prescribes "fire this carrier." It gives the VP the facts in the right order.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Per-carrier detail (Carrier D, expanded)</h2>
+        <p>Each carrier gets a one-page detail view. The structure for Carrier D in the example above:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>Score: 81.0 (down 4.3 from previous month).</li>
+          <li>Total shipments tracked: 247.</li>
+          <li>Total spend: $284,000.</li>
+          <li>Lane breakdown: 6 lanes, with score per lane.</li>
+          <li>The Memphis lane (where the drop happened) has its own breakout: 38 shipments, 79% on-time delivery, 11 service exceptions in 30 days, top 3 root-cause categories from the EDI 214 reason codes.</li>
+        </ul>
+        <p>An ops VP reads this in 90 seconds and walks into the carrier rep call with specifics.</p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">Why this matters more than a dashboard</h2>
+        <p>Most BI dashboards for carrier performance are well-built and rarely opened. The reason is structural: a dashboard requires the user to come to it, ask the right question, and interpret the chart. By Wednesday morning the dashboard is stale and ignored.</p>
+        <p>A weekly written report does the work in advance. It picks the most important changes. It states them in language that maps to action. It arrives in the inbox at the same time every Monday. The discipline of the deliverable is what makes the system actually used.</p>
+        <div class="callout">
+          <p class="text-chalk font-semibold mb-1">Honest framing:</p>
+          <p class="text-sm">The hard part of carrier scoring isn't the math. It's producing a report busy people actually read and act on. The Marapone scorecard is built around that constraint.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl text-chalk mb-4">What we configured for this client</h2>
+        <p>Their custom weights:</p>
+        <ul class="space-y-2 ml-5 list-disc">
+          <li>On-time delivery: 25% (their shippers care most about this).</li>
+          <li>Billing accuracy: 20%.</li>
+          <li>On-time pickup: 15%.</li>
+          <li>Tender acceptance: 15%.</li>
+          <li>Claim frequency: 10%.</li>
+          <li>Accessorial dispute rate: 10%.</li>
+          <li>POD compliance: 5%.</li>
+        </ul>
+        <p>Other clients weight differently. Ours uses 30% on billing accuracy because invoice leakage is their biggest pain. Yours might be different. The report adjusts; the inputs don't.</p>
+      </section>
+
+    </div>
+
+    <section class="border-t border-b border-plate py-12 bg-gunmetal">
+      <div class="max-w-5xl mx-auto px-4">
+        <p class="font-mono text-xs uppercase tracking-widest mb-4" style="color:#52b788">// Related reading</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="/logistics/resources/private-tms-integrated-ai" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Private AI + Your TMS</p>
+            <p class="text-fog text-xs">Integration patterns.</p>
+          </a>
+          <a href="/logistics/resources/invoice-audit-build-vs-buy" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">Invoice Audit: Build vs Buy</p>
+            <p class="text-fog text-xs">Decision frame.</p>
+          </a>
+          <a href="/logistics/resources/what-owning-the-model-means" class="block bg-steel border border-plate rounded-lg p-5 transition-colors" onmouseover="this.style.borderColor='#52b788'" onmouseout="this.style.borderColor=''">
+            <p class="text-chalk font-semibold mb-1">What Owning the Model Means</p>
+            <p class="text-fog text-xs">Weights, code, runbooks.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 grid-dot">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-display text-4xl text-chalk mb-3">WANT A SCORECARD<br/><span style="color:#52b788">RUN ON YOUR CARRIERS?</span></h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">Send us 90 days of shipment + invoice data and we'll produce a sample scorecard — anonymized in the deliverable, real numbers behind it.</p>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity inline-block">Request a Sample Scorecard &rarr;</a>
+      </div>
+    </section>
+  </article>
+
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
+          <div class="flex gap-2 mt-1"><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span><span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a><a href="/logistics/services" class="hover:text-chalk">Services</a><a href="/logistics/pricing" class="hover:text-chalk">Pricing</a><a href="/logistics/resources" class="hover:text-chalk">Resources</a><a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

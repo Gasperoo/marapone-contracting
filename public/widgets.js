@@ -24,11 +24,14 @@
   // ===== STYLES =====
   var style = document.createElement('style');
   style.textContent = [
-    '#mp-wa-btn{position:fixed;bottom:20px;right:20px;z-index:9998;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,0.45);transition:transform .18s ease,box-shadow .18s ease;text-decoration:none}',
+    /* Floating WhatsApp: bottom-right, but ABOVE any sticky CTA so they stack */
+    '#mp-wa-btn{position:fixed;bottom:88px;right:20px;z-index:9998;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,0.45);transition:transform .18s ease,box-shadow .18s ease,bottom .25s ease;text-decoration:none}',
     '#mp-wa-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.55)}',
     '#mp-wa-btn svg{width:28px;height:28px;fill:#fff}',
     '#mp-wa-btn[aria-expanded="true"]{background:#1da851}',
-    '@media (max-width:639px){#mp-wa-btn{bottom:14px;right:14px;width:48px;height:48px}#mp-wa-btn svg{width:24px;height:24px}}',
+    /* When no sticky CTA is visible, sit lower for a cleaner look */
+    'body.mp-no-stickycta #mp-wa-btn{bottom:20px}',
+    '@media (max-width:639px){#mp-wa-btn{right:14px;width:48px;height:48px}#mp-wa-btn svg{width:24px;height:24px}}',
     '#mp-exit{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(10,10,10,0.78);backdrop-filter:blur(6px)}',
     '#mp-exit.open{display:flex}',
     '#mp-exit .box{background:#1a1a1a;border:1px solid #3a3a3a;border-radius:12px;max-width:440px;width:100%;padding:2rem;color:#e8e8e8;font-family:"DM Sans",sans-serif;position:relative}',
@@ -200,6 +203,12 @@
 
   function attach() {
     injectMoreDropdown();
+
+    // If page has no sticky CTA element at all, drop WhatsApp lower
+    if (!document.getElementById('sticky-cta')) {
+      document.body.classList.add('mp-no-stickycta');
+    }
+
     document.body.appendChild(wa);
     document.body.appendChild(exit);
     exit.querySelector('.close').addEventListener('click', closeExit);

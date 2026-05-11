@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================================
+   Mobile-safety baseline — applies site-wide
+   ============================================================ */
+@layer base {
+  html, body {
+    /* Prevent any rogue element from creating horizontal scroll */
+    overflow-x: hidden;
+    overflow-x: clip; /* modern browsers — does not break sticky positioning */
+    max-width: 100vw;
+  }
+
+  /* Force responsive media. Icons keep their explicit class-set sizes via Tailwind. */
+  img, video, iframe {
+    max-width: 100%;
+  }
+
+  /* Only auto-height images/videos that lack a fixed height class.
+     Anything explicitly sized via Tailwind h-* keeps its size. */
+  img:not([height]):not([class*="h-"]),
+  video:not([height]):not([class*="h-"]) {
+    height: auto;
+  }
+
+  /* Long words / URLs in body copy should break, not overflow */
+  p, li, dd, blockquote, td, th, h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+  }
+
+  /* Code blocks scroll inside, not outside */
+  pre, code {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  /* Tables never push the viewport */
+  table {
+    max-width: 100%;
+  }
+}
+
+/* ============================================================
+   Mobile polish for tight viewports
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Tone down extreme hero sizes that would otherwise overflow on small phones */
+  .font-display.text-7xl { font-size: 3rem; line-height: 1.05; }
+  .font-display.text-6xl { font-size: 2.75rem; line-height: 1.05; }
+  .font-display.text-5xl { font-size: 2.25rem; line-height: 1.1; }
+
+  /* Headings inside cards on small screens — keep them readable, not enormous */
+  .font-display.text-4xl { font-size: 1.875rem; line-height: 1.15; }
+
+  /* Comparison/pricing tables: allow internal scroll on mobile */
+  .comparison-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   Wide horizontal strips (marquees, audience chips) — contain
+   any overflow so they never push the viewport on mobile
+   ============================================================ */
+.marquee, .integrations-marquee, [class*="overflow-x-auto"] {
+  max-width: 100%;
+}

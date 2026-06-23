@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Demo – Run the Blueprint Auditor on Your Own File | Marapone Construction</title>
+  <meta name="description" content="Upload a drawing set and watch Marapone's Blueprint Auditor extract sheets, disciplines, scale and completeness findings live from your own file. No signup." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Blueprint Auditor – Live Demo | Marapone Construction" />
+  <meta property="og:description" content="Run a real analysis on your own drawing set, right in the browser." />
+  <meta property="og:url" content="https://marapone.com/construction/demo" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/demo" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .dz { transition: border-color .15s, background-color .15s; }
+    .dz.drag { border-color: #f97316; background-color: rgba(249,115,22,.06); }
+    .locked-blur { filter: blur(6px); user-select: none; pointer-events: none; }
+    .lock-wrap { position: relative; }
+    .lock-veil { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: .5rem; background: rgba(26,26,26,.35); border-radius: .5rem; }
+    .sev-high { color: #f87171; } .sev-medium { color: #fbbf24; } .sev-low { color: #9ca3af; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .spin { animation: spin 1s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk">Services</a>
+        <a href="/construction/demo" class="text-hiviz font-semibold">Live Demo</a>
+        <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk">Work</a>
+        <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+        <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/demo" class="text-hiviz font-semibold">Live Demo</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="grid-dot border-b border-plate py-14 lg:py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// Live demo · Blueprint Auditor</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">RUN IT ON<br/><span class="text-hiviz">YOUR OWN DRAWINGS.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed">Drop in a drawing set or document (up to 5&nbsp;MB) and the engine reads it live — sheets, disciplines, scale and completeness gaps, computed from <em>your</em> file. We unlock the first results free; the full coordinated audit runs in your private build.</p>
+      <p class="text-plate text-xs font-mono mt-4">Processed in memory, never stored. PDF · CSV · TXT · JSON. <span id="quota-note"></span></p>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section class="py-10 lg:py-14">
+    <div class="max-w-5xl mx-auto px-4">
+
+      <!-- Upload -->
+      <div id="upload-card" class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8">
+        <div id="dz" class="dz border-2 border-dashed border-plate rounded-lg py-12 px-6 text-center cursor-pointer">
+          <svg class="w-10 h-10 mx-auto text-hiviz mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M12 4L7 9M12 4l5 5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3" stroke-linecap="round"/></svg>
+          <p class="text-chalk font-semibold">Drop a drawing set here, or <span class="text-hiviz underline">browse</span></p>
+          <p class="text-plate text-xs font-mono mt-2">Vector / text PDF works best · up to 5 MB</p>
+        </div>
+        <input type="file" id="file" accept=".pdf,.csv,.tsv,.txt,.json" class="hidden" />
+        <div class="flex flex-wrap items-center gap-3 mt-4">
+          <button id="sample-btn" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Use a sample drawing index</button>
+          <span class="text-plate text-xs">No file handy? Try ours.</span>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="results" class="mt-8 hidden"></div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/demo" class="hover:text-chalk">Live Demo</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy</a>
+        <a href="/construction/trust" class="text-xs font-mono text-plate hover:text-fog transition-colors">Trust Center</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var MODE = 'blueprint';
+      var SAMPLE = '/samples/drawing-set-index.pdf';
+      var ACCENT = '#f97316';
+      var dz = document.getElementById('dz');
+      var fileInput = document.getElementById('file');
+      var results = document.getElementById('results');
+      var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+      var riskColor = function (r) { return r === 'HIGH' ? '#f87171' : r === 'MEDIUM' ? '#fbbf24' : '#34d399'; };
+
+      dz.addEventListener('click', function () { fileInput.click(); });
+      dz.addEventListener('dragover', function (e) { e.preventDefault(); dz.classList.add('drag'); });
+      dz.addEventListener('dragleave', function () { dz.classList.remove('drag'); });
+      dz.addEventListener('drop', function (e) { e.preventDefault(); dz.classList.remove('drag'); if (e.dataTransfer.files[0]) handle(e.dataTransfer.files[0]); });
+      fileInput.addEventListener('change', function () { if (fileInput.files[0]) handle(fileInput.files[0]); fileInput.value = ''; });
+      document.getElementById('sample-btn').addEventListener('click', function () {
+        results.classList.remove('hidden');
+        results.innerHTML = loadingHTML('sample drawing set');
+        fetch(SAMPLE).then(function (r) { return r.blob(); }).then(function (b) {
+          handle(new File([b], 'drawing-set-index.pdf', { type: 'application/pdf' }));
+        }).catch(function () { results.innerHTML = errHTML('Could not load the sample file.'); });
+      });
+
+      function handle(file) {
+        if (file.size > 5 * 1024 * 1024) { results.classList.remove('hidden'); results.innerHTML = errHTML('That file is larger than 5 MB. Try a smaller export.'); return; }
+        results.classList.remove('hidden');
+        results.innerHTML = loadingHTML(file.name);
+        var reader = new FileReader();
+        reader.onload = function () {
+          fetch('/api/demo-analyze', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include',
+            body: JSON.stringify({ mode: MODE, filename: file.name, b64: reader.result })
+          }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
+            .then(function (res) {
+              if (!res.j.ok) { results.innerHTML = errHTML(res.j.error || 'Analysis failed.', res.j.quota); return; }
+              render(res.j);
+            }).catch(function () { results.innerHTML = errHTML('Network error — please try again.'); });
+        };
+        reader.onerror = function () { results.innerHTML = errHTML('Could not read that file.'); };
+        reader.readAsDataURL(file);
+      }
+
+      function loadingHTML(name) {
+        return '<div class="bg-gunmetal border border-plate rounded-xl p-10 text-center">' +
+          '<svg class="spin w-8 h-8 mx-auto text-hiviz mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9" stroke-linecap="round"/></svg>' +
+          '<p class="text-fog text-sm">Reading <b class="text-chalk">' + esc(name) + '</b> and running the analysis…</p></div>';
+      }
+      function errHTML(msg, quota) {
+        return '<div class="bg-gunmetal border border-plate rounded-xl p-8 text-center">' +
+          '<p class="' + (quota ? 'text-hiviz' : 'text-red-400') + ' font-semibold mb-2">' + esc(msg) + '</p>' +
+          (quota ? '<a href="/construction/contact" class="inline-block hiviz-gradient text-white font-semibold px-5 py-2.5 rounded mt-2">Book a free assessment &rarr;</a>' : '<p class="text-plate text-xs">A vector/text PDF, CSV or TXT works best.</p>') + '</div>';
+      }
+
+      function statCard(label, value) {
+        return '<div class="bg-steel border border-plate rounded-lg p-4"><p class="text-fog text-[10px] font-mono uppercase mb-1">' + label + '</p><p class="font-display text-3xl text-chalk leading-none">' + value + '</p></div>';
+      }
+      function findingRow(f) {
+        return '<div class="flex items-start gap-3 py-2 border-b border-plate/50"><span class="dot mt-1.5 sev-' + f.severity + '" style="background:currentColor"></span>' +
+          '<span class="text-sm"><span class="font-mono text-[10px] uppercase sev-' + f.severity + '">' + f.severity + '</span><br/>' + esc(f.message) + '</span></div>';
+      }
+      function lockedBars(n, label) {
+        var bars = '';
+        for (var i = 0; i < n; i++) {
+          var w = 60 + ((i * 37) % 35);
+          bars += '<div class="flex items-center gap-3 py-2 border-b border-plate/40"><span class="dot bg-plate"></span><span class="locked-blur text-sm text-fog">' + 'XXXXXXXXXX XXXXX XXXXXXX XXXX XXXXXX'.slice(0, w / 4) + '</span></div>';
+        }
+        return '<div class="lock-wrap"><div>' + bars + '</div><div class="lock-veil"><svg class="w-6 h-6 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + label + '</p></div></div>';
+      }
+      function premiumCard(p) {
+        return '<div class="lock-wrap bg-steel border border-plate rounded-lg p-4">' +
+          '<div class="flex items-center gap-2 mb-2"><svg class="w-4 h-4 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + esc(p.label) + '</p></div>' +
+          '<div class="locked-blur space-y-1"><div class="h-2 bg-plate rounded w-5/6"></div><div class="h-2 bg-plate rounded w-2/3"></div><div class="h-2 bg-plate rounded w-3/4"></div></div></div>';
+      }
+
+      function render(j) {
+        var f = j.fields || {};
+        var stats = [
+          statCard('Pages parsed', j.fields.pages || '—'),
+          statCard('Sheets detected', j.fields.sheets_detected || 0),
+          statCard('Disciplines', (j.fields.disciplines || []).length),
+          statCard('Gross area', j.fields.gross_area_sf ? j.fields.gross_area_sf.toLocaleString() + ' sf' : '—'),
+        ].join('');
+        var sheets = (j.sheets || []).map(function (s) { return '<span class="inline-block font-mono text-xs text-chalk bg-steel border border-plate rounded px-2 py-1 m-0.5">' + esc(s) + '</span>'; }).join('');
+        var disc = (f.disciplines || []).map(function (d) { return '<span class="inline-block text-xs text-fog border border-plate rounded-full px-2.5 py-0.5 m-0.5">' + esc(d) + '</span>'; }).join('');
+
+        var unlocked = j.findings.map(findingRow).join('');
+        var lockedFind = (j.locked_findings && j.locked_findings.length) ? lockedBars(j.locked_findings.length, j.locked_findings.length + ' more finding' + (j.locked_findings.length > 1 ? 's' : '') + ' — unlock to view') : '';
+        var premium = (j.premium || []).map(premiumCard).join('');
+
+        var sheetLock = j.sheets_hidden ? '<div class="lock-wrap mt-2"><div class="locked-blur">' + Array(j.sheets_hidden).fill('<span class="inline-block font-mono text-xs text-chalk bg-steel border border-plate rounded px-2 py-1 m-0.5">X-000</span>').join('') + '</div><div class="lock-veil"><p class="text-chalk text-sm font-semibold">+' + j.sheets_hidden + ' more sheets + room schedule</p></div></div>' : '';
+
+        results.innerHTML =
+          '<div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8">' +
+            '<div class="flex flex-wrap items-center gap-3 mb-6">' +
+              '<span class="font-mono text-xs text-plate">' + esc(j.filename) + '</span>' +
+              '<span class="ml-auto inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full border" style="color:' + riskColor(j.risk) + ';border-color:' + riskColor(j.risk) + '55">' + j.risk + ' COMPLETENESS RISK</span>' +
+            '</div>' +
+            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Extracted live from your file</p>' +
+            '<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">' + stats + '</div>' +
+            (disc ? '<div class="mb-4"><p class="text-fog text-xs font-mono uppercase mb-2">Disciplines identified</p>' + disc + '</div>' : '') +
+            (sheets ? '<div class="mb-5"><p class="text-fog text-xs font-mono uppercase mb-2">Sheet references (sample)</p>' + sheets + sheetLock + '</div>' : '') +
+            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-6">// Findings</p>' +
+            '<div class="mb-2">' + unlocked + '</div>' + lockedFind +
+            '<div class="mt-8 pt-6 border-t border-plate">' +
+              '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// In your full private build</p>' +
+              '<div class="grid sm:grid-cols-2 gap-3">' + premium + '</div>' +
+            '</div>' +
+            '<div class="hiviz-gradient rounded-lg p-6 mt-8 flex flex-col sm:flex-row items-center gap-4">' +
+              '<div><p class="text-white font-display text-2xl leading-none mb-1">SEE THE FULL AUDIT</p><p class="text-white/90 text-sm">The complete build runs the full coordination + code audit and quantity takeoff on your real set — and the report is yours to keep.</p></div>' +
+              '<a href="/construction/contact" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 sm:ml-auto">Get a Free Assessment &rarr;</a>' +
+            '</div>' +
+            (typeof j.remaining_today === 'number' ? '<p class="text-plate text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo run' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
+          '</div>';
+        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    })();
+  </script>
+
+</body>
+</html>

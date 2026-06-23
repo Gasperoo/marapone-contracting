@@ -47,3 +47,7 @@ Screenshot*.png
 /news.jpg
 /risksim.jpg
 /routes.jpg
+
+# Python
+__pycache__/
+*.pyc

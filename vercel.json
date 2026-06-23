@@ -47,6 +47,9 @@
     },
     "api/newsletter-signup.js": {
       "maxDuration": 10
+    },
+    "api/demo-analyze.py": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
@@ -188,6 +191,8 @@
     { "source": "/logistics/for/customs-brokers", "destination": "/logistics/for/customs-brokers.html" },
     { "source": "/logistics/for/importers", "destination": "/logistics/for/importers.html" },
     { "source": "/logistics/for/forwarders", "destination": "/logistics/for/forwarders.html" },
+    { "source": "/construction/demo", "destination": "/construction/demo.html" },
+    { "source": "/logistics/demo", "destination": "/logistics/demo.html" },
     { "source": "/construction/sample-assessment", "destination": "/construction/sample-assessment.html" },
     { "source": "/construction/roi-calculator", "destination": "/construction/roi-calculator.html" },
     { "source": "/construction/security-pack", "destination": "/construction/security-pack.html" },
@@ -221,6 +226,7 @@
     { "source": "/logistics/resources/what-owning-the-model-means", "destination": "/logistics/resources/what-owning-the-model-means.html" },
     { "source": "/logistics/resources/sample-carrier-scorecard", "destination": "/logistics/resources/sample-carrier-scorecard.html" },
     { "source": "/api/newsletter-signup", "destination": "/api/newsletter-signup" },
+    { "source": "/api/demo-analyze", "destination": "/api/demo-analyze" },
     {
       "source": "/api/send-contact-email",
       "destination": "/api/send-contact-email"

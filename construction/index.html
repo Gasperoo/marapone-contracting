@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence</title>
   <link rel="canonical" href="https://marapone.com/construction" />
   <meta name="description"
@@ -19,13 +19,15 @@
   <meta property="og:description"
     content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
   <meta property="og:url" content="https://marapone.com/construction" />
-  <meta property="og:image" content="https://marapone.com/construction-workers-looking-up-at-crane-8yehx0ze4t4tno03.jpg" />
+  <meta property="og:image"
+    content="https://marapone.com/construction-workers-looking-up-at-crane-8yehx0ze4t4tno03.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title"
     content="Marapone – Private AI Solutions for Construction & Logistics | Own Your Intelligence" />
   <meta name="twitter:description"
     content="Marapone builds private AI systems for construction and logistics companies. Document intelligence, risk analysis, trade compliance — deployed on your infrastructure. One-time price. Full source code. You own it." />
-  <meta name="twitter:image" content="https://marapone.com/construction-workers-looking-up-at-crane-8yehx0ze4t4tno03.jpg" />
+  <meta name="twitter:image"
+    content="https://marapone.com/construction-workers-looking-up-at-crane-8yehx0ze4t4tno03.jpg" />
   <link rel="stylesheet" href="../src/tailwind.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
@@ -261,7 +263,12 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .fade-up, .delay-1, .delay-2, .delay-3, .delay-4 {
+
+      .fade-up,
+      .delay-1,
+      .delay-2,
+      .delay-3,
+      .delay-4 {
         animation: none;
         opacity: 1;
       }
@@ -270,8 +277,26 @@
     /* Prevent hero heading overflow on very small phones */
 
     /* Service card hover — replaces inline onmouseover/onmouseout */
-    .service-card { border-color: #3a3a3a; }
-    .service-card:hover { border-color: rgba(249,115,22,0.4) !important; }
+    .service-card {
+      border-color: #3a3a3a;
+    }
+
+    .service-card:hover {
+      border-color: rgba(249, 115, 22, 0.4) !important;
+    }
+
+    /* Role card hover — "Built for your role" strip */
+    .role-card {
+      border-color: #3a3a3a;
+      transition: border-color 0.2s, background-color 0.2s, transform 0.2s;
+    }
+
+    .role-card:hover {
+      border-color: rgba(249, 115, 22, 0.5) !important;
+      background-color: #1f1f1f;
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 380px) {
       #main-content h1 {
         font-size: 2.5rem !important;
@@ -738,8 +763,11 @@
   <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-5">
-        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap" aria-label="Back to industry selection">&larr; All Industries</a>
-        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+        <a href="/"
+          class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap"
+          aria-label="Back to industry selection">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span
+            class="text-hiviz">PONE</span></a>
       </div>
       <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
         <a href="/construction/" class="text-chalk">Home</a>
@@ -750,10 +778,16 @@
         <a href="/construction/faq" class="hover:text-chalk transition-colors">FAQ</a>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+        <a href="/construction/contact"
+          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
+          Free Assessment &rarr;</a>
       </div>
-      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
@@ -766,7 +800,8 @@
       <a href="/construction/faq" class="text-fog hover:text-chalk">FAQ</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
-      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free
+        Assessment &rarr;</a>
     </div>
   </nav>
 
@@ -864,20 +899,36 @@
   </section>
 
   <!-- INDUSTRY STRIP -->
-  <section class="bg-charcoal border-b border-plate py-4">
+  <section class="bg-charcoal border-b border-plate py-10">
     <div class="max-w-6xl mx-auto px-4">
-      <div
-        class="flex flex-nowrap items-center justify-center lg:justify-evenly gap-x-3 text-xs font-mono text-fog overflow-x-auto">
-        <span class="text-plate hidden lg:inline">// Built for:</span>
-        <a href="/construction/for/general-contractors" class="hover:text-hiviz transition-colors whitespace-nowrap">General Contractors</a>
-        <span class="text-plate">·</span>
-        <a href="/construction/for/ici" class="hover:text-hiviz transition-colors whitespace-nowrap">ICI Builders</a>
-        <span class="text-plate">·</span>
-        <a href="/construction/for/estimators" class="hover:text-hiviz transition-colors whitespace-nowrap">Estimators</a>
-        <span class="text-plate">·</span>
-        <a href="/construction/for/owners-reps" class="hover:text-hiviz transition-colors whitespace-nowrap">Owners&rsquo; Reps</a>
-        <span class="text-plate">·</span>
-        <a href="/construction/for/subcontractors" class="hover:text-hiviz transition-colors whitespace-nowrap">Subcontractors</a>
+      <p class="font-mono text-hiviz text-xs uppercase tracking-wider text-center mb-1">// Built for your role</p>
+      <p class="text-fog text-sm text-center mb-6">Pick your role to see exactly how it works for you</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <a href="/construction/for/general-contractors"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
+          <span class="font-mono text-sm text-chalk leading-tight">General Contractors</span>
+          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
+        </a>
+        <a href="/construction/for/ici"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
+          <span class="font-mono text-sm text-chalk leading-tight">ICI Builders</span>
+          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
+        </a>
+        <a href="/construction/for/estimators"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
+          <span class="font-mono text-sm text-chalk leading-tight">Estimators</span>
+          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
+        </a>
+        <a href="/construction/for/owners-reps"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
+          <span class="font-mono text-sm text-chalk leading-tight">Owners&rsquo; Reps</span>
+          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
+        </a>
+        <a href="/construction/for/subcontractors"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
+          <span class="font-mono text-sm text-chalk leading-tight">Subcontractors</span>
+          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
+        </a>
       </div>
     </div>
   </section>
@@ -887,22 +938,27 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="text-center mb-10 reveal">
         <p class="font-mono text-hiviz text-sm mb-2">// Construction AI solutions</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">SIX AI SYSTEMS.<br /><span class="text-hiviz">ONE APPROACH.</span></h2>
-        <p class="text-fog max-w-xl mx-auto mt-4 text-sm leading-relaxed">Every system is built around your specific documents — your blueprints, your RFIs, your project records. Not a generic platform. Not a dashboard you rent. A private AI that belongs to you.</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">SIX AI SYSTEMS.<br /><span class="text-hiviz">ONE
+            APPROACH.</span></h2>
+        <p class="text-fog max-w-xl mx-auto mt-4 text-sm leading-relaxed">Every system is built around your specific
+          documents — your blueprints, your RFIs, your project records. Not a generic platform. Not a dashboard you
+          rent. A private AI that belongs to you.</p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
         <!-- Blueprint Auditor -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
->
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1">
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
           </div>
           <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Blueprint &amp; Spec Review</p>
           <h3 class="font-display text-xl text-chalk mb-3">BLUEPRINT AUDITOR</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">AI reviews your full spec set for scope gaps, ambiguities, and coordination conflicts — before you mobilize. Turns a 4-hour manual review into 8 minutes.</p>
+          <p class="text-fog text-sm leading-relaxed mb-4">AI reviews your full spec set for scope gaps, ambiguities,
+            and coordination conflicts — before you mobilize. Turns a 4-hour manual review into 8 minutes.</p>
           <ul class="space-y-1.5 text-xs text-fog">
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Scope gap detection</li>
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Coordination conflict flags</li>
@@ -911,16 +967,17 @@
         </div>
 
         <!-- RFI Intelligence -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
->
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2">
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
             </svg>
           </div>
           <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">RFI Tracking &amp; Management</p>
           <h3 class="font-display text-xl text-chalk mb-3">RFI INTELLIGENCE</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Tracks every open RFI against your drawings and critical path. Automatically surfaces blockers before they stop your project cold.</p>
+          <p class="text-fog text-sm leading-relaxed mb-4">Tracks every open RFI against your drawings and critical
+            path. Automatically surfaces blockers before they stop your project cold.</p>
           <ul class="space-y-1.5 text-xs text-fog">
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Critical path impact analysis</li>
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Blocker prioritization</li>
@@ -929,16 +986,20 @@
         </div>
 
         <!-- Daily Log Synthesis -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
->
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3">
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
             </svg>
           </div>
           <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Site Documentation</p>
           <h3 class="font-display text-xl text-chalk mb-3">LOG SYNTHESIZER</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Processes daily site logs and field reports — extracts delays, resource issues, and key events. Generates dispute-ready documentation automatically.</p>
+          <p class="text-fog text-sm leading-relaxed mb-4">Processes daily site logs and field reports — extracts
+            delays, resource issues, and key events. Generates dispute-ready documentation automatically.</p>
           <ul class="space-y-1.5 text-xs text-fog">
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Delay detection and dating</li>
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Resource conflict flagging</li>
@@ -947,16 +1008,19 @@
         </div>
 
         <!-- Risk & Delay Signals -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1"
->
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1">
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
             </svg>
           </div>
           <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Risk Management</p>
           <h3 class="font-display text-xl text-chalk mb-3">RISK SIGNALS</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Pattern recognition across your project documents surfaces cash-flow risks, delay indicators, and scope creep before they become disputes.</p>
+          <p class="text-fog text-sm leading-relaxed mb-4">Pattern recognition across your project documents surfaces
+            cash-flow risks, delay indicators, and scope creep before they become disputes.</p>
           <ul class="space-y-1.5 text-xs text-fog">
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Cash-flow risk patterns</li>
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Delay trend detection</li>
@@ -965,16 +1029,19 @@
         </div>
 
         <!-- Change Order AI -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2"
->
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2">
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
           </div>
           <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Change Management</p>
           <h3 class="font-display text-xl text-chalk mb-3">CHANGE ORDER AI</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Tracks all change orders against original scope, flags pricing gaps, and ensures every variation is documented and approved before execution.</p>
+          <p class="text-fog text-sm leading-relaxed mb-4">Tracks all change orders against original scope, flags
+            pricing gaps, and ensures every variation is documented and approved before execution.</p>
           <ul class="space-y-1.5 text-xs text-fog">
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Scope vs. change order comparison</li>
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Pricing gap identification</li>
@@ -983,16 +1050,18 @@
         </div>
 
         <!-- Scope Gap Finder -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3"
->
+        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3">
           <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
           </div>
           <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Pre-Tender Analysis</p>
           <h3 class="font-display text-xl text-chalk mb-3">SCOPE GAP FINDER</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Scans tender documents, specifications, and drawings for gaps that will cost you at execution. Find the holes before you price them into a losing bid.</p>
+          <p class="text-fog text-sm leading-relaxed mb-4">Scans tender documents, specifications, and drawings for gaps
+            that will cost you at execution. Find the holes before you price them into a losing bid.</p>
           <ul class="space-y-1.5 text-xs text-fog">
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Pre-tender spec review</li>
             <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Cost exposure identification</li>
@@ -1002,7 +1071,9 @@
 
       </div>
       <div class="text-center mt-10">
-        <a href="/construction/services" class="inline-flex items-center gap-2 font-mono text-hiviz text-sm hover:underline">See all construction AI tools →</a>
+        <a href="/construction/services"
+          class="inline-flex items-center gap-2 font-mono text-hiviz text-sm hover:underline">See all construction AI
+          tools →</a>
       </div>
     </div>
   </section>
@@ -1089,28 +1160,43 @@
   <section class="bg-gunmetal border-t border-b border-plate py-16 lg:py-20">
     <div class="max-w-5xl mx-auto px-4">
       <div class="text-center mb-12 reveal">
-        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-3">// No SaaS. No cloud. No subscriptions.</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">YOU OWN THE AI.<br /><span class="text-hiviz">PERMANENTLY.</span></h2>
+        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-3">// No SaaS. No cloud. No subscriptions.
+        </p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">YOU OWN THE AI.<br /><span
+            class="text-hiviz">PERMANENTLY.</span></h2>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="text-center reveal reveal-d1">
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">01</div>
+          <div
+            class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">
+            01</div>
           <h3 class="font-display text-xl text-chalk mb-2">FREE ASSESSMENT</h3>
-          <p class="text-fog text-sm leading-relaxed">Send us one real document — a blueprint, RFI, or change order package. We return a written report within 24 hours showing exactly what AI can do with your construction documents.</p>
+          <p class="text-fog text-sm leading-relaxed">Send us one real document — a blueprint, RFI, or change order
+            package. We return a written report within 24 hours showing exactly what AI can do with your construction
+            documents.</p>
         </div>
         <div class="text-center reveal reveal-d2">
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">02</div>
+          <div
+            class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">
+            02</div>
           <h3 class="font-display text-xl text-chalk mb-2">CUSTOM BUILD</h3>
-          <p class="text-fog text-sm leading-relaxed">We design and build a private AI system around your specific project workflows, document formats, and compliance requirements. Your data never leaves your network during training or deployment.</p>
+          <p class="text-fog text-sm leading-relaxed">We design and build a private AI system around your specific
+            project workflows, document formats, and compliance requirements. Your data never leaves your network during
+            training or deployment.</p>
         </div>
         <div class="text-center reveal reveal-d3">
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">03</div>
+          <div
+            class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4 font-display text-xl text-white hiviz-gradient">
+            03</div>
           <h3 class="font-display text-xl text-chalk mb-2">FULL HANDOVER</h3>
-          <p class="text-fog text-sm leading-relaxed">Source code, model weights, documentation, and a team onboarding session. You own it outright. No subscriptions. No usage fees. No dependency on Marapone's servers. Ever.</p>
+          <p class="text-fog text-sm leading-relaxed">Source code, model weights, documentation, and a team onboarding
+            session. You own it outright. No subscriptions. No usage fees. No dependency on Marapone's servers. Ever.
+          </p>
         </div>
       </div>
       <div class="text-center mt-10">
-        <a href="/construction/how-it-works" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">Full technical breakdown &rarr;</a>
+        <a href="/construction/how-it-works"
+          class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">Full technical breakdown &rarr;</a>
       </div>
     </div>
   </section>
@@ -1120,7 +1206,8 @@
     <div class="max-w-5xl mx-auto px-4">
       <div class="text-center mb-10 reveal">
         <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-2">// Based on live client deployments</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">REAL RESULTS.<br /><span class="text-hiviz">REAL PROJECTS.</span></h2>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">REAL RESULTS.<br /><span class="text-hiviz">REAL
+            PROJECTS.</span></h2>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-plate rounded overflow-hidden">
         <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d1">
@@ -1141,7 +1228,8 @@
         </div>
       </div>
       <div class="text-center mt-8">
-        <a href="/construction/work" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">See the case studies &rarr;</a>
+        <a href="/construction/work" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">See the
+          case studies &rarr;</a>
       </div>
     </div>
   </section>
@@ -1158,30 +1246,98 @@
       </div>
       <noscript>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-steel border-l-2 border-l-hiviz border border-plate rounded-lg p-6 flex flex-col">
-          <div class="flex gap-0.5 mb-4"><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
-          <blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">“We had 60+ open RFIs on a school build and no one had time to cross-reference them against the drawings. The AI found 7 that were directly on our critical path. That saved us from a nasty conversation with the owner.”</blockquote>
-          <div class="border-t border-plate pt-4">
-            <p class="font-semibold text-chalk text-sm">Project Manager</p>
-            <p class="text-hiviz text-xs font-mono mt-0.5">Commercial GC — $3.2M ICI project</p>
+          <div class="bg-steel border-l-2 border-l-hiviz border border-plate rounded-lg p-6 flex flex-col">
+            <div class="flex gap-0.5 mb-4"><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor"
+                viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg></div>
+            <blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">“We had 60+ open RFIs on a school build
+              and no one had time to cross-reference them against the drawings. The AI found 7 that were directly on our
+              critical path. That saved us from a nasty conversation with the owner.”</blockquote>
+            <div class="border-t border-plate pt-4">
+              <p class="font-semibold text-chalk text-sm">Project Manager</p>
+              <p class="text-hiviz text-xs font-mono mt-0.5">Commercial GC — $3.2M ICI project</p>
+            </div>
           </div>
-        </div>
-        <div class="bg-steel border-l-2 border-l-hiviz border border-plate rounded-lg p-6 flex flex-col">
-          <div class="flex gap-0.5 mb-4"><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
-          <blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">“Carrier invoice auditing manually wasn’t feasible at the volume we’re moving. The system flags variances between the rate we were quoted and what we’re actually billed. First quarter it was running, it caught overcharges we’d have never found going line by line. The numbers made the decision easy.”</blockquote>
-          <div class="border-t border-plate pt-4">
-            <p class="font-semibold text-chalk text-sm">Freight Operations Manager</p>
-            <p class="text-hiviz text-xs font-mono mt-0.5">International freight forwarder — regional 3PL operation</p>
+          <div class="bg-steel border-l-2 border-l-hiviz border border-plate rounded-lg p-6 flex flex-col">
+            <div class="flex gap-0.5 mb-4"><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor"
+                viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg></div>
+            <blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">“Carrier invoice auditing manually wasn’t
+              feasible at the volume we’re moving. The system flags variances between the rate we were quoted and what
+              we’re actually billed. First quarter it was running, it caught overcharges we’d have never found going
+              line by line. The numbers made the decision easy.”</blockquote>
+            <div class="border-t border-plate pt-4">
+              <p class="font-semibold text-chalk text-sm">Freight Operations Manager</p>
+              <p class="text-hiviz text-xs font-mono mt-0.5">International freight forwarder — regional 3PL operation
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="bg-steel border-l-2 border-l-hiviz border border-plate rounded-lg p-6 flex flex-col">
-          <div class="flex gap-0.5 mb-4"><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
-          <blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">“I was spending 4–6 hours reviewing blueprints before every subcontractor meeting. This cut that to under an hour. I don’t understand how it works but I don’t need to — it runs on my laptop and it’s mine.”</blockquote>
-          <div class="border-t border-plate pt-4">
-            <p class="font-semibold text-chalk text-sm">GC Owner</p>
-            <p class="text-hiviz text-xs font-mono mt-0.5">Mid-size residential/ICI — 2 active projects</p>
+          <div class="bg-steel border-l-2 border-l-hiviz border border-plate rounded-lg p-6 flex flex-col">
+            <div class="flex gap-0.5 mb-4"><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor"
+                viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg><svg class="w-5 h-5 text-hiviz inline-block" fill="currentColor" viewBox="0 0 20 20"
+                aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg></div>
+            <blockquote class="text-chalk text-sm leading-relaxed mb-6 flex-1">“I was spending 4–6 hours reviewing
+              blueprints before every subcontractor meeting. This cut that to under an hour. I don’t understand how it
+              works but I don’t need to — it runs on my laptop and it’s mine.”</blockquote>
+            <div class="border-t border-plate pt-4">
+              <p class="font-semibold text-chalk text-sm">GC Owner</p>
+              <p class="text-hiviz text-xs font-mono mt-0.5">Mid-size residential/ICI — 2 active projects</p>
+            </div>
           </div>
-        </div>
         </div>
       </noscript>
       <div class="flex items-center justify-center mt-8">
@@ -1376,7 +1532,8 @@
             experience inside construction and logistics — not consultants hired to study the industries from the
             outside. We didn't need to guess at the pain points. We've lived them. That's why the systems we build
             reflect how these industries actually operate.</p>
-          <a href="/construction/about" class="inline-flex items-center gap-2 font-mono text-hiviz text-sm hover:underline">Learn
+          <a href="/construction/about"
+            class="inline-flex items-center gap-2 font-mono text-hiviz text-sm hover:underline">Learn
             more about the team →</a>
         </div>
         <div class="grid grid-cols-2 gap-4">
@@ -1509,29 +1666,41 @@
   <section class="py-16 lg:py-20 bg-gunmetal border-b border-plate">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <div class="reveal">
-        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-3">// One-time price. No subscriptions. Ever.</p>
-        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-6">STARTER BUILDS<br /><span class="text-hiviz">FROM $1,500</span></h2>
-        <p class="text-fog max-w-2xl mx-auto leading-relaxed mb-8 text-sm">Most construction clients land in the $4,900–$9,500 range for a full document intelligence suite covering blueprints, RFIs, and change orders. Larger multi-site, multi-workflow systems from $15,000. All one-time. Exact scope and price confirmed after the free assessment.</p>
-        <a href="/construction/pricing" class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-chalk transition-colors">See full pricing breakdown &rarr;</a>
+        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-3">// One-time price. No subscriptions. Ever.
+        </p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-6">STARTER BUILDS<br /><span class="text-hiviz">FROM
+            $1,500</span></h2>
+        <p class="text-fog max-w-2xl mx-auto leading-relaxed mb-8 text-sm">Most construction clients land in the
+          $4,900–$9,500 range for a full document intelligence suite covering blueprints, RFIs, and change orders.
+          Larger multi-site, multi-workflow systems from $15,000. All one-time. Exact scope and price confirmed after
+          the free assessment.</p>
+        <a href="/construction/pricing"
+          class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-chalk transition-colors">See
+          full pricing breakdown &rarr;</a>
       </div>
     </div>
   </section>
 
   <!-- CTA SECTION -->
   <section id="audit" class="relative py-24 lg:py-36 overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 65%)"></div>
+    <div class="absolute inset-0 pointer-events-none"
+      style="background:radial-gradient(ellipse at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 65%)"></div>
     <div class="absolute inset-0 grid-dot opacity-30 pointer-events-none"></div>
     <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
       <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-4">// Ready to start</p>
-      <h2 class="font-display text-5xl lg:text-7xl text-chalk mb-6 leading-none reveal">WANT TO SEE IF<br /><span class="text-hiviz">WE'RE A FIT?</span></h2>
-      <p class="text-fog mb-10 leading-relaxed max-w-xl mx-auto text-sm lg:text-base reveal reveal-d1">Start with the free assessment. Send us one real document from your site — a blueprint, RFI, change order, anything. We'll analyze it and return a written report + video walkthrough within 24 hours. No obligation.</p>
+      <h2 class="font-display text-5xl lg:text-7xl text-chalk mb-6 leading-none reveal">WANT TO SEE IF<br /><span
+          class="text-hiviz">WE'RE A FIT?</span></h2>
+      <p class="text-fog mb-10 leading-relaxed max-w-xl mx-auto text-sm lg:text-base reveal reveal-d1">Start with the
+        free assessment. Send us one real document from your site — a blueprint, RFI, change order, anything. We'll
+        analyze it and return a written report + video walkthrough within 24 hours. No obligation.</p>
       <div class="reveal reveal-d2">
         <a href="/construction/contact"
           class="text-white font-semibold px-10 py-4 rounded-lg text-base inline-block hover:opacity-90 transition-opacity hiviz-gradient"
           style="box-shadow:0 8px 32px rgba(249,115,22,0.25)">
           Request Your Free 24h Assessment &rarr;
         </a>
-        <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span class="text-hiviz">general@marapone.com</span></p>
+        <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span
+            class="text-hiviz">general@marapone.com</span></p>
       </div>
     </div>
   </section>
@@ -1542,50 +1711,90 @@
       <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
         <div>
           <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Go deeper</p>
-          <h2 class="font-display text-4xl lg:text-5xl text-chalk">EXPLORE THE BUILD,<br/><span class="text-hiviz">NOT JUST THE PITCH</span></h2>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk">EXPLORE THE BUILD,<br /><span class="text-hiviz">NOT
+              JUST THE PITCH</span></h2>
         </div>
-        <a href="/construction/resources" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">All resources &rarr;</a>
+        <a href="/construction/resources" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">All
+          resources &rarr;</a>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="/construction/resources" class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
+        <a href="/construction/resources"
+          class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
           <div class="flex items-center justify-between mb-3">
-            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a2 2 0 012-2h8.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2H6a2 2 0 01-2-2V5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 11h8M8 15h5"/></svg>
-            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4 5a2 2 0 012-2h8.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 11h8M8 15h5" />
+            </svg>
+            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </div>
           <p class="font-mono text-hiviz text-xs uppercase mb-1">Resources</p>
           <h3 class="font-display text-xl text-chalk mb-2">PILLAR ARTICLES</h3>
-          <p class="text-fog text-xs leading-relaxed">5 long-reads on owning vs renting AI, scoping a build, what a private LLM stack costs, and what handover day looks like.</p>
+          <p class="text-fog text-xs leading-relaxed">5 long-reads on owning vs renting AI, scoping a build, what a
+            private LLM stack costs, and what handover day looks like.</p>
         </a>
 
-        <a href="/construction/architecture" class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
+        <a href="/construction/architecture"
+          class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
           <div class="flex items-center justify-between mb-3">
-            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h10"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/><circle cx="6" cy="12" r="1.5" fill="currentColor"/><circle cx="6" cy="18" r="1.5" fill="currentColor"/></svg>
-            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h10" />
+              <circle cx="6" cy="6" r="1.5" fill="currentColor" />
+              <circle cx="6" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="6" cy="18" r="1.5" fill="currentColor" />
+            </svg>
+            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </div>
           <p class="font-mono text-hiviz text-xs uppercase mb-1">Architecture</p>
           <h3 class="font-display text-xl text-chalk mb-2">UNDER THE HOOD</h3>
-          <p class="text-fog text-xs leading-relaxed">The exact stack inside a build: models, vector store, API, UI, infra. Sample handover folder tree. Three deployment options.</p>
+          <p class="text-fog text-xs leading-relaxed">The exact stack inside a build: models, vector store, API, UI,
+            infra. Sample handover folder tree. Three deployment options.</p>
         </a>
 
-        <a href="/construction/integrations" class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
+        <a href="/construction/integrations"
+          class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
           <div class="flex items-center justify-between mb-3">
-            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </div>
           <p class="font-mono text-hiviz text-xs uppercase mb-1">Integrations</p>
           <h3 class="font-display text-xl text-chalk mb-2">WHAT WE PLUG INTO</h3>
-          <p class="text-fog text-xs leading-relaxed">Procore, Autodesk, Bluebeam, SharePoint, Outlook, and more — with built / custom-build / roadmap status per tool.</p>
+          <p class="text-fog text-xs leading-relaxed">Procore, Autodesk, Bluebeam, SharePoint, Outlook, and more — with
+            built / custom-build / roadmap status per tool.</p>
         </a>
 
-        <a href="/construction/trust" class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
+        <a href="/construction/trust"
+          class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
           <div class="flex items-center justify-between mb-3">
-            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+            </svg>
+            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </div>
           <p class="font-mono text-hiviz text-xs uppercase mb-1">Trust</p>
           <h3 class="font-display text-xl text-chalk mb-2">DATA &amp; SECURITY</h3>
-          <p class="text-fog text-xs leading-relaxed">How your drawings and project data stay private. Data residency, NDAs, deployment security defaults, and customer responsibilities.</p>
+          <p class="text-fog text-xs leading-relaxed">How your drawings and project data stay private. Data residency,
+            NDAs, deployment security defaults, and customer responsibilities.</p>
         </a>
       </div>
 
@@ -1593,13 +1802,17 @@
       <div class="mt-10 pt-8 border-t border-plate">
         <div class="flex flex-wrap items-center gap-3">
           <p class="font-mono text-fog text-xs uppercase tracking-widest">// Compare honestly:</p>
-          <a href="/construction/vs/procore" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs Procore</a>
+          <a href="/construction/vs/procore" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs
+            Procore</a>
           <span class="text-plate">·</span>
-          <a href="/construction/vs/autodesk" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs Autodesk</a>
+          <a href="/construction/vs/autodesk" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs
+            Autodesk</a>
           <span class="text-plate">·</span>
-          <a href="/construction/vs/document-crunch" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs Document Crunch</a>
+          <a href="/construction/vs/document-crunch"
+            class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs Document Crunch</a>
           <span class="text-plate">·</span>
-          <a href="/construction/vs/chatgpt" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs ChatGPT Enterprise</a>
+          <a href="/construction/vs/chatgpt" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs
+            ChatGPT Enterprise</a>
         </div>
       </div>
     </div>
@@ -1610,7 +1823,8 @@
     <div class="max-w-3xl mx-auto px-4 text-center">
       <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Once a month, nothing more</p>
       <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-3">SUBSCRIBE</h2>
-      <p class="text-fog text-sm leading-relaxed mb-5 max-w-xl mx-auto">One short email a month: a new construction AI case study, plus one trend worth your time. Skip the noise — read it on a coffee break.</p>
+      <p class="text-fog text-sm leading-relaxed mb-5 max-w-xl mx-auto">One short email a month: a new construction AI
+        case study, plus one trend worth your time. Skip the noise — read it on a coffee break.</p>
       <div id="newsletter-mount" class="flex justify-center"></div>
     </div>
   </section>
@@ -1620,14 +1834,32 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <div class="flex flex-col items-center md:items-start gap-1">
-          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span
+              class="text-hiviz">PONE</span></a>
           <div class="flex gap-2 mt-1">
-            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
-            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+            <span
+              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
+                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Toronto</span>
+            <span
+              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
+                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Rome</span>
           </div>
           <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
-            <address class="not-italic"><p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br/>Etobicoke, ON M9B 6K5<br/>Canada</p></address>
-            <address class="not-italic"><p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br/>Rome, 00193<br/>Italy</p></address>
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B
+                6K5<br />Canada</p>
+            </address>
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
+            </address>
           </div>
         </div>
         <div class="flex flex-col gap-2">
@@ -1649,22 +1881,58 @@
             <a href="/construction/vs/procore" class="hover:text-hiviz">vs Procore</a>
           </div>
         </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All
+          Rights Reserved.</p>
       </div>
       <div class="flex justify-center gap-5 mt-6 mb-1">
-        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors" aria-label="Email us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
-        <span class="text-plate opacity-30 cursor-default" aria-label="X &mdash; coming soon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
-        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram"><svg width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg></a>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors"
+          aria-label="Email us"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <polyline points="2,4 12,13 22,4" />
+          </svg></a>
+        <span class="text-plate opacity-30 cursor-default" aria-label="X &mdash; coming soon"><svg width="20"
+            height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg></span>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp"><svg width="20" height="20"
+            viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg></a>
+        <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook"><svg width="20" height="20"
+            viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg></a>
+        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D"
+          target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors"
+          aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+            <circle cx="4" cy="4" r="2" />
+          </svg></a>
       </div>
       <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
-        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
-        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
-        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
-        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
-        <a href="/badge?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Badge</a>
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms
+          of Service</a>
+        <a href="/privacy?from=construction"
+          class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction"
+          class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction"
+          class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+        <a href="/badge?from=construction"
+          class="text-xs font-mono text-plate hover:text-fog transition-colors">Badge</a>
       </div>
     </div>
   </footer>

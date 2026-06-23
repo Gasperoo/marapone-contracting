@@ -116,6 +116,22 @@
       border-color: rgba(82, 183, 136, 0.4) !important;
     }
 
+    /* Role card hover — "Built for your role" strip */
+    .role-card {
+      border-color: #3a3a3a;
+      transition: border-color 0.2s, background-color 0.2s, transform 0.2s;
+    }
+
+    .role-card:hover {
+      border-color: rgba(82, 183, 136, 0.55) !important;
+      background-color: #1f1f1f;
+      transform: translateY(-2px);
+    }
+
+    .role-card:hover .role-arrow {
+      color: #52b788;
+    }
+
     @media (max-width: 380px) {
       #main-content h1 {
         font-size: 2.5rem !important;
@@ -806,20 +822,36 @@
   </section>
 
   <!-- INDUSTRY STRIP -->
-  <section class="bg-charcoal border-b border-plate py-4">
+  <section class="bg-charcoal border-b border-plate py-10">
     <div class="max-w-6xl mx-auto px-4">
-      <div
-        class="flex flex-nowrap items-center justify-center lg:justify-evenly gap-x-3 text-xs font-mono text-fog overflow-x-auto">
-        <span class="text-plate hidden lg:inline">// Built for:</span>
-        <a href="/logistics/for/freight-brokers" class="hover:text-chalk transition-colors whitespace-nowrap" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color=''">Freight Brokers</a>
-        <span class="text-plate">·</span>
-        <a href="/logistics/for/3pls" class="hover:text-chalk transition-colors whitespace-nowrap" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color=''">3PLs</a>
-        <span class="text-plate">·</span>
-        <a href="/logistics/for/customs-brokers" class="hover:text-chalk transition-colors whitespace-nowrap" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color=''">Customs Brokers</a>
-        <span class="text-plate">·</span>
-        <a href="/logistics/for/importers" class="hover:text-chalk transition-colors whitespace-nowrap" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color=''">Importers</a>
-        <span class="text-plate">·</span>
-        <a href="/logistics/for/forwarders" class="hover:text-chalk transition-colors whitespace-nowrap" onmouseover="this.style.color='#52b788'" onmouseout="this.style.color=''">Forwarding Agents</a>
+      <p class="font-mono text-xs uppercase tracking-wider text-center mb-1" style="color:#52b788">// Built for your role</p>
+      <p class="text-fog text-sm text-center mb-6">Pick your role to see exactly how it works for you</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <a href="/logistics/for/freight-brokers"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2">
+          <span class="font-mono text-sm text-chalk leading-tight">Freight Brokers</span>
+          <span class="role-arrow text-plate transition-colors text-lg leading-none">&rarr;</span>
+        </a>
+        <a href="/logistics/for/3pls"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2">
+          <span class="font-mono text-sm text-chalk leading-tight">3PLs</span>
+          <span class="role-arrow text-plate transition-colors text-lg leading-none">&rarr;</span>
+        </a>
+        <a href="/logistics/for/customs-brokers"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2">
+          <span class="font-mono text-sm text-chalk leading-tight">Customs Brokers</span>
+          <span class="role-arrow text-plate transition-colors text-lg leading-none">&rarr;</span>
+        </a>
+        <a href="/logistics/for/importers"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2">
+          <span class="font-mono text-sm text-chalk leading-tight">Importers</span>
+          <span class="role-arrow text-plate transition-colors text-lg leading-none">&rarr;</span>
+        </a>
+        <a href="/logistics/for/forwarders"
+          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2">
+          <span class="font-mono text-sm text-chalk leading-tight">Forwarding Agents</span>
+          <span class="role-arrow text-plate transition-colors text-lg leading-none">&rarr;</span>
+        </a>
       </div>
     </div>
   </section>

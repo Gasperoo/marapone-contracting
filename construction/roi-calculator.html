@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROI Calculator – What a Private AI Build Saves You | Marapone Construction</title>
+  <meta name="description" content="Estimate the hours and dollars a private Marapone AI build recovers on RFIs, daily logs, and tender review — and how fast a one-time build pays for itself. No subscriptions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Construction AI ROI Calculator – Marapone" />
+  <meta property="og:description" content="See the hours and dollars a one-time private AI build recovers, and your payback period." />
+  <meta property="og:url" content="https://marapone.com/construction/roi-calculator" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/roi-calculator" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .roi-input { background-color: #1a1a1a; border: 1px solid #3a3a3a; color: #e8e8e8; }
+    .roi-input:focus { outline: none; border-color: #f97316; }
+    input[type="range"] { accent-color: #f97316; }
+    .roi-field label { display: block; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk">Work</a>
+        <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+        <a href="/construction/about" class="hover:text-chalk">About</a>
+        <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// ROI calculator</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">WHAT DOES THE<br/><span class="text-hiviz">MANUAL WORK COST YOU?</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed">A Marapone build is a one-time price, not a subscription. So the only question that matters is how fast it pays for itself. Put in your real numbers — the math updates live. Nothing is sent anywhere; this runs entirely in your browser.</p>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="py-12 lg:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-5 gap-8">
+
+        <!-- INPUTS -->
+        <div class="lg:col-span-2 space-y-6">
+          <div>
+            <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Your numbers</p>
+
+            <div class="roi-field mb-5">
+              <label for="task" class="text-chalk font-semibold text-sm mb-2">Which manual task are you costing out?</label>
+              <select id="task" class="roi-input w-full rounded px-3 py-2.5 text-sm">
+                <option value="rfi">Cross-referencing RFIs against drawings</option>
+                <option value="logs">Reading &amp; summarizing daily logs</option>
+                <option value="tender">Reviewing tenders / scope for risk</option>
+                <option value="scope">Scope-gap checks across sub quotes</option>
+                <option value="co">Tracking change-order exposure</option>
+                <option value="generic">Something else (generic)</option>
+              </select>
+            </div>
+
+            <div class="roi-field mb-5">
+              <label for="volume" class="text-chalk font-semibold text-sm mb-2">Documents / items handled per month</label>
+              <input id="volume" type="number" min="0" step="1" value="120" class="roi-input w-full rounded px-3 py-2.5 text-sm" />
+            </div>
+
+            <div class="roi-field mb-5">
+              <label for="minutes" class="text-chalk font-semibold text-sm mb-2">Minutes a person spends on each, manually</label>
+              <input id="minutes" type="number" min="0" step="1" value="12" class="roi-input w-full rounded px-3 py-2.5 text-sm" />
+            </div>
+
+            <div class="roi-field mb-5">
+              <label for="rate" class="text-chalk font-semibold text-sm mb-2">Loaded hourly cost of that person ($/hr)</label>
+              <input id="rate" type="number" min="0" step="1" value="75" class="roi-input w-full rounded px-3 py-2.5 text-sm" />
+            </div>
+
+            <div class="roi-field mb-5">
+              <label for="reduction" class="text-chalk font-semibold text-sm mb-2">Time the AI takes off that task: <span id="reductionVal" class="text-hiviz font-mono">75%</span></label>
+              <input id="reduction" type="range" min="30" max="95" step="5" value="75" class="w-full" />
+              <p class="text-plate text-xs mt-1 font-mono">Conservative 30% · typical 70–80% · high 95%</p>
+            </div>
+
+            <div class="roi-field">
+              <label for="price" class="text-chalk font-semibold text-sm mb-2">One-time build price ($)</label>
+              <input id="price" type="number" min="0" step="100" value="6000" class="roi-input w-full rounded px-3 py-2.5 text-sm" />
+              <p class="text-plate text-xs mt-1 font-mono">Starter builds from $1,500. Multi-system builds run higher — use a real quote if you have one.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="lg:col-span-3">
+          <div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-6">// What you recover</p>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-6">
+              <div class="bg-steel border border-plate rounded-lg p-5">
+                <p class="text-fog text-xs font-mono uppercase mb-1">Hours back / month</p>
+                <p id="hoursMonth" class="font-display text-4xl text-chalk">—</p>
+              </div>
+              <div class="bg-steel border border-plate rounded-lg p-5">
+                <p class="text-fog text-xs font-mono uppercase mb-1">Saved / month</p>
+                <p id="moneyMonth" class="font-display text-4xl text-hiviz">—</p>
+              </div>
+              <div class="bg-steel border border-plate rounded-lg p-5">
+                <p class="text-fog text-xs font-mono uppercase mb-1">Saved / year</p>
+                <p id="moneyYear" class="font-display text-4xl text-chalk">—</p>
+              </div>
+              <div class="bg-steel border border-plate rounded-lg p-5">
+                <p class="text-fog text-xs font-mono uppercase mb-1">Hours back / year</p>
+                <p id="hoursYear" class="font-display text-4xl text-chalk">—</p>
+              </div>
+            </div>
+
+            <div class="hiviz-gradient rounded-lg p-6 mb-6">
+              <p class="text-white/80 text-xs font-mono uppercase tracking-widest mb-1">Payback period</p>
+              <p id="payback" class="font-display text-5xl lg:text-6xl text-white leading-none">—</p>
+              <p id="paybackNote" class="text-white/90 text-sm mt-2">After that, it's pure recovered margin — there's no subscription clock running.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="border border-plate rounded-lg p-5">
+                <p class="text-fog text-xs font-mono uppercase mb-1">Net value, 3 years</p>
+                <p id="net3" class="font-display text-3xl text-chalk">—</p>
+                <p class="text-plate text-xs mt-1">Savings minus the one-time price.</p>
+              </div>
+              <div class="border border-plate rounded-lg p-5">
+                <p class="text-fog text-xs font-mono uppercase mb-1">Return on the build</p>
+                <p id="roi3" class="font-display text-3xl text-chalk">—</p>
+                <p class="text-plate text-xs mt-1">3-year return on the one-time cost.</p>
+              </div>
+            </div>
+
+            <p class="text-plate text-xs mt-6 leading-relaxed">These are planning estimates from the inputs above, not a quote or a guarantee. They count only the labour on the one task you selected — they don't include the cost of errors a manual process misses, which is usually where the real money is. Your free assessment runs the AI on your actual documents so the numbers come from your data, not a slider.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get the Real Numbers — Free Assessment &rarr;</a>
+            <a href="/construction/sample-assessment" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">See a Sample Assessment</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/construction/trust" class="text-xs font-mono text-plate hover:text-fog transition-colors">Trust Center</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var fmt0 = function (n) { return n.toLocaleString('en-US', { maximumFractionDigits: 0 }); };
+      var money = function (n) { return '$' + fmt0(Math.round(n)); };
+      var ids = ['task', 'volume', 'minutes', 'rate', 'reduction', 'price'];
+      var el = {};
+      ids.forEach(function (id) { el[id] = document.getElementById(id); });
+
+      function calc() {
+        var volume = Math.max(0, parseFloat(el.volume.value) || 0);
+        var minutes = Math.max(0, parseFloat(el.minutes.value) || 0);
+        var rate = Math.max(0, parseFloat(el.rate.value) || 0);
+        var reduction = Math.max(0, parseFloat(el.reduction.value) || 0) / 100;
+        var price = Math.max(0, parseFloat(el.price.value) || 0);
+        document.getElementById('reductionVal').textContent = Math.round(reduction * 100) + '%';
+
+        var hoursMonth = (volume * minutes / 60) * reduction;
+        var hoursYear = hoursMonth * 12;
+        var moneyMonth = hoursMonth * rate;
+        var moneyYear = moneyMonth * 12;
+
+        document.getElementById('hoursMonth').textContent = fmt0(hoursMonth);
+        document.getElementById('hoursYear').textContent = fmt0(hoursYear);
+        document.getElementById('moneyMonth').textContent = money(moneyMonth);
+        document.getElementById('moneyYear').textContent = money(moneyYear);
+
+        var paybackEl = document.getElementById('payback');
+        var paybackNote = document.getElementById('paybackNote');
+        if (moneyMonth <= 0) {
+          paybackEl.textContent = '—';
+          paybackNote.textContent = 'Add your volume and time-per-item to see how fast the build pays for itself.';
+        } else {
+          var months = price / moneyMonth;
+          if (months < 1) {
+            var weeks = Math.max(1, Math.round(months * 4.345));
+            paybackEl.textContent = weeks + (weeks === 1 ? ' week' : ' weeks');
+          } else if (months < 12) {
+            paybackEl.textContent = (Math.round(months * 10) / 10) + (months < 2 ? ' month' : ' months');
+          } else {
+            paybackEl.textContent = (Math.round((months / 12) * 10) / 10) + ' years';
+          }
+          paybackNote.textContent = "After that, it's pure recovered margin — there's no subscription clock running.";
+        }
+
+        var net3 = (moneyYear * 3) - price;
+        document.getElementById('net3').textContent = money(net3);
+        var roi3 = price > 0 ? Math.round(((moneyYear * 3 - price) / price) * 100) : 0;
+        document.getElementById('roi3').textContent = price > 0 ? fmt0(roi3) + '%' : '—';
+      }
+
+      ids.forEach(function (id) {
+        el[id].addEventListener('input', calc);
+        el[id].addEventListener('change', calc);
+      });
+      calc();
+    })();
+  </script>
+
+</body>
+</html>

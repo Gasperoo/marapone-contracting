@@ -193,6 +193,13 @@ export default defineConfig({
         'l-res-3':                     path.resolve(__dirname, 'logistics/resources/private-tms-integrated-ai.html'),
         'l-res-4':                     path.resolve(__dirname, 'logistics/resources/what-owning-the-model-means.html'),
         'l-res-5':                     path.resolve(__dirname, 'logistics/resources/sample-carrier-scorecard.html'),
+        // Tier 1/2: Proof tools + security pack
+        'c-sample-assessment':         path.resolve(__dirname, 'construction/sample-assessment.html'),
+        'c-roi-calculator':            path.resolve(__dirname, 'construction/roi-calculator.html'),
+        'c-security-pack':             path.resolve(__dirname, 'construction/security-pack.html'),
+        'l-sample-assessment':         path.resolve(__dirname, 'logistics/sample-assessment.html'),
+        'l-roi-calculator':            path.resolve(__dirname, 'logistics/roi-calculator.html'),
+        'l-security-pack':             path.resolve(__dirname, 'logistics/security-pack.html'),
       },
     },
   },

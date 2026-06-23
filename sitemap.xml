@@ -22,6 +22,9 @@
   <url><loc>https://marapone.com/construction/architecture</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/integrations</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/trust</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/sample-assessment</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/roi-calculator</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/security-pack</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/procore</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/autodesk</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/document-crunch</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
@@ -51,6 +54,9 @@
   <url><loc>https://marapone.com/logistics/architecture</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/integrations</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/trust</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/sample-assessment</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/roi-calculator</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/security-pack</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/vs/project44</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/vs/descartes</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/vs/flexport</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>

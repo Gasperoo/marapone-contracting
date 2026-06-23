@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security &amp; Trust Pack – Send It to Your IT Team | Marapone Construction</title>
+  <meta name="description" content="A one-document security overview for Marapone construction builds: data-flow diagram, deployment models, what never happens to your documents, and data-handling defaults. Print or save as PDF for your CISO." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Security &amp; Trust Pack – Marapone Construction" />
+  <meta property="og:description" content="The one-page security overview, data-flow diagram, and data-handling summary your IT team will ask for." />
+  <meta property="og:url" content="https://marapone.com/construction/security-pack" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/security-pack" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; color: #111 !important; }
+      .pack-doc, .pack-doc * { color: #111 !important; }
+      .pack-doc .text-fog, .pack-doc .text-plate { color: #444 !important; }
+      .pack-doc .bg-steel, .pack-doc .bg-gunmetal { background:#f5f5f5 !important; }
+      .pack-doc .border-plate { border-color:#ccc !important; }
+      .pack-section { break-inside: avoid; }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="no-print sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+        <a href="/construction/trust" class="hover:text-chalk">Trust</a>
+        <a href="/construction/about" class="hover:text-chalk">About</a>
+        <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/trust" class="text-fog hover:text-chalk">Trust</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="no-print grid-dot border-b border-plate py-14 lg:py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// Security &amp; trust pack</p>
+      <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-none mb-6">ONE DOCUMENT<br/><span class="text-hiviz">FOR YOUR IT TEAM.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-6">Everything a CISO or IT lead asks for before a construction AI build starts — the data-flow diagram, the deployment models, what never happens to your documents, and the data-handling defaults — in one printable page. No marketing, no fluff.</p>
+      <div class="flex flex-wrap gap-3">
+        <button onclick="window.print()" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Print / Save as PDF</button>
+        <a href="/construction/trust" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Back to Trust Center</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACK DOCUMENT -->
+  <section class="py-10 lg:py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <article class="pack-doc bg-gunmetal border border-plate rounded-xl p-6 lg:p-10">
+
+        <header class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-plate pb-6 mb-8">
+          <div>
+            <p class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></p>
+            <p class="font-mono text-xs text-fog mt-1">Security &amp; Data-Handling Overview — Construction</p>
+          </div>
+          <div class="text-sm sm:text-right text-fog">
+            <p><span class="text-plate font-mono text-xs">DOC:</span> SEC-PACK-CON</p>
+            <p><span class="text-plate font-mono text-xs">SCOPE:</span> Private AI builds</p>
+            <p><span class="text-plate font-mono text-xs">CONTACT:</span> security@marapone.com</p>
+          </div>
+        </header>
+
+        <!-- Data-flow diagram -->
+        <div class="pack-section mb-10">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Data flow — where documents go (and don't)</h2>
+          <div class="bg-steel border border-plate rounded-lg p-4 overflow-x-auto">
+            <svg viewBox="0 0 760 260" width="100%" role="img" aria-label="Data-flow diagram showing documents, model, vector store, and outputs all inside your environment, with no outbound calls to third-party LLM providers." font-family="DM Mono, monospace">
+              <!-- boundary -->
+              <rect x="8" y="40" width="560" height="200" rx="10" fill="none" stroke="#f97316" stroke-width="2" stroke-dasharray="6 5"/>
+              <text x="20" y="32" fill="#f97316" font-size="13">YOUR ENVIRONMENT — on-prem, your cloud tenant, or air-gapped</text>
+              <!-- docs -->
+              <rect x="28" y="100" width="120" height="70" rx="8" fill="#1a1a1a" stroke="#3a3a3a"/>
+              <text x="88" y="130" fill="#e8e8e8" font-size="13" text-anchor="middle">Your docs</text>
+              <text x="88" y="150" fill="#a0a0a0" font-size="11" text-anchor="middle">drawings · RFIs</text>
+              <!-- model -->
+              <rect x="218" y="70" width="130" height="60" rx="8" fill="#1a1a1a" stroke="#3a3a3a"/>
+              <text x="283" y="96" fill="#e8e8e8" font-size="13" text-anchor="middle">Local model</text>
+              <text x="283" y="114" fill="#a0a0a0" font-size="11" text-anchor="middle">runs on your HW</text>
+              <!-- vector store -->
+              <rect x="218" y="150" width="130" height="60" rx="8" fill="#1a1a1a" stroke="#3a3a3a"/>
+              <text x="283" y="176" fill="#e8e8e8" font-size="13" text-anchor="middle">Vector store</text>
+              <text x="283" y="194" fill="#a0a0a0" font-size="11" text-anchor="middle">per-project</text>
+              <!-- outputs -->
+              <rect x="418" y="100" width="130" height="70" rx="8" fill="#1a1a1a" stroke="#3a3a3a"/>
+              <text x="483" y="130" fill="#e8e8e8" font-size="13" text-anchor="middle">Outputs</text>
+              <text x="483" y="150" fill="#a0a0a0" font-size="11" text-anchor="middle">flags · summaries</text>
+              <!-- arrows -->
+              <line x1="148" y1="135" x2="214" y2="110" stroke="#a0a0a0" stroke-width="2" marker-end="url(#ar)"/>
+              <line x1="148" y1="140" x2="214" y2="178" stroke="#a0a0a0" stroke-width="2" marker-end="url(#ar)"/>
+              <line x1="348" y1="100" x2="414" y2="125" stroke="#a0a0a0" stroke-width="2" marker-end="url(#ar)"/>
+              <line x1="348" y1="180" x2="414" y2="145" stroke="#a0a0a0" stroke-width="2" marker-end="url(#ar)"/>
+              <!-- blocked external -->
+              <rect x="600" y="100" width="150" height="70" rx="8" fill="#1a1a1a" stroke="#7f1d1d"/>
+              <text x="675" y="128" fill="#fecaca" font-size="12" text-anchor="middle">3rd-party LLM</text>
+              <text x="675" y="146" fill="#fecaca" font-size="12" text-anchor="middle">APIs / cloud</text>
+              <line x1="568" y1="135" x2="596" y2="135" stroke="#7f1d1d" stroke-width="2"/>
+              <text x="582" y="120" fill="#ef4444" font-size="20" text-anchor="middle">&#10005;</text>
+              <text x="675" y="190" fill="#ef4444" font-size="11" text-anchor="middle">no outbound calls</text>
+              <defs>
+                <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#a0a0a0"/></marker>
+              </defs>
+            </svg>
+          </div>
+          <p class="text-plate text-xs mt-2">Documents, model, index, and outputs all stay inside a boundary you control. There is no Marapone-hosted tenant in the path.</p>
+        </div>
+
+        <!-- Deployment models -->
+        <div class="pack-section mb-10">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Deployment models</h2>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="text-chalk font-semibold mb-1">On a laptop</p>
+              <p class="text-fog text-sm">localhost only · FileVault/LUKS at rest · zero outbound.</p>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="text-chalk font-semibold mb-1">On-prem server</p>
+              <p class="text-fog text-sm">LAN + VPN · SSO + role-based access · LUKS/BitLocker.</p>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="text-chalk font-semibold mb-1">Your cloud tenant</p>
+              <p class="text-fog text-sm">Private VPC · KMS/Disk encryption · IAM + SSO.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- What never happens -->
+        <div class="pack-section mb-10">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// What never happens to your documents</h2>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="border border-plate rounded-lg p-4"><p class="text-chalk font-semibold text-sm">No third-party LLM API calls</p><p class="text-fog text-sm">Models run on hardware you control.</p></div>
+            <div class="border border-plate rounded-lg p-4"><p class="text-chalk font-semibold text-sm">No training on your data</p><p class="text-fog text-sm">Any fine-tuned weights are yours and stay with you.</p></div>
+            <div class="border border-plate rounded-lg p-4"><p class="text-chalk font-semibold text-sm">No central data lake</p><p class="text-fog text-sm">There is no Marapone tenant holding your projects.</p></div>
+            <div class="border border-plate rounded-lg p-4"><p class="text-chalk font-semibold text-sm">No cross-client sharing</p><p class="text-fog text-sm">Separate codebase, weights, and store per client.</p></div>
+          </div>
+        </div>
+
+        <!-- Data handling defaults -->
+        <div class="pack-section mb-10">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Data-handling defaults</h2>
+          <table class="w-full text-left text-sm">
+            <tbody class="text-fog">
+              <tr class="border-b border-plate"><td class="py-2.5 pr-3 font-semibold text-chalk w-1/3">Data residency</td><td class="py-2.5">Canada (Toronto) or EU (Rome) by default; on-prem keeps it entirely with you. PIPEDA / GDPR-aligned.</td></tr>
+              <tr class="border-b border-plate"><td class="py-2.5 pr-3 font-semibold text-chalk">Retention</td><td class="py-2.5">You set per-document-class windows. Assessment documents deleted after delivery unless you ask us to keep them.</td></tr>
+              <tr class="border-b border-plate"><td class="py-2.5 pr-3 font-semibold text-chalk">Deletion</td><td class="py-2.5">Single command/UI action wipes a project's docs, embeddings, and project-specific weights.</td></tr>
+              <tr class="border-b border-plate"><td class="py-2.5 pr-3 font-semibold text-chalk">Audit trail</td><td class="py-2.5">Every query, document touched, and response logged with timestamp + user. Searchable and exportable.</td></tr>
+              <tr class="border-b border-plate"><td class="py-2.5 pr-3 font-semibold text-chalk">Access control</td><td class="py-2.5">Integrates with your identity provider (SSO); role-based; per-project namespace segregation by default.</td></tr>
+              <tr><td class="py-2.5 pr-3 font-semibold text-chalk">Agreements</td><td class="py-2.5">Mutual NDA on request before any documents change hands; project-specific NDA and DPA available pre-build.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Ownership / handover -->
+        <div class="pack-section border-t border-plate pt-6">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Ownership at handover</h2>
+          <p class="text-fog text-sm leading-relaxed">At handover you receive the full source code, any project-specific model weights, deployment and backup runbooks, and admin credentials. There is no license that can be revoked and no server we can switch off. Questions: <span class="text-chalk">security@marapone.com</span>.</p>
+        </div>
+
+      </article>
+
+      <div class="no-print text-center mt-10">
+        <div class="flex flex-wrap gap-3 justify-center">
+          <button onclick="window.print()" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Print / Save as PDF</button>
+          <a href="/construction/contact" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Request a Review Call &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="no-print bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/trust" class="hover:text-chalk">Trust</a>
+          <a href="/construction/architecture" class="hover:text-chalk">Architecture</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/construction/trust" class="text-xs font-mono text-plate hover:text-fog transition-colors">Trust Center</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

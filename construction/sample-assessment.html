@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample AI Assessment Report – What You Get in 48 Hours | Marapone Construction</title>
+  <meta name="description" content="A redacted, real-format sample of the free AI assessment Marapone returns on your drawings and RFIs: findings, severity, drawing citations, and recommended next steps. Print or save as PDF." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Sample AI Assessment Report – Marapone Construction" />
+  <meta property="og:description" content="See exactly what lands in your inbox after the free assessment — a redacted real-format report." />
+  <meta property="og:url" content="https://marapone.com/construction/sample-assessment" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/sample-assessment" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .sev-high { background:#7f1d1d; color:#fecaca; }
+    .sev-med { background:#78350f; color:#fed7aa; }
+    .sev-low { background:#1e3a5f; color:#bfdbfe; }
+    .redact { background:#3a3a3a; color:transparent; border-radius:2px; padding:0 .35em; user-select:none; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; color: #111 !important; }
+      .report-doc { box-shadow: none !important; border: none !important; background: #fff !important; }
+      .report-doc * { color: #111 !important; }
+      .report-doc .text-fog, .report-doc .text-plate { color: #444 !important; }
+      .sev-high { background:#fee2e2 !important; color:#991b1b !important; }
+      .sev-med { background:#ffedd5 !important; color:#9a3412 !important; }
+      .sev-low { background:#dbeafe !important; color:#1e40af !important; }
+      .report-doc .bg-steel, .report-doc .bg-gunmetal { background:#f5f5f5 !important; }
+      .report-doc .border-plate { border-color:#ccc !important; }
+      .redact { background:#222 !important; }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="no-print sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk">Work</a>
+        <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+        <a href="/construction/about" class="hover:text-chalk">About</a>
+        <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="no-print grid-dot border-b border-plate py-14 lg:py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// Sample deliverable</p>
+      <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-none mb-6">THE FREE ASSESSMENT,<br/><span class="text-hiviz">UN-REDACTED ON YOUR DOCS.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-6">When you send us a set of drawings and a few RFIs, this is the format of what comes back — usually within 48 hours, before you've paid anything or committed to a build. Below is a real-format sample with the client and project details redacted. Yours runs on your actual documents.</p>
+      <div class="flex flex-wrap gap-3">
+        <button onclick="window.print()" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Print / Save as PDF</button>
+        <a href="/construction/contact" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Get This On Your Drawings &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORT DOCUMENT -->
+  <section class="py-10 lg:py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <article class="report-doc bg-gunmetal border border-plate rounded-xl p-6 lg:p-10">
+
+        <!-- Report header -->
+        <header class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-plate pb-6 mb-8">
+          <div>
+            <p class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></p>
+            <p class="font-mono text-xs text-fog mt-1">AI Document Assessment — Construction</p>
+          </div>
+          <div class="text-sm sm:text-right">
+            <p class="text-fog"><span class="text-plate font-mono text-xs">CLIENT:</span> <span class="redact">Northside GC Group</span></p>
+            <p class="text-fog"><span class="text-plate font-mono text-xs">PROJECT:</span> <span class="redact">K-12 Build, Ph 2</span></p>
+            <p class="text-fog"><span class="text-plate font-mono text-xs">PREPARED:</span> Sample — your date here</p>
+            <p class="text-fog"><span class="text-plate font-mono text-xs">REF:</span> ASMT-SAMPLE-001</p>
+          </div>
+        </header>
+
+        <!-- Scope -->
+        <div class="mb-8">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Documents reviewed</h2>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="font-display text-3xl text-chalk">38</p>
+              <p class="text-fog text-xs">Drawing sheets (A / S / M)</p>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="font-display text-3xl text-chalk">61</p>
+              <p class="text-fog text-xs">Open RFIs</p>
+            </div>
+            <div class="bg-steel border border-plate rounded-lg p-4">
+              <p class="font-display text-3xl text-chalk">2</p>
+              <p class="text-fog text-xs">Spec divisions (23, 26)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive summary -->
+        <div class="mb-8">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Executive summary</h2>
+          <p class="text-fog leading-relaxed mb-3">An automated pass cross-referenced all 61 open RFIs against the 38 supplied drawing sheets and the mechanical and electrical specs. The model surfaced <span class="text-chalk font-semibold">9 items worth a human look</span>: 2 high-severity coordination conflicts, 4 medium-severity scope or answer gaps, and 3 low-severity housekeeping items. Two of the high-severity items sit on the critical path for the mechanical rough-in.</p>
+          <p class="text-fog leading-relaxed">Each finding below cites the specific drawing sheet and RFI number so your team can verify it in minutes. This is a screening pass, not a substitute for the project team's judgment — every flag is meant to be confirmed by a person.</p>
+        </div>
+
+        <!-- Findings -->
+        <div class="mb-8">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Findings</h2>
+
+          <div class="space-y-4">
+            <!-- Finding 1 -->
+            <div class="bg-steel border border-plate rounded-lg p-5">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <p class="font-display text-xl text-chalk">F-01 · Mechanical / structural clash at gridline</p>
+                <span class="sev-high text-xs font-mono uppercase px-2 py-1 rounded whitespace-nowrap">High</span>
+              </div>
+              <p class="text-fog text-sm leading-relaxed mb-3">Duct routing on <span class="font-mono text-chalk">M-401</span> passes through a beam web shown on <span class="font-mono text-chalk">S-210</span> with no penetration detail. RFI <span class="font-mono text-chalk">#0042</span> asks about ceiling heights in the same zone but doesn't reference the conflict. Likely a coordination miss.</p>
+              <p class="text-plate text-xs"><span class="font-mono uppercase">Cited:</span> M-401, S-210, RFI #0042 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> route to structural before next mechanical pull.</p>
+            </div>
+            <!-- Finding 2 -->
+            <div class="bg-steel border border-plate rounded-lg p-5">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <p class="font-display text-xl text-chalk">F-02 · Critical-path RFI unanswered 19 days</p>
+                <span class="sev-high text-xs font-mono uppercase px-2 py-1 rounded whitespace-nowrap">High</span>
+              </div>
+              <p class="text-fog text-sm leading-relaxed mb-3">RFI <span class="font-mono text-chalk">#0051</span> (electrical panel location) is unanswered and gates the <span class="redact">rough-in start</span> per the supplied look-ahead. It is not flagged as critical in the RFI log.</p>
+              <p class="text-plate text-xs"><span class="font-mono uppercase">Cited:</span> RFI #0051, E-301 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> escalate; tie to schedule activity.</p>
+            </div>
+            <!-- Finding 3 -->
+            <div class="bg-steel border border-plate rounded-lg p-5">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <p class="font-display text-xl text-chalk">F-03 · Two RFIs ask the same question</p>
+                <span class="sev-med text-xs font-mono uppercase px-2 py-1 rounded whitespace-nowrap">Medium</span>
+              </div>
+              <p class="text-fog text-sm leading-relaxed mb-3">RFI <span class="font-mono text-chalk">#0033</span> and <span class="font-mono text-chalk">#0047</span> both ask for the same door hardware clarification on <span class="font-mono text-chalk">A-602</span>. One was answered; the other is still open, risking a contradictory response.</p>
+              <p class="text-plate text-xs"><span class="font-mono uppercase">Cited:</span> RFI #0033, #0047, A-602 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> close #0047 as duplicate.</p>
+            </div>
+            <!-- Finding 4 -->
+            <div class="bg-steel border border-plate rounded-lg p-5">
+              <div class="flex items-center justify-between gap-3 mb-2">
+                <p class="font-display text-xl text-chalk">F-04 · Spec / drawing mismatch on fixture</p>
+                <span class="sev-med text-xs font-mono uppercase px-2 py-1 rounded whitespace-nowrap">Medium</span>
+              </div>
+              <p class="text-fog text-sm leading-relaxed mb-3">Lighting schedule on <span class="font-mono text-chalk">E-601</span> calls a fixture type that doesn't appear in spec <span class="font-mono text-chalk">26 51 00</span>. Either a substitution wasn't logged or the schedule is stale.</p>
+              <p class="text-plate text-xs"><span class="font-mono uppercase">Cited:</span> E-601, Spec 26 51 00 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> confirm fixture with EE.</p>
+            </div>
+          </div>
+
+          <p class="text-plate text-xs mt-4 font-mono">+ 5 additional findings (F-05 … F-09) in the full sample. Redacted here for length.</p>
+        </div>
+
+        <!-- What this would mean -->
+        <div class="mb-8">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// What this means for you</h2>
+          <p class="text-fog leading-relaxed">A reviewer working these 61 RFIs against 38 sheets by hand is a full day or more, and the cross-document conflicts (F-01, F-04) are exactly the kind a tired human misses at 5pm. The pass that produced this report took the model under ten minutes. The free assessment shows you that on your own documents — no build commitment, no data leaving an environment you approve.</p>
+        </div>
+
+        <!-- Methodology -->
+        <div class="border-t border-plate pt-6">
+          <h2 class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Method &amp; handling</h2>
+          <ul class="text-fog text-sm space-y-2">
+            <li class="flex gap-2"><span class="text-hiviz">&check;</span> Every flag cites a source document and location so your team verifies, not trusts.</li>
+            <li class="flex gap-2"><span class="text-hiviz">&check;</span> Run on an isolated environment; documents are deleted after the assessment unless you ask us to keep them.</li>
+            <li class="flex gap-2"><span class="text-hiviz">&check;</span> No third-party LLM API calls. Nothing is added to any training set.</li>
+            <li class="flex gap-2"><span class="text-hiviz">&check;</span> A screening aid for your team — it does not replace professional review or sign-off.</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <!-- CTA -->
+      <div class="no-print text-center mt-10">
+        <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-3">WANT THIS ON YOUR ACTUAL DRAWINGS?</h2>
+        <p class="text-fog max-w-xl mx-auto mb-6">Send us a sheet set and a handful of open RFIs. We'll return a report like this — free, usually inside 48 hours.</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Free Assessment &rarr;</a>
+          <a href="/construction/roi-calculator" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Estimate the ROI First</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="no-print bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/construction/trust" class="text-xs font-mono text-plate hover:text-fog transition-colors">Trust Center</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

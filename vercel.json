@@ -110,6 +110,10 @@
       "destination": "/discovery.html"
     },
     {
+      "source": "/shop",
+      "destination": "/shop.html"
+    },
+    {
       "source": "/construction",
       "destination": "/construction/index.html"
     },

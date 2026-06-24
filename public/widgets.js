@@ -240,7 +240,7 @@
         fetch('/api/newsletter-signup', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email, source: 'exit_intent', vertical: isLogistics ? 'logistics' : 'construction' })
-        }).then(function (r) { return r.json().catch(function () { return {}; }); }).then(function () {
+        }).then(function (r) { if (!r.ok) throw new Error('request failed'); return r.json().catch(function () { return {}; }); }).then(function () {
           form.style.display = 'none';
           document.getElementById('mp-exit-ok').style.display = 'block';
         }).catch(function () {
@@ -269,7 +269,7 @@
         fetch('/api/newsletter-signup', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email, source: 'footer', vertical: isLogistics ? 'logistics' : 'construction' })
-        }).then(function (r) { return r.json().catch(function () { return {}; }); }).then(function () {
+        }).then(function (r) { if (!r.ok) throw new Error('request failed'); return r.json().catch(function () { return {}; }); }).then(function () {
           f.style.display = 'none';
           msg.className = 'mp-nl-msg ok';
           msg.textContent = '✓ Subscribed. Welcome.';

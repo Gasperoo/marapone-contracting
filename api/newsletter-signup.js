@@ -2,6 +2,27 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Public base URL the sample files are hosted at (used for email attachments).
+const SITE_URL = 'https://marapone.com';
+
+// Sample files attached to the visitor's email, picked by vertical.
+// Files live in /public/samples and are served at /samples/* on the site.
+const SAMPLES = {
+  construction: [
+    { filename: 'drawing-set-index.pdf', file: 'drawing-set-index.pdf' },
+  ],
+  logistics: [
+    { filename: 'bill-of-lading-COSU6118822540.pdf', file: 'bill-of-lading-COSU6118822540.pdf' },
+    { filename: 'freight-invoice-MAR-2026-04417.pdf', file: 'freight-invoice-MAR-2026-04417.pdf' },
+    { filename: 'freight-invoice-MAR-2026-04417.csv', file: 'freight-invoice-MAR-2026-04417.csv' },
+  ],
+};
+
+function samplesFor(vertical) {
+  const set = SAMPLES[vertical] || [...SAMPLES.construction, ...SAMPLES.logistics];
+  return set.map((s) => ({ filename: s.filename, path: `${SITE_URL}/samples/${s.file}` }));
+}
+
 // In-memory rate limit (resets on cold start)
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 8;
@@ -45,19 +66,57 @@ export default async function handler(req, res) {
   const e = escapeHtml(email);
   const s = escapeHtml(source);
   const v = escapeHtml(vertical);
+  const attachments = samplesFor(vertical);
+  const fileList = attachments.map((a) => `<li>${escapeHtml(a.filename)}</li>`).join('');
 
   try {
-    // Notify Marapone of the signup
+    // 1) Send the sample pack to the visitor (the critical email).
+    await resend.emails.send({
+      from: 'Marapone <info@marapone.com>',
+      to: [email],
+      reply_to: 'general@marapone.com',
+      subject: 'Your Marapone sample pack',
+      attachments,
+      html: `
+        <div style="font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;line-height:1.55">
+          <p>Hi,</p>
+          <p>Thanks for your interest in Marapone — here are the sample files you asked for, attached to this email:</p>
+          <ul>${fileList}</ul>
+          <p>These show exactly what a finished build hands over: real, owned artifacts you keep, with no subscription.</p>
+          <p>Questions? Just reply to this email and a human will get back to you.</p>
+          <p>— The Marapone team<br/><a href="${SITE_URL}">marapone.com</a></p>
+        </div>`,
+    });
+  } catch (err) {
+    console.error('Sample email error:', err);
+    return res.status(500).json({ error: 'Failed to send the sample. Please email general@marapone.com.' });
+  }
+
+  // 2) Add the visitor to the Resend audience (mailing list). Best-effort.
+  if (process.env.RESEND_AUDIENCE_ID) {
+    try {
+      await resend.contacts.create({
+        email,
+        unsubscribed: false,
+        audienceId: process.env.RESEND_AUDIENCE_ID,
+      });
+    } catch (err) {
+      console.error('Audience add error:', err);
+    }
+  }
+
+  // 3) Notify Marapone of the signup. Best-effort.
+  try {
     await resend.emails.send({
       from: 'Marapone Signups <info@marapone.com>',
       to: ['general@marapone.com'],
       reply_to: email,
-      subject: `Newsletter signup (${s}${v ? ' / ' + v : ''}): ${e}`,
-      html: `<p><strong>${e}</strong> just subscribed to the Marapone newsletter.</p><p>Source: ${s}<br/>Vertical: ${v || '—'}<br/>IP: ${escapeHtml(ip)}<br/>Submitted: ${new Date().toLocaleString('en-US', { timeZoneName: 'short' })}</p>`,
+      subject: `Sample request (${s}${v ? ' / ' + v : ''}): ${e}`,
+      html: `<p><strong>${e}</strong> requested the sample pack and was added to the mailing list.</p><p>Source: ${s}<br/>Vertical: ${v || '—'}<br/>IP: ${escapeHtml(ip)}<br/>Submitted: ${new Date().toLocaleString('en-US', { timeZoneName: 'short' })}</p>`,
     });
-    return res.status(200).json({ success: true });
   } catch (err) {
-    console.error('Newsletter signup error:', err);
-    return res.status(500).json({ error: 'Failed to subscribe. Please email general@marapone.com.' });
+    console.error('Signup notification error:', err);
   }
+
+  return res.status(200).json({ success: true });
 }

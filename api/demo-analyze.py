@@ -21,6 +21,8 @@ import json
 import os
 import re
 import time
+import urllib.parse
+import urllib.request
 from http.server import BaseHTTPRequestHandler
 
 # ════════════════════════════ ENGINE ═════════════════════════════════════
@@ -355,7 +357,52 @@ BURST_MAX = 12
 BURST_WINDOW = 10 * 60
 SECRET = (os.environ.get('DEMO_HMAC_SECRET') or 'marapone-demo-v1').encode()
 
+# Cloudflare Turnstile. Defaults are Cloudflare's public TEST secret (always
+# passes) so the flow works before real keys are set — replace TURNSTILE_SECRET
+# (env) and the site key in the demo pages with your real widget's keys.
+TURNSTILE_SECRET = os.environ.get('TURNSTILE_SECRET') or '1x0000000000000000000000000000000AA'
+TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
+
+# Lead capture (best-effort) via Resend, reusing the key the other functions use.
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY')
+LEAD_TO = os.environ.get('DEMO_LEAD_TO') or 'maraponecontracting@gmail.com'
+LEAD_FROM = os.environ.get('DEMO_LEAD_FROM') or 'Marapone Demo <onboarding@resend.dev>'
+EMAIL_RE = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]{2,}$')
+
 _ip_hits = {}
+
+
+def _verify_turnstile(token, ip):
+    """Verify a Cloudflare Turnstile token. Returns True/False."""
+    if not token:
+        return False
+    try:
+        data = urllib.parse.urlencode({'secret': TURNSTILE_SECRET, 'response': token, 'remoteip': ip}).encode()
+        req = urllib.request.Request(TURNSTILE_VERIFY_URL, data=data, method='POST')
+        with urllib.request.urlopen(req, timeout=8) as r:
+            return bool(json.loads(r.read()).get('success'))
+    except Exception:
+        return False
+
+
+def _capture_lead(email, tool, filename, risk):
+    """Best-effort lead notification via Resend. Never blocks the response."""
+    if not RESEND_API_KEY:
+        return
+    try:
+        body = json.dumps({
+            'from': LEAD_FROM, 'to': [LEAD_TO],
+            'subject': f'New demo lead: {email} ({tool})',
+            'text': f'Email: {email}\nTool: {tool}\nFile: {filename}\nRisk: {risk}\n'
+                    f'Captured: {time.strftime("%Y-%m-%d %H:%M:%S")} UTC',
+        }).encode()
+        req = urllib.request.Request('https://api.resend.com/emails', data=body, method='POST',
+                                     headers={'Authorization': f'Bearer {RESEND_API_KEY}',
+                                              'Content-Type': 'application/json'})
+        urllib.request.urlopen(req, timeout=8)
+    except Exception:
+        pass
+
 
 PREMIUM = {
     'invoice': [
@@ -429,7 +476,30 @@ def _gate(result):
         out['sheets'] = sheets[:5]
         out['sheets_hidden'] = max(0, len(sheets) - 5)
         out['rooms_hidden'] = len(result.get('rooms', []))
+    out['unlocked'] = True
     return out
+
+
+def _teaser(result):
+    """Tier-0 (no email): aggregate counts + risk only. No field values, no
+    finding text, no rows — nothing substantive leaves the server until a valid
+    email is supplied (and even then only the first finding is revealed)."""
+    tool = result.get('tool')
+    findings = result.get('findings', [])
+    summ = result.get('summary', {})
+    sev = {}
+    for f in findings:
+        sev[f['severity']] = sev.get(f['severity'], 0) + 1
+    teaser = {'issues': summ.get('issues', len(findings)), 'severities': sev}
+    if tool == 'invoice':
+        teaser['line_count'] = summ.get('line_count')
+        teaser['flagged'] = summ.get('flagged')
+    elif tool == 'blueprint':
+        teaser['sheets'] = summ.get('sheets')
+        teaser['disciplines'] = summ.get('disciplines')
+    return {'ok': True, 'tool': tool, 'filename': result.get('filename'),
+            'risk': result.get('risk'), 'needs_email': True,
+            'teaser': teaser, 'premium': PREMIUM.get(tool, [])}
 
 
 class handler(BaseHTTPRequestHandler):
@@ -466,13 +536,6 @@ class handler(BaseHTTPRequestHandler):
         if not _burst_ok(ip):
             return self._json(429, {'ok': False, 'error': 'Too many requests — please wait a few minutes.'})
 
-        day, count = _read_quota_cookie(self.headers.get('Cookie', ''))
-        if count >= DAILY_QUOTA:
-            return self._json(429, {
-                'ok': False, 'quota': True,
-                'error': f'You have used all {DAILY_QUOTA} free demo runs for today. '
-                         'Book a free assessment to run the full audit on your documents.'})
-
         try:
             length = int(self.headers.get('Content-Length', 0))
         except ValueError:
@@ -489,6 +552,8 @@ class handler(BaseHTTPRequestHandler):
         mode = (payload.get('mode') or '').strip()
         filename = (payload.get('filename') or 'upload').strip()
         b64 = payload.get('b64') or ''
+        email = (payload.get('email') or '').strip().lower()
+        token = payload.get('turnstile_token') or ''
         if mode not in ('invoice', 'blueprint'):
             return self._json(400, {'ok': False, 'error': 'Unknown demo mode.'})
 
@@ -513,8 +578,25 @@ class handler(BaseHTTPRequestHandler):
             return self._json(500, {'ok': False, 'error': f'Analysis failed: {e}'})
 
         if not result.get('ok'):
-            return self._json(200, result)   # don't burn quota on an unreadable file
+            return self._json(200, result)   # unreadable file — no gate, no quota
 
+        # ── Tier 0: no email → counts + risk teaser only (nothing substantive). ──
+        if not email or not EMAIL_RE.match(email):
+            return self._json(200, _teaser(result))
+
+        # ── Tier 1: valid email → verify human, enforce quota, reveal first result. ──
+        if not _verify_turnstile(token, ip):
+            return self._json(403, {'ok': False, 'verify': True,
+                                    'error': 'Verification failed — please complete the check and retry.'})
+
+        day, count = _read_quota_cookie(self.headers.get('Cookie', ''))
+        if count >= DAILY_QUOTA:
+            return self._json(429, {
+                'ok': False, 'quota': True,
+                'error': f'You have used all {DAILY_QUOTA} free demo unlocks for today. '
+                         'Book a free assessment to run the full audit on your documents.'})
+
+        _capture_lead(email, mode, filename, result.get('risk'))
         gated = _gate(result)
         new_count = count + 1
         gated['remaining_today'] = max(0, DAILY_QUOTA - new_count)

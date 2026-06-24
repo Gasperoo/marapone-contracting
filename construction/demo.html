@@ -45,7 +45,7 @@
         <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
         <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
       </div>
-      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+      <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
         <a href="/construction/" class="hover:text-chalk">Home</a>
         <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
         <a href="/construction/services" class="hover:text-chalk">Services</a>
@@ -130,123 +130,51 @@
     </div>
   </footer>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="/demo-tool.js" defer></script>
   <script>
-    (function () {
-      var MODE = 'blueprint';
-      var SAMPLE = '/samples/drawing-set-index.pdf';
-      var ACCENT = '#f97316';
-      var dz = document.getElementById('dz');
-      var fileInput = document.getElementById('file');
-      var results = document.getElementById('results');
-      var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
-      var riskColor = function (r) { return r === 'HIGH' ? '#f87171' : r === 'MEDIUM' ? '#fbbf24' : '#34d399'; };
-
-      dz.addEventListener('click', function () { fileInput.click(); });
-      dz.addEventListener('dragover', function (e) { e.preventDefault(); dz.classList.add('drag'); });
-      dz.addEventListener('dragleave', function () { dz.classList.remove('drag'); });
-      dz.addEventListener('drop', function (e) { e.preventDefault(); dz.classList.remove('drag'); if (e.dataTransfer.files[0]) handle(e.dataTransfer.files[0]); });
-      fileInput.addEventListener('change', function () { if (fileInput.files[0]) handle(fileInput.files[0]); fileInput.value = ''; });
-      document.getElementById('sample-btn').addEventListener('click', function () {
-        results.classList.remove('hidden');
-        results.innerHTML = loadingHTML('sample drawing set');
-        fetch(SAMPLE).then(function (r) { return r.blob(); }).then(function (b) {
-          handle(new File([b], 'drawing-set-index.pdf', { type: 'application/pdf' }));
-        }).catch(function () { results.innerHTML = errHTML('Could not load the sample file.'); });
-      });
-
-      function handle(file) {
-        if (file.size > 5 * 1024 * 1024) { results.classList.remove('hidden'); results.innerHTML = errHTML('That file is larger than 5 MB. Try a smaller export.'); return; }
-        results.classList.remove('hidden');
-        results.innerHTML = loadingHTML(file.name);
-        var reader = new FileReader();
-        reader.onload = function () {
-          fetch('/api/demo-analyze', {
-            method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include',
-            body: JSON.stringify({ mode: MODE, filename: file.name, b64: reader.result })
-          }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
-            .then(function (res) {
-              if (!res.j.ok) { results.innerHTML = errHTML(res.j.error || 'Analysis failed.', res.j.quota); return; }
-              render(res.j);
-            }).catch(function () { results.innerHTML = errHTML('Network error — please try again.'); });
-        };
-        reader.onerror = function () { results.innerHTML = errHTML('Could not read that file.'); };
-        reader.readAsDataURL(file);
-      }
-
-      function loadingHTML(name) {
-        return '<div class="bg-gunmetal border border-plate rounded-xl p-10 text-center">' +
-          '<svg class="spin w-8 h-8 mx-auto text-hiviz mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9" stroke-linecap="round"/></svg>' +
-          '<p class="text-fog text-sm">Reading <b class="text-chalk">' + esc(name) + '</b> and running the analysis…</p></div>';
-      }
-      function errHTML(msg, quota) {
-        return '<div class="bg-gunmetal border border-plate rounded-xl p-8 text-center">' +
-          '<p class="' + (quota ? 'text-hiviz' : 'text-red-400') + ' font-semibold mb-2">' + esc(msg) + '</p>' +
-          (quota ? '<a href="/construction/contact" class="inline-block hiviz-gradient text-white font-semibold px-5 py-2.5 rounded mt-2">Book a free assessment &rarr;</a>' : '<p class="text-plate text-xs">A vector/text PDF, CSV or TXT works best.</p>') + '</div>';
-      }
-
-      function statCard(label, value) {
-        return '<div class="bg-steel border border-plate rounded-lg p-4"><p class="text-fog text-[10px] font-mono uppercase mb-1">' + label + '</p><p class="font-display text-3xl text-chalk leading-none">' + value + '</p></div>';
-      }
-      function findingRow(f) {
-        return '<div class="flex items-start gap-3 py-2 border-b border-plate/50"><span class="dot mt-1.5 sev-' + f.severity + '" style="background:currentColor"></span>' +
-          '<span class="text-sm"><span class="font-mono text-[10px] uppercase sev-' + f.severity + '">' + f.severity + '</span><br/>' + esc(f.message) + '</span></div>';
-      }
-      function lockedBars(n, label) {
-        var bars = '';
-        for (var i = 0; i < n; i++) {
-          var w = 60 + ((i * 37) % 35);
-          bars += '<div class="flex items-center gap-3 py-2 border-b border-plate/40"><span class="dot bg-plate"></span><span class="locked-blur text-sm text-fog">' + 'XXXXXXXXXX XXXXX XXXXXXX XXXX XXXXXX'.slice(0, w / 4) + '</span></div>';
-        }
-        return '<div class="lock-wrap"><div>' + bars + '</div><div class="lock-veil"><svg class="w-6 h-6 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + label + '</p></div></div>';
-      }
-      function premiumCard(p) {
-        return '<div class="lock-wrap bg-steel border border-plate rounded-lg p-4">' +
-          '<div class="flex items-center gap-2 mb-2"><svg class="w-4 h-4 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + esc(p.label) + '</p></div>' +
-          '<div class="locked-blur space-y-1"><div class="h-2 bg-plate rounded w-5/6"></div><div class="h-2 bg-plate rounded w-2/3"></div><div class="h-2 bg-plate rounded w-3/4"></div></div></div>';
-      }
-
-      function render(j) {
+    window.addEventListener('DOMContentLoaded', function () {
+      // NOTE: replace the test sitekey below with your real Cloudflare Turnstile site key.
+      var SITEKEY = '1x00000000000000000000AA';
+      function renderResult(results, j, h) {
+        var esc = h.esc, riskColor = h.riskColor, ACCENT = h.accent;
         var f = j.fields || {};
+        function statCard(label, value) { return '<div class="bg-steel border border-plate rounded-lg p-4"><p class="text-fog text-[10px] font-mono uppercase mb-1">' + label + '</p><p class="font-display text-3xl text-chalk leading-none">' + value + '</p></div>'; }
+        function findingRow(fd) { return '<div class="flex items-start gap-3 py-2 border-b border-plate/50"><span class="dot mt-1.5 sev-' + fd.severity + '" style="background:currentColor"></span><span class="text-sm"><span class="font-mono text-[10px] uppercase sev-' + fd.severity + '">' + fd.severity + '</span><br/>' + esc(fd.message) + '</span></div>'; }
         var stats = [
-          statCard('Pages parsed', j.fields.pages || '—'),
-          statCard('Sheets detected', j.fields.sheets_detected || 0),
-          statCard('Disciplines', (j.fields.disciplines || []).length),
-          statCard('Gross area', j.fields.gross_area_sf ? j.fields.gross_area_sf.toLocaleString() + ' sf' : '—'),
+          statCard('Pages parsed', f.pages || '—'),
+          statCard('Sheets detected', f.sheets_detected || 0),
+          statCard('Disciplines', (f.disciplines || []).length),
+          statCard('Gross area', f.gross_area_sf ? f.gross_area_sf.toLocaleString() + ' sf' : '—'),
         ].join('');
         var sheets = (j.sheets || []).map(function (s) { return '<span class="inline-block font-mono text-xs text-chalk bg-steel border border-plate rounded px-2 py-1 m-0.5">' + esc(s) + '</span>'; }).join('');
         var disc = (f.disciplines || []).map(function (d) { return '<span class="inline-block text-xs text-fog border border-plate rounded-full px-2.5 py-0.5 m-0.5">' + esc(d) + '</span>'; }).join('');
-
-        var unlocked = j.findings.map(findingRow).join('');
-        var lockedFind = (j.locked_findings && j.locked_findings.length) ? lockedBars(j.locked_findings.length, j.locked_findings.length + ' more finding' + (j.locked_findings.length > 1 ? 's' : '') + ' — unlock to view') : '';
-        var premium = (j.premium || []).map(premiumCard).join('');
-
         var sheetLock = j.sheets_hidden ? '<div class="lock-wrap mt-2"><div class="locked-blur">' + Array(j.sheets_hidden).fill('<span class="inline-block font-mono text-xs text-chalk bg-steel border border-plate rounded px-2 py-1 m-0.5">X-000</span>').join('') + '</div><div class="lock-veil"><p class="text-chalk text-sm font-semibold">+' + j.sheets_hidden + ' more sheets + room schedule</p></div></div>' : '';
-
+        var unlocked = (j.findings || []).map(findingRow).join('');
+        var lf = j.locked_findings || [];
+        var lockedFind = '';
+        if (lf.length) {
+          var bars = '';
+          for (var i = 0; i < lf.length; i++) bars += '<div class="flex items-center gap-3 py-2 border-b border-plate/40"><span class="dot bg-plate"></span><span class="locked-blur text-sm text-fog">XXXXXXXXXX XXXXX XXXXXXX XXXX XXXXXX</span></div>';
+          lockedFind = '<div class="lock-wrap"><div>' + bars + '</div><div class="lock-veil"><svg class="w-6 h-6 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + lf.length + ' more finding' + (lf.length > 1 ? 's' : '') + ' — in the full audit</p></div></div>';
+        }
+        var premium = (j.premium || []).map(function (p) { return '<div class="lock-wrap bg-steel border border-plate rounded-lg p-4"><div class="flex items-center gap-2 mb-2"><svg class="w-4 h-4 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + esc(p.label) + '</p></div><div class="locked-blur space-y-1"><div class="h-2 bg-plate rounded w-5/6"></div><div class="h-2 bg-plate rounded w-2/3"></div><div class="h-2 bg-plate rounded w-3/4"></div></div></div>'; }).join('');
         results.innerHTML =
           '<div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8">' +
-            '<div class="flex flex-wrap items-center gap-3 mb-6">' +
-              '<span class="font-mono text-xs text-plate">' + esc(j.filename) + '</span>' +
-              '<span class="ml-auto inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full border" style="color:' + riskColor(j.risk) + ';border-color:' + riskColor(j.risk) + '55">' + j.risk + ' COMPLETENESS RISK</span>' +
-            '</div>' +
+            '<div class="flex flex-wrap items-center gap-3 mb-6"><span class="font-mono text-xs text-plate">' + esc(j.filename) + '</span><span class="ml-auto inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full border" style="color:' + riskColor(j.risk) + ';border-color:' + riskColor(j.risk) + '55">' + j.risk + ' COMPLETENESS RISK</span></div>' +
             '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Extracted live from your file</p>' +
             '<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">' + stats + '</div>' +
             (disc ? '<div class="mb-4"><p class="text-fog text-xs font-mono uppercase mb-2">Disciplines identified</p>' + disc + '</div>' : '') +
             (sheets ? '<div class="mb-5"><p class="text-fog text-xs font-mono uppercase mb-2">Sheet references (sample)</p>' + sheets + sheetLock + '</div>' : '') +
-            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-6">// Findings</p>' +
-            '<div class="mb-2">' + unlocked + '</div>' + lockedFind +
-            '<div class="mt-8 pt-6 border-t border-plate">' +
-              '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// In your full private build</p>' +
-              '<div class="grid sm:grid-cols-2 gap-3">' + premium + '</div>' +
-            '</div>' +
-            '<div class="hiviz-gradient rounded-lg p-6 mt-8 flex flex-col sm:flex-row items-center gap-4">' +
-              '<div><p class="text-white font-display text-2xl leading-none mb-1">SEE THE FULL AUDIT</p><p class="text-white/90 text-sm">The complete build runs the full coordination + code audit and quantity takeoff on your real set — and the report is yours to keep.</p></div>' +
-              '<a href="/construction/contact" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 sm:ml-auto">Get a Free Assessment &rarr;</a>' +
-            '</div>' +
-            (typeof j.remaining_today === 'number' ? '<p class="text-plate text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo run' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
+            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-6">// Findings</p><div class="mb-2">' + unlocked + '</div>' + lockedFind +
+            '<div class="mt-8 pt-6 border-t border-plate"><p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// In your full private build</p><div class="grid sm:grid-cols-2 gap-3">' + premium + '</div></div>' +
+            '<div class="hiviz-gradient rounded-lg p-6 mt-8 flex flex-col sm:flex-row items-center gap-4"><div><p class="text-white font-display text-2xl leading-none mb-1">SEE THE FULL AUDIT</p><p class="text-white/90 text-sm">The complete build runs the full coordination + code audit and quantity takeoff on your real set — and the report is yours to keep.</p></div><a href="/construction/contact" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 sm:ml-auto">Get a Free Assessment &rarr;</a></div>' +
+            (typeof j.remaining_today === 'number' ? '<p class="text-plate text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo unlock' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
           '</div>';
         results.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    })();
+      MaraDemo.init({ mode: 'blueprint', sample: '/samples/drawing-set-index.pdf', sampleName: 'drawing-set-index.pdf', accent: '#f97316', gradientClass: 'hiviz-gradient', contactUrl: '/construction/contact', sitekey: SITEKEY, renderResult: renderResult });
+    });
   </script>
 
 </body>

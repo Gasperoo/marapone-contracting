@@ -45,7 +45,7 @@
         <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
         <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></a>
       </div>
-      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+      <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
         <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a>
         <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
         <a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a>
@@ -126,76 +126,17 @@
     </div>
   </footer>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="/demo-tool.js" defer></script>
   <script>
-    (function () {
-      var MODE = 'invoice';
-      var SAMPLE = '/samples/freight-invoice-MAR-2026-04417.csv';
-      var dz = document.getElementById('dz');
-      var fileInput = document.getElementById('file');
-      var results = document.getElementById('results');
-      var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
-      var riskColor = function (r) { return r === 'HIGH' ? '#f87171' : r === 'MEDIUM' ? '#fbbf24' : '#34d399'; };
-      var money = function (v) { return v == null ? '—' : '$' + Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
-
-      dz.addEventListener('click', function () { fileInput.click(); });
-      dz.addEventListener('dragover', function (e) { e.preventDefault(); dz.classList.add('drag'); });
-      dz.addEventListener('dragleave', function () { dz.classList.remove('drag'); });
-      dz.addEventListener('drop', function (e) { e.preventDefault(); dz.classList.remove('drag'); if (e.dataTransfer.files[0]) handle(e.dataTransfer.files[0]); });
-      fileInput.addEventListener('change', function () { if (fileInput.files[0]) handle(fileInput.files[0]); fileInput.value = ''; });
-      document.getElementById('sample-btn').addEventListener('click', function () {
-        results.classList.remove('hidden'); results.innerHTML = loadingHTML('sample freight invoice');
-        fetch(SAMPLE).then(function (r) { return r.blob(); }).then(function (b) {
-          handle(new File([b], 'freight-invoice-MAR-2026-04417.csv', { type: 'text/csv' }));
-        }).catch(function () { results.innerHTML = errHTML('Could not load the sample file.'); });
-      });
-
-      function handle(file) {
-        if (file.size > 5 * 1024 * 1024) { results.classList.remove('hidden'); results.innerHTML = errHTML('That file is larger than 5 MB. Try a smaller export.'); return; }
-        results.classList.remove('hidden'); results.innerHTML = loadingHTML(file.name);
-        var reader = new FileReader();
-        reader.onload = function () {
-          fetch('/api/demo-analyze', {
-            method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include',
-            body: JSON.stringify({ mode: MODE, filename: file.name, b64: reader.result })
-          }).then(function (r) { return r.json(); })
-            .then(function (j) { if (!j.ok) { results.innerHTML = errHTML(j.error || 'Audit failed.', j.quota); return; } render(j); })
-            .catch(function () { results.innerHTML = errHTML('Network error — please try again.'); });
-        };
-        reader.onerror = function () { results.innerHTML = errHTML('Could not read that file.'); };
-        reader.readAsDataURL(file);
-      }
-
-      function loadingHTML(name) {
-        return '<div class="bg-gunmetal border border-plate rounded-xl p-10 text-center">' +
-          '<svg class="spin w-8 h-8 mx-auto mb-3" style="color:#52b788" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9" stroke-linecap="round"/></svg>' +
-          '<p class="text-fog text-sm">Auditing <b class="text-chalk">' + esc(name) + '</b>…</p></div>';
-      }
-      function errHTML(msg, quota) {
-        return '<div class="bg-gunmetal border border-plate rounded-xl p-8 text-center">' +
-          '<p class="' + (quota ? '' : 'text-red-400') + ' font-semibold mb-2"' + (quota ? ' style="color:#52b788"' : '') + '>' + esc(msg) + '</p>' +
-          (quota ? '<a href="/logistics/contact" class="inline-block marine-gradient text-white font-semibold px-5 py-2.5 rounded mt-2">Book a free assessment &rarr;</a>' : '<p class="text-plate text-xs">A text-based PDF or CSV works best.</p>') + '</div>';
-      }
-
-      function kv(label, value) {
-        return '<div class="flex justify-between text-sm py-1"><span class="text-fog">' + label + '</span><span class="font-mono text-chalk">' + value + '</span></div>';
-      }
-      function findingRow(f) {
-        return '<div class="flex items-start gap-3 py-2 border-b border-plate/50"><span class="dot mt-1.5 sev-' + f.severity + '" style="background:currentColor"></span>' +
-          '<span class="text-sm"><span class="font-mono text-[10px] uppercase sev-' + f.severity + '">' + f.severity + '</span><br/>' + esc(f.message) + '</span></div>';
-      }
-      function lockedBars(n, label) {
-        var bars = '';
-        for (var i = 0; i < n; i++) bars += '<div class="flex items-center gap-3 py-2 border-b border-plate/40"><span class="dot bg-plate"></span><span class="locked-blur text-sm text-fog">XXXXXXXX XXXXX XXXX XXXXXXX XXXX XX</span></div>';
-        return '<div class="lock-wrap"><div>' + bars + '</div><div class="lock-veil"><svg class="w-6 h-6" style="color:#52b788" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + label + '</p></div></div>';
-      }
-      function premiumCard(p) {
-        return '<div class="lock-wrap bg-steel border border-plate rounded-lg p-4">' +
-          '<div class="flex items-center gap-2 mb-2"><svg class="w-4 h-4" style="color:#52b788" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + esc(p.label) + '</p></div>' +
-          '<div class="locked-blur space-y-1"><div class="h-2 bg-plate rounded w-5/6"></div><div class="h-2 bg-plate rounded w-2/3"></div><div class="h-2 bg-plate rounded w-3/4"></div></div></div>';
-      }
-
-      function render(j) {
+    window.addEventListener('DOMContentLoaded', function () {
+      // NOTE: replace the test sitekey below with your real Cloudflare Turnstile site key.
+      var SITEKEY = '1x00000000000000000000AA';
+      function renderResult(results, j, h) {
+        var esc = h.esc, money = h.money, riskColor = h.riskColor, ACCENT = h.accent;
         var f = j.fields || {}, t = j.totals || {};
+        function kv(label, value) { return '<div class="flex justify-between text-sm py-1"><span class="text-fog">' + label + '</span><span class="font-mono text-chalk">' + value + '</span></div>'; }
+        function findingRow(fd) { return '<div class="flex items-start gap-3 py-2 border-b border-plate/50"><span class="dot mt-1.5 sev-' + fd.severity + '" style="background:currentColor"></span><span class="text-sm"><span class="font-mono text-[10px] uppercase sev-' + fd.severity + '">' + fd.severity + '</span><br/>' + esc(fd.message) + '</span></div>'; }
         var rows = (j.line_items || []).map(function (it) {
           var bad = it.check === 'mismatch';
           return '<tr class="' + (bad ? 'bg-red-500/10' : '') + '"><td class="py-1.5 pr-2 text-chalk">' + esc(it.description || '—') + '</td>' +
@@ -205,41 +146,32 @@
             '<td class="py-1.5 pl-2 text-right font-mono ' + (bad ? 'text-red-400' : 'text-fog') + '">' + (bad ? 'Δ ' + money(it.expected) : '✓') + '</td></tr>';
         }).join('');
         var rowLock = j.line_items_hidden ? '<div class="lock-wrap mt-1"><div class="locked-blur">' + Array(Math.min(j.line_items_hidden, 5)).fill('<div class="flex justify-between py-1.5 text-sm"><span class="text-chalk">XXXXXXXXXXXXXX</span><span class="font-mono text-fog">$X,XXX.XX</span></div>').join('') + '</div><div class="lock-veil"><p class="text-chalk text-sm font-semibold">+' + j.line_items_hidden + ' more line items</p></div></div>' : '';
-
-        var unlocked = j.findings.map(findingRow).join('');
-        var lockedFind = (j.locked_findings && j.locked_findings.length) ? lockedBars(j.locked_findings.length, j.locked_findings.length + ' more finding' + (j.locked_findings.length > 1 ? 's' : '') + ' — unlock to view') : '';
-        var premium = (j.premium || []).map(premiumCard).join('');
+        var unlocked = (j.findings || []).map(findingRow).join('');
+        var lf = j.locked_findings || [];
+        var lockedFind = '';
+        if (lf.length) {
+          var bars = '';
+          for (var i = 0; i < lf.length; i++) bars += '<div class="flex items-center gap-3 py-2 border-b border-plate/40"><span class="dot bg-plate"></span><span class="locked-blur text-sm text-fog">XXXXXXXX XXXXX XXXX XXXXXXX XXXX XX</span></div>';
+          lockedFind = '<div class="lock-wrap"><div>' + bars + '</div><div class="lock-veil"><svg class="w-6 h-6" style="color:' + ACCENT + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + lf.length + ' more finding' + (lf.length > 1 ? 's' : '') + ' — in the full audit</p></div></div>';
+        }
+        var premium = (j.premium || []).map(function (p) { return '<div class="lock-wrap bg-steel border border-plate rounded-lg p-4"><div class="flex items-center gap-2 mb-2"><svg class="w-4 h-4" style="color:' + ACCENT + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + esc(p.label) + '</p></div><div class="locked-blur space-y-1"><div class="h-2 bg-plate rounded w-5/6"></div><div class="h-2 bg-plate rounded w-2/3"></div><div class="h-2 bg-plate rounded w-3/4"></div></div></div>'; }).join('');
         var discrepancy = (t.computed_subtotal != null && t.stated_subtotal != null && Math.abs(t.computed_subtotal - t.stated_subtotal) > 0.01);
-
         results.innerHTML =
           '<div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8">' +
-            '<div class="flex flex-wrap items-center gap-3 mb-6"><span class="font-mono text-xs text-plate">' + esc(j.filename) + '</span>' +
-              '<span class="ml-auto inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full border" style="color:' + riskColor(j.risk) + ';border-color:' + riskColor(j.risk) + '55">' + j.risk + ' RISK</span></div>' +
+            '<div class="flex flex-wrap items-center gap-3 mb-6"><span class="font-mono text-xs text-plate">' + esc(j.filename) + '</span><span class="ml-auto inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full border" style="color:' + riskColor(j.risk) + ';border-color:' + riskColor(j.risk) + '55">' + j.risk + ' RISK</span></div>' +
             '<div class="grid lg:grid-cols-2 gap-6">' +
-              '<div><p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Extracted fields</p>' +
-                kv('Invoice No', esc(f.invoice_no || '—')) + kv('Date', esc(f.invoice_date || '—')) + kv('Currency', esc(f.currency || '—')) + kv('PO No', esc(f.po_no || '—')) +
-                '<div class="border-t border-plate my-3"></div>' +
-                kv('Line-item sum', money(t.computed_subtotal)) + kv('Stated subtotal', money(t.stated_subtotal)) +
-                kv('Tax' + (t.tax_rate_pct != null ? ' (' + t.tax_rate_pct + '%)' : ''), money(t.tax)) + kv('Stated total', money(t.stated_total)) +
-                (discrepancy ? '<div class="mt-3 rounded bg-red-500/10 border border-red-500/30 px-3 py-2 text-sm text-red-300">Computed sum does not match the stated subtotal — see findings.</div>' : '') +
-              '</div>' +
-              '<div><p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Line items (sample)</p>' +
-                '<table class="w-full text-xs"><thead><tr class="text-plate font-mono uppercase"><th class="text-left pb-1">Description</th><th class="text-right pb-1 px-2">Qty</th><th class="text-right pb-1 px-2">Unit</th><th class="text-right pb-1 px-2">Amount</th><th class="text-right pb-1">Check</th></tr></thead><tbody>' + rows + '</tbody></table>' + rowLock +
-              '</div>' +
+              '<div><p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:' + ACCENT + '">// Extracted fields</p>' + kv('Invoice No', esc(f.invoice_no || '—')) + kv('Date', esc(f.invoice_date || '—')) + kv('Currency', esc(f.currency || '—')) + kv('PO No', esc(f.po_no || '—')) + '<div class="border-t border-plate my-3"></div>' + kv('Line-item sum', money(t.computed_subtotal)) + kv('Stated subtotal', money(t.stated_subtotal)) + kv('Tax' + (t.tax_rate_pct != null ? ' (' + t.tax_rate_pct + '%)' : ''), money(t.tax)) + kv('Stated total', money(t.stated_total)) + (discrepancy ? '<div class="mt-3 rounded bg-red-500/10 border border-red-500/30 px-3 py-2 text-sm text-red-300">Computed sum does not match the stated subtotal — see findings.</div>' : '') + '</div>' +
+              '<div><p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:' + ACCENT + '">// Line items (sample)</p><table class="w-full text-xs"><thead><tr class="text-plate font-mono uppercase"><th class="text-left pb-1">Description</th><th class="text-right pb-1 px-2">Qty</th><th class="text-right pb-1 px-2">Unit</th><th class="text-right pb-1 px-2">Amount</th><th class="text-right pb-1">Check</th></tr></thead><tbody>' + rows + '</tbody></table>' + rowLock + '</div>' +
             '</div>' +
-            '<p class="font-mono text-xs uppercase tracking-widest mb-2 mt-7" style="color:#52b788">// Findings</p>' +
-            '<div class="mb-2">' + unlocked + '</div>' + lockedFind +
-            '<div class="mt-8 pt-6 border-t border-plate"><p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// In your full private build</p>' +
-              '<div class="grid sm:grid-cols-2 gap-3">' + premium + '</div></div>' +
-            '<div class="marine-gradient rounded-lg p-6 mt-8 flex flex-col sm:flex-row items-center gap-4">' +
-              '<div><p class="text-white font-display text-2xl leading-none mb-1">SEE THE FULL AUDIT</p><p class="text-white/90 text-sm">The full build audits every invoice against contracts and prior bills, screens parties live against OFAC, and the engine is yours to keep.</p></div>' +
-              '<a href="/logistics/contact" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 sm:ml-auto">Get a Free Assessment &rarr;</a>' +
-            '</div>' +
-            (typeof j.remaining_today === 'number' ? '<p class="text-plate text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo run' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
+            '<p class="font-mono text-xs uppercase tracking-widest mb-2 mt-7" style="color:' + ACCENT + '">// Findings</p><div class="mb-2">' + unlocked + '</div>' + lockedFind +
+            '<div class="mt-8 pt-6 border-t border-plate"><p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:' + ACCENT + '">// In your full private build</p><div class="grid sm:grid-cols-2 gap-3">' + premium + '</div></div>' +
+            '<div class="marine-gradient rounded-lg p-6 mt-8 flex flex-col sm:flex-row items-center gap-4"><div><p class="text-white font-display text-2xl leading-none mb-1">SEE THE FULL AUDIT</p><p class="text-white/90 text-sm">The full build audits every invoice against contracts and prior bills, screens parties live against OFAC, and the engine is yours to keep.</p></div><a href="/logistics/contact" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 sm:ml-auto">Get a Free Assessment &rarr;</a></div>' +
+            (typeof j.remaining_today === 'number' ? '<p class="text-plate text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo unlock' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
           '</div>';
         results.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    })();
+      MaraDemo.init({ mode: 'invoice', sample: '/samples/freight-invoice-MAR-2026-04417.csv', sampleName: 'freight-invoice-MAR-2026-04417.csv', accent: '#52b788', gradientClass: 'marine-gradient', contactUrl: '/logistics/contact', sitekey: SITEKEY, renderResult: renderResult });
+    });
   </script>
 
 </body>

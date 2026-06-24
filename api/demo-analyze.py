@@ -1,6 +1,6 @@
 """Live demo endpoint — runs the genuine document-intelligence engine on the
 user's uploaded file and returns REAL results, but gates them server-side:
-only the first finding (and a couple of rows) come back in full; everything
+only the top few findings (and a couple of rows) come back in full; everything
 else is redacted to a count/severity so the browser never receives the locked
 data. CSS blur on the client is purely cosmetic over already-stripped content.
 
@@ -352,7 +352,8 @@ ALLOWED_ORIGINS = {
 }
 ALLOWED_EXT = {'pdf', 'csv', 'tsv', 'txt', 'json'}
 MAX_BYTES = 5 * 1024 * 1024
-DAILY_QUOTA = 3
+DAILY_QUOTA = 1
+REVEAL = 3          # genuine findings revealed after a valid email (rest stay locked)
 BURST_MAX = 12
 BURST_WINDOW = 10 * 60
 SECRET = (os.environ.get('DEMO_HMAC_SECRET') or 'marapone-demo-v1').encode()
@@ -462,15 +463,15 @@ def _gate(result):
         'ok': True, 'tool': tool, 'filename': result.get('filename'),
         'risk': result.get('risk'), 'summary': result.get('summary'),
         'fields': result.get('fields'),
-        'findings': findings[:1],
-        'locked_findings': [{'locked': True, 'severity': f.get('severity')} for f in findings[1:]],
+        'findings': findings[:REVEAL],
+        'locked_findings': [{'locked': True, 'severity': f.get('severity')} for f in findings[REVEAL:]],
         'premium': PREMIUM.get(tool, []),
     }
     if tool == 'invoice':
         items = result.get('line_items', [])
         out['totals'] = result.get('totals')
-        out['line_items'] = items[:2]
-        out['line_items_hidden'] = max(0, len(items) - 2)
+        out['line_items'] = items[:3]
+        out['line_items_hidden'] = max(0, len(items) - 3)
     elif tool == 'blueprint':
         sheets = result.get('sheets', [])
         out['sheets'] = sheets[:5]
@@ -483,7 +484,7 @@ def _gate(result):
 def _teaser(result):
     """Tier-0 (no email): aggregate counts + risk only. No field values, no
     finding text, no rows — nothing substantive leaves the server until a valid
-    email is supplied (and even then only the first finding is revealed)."""
+    email is supplied (and even then only the top few findings are revealed)."""
     tool = result.get('tool')
     findings = result.get('findings', [])
     summ = result.get('summary', {})
@@ -593,7 +594,8 @@ class handler(BaseHTTPRequestHandler):
         if count >= DAILY_QUOTA:
             return self._json(429, {
                 'ok': False, 'quota': True,
-                'error': f'You have used all {DAILY_QUOTA} free demo unlocks for today. '
+                'error': ('You have used your free demo unlock for today. ' if DAILY_QUOTA == 1
+                          else f'You have used all {DAILY_QUOTA} free demo unlocks for today. ') +
                          'Book a free assessment to run the full audit on your documents.'})
 
         _capture_lead(email, mode, filename, result.get('risk'))

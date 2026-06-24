@@ -5,8 +5,8 @@
  *      teaser only (no findings text, no rows, no field values).
  *   2. Visitor enters email + solves Cloudflare Turnstile -> POST tier-1 ->
  *      server verifies the token, enforces the daily quota, captures the lead,
- *      and returns ONLY the first genuine finding (+ a couple of rows). The bulk
- *      stays locked. The page-supplied renderResult() draws the tool-specific
+ *      and returns ONLY the top few genuine findings (+ a couple of rows). The
+ *      bulk stays locked. The page-supplied renderResult() draws the tool-specific
  *      unlocked view.
  *
  * A page calls MaraDemo.init({ mode, sample, sampleName, accent, gradientClass,
@@ -69,7 +69,7 @@ window.MaraDemo = (function () {
       msgEl.textContent = ''; btn.disabled = true; btn.textContent = 'Unlocking…';
       post({ mode: cfg.mode, filename: pending.filename, b64: pending.b64, email: email, turnstile_token: cfToken }, function (status, j) {
         if (j && j.ok) { cfg.renderResult(results, j, helpers); return; }
-        btn.disabled = false; btn.textContent = 'Reveal the first finding →';
+        btn.disabled = false; btn.textContent = 'Reveal the top findings →';
         if (window.turnstile && cfWidgetId !== null) { try { window.turnstile.reset(cfWidgetId); } catch (e) {} cfToken = ''; }
         if (j && j.quota) { results.innerHTML = errHTML(j.error, true, contact); }
         else { msgEl.textContent = (j && j.error) || 'Something went wrong — please retry.'; }
@@ -128,14 +128,14 @@ window.MaraDemo = (function () {
           // Locked findings preview (blurred, no real text)
           '<p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:' + accent + '">// Findings</p>' +
           '<div class="lock-wrap mb-6"><div>' + lockedBars(Math.max(2, (t.issues || 2))) + '</div>' +
-            '<div class="lock-veil"><svg class="w-6 h-6" style="color:' + accent + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">Enter your email to reveal the first finding</p></div></div>' +
+            '<div class="lock-veil"><svg class="w-6 h-6" style="color:' + accent + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">Enter your email to reveal the top findings</p></div></div>' +
           // Email capture + Turnstile
           '<div class="bg-steel border border-plate rounded-lg p-5 mb-6">' +
             '<p class="text-chalk font-semibold text-sm mb-1">Reveal your result</p>' +
-            '<p class="text-plate text-xs mb-3">We\'ll show the first genuine finding from your file. The full audit runs in your private build.</p>' +
+            '<p class="text-plate text-xs mb-3">We\'ll show the top genuine findings from your file. The full audit runs in your private build.</p>' +
             '<div class="flex flex-col sm:flex-row gap-3">' +
               '<input id="demo-email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" class="flex-1 bg-charcoal border border-plate rounded px-3 py-2.5 text-sm text-chalk" style="outline:none" />' +
-              '<button id="demo-unlock-btn" class="' + grad + ' text-white font-semibold px-5 py-2.5 rounded whitespace-nowrap">Reveal the first finding &rarr;</button>' +
+              '<button id="demo-unlock-btn" class="' + grad + ' text-white font-semibold px-5 py-2.5 rounded whitespace-nowrap">Reveal the top findings &rarr;</button>' +
             '</div>' +
             '<div id="cf-widget" class="mt-3"></div>' +
             '<p id="demo-form-msg" class="text-red-400 text-xs mt-2"></p>' +

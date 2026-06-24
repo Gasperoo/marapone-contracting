@@ -116,23 +116,94 @@
     /* ── Quick-view modal ── */
     .shop-modal { position: fixed; inset: 0; z-index: 90; display: none; }
     .shop-modal.is-open { display: block; }
-    .shop-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(2px); }
+    .shop-modal-backdrop {
+      position: absolute; inset: 0; background: rgba(8,8,8,.8); backdrop-filter: blur(6px);
+      opacity: 0; transition: opacity .28s ease;
+    }
+    .shop-modal.is-in .shop-modal-backdrop { opacity: 1; }
     .shop-modal-panel {
-      position: relative; z-index: 1; width: calc(100% - 2rem); max-width: 880px; margin: 5vh auto;
-      background: #1f1f1f; border: 1px solid #3a3a3a; border-radius: 1rem; overflow: hidden;
-      max-height: 90vh; overflow-y: auto;
+      position: relative; z-index: 1; width: calc(100% - 2rem); max-width: 940px; margin: 5vh auto;
+      background: linear-gradient(180deg, #232323 0%, #1a1a1a 100%);
+      border: 1px solid #3a3a3a; border-radius: 1.1rem; overflow: hidden;
+      max-height: 90vh; overflow-y: auto; box-shadow: 0 32px 90px -24px rgba(0,0,0,.75);
+      opacity: 0; transform: translateY(18px) scale(.985);
+      transition: opacity .3s ease, transform .42s cubic-bezier(.16,1,.3,1);
+    }
+    .shop-modal.is-in .shop-modal-panel { opacity: 1; transform: none; }
+    /* dual-brand accent hairline across the top of the panel */
+    .shop-modal-panel::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 4;
+      background: linear-gradient(120deg, #f97316, #52b788);
     }
     .shop-modal-x {
-      position: absolute; top: .75rem; right: .75rem; z-index: 3; width: 2.25rem; height: 2.25rem;
-      border-radius: 9999px; background: rgba(0,0,0,.5); border: 1px solid #5a5a5a; color: #e8e8e8;
-      font-size: 1.25rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      position: absolute; top: .85rem; right: .85rem; z-index: 5; width: 2.3rem; height: 2.3rem;
+      border-radius: 9999px; background: rgba(0,0,0,.45); border: 1px solid #5a5a5a; color: #e8e8e8;
+      font-size: 1.3rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(4px); transition: background .15s ease, transform .15s ease;
     }
-    .shop-modal-x:hover { background: rgba(0,0,0,.75); }
+    .shop-modal-x:hover { background: rgba(0,0,0,.8); transform: rotate(90deg); }
+
     .shop-modal-grid { display: grid; grid-template-columns: 1fr; }
-    @media (min-width: 720px) { .shop-modal-grid { grid-template-columns: 1.1fr 1fr; } }
-    .shop-modal-media { position: relative; aspect-ratio: 1 / 1; background: #232323; }
-    .shop-modal-media img { width: 100%; height: 100%; object-fit: cover; }
+    @media (min-width: 760px) { .shop-modal-grid { grid-template-columns: 1.05fr .95fr; } }
+
+    /* media: large stage + thumbnail switcher */
+    .shop-modal-mediawrap { padding: 1.25rem; }
+    @media (min-width: 760px) { .shop-modal-mediawrap { padding: 1.5rem; } }
+    .shop-modal-stage {
+      position: relative; aspect-ratio: 1 / 1; background: #161616;
+      border: 1px solid #2e2e2e; border-radius: .85rem; overflow: hidden;
+    }
+    .shop-modal-stage img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transition: opacity .35s ease, transform .6s ease;
+    }
+    .shop-modal-stage img.is-active { opacity: 1; }
+    .shop-modal-stage:hover img.is-active { transform: scale(1.05); }
+    .shop-modal-thumbs { display: flex; gap: .6rem; margin-top: .9rem; }
+    .shop-modal-thumb {
+      position: relative; width: 78px; aspect-ratio: 1 / 1; padding: 0; cursor: pointer;
+      border: 1px solid #2e2e2e; border-radius: .55rem; overflow: hidden; background: #161616;
+      transition: border-color .15s ease;
+    }
+    .shop-modal-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .65; transition: opacity .15s ease; }
+    .shop-modal-thumb span {
+      position: absolute; bottom: 0; left: 0; right: 0; text-align: center; padding: .12rem 0;
+      font-family: 'DM Mono', monospace; font-size: .54rem; letter-spacing: .06em; text-transform: uppercase;
+      background: rgba(0,0,0,.62); color: #cfcfcf;
+    }
+    .shop-modal-thumb:hover img { opacity: .9; }
+    .shop-modal-thumb.is-active { border-color: #52b788; }
+    .shop-modal-thumb.is-active img { opacity: 1; }
+
+    /* info column */
     .shop-modal-info { padding: 1.75rem; display: flex; flex-direction: column; }
+    @media (min-width: 760px) { .shop-modal-info { padding: 2.2rem 2.2rem 2.2rem 1.2rem; } }
+    .shop-modal-eyebrow { margin-bottom: .55rem; }
+    .shop-modal-title { font-size: 2.1rem; line-height: 1.04; letter-spacing: .02em; color: #f3f3f3; }
+    .shop-modal-priceline { display: flex; align-items: center; gap: .7rem; margin-top: .7rem; }
+    .shop-modal-price { font-size: 1.05rem; }
+    .shop-modal-pill {
+      font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;
+      padding: .22rem .6rem; border-radius: 9999px; border: 1px solid #3a3a3a; color: #cfcfcf; background: rgba(255,255,255,.03);
+    }
+    .shop-modal-pill.is-out { color: #e09a9a; border-color: #5a3a3a; }
+    .shop-modal-desc { font-size: .9rem; color: #b3b3b3; margin-top: 1rem; line-height: 1.6; }
+    .shop-specs { margin-top: 1.4rem; border-top: 1px solid #2a2a2a; padding-top: .4rem; }
+    @media (min-width: 480px) { .shop-specs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.5rem; } }
+    .shop-specs div { display: flex; justify-content: space-between; gap: 1rem; padding: .55rem 0; border-bottom: 1px solid #242424; }
+    .shop-specs dt { font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; color: #888; }
+    .shop-specs dd { font-family: 'DM Sans', sans-serif; font-size: .8rem; color: #e2e2e2; }
+    .shop-modal-secure {
+      display: flex; align-items: center; gap: .45rem; margin-top: 1.1rem;
+      font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .03em; color: #7a7a7a;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shop-modal-backdrop, .shop-modal-panel { transition: opacity .2s ease; transform: none; }
+      .shop-modal-stage img { transition: opacity .2s ease; }
+      .shop-modal-stage:hover img.is-active { transform: none; }
+      .shop-modal-x:hover { transform: none; }
+    }
   </style>
   <script defer src="/widgets.js"></script>
 </head>
@@ -369,37 +440,89 @@
       var modal = document.getElementById('shop-modal');
       var modalBody = document.getElementById('shop-modal-body');
 
+      function thumbLabel(i) { return i === 0 ? 'Front' : (i === 1 ? 'Back' : 'View ' + (i + 1)); }
+
       function openModal(p) {
         var imgs = getImgs(p);
         var badge = statusBadge(p);
-        var gallery = imgs.length
-          ? imgs.map(function (src, i) { return '<div class="shop-modal-media">' + (i === 0 ? badge : '') + '<img src="' + esc(src) + '" alt="' + esc(p.name) + (i ? ' (' + (i + 1) + ')' : '') + '" /></div>'; }).join('')
-          : '<div class="shop-modal-media grid-dot" style="display:flex;align-items:center;justify-content:center">' + badge + '<span class="font-display text-4xl tracking-wider text-plate">MARA<span class="duo-text">PONE</span></span></div>';
+
+        // Large image stage — one <img> per photo, crossfaded via .is-active.
+        var stage = imgs.length
+          ? imgs.map(function (src, i) {
+              return '<img class="' + (i === 0 ? 'is-active' : '') + '" src="' + esc(src) + '" alt="' + esc(p.name) + ' — ' + thumbLabel(i).toLowerCase() + '" />';
+            }).join('')
+          : '<div class="grid-dot" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span class="font-display text-4xl tracking-wider text-plate">MARA<span class="duo-text">PONE</span></span></div>';
+
+        var thumbs = imgs.length > 1
+          ? '<div class="shop-modal-thumbs">' + imgs.map(function (src, i) {
+              return '<button type="button" class="shop-modal-thumb' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '" aria-label="' + thumbLabel(i) + '">' +
+                       '<img src="' + esc(src) + '" alt="" /><span>' + thumbLabel(i) + '</span></button>';
+            }).join('') + '</div>'
+          : '';
+
+        // Spec sheet — product can override via `specs: [{label, value}, …]`.
+        var specs = (p.specs && p.specs.length)
+          ? p.specs.map(function (s) { return [s.label, s.value]; })
+          : [['Colour', 'Black'], ['Sizes', 'S – 2XL'], ['Fit', 'Unisex'], ['Print', 'Front & back']];
+        var specHtml = '<dl class="shop-specs">' + specs.map(function (s) {
+          return '<div><dt>' + esc(s[0]) + '</dt><dd>' + esc(s[1]) + '</dd></div>';
+        }).join('') + '</dl>';
+
+        var pill = p.soldOut ? '<span class="shop-modal-pill is-out">Sold out</span>'
+          : (!hasBuy(p) ? '<span class="shop-modal-pill">Coming soon</span>' : '');
+
+        var secure =
+          '<p class="shop-modal-secure">' +
+            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>' +
+            'Secure checkout by Stripe — your card never touches our servers.' +
+          '</p>';
 
         modalBody.innerHTML =
           '<div class="shop-modal-grid">' +
-            '<div>' + gallery + '</div>' +
+            '<div class="shop-modal-mediawrap">' +
+              '<div class="shop-modal-stage">' + badge + stage + '</div>' +
+              thumbs +
+            '</div>' +
             '<div class="shop-modal-info">' +
-              (p.category ? '<p class="eyebrow mb-2"><span class="duo-text">// ' + esc(p.category) + '</span></p>' : '') +
-              '<h3 class="font-display text-3xl tracking-wide text-chalk leading-tight">' + esc(p.name) + '</h3>' +
-              '<p class="font-mono text-base duo-text mt-2">' + esc(p.price) + '</p>' +
-              (p.description ? '<p class="font-body text-sm text-fog mt-4 leading-relaxed">' + esc(p.description) + '</p>' : '') +
+              (p.category ? '<p class="eyebrow shop-modal-eyebrow"><span class="duo-text">// ' + esc(p.category) + '</span></p>' : '') +
+              '<h3 class="font-display shop-modal-title">' + esc(p.name) + '</h3>' +
+              '<div class="shop-modal-priceline"><span class="font-mono shop-modal-price duo-text">' + esc(p.price) + '</span>' + pill + '</div>' +
+              (p.description ? '<p class="font-body shop-modal-desc">' + esc(p.description) + '</p>' : '') +
+              specHtml +
+              '<div class="shop-modal-buy"></div>' +
+              secure +
             '</div>' +
           '</div>';
 
-        modalBody.querySelector('.shop-modal-info').appendChild(buyControls(p));
+        // Thumbnail → swap the active stage image.
+        var stageImgs = modalBody.querySelectorAll('.shop-modal-stage img');
+        modalBody.querySelectorAll('.shop-modal-thumb').forEach(function (t) {
+          t.addEventListener('click', function () {
+            var idx = +t.getAttribute('data-i');
+            modalBody.querySelectorAll('.shop-modal-thumb').forEach(function (x) { x.classList.remove('is-active'); });
+            t.classList.add('is-active');
+            stageImgs.forEach(function (im, j) { im.classList.toggle('is-active', j === idx); });
+          });
+        });
+
+        modalBody.querySelector('.shop-modal-buy').appendChild(buyControls(p));
+
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        requestAnimationFrame(function () { modal.classList.add('is-in'); });
       }
       function closeModal() {
-        modal.classList.remove('is-open');
+        modal.classList.remove('is-in');
         modal.setAttribute('aria-hidden', 'true');
-        modalBody.innerHTML = '';
         document.body.style.overflow = '';
+        setTimeout(function () {
+          modal.classList.remove('is-open');
+          modalBody.innerHTML = '';
+        }, 300);
       }
       modal.addEventListener('click', function (e) {
-        if (e.target.hasAttribute('data-close')) closeModal();
+        if (e.target.closest('[data-close]')) closeModal();
       });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();

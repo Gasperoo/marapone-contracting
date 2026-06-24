@@ -120,6 +120,7 @@
       isLogistics
         ? { label: 'vs Project44', href: '/logistics/vs/project44' }
         : { label: 'vs Procore',   href: '/construction/vs/procore' },
+      { label: 'Shop',           href: '/shop' },
     ];
 
     // ---- DESKTOP: insert dropdown into nav before the About link ----

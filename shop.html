@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Shop – Marapone | Small-batch gear</title>
+  <link rel="canonical" href="https://marapone.com/shop" />
+  <meta name="description" content="Small-batch Marapone gear — tees, hats and more. Checkout handled securely by Stripe." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Shop – Marapone | Small-batch gear" />
+  <meta property="og:description" content="Small-batch Marapone gear — tees, hats and more. Checkout handled securely by Stripe." />
+  <meta property="og:url" content="https://marapone.com/shop" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shop – Marapone | Small-batch gear" />
+  <meta name="twitter:description" content="Small-batch Marapone gear — tees, hats and more. Checkout handled securely by Stripe." />
+  <meta name="twitter:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="stylesheet" href="./src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .hero-glow {
+      position: absolute; top: -80px; right: -80px; width: 640px; height: 560px;
+      background: radial-gradient(ellipse at 60% 40%, rgba(249,115,22,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #f97316;
+    }
+    /* Front/back image hover swap */
+    .shop-media { position: relative; aspect-ratio: 1 / 1; background: #232323; }
+    .shop-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .3s ease; }
+    .shop-media img.back { opacity: 0; }
+    .group:hover .shop-media img.back { opacity: 1; }
+  </style>
+  <script defer src="/widgets.js"></script>
+</head>
+<body class="antialiased">
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
+        <a href="/construction/" class="hover:text-chalk transition-colors">Construction</a>
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Logistics</a>
+        <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/shop" class="text-chalk">Shop</a>
+        <a href="/" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Started →</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/construction/" class="text-fog pt-3 hover:text-chalk">Construction</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Logistics</a>
+      <a href="/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/shop" class="text-chalk">Shop</a>
+      <a href="/" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Started →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative overflow-hidden border-b border-plate">
+    <div class="hero-glow"></div>
+    <div class="absolute inset-0 grid-dot opacity-30"></div>
+    <div class="max-w-6xl mx-auto px-4 py-16 lg:py-20 relative z-10">
+      <p class="eyebrow mb-4">// Merch</p>
+      <h1 id="main-content" class="font-display text-5xl sm:text-6xl lg:text-7xl tracking-wide text-chalk leading-none">MARAPONE SHOP</h1>
+      <p class="font-body text-lg text-fog max-w-xl mt-5 leading-relaxed">
+        Small-batch gear — the same stuff we hand to clients on a build. Tees, hats, and the occasional drop.
+      </p>
+      <p class="font-mono text-xs text-plate mt-4 inline-flex items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Checkout is handled securely by Stripe — we never see your card details.
+      </p>
+    </div>
+  </header>
+
+  <!-- PRODUCTS -->
+  <main class="max-w-6xl mx-auto px-4 py-14 lg:py-20">
+    <div id="shop-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style="display:none"></div>
+
+    <!-- Empty state (shown when there are no products yet) -->
+    <div id="shop-empty" class="text-center py-16" style="display:none">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gunmetal border border-plate mb-6">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </div>
+      <h2 class="font-display text-3xl tracking-wide text-chalk mb-2">Drops coming soon</h2>
+      <p class="font-body text-fog max-w-md mx-auto mb-6">Small-batch Marapone gear is on the way. Check back shortly — or message us and we'll let you know when it lands.</p>
+      <a href="/contact" class="inline-block bg-hiviz text-white px-5 py-3 rounded font-semibold hover:bg-hiviz2 transition-colors">Get in touch →</a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/" class="hover:text-chalk">Home</a>
+          <a href="/construction/" class="hover:text-chalk">Construction</a>
+          <a href="/logistics/" class="hover:text-chalk">Logistics</a>
+          <a href="/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/about" class="hover:text-chalk">About</a>
+          <a href="/shop" class="hover:text-chalk">Shop</a>
+          <a href="/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product data — edit /public/shop-products.js to add products -->
+  <script src="/shop-products.js"></script>
+  <script>
+    (function () {
+      function esc(s) {
+        return String(s == null ? '' : s)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
+      }
+
+      var products = (window.MARAPONE_PRODUCTS || []).filter(Boolean);
+      var grid = document.getElementById('shop-grid');
+      var empty = document.getElementById('shop-empty');
+
+      if (!products.length) { empty.style.display = 'block'; return; }
+
+      grid.style.display = 'grid';
+
+      products.forEach(function (p) {
+        var imgs = (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []);
+
+        var media;
+        if (imgs.length >= 2) {
+          media = '<div class="shop-media">' +
+            '<img src="' + esc(imgs[0]) + '" alt="' + esc(p.name) + '" loading="lazy" />' +
+            '<img class="back" src="' + esc(imgs[1]) + '" alt="' + esc(p.name) + ' (back)" loading="lazy" />' +
+            '</div>';
+        } else if (imgs.length === 1) {
+          media = '<div class="shop-media"><img src="' + esc(imgs[0]) + '" alt="' + esc(p.name) + '" loading="lazy" /></div>';
+        } else {
+          media = '<div class="shop-media grid-dot" style="display:flex;align-items:center;justify-content:center">' +
+            '<span class="font-display text-3xl tracking-wider text-plate">MARA<span class="text-hiviz/60" style="color:#5a3a22">PONE</span></span></div>';
+        }
+
+        var button;
+        if (p.soldOut) {
+          button = '<button type="button" disabled class="w-full mt-4 bg-steel text-plate px-4 py-3 rounded font-semibold cursor-not-allowed">Sold out</button>';
+        } else if (p.buyUrl) {
+          button = '<a href="' + esc(p.buyUrl) + '" target="_blank" rel="noopener noreferrer" ' +
+            'class="block text-center w-full mt-4 bg-hiviz text-white px-4 py-3 rounded font-semibold hover:bg-hiviz2 transition-colors">Buy on Stripe →</a>';
+        } else {
+          button = '<button type="button" disabled class="w-full mt-4 bg-steel text-plate px-4 py-3 rounded font-semibold cursor-not-allowed">Coming soon</button>';
+        }
+
+        var card = document.createElement('div');
+        card.className = 'group bg-gunmetal border border-plate rounded-xl overflow-hidden flex flex-col';
+        card.innerHTML =
+          media +
+          '<div class="p-5 flex flex-col flex-1">' +
+            '<div class="flex items-start justify-between gap-3">' +
+              '<h3 class="font-display text-xl tracking-wide text-chalk leading-tight">' + esc(p.name) + '</h3>' +
+              '<span class="font-mono text-sm text-hiviz whitespace-nowrap">' + esc(p.price) + '</span>' +
+            '</div>' +
+            (p.description ? '<p class="font-body text-sm text-fog mt-2 leading-relaxed">' + esc(p.description) + '</p>' : '') +
+            '<div class="mt-auto">' + button + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    })();
+  </script>
+
+</body>
+</html>

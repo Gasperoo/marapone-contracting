@@ -34,11 +34,19 @@ window.MaraDemo = (function () {
     dz.addEventListener('dragleave', function () { dz.classList.remove('drag'); });
     dz.addEventListener('drop', function (e) { e.preventDefault(); dz.classList.remove('drag'); if (e.dataTransfer.files[0]) handle(e.dataTransfer.files[0]); });
     fileInput.addEventListener('change', function () { if (fileInput.files[0]) handle(fileInput.files[0]); fileInput.value = ''; });
-    if (sampleBtn) sampleBtn.addEventListener('click', function () {
-      results.classList.remove('hidden'); results.innerHTML = loadingHTML(cfg.sampleName);
-      fetch(cfg.sample).then(function (r) { return r.blob(); }).then(function (b) {
-        handle(new File([b], cfg.sampleName, { type: 'application/octet-stream' }));
+    function loadSample(url, name) {
+      results.classList.remove('hidden'); results.innerHTML = loadingHTML(name);
+      fetch(url).then(function (r) { return r.blob(); }).then(function (b) {
+        handle(new File([b], name, { type: 'application/octet-stream' }));
       }).catch(function () { results.innerHTML = errHTML('Could not load the sample file.'); });
+    }
+    // Single-sample pages (e.g. logistics) use #sample-btn + cfg.sample.
+    if (sampleBtn) sampleBtn.addEventListener('click', function () { loadSample(cfg.sample, cfg.sampleName); });
+    // Multi-sample pages declare buttons with data-sample / data-name.
+    Array.prototype.forEach.call(document.querySelectorAll('[data-sample]'), function (btn) {
+      btn.addEventListener('click', function () {
+        loadSample(btn.getAttribute('data-sample'), btn.getAttribute('data-name') || 'sample.pdf');
+      });
     });
 
     function handle(file) {

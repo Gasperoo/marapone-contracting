@@ -81,7 +81,7 @@
     <div class="max-w-5xl mx-auto px-4">
       <p class="font-mono text-hiviz text-sm mb-4">// Live demo · Blueprint Auditor</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">RUN IT ON<br/><span class="text-hiviz">YOUR OWN DRAWINGS.</span></h1>
-      <p class="text-fog text-lg max-w-2xl leading-relaxed">Drop in a drawing set (up to 5&nbsp;MB) and the engine reads it live — a real quantity takeoff (room areas, door, window &amp; fixture counts) plus sheets, disciplines and completeness gaps, computed from <em>your</em> file. We unlock the first results free; the full coordinated audit runs in your private build.</p>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed">Drop in a drawing or text set (up to 5&nbsp;MB) and the engine reads it live — a real quantity takeoff (room areas, door, window &amp; fixture counts etc.) compliance risk plus sheets, disciplines and completeness gaps, computed from <em>your</em> file. We unlock the first results free; the full coordinated audit runs in your private build.</p>
       <p class="text-plate text-xs font-mono mt-4">Reads text/vector PDFs (Revit, AutoCAD, Bluebeam exports) · scanned sets are OCR'd in your private build. Processed in memory, never stored. <span id="quota-note"></span></p>
     </div>
   </section>
@@ -99,8 +99,9 @@
         </div>
         <input type="file" id="file" accept=".pdf,.csv,.tsv,.txt,.json" class="hidden" />
         <div class="flex flex-wrap items-center gap-3 mt-4">
-          <button id="sample-btn" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Use a sample drawing index</button>
-          <span class="text-plate text-xs">No file handy? Try ours.</span>
+          <span class="text-plate text-xs w-full sm:w-auto">No file handy? Run a sample and compare:</span>
+          <button data-sample="/samples/sample-residential-plan-set.pdf" data-name="sample-residential-plan-set.pdf" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Sample drawing set · <span class="text-green-400">low risk</span></button>
+          <button data-sample="/samples/sample-high-risk-plan-set.pdf" data-name="sample-high-risk-plan-set.pdf" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Sample drawing set · <span class="text-red-400">high risk</span></button>
         </div>
       </div>
 

@@ -1,0 +1,258 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 5
+/Kids [ 4 0 R 7 0 R 9 0 R 11 0 R 13 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 6 0 R
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+6 0 obj
+<<
+/Length 344
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(MARAPONE SAMPLE - RETAIL TENANT FIT-OUT) Tj
+T*
+(PRELIMINARY DESIGN SET - NOT FOR CONSTRUCTION) Tj
+T*
+() Tj
+T*
+(SHEET INDEX) Tj
+T*
+(A-101  FLOOR PLAN) Tj
+T*
+(A-201  INTERIOR ELEVATIONS) Tj
+T*
+(A-501  DOOR AND WINDOW SCHEDULES) Tj
+T*
+(A-601  ROOM FINISH SCHEDULE) Tj
+T*
+(P-101  PLUMBING FIXTURE PLAN) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 8 0 R
+/Parent 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 581
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(ROOM FINISH SCHEDULE) Tj
+T*
+(ROOM NAME                AREA) Tj
+T*
+(SALES FLOOR              1840 SF) Tj
+T*
+(STOCKROOM                620 SF) Tj
+T*
+(FITTING ROOMS            180 SF) Tj
+T*
+(BREAK ROOM               148 SF) Tj
+T*
+(MANAGER OFFICE           120 SF) Tj
+T*
+(RECEIVING                240 SF) Tj
+T*
+(STAFF RESTROOM           64 SF) Tj
+T*
+(PUBLIC RESTROOM A        72 SF) Tj
+T*
+(PUBLIC RESTROOM B        72 SF) Tj
+T*
+(JANITOR CLOSET           36 SF) Tj
+T*
+(VESTIBULE                96 SF) Tj
+T*
+(CORRIDOR                 210 SF) Tj
+T*
+ET
+endstream
+endobj
+9 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 10 0 R
+/Parent 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 372
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(DOOR SCHEDULE) Tj
+T*
+(MARK   SIZE             TYPE                QTY) Tj
+T*
+(D1     3'-0" x 7'-0"     STOREFRONT ALUMINUM      QTY 2) Tj
+T*
+(D2     3'-0" x 7'-0"     INTERIOR SOLID CORE      QTY 9) Tj
+T*
+(D3     2'-8" x 6'-8"     INTERIOR HOLLOW CORE     QTY 5) Tj
+T*
+(D4     6'-0" x 7'-0"     EXTERIOR RECEIVING HM    QTY 1) Tj
+T*
+ET
+endstream
+endobj
+11 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 12 0 R
+/Parent 2 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 226
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(WINDOW SCHEDULE) Tj
+T*
+(MARK   SIZE             TYPE          QTY) Tj
+T*
+(W1     4'-0" x 6'-0"     STOREFRONT FIXED  QTY 7) Tj
+T*
+(W2     2'-0" x 2'-0"     CLERESTORY        QTY 4) Tj
+T*
+ET
+endstream
+endobj
+13 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 14 0 R
+/Parent 2 0 R
+>>
+endobj
+14 0 obj
+<<
+/Length 306
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(PLUMBING FIXTURE SCHEDULE) Tj
+T*
+(WATER CLOSET             QTY 4) Tj
+T*
+(LAVATORY                 QTY 4) Tj
+T*
+(MOP SINK                 QTY 1) Tj
+T*
+(BREAK ROOM SINK          QTY 1) Tj
+T*
+(WATER HEATER             QTY 1) Tj
+T*
+(FLOOR DRAIN              QTY 3) Tj
+T*
+ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000139 00000 n 
+0000000188 00000 n 
+0000000316 00000 n 
+0000000386 00000 n 
+0000000781 00000 n 
+0000000909 00000 n 
+0000001541 00000 n 
+0000001670 00000 n 
+0000002094 00000 n 
+0000002224 00000 n 
+0000002502 00000 n 
+0000002632 00000 n 
+trailer
+<<
+/Size 15
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+2990
+%%EOF

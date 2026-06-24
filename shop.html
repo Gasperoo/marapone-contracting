@@ -144,34 +144,35 @@
     .shop-modal-x:hover { background: rgba(0,0,0,.8); transform: rotate(90deg); }
 
     .shop-modal-grid { display: grid; grid-template-columns: 1fr; }
-    @media (min-width: 760px) { .shop-modal-grid { grid-template-columns: 1.05fr .95fr; } }
+    @media (min-width: 760px) { .shop-modal-grid { grid-template-columns: 1.05fr .95fr; align-items: stretch; } }
 
-    /* media: large stage + thumbnail switcher */
-    .shop-modal-mediawrap { padding: 1.25rem; }
-    @media (min-width: 760px) { .shop-modal-mediawrap { padding: 1.5rem; } }
-    .shop-modal-stage {
-      position: relative; aspect-ratio: 1 / 1; background: #161616;
-      border: 1px solid #2e2e2e; border-radius: .85rem; overflow: hidden;
+    /* media: full-bleed product image filling the whole left column */
+    .shop-modal-mediawrap {
+      position: relative; overflow: hidden; background: #fff; min-height: 360px;
     }
+    @media (min-width: 760px) { .shop-modal-mediawrap { min-height: 0; } }
+    .shop-modal-stage { position: absolute; inset: 0; overflow: hidden; background: #fff; }
     .shop-modal-stage img {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
       opacity: 0; transition: opacity .35s ease, transform .6s ease;
     }
     .shop-modal-stage img.is-active { opacity: 1; }
-    .shop-modal-stage:hover img.is-active { transform: scale(1.05); }
-    .shop-modal-thumbs { display: flex; gap: .6rem; margin-top: .9rem; }
+    .shop-modal-stage:hover img.is-active { transform: scale(1.04); }
+    /* thumbnails overlay the bottom-left of the image */
+    .shop-modal-thumbs { position: absolute; left: .9rem; bottom: .9rem; z-index: 3; display: flex; gap: .5rem; }
     .shop-modal-thumb {
-      position: relative; width: 78px; aspect-ratio: 1 / 1; padding: 0; cursor: pointer;
-      border: 1px solid #2e2e2e; border-radius: .55rem; overflow: hidden; background: #161616;
-      transition: border-color .15s ease;
+      position: relative; width: 58px; aspect-ratio: 1 / 1; padding: 0; cursor: pointer;
+      border: 2px solid rgba(255,255,255,.85); border-radius: .55rem; overflow: hidden; background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,.35); transition: border-color .15s ease, transform .15s ease;
     }
-    .shop-modal-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .65; transition: opacity .15s ease; }
+    .shop-modal-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .85; transition: opacity .15s ease; }
     .shop-modal-thumb span {
-      position: absolute; bottom: 0; left: 0; right: 0; text-align: center; padding: .12rem 0;
-      font-family: 'DM Mono', monospace; font-size: .54rem; letter-spacing: .06em; text-transform: uppercase;
-      background: rgba(0,0,0,.62); color: #cfcfcf;
+      position: absolute; bottom: 0; left: 0; right: 0; text-align: center; padding: .1rem 0;
+      font-family: 'DM Mono', monospace; font-size: .5rem; letter-spacing: .05em; text-transform: uppercase;
+      background: rgba(0,0,0,.72); color: #fff;
     }
-    .shop-modal-thumb:hover img { opacity: .9; }
+    .shop-modal-thumb:hover { transform: translateY(-2px); }
+    .shop-modal-thumb:hover img { opacity: 1; }
     .shop-modal-thumb.is-active { border-color: #52b788; }
     .shop-modal-thumb.is-active img { opacity: 1; }
 

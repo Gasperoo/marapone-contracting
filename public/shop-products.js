@@ -32,7 +32,7 @@
      soldOut     optional   true → disabled "Sold out" button
 
    To remove the blank placeholders entirely, just delete the objects.
-   To hide a single card for now, delete that object (or wrap it in /* */).
+   To hide a single card for now, delete or comment out that object.
    ============================================================ */
 window.MARAPONE_PRODUCTS = [
 

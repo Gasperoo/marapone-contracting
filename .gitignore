@@ -51,3 +51,6 @@ Screenshot*.png
 # Python
 __pycache__/
 *.pyc
+
+# Raw screen recordings (process, do not commit)
+*.mov

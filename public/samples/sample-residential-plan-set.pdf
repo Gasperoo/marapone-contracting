@@ -1,0 +1,294 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 5
+/Kids [ 4 0 R 7 0 R 9 0 R 11 0 R 13 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 6 0 R
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+6 0 obj
+<<
+/Length 729
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(MARAPONE SAMPLE RESIDENCE  -  CONSTRUCTION DOCUMENTS) Tj
+T*
+(ISSUED FOR CONSTRUCTION    REVISION 2    DATE 2026-05-01) Tj
+T*
+(PROJECT NO: MARA-2026-014   DRAWN BY: JL   CHECKED BY: AM) Tj
+T*
+(SCALE: 1/4" = 1'-0"      TRUE NORTH ARROW SHOWN) Tj
+T*
+() Tj
+T*
+(SHEET INDEX) Tj
+T*
+(A-101  FIRST FLOOR PLAN) Tj
+T*
+(A-102  SECOND FLOOR PLAN) Tj
+T*
+(A-201  EXTERIOR ELEVATIONS) Tj
+T*
+(A-301  BUILDING SECTIONS) Tj
+T*
+(A-501  DOOR AND WINDOW SCHEDULES) Tj
+T*
+(A-601  ROOM FINISH SCHEDULE) Tj
+T*
+(S-101  FOUNDATION PLAN) Tj
+T*
+(S-201  FLOOR FRAMING PLAN) Tj
+T*
+(M-101  HVAC PLAN) Tj
+T*
+(E-101  ELECTRICAL POWER PLAN) Tj
+T*
+(E-102  LIGHTING PLAN AND PANEL SCHEDULE) Tj
+T*
+(P-101  PLUMBING PLAN) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 8 0 R
+/Parent 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 697
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(ROOM FINISH SCHEDULE) Tj
+T*
+(ROOM NAME                AREA) Tj
+T*
+(LIVING ROOM              324 SF) Tj
+T*
+(KITCHEN                  201 SF) Tj
+T*
+(DINING ROOM              168 SF) Tj
+T*
+(FOYER                    72 SF) Tj
+T*
+(MASTER BEDROOM           286 SF) Tj
+T*
+(BEDROOM 2                164 SF) Tj
+T*
+(BEDROOM 3                152 SF) Tj
+T*
+(MASTER BATH              96 SF) Tj
+T*
+(BATHROOM 2               54 SF) Tj
+T*
+(POWDER ROOM              28 SF) Tj
+T*
+(WALK-IN CLOSET           64 SF) Tj
+T*
+(LAUNDRY                  48 SF) Tj
+T*
+(HALLWAY                  88 SF) Tj
+T*
+(MECHANICAL ROOM          36 SF) Tj
+T*
+(GARAGE                   440 SF) Tj
+T*
+ET
+endstream
+endobj
+9 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 10 0 R
+/Parent 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 500
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(DOOR SCHEDULE) Tj
+T*
+(MARK   SIZE             TYPE                QTY) Tj
+T*
+(D1     3'-0" x 7'-0"     EXTERIOR INSULATED HM    QTY 2) Tj
+T*
+(D2     2'-8" x 6'-8"     INTERIOR SOLID CORE      QTY 8) Tj
+T*
+(D3     2'-6" x 6'-8"     INTERIOR HOLLOW CORE     QTY 6) Tj
+T*
+(D4     2'-4" x 6'-8"     INTERIOR POCKET          QTY 3) Tj
+T*
+(D5     16'-0" x 7'-0"    OVERHEAD GARAGE          QTY 1) Tj
+T*
+(D6     6'-0" x 6'-8"     EXTERIOR SLIDING GLASS   QTY 1) Tj
+T*
+ET
+endstream
+endobj
+11 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 12 0 R
+/Parent 2 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 332
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(WINDOW SCHEDULE) Tj
+T*
+(MARK   SIZE             TYPE          QTY) Tj
+T*
+(W1     3'-0" x 4'-0"     DOUBLE HUNG     QTY 8) Tj
+T*
+(W2     2'-6" x 4'-0"     DOUBLE HUNG     QTY 5) Tj
+T*
+(W3     5'-0" x 4'-0"     FIXED PICTURE   QTY 3) Tj
+T*
+(W4     2'-0" x 2'-0"     AWNING          QTY 4) Tj
+T*
+ET
+endstream
+endobj
+13 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 14 0 R
+/Parent 2 0 R
+>>
+endobj
+14 0 obj
+<<
+/Length 384
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(PLUMBING FIXTURE SCHEDULE) Tj
+T*
+(WATER CLOSET             QTY 3) Tj
+T*
+(LAVATORY                 QTY 4) Tj
+T*
+(BATHTUB                  QTY 1) Tj
+T*
+(SHOWER                   QTY 2) Tj
+T*
+(KITCHEN SINK             QTY 1) Tj
+T*
+(LAUNDRY SINK             QTY 1) Tj
+T*
+(WATER HEATER             QTY 1) Tj
+T*
+(HOSE BIBB                QTY 2) Tj
+T*
+ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000139 00000 n 
+0000000188 00000 n 
+0000000316 00000 n 
+0000000386 00000 n 
+0000001166 00000 n 
+0000001294 00000 n 
+0000002042 00000 n 
+0000002171 00000 n 
+0000002723 00000 n 
+0000002853 00000 n 
+0000003237 00000 n 
+0000003367 00000 n 
+trailer
+<<
+/Size 15
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+3803
+%%EOF

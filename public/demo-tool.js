@@ -53,7 +53,7 @@ window.MaraDemo = (function () {
 
     function analyze() {
       post({ mode: cfg.mode, filename: pending.filename, b64: pending.b64 }, function (status, j) {
-        if (!j || !j.ok) { results.innerHTML = errHTML((j && j.error) || 'Analysis failed.'); return; }
+        if (!j || !j.ok) { results.innerHTML = errHTML((j && j.error) || 'Analysis failed.', false, contact, j && j.scanned); return; }
         if (j.needs_email) renderTeaser(j);
         else cfg.renderResult(results, j, helpers);   // unlocked (shouldn't occur without email)
       });
@@ -89,11 +89,16 @@ window.MaraDemo = (function () {
         '<svg class="spin w-8 h-8 mx-auto mb-3" style="color:' + accent + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9" stroke-linecap="round"/></svg>' +
         '<p class="text-fog text-sm">Analysing <b class="text-chalk">' + esc(name) + '</b>…</p></div>';
     }
-    function errHTML(msg, quota, contactUrl) {
+    function errHTML(msg, quota, contactUrl, info) {
+      // `info` (e.g. a scanned/image-only PDF) is a neutral notice, not an error.
+      var titleClass = quota ? '' : (info ? '' : 'text-red-400');
+      var titleStyle = (quota || info) ? ' style="color:' + accent + '"' : '';
+      var sub = quota
+        ? '<a href="' + (contactUrl || '#') + '" class="inline-block ' + grad + ' text-white font-semibold px-5 py-2.5 rounded mt-2">Book a free assessment &rarr;</a>'
+        : (info ? '<p class="text-plate text-xs">The live demo reads text/vector PDFs — try the sample plan set above, or upload a CAD/Revit export.</p>'
+                : '<p class="text-plate text-xs">A text-based PDF or CSV works best.</p>');
       return '<div class="bg-gunmetal border border-plate rounded-xl p-8 text-center">' +
-        '<p class="' + (quota ? '' : 'text-red-400') + ' font-semibold mb-2"' + (quota ? ' style="color:' + accent + '"' : '') + '>' + esc(msg) + '</p>' +
-        (quota ? '<a href="' + (contactUrl || '#') + '" class="inline-block ' + grad + ' text-white font-semibold px-5 py-2.5 rounded mt-2">Book a free assessment &rarr;</a>'
-               : '<p class="text-plate text-xs">A text-based PDF or CSV works best.</p>') + '</div>';
+        '<p class="' + titleClass + ' font-semibold mb-2"' + titleStyle + '>' + esc(msg) + '</p>' + sub + '</div>';
     }
 
     // Blurred placeholder bars (no real content — purely visual under the lock).
@@ -112,7 +117,7 @@ window.MaraDemo = (function () {
       var t = j.teaser || {};
       var summaryLine = j.tool === 'invoice'
         ? (t.issues || 0) + ' issue' + (t.issues === 1 ? '' : 's') + ' detected across ' + (t.line_count || 0) + ' line items · ' + (t.flagged || 0) + ' flagged'
-        : (t.issues || 0) + ' finding' + (t.issues === 1 ? '' : 's') + ' · ' + (t.sheets || 0) + ' sheet references · ' + (t.disciplines || 0) + ' disciplines';
+        : (t.rooms || 0) + ' rooms · ' + (t.floor_area_sf ? t.floor_area_sf.toLocaleString() + ' SF' : '—') + ' · ' + (t.doors || 0) + ' doors · ' + (t.windows || 0) + ' windows · ' + (t.sheets || 0) + ' sheets';
       var sevChips = Object.keys(t.severities || {}).map(function (s) {
         return '<span class="font-mono text-[10px] uppercase sev-' + s + '" style="color:currentColor">' + (t.severities[s]) + ' ' + s + '</span>';
       }).join(' · ');

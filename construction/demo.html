@@ -81,8 +81,8 @@
     <div class="max-w-5xl mx-auto px-4">
       <p class="font-mono text-hiviz text-sm mb-4">// Live demo · Blueprint Auditor</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">RUN IT ON<br/><span class="text-hiviz">YOUR OWN DRAWINGS.</span></h1>
-      <p class="text-fog text-lg max-w-2xl leading-relaxed">Drop in a drawing set or document (up to 5&nbsp;MB) and the engine reads it live — sheets, disciplines, scale and completeness gaps, computed from <em>your</em> file. We unlock the first results free; the full coordinated audit runs in your private build.</p>
-      <p class="text-plate text-xs font-mono mt-4">Processed in memory, never stored. PDF · CSV · TXT · JSON. <span id="quota-note"></span></p>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed">Drop in a drawing set (up to 5&nbsp;MB) and the engine reads it live — a real quantity takeoff (room areas, door, window &amp; fixture counts) plus sheets, disciplines and completeness gaps, computed from <em>your</em> file. We unlock the first results free; the full coordinated audit runs in your private build.</p>
+      <p class="text-plate text-xs font-mono mt-4">Reads text/vector PDFs (Revit, AutoCAD, Bluebeam exports) · scanned sets are OCR'd in your private build. Processed in memory, never stored. <span id="quota-note"></span></p>
     </div>
   </section>
 
@@ -147,8 +147,20 @@
           statCard('Pages parsed', f.pages || '—'),
           statCard('Sheets detected', f.sheets_detected || 0),
           statCard('Disciplines', (f.disciplines || []).length),
-          statCard('Gross area', f.gross_area_sf ? f.gross_area_sf.toLocaleString() + ' sf' : '—'),
+          statCard('Floor area', f.gross_area_sf ? f.gross_area_sf.toLocaleString() + ' sf' : '—'),
         ].join('');
+        // ── Quantity takeoff (extracted live from the schedules) ──
+        var tk = j.takeoff || {};
+        var tkStats = [
+          statCard('Rooms', tk.room_count != null ? tk.room_count : (f.rooms_detected || 0)),
+          statCard('Doors', tk.doors != null ? tk.doors : (f.doors || 0)),
+          statCard('Windows', tk.windows != null ? tk.windows : (f.windows || 0)),
+          statCard('Fixtures', tk.fixtures != null ? tk.fixtures : (f.fixtures || 0)),
+        ].join('');
+        var tkRows = (tk.items || []).map(function (it) {
+          return '<div class="flex items-center justify-between gap-3 py-2 border-b border-plate/50"><span class="text-sm text-chalk">' + esc(it.description) + ' <span class="font-mono text-[10px] uppercase text-fog ml-1">' + esc(it.category) + '</span></span><span class="font-mono text-sm text-chalk whitespace-nowrap">' + Number(it.qty).toLocaleString() + ' ' + esc(it.unit) + '</span></div>';
+        }).join('');
+        var tkLock = tk.items_hidden ? '<div class="lock-wrap mt-1"><div class="locked-blur">' + Array(Math.min(tk.items_hidden, 6)).fill('<div class="flex items-center justify-between py-2"><span class="text-sm text-chalk">XXXXXXXXXXXXXX</span><span class="font-mono text-sm text-fog">XXX SF</span></div>').join('') + '</div><div class="lock-veil"><svg class="w-6 h-6 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">+' + tk.items_hidden + ' more takeoff line item' + (tk.items_hidden > 1 ? 's' : '') + ' — in the full audit</p></div></div>' : '';
         var sheets = (j.sheets || []).map(function (s) { return '<span class="inline-block font-mono text-xs text-chalk bg-steel border border-plate rounded px-2 py-1 m-0.5">' + esc(s) + '</span>'; }).join('');
         var disc = (f.disciplines || []).map(function (d) { return '<span class="inline-block text-xs text-fog border border-plate rounded-full px-2.5 py-0.5 m-0.5">' + esc(d) + '</span>'; }).join('');
         var sheetLock = j.sheets_hidden ? '<div class="lock-wrap mt-2"><div class="locked-blur">' + Array(j.sheets_hidden).fill('<span class="inline-block font-mono text-xs text-chalk bg-steel border border-plate rounded px-2 py-1 m-0.5">X-000</span>').join('') + '</div><div class="lock-veil"><p class="text-chalk text-sm font-semibold">+' + j.sheets_hidden + ' more sheets + room schedule</p></div></div>' : '';
@@ -168,14 +180,18 @@
             '<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">' + stats + '</div>' +
             (disc ? '<div class="mb-4"><p class="text-fog text-xs font-mono uppercase mb-2">Disciplines identified</p>' + disc + '</div>' : '') +
             (sheets ? '<div class="mb-5"><p class="text-fog text-xs font-mono uppercase mb-2">Sheet references (sample)</p>' + sheets + sheetLock + '</div>' : '') +
-            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-6">// Findings</p><div class="mb-2">' + unlocked + '</div>' + lockedFind +
+            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-7">// Quantity takeoff — extracted live</p>' +
+            '<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">' + tkStats + '</div>' +
+            (tkRows ? '<div class="bg-steel/40 border border-plate rounded-lg px-4 py-1 mb-1">' + tkRows + '</div>' + tkLock
+                    : '<p class="text-fog text-sm mb-2">No room/door/window schedules detected in this set.</p>') +
+            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-7">// Findings</p><div class="mb-2">' + unlocked + '</div>' + lockedFind +
             '<div class="mt-8 pt-6 border-t border-plate"><p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// In your full private build</p><div class="grid sm:grid-cols-2 gap-3">' + premium + '</div></div>' +
             '<div class="hiviz-gradient rounded-lg p-6 mt-8 flex flex-col sm:flex-row items-center gap-4"><div><p class="text-white font-display text-2xl leading-none mb-1">SEE THE FULL AUDIT</p><p class="text-white/90 text-sm">The complete build runs the full coordination + code audit and quantity takeoff on your real set — and the report is yours to keep.</p></div><a href="/construction/contact" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 sm:ml-auto">Get a Free Assessment &rarr;</a></div>' +
             (typeof j.remaining_today === 'number' ? '<p class="text-plate text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo unlock' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
           '</div>';
         results.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-      MaraDemo.init({ mode: 'blueprint', sample: '/samples/drawing-set-index.pdf', sampleName: 'drawing-set-index.pdf', accent: '#f97316', gradientClass: 'hiviz-gradient', contactUrl: '/construction/contact', sitekey: SITEKEY, renderResult: renderResult });
+      MaraDemo.init({ mode: 'blueprint', sample: '/samples/sample-residential-plan-set.pdf', sampleName: 'sample-residential-plan-set.pdf', accent: '#f97316', gradientClass: 'hiviz-gradient', contactUrl: '/construction/contact', sitekey: SITEKEY, renderResult: renderResult });
     });
   </script>
 

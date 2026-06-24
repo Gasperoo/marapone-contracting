@@ -274,12 +274,87 @@ _DISCIPLINES = [
 ]
 
 
+def _titlecase(s):
+    return ' '.join(w if (w.isupper() and len(w) <= 3) else w.capitalize()
+                    for w in s.split())
+
+
+def _blueprint_takeoff(text):
+    """Real quantity takeoff from a text/vector drawing set: room areas from the
+    finish schedule, door/window/fixture counts from their schedules. Everything
+    returned is parsed from the actual PDF text — nothing is synthesized."""
+    low = text.lower()
+
+    # ── Rooms + areas (room finish schedule) ──
+    rooms, seen = [], set()
+    for m in re.finditer(r"([A-Za-z][A-Za-z0-9 ./&'-]{2,28}?)\s+([\d,]{2,6})\s*"
+                         r"(?:sf|sq\.?\s*ft|square\s*feet)\b", text, re.I):
+        name = m.group(1).strip(' .-')
+        if re.search(r'total|gross|net|area|schedule', name, re.I):
+            continue
+        try:
+            area = int(m.group(2).replace(',', ''))
+        except ValueError:
+            continue
+        if not (0 < area <= 100000):
+            continue
+        key = name.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        rooms.append({'name': _titlecase(name), 'area_sf': area})
+    floor_area = sum(r['area_sf'] for r in rooms)
+
+    def section(header):
+        # Return the schedule table for `header` — the occurrence that actually
+        # has QTY rows, so a sheet-index mention ("DOOR & WINDOW SCHEDULES")
+        # doesn't shadow the real table.
+        start = 0
+        while True:
+            i = low.find(header, start)
+            if i < 0:
+                return ''
+            rest = low[i + len(header):]
+            nxt = rest.find('schedule')
+            end = i + len(header) + (nxt if nxt > 0 else 1400)
+            chunk = text[i:end]
+            if re.search(r'qty', chunk, re.I):
+                return chunk
+            start = i + len(header)
+
+    def sum_qty(chunk):
+        return sum(int(x) for x in re.findall(r'qty[:.\s]*([0-9]{1,4})', chunk, re.I))
+
+    doors = sum_qty(section('door schedule'))
+    windows = sum_qty(section('window schedule'))
+    fixtures = sum_qty(section('fixture schedule'))
+
+    items = []
+    for rm in sorted(rooms, key=lambda r: -r['area_sf']):
+        items.append({'category': 'Floor area', 'description': rm['name'],
+                      'qty': rm['area_sf'], 'unit': 'SF'})
+    if doors:
+        items.append({'category': 'Openings', 'description': 'Doors (scheduled)', 'qty': doors, 'unit': 'EA'})
+    if windows:
+        items.append({'category': 'Openings', 'description': 'Windows (scheduled)', 'qty': windows, 'unit': 'EA'})
+    if fixtures:
+        items.append({'category': 'Plumbing', 'description': 'Plumbing fixtures', 'qty': fixtures, 'unit': 'EA'})
+
+    return {'floor_area_sf': floor_area, 'room_count': len(rooms),
+            'doors': doors, 'windows': windows, 'fixtures': fixtures,
+            'rooms': rooms, 'items': items}
+
+
 def scan_blueprint(filename, ext, raw):
     text, page_count = extract_text(ext, raw)
     if text.startswith('__PDF_ERROR__'):
         return {'ok': False, 'error': 'Could not read this PDF (it may be scanned/image-only). A text/vector PDF works best.'}
     if not text.strip():
-        return {'ok': False, 'error': 'No readable text found — this looks like a scanned/image-only drawing. The full app OCRs these; the demo needs a vector PDF.'}
+        return {'ok': False, 'scanned': True,
+                'error': 'Scanned drawing detected — this PDF is image-only with no readable text, '
+                         'so a live takeoff can’t be computed here. Your private build OCRs and '
+                         'vectorises scanned sets like this; the live demo reads text/vector PDFs '
+                         '(most Revit, AutoCAD and Bluebeam exports). Try the sample plan set to see it run.'}
     low = text.lower()
 
     sheet_re = re.compile(r'\b([A-Z]{1,3}[-.]?\d{1,3}(?:\.\d{1,2})?)\b')
@@ -295,15 +370,8 @@ def scan_blueprint(filename, ext, raw):
     disciplines = [name for name, kws in _DISCIPLINES if any(k in low for k in kws)]
 
     scales = list(dict.fromkeys(re.findall(r'(\d{1,2}/\d{1,2}"\s*=\s*\d+\'(?:-\d+")?|1\s*:\s*\d{1,4}|1/\d{1,3}"\s*=\s*1\'?-?0")', text)))[:6]
-    areas = re.findall(r'([\d,]{2,})\s*(?:sq\.?\s*ft|sf|square\s*feet)', low)
-    area_total = None
-    try:
-        nums = [int(a.replace(',', '')) for a in areas if a.replace(',', '').isdigit()]
-        if nums:
-            area_total = sum(nums)
-    except Exception:
-        pass
-    rooms = list(dict.fromkeys(re.findall(r'\b(office|corridor|lobby|restroom|toilet|kitchen|stair|storage|mechanical room|electrical room|conference|classroom|bedroom|bathroom|garage|closet|utility)\b', low)))
+    takeoff = _blueprint_takeoff(text)
+    area_total = takeoff['floor_area_sf'] or None
     has_revisions = bool(re.search(r'\b(rev(?:ision)?\.?\s*\d|issued for (?:construction|permit|bid))\b', low))
     has_scale = bool(scales) or 'scale' in low
     has_north = 'north' in low or 'true north' in low
@@ -324,8 +392,12 @@ def scan_blueprint(filename, ext, raw):
         add('medium', 'No revision history or issue stamp detected — cannot confirm this is the current issued set.')
     if len(disciplines) <= 1:
         add('low', 'Only one design discipline detected — a coordinated set normally spans Architectural + Structural + MEP.')
-    if not rooms:
-        add('low', 'No room/space labels detected — area takeoff and finish scheduling rely on labelled spaces.')
+    if takeoff['items']:
+        add('low', f"Quantity takeoff extracted live: {takeoff['room_count']} room(s) · "
+                   f"{takeoff['floor_area_sf']:,} SF · {takeoff['doors']} door(s) · "
+                   f"{takeoff['windows']} window(s) · {takeoff['fixtures']} fixture(s).")
+    else:
+        add('low', 'No room/door/window schedules detected — takeoff relies on labelled spaces and scheduled openings in the set.')
     add('low', f'{page_count or "Multiple"} page(s) parsed · {len(sheets)} sheet reference(s) · {len(disciplines)} discipline(s) identified.')
 
     severity_order = {'high': 0, 'medium': 1, 'low': 2}
@@ -337,11 +409,16 @@ def scan_blueprint(filename, ext, raw):
         'ok': True, 'tool': 'blueprint', 'filename': filename,
         'fields': {'pages': page_count, 'sheets_detected': len(sheets),
                    'disciplines': disciplines, 'scales': scales,
-                   'gross_area_sf': area_total, 'rooms_detected': len(rooms)},
-        'sheets': sheets, 'rooms': rooms,
+                   'gross_area_sf': area_total, 'rooms_detected': takeoff['room_count'],
+                   'doors': takeoff['doors'], 'windows': takeoff['windows'],
+                   'fixtures': takeoff['fixtures']},
+        'sheets': sheets, 'rooms': [r['name'] for r in takeoff['rooms']],
+        'takeoff': takeoff,
         'findings': findings, 'risk': risk,
         'summary': {'sheets': len(sheets), 'disciplines': len(disciplines),
-                    'issues': len(findings)},
+                    'issues': len(findings), 'floor_area_sf': takeoff['floor_area_sf'],
+                    'rooms': takeoff['room_count'], 'doors': takeoff['doors'],
+                    'windows': takeoff['windows']},
     }
 
 
@@ -413,7 +490,7 @@ PREMIUM = {
         {'label': 'Live OFAC / sanctions screening on every party (Trade Doc Engine)'},
     ],
     'blueprint': [
-        {'label': 'Automated quantity takeoff — counts, areas & lengths per assembly'},
+        {'label': 'Assembly-level takeoff from drawing geometry (not just schedules) + OCR of scanned sets'},
         {'label': 'Full 113-point code & coordination audit'},
         {'label': 'Scope-gap finder — items in the spec but missing from the drawings'},
         {'label': 'Change-order & RFI risk detection'},
@@ -477,6 +554,13 @@ def _gate(result):
         out['sheets'] = sheets[:5]
         out['sheets_hidden'] = max(0, len(sheets) - 5)
         out['rooms_hidden'] = len(result.get('rooms', []))
+        tk = result.get('takeoff') or {}
+        items = tk.get('items', [])
+        out['takeoff'] = {
+            'floor_area_sf': tk.get('floor_area_sf'), 'room_count': tk.get('room_count'),
+            'doors': tk.get('doors'), 'windows': tk.get('windows'), 'fixtures': tk.get('fixtures'),
+            'items': items[:3], 'items_hidden': max(0, len(items) - 3),
+        }
     out['unlocked'] = True
     return out
 
@@ -498,6 +582,10 @@ def _teaser(result):
     elif tool == 'blueprint':
         teaser['sheets'] = summ.get('sheets')
         teaser['disciplines'] = summ.get('disciplines')
+        teaser['floor_area_sf'] = summ.get('floor_area_sf')
+        teaser['rooms'] = summ.get('rooms')
+        teaser['doors'] = summ.get('doors')
+        teaser['windows'] = summ.get('windows')
     return {'ok': True, 'tool': tool, 'filename': result.get('filename'),
             'risk': result.get('risk'), 'needs_email': True,
             'teaser': teaser, 'premium': PREMIUM.get(tool, [])}

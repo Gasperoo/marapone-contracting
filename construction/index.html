@@ -103,6 +103,30 @@
       opacity: 0;
     }
 
+    /* ── HERO HEADLINE TREATMENT (rented = hollow, owned = solid+sheen) ── */
+    .hero-rent {
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(232, 232, 232, 0.5);
+    }
+    .hero-rent .ai { -webkit-text-stroke-color: #f97316; }
+    .hero-own {
+      background: linear-gradient(100deg, #ffffff 0%, #e8e8e8 38%, #f97316 50%, #e8e8e8 62%, #ffffff 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      filter: drop-shadow(0 0 24px rgba(249, 115, 22, 0.30));
+      animation: heroSheen 6s ease-in-out infinite;
+    }
+    @keyframes heroSheen {
+      0%, 100% { background-position: 8% 0; }
+      50%      { background-position: 92% 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-own { animation: none; background-position: 30% 0; }
+    }
+
     @keyframes logoPulse {
 
       0%,
@@ -816,11 +840,8 @@
       <div id="hero-grid">
         <!-- Left: Copy -->
         <div id="hero-text">
-          <div class="fade-up mb-5">
-            <img src="/MARACON-WHITE.png" alt="Marapone" width="2048" height="2048" decoding="async" class="h-10 lg:h-12 object-contain opacity-80" />
-          </div>
           <h1 class="fade-up font-display text-5xl sm:text-7xl lg:text-9xl leading-none text-chalk mb-4">
-            STOP RENTING<br />YOUR <span class="text-hiviz">AI.</span><br />OWN THE<br />ENGINE.
+            <span class="hero-rent">STOP RENTING<br />YOUR <span class="ai">AI.</span></span><br /><span class="hero-own">OWN THE<br />ENGINE.</span>
           </h1>
           <p class="fade-up delay-1 font-body text-lg text-fog max-w-xl mt-6 mb-8 leading-relaxed">
             Marapone builds private AI systems for construction and logistics companies — deployed on your

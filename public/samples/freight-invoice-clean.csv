@@ -1,0 +1,17 @@
+Description,Quantity,Unit Price,Amount
+"Ocean Freight - FCL 40'HC (Ningbo -> Hamburg)",3,1780.00,5340.00
+"Bunker Adjustment Factor (BAF)",3,395.00,1185.00
+"Terminal Handling - Origin",1,365.00,365.00
+"Terminal Handling - Destination",1,395.00,395.00
+"Documentation Fee",1,75.00,75.00
+"Customs Brokerage",1,225.00,225.00
+"ISPS / Security Surcharge",3,30.00,90.00
+
+Invoice No,MAR-2026-05210
+Invoice Date,2026-06-18
+Due Date,2026-07-18
+PO No,PO-90417
+Currency,USD
+Subtotal,7675.00
+Tax,383.75
+Total,8058.75

@@ -127,6 +127,24 @@
       .hero-own { animation: none; background-position: 30% 0; }
     }
 
+    /* Soft brand glow on section-heading accents (cohesion with hero) */
+    h2 .text-hiviz,
+    h2 span[style*="f97316"] { text-shadow: 0 0 22px rgba(249, 115, 22, 0.28); }
+    /* Accent-hue shimmer for marquee moments (e.g. the price) */
+    .shine-accent {
+      background: linear-gradient(100deg, #fdba74 0%, #f97316 42%, #ffffff 50%, #f97316 58%, #fdba74 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.35));
+      animation: heroSheen 6s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .shine-accent { animation: none; background-position: 30% 0; }
+    }
+
     @keyframes logoPulse {
 
       0%,
@@ -1711,7 +1729,7 @@
       <div class="reveal">
         <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-3">// One-time price. No subscriptions. Ever.
         </p>
-        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-6">STARTER BUILDS<br /><span class="text-hiviz">FROM
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-6">STARTER BUILDS<br /><span class="text-hiviz shine-accent">FROM
             $1,500</span></h2>
         <p class="text-fog max-w-2xl mx-auto leading-relaxed mb-8 text-sm">Most construction clients land in the
           $4,900–$9,500 range for a full document intelligence suite covering blueprints, RFIs, and change orders.

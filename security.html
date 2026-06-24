@@ -200,13 +200,27 @@
         <p class="section-num">05</p>
         <h2 class="font-display text-3xl text-chalk mb-4">THIS WEBSITE</h2>
         <p class="text-fog leading-relaxed mb-4">This website (marapone.com) collects minimal data. We use session cookies required for the site to function, Vercel's anonymous web analytics, and Google Analytics (GA4) to measure aggregate page traffic. Google Analytics does not identify visitors personally and is not used for advertising or behavioural profiling. We do not use advertising cookies, third-party tracking pixels, or behavioural surveillance tools.</p>
-        <p class="text-fog leading-relaxed mb-4">Form submissions (assessment requests) collect only what you provide — name, email, company, industry, and an optional file. This is used solely to process your request. See our <a href="/privacy" class="text-hiviz hover:underline">Privacy Policy</a> for full details.</p>
+        <p class="text-fog leading-relaxed mb-4">Form submissions (assessment requests) collect only what you provide — name, email, company, industry, and an optional file. This is used solely to process your request. Our demo and forms are protected against bots and abuse by Cloudflare Turnstile, a privacy-focused CAPTCHA alternative that uses no tracking cookies. See our <a href="/privacy" class="text-hiviz hover:underline">Privacy Policy</a> for full details.</p>
         <p class="text-fog leading-relaxed">See our <a href="/cookies" class="text-hiviz hover:underline">Cookie Policy</a> for a complete breakdown of the cookies we set and why.</p>
       </div>
 
       <!-- SECTION 6 -->
       <div class="policy-section">
         <p class="section-num">06</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">THE LIVE DEMO</h2>
+        <p class="text-fog leading-relaxed mb-4">The website's live demo lets you upload a sample document and see the engine analyse it in real time. It is the one place on our site where a file you upload is processed on cloud infrastructure rather than locally — so we built it to hold onto as little as possible:</p>
+        <ul class="space-y-3 text-fog leading-relaxed text-sm">
+          <li class="tape-line"><strong class="text-chalk">In-memory only.</strong> Your file is analysed by a serverless function and discarded the moment the request finishes. It is not stored, not logged, and never sent to any external or third-party AI service.</li>
+          <li class="tape-line"><strong class="text-chalk">Strict limits.</strong> Uploads are transmitted over HTTPS, capped at 5&nbsp;MB, and restricted to a file-type allowlist (PDF, CSV, TXT, JSON).</li>
+          <li class="tape-line"><strong class="text-chalk">Abuse protection.</strong> A Cloudflare Turnstile check plus per-IP and per-browser rate limits guard the demo against automated abuse.</li>
+          <li class="tape-line"><strong class="text-chalk">Server-side gating.</strong> Locked results are stripped on the server before the response is sent — they are genuinely withheld, not just blurred in your browser.</li>
+          <li class="tape-line"><strong class="text-chalk">Use sample files.</strong> Because the demo runs in the cloud (unlike a delivered build), please use sample or non-sensitive documents. Highly confidential material should go through a private, locally-handled channel instead.</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 7 -->
+      <div class="policy-section">
+        <p class="section-num">07</p>
         <h2 class="font-display text-3xl text-chalk mb-4">QUESTIONS OR CONCERNS</h2>
         <p class="text-fog leading-relaxed mb-4">If you have specific security requirements — compliance documentation, NDA before assessment, custom data handling agreements, or air-gapped deployment requirements — reach out before submitting your assessment. We deal with these regularly.</p>
         <p class="text-fog leading-relaxed">Contact: <a href="mailto:general@marapone.com" class="text-hiviz hover:underline">general@marapone.com</a></p>

@@ -134,7 +134,7 @@
       <p class="text-fog leading-relaxed max-w-xl">We built Marapone around the principle that your data belongs to you.
         This policy explains what we collect when you visit this website or engage us as a client, and — importantly —
         what we do not collect and why.</p>
-      <p class="font-mono text-xs text-plate mt-4">Effective date: January 1, 2026 &nbsp;·&nbsp; Last updated: April 2026 &nbsp;·&nbsp; Marapone Contracting Inc. (Canada)</p>
+      <p class="font-mono text-xs text-plate mt-4">Effective date: January 1, 2026 &nbsp;·&nbsp; Last updated: June 2026 &nbsp;·&nbsp; Marapone Contracting Inc. (Canada)</p>
     </div>
   </section>
 
@@ -143,9 +143,14 @@
     <div class="max-w-3xl mx-auto px-4">
       <div class="tape-line">
         <p class="text-chalk font-semibold leading-relaxed">The core of our privacy model: the AI systems we build for
-          clients run entirely on your own hardware. Your business documents — blueprints, trade documents, freight
-          invoices, daily logs — are never uploaded to our servers, never sent to cloud APIs, and never stored by
-          Marapone. Private AI means private AI.</p>
+          clients run entirely on your own hardware. The documents you hand us for a client build — blueprints, trade
+          documents, freight invoices, daily logs — are processed locally on our build hardware, never passed through
+          external AI APIs, and deleted on delivery. Private AI means private AI.</p>
+        <p class="text-fog text-sm leading-relaxed mt-3">One exception to be transparent about: the optional tools on
+          this website — the live demo and the file-upload field on our contact form — do process the file you choose to
+          send through cloud infrastructure (for hosting, malware scanning, and short-term quarantine) so we can run the
+          demonstration or safely receive your attachment. These website tools are entirely optional, and exactly what
+          happens to those files is described in sections 03 and 04 below.</p>
       </div>
     </div>
   </section>
@@ -190,6 +195,15 @@
                   class="text-chalk">Cookies:</strong> We use a minimal number of functional cookies required for the
                 site to operate correctly, plus Google Analytics cookies for aggregate traffic measurement. No advertising or behavioural tracking cookies are used. See our <a href="/cookies"
                   class="text-hiviz hover:underline">Cookie Policy</a> for full details.</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
+                  class="text-chalk">Bot &amp; spam protection:</strong> Our demo and forms are protected by Cloudflare
+                Turnstile, a privacy-focused alternative to CAPTCHA. To tell humans from bots, Cloudflare receives your
+                IP address and basic browser signals. Turnstile does not use tracking cookies and is not used to profile
+                or advertise to you.</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
+                  class="text-chalk">Hosting &amp; analytics:</strong> This site is hosted on Vercel, which also provides
+                privacy-friendly, cookieless aggregate traffic analytics (Vercel Analytics). Standard hosting logs apply
+                as described above.</span></li>
           </ul>
           <p>We use Google Analytics (GA4) to measure aggregate site traffic — page views and visitor counts. Google Analytics cookies do not identify you personally and are not used for advertising or behavioural profiling. We do not use Facebook Pixel or any other advertising or surveillance tools. We do not build advertising profiles. We do not sell or share visitor data with any third party.
           </p>
@@ -219,12 +233,60 @@
           <p><strong class="text-chalk">Retention:</strong> Enquiry data from contacts who do not become clients is
             retained for up to 12 months and then securely deleted. Project-related communications with clients are
             retained for up to 3 years for contractual and legal compliance purposes.</p>
+          <p><strong class="text-chalk">If you attach a file to the contact form:</strong> So we can receive your
+            attachment safely, the file is handled by a small number of processors before it reaches us:</p>
+          <ul class="space-y-2 ml-4">
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
+                  class="text-chalk">Malware scanning (VirusTotal):</strong> The file is scanned for malware via
+                VirusTotal before we open it. Be aware that files submitted to VirusTotal may be retained and shared
+                within VirusTotal's security community — so please do not attach highly confidential documents through
+                the website form. For sensitive material, we will arrange a private, locally-handled channel instead.</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
+                  class="text-chalk">Short-term quarantine (Supabase):</strong> The file is stored in an access-controlled
+                quarantine bucket (Supabase Storage) and made available to us via a private link that expires
+                automatically after 7 days, after which it is removed from quarantine.</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
+                  class="text-chalk">Spam filtering (Akismet):</strong> Discovery and enquiry submissions are checked for
+                spam using Akismet, which receives the submitted text, email, and IP address for that check only.</span></li>
+          </ul>
+          <p class="text-xs text-plate">Note: this website file handling is separate from how we treat documents during a
+            paid client build. Client build materials are processed locally and are never sent to VirusTotal, Supabase,
+            or any cloud AI service — see section 05.</p>
+        </div>
+      </div>
+
+      <!-- 4. Live Demo -->
+      <div class="policy-section">
+        <p class="section-num">04 — Live Demo Tool</p>
+        <h2 class="font-display text-2xl text-chalk mb-4">WHEN YOU USE THE LIVE DEMO</h2>
+        <div class="space-y-4 text-fog leading-relaxed text-sm">
+          <p>The website offers an optional live demo where you can upload a sample document (PDF, CSV, TXT, or JSON, up
+            to 5&nbsp;MB) and our document-intelligence engine analyses it in real time. Here is exactly what happens to
+            your data:</p>
+          <ul class="space-y-2 ml-4">
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span><strong
+                  class="text-chalk">Your file is processed in memory only.</strong> It is sent to our serverless
+                function, analysed deterministically, and discarded when the request ends. It is <strong
+                  class="text-chalk">not stored, logged, or retained</strong>, and it is <strong class="text-chalk">never
+                  sent to any external or third-party AI service.</strong></span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
+                  class="text-chalk">Email (optional):</strong> To unlock the full results, you may enter an email
+                address. We use it to notify our team of your interest (a sales lead) and to follow up. The notification
+                records your email, which demo tool you used, the file name, and the summary risk score — not the file's
+                contents. We do not add you to marketing lists without consent.</span></li>
+            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
+                  class="text-chalk">IP address &amp; bot check:</strong> Your IP address is used temporarily to enforce
+                rate limits (to prevent abuse), and a Cloudflare Turnstile check is performed before processing.</span></li>
+          </ul>
+          <p class="text-xs text-plate">Because the demo runs on cloud infrastructure (unlike a delivered client build),
+            please use sample or non-sensitive documents in the demo. The first finding is shown in full; the rest of the
+            results are redacted server-side until you engage us for a private build.</p>
         </div>
       </div>
 
       <!-- 4. Client Project Data -->
       <div class="policy-section">
-        <p class="section-num">04 — Client Project Data</p>
+        <p class="section-num">05 — Client Project Data</p>
         <h2 class="font-display text-2xl text-chalk mb-4">YOUR BUSINESS DOCUMENTS & PROJECT MATERIALS</h2>
         <div class="space-y-5 text-fog leading-relaxed text-sm">
           <div class="tape-line">
@@ -255,31 +317,45 @@
 
       <!-- 5. Third Parties -->
       <div class="policy-section">
-        <p class="section-num">05 — Third Parties</p>
+        <p class="section-num">06 — Third Parties</p>
         <h2 class="font-display text-2xl text-chalk mb-4">WHO WE SHARE DATA WITH</h2>
         <div class="space-y-4 text-fog leading-relaxed text-sm">
           <p>We do not sell personal data. We do not share personal data with advertising networks, data brokers, or
             marketing platforms.</p>
-          <p>In limited circumstances, we may share data with:</p>
-          <ul class="space-y-3 ml-4">
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
-                  class="text-chalk">Payment processors:</strong> When you pay an invoice, your payment details are
-                handled by your chosen payment provider (e.g., your bank, PayPal, or card network). Marapone does not
-                store card numbers or banking credentials.</span></li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
-                  class="text-chalk">Email and communication providers:</strong> Standard email services are used to
-                communicate with clients. Email content related to your project is treated as confidential.</span></li>
-            <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">—</span><span><strong
-                  class="text-chalk">Legal or regulatory authorities:</strong> If required by law or court order, we may
-                disclose information to the relevant authorities. We will notify you to the extent permitted by law if
-                such a request is received.</span></li>
-          </ul>
+          <p>To operate this website and our services, we rely on a short list of reputable service providers
+            (sub-processors), each handling only the data needed for its specific function:</p>
+          <div class="overflow-x-auto -mx-1">
+            <table class="w-full text-xs border border-plate rounded-lg overflow-hidden">
+              <thead>
+                <tr class="bg-gunmetal text-chalk text-left">
+                  <th class="px-3 py-2 font-semibold border-b border-plate">Provider</th>
+                  <th class="px-3 py-2 font-semibold border-b border-plate">Purpose</th>
+                  <th class="px-3 py-2 font-semibold border-b border-plate">Data handled</th>
+                </tr>
+              </thead>
+              <tbody class="align-top">
+                <tr><td class="px-3 py-2 border-b border-plate text-chalk">Vercel</td><td class="px-3 py-2 border-b border-plate">Website hosting &amp; cookieless analytics</td><td class="px-3 py-2 border-b border-plate">Server logs, IP, aggregate traffic</td></tr>
+                <tr><td class="px-3 py-2 border-b border-plate text-chalk">Google Analytics</td><td class="px-3 py-2 border-b border-plate">Aggregate traffic measurement</td><td class="px-3 py-2 border-b border-plate">Pseudonymous usage data, cookies</td></tr>
+                <tr><td class="px-3 py-2 border-b border-plate text-chalk">Cloudflare Turnstile</td><td class="px-3 py-2 border-b border-plate">Bot/abuse protection on demo &amp; forms</td><td class="px-3 py-2 border-b border-plate">IP, browser signals (no tracking cookies)</td></tr>
+                <tr><td class="px-3 py-2 border-b border-plate text-chalk">Resend</td><td class="px-3 py-2 border-b border-plate">Transactional &amp; notification email delivery</td><td class="px-3 py-2 border-b border-plate">Name, email, message content</td></tr>
+                <tr><td class="px-3 py-2 border-b border-plate text-chalk">Supabase</td><td class="px-3 py-2 border-b border-plate">7-day quarantine of contact-form file uploads</td><td class="px-3 py-2 border-b border-plate">Uploaded file (temporary)</td></tr>
+                <tr><td class="px-3 py-2 border-b border-plate text-chalk">VirusTotal</td><td class="px-3 py-2 border-b border-plate">Malware scanning of uploaded files</td><td class="px-3 py-2 border-b border-plate">Uploaded file &amp; its hash</td></tr>
+                <tr><td class="px-3 py-2 border-b border-plate text-chalk">Akismet</td><td class="px-3 py-2 border-b border-plate">Spam filtering of form submissions</td><td class="px-3 py-2 border-b border-plate">Submitted text, email, IP</td></tr>
+                <tr><td class="px-3 py-2 border-b border-plate text-chalk">Cal.com</td><td class="px-3 py-2 border-b border-plate">Discovery-call scheduling (where offered)</td><td class="px-3 py-2 border-b border-plate">Name, email, booking details</td></tr>
+                <tr><td class="px-3 py-2 text-chalk">Payment processor</td><td class="px-3 py-2">Invoice payment (clients only)</td><td class="px-3 py-2">Handled by your bank/card network; we don't store card data</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>We may also disclose information to <strong class="text-chalk">legal or regulatory authorities</strong> if
+            required by law or court order, and will notify you to the extent permitted by law if such a request is
+            received. Client build documents are <strong class="text-chalk">not</strong> shared with any of the
+            sub-processors above — they are processed locally as described in section 05.</p>
         </div>
       </div>
 
       <!-- 6. Your Rights -->
       <div class="policy-section">
-        <p class="section-num">06 — Your Rights</p>
+        <p class="section-num">07 — Your Rights</p>
         <h2 class="font-display text-2xl text-chalk mb-4">YOUR DATA RIGHTS</h2>
         <div class="space-y-4 text-fog leading-relaxed text-sm">
           <p>Depending on your location, you may have the following rights regarding personal data we hold about you:
@@ -319,7 +395,7 @@
 
       <!-- 7. Security -->
       <div class="policy-section">
-        <p class="section-num">07 — Security</p>
+        <p class="section-num">08 — Security</p>
         <h2 class="font-display text-2xl text-chalk mb-4">HOW WE PROTECT YOUR DATA</h2>
         <div class="space-y-4 text-fog leading-relaxed text-sm">
           <p>We take reasonable and appropriate technical and organisational measures to protect personal data against
@@ -333,7 +409,7 @@
 
       <!-- 8. International Transfers -->
       <div class="policy-section">
-        <p class="section-num">08 — International Operations</p>
+        <p class="section-num">09 — International Operations</p>
         <h2 class="font-display text-2xl text-chalk mb-4">CROSS-BORDER DATA HANDLING</h2>
         <div class="space-y-4 text-fog leading-relaxed text-sm">
           <p>Marapone operates from Canada and Italy. If you are located in the European Economic Area (EEA) or the
@@ -347,7 +423,7 @@
 
       <!-- 9. Changes -->
       <div class="policy-section">
-        <p class="section-num">09 — Changes</p>
+        <p class="section-num">10 — Changes</p>
         <h2 class="font-display text-2xl text-chalk mb-4">UPDATES TO THIS POLICY</h2>
         <div class="space-y-4 text-fog leading-relaxed text-sm">
           <p>We may update this Privacy Policy as our services evolve or legal requirements change. The "Last updated"

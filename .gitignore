@@ -54,3 +54,6 @@ __pycache__/
 
 # Raw screen recordings (process, do not commit)
 *.mov
+
+# Local full-res image backups (kept off the deployed site)
+public/images/originals/

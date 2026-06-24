@@ -4,105 +4,89 @@
    This is the ONLY file you edit to add or remove products.
    No build/logic changes needed — just fill in the objects below.
 
-   The page lays cards out 3 across, so every 3 products = one row.
-   Right now there are 9 placeholder cards (a 3x3 grid):
-     Row 1 → Construction tees
-     Row 2 → Logistics tees
-     Row 3 → Hats
+   The page lays cards out 3 across. Right now there are 3 live products
+   (Construction, Logistics, and Canada–Italy tees) — all "Coming soon"
+   until each gets a Stripe Payment Link. Category filter tabs appear
+   automatically from the `category` field.
 
-   TO FILL IN A CARD
+   TO MAKE A PRODUCT BUYABLE
    1. In your Stripe Dashboard: create the Product + Price, then
       create a Payment Link for it
       (Product → "..." menu → Create payment link).
       Copy the URL — it looks like  https://buy.stripe.com/xxxxxxxx
       (Checkout happens 100% on Stripe — your site never sees cards.)
-   2. Put the product photo(s) in  /public/shop/  (e.g. constr-tee-1.jpg).
-   3. On the matching object below, fill in `images`, `price`, and `buyUrl`
-      (and tweak `name`/`description`), then commit & push.
+      For per-size checkout, make ONE Payment Link per size (see `sizes`).
+   2. Product photos live in  /public/images/  (served at /images/...).
+   3. On the matching object below, fill in `price`, `buyUrl` (or `sizes`),
+      then commit & push. The "Coming soon" badge clears automatically.
 
    FIELDS
      name        product title
      price       display price string, e.g. '$35 CAD'  (Stripe charges the real amount)
+     category    optional   groups the product under a filter tab, e.g. 'Construction',
+                            'Logistics', 'Hats'. Filter tabs appear automatically once
+                            there is more than one distinct category.
      image       optional   '/shop/your-photo.jpg'
      images      optional   array for front/back hover, e.g.
                             ['/shop/tee-front.jpg', '/shop/tee-back.jpg']
-     description optional   short blurb under the title
+     description optional   short blurb (shown on the card + in the quick-view modal)
      buyUrl      add your Stripe Payment Link to enable buying.
                             While empty, the card shows a "Coming soon" button.
-     soldOut     optional   true → disabled "Sold out" button
+     sizes       optional   array of { label, buyUrl } for per-size checkout. Each size
+                            needs its OWN Stripe Payment Link. When present, `sizes`
+                            drives the buy button (it overrides `buyUrl`). Example:
+                              sizes: [
+                                { label: 'S',  buyUrl: 'https://buy.stripe.com/aaa' },
+                                { label: 'M',  buyUrl: 'https://buy.stripe.com/bbb' },
+                                { label: 'L',  buyUrl: 'https://buy.stripe.com/ccc' },
+                                { label: 'XL', buyUrl: '' },   // greyed out until linked
+                              ]
+     badge       optional   small accent badge text on the photo, e.g. 'Small batch',
+                            'Only 25 made'. (Ignored while a card is sold out / coming soon.)
+     soldOut     optional   true → disabled "Sold out" button + badge
+
+   Every card opens a Quick-view modal (click the photo) and emits Product
+   structured data for Google automatically — no extra setup needed.
 
    To remove the blank placeholders entirely, just delete the objects.
    To hide a single card for now, delete or comment out that object.
    ============================================================ */
 window.MARAPONE_PRODUCTS = [
 
-  // ── Row 1 — Construction tees ───────────────────────────────
+  // ── Construction Tee ────────────────────────────────────────
   {
-    name: 'Construction Tee #1',
+    name: 'Construction Tee',
     price: 'TBA',
-    description: '',
-    images: [],          // e.g. ['/shop/constr-tee-1-front.jpg', '/shop/constr-tee-1-back.jpg']
-    buyUrl: '',          // e.g. 'https://buy.stripe.com/...'
-  },
-  {
-    name: 'Construction Tee #2',
-    price: 'TBA',
-    description: '',
-    images: [],
-    buyUrl: '',
-  },
-  {
-    name: 'Construction Tee #3',
-    price: 'TBA',
-    description: '',
-    images: [],
-    buyUrl: '',
+    category: 'Construction',
+    description: 'Heavyweight black tee. Mountain crest in safety orange on the left chest, "Private AI for Construction" across the back. Black · Sizes S–2XL.',
+    images: ['/images/frontblk%202.jpg', '/images/CONBACKBLK.jpg'],
+    buyUrl: '',          // leave empty → "Coming soon". Add a Stripe Payment Link to enable buying.
+    sizes: [],           // when buyable: [{ label: 'S', buyUrl: '...' }, … up to '2XL']
+    badge: '',
   },
 
-  // ── Row 2 — Logistics tees ──────────────────────────────────
+  // ── Logistics Tee ───────────────────────────────────────────
   {
-    name: 'Logistics Tee #1',
+    name: 'Logistics Tee',
     price: 'TBA',
-    description: '',
-    images: [],
+    category: 'Logistics',
+    description: 'Heavyweight black tee. Mountain crest in signal green on the left chest, "Private AI for Logistics" across the back. Black · Sizes S–2XL.',
+    images: ['/images/frontblklogis.jpg', '/images/LOGBACKBLK.jpg'],
     buyUrl: '',
-  },
-  {
-    name: 'Logistics Tee #2',
-    price: 'TBA',
-    description: '',
-    images: [],
-    buyUrl: '',
-  },
-  {
-    name: 'Logistics Tee #3',
-    price: 'TBA',
-    description: '',
-    images: [],
-    buyUrl: '',
+    sizes: [],
+    badge: '',
   },
 
-  // ── Row 3 — Hats ────────────────────────────────────────────
+  // ── Canada–Italy Tee ────────────────────────────────────────
   {
-    name: 'Hat #1',
+    name: 'Canada–Italy Tee',
     price: 'TBA',
-    description: '',
-    images: [],
+    category: 'Heritage',
+    description: 'Canada–Italy flag bar on the chest, "Stop renting your AI. Own the engine." on the back — a nod to our Toronto and Rome crews. Black · Sizes S–2XL.',
+    images: ['/images/frontblkCANITA.jpg', '/images/backblkCANITA.jpg'],
     buyUrl: '',
-  },
-  {
-    name: 'Hat #2',
-    price: 'TBA',
-    description: '',
-    images: [],
-    buyUrl: '',
-  },
-  {
-    name: 'Hat #3',
-    price: 'TBA',
-    description: '',
-    images: [],
-    buyUrl: '',
+    sizes: [],
+    badge: '',
   },
 
 ];

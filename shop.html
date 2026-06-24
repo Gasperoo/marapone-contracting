@@ -57,10 +57,82 @@
     .nav-link:hover { color: #e8e8e8; }
 
     /* Product image front/back hover swap */
-    .shop-media { position: relative; aspect-ratio: 1 / 1; background: #232323; }
+    .shop-media { position: relative; aspect-ratio: 1 / 1; background: #232323; cursor: pointer; }
     .shop-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .3s ease; }
     .shop-media img.back { opacity: 0; }
     .group:hover .shop-media img.back { opacity: 1; }
+
+    /* Quick-view affordance on hover */
+    .shop-qv {
+      position: absolute; bottom: .6rem; right: .6rem; z-index: 2;
+      font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase;
+      padding: .3rem .6rem; border-radius: 9999px; color: #e8e8e8;
+      background: rgba(0,0,0,.55); border: 1px solid #5a5a5a;
+      opacity: 0; transform: translateY(4px); transition: opacity .2s ease, transform .2s ease;
+      pointer-events: none;
+    }
+    .group:hover .shop-qv { opacity: 1; transform: translateY(0); }
+
+    /* ── Category filter tabs ── */
+    .shop-tab {
+      font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+      color: #a0a0a0; border: 1px solid #3a3a3a; border-radius: 9999px; padding: .45rem .95rem;
+      background: transparent; cursor: pointer; transition: color .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .shop-tab:hover { color: #e8e8e8; border-color: #5a5a5a; }
+    .shop-tab.is-active { color: #fff; border-color: transparent; background: linear-gradient(120deg, #f97316, #52b788); }
+
+    /* ── Status badge on the image ── */
+    .shop-badge {
+      position: absolute; top: .6rem; left: .6rem; z-index: 2;
+      font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase;
+      padding: .28rem .6rem; border-radius: 9999px;
+    }
+    .badge-out   { background: rgba(0,0,0,.6); color: #e8e8e8; border: 1px solid #5a5a5a; }
+    .badge-soon  { background: rgba(0,0,0,.55); color: #cfcfcf; border: 1px solid #3a3a3a; }
+    .badge-batch { background: linear-gradient(120deg, rgba(249,115,22,.92), rgba(82,183,136,.92)); color: #fff; }
+
+    /* ── Size selector ── */
+    .shop-sizes { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .9rem; }
+    .shop-size {
+      font-family: 'DM Mono', monospace; font-size: .72rem; min-width: 2.3rem; padding: .35rem .55rem;
+      border: 1px solid #3a3a3a; border-radius: .4rem; color: #a0a0a0; background: transparent;
+      cursor: pointer; transition: color .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .shop-size:hover { color: #e8e8e8; border-color: #5a5a5a; }
+    .shop-size.is-active { color: #fff; border-color: #52b788; background: rgba(82,183,136,.12); }
+    .shop-size:disabled { opacity: .4; cursor: not-allowed; }
+
+    /* ── Trust row ── */
+    .shop-trust {
+      margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid #2a2a2a;
+      display: grid; gap: 1.25rem; grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .shop-trust { grid-template-columns: repeat(3, 1fr); } }
+    .shop-trust-item { display: flex; align-items: flex-start; gap: .75rem; }
+    .shop-trust-item h4 { font-family: 'DM Sans', sans-serif; font-weight: 600; color: #e8e8e8; font-size: .9rem; }
+    .shop-trust-item p { font-family: 'DM Sans', sans-serif; color: #a0a0a0; font-size: .8rem; line-height: 1.4; margin-top: .15rem; }
+
+    /* ── Quick-view modal ── */
+    .shop-modal { position: fixed; inset: 0; z-index: 90; display: none; }
+    .shop-modal.is-open { display: block; }
+    .shop-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(2px); }
+    .shop-modal-panel {
+      position: relative; z-index: 1; width: calc(100% - 2rem); max-width: 880px; margin: 5vh auto;
+      background: #1f1f1f; border: 1px solid #3a3a3a; border-radius: 1rem; overflow: hidden;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .shop-modal-x {
+      position: absolute; top: .75rem; right: .75rem; z-index: 3; width: 2.25rem; height: 2.25rem;
+      border-radius: 9999px; background: rgba(0,0,0,.5); border: 1px solid #5a5a5a; color: #e8e8e8;
+      font-size: 1.25rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .shop-modal-x:hover { background: rgba(0,0,0,.75); }
+    .shop-modal-grid { display: grid; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .shop-modal-grid { grid-template-columns: 1.1fr 1fr; } }
+    .shop-modal-media { position: relative; aspect-ratio: 1 / 1; background: #232323; }
+    .shop-modal-media img { width: 100%; height: 100%; object-fit: cover; }
+    .shop-modal-info { padding: 1.75rem; display: flex; flex-direction: column; }
   </style>
   <script defer src="/widgets.js"></script>
 </head>
@@ -122,7 +194,26 @@
 
   <!-- PRODUCTS -->
   <main class="max-w-6xl mx-auto px-4 py-14 lg:py-20">
+    <!-- Category filter tabs (populated by script when >1 category exists) -->
+    <div id="shop-filters" class="flex flex-wrap gap-2 mb-8" style="display:none"></div>
+
     <div id="shop-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style="display:none"></div>
+
+    <!-- Trust row (shown when there are products) -->
+    <div id="shop-trust" class="shop-trust" style="display:none">
+      <div class="shop-trust-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <div><h4>Secure Stripe checkout</h4><p>Payments are processed by Stripe. We never see or store your card details.</p></div>
+      </div>
+      <div class="shop-trust-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div><h4>Ships from Toronto</h4><p>Packed and shipped by the same crew building the brand — Toronto &amp; Rome.</p></div>
+      </div>
+      <div class="shop-trust-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        <div><h4>Small-batch quality</h4><p>Limited runs of gear we'd actually wear on a build — not mass-produced merch.</p></div>
+      </div>
+    </div>
 
     <!-- Empty state (shown when there are no products yet) -->
     <div id="shop-empty" class="text-center py-16" style="display:none">
@@ -166,6 +257,15 @@
     </div>
   </footer>
 
+  <!-- Quick-view modal -->
+  <div id="shop-modal" class="shop-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Product details">
+    <div class="shop-modal-backdrop" data-close></div>
+    <div class="shop-modal-panel">
+      <button type="button" class="shop-modal-x" data-close aria-label="Close">&times;</button>
+      <div id="shop-modal-body"></div>
+    </div>
+  </div>
+
   <!-- Product data — edit /public/shop-products.js to add products -->
   <script src="/shop-products.js"></script>
   <script>
@@ -179,51 +279,213 @@
       var products = (window.MARAPONE_PRODUCTS || []).filter(Boolean);
       var grid = document.getElementById('shop-grid');
       var empty = document.getElementById('shop-empty');
+      var filterBar = document.getElementById('shop-filters');
+      var trust = document.getElementById('shop-trust');
 
       if (!products.length) { empty.style.display = 'block'; return; }
 
       grid.style.display = 'grid';
+      if (trust) trust.style.display = 'grid';
 
-      products.forEach(function (p) {
-        var imgs = (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []);
-
-        var media;
-        if (imgs.length >= 2) {
-          media = '<div class="shop-media">' +
-            '<img src="' + esc(imgs[0]) + '" alt="' + esc(p.name) + '" loading="lazy" />' +
-            '<img class="back" src="' + esc(imgs[1]) + '" alt="' + esc(p.name) + ' (back)" loading="lazy" />' +
-            '</div>';
-        } else if (imgs.length === 1) {
-          media = '<div class="shop-media"><img src="' + esc(imgs[0]) + '" alt="' + esc(p.name) + '" loading="lazy" /></div>';
-        } else {
-          media = '<div class="shop-media grid-dot" style="display:flex;align-items:center;justify-content:center">' +
-            '<span class="font-display text-3xl tracking-wider text-plate">MARA<span class="duo-text">PONE</span></span></div>';
+      // ── helpers ──────────────────────────────────────────────
+      function getImgs(p) {
+        return (p.images && p.images.length) ? p.images : (p.image ? [p.image] : []);
+      }
+      function getSizes(p) {
+        return (p.sizes || []).filter(function (s) { return s && s.label; });
+      }
+      function hasBuy(p) {
+        if (p.buyUrl) return true;
+        var sizes = getSizes(p);
+        return sizes.some(function (s) { return s.buyUrl; });
+      }
+      function statusBadge(p) {
+        if (p.soldOut) return '<span class="shop-badge badge-out">Sold out</span>';
+        if (!hasBuy(p)) return '<span class="shop-badge badge-soon">Coming soon</span>';
+        if (p.badge) return '<span class="shop-badge badge-batch">' + esc(p.badge) + '</span>';
+        return '';
+      }
+      function mediaInner(p, opts) {
+        var imgs = getImgs(p);
+        var hover = opts && opts.hover;
+        if (imgs.length >= 2 && hover) {
+          return '<img src="' + esc(imgs[0]) + '" alt="' + esc(p.name) + '" loading="lazy" />' +
+                 '<img class="back" src="' + esc(imgs[1]) + '" alt="' + esc(p.name) + ' (back)" loading="lazy" />';
         }
+        if (imgs.length >= 1) {
+          return '<img src="' + esc(imgs[0]) + '" alt="' + esc(p.name) + '" loading="lazy" />';
+        }
+        return '<div class="grid-dot" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">' +
+               '<span class="font-display text-3xl tracking-wider text-plate">MARA<span class="duo-text">PONE</span></span></div>';
+      }
 
-        var button;
+      // Builds the size selector + buy button as a live DOM node (events wired).
+      function buyControls(p) {
+        var box = document.createElement('div');
+        box.className = 'mt-auto';
+
         if (p.soldOut) {
-          button = '<button type="button" disabled class="w-full mt-4 bg-steel text-plate px-4 py-3 rounded font-semibold cursor-not-allowed">Sold out</button>';
-        } else if (p.buyUrl) {
-          button = '<a href="' + esc(p.buyUrl) + '" target="_blank" rel="noopener noreferrer" ' +
-            'class="block text-center w-full mt-4 duo-gradient text-white px-4 py-3 rounded font-semibold hover:opacity-90 transition-opacity">Buy on Stripe →</a>';
-        } else {
-          button = '<button type="button" disabled class="w-full mt-4 bg-steel text-plate px-4 py-3 rounded font-semibold cursor-not-allowed">Coming soon</button>';
+          box.innerHTML = '<button type="button" disabled class="w-full mt-4 bg-steel text-plate px-4 py-3 rounded font-semibold cursor-not-allowed">Sold out</button>';
+          return box;
         }
+
+        var sizes = getSizes(p);
+        // When sizes exist they drive the buy URL; otherwise fall back to p.buyUrl.
+        var state = { url: sizes.length ? (sizes[0].buyUrl || '') : (p.buyUrl || '') };
+        var btnHolder = document.createElement('div');
+
+        function renderButton() {
+          btnHolder.innerHTML = state.url
+            ? '<a href="' + esc(state.url) + '" target="_blank" rel="noopener noreferrer" class="block text-center w-full mt-4 duo-gradient text-white px-4 py-3 rounded font-semibold hover:opacity-90 transition-opacity">Buy on Stripe →</a>'
+            : '<button type="button" disabled class="w-full mt-4 bg-steel text-plate px-4 py-3 rounded font-semibold cursor-not-allowed">Coming soon</button>';
+        }
+
+        if (sizes.length) {
+          var row = document.createElement('div');
+          row.className = 'shop-sizes';
+          sizes.forEach(function (s, i) {
+            var pill = document.createElement('button');
+            pill.type = 'button';
+            pill.className = 'shop-size' + (i === 0 ? ' is-active' : '');
+            pill.textContent = s.label;
+            if (!s.buyUrl) pill.disabled = true;
+            pill.addEventListener('click', function () {
+              row.querySelectorAll('.shop-size').forEach(function (b) { b.classList.remove('is-active'); });
+              pill.classList.add('is-active');
+              state.url = s.buyUrl || '';
+              renderButton();
+            });
+            row.appendChild(pill);
+          });
+          box.appendChild(row);
+        }
+
+        renderButton();
+        box.appendChild(btnHolder);
+        return box;
+      }
+
+      // ── modal ────────────────────────────────────────────────
+      var modal = document.getElementById('shop-modal');
+      var modalBody = document.getElementById('shop-modal-body');
+
+      function openModal(p) {
+        var imgs = getImgs(p);
+        var badge = statusBadge(p);
+        var gallery = imgs.length
+          ? imgs.map(function (src, i) { return '<div class="shop-modal-media">' + (i === 0 ? badge : '') + '<img src="' + esc(src) + '" alt="' + esc(p.name) + (i ? ' (' + (i + 1) + ')' : '') + '" /></div>'; }).join('')
+          : '<div class="shop-modal-media grid-dot" style="display:flex;align-items:center;justify-content:center">' + badge + '<span class="font-display text-4xl tracking-wider text-plate">MARA<span class="duo-text">PONE</span></span></div>';
+
+        modalBody.innerHTML =
+          '<div class="shop-modal-grid">' +
+            '<div>' + gallery + '</div>' +
+            '<div class="shop-modal-info">' +
+              (p.category ? '<p class="eyebrow mb-2"><span class="duo-text">// ' + esc(p.category) + '</span></p>' : '') +
+              '<h3 class="font-display text-3xl tracking-wide text-chalk leading-tight">' + esc(p.name) + '</h3>' +
+              '<p class="font-mono text-base duo-text mt-2">' + esc(p.price) + '</p>' +
+              (p.description ? '<p class="font-body text-sm text-fog mt-4 leading-relaxed">' + esc(p.description) + '</p>' : '') +
+            '</div>' +
+          '</div>';
+
+        modalBody.querySelector('.shop-modal-info').appendChild(buyControls(p));
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        modalBody.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+      modal.addEventListener('click', function (e) {
+        if (e.target.hasAttribute('data-close')) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+
+      // ── cards ────────────────────────────────────────────────
+      products.forEach(function (p) {
+        var imgs = getImgs(p);
 
         var card = document.createElement('div');
         card.className = 'group bg-gunmetal border border-plate rounded-xl overflow-hidden flex flex-col hover:border-fog transition-colors';
-        card.innerHTML =
-          media +
-          '<div class="p-5 flex flex-col flex-1">' +
-            '<div class="flex items-start justify-between gap-3">' +
-              '<h3 class="font-display text-xl tracking-wide text-chalk leading-tight">' + esc(p.name) + '</h3>' +
-              '<span class="font-mono text-sm duo-text whitespace-nowrap">' + esc(p.price) + '</span>' +
-            '</div>' +
-            (p.description ? '<p class="font-body text-sm text-fog mt-2 leading-relaxed">' + esc(p.description) + '</p>' : '') +
-            '<div class="mt-auto">' + button + '</div>' +
-          '</div>';
+        card.setAttribute('data-card', '');
+        if (p.category) card.setAttribute('data-cat', p.category);
+
+        var media = document.createElement('div');
+        media.className = 'shop-media' + (imgs.length ? '' : ' grid-dot');
+        media.innerHTML = statusBadge(p) + mediaInner(p, { hover: true }) +
+          '<span class="shop-qv">+ Quick view</span>';
+        media.addEventListener('click', function () { openModal(p); });
+
+        var body = document.createElement('div');
+        body.className = 'p-5 flex flex-col flex-1';
+        body.innerHTML =
+          '<div class="flex items-start justify-between gap-3">' +
+            '<h3 class="font-display text-xl tracking-wide text-chalk leading-tight">' + esc(p.name) + '</h3>' +
+            '<span class="font-mono text-sm duo-text whitespace-nowrap">' + esc(p.price) + '</span>' +
+          '</div>' +
+          (p.description ? '<p class="font-body text-sm text-fog mt-2 leading-relaxed">' + esc(p.description) + '</p>' : '');
+        body.appendChild(buyControls(p));
+
+        card.appendChild(media);
+        card.appendChild(body);
         grid.appendChild(card);
       });
+
+      // ── category filter tabs ─────────────────────────────────
+      var cats = [];
+      products.forEach(function (p) {
+        if (p.category && cats.indexOf(p.category) === -1) cats.push(p.category);
+      });
+      if (filterBar && cats.length > 1) {
+        filterBar.style.display = 'flex';
+        ['All'].concat(cats).forEach(function (cat, i) {
+          var tab = document.createElement('button');
+          tab.type = 'button';
+          tab.className = 'shop-tab' + (i === 0 ? ' is-active' : '');
+          tab.textContent = cat;
+          tab.addEventListener('click', function () {
+            filterBar.querySelectorAll('.shop-tab').forEach(function (b) { b.classList.remove('is-active'); });
+            tab.classList.add('is-active');
+            grid.querySelectorAll('[data-card]').forEach(function (c) {
+              c.style.display = (cat === 'All' || c.getAttribute('data-cat') === cat) ? 'flex' : 'none';
+            });
+          });
+          filterBar.appendChild(tab);
+        });
+      }
+
+      // ── JSON-LD structured data (Product rich results) ───────
+      function absUrl(u) {
+        if (!u) return u;
+        return /^https?:/i.test(u) ? u : ('https://marapone.com' + (u.charAt(0) === '/' ? '' : '/') + u);
+      }
+      var itemList = products.map(function (p, i) {
+        var node = { '@type': 'Product', name: p.name };
+        if (p.description) node.description = p.description;
+        var imgs = getImgs(p);
+        if (imgs.length) node.image = imgs.map(absUrl);
+        var m = String(p.price || '').match(/([\d][\d.,]*)/);
+        if (m) {
+          var cur = (String(p.price).match(/[A-Z]{3}/) || ['CAD'])[0];
+          node.offers = {
+            '@type': 'Offer',
+            price: m[1].replace(/,/g, ''),
+            priceCurrency: cur,
+            url: 'https://marapone.com/shop',
+            availability: p.soldOut ? 'https://schema.org/SoldOut'
+              : (hasBuy(p) ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder')
+          };
+        }
+        return { '@type': 'ListItem', position: i + 1, item: node };
+      });
+      var ld = document.createElement('script');
+      ld.type = 'application/ld+json';
+      ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: itemList });
+      document.head.appendChild(ld);
     })();
   </script>
 

@@ -1,0 +1,12 @@
+Description,Quantity,Unit Price,Amount
+"Air Freight - 480 kg (PVG -> YYZ)",480,4.85,2328.00
+"Fuel Surcharge",480,1.20,576.00
+"Security Screening",480,0.35,168.00
+"AWB / Documentation Fee",1,55.00,55.00
+"Customs Clearance",1,185.00,185.00
+"Airport Transfer & Handling",1,240.00,240.00
+
+Currency,USD
+Subtotal,3552.00
+Tax,177.60
+Total,3729.60

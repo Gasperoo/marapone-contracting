@@ -69,3 +69,16 @@
 .marquee, .integrations-marquee, [class*="overflow-x-auto"] {
   max-width: 100%;
 }
+
+/* ============================================================
+   Heading accent glow — site-wide cohesion with the hero.
+   Each rule matches the accent's own colour (orange = hiviz,
+   green = inline #52b788) so it adapts per site automatically.
+   ============================================================ */
+h1 .text-hiviz, h2 .text-hiviz,
+h1 [style*="f97316"], h2 [style*="f97316"] {
+  text-shadow: 0 0 22px rgba(249, 115, 22, 0.28);
+}
+h1 [style*="52b788"], h2 [style*="52b788"] {
+  text-shadow: 0 0 22px rgba(82, 183, 136, 0.28);
+}

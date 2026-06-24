@@ -111,10 +111,12 @@
     if (path.indexOf('/' + v) !== 0) return;
 
     var items = [
-      { label: 'Resources',    href: '/' + v + '/resources' },
-      { label: 'Architecture', href: '/' + v + '/architecture' },
-      { label: 'Integrations', href: '/' + v + '/integrations' },
-      { label: 'Trust',        href: '/' + v + '/trust' },
+      { label: 'Samples',        href: '/' + v + '/sample-assessment' },
+      { label: 'ROI Calculator', href: '/' + v + '/roi-calculator' },
+      { label: 'Resources',      href: '/' + v + '/resources' },
+      { label: 'Architecture',   href: '/' + v + '/architecture' },
+      { label: 'Integrations',   href: '/' + v + '/integrations' },
+      { label: 'Trust',          href: '/' + v + '/trust' },
       isLogistics
         ? { label: 'vs Project44', href: '/logistics/vs/project44' }
         : { label: 'vs Procore',   href: '/construction/vs/procore' },

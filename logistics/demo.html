@@ -130,8 +130,8 @@
   <script src="/demo-tool.js" defer></script>
   <script>
     window.addEventListener('DOMContentLoaded', function () {
-      // NOTE: replace the test sitekey below with your real Cloudflare Turnstile site key.
-      var SITEKEY = '1x00000000000000000000AA';
+      // Cloudflare Turnstile site key (public — safe to expose). Hostname: marapone.com
+      var SITEKEY = '0x4AAAAAADqW_FGnkSV2BbD4';
       function renderResult(results, j, h) {
         var esc = h.esc, money = h.money, riskColor = h.riskColor, ACCENT = h.accent;
         var f = j.fields || {}, t = j.totals || {};

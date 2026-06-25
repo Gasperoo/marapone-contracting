@@ -105,6 +105,7 @@
     .focus\:bg-hiviz:focus { background-color: #52b788 !important; }
   </style>
   <script defer src="/widgets.js"></script>
+  <script defer src="/checkout.js"></script>
 </head>
 
 <body class="antialiased">
@@ -234,9 +235,7 @@
               </ul>
             </div>
             <div class="mt-6">
-              <a href="/logistics/contact"
-                class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Get
-                Started →</a>
+              <a href="/logistics/contact" class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors" data-checkout="build" data-tier="starter" data-vertical="logistics">Reserve · pay deposit &rarr;</a>
             </div>
           </div>
 
@@ -285,9 +284,7 @@
               </ul>
             </div>
             <div class="mt-6">
-              <a href="/logistics/contact"
-                class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Get
-                Started →</a>
+              <a href="/logistics/contact" class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors" data-checkout="build" data-tier="pilot" data-vertical="logistics">Reserve · pay deposit &rarr;</a>
             </div>
           </div>
 
@@ -489,9 +486,7 @@
               </ul>
             </div>
             <div class="mt-8">
-              <a href="/logistics/contact"
-                class="block border border-hiviz text-hiviz font-semibold py-3 rounded text-center hover:bg-hiviz hover:text-white transition-colors">Get
-                Started →</a>
+              <a href="/logistics/contact" class="block border border-hiviz text-hiviz font-semibold py-3 rounded text-center hover:bg-hiviz hover:text-white transition-colors" data-checkout="marketing" data-tier="starter">Buy now &rarr;</a>
             </div>
           </div>
 
@@ -527,9 +522,7 @@
               </ul>
             </div>
             <div class="mt-8">
-              <a href="/logistics/contact"
-                class="hiviz-gradient block text-white font-semibold py-3 rounded text-center hover:opacity-90 transition-opacity">Get
-                Started →</a>
+              <a href="/logistics/contact" class="hiviz-gradient block text-white font-semibold py-3 rounded text-center hover:opacity-90 transition-opacity" data-checkout="marketing" data-tier="growth">Buy now &rarr;</a>
             </div>
           </div>
 
@@ -564,9 +557,7 @@
               </ul>
             </div>
             <div class="mt-8">
-              <a href="/logistics/contact"
-                class="block border border-plate text-chalk font-semibold py-3 rounded text-center hover:border-hiviz hover:text-hiviz transition-colors">Get
-                Started →</a>
+              <a href="/logistics/contact" class="block border border-plate text-chalk font-semibold py-3 rounded text-center hover:border-hiviz hover:text-hiviz transition-colors" data-checkout="marketing" data-tier="pro">Buy now &rarr;</a>
             </div>
           </div>
 
@@ -897,9 +888,7 @@
             </ul>
           </div>
           <div class="mt-8">
-            <a href="/logistics/contact"
-              class="block border border-hiviz text-hiviz font-semibold py-3 rounded text-center hover:bg-hiviz hover:text-white transition-colors">Enquire
-              About Support →</a>
+            <a href="/logistics/contact" class="block border border-hiviz text-hiviz font-semibold py-3 rounded text-center hover:bg-hiviz hover:text-white transition-colors" data-checkout="support" data-plan="flex">Subscribe &rarr;</a>
           </div>
         </div>
 
@@ -934,9 +923,7 @@
             </ul>
           </div>
           <div class="mt-8">
-            <a href="/logistics/contact"
-              class="hiviz-gradient block text-white font-semibold py-3 rounded text-center hover:opacity-90 transition-opacity">Enquire
-              About Support →</a>
+            <a href="/logistics/contact" class="hiviz-gradient block text-white font-semibold py-3 rounded text-center hover:opacity-90 transition-opacity" data-checkout="support" data-plan="annual">Subscribe &rarr;</a>
           </div>
         </div>
 
@@ -1014,7 +1001,7 @@
   <section class="border-t border-plate py-12 bg-gunmetal">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <p class="font-mono text-hiviz text-xs uppercase mb-2">// Accepted payment methods</p>
-      <p class="text-fog text-sm">visa, mastercard, amex, e-Transfer, cheques and bank wire.</p>
+      <p class="text-fog text-sm">Online payments are handled securely by Stripe (Visa, Mastercard, Amex). In person we also accept e-Transfer, cheque and bank wire.</p>
       <p class="text-xs font-mono text-fog mt-6">All prices in CAD. Invoices issued before project start. Payment plans
         available on Full Build and Plus tiers — just ask.</p>
       <div class="mt-6">

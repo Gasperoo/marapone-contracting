@@ -149,6 +149,7 @@
     /* ── Domain expertise cards ── */
     .domain-card {
       position: relative;
+      isolation: isolate;
       border: 1px solid rgba(58,58,58,0.9);
       border-radius: 0.85rem;
       padding: 1.85rem;
@@ -226,6 +227,70 @@
       border: none;
       margin: 0;
     }
+
+    /* ════════════════════════════════════════
+         BLUEPRINT + LOGISTICS VISUAL MOTIFS
+    ════════════════════════════════════════ */
+
+    /* Orange blueprint linework behind the hero — faded so text stays crisp */
+    .blueprint-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.7;
+      -webkit-mask-image: radial-gradient(ellipse 105% 96% at 50% 44%, #000 62%, transparent 100%);
+              mask-image: radial-gradient(ellipse 105% 96% at 50% 44%, #000 62%, transparent 100%);
+    }
+    .blueprint-layer svg { width: 100%; height: 100%; display: block; }
+
+    /* Corner watermark motifs inside the domain cards */
+    .motif {
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.5;
+      transition: opacity 0.4s ease, transform 0.5s ease;
+    }
+    .motif svg { width: 100%; height: auto; display: block; }
+    .motif-br { right: -6px; bottom: -8px; width: 215px; }
+    .domain-card:hover .motif { opacity: 0.85; transform: translateY(-4px); }
+
+    /* Faint blueprint grid behind the values section */
+    .bp-grid-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(249,115,22,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249,115,22,0.05) 1px, transparent 1px);
+      background-size: 46px 46px;
+      -webkit-mask-image: radial-gradient(ellipse 78% 72% at 50% 50%, #000 38%, transparent 86%);
+              mask-image: radial-gradient(ellipse 78% 72% at 50% 50%, #000 38%, transparent 86%);
+    }
+
+    /* Value card — animated top accent on hover */
+    .value-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, #f97316, rgba(249,115,22,0));
+      transition: width 0.45s ease;
+    }
+    .value-card:hover::after { width: 62%; }
+
+    /* Port skyline closer (crane + container ship) under the CTA */
+    .skyline {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      width: 100%;
+      pointer-events: none;
+      opacity: 0.55;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+    }
+    .skyline svg { width: 100%; height: auto; display: block; }
   </style>
   <!-- Google Analytics (G-J31Z05DB01) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
@@ -286,6 +351,57 @@
   <section id="main-content" class="relative overflow-hidden grid-dot py-20 lg:py-32 border-b border-plate">
     <div class="hero-glow"></div>
     <div class="hero-glow-left"></div>
+
+    <!-- Orange blueprint linework — faded so it never competes with the copy -->
+    <div class="blueprint-layer text-hiviz" aria-hidden="true">
+      <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="bpFine" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M40 0H0V40" stroke="currentColor" stroke-opacity="0.16" stroke-width="1" fill="none"/>
+          </pattern>
+          <pattern id="bpMaj" width="200" height="200" patternUnits="userSpaceOnUse">
+            <path d="M200 0H0V200" stroke="currentColor" stroke-opacity="0.28" stroke-width="1.3" fill="none"/>
+          </pattern>
+          <marker id="bpArrow" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto">
+            <path d="M0 0 L6 3 L0 6" stroke="currentColor" stroke-opacity="0.4" stroke-width="1" fill="none"/>
+          </marker>
+        </defs>
+
+        <rect width="1200" height="600" fill="url(#bpFine)"/>
+        <rect width="1200" height="600" fill="url(#bpMaj)"/>
+
+        <g stroke="currentColor" stroke-opacity="0.5" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Tower crane (left margin) -->
+          <line x1="150" y1="120" x2="150" y2="470"/>
+          <line x1="172" y1="120" x2="172" y2="470"/>
+          <path d="M150 150 L172 180 M172 150 L150 180 M150 210 L172 240 M172 210 L150 240 M150 270 L172 300 M172 270 L150 300 M150 330 L172 360 M172 330 L150 360 M150 390 L172 420 M172 390 L150 420"/>
+          <line x1="161" y1="120" x2="430" y2="120"/>
+          <line x1="161" y1="108" x2="430" y2="108"/>
+          <line x1="161" y1="120" x2="80" y2="120"/>
+          <path d="M161 80 L120 108 M161 80 L300 108 M161 80 L161 108"/>
+          <path d="M180 108 L210 120 M240 108 L270 120 M300 108 L330 120 M360 108 L390 120"/>
+          <line x1="380" y1="120" x2="380" y2="220"/>
+          <path d="M374 220 q6 12 12 0"/>
+
+          <!-- Building elevation (right margin) -->
+          <rect x="900" y="180" width="240" height="340"/>
+          <path d="M890 180 H1150"/>
+          <path d="M900 230 H1140 M900 280 H1140 M900 330 H1140 M900 380 H1140 M900 430 H1140 M900 480 H1140"/>
+          <path d="M960 180 V520 M1020 180 V520 M1080 180 V520"/>
+          <path d="M1000 520 V492 a20 20 0 0 1 40 0 V520"/>
+
+          <!-- Dimension line under building -->
+          <line x1="900" y1="552" x2="1140" y2="552" marker-start="url(#bpArrow)" marker-end="url(#bpArrow)" stroke-opacity="0.3"/>
+          <path d="M900 545 V559 M1140 545 V559" stroke-opacity="0.3"/>
+
+          <!-- Section detail callout -->
+          <circle cx="690" cy="300" r="58" stroke-opacity="0.26"/>
+          <path d="M690 252 V348 M642 300 H738" stroke-opacity="0.2"/>
+          <line x1="736" y1="278" x2="892" y2="222" stroke-opacity="0.2"/>
+        </g>
+      </svg>
+    </div>
+
     <div class="max-w-5xl mx-auto px-4 relative z-10">
       <div class="grid lg:grid-cols-5 gap-14 items-start">
 
@@ -452,6 +568,26 @@
 
         <!-- Construction -->
         <div class="domain-card reveal reveal-d2">
+          <!-- Blueprint detail watermark -->
+          <div class="motif motif-br text-hiviz" aria-hidden="true">
+            <svg viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <g stroke-opacity="0.16">
+                  <path d="M20 10 V140 M60 10 V140 M100 10 V140 M140 10 V140 M180 10 V140"/>
+                  <path d="M0 30 H220 M0 70 H220 M0 110 H220"/>
+                </g>
+                <g stroke-opacity="0.5">
+                  <rect x="60" y="30" width="120" height="100"/>
+                  <path d="M60 55 H180 M60 80 H180 M60 105 H180"/>
+                  <path d="M90 30 V130 M120 30 V130 M150 30 V130"/>
+                  <path d="M60 18 H180" stroke-opacity="0.4"/>
+                  <path d="M60 13 V23 M180 13 V23" stroke-opacity="0.4"/>
+                  <circle cx="38" cy="100" r="22" stroke-opacity="0.4"/>
+                  <path d="M38 82 V118 M16 100 H60" stroke-opacity="0.28"/>
+                </g>
+              </g>
+            </svg>
+          </div>
           <div class="flex items-center gap-4 mb-6">
             <div class="w-12 h-12 hiviz-gradient rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow:0 6px 24px rgba(249,115,22,0.3);">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg>
@@ -476,6 +612,35 @@
 
         <!-- Logistics -->
         <div class="domain-card reveal reveal-d3">
+          <!-- Container ship + port crane watermark -->
+          <div class="motif motif-br text-hiviz" aria-hidden="true">
+            <svg viewBox="0 0 240 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <g stroke-opacity="0.4">
+                  <!-- port gantry cranes -->
+                  <path d="M20 95 V40 H70 V95 M30 95 V52 M60 95 V52 M20 40 H8 M70 40 H96"/>
+                  <path d="M120 95 V32 H176 V95 M130 95 V44 M166 95 V44 M176 32 H206"/>
+                  <!-- hull -->
+                  <path d="M28 110 L40 128 H208 L222 110 Z"/>
+                  <path d="M28 110 H222"/>
+                  <!-- superstructure -->
+                  <rect x="172" y="64" width="34" height="44"/>
+                  <path d="M178 72 H200 M178 80 H200 M178 88 H200" stroke-opacity="0.3"/>
+                  <line x1="189" y1="64" x2="189" y2="48"/>
+                  <rect x="184" y="40" width="10" height="10"/>
+                </g>
+                <!-- stacked containers -->
+                <g stroke-opacity="0.5">
+                  <rect x="40" y="78" width="22" height="14"/><rect x="64" y="78" width="22" height="14"/><rect x="88" y="78" width="22" height="14"/><rect x="112" y="78" width="22" height="14"/><rect x="136" y="78" width="22" height="14"/>
+                  <rect x="40" y="94" width="22" height="14"/><rect x="64" y="94" width="22" height="14"/><rect x="88" y="94" width="22" height="14"/><rect x="112" y="94" width="22" height="14"/><rect x="136" y="94" width="22" height="14"/>
+                  <rect x="52" y="62" width="22" height="14"/><rect x="76" y="62" width="22" height="14"/><rect x="100" y="62" width="22" height="14"/><rect x="124" y="62" width="22" height="14"/>
+                </g>
+                <!-- waterline -->
+                <path d="M0 128 H240" stroke-opacity="0.3"/>
+                <path d="M14 134 q6 -4 12 0 M40 134 q6 -4 12 0 M66 134 q6 -4 12 0 M92 134 q6 -4 12 0 M118 134 q6 -4 12 0 M144 134 q6 -4 12 0 M170 134 q6 -4 12 0 M196 134 q6 -4 12 0" stroke-opacity="0.18"/>
+              </g>
+            </svg>
+          </div>
           <div class="flex items-center gap-4 mb-6">
             <div class="w-12 h-12 hiviz-gradient rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow:0 6px 24px rgba(249,115,22,0.3);">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
@@ -509,6 +674,7 @@
        VALUES / HOW WE WORK
   ════════════════════════════════════════ -->
   <section class="relative py-20 lg:py-28 border-b border-plate overflow-hidden">
+    <div class="bp-grid-bg" aria-hidden="true"></div>
     <div class="max-w-5xl mx-auto px-4 relative z-10">
       <span class="eyebrow reveal">How we operate</span>
       <h2 class="font-display text-5xl lg:text-6xl text-chalk mb-12 reveal leading-none">THE WAY WE WORK</h2>
@@ -584,6 +750,35 @@
     <div class="cta-glow"></div>
     <!-- subtle dot grid overlay -->
     <div class="absolute inset-0 grid-dot opacity-30 pointer-events-none"></div>
+
+    <!-- Port skyline closer — crane (construction) meets container ship (logistics) -->
+    <div class="skyline text-hiviz" aria-hidden="true">
+      <svg viewBox="0 0 1200 140" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="currentColor" stroke-opacity="0.32" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <!-- quay -->
+          <path d="M0 128 H1200"/>
+          <!-- tower crane -->
+          <path d="M128 128 V52 M150 128 V52"/>
+          <path d="M128 68 L150 84 M150 68 L128 84 M128 100 L150 116 M150 100 L128 116"/>
+          <path d="M139 44 H300 M150 54 H290 M180 44 V54 M220 44 V54 M260 44 V54"/>
+          <path d="M95 52 H128 M95 52 L139 44"/>
+          <path d="M139 26 L95 52 M139 26 L139 44 M139 26 L230 46"/>
+          <path d="M270 54 V92 M264 92 q6 10 12 0"/>
+          <!-- gantry crane -->
+          <path d="M470 128 V44 M610 128 V44 M460 44 H710 M500 128 V60 M580 128 V60 M710 44 L752 28 M710 50 L755 38"/>
+          <!-- container ship -->
+          <path d="M820 128 L842 110 H1118 L1140 128 Z"/>
+          <path d="M820 110 H1140" stroke-opacity="0.24"/>
+          <g stroke-opacity="0.24">
+            <rect x="852" y="90" width="34" height="18"/><rect x="888" y="90" width="34" height="18"/><rect x="924" y="90" width="34" height="18"/><rect x="960" y="90" width="34" height="18"/><rect x="996" y="90" width="34" height="18"/><rect x="1032" y="90" width="34" height="18"/>
+            <rect x="870" y="70" width="34" height="18"/><rect x="906" y="70" width="34" height="18"/><rect x="942" y="70" width="34" height="18"/><rect x="978" y="70" width="34" height="18"/><rect x="1014" y="70" width="34" height="18"/>
+          </g>
+          <rect x="1066" y="72" width="44" height="36"/>
+          <line x1="1088" y1="72" x2="1088" y2="54"/>
+        </g>
+      </svg>
+    </div>
+
     <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
       <span class="eyebrow justify-center reveal">Ready to start</span>
       <h2 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk mb-6 reveal leading-none">WANT TO SEE IF<br/><span class="text-hiviz">WE'RE A FIT?</span></h2>

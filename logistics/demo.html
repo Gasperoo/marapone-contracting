@@ -96,11 +96,13 @@
           <p class="text-plate text-xs font-mono mt-2">Text PDF or CSV works best · up to 5 MB</p>
         </div>
         <input type="file" id="file" accept=".pdf,.csv,.tsv,.txt,.json" class="hidden" />
-        <div class="flex flex-wrap items-center gap-3 mt-4">
-          <span class="text-plate text-xs w-full sm:w-auto">No file handy? Run a sample and compare:</span>
-          <button data-sample="/samples/freight-invoice-clean.csv" data-name="freight-invoice-clean.csv" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-fog transition-colors">Sample freight invoice · <span class="text-green-400">low risk</span></button>
-          <button data-sample="/samples/freight-invoice-incomplete.csv" data-name="freight-invoice-incomplete.csv" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-fog transition-colors">Sample freight invoice · <span class="text-amber-400">medium risk</span></button>
-          <button data-sample="/samples/freight-invoice-MAR-2026-04417.csv" data-name="freight-invoice-MAR-2026-04417.csv" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-fog transition-colors">Sample freight invoice · <span class="text-red-400">high risk</span></button>
+        <div class="mt-4">
+          <span class="text-plate text-xs block mb-2">No file handy? Run a sample and compare:</span>
+          <div class="flex flex-wrap items-center gap-3">
+            <button data-sample="/samples/freight-invoice-clean.csv" data-name="freight-invoice-clean.csv" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-fog transition-colors">Sample freight invoice · <span class="text-green-400">low risk</span></button>
+            <button data-sample="/samples/freight-invoice-incomplete.csv" data-name="freight-invoice-incomplete.csv" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-fog transition-colors">Sample freight invoice · <span class="text-amber-400">medium risk</span></button>
+            <button data-sample="/samples/freight-invoice-MAR-2026-04417.csv" data-name="freight-invoice-MAR-2026-04417.csv" class="border border-plate text-chalk text-sm font-semibold px-4 py-2 rounded hover:border-fog transition-colors">Sample freight invoice · <span class="text-red-400">high risk</span></button>
+          </div>
         </div>
       </div>
 

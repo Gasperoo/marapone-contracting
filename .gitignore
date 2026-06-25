@@ -60,3 +60,6 @@ public/images/originals/
 
 # Generated email previews
 emails/preview/
+
+# Headless Chrome profile used by tools/render-headings.js
+.chrome-render-profile/

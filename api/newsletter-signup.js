@@ -80,13 +80,14 @@ export default async function handler(req, res) {
   const includeSamples = wantsSamples(source);
   const attachments = includeSamples ? samplesFor(vertical) : [];
 
-  // First-time welcome offer: a real, single-use 10%-off Stripe code (best-effort).
+  // First-time welcome offer: a unique, single-use, per-customer 10%-off Stripe
+  // promo code bound to this subscriber's email (best-effort).
   let promo;
   try {
-    promo = await createWelcomePromoCode();
+    promo = await createWelcomePromoCode({ email });
   } catch (err) {
     console.error('Promo code generation failed, continuing without:', err);
-    promo = { code: process.env.WELCOME_PROMO_CODE || 'MARAPONE10', expires: new Date(Date.now() + 30 * 864e5), unique: false };
+    promo = { code: process.env.WELCOME_PROMO_CODE || 'MARAPONE10', expires: new Date(Date.now() + 30 * 864e5), unique: false, bound: false };
   }
 
   const welcome = welcomeEmail({

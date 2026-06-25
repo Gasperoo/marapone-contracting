@@ -51,23 +51,35 @@ Review the draft in the Resend dashboard first; add `--send` when happy.
 On every signup, `api/newsletter-signup.js` asks `lib/stripe-promo.js` for a
 code:
 
-- **With Stripe configured** (`STRIPE_SECRET_KEY` set): it creates a real,
-  **unique, single-use** promotion code (e.g. `WELCOME-7F3K9Q`) off a shared
-  10% coupon, expiring in 30 days. The coupon is auto-created once as
-  `mailing-welcome-10`.
+- **With Stripe configured** (`STRIPE_SECRET_KEY` set): it creates a real promo
+  code (e.g. `WELCOME-7F3K9Q`) off a shared 10% coupon (`mailing-welcome-10`,
+  auto-created once), with four anti-abuse restrictions so codes can't be
+  shared or reused:
+  - **unique** — a fresh code string per subscriber
+  - **single-use** — `max_redemptions: 1` (one redemption, ever)
+  - **time-limited** — expires 30 days out
+  - **per-customer** — bound to a Stripe customer created from the subscriber's
+    email, so a forwarded code is rejected for anyone else
 - **Without Stripe / on error**: it falls back to the static code
-  `WELCOME_PROMO_CODE` (default `MARAPONE10`) so the email always has a code.
+  `WELCOME_PROMO_CODE` (default `MARAPONE10`). Note this fallback is *not*
+  unique or per-customer, so keep Stripe configured in production.
 
-### One-time Stripe step to make codes redeemable
+> The module pins Stripe API version `2024-06-20` — the account default
+> (`2026-01-28.clover`) restructured promotion codes and rejects `coupon` on
+> create.
 
-The codes only apply if your checkout accepts promotion codes:
+### Making the code redeemable (depends on how you take payment)
 
-1. **Payment Links** (what the site uses): open each package's Payment Link in
-   the Stripe dashboard → **enable "Allow promotion codes"**.
-2. If you prefer one shared code instead of unique ones, create a coupon in
-   Stripe with a promotion code matching `WELCOME_PROMO_CODE` and leave
-   `STRIPE_SECRET_KEY` out of the newsletter function — the fallback will show
-   that code.
+Because each code is **bound to the subscriber's customer (by email)**, it must
+be applied in a context tied to that same customer:
+
+- **Stripe Invoice** (manual, after a discovery call): when you raise the
+  invoice, pick the existing customer with that email (Stripe will have one from
+  signup) and add the promotion code under **Discounts**. The binding matches,
+  so it applies; any other customer's invoice rejects it.
+- **Stripe Checkout / Payment Link** (self-serve): enable **"Allow promotion
+  codes"** on the link, and the buyer must check out with the same email the
+  code was issued to.
 
 ## Environment variables
 
@@ -78,10 +90,9 @@ The codes only apply if your checkout accepts promotion codes:
 | `STRIPE_SECRET_KEY` | Unique welcome codes | Optional (falls back) |
 | `WELCOME_PROMO_CODE` | Static fallback code | Optional (default `MARAPONE10`) |
 
-> Note: `RESEND_AUDIENCE_ID` isn't in `.env` yet. Create an Audience in Resend,
-> copy its ID, and add it (locally **and** in Vercel) to enable list signups and
-> campaign sends. Without it, the welcome email still sends; contacts just won't
-> be stored.
+> `RESEND_AUDIENCE_ID` is set locally (audience "Marapone Mailing List"). It
+> still needs adding in **Vercel → Settings → Environment Variables** (all
+> environments) for production signups to store contacts and for broadcasts.
 
 ## Editing copy
 

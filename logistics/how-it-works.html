@@ -75,8 +75,44 @@
   </nav>
 
   <!-- HEADER -->
-  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate">
-    <div class="max-w-4xl mx-auto px-4 text-center">
+  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate relative overflow-hidden">
+    <!-- Shipping-route arc-map motif -->
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;color:#52b788;opacity:.6;-webkit-mask-image:radial-gradient(ellipse 72% 96% at 50% 50%, transparent 20%, #000 68%);mask-image:radial-gradient(ellipse 72% 96% at 50% 50%, transparent 20%, #000 68%);">
+      <svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" fill="none" style="width:100%;height:100%;display:block">
+        <g stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <g stroke-opacity="0.09" stroke-width="1">
+            <path d="M0 90H1200 M0 180H1200 M0 270H1200 M0 360H1200"/>
+            <path d="M150 0V420 M390 0V420 M630 0V420 M870 0V420 M1110 0V420"/>
+          </g>
+          <g stroke-opacity="0.4" stroke-width="1.6" stroke-dasharray="3 9">
+            <path d="M180 300 Q420 110 660 220"/>
+            <path d="M660 220 Q880 320 1040 150"/>
+            <path d="M180 300 Q520 380 900 330"/>
+          </g>
+          <g stroke="currentColor" stroke-opacity="0.5" stroke-width="1.6">
+            <circle cx="180" cy="300" r="9"/>
+            <circle cx="660" cy="220" r="9"/>
+            <circle cx="1040" cy="150" r="9"/>
+            <circle cx="900" cy="330" r="9"/>
+          </g>
+          <g fill="currentColor" fill-opacity="0.45" stroke="none">
+            <circle cx="180" cy="300" r="3"/>
+            <circle cx="660" cy="220" r="3"/>
+            <circle cx="1040" cy="150" r="3"/>
+            <circle cx="900" cy="330" r="3"/>
+          </g>
+          <g stroke-opacity="0.4" stroke-width="1.4">
+            <path d="M447 168 l16 6 -6 16 -10 -22z"/>
+          </g>
+          <g stroke-opacity="0.3" stroke-width="1.3">
+            <circle cx="1086" cy="84" r="30"/>
+            <path d="M1086 54 V114 M1056 84 H1116"/>
+            <path d="M1086 54 L1095 84 L1086 76 L1077 84 Z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
       <p class="font-mono text-sm mb-4" style="color:#52b788">// The Marapone Process — Logistics</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-6">HOW WE BUILD IT<br /><span style="color:#52b788">FOR YOUR OPERATION</span></h1>
       <p class="text-fog max-w-2xl mx-auto leading-relaxed">We don't sell software you figure out yourself. We design, build, and install a private AI system around your specific trade documents and carrier network — on your hardware, in your environment, with a full handover when it's done.</p>

@@ -96,8 +96,43 @@
   </nav>
 
   <!-- HERO -->
-  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate">
-    <div class="max-w-4xl mx-auto px-4 text-center">
+  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate relative overflow-hidden">
+    <!-- Floor-plan blueprint motif -->
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;color:#f97316;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 74% 94% at 50% 50%, transparent 22%, #000 70%);mask-image:radial-gradient(ellipse 74% 94% at 50% 50%, transparent 22%, #000 70%);">
+      <svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" fill="none" style="width:100%;height:100%;display:block">
+        <g stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <g stroke-opacity="0.10" stroke-width="1">
+            <path d="M0 40H1200 M0 120H1200 M0 200H1200 M0 280H1200 M0 360H1200 M0 440H1200"/>
+            <path d="M80 0V480 M240 0V480 M400 0V480 M560 0V480 M720 0V480 M880 0V480 M1040 0V480"/>
+          </g>
+          <rect x="120" y="90" width="960" height="300" stroke-opacity="0.42" stroke-width="2"/>
+          <rect x="128" y="98" width="944" height="284" stroke-opacity="0.2" stroke-width="1"/>
+          <g stroke-opacity="0.36" stroke-width="1.6">
+            <path d="M470 90 V250 M470 312 V390"/>
+            <path d="M470 250 H820 M882 250 H1080"/>
+            <path d="M820 250 V390"/>
+            <path d="M120 250 H410"/>
+          </g>
+          <g stroke-opacity="0.3" stroke-width="1.2">
+            <path d="M470 250 L414 250 M470 250 A56 56 0 0 1 414 306"/>
+            <path d="M822 250 L822 302 M822 250 A52 52 0 0 1 874 302"/>
+          </g>
+          <g stroke-opacity="0.3" stroke-width="1.2">
+            <path d="M200 90 V98 M260 90 V98 M320 90 V98"/>
+            <path d="M600 390 V382 M660 390 V382 M720 390 V382"/>
+          </g>
+          <g stroke-opacity="0.3" stroke-width="1.2">
+            <path d="M180 300 H410 M180 312 H410 M180 324 H410 M180 336 H410 M180 348 H410 M180 360 H410"/>
+            <path d="M295 300 V360"/>
+          </g>
+          <g stroke-opacity="0.26" stroke-width="1">
+            <path d="M120 60 H1080"/>
+            <path d="M120 54 V66 M470 54 V66 M820 54 V66 M1080 54 V66"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
       <p class="font-mono text-sm mb-4" style="color:#f97316">// What we build for construction companies</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-6">CONSTRUCTION AI<br /><span style="color:#f97316">THAT YOU OWN</span></h1>
       <p class="text-fog max-w-2xl mx-auto leading-relaxed">Nine purpose-built AI tools for general contractors, developers, and project managers. Each built around your specific documents, your project types, and your workflow — not a generic SaaS platform you're renting by the month.</p>

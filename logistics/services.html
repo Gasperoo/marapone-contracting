@@ -79,8 +79,43 @@
     </div>
   </nav>
 
-  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate">
-    <div class="max-w-4xl mx-auto px-4 text-center">
+  <section id="main-content" class="grid-dot py-20 lg:py-28 border-b border-plate relative overflow-hidden">
+    <!-- Container bay / stowage-plan motif -->
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;color:#52b788;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 74% 94% at 50% 50%, transparent 22%, #000 70%);mask-image:radial-gradient(ellipse 74% 94% at 50% 50%, transparent 22%, #000 70%);">
+      <svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" fill="none" style="width:100%;height:100%;display:block">
+        <defs>
+          <pattern id="bayCell" width="72" height="46" patternUnits="userSpaceOnUse">
+            <rect x="0.5" y="0.5" width="71" height="45" stroke="currentColor" stroke-opacity="0.3" stroke-width="1" fill="none"/>
+          </pattern>
+        </defs>
+        <g stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <g stroke-opacity="0.09" stroke-width="1">
+            <path d="M0 60H1200 M0 380H1200"/>
+            <path d="M120 0V480 M1080 0V480"/>
+          </g>
+          <rect x="180" y="92" width="864" height="230" fill="url(#bayCell)"/>
+          <rect x="180" y="92" width="864" height="230" stroke-opacity="0.44" stroke-width="2"/>
+          <path d="M180 138 H1044 M180 184 H1044 M180 230 H1044 M180 276 H1044" stroke-opacity="0.16" stroke-width="1"/>
+          <g stroke-opacity="0.34" stroke-width="1.3">
+            <path d="M252 92 L324 138 M324 92 L252 138"/>
+            <path d="M468 138 L540 184 M540 138 L468 184"/>
+            <path d="M756 92 L828 138 M828 92 L756 138"/>
+            <path d="M612 230 L684 276 M684 230 L612 276"/>
+            <path d="M900 184 L972 230 M972 184 L900 230"/>
+            <path d="M324 276 L396 322 M396 276 L324 322"/>
+          </g>
+          <g stroke-opacity="0.3" stroke-width="1.2">
+            <path d="M150 92 H168 M150 138 H168 M150 184 H168 M150 230 H168 M150 276 H168 M150 322 H168"/>
+          </g>
+          <g stroke-opacity="0.32" stroke-width="1.6">
+            <path d="M150 348 Q612 392 1074 348"/>
+            <path d="M150 348 L132 362 M1074 348 L1092 362"/>
+          </g>
+          <path d="M70 372 q9 -6 18 0 q9 6 18 0 M1094 372 q9 -6 18 0 q9 6 18 0" stroke-opacity="0.16" stroke-width="1.2"/>
+        </g>
+      </svg>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
       <p class="font-mono text-sm mb-4" style="color:#52b788">// What we build for logistics & trade</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-6">LOGISTICS AI<br /><span style="color:#52b788">THAT YOU OWN</span></h1>
       <p class="text-fog max-w-2xl mx-auto leading-relaxed">Seven purpose-built AI modules for freight, import/export, and trade compliance operations. Each built around your specific documents, your trade lanes, and your workflow — not a generic SaaS platform you're renting by the month.</p>

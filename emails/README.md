@@ -68,18 +68,32 @@ code:
 > (`2026-01-28.clover`) restructured promotion codes and rejects `coupon` on
 > create.
 
-### Making the code redeemable (depends on how you take payment)
+### Honoring a code (deposit / mostly-offline flow)
 
-Because each code is **bound to the subscriber's customer (by email)**, it must
-be applied in a context tied to that same customer:
+Payments are mostly offline (cheque, wire, e-transfer) with Stripe as one
+option, and a **deposit** is taken up front. The 10% applies to the **whole
+project total**, then the deposit is calculated on the discounted amount. (The
+order doesn't change the deposit: 10%-off-then-deposit-% equals
+deposit-%-then-10%-off.)
 
-- **Stripe Invoice** (manual, after a discovery call): when you raise the
-  invoice, pick the existing customer with that email (Stripe will have one from
-  signup) and add the promotion code under **Discounts**. The binding matches,
-  so it applies; any other customer's invoice rejects it.
-- **Stripe Checkout / Payment Link** (self-serve): enable **"Allow promotion
-  codes"** on the link, and the buyer must check out with the same email the
-  code was issued to.
+Because offline payments can't be auto-enforced by Stripe, use the CLI to treat
+each code as a verifiable, single-use token:
+
+```bash
+node tools/promo.js check  WELCOME-7F3K9Q   # valid? expired? whose email is it bound to?
+# → honor 10% on the project total, calculate the deposit on the discounted amount
+node tools/promo.js redeem WELCOME-7F3K9Q   # deactivate so it can't be reused
+node tools/promo.js list                    # recent codes at a glance
+```
+
+- **Always `check` first.** Only honor a code that shows `valid: YES` and is
+  **bound to the email of the person presenting it** — that's what stops sharing.
+- **`redeem` once you've applied it.** This deactivates the code (single-use)
+  regardless of how they paid.
+- **If they pay the deposit through Stripe** instead: pick the existing customer
+  with that email and add the promotion code under **Discounts** (or enable
+  "Allow promotion codes" on a Payment Link and have them check out with the
+  same email). Stripe then enforces single-use automatically.
 
 ## Environment variables
 

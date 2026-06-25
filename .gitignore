@@ -57,3 +57,6 @@ __pycache__/
 
 # Local full-res image backups (kept off the deployed site)
 public/images/originals/
+
+# Generated email previews
+emails/preview/

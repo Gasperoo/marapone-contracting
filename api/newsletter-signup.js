@@ -1,9 +1,20 @@
 import { Resend } from 'resend';
+import { welcomeEmail } from '../lib/email-brand.js';
+import { createWelcomePromoCode } from '../lib/stripe-promo.js';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Public base URL the sample files are hosted at (used for email attachments).
 const SITE_URL = 'https://marapone.com';
+
+// Sources that explicitly asked for the sample files (vs. a plain subscribe).
+function wantsSamples(source) {
+  return source === 'exit_intent' || source.startsWith('sample');
+}
+
+function fmtDate(d) {
+  return d.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+}
 
 // Sample files attached to the visitor's email, picked by vertical.
 // Files live in /public/samples and are served at /samples/* on the site.
@@ -66,30 +77,38 @@ export default async function handler(req, res) {
   const e = escapeHtml(email);
   const s = escapeHtml(source);
   const v = escapeHtml(vertical);
-  const attachments = samplesFor(vertical);
-  const fileList = attachments.map((a) => `<li>${escapeHtml(a.filename)}</li>`).join('');
+  const includeSamples = wantsSamples(source);
+  const attachments = includeSamples ? samplesFor(vertical) : [];
+
+  // First-time welcome offer: a real, single-use 10%-off Stripe code (best-effort).
+  let promo;
+  try {
+    promo = await createWelcomePromoCode();
+  } catch (err) {
+    console.error('Promo code generation failed, continuing without:', err);
+    promo = { code: process.env.WELCOME_PROMO_CODE || 'MARAPONE10', expires: new Date(Date.now() + 30 * 864e5), unique: false };
+  }
+
+  const welcome = welcomeEmail({
+    code: promo.code,
+    expires: fmtDate(promo.expires),
+    vertical,
+  });
 
   try {
-    // 1) Send the sample pack to the visitor (the critical email).
+    // 1) Send the branded welcome email + 10% offer (the critical email).
+    //    Sample requesters also get the sample files attached.
     await resend.emails.send({
       from: 'Marapone <info@marapone.com>',
       to: [email],
       reply_to: 'general@marapone.com',
-      subject: 'Your Marapone sample pack',
-      attachments,
-      html: `
-        <div style="font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;line-height:1.55">
-          <p>Hi,</p>
-          <p>Thanks for your interest in Marapone — here are the sample files you asked for, attached to this email:</p>
-          <ul>${fileList}</ul>
-          <p>These show exactly what a finished build hands over: real, owned artifacts you keep, with no subscription.</p>
-          <p>Questions? Just reply to this email and a human will get back to you.</p>
-          <p>— The Marapone team<br/><a href="${SITE_URL}">marapone.com</a></p>
-        </div>`,
+      subject: welcome.subject,
+      html: welcome.html,
+      ...(attachments.length ? { attachments } : {}),
     });
   } catch (err) {
-    console.error('Sample email error:', err);
-    return res.status(500).json({ error: 'Failed to send the sample. Please email general@marapone.com.' });
+    console.error('Welcome email error:', err);
+    return res.status(500).json({ error: 'Failed to send your welcome email. Please email general@marapone.com.' });
   }
 
   // 2) Add the visitor to the Resend audience (mailing list). Best-effort.
@@ -111,8 +130,8 @@ export default async function handler(req, res) {
       from: 'Marapone Signups <info@marapone.com>',
       to: ['general@marapone.com'],
       reply_to: email,
-      subject: `Sample request (${s}${v ? ' / ' + v : ''}): ${e}`,
-      html: `<p><strong>${e}</strong> requested the sample pack and was added to the mailing list.</p><p>Source: ${s}<br/>Vertical: ${v || '—'}<br/>IP: ${escapeHtml(ip)}<br/>Submitted: ${new Date().toLocaleString('en-US', { timeZoneName: 'short' })}</p>`,
+      subject: `New subscriber (${s}${v ? ' / ' + v : ''}): ${e}`,
+      html: `<p><strong>${e}</strong> joined the mailing list${includeSamples ? ' and was sent the sample files' : ''}.</p><p>Welcome code: <strong>${escapeHtml(promo.code)}</strong> (${promo.unique ? 'unique Stripe code' : 'static fallback'})<br/>Source: ${s}<br/>Vertical: ${v || '—'}<br/>IP: ${escapeHtml(ip)}<br/>Submitted: ${new Date().toLocaleString('en-US', { timeZoneName: 'short' })}</p>`,
     });
   } catch (err) {
     console.error('Signup notification error:', err);

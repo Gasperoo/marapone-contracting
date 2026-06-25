@@ -13,6 +13,8 @@ lib/stripe-promo.js    ← generates the unique 10%-off welcome code
 api/newsletter-signup.js ← sends the welcome email on every signup
 tools/preview-emails.js  ← render all emails to emails/preview/*.html
 tools/send-campaign.js   ← send a campaign to the mailing list (Resend broadcast)
+tools/promo.js           ← check / redeem welcome codes when honoring the 10%
+tools/render-headings.js ← rasterise the Bebas Neue display headings
 ```
 
 ## The emails

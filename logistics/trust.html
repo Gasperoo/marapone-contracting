@@ -70,8 +70,20 @@
   </nav>
 
   <!-- HERO -->
-  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24">
-    <div class="max-w-5xl mx-auto px-4">
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24 relative overflow-hidden">
+    <div aria-hidden="true" class="hidden md:block" style="position:absolute;top:1.25rem;right:1.5rem;width:104px;height:104px;pointer-events:none;color:#52b788;opacity:.42">
+      <svg viewBox="0 0 120 120" fill="none" style="width:100%;height:100%;display:block">
+        <g stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="60" cy="60" r="38" stroke-opacity="0.5" stroke-width="1.4"/>
+          <circle cx="60" cy="60" r="30" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="2 6"/>
+          <path d="M60 14 L66 60 L60 106 L54 60 Z" stroke-opacity="0.45" stroke-width="1.2"/>
+          <path d="M14 60 L60 54 L106 60 L60 66 Z" stroke-opacity="0.3" stroke-width="1.2"/>
+          <path d="M60 16 L63 57 L60 50 L57 57 Z" fill="currentColor" fill-opacity="0.4" stroke="none"/>
+          <path d="M31 31 L35 35 M89 31 L85 35 M31 89 L35 85 M89 89 L85 85" stroke-opacity="0.3" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
       <p class="font-mono text-sm mb-4" style="color:#52b788">// Trust Center</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">HOW WE KEEP YOUR<br/><span style="color:#52b788">DOCUMENTS PRIVATE.</span></h1>
       <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">Your shipper rates, your carrier contracts, your customs declarations — none of it should ever be on a third party's training set. The whole point of a Marapone build is that the model and the data live where you put them. Here's exactly how that works.</p>

@@ -70,8 +70,19 @@
   </nav>
 
   <!-- HERO -->
-  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24">
-    <div class="max-w-5xl mx-auto px-4">
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24 relative overflow-hidden">
+    <div aria-hidden="true" class="hidden md:block" style="position:absolute;top:1.25rem;right:1.5rem;width:104px;height:104px;pointer-events:none;color:#f97316;opacity:.4">
+      <svg viewBox="0 0 120 120" fill="none" style="width:100%;height:100%;display:block">
+        <g stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="60" cy="60" r="34" stroke-opacity="0.55" stroke-width="1.4"/>
+          <circle cx="60" cy="60" r="34" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="2 6"/>
+          <path d="M60 18 V40 M60 80 V102 M18 60 H40 M80 60 H102" stroke-opacity="0.4" stroke-width="1.2"/>
+          <path d="M60 44 V76 M44 60 H76" stroke-opacity="0.3" stroke-width="1"/>
+          <path d="M10 30 V10 H30 M110 90 V110 H90" stroke-opacity="0.35" stroke-width="1.3"/>
+        </g>
+      </svg>
+    </div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
       <p class="font-mono text-hiviz text-sm mb-4">// Trust Center</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">HOW WE KEEP YOUR<br/><span class="text-hiviz">DOCUMENTS PRIVATE.</span></h1>
       <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">Your tender drawings, your owner's emails, your fee schedules — none of it should ever be on a third party's training set or leaked to a competing GC. The whole point of a Marapone build is that the model and the data live where you put them. Here's exactly how that works.</p>

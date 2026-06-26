@@ -882,8 +882,8 @@
             <p class="font-mono text-fog text-xs mb-2">SUPPORT PLAN · MONTHLY</p>
             <h3 class="font-display text-3xl text-chalk mb-1">FLEX</h3>
             <div class="flex items-end gap-2 mt-4">
-              <span class="font-display text-5xl text-chalk">$249</span>
-              <span class="text-fog font-mono text-sm mb-2">CAD / month · +HST</span>
+              <span class="font-display text-5xl text-chalk" data-price-cad="249">$249</span>
+              <span class="text-fog font-mono text-sm mb-2" data-curr-period="month">CAD / month · +HST</span>
             </div>
             <p class="text-fog text-sm mt-3">Cancel any month. No minimum commitment.</p>
           </div>
@@ -916,10 +916,10 @@
             <p class="font-mono text-hiviz text-xs mb-2">SUPPORT PLAN · ANNUAL</p>
             <h3 class="font-display text-3xl text-chalk mb-1">ANNUAL</h3>
             <div class="flex items-end gap-2 mt-4">
-              <span class="font-display text-5xl text-chalk">$1,750</span>
-              <span class="text-fog font-mono text-sm mb-2">CAD / year · +HST</span>
+              <span class="font-display text-5xl text-chalk" data-price-cad="1750">$1,750</span>
+              <span class="text-fog font-mono text-sm mb-2" data-curr-period="year">CAD / year · +HST</span>
             </div>
-            <p class="text-fog text-sm mt-3">Equivalent to $146/month. Billed once per year. Best for companies running
+            <p class="text-fog text-sm mt-3">Equivalent to <span data-price-cad="146">$146</span>/month. Billed once per year. Best for companies running
               active projects year-round.</p>
           </div>
           <div class="border-t border-plate pt-6 flex-1">
@@ -1215,6 +1215,10 @@
       var SYMBOL = { CAD: '$', USD: '$', EUR: '€' };
       var SUFFIX = { CAD: 'CAD · one time · +HST', USD: 'USD · one time', EUR: 'EUR · one time · approx' };
       var ACCENT = '#52b788';
+      var PSUFFIX = {
+        month: { CAD: 'CAD / month · +HST', USD: 'USD / month', EUR: 'EUR / month · approx' },
+        year:  { CAD: 'CAD / year · +HST',  USD: 'USD / year',  EUR: 'EUR / year · approx' }
+      };
       function setCurrency(c) {
         if (!RATES[c]) c = 'CAD';
         document.querySelectorAll('[data-price-cad]').forEach(function(el){
@@ -1223,6 +1227,7 @@
           el.textContent = SYMBOL[c] + v.toLocaleString();
         });
         document.querySelectorAll('[data-curr-suffix]').forEach(function(el){ el.textContent = SUFFIX[c]; });
+        document.querySelectorAll('[data-curr-period]').forEach(function(el){ var p = el.getAttribute('data-curr-period'); if (PSUFFIX[p]) el.textContent = PSUFFIX[p][c]; });
         document.querySelectorAll('.curr-btn').forEach(function(b){
           var active = b.getAttribute('data-curr') === c;
           b.setAttribute('aria-pressed', active);

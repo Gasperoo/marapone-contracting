@@ -161,40 +161,65 @@
       border-color: rgba(249, 115, 22, 0.3);
     }
 
-    /* Premium demo-video framing */
+    /* Premium demo-video framing — app UI floating on a gradient stage */
     .media-frame {
       position: relative;
       display: block;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      border: 1px solid #3a3a3a;
-      background: #161616;
-      box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.85);
-      transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+      border-radius: 0.9rem;
+      padding: 3.25%;
+      border: 1px solid #2a2a2a;
+      background:
+        radial-gradient(130% 125% at 14% -5%, rgba(249, 115, 22, 0.075), transparent 50%),
+        linear-gradient(158deg, #212121 0%, #181818 55%, #131313 100%);
+      box-shadow: 0 30px 60px -32px rgba(0, 0, 0, 0.9);
+      transition: border-color .4s ease, box-shadow .4s ease, transform .4s ease;
     }
 
-    .media-frame video,
-    .media-frame img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .media-frame::after {
+    /* faint brushed-diagonal sheen across the backdrop */
+    .media-frame::before {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: inherit;
       pointer-events: none;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 11px);
+    }
+
+    /* the app UI floats above the backdrop with depth */
+    .media-frame video,
+    .media-frame img {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.065);
+      box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.88);
     }
 
     .service-card:hover .media-frame,
     .media-frame:hover {
-      border-color: rgba(249, 115, 22, 0.42);
-      box-shadow: 0 24px 55px -22px rgba(249, 115, 22, 0.22), 0 18px 40px -24px rgba(0, 0, 0, 0.9);
-      transform: translateY(-2px);
+      border-color: rgba(249, 115, 22, 0.34);
+      box-shadow: 0 26px 60px -30px rgba(249, 115, 22, 0.16), 0 26px 55px -34px rgba(0, 0, 0, 0.9);
+      transform: translateY(-3px);
     }
+
+    /* Panel-style caption + stepper (under featured demo) */
+    .demo-stepper { margin-top: 0.85rem; }
+    .ds-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+    .ds-live { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: #9a9a9a; }
+    .ds-dot { width: 6px; height: 6px; border-radius: 50%; background: #f97316; animation: dspulse 2.4s ease-out infinite; }
+    @keyframes dspulse { 0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5); } 70% { box-shadow: 0 0 0 6px rgba(249, 115, 22, 0); } 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); } }
+    .ds-count { font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .08em; color: #6f6f6f; }
+    .ds-count .ds-cur { color: #f97316; }
+    .ds-track { position: relative; height: 2px; border-radius: 2px; background: #2e2e2e; overflow: hidden; }
+    .ds-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: linear-gradient(90deg, #f97316, #ea580c); transition: width .15s linear; }
+    .ds-steps { display: flex; gap: 6px; margin-top: 0.6rem; }
+    .ds-step { flex: 1; text-align: left; font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .02em; color: #7a7a7a; background: transparent; border: 1px solid #2e2e2e; border-radius: 6px; padding: 6px 8px; cursor: pointer; transition: color .25s, border-color .25s, background .25s; line-height: 1.3; }
+    .ds-step:hover { color: #cfcfcf; border-color: #444; }
+    .ds-step.active { color: #f97316; border-color: rgba(249, 115, 22, 0.5); background: rgba(249, 115, 22, 0.07); }
+    @media (max-width: 480px) { .ds-step { font-size: .52rem; padding: 5px 6px; } }
+    @media (prefers-reduced-motion: reduce) { .ds-dot { animation: none; } }
 
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
@@ -556,11 +581,25 @@
               style="color:#f97316">Request a Live Takeoff demo &rarr;</a>
           </div>
           <div class="lg:col-span-2">
-            <div class="media-frame reveal reveal-d1">              <video class="demo-video" autoplay muted loop playsinline preload="none"
+            <div class="media-frame reveal reveal-d1">
+              <video id="demo-takeoff" class="demo-video" autoplay muted loop playsinline preload="none"
                 poster="/blueprint-auditor-takeoff-poster.jpg"
                 aria-label="Automated AI takeoff extracting quantities and pricing them against live cost data">
                 <source src="/blueprint-auditor-takeoff.mp4" type="video/mp4" />
               </video>
+            </div>
+            <div class="demo-stepper reveal reveal-d2" data-video="demo-takeoff">
+              <div class="ds-head">
+                <span class="ds-live"><span class="ds-dot"></span>Live walkthrough</span>
+                <span class="ds-count"><span class="ds-cur">01</span> / 04</span>
+              </div>
+              <div class="ds-track"><span class="ds-fill"></span></div>
+              <div class="ds-steps">
+                <button type="button" class="ds-step active" data-at="0">01 · Takeoff</button>
+                <button type="button" class="ds-step" data-at="0.54">02 · Live cost</button>
+                <button type="button" class="ds-step" data-at="0.69">03 · Change orders</button>
+                <button type="button" class="ds-step" data-at="0.81">04 · Market pricing</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1043,6 +1082,16 @@
       var bar = document.getElementById('nav-progress'); if (bar) { window.addEventListener('scroll', function () { var d = document.documentElement; var h = d.scrollHeight - d.clientHeight; if (h > 0) bar.style.width = ((d.scrollTop || window.scrollY) / h * 100) + '%'; }, { passive: true }); }
       if ('IntersectionObserver' in window) { var obs = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }); document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); }); } else { document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); }); }
       var dv = document.querySelectorAll('.demo-video'); if (dv.length && 'IntersectionObserver' in window) { var vobs = new IntersectionObserver(function (entries) { entries.forEach(function (e) { var v = e.target; if (e.isIntersecting) { if (v.preload === 'none') { v.preload = 'auto'; v.load(); } var p = v.play(); if (p && p.catch) p.catch(function () { }); } else { v.pause(); } }); }, { threshold: 0.25 }); dv.forEach(function (v) { vobs.observe(v); }); }
+      document.querySelectorAll('.demo-stepper').forEach(function (st) {
+        var vid = document.getElementById(st.getAttribute('data-video')); if (!vid) return;
+        var fill = st.querySelector('.ds-fill'), cur = st.querySelector('.ds-cur');
+        var steps = Array.prototype.slice.call(st.querySelectorAll('.ds-step'));
+        var ats = steps.map(function (s) { return parseFloat(s.getAttribute('data-at')) || 0; });
+        function update() { var d = vid.duration || 0; if (!d) return; var f = Math.min(1, (vid.currentTime || 0) / d); if (fill) fill.style.width = (f * 100) + '%'; var idx = 0; for (var i = 0; i < ats.length; i++) { if (f >= ats[i] - 0.001) idx = i; } steps.forEach(function (s, i) { s.classList.toggle('active', i === idx); }); if (cur) cur.textContent = ('0' + (idx + 1)).slice(-2); }
+        vid.addEventListener('timeupdate', update); vid.addEventListener('loadedmetadata', update);
+        steps.forEach(function (s) { s.addEventListener('click', function () { var d = vid.duration || 0; if (d) { vid.currentTime = (parseFloat(s.getAttribute('data-at')) || 0) * d; } var p = vid.play(); if (p && p.catch) p.catch(function () { }); }); });
+        update();
+      });
     })();
   </script>
 </body>

@@ -1556,12 +1556,12 @@
 
       <!-- launch waitlist -->
       <div class="max-w-md mx-auto mb-12 reveal reveal-d2">
-        <div class="flex justify-center">
-          <form class="mp-nl-form" id="mp-app-waitlist" novalidate>
-            <input type="email" name="email" placeholder="you@yourcompany.com" required autocomplete="email" />
-            <button type="submit">Notify me at launch &rarr;</button>
-          </form>
-        </div>
+        <form class="mp-nl-form" id="mp-app-waitlist" novalidate
+          style="flex-direction:column;align-items:stretch;max-width:340px;margin:0 auto">
+          <input type="email" name="email" placeholder="you@yourcompany.com" required autocomplete="email"
+            style="width:100%;text-align:center" />
+          <button type="submit" style="width:100%">Notify me at launch &rarr;</button>
+        </form>
         <p class="mp-nl-msg" id="mp-app-waitlist-msg" style="text-align:center">Be first in line when the app drops &mdash;
           one email when it's live, nothing else.</p>
       </div>

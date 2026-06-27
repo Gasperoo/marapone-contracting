@@ -429,21 +429,46 @@
         </p>
       </div>
 
-      <!-- iPhone app preview -->
+      <!-- iPhone app previews -->
       <style>
-        .mp-phone{position:relative;width:300px;max-width:74vw;margin:0 auto;aspect-ratio:431/876;filter:drop-shadow(0 24px 48px rgba(0,0,0,.55))}
+        .mp-phones{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:1.75rem;margin:0 auto 3.5rem}
+        .mp-figure{margin:0;width:218px;max-width:62vw}
+        .mp-phone{position:relative;width:100%;aspect-ratio:431/876;filter:drop-shadow(0 22px 42px rgba(0,0,0,.55))}
         .mp-phone__screen{position:absolute;left:5.1%;top:2.17%;width:89.79%;height:95.66%;object-fit:cover;border-radius:11.9%/5.5%;background:#000;z-index:1}
         .mp-phone__frame{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+        @media(min-width:768px){.mp-phones .mp-figure:nth-child(2){transform:translateY(-30px)}}
       </style>
-      <div class="reveal" style="margin:0 auto 3.5rem">
-        <div class="mp-phone" role="img" aria-label="Preview of the Marapone field app running on iPhone">
-          <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto"
-            poster="/marapone-app-poster.jpg" x-webkit-airplay="deny">
-            <source src="/marapone-app-demo.mp4" type="video/mp4" />
-          </video>
-          <img class="mp-phone__frame" src="/iphone-frame.png" alt="" aria-hidden="true" />
-        </div>
-        <p class="text-center font-mono text-xs text-fog mt-5">// GasperAI in your pocket &mdash; early build of the field app</p>
+      <div class="mp-phones reveal" role="group" aria-label="Previews of the Marapone field app running on iPhone">
+        <figure class="mp-figure">
+          <div class="mp-phone">
+            <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto"
+              poster="/app-clips/marapone-app-audit-poster.jpg" x-webkit-airplay="deny">
+              <source src="/app-clips/marapone-app-audit.mp4" type="video/mp4" />
+            </video>
+            <img class="mp-phone__frame" src="/iphone-frame.png" alt="" aria-hidden="true" />
+          </div>
+          <figcaption class="text-center font-mono text-xs text-fog mt-4">// Upload &amp; audit on-site</figcaption>
+        </figure>
+        <figure class="mp-figure">
+          <div class="mp-phone">
+            <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto"
+              poster="/app-clips/marapone-app-risk-poster.jpg" x-webkit-airplay="deny">
+              <source src="/app-clips/marapone-app-risk.mp4" type="video/mp4" />
+            </video>
+            <img class="mp-phone__frame" src="/iphone-frame.png" alt="" aria-hidden="true" />
+          </div>
+          <figcaption class="text-center font-mono text-xs text-fog mt-4">// Instant OBC risk score</figcaption>
+        </figure>
+        <figure class="mp-figure">
+          <div class="mp-phone">
+            <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto"
+              poster="/app-clips/marapone-app-features-poster.jpg" x-webkit-airplay="deny">
+              <source src="/app-clips/marapone-app-features.mp4" type="video/mp4" />
+            </video>
+            <img class="mp-phone__frame" src="/iphone-frame.png" alt="" aria-hidden="true" />
+          </div>
+          <figcaption class="text-center font-mono text-xs text-fog mt-4">// The full toolset, in hand</figcaption>
+        </figure>
       </div>
 
       <div class="grid md:grid-cols-3 gap-5">

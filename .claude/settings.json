@@ -53,7 +53,13 @@
       "Bash(echo \"markets.jpg: $\\(curl -s -o /dev/null -w '%{http_code}' https://marapone.com/markets.jpg\\) \\(expect 404 now, 200 after deploy\\)\")",
       "Bash(echo \"about canonical: $\\(curl -s https://marapone.com/about)",
       "Bash(grep -v '^[[:space:]]*$')",
-      "Bash(awk '/<section/{s=1} s' construction/index.html)"
+      "Bash(awk '/<section/{s=1} s' construction/index.html)",
+      "Bash(grep -o \"\\\\$249 CAD/month\\\\|\\\\$1,750 CAD/year\" logistics/faq.html)",
+      "Bash(grep -o \"\\\\$249 CAD/month\\\\|\\\\$1,750 CAD/year\" construction/faq.html)",
+      "Bash(grep -o '249 CAD/month or \\\\$1,750 CAD/year' construction/faq.html)",
+      "Bash(grep -rn \"499\\\\|3,500\\\\|3500\\\\|292/month\\\\|\\\\$292\" construction/pricing.html construction/faq.html logistics/pricing.html logistics/faq.html)",
+      "Bash(grep -rno \"\\\\$249\\\\|\\\\$1,750\\\\|146/month\\\\|249 CAD\\\\|1,750 CAD\" construction/pricing.html construction/faq.html logistics/pricing.html logistics/faq.html)",
+      "Bash(grep -n 'text-5xl text-chalk\">\\\\$249\\\\|text-5xl text-chalk\">\\\\$1,750' construction/pricing.html logistics/pricing.html)"
     ],
     "additionalDirectories": [
       "/Users/gasper/Documents/AntiGravity/marapone-contracting"

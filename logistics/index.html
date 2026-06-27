@@ -1520,6 +1520,98 @@
     </div>
   </section>
 
+  <!-- MOBILE APP / GASPERAI -->
+  <section class="relative py-16 lg:py-24 border-t border-plate bg-gunmetal overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none"
+      style="background:radial-gradient(ellipse at 50% 0%, rgba(82,183,136,0.10) 0%, transparent 60%)"></div>
+    <div class="absolute inset-0 grid-dot opacity-20 pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-9 reveal">
+        <p class="font-mono text-xs uppercase tracking-wider mb-3" style="color:#52b788">// On the roadmap &mdash; 2026
+        </p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-5 leading-none">MARAPONE IS<br /><span
+            class="shine-accent" style="color:#52b788">GOING MOBILE</span></h2>
+        <p class="text-fog max-w-2xl mx-auto leading-relaxed text-sm lg:text-base">The tools you run at the desk are
+          coming to your pocket. We're building a native iOS and Android app &mdash; launching in 2026 &mdash; that puts
+          your full document intelligence suite wherever the freight is: on the dock, at the terminal, on the road. Make
+          a call in the field and every change syncs live to your desktop, so the office sees exactly where the shipment
+          stands the moment it happens.</p>
+      </div>
+
+      <!-- platform badges -->
+      <div class="flex items-center justify-center gap-3 mb-12 reveal reveal-d1">
+        <span class="inline-flex items-center gap-2 bg-steel border border-plate rounded-full px-4 py-2">
+          <svg class="w-4 h-4" style="color:#52b788" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+          </svg>
+          <span class="font-mono text-xs text-chalk uppercase tracking-wide">iOS</span>
+        </span>
+        <span class="inline-flex items-center gap-2 bg-steel border border-plate rounded-full px-4 py-2">
+          <svg class="w-4 h-4" style="color:#52b788" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.43 11.43 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.81 10.81 0 001 18h22c0-3.5-2.08-6.54-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z" />
+          </svg>
+          <span class="font-mono text-xs text-chalk uppercase tracking-wide">Android</span>
+        </span>
+      </div>
+
+      <!-- launch waitlist -->
+      <div class="max-w-md mx-auto mb-12 reveal reveal-d2">
+        <div class="flex justify-center">
+          <form class="mp-nl-form" id="mp-app-waitlist" novalidate>
+            <input type="email" name="email" placeholder="you@yourcompany.com" required autocomplete="email" />
+            <button type="submit">Notify me at launch &rarr;</button>
+          </form>
+        </div>
+        <p class="mp-nl-msg" id="mp-app-waitlist-msg" style="text-align:center">Be first in line when the app drops &mdash;
+          one email when it's live, nothing else.</p>
+      </div>
+      <script>
+        (function () {
+          var f = document.getElementById('mp-app-waitlist'), msg = document.getElementById('mp-app-waitlist-msg');
+          if (!f) return;
+          f.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var btn = f.querySelector('button'), email = f.email.value.trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a valid email.'; return; }
+            btn.disabled = true; btn.textContent = 'Sending…';
+            fetch('/api/newsletter-signup', {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: email, source: 'mobile_app_waitlist', vertical: 'logistics' })
+            }).then(function (r) { if (!r.ok) throw new Error('failed'); return r.json().catch(function () { return {}; }); })
+              .then(function () { f.style.display = 'none'; msg.className = 'mp-nl-msg ok'; msg.textContent = '✓ You’re on the list. We’ll email you the moment it launches.'; })
+              .catch(function () { btn.disabled = false; btn.textContent = 'Try again →'; msg.textContent = 'Something went wrong. Try again or email general@marapone.com.'; });
+          });
+        })();
+      </script>
+
+      <!-- three beats -->
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="bg-steel border border-plate rounded-xl p-6 reveal reveal-d1">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Take it anywhere</p>
+          <h3 class="font-display text-xl text-chalk mb-2">FIELD-READY</h3>
+          <p class="text-fog text-sm leading-relaxed">Run your document tools from the dock, the cab, or the terminal
+            floor. Everything you have on desktop &mdash; now in your hand.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-xl p-6 reveal reveal-d2">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Always in sync</p>
+          <h3 class="font-display text-xl text-chalk mb-2">ONE LIVE RECORD</h3>
+          <p class="text-fog text-sm leading-relaxed">Edits on your phone land on your laptop instantly, and the other
+            way around. One source of truth, updating in real time.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-xl p-6 reveal reveal-d3">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Stay in the loop</p>
+          <h3 class="font-display text-xl text-chalk mb-2">NO DESK REQUIRED</h3>
+          <p class="text-fog text-sm leading-relaxed">Know exactly what's moving across every lane without being chained
+            to a screen to find out. The freight moves; so does the record.</p>
+        </div>
+      </div>
+
+      <p class="text-center text-fog text-sm leading-relaxed max-w-2xl mx-auto mt-10 reveal reveal-d2">All of it driven
+        by <span class="font-semibold" style="color:#52b788">GasperAI</span> &mdash; our own model, trained across a
+        range of leading LLMs and built from the ground up for construction and logistics.</p>
+    </div>
+  </section>
+
   <!-- CTA SECTION -->
   <section class="relative py-24 lg:py-36 overflow-hidden">
     <div class="absolute inset-0 pointer-events-none"

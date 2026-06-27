@@ -24,6 +24,7 @@ export default defineConfig({
           '/badge': '/badge.html',
           '/discovery': '/discovery.html',
           '/shop': '/shop.html',
+          '/gasperai': '/gasperai.html',
           // construction subdirectory
           '/construction': '/construction/index.html',
           '/construction/how-it-works': '/construction/how-it-works.html',
@@ -134,6 +135,7 @@ export default defineConfig({
         badge: path.resolve(__dirname, 'badge.html'),
         discovery: path.resolve(__dirname, 'discovery.html'),
         shop: path.resolve(__dirname, 'shop.html'),
+        gasperai: path.resolve(__dirname, 'gasperai.html'),
         // Construction subdirectory
         'construction-index': path.resolve(__dirname, 'construction/index.html'),
         'construction-how-it-works': path.resolve(__dirname, 'construction/how-it-works.html'),

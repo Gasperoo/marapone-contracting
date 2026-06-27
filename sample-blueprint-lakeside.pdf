@@ -1,0 +1,308 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 5
+/Kids [ 4 0 R 7 0 R 9 0 R 11 0 R 13 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 6 0 R
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+6 0 obj
+<<
+/Length 775
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(MARAPONE SAMPLE - LAKESIDE RESIDENCE  -  CONSTRUCTION DOCUMENTS) Tj
+T*
+(ISSUED FOR CONSTRUCTION    REVISION 1    DATE 2026-06-12) Tj
+T*
+(PROJECT NO: MARA-2026-031   DRAWN BY: RT   CHECKED BY: AM) Tj
+T*
+(SCALE: 1/4" = 1'-0"      TRUE NORTH ARROW SHOWN) Tj
+T*
+() Tj
+T*
+(SHEET INDEX) Tj
+T*
+(A-101  MAIN FLOOR PLAN) Tj
+T*
+(A-102  UPPER FLOOR PLAN) Tj
+T*
+(A-103  BASEMENT PLAN) Tj
+T*
+(A-201  EXTERIOR ELEVATIONS) Tj
+T*
+(A-301  BUILDING SECTIONS) Tj
+T*
+(A-501  DOOR AND WINDOW SCHEDULES) Tj
+T*
+(A-601  ROOM FINISH SCHEDULE) Tj
+T*
+(S-101  FOUNDATION PLAN) Tj
+T*
+(S-201  ROOF FRAMING PLAN) Tj
+T*
+(M-101  HVAC PLAN) Tj
+T*
+(E-101  ELECTRICAL POWER PLAN) Tj
+T*
+(E-102  LIGHTING PLAN AND PANEL SCHEDULE) Tj
+T*
+(P-101  PLUMBING RISER DIAGRAM) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 8 0 R
+/Parent 2 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 818
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(ROOM FINISH SCHEDULE) Tj
+T*
+(ROOM NAME                AREA) Tj
+T*
+(GREAT ROOM               412 SF) Tj
+T*
+(KITCHEN                  238 SF) Tj
+T*
+(PANTRY                   42 SF) Tj
+T*
+(DINING ROOM              196 SF) Tj
+T*
+(MUDROOM                  64 SF) Tj
+T*
+(PRIMARY BEDROOM          318 SF) Tj
+T*
+(BEDROOM 2                176 SF) Tj
+T*
+(BEDROOM 3                168 SF) Tj
+T*
+(BEDROOM 4                152 SF) Tj
+T*
+(PRIMARY BATH             124 SF) Tj
+T*
+(BATHROOM 2               62 SF) Tj
+T*
+(BATHROOM 3               58 SF) Tj
+T*
+(POWDER ROOM              26 SF) Tj
+T*
+(HOME OFFICE              140 SF) Tj
+T*
+(LAUNDRY                  56 SF) Tj
+T*
+(REC ROOM                 384 SF) Tj
+T*
+(MECHANICAL ROOM          48 SF) Tj
+T*
+(TWO-CAR GARAGE           462 SF) Tj
+T*
+ET
+endstream
+endobj
+9 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 10 0 R
+/Parent 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 565
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(DOOR SCHEDULE) Tj
+T*
+(MARK   SIZE             TYPE                QTY) Tj
+T*
+(D1     3'-0" x 7'-0"     EXTERIOR INSULATED FG    QTY 3) Tj
+T*
+(D2     2'-8" x 6'-8"     INTERIOR SOLID CORE      QTY 11) Tj
+T*
+(D3     2'-6" x 6'-8"     INTERIOR HOLLOW CORE     QTY 7) Tj
+T*
+(D4     2'-4" x 6'-8"     INTERIOR POCKET          QTY 4) Tj
+T*
+(D5     18'-0" x 8'-0"    OVERHEAD GARAGE          QTY 1) Tj
+T*
+(D6     8'-0" x 6'-8"     EXTERIOR SLIDING GLASS   QTY 2) Tj
+T*
+(D7     5'-0" x 6'-8"     EXTERIOR FRENCH          QTY 1) Tj
+T*
+ET
+endstream
+endobj
+11 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 12 0 R
+/Parent 2 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 388
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(WINDOW SCHEDULE) Tj
+T*
+(MARK   SIZE             TYPE          QTY) Tj
+T*
+(W1     3'-0" x 5'-0"     DOUBLE HUNG     QTY 12) Tj
+T*
+(W2     2'-6" x 4'-0"     DOUBLE HUNG     QTY 6) Tj
+T*
+(W3     6'-0" x 4'-0"     FIXED PICTURE   QTY 4) Tj
+T*
+(W4     2'-0" x 2'-0"     AWNING          QTY 5) Tj
+T*
+(W5     4'-0" x 6'-0"     CASEMENT        QTY 3) Tj
+T*
+ET
+endstream
+endobj
+13 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+/Contents 14 0 R
+/Parent 2 0 R
+>>
+endobj
+14 0 obj
+<<
+/Length 423
+>>
+stream
+BT
+/F1 9 Tf
+13 TL
+1 0 0 1 54 760 Tm
+(PLUMBING FIXTURE SCHEDULE) Tj
+T*
+(WATER CLOSET             QTY 4) Tj
+T*
+(LAVATORY                 QTY 5) Tj
+T*
+(BATHTUB                  QTY 2) Tj
+T*
+(SHOWER                   QTY 3) Tj
+T*
+(KITCHEN SINK             QTY 1) Tj
+T*
+(BAR SINK                 QTY 1) Tj
+T*
+(LAUNDRY SINK             QTY 1) Tj
+T*
+(WATER HEATER             QTY 1) Tj
+T*
+(HOSE BIBB                QTY 3) Tj
+T*
+ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000139 00000 n 
+0000000188 00000 n 
+0000000316 00000 n 
+0000000386 00000 n 
+0000001212 00000 n 
+0000001340 00000 n 
+0000002209 00000 n 
+0000002338 00000 n 
+0000002955 00000 n 
+0000003085 00000 n 
+0000003525 00000 n 
+0000003655 00000 n 
+trailer
+<<
+/Size 15
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+4130
+%%EOF

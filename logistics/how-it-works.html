@@ -23,6 +23,11 @@
     .reveal.visible { opacity:1;transform:translateY(0); }
     .reveal-d1 { transition-delay:.1s; } .reveal-d2 { transition-delay:.2s; } .reveal-d3 { transition-delay:.3s; } .reveal-d4 { transition-delay:.4s; }
     @media (prefers-reduced-motion:reduce) { .reveal { opacity:1;transform:none;transition:none; } }
+    /* Premium demo-video framing */
+    .media-frame { position:relative;display:block;border-radius:0.9rem;padding:3.25%;border:1px solid #2a2a2a;background:radial-gradient(130% 125% at 14% -5%, rgba(82,183,136,0.075), transparent 50%),linear-gradient(158deg,#212121 0%,#181818 55%,#131313 100%);box-shadow:0 30px 60px -32px rgba(0,0,0,0.9);transition:border-color .4s ease,box-shadow .4s ease,transform .4s ease; }
+    .media-frame::before { content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:repeating-linear-gradient(135deg, rgba(255,255,255,0.012) 0 2px, transparent 2px 11px); }
+    .media-frame video, .media-frame img { position:relative;display:block;width:100%;height:auto;border-radius:0.4rem;border:1px solid rgba(255,255,255,0.065);box-shadow:0 18px 40px -20px rgba(0,0,0,0.88); }
+    .media-frame:hover { border-color:rgba(82,183,136,0.34);box-shadow:0 26px 60px -30px rgba(82,183,136,0.16),0 26px 55px -34px rgba(0,0,0,0.9);transform:translateY(-3px); }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
@@ -135,7 +140,7 @@
             <p class="text-fog leading-relaxed text-sm">No pitch. No obligation. Just a demonstration on your actual data so you can make an informed decision before committing to anything.</p>
           </div>
           <div class="bg-gunmetal border border-plate rounded-xl p-6" style="border-color:rgba(82,183,136,0.15)">
-            <a href="/logistics/demo" class="block mb-5"><img src="/images/ls-dashboard.jpg" alt="Sample build output — your trade data visualized live" loading="lazy" decoding="async" class="w-full h-auto rounded-lg border border-plate" /></a>
+            <a href="/logistics/demo" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/ls-dashboard-poster.jpg" aria-label="Your live trade data visualized — global overview dashboard"><source src="/ls-dashboard.mp4" type="video/mp4" /></video></span></a>
             <p class="font-mono text-xs mb-4" style="color:#52b788">// What to send us</p>
             <ul class="space-y-2 text-sm text-fog">
               <li class="flex items-start gap-2"><span style="color:#52b788" class="mt-0.5">✓</span>Freight carrier invoices (any format)</li>
@@ -187,7 +192,7 @@
             <p class="text-fog leading-relaxed text-sm">All fine-tuning happens in our secure build environment. Your documents are deleted from our systems after the build is complete and verified. Nothing is retained.</p>
           </div>
           <div class="bg-gunmetal border border-plate rounded-xl p-6" style="border-color:rgba(82,183,136,0.15)">
-            <a href="/logistics/demo" class="block mb-5"><img src="/images/ls-markets.jpg" alt="A live module tuned on your own lanes and documents" loading="lazy" decoding="async" class="w-full h-auto rounded-lg border border-plate" /></a>
+            <a href="/logistics/demo" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/ls-quote-poster.jpg" aria-label="A live module tuned on your own lanes — instant freight quote engine"><source src="/ls-quote.mp4" type="video/mp4" /></video></span></a>
             <p class="font-mono text-xs mb-4" style="color:#52b788">// What gets built</p>
             <div class="space-y-3 text-sm text-fog">
               <div class="flex items-start gap-3">
@@ -221,7 +226,7 @@
             <p class="text-fog leading-relaxed text-sm">After handover, the system is yours outright. You can modify it, extend it, or have another developer work on it. There are no usage restrictions, no subscription renewals, and no dependency on Marapone's servers continuing to exist.</p>
           </div>
           <div class="tape-line bg-steel border border-plate rounded-r-xl p-5">
-            <a href="/logistics/demo" class="block mb-5"><img src="/images/ls-sea.jpg" alt="Verified on live data before handover" loading="lazy" decoding="async" class="w-full h-auto rounded-lg border border-plate" /></a>
+            <a href="/logistics/demo" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/ls-sea-poster.jpg" aria-label="Verified on live data before handover — live vessel tracking"><source src="/ls-sea.mp4" type="video/mp4" /></video></span></a>
             <p class="text-sm font-mono text-fog leading-relaxed">"We don't take on many projects at once. When we're building your logistics AI, you have our direct attention — not a shared project manager. Typical build time from scoping to handover is under two weeks."</p>
           </div>
         </div>
@@ -356,6 +361,7 @@
       if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
       var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
       if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+      var dv=document.querySelectorAll('.demo-video');if(dv.length&&'IntersectionObserver' in window){var vobs=new IntersectionObserver(function(entries){entries.forEach(function(e){var v=e.target;if(e.isIntersecting){if(v.preload==='none'){v.preload='auto';v.load();}var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:0.25});dv.forEach(function(v){vobs.observe(v);});}
     })();
   </script>
 </body>

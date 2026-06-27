@@ -168,7 +168,7 @@
             <a href="/logistics/contact" class="font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">Request a compliance scan demo &rarr;</a>
           </div>
           <div class="lg:col-span-2">
-            <img src="/images/risksim.jpg" alt="Compliance Guard risk simulation preview" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:0.5rem;" loading="lazy">
+            <video class="demo-video" autoplay muted loop playsinline preload="none" poster="/ls-risk-poster.jpg" aria-label="Compliance Guard — risk & disruption simulation engine" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:0.5rem;"><source src="/ls-risk.mp4" type="video/mp4" /></video>
           </div>
         </div>
       </div>
@@ -183,7 +183,7 @@
             <a href="/logistics/contact" class="font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">Book a rate analysis demo &rarr;</a>
           </div>
           <div class="lg:col-span-2">
-            <img src="/images/routes.jpg" alt="Freight Rate AI routes and live rates preview" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:0.5rem;" loading="lazy">
+            <video class="demo-video" autoplay muted loop playsinline preload="none" poster="/ls-quote-poster.jpg" aria-label="Freight Rate AI — instant freight quote with all-in cost breakdown" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:0.5rem;"><source src="/ls-quote.mp4" type="video/mp4" /></video>
           </div>
         </div>
       </div>
@@ -198,7 +198,7 @@
             <a href="/logistics/contact" class="font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">See carrier analytics demo &rarr;</a>
           </div>
           <div class="lg:col-span-2">
-            <img src="/images/air-cargo.jpg" alt="Carrier Tracker live cargo aircraft map preview" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:0.5rem;" loading="lazy">
+            <video class="demo-video" autoplay muted loop playsinline preload="none" poster="/ls-sea-poster.jpg" aria-label="Carrier Tracker — live vessel tracking across your network" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:0.5rem;"><source src="/ls-sea.mp4" type="video/mp4" /></video>
           </div>
         </div>
       </div>
@@ -243,7 +243,7 @@
             <a href="/logistics/contact" class="font-mono text-sm hover:text-chalk transition-colors" style="color:#52b788">Request a Supply Chain Twin demo &rarr;</a>
           </div>
           <div class="lg:col-span-2">
-            <img src="/images/ls-dashboard.jpg" alt="Live Supply Chain Twin — live global overview dashboard" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:0.5rem;" loading="lazy">
+            <video class="demo-video" autoplay muted loop playsinline preload="none" poster="/ls-dashboard-poster.jpg" aria-label="Live Supply Chain Twin — real-time global overview dashboard" style="width:100%;height:220px;object-fit:cover;object-position:top;border-radius:0.5rem;"><source src="/ls-dashboard.mp4" type="video/mp4" /></video>
           </div>
         </div>
       </div>
@@ -420,6 +420,7 @@
       if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
       var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
       if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
+      var dv=document.querySelectorAll('.demo-video');if(dv.length&&'IntersectionObserver' in window){var vobs=new IntersectionObserver(function(entries){entries.forEach(function(e){var v=e.target;if(e.isIntersecting){if(v.preload==='none'){v.preload='auto';v.load();}var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:0.25});dv.forEach(function(v){vobs.observe(v);});}
     })();
   </script>
 </body>

@@ -1,57 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-      <title>About – Marapone | Private B2B AI | Canada & Italy | Construction & Logistics</title>
+  <title>About – Marapone | Private B2B AI | Canada & Italy | Construction & Logistics</title>
   <link rel="canonical" href="https://marapone.com/about" />
-  <meta name="description" content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
+  <meta name="description"
+    content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Marapone" />
   <meta property="og:title" content="About – Marapone | Private B2B AI | Canada & Italy | Construction & Logistics" />
-  <meta property="og:description" content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
+  <meta property="og:description"
+    content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
   <meta property="og:url" content="https://marapone.com/about" />
   <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="About – Marapone | Private B2B AI | Canada & Italy | Construction & Logistics" />
-  <meta name="twitter:description" content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
+  <meta name="twitter:description"
+    content="Marapone is a B2B AI company based in Canada and Italy. We build private, owned AI systems for construction and logistics companies — no subscriptions, no cloud, full source code handover." />
   <meta name="twitter:image" content="https://marapone.com/MARACON-WHITE.png" />
   <link rel="stylesheet" href="./src/tailwind.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
   <style>
-    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
-    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
-    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
-    .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
-    @keyframes logoPulse {
-      0%, 100% { opacity: 0.7; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.04); }
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
     }
-    .logo-pulse { animation: logoPulse 4s ease-in-out infinite; }
+
+    .hiviz-gradient {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .tape-line {
+      border-left: 3px solid #f97316;
+      padding-left: 1rem;
+    }
+
+    @keyframes logoPulse {
+
+      0%,
+      100% {
+        opacity: 0.7;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+    }
+
+    .logo-pulse {
+      animation: logoPulse 4s ease-in-out infinite;
+    }
 
     /* ── Premium ambient elements ── */
     .hero-glow {
       position: absolute;
-      top: -80px; right: -80px;
-      width: 640px; height: 560px;
-      background: radial-gradient(ellipse at 60% 40%, rgba(249,115,22,0.09) 0%, transparent 65%);
+      top: -80px;
+      right: -80px;
+      width: 640px;
+      height: 560px;
+      background: radial-gradient(ellipse at 60% 40%, rgba(249, 115, 22, 0.09) 0%, transparent 65%);
       pointer-events: none;
     }
+
     .hero-glow-left {
       position: absolute;
-      bottom: -60px; left: -60px;
-      width: 360px; height: 360px;
-      background: radial-gradient(ellipse, rgba(249,115,22,0.05) 0%, transparent 70%);
+      bottom: -60px;
+      left: -60px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(ellipse, rgba(249, 115, 22, 0.05) 0%, transparent 70%);
       pointer-events: none;
     }
+
     .section-glow {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 700px; height: 400px;
-      background: radial-gradient(ellipse, rgba(249,115,22,0.06) 0%, transparent 70%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(249, 115, 22, 0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -65,15 +107,17 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #f97316;
-      background: rgba(249,115,22,0.08);
-      border: 1px solid rgba(249,115,22,0.22);
+      background: rgba(249, 115, 22, 0.08);
+      border: 1px solid rgba(249, 115, 22, 0.22);
       border-radius: 999px;
       padding: 0.28rem 0.85rem;
       margin-bottom: 1.25rem;
     }
+
     .eyebrow::before {
       content: '';
-      width: 5px; height: 5px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: #f97316;
       flex-shrink: 0;
@@ -84,63 +128,85 @@
       display: flex;
       align-items: center;
       gap: 0.65rem;
-      background: rgba(36,36,36,0.8);
-      border: 1px solid rgba(58,58,58,0.9);
+      background: rgba(36, 36, 36, 0.8);
+      border: 1px solid rgba(58, 58, 58, 0.9);
       border-radius: 0.6rem;
       padding: 0.6rem 0.85rem;
       transition: border-color 0.25s;
     }
-    .stat-chip:hover { border-color: rgba(249,115,22,0.3); }
+
+    .stat-chip:hover {
+      border-color: rgba(249, 115, 22, 0.3);
+    }
 
     /* ── Timeline cards ── */
     .tl-card {
       position: relative;
-      border: 1px solid rgba(58,58,58,0.9);
+      border: 1px solid rgba(58, 58, 58, 0.9);
       border-radius: 0.85rem;
       padding: 1.75rem;
       background: #222222;
       overflow: hidden;
       transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
+
     .tl-card:hover {
-      border-color: rgba(249,115,22,0.35);
+      border-color: rgba(249, 115, 22, 0.35);
       transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 0 transparent;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 0 0 transparent;
     }
+
     .tl-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(249,115,22,0), transparent);
+      background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0), transparent);
       transition: background 0.3s;
     }
+
     .tl-card:hover::before {
-      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.45), transparent);
+      background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.45), transparent);
     }
 
     /* ── Now card ── */
     .now-card {
       position: relative;
-      border: 1px solid rgba(249,115,22,0.25);
+      border: 1px solid rgba(249, 115, 22, 0.25);
       border-radius: 0.85rem;
       overflow: hidden;
-      background: rgba(249,115,22,0.05);
+      background: rgba(249, 115, 22, 0.05);
     }
+
     .now-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.5), transparent);
     }
+
     @keyframes pulseRing {
-      0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.5); }
-      70% { box-shadow: 0 0 0 8px rgba(249,115,22,0); }
-      100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(249, 115, 22, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+      }
     }
+
     .pulse-dot {
-      width: 10px; height: 10px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: #f97316;
       animation: pulseRing 2s ease-out infinite;
@@ -150,27 +216,34 @@
     .domain-card {
       position: relative;
       isolation: isolate;
-      border: 1px solid rgba(58,58,58,0.9);
+      border: 1px solid rgba(58, 58, 58, 0.9);
       border-radius: 0.85rem;
       padding: 1.85rem;
       background: #222222;
       overflow: hidden;
       transition: border-color 0.3s;
     }
+
     .domain-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 2px; height: 100%;
-      background: linear-gradient(to bottom, #f97316, rgba(249,115,22,0.1));
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, #f97316, rgba(249, 115, 22, 0.1));
     }
-    .domain-card:hover { border-color: rgba(249,115,22,0.3); }
+
+    .domain-card:hover {
+      border-color: rgba(249, 115, 22, 0.3);
+    }
+
     .serve-pill {
       display: inline-block;
       font-family: 'DM Mono', monospace;
       font-size: 0.65rem;
-      color: rgba(232,232,232,0.5);
-      background: rgba(58,58,58,0.5);
+      color: rgba(232, 232, 232, 0.5);
+      background: rgba(58, 58, 58, 0.5);
       border-radius: 4px;
       padding: 0.15rem 0.5rem;
       margin: 0.15rem 0.1rem;
@@ -179,24 +252,27 @@
     /* ── Values cards ── */
     .value-card {
       position: relative;
-      border: 1px solid rgba(58,58,58,0.9);
+      border: 1px solid rgba(58, 58, 58, 0.9);
       border-radius: 0.85rem;
       padding: 1.5rem 1.5rem 1.5rem 1.5rem;
       background: #222222;
       overflow: hidden;
       transition: border-color 0.3s, background 0.3s;
     }
+
     .value-card:hover {
-      border-color: rgba(249,115,22,0.28);
+      border-color: rgba(249, 115, 22, 0.28);
       background: #242424;
     }
+
     .value-num {
       position: absolute;
-      bottom: -1rem; right: 0.25rem;
+      bottom: -1rem;
+      right: 0.25rem;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 7rem;
       line-height: 1;
-      color: rgba(232,232,232,0.03);
+      color: rgba(232, 232, 232, 0.03);
       pointer-events: none;
       user-select: none;
     }
@@ -206,24 +282,26 @@
       position: relative;
       border-left: 2px solid #f97316;
       padding: 1.1rem 1.4rem;
-      background: rgba(249,115,22,0.04);
+      background: rgba(249, 115, 22, 0.04);
       border-radius: 0 0.5rem 0.5rem 0;
     }
 
     /* ── CTA glow ── */
     .cta-glow {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 700px; height: 350px;
-      background: radial-gradient(ellipse, rgba(249,115,22,0.08) 0%, transparent 65%);
+      width: 700px;
+      height: 350px;
+      background: radial-gradient(ellipse, rgba(249, 115, 22, 0.08) 0%, transparent 65%);
       pointer-events: none;
     }
 
     /* ── Horizontal rule accent ── */
     .hr-accent {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.3), transparent);
       border: none;
       margin: 0;
     }
@@ -240,9 +318,14 @@
       pointer-events: none;
       opacity: 0.7;
       -webkit-mask-image: radial-gradient(ellipse 105% 96% at 50% 44%, #000 62%, transparent 100%);
-              mask-image: radial-gradient(ellipse 105% 96% at 50% 44%, #000 62%, transparent 100%);
+      mask-image: radial-gradient(ellipse 105% 96% at 50% 44%, #000 62%, transparent 100%);
     }
-    .blueprint-layer svg { width: 100%; height: 100%; display: block; }
+
+    .blueprint-layer svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
 
     /* Corner watermark motifs inside the domain cards */
     .motif {
@@ -252,9 +335,23 @@
       opacity: 0.5;
       transition: opacity 0.4s ease, transform 0.5s ease;
     }
-    .motif svg { width: 100%; height: auto; display: block; }
-    .motif-br { right: -6px; bottom: -8px; width: 215px; }
-    .domain-card:hover .motif { opacity: 0.85; transform: translateY(-4px); }
+
+    .motif svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .motif-br {
+      right: -6px;
+      bottom: -8px;
+      width: 215px;
+    }
+
+    .domain-card:hover .motif {
+      opacity: 0.85;
+      transform: translateY(-4px);
+    }
 
     /* Faint blueprint grid behind the values section */
     .bp-grid-bg {
@@ -262,78 +359,137 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(249,115,22,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(249,115,22,0.05) 1px, transparent 1px);
+        linear-gradient(rgba(249, 115, 22, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249, 115, 22, 0.05) 1px, transparent 1px);
       background-size: 46px 46px;
       -webkit-mask-image: radial-gradient(ellipse 78% 72% at 50% 50%, #000 38%, transparent 86%);
-              mask-image: radial-gradient(ellipse 78% 72% at 50% 50%, #000 38%, transparent 86%);
+      mask-image: radial-gradient(ellipse 78% 72% at 50% 50%, #000 38%, transparent 86%);
     }
 
     /* Value card — animated top accent on hover */
     .value-card::after {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 0; height: 2px;
-      background: linear-gradient(90deg, #f97316, rgba(249,115,22,0));
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #f97316, rgba(249, 115, 22, 0));
       transition: width 0.45s ease;
     }
-    .value-card:hover::after { width: 62%; }
+
+    .value-card:hover::after {
+      width: 62%;
+    }
 
     /* Port skyline closer (crane + container ship) under the CTA */
     .skyline {
       position: absolute;
-      left: 0; right: 0; bottom: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       width: 100%;
       pointer-events: none;
       opacity: 0.55;
       -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
-              mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
     }
-    .skyline svg { width: 100%; height: auto; display: block; }
+
+    .skyline svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
   </style>
   <!-- Google Analytics (G-J31Z05DB01) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-J31Z05DB01');
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js" integrity="sha384-4EgXbGZLDwcPHcRGrHOxm1OvumWUqhr/ts6eapdZnak6ORZAsSE3fMd0niykaSkw" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"
+    integrity="sha384-4EgXbGZLDwcPHcRGrHOxm1OvumWUqhr/ts6eapdZnak6ORZAsSE3fMd0niykaSkw"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+    integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d"
+    crossorigin="anonymous"></script>
   <style>
-    #nav-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:#f97316;z-index:9999;pointer-events:none;transition:width .08s linear;}
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
-    .reveal.visible{opacity:1;transform:translateY(0);}
-    .reveal-d1{transition-delay:.1s;}
-    .reveal-d2{transition-delay:.2s;}
-    .reveal-d3{transition-delay:.3s;}
-    .reveal-d4{transition-delay:.4s;}
+    #nav-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: #f97316;
+      z-index: 9999;
+      pointer-events: none;
+      transition: width .08s linear;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 {
+      transition-delay: .1s;
+    }
+
+    .reveal-d2 {
+      transition-delay: .2s;
+    }
+
+    .reveal-d3 {
+      transition-delay: .3s;
+    }
+
+    .reveal-d4 {
+      transition-delay: .4s;
+    }
   </style>
   <script defer src="/widgets.js"></script>
 </head>
+
 <body class="antialiased">
   <div id="nav-progress" aria-hidden="true"></div>
 
   <!-- SKIP TO CONTENT -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip
+    to content</a>
 
   <!-- NAV -->
   <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span class="text-hiviz">PONE</span></a>
+      <a href="/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span
+          class="text-hiviz">PONE</span></a>
       <div class="hidden md:flex items-center gap-6 font-body text-sm font-medium text-fog">
         <a href="/construction/" class="hover:text-chalk transition-colors">Construction</a>
         <a href="/logistics/" class="hover:text-chalk transition-colors">Logistics</a>
         <a href="/pricing" class="hover:text-chalk transition-colors">Pricing</a>
         <a href="/about" class="text-chalk">About</a>
-        <a href="/" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Started →</a>
+        <a href="/"
+          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
+          Started →</a>
       </div>
-      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
@@ -357,47 +513,50 @@
       <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="bpFine" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M40 0H0V40" stroke="currentColor" stroke-opacity="0.16" stroke-width="1" fill="none"/>
+            <path d="M40 0H0V40" stroke="currentColor" stroke-opacity="0.16" stroke-width="1" fill="none" />
           </pattern>
           <pattern id="bpMaj" width="200" height="200" patternUnits="userSpaceOnUse">
-            <path d="M200 0H0V200" stroke="currentColor" stroke-opacity="0.28" stroke-width="1.3" fill="none"/>
+            <path d="M200 0H0V200" stroke="currentColor" stroke-opacity="0.28" stroke-width="1.3" fill="none" />
           </pattern>
           <marker id="bpArrow" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto">
-            <path d="M0 0 L6 3 L0 6" stroke="currentColor" stroke-opacity="0.4" stroke-width="1" fill="none"/>
+            <path d="M0 0 L6 3 L0 6" stroke="currentColor" stroke-opacity="0.4" stroke-width="1" fill="none" />
           </marker>
         </defs>
 
-        <rect width="1200" height="600" fill="url(#bpFine)"/>
-        <rect width="1200" height="600" fill="url(#bpMaj)"/>
+        <rect width="1200" height="600" fill="url(#bpFine)" />
+        <rect width="1200" height="600" fill="url(#bpMaj)" />
 
-        <g stroke="currentColor" stroke-opacity="0.5" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g stroke="currentColor" stroke-opacity="0.5" stroke-width="1.4" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
           <!-- Tower crane (left margin) -->
-          <line x1="150" y1="120" x2="150" y2="470"/>
-          <line x1="172" y1="120" x2="172" y2="470"/>
-          <path d="M150 150 L172 180 M172 150 L150 180 M150 210 L172 240 M172 210 L150 240 M150 270 L172 300 M172 270 L150 300 M150 330 L172 360 M172 330 L150 360 M150 390 L172 420 M172 390 L150 420"/>
-          <line x1="161" y1="120" x2="430" y2="120"/>
-          <line x1="161" y1="108" x2="430" y2="108"/>
-          <line x1="161" y1="120" x2="80" y2="120"/>
-          <path d="M161 80 L120 108 M161 80 L300 108 M161 80 L161 108"/>
-          <path d="M180 108 L210 120 M240 108 L270 120 M300 108 L330 120 M360 108 L390 120"/>
-          <line x1="380" y1="120" x2="380" y2="220"/>
-          <path d="M374 220 q6 12 12 0"/>
+          <line x1="150" y1="120" x2="150" y2="470" />
+          <line x1="172" y1="120" x2="172" y2="470" />
+          <path
+            d="M150 150 L172 180 M172 150 L150 180 M150 210 L172 240 M172 210 L150 240 M150 270 L172 300 M172 270 L150 300 M150 330 L172 360 M172 330 L150 360 M150 390 L172 420 M172 390 L150 420" />
+          <line x1="161" y1="120" x2="430" y2="120" />
+          <line x1="161" y1="108" x2="430" y2="108" />
+          <line x1="161" y1="120" x2="80" y2="120" />
+          <path d="M161 80 L120 108 M161 80 L300 108 M161 80 L161 108" />
+          <path d="M180 108 L210 120 M240 108 L270 120 M300 108 L330 120 M360 108 L390 120" />
+          <line x1="380" y1="120" x2="380" y2="220" />
+          <path d="M374 220 q6 12 12 0" />
 
           <!-- Building elevation (right margin) -->
-          <rect x="900" y="180" width="240" height="340"/>
-          <path d="M890 180 H1150"/>
-          <path d="M900 230 H1140 M900 280 H1140 M900 330 H1140 M900 380 H1140 M900 430 H1140 M900 480 H1140"/>
-          <path d="M960 180 V520 M1020 180 V520 M1080 180 V520"/>
-          <path d="M1000 520 V492 a20 20 0 0 1 40 0 V520"/>
+          <rect x="900" y="180" width="240" height="340" />
+          <path d="M890 180 H1150" />
+          <path d="M900 230 H1140 M900 280 H1140 M900 330 H1140 M900 380 H1140 M900 430 H1140 M900 480 H1140" />
+          <path d="M960 180 V520 M1020 180 V520 M1080 180 V520" />
+          <path d="M1000 520 V492 a20 20 0 0 1 40 0 V520" />
 
           <!-- Dimension line under building -->
-          <line x1="900" y1="552" x2="1140" y2="552" marker-start="url(#bpArrow)" marker-end="url(#bpArrow)" stroke-opacity="0.3"/>
-          <path d="M900 545 V559 M1140 545 V559" stroke-opacity="0.3"/>
+          <line x1="900" y1="552" x2="1140" y2="552" marker-start="url(#bpArrow)" marker-end="url(#bpArrow)"
+            stroke-opacity="0.3" />
+          <path d="M900 545 V559 M1140 545 V559" stroke-opacity="0.3" />
 
           <!-- Section detail callout -->
-          <circle cx="690" cy="300" r="58" stroke-opacity="0.26"/>
-          <path d="M690 252 V348 M642 300 H738" stroke-opacity="0.2"/>
-          <line x1="736" y1="278" x2="892" y2="222" stroke-opacity="0.2"/>
+          <circle cx="690" cy="300" r="58" stroke-opacity="0.26" />
+          <path d="M690 252 V348 M642 300 H738" stroke-opacity="0.2" />
+          <line x1="736" y1="278" x2="892" y2="222" stroke-opacity="0.2" />
         </g>
       </svg>
     </div>
@@ -410,35 +569,65 @@
           <div class="flex items-center justify-center lg:justify-start mb-8">
             <div class="relative">
               <!-- subtle glow ring behind logo -->
-              <div class="absolute inset-0 rounded-full" style="background:radial-gradient(ellipse, rgba(249,115,22,0.15) 0%, transparent 70%); transform:scale(1.4);"></div>
-              <img src="/MARACON-WHITE.png" alt="Marapone Contracting" class="relative w-40 lg:w-48 object-contain logo-pulse" />
+              <div class="absolute inset-0 rounded-full"
+                style="background:radial-gradient(ellipse, rgba(249,115,22,0.15) 0%, transparent 70%); transform:scale(1.4);">
+              </div>
+              <img src="/MARACON-WHITE.png" alt="Marapone Contracting"
+                class="relative w-40 lg:w-48 object-contain logo-pulse" />
             </div>
           </div>
 
           <!-- Stat chips grid -->
           <div class="grid grid-cols-1 gap-2.5">
             <div class="stat-chip">
-              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg></span>
               <span class="font-mono text-xs text-fog">Toronto, Canada &amp; Rome, Italy</span>
             </div>
             <div class="stat-chip">
-              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg></span>
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 19h20" />
+                  <path d="M5 19V11h14v8" />
+                  <path d="M9 11V7a3 3 0 016 0v4" />
+                </svg></span>
               <span class="font-mono text-xs text-fog">Construction AI</span>
             </div>
             <div class="stat-chip">
-              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="3" width="15" height="13" />
+                  <path d="M16 8h4l3 4v5h-7z" />
+                  <circle cx="5.5" cy="18.5" r="2.5" />
+                  <circle cx="18.5" cy="18.5" r="2.5" />
+                </svg></span>
               <span class="font-mono text-xs text-fog">Logistics &amp; Trade AI</span>
             </div>
             <div class="stat-chip">
-              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span>
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+                </svg></span>
               <span class="font-mono text-xs text-fog">10+ years in construction &amp; logistics</span>
             </div>
             <div class="stat-chip">
-              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg></span>
               <span class="font-mono text-xs text-fog">Small project load, high-quality results</span>
             </div>
             <div class="stat-chip">
-              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span>
+              <span class="text-hiviz flex-shrink-0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
+                </svg></span>
               <span class="font-mono text-xs text-fog">Full source code — always</span>
             </div>
           </div>
@@ -447,25 +636,45 @@
         <!-- Right: Story -->
         <div class="lg:col-span-3">
           <span class="eyebrow">Who's behind this</span>
-          <h1 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk mb-8 leading-none">WE ARE<br/>MARAPONE.<br/><span class="text-hiviz">THIS IS THE DEAL.</span></h1>
+          <h1 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk mb-8 leading-none">WE
+            ARE<br />MARAPONE.<br /><span class="text-hiviz">THIS IS THE DEAL.</span></h1>
           <div class="space-y-5 text-fog leading-relaxed text-sm lg:text-base">
             <p>
-              Marapone is a B2B AI company based in Canada and Italy, operating globally. We are not a construction company. We are not a venture-backed AI startup burning investor cash on a SaaS dashboard. We are a focused, technical team that builds private AI systems and sells them directly to the businesses that need them.
+              Marapone is a B2B AI company based in Canada and Italy, operating globally. We are not a construction
+              company. We are not a venture-backed AI startup burning investor cash on a SaaS dashboard. We are a
+              focused, technical team that builds private AI systems and sells them directly to the businesses that need
+              them.
             </p>
             <p>
-              We operate across two industries because document intelligence has the same fundamental problem in both: critical information buried in hundreds of pages that no one has time to read properly. In construction, it's blueprints, RFIs, and site logs. In logistics, it's trade documents, freight invoices, and compliance filings. The problem is the same. The solution — a private, fine-tuned AI that runs on your own infrastructure — is the same.
+              We operate across two industries because document intelligence has the same fundamental problem in both:
+              critical information buried in hundreds of pages that no one has time to read properly. In construction,
+              it's blueprints, RFIs, and site logs. In logistics, it's trade documents, freight invoices, and compliance
+              filings. The problem is the same. The solution — a private, fine-tuned AI that runs on your own
+              infrastructure — is the same.
             </p>
             <p>
-              Our Canada base gives us deep roots in North American construction and trade. Our Italy presence connects us to European logistics networks and Mediterranean trade corridors. We work primarily in person — on-site with your team — which is how we actually understand the workflow before building anything around it.
+              Our Canada base gives us deep roots in North American construction and trade. Our Italy presence connects
+              us to European logistics networks and Mediterranean trade corridors. We work primarily in person — on-site
+              with your team — which is how we actually understand the workflow before building anything around it.
             </p>
             <p>
-              Marapone was founded by people with over 10 years of hands-on experience inside construction and logistics — not consultants hired to study the industries from the outside, but people who have worked in them directly. That background matters. It means we already understand the real problems companies in these industries face: the document overload, the coordination failures, the costly assumptions made because no one had time to read page 247 of a blueprint. We didn't need to guess at the pain points. We've lived them.
+              Marapone was founded by people with over 10 years of hands-on experience inside construction and logistics
+              — not consultants hired to study the industries from the outside, but people who have worked in them
+              directly. That background matters. It means we already understand the real problems companies in these
+              industries face: the document overload, the coordination failures, the costly assumptions made because no
+              one had time to read page 247 of a blueprint. We didn't need to guess at the pain points. We've lived
+              them.
             </p>
             <div class="quote-block">
-              <p class="text-chalk font-medium leading-relaxed">We don't take on many projects at once. When we're building your system, you have our full attention — not a shared project manager and a ticketing queue. Us, directly, focused entirely on your build and making sure it works perfectly.</p>
+              <p class="text-chalk font-medium leading-relaxed">We don't take on many projects at once. When we're
+                building your system, you have our full attention — not a shared project manager and a ticketing queue.
+                Us, directly, focused entirely on your build and making sure it works perfectly.</p>
             </div>
             <p>
-              We got tired of watching serious businesses get locked into expensive subscription AI that stores their sensitive documents on someone else's servers, then charges them more every month for the privilege. That model benefits the vendor, not the client. We built Marapone to flip that — you pay once, you own everything, we walk away. That's the whole business model.
+              We got tired of watching serious businesses get locked into expensive subscription AI that stores their
+              sensitive documents on someone else's servers, then charges them more every month for the privilege. That
+              model benefits the vendor, not the client. We built Marapone to flip that — you pay once, you own
+              everything, we walk away. That's the whole business model.
             </p>
           </div>
         </div>
@@ -483,8 +692,11 @@
     <div class="max-w-5xl mx-auto px-4 relative z-10">
       <div class="mb-16 reveal">
         <span class="eyebrow">Domain knowledge</span>
-        <h2 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk leading-none">BUILT FROM INSIDE <span class="text-hiviz">THE INDUSTRY</span></h2>
-        <p class="text-fog text-sm leading-relaxed mt-4 max-w-2xl">The people behind Marapone came from hands-on work inside construction and logistics — not from consulting engagements or market research. That changes what we build and how we build it.</p>
+        <h2 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk leading-none">BUILT FROM INSIDE <span
+            class="text-hiviz">THE INDUSTRY</span></h2>
+        <p class="text-fog text-sm leading-relaxed mt-4 max-w-2xl">The people behind Marapone came from hands-on work
+          inside construction and logistics — not from consulting engagements or market research. That changes what we
+          build and how we build it.</p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-4 mb-4">
@@ -495,8 +707,12 @@
             <div class="mb-4">
               <span class="font-mono text-hiviz text-xs tracking-widest">CONSTRUCTION</span>
             </div>
-            <h3 class="font-display text-xl text-chalk mb-3">Blueprint ambiguity doesn't surface until it's already cost you</h3>
-            <p class="text-fog text-sm leading-relaxed">An unclear structural detail, a spec conflict that reads fine on paper, an RFI that never got a definitive answer — these only become visible problems when trades are already mobilizing. The cost isn't just in the rework. It's in the contested change orders and schedule impact that follows. That's the failure mode our tools are built to catch before it happens.</p>
+            <h3 class="font-display text-xl text-chalk mb-3">Blueprint ambiguity doesn't surface until it's already cost
+              you</h3>
+            <p class="text-fog text-sm leading-relaxed">An unclear structural detail, a spec conflict that reads fine on
+              paper, an RFI that never got a definitive answer — these only become visible problems when trades are
+              already mobilizing. The cost isn't just in the rework. It's in the contested change orders and schedule
+              impact that follows. That's the failure mode our tools are built to catch before it happens.</p>
           </div>
         </div>
 
@@ -506,8 +722,12 @@
             <div class="mb-4">
               <span class="font-mono text-hiviz text-xs tracking-widest">LOGISTICS &amp; TRADE</span>
             </div>
-            <h3 class="font-display text-xl text-chalk mb-3">A single wrong field in a trade document can hold freight for days</h3>
-            <p class="text-fog text-sm leading-relaxed">Customs errors, invoice discrepancies, and misclassified shipments aren't edge cases — they're a routine cost of operating at volume. We've worked the trade lanes where these failures happen. The document intelligence systems we build are designed around the specific document types and error patterns that actually occur in freight and import/export operations.</p>
+            <h3 class="font-display text-xl text-chalk mb-3">A single wrong field in a trade document can hold freight
+              for days</h3>
+            <p class="text-fog text-sm leading-relaxed">Customs errors, invoice discrepancies, and misclassified
+              shipments aren't edge cases — they're a routine cost of operating at volume. We've worked the trade lanes
+              where these failures happen. The document intelligence systems we build are designed around the specific
+              document types and error patterns that actually occur in freight and import/export operations.</p>
           </div>
         </div>
 
@@ -517,8 +737,13 @@
             <div class="mb-4">
               <span class="font-mono text-hiviz text-xs tracking-widest">ON AI</span>
             </div>
-            <h3 class="font-display text-xl text-chalk mb-3">Generic AI doesn't know your industry — and that gap has real consequences</h3>
-            <p class="text-fog text-sm leading-relaxed">A model trained on general internet data doesn't understand the difference between a notice to owner and a notice of commencement, or why that distinction matters in a dispute. Industry-specific systems, trained on industry-specific documents, perform differently. That's the premise we build from — and why we fine-tune on your actual project documents, not a generic dataset.</p>
+            <h3 class="font-display text-xl text-chalk mb-3">Generic AI doesn't know your industry — and that gap has
+              real consequences</h3>
+            <p class="text-fog text-sm leading-relaxed">A model trained on general internet data doesn't understand the
+              difference between a notice to owner and a notice of commencement, or why that distinction matters in a
+              dispute. Industry-specific systems, trained on industry-specific documents, perform differently. That's
+              the premise we build from — and why we fine-tune on your actual project documents, not a generic dataset.
+            </p>
           </div>
         </div>
 
@@ -528,8 +753,12 @@
             <div class="mb-4">
               <span class="font-mono text-hiviz text-xs tracking-widest">ON OWNERSHIP</span>
             </div>
-            <h3 class="font-display text-xl text-chalk mb-3">You shouldn't need us after delivery — and that's by design</h3>
-            <p class="text-fog text-sm leading-relaxed">Most software vendors optimize for dependency. We optimize for handover. Every engagement ends with you holding the source code, the model weights, and the documentation. The goal is for the tool to run without us — because that's what real ownership looks like, and it's what we'd want if we were the client.</p>
+            <h3 class="font-display text-xl text-chalk mb-3">You shouldn't need us after delivery — and that's by design
+            </h3>
+            <p class="text-fog text-sm leading-relaxed">Most software vendors optimize for dependency. We optimize for
+              handover. Every engagement ends with you holding the source code, the model weights, and the
+              documentation. The goal is for the tool to run without us — because that's what real ownership looks like,
+              and it's what we'd want if we were the client.</p>
           </div>
         </div>
 
@@ -537,16 +766,19 @@
 
       <!-- Open for projects -->
       <div class="now-card reveal">
-        <div class="absolute -top-6 -right-4 font-display leading-none select-none pointer-events-none" style="font-size:10rem;color:rgba(249,115,22,0.07);">NOW</div>
+        <div class="absolute -top-6 -right-4 font-display leading-none select-none pointer-events-none"
+          style="font-size:10rem;color:rgba(249,115,22,0.07);">NOW</div>
         <div class="relative z-10 p-8 lg:p-10">
           <div class="flex items-center gap-3 mb-5">
-            <div class="w-9 h-9 rounded-full hiviz-gradient flex items-center justify-center flex-shrink-0" style="box-shadow:0 4px 20px rgba(249,115,22,0.4);">
+            <div class="w-9 h-9 rounded-full hiviz-gradient flex items-center justify-center flex-shrink-0"
+              style="box-shadow:0 4px 20px rgba(249,115,22,0.4);">
               <div class="pulse-dot"></div>
             </div>
             <span class="font-mono text-hiviz text-xs tracking-widest font-semibold">NOW — OPEN FOR NEW PROJECTS</span>
           </div>
           <h3 class="font-display text-2xl lg:text-4xl text-chalk mb-3">Marapone — accepting new projects</h3>
-          <p class="text-fog text-sm leading-relaxed max-w-2xl">Private AI for construction and logistics. Small project load, full attention, complete handover. Toronto &amp; Rome. Currently open for new assessments.</p>
+          <p class="text-fog text-sm leading-relaxed max-w-2xl">Private AI for construction and logistics. Small project
+            load, full attention, complete handover. Toronto &amp; Rome. Currently open for new assessments.</p>
         </div>
       </div>
 
@@ -562,8 +794,12 @@
     <div class="section-glow"></div>
     <div class="max-w-5xl mx-auto px-4 relative z-10">
       <span class="eyebrow reveal">Our domain expertise</span>
-      <h2 class="font-display text-5xl lg:text-6xl text-chalk mb-4 reveal leading-none">WHAT WE ACTUALLY <span class="text-hiviz">KNOW</span></h2>
-      <p class="text-fog leading-relaxed mb-12 max-w-2xl text-sm lg:text-base reveal reveal-d1">With over 10 years of extensive, hands-on experience across construction and logistics, the people behind Marapone understand these industries from the inside. The systems we build reflect that — they're designed around the real workflows, real documents, and real failure points that companies in these fields deal with every day.</p>
+      <h2 class="font-display text-5xl lg:text-6xl text-chalk mb-4 reveal leading-none">WHAT WE ACTUALLY <span
+          class="text-hiviz">KNOW</span></h2>
+      <p class="text-fog leading-relaxed mb-12 max-w-2xl text-sm lg:text-base reveal reveal-d1">With over 10 years of
+        extensive, hands-on experience across construction and logistics, the people behind Marapone understand these
+        industries from the inside. The systems we build reflect that — they're designed around the real workflows, real
+        documents, and real failure points that companies in these fields deal with every day.</p>
       <div class="grid md:grid-cols-2 gap-6">
 
         <!-- Construction -->
@@ -573,30 +809,40 @@
             <svg viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <g stroke-opacity="0.16">
-                  <path d="M20 10 V140 M60 10 V140 M100 10 V140 M140 10 V140 M180 10 V140"/>
-                  <path d="M0 30 H220 M0 70 H220 M0 110 H220"/>
+                  <path d="M20 10 V140 M60 10 V140 M100 10 V140 M140 10 V140 M180 10 V140" />
+                  <path d="M0 30 H220 M0 70 H220 M0 110 H220" />
                 </g>
                 <g stroke-opacity="0.5">
-                  <rect x="60" y="30" width="120" height="100"/>
-                  <path d="M60 55 H180 M60 80 H180 M60 105 H180"/>
-                  <path d="M90 30 V130 M120 30 V130 M150 30 V130"/>
-                  <path d="M60 18 H180" stroke-opacity="0.4"/>
-                  <path d="M60 13 V23 M180 13 V23" stroke-opacity="0.4"/>
-                  <circle cx="38" cy="100" r="22" stroke-opacity="0.4"/>
-                  <path d="M38 82 V118 M16 100 H60" stroke-opacity="0.28"/>
+                  <rect x="60" y="30" width="120" height="100" />
+                  <path d="M60 55 H180 M60 80 H180 M60 105 H180" />
+                  <path d="M90 30 V130 M120 30 V130 M150 30 V130" />
+                  <path d="M60 18 H180" stroke-opacity="0.4" />
+                  <path d="M60 13 V23 M180 13 V23" stroke-opacity="0.4" />
+                  <circle cx="38" cy="100" r="22" stroke-opacity="0.4" />
+                  <path d="M38 82 V118 M16 100 H60" stroke-opacity="0.28" />
                 </g>
               </g>
             </svg>
           </div>
           <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 hiviz-gradient rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow:0 6px 24px rgba(249,115,22,0.3);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19h20"/><path d="M5 19V11h14v8"/><path d="M9 11V7a3 3 0 016 0v4"/></svg>
+            <div class="w-12 h-12 hiviz-gradient rounded-xl flex items-center justify-center flex-shrink-0"
+              style="box-shadow:0 6px 24px rgba(249,115,22,0.3);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 19h20" />
+                <path d="M5 19V11h14v8" />
+                <path d="M9 11V7a3 3 0 016 0v4" />
+              </svg>
             </div>
             <h3 class="font-display text-2xl lg:text-3xl text-chalk">CONSTRUCTION</h3>
           </div>
           <div class="space-y-3 text-fog text-sm leading-relaxed">
-            <p>We understand the document lifecycle on a construction project — from IFB and tender packages through to RFIs, submittals, daily logs, change orders, and close-out packages. We know what a critical path looks like in a spec, and what an ambiguity in a structural drawing costs when you mobilize trades on wrong assumptions.</p>
-            <p>We build AI that reads these documents the way an experienced superintendent would — with context, with consequence, and with an eye for what matters in a dispute.</p>
+            <p>We understand the document lifecycle on a construction project — from IFB and tender packages through to
+              RFIs, submittals, daily logs, change orders, and close-out packages. We know what a critical path looks
+              like in a spec, and what an ambiguity in a structural drawing costs when you mobilize trades on wrong
+              assumptions.</p>
+            <p>We build AI that reads these documents the way an experienced superintendent would — with context, with
+              consequence, and with an eye for what matters in a dispute.</p>
             <div class="mt-5 pt-4 border-t border-plate">
               <p class="font-mono text-xs text-hiviz uppercase mb-2 tracking-wider">We serve</p>
               <div class="flex flex-wrap gap-1">
@@ -618,38 +864,62 @@
               <g stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <g stroke-opacity="0.4">
                   <!-- port gantry cranes -->
-                  <path d="M20 95 V40 H70 V95 M30 95 V52 M60 95 V52 M20 40 H8 M70 40 H96"/>
-                  <path d="M120 95 V32 H176 V95 M130 95 V44 M166 95 V44 M176 32 H206"/>
+                  <path d="M20 95 V40 H70 V95 M30 95 V52 M60 95 V52 M20 40 H8 M70 40 H96" />
+                  <path d="M120 95 V32 H176 V95 M130 95 V44 M166 95 V44 M176 32 H206" />
                   <!-- hull -->
-                  <path d="M28 110 L40 128 H208 L222 110 Z"/>
-                  <path d="M28 110 H222"/>
+                  <path d="M28 110 L40 128 H208 L222 110 Z" />
+                  <path d="M28 110 H222" />
                   <!-- superstructure -->
-                  <rect x="172" y="64" width="34" height="44"/>
-                  <path d="M178 72 H200 M178 80 H200 M178 88 H200" stroke-opacity="0.3"/>
-                  <line x1="189" y1="64" x2="189" y2="48"/>
-                  <rect x="184" y="40" width="10" height="10"/>
+                  <rect x="172" y="64" width="34" height="44" />
+                  <path d="M178 72 H200 M178 80 H200 M178 88 H200" stroke-opacity="0.3" />
+                  <line x1="189" y1="64" x2="189" y2="48" />
+                  <rect x="184" y="40" width="10" height="10" />
                 </g>
                 <!-- stacked containers -->
                 <g stroke-opacity="0.5">
-                  <rect x="40" y="78" width="22" height="14"/><rect x="64" y="78" width="22" height="14"/><rect x="88" y="78" width="22" height="14"/><rect x="112" y="78" width="22" height="14"/><rect x="136" y="78" width="22" height="14"/>
-                  <rect x="40" y="94" width="22" height="14"/><rect x="64" y="94" width="22" height="14"/><rect x="88" y="94" width="22" height="14"/><rect x="112" y="94" width="22" height="14"/><rect x="136" y="94" width="22" height="14"/>
-                  <rect x="52" y="62" width="22" height="14"/><rect x="76" y="62" width="22" height="14"/><rect x="100" y="62" width="22" height="14"/><rect x="124" y="62" width="22" height="14"/>
+                  <rect x="40" y="78" width="22" height="14" />
+                  <rect x="64" y="78" width="22" height="14" />
+                  <rect x="88" y="78" width="22" height="14" />
+                  <rect x="112" y="78" width="22" height="14" />
+                  <rect x="136" y="78" width="22" height="14" />
+                  <rect x="40" y="94" width="22" height="14" />
+                  <rect x="64" y="94" width="22" height="14" />
+                  <rect x="88" y="94" width="22" height="14" />
+                  <rect x="112" y="94" width="22" height="14" />
+                  <rect x="136" y="94" width="22" height="14" />
+                  <rect x="52" y="62" width="22" height="14" />
+                  <rect x="76" y="62" width="22" height="14" />
+                  <rect x="100" y="62" width="22" height="14" />
+                  <rect x="124" y="62" width="22" height="14" />
                 </g>
                 <!-- waterline -->
-                <path d="M0 128 H240" stroke-opacity="0.3"/>
-                <path d="M14 134 q6 -4 12 0 M40 134 q6 -4 12 0 M66 134 q6 -4 12 0 M92 134 q6 -4 12 0 M118 134 q6 -4 12 0 M144 134 q6 -4 12 0 M170 134 q6 -4 12 0 M196 134 q6 -4 12 0" stroke-opacity="0.18"/>
+                <path d="M0 128 H240" stroke-opacity="0.3" />
+                <path
+                  d="M14 134 q6 -4 12 0 M40 134 q6 -4 12 0 M66 134 q6 -4 12 0 M92 134 q6 -4 12 0 M118 134 q6 -4 12 0 M144 134 q6 -4 12 0 M170 134 q6 -4 12 0 M196 134 q6 -4 12 0"
+                  stroke-opacity="0.18" />
               </g>
             </svg>
           </div>
           <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 hiviz-gradient rounded-xl flex items-center justify-center flex-shrink-0" style="box-shadow:0 6px 24px rgba(249,115,22,0.3);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 4v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <div class="w-12 h-12 hiviz-gradient rounded-xl flex items-center justify-center flex-shrink-0"
+              style="box-shadow:0 6px 24px rgba(249,115,22,0.3);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" />
+                <path d="M16 8h4l3 4v5h-7z" />
+                <circle cx="5.5" cy="18.5" r="2.5" />
+                <circle cx="18.5" cy="18.5" r="2.5" />
+              </svg>
             </div>
             <h3 class="font-display text-2xl lg:text-3xl text-chalk">LOGISTICS &amp; TRADE</h3>
           </div>
           <div class="space-y-3 text-fog text-sm leading-relaxed">
-            <p>International trade generates enormous document volume — bills of lading, commercial invoices, packing lists, certificates of origin, customs entries, freight quotes, carrier confirmations. Each one is a potential error point, a compliance risk, or a billing discrepancy waiting to be discovered too late.</p>
-            <p>We build AI that processes these documents at scale, validates them against your specific trade lanes and commodity requirements, and surfaces problems before they become customs holds, chargebacks, or delivery failures.</p>
+            <p>International trade generates enormous document volume — bills of lading, commercial invoices, packing
+              lists, certificates of origin, customs entries, freight quotes, carrier confirmations. Each one is a
+              potential error point, a compliance risk, or a billing discrepancy waiting to be discovered too late.</p>
+            <p>We build AI that processes these documents at scale, validates them against your specific trade lanes and
+              commodity requirements, and surfaces problems before they become customs holds, chargebacks, or delivery
+              failures.</p>
             <div class="mt-5 pt-4 border-t border-plate">
               <p class="font-mono text-xs text-hiviz uppercase mb-2 tracking-wider">We serve</p>
               <div class="flex flex-wrap gap-1">
@@ -683,37 +953,50 @@
         <div class="value-card reveal reveal-d1">
           <span class="value-num">01</span>
           <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">RADICAL TRANSPARENCY</h3>
-          <p class="text-fog leading-relaxed text-sm relative z-10">We tell you exactly what we're building, how it works, and what it can't do. If something won't work for your use case, we'll tell you before you pay — not after. We'd rather lose the deal than waste your time.</p>
+          <p class="text-fog leading-relaxed text-sm relative z-10">We tell you exactly what we're building, how it
+            works, and what it can't do. If something won't work for your use case, we'll tell you before you pay — not
+            after. We'd rather lose the deal than waste your time.</p>
         </div>
 
         <div class="value-card reveal reveal-d2">
           <span class="value-num">02</span>
           <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">FULL HANDOVER, ALWAYS</h3>
-          <p class="text-fog leading-relaxed text-sm relative z-10">Every engagement ends with you owning everything. Source code. Model weights. Documentation. We keep nothing back. The goal is for you to never need us again after delivery — that's how we know we did the job right.</p>
+          <p class="text-fog leading-relaxed text-sm relative z-10">Every engagement ends with you owning everything.
+            Source code. Model weights. Documentation. We keep nothing back. The goal is for you to never need us again
+            after delivery — that's how we know we did the job right.</p>
         </div>
 
         <div class="value-card reveal reveal-d3">
           <span class="value-num">03</span>
           <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">QUALITY OVER QUANTITY</h3>
-          <p class="text-fog leading-relaxed text-sm relative z-10">We don't take on many projects at once. Every build gets our full attention and is completed to the highest standard before we move on. Quality isn't negotiable — every client deserves a product that works perfectly.</p>
+          <p class="text-fog leading-relaxed text-sm relative z-10">We don't take on many projects at once. Every build
+            gets our full attention and is completed to the highest standard before we move on. Quality isn't negotiable
+            — every client deserves a product that works perfectly.</p>
         </div>
 
         <div class="value-card reveal reveal-d1">
           <span class="value-num">04</span>
           <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">PRIVATE BY DEFAULT</h3>
-          <p class="text-fog leading-relaxed text-sm relative z-10">Everything we build runs on your infrastructure. Your documents stay in your network. We never store, log, or transmit your data. Privacy isn't a feature tier — it's the architecture. Every build, every time.</p>
+          <p class="text-fog leading-relaxed text-sm relative z-10">Everything we build runs on your infrastructure.
+            Your documents stay in your network. We never store, log, or transmit your data. Privacy isn't a feature
+            tier — it's the architecture. Every build, every time.</p>
         </div>
 
         <div class="value-card reveal reveal-d2">
           <span class="value-num">05</span>
           <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">NO FAKE STATS</h3>
-          <p class="text-fog leading-relaxed text-sm relative z-10">No "12+ agents deployed." No "over $5B in projects managed." No stock photo team. This is a real team doing real builds. We'll let the work speak rather than pad the pitch with numbers we can't back up.</p>
+          <p class="text-fog leading-relaxed text-sm relative z-10">No "12+ agents deployed." No "over $5B in projects
+            managed." No stock photo team. This is a real team doing real builds. We'll let the work speak rather than
+            pad the pitch with numbers we can't back up.</p>
         </div>
 
         <div class="value-card reveal reveal-d3">
           <span class="value-num">06</span>
           <h3 class="font-display text-xl text-hiviz mb-3 relative z-10">IN PERSON BY DEFAULT</h3>
-          <p class="text-fog leading-relaxed text-sm relative z-10">We deliver on-site. Most engagements involve us working directly with your team, at your location — understanding how the work actually runs before we build anything. That's how we avoid building something that looks right but doesn't fit the real workflow. Digital delivery happens only in specific, agreed circumstances.</p>
+          <p class="text-fog leading-relaxed text-sm relative z-10">We deliver on-site. Most engagements involve us
+            working directly with your team, at your location — understanding how the work actually runs before we build
+            anything. That's how we avoid building something that looks right but doesn't fit the real workflow. Digital
+            delivery happens only in specific, agreed circumstances.</p>
         </div>
 
       </div>
@@ -729,13 +1012,22 @@
     <div class="section-glow"></div>
     <div class="max-w-3xl mx-auto px-4 relative z-10">
       <span class="eyebrow reveal">Important limits to know</span>
-      <h2 class="font-display text-5xl lg:text-6xl text-chalk mb-10 reveal leading-none">WHAT WE CAN'T DO<br/><span class="text-hiviz">(AND WON'T PRETEND TO)</span></h2>
+      <h2 class="font-display text-5xl lg:text-6xl text-chalk mb-10 reveal leading-none">WHAT WE CAN'T DO<br /><span
+          class="text-hiviz">(AND WON'T PRETEND TO)</span></h2>
       <div class="space-y-5 text-fog text-sm leading-relaxed reveal reveal-d1">
-        <p>We are not a construction company and we are not a logistics operator. We don't know your specific trade, your specific lane, or your local building codes better than you do. What we know is how to build AI systems that read your documents accurately and surface information you'd otherwise miss or find too slowly.</p>
-        <p>We can't guarantee the AI catches every single issue in every document — no system can, and anyone who claims otherwise is selling you something. What we can guarantee is that it dramatically reduces what slips through, and it does it consistently, without getting tired or distracted.</p>
-        <p>We are a small, focused team — not a 24/7 support operation. We work during normal hours across our time zones. If you need around-the-clock live support with SLAs, we are not the right fit. We'd rather be honest about that upfront than write you a contract we can't honour.</p>
+        <p>We are not a construction company and we are not a logistics operator. We don't know your specific trade,
+          your specific lane, or your local building codes better than you do. What we know is how to build AI systems
+          that read your documents accurately and surface information you'd otherwise miss or find too slowly.</p>
+        <p>We can't guarantee the AI catches every single issue in every document — no system can, and anyone who claims
+          otherwise is selling you something. What we can guarantee is that it dramatically reduces what slips through,
+          and it does it consistently, without getting tired or distracted.</p>
+        <p>We are a small, focused team — not a 24/7 support operation. We work during normal hours across our time
+          zones. If you need around-the-clock live support with SLAs, we are not the right fit. We'd rather be honest
+          about that upfront than write you a contract we can't honour.</p>
         <div class="quote-block">
-          <p class="text-chalk font-medium leading-relaxed">What we are: a technically rigorous, honest, international team who will give your build genuine attention and deliver something that actually works in your real workflow. That's the whole pitch.</p>
+          <p class="text-chalk font-medium leading-relaxed">What we are: a technically rigorous, honest, international
+            team who will give your build genuine attention and deliver something that actually works in your real
+            workflow. That's the whole pitch.</p>
         </div>
       </div>
     </div>
@@ -754,40 +1046,56 @@
     <!-- Port skyline closer — crane (construction) meets container ship (logistics) -->
     <div class="skyline text-hiviz" aria-hidden="true">
       <svg viewBox="0 0 1200 140" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="currentColor" stroke-opacity="0.32" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g stroke="currentColor" stroke-opacity="0.32" stroke-width="1.4" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
           <!-- quay -->
-          <path d="M0 128 H1200"/>
+          <path d="M0 128 H1200" />
           <!-- tower crane -->
-          <path d="M128 128 V52 M150 128 V52"/>
-          <path d="M128 68 L150 84 M150 68 L128 84 M128 100 L150 116 M150 100 L128 116"/>
-          <path d="M139 44 H300 M150 54 H290 M180 44 V54 M220 44 V54 M260 44 V54"/>
-          <path d="M95 52 H128 M95 52 L139 44"/>
-          <path d="M139 26 L95 52 M139 26 L139 44 M139 26 L230 46"/>
-          <path d="M270 54 V92 M264 92 q6 10 12 0"/>
+          <path d="M128 128 V52 M150 128 V52" />
+          <path d="M128 68 L150 84 M150 68 L128 84 M128 100 L150 116 M150 100 L128 116" />
+          <path d="M139 44 H300 M150 54 H290 M180 44 V54 M220 44 V54 M260 44 V54" />
+          <path d="M95 52 H128 M95 52 L139 44" />
+          <path d="M139 26 L95 52 M139 26 L139 44 M139 26 L230 46" />
+          <path d="M270 54 V92 M264 92 q6 10 12 0" />
           <!-- gantry crane -->
-          <path d="M470 128 V44 M610 128 V44 M460 44 H710 M500 128 V60 M580 128 V60 M710 44 L752 28 M710 50 L755 38"/>
+          <path d="M470 128 V44 M610 128 V44 M460 44 H710 M500 128 V60 M580 128 V60 M710 44 L752 28 M710 50 L755 38" />
           <!-- container ship -->
-          <path d="M820 128 L842 110 H1118 L1140 128 Z"/>
-          <path d="M820 110 H1140" stroke-opacity="0.24"/>
+          <path d="M820 128 L842 110 H1118 L1140 128 Z" />
+          <path d="M820 110 H1140" stroke-opacity="0.24" />
           <g stroke-opacity="0.24">
-            <rect x="852" y="90" width="34" height="18"/><rect x="888" y="90" width="34" height="18"/><rect x="924" y="90" width="34" height="18"/><rect x="960" y="90" width="34" height="18"/><rect x="996" y="90" width="34" height="18"/><rect x="1032" y="90" width="34" height="18"/>
-            <rect x="870" y="70" width="34" height="18"/><rect x="906" y="70" width="34" height="18"/><rect x="942" y="70" width="34" height="18"/><rect x="978" y="70" width="34" height="18"/><rect x="1014" y="70" width="34" height="18"/>
+            <rect x="852" y="90" width="34" height="18" />
+            <rect x="888" y="90" width="34" height="18" />
+            <rect x="924" y="90" width="34" height="18" />
+            <rect x="960" y="90" width="34" height="18" />
+            <rect x="996" y="90" width="34" height="18" />
+            <rect x="1032" y="90" width="34" height="18" />
+            <rect x="870" y="70" width="34" height="18" />
+            <rect x="906" y="70" width="34" height="18" />
+            <rect x="942" y="70" width="34" height="18" />
+            <rect x="978" y="70" width="34" height="18" />
+            <rect x="1014" y="70" width="34" height="18" />
           </g>
-          <rect x="1066" y="72" width="44" height="36"/>
-          <line x1="1088" y1="72" x2="1088" y2="54"/>
+          <rect x="1066" y="72" width="44" height="36" />
+          <line x1="1088" y1="72" x2="1088" y2="54" />
         </g>
       </svg>
     </div>
 
     <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
       <span class="eyebrow justify-center reveal">Ready to start</span>
-      <h2 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk mb-6 reveal leading-none">WANT TO SEE IF<br/><span class="text-hiviz">WE'RE A FIT?</span></h2>
-      <p class="text-fog mb-10 leading-relaxed max-w-xl mx-auto text-sm lg:text-base reveal reveal-d1">Start with the free assessment. Send us one real document from your workflow. We'll analyze it and send back a written report + video walkthrough — no obligation, no pitch on the other end.</p>
+      <h2 class="font-display text-5xl lg:text-6xl xl:text-7xl text-chalk mb-6 reveal leading-none">WANT TO SEE
+        IF<br /><span class="text-hiviz">WE'RE A FIT?</span></h2>
+      <p class="text-fog mb-10 leading-relaxed max-w-xl mx-auto text-sm lg:text-base reveal reveal-d1">Start with the
+        free assessment. Send us one real document from your workflow. We'll analyze it and send back a written report +
+        video walkthrough — no obligation, no pitch on the other end.</p>
       <div class="reveal reveal-d2">
-        <a href="/contact" class="hiviz-gradient text-white font-semibold px-10 py-4 rounded-lg text-base inline-block hover:opacity-90 transition-opacity shadow-lg" style="box-shadow:0 8px 32px rgba(249,115,22,0.3);">
+        <a href="/contact"
+          class="hiviz-gradient text-white font-semibold px-10 py-4 rounded-lg text-base inline-block hover:opacity-90 transition-opacity shadow-lg"
+          style="box-shadow:0 8px 32px rgba(249,115,22,0.3);">
           Request Your Free 24h Assessment →
         </a>
-        <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span class="text-hiviz">general@marapone.com</span></p>
+        <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span
+            class="text-hiviz">general@marapone.com</span></p>
       </div>
     </div>
   </section>
@@ -805,17 +1113,31 @@
       </div>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <div class="flex flex-col items-center md:items-start gap-1">
-          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span
+              class="text-hiviz">PONE</span></a>
           <div class="flex gap-2 mt-1">
-            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Toronto</span>
-            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Rome</span>
+            <span
+              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
+                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Toronto</span>
+            <span
+              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
+                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Rome</span>
           </div>
           <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
             <address class="not-italic">
-              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br/>Etobicoke, ON M9B 6K5<br/>Canada</p>
+              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B
+                6K5<br />Canada</p>
             </address>
             <address class="not-italic">
-              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br/>Rome, 00193<br/>Italy</p>
+              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
             </address>
           </div>
         </div>
@@ -829,25 +1151,44 @@
           <a href="/about" class="hover:text-chalk">About</a>
           <a href="/contact" class="hover:text-chalk">Contact</a>
         </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All Rights Reserved.</p>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All
+          Rights Reserved.</p>
       </div>
       <div class="flex justify-center gap-5 mt-6 mb-1">
         <!-- Instagram -->
-        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <a href="https://www.instagram.com/maraponehq" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
         </a>
         <!-- Email -->
-        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors" aria-label="Email us">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        <a href="mailto:general@marapone.com" class="text-plate hover:text-hiviz transition-colors"
+          aria-label="Email us">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <polyline points="2,4 12,13 22,4" />
+          </svg>
         </a>
         <!-- X (coming soon) -->
         <span class="text-plate opacity-30 cursor-default" aria-label="X — coming soon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
         </span>
         <!-- WhatsApp -->
-        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                </a>
+        <a href="https://wa.me/message/SZZRHSTGUDJCL1" target="_blank" rel="noopener noreferrer"
+          class="text-plate hover:text-hiviz transition-colors" aria-label="WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
         <!-- Facebook -->
         <a href="https://www.facebook.com/share/17M1zvVDob/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
           class="text-plate hover:text-hiviz transition-colors" aria-label="Facebook">
@@ -856,8 +1197,9 @@
           </svg>
         </a>
         <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D" target="_blank" rel="noopener noreferrer"
-          class="text-plate hover:text-hiviz transition-colors" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/company/marapone-contracting-inc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BmP8NMWplTUqRm2Z8bEYCUA%3D%3D"
+          target="_blank" rel="noopener noreferrer" class="text-plate hover:text-hiviz transition-colors"
+          aria-label="LinkedIn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
             <circle cx="4" cy="4" r="2" />
@@ -877,11 +1219,15 @@
   <!-- STICKY FLOATING CTA -->
   <div id="sticky-cta" class="fixed bottom-6 right-6 z-50 hidden">
     <div class="flex items-center gap-2 hiviz-gradient rounded-lg shadow-lg shadow-black/40 overflow-hidden">
-      <a href="/contact" class="text-white font-semibold text-sm px-5 py-3 hover:opacity-90 transition-opacity whitespace-nowrap">
+      <a href="/contact"
+        class="text-white font-semibold text-sm px-5 py-3 hover:opacity-90 transition-opacity whitespace-nowrap">
         Get Free Assessment →
       </a>
-      <button id="sticky-cta-close" aria-label="Dismiss" class="pr-3 pl-1 py-3 text-white/70 hover:text-white transition-colors">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      <button id="sticky-cta-close" aria-label="Dismiss"
+        class="pr-3 pl-1 py-3 text-white/70 hover:text-white transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
     </div>
   </div>
@@ -903,12 +1249,13 @@
     })();
   </script>
   <script>
-  (function(){
-    if(typeof Lenis!=='undefined'){var lenis=new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
-    var bar=document.getElementById('nav-progress');if(bar){window.addEventListener('scroll',function(){var d=document.documentElement;var h=d.scrollHeight-d.clientHeight;if(h>0)bar.style.width=((d.scrollTop||window.scrollY)/h*100)+'%';},{passive:true});}
-    if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});}
-  })();
+    (function () {
+      if (typeof Lenis !== 'undefined') { var lenis = new Lenis({ duration: 1.2, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } }); function raf(t) { lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf); }
+      var bar = document.getElementById('nav-progress'); if (bar) { window.addEventListener('scroll', function () { var d = document.documentElement; var h = d.scrollHeight - d.clientHeight; if (h > 0) bar.style.width = ((d.scrollTop || window.scrollY) / h * 100) + '%'; }, { passive: true }); }
+      if ('IntersectionObserver' in window) { var obs = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }); document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); }); } else { document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); }); }
+    })();
   </script>
 
 </body>
+
 </html>

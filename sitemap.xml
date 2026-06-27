@@ -3,7 +3,8 @@
 
   <!-- Landing -->
   <url><loc>https://marapone.com/</loc><priority>1.0</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://marapone.com/gasperai</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/gasperai</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/gasperai</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 
   <!-- Construction -->
   <url><loc>https://marapone.com/construction/</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>

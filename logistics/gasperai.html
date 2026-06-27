@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/GN.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>GasperAI for Logistics – The Private AI Engine Inside Your Build | Marapone</title>
+  <link rel="canonical" href="https://marapone.com/logistics/gasperai" />
+  <meta name="description"
+    content="GasperAI is Marapone's own AI engine, purpose-built for logistics — BOL and packing-list checks, invoice and freight-bill audits, customs and HS codes, carrier scorecards. It powers every private system we build, deployed on your infrastructure. You own it." />
+  <meta name="keywords"
+    content="GasperAI, logistics AI, freight AI, customs AI, invoice audit, BOL check, carrier scorecard, HS code, document intelligence, private AI, owned AI, no subscription AI" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="GasperAI for Logistics – The Private AI Engine Inside Your Build" />
+  <meta property="og:description"
+    content="GasperAI is Marapone's own AI engine, purpose-built for logistics. It powers every private system we build — deployed on your infrastructure, owned by you." />
+  <meta property="og:url" content="https://marapone.com/logistics/gasperai" />
+  <meta property="og:image" content="https://marapone.com/GN.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GasperAI for Logistics – The Private AI Engine Inside Your Build" />
+  <meta name="twitter:description"
+    content="GasperAI is Marapone's own AI engine, purpose-built for logistics. It powers every private system we build — deployed on your infrastructure, owned by you." />
+  <meta name="twitter:image" content="https://marapone.com/GN.png" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-J31Z05DB01');
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <style>
+    /* ── GasperAI · Logistics theme (marine green) ── */
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .marine-gradient {
+      background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%);
+    }
+
+    .gn-text-gradient {
+      background: linear-gradient(100deg, #d8f3dc 0%, #52b788 42%, #95d5b2 60%, #d8f3dc 100%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      filter: drop-shadow(0 0 22px rgba(82, 183, 136, 0.25));
+      animation: gnSheen 7s ease-in-out infinite;
+    }
+
+    @keyframes gnSheen {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gn-text-gradient { animation: none; }
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .blueprint-grid {
+      background-image:
+        linear-gradient(rgba(82, 183, 136, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(82, 183, 136, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .gn-glow {
+      position: absolute;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(82, 183, 136, 0.16) 0%, transparent 65%);
+    }
+
+    .noise-bg {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #52b788;
+      background: rgba(82, 183, 136, 0.08);
+      border: 1px solid rgba(82, 183, 136, 0.24);
+      border-radius: 999px;
+      padding: 0.28rem 0.85rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #52b788;
+      flex-shrink: 0;
+    }
+
+    @keyframes gnPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 26px rgba(82, 183, 136, 0.35)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 38px rgba(149, 213, 178, 0.45)); }
+    }
+
+    .gn-logo-pulse { animation: gnPulse 5s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gn-logo-pulse { animation: none; }
+    }
+
+    .gn-card {
+      background: rgba(46, 46, 46, 0.55);
+      border: 1px solid rgba(82, 183, 136, 0.12);
+      border-radius: 0.85rem;
+      transition: border-color .25s ease, transform .25s ease, background .25s ease;
+    }
+
+    .gn-card:hover {
+      border-color: rgba(82, 183, 136, 0.4);
+      background: rgba(46, 46, 46, 0.85);
+      transform: translateY(-3px);
+    }
+
+    #nav-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: #52b788;
+      z-index: 9999;
+      pointer-events: none;
+      transition: width .08s linear;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+  </style>
+  <script defer src="/widgets.js"></script>
+</head>
+
+<body class="antialiased">
+  <div id="nav-progress" aria-hidden="true"></div>
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold"
+    style="background:#52b788">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/"
+          class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap"
+          aria-label="Back to industry selection">&larr; All Industries</a>
+        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span
+            style="color:#52b788">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
+        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/logistics/demo" class="hover:text-chalk transition-colors">Live Demo</a>
+        <a href="/logistics/gasperai" style="color:#52b788">GasperAI</a>
+        <a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/logistics/faq" class="hover:text-chalk transition-colors">FAQ</a>
+        <a href="/logistics/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
+          class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get
+          Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/logistics/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/logistics/demo" class="text-fog hover:text-chalk">Live Demo</a>
+      <a href="/logistics/gasperai" style="color:#52b788">GasperAI</a>
+      <a href="/logistics/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/logistics/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/logistics/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/logistics/faq" class="text-fog hover:text-chalk">FAQ</a>
+      <a href="/logistics/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
+        class="text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="relative overflow-hidden blueprint-grid">
+    <div class="gn-glow" style="top:-120px;left:50%;transform:translateX(-50%);width:760px;height:560px"></div>
+    <div class="absolute inset-0 noise-bg pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-1 h-full hidden lg:block" style="background:#52b788"></div>
+    <div class="max-w-5xl mx-auto px-4 pt-16 pb-20 lg:pt-24 lg:pb-28 relative z-10 text-center">
+      <img src="/GN.png" alt="GasperAI logo"
+        class="gn-logo-pulse w-24 h-24 lg:w-32 lg:h-32 mx-auto mb-7" width="128" height="128" />
+      <span class="eyebrow mb-6">// The engine inside your logistics build</span>
+      <h1 class="font-display text-6xl sm:text-7xl lg:text-8xl leading-none mt-6 mb-5">
+        <span class="text-chalk">MEET </span><span class="gn-text-gradient">GASPERAI</span>
+      </h1>
+      <p class="font-body text-lg lg:text-xl text-fog max-w-2xl mx-auto leading-relaxed mb-9">
+        GasperAI is our own AI engine — trained across a range of leading large language models and built from the
+        ground up for the documents that move freight: <span class="font-semibold" style="color:#74c69d">bills of
+        lading, packing lists, invoices, customs paperwork, carrier records</span>. It's the intelligence inside every
+        system Marapone builds for logistics, and it runs privately on your infrastructure — not ours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
+          class="text-white font-semibold px-8 py-4 rounded text-center text-lg hover:opacity-90 transition-opacity">
+          Get Your Free AI Assessment &rarr;
+        </a>
+        <a href="#what"
+          class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
+          What can it do?
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS GASPERAI -->
+  <section id="what" class="relative py-16 lg:py-24 border-t border-plate">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12 reveal">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// What it is</p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none mb-5">NOT A CHATBOT.<br /><span
+            class="gn-text-gradient">AN INDUSTRY ENGINE.</span></h2>
+        <p class="text-fog max-w-2xl mx-auto leading-relaxed text-sm lg:text-base">
+          Generic AI tools are trained to do a little of everything. GasperAI is trained to do one thing extremely
+          well: read, understand, and reason over the documents that move a shipment forward — bills of lading, packing
+          lists, commercial invoices, freight bills, and customs paperwork. It's the core model we fine-tune, wire into
+          a private system, and hand to you.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="gn-card p-6 reveal reveal-d1">
+          <div class="w-11 h-11 rounded-lg marine-gradient flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl text-chalk mb-2">PURPOSE-TRAINED</h3>
+          <p class="text-fog text-sm leading-relaxed">Built and tuned on real logistics documents, so it understands the
+            language, formats, and edge cases of freight — not the open web.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d2">
+          <div class="w-11 h-11 rounded-lg marine-gradient flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl text-chalk mb-2">PRIVATE BY DESIGN</h3>
+          <p class="text-fog text-sm leading-relaxed">Deployed on the infrastructure we build for you. Your shipment data
+            never trains someone else's model and never leaves your environment.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d3">
+          <div class="w-11 h-11 rounded-lg marine-gradient flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7M5 19h14" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl text-chalk mb-2">YOURS TO KEEP</h3>
+          <p class="text-fog text-sm leading-relaxed">One-time build, full source code, no subscription. GasperAI ships
+            as part of a system you own outright — desktop and, on Starter and up, in the field.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT CAN DO -->
+  <section class="relative py-16 lg:py-24 border-t border-plate bg-gunmetal overflow-hidden">
+    <div class="absolute inset-0 grid-dot opacity-20 pointer-events-none"></div>
+    <div class="gn-glow" style="bottom:-120px;right:-80px;width:520px;height:480px"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-12 reveal">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// What it can do</p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">SIX THINGS GASPERAI<br /><span
+            class="gn-text-gradient">DOES ALL DAY</span></h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="gn-card p-6 reveal reveal-d1">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Read</p>
+          <h3 class="font-display text-xl text-chalk mb-2">DOCUMENT INTELLIGENCE</h3>
+          <p class="text-fog text-sm leading-relaxed">Ingests BOLs, invoices, PDFs, spreadsheets, scans and emails, then
+            pulls out the parts that matter — references, quantities, dates, parties, line items.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d2">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Cross-check</p>
+          <h3 class="font-display text-xl text-chalk mb-2">CONFLICT &amp; GAP DETECTION</h3>
+          <p class="text-fog text-sm leading-relaxed">Compares documents against each other — BOL against packing list
+            against invoice — to surface mismatches and missing detail before they ship.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d3">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Flag</p>
+          <h3 class="font-display text-xl text-chalk mb-2">RISK &amp; AUDIT</h3>
+          <p class="text-fog text-sm leading-relaxed">Scores documents for risk and catches overcharges, duplicate
+            charges, and compliance red flags that need a human's eyes first.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d1">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Extract</p>
+          <h3 class="font-display text-xl text-chalk mb-2">STRUCTURED CAPTURE</h3>
+          <p class="text-fog text-sm leading-relaxed">Turns messy paperwork into clean, structured data your TMS can
+            use — rates, terms, and references instead of re-keying by hand.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d2">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Answer</p>
+          <h3 class="font-display text-xl text-chalk mb-2">ASK YOUR DOCUMENTS</h3>
+          <p class="text-fog text-sm leading-relaxed">Plain-language questions across an entire shipment file, with
+            answers cited back to the exact document, page, and line they came from.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d3">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Draft</p>
+          <h3 class="font-display text-xl text-chalk mb-2">DRAFT &amp; SUMMARIZE</h3>
+          <p class="text-fog text-sm leading-relaxed">Writes the first version of responses, summaries and exception
+            notes from the source documents — so your team edits instead of starting from a blank page.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IN THE LANE / TWO TRADES (logistics-led) -->
+  <section class="relative py-16 lg:py-24 border-t border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12 reveal">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Built for the lane</p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">WHAT GASPERAI<br /><span
+            class="gn-text-gradient">DOES IN THE LANE</span></h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- Logistics (primary) -->
+        <div class="gn-card p-7 lg:p-8 reveal reveal-d1" style="border-color:rgba(82,183,136,0.35)">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-marine border border-marine/30 bg-marine/5 rounded-full px-3 py-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-marine"></span>Logistics
+            </span>
+          </div>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mb-4">PURPOSE-BUILT FOR YOUR FREIGHT</h3>
+          <ul class="space-y-3 text-sm text-fog">
+            <li class="flex gap-3"><span class="mt-0.5" style="color:#52b788">&#9656;</span><span><span class="text-chalk font-semibold">BOL &amp; packing-list checks</span> — cross-checks bills of lading, packing lists, and commercial invoices before they ship.</span></li>
+            <li class="flex gap-3"><span class="mt-0.5" style="color:#52b788">&#9656;</span><span><span class="text-chalk font-semibold">Invoice &amp; freight-bill audit</span> — catches overcharges, duplicate charges, and rate mismatches automatically.</span></li>
+            <li class="flex gap-3"><span class="mt-0.5" style="color:#52b788">&#9656;</span><span><span class="text-chalk font-semibold">Customs &amp; classification</span> — reads customs paperwork, checks HS codes, and surfaces compliance gaps.</span></li>
+            <li class="flex gap-3"><span class="mt-0.5" style="color:#52b788">&#9656;</span><span><span class="text-chalk font-semibold">Carrier scorecards</span> — turns shipment history into carrier performance you can actually compare.</span></li>
+            <li class="flex gap-3"><span class="mt-0.5" style="color:#52b788">&#9656;</span><span><span class="text-chalk font-semibold">Rate &amp; document extraction</span> — pulls rates, terms, and references out of quotes and contracts into clean data.</span></li>
+          </ul>
+          <a href="/logistics/services"
+            class="inline-flex items-center gap-2 font-mono text-sm hover:opacity-80 transition-opacity mt-6" style="color:#52b788">See
+            the logistics toolset &rarr;</a>
+        </div>
+
+        <!-- Construction (secondary) -->
+        <div class="gn-card p-7 lg:p-8 reveal reveal-d2">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-hiviz border border-hiviz/30 bg-hiviz/5 rounded-full px-3 py-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiviz"></span>Also: Construction
+            </span>
+          </div>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mb-4">SAME ENGINE, OTHER SIDE</h3>
+          <p class="text-fog text-sm leading-relaxed mb-4">GasperAI is one engine that also runs the construction side of
+            Marapone — blueprint and spec review, RFI and change-order analysis, tender and scope-gap finding, daily
+            logs, and deficiency lists.</p>
+          <p class="text-fog text-sm leading-relaxed">If your business spans both worlds, the same model and the same
+            approach carry across — fine-tuned to each.</p>
+          <a href="/construction/gasperai"
+            class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-hiviz2 transition-colors mt-6">See
+            GasperAI for Construction &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESK TO LANE -->
+  <section class="relative py-16 lg:py-24 border-t border-plate bg-gunmetal overflow-hidden">
+    <div class="absolute inset-0 grid-dot opacity-20 pointer-events-none"></div>
+    <div class="gn-glow" style="top:-80px;left:-80px;width:480px;height:420px"></div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-12 reveal">
+        <p class="font-mono text-xs uppercase tracking-widest mb-3" style="color:#52b788">// Where it lives</p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">ONE ENGINE,<br /><span
+            class="gn-text-gradient">DESK TO DOCK</span></h2>
+        <p class="text-fog max-w-2xl mx-auto leading-relaxed text-sm lg:text-base mt-5">
+          GasperAI is the brain inside the private system we build for you. It runs on your desktop tools — and, on
+          <span class="font-semibold" style="color:#74c69d">Starter plans and up</span>, in your pocket through the
+          Marapone field app. The app isn't a standalone product: it's a window into the same engine and infrastructure
+          we deploy for you, with every change syncing live between the dock and the office.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="gn-card p-6 reveal reveal-d1">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Desktop</p>
+          <h3 class="font-display text-xl text-chalk mb-2">YOUR PRIVATE SYSTEM</h3>
+          <p class="text-fog text-sm leading-relaxed">The full document-intelligence suite, deployed on your
+            infrastructure and tuned to your workflows.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d2">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Field app · Starter+</p>
+          <h3 class="font-display text-xl text-chalk mb-2">SAME ENGINE, IN HAND</h3>
+          <p class="text-fog text-sm leading-relaxed">A companion app for Starter and higher plans — it connects to your
+            build, so it only works alongside the system we set up for you.</p>
+        </div>
+        <div class="gn-card p-6 reveal reveal-d3">
+          <p class="font-mono text-xs uppercase tracking-widest mb-2" style="color:#52b788">// Always</p>
+          <h3 class="font-display text-xl text-chalk mb-2">ONE LIVE RECORD</h3>
+          <p class="text-fog text-sm leading-relaxed">Edits sync between field and office in real time, so everyone is
+            working from a single source of truth.</p>
+        </div>
+      </div>
+
+      <p class="text-center text-plate text-xs font-mono mt-8 reveal">
+        The field app requires a Marapone build on a Starter tier or higher — it is not sold or used on its own.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-20 lg:py-28 border-t border-plate overflow-hidden">
+    <div class="gn-glow" style="top:50%;left:50%;transform:translate(-50%,-50%);width:760px;height:440px"></div>
+    <div class="absolute inset-0 blueprint-grid opacity-60 pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+      <img src="/GN.png" alt="" aria-hidden="true" class="w-14 h-14 mx-auto mb-6 opacity-90" />
+      <p class="font-mono text-xs uppercase tracking-widest mb-4" style="color:#52b788">// Put it to work</p>
+      <h2 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6 reveal">SEE GASPERAI<br /><span
+          class="gn-text-gradient">ON YOUR SHIPMENTS</span></h2>
+      <p class="text-fog mb-10 leading-relaxed max-w-xl mx-auto text-sm lg:text-base reveal reveal-d1">
+        Send us one real document from your work — a bill of lading, invoice, packing list, anything. We'll run it
+        through GasperAI and return a written report plus a video walkthrough within 24 hours. No obligation.
+      </p>
+      <div class="reveal reveal-d2">
+        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%);box-shadow:0 8px 32px rgba(82,183,136,0.28)"
+          class="text-white font-semibold px-10 py-4 rounded-lg text-base inline-block hover:opacity-90 transition-opacity">
+          Request Your Free 24h Assessment &rarr;
+        </a>
+        <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span style="color:#74c69d">general@marapone.com</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="/logistics/" class="flex items-center gap-2.5">
+          <img src="/GN.png" alt="" aria-hidden="true" class="w-6 h-6" />
+          <span class="font-display text-xl tracking-wider text-chalk">MARA<span style="color:#52b788">PONE</span></span>
+        </a>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/logistics/" class="hover:text-chalk">Home</a>
+          <a href="/logistics/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/logistics/gasperai" style="color:#52b788">GasperAI</a>
+          <a href="/logistics/services" class="hover:text-chalk">Services</a>
+          <a href="/logistics/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/logistics/about" class="hover:text-chalk">About</a>
+          <a href="/logistics/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All
+          Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=logistics" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=logistics" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=logistics" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=logistics" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('nav-progress');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var d = document.documentElement;
+          var h = d.scrollHeight - d.clientHeight;
+          if (h > 0) bar.style.width = ((d.scrollTop || window.scrollY) / h * 100) + '%';
+        }, { passive: true });
+      }
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+
+</html>

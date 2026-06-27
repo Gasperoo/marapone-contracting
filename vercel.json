@@ -114,8 +114,12 @@
       "destination": "/shop.html"
     },
     {
-      "source": "/gasperai",
-      "destination": "/gasperai.html"
+      "source": "/construction/gasperai",
+      "destination": "/construction/gasperai.html"
+    },
+    {
+      "source": "/logistics/gasperai",
+      "destination": "/logistics/gasperai.html"
     },
     {
       "source": "/construction",

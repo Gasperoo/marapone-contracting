@@ -81,6 +81,54 @@
         <p>"You own your AI" usually means item 3 or 4 only. A real handover covers all five.</p>
       </section>
 
+  <!-- panel agent demo (kit) -->
+  <section class="pnl-section pnl-gridlines py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 relative" style="z-index:1">
+      <div class="pnl-reveal max-w-3xl">
+        <p class="pnl-eyebrow mb-5">Own vs rent</p>
+        <h2 class="pnl-wipe font-display text-5xl sm:text-6xl text-chalk leading-[0.95]">RENT FOREVER,<br /><span class="pnl-accent">OR OWN IT ONCE.</span></h2>
+        <p class="text-fog text-base sm:text-lg leading-relaxed mt-6">Owning the model means the weights, the code and the system are yours — not a login you pay for monthly. Here&#x27;s the difference, in action.</p>
+      </div>
+      <div class="grid lg:grid-cols-5 gap-8 items-stretch mt-12">
+        <div class="lg:col-span-3 pnl-reveal">
+          <div class="pnl-term" data-pnl-auto>
+            <div class="pnl-term-bar">
+              <span class="pnl-dot" style="background:#ff5f57"></span>
+              <span class="pnl-dot" style="background:#febc2e"></span>
+              <span class="pnl-dot" style="background:#28c840"></span>
+              <span class="font-mono text-xs text-fog ml-2">marapone · agent run</span>
+            </div>
+            <div class="pnl-term-body">
+              <p class="pnl-user mb-4"><b>you &#9656;</b> <span class="pnl-type" data-text="Show me what owning the model means day to day."></span><span class="pnl-caret"></span></p>
+              <div class="pnl-steps space-y-2.5">
+                <div class="pnl-step-line" data-run="1000"><span class="ic">&#10003;</span><span class="tx">Model trained on your documents</span></div>
+                <div class="pnl-step-line" data-run="900"><span class="ic">&#10003;</span><span class="tx">Deployed on your infrastructure</span></div>
+                <div class="pnl-step-line" data-run="900"><span class="ic">&#10003;</span><span class="tx">Source code + weights handed over</span></div>
+                <div class="pnl-step-line" data-run="900"><span class="ic">&#10003;</span><span class="tx">No per-shipment fees as you grow</span></div>
+                <div class="pnl-step-line" data-run="700"><span class="ic">&#10003;</span><span class="tx">Yours to keep and change</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-2 pnl-reveal pnl-d1 grid grid-rows-2 gap-4">
+          <div class="pnl-vs-col">
+            <div class="pnl-vs-head text-fog">Renting AI</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">&#10005;</span> Monthly per-seat fees</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">&#10005;</span> Vendor owns the model</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">&#10005;</span> Price rises as you scale</div>
+          </div>
+          <div class="pnl-vs-col">
+            <div class="pnl-vs-head pnl-accent">Owning it</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">&#10003;</span> One-time build, then it&#x27;s yours</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">&#10003;</span> You own model + code</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">&#10003;</span> Volume costs nothing extra</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
       <section>
         <h2 class="text-3xl text-chalk mb-4">Layer 1: Base model weights</h2>
         <p>If the system uses an open-weight model (Llama 3.1, Qwen 2.5, Mistral), the weights are already free under their respective licences. "Owning" them means they're on disk in your environment, not pulled from someone else's API at inference time. That's a meaningful distinction — air-gap support depends on it.</p>

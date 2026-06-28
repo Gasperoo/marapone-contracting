@@ -429,45 +429,65 @@
         </p>
       </div>
 
-      <!-- iPhone app previews -->
+      <!-- iPhone app previews — CSS-drawn devices, no image asset -->
       <style>
-        .mp-phones{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:1.75rem;margin:0 auto 3.5rem}
-        .mp-figure{margin:0;width:218px;max-width:62vw}
-        .mp-phone{position:relative;width:100%;aspect-ratio:431/876;filter:drop-shadow(0 22px 42px rgba(0,0,0,.55))}
-        .mp-phone__screen{position:absolute;left:5.1%;top:2.17%;width:89.79%;height:95.66%;object-fit:cover;border-radius:11.9%/5.5%;background:#000;z-index:1}
-        .mp-phone__frame{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
-        @media(min-width:768px){.mp-phones .mp-figure:nth-child(2){transform:translateY(-30px)}}
+        .mp-phones{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:1.5rem;margin:0 auto 3.5rem}
+        .mp-figure{margin:0;width:198px;max-width:44vw}
+        .mp-phone{position:relative;width:100%;aspect-ratio:.474;border-radius:14.5%/6.9%;padding:2.4%;box-sizing:border-box;
+          background:linear-gradient(145deg,#45484d 0%,#16181b 16%,#24272b 38%,#0d0e10 62%,#1c1f22 82%,#3b3e43 100%);
+          box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.12),inset 0 0 0 3.5px rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.05),0 28px 50px -22px rgba(0,0,0,.8),0 12px 26px rgba(0,0,0,.45)}
+        .mp-phone::before,.mp-phone::after{content:"";position:absolute;z-index:-1;border-radius:2px}
+        .mp-phone::after{right:-1.1%;top:33%;width:1.4%;height:12%;background:linear-gradient(180deg,#3a3d42,#15171a)}
+        .mp-phone::before{left:-1.1%;top:25%;width:1.4%;height:7.5%;background:linear-gradient(180deg,#3a3d42,#15171a);box-shadow:0 170% 0 0 #2c2f33,0 175% 0 0 #15171a}
+        .mp-phone__inner{position:relative;width:100%;height:100%;background:#000;border-radius:12%/5.6%;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+        .mp-phone__screen{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000}
+        .mp-phone__island{position:absolute;z-index:3;top:2.4%;left:50%;transform:translateX(-50%);width:30%;aspect-ratio:2.7;background:#000;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+        @media(min-width:768px){.mp-phones .mp-figure:nth-child(even){transform:translateY(-28px)}}
       </style>
       <div class="mp-phones reveal" role="group" aria-label="Previews of the Marapone field app running on iPhone">
         <figure class="mp-figure">
           <div class="mp-phone">
-            <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto"
-              poster="/app-clips/marapone-app-audit-poster.jpg" x-webkit-airplay="deny">
-              <source src="/app-clips/marapone-app-audit.mp4" type="video/mp4" />
-            </video>
-            <img class="mp-phone__frame" src="/iphone-frame.png" alt="" aria-hidden="true" />
+            <div class="mp-phone__inner">
+              <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto" x-webkit-airplay="deny">
+                <source src="/short-1-scan-to-results.mp4" type="video/mp4" />
+              </video>
+              <div class="mp-phone__island" aria-hidden="true"></div>
+            </div>
           </div>
-          <figcaption class="text-center font-mono text-xs text-fog mt-4">// Upload &amp; audit on-site</figcaption>
+          <figcaption class="text-center font-mono text-xs text-fog mt-4">// Scan to results, on-site</figcaption>
         </figure>
         <figure class="mp-figure">
           <div class="mp-phone">
-            <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto"
-              poster="/app-clips/marapone-app-risk-poster.jpg" x-webkit-airplay="deny">
-              <source src="/app-clips/marapone-app-risk.mp4" type="video/mp4" />
-            </video>
-            <img class="mp-phone__frame" src="/iphone-frame.png" alt="" aria-hidden="true" />
+            <div class="mp-phone__inner">
+              <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto" x-webkit-airplay="deny">
+                <source src="/short-2-saved-projects.mp4" type="video/mp4" />
+              </video>
+              <div class="mp-phone__island" aria-hidden="true"></div>
+            </div>
           </div>
-          <figcaption class="text-center font-mono text-xs text-fog mt-4">// Instant OBC risk score</figcaption>
+          <figcaption class="text-center font-mono text-xs text-fog mt-4">// Your saved projects</figcaption>
         </figure>
         <figure class="mp-figure">
           <div class="mp-phone">
-            <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto"
-              poster="/app-clips/marapone-app-features-poster.jpg" x-webkit-airplay="deny">
-              <source src="/app-clips/marapone-app-features.mp4" type="video/mp4" />
-            </video>
-            <img class="mp-phone__frame" src="/iphone-frame.png" alt="" aria-hidden="true" />
+            <div class="mp-phone__inner">
+              <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto" x-webkit-airplay="deny">
+                <source src="/short-3-code-audit.mp4" type="video/mp4" />
+              </video>
+              <div class="mp-phone__island" aria-hidden="true"></div>
+            </div>
           </div>
-          <figcaption class="text-center font-mono text-xs text-fog mt-4">// The full toolset, in hand</figcaption>
+          <figcaption class="text-center font-mono text-xs text-fog mt-4">// Instant code audit</figcaption>
+        </figure>
+        <figure class="mp-figure">
+          <div class="mp-phone">
+            <div class="mp-phone__inner">
+              <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto" x-webkit-airplay="deny">
+                <source src="/short-4-gasper-ai.mp4" type="video/mp4" />
+              </video>
+              <div class="mp-phone__island" aria-hidden="true"></div>
+            </div>
+          </div>
+          <figcaption class="text-center font-mono text-xs text-fog mt-4">// GasperAI in your pocket</figcaption>
         </figure>
       </div>
 

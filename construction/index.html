@@ -1774,19 +1774,27 @@
           own.</p>
       </div>
 
-      <!-- iPhone app preview -->
+      <!-- iPhone app preview — CSS-drawn device, no image asset -->
       <style>
-        .mp-phone{position:relative;width:300px;max-width:74vw;margin:0 auto;aspect-ratio:431/876;filter:drop-shadow(0 24px 48px rgba(0,0,0,.55))}
-        .mp-phone__screen{position:absolute;left:5.1%;top:2.17%;width:89.79%;height:95.66%;object-fit:cover;border-radius:11.9%/5.5%;background:#000;z-index:1}
-        .mp-phone__frame{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+        .mp-phone{position:relative;aspect-ratio:.474;border-radius:14.5%/6.9%;padding:2.4%;box-sizing:border-box;
+          background:linear-gradient(145deg,#45484d 0%,#16181b 16%,#24272b 38%,#0d0e10 62%,#1c1f22 82%,#3b3e43 100%);
+          box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.12),inset 0 0 0 3.5px rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.05),0 30px 55px -22px rgba(0,0,0,.8),0 14px 30px rgba(0,0,0,.45)}
+        .mp-phone::before,.mp-phone::after{content:"";position:absolute;z-index:-1;border-radius:2px}
+        .mp-phone::after{right:-1.1%;top:33%;width:1.4%;height:12%;background:linear-gradient(180deg,#3a3d42,#15171a)}
+        .mp-phone::before{left:-1.1%;top:25%;width:1.4%;height:7.5%;background:linear-gradient(180deg,#3a3d42,#15171a);box-shadow:0 170% 0 0 #2c2f33,0 175% 0 0 #15171a}
+        .mp-phone__inner{position:relative;width:100%;height:100%;background:#000;border-radius:12%/5.6%;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+        .mp-phone__screen{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000}
+        .mp-phone__island{position:absolute;z-index:3;top:2.4%;left:50%;transform:translateX(-50%);width:30%;aspect-ratio:2.7;background:#000;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+        .mp-phone--solo{width:300px;max-width:74vw;margin:0 auto}
       </style>
       <div class="reveal reveal-d1" style="margin:0 auto 3.5rem">
-        <div class="mp-phone" role="img" aria-label="Preview of the Marapone field app running on iPhone">
-          <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto"
-            poster="/marapone-app-poster.jpg" x-webkit-airplay="deny">
-            <source src="/marapone-app-demo.mp4" type="video/mp4" />
-          </video>
-          <img class="mp-phone__frame" src="/iphone-frame.png" alt="" aria-hidden="true" />
+        <div class="mp-phone mp-phone--solo" role="img" aria-label="Preview of the Marapone field app running on iPhone">
+          <div class="mp-phone__inner">
+            <video class="mp-phone__screen" autoplay muted loop playsinline webkit-playsinline preload="auto" x-webkit-airplay="deny">
+              <source src="/mobile-app-walkthrough.mp4" type="video/mp4" />
+            </video>
+            <div class="mp-phone__island" aria-hidden="true"></div>
+          </div>
         </div>
         <p class="text-center font-mono text-xs text-fog mt-5">// Early build &mdash; the Marapone companion app, live on device</p>
       </div>

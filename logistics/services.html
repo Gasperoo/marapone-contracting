@@ -36,6 +36,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
   <script defer src="/widgets.js"></script>
+  <!-- panel-polish kit -->
+  <link rel="stylesheet" href="/panel-polish.css" />
+  <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
+  <script defer src="/panel-polish.js"></script>
 </head>
 <body class="antialiased">
   <div id="nav-progress" aria-hidden="true"></div>
@@ -121,6 +125,54 @@
       <p class="text-fog max-w-2xl mx-auto leading-relaxed">Seven purpose-built AI modules for freight, import/export, and trade compliance operations. Each built around your specific documents, your trade lanes, and your workflow — not a generic SaaS platform you're renting by the month.</p>
     </div>
   </section>
+
+  <!-- panel agent demo (kit) -->
+  <section class="pnl-section pnl-gridlines py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 relative" style="z-index:1">
+      <div class="pnl-reveal max-w-3xl">
+        <p class="pnl-eyebrow mb-5">Watch an agent work</p>
+        <h2 class="pnl-wipe font-display text-5xl sm:text-6xl text-chalk leading-[0.95]">FROM INBOX<br /><span class="pnl-accent">TO BOOKED.</span></h2>
+        <p class="text-fog text-base sm:text-lg leading-relaxed mt-6">Point an agent at a shipment and it audits the invoice, compares rates, scores the lane and updates your dashboard.</p>
+      </div>
+      <div class="grid lg:grid-cols-5 gap-8 items-stretch mt-12">
+        <div class="lg:col-span-3 pnl-reveal">
+          <div class="pnl-term" data-pnl-auto>
+            <div class="pnl-term-bar">
+              <span class="pnl-dot" style="background:#ff5f57"></span>
+              <span class="pnl-dot" style="background:#febc2e"></span>
+              <span class="pnl-dot" style="background:#28c840"></span>
+              <span class="font-mono text-xs text-fog ml-2">marapone · agent run</span>
+            </div>
+            <div class="pnl-term-body">
+              <p class="pnl-user mb-4"><b>you &#9656;</b> <span class="pnl-type" data-text="Audit this carrier invoice, compare rates on the lane, score the risk, and update the dashboard."></span><span class="pnl-caret"></span></p>
+              <div class="pnl-steps space-y-2.5">
+                <div class="pnl-step-line" data-run="1000"><span class="ic">&#10003;</span><span class="tx">Invoice parsed · 3 overcharges found</span></div>
+                <div class="pnl-step-line" data-run="1000"><span class="ic">&#10003;</span><span class="tx">Live rates pulled · 5 carriers</span></div>
+                <div class="pnl-step-line" data-run="1000"><span class="ic">&#10003;</span><span class="tx">Best lane: $2,180 · 26-day transit</span></div>
+                <div class="pnl-step-line" data-run="900"><span class="ic">&#10003;</span><span class="tx">Risk scan · congestion flagged</span></div>
+                <div class="pnl-step-line" data-run="700"><span class="ic">&#10003;</span><span class="tx">Dashboard updated · client notified</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-2 pnl-reveal pnl-d1 grid grid-rows-2 gap-4">
+          <div class="pnl-vs-col">
+            <div class="pnl-vs-head text-fog">Without it</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">&#10005;</span> Invoices audited by hand, if ever</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">&#10005;</span> Rates chased across portals</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">&#10005;</span> Risk found at the port</div>
+          </div>
+          <div class="pnl-vs-col">
+            <div class="pnl-vs-head pnl-accent">With Marapone</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">&#10003;</span> Every invoice audited automatically</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">&#10003;</span> Live rates in one place</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">&#10003;</span> Lane risk scored up front</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <section class="py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4 space-y-6">

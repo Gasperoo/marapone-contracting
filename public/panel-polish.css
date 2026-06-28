@@ -1,0 +1,97 @@
+/* ============================================================
+   Panel-inspired polish kit — shared across construction + logistics
+   Theme accent is driven by --pnl (set per-vertical by an inline
+   head script + panel-polish.js). Construction = #f97316, Logistics = #52b788.
+   All effects are additive / progressive-enhancement (no FOUC: JS only
+   hides elements that are already off-screen).
+   ============================================================ */
+:root { --pnl: #f97316; --pnl-2: #c2410c; }
+
+/* faint blueprint guide-lines across the whole page */
+.pnl-on body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, .015) 0 1px, transparent 1px 112px);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+/* scroll reveal (kit-driven; class added by JS to off-screen blocks only) */
+.pnl-reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1); }
+.pnl-reveal.pnl-vis { opacity: 1; transform: none; }
+.pnl-reveal.pnl-d1 { transition-delay: .08s; }
+.pnl-reveal.pnl-d2 { transition-delay: .16s; }
+.pnl-reveal.pnl-d3 { transition-delay: .24s; }
+.pnl-reveal.pnl-d4 { transition-delay: .32s; }
+
+/* card hover-lift (class added by JS to common card selectors) */
+.pnl-lift { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.pnl-lift:hover { transform: translateY(-3px); border-color: var(--pnl) !important; box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .7); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pnl-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .pnl-wipe { clip-path: none !important; opacity: 1 !important; }
+  .pnl-lift:hover { transform: none; }
+}
+
+/* ---------- primitives (used by bespoke sections) ---------- */
+.pnl-eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .28em; text-transform: uppercase; color: var(--pnl); }
+.pnl-eyebrow::before { content: ""; width: 7px; height: 7px; background: var(--pnl); border-radius: 1px; box-shadow: 0 0 10px color-mix(in srgb, var(--pnl) 70%, transparent); }
+
+.pnl-wipe { clip-path: inset(0 112% 0 0); opacity: 0; transition: clip-path 1.15s cubic-bezier(.22, 1, .36, 1), opacity .7s ease; }
+.reveal.visible .pnl-wipe, .pnl-reveal.pnl-vis .pnl-wipe, .pnl-wipe.pnl-vis, .visible .pnl-wipe { clip-path: inset(0 0 0 0); opacity: 1; }
+.pnl-accent { color: var(--pnl); }
+
+.pnl-section { position: relative; background: #101011; overflow: hidden; }
+.pnl-section .pnl-gridlines::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, .022) 0 1px, transparent 1px 104px); -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent); }
+
+/* agent terminal */
+.pnl-term { background: linear-gradient(180deg, #171718, #121213); border: 1px solid #2c2c2e; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .8), inset 0 1px 0 rgba(255, 255, 255, .04); }
+.pnl-term-bar { display: flex; align-items: center; gap: .5rem; padding: .7rem .9rem; border-bottom: 1px solid #242426; background: #141415; }
+.pnl-dot { width: 11px; height: 11px; border-radius: 50%; }
+.pnl-term-body { padding: 1.15rem 1.2rem; font-family: 'DM Mono', monospace; font-size: .84rem; line-height: 1.65; min-height: 300px; }
+.pnl-user { color: #cfcfcf; } .pnl-user b { color: #fff; font-weight: 600; }
+.pnl-caret { display: inline-block; width: .55ch; height: 1.05em; background: var(--pnl); vertical-align: -2px; animation: pnlBlink 1s steps(1) infinite; margin-left: 1px; }
+@keyframes pnlBlink { 50% { opacity: 0; } }
+.pnl-step-line { display: flex; gap: .6rem; align-items: flex-start; opacity: 0; transform: translateY(6px); transition: opacity .45s ease, transform .45s ease; color: #9a9a9d; }
+.pnl-step-line.on { opacity: 1; transform: none; }
+.pnl-step-line .ic { flex: 0 0 auto; width: 16px; height: 16px; margin-top: 3px; border-radius: 50%; display: grid; place-items: center; border: 1px solid #3a3a3c; color: #6c6c6f; font-size: 9px; }
+.pnl-step-line.done .ic { background: color-mix(in srgb, var(--pnl) 14%, transparent); border-color: var(--pnl); color: var(--pnl); }
+.pnl-step-line.done span.tx { color: #dcdcdc; }
+
+/* pressure vs solution table */
+.pnl-vs-col { border: 1px solid #242426; border-radius: 14px; background: #131314; overflow: hidden; }
+.pnl-vs-head { padding: .85rem 1.1rem; font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; border-bottom: 1px solid #242426; }
+.pnl-vs-row { display: flex; gap: .75rem; align-items: center; padding: .85rem 1.1rem; border-bottom: 1px solid #1d1d1f; color: #cfcfcf; font-size: .92rem; }
+.pnl-vs-row:last-child { border-bottom: 0; }
+.pnl-badge { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+.pnl-badge.no { background: rgba(239, 68, 68, .12); color: #ef4444; }
+.pnl-badge.yes { background: color-mix(in srgb, var(--pnl) 16%, transparent); color: var(--pnl); }
+
+/* numbered feature grid */
+.pnl-num { position: relative; padding: 1.4rem 1.3rem; border: 1px solid #242426; border-radius: 14px; background: #131314; transition: border-color .25s, transform .25s; }
+.pnl-num:hover { border-color: var(--pnl); transform: translateY(-3px); }
+.pnl-num .n { font-family: 'DM Mono', monospace; font-size: .72rem; color: #5e5e61; letter-spacing: .1em; }
+.pnl-num .tile { width: 38px; height: 38px; border-radius: 9px; background: linear-gradient(160deg, #232325, #151516); border: 1px solid #303032; display: grid; place-items: center; color: var(--pnl); margin: .4rem 0 .9rem; }
+
+/* tabbed video stepper */
+.pnl-tabs { display: flex; gap: 0; border-bottom: 1px solid #242426; flex-wrap: wrap; }
+.pnl-tab { position: relative; padding: .9rem 1.2rem .9rem 0; margin-right: 1.6rem; cursor: pointer; font-family: 'DM Mono', monospace; font-size: .8rem; color: #6c6c6f; transition: color .2s; background: none; border: 0; text-align: left; }
+.pnl-tab .tn { color: #444; margin-right: .5rem; }
+.pnl-tab:hover { color: #bbb; }
+.pnl-tab.active { color: #f4f4f4; } .pnl-tab.active .tn { color: var(--pnl); }
+.pnl-tab::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 0; background: var(--pnl); transition: width .35s cubic-bezier(.22, 1, .36, 1); }
+.pnl-tab.active::after { width: 100%; }
+.pnl-screen { position: relative; border: 1px solid #242426; border-radius: 14px; overflow: hidden; background: #0c0c0d; aspect-ratio: 16/10; }
+.pnl-screen::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3; background: linear-gradient(115deg, transparent 28%, color-mix(in srgb, var(--pnl) 10%, transparent) 46%, rgba(255, 255, 255, .05) 50%, transparent 64%); background-size: 280% 100%; animation: pnlStreak 7s linear infinite; }
+@keyframes pnlStreak { 0% { background-position: 160% 0; } 100% { background-position: -60% 0; } }
+.pnl-screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s ease; z-index: 1; }
+.pnl-screen video.active { opacity: 1; z-index: 2; }
+.pnl-slide-tx { opacity: 0; position: absolute; pointer-events: none; transition: opacity .4s ease; }
+.pnl-slide-tx.active { opacity: 1; position: relative; pointer-events: auto; }
+.pnl-prog { height: 3px; background: #1f1f21; border-radius: 3px; overflow: hidden; }
+.pnl-prog i { display: block; height: 100%; width: 0; background: var(--pnl); }
+@media (max-width: 767px) { .pnl-term-body { min-height: 260px; font-size: .78rem; } }

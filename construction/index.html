@@ -984,6 +984,258 @@
     </div>
   </section>
 
+  <!-- ============ PANEL-INSPIRED SHOWCASE ============ -->
+  <style>
+    .pnl{position:relative;background:#101011;overflow:hidden}
+    .pnl-grid-bg::before{content:"";position:absolute;inset:0;pointer-events:none;
+      background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0 1px,transparent 1px 104px);
+      mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
+    .pnl-eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:'DM Mono',monospace;font-size:.7rem;
+      letter-spacing:.28em;text-transform:uppercase;color:#f97316}
+    .pnl-eyebrow::before{content:"";width:7px;height:7px;background:#f97316;border-radius:1px;box-shadow:0 0 10px rgba(249,115,22,.7)}
+    .pnl-wipe{clip-path:inset(0 112% 0 0);opacity:0;transition:clip-path 1.15s cubic-bezier(.22,1,.36,1),opacity .7s ease}
+    .reveal.visible .pnl-wipe{clip-path:inset(0 0 0 0);opacity:1}
+    .pnl-accent{color:#f97316}
+    /* agent terminal */
+    .pnl-term{background:linear-gradient(180deg,#171718,#121213);border:1px solid #2c2c2e;border-radius:14px;overflow:hidden;
+      box-shadow:0 30px 60px -28px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.04)}
+    .pnl-term-bar{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;border-bottom:1px solid #242426;background:#141415}
+    .pnl-dot{width:11px;height:11px;border-radius:50%}
+    .pnl-term-body{padding:1.15rem 1.2rem;font-family:'DM Mono',monospace;font-size:.84rem;line-height:1.65;min-height:300px}
+    .pnl-user{color:#cfcfcf}.pnl-user b{color:#fff;font-weight:600}
+    .pnl-caret{display:inline-block;width:.55ch;height:1.05em;background:#f97316;vertical-align:-2px;animation:pnlBlink 1s steps(1) infinite;margin-left:1px}
+    @keyframes pnlBlink{50%{opacity:0}}
+    .pnl-step-line{display:flex;gap:.6rem;align-items:flex-start;opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease;color:#9a9a9d}
+    .pnl-step-line.on{opacity:1;transform:none}
+    .pnl-step-line .ic{flex:0 0 auto;width:16px;height:16px;margin-top:3px;border-radius:50%;display:grid;place-items:center;
+      border:1px solid #3a3a3c;color:#6c6c6f;font-size:9px}
+    .pnl-step-line.done .ic{background:rgba(249,115,22,.14);border-color:#f97316;color:#f97316}
+    .pnl-step-line.done span.tx{color:#dcdcdc}
+    .pnl-running{color:#f97316}
+    /* pressure vs solution */
+    .pnl-vs-col{border:1px solid #242426;border-radius:14px;background:#131314;overflow:hidden}
+    .pnl-vs-head{padding:.85rem 1.1rem;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #242426}
+    .pnl-vs-row{display:flex;gap:.75rem;align-items:center;padding:.85rem 1.1rem;border-bottom:1px solid #1d1d1f;color:#cfcfcf;font-size:.92rem}
+    .pnl-vs-row:last-child{border-bottom:0}
+    .pnl-badge{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700}
+    .pnl-badge.no{background:rgba(239,68,68,.12);color:#ef4444}
+    .pnl-badge.yes{background:rgba(249,115,22,.15);color:#f97316}
+    /* numbered grid */
+    .pnl-num{position:relative;padding:1.4rem 1.3rem;border:1px solid #242426;border-radius:14px;background:#131314;transition:border-color .25s,transform .25s}
+    .pnl-num:hover{border-color:#f97316;transform:translateY(-3px)}
+    .pnl-num .n{font-family:'DM Mono',monospace;font-size:.72rem;color:#5e5e61;letter-spacing:.1em}
+    .pnl-num .tile{width:38px;height:38px;border-radius:9px;background:linear-gradient(160deg,#232325,#151516);border:1px solid #303032;display:grid;place-items:center;color:#f97316;margin:.4rem 0 .9rem}
+    /* stepper */
+    .pnl-tabs{display:flex;gap:0;border-bottom:1px solid #242426;flex-wrap:wrap}
+    .pnl-tab{position:relative;padding:.9rem 1.2rem .9rem 0;margin-right:1.6rem;cursor:pointer;font-family:'DM Mono',monospace;font-size:.8rem;color:#6c6c6f;transition:color .2s;background:none;border:0;text-align:left}
+    .pnl-tab .tn{color:#444;margin-right:.5rem}
+    .pnl-tab:hover{color:#bbb}
+    .pnl-tab.active{color:#f4f4f4}.pnl-tab.active .tn{color:#f97316}
+    .pnl-tab::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:#f97316;transition:width .35s cubic-bezier(.22,1,.36,1)}
+    .pnl-tab.active::after{width:100%}
+    .pnl-screen{position:relative;border:1px solid #242426;border-radius:14px;overflow:hidden;background:#0c0c0d;aspect-ratio:16/10}
+    .pnl-screen::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+      background:linear-gradient(115deg,transparent 28%,rgba(249,115,22,.10) 46%,rgba(255,255,255,.05) 50%,transparent 64%);
+      background-size:280% 100%;animation:pnlStreak 7s linear infinite}
+    @keyframes pnlStreak{0%{background-position:160% 0}100%{background-position:-60% 0}}
+    .pnl-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease;z-index:1}
+    .pnl-screen video.active{opacity:1;z-index:2}
+    .pnl-slide-tx{opacity:0;position:absolute;pointer-events:none;transition:opacity .4s ease}
+    .pnl-slide-tx.active{opacity:1;position:relative;pointer-events:auto}
+    .pnl-prog{height:3px;background:#1f1f21;border-radius:3px;overflow:hidden}
+    .pnl-prog i{display:block;height:100%;width:0;background:#f97316}
+    @media(max-width:767px){.pnl-term-body{min-height:260px;font-size:.78rem}}
+  </style>
+  <section id="pnl-showcase" class="pnl pnl-grid-bg py-20 lg:py-28 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <!-- header: eyebrow + wipe headline -->
+      <div class="reveal max-w-3xl">
+        <p class="pnl-eyebrow mb-5">AI agents · construction</p>
+        <h2 class="pnl-wipe font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-chalk">
+          THEY DO THE WORK.<br /><span class="pnl-accent">YOU STAY IN CONTROL.</span>
+        </h2>
+        <p class="text-fog text-base sm:text-lg leading-relaxed mt-6">
+          Private AI agents that run your construction workflows end-to-end &mdash; takeoffs, code review, RFIs and
+          pricing &mdash; while every decision stays yours, on your infrastructure.
+        </p>
+      </div>
+
+      <!-- agent prompt demo -->
+      <div class="grid lg:grid-cols-5 gap-8 items-stretch mt-14">
+        <div class="lg:col-span-3 reveal">
+          <div class="pnl-term" id="pnl-term-c">
+            <div class="pnl-term-bar">
+              <span class="pnl-dot" style="background:#ff5f57"></span>
+              <span class="pnl-dot" style="background:#febc2e"></span>
+              <span class="pnl-dot" style="background:#28c840"></span>
+              <span class="font-mono text-xs text-fog ml-2">marapone · agent run</span>
+            </div>
+            <div class="pnl-term-body">
+              <p class="pnl-user mb-4"><b>you ▸</b> <span class="pnl-type" data-text="Audit the Westbridge Tower drawing set for OBC violations, flag tender risks, then draft the RFI and save it to the project."></span><span class="pnl-caret"></span></p>
+              <div class="pnl-steps space-y-2.5">
+                <div class="pnl-step-line" data-run="900"><span class="ic">✓</span><span class="tx">Parsing 142-page drawing set</span></div>
+                <div class="pnl-step-line" data-run="1100"><span class="ic">✓</span><span class="tx">Cross-checking against OBC 2024 + project spec</span></div>
+                <div class="pnl-step-line" data-run="900"><span class="ic">✓</span><span class="tx">3 code conflicts found · 2 scope gaps flagged</span></div>
+                <div class="pnl-step-line" data-run="1000"><span class="ic">✓</span><span class="tx">Drafting RFI-018 &rarr; ready for your review</span></div>
+                <div class="pnl-step-line" data-run="700"><span class="ic">✓</span><span class="tx">Saved to Westbridge Tower · synced to field app</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- pressure vs solution -->
+        <div class="lg:col-span-2 reveal reveal-d1 grid grid-rows-2 gap-4">
+          <div class="pnl-vs-col">
+            <div class="pnl-vs-head text-fog">The daily grind</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> RFI backlog piles up</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> Scope gaps surface too late</div>
+            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> Tender risk is guesswork</div>
+          </div>
+          <div class="pnl-vs-col">
+            <div class="pnl-vs-head text-hiviz">How Marapone handles it</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> Auto-drafted RFIs from your docs</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> Scope-gap finder on every set</div>
+            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> OBC + tender risk scored instantly</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- numbered feature grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
+        <div class="pnl-num reveal reveal-d1">
+          <p class="n">01</p>
+          <div class="tile"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7h10M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+          <h3 class="font-display text-xl text-chalk">BLUEPRINT AUDITOR</h3>
+          <p class="text-fog text-sm leading-relaxed mt-1.5">Automated takeoffs and code review straight from your drawing sets.</p>
+        </div>
+        <div class="pnl-num reveal reveal-d2">
+          <p class="n">02</p>
+          <div class="tile"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+          <h3 class="font-display text-xl text-chalk">RFI &amp; SUBMITTALS</h3>
+          <p class="text-fog text-sm leading-relaxed mt-1.5">Drafted, tracked and chased automatically &mdash; nothing slips.</p>
+        </div>
+        <div class="pnl-num reveal reveal-d3">
+          <p class="n">03</p>
+          <div class="tile"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <h3 class="font-display text-xl text-chalk">TENDER RISK SCANNER</h3>
+          <p class="text-fog text-sm leading-relaxed mt-1.5">Every bid scored for hidden risk before you commit a dollar.</p>
+        </div>
+        <div class="pnl-num reveal reveal-d4">
+          <p class="n">04</p>
+          <div class="tile"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z"/></svg></div>
+          <h3 class="font-display text-xl text-chalk">FIELD COMPANION</h3>
+          <p class="text-fog text-sm leading-relaxed mt-1.5">The same engine in your pocket, synced live with the office.</p>
+        </div>
+      </div>
+
+      <!-- See it in action: tabbed stepper -->
+      <div class="mt-20 reveal" id="pnl-step-c">
+        <p class="pnl-eyebrow mb-4">See it in action</p>
+        <div class="pnl-tabs mb-6">
+          <button class="pnl-tab active" data-i="0"><span class="tn">01</span>Takeoff &amp; Quantities</button>
+          <button class="pnl-tab" data-i="1"><span class="tn">02</span>Code Review</button>
+          <button class="pnl-tab" data-i="2"><span class="tn">03</span>Pricing &amp; Estimate</button>
+        </div>
+        <div class="grid lg:grid-cols-5 gap-7 items-center">
+          <div class="lg:col-span-3">
+            <div class="pnl-screen">
+              <video data-i="0" class="active" autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="/blueprint-auditor-takeoff.mp4" type="video/mp4" /></video>
+              <video data-i="1" muted loop playsinline webkit-playsinline preload="none"><source src="/blueprint-auditor-review.mp4" type="video/mp4" /></video>
+              <video data-i="2" muted loop playsinline webkit-playsinline preload="none"><source src="/blueprint-auditor-pricing.mp4" type="video/mp4" /></video>
+            </div>
+          </div>
+          <div class="lg:col-span-2">
+            <div class="pnl-slide-tx active" data-i="0">
+              <h3 class="font-display text-3xl text-chalk mb-3">AUTOMATED TAKEOFFS</h3>
+              <p class="text-fog leading-relaxed text-sm">Drop in a drawing set and the agent measures quantities, counts assemblies and builds a structured takeoff in seconds &mdash; no manual clicking.</p>
+            </div>
+            <div class="pnl-slide-tx" data-i="1">
+              <h3 class="font-display text-3xl text-chalk mb-3">INSTANT CODE REVIEW</h3>
+              <p class="text-fog leading-relaxed text-sm">Every sheet cross-checked against OBC and your project spec, with conflicts and scope gaps flagged and explained in plain language.</p>
+            </div>
+            <div class="pnl-slide-tx" data-i="2">
+              <h3 class="font-display text-3xl text-chalk mb-3">PRICING &amp; ESTIMATE</h3>
+              <p class="text-fog leading-relaxed text-sm">Quantities flow straight into a priced estimate using your rates &mdash; ready to review, adjust and send.</p>
+            </div>
+            <a href="/construction/contact" class="inline-flex items-center gap-2 mt-6 hiviz-gradient text-white font-semibold px-6 py-3 rounded text-sm hover:opacity-90 transition-opacity">Try it on your project →</a>
+            <p class="font-mono text-xs text-plate mt-4"><span class="pnl-cur">01</span> / 03 · No credit card</p>
+          </div>
+        </div>
+        <div class="pnl-prog mt-7"><i></i></div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var root = document.querySelector('.pnl');
+        if (!root) return;
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        /* --- agent terminal typewriter + steps --- */
+        var term = document.getElementById('pnl-term-c');
+        if (term) {
+          var typeEl = term.querySelector('.pnl-type');
+          var caret = term.querySelector('.pnl-caret');
+          var steps = Array.prototype.slice.call(term.querySelectorAll('.pnl-step-line'));
+          var full = typeEl.getAttribute('data-text');
+          var played = false;
+          function runSteps(idx) {
+            if (idx >= steps.length) { return; }
+            var s = steps[idx];
+            s.classList.add('on'); s.classList.add('running');
+            var ic = s.querySelector('.ic'); var tx = s.querySelector('.tx');
+            ic.textContent = '●'; ic.style.color = '#f97316';
+            setTimeout(function () {
+              s.classList.remove('running'); s.classList.add('done'); ic.textContent = '✓';
+              runSteps(idx + 1);
+            }, parseInt(s.getAttribute('data-run'), 10) || 800);
+          }
+          function play() {
+            if (played) return; played = true;
+            if (reduce) { typeEl.textContent = full; caret.style.display = 'none'; steps.forEach(function (s) { s.classList.add('on', 'done'); s.querySelector('.ic').textContent = '✓'; }); return; }
+            var i = 0;
+            (function tick() {
+              if (i <= full.length) { typeEl.textContent = full.slice(0, i); i++; setTimeout(tick, 22); }
+              else { setTimeout(function () { caret.style.display = 'none'; runSteps(0); }, 350); }
+            })();
+          }
+          new IntersectionObserver(function (en, o) {
+            en.forEach(function (e) { if (e.isIntersecting) { play(); o.disconnect(); } });
+          }, { threshold: 0.35 }).observe(term);
+        }
+        /* --- stepper --- */
+        var step = document.getElementById('pnl-step-c');
+        if (step) {
+          var tabs = Array.prototype.slice.call(step.querySelectorAll('.pnl-tab'));
+          var vids = Array.prototype.slice.call(step.querySelectorAll('.pnl-screen video'));
+          var txs = Array.prototype.slice.call(step.querySelectorAll('.pnl-slide-tx'));
+          var cur = step.querySelector('.pnl-cur');
+          var bar = step.querySelector('.pnl-prog i');
+          var n = tabs.length, active = 0, timer = null, DUR = 6000, t0 = 0, raf = null, inView = false;
+          function paint(ts) {
+            if (!t0) t0 = ts; var p = Math.min((ts - t0) / DUR, 1);
+            if (bar) bar.style.width = (p * 100) + '%';
+            if (p >= 1) { go((active + 1) % n, true); } else { raf = requestAnimationFrame(paint); }
+          }
+          function loop() { cancelAnimationFrame(raf); t0 = 0; if (inView && !reduce) raf = requestAnimationFrame(paint); }
+          function go(i, auto) {
+            active = i;
+            tabs.forEach(function (t, k) { t.classList.toggle('active', k === i); });
+            txs.forEach(function (t, k) { t.classList.toggle('active', k === i); });
+            vids.forEach(function (v, k) {
+              var on = k === i; v.classList.toggle('active', on);
+              if (on) { if (v.preload === 'none') { v.preload = 'auto'; v.load(); } var pr = v.play(); if (pr && pr.catch) pr.catch(function () { }); }
+              else { v.pause(); }
+            });
+            if (cur) cur.textContent = '0' + (i + 1);
+            if (!auto) loop(); else loop();
+          }
+          tabs.forEach(function (t) { t.addEventListener('click', function () { go(parseInt(t.getAttribute('data-i'), 10), false); }); });
+          new IntersectionObserver(function (en) {
+            en.forEach(function (e) { inView = e.isIntersecting; if (inView) loop(); else { cancelAnimationFrame(raf); } });
+          }, { threshold: 0.3 }).observe(step);
+        }
+      })();
+    </script>
+  </section>
+
   <!-- CONSTRUCTION AI SERVICES -->
   <section class="py-16 lg:py-24">
     <div class="max-w-6xl mx-auto px-4">

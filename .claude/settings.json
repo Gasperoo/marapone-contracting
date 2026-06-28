@@ -60,7 +60,10 @@
       "Bash(grep -rn \"499\\\\|3,500\\\\|3500\\\\|292/month\\\\|\\\\$292\" construction/pricing.html construction/faq.html logistics/pricing.html logistics/faq.html)",
       "Bash(grep -rno \"\\\\$249\\\\|\\\\$1,750\\\\|146/month\\\\|249 CAD\\\\|1,750 CAD\" construction/pricing.html construction/faq.html logistics/pricing.html logistics/faq.html)",
       "Bash(grep -n 'text-5xl text-chalk\">\\\\$249\\\\|text-5xl text-chalk\">\\\\$1,750' construction/pricing.html logistics/pricing.html)",
-      "Bash(echo \"exit:$?\")"
+      "Bash(echo \"exit:$?\")",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://panelai.app/agentic/agents\")",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=1440,3200 --virtual-time-budget=8000 --screenshot=/private/tmp/claude-501/-Users-gasper-Documents-AntiGravity-marapone-contracting/784f30b8-cd86-4955-95a0-9734eb112f3e/scratchpad/agents.png https://panelai.app/agentic/agents)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=1440,3200 --virtual-time-budget=8000 --screenshot=/private/tmp/claude-501/-Users-gasper-Documents-AntiGravity-marapone-contracting/784f30b8-cd86-4955-95a0-9734eb112f3e/scratchpad/residential.png https://panelai.app/industries/residential)"
     ],
     "additionalDirectories": [
       "/Users/gasper/Documents/AntiGravity/marapone-contracting"

@@ -183,6 +183,17 @@
 .pnl-progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--pnl); z-index: 9999; pointer-events: none; box-shadow: 0 0 10px color-mix(in srgb, var(--pnl) 65%, transparent); }
 /* magnetic cards */
 .pnl-mag { transition: transform .3s cubic-bezier(.22, 1, .36, 1); will-change: transform; }
+/* hero cursor-following glow */
+.pnl-hglow { position: absolute; top: 0; left: 0; width: 540px; height: 540px; border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity .45s ease; transform: translate(-50%, -50%); z-index: 0; background: radial-gradient(circle, color-mix(in srgb, var(--pnl) 15%, transparent), transparent 68%); filter: blur(26px); }
+/* blueprint SVG self-draws on scroll-in */
+.pnl-draw { transition: stroke-dashoffset 1.8s ease; }
+.pnl-draw.in { stroke-dashoffset: 0 !important; }
+/* sliding accent underline for footer links */
+.pnl-ul { background-image: linear-gradient(var(--pnl), var(--pnl)); background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .3s ease, color .2s ease; }
+.pnl-ul:hover { background-size: 100% 1px; }
+/* icon micro-motion on card hover */
+.service-card svg, .gn-card svg, .pnl-num .tile svg { transition: transform .3s cubic-bezier(.22, 1, .36, 1); }
+.service-card:hover svg, .gn-card:hover svg, .pnl-num:hover .tile svg { transform: translateY(-2px) scale(1.07); }
 
 @media (prefers-reduced-motion: reduce) {
   .pnl-words .w { opacity: 1 !important; transform: none !important; }
@@ -190,4 +201,6 @@
   .pnl-eyebrow::before { animation: none; }
   .pnl-marquee-track { animation: none; }
   .pnl-mag { transition: none; }
+  .pnl-draw { stroke-dashoffset: 0 !important; }
+  .service-card:hover svg, .gn-card:hover svg, .pnl-num:hover .tile svg { transform: none; }
 }

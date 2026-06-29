@@ -84,6 +84,55 @@
     } catch (e) { }
   }
 
+  /* ---------- hero cursor-following glow ---------- */
+  function initHeroGlow() {
+    try {
+      if (reduce || (window.matchMedia && window.matchMedia('(hover: none)').matches)) return;
+      [].slice.call(document.querySelectorAll('.hero-section')).forEach(function (h) {
+        if (getComputedStyle(h).position === 'static') h.style.position = 'relative';
+        var g = document.createElement('div'); g.className = 'pnl-hglow'; g.setAttribute('aria-hidden', 'true');
+        h.insertBefore(g, h.firstChild);
+        h.addEventListener('pointermove', function (e) { var r = this.getBoundingClientRect(); g.style.left = (e.clientX - r.left) + 'px'; g.style.top = (e.clientY - r.top) + 'px'; g.style.opacity = '1'; });
+        h.addEventListener('pointerleave', function () { g.style.opacity = '0'; });
+      });
+    } catch (e) { }
+  }
+
+  /* ---------- blueprint SVG draws itself in ---------- */
+  function initDraw() {
+    try {
+      if (reduce) return;
+      var els = [].slice.call(document.querySelectorAll('.hero-section svg path, .hero-section svg circle, .hero-section svg line'));
+      if (!els.length) return;
+      var pending = [];
+      els.forEach(function (el) {
+        if (el.getAttribute('stroke-dasharray')) return;          // skip intentionally-dashed strokes
+        if (el.closest('a, button')) return;                      // skip CTA icons
+        var svg = el.closest('svg'); if (!svg || svg.getBoundingClientRect().width < 48) return; // decorative (large) only
+        var len; try { len = el.getTotalLength(); } catch (e) { return; }
+        if (!len || len > 4000) return;
+        el.style.strokeDasharray = len; el.style.strokeDashoffset = len;
+        el.classList.add('pnl-draw'); pending.push(el);
+      });
+      if (!pending.length) return;
+      function go() { pending.forEach(function (el, i) { el.style.transitionDelay = (i * 0.12) + 's'; el.classList.add('in'); }); }
+      var host = pending[0].closest('svg') || pending[0];
+      if ('IntersectionObserver' in window) { new IntersectionObserver(function (en, o) { en.forEach(function (e) { if (e.isIntersecting) { go(); o.disconnect(); } }); }, { threshold: 0.1 }).observe(host); }
+      else go();
+    } catch (e) { }
+  }
+
+  /* ---------- sliding underline on footer links ---------- */
+  function initLinkUl() {
+    try {
+      [].slice.call(document.querySelectorAll('footer a')).forEach(function (a) {
+        if (a.querySelector('*')) return;                         // text links only
+        if (!a.textContent.trim()) return;
+        a.classList.add('pnl-ul');
+      });
+    } catch (e) { }
+  }
+
   /* ---------- scroll-progress bar ---------- */
   function initProgress() {
     try {
@@ -282,5 +331,5 @@
     });
   }
 
-  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initInview(); initParallax(); initWords(); initCta(); initProgress(); initMagnetic(); initAutoCount(); });
+  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initInview(); initParallax(); initWords(); initCta(); initProgress(); initMagnetic(); initAutoCount(); initHeroGlow(); initDraw(); initLinkUl(); });
 })();

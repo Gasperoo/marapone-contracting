@@ -21,6 +21,23 @@
     .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
     .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
+    /* ── Angled app-screenshot showcase (hero) ── */
+    .shot-3d { position: relative; perspective: 1800px; }
+    .shot-glow { position: absolute; inset: -12% -8% -18% 8%; z-index: 0;
+      background: radial-gradient(60% 60% at 60% 40%, rgba(249,115,22,.22), transparent 70%);
+      filter: blur(14px); pointer-events: none; }
+    .app-shot { position: relative; z-index: 1; border: 1px solid #2e2e2e; border-radius: 12px;
+      overflow: hidden; background: #111; transform-origin: left center;
+      transform: rotateY(-10deg) rotateX(3deg);
+      box-shadow: 0 35px 90px -25px rgba(0,0,0,.8), 0 0 0 1px rgba(249,115,22,.08);
+      transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+    .shot-3d:hover .app-shot { transform: rotateY(-4deg) rotateX(1deg); }
+    .app-bar { display: flex; align-items: center; gap: 7px; padding: 9px 12px;
+      background: #161616; border-bottom: 1px solid #2a2a2a; }
+    .app-bar i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .app-bar .d1 { background: #ff5f57; } .app-bar .d2 { background: #febc2e; } .app-bar .d3 { background: #28c840; }
+    .app-bar span { margin-left: 8px; font-family: 'DM Mono', monospace; font-size: 11px; color: #6b6b6b; }
+    .app-shot img { display: block; width: 100%; height: auto; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
@@ -74,16 +91,25 @@
   </nav>
 
   <!-- HERO -->
-  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24">
-    <div class="max-w-5xl mx-auto px-4">
-      <p class="font-mono text-hiviz text-sm mb-4">// For general contractors</p>
-      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">RFI BACKLOGS,<br/><span class="text-hiviz">RESOLVED OVERNIGHT.</span></h1>
-      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">You're running three sites, four trade meetings a week, and an inbox full of RFIs that are eight days old. Marapone builds private AI that triages your RFIs, writes your daily logs, and flags change-order risk before it shows up in a claim. You own the model. You own the data. No subscription.</p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Free 24h Assessment &rarr;</a>
-        <a href="/construction/discovery" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Book a 15-Min Call</a>
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-12 items-center">
+      <div>
+        <p class="font-mono text-hiviz text-sm mb-4">// For general contractors</p>
+        <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">RFI BACKLOGS,<br/><span class="text-hiviz">RESOLVED OVERNIGHT.</span></h1>
+        <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">You're running three sites, four trade meetings a week, and an inbox full of RFIs that are eight days old. Marapone builds private AI that triages your RFIs, writes your daily logs, and flags change-order risk before it shows up in a claim. You own the model. You own the data. No subscription.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Free 24h Assessment &rarr;</a>
+          <a href="/construction/discovery" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Book a 15-Min Call</a>
+        </div>
+        <p class="font-mono text-xs text-plate mt-6">Built for ICI and residential GCs running concurrent jobs · Toronto + Rome</p>
       </div>
-      <p class="font-mono text-xs text-plate mt-6">Built for ICI and residential GCs running concurrent jobs · Toronto + Rome</p>
+      <div class="shot-3d hidden lg:block">
+        <div class="shot-glow"></div>
+        <figure class="app-shot">
+          <div class="app-bar"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>marapone · RFI Intelligence</span></div>
+          <img src="/images/01_rfi_backlog.jpg" alt="Marapone RFI Backlog dashboard — open RFIs cross-referenced to blueprints with critical-path blockers flagged" width="3420" height="1986" loading="eager" decoding="async" />
+        </figure>
+      </div>
     </div>
   </section>
 

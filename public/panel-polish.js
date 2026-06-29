@@ -84,6 +84,63 @@
     } catch (e) { }
   }
 
+  /* ---------- scroll-progress bar ---------- */
+  function initProgress() {
+    try {
+      var bar = document.getElementById('nav-progress');
+      if (!bar) { bar = document.createElement('div'); bar.className = 'pnl-progress'; bar.setAttribute('aria-hidden', 'true'); document.body.appendChild(bar); }
+      var ticking = false;
+      function upd() { var h = document.documentElement; var max = (h.scrollHeight - h.clientHeight) || 1; var p = (window.pageYOffset || h.scrollTop) / max; bar.style.width = Math.max(0, Math.min(1, p)) * 100 + '%'; ticking = false; }
+      window.addEventListener('scroll', function () { if (!ticking) { requestAnimationFrame(upd); ticking = true; } }, { passive: true });
+      window.addEventListener('resize', upd, { passive: true }); upd();
+    } catch (e) { }
+  }
+
+  /* ---------- magnetic hover on role cards ---------- */
+  function initMagnetic() {
+    try {
+      if (reduce || (window.matchMedia && window.matchMedia('(hover: none)').matches)) return;
+      [].slice.call(document.querySelectorAll('.role-card')).forEach(function (el) {
+        el.classList.add('pnl-mag');
+        el.addEventListener('pointermove', function (e) {
+          var r = this.getBoundingClientRect();
+          var x = (e.clientX - r.left - r.width / 2) / r.width, y = (e.clientY - r.top - r.height / 2) / r.height;
+          this.style.transform = 'translate(' + (x * 8).toFixed(1) + 'px,' + (y * 8).toFixed(1) + 'px)';
+        });
+        el.addEventListener('pointerleave', function () { this.style.transform = ''; });
+      });
+    } catch (e) { }
+  }
+
+  /* ---------- auto count-up on display-font stat numbers ---------- */
+  function initAutoCount() {
+    try {
+      if (!('IntersectionObserver' in window)) return;
+      var re = /^(\D{0,3})(\d[\d,]*)(\D{0,4})$/;
+      function run(el) {
+        var target = parseInt(el.getAttribute('data-target'), 10), pre = el.getAttribute('data-pre') || '', suf = el.getAttribute('data-suf') || '';
+        var t0 = null, dur = 1200;
+        requestAnimationFrame(function step(ts) { if (!t0) t0 = ts; var p = Math.min((ts - t0) / dur, 1); var e = 1 - Math.pow(1 - p, 3); el.textContent = pre + Math.round(target * e).toLocaleString() + suf; if (p < 1) requestAnimationFrame(step); });
+      }
+      var io = new IntersectionObserver(function (en, o) { en.forEach(function (e) { if (e.isIntersecting) { run(e.target); o.unobserve(e.target); } }); }, { threshold: 0.5 });
+      [].slice.call(document.querySelectorAll('.font-display')).forEach(function (el) {
+        if (el.closest('nav,header,footer')) return;
+        var tn = el.tagName; if (tn === 'H1' || tn === 'H2' || tn === 'H3') return;
+        if (el.querySelector('*')) return;                       // leaf text only
+        if (el.closest('.pnl-stat') || el.hasAttribute('data-count')) return;
+        var t = el.textContent.trim(); if (t.length > 12) return;
+        var m = t.match(re); if (!m) return;
+        var val = parseInt(m[2].replace(/,/g, ''), 10);
+        if (isNaN(val) || val < 5) return;
+        if (val >= 1990 && val <= 2099) return;                  // skip likely years
+        el.setAttribute('data-pre', m[1]); el.setAttribute('data-suf', m[3]); el.setAttribute('data-target', String(val));
+        if (reduce) return;
+        el.textContent = m[1] + '0' + m[3];
+        io.observe(el);
+      });
+    } catch (e) { }
+  }
+
   /* ---------- tag primary accent CTAs for hover shine ---------- */
   function initCta() {
     try {
@@ -225,5 +282,5 @@
     });
   }
 
-  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initInview(); initParallax(); initWords(); initCta(); });
+  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initInview(); initParallax(); initWords(); initCta(); initProgress(); initMagnetic(); initAutoCount(); });
 })();

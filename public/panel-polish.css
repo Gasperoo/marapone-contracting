@@ -179,9 +179,15 @@
 .pnl-mq { display: flex; align-items: center; gap: 2.4rem; padding-right: 2.4rem; font-family: 'DM Mono', monospace; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: #86868a; white-space: nowrap; }
 .pnl-mq::before { content: ""; width: 5px; height: 5px; border-radius: 1px; background: var(--pnl); flex: 0 0 auto; }
 
+/* scroll-progress bar (created by JS when a page has no #nav-progress) */
+.pnl-progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--pnl); z-index: 9999; pointer-events: none; box-shadow: 0 0 10px color-mix(in srgb, var(--pnl) 65%, transparent); }
+/* magnetic cards */
+.pnl-mag { transition: transform .3s cubic-bezier(.22, 1, .36, 1); will-change: transform; }
+
 @media (prefers-reduced-motion: reduce) {
   .pnl-words .w { opacity: 1 !important; transform: none !important; }
   .pnl-section::after { width: 100% !important; transition: none !important; }
   .pnl-eyebrow::before { animation: none; }
   .pnl-marquee-track { animation: none; }
+  .pnl-mag { transition: none; }
 }

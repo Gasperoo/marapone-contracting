@@ -183,8 +183,6 @@
 .pnl-progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--pnl); z-index: 9999; pointer-events: none; box-shadow: 0 0 10px color-mix(in srgb, var(--pnl) 65%, transparent); }
 /* magnetic cards */
 .pnl-mag { transition: transform .3s cubic-bezier(.22, 1, .36, 1); will-change: transform; }
-/* hero cursor-following glow */
-.pnl-hglow { position: absolute; top: 0; left: 0; width: 540px; height: 540px; border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity .45s ease; transform: translate(-50%, -50%); z-index: 0; background: radial-gradient(circle, color-mix(in srgb, var(--pnl) 15%, transparent), transparent 68%); filter: blur(26px); }
 /* blueprint SVG self-draws on scroll-in */
 .pnl-draw { transition: stroke-dashoffset 1.8s ease; }
 .pnl-draw.in { stroke-dashoffset: 0 !important; }

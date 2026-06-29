@@ -84,20 +84,6 @@
     } catch (e) { }
   }
 
-  /* ---------- hero cursor-following glow ---------- */
-  function initHeroGlow() {
-    try {
-      if (reduce || (window.matchMedia && window.matchMedia('(hover: none)').matches)) return;
-      [].slice.call(document.querySelectorAll('.hero-section')).forEach(function (h) {
-        if (getComputedStyle(h).position === 'static') h.style.position = 'relative';
-        var g = document.createElement('div'); g.className = 'pnl-hglow'; g.setAttribute('aria-hidden', 'true');
-        h.insertBefore(g, h.firstChild);
-        h.addEventListener('pointermove', function (e) { var r = this.getBoundingClientRect(); g.style.left = (e.clientX - r.left) + 'px'; g.style.top = (e.clientY - r.top) + 'px'; g.style.opacity = '1'; });
-        h.addEventListener('pointerleave', function () { g.style.opacity = '0'; });
-      });
-    } catch (e) { }
-  }
-
   /* ---------- blueprint SVG draws itself in ---------- */
   function initDraw() {
     try {
@@ -331,5 +317,5 @@
     });
   }
 
-  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initInview(); initParallax(); initWords(); initCta(); initProgress(); initMagnetic(); initAutoCount(); initHeroGlow(); initDraw(); initLinkUl(); });
+  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initInview(); initParallax(); initWords(); initCta(); initProgress(); initMagnetic(); initAutoCount(); initDraw(); initLinkUl(); });
 })();

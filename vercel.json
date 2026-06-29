@@ -158,6 +158,10 @@
       "destination": "/construction/pricing.html"
     },
     {
+      "source": "/construction/blueprint-auditor",
+      "destination": "/construction/blueprint-auditor.html"
+    },
+    {
       "source": "/logistics",
       "destination": "/logistics/index.html"
     },

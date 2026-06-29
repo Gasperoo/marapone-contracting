@@ -1064,41 +1064,33 @@
         </p>
       </div>
 
-      <!-- agent prompt demo -->
-      <div class="grid lg:grid-cols-5 gap-8 items-stretch mt-14">
-        <div class="lg:col-span-3 reveal">
-          <div class="pnl-term" id="pnl-term-c">
-            <div class="pnl-term-bar">
-              <span class="pnl-dot" style="background:#ff5f57"></span>
-              <span class="pnl-dot" style="background:#febc2e"></span>
-              <span class="pnl-dot" style="background:#28c840"></span>
-              <span class="font-mono text-xs text-fog ml-2">marapone · agent run</span>
-            </div>
-            <div class="pnl-term-body">
-              <p class="pnl-user mb-4"><b>you ▸</b> <span class="pnl-type" data-text="Audit the Westbridge Tower drawing set for OBC violations, flag tender risks, then draft the RFI and save it to the project."></span><span class="pnl-caret"></span></p>
-              <div class="pnl-steps space-y-2.5">
-                <div class="pnl-step-line" data-run="900"><span class="ic">✓</span><span class="tx">Parsing 142-page drawing set</span></div>
-                <div class="pnl-step-line" data-run="1100"><span class="ic">✓</span><span class="tx">Cross-checking against OBC 2024 + project spec</span></div>
-                <div class="pnl-step-line" data-run="900"><span class="ic">✓</span><span class="tx">3 code conflicts found · 2 scope gaps flagged</span></div>
-                <div class="pnl-step-line" data-run="1000"><span class="ic">✓</span><span class="tx">Drafting RFI-018 &rarr; ready for your review</span></div>
-                <div class="pnl-step-line" data-run="700"><span class="ic">✓</span><span class="tx">Saved to Westbridge Tower · synced to field app</span></div>
-              </div>
-            </div>
+      <!-- workflow timeline -->
+      <div class="pnl-tl" style="--n:4">
+        <div class="pnl-tl-line"><i></i></div>
+        <div class="pnl-tl-steps">
+          <div class="pnl-tl-step">
+            <div class="pnl-tl-node"></div>
+            <p class="num">01</p>
+            <h3>INTAKE</h3>
+            <p class="desc">Drawings, specs and RFIs in</p>
           </div>
-        </div>
-        <!-- pressure vs solution -->
-        <div class="lg:col-span-2 reveal reveal-d1 grid grid-rows-2 gap-4">
-          <div class="pnl-vs-col">
-            <div class="pnl-vs-head text-fog">The daily grind</div>
-            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> RFI backlog piles up</div>
-            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> Scope gaps surface too late</div>
-            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> Tender risk is guesswork</div>
+          <div class="pnl-tl-step">
+            <div class="pnl-tl-node"></div>
+            <p class="num">02</p>
+            <h3>ANALYZE</h3>
+            <p class="desc">Checked against code + your spec</p>
           </div>
-          <div class="pnl-vs-col">
-            <div class="pnl-vs-head text-hiviz">How Marapone handles it</div>
-            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> Auto-drafted RFIs from your docs</div>
-            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> Scope-gap finder on every set</div>
-            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> OBC + tender risk scored instantly</div>
+          <div class="pnl-tl-step">
+            <div class="pnl-tl-node"></div>
+            <p class="num">03</p>
+            <h3>DRAFT</h3>
+            <p class="desc">RFIs, logs and takeoffs out</p>
+          </div>
+          <div class="pnl-tl-step">
+            <div class="pnl-tl-node"></div>
+            <p class="num">04</p>
+            <h3>DELIVER</h3>
+            <p class="desc">Synced to your private system</p>
           </div>
         </div>
       </div>

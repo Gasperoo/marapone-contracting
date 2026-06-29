@@ -18,7 +18,7 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       // a) authored bespoke reveals (hero wipes, custom blocks) — observe on every page
       [].slice.call(document.querySelectorAll('.pnl-reveal')).forEach(function (el) { io.observe(el); });
-      // b) on pages with no existing .reveal system, gently reveal off-screen sections too
+      // b) on pages with no existing .reveal system, reveal off-screen sections + cascade their grid children
       if (!document.querySelector('.reveal')) {
         var vh = window.innerHeight || 800;
         [].slice.call(document.querySelectorAll('section')).filter(function (s) { return !s.parentElement.closest('section'); })
@@ -27,8 +27,42 @@
             if (s.classList.contains('pnl-reveal')) return;        // already handled
             if (s.getBoundingClientRect().top < vh * 0.9) return;  // already on screen -> no flash
             s.classList.add('pnl-reveal'); io.observe(s);
+            // stagger grid children for a nicer cascade
+            [].slice.call(s.querySelectorAll('.grid')).forEach(function (g) {
+              if (g.closest('.grid') !== g) { /* allow */ }
+              var kids = [].slice.call(g.children);
+              if (kids.length >= 2 && kids.length <= 16) {
+                kids.forEach(function (k, i) {
+                  if (k.querySelector('section')) return;
+                  k.classList.add('pnl-cascade'); k.style.transitionDelay = (i * 55) + 'ms';
+                });
+              }
+            });
           });
       }
+    } catch (e) { }
+  }
+
+  /* ---------- process timeline: draw line + light nodes on scroll ---------- */
+  function initTimeline() {
+    try {
+      var tls = [].slice.call(document.querySelectorAll('.pnl-tl'));
+      if (!tls.length) return;
+      if (!('IntersectionObserver' in window) || reduce) { tls.forEach(function (t) { t.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function (en, o) { en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); o.unobserve(e.target); } }); }, { threshold: 0.25 });
+      tls.forEach(function (t) { io.observe(t); });
+    } catch (e) { }
+  }
+
+  /* ---------- subtle parallax on decorative glows ---------- */
+  function initParallax() {
+    try {
+      var els = [].slice.call(document.querySelectorAll('.hero-glow, .gn-glow, .hero-video-glow'));
+      if (!els.length || reduce) return;
+      var ticking = false;
+      function upd() { var y = window.pageYOffset || 0; els.forEach(function (el) { el.style.transform = 'translate3d(0,' + (y * 0.08) + 'px,0)'; }); ticking = false; }
+      window.addEventListener('scroll', function () { if (!ticking) { requestAnimationFrame(upd); ticking = true; } }, { passive: true });
+      upd();
     } catch (e) { }
   }
 
@@ -147,5 +181,5 @@
     });
   }
 
-  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); });
+  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initTimeline(); initParallax(); });
 })();

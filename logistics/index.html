@@ -1010,41 +1010,33 @@
         </p>
       </div>
 
-      <!-- agent prompt demo -->
-      <div class="grid lg:grid-cols-5 gap-8 items-stretch mt-14">
-        <div class="lg:col-span-3 reveal">
-          <div class="pnl-term" id="pnl-term-l">
-            <div class="pnl-term-bar">
-              <span class="pnl-dot" style="background:#ff5f57"></span>
-              <span class="pnl-dot" style="background:#febc2e"></span>
-              <span class="pnl-dot" style="background:#28c840"></span>
-              <span class="font-mono text-xs text-fog ml-2">marapone · agent run</span>
-            </div>
-            <div class="pnl-term-body">
-              <p class="pnl-user mb-4"><b>you ▸</b> <span class="pnl-type" data-text="Quote the Shanghai→Rotterdam FCL move, scan the lane for risk, update the ops dashboard and notify the client."></span><span class="pnl-caret"></span></p>
-              <div class="pnl-steps space-y-2.5">
-                <div class="pnl-step-line" data-run="900"><span class="ic">✓</span><span class="tx">Pulling live rates · 4 carriers compared</span></div>
-                <div class="pnl-step-line" data-run="1000"><span class="ic">✓</span><span class="tx">Best lane: $2,340 · 28-day transit</span></div>
-                <div class="pnl-step-line" data-run="1100"><span class="ic">✓</span><span class="tx">Risk scan: port congestion flagged at Rotterdam</span></div>
-                <div class="pnl-step-line" data-run="900"><span class="ic">✓</span><span class="tx">Dashboard updated · margin 18.4%</span></div>
-                <div class="pnl-step-line" data-run="700"><span class="ic">✓</span><span class="tx">Client notified · quote sent</span></div>
-              </div>
-            </div>
+      <!-- workflow timeline -->
+      <div class="pnl-tl" style="--n:4">
+        <div class="pnl-tl-line"><i></i></div>
+        <div class="pnl-tl-steps">
+          <div class="pnl-tl-step">
+            <div class="pnl-tl-node"></div>
+            <p class="num">01</p>
+            <h3>INTAKE</h3>
+            <p class="desc">Invoices, rate sheets and docs in</p>
           </div>
-        </div>
-        <!-- pressure vs solution -->
-        <div class="lg:col-span-2 reveal reveal-d1 grid grid-rows-2 gap-4">
-          <div class="pnl-vs-col">
-            <div class="pnl-vs-head text-fog">The daily grind</div>
-            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> Rates change by the hour</div>
-            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> Risk hides in every lane</div>
-            <div class="pnl-vs-row"><span class="pnl-badge no">✕</span> Quoting eats the day</div>
+          <div class="pnl-tl-step">
+            <div class="pnl-tl-node"></div>
+            <p class="num">02</p>
+            <h3>AUDIT</h3>
+            <p class="desc">Checked against your contracted rates</p>
           </div>
-          <div class="pnl-vs-col">
-            <div class="pnl-vs-head" style="color:#52b788">How Marapone handles it</div>
-            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> Live multi-carrier rate pulls</div>
-            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> Lane risk scored automatically</div>
-            <div class="pnl-vs-row"><span class="pnl-badge yes">✓</span> Quotes drafted in seconds</div>
+          <div class="pnl-tl-step">
+            <div class="pnl-tl-node"></div>
+            <p class="num">03</p>
+            <h3>ACT</h3>
+            <p class="desc">Quotes, audits and risk scored</p>
+          </div>
+          <div class="pnl-tl-step">
+            <div class="pnl-tl-node"></div>
+            <p class="num">04</p>
+            <h3>DELIVER</h3>
+            <p class="desc">Synced to your dashboard</p>
           </div>
         </div>
       </div>

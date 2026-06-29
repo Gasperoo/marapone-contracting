@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Auditor – Audit any blueprint instantly | Marapone</title>
+  <link rel="canonical" href="https://marapone.com/construction/blueprint-auditor" />
+  <meta name="description"
+    content="Drop a drawing and get Ontario Building Code compliance, a full material takeoff, and a costed estimate in seconds — not days of manual review. AI blueprint auditing & takeoff for construction." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Blueprint Auditor – Audit any blueprint instantly | Marapone" />
+  <meta property="og:description"
+    content="Drop a drawing and get OBC compliance, a full material takeoff, and a costed estimate in seconds — not days of manual review." />
+  <meta property="og:url" content="https://marapone.com/construction/blueprint-auditor" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blueprint Auditor – Audit any blueprint instantly | Marapone" />
+  <meta name="twitter:description"
+    content="Drop a drawing and get OBC compliance, a full material takeoff, and a costed estimate in seconds." />
+  <meta name="twitter:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    html {
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      max-width: 100%;
+    }
+
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      max-width: 100%;
+    }
+
+    .hiviz-gradient {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    }
+
+    #nav-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: #f97316;
+      z-index: 9999;
+      pointer-events: none;
+      transition: width .08s linear;
+    }
+
+    /* ── scroll-reveal (matches the rest of the site) ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+    .reveal-d4 { transition-delay: .4s; }
+
+    @media (prefers-reduced-motion:reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── Blueprint-Auditor landing kit ───────────────────────── */
+    .ba-display {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', Inter, 'DM Sans', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+    }
+
+    .ba-grad-text {
+      background: linear-gradient(100deg, #fb923c 0%, #f97316 55%, #e5650a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* dash-style eyebrow (matches the desktop app) */
+    .ba-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #f97316;
+      margin-bottom: 1.35rem;
+    }
+
+    .ba-eyebrow::before {
+      content: "";
+      width: 18px;
+      height: 1.5px;
+      background: #f97316;
+      display: inline-block;
+    }
+
+    .ba-eyebrow.muted { color: #6e6e6e; }
+    .ba-eyebrow.muted::before { background: #6e6e6e; }
+
+    /* buttons */
+    .ba-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: linear-gradient(100deg, #fb923c 0%, #f97316 55%, #e5650a 100%);
+      color: #1a0d02;
+      font-weight: 700;
+      font-size: .95rem;
+      padding: .8rem 1.4rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 28px -10px rgba(249, 115, 22, .55);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .ba-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px -10px rgba(249, 115, 22, .7);
+    }
+
+    .ba-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255, 255, 255, .04);
+      color: #f4f4f4;
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .8rem 1.4rem;
+      border-radius: 12px;
+      border: 1px solid #3c3c44;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    .ba-btn-ghost:hover {
+      border-color: #f97316;
+      background: rgba(249, 115, 22, .06);
+    }
+
+    /* upload card */
+    .ba-upload-shell {
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(150deg, rgba(249, 115, 22, .45), rgba(249, 115, 22, .05) 45%, rgba(255, 255, 255, .04));
+    }
+
+    .ba-upload-card {
+      border-radius: 15px;
+      background: #141416;
+      padding: 2.25rem 1.75rem;
+    }
+
+    .ba-dropzone {
+      border: 1.5px dashed #3c3c44;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .015);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      transition: border-color .2s ease, background .2s ease;
+      cursor: pointer;
+    }
+
+    .ba-dropzone:hover,
+    .ba-dropzone:focus-visible {
+      border-color: rgba(249, 115, 22, .6);
+      outline: none;
+    }
+
+    .ba-dropzone.dragover {
+      border-color: #f97316;
+      border-style: solid;
+      background: rgba(249, 115, 22, .07);
+    }
+
+    .ba-doc-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 1rem;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: #1a1a1d;
+      border: 1px solid #2c2c32;
+      color: #a0a0a0;
+    }
+
+    .ba-or {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: #6e6e6e;
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin: 1.1rem 0;
+    }
+
+    .ba-or::before,
+    .ba-or::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #2c2c32;
+    }
+
+    /* stat band */
+    .ba-stat {
+      border-left: 2px solid transparent;
+      border-image: linear-gradient(180deg, #fb923c, #e5650a) 1;
+      padding-left: 1.1rem;
+    }
+
+    /* process steps */
+    .ba-step-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-family: 'DM Mono', monospace;
+      font-weight: 500;
+      color: #f97316;
+      background: rgba(249, 115, 22, .1);
+      border: 1px solid rgba(249, 115, 22, .3);
+      margin-bottom: 1.1rem;
+    }
+
+    /* capability cards */
+    .ba-cap-card {
+      display: flex;
+      gap: 1rem;
+      padding: 1.4rem;
+      border-radius: 14px;
+      background: #141416;
+      border: 1px solid #2c2c32;
+      transition: border-color .25s ease, transform .25s ease, background .25s ease;
+    }
+
+    .ba-cap-card:hover {
+      border-color: rgba(249, 115, 22, .4);
+      transform: translateY(-3px);
+      background: #17171a;
+    }
+
+    .ba-cap-icon {
+      flex: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #f97316;
+      background: rgba(249, 115, 22, .1);
+      border: 1px solid rgba(249, 115, 22, .25);
+    }
+
+    .ba-cap-card .ba-cap-arrow {
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .ba-cap-card:hover .ba-cap-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* closing CTA band */
+    .ba-cta-band {
+      position: relative;
+      border-radius: 20px;
+      background: #141416;
+      border: 1px solid #2c2c32;
+      overflow: hidden;
+    }
+
+    .ba-cta-band::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, rgba(249, 115, 22, .22), transparent 60%);
+      pointer-events: none;
+    }
+  </style>
+
+  <!-- analytics & smooth-scroll (shared with the rest of the site) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"
+    integrity="sha384-4EgXbGZLDwcPHcRGrHOxm1OvumWUqhr/ts6eapdZnak6ORZAsSE3fMd0niykaSkw"
+    crossorigin="anonymous"></script>
+</head>
+
+<body class="antialiased">
+
+  <div id="nav-progress" aria-hidden="true"></div>
+
+  <!-- SKIP TO CONTENT -->
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip
+    to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/"
+          class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap"
+          aria-label="Back to industry selection">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span
+            class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
+        <a href="/construction/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/construction/blueprint-auditor" class="text-chalk">Blueprint Auditor</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/construction/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/construction/contact"
+          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
+          Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle navigation"
+        onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/blueprint-auditor" class="text-chalk">Blueprint Auditor</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free
+        Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="relative overflow-hidden border-b border-plate">
+    <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block" aria-hidden="true"></div>
+    <div class="max-w-6xl mx-auto px-4 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
+        <!-- text -->
+        <div class="reveal">
+          <span class="ba-eyebrow">Blueprint Intelligence</span>
+          <h1 class="ba-display text-5xl sm:text-6xl lg:text-7xl text-chalk mb-6">
+            Audit any blueprint.<br /><span class="ba-grad-text">Instantly.</span>
+          </h1>
+          <p class="text-fog text-lg leading-relaxed max-w-xl mb-8">
+            Drop a drawing and get Ontario Building Code compliance, a full material takeoff, and a costed estimate in
+            seconds — not days of manual review.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <button type="button" class="ba-btn-primary" data-upload-trigger>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Upload a blueprint
+            </button>
+            <a href="#capabilities" class="ba-btn-ghost">Explore solutions</a>
+          </div>
+          <p class="font-mono text-xs text-plate mt-5">PDF · DWG · DXF · IFC · images · XLSX — processed locally.</p>
+        </div>
+
+        <!-- upload card -->
+        <div class="reveal reveal-d1">
+          <div class="ba-upload-shell">
+            <div class="ba-upload-card">
+              <div class="ba-dropzone" id="ba-dropzone" role="button" tabindex="0"
+                aria-label="Drop a blueprint here or press Enter to browse files">
+                <div class="ba-doc-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <path d="M14 2v6h6M8 13h8M8 17h8M8 9h2" />
+                  </svg>
+                </div>
+                <p class="text-chalk font-semibold">Drop blueprint here</p>
+                <div class="ba-or">or</div>
+                <button type="button" class="ba-btn-ghost mx-auto" data-upload-trigger>Browse Files</button>
+                <p class="font-mono text-[0.62rem] text-plate mt-5 tracking-wide">pdf · dwg · dxf · ifc · png · jpg ·
+                  tiff · xlsx · csv</p>
+                <!-- Visual-only file input. TODO: wire onBlueprintUpload() to a real endpoint when available. -->
+                <input type="file" id="ba-file-input" class="sr-only"
+                  accept=".pdf,.dwg,.dxf,.ifc,.png,.jpg,.jpeg,.tiff,.xlsx,.csv"
+                  aria-label="Blueprint file (preview only)" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT BAND -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <span class="ba-eyebrow reveal">By the numbers</span>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mt-2">
+        <div class="ba-stat reveal">
+          <div class="ba-display text-4xl lg:text-5xl text-chalk mb-2">110+</div>
+          <p class="text-fog text-sm">Code checks run per drawing set</p>
+        </div>
+        <div class="ba-stat reveal reveal-d1">
+          <div class="ba-display text-4xl lg:text-5xl text-chalk mb-2">5</div>
+          <p class="text-fog text-sm">Rule sets — OBC, AODA, fire, zoning, green</p>
+        </div>
+        <div class="ba-stat reveal reveal-d2">
+          <div class="ba-display text-4xl lg:text-5xl text-chalk mb-2">9</div>
+          <p class="text-fog text-sm">File formats ingested, including scanned PDFs</p>
+        </div>
+        <div class="ba-stat reveal reveal-d3">
+          <div class="ba-display text-4xl lg:text-5xl text-chalk mb-2">100%</div>
+          <p class="text-fog text-sm">On-device — nothing leaves your machine</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <span class="ba-eyebrow reveal">From drawing to done</span>
+      <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4 reveal">Four steps. <span class="ba-grad-text">No
+          spreadsheets.</span></h2>
+      <p class="text-fog text-lg leading-relaxed max-w-2xl mb-12 reveal">Drop a file and the pipeline handles ingestion,
+        extraction, code audit and reporting — review the output and ship it.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="reveal">
+          <div class="ba-step-badge">01</div>
+          <h3 class="ba-display text-xl text-chalk mb-2">Drop a drawing</h3>
+          <p class="text-fog text-sm leading-relaxed">PDF, DWG/DXF, IFC, image, or schedule. Scanned sheets are OCR'd
+            automatically.</p>
+        </div>
+        <div class="reveal reveal-d1">
+          <div class="ba-step-badge">02</div>
+          <h3 class="ba-display text-xl text-chalk mb-2">Extract</h3>
+          <p class="text-fog text-sm leading-relaxed">Rooms, areas, openings and quantities are read off the geometry
+            and schedules.</p>
+        </div>
+        <div class="reveal reveal-d2">
+          <div class="ba-step-badge">03</div>
+          <h3 class="ba-display text-xl text-chalk mb-2">Audit</h3>
+          <p class="text-fog text-sm leading-relaxed">Every sheet is checked against OBC, AODA, fire, zoning and
+            green-standard rules.</p>
+        </div>
+        <div class="reveal reveal-d3">
+          <div class="ba-step-badge">04</div>
+          <h3 class="ba-display text-xl text-chalk mb-2">Report</h3>
+          <p class="text-fog text-sm leading-relaxed">Takeoff, costed estimate and a client-ready Excel/PDF audit —
+            generated for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="capabilities" class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <span class="ba-eyebrow reveal">Everything in one place</span>
+      <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4 reveal">Built for real construction work.</h2>
+      <p class="text-fog text-lg leading-relaxed max-w-2xl mb-12 reveal">A full preconstruction and project suite.</p>
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- Code compliance audit → Blueprint Review -->
+        <a href="/construction/services#svc-blueprint" class="ba-cap-card reveal">
+          <span class="ba-cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="text-chalk font-semibold mb-1 flex items-center gap-1.5">Code compliance audit <span
+                class="ba-cap-arrow text-hiviz">&rarr;</span></h3>
+            <p class="text-fog text-sm leading-relaxed">OBC, AODA, fire, zoning &amp; green-standard checks with clause
+              references.</p>
+          </div>
+        </a>
+        <!-- Takeoff → costed estimate → Live Takeoff -->
+        <a href="/construction/services#svc-takeoff" class="ba-cap-card reveal reveal-d1">
+          <span class="ba-cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23" />
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="text-chalk font-semibold mb-1 flex items-center gap-1.5">Takeoff &rarr; costed estimate <span
+                class="ba-cap-arrow text-hiviz">&rarr;</span></h3>
+            <p class="text-fog text-sm leading-relaxed">Material &amp; labor quantities priced into a full estimate and
+              client bid.</p>
+          </div>
+        </a>
+        <!-- Overlay & revision compare → Change Order Risk -->
+        <a href="/construction/services#svc-change-order" class="ba-cap-card reveal">
+          <span class="ba-cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="text-chalk font-semibold mb-1 flex items-center gap-1.5">Overlay &amp; revision compare <span
+                class="ba-cap-arrow text-hiviz">&rarr;</span></h3>
+            <p class="text-fog text-sm leading-relaxed">Pixel-diff two revisions or plan-vs-as-built — additions and
+              removals highlighted.</p>
+          </div>
+        </a>
+        <!-- Consistency & clash scan → Scope Gap -->
+        <a href="/construction/services#svc-scope-gap" class="ba-cap-card reveal reveal-d1">
+          <span class="ba-cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="text-chalk font-semibold mb-1 flex items-center gap-1.5">Consistency &amp; clash scan <span
+                class="ba-cap-arrow text-hiviz">&rarr;</span></h3>
+            <p class="text-fog text-sm leading-relaxed">Flags internal contradictions — GFA vs room sums, counts,
+              ceiling heights.</p>
+          </div>
+        </a>
+        <!-- Drawing register & RFIs → RFI Backlog -->
+        <a href="/construction/services#svc-rfi" class="ba-cap-card reveal">
+          <span class="ba-cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <path d="M14 2v6h6" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="text-chalk font-semibold mb-1 flex items-center gap-1.5">Drawing register &amp; RFIs <span
+                class="ba-cap-arrow text-hiviz">&rarr;</span></h3>
+            <p class="text-fog text-sm leading-relaxed">Revision history, submittals, RFIs, transmittals and daily logs
+              in one register.</p>
+          </div>
+        </a>
+        <!-- Solutions by industry → Not sure which helper -->
+        <a href="/construction/services#svc-not-sure" class="ba-cap-card reveal reveal-d1">
+          <span class="ba-cap-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <line x1="8" y1="12" x2="16" y2="12" />
+            </svg>
+          </span>
+          <div>
+            <h3 class="text-chalk font-semibold mb-1 flex items-center gap-1.5">Solutions by industry <span
+                class="ba-cap-arrow text-hiviz">&rarr;</span></h3>
+            <p class="text-fog text-sm leading-relaxed">Tailored workflows for owners, GCs, residential, commercial and
+              industrial.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="ba-cta-band px-6 py-14 lg:py-20 text-center reveal">
+        <div class="relative">
+          <span class="ba-eyebrow" style="justify-content:center;">Ready when you are</span>
+          <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4">Drop a blueprint to begin.</h2>
+          <p class="text-fog text-lg leading-relaxed max-w-xl mx-auto mb-8">No setup — pick a file and watch the audit
+            run.</p>
+          <div class="flex flex-wrap gap-3 justify-center">
+            <button type="button" class="ba-btn-primary" data-upload-trigger>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              Upload a blueprint
+            </button>
+            <a href="/construction/contact" class="ba-btn-ghost">Book a demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span
+              class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span
+              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
+                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Toronto</span>
+            <span
+              class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg
+                width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Rome</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B
+                6K5<br />Canada</p>
+            </address>
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
+            </address>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone Contracting Inc. All
+          Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms
+          of Service</a>
+        <a href="/privacy?from=construction"
+          class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction"
+          class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction"
+          class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // ── smooth scroll + nav progress (shared pattern) ──
+      if (typeof Lenis !== 'undefined') {
+        var lenis = new Lenis({ duration: 1.2, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+        function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+      }
+      var bar = document.getElementById('nav-progress');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var d = document.documentElement;
+          var h = d.scrollHeight - d.clientHeight;
+          if (h > 0) bar.style.width = ((d.scrollTop || window.scrollY) / h * 100) + '%';
+        }, { passive: true });
+      }
+
+      // ── scroll reveal ──
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+
+      // ── Blueprint upload (VISUAL ONLY — no backend wired) ──
+      var fileInput = document.getElementById('ba-file-input');
+      var dropzone = document.getElementById('ba-dropzone');
+
+      // TODO: replace this stub with a real handler (POST to the audit API,
+      // redirect into the app, or open sign-up) once the endpoint is known.
+      function onBlueprintUpload(file) {
+        if (!file) return;
+        /* intentionally a no-op for the marketing landing */
+        console.info('[blueprint-auditor] file selected (preview only):', file.name);
+      }
+
+      function openPicker() { if (fileInput) fileInput.click(); }
+
+      document.querySelectorAll('[data-upload-trigger]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) { e.preventDefault(); openPicker(); });
+      });
+
+      if (dropzone) {
+        dropzone.addEventListener('click', function (e) {
+          // avoid double-trigger when the inner Browse button is clicked
+          if (e.target.closest('[data-upload-trigger]')) return;
+          openPicker();
+        });
+        dropzone.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPicker(); }
+        });
+        ['dragenter', 'dragover'].forEach(function (evt) {
+          dropzone.addEventListener(evt, function (e) {
+            e.preventDefault(); e.stopPropagation();
+            dropzone.classList.add('dragover');
+          });
+        });
+        ['dragleave', 'drop'].forEach(function (evt) {
+          dropzone.addEventListener(evt, function (e) {
+            e.preventDefault(); e.stopPropagation();
+            dropzone.classList.remove('dragover');
+          });
+        });
+        dropzone.addEventListener('drop', function (e) {
+          var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+          onBlueprintUpload(f);
+        });
+      }
+
+      if (fileInput) {
+        fileInput.addEventListener('change', function () {
+          onBlueprintUpload(fileInput.files && fileInput.files[0]);
+          fileInput.value = '';
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>

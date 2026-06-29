@@ -122,6 +122,9 @@
       }
     }
 
+    /* keep anchored service sections clear of the sticky nav */
+    [id^="svc-"] { scroll-margin-top: 90px; }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -392,7 +395,7 @@
     <div class="max-w-6xl mx-auto px-4 space-y-6">
 
       <!-- UC01 — Blueprint Review -->
-      <div class="service-card p-8 reveal">
+      <div id="svc-blueprint" class="service-card p-8 reveal">
         <div class="grid lg:grid-cols-5 gap-8 items-center">
           <div class="lg:col-span-3">
             <span class="eyebrow">Blueprint Review</span>
@@ -423,7 +426,7 @@
       </div>
 
       <!-- UC02 — RFI Backlog -->
-      <div class="service-card p-8 reveal">
+      <div id="svc-rfi" class="service-card p-8 reveal">
         <div class="grid lg:grid-cols-5 gap-8 items-center">
           <div class="lg:col-span-3">
             <span class="eyebrow">RFI Management</span>
@@ -471,7 +474,7 @@
       </div>
 
       <!-- UC04 — Scope Gap Finder -->
-      <div class="service-card p-8 reveal">
+      <div id="svc-scope-gap" class="service-card p-8 reveal">
         <div class="grid lg:grid-cols-5 gap-8 items-center">
           <div class="lg:col-span-3">
             <span class="eyebrow">Subcontractor Scoping</span>
@@ -519,7 +522,7 @@
       </div>
 
       <!-- UC06 — Change Order Risk Tracker -->
-      <div class="service-card p-8 reveal">
+      <div id="svc-change-order" class="service-card p-8 reveal">
         <div class="grid lg:grid-cols-5 gap-8 items-center">
           <div class="lg:col-span-3">
             <span class="eyebrow">Change Order Management</span>
@@ -591,7 +594,7 @@
       </div>
 
       <!-- UC09 — Live Takeoff & Cost Intelligence (featured) -->
-      <div class="service-card p-8 reveal" style="border-color:rgba(249,115,22,0.3);background:rgba(249,115,22,0.04);">
+      <div id="svc-takeoff" class="service-card p-8 reveal" style="border-color:rgba(249,115,22,0.3);background:rgba(249,115,22,0.04);">
         <div
           style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,115,22,0.5),transparent);pointer-events:none;">
         </div>
@@ -965,7 +968,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="bg-gunmetal border-t border-plate py-16 lg:py-20">
+  <section id="svc-not-sure" class="bg-gunmetal border-t border-plate py-16 lg:py-20">
     <div class="max-w-3xl mx-auto px-4 text-center reveal">
       <p class="font-mono text-xs uppercase tracking-wider mb-4" style="color:#f97316">// Start with a free 24h
         assessment</p>

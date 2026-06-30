@@ -21,17 +21,17 @@
     .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
     .tape-line { border-left: 3px solid #f97316; padding-left: 1rem; }
-    /* ── Angled app-screenshot showcase (hero) ── */
-    .shot-3d { position: relative; perspective: 1800px; }
-    .shot-glow { position: absolute; inset: -12% -8% -18% 8%; z-index: 0;
-      background: radial-gradient(60% 60% at 60% 40%, rgba(249,115,22,.22), transparent 70%);
-      filter: blur(14px); pointer-events: none; }
-    .app-shot { position: relative; z-index: 1; border: 1px solid #2e2e2e; border-radius: 12px;
-      overflow: hidden; background: #111; transform-origin: left center;
-      transform: rotateY(-10deg) rotateX(3deg);
-      box-shadow: 0 35px 90px -25px rgba(0,0,0,.8), 0 0 0 1px rgba(249,115,22,.08);
-      transition: transform .55s cubic-bezier(.2,.7,.2,1); }
-    .shot-3d:hover .app-shot { transform: rotateY(-4deg) rotateX(1deg); }
+    /* ── Clean app-screenshot showcase (hero) ── */
+    .shot-3d { position: relative; }
+    .shot-glow { position: absolute; inset: -8% -6% -12% -6%; z-index: 0;
+      background: radial-gradient(55% 55% at 50% 35%, rgba(249,115,22,.13), transparent 72%);
+      filter: blur(30px); pointer-events: none; }
+    .app-shot { position: relative; z-index: 1; border: 1px solid #2a2a2a; border-radius: 14px;
+      overflow: hidden; background: #111;
+      box-shadow: 0 24px 60px -30px rgba(0,0,0,.7), inset 0 1px 0 0 rgba(255,255,255,.04);
+      transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease; }
+    .shot-3d:hover .app-shot { transform: translateY(-5px);
+      box-shadow: 0 34px 74px -30px rgba(0,0,0,.78), inset 0 1px 0 0 rgba(255,255,255,.05); }
     .app-bar { display: flex; align-items: center; gap: 7px; padding: 9px 12px;
       background: #161616; border-bottom: 1px solid #2a2a2a; }
     .app-bar i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }

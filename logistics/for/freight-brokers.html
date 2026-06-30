@@ -21,6 +21,23 @@
     .marine-gradient { background: linear-gradient(135deg, #52b788 0%, #2d6a4f 100%); }
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
     .tape-line { border-left: 3px solid #52b788; padding-left: 1rem; }
+    /* ── Clean app-screenshot showcase (hero) ── */
+    .shot-3d { position: relative; }
+    .shot-glow { position: absolute; inset: -8% -6% -12% -6%; z-index: 0;
+      background: radial-gradient(55% 55% at 50% 35%, rgba(82,183,136,.16), transparent 72%);
+      filter: blur(30px); pointer-events: none; }
+    .app-shot { position: relative; z-index: 1; border: 1px solid #2a2a2a; border-radius: 14px;
+      overflow: hidden; background: #111;
+      box-shadow: 0 24px 60px -30px rgba(0,0,0,.7), inset 0 1px 0 0 rgba(255,255,255,.04);
+      transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease; }
+    .shot-3d:hover .app-shot { transform: translateY(-5px);
+      box-shadow: 0 34px 74px -30px rgba(0,0,0,.78), inset 0 1px 0 0 rgba(255,255,255,.05); }
+    .app-bar { display: flex; align-items: center; gap: 7px; padding: 9px 12px;
+      background: #161616; border-bottom: 1px solid #2a2a2a; }
+    .app-bar i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .app-bar .d1 { background: #ff5f57; } .app-bar .d2 { background: #febc2e; } .app-bar .d3 { background: #28c840; }
+    .app-bar span { margin-left: 8px; font-family: 'DM Mono', monospace; font-size: 11px; color: #6b6b6b; }
+    .app-shot img { display: block; width: 100%; height: auto; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
@@ -74,8 +91,9 @@
   </nav>
 
   <!-- HERO -->
-  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24">
-    <div class="max-w-5xl mx-auto px-4">
+  <section id="main-content" class="grid-dot border-b border-plate py-16 lg:py-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-14 items-center">
+      <div>
       <p class="font-mono text-sm mb-4" style="color:#52b788">// For freight brokers</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">RFQ IN, QUOTE OUT,<br/><span style="color:#52b788">BEFORE THE COMPETITION OPENS THE EMAIL.</span></h1>
       <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">You're juggling 40 carriers, four spreadsheets of rates that go stale every week, and a stack of invoices nobody had time to audit. Marapone builds private AI that quotes from your live carrier panel in seconds, audits every invoice against the original quote, and tracks carrier performance without anyone updating a scorecard. You own the model. You own the data. No subscription.</p>
@@ -84,6 +102,14 @@
         <a href="/logistics/discovery" class="border border-plate text-chalk font-semibold px-6 py-3 rounded transition-colors" onmouseover="this.style.borderColor='#52b788';this.style.color='#52b788'" onmouseout="this.style.borderColor='';this.style.color=''">Book a 15-Min Call</a>
       </div>
       <p class="font-mono text-xs text-plate mt-6">Built for asset-light brokers and brokerage desks running multi-modal North America and trans-Atlantic lanes · Toronto + Rome</p>
+      </div>
+      <div class="shot-3d hidden lg:block lg:w-[116%] lg:-mr-[10%] xl:w-[122%] xl:-mr-[14%]">
+        <div class="shot-glow"></div>
+        <figure class="app-shot">
+          <div class="app-bar"><i class="d1"></i><i class="d2"></i><i class="d3"></i><span>marapone · Instant Freight Quote</span></div>
+          <img src="/images/ls-hero-brokers.jpg" alt="Marapone Instant Freight Quote — live carrier-panel rates with an all-in landed cost breakdown" width="2200" height="1381" loading="eager" decoding="async" />
+        </figure>
+      </div>
     </div>
   </section>
 

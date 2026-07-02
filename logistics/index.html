@@ -488,10 +488,45 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Marapone",
+    "legalName": "Marapone Contracting Inc.",
     "description": "Private AI systems for logistics and trade companies. One-time price, full source code handover. Deployed on your infrastructure.",
     "url": "https://marapone.com/logistics",
+    "logo": "https://marapone.com/MaraponeLogo-1.png",
+    "email": "general@marapone.com",
+    "priceRange": "$1,500 – $15,000",
     "serviceArea": { "@type": "GeoShape", "description": "Canada, Italy, and global remote" },
-    "priceRange": "$1,500 – $15,000"
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "general@marapone.com",
+      "areaServed": ["CA", "IT", "US", "EU"],
+      "availableLanguage": ["English", "Italian"]
+    },
+    "location": [
+      {
+        "@type": "ProfessionalService",
+        "name": "Marapone — Canada",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5343 Dundas St W",
+          "addressLocality": "Etobicoke",
+          "addressRegion": "ON",
+          "postalCode": "M9B 6K5",
+          "addressCountry": "CA"
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "name": "Marapone — Italy",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Boezio 6",
+          "addressLocality": "Rome",
+          "postalCode": "00193",
+          "addressCountry": "IT"
+        }
+      }
+    ]
   }
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
@@ -738,6 +773,22 @@
   <link rel="stylesheet" href="/panel-polish.css" />
   <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
   <script defer src="/panel-polish.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Marapone Logistics AI — App Tour",
+    "description": "A tour of Marapone's private logistics and trade AI — freight invoice auditing, carrier performance, and customs/HS-code compliance running on your own infrastructure, no subscription.",
+    "thumbnailUrl": "https://marapone.com/logistics-app-tour-poster.jpg",
+    "contentUrl": "https://marapone.com/logistics-app-tour.mp4",
+    "uploadDate": "2026-06-30",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Marapone",
+      "logo": { "@type": "ImageObject", "url": "https://marapone.com/MaraponeLogo-1.png" }
+    }
+  }
+  </script>
 </head>
 
 <body class="antialiased">
@@ -817,7 +868,7 @@
       <div id="hero-grid">
         <div id="hero-text">
           <h1 class="fade-up font-display text-5xl sm:text-7xl lg:text-9xl leading-none text-chalk mb-4">
-            <span class="hero-rent">STOP RENTING<br />YOUR <span class="ai">AI.</span></span><br /><span class="hero-own">OWN THE<br />ENGINE.</span>
+            <span class="hero-rent">STOP RENTING<br />YOUR <span class="ai">AI.</span></span><br /><span class="hero-own">OWN THE<br />ENGINE.</span><span class="sr-only"> Private logistics AI for freight, import/export, 3PLs, and customs compliance.</span>
           </h1>
           <p class="fade-up delay-1 font-body text-lg text-fog max-w-xl mt-6 mb-8 leading-relaxed">
             Marapone builds private AI systems for freight brokers, importers, exporters, 3PLs, and customs teams —

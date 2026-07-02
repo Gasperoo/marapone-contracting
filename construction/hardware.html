@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware Requirements – Run Private AI on the Laptop You Already Own | Marapone Construction</title>
+  <meta name="description" content="What it takes to run a Marapone private construction AI: CPU, RAM, storage, and optional GPU specs, plus supported operating systems. No internet required at runtime. Runs on a regular laptop, workstation, or your own server." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Hardware Requirements – Marapone Construction" />
+  <meta property="og:description" content="CPU, RAM, storage, GPU, and OS specs for running a private AI on hardware you already own. No cloud, no internet at runtime." />
+  <meta property="og:url" content="https://marapone.com/construction/hardware" />
+  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <link rel="canonical" href="https://marapone.com/construction/hardware" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; color: #111 !important; }
+      .pack-doc, .pack-doc * { color: #111 !important; }
+      .pack-doc .text-fog, .pack-doc .text-plate { color: #444 !important; }
+      .pack-doc .bg-steel, .pack-doc .bg-gunmetal { background:#f5f5f5 !important; }
+      .pack-doc .border-plate { border-color:#ccc !important; }
+      .pack-section { break-inside: avoid; }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
+  <!-- panel-polish kit -->
+  <link rel="stylesheet" href="/panel-polish.css" />
+  <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
+  <script defer src="/panel-polish.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="no-print sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
+        <a href="/construction/" class="hover:text-chalk">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/demo" class="hover:text-chalk">Live Demo</a>
+        <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+        <a href="/construction/trust" class="hover:text-chalk">Trust</a>
+        <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+        <a href="/construction/demo" class="text-fog hover:text-chalk">Live Demo</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/trust" class="text-fog hover:text-chalk">Trust</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="main-content" class="grid-dot border-b border-plate py-14 lg:py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4">// Hardware requirements</p>
+      <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-none mb-6">RUNS ON HARDWARE<br/><span class="text-hiviz">YOU ALREADY OWN.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-6">A Marapone private construction AI installs on a regular laptop, a workstation, or your own server &mdash; and runs with no internet connection. Here's exactly what it needs, so your IT team can sign off before the build starts.</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get Your Free Assessment &rarr;</a>
+        <a href="/construction/faq" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Back to FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEC TABLE -->
+  <section class="py-10 lg:py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-10">
+        <h2 class="font-display text-2xl text-chalk mb-2">System requirements</h2>
+        <p class="text-fog text-sm mb-6">Most single-user builds run comfortably on the "Minimum" column &mdash; the same spec as a mid-range business laptop bought in the last few years.</p>
+        
+        <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border-collapse min-w-[640px]">
+          <thead>
+            <tr class="border-b border-plate">
+              <th class="py-3 pr-4 font-mono text-xs uppercase tracking-wider text-hiviz">Spec</th>
+              <th class="py-3 px-4 font-mono text-xs uppercase tracking-wider text-fog">Minimum<br/><span class="text-plate normal-case">single user</span></th>
+              <th class="py-3 px-4 font-mono text-xs uppercase tracking-wider text-fog">Recommended<br/><span class="text-plate normal-case">daily use, heavier docs</span></th>
+              <th class="py-3 px-4 font-mono text-xs uppercase tracking-wider text-fog">Server / multi-user<br/><span class="text-plate normal-case">optional, shared</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-fog">
+            <tr class="border-b border-plate/60"><td class="py-3 pr-4 text-chalk font-semibold">CPU</td><td class="py-3 px-4">Modern 4-core — Apple Silicon (M1+), Intel i5 8th-gen+, or Ryzen 5</td><td class="py-3 px-4">8-core — Apple Silicon (M-Pro/Max), Intel i7/i9, or Ryzen 7/9</td><td class="py-3 px-4">8–16 cores, server or workstation class</td></tr>
+            <tr class="border-b border-plate/60"><td class="py-3 pr-4 text-chalk font-semibold">RAM</td><td class="py-3 px-4">16 GB</td><td class="py-3 px-4">32 GB</td><td class="py-3 px-4">64 GB+</td></tr>
+            <tr class="border-b border-plate/60"><td class="py-3 pr-4 text-chalk font-semibold">Storage</td><td class="py-3 px-4">20 GB free SSD</td><td class="py-3 px-4">50 GB free SSD</td><td class="py-3 px-4">NVMe SSD, sized to your document archive</td></tr>
+            <tr class="border-b border-plate/60"><td class="py-3 pr-4 text-chalk font-semibold">GPU</td><td class="py-3 px-4"><span class="text-hiviz">Not required</span> — runs on CPU</td><td class="py-3 px-4">Optional NVIDIA 8 GB+ VRAM (or Apple unified memory) for faster runs</td><td class="py-3 px-4">Optional NVIDIA 16–24 GB VRAM for concurrent users</td></tr>
+            <tr class="border-b border-plate/60"><td class="py-3 pr-4 text-chalk font-semibold">OS</td><td class="py-3 px-4" colspan="3">macOS 12+ · Windows 10/11 · Ubuntu 20.04+ (most modern 64-bit Linux). Windows Server &amp; common hypervisors (VMware/Hyper-V/Proxmox) supported for the server tier.</td></tr>
+            <tr><td class="py-3 pr-4 text-chalk font-semibold">Network</td><td class="py-3 px-4" colspan="3"><span class="text-hiviz">No internet required at runtime.</span> Runs fully offline / air-gapped. Nothing leaves the machine.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 mt-8">
+        <div class="bg-steel border border-plate rounded-xl p-5">
+          <p class="font-display text-lg text-chalk mb-1">Do I need a GPU?</p>
+          <p class="text-fog text-sm leading-relaxed">No. Everything runs on the CPU. A GPU only makes runs faster on large blueprints and spec sets; it's never required.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-xl p-5">
+          <p class="font-display text-lg text-chalk mb-1">Does it phone home?</p>
+          <p class="text-fog text-sm leading-relaxed">No. There are no third-party API calls and no telemetry on your documents. It works fully offline and can run air-gapped.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-xl p-5">
+          <p class="font-display text-lg text-chalk mb-1">Where does it install?</p>
+          <p class="text-fog text-sm leading-relaxed">On your existing laptop or workstation, or on a server / VM in your own environment. You own the machine and the code.</p>
+        </div>
+      </div>
+
+      <p class="text-center text-fog text-sm mt-10">Not sure your hardware fits? Tell us what you're running &mdash;
+        <a href="/construction/contact" class="text-hiviz font-semibold hover:opacity-80 transition-opacity">we'll confirm it on the free assessment</a>.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="no-print bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5">Rome</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+        <a href="/construction/demo" class="hover:text-chalk">Live Demo</a>
+          <a href="/construction/trust" class="hover:text-chalk">Trust</a>
+          <a href="/construction/architecture" class="hover:text-chalk">Architecture</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/construction/trust" class="text-xs font-mono text-plate hover:text-fog transition-colors">Trust Center</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>

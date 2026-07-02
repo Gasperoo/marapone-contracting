@@ -66,6 +66,9 @@ export default defineConfig({
           '/logistics/architecture': '/logistics/architecture.html',
           '/logistics/integrations': '/logistics/integrations.html',
           '/logistics/trust': '/logistics/trust.html',
+          // Hardware requirements
+          '/construction/hardware': '/construction/hardware.html',
+          '/logistics/hardware': '/logistics/hardware.html',
           // Comparison pages
           '/construction/vs/procore': '/construction/vs/procore.html',
           '/construction/vs/autodesk': '/construction/vs/autodesk.html',
@@ -211,6 +214,9 @@ export default defineConfig({
         // Live demo pages
         'c-demo':                      path.resolve(__dirname, 'construction/demo.html'),
         'l-demo':                      path.resolve(__dirname, 'logistics/demo.html'),
+        // Hardware requirements
+        'c-hardware':                  path.resolve(__dirname, 'construction/hardware.html'),
+        'l-hardware':                  path.resolve(__dirname, 'logistics/hardware.html'),
       },
     },
   },

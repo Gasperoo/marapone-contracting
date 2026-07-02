@@ -812,12 +812,8 @@
         <a href="/logistics/" class="text-chalk">Home</a>
         <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
         <a href="/logistics/demo" class="hover:text-chalk transition-colors">Live Demo</a>
-        <a href="/logistics/gasperai" class="hover:text-chalk transition-colors">MaraponeAI</a>
-        <a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a>
         <a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a>
         <a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a>
-        <a href="/logistics/faq" class="hover:text-chalk transition-colors">FAQ</a>
-        <a href="/logistics/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
         <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
           class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get
@@ -836,12 +832,8 @@
       <a href="/logistics/" class="text-chalk">Home</a>
       <a href="/logistics/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
         <a href="/logistics/demo" class="text-fog hover:text-chalk">Live Demo</a>
-      <a href="/logistics/gasperai" class="text-fog hover:text-chalk">MaraponeAI</a>
-      <a href="/logistics/services" class="text-fog hover:text-chalk">Services</a>
       <a href="/logistics/pricing" class="text-fog hover:text-chalk">Pricing</a>
       <a href="/logistics/work" class="text-fog hover:text-chalk">Work</a>
-      <a href="/logistics/faq" class="text-fog hover:text-chalk">FAQ</a>
-      <a href="/logistics/about" class="text-fog hover:text-chalk">About</a>
       <a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)"
         class="text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
@@ -913,7 +905,7 @@
         <div class="fade-up delay-1" id="hero-video-col">
           <div class="hero-video-wrap">
             <div class="hero-video-glow"></div>
-            <video id="hero-demo-video" autoplay muted loop playsinline webkit-playsinline preload="auto"
+            <video id="hero-demo-video" autoplay muted loop playsinline webkit-playsinline preload="metadata"
               x-webkit-airplay="deny" width="2560" height="1608" poster="/logistics-app-tour-poster.jpg">
               <source src="/logistics-app-tour.mp4" type="video/mp4" />
             </video>
@@ -2252,6 +2244,13 @@
       }
     })();
   </script>
+
+  <!-- Sticky mobile CTA -->
+  <a href="/logistics/contact"
+    class="md:hidden fixed bottom-0 inset-x-0 z-50 text-white font-semibold text-center py-3.5 shadow-[0_-4px_16px_rgba(0,0,0,0.4)]"
+    style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%);padding-bottom:calc(0.875rem + env(safe-area-inset-bottom))">
+    Get Your Free AI Assessment →
+  </a>
 </body>
 
 </html>

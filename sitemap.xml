@@ -72,6 +72,14 @@
   <url><loc>https://marapone.com/logistics/resources/what-owning-the-model-means</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/resources/sample-carrier-scorecard</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 
+  <!-- Product / corporate -->
+  <url><loc>https://marapone.com/construction/blueprint-auditor</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/demo</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/logistics/demo</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/pricing</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/about</loc><priority>0.6</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://marapone.com/shop</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+
   <!-- Legal / misc -->
   <url><loc>https://marapone.com/terms</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://marapone.com/privacy</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>

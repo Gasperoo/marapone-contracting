@@ -35,6 +35,17 @@ gasper-ios-app/
 .vercel
 social/
 
+# Deploy keys / credentials — never commit private keys.
+*_deploy
+*_deploy.pub
+*.pem
+id_rsa*
+id_ed25519*
+*.key
+
+# Raw capture originals staged for editing (never served)
+media-originals/
+
 # Local media assets — heavy ROOT originals kept local only.
 # Anchored to root (leading /) so optimized copies under public/ ARE tracked.
 *-original.mp4

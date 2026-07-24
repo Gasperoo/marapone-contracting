@@ -7,6 +7,32 @@ export default defineConfig({
   plugins: [
     react(),
     {
+      // publicDir is copied verbatim, so anything dropped into public/ ships to
+      // production. Strip OS cruft and raw camera/screen-capture originals from
+      // the bundle — they are source material, never site assets.
+      name: 'strip-non-web-assets',
+      apply: 'build',
+      closeBundle() {
+        const outDir = path.resolve(__dirname, 'dist');
+        const junk = /(^\.DS_Store$|\.mov$|^Thumbs\.db$|-original\.(mp4|mov)$)/i;
+        let removed = 0, bytes = 0;
+        const walk = (dir) => {
+          for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+            const full = path.join(dir, entry.name);
+            if (entry.isDirectory()) { walk(full); continue; }
+            if (!junk.test(entry.name)) continue;
+            bytes += fs.statSync(full).size;
+            fs.unlinkSync(full);
+            removed++;
+          }
+        };
+        if (fs.existsSync(outDir)) walk(outDir);
+        if (removed) {
+          console.log(`[strip-non-web-assets] removed ${removed} file(s), ${(bytes / 1e6).toFixed(1)} MB from dist/`);
+        }
+      },
+    },
+    {
       name: 'html-rewrite',
       configureServer(server) {
         const rewrites = {

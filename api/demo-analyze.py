@@ -664,7 +664,10 @@ class handler(BaseHTTPRequestHandler):
         try:
             result = audit_invoice(filename, ext, data) if mode == 'invoice' else scan_blueprint(filename, ext, data)
         except Exception as e:
-            return self._json(500, {'ok': False, 'error': f'Analysis failed: {e}'})
+            # Log the detail server-side; never return raw exception text to the
+            # browser (leaks file paths, library versions and internal structure).
+            print(f'demo-analyze: {mode} analysis failed: {type(e).__name__}: {e}')
+            return self._json(500, {'ok': False, 'error': 'Could not analyse that file. Try a different export, or book a free assessment.'})
 
         if not result.get('ok'):
             return self._json(200, result)   # unreadable file — no gate, no quota

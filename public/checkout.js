@@ -5,7 +5,11 @@
    add-on and (optionally) apply a welcome code, then pay the deposit. Marketing
    packages and support plans go straight to Stripe.
 
+   Finished products (Blueprint Auditor / AI Estimator / the pair) are paid in
+   full, so they skip the modal entirely and go straight to Stripe.
+
    Markup:
+     <a data-checkout="product"   data-product="ai-estimator">…</a>
      <a data-checkout="build"     data-tier="starter" data-vertical="construction">…</a>
      <a data-checkout="marketing" data-tier="growth">…</a>
      <a data-checkout="support"   data-plan="flex">…</a>
@@ -138,7 +142,9 @@
     if (el.dataset.busy) return;
     e.preventDefault();
     var kind = el.getAttribute('data-checkout');
-    if (kind === 'build') {
+    if (kind === 'product') {
+      quickCheckout(el, { kind: 'product', product: el.getAttribute('data-product') });
+    } else if (kind === 'build') {
       openBuildModal(el.getAttribute('data-tier'), el.getAttribute('data-vertical') || '');
     } else if (kind === 'marketing') {
       quickCheckout(el, { kind: 'marketing', tier: el.getAttribute('data-tier') });

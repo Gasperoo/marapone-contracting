@@ -62,6 +62,7 @@ export default async function handler(req, res) {
         const who = s.customer_details?.email || s.customer_email || 'unknown';
         const summary = m.kind === 'build'
           ? `${m.tier} build deposit${m.vertical ? ' (' + m.vertical + ')' : ''}${m.addOn === 'true' ? ' + local machine' : ''} · paid ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()}${m.code ? ` · code ${m.code}` : ''} · project total $${m.buildTotal} · balance $${m.balanceLater}`
+          : m.kind === 'product' ? `Product ${m.product} · paid in full ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()} — send the download + licence`
           : m.kind === 'marketing' ? `Marketing ${m.tier} · paid ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()}`
           : m.kind === 'support' ? `Support ${m.plan} subscription started`
           : `Checkout completed (${JSON.stringify(m)})`;

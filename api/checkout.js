@@ -5,6 +5,9 @@
  *   { kind, tier|plan, vertical?, addOn?, email?, code? }
  *
  * kinds:
+ *   - "product"   Blueprint Auditor / AI Estimator / the pair → finished
+ *                 software, paid in FULL now + 13% HST. No deposit, because
+ *                 there is nothing to scope and delivery is immediate.
  *   - "build"     Starter/Pilot → charges a DEPOSIT now (25% / 35%), balance
  *                 invoiced later. Optional $1,000 local-machine add-on (full,
  *                 no tax). Optional welcome code (10% off the build only),
@@ -19,7 +22,7 @@
 
 import { getStripe, ensureHstTaxRate, isLiveKey } from '../lib/stripe.js';
 import { validateCode } from '../lib/stripe-promo.js';
-import { BUILDS, MARKETING, SUPPORT, ADDON, CURRENCY, quoteBuild, quoteMarketing, quoteSupport } from '../lib/pricing.js';
+import { BUILDS, MARKETING, SUPPORT, PRODUCTS, ADDON, CURRENCY, quoteBuild, quoteMarketing, quoteSupport, quoteProduct } from '../lib/pricing.js';
 
 const SITE_URL = 'https://marapone.com';
 const cents = (dollars) => Math.round(dollars * 100);
@@ -68,6 +71,36 @@ export default async function handler(req, res) {
   };
 
   try {
+    if (kind === 'product') {
+      const product = String(body.product || '');
+      if (!PRODUCTS[product]) return res.status(400).json({ error: 'Unknown product.' });
+      const q = quoteProduct({ product });
+      const hst = await ensureHstTaxRate(sk);
+      const session = await sk.checkout.sessions.create({
+        ...base,
+        // Products are bought from the construction pricing page — send the
+        // buyer back there rather than to the shared /pricing index.
+        success_url: `${SITE_URL}/construction/pricing?checkout=success&product=${product}`,
+        cancel_url: `${SITE_URL}/construction/pricing?checkout=cancelled`,
+        mode: 'payment',
+        line_items: [{
+          quantity: 1,
+          price_data: {
+            currency: CURRENCY,
+            unit_amount: cents(q.subtotal),
+            product_data: { name: q.label, description: q.description },
+          },
+          tax_rates: [hst],
+        }],
+        payment_intent_data: { description: `${q.label} — one-time purchase` },
+        metadata: {
+          kind: 'product', product,
+          subtotal: q.subtotal.toFixed(2), total: q.total.toFixed(2),
+        },
+      });
+      return res.status(200).json({ url: session.url });
+    }
+
     if (kind === 'build') {
       const tier = String(body.tier || '');
       if (!BUILDS[tier]?.online) return res.status(400).json({ error: 'That build is not available for online checkout.' });

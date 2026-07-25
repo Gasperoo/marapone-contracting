@@ -88,12 +88,6 @@
       color: #fff; border-radius: 4px; font-weight: 600;
     }
 
-    /* ── Texture ── */
-    .noise {
-      position: fixed; inset: 0; z-index: 90; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    }
-
     /* ══════════════════════════════════════════════════════════
        NAV
        ══════════════════════════════════════════════════════════ */
@@ -536,7 +530,6 @@
 <body>
 
   <a href="#main" class="sr-only skip-link">Skip to content</a>
-  <div class="noise" aria-hidden="true"></div>
 
   <!-- ══════════ NAV ══════════ -->
   <nav class="nav" id="nav">

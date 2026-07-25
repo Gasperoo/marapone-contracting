@@ -7,6 +7,9 @@ cheque / bank wire.
 
 | Thing | Mode | Charge |
 |-------|------|--------|
+| **Blueprint Auditor** | one-time | full **$990** + 13% HST |
+| **AI Estimator** | one-time | full **$990** + 13% HST |
+| **The pair** (both) | one-time | full **$1,690** + 13% HST |
 | **Starter build** | one-time | **25% deposit** of the discounted, taxed total (balance invoiced later) |
 | **Pilot build** | one-time | **35% deposit** of the discounted, taxed total (balance invoiced later) |
 | **Local-machine add-on** | one-time | full **$1,000, no tax** (added to a Starter/Pilot deposit checkout) |
@@ -16,6 +19,24 @@ cheque / bank wire.
 
 Prices and math live in [lib/pricing.js](lib/pricing.js) (single source of truth,
 shared by the API and the front-end widget).
+
+## Finished products vs. custom builds
+
+The two shipped applications are paid **in full** at checkout — there is nothing
+to scope and delivery is immediate, so a deposit would make no sense. They skip
+the build modal entirely and go straight to Stripe:
+
+```html
+<a data-checkout="product" data-product="ai-estimator">Buy the AI Estimator</a>
+```
+
+Valid `data-product` values: `blueprint-auditor`, `ai-estimator`, `pair`.
+Buttons live on `/construction/pricing`, `/construction/ai-estimator` and
+`/construction/blueprint-auditor`; each page must load `/checkout.js`. Every
+button also carries a real `href` so it still goes somewhere useful if JS fails.
+
+The webhook flags these as `kind: product` in the "paid" email so you know to
+send the download and licence.
 
 ## The build deposit math
 

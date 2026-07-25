@@ -167,6 +167,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/checkout.js"></script>
 </head>
 
 <body class="antialiased">
@@ -244,13 +245,19 @@
           </p>
 
           <div class="flex flex-col sm:flex-row gap-3 mt-8">
-            <a href="/construction/contact?product=ai-estimator"
+            <a href="/construction/pricing#products" data-checkout="product" data-product="ai-estimator"
               class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">
-              Book a walkthrough →
+              Buy it — $990 one time →
             </a>
             <a href="#inside"
               class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">
               See every screen
+            </a>
+          </div>
+          <div class="mt-3">
+            <a href="/construction/contact?product=ai-estimator"
+              class="inline-flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
+              Or book a walkthrough on one of your own jobs first →
             </a>
           </div>
 
@@ -825,16 +832,16 @@
         anything.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
-        <a href="/construction/contact?product=ai-estimator"
+        <a href="/construction/pricing#products" data-checkout="product" data-product="ai-estimator"
           class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-center hover:opacity-90 transition-opacity">
-          Book a walkthrough →
+          Buy the AI Estimator — $990 →
         </a>
-        <a href="/construction/discovery"
+        <a href="/construction/contact?product=ai-estimator"
           class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
-          Book a 15-min call
+          Book a walkthrough first
         </a>
       </div>
-      <p class="font-mono text-xs text-plate mt-6">30-day full refund guarantee · No questions asked</p>
+      <p class="font-mono text-xs text-plate mt-6">One time · +HST · Secured by Stripe · 30-day full refund guarantee</p>
     </div>
   </section>
 

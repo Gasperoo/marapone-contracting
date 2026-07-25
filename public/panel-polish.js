@@ -147,17 +147,50 @@
     } catch (e) { }
   }
 
-  /* ---------- auto count-up on display-font stat numbers ---------- */
+  /* ---------- auto count-up on display-font stat numbers ----------
+
+     These elements are prices. The animation blanks them to "$0" until they
+     scroll into view, so anything that stops the animation from finishing
+     leaves a real price reading $0 on screen — much worse than no animation.
+     Every path below therefore ends by snapping to the true figure.          */
   function initAutoCount() {
     try {
       if (!('IntersectionObserver' in window)) return;
       var re = /^(\D{0,3})(\d[\d,]*)(\D{0,4})$/;
-      function run(el) {
-        var target = parseInt(el.getAttribute('data-target'), 10), pre = el.getAttribute('data-pre') || '', suf = el.getAttribute('data-suf') || '';
-        var t0 = null, dur = 1200;
-        requestAnimationFrame(function step(ts) { if (!t0) t0 = ts; var p = Math.min((ts - t0) / dur, 1); var e = 1 - Math.pow(1 - p, 3); el.textContent = pre + Math.round(target * e).toLocaleString() + suf; if (p < 1) requestAnimationFrame(step); });
+      var pending = [];
+
+      // Snap to the real number. Idempotent — safe to call from any path.
+      function finish(el) {
+        el.textContent = (el.getAttribute('data-pre') || '')
+          + parseInt(el.getAttribute('data-target'), 10).toLocaleString()
+          + (el.getAttribute('data-suf') || '');
+        el.removeAttribute('data-counting');
+        var i = pending.indexOf(el);
+        if (i > -1) pending.splice(i, 1);
       }
-      var io = new IntersectionObserver(function (en, o) { en.forEach(function (e) { if (e.isIntersecting) { run(e.target); o.unobserve(e.target); } }); }, { threshold: 0.5 });
+
+      function run(el) {
+        var target = parseInt(el.getAttribute('data-target'), 10),
+            pre = el.getAttribute('data-pre') || '',
+            suf = el.getAttribute('data-suf') || '';
+        el.setAttribute('data-counting', '1');
+        // rAF does not run in a background tab and can be throttled. If the
+        // frames never arrive, land the real figure anyway.
+        var guard = setTimeout(function () { finish(el); }, 2500);
+        var t0 = null, dur = 1200;
+        requestAnimationFrame(function step(ts) {
+          if (!el.hasAttribute('data-counting')) return;   // guard already landed it
+          if (!t0) t0 = ts;
+          var p = Math.min((ts - t0) / dur, 1);
+          var e = 1 - Math.pow(1 - p, 3);
+          el.textContent = pre + Math.round(target * e).toLocaleString() + suf;
+          if (p < 1) { requestAnimationFrame(step); return; }
+          clearTimeout(guard);
+          finish(el);
+        });
+      }
+
+      var io = new IntersectionObserver(function (en, o) { en.forEach(function (e) { if (e.isIntersecting) { o.unobserve(e.target); run(e.target); } }); }, { threshold: 0.5 });
       [].slice.call(document.querySelectorAll('.font-display')).forEach(function (el) {
         if (el.closest('nav,header,footer')) return;
         var tn = el.tagName; if (tn === 'H1' || tn === 'H2' || tn === 'H3') return;
@@ -171,8 +204,26 @@
         el.setAttribute('data-pre', m[1]); el.setAttribute('data-suf', m[3]); el.setAttribute('data-target', String(val));
         if (reduce) return;
         el.textContent = m[1] + '0' + m[3];
+        pending.push(el);
         io.observe(el);
       });
+
+      // Last resort: repair anything the visitor can actually see that is still
+      // blanked — an observer that never delivers, a renderer without live
+      // IntersectionObserver, a script error upstream. Only touches elements
+      // inside the viewport, so off-screen figures keep their animation.
+      if (pending.length) {
+        var sweeps = 0;
+        var timer = setInterval(function () {
+          pending.slice().forEach(function (el) {
+            if (el.hasAttribute('data-counting')) return;
+            var r = el.getBoundingClientRect();
+            var onScreen = r.bottom > 0 && r.top < (window.innerHeight || 0) && r.width > 0;
+            if (onScreen) finish(el);
+          });
+          if (++sweeps >= 8 || !pending.length) clearInterval(timer);
+        }, 1200);
+      }
     } catch (e) { }
   }
 

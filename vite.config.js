@@ -63,6 +63,7 @@ export default defineConfig({
           '/construction/about': '/construction/about.html',
           '/construction/pricing': '/construction/pricing.html',
           '/construction/blueprint-auditor': '/construction/blueprint-auditor.html',
+          '/construction/ai-estimator': '/construction/ai-estimator.html',
           // logistics subdirectory
           '/logistics': '/logistics/index.html',
           '/logistics/how-it-works': '/logistics/how-it-works.html',
@@ -179,6 +180,7 @@ export default defineConfig({
         'construction-about': path.resolve(__dirname, 'construction/about.html'),
         'construction-pricing': path.resolve(__dirname, 'construction/pricing.html'),
         'construction-blueprint-auditor': path.resolve(__dirname, 'construction/blueprint-auditor.html'),
+        'construction-ai-estimator': path.resolve(__dirname, 'construction/ai-estimator.html'),
         // Logistics subdirectory
         'logistics-index': path.resolve(__dirname, 'logistics/index.html'),
         'logistics-how-it-works': path.resolve(__dirname, 'logistics/how-it-works.html'),

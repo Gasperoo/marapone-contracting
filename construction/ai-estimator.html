@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Estimator – Turn takeoff into a priced, defensible bid | Marapone</title>
+  <link rel="canonical" href="https://marapone.com/construction/ai-estimator" />
+  <meta name="description"
+    content="Marapone AI Estimator turns measured quantities into accurate, competitive, profitable bids. 57 assemblies, 27 risk rules, Toronto permits and development charges, Monte Carlo, and a margin ladder built from your own win history. Runs on your Mac. Bought once." />
+  <meta name="keywords"
+    content="construction estimating software, AI estimator, Toronto development charges, construction contingency, Monte Carlo bid, margin ladder, CSI assemblies, private AI construction" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="AI Estimator – Turn takeoff into a priced, defensible bid | Marapone" />
+  <meta property="og:description"
+    content="Takeoff measures the drawings. The AI Estimator prices them — assemblies, risk, contingency, Toronto soft costs, and a bid strategy built on your own win history." />
+  <meta property="og:url" content="https://marapone.com/construction/ai-estimator" />
+  <meta property="og:image" content="https://marapone.com/estimator/og-ai-estimator.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Estimator – Turn takeoff into a priced, defensible bid | Marapone" />
+  <meta name="twitter:description"
+    content="Takeoff measures the drawings. The AI Estimator prices them — with the risk, the contingency and the walk-away number written down." />
+  <meta name="twitter:image" content="https://marapone.com/estimator/og-ai-estimator.jpg" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="preload" as="image" href="/estimator/dashboard.webp" fetchpriority="high" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Marapone AI Estimator",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "macOS 12+",
+    "url": "https://marapone.com/construction/ai-estimator",
+    "description": "Construction estimating for Toronto and the GTA. Turns measured quantities into priced, risk-adjusted, defensible bids — assemblies, contingency, municipal soft costs, scenario analysis and bid strategy — running entirely on the contractor's own machine.",
+    "featureList": [
+      "57 parametric assemblies across 20 CSI divisions",
+      "27 risk rules with recommended contingency and mitigations",
+      "Toronto permits, development charges, parkland, CBC and HST",
+      "Monte Carlo cost distribution and tornado sensitivity",
+      "Margin ladder with win probability from recorded bid outcomes",
+      "Specification, RFP and addenda document intelligence",
+      "Learning from completed job actuals"
+    ],
+    "publisher": { "@type": "Organization", "name": "Marapone", "url": "https://marapone.com/" }
+  }
+  </script>
+
+  <style>
+    html { overflow-x: hidden; overscroll-behavior-x: none; max-width: 100%; }
+
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      max-width: 100%;
+    }
+
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+
+    #nav-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: #f97316; z-index: 9999; pointer-events: none;
+      transition: width .08s linear;
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .noise-bg {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    /* ── scroll-reveal (matches the rest of the site) ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ── eyebrow ── */
+    .est-eyebrow {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-family: 'DM Mono', monospace; font-size: .7rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase; color: #f97316;
+    }
+    .est-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: #f97316; display: inline-block; }
+    .est-eyebrow.muted { color: #6e6e6e; }
+    .est-eyebrow.muted::before { background: #6e6e6e; }
+
+    /* ── hero headline sheen (site-wide treatment) ── */
+    .est-shine {
+      background: linear-gradient(100deg, #ffffff 0%, #e8e8e8 38%, #f97316 50%, #e8e8e8 62%, #ffffff 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 0 24px rgba(249, 115, 22, .30));
+      animation: estSheen 6s ease-in-out infinite;
+    }
+    @keyframes estSheen { 0%, 100% { background-position: 8% 0; } 50% { background-position: 92% 0; } }
+    @media (prefers-reduced-motion: reduce) { .est-shine { animation: none; background-position: 30% 0; } }
+
+    /* ── app window chrome ── */
+    .app-window {
+      border-radius: 10px;
+      border: 1px solid #3a3a3a;
+      background: #101012;
+      overflow: hidden;
+      box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .02);
+    }
+    .app-titlebar {
+      display: flex; align-items: center; gap: .45rem;
+      padding: .55rem .8rem;
+      background: #1c1c1f;
+      border-bottom: 1px solid #2b2b2f;
+    }
+    .app-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .app-title {
+      margin-left: .65rem; font-family: 'DM Mono', monospace; font-size: .68rem;
+      color: #7a7a7a; letter-spacing: .04em; overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap;
+    }
+    .app-window img { display: block; width: 100%; height: auto; }
+
+    .app-glow { position: relative; }
+    .app-glow::before {
+      content: ""; position: absolute; inset: -8% -4% -12%;
+      background: radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, .18), transparent 65%);
+      pointer-events: none; z-index: -1;
+    }
+
+    /* ── stat rail ── */
+    .stat-card {
+      border: 1px solid #3a3a3a; border-radius: 8px; background: #232323;
+      padding: 1.1rem 1.15rem;
+    }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; letter-spacing: .02em; }
+
+    /* ── feature row media ── */
+    .feature-row { align-items: center; }
+
+    /* ── spec table ── */
+    .spec-row { display: grid; grid-template-columns: 190px 1fr; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid #2e2e2e; }
+    @media (max-width: 640px) { .spec-row { grid-template-columns: 1fr; gap: .35rem; } }
+
+    .cta-band { position: relative; overflow: hidden; }
+    .cta-band::before {
+      content: ""; position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 120%;
+      background: radial-gradient(ellipse at center, rgba(249, 115, 22, .22), transparent 60%);
+      pointer-events: none;
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body class="antialiased">
+
+  <div id="nav-progress" aria-hidden="true"></div>
+
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip
+    to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap" aria-label="Back to industry selection">&larr; All Industries</a>
+        <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
+        <a href="/construction/" class="hover:text-chalk transition-colors">Home</a>
+        <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/construction/demo" class="hover:text-chalk transition-colors">Live Demo</a>
+        <a href="/construction/services" class="hover:text-chalk transition-colors">Services</a>
+        <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/construction/work" class="hover:text-chalk transition-colors">Work</a>
+        <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
+      <a href="/construction/demo" class="text-fog hover:text-chalk">Live Demo</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="main-content" class="relative overflow-hidden border-b border-plate">
+    <div class="absolute inset-0 grid-dot opacity-40" aria-hidden="true"></div>
+    <div class="absolute inset-0 noise-bg pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block" aria-hidden="true"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
+
+        <div>
+          <div class="flex flex-wrap items-center gap-3 mb-5">
+            <span class="est-eyebrow">Marapone AI Estimator</span>
+            <span class="inline-flex items-center gap-1.5 font-mono text-[0.62rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiviz" aria-hidden="true"></span> New
+            </span>
+          </div>
+
+          <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.92] text-chalk">
+            Takeoff measures.<br /><span class="est-shine">This prices.</span>
+          </h1>
+
+          <p class="font-body text-lg text-fog max-w-xl mt-6 leading-relaxed">
+            The Blueprint Auditor tells you there are 24,000 square feet of partition.
+            The AI&nbsp;Estimator turns that into studs, board, tape, fasteners, waste and
+            crew-hours — then adds the risk, the contingency, the Toronto soft costs and the
+            margin you can actually win at. A native Mac app. Runs on your machine. Bought once.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mt-8">
+            <a href="/construction/contact?product=ai-estimator"
+              class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">
+              Book a walkthrough →
+            </a>
+            <a href="#inside"
+              class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">
+              See every screen
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 mt-6 font-mono text-xs text-fog">
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Runs offline</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Your data never leaves</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Stands alone or pairs with takeoff</span>
+          </div>
+        </div>
+
+        <div class="app-glow reveal reveal-d1">
+          <figure class="app-window">
+            <div class="app-titlebar" aria-hidden="true">
+              <span class="app-dot" style="background:#ff5f57"></span>
+              <span class="app-dot" style="background:#febc2e"></span>
+              <span class="app-dot" style="background:#28c840"></span>
+              <span class="app-title">Marapone AI Estimator — Lakeshore Yards, 38-Unit Residential Infill</span>
+            </div>
+            <img src="/estimator/dashboard.webp" width="1920" height="1200" fetchpriority="high"
+              alt="The AI Estimator dashboard showing an $11,773,510 bid on a 42,000 square foot Toronto residential project, with the full cost build-up from direct cost through escalation, general conditions, contingency, overhead and profit, and a cost-by-division breakdown." />
+          </figure>
+          <figcaption class="text-center font-mono text-xs text-plate mt-3">
+            Live app · a real 38-unit Toronto infill priced end to end
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ STAT RAIL ══════════ -->
+  <section class="bg-steel border-b border-plate py-6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="stat-card">
+          <p class="stat-num text-hiviz">57</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Parametric assemblies</p>
+          <p class="text-xs text-plate mt-0.5">Across 20 CSI divisions</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">27</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Risk rules</p>
+          <p class="text-xs text-plate mt-0.5">Each with a cited reason</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">25</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Requirement types read</p>
+          <p class="text-xs text-plate mt-0.5">From specs, ITBs and addenda</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">4,000</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Monte Carlo iterations</p>
+          <p class="text-xs text-plate mt-0.5">Per cost distribution</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TAKEOFF vs ESTIMATE ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="est-eyebrow">Two tools, one pipeline</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+          This is not a takeoff tool.
+        </h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Takeoff and estimating get sold as one thing and they are not. Measuring is a
+          geometry problem. Pricing is a judgement problem. We built them as two products so
+          you can buy the one you are missing — or wire both together and never retype a
+          quantity again.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-4 items-stretch mt-10">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Upstream</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">Blueprint Auditor</h3>
+          <p class="text-sm text-fog leading-relaxed">Reads the drawing set and answers <em class="text-chalk not-italic font-medium">how much is there</em>.</p>
+          <ul class="mt-4 space-y-2 text-sm text-fog">
+            <li class="flex gap-2"><span class="text-plate">→</span> Quantities measured off the sheets</li>
+            <li class="flex gap-2"><span class="text-plate">→</span> Scope gaps and drawing conflicts</li>
+            <li class="flex gap-2"><span class="text-plate">→</span> Code and tender risk flags</li>
+          </ul>
+          <a href="/construction/blueprint-auditor" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See the auditor →</a>
+        </div>
+
+        <div class="reveal reveal-d1 hidden md:flex flex-col items-center justify-center px-2" aria-hidden="true">
+          <div class="w-px flex-1 bg-gradient-to-b from-transparent via-plate to-transparent"></div>
+          <span class="font-mono text-[0.6rem] tracking-widest uppercase text-hiviz py-3 whitespace-nowrap" style="writing-mode:vertical-rl">JSON handoff</span>
+          <div class="w-px flex-1 bg-gradient-to-b from-transparent via-plate to-transparent"></div>
+        </div>
+
+        <div class="reveal reveal-d2 border border-hiviz/45 rounded-lg bg-gunmetal p-6 relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">Downstream</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">AI Estimator</h3>
+          <p class="text-sm text-fog leading-relaxed">Takes those quantities and answers <em class="text-chalk not-italic font-medium">what should we bid</em>.</p>
+          <ul class="mt-4 space-y-2 text-sm text-fog">
+            <li class="flex gap-2"><span class="text-hiviz">→</span> Assemblies, waste factors and crew-hours</li>
+            <li class="flex gap-2"><span class="text-hiviz">→</span> Contingency sized to the actual risk</li>
+            <li class="flex gap-2"><span class="text-hiviz">→</span> Permits, DCs, HST and the margin call</li>
+          </ul>
+          <span class="inline-flex items-center gap-1.5 font-mono text-xs text-plate mt-5">You are here</span>
+        </div>
+      </div>
+
+      <p class="reveal text-sm text-fog mt-8 max-w-3xl leading-relaxed">
+        <span class="text-chalk font-medium">Either one works on its own.</span>
+        Already have takeoff you trust? Import a CSV or Excel sheet of quantities and the
+        estimator never needs the auditor. Already price by hand and only want the measuring
+        done? Buy the auditor alone. Most teams end up running both — because the seam between
+        them is where quantities get retyped and errors get born.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ THE SCREENS ══════════ -->
+  <section id="inside" class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-14">
+        <span class="est-eyebrow">Inside the app</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Every screen, no mock-ups.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Everything below is the shipping application priced against one real job: a
+          four-storey, 38-unit residential infill on Lakeshore Blvd West — 42,000&nbsp;SF,
+          15&nbsp;months, constrained site, winter start.
+        </p>
+      </div>
+
+      <!-- 01 · RISK -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">01 — Risk &amp; contingency</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">The number under the number.</h3>
+          <p class="text-fog leading-relaxed">
+            27 rules across scope, schedule, market, site, regulatory, design and financial
+            exposure. Each one that fires gets a written reason, a dollar exposure and a
+            mitigation — not a colour-coded dot.
+          </p>
+          <p class="text-fog leading-relaxed mt-3">
+            On this job the model wants <span class="text-chalk font-medium">9.0% contingency</span>.
+            The bid carries 5.0%. That gap is
+            <span class="text-hiviz font-medium">$362,535</span> of unpriced exposure, and it is on
+            screen before the bid goes out rather than in the post-mortem.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Contingency clamped into a band by design stage, so a pile of small flags cannot produce an absurd number</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Confidence scored by division — you can see which trades are assumption rather than quote</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every rule cites the code, by-law or statute it comes from</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <div class="app-titlebar" aria-hidden="true">
+              <span class="app-dot" style="background:#ff5f57"></span><span class="app-dot" style="background:#febc2e"></span><span class="app-dot" style="background:#28c840"></span>
+              <span class="app-title">Risk register — 15 risks, critical</span>
+            </div>
+            <img src="/estimator/risk.webp" width="1920" height="1200" loading="lazy"
+              alt="The Risk view listing 15 identified risks at critical level, with recommended contingency of 9 percent against 5 percent carried, and each risk showing its category, dollar exposure, reason and mitigation." />
+          </figure>
+        </div>
+      </div>
+
+      <!-- 02 · STRATEGY -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal app-glow">
+          <figure class="app-window">
+            <div class="app-titlebar" aria-hidden="true">
+              <span class="app-dot" style="background:#ff5f57"></span><span class="app-dot" style="background:#febc2e"></span><span class="app-dot" style="background:#28c840"></span>
+              <span class="app-title">Bid strategy — margin ladder &amp; win probability</span>
+            </div>
+            <img src="/estimator/strategy.webp" width="1920" height="1200" loading="lazy"
+              alt="The Strategy view showing a walk-away price of $10,737,503, a recommended bid of $11,980,712 at 12 percent margin with 21 percent win probability, and a margin ladder from 2 to 13 percent with expected value for each rung." />
+          </figure>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">02 — Bid strategy</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">Where to put the margin, and why.</h3>
+          <p class="text-fog leading-relaxed">
+            Four numbers every estimator has in their head and almost never writes down:
+            the walk-away price, the competitive price, the recommended price, and the stretch.
+            Here they are calculated — and the win probability behind them comes from
+            <span class="text-chalk font-medium">your own recorded outcomes</span>, not an industry curve.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Margin ladder with expected value at every rung — the pure EV optimum is often <em class="not-italic text-chalk">below</em> where you want to be</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>A risk floor that refuses to let margin cover a risk that was never priced</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Priced value-engineering options for when the number comes back too high</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Record the outcome afterwards and the curve sharpens on the next bid</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 03 · SOFT COSTS -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">03 — Toronto soft costs</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">The line item that dwarfs the finishes.</h3>
+          <p class="text-fog leading-relaxed">
+            On this project the development charges alone are
+            <span class="text-chalk font-medium">$3,153,979 gross</span> — reduced to
+            <span class="text-hiviz font-medium">$1,576,989</span> under the Canada–Ontario
+            Development Charge Reduction Program. That is more than the entire interiors
+            package, and generic estimating software does not know it exists.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>City of Toronto 2026 fee schedule — area rates by occupancy, 4.5% Construction Surcharge, Building Code Act administration fee</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Development charges gross and reduced side by side, with demolition credits</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Parkland, Community Benefits Charge, HST at 13% and the new housing rebate</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every levy tagged <span class="font-mono text-xs">CONTRACTOR</span> or <span class="font-mono text-xs">OWNER</span>, so nothing lands in the bid that should not be there</span></li>
+          </ul>
+          <p class="text-xs text-plate mt-5 leading-relaxed font-mono">
+            Municipal schedules change annually. Every figure is editable in-app and stored in
+            your own folder — no dependency on us to stay current.
+          </p>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <div class="app-titlebar" aria-hidden="true">
+              <span class="app-dot" style="background:#ff5f57"></span><span class="app-dot" style="background:#febc2e"></span><span class="app-dot" style="background:#28c840"></span>
+              <span class="app-title">Soft costs — municipal cost stack</span>
+            </div>
+            <img src="/estimator/softcosts.webp" width="1920" height="1200" loading="lazy"
+              alt="The Soft Costs view showing $186,301 of permits inside the construction bid, $1,996,989 of owner cost excluded, and a municipal cost stack itemising building permits, the Toronto construction surcharge, plumbing and mechanical permits, and development charges per unit type." />
+          </figure>
+        </div>
+      </div>
+
+      <!-- 04 · DOCUMENTS -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal app-glow">
+          <figure class="app-window">
+            <div class="app-titlebar" aria-hidden="true">
+              <span class="app-dot" style="background:#ff5f57"></span><span class="app-dot" style="background:#febc2e"></span><span class="app-dot" style="background:#28c840"></span>
+              <span class="app-title">Documents — 26 requirements that carry cost or risk</span>
+            </div>
+            <img src="/estimator/documents.webp" width="1920" height="1200" loading="lazy"
+              alt="The Documents view listing requirements extracted from the specification and instructions to bidders — Toronto Green Standard, excess soil, phased work, no substitutions and bonding — each with the source excerpt and a specific action to take." />
+          </figure>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">04 — Document intelligence</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">The clauses that cost money.</h3>
+          <p class="text-fog leading-relaxed">
+            The takeoff reads the drawings. This reads everything else that binds the price —
+            specifications, instructions to bidders, addenda, geotechnical reports, emailed
+            clarifications — and pulls out the 25 requirement types that actually carry cost
+            or risk. Three documents on this job produced
+            <span class="text-chalk font-medium">26 requirements</span>.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Bonding, insurance, liquidated damages, holdback and prompt payment</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Fair wage, phasing, restricted hours, road occupancy, sole-source products</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Toronto Green Standard, green roof, heritage, tree protection, excess soil</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Each finding shows the excerpt it came from, and converts to a qualification, a risk flag or a markup change with one click</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 05 · HISTORY -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">05 — Learning from your jobs</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">It stops using averages and starts using your crews.</h3>
+          <p class="text-fog leading-relaxed">
+            Feed in completed jobs with actual costs and hours. The catalog defaults get
+            replaced by what your people actually do: drywall running 14% over, carpentry
+            10% under, finishes consistently 7% hot. Those factors then apply to every
+            future estimate automatically.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Factors are shrunk toward 1.00 by sample size — two jobs get a quarter of the signal, eight or more get all of it</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>One bad job never permanently distorts your pricing</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Learned at assembly, trade and division level, whichever has the evidence</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Import from CSV, or add a job by hand in a minute</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <div class="app-titlebar" aria-hidden="true">
+              <span class="app-dot" style="background:#ff5f57"></span><span class="app-dot" style="background:#febc2e"></span><span class="app-dot" style="background:#28c840"></span>
+              <span class="app-title">History — 35 learned factors from 8 completed jobs</span>
+            </div>
+            <img src="/estimator/history.webp" width="1920" height="1200" loading="lazy"
+              alt="The History view showing 8 recorded jobs, 35 learned factors, a median of $234.63 per square foot and 3.1 percent estimate variance, with a table of learned productivity factors by assembly, trade and division." />
+          </figure>
+        </div>
+      </div>
+
+      <!-- 06 · SCENARIOS + ESTIMATE, side by side -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="reveal">
+          <div class="app-glow">
+            <figure class="app-window">
+              <div class="app-titlebar" aria-hidden="true">
+                <span class="app-dot" style="background:#ff5f57"></span><span class="app-dot" style="background:#febc2e"></span><span class="app-dot" style="background:#28c840"></span>
+                <span class="app-title">Scenarios &amp; Monte Carlo</span>
+              </div>
+              <img src="/estimator/scenarios.webp" width="1920" height="1200" loading="lazy"
+                alt="The Scenarios view offering preset stress tests for slow labour, material market moves, subcontract allowances landing over, schedule slip and Toronto winter conditions, plus Monte Carlo and sensitivity analysis." />
+            </figure>
+          </div>
+          <h3 class="font-display text-xl text-chalk mt-5 mb-2">06 — What-if &amp; Monte Carlo</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Eight preset stress tests, custom levers, tornado sensitivity, and a probabilistic
+            cost distribution that answers the only question that matters at 2 a.m.:
+            what is the chance this job loses money. Scenarios run against a copy — nothing
+            moves until you apply one.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1">
+          <div class="app-glow">
+            <figure class="app-window">
+              <div class="app-titlebar" aria-hidden="true">
+                <span class="app-dot" style="background:#ff5f57"></span><span class="app-dot" style="background:#febc2e"></span><span class="app-dot" style="background:#28c840"></span>
+                <span class="app-title">Estimate — 44 assemblies by division</span>
+              </div>
+              <img src="/estimator/estimate.webp" width="1920" height="1200" loading="lazy"
+                alt="The Estimate view showing assemblies grouped by CSI division with quantities, unit rates, direct cost and crew hours for each line." />
+            </figure>
+          </div>
+          <h3 class="font-display text-xl text-chalk mt-5 mb-2">07 — The estimate itself</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Every assembly expanded to its components, grouped by CSI division, each line
+            traceable back to the catalog entry, your rate sheet or the drawing it was measured
+            from. Override any price and it locks — repricing will not quietly overwrite a
+            number you know to be true.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TORONTO ACCURACY ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="est-eyebrow">Built for one jurisdiction, properly</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Toronto, not "North America".</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Generic estimating software is accurate everywhere and therefore precise nowhere.
+          This one is locked to the City of Toronto and Ontario by default — because that is
+          where the money actually leaks.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal">
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Building code</span>
+          <p class="text-sm text-fog leading-relaxed">2024 Ontario Building Code (O.&nbsp;Reg.&nbsp;163/24, in force 1&nbsp;Jan&nbsp;2025), SB-12 Zone&nbsp;6 energy packages, 1.2&nbsp;m frost depth, AODA barrier-free requirements.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Payment &amp; statute</span>
+          <p class="text-sm text-fog leading-relaxed">Construction Act (Ontario) — 10% statutory holdback, 28-day prompt payment, s.&nbsp;85.1 bonding thresholds on public work.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Permits</span>
+          <p class="text-sm text-fog leading-relaxed">City of Toronto 2026 fee schedule — $214.79 minimum permit, $92.79 hourly examination, area rates by occupancy, 4.5% Construction Surcharge, $3.00/m² Building Code Act administration fee.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Development charges</span>
+          <p class="text-sm text-fog leading-relaxed">Canada–Ontario Development Charge Reduction Program (40–60% off, from March&nbsp;2026), demolition credits, gross and reduced shown side by side so the exposure if eligibility fails is never hidden.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Tax</span>
+          <p class="text-sm text-fog leading-relaxed">HST at 13%, shown separately and never buried in a unit rate, with input tax credit treatment and the federal plus Ontario new housing rebate.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Municipal</span>
+          <p class="text-sm text-fog leading-relaxed">Toronto Green Standard v4, green roof by-law Ch.&nbsp;492, ravine and tree protection Ch.&nbsp;658/813, Ontario Heritage Act, and excess soil under O.&nbsp;Reg.&nbsp;406/19.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Schedule</span>
+          <p class="text-sm text-fog leading-relaxed">Noise by-law Ch.&nbsp;591 — durations built on the roughly 65 productive hours a week Toronto actually permits, not a seven-day assumption.</p>
+        </div>
+        <div class="spec-row" style="border-bottom:none">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Labour</span>
+          <p class="text-sm text-fog leading-relaxed">GTA labour benchmarks and market conditions as at mid-2026, used to validate imported rates and drive escalation — flagged for a second look, never silently corrected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE AI POSITION ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div class="reveal">
+          <span class="est-eyebrow">MaraponeAI</span>
+          <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+            The model never decides a number.
+          </h2>
+          <p class="text-fog mt-5 leading-relaxed">
+            This is the part most AI estimating tools get backwards. Prices come from the
+            catalog and your rate sheet. Factors come from your job history. Contingency comes
+            from the risk rules. The bid range comes from the strategy engine. All of it is
+            deterministic and all of it is traceable.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            MaraponeAI explains, summarises and drafts. It does not price. Every figure it
+            quotes traces back to the audit trail — which is what makes the estimate defensible
+            to an owner, and what stops a 30-year estimator from writing the whole thing off as
+            a black box.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            Even the conversational layer is deterministic. Type
+            <span class="font-mono text-xs text-chalk bg-charcoal border border-plate rounded px-1.5 py-0.5">tighten drywall productivity 8% and show me the impact</span>
+            and it is parsed by rule, previewed before it moves a cent, and logged in the change
+            history. An estimator typing an instruction about money needs it executed exactly —
+            a misread intent that silently shifts a bid is far worse than an honest
+            "I did not understand that".
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1 space-y-4">
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Runs entirely on your machine</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              A native macOS app. Drop an embedded model into the app's own folder and nothing
+              leaves the machine, ever. No account, no cloud, no telemetry, no per-seat licence
+              phoning home.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Fully functional without a model</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Every analysis, recommendation and explanation is available from the deterministic
+              reasoning engine alone. Without a model you lose free-form narrative — you do not
+              lose a single number.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Your data outlives the software</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              The database, rate overrides, job history and fee-schedule edits live in your own
+              Application Support folder in open SQLite. An app update never touches them, and
+              you can read them without us.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Exports into what you already run</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Client proposal PDF, internal bid review PDF, Excel workbook, and CSVs for Procore,
+              Sage, QuickBooks and Bluebeam, plus a buyout list. Client-facing and internal
+              documents are deliberately separate — handing a client your margin ladder is a bad
+              afternoon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WORKFLOW ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-12">
+        <span class="est-eyebrow">From drawings to submitted bid</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Eight steps, and the last one matters most.</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">01</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">New estimate</h3>
+          <p class="text-sm text-fog leading-relaxed">Project, postal code, type, area, duration, site conditions.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">02</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Import quantities</h3>
+          <p class="text-sm text-fog leading-relaxed">Blueprint Auditor JSON, or any CSV/XLSX. Metric converts automatically. Anything it cannot confidently match is surfaced, never guessed.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">03</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Import your rates</h3>
+          <p class="text-sm text-fog leading-relaxed">Your rate sheet becomes the primary source. Rates well outside the GTA benchmark get flagged, not corrected.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">04</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Analyse documents</h3>
+          <p class="text-sm text-fog leading-relaxed">Findings become qualifications, risk flags and markup changes you apply with one click.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">05</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Review the risk</h3>
+          <p class="text-sm text-fog leading-relaxed">Risk register, contingency gap, Monte Carlo, sensitivity.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">06</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Position the bid</h3>
+          <p class="text-sm text-fog leading-relaxed">Margin ladder, win probability, value engineering, walk-away number.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">07</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Export</h3>
+          <p class="text-sm text-fog leading-relaxed">Proposal PDF, internal review PDF, Excel workbook, integration CSVs, buyout list.</p>
+        </div>
+        <div class="reveal border border-hiviz/45 rounded-lg bg-gunmetal p-5 relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-display text-3xl text-hiviz">08</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Close the loop</h3>
+          <p class="text-sm text-fog leading-relaxed">Record the outcome and the actual costs. The next estimate is measurably better because of it — this is the step everyone skips and the only one that compounds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW TO BUY ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-10">
+        <span class="est-eyebrow">Separately, or together</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Buy the piece you're missing.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Both are one-time purchases with the source code included. No seats, no renewals,
+          no metering. Full pricing lives on the pricing page — this is how the two products
+          fit together.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="reveal border border-plate rounded-lg bg-charcoal p-6 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Option A</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">Estimator alone</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">
+            You already have takeoff you trust — a measuring service, Bluebeam, or an estimator
+            with a scale rule. Import a CSV of quantities and get the pricing, risk, soft costs
+            and strategy layer on top.
+          </p>
+          <p class="font-mono text-xs text-plate mt-4">Best for: estimators who measure fine and price by gut</p>
+        </div>
+
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-charcoal p-6 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Option B</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">Auditor alone</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">
+            Your pricing is dialled in and the bottleneck is measuring and reviewing drawings.
+            Run the Blueprint Auditor for takeoff, scope gaps and tender risk, and keep pricing
+            the way you always have.
+          </p>
+          <p class="font-mono text-xs text-plate mt-4">Best for: teams drowning in drawing review</p>
+        </div>
+
+        <div class="reveal reveal-d2 border border-hiviz/45 rounded-lg bg-charcoal p-6 flex flex-col relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">Option C — most teams</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">Both, wired together</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">
+            Quantities flow straight from the drawings into the priced bid with nothing retyped.
+            The seam between measuring and pricing is where errors get born — this removes it
+            entirely.
+          </p>
+          <p class="font-mono text-xs text-hiviz mt-4">Bundled pricing available</p>
+        </div>
+      </div>
+
+      <div class="reveal flex flex-col sm:flex-row gap-3 mt-8">
+        <a href="/construction/pricing" class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">See pricing →</a>
+        <a href="/construction/blueprint-auditor" class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">Compare with the Blueprint Auditor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA ══════════ -->
+  <section class="cta-band py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-4 text-center relative reveal">
+      <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">Price your next bid with it.</h2>
+      <p class="text-fog mt-5 leading-relaxed max-w-xl mx-auto">
+        Send us a real job — quantities, drawings, or just the tender documents. We will run it
+        through the estimator and walk you through what it found, line by line, before you spend
+        anything.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+        <a href="/construction/contact?product=ai-estimator"
+          class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-center hover:opacity-90 transition-opacity">
+          Book a walkthrough →
+        </a>
+        <a href="/construction/discovery"
+          class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
+          Book a 15-min call
+        </a>
+      </div>
+      <p class="font-mono text-xs text-plate mt-6">30-day full refund guarantee · No questions asked</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/construction/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Rome</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B 6K5<br />Canada</p>
+            </address>
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
+            </address>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/construction/" class="hover:text-chalk">Home</a>
+          <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('nav-progress');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var d = document.documentElement;
+          var h = d.scrollHeight - d.clientHeight;
+          if (h > 0) bar.style.width = ((d.scrollTop || window.scrollY) / h * 100) + '%';
+        }, { passive: true });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+
+</html>

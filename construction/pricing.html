@@ -76,7 +76,7 @@
     }
     .pricing-panel.active { display: block; opacity: 1; } /* legacy */
     html { scroll-behavior: smooth; }
-    [id="construction-builds"], [id="marketing-addon"] { scroll-margin-top: 80px; }
+    [id="construction-builds"] { scroll-margin-top: 80px; }
   </style>
   <!-- Google Analytics (G-J31Z05DB01) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
@@ -109,6 +109,30 @@
     "category": "Construction AI software",
     "url": "https://marapone.com/construction/pricing",
     "offers": [
+      {
+        "@type": "Offer",
+        "name": "Blueprint Auditor",
+        "price": "990",
+        "priceCurrency": "CAD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://marapone.com/construction/blueprint-auditor"
+      },
+      {
+        "@type": "Offer",
+        "name": "AI Estimator",
+        "price": "990",
+        "priceCurrency": "CAD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://marapone.com/construction/ai-estimator"
+      },
+      {
+        "@type": "Offer",
+        "name": "Blueprint Auditor + AI Estimator bundle",
+        "price": "1690",
+        "priceCurrency": "CAD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://marapone.com/construction/pricing"
+      },
       {
         "@type": "Offer",
         "name": "Starter",
@@ -207,9 +231,10 @@
       <p class="font-mono text-hiviz text-sm mb-3">// Simple pricing. No tricks.</p>
       <h1 class="font-display text-5xl lg:text-7xl text-chalk mb-4">PAY ONCE.<br /><span class="text-hiviz">OWN
           EVERYTHING.</span></h1>
-      <p class="text-fog max-w-2xl mx-auto leading-relaxed">Every tier gives you full source code and model handover.
-        The difference is scope, support depth, and how hands-on we need to be. No subscriptions. No per-seat fees. No
-        vendor lock-in.</p>
+      <p class="text-fog max-w-2xl mx-auto leading-relaxed">Two ways in. Buy a <strong class="text-chalk">finished
+        product</strong> — the Blueprint Auditor or the AI Estimator — and run it this week. Or commission a
+        <strong class="text-chalk">custom build</strong> shaped around how your company actually works. Either way you
+        get full source code and model handover. No subscriptions. No per-seat fees. No vendor lock-in.</p>
     </div>
   </section>
 
@@ -219,9 +244,11 @@
   <section class="py-6 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
       <div class="flex flex-wrap gap-3 text-sm font-mono">
-        <a href="#construction-builds" class="text-hiviz hover:text-chalk transition-colors">↓ Construction Builds</a>
+        <a href="#products" class="text-hiviz hover:text-chalk transition-colors">↓ Software</a>
         <span class="text-plate">·</span>
-        <a href="#marketing-addon" class="text-fog hover:text-chalk transition-colors">↓ Marketing Add-on</a>
+        <a href="#construction-builds" class="text-fog hover:text-chalk transition-colors">↓ Custom Builds</a>
+        <span class="text-plate">·</span>
+        <a href="#worth-it" class="text-fog hover:text-chalk transition-colors">↓ What it replaces</a>
         <span class="text-plate">·</span>
         <a href="/logistics/pricing" class="text-fog hover:text-chalk transition-colors">→ Logistics pricing</a>
       </div>
@@ -230,6 +257,135 @@
         <button type="button" data-curr="CAD" class="curr-btn px-2.5 py-1 rounded border border-hiviz text-hiviz bg-hiviz/10" aria-pressed="true">CAD</button>
         <button type="button" data-curr="USD" class="curr-btn px-2.5 py-1 rounded border border-plate text-fog hover:text-chalk transition-colors" aria-pressed="false">USD</button>
         <button type="button" data-curr="EUR" class="curr-btn px-2.5 py-1 rounded border border-plate text-fog hover:text-chalk transition-colors" aria-pressed="false">EUR</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FINISHED SOFTWARE — BUY OFF THE SHELF ═══════════ -->
+  <section id="products" class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <div class="mb-10 reveal">
+        <p class="font-mono text-hiviz text-sm mb-2">// Finished software · nothing to scope</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">BUY THE TOOL. <span class="text-hiviz">OWN IT OUTRIGHT.</span></h2>
+        <p class="text-fog text-sm mt-3 leading-relaxed max-w-3xl">
+          Two products are already built. No discovery call, no scoping, no waiting — you buy the
+          application, install it on your own machine, and it is yours permanently. Same terms as
+          everything else we sell: one payment, full source code, no subscription, and it keeps
+          working whether or not we are still here.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-5">
+
+        <!-- Blueprint Auditor -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 flex flex-col reveal">
+          <div class="mb-5">
+            <p class="font-mono text-hiviz text-xs mb-2">PRODUCT 01 · TAKEOFF &amp; REVIEW</p>
+            <h3 class="font-display text-3xl text-chalk mb-1">BLUEPRINT AUDITOR</h3>
+            <div class="flex items-end gap-2 mt-3">
+              <span class="font-display text-5xl text-chalk" data-price-cad="990">$990</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+            </div>
+            <p class="text-fog text-xs mt-3 leading-relaxed">
+              Best if: drawing review and takeoff is the bottleneck. Drop in a drawing set and get
+              measured quantities, scope gaps and code conflicts back — before they become change orders.
+            </p>
+          </div>
+          <div class="border-t border-plate pt-5 flex-1">
+            <p class="font-mono text-xs text-fog uppercase mb-3">What you get</p>
+            <ul class="space-y-2.5 text-xs">
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Quantity takeoff read straight off the PDF drawing set</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Scope-gap and drawing-conflict detection</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Ontario Building Code compliance checks</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Tender risk scan across the bid documents</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">RFI, deficiency and change-order lists generated for you</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>Full source code</strong> — modify it, or hire anyone to</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Unlimited drawings. No per-sheet or per-project fees</span></li>
+            </ul>
+          </div>
+          <div class="mt-6">
+            <a href="/construction/contact?product=blueprint-auditor" class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Get the Blueprint Auditor &rarr;</a>
+            <a href="/construction/blueprint-auditor" class="block text-center font-mono text-xs text-fog hover:text-chalk mt-2.5 transition-colors">See it work first →</a>
+          </div>
+        </div>
+
+        <!-- AI Estimator — FEATURED -->
+        <div class="bg-gunmetal border-2 border-hiviz rounded-xl p-6 flex flex-col relative reveal reveal-d1">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-hiviz text-white font-mono text-[0.6rem] tracking-widest uppercase px-3 py-1 rounded whitespace-nowrap">New</span>
+          <div class="mb-5">
+            <p class="font-mono text-hiviz text-xs mb-2">PRODUCT 02 · PRICING &amp; STRATEGY</p>
+            <h3 class="font-display text-3xl text-chalk mb-1">AI ESTIMATOR</h3>
+            <div class="flex items-end gap-2 mt-3">
+              <span class="font-display text-5xl text-chalk" data-price-cad="990">$990</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+            </div>
+            <p class="text-fog text-xs mt-3 leading-relaxed">
+              Best if: you can measure fine, but pricing, contingency and the margin call are done on
+              instinct. Turns quantities into a priced, risk-adjusted bid you can defend line by line.
+            </p>
+          </div>
+          <div class="border-t border-plate pt-5 flex-1">
+            <p class="font-mono text-xs text-fog uppercase mb-3">What you get</p>
+            <ul class="space-y-2.5 text-xs">
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>57 parametric assemblies</strong> across 20 CSI divisions</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>27 risk rules</strong> → a recommended contingency with a written reason</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Toronto permits, development charges, parkland, CBC, HST and rebate</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Monte Carlo, tornado sensitivity and eight what-if presets</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Margin ladder with win probability from <strong>your</strong> recorded bids</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Proposal PDF, internal review PDF, Excel, and Procore / Sage / QuickBooks / Bluebeam exports</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>Full source code</strong> + every fee schedule editable in-app</span></li>
+            </ul>
+          </div>
+          <div class="mt-6">
+            <a href="/construction/contact?product=ai-estimator" class="block bg-hiviz text-white font-semibold py-2.5 rounded text-center text-sm hover:opacity-90 transition-opacity">Get the AI Estimator &rarr;</a>
+            <a href="/construction/ai-estimator" class="block text-center font-mono text-xs text-fog hover:text-chalk mt-2.5 transition-colors">See every screen first →</a>
+          </div>
+        </div>
+
+        <!-- Bundle -->
+        <div class="bg-gunmetal border border-plate rounded-xl p-6 flex flex-col reveal reveal-d2">
+          <div class="mb-5">
+            <p class="font-mono text-hiviz text-xs mb-2">BOTH · DRAWINGS → PRICED BID</p>
+            <h3 class="font-display text-3xl text-chalk mb-1">THE PAIR</h3>
+            <div class="flex items-end gap-2 mt-3">
+              <span class="font-display text-5xl text-chalk" data-price-cad="1690">$1,690</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+            </div>
+            <p class="font-mono text-xs text-hiviz mt-2">Save <span data-price-cad="290">$290</span> versus buying separately</p>
+            <p class="text-fog text-xs mt-3 leading-relaxed">
+              Best if: you want the whole path. Quantities flow from the drawings straight into the
+              priced bid with nothing retyped — which removes the seam where most estimating errors
+              are actually born.
+            </p>
+          </div>
+          <div class="border-t border-plate pt-5 flex-1">
+            <p class="font-mono text-xs text-fog uppercase mb-3">What you get</p>
+            <ul class="space-y-2.5 text-xs">
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Everything in both products above</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>Direct handoff</strong> — the auditor's takeoff imports into the estimator with one click</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">One setup call covering both, end to end on a real job of yours</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Your rate sheet imported and validated against GTA benchmarks</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Your completed job history loaded, so it prices with your crews' numbers from day one</span></li>
+            </ul>
+          </div>
+          <div class="mt-6">
+            <a href="/construction/contact?product=bundle" class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Get both &rarr;</a>
+            <p class="flex items-center justify-center gap-1.5 mt-2.5 font-mono text-xs text-fog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secured by Stripe</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 border border-plate rounded-lg p-5 bg-steel reveal">
+        <p class="font-mono text-hiviz text-xs uppercase mb-2">Products vs. custom builds — which one</p>
+        <p class="text-fog text-sm leading-relaxed">
+          <span class="text-chalk font-semibold">Buy a product</span> when the workflow above already
+          describes your problem. It is finished, it is cheaper, and you can be running it this week.
+          <span class="text-chalk font-semibold">Commission a build</span> when the workflow is specific
+          to how your company operates — trained on your documents, wired into your systems, and shaped
+          around a process nobody else runs. Buying a product first does not lock you out of a build
+          later; most teams start here.
+        </p>
       </div>
     </div>
   </section>
@@ -483,154 +639,134 @@
       </div>
 
 
-      <!-- ===== MARKETING ADD-ON PANEL ===== -->
-      <div id="marketing-addon" class="pricing-panel active mt-20 pt-12 border-t border-plate">
+      
 
-        <!-- Results guarantee banner -->
-        <div
-          class="mb-10 bg-gunmetal border border-hiviz rounded-lg px-6 py-4 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-          <div class="text-3xl">🛡️</div>
-          <div>
-            <p class="font-mono text-hiviz text-xs uppercase mb-1">Results Guarantee</p>
-            <p class="text-chalk text-sm font-semibold">Every marketing plan includes a results guarantee — more views, impressions, and leads within your plan's duration — or we refund you in full. No questions asked.</p>
-          </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ WHAT IT REPLACES / TCO ═══════════ -->
+  <section id="worth-it" class="py-16 lg:py-24 border-t border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <div class="mb-10 reveal">
+        <p class="font-mono text-hiviz text-sm mb-2">// Compare the three-year number, not the sticker</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">A ONE-TIME PRICE IS<br /><span class="text-hiviz">A DIFFERENT KIND OF NUMBER.</span></h2>
+        <p class="text-fog text-sm mt-4 leading-relaxed max-w-3xl">
+          Software pricing trains you to compare monthly figures, where $300 a seat sounds smaller
+          than $9,500. It isn't — it just arrives slower. Here is the same three years, priced three
+          ways, for a ten-person estimating and project team.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-5">
+
+        <!-- Rent it -->
+        <div class="border border-plate rounded-xl bg-charcoal p-6 flex flex-col reveal">
+          <p class="font-mono text-xs text-fog uppercase tracking-wider mb-2">Option 1 — Rent it</p>
+          <h3 class="font-display text-2xl text-chalk mb-1">Industry SaaS, per seat</h3>
+          <p class="font-display text-4xl text-red-400 mt-3">$90,000<span class="font-body text-base text-fog font-normal"> / 3 yr</span></p>
+          <p class="font-mono text-xs text-fog mt-1">10 seats × ~$250/mo · typical construction-software seat pricing</p>
+          <ul class="space-y-2 text-xs text-fog mt-5 flex-1">
+            <li class="flex gap-2"><span class="text-plate">✗</span> Renewal increases are the vendor's decision, not yours</li>
+            <li class="flex gap-2"><span class="text-plate">✗</span> Your drawings, contracts and cost history sit on their servers</li>
+            <li class="flex gap-2"><span class="text-plate">✗</span> Features you rely on can be repackaged into a higher tier</li>
+            <li class="flex gap-2"><span class="text-plate">✗</span> Stop paying and you keep nothing — not the tool, not the data</li>
+            <li class="flex gap-2"><span class="text-plate">✗</span> Adding a person adds cost, forever</li>
+          </ul>
+          <p class="font-mono text-xs text-plate mt-5 pt-4 border-t border-plate">Year 4 cost: another $30,000</p>
         </div>
 
-        <p class="font-mono text-hiviz text-xs uppercase text-center mb-10">Marketing — We actively market your company for 30, 60, or 90 days. Every plan includes real execution — posts, reels, video, and strategy — built for your brand.</p>
-
-        <div class="grid md:grid-cols-3 gap-6">
-
-          <!-- Starter -->
-          <div class="bg-gunmetal border border-plate rounded-xl p-8 flex flex-col">
-            <div class="mb-6">
-              <p class="font-mono text-hiviz text-xs mb-2">TIER 01</p>
-              <h2 class="font-display text-3xl text-chalk mb-1">STARTER</h2>
-              <p class="font-mono text-hiviz text-xs font-semibold tracking-widest mt-1">30-DAY MARKETING PLAN</p>
-              <div class="flex items-end gap-2 mt-4">
-                <span class="font-display text-5xl text-chalk">$1,500</span>
-                <span class="text-fog font-mono text-sm mb-2">CAD · one time · +HST</span>
-              </div>
-              <p class="text-fog text-sm mt-3">Best if: you want to get your brand in front of the right people fast — a fully managed 30-day marketing campaign to build your presence.</p>
-            </div>
-            <div class="border-t border-plate pt-6 flex-1">
-              <p class="font-mono text-xs text-fog uppercase mb-4">What's included</p>
-              <ul class="space-y-3 text-sm">
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>30-day active marketing campaign</strong> — we manage and publish content for your brand</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Custom posts and captions — short-form, written for your brand</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">5 short-form video scripts (Reels / TikTok / Shorts format)</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Custom brand voice brief</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">1 revision round on all deliverables</span></li>
-              </ul>
-              <p class="font-mono text-xs text-fog uppercase mt-6 mb-4">What's not included</p>
-              <ul class="space-y-2 text-sm text-fog">
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Long-form video content</li>
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Competitor content analysis</li>
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Paid ad management</li>
-              </ul>
-            </div>
-            <div class="mt-8">
-              <a href="/construction/contact" class="block border border-hiviz text-hiviz font-semibold py-3 rounded text-center hover:bg-hiviz hover:text-white transition-colors" data-checkout="marketing" data-tier="starter">Buy now &rarr;</a>
-            </div>
-          </div>
-
-          <!-- Growth — FEATURED -->
-          <div class="bg-steel border-2 border-hiviz rounded-xl p-8 flex flex-col relative">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <span class="hiviz-gradient text-white font-mono text-xs px-4 py-1 rounded-full whitespace-nowrap">MOST
-                POPULAR</span>
-            </div>
-            <div class="mb-6">
-              <p class="font-mono text-hiviz text-xs mb-2">TIER 02</p>
-              <h2 class="font-display text-3xl text-chalk mb-1">GROWTH</h2>
-              <p class="font-mono text-hiviz text-xs font-semibold tracking-widest mt-1">60-DAY MARKETING PLAN</p>
-              <div class="flex items-end gap-2 mt-4">
-                <span class="font-display text-5xl text-chalk">$2,500</span>
-                <span class="text-fog font-mono text-sm mb-2">CAD · one time · +HST</span>
-              </div>
-              <p class="text-fog text-sm mt-3">Best if: you want a sustained 60-day marketing push — double the runway, more content types, and deeper platform coverage than a one-month sprint.</p>
-            </div>
-            <div class="border-t border-plate pt-6 flex-1">
-              <p class="font-mono text-xs text-fog uppercase mb-4">What's included</p>
-              <ul class="space-y-3 text-sm">
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>60-day active marketing campaign</strong> — everything in Starter, extended to 60 days</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Long-form video scripts and content pieces</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Full Reels package — scripted, with direction notes for filming</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Competitor content analysis (3–5 direct competitors)</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">2 revision rounds on all deliverables</span></li>
-              </ul>
-              <p class="font-mono text-xs text-fog uppercase mt-6 mb-4">What's not included</p>
-              <ul class="space-y-2 text-sm text-fog">
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Custom AI brand voice model</li>
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Paid ad management</li>
-              </ul>
-            </div>
-            <div class="mt-8">
-              <a href="/construction/contact" class="hiviz-gradient block text-white font-semibold py-3 rounded text-center hover:opacity-90 transition-opacity" data-checkout="marketing" data-tier="growth">Buy now &rarr;</a>
-            </div>
-          </div>
-
-          <!-- Pro -->
-          <div class="bg-gunmetal border border-plate rounded-xl p-8 flex flex-col">
-            <div class="mb-6">
-              <p class="font-mono text-hiviz text-xs mb-2">TIER 03</p>
-              <h2 class="font-display text-3xl text-chalk mb-1">PRO</h2>
-              <p class="font-mono text-hiviz text-xs font-semibold tracking-widest mt-1">90-DAY MARKETING PLAN</p>
-              <div class="flex items-end gap-2 mt-4">
-                <span class="font-display text-5xl text-chalk">$5,000</span>
-                <span class="text-fog font-mono text-sm mb-2">CAD · one time · +HST</span>
-              </div>
-              <p class="text-fog text-sm mt-3">Best if: you want the full 90-day marketing build — AI-powered brand voice, complete platform coverage, and a strategy built to outlast the engagement.</p>
-            </div>
-            <div class="border-t border-plate pt-6 flex-1">
-              <p class="font-mono text-xs text-fog uppercase mb-4">What's included</p>
-              <ul class="space-y-3 text-sm">
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk"><strong>90-day active marketing campaign</strong> — everything in Growth, extended to 90 days</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span
-                    class="text-chalk">Custom AI brand voice model — trained on your existing content</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Full 90-day content roadmap — short form, long form, and video across all platforms</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Full competitor landscape report (up to 10 competitors)</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Unlimited revisions within the project scope</span></li>
-                <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">2 strategy calls + final handover walkthrough</span></li>
-              </ul>
-              <p class="font-mono text-xs text-fog uppercase mt-6 mb-4">What's not included</p>
-              <ul class="space-y-2 text-sm text-fog">
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Video production (filming and editing)</li>
-                <li class="flex items-start gap-2"><span class="text-plate mt-0.5">✗</span>Paid ad management</li>
-              </ul>
-            </div>
-            <div class="mt-8">
-              <a href="/construction/contact" class="block border border-plate text-chalk font-semibold py-3 rounded text-center hover:border-hiviz hover:text-hiviz transition-colors" data-checkout="marketing" data-tier="pro">Buy now &rarr;</a>
-            </div>
-          </div>
-
+        <!-- Build it yourself -->
+        <div class="border border-plate rounded-xl bg-charcoal p-6 flex flex-col reveal reveal-d1">
+          <p class="font-mono text-xs text-fog uppercase tracking-wider mb-2">Option 2 — Commission it elsewhere</p>
+          <h3 class="font-display text-2xl text-chalk mb-1">Dev shop, hourly</h3>
+          <p class="font-display text-4xl text-red-400 mt-3">$40,000+<span class="font-body text-base text-fog font-normal"> / build</span></p>
+          <p class="font-mono text-xs text-fog mt-1">~200 hrs × $200/hr · a typical agency rate for custom AI work</p>
+          <ul class="space-y-2 text-xs text-fog mt-5 flex-1">
+            <li class="flex gap-2"><span class="text-plate">✗</span> Priced by the hour, so scope creep is their upside</li>
+            <li class="flex gap-2"><span class="text-plate">✗</span> They learn construction on your budget</li>
+            <li class="flex gap-2"><span class="text-plate">✗</span> Ontario Building Code, the Construction Act and Toronto's fee schedule are all research hours you pay for</li>
+            <li class="flex gap-2"><span class="text-plate">✗</span> Maintenance is a second contract</li>
+          </ul>
+          <p class="font-mono text-xs text-plate mt-5 pt-4 border-t border-plate">Then you still own the maintenance</p>
         </div>
 
-        <!-- Always Included Strip -->
-        <div class="mt-10 bg-steel border border-plate rounded-lg p-6 grid md:grid-cols-4 gap-4 text-sm">
-          <div>
-            <p class="font-mono text-hiviz text-xs mb-2">ALWAYS INCLUDED</p>
-            <p class="text-chalk font-semibold">Results guaranteed</p>
-            <p class="text-fog text-xs">More views, impressions &amp; leads — or full refund.</p>
-          </div>
-          <div>
-            <p class="font-mono text-xs text-fog mb-2">—</p>
-            <p class="text-chalk font-semibold">All content is yours</p>
-            <p class="text-fog text-xs">We deliver. You own it. Forever.</p>
-          </div>
-          <div>
-            <p class="font-mono text-xs text-fog mb-2">—</p>
-            <p class="text-chalk font-semibold">Built for modern platforms</p>
-            <p class="text-fog text-xs">Short-form, long-form, and video — content that works where attention is.</p>
-          </div>
-          <div>
-            <p class="font-mono text-xs text-fog mb-2">—</p>
-            <p class="text-chalk font-semibold">Full campaign included</p>
-            <p class="text-fog text-xs">One price covers your entire plan duration. No hidden add-ons.</p>
-          </div>
+        <!-- Own it -->
+        <div class="border-2 border-hiviz rounded-xl bg-charcoal p-6 flex flex-col relative reveal reveal-d2">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-hiviz text-white font-mono text-[0.6rem] tracking-widest uppercase px-3 py-1 rounded whitespace-nowrap">Marapone</span>
+          <p class="font-mono text-xs text-hiviz uppercase tracking-wider mb-2">Option 3 — Own it</p>
+          <h3 class="font-display text-2xl text-chalk mb-1">Full Build, once</h3>
+          <p class="font-display text-4xl text-hiviz mt-3" data-price-cad="9500">$9,500</p>
+          <p class="font-mono text-xs text-fog mt-1">One invoice · unlimited users · +HST</p>
+          <ul class="space-y-2 text-xs text-chalk mt-5 flex-1">
+            <li class="flex gap-2"><span class="text-hiviz">✓</span> Unlimited seats — hire twenty more people, the price does not move</li>
+            <li class="flex gap-2"><span class="text-hiviz">✓</span> Runs inside your network; nothing leaves it</li>
+            <li class="flex gap-2"><span class="text-hiviz">✓</span> Full source code and model weights, handed over</li>
+            <li class="flex gap-2"><span class="text-hiviz">✓</span> Built by people who already know the OBC and the Construction Act</li>
+            <li class="flex gap-2"><span class="text-hiviz">✓</span> It is a capital asset on your books, not an operating line</li>
+          </ul>
+          <p class="font-mono text-xs text-hiviz mt-5 pt-4 border-t border-plate">Year 4 cost: $0</p>
         </div>
       </div>
 
+      <div class="mt-6 border border-plate rounded-lg bg-steel p-5 reveal">
+        <p class="text-fog text-xs leading-relaxed">
+          <span class="font-mono text-hiviz uppercase">Note on these figures —</span>
+          the SaaS and agency numbers are typical market rates for the GTA, shown to make the shape of
+          the comparison clear. They are illustrative, not quotes from any named vendor. Your actual
+          numbers will differ; the direction will not. Ask us for a written comparison against whatever
+          you are paying today and we will do it properly, with your real invoices.
+        </p>
+      </div>
+
+      <!-- WHAT ACTUALLY ARRIVES -->
+      <div class="mt-16 reveal">
+        <p class="font-mono text-hiviz text-sm mb-2">// The deliverable, spelled out</p>
+        <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-3">WHAT ACTUALLY LANDS IN YOUR HANDS</h2>
+        <p class="text-fog text-sm leading-relaxed max-w-3xl mb-8">
+          "You own it" is easy to write on a pricing page. This is what ownership physically consists
+          of on handover day — every item is a file or an artefact you can open without us.
+        </p>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="border border-plate rounded-lg bg-charcoal p-5">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">01 — The software</p>
+            <ul class="space-y-2 text-xs text-fog">
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Complete source repository, commit history intact</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Fine-tuned model weights, on disk</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> A build script that produces the app from scratch</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> No licence key, no activation server, no kill switch</li>
+            </ul>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-5">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">02 — The knowledge</p>
+            <ul class="space-y-2 text-xs text-fog">
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> A README that explains how it works, not just how to run it</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Architecture and data-flow diagrams</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Runbook for deployment, backup and recovery</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Recorded walkthrough of the codebase</li>
+            </ul>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-5">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">03 — The independence</p>
+            <ul class="space-y-2 text-xs text-fog">
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Every rate, rule and fee schedule editable in-app</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Open data formats — SQLite, JSON, CSV</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Any developer can pick it up; you are not tied to us</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Works with no internet connection at all</li>
+            </ul>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-5">
+            <p class="font-mono text-hiviz text-xs uppercase mb-2">04 — The safety net</p>
+            <ul class="space-y-2 text-xs text-fog">
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> 30-day full refund, no questions asked</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> If it breaks and it is our error, we fix it free</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Included support window on every tier</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Ongoing support is optional, never required to keep running</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1130,6 +1266,7 @@
         <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
           <a href="/construction/" class="hover:text-chalk">Home</a>
           <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
           <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
         <a href="/construction/demo" class="hover:text-chalk">Live Demo</a>
           <a href="/construction/services" class="hover:text-chalk">Services</a>

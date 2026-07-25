@@ -4,552 +4,522 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marapone – Private AI for Construction & Logistics | Choose Your Industry</title>
+  <title>Marapone – Private AI for Construction | Own the Engine</title>
   <link rel="canonical" href="https://marapone.com/" />
-  <meta name="description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code. Deployed on your infrastructure. Choose your industry to get started." />
+  <meta name="description" content="Marapone builds private AI systems for construction companies — blueprint takeoff, estimating, tender risk and document intelligence. One-time price. Full source code. Deployed on your infrastructure. Also serving select logistics teams." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Marapone" />
-  <meta property="og:title" content="Marapone – Private AI for Construction & Logistics" />
-  <meta property="og:description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code. Deployed on your infrastructure." />
+  <meta property="og:title" content="Marapone – Private AI for Construction" />
+  <meta property="og:description" content="Private AI for general contractors, estimators and owners' reps. One-time price. Full source code. Deployed on your infrastructure." />
   <meta property="og:url" content="https://marapone.com/" />
-  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <meta property="og:image" content="https://marapone.com/construction-hero-poster.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Marapone – Private AI for Construction & Logistics" />
-  <meta name="twitter:description" content="Marapone builds private AI systems for construction and logistics companies. One-time price. Full source code." />
-  <meta name="twitter:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <meta name="twitter:title" content="Marapone – Private AI for Construction" />
+  <meta name="twitter:description" content="Private AI for general contractors, estimators and owners' reps. One-time price. Full source code. You own it." />
+  <meta name="twitter:image" content="https://marapone.com/construction-hero-poster.jpg" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <meta name="theme-color" content="#111111" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="/construction-hero-poster.jpg" fetchpriority="high" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Marapone",
+    "url": "https://marapone.com/",
+    "logo": "https://marapone.com/MARACON-WHITE.png",
+    "description": "Marapone builds private, owned AI systems for construction companies — blueprint takeoff, estimating, tender risk and document intelligence — and for select logistics teams.",
+    "areaServed": ["CA", "IT"],
+    "sameAs": []
+  }
+  </script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      overscroll-behavior: none;
-      background: #0f0f0f;
-      font-family: 'DM Sans', sans-serif;
+    :root {
+      --charcoal: #1a1a1a;
+      --gunmetal: #232323;
+      --steel: #2e2e2e;
+      --plate: #3a3a3a;
+      --hiviz: #f97316;
+      --hiviz2: #fb923c;
+      --chalk: #e8e8e8;
+      --fog: #a0a0a0;
+      --marine: #52b788;
+      --marine-light: #74c69d;
     }
 
-    @media (max-width: 767px) {
-      html, body {
-        overflow: hidden;
-        max-width: 100%;
-      }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-    /* ── Noise overlay ── */
-    .noise {
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 100;
-    }
-
-    /* ── Grid dot background ── */
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(58,58,58,0.5) 1px, transparent 1px);
-      background-size: 28px 28px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── Main split layout ── */
-    .split-container {
-      position: relative;
-      display: flex;
-      width: 100%;
-      height: 100vh;
-      z-index: 1;
-    }
-
-    @media (max-width: 767px) {
-      .split-container {
-        flex-direction: column;
-        height: 100svh;
-      }
-    }
-
-    /* ── Panels ── */
-    .panel {
-      position: relative;
-      flex: 1;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .split-container:hover .panel { flex: 0.65; }
-    .split-container:hover .panel:hover { flex: 1.35; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .panel { transition: none; }
-    }
-
-    @media (max-width: 767px) {
-      .panel {
-        flex: none !important;
-        width: 100%;
-        height: 50svh;
-      }
-      .panel-construction { align-items: flex-start; }
-      .panel-logistics { align-items: flex-end; }
-    }
-
-    /* ── Construction panel (left) ── */
-    .panel-construction {
+    body {
       background: #111111;
-      justify-content: flex-start;
-    }
-
-    .panel-construction .panel-glow {
-      position: absolute;
-      top: -20%;
-      left: -15%;
-      width: 70%;
-      height: 120%;
-      background: radial-gradient(ellipse at 25% 40%, rgba(249,115,22,0.22) 0%, transparent 65%);
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    .panel-construction:hover .panel-glow {
-      opacity: 1.4;
-    }
-
-    /* ── Logistics panel (right) ── */
-    .panel-logistics {
-      background: #0e1210;
-      justify-content: flex-end;
-    }
-
-    .panel-logistics .panel-glow {
-      position: absolute;
-      top: -20%;
-      right: -15%;
-      width: 70%;
-      height: 120%;
-      background: radial-gradient(ellipse at 75% 40%, rgba(82,183,136,0.20) 0%, transparent 65%);
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    .panel-logistics:hover .panel-glow {
-      opacity: 1.4;
-    }
-
-    /* ── Panel inner content ── */
-    .panel-inner {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      padding: 3rem 4rem;
-      max-width: 380px;
-    }
-
-    .panel-construction .panel-inner {
-      margin-left: 4%;
-    }
-
-    .panel-logistics .panel-inner {
-      margin-right: 4%;
-      text-align: right;
-      align-items: flex-end;
-    }
-
-    @media (max-width: 1199px) {
-      .panel-inner { padding: 2.5rem 2.5rem; max-width: 320px; }
-      .panel-construction .panel-inner { margin-left: 2%; }
-      .panel-logistics .panel-inner { margin-right: 2%; }
-    }
-
-    @media (max-width: 767px) {
-      .panel-inner {
-        padding: 2.5rem 1.75rem;
-        max-width: 100%;
-        width: 100%;
-        margin: 0 !important;
-        text-align: left !important;
-        align-items: flex-start !important;
-      }
-    }
-
-    .panel-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.5;
-      color: #e8e8e8;
-    }
-
-    .panel-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.4rem, 3.8vw, 4.5rem);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-    }
-
-    .panel-construction .panel-title { color: #f97316; }
-    .panel-logistics .panel-title { color: #52b788; }
-
-    .panel-desc {
+      color: var(--chalk);
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.875rem;
-      color: #a0a0a0;
-      line-height: 1.65;
-      max-width: 280px;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      -webkit-font-smoothing: antialiased;
     }
 
-    @media (max-width: 767px) {
-      .panel-desc { max-width: 100%; }
-      .panel-title { white-space: normal; text-shadow: 0 2px 16px rgba(0,0,0,0.95); }
-      .panel-desc { text-shadow: 0 1px 8px rgba(0,0,0,0.85); color: #c8c8c8; }
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    @media (max-width: 640px) { .wrap { padding: 0 1.15rem; } }
+
+    .mono { font-family: 'DM Mono', monospace; }
+    .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.015em; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .skip-link:focus {
+      position: fixed; top: 1rem; left: 1rem; z-index: 200; width: auto; height: auto;
+      clip: auto; margin: 0; padding: 0.6rem 1rem; background: var(--hiviz);
+      color: #fff; border-radius: 4px; font-weight: 600;
     }
 
-    .panel-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      padding: 0.6rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid;
-      transition: background 0.25s ease, color 0.25s ease;
-      text-decoration: none;
-      pointer-events: none; /* parent <a> handles click */
+    /* ── Texture ── */
+    .noise {
+      position: fixed; inset: 0; z-index: 90; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
     }
 
-    .panel-construction .panel-cta {
-      border-color: #f97316;
-      color: #f97316;
+    /* ══════════════════════════════════════════════════════════
+       NAV
+       ══════════════════════════════════════════════════════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+      transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+      border-bottom: 1px solid transparent;
     }
-    .panel-construction:hover .panel-cta {
-      background: rgba(249,115,22,0.12);
+    .nav.scrolled {
+      background: rgba(17,17,17,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: var(--plate);
+    }
+    /* Only the block padding — the horizontal padding belongs to .wrap and a
+       shorthand here would silently reset it. */
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding-top: 1.05rem; padding-bottom: 1.05rem;
+    }
+    .wordmark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; letter-spacing: 0.09em; color: var(--chalk); line-height: 1;
+    }
+    .wordmark span { color: var(--hiviz); }
+
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-seg {
+      display: inline-flex; align-items: center;
+      border: 1px solid var(--plate); border-radius: 999px; padding: 3px; gap: 2px;
+      background: rgba(255,255,255,0.02);
+    }
+    .nav-seg a {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.42rem 0.95rem; border-radius: 999px;
+      color: var(--fog); transition: color 0.2s ease, background 0.2s ease;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .nav-seg a .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .nav-seg a.is-primary { background: rgba(249,115,22,0.14); color: var(--hiviz2); }
+    .nav-seg a:hover { color: var(--chalk); }
+    .nav-seg a.is-primary:hover { color: #fff; background: rgba(249,115,22,0.22); }
+    .nav-seg a.is-alt:hover { color: var(--marine-light); }
+
+    .nav-cta {
+      font-size: 0.85rem; font-weight: 600; color: var(--chalk);
+      border: 1px solid var(--plate); border-radius: 5px; padding: 0.55rem 1.1rem;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .nav-cta:hover { background: var(--steel); border-color: var(--fog); }
+    @media (max-width: 860px) { .nav-cta { display: none; } }
+    @media (max-width: 420px) {
+      .nav-seg a { padding: 0.4rem 0.7rem; font-size: 0.63rem; }
+      .nav-seg a .dot { display: none; }
     }
 
-    .panel-logistics .panel-cta {
-      border-color: #52b788;
-      color: #52b788;
+    /* ══════════════════════════════════════════════════════════
+       HERO — construction, full bleed
+       ══════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative; isolation: isolate;
+      min-height: 100svh; display: flex; align-items: center;
+      padding: 7.5rem 0 3rem; overflow: hidden;
     }
-    .panel-logistics:hover .panel-cta {
-      background: rgba(82,183,136,0.12);
+    .hero-media { position: absolute; inset: 0; z-index: -3; background: #0d0d0d; }
+    .hero-media img, .hero-media video {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 42%;
+    }
+    .hero-media video { position: absolute; inset: 0; opacity: 0; transition: opacity 1.1s ease; }
+    .hero-media video.ready { opacity: 1; }
+
+    /* Legibility scrim: heavy on the copy side, opens toward the right. */
+    .hero-scrim {
+      position: absolute; inset: 0; z-index: -2; pointer-events: none;
+      background:
+        linear-gradient(to right, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.86) 38%, rgba(12,8,4,0.52) 68%, rgba(12,8,4,0.42) 100%),
+        linear-gradient(to bottom, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.1) 26%, rgba(10,10,10,0.2) 62%, rgba(17,17,17,0.98) 100%);
+    }
+    .hero-bloom {
+      position: absolute; z-index: -1; pointer-events: none;
+      top: 8%; right: -6%; width: 62%; height: 88%;
+      background: radial-gradient(ellipse at 62% 45%, rgba(249,115,22,0.22) 0%, transparent 62%);
+    }
+    @media (max-width: 900px) {
+      .hero-scrim {
+        background:
+          linear-gradient(to bottom, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.74) 34%, rgba(10,10,10,0.82) 70%, rgba(17,17,17,0.99) 100%);
+      }
+      .hero-bloom { top: auto; bottom: 4%; right: -20%; width: 90%; height: 46%; }
     }
 
-    /* ── Divider ── */
-    .divider {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: rgba(255,255,255,0.06);
-      z-index: 10;
-      transform: translateX(-50%);
-      pointer-events: none;
+    /* Blueprint rule down the left edge — carried over from the old split divider */
+    .hero-rule {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 3px; z-index: 2;
+      background: linear-gradient(to bottom, transparent, var(--hiviz) 18%, var(--hiviz) 74%, transparent);
+      opacity: 0.85;
     }
-
-    .divider::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 1px;
-      height: 30%;
-      background: linear-gradient(to bottom, transparent, rgba(249,115,22,0.6), rgba(82,183,136,0.6), transparent);
-      animation: dividerShimmer 3s ease-in-out infinite;
+    .hero-rule::after {
+      content: ''; position: absolute; left: 0; width: 3px; height: 22%;
+      background: linear-gradient(to bottom, transparent, #fff, transparent);
+      opacity: 0.55; animation: ruleShimmer 5.5s ease-in-out infinite;
     }
-
-    @keyframes dividerShimmer {
-      0%   { top: -30%; opacity: 0; }
-      20%  { opacity: 1; }
-      80%  { opacity: 1; }
+    @keyframes ruleShimmer {
+      0% { top: -22%; opacity: 0; }
+      18% { opacity: 0.6; }
+      82% { opacity: 0.6; }
       100% { top: 100%; opacity: 0; }
     }
+    @media (max-width: 900px) { .hero-rule { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .hero-rule::after { animation: none; top: 38%; } }
 
-    @media (prefers-reduced-motion: reduce) {
-      .divider::after { animation: none; opacity: 0.5; top: 35%; height: 30%; }
+    /* Survey mark, top-left — brand motif from the construction hero */
+    .hero-mark {
+      position: absolute; top: 6.5rem; left: 2.75rem; width: 88px; height: 88px;
+      color: var(--hiviz); opacity: 0.3; pointer-events: none; z-index: 2;
     }
+    @media (max-width: 1180px) { .hero-mark { display: none; } }
 
-    @media (max-width: 767px) {
-      .divider {
-        left: 0;
-        right: 0;
-        top: 50%;
-        bottom: auto;
-        width: 100%;
-        height: 1px;
-        transform: translateY(-50%);
-      }
-      .divider::after {
-        top: 0;
-        width: 30%;
-        height: 1px;
-        left: 0;
-        background: linear-gradient(to right, transparent, rgba(249,115,22,0.6), rgba(82,183,136,0.6), transparent);
-        animation: dividerShimmerH 3s ease-in-out infinite;
-      }
-      @keyframes dividerShimmerH {
-        0%   { left: -30%; opacity: 0; }
-        20%  { opacity: 1; }
-        80%  { opacity: 1; }
-        100% { left: 100%; opacity: 0; }
-      }
+    .hero-grid {
+      position: relative; z-index: 3;
+      display: grid; grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 3.5rem; align-items: end; width: 100%;
     }
+    @media (max-width: 1080px) { .hero-grid { grid-template-columns: 1fr; gap: 2.75rem; align-items: start; } }
 
-    /* ── Center logo ── */
-    /* PNG analysis: content centre is 44px right (2.148%) and bottom tip
-       at 82.0% down from image top. Tip anchored to viewport centre.
-       transform-origin set to the tip so the breath pulse radiates upward. */
-    @keyframes logoBreath {
-      0%, 100% { transform: translate(calc(-50% - 2.148%), -82.0%) scale(1); }
-      50%       { transform: translate(calc(-50% - 2.148%), -82.0%) scale(1.06); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--hiviz2);
+      border: 1px solid rgba(249,115,22,0.35); background: rgba(249,115,22,0.08);
+      border-radius: 3px; padding: 0.38rem 0.8rem;
     }
-    @keyframes logoBreathMobile {
-      0%, 100% { transform: translateX(-2.148%) scale(1); }
-      50%       { transform: translateX(-2.148%) scale(1.06); }
+    .eyebrow .dot {
+      width: 5px; height: 5px; border-radius: 50%; background: var(--hiviz);
+      box-shadow: 0 0 0 0 rgba(249,115,22,0.6); animation: pulseDot 2.6s ease-out infinite;
     }
+    @keyframes pulseDot {
+      0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.55); }
+      70% { box-shadow: 0 0 0 7px rgba(249,115,22,0); }
+      100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+    }
+    @media (prefers-reduced-motion: reduce) { .eyebrow .dot { animation: none; } }
 
-    .center-logo {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      z-index: 20;
-      width: 161px;
-      height: 161px;
-      pointer-events: none;
-      transform-origin: 52.148% 82.0%;
-      animation: logoBreath 4s ease-in-out infinite;
+    h1.hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.1rem, 9.2vw, 8.2rem);
+      line-height: 0.86; letter-spacing: 0.012em;
+      margin: 1.5rem 0 0; color: var(--chalk);
+      text-shadow: 0 4px 40px rgba(0,0,0,0.65);
     }
-
-    .center-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.7));
-      opacity: 0.92;
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(100deg, #ffffff 0%, #e8e8e8 36%, var(--hiviz) 50%, #e8e8e8 64%, #ffffff 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 0 26px rgba(249,115,22,0.28));
+      animation: heroSheen 6s ease-in-out infinite;
     }
-
-    .center-logo-ring {
-      position: absolute;
-      inset: -12px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 70%);
+    @keyframes heroSheen {
+      0%, 100% { background-position: 8% 0; }
+      50% { background-position: 92% 0; }
     }
+    @media (prefers-reduced-motion: reduce) { .hero-title .line2 { animation: none; background-position: 30% 0; } }
 
-    @media (max-width: 767px) {
-      .center-logo {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 112px;
-        height: 112px;
-        margin: 0;
-        order: 0;
-        animation: logoBreath 4s ease-in-out infinite;
-      }
+    .hero-sub {
+      font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.66; color: #c4c4c4;
+      max-width: 40rem; margin-top: 1.5rem;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.7);
     }
+    .hero-sub strong { color: var(--chalk); font-weight: 600; }
 
-    @media (prefers-reduced-motion: reduce) {
-      .center-logo {
-        animation: none;
-        transform: translate(calc(-50% - 2.148%), -82.0%);
-      }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 2.1rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+      font-weight: 600; font-size: 1rem; padding: 0.95rem 1.7rem; border-radius: 5px;
+      transition: transform 0.18s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      border: 1px solid transparent;
     }
-
-    /* ── Bottom tagline ── */
-    .tagline {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 0;
-      right: 0;
-      text-align: center;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: #3a3a3a;
-      z-index: 50;
-      pointer-events: none;
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--hiviz) 0%, #ea580c 100%);
+      color: #fff; box-shadow: 0 8px 30px -10px rgba(249,115,22,0.75);
     }
-
-    @media (max-width: 767px) {
-      .tagline { display: none; }
+    .btn-primary:hover { box-shadow: 0 12px 38px -10px rgba(249,115,22,0.95); }
+    .btn-ghost {
+      border-color: var(--plate); color: var(--chalk);
+      background: rgba(26,26,26,0.55); backdrop-filter: blur(6px);
     }
+    .btn-ghost:hover { background: var(--steel); border-color: var(--fog); }
 
-    /* ── Hover state: panel content fade in stronger ── */
-    .panel-inner {
-      opacity: 0.7;
-      transition: opacity 0.4s ease;
+    .hero-assure {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem;
+      margin-top: 1.5rem;
+      font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--fog);
     }
-    .panel:hover .panel-inner { opacity: 1; }
-
-    @media (max-width: 767px) {
-      .panel-inner { opacity: 1; }
+    .hero-assure .pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border: 1px solid var(--plate); background: rgba(26,26,26,0.6);
+      border-radius: 999px; padding: 0.35rem 0.8rem;
     }
+    .hero-assure .tick { color: var(--hiviz); }
 
-    /* ── Focus ring for accessibility ── */
-    .panel:focus-visible {
-      outline: 2px solid #e8e8e8;
-      outline-offset: -4px;
+    /* ── Secondary door: logistics ── */
+    .side-door {
+      position: relative;
+      border: 1px solid rgba(82,183,136,0.28);
+      border-left: 2px solid var(--marine);
+      background: linear-gradient(135deg, rgba(14,18,16,0.92) 0%, rgba(18,26,22,0.86) 100%);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-radius: 4px; padding: 1.4rem 1.35rem;
+      display: block; transition: border-color 0.28s ease, transform 0.28s ease, background 0.28s ease;
     }
-
-    /* ── Decorative corner lines ── */
-    .corner-lines {
-      position: absolute;
-      pointer-events: none;
-      z-index: 3;
+    .side-door:hover {
+      border-color: rgba(82,183,136,0.6); transform: translateY(-3px);
+      background: linear-gradient(135deg, rgba(16,22,19,0.95) 0%, rgba(22,32,27,0.9) 100%);
     }
-
-    .panel-construction .corner-lines {
-      top: 2rem; left: 2rem;
+    .side-door .sd-label {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--marine); display: flex; align-items: center; gap: 0.45rem;
     }
-
-    .panel-logistics .corner-lines {
-      top: 2rem; right: 2rem;
+    .side-door .sd-label .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .side-door h2 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; letter-spacing: 0.03em;
+      color: var(--chalk); margin: 0.6rem 0 0.4rem; line-height: 1;
     }
-
-    .corner-line-h {
-      width: 32px; height: 1px;
-      background: currentColor;
-      opacity: 0.15;
+    .side-door p { font-size: 0.83rem; line-height: 1.6; color: var(--fog); }
+    .side-door .sd-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.9rem;
+      font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--marine-light);
     }
+    .side-door .sd-arrow { transition: transform 0.28s ease; }
+    .side-door:hover .sd-arrow { transform: translateX(4px); }
+    @media (max-width: 1080px) { .side-door { max-width: 30rem; } }
 
-    .corner-line-v {
-      width: 1px; height: 32px;
-      background: currentColor;
-      opacity: 0.15;
+    .scroll-hint {
+      position: absolute; bottom: 1.6rem; left: 50%; transform: translateX(-50%);
+      z-index: 3; font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: #6b6b6b;
+      display: flex; flex-direction: column; align-items: center; gap: 0.45rem;
     }
-
-    .panel-construction .corner-lines { color: #f97316; }
-    .panel-logistics .corner-lines { color: #52b788; }
-
-    @media (max-width: 767px) {
-      .corner-lines { display: none; }
+    .scroll-hint::after {
+      content: ''; width: 1px; height: 26px;
+      background: linear-gradient(to bottom, var(--plate), transparent);
     }
+    @media (max-width: 1080px) { .scroll-hint { display: none; } }
 
-    /* ── Industry tag chip ── */
-    .industry-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.75rem;
-      border-radius: 0.25rem;
-      border: 1px solid;
-      opacity: 0.6;
+    /* ══════════════════════════════════════════════════════════
+       TRUST STRIP
+       ══════════════════════════════════════════════════════════ */
+    .trust {
+      background: var(--steel);
+      border-top: 1px solid var(--plate); border-bottom: 1px solid var(--plate);
+      padding: 1.05rem 0; position: relative; z-index: 4;
     }
+    .trust-row {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: 0.5rem 0.9rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--fog);
+    }
+    .trust-row .item { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+    .trust-row .tick { color: var(--hiviz); font-size: 0.9rem; }
+    .trust-row .sep { color: var(--plate); }
+    @media (max-width: 900px) { .trust-row .sep { display: none; } }
 
-    .panel-construction .industry-chip {
-      border-color: rgba(249,115,22,0.35);
-      color: #f97316;
-      background: rgba(249,115,22,0.06);
-    }
+    /* ══════════════════════════════════════════════════════════
+       SECTION FURNITURE
+       ══════════════════════════════════════════════════════════ */
+    section.band { padding: 5rem 0; border-bottom: 1px solid var(--plate); background: var(--charcoal); }
+    section.band.alt { background: var(--gunmetal); }
+    @media (max-width: 640px) { section.band { padding: 3.5rem 0; } }
 
-    .panel-logistics .industry-chip {
-      border-color: rgba(82,183,136,0.35);
-      color: #52b788;
-      background: rgba(82,183,136,0.06);
+    .sec-label {
+      font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--hiviz);
+      display: flex; align-items: center; gap: 0.65rem;
     }
+    .sec-label::before { content: ''; width: 22px; height: 2px; background: var(--hiviz); }
+    .sec-title {
+      font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; color: var(--chalk);
+      font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.02; margin-top: 0.85rem;
+    }
+    .sec-intro { color: var(--fog); font-size: 1rem; line-height: 1.7; max-width: 46rem; margin-top: 1rem; }
 
-    .chip-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: currentColor;
-      flex-shrink: 0;
-    }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
-    /* ── Panel video backgrounds ── */
-    .panel-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 0;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      pointer-events: none;
-    }
+    /* ── Product cards ── */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.75rem; }
+    @media (max-width: 980px) { .cards { grid-template-columns: 1fr; } }
 
-    .panel:hover .panel-video {
-      opacity: 1;
+    .card {
+      position: relative; display: flex; flex-direction: column;
+      background: var(--gunmetal); border: 1px solid var(--plate); border-radius: 6px;
+      padding: 1.6rem 1.5rem 1.5rem; overflow: hidden;
+      transition: border-color 0.28s ease, transform 0.28s ease, background 0.28s ease;
     }
+    section.band.alt .card { background: var(--charcoal); }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--hiviz), transparent);
+      opacity: 0.65; transition: opacity 0.28s ease;
+    }
+    .card:hover { border-color: rgba(249,115,22,0.5); transform: translateY(-4px); }
+    .card:hover::before { opacity: 1; }
+    .card-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--hiviz);
+    }
+    .card-tag.new {
+      /* the card is a column flex container — without this the badge stretches */
+      display: inline-flex; align-self: flex-start; align-items: center; gap: 0.35rem;
+      border: 1px solid rgba(249,115,22,0.4); background: rgba(249,115,22,0.1);
+      border-radius: 3px; padding: 0.22rem 0.5rem;
+    }
+    .card h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.025em;
+      color: var(--chalk); margin: 0.75rem 0 0.55rem; line-height: 1.02;
+    }
+    .card p { color: var(--fog); font-size: 0.9rem; line-height: 1.65; }
+    .card ul { list-style: none; margin: 1rem 0 0; display: grid; gap: 0.45rem; }
+    .card li {
+      font-size: 0.83rem; color: #b4b4b4; display: flex; gap: 0.55rem; line-height: 1.5;
+    }
+    .card li::before { content: '▸'; color: var(--hiviz); flex-shrink: 0; font-size: 0.75rem; line-height: 1.7; }
+    .card-link {
+      margin-top: auto; padding-top: 1.25rem;
+      font-family: 'DM Mono', monospace; font-size: 0.76rem; color: var(--hiviz2);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .card:hover .card-link .sd-arrow { transform: translateX(4px); }
+    .card-link .sd-arrow { transition: transform 0.28s ease; }
 
-    .panel-video-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      pointer-events: none;
+    /* ── Own vs rent ── */
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+    @media (max-width: 820px) { .compare { grid-template-columns: 1fr; } }
+    .comp-col { border: 1px solid var(--plate); border-radius: 6px; padding: 1.5rem; }
+    .comp-col.rent { background: rgba(26,26,26,0.6); }
+    .comp-col.own { background: var(--gunmetal); border-color: rgba(249,115,22,0.42); }
+    .comp-head {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem; letter-spacing: 0.04em;
+      display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.1rem;
     }
+    .comp-col.rent .comp-head { color: var(--fog); }
+    .comp-col.own .comp-head { color: var(--hiviz); }
+    .comp-col ul { list-style: none; display: grid; gap: 0.7rem; }
+    .comp-col li { font-size: 0.9rem; line-height: 1.55; display: flex; gap: 0.6rem; }
+    .comp-col.rent li { color: #8c8c8c; }
+    .comp-col.own li { color: #c8c8c8; }
+    .comp-col li .g { flex-shrink: 0; font-family: 'DM Mono', monospace; }
+    .comp-col.rent li .g { color: #6b6b6b; }
+    .comp-col.own li .g { color: var(--hiviz); }
 
-    .panel:hover .panel-video-overlay {
-      opacity: 1;
+    /* ══════════════════════════════════════════════════════════
+       LOGISTICS BAND — deliberately quieter than construction
+       ══════════════════════════════════════════════════════════ */
+    .logistics-band {
+      position: relative; overflow: hidden; background: #0e1210;
+      border-bottom: 1px solid var(--plate); padding: 4rem 0;
     }
+    .lb-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3rem; align-items: center; }
+    @media (max-width: 940px) { .lb-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .lb-label {
+      font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--marine);
+      display: flex; align-items: center; gap: 0.65rem;
+    }
+    .lb-label::before { content: ''; width: 22px; height: 2px; background: var(--marine); }
+    .lb-title {
+      font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; color: var(--chalk);
+      font-size: clamp(1.65rem, 3.2vw, 2.4rem); line-height: 1.04; margin-top: 0.8rem;
+    }
+    .lb-copy { color: var(--fog); font-size: 0.95rem; line-height: 1.7; margin-top: 0.9rem; max-width: 34rem; }
+    .lb-list {
+      list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem;
+    }
+    .lb-list li {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #9fb8ab;
+      border: 1px solid rgba(82,183,136,0.28); background: rgba(82,183,136,0.06);
+      border-radius: 999px; padding: 0.3rem 0.75rem;
+    }
+    .btn-marine {
+      background: transparent; border-color: var(--marine); color: var(--marine-light);
+      margin-top: 1.6rem;
+    }
+    .btn-marine:hover { background: rgba(82,183,136,0.12); border-color: var(--marine-light); color: #fff; }
+    .lb-media {
+      position: relative; border: 1px solid rgba(82,183,136,0.22); border-radius: 6px;
+      overflow: hidden; aspect-ratio: 16 / 10;
+    }
+    .lb-media img { width: 100%; height: 100%; object-fit: cover; opacity: 0.62; }
+    .lb-media::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(14,18,16,0.9) 0%, rgba(14,18,16,0.15) 55%, rgba(82,183,136,0.1) 100%);
+    }
+    @media (max-width: 940px) { .lb-media { display: none; } }
 
-    /* Dark gradient toward the text side + subtle brand colour on far side */
-    .panel-construction .panel-video-overlay {
-      background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.68) 15%,
-        rgba(12, 5, 0, 0.42) 50%,
-        rgba(249, 115, 22, 0.18) 100%
-      );
+    /* ══════════════════════════════════════════════════════════
+       CLOSING CTA + FOOTER
+       ══════════════════════════════════════════════════════════ */
+    .closer { position: relative; padding: 5.5rem 0; text-align: center; background: var(--charcoal); overflow: hidden; }
+    .closer::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 120%, rgba(249,115,22,0.16) 0%, transparent 62%);
     }
+    .closer-inner { position: relative; }
+    .closer h2 {
+      font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; color: var(--chalk);
+      font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.02;
+    }
+    .closer p { color: var(--fog); max-width: 34rem; margin: 1rem auto 0; line-height: 1.7; }
+    .closer .hero-ctas { justify-content: center; }
 
-    .panel-logistics .panel-video-overlay {
-      background: linear-gradient(
-        to left,
-        rgba(0, 0, 0, 0.68) 15%,
-        rgba(0, 10, 5, 0.42) 50%,
-        rgba(82, 183, 136, 0.16) 100%
-      );
+    footer { background: #0f0f0f; border-top: 1px solid var(--plate); padding: 2.5rem 0; }
+    .foot-row {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 1.2rem;
     }
-
-    /* Mobile: show video, dim it, and use a strong bottom gradient so text stays legible */
-    @media (max-width: 767px) {
-      .panel-video { opacity: 0.55; }
-      .panel-video-overlay { opacity: 1; }
-      /* construction text is at the top — darken the top, open up near the divider */
-      .panel-construction .panel-video-overlay {
-        background: linear-gradient(to bottom,
-          rgba(0,0,0,0.75) 0%,
-          rgba(0,0,0,0.28) 60%,
-          rgba(0,0,0,0.04) 100%
-        );
-      }
-      /* logistics text is at the bottom — open near the divider, darken the bottom */
-      .panel-logistics .panel-video-overlay {
-        background: linear-gradient(to bottom,
-          rgba(0,0,0,0.04) 0%,
-          rgba(0,0,0,0.28) 40%,
-          rgba(0,0,0,0.75) 100%
-        );
-      }
+    .foot-links { display: flex; flex-wrap: wrap; gap: 1.1rem; }
+    .foot-links a, .foot-legal {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #6b6b6b;
+      transition: color 0.2s ease;
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      .panel-video,
-      .panel-video-overlay { display: none; }
-    }
+    .foot-links a:hover { color: var(--chalk); }
+    .foot-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .foot-brand img { width: 30px; height: 30px; object-fit: contain; opacity: 0.85; }
   </style>
 
   <!-- Google Analytics -->
@@ -565,151 +535,335 @@
 </head>
 <body>
 
-  <!-- Noise texture overlay -->
+  <a href="#main" class="sr-only skip-link">Skip to content</a>
   <div class="noise" aria-hidden="true"></div>
-  <!-- Grid dot background -->
-  <div class="grid-bg" aria-hidden="true"></div>
 
+  <!-- ══════════ NAV ══════════ -->
+  <nav class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="wordmark" aria-label="Marapone — home">MARA<span>PONE</span></a>
+      <div class="nav-links">
+        <div class="nav-seg" role="navigation" aria-label="Industry">
+          <a href="/construction/" class="is-primary"><span class="dot"></span>Construction</a>
+          <a href="/logistics/" class="is-alt">Logistics</a>
+        </div>
+        <a href="/construction/contact" class="nav-cta">Free assessment →</a>
+      </div>
+    </div>
+  </nav>
 
-  <!-- MAIN SPLIT LAYOUT -->
-  <main>
-    <!-- Accessible/SEO page heading. Visually hidden: the split panels carry the
-         visual hierarchy, but the page needs a real top-level heading for crawlers and screen readers. -->
-    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
-      Marapone — private AI systems for construction and logistics companies
-    </h1>
+  <main id="main">
 
-    <div class="split-container" role="navigation" aria-label="Industry selection">
+    <!-- ══════════ HERO ══════════ -->
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img src="/construction-hero-poster.jpg" alt="" width="1600" height="720" fetchpriority="high" />
+        <video id="hero-video" muted loop playsinline preload="none"
+               poster="/construction-hero-poster.jpg" aria-hidden="true" tabindex="-1"></video>
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-bloom" aria-hidden="true"></div>
+      <div class="hero-rule" aria-hidden="true"></div>
 
-      <!-- CENTER LOGO (desktop) -->
-      <div class="center-logo" aria-hidden="true">
-        <div class="center-logo-ring"></div>
-        <img src="/MARACON-WHITE.png" alt="Marapone" />
+      <div class="hero-mark" aria-hidden="true">
+        <svg viewBox="0 0 120 120" fill="none" style="width:100%;height:100%;display:block">
+          <g stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="60" cy="60" r="34" stroke-opacity="0.55" stroke-width="1.4"/>
+            <circle cx="60" cy="60" r="34" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="2 6"/>
+            <path d="M60 18 V40 M60 80 V102 M18 60 H40 M80 60 H102" stroke-opacity="0.4" stroke-width="1.2"/>
+            <path d="M60 44 V76 M44 60 H76" stroke-opacity="0.3" stroke-width="1"/>
+            <path d="M10 30 V10 H30 M110 90 V110 H90" stroke-opacity="0.35" stroke-width="1.3"/>
+          </g>
+        </svg>
       </div>
 
-      <!-- DIVIDER -->
-      <div class="divider" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>Marapone — Private AI</span>
 
-      <!-- LEFT PANEL: CONSTRUCTION -->
-      <a id="construction-panel"
-        href="/construction/"
-        class="panel panel-construction"
-        aria-label="Enter Construction — Private AI for general contractors and project teams">
+          <h1 class="hero-title">
+            Private AI for<br /><span class="line2">Construction.</span>
+          </h1>
 
-        <video id="construction-video" class="panel-video" src="/Construction-Vid.mp4"
-          muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
-        <div class="panel-video-overlay" aria-hidden="true"></div>
+          <p class="hero-sub">
+            Blueprint takeoff, estimating, tender risk and document intelligence — built for
+            general contractors, estimators and owners' reps. Deployed on <strong>your</strong>
+            infrastructure, trained on <strong>your</strong> drawings and project documents,
+            handed to you permanently. No subscriptions. No data sharing. Ever.
+          </p>
 
-        <div class="panel-glow" aria-hidden="true"></div>
-
-        <!-- Corner accent -->
-        <div class="corner-lines" aria-hidden="true">
-          <div class="corner-line-h"></div>
-          <div class="corner-line-v" style="margin-top:0;position:absolute;top:0;left:0;"></div>
-        </div>
-
-        <div class="panel-inner">
-          <div class="industry-chip">
-            <span class="chip-dot"></span>
-            Private AI
+          <div class="hero-ctas">
+            <a href="/construction/" class="btn btn-primary">Enter Construction <span aria-hidden="true">→</span></a>
+            <a href="/construction/blueprint-auditor" class="btn btn-ghost">Try the Blueprint Auditor</a>
           </div>
-          <div class="panel-title">CONSTRUCTION</div>
-          <p class="panel-desc">Private AI for general contractors &amp; project teams — document intelligence, risk analysis, and workflow automation.</p>
-          <span class="panel-cta" aria-hidden="true">Enter →</span>
-        </div>
-      </a>
 
-      <!-- RIGHT PANEL: LOGISTICS -->
-      <a id="logistics-panel"
-        href="/logistics/"
-        class="panel panel-logistics"
-        aria-label="Enter Logistics — Private AI for freight, import/export and trade compliance">
-
-        <video id="logistics-video" class="panel-video" src="/logistics-vid2.mp4"
-          muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
-        <div class="panel-video-overlay" aria-hidden="true"></div>
-
-        <div class="panel-glow" aria-hidden="true"></div>
-
-        <!-- Corner accent -->
-        <div class="corner-lines" aria-hidden="true" style="left:auto;">
-          <div class="corner-line-h" style="float:right;"></div>
-          <div class="corner-line-v" style="margin-top:0;position:absolute;top:0;right:0;"></div>
-        </div>
-
-        <div class="panel-inner">
-          <div class="industry-chip">
-            <span class="chip-dot"></span>
-            Private AI
+          <div class="hero-assure">
+            <span class="pill"><span class="tick">✓</span> One-time price</span>
+            <span class="pill"><span class="tick">✓</span> Full source code</span>
+            <span class="pill"><span class="tick">✓</span> Your servers</span>
+            <span class="pill"><span class="tick">✓</span> 30-day refund</span>
           </div>
-          <div class="panel-title">LOGISTICS</div>
-          <p class="panel-desc">Private AI for freight, import/export &amp; trade compliance — document processing, invoice auditing, and customs intelligence.</p>
-          <span class="panel-cta" aria-hidden="true">Enter →</span>
         </div>
-      </a>
 
+        <!-- Secondary path — logistics -->
+        <a href="/logistics/" class="side-door" aria-label="Enter Logistics — private AI for freight, customs and trade compliance">
+          <span class="sd-label"><span class="dot"></span>Also serving</span>
+          <h2>Select logistics teams</h2>
+          <p>Freight, import/export and customs brokerage — invoice auditing, document processing and trade-compliance intelligence, on the same owned-not-rented terms.</p>
+          <span class="sd-cta">Enter Logistics <span class="sd-arrow" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+
+      <span class="scroll-hint" aria-hidden="true">What you get</span>
+    </section>
+
+    <!-- ══════════ TRUST STRIP ══════════ -->
+    <div class="trust">
+      <div class="wrap trust-row">
+        <span class="item"><span class="tick">✓</span> One-time price</span>
+        <span class="sep">|</span>
+        <span class="item"><span class="tick">✓</span> Full source code</span>
+        <span class="sep">|</span>
+        <span class="item"><span class="tick">✓</span> Your infrastructure</span>
+        <span class="sep">|</span>
+        <span class="item"><span class="tick">✓</span> Canada &amp; Italy</span>
+        <span class="sep">|</span>
+        <span class="item"><span class="tick">✓</span> Your data stays private</span>
+        <span class="sep">|</span>
+        <span class="item"><span class="tick">✓</span> Phone, tablet &amp; desktop</span>
+      </div>
     </div>
 
-    <!-- BOTTOM TAGLINE -->
-    <p class="tagline">Marapone &mdash; Private AI. Two industries. One standard.</p>
+    <!-- ══════════ PRODUCTS ══════════ -->
+    <section class="band">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">Built for construction</span>
+          <h2 class="sec-title">Three systems. One standard.</h2>
+          <p class="sec-intro">
+            Each one runs on your hardware and stands alone. Run the auditor by itself, run the
+            estimator by itself, or wire them together so a measured quantity flows straight into
+            a priced, defensible bid.
+          </p>
+        </div>
+
+        <div class="cards">
+          <a href="/construction/blueprint-auditor" class="card reveal">
+            <span class="card-tag">01 — Takeoff &amp; review</span>
+            <h3>Blueprint Auditor</h3>
+            <p>Drop in a drawing set. It reads the sheets, measures the quantities and flags what the drawings contradict before it becomes a change order.</p>
+            <ul>
+              <li>Quantity takeoff straight off the PDF</li>
+              <li>Scope-gap and code-conflict detection</li>
+              <li>Tender risk scan on the bid documents</li>
+              <li>RFI and deficiency lists generated for you</li>
+            </ul>
+            <span class="card-link">See it work <span class="sd-arrow" aria-hidden="true">→</span></span>
+          </a>
+
+          <a href="/construction/ai-estimator" class="card reveal">
+            <span class="card-tag new"><span aria-hidden="true">●</span> New — 02 · Pricing</span>
+            <h3>AI Estimator</h3>
+            <p>Takeoff gives you quantities. This turns them into a priced, competitive, profitable bid — with the risk, the contingency and the walk-away number written down.</p>
+            <ul>
+              <li>57 assemblies across 20 CSI divisions</li>
+              <li>Toronto permits, DCs, HST and soft costs</li>
+              <li>Monte Carlo, sensitivity and what-if scenarios</li>
+              <li>Margin ladder with win probability from your bids</li>
+            </ul>
+            <span class="card-link">See the estimator <span class="sd-arrow" aria-hidden="true">→</span></span>
+          </a>
+
+          <a href="/construction/services" class="card reveal">
+            <span class="card-tag">03 — Bespoke</span>
+            <h3>Custom AI Systems</h3>
+            <p>The workflow that only your company runs. Scoped in a free assessment, built against your documents, and handed over with the source code and the keys.</p>
+            <ul>
+              <li>Trained on your drawings, specs and contracts</li>
+              <li>Runs on your servers or your own hardware</li>
+              <li>Integrates with Procore, Sage and Bluebeam</li>
+              <li>You own the model, the weights and the code</li>
+            </ul>
+            <span class="card-link">Explore services <span class="sd-arrow" aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ OWN VS RENT ══════════ -->
+    <section class="band alt">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">Why own it</span>
+          <h2 class="sec-title">Rented AI never becomes yours.</h2>
+          <p class="sec-intro">
+            Every month you pay a SaaS vendor, you are renting a system that learns from your
+            projects and keeps the result. Marapone builds it once and hands it over.
+          </p>
+        </div>
+
+        <div class="compare reveal">
+          <div class="comp-col rent">
+            <div class="comp-head"><span aria-hidden="true">✕</span> Renting it</div>
+            <ul>
+              <li><span class="g">01</span> Per-seat fees that climb every renewal</li>
+              <li><span class="g">02</span> Your drawings and contracts sit on their servers</li>
+              <li><span class="g">03</span> Roadmap set by their other customers</li>
+              <li><span class="g">04</span> Price changes, feature removals, forced migrations</li>
+              <li><span class="g">05</span> Cancel and you keep nothing</li>
+            </ul>
+          </div>
+          <div class="comp-col own">
+            <div class="comp-head"><span aria-hidden="true">✓</span> Owning it</div>
+            <ul>
+              <li><span class="g">01</span> One invoice. No seats, no renewals, no metering</li>
+              <li><span class="g">02</span> Everything stays inside your network</li>
+              <li><span class="g">03</span> Built around your workflow, not the average customer's</li>
+              <li><span class="g">04</span> Full source code — change it or hire anyone to</li>
+              <li><span class="g">05</span> It is an asset on your books, not a line item</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ LOGISTICS — SECONDARY ══════════ -->
+    <section class="logistics-band">
+      <div class="wrap lb-grid">
+        <div class="reveal">
+          <span class="lb-label">Secondary practice</span>
+          <h2 class="lb-title">Also serving select logistics teams</h2>
+          <p class="lb-copy">
+            Construction is where most of our work goes. But the same private-AI stack runs
+            freight and trade: invoice auditing, customs document processing, quote intelligence
+            and compliance checks — for a limited number of forwarders, brokers and 3PLs.
+          </p>
+          <ul class="lb-list">
+            <li>Freight brokers</li>
+            <li>Customs brokers</li>
+            <li>3PLs</li>
+            <li>Forwarders</li>
+            <li>Importers</li>
+          </ul>
+          <a href="/logistics/" class="btn btn-ghost btn-marine">Enter Logistics <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="lb-media reveal" aria-hidden="true">
+          <img src="/logistics-hero-poster.jpg" alt="" width="960" height="600" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ CLOSER ══════════ -->
+    <section class="closer">
+      <div class="wrap closer-inner reveal">
+        <h2>Start with a free assessment.</h2>
+        <p>
+          Tell us the workflow that costs you the most time. We come back with what can be
+          automated, what it would take, and what it would cost — before you spend anything.
+        </p>
+        <div class="hero-ctas">
+          <a href="/construction/contact" class="btn btn-primary">Get your free AI assessment <span aria-hidden="true">→</span></a>
+          <a href="/construction/discovery" class="btn btn-ghost">Book a 15-min call</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <div class="wrap foot-row">
+      <div class="foot-brand">
+        <img src="/MARACON-WHITE.png" alt="Marapone" width="30" height="30" loading="lazy" />
+        <span class="foot-legal">© 2026 Marapone — Private AI. Built once. Owned forever.</span>
+      </div>
+      <div class="foot-links">
+        <a href="/construction/">Construction</a>
+        <a href="/construction/pricing">Pricing</a>
+        <a href="/construction/about">About</a>
+        <a href="/construction/contact">Contact</a>
+        <a href="/logistics/">Logistics</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
     (function () {
-      // Keyboard navigation
-      document.querySelectorAll('.panel').forEach(function(panel) {
-        panel.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            window.location.href = panel.href;
-          }
-        });
-      });
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Preload construction and logistics pages on hover for snappy navigation
-      var preloaded = {};
-      document.querySelectorAll('.panel').forEach(function(panel) {
-        panel.addEventListener('mouseenter', function() {
-          var href = panel.getAttribute('href');
-          if (href && !preloaded[href]) {
-            preloaded[href] = true;
-            var link = document.createElement('link');
-            link.rel = 'prefetch';
-            link.href = href;
-            document.head.appendChild(link);
-          }
+      // ── Nav background on scroll ──
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        if (window.scrollY > 24) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // ── Reveal on scroll ──
+      var revealables = document.querySelectorAll('.reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        revealables.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry, i) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            var siblings = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+            el.style.transitionDelay = Math.min(siblings, 3) * 90 + 'ms';
+            el.classList.add('in');
+            io.unobserve(el);
+          });
+        }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+        revealables.forEach(function (el) { io.observe(el); });
+      }
+
+      // ── Hero video ──
+      // The poster carries the first paint; the 5 MB clip only loads once the
+      // page is idle, on a connection that can take it, and never on save-data.
+      var video = document.getElementById('hero-video');
+      function loadHeroVideo() {
+        if (!video || reduceMotion) return;
+        var conn = navigator.connection || {};
+        if (conn.saveData) return;
+        if (conn.effectiveType && /(^|\W)(slow-2g|2g|3g)$/.test(conn.effectiveType)) return;
+        if (window.matchMedia('(max-width: 767px)').matches) return;  // poster only on phones
+
+        video.src = '/construction-hero.mp4';
+        video.load();
+        video.addEventListener('canplay', function () {
+          video.classList.add('ready');
+          video.play().catch(function () {});
+        }, { once: true });
+      }
+      if ('requestIdleCallback' in window) requestIdleCallback(loadHeroVideo, { timeout: 2600 });
+      else window.addEventListener('load', function () { setTimeout(loadHeroVideo, 900); });
+
+      // Pause the clip when the hero scrolls away — no point decoding offscreen.
+      if ('IntersectionObserver' in window && video) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!video.src) return;
+            if (e.isIntersecting) video.play().catch(function () {});
+            else video.pause();
+          });
+        }, { threshold: 0.05 }).observe(document.querySelector('.hero'));
+      }
+
+      // ── Prefetch the two industry destinations on intent ──
+      var prefetched = {};
+      document.querySelectorAll('a[href^="/construction/"], a[href^="/logistics/"]').forEach(function (a) {
+        a.addEventListener('mouseenter', function () {
+          var href = a.getAttribute('href');
+          if (!href || prefetched[href]) return;
+          prefetched[href] = true;
+          var link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = href;
+          document.head.appendChild(link);
         }, { once: true });
       });
-
-      // Video backgrounds — play on hover, pause on leave
-      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!reduceMotion) {
-        function setupVideoHover(panelEl, videoEl) {
-          if (!panelEl || !videoEl) return;
-          panelEl.addEventListener('mouseenter', function() {
-            videoEl.play().catch(function() {});
-          });
-          panelEl.addEventListener('mouseleave', function() {
-            videoEl.pause();
-          });
-        }
-        setupVideoHover(
-          document.getElementById('construction-panel'),
-          document.getElementById('construction-video')
-        );
-        setupVideoHover(
-          document.getElementById('logistics-panel'),
-          document.getElementById('logistics-video')
-        );
-
-        // Mobile: autoplay both videos as ambient background (muted — browser permits without gesture)
-        if (window.matchMedia('(max-width: 767px)').matches) {
-          var cVid = document.getElementById('construction-video');
-          var lVid = document.getElementById('logistics-video');
-          if (cVid) cVid.play().catch(function() {});
-          if (lVid) lVid.play().catch(function() {});
-        }
-      }
     })();
   </script>
 

@@ -163,6 +163,10 @@
       "destination": "/construction/blueprint-auditor.html"
     },
     {
+      "source": "/construction/ai-estimator",
+      "destination": "/construction/ai-estimator.html"
+    },
+    {
       "source": "/logistics",
       "destination": "/logistics/index.html"
     },

@@ -1,0 +1,13 @@
+Six AI systems. One approach.
+
+A look inside the private construction AI we build for general contractors, estimators and tender teams:
+
+1️⃣ RFI Backlog — every open RFI checked against your blueprints, critical-path blockers surfaced first
+2️⃣ Scope Gap Finder — scope letters compared to specs & drawings, unpriced items found before mobilisation
+3️⃣ Tender Risk Scanner — ambiguous specs and one-sided clauses flagged before you sign
+
+All of it runs on your servers. All of it is yours.
+
+🔗 marapone.com
+
+#ConstructionTech #ConstructionAI #GeneralContractor #Estimating #Tendering #Marapone #BuildSmarter

@@ -429,6 +429,164 @@
     .comp-col.rent li .g { color: #6b6b6b; }
     .comp-col.own li .g { color: var(--hiviz); }
 
+    .hero-tertiary {
+      display: inline-block; margin-top: 1.1rem;
+      font-family: 'DM Mono', monospace; font-size: 0.74rem; color: var(--fog);
+      border-bottom: 1px solid rgba(160,160,160,0.3); padding-bottom: 2px;
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+    .hero-tertiary:hover { color: var(--chalk); border-bottom-color: var(--hiviz); }
+
+    /* ── Closer email capture — the no-phone-call path ── */
+    .capture { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--plate); }
+    .capture p.cap-lead { color: var(--fog); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+    .cap-form { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+    .cap-form input[type="email"] {
+      flex: 1 1 20rem; min-width: 0; max-width: 24rem;
+      background: var(--charcoal); border: 1px solid var(--plate); border-radius: 4px;
+      color: var(--chalk); font-family: 'DM Sans', sans-serif; font-size: 0.92rem;
+      padding: 0.85rem 1rem;
+    }
+    .cap-form input[type="email"]::placeholder { color: #6b6b6b; }
+    .cap-form input[type="email"]:focus { outline: none; border-color: var(--hiviz); }
+    .cap-form button {
+      background: var(--hiviz); color: #fff; border: 0; border-radius: 4px; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.92rem;
+      padding: 0.85rem 1.5rem; transition: opacity 0.25s ease;
+    }
+    .cap-form button:hover { opacity: 0.9; }
+    .cap-form button[disabled] { opacity: 0.55; cursor: default; }
+    .cap-note { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #6b6b6b; margin-top: 0.85rem; }
+    .cap-msg { font-family: 'DM Mono', monospace; font-size: 0.76rem; margin-top: 0.9rem; }
+    .cap-msg.ok { color: var(--hiviz2); }
+    .cap-msg.err { color: #f87171; }
+
+    /* ══════════════════════════════════════════════════════════
+       FLAGSHIP BAND — the AI Estimator, given its own real estate
+       ══════════════════════════════════════════════════════════ */
+    .flagship {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, #191919 0%, var(--charcoal) 60%);
+      border-bottom: 1px solid var(--plate); padding: 5rem 0;
+    }
+    @media (max-width: 640px) { .flagship { padding: 3.5rem 0; } }
+    .flagship::before {
+      content: ''; position: absolute; inset: -30% -10% auto -10%; height: 80%;
+      background: radial-gradient(ellipse at 30% 0%, rgba(249,115,22,0.16) 0%, transparent 62%);
+      pointer-events: none;
+    }
+    .fs-grid { position: relative; display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 3rem; align-items: center; }
+    @media (max-width: 980px) { .fs-grid { grid-template-columns: 1fr; gap: 2.25rem; } }
+    .fs-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #fff; background: var(--hiviz);
+      border-radius: 3px; padding: 0.34rem 0.6rem; margin-bottom: 1.1rem;
+    }
+    .fs-title {
+      font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.015em; line-height: 0.94;
+      font-size: clamp(2.5rem, 6vw, 3.9rem); color: var(--chalk);
+    }
+    .fs-title span { color: var(--hiviz); }
+    .fs-copy { color: var(--fog); font-size: 1rem; line-height: 1.7; margin-top: 1.1rem; max-width: 46ch; }
+    .fs-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--plate); border: 1px solid var(--plate); border-radius: 6px;
+      overflow: hidden; margin: 1.9rem 0;
+    }
+    .fs-stat { background: var(--charcoal); padding: 1rem 0.85rem; text-align: center; }
+    .fs-stat b {
+      display: block; font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem;
+      letter-spacing: 0.02em; color: var(--hiviz); font-weight: 400; line-height: 1.1;
+    }
+    .fs-stat span {
+      display: block; font-family: 'DM Mono', monospace; font-size: 0.64rem;
+      line-height: 1.45; color: var(--fog); margin-top: 0.35rem;
+    }
+    .fs-list { list-style: none; display: grid; gap: 0.5rem; margin-bottom: 1.9rem; }
+    .fs-list li { display: flex; gap: 0.6rem; font-size: 0.9rem; line-height: 1.6; color: #c8c8c8; }
+    .fs-list li::before { content: '▸'; color: var(--hiviz); flex-shrink: 0; font-size: 0.75rem; line-height: 1.75; }
+    .fs-media {
+      position: relative; border: 1px solid var(--plate); border-radius: 8px; overflow: hidden;
+      background: #0d0d0d; box-shadow: 0 30px 70px -30px rgba(0,0,0,0.9);
+    }
+    .fs-media .bar {
+      display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 0.85rem;
+      background: var(--gunmetal); border-bottom: 1px solid var(--plate);
+    }
+    .fs-media .bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3a3a; display: block; }
+    .fs-media .bar em {
+      font-family: 'DM Mono', monospace; font-size: 0.64rem; color: var(--fog);
+      font-style: normal; margin-left: 0.5rem;
+    }
+    .fs-media video, .fs-media img { width: 100%; height: auto; display: block; }
+    .fs-cap { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: #6b6b6b; text-align: center; margin-top: 0.75rem; }
+
+    /* ══════════════════════════════════════════════════════════
+       PROOF BAND — quantified before/after from real deployments
+       ══════════════════════════════════════════════════════════ */
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.75rem; }
+    @media (max-width: 980px) { .proof-grid { grid-template-columns: 1fr; } }
+    .proof {
+      display: flex; flex-direction: column;
+      border: 1px solid var(--plate); border-radius: 6px;
+      background: var(--charcoal); padding: 1.5rem;
+    }
+    section.band .proof { background: var(--gunmetal); }
+    .proof-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--hiviz2); margin-bottom: 0.7rem;
+    }
+    .proof h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.03em;
+      color: var(--chalk); font-weight: 400; line-height: 1.15; margin-bottom: 0.6rem;
+    }
+    .proof > p { color: var(--fog); font-size: 0.86rem; line-height: 1.6; }
+    .ba { display: grid; gap: 0.55rem; margin: 1.25rem 0 0; list-style: none; }
+    .ba li {
+      display: grid; grid-template-columns: 1fr auto; gap: 0.5rem 0.75rem; align-items: baseline;
+      padding-bottom: 0.55rem; border-bottom: 1px dashed rgba(58,58,58,0.85);
+    }
+    .ba li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .ba .k { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #8c8c8c; line-height: 1.4; }
+    .ba .v { display: flex; align-items: baseline; gap: 0.4rem; white-space: nowrap; }
+    .ba .before { font-family: 'DM Mono', monospace; font-size: 0.76rem; color: #6b6b6b; text-decoration: line-through; }
+    .ba .arrow { color: var(--hiviz); font-size: 0.7rem; }
+    .ba .after {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.02em;
+      color: var(--hiviz); line-height: 1;
+    }
+    .proof-foot {
+      margin-top: auto; padding-top: 1.25rem;
+      font-family: 'DM Mono', monospace; font-size: 0.72rem; color: #7d7d7d; line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HANDOVER CHECKLIST — what physically arrives on day one
+       ══════════════════════════════════════════════════════════ */
+    .handover { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.75rem; }
+    @media (max-width: 900px) { .handover { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .handover { grid-template-columns: 1fr; } }
+    .ho {
+      border: 1px solid var(--plate); border-radius: 6px; background: var(--charcoal);
+      padding: 1.35rem; display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .ho .ho-ic {
+      width: 34px; height: 34px; border-radius: 5px; display: grid; place-items: center;
+      background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.35);
+      color: var(--hiviz); font-size: 0.95rem; margin-bottom: 0.25rem;
+    }
+    .ho b {
+      font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.2rem;
+      letter-spacing: 0.03em; color: var(--chalk);
+    }
+    .ho span { font-size: 0.83rem; line-height: 1.6; color: var(--fog); }
+    .ho code {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #7d7d7d;
+      background: rgba(0,0,0,0.35); border: 1px solid var(--plate);
+      border-radius: 3px; padding: 0.15rem 0.4rem; align-self: flex-start; margin-top: 0.2rem;
+    }
+
     /* ══════════════════════════════════════════════════════════
        LOGISTICS BAND — deliberately quieter than construction
        ══════════════════════════════════════════════════════════ */
@@ -570,9 +728,10 @@
           </p>
 
           <div class="hero-ctas">
-            <a href="/construction/" class="btn btn-primary">Enter Construction <span aria-hidden="true">→</span></a>
-            <a href="/construction/blueprint-auditor" class="btn btn-ghost">Try the Blueprint Auditor</a>
+            <a href="/construction/contact" class="btn btn-primary">Get your free assessment <span aria-hidden="true">→</span></a>
+            <a href="/construction/ai-estimator" class="btn btn-ghost">See the AI Estimator</a>
           </div>
+          <a href="/construction/" class="hero-tertiary">Or browse everything we build for construction <span aria-hidden="true">→</span></a>
 
           <div class="hero-assure">
             <span class="pill"><span class="tick">✓</span> One-time price</span>
@@ -611,12 +770,60 @@
       </div>
     </div>
 
+    <!-- ══════════ FLAGSHIP — AI ESTIMATOR ══════════ -->
+    <section class="flagship">
+      <div class="wrap fs-grid">
+        <div class="reveal">
+          <span class="fs-badge"><span aria-hidden="true">●</span> Flagship product</span>
+          <h2 class="fs-title">The AI Estimator.<br /><span>Takeoff measures. This prices.</span></h2>
+          <p class="fs-copy">
+            The auditor tells you there are 24,000 square feet of partition. The Estimator turns
+            that into studs, board, tape, fasteners, waste and crew-hours — then adds the risk,
+            the contingency, the Toronto soft costs and the margin you can actually win at.
+            Desktop app, Windows or Mac, bought once.
+          </p>
+
+          <div class="fs-stats">
+            <div class="fs-stat"><b>57</b><span>parametric assemblies<br />20 CSI divisions</span></div>
+            <div class="fs-stat"><b>18 min</b><span>per estimate<br />was 6–10 hours</span></div>
+            <div class="fs-stat"><b>4,000</b><span>Monte Carlo runs<br />per cost curve</span></div>
+          </div>
+
+          <ul class="fs-list">
+            <li>Toronto permits, development charges, HST and soft costs priced in</li>
+            <li>27 risk rules, each flagged with a cited reason you can defend</li>
+            <li>Margin ladder with win probability drawn from your own bid history</li>
+            <li>Runs offline on your machine — no drawing ever leaves the building</li>
+          </ul>
+
+          <div class="hero-ctas">
+            <a href="/construction/ai-estimator" class="btn btn-primary">See the live estimator <span aria-hidden="true">→</span></a>
+            <a href="/construction/contact?product=ai-estimator" class="btn btn-ghost">Walkthrough on your job</a>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <figure class="fs-media">
+            <div class="bar" aria-hidden="true">
+              <i></i><i></i><i></i><em>AI Estimator — 38-unit Toronto infill</em>
+            </div>
+            <video muted loop playsinline autoplay preload="none" width="1920" height="1080"
+                   poster="/estimator/ai-estimator-tour-poster.jpg"
+                   aria-label="Screen recording of the AI Estimator pricing a 38-unit Toronto residential infill end to end.">
+              <source src="/estimator/ai-estimator-tour.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <p class="fs-cap">The real app, recorded — no mock-ups</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ══════════ PRODUCTS ══════════ -->
     <section class="band">
       <div class="wrap">
         <div class="reveal">
           <span class="sec-label">Built for construction</span>
-          <h2 class="sec-title">Three systems. One standard.</h2>
+          <h2 class="sec-title">The full lineup.</h2>
           <p class="sec-intro">
             Each one runs on your hardware and stands alone. Run the auditor by itself, run the
             estimator by itself, or wire them together so a measured quantity flows straight into
@@ -639,7 +846,7 @@
           </a>
 
           <a href="/construction/ai-estimator" class="card reveal">
-            <span class="card-tag new"><span aria-hidden="true">●</span> New — 02 · Pricing</span>
+            <span class="card-tag new"><span aria-hidden="true">●</span> Flagship — 02 · Pricing</span>
             <h3>AI Estimator</h3>
             <p>Takeoff gives you quantities. This turns them into a priced, competitive, profitable bid — with the risk, the contingency and the walk-away number written down.</p>
             <ul>
@@ -704,6 +911,135 @@
       </div>
     </section>
 
+    <!-- ══════════ PROOF — QUANTIFIED CASE STUDIES ══════════ -->
+    <section class="band">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">Measured, not claimed</span>
+          <h2 class="sec-title">Three builds. Before and after.</h2>
+          <p class="sec-intro">
+            Every figure below came off a system that is still running in an Ontario contractor's
+            office today — no pilots, no proofs of concept, no numbers we could not point at.
+          </p>
+        </div>
+
+        <div class="proof-grid">
+          <div class="proof reveal">
+            <span class="proof-tag">01 — Residential GC · 12–18 projects</span>
+            <h3>Blueprint Auditor</h3>
+            <p>Revisions were cross-referenced by hand, so conflicts surfaced after the trades had already mobilised.</p>
+            <ul class="ba">
+              <li>
+                <span class="k">Time to review a drawing set</span>
+                <span class="v"><span class="before">6–8 hrs</span><span class="arrow" aria-hidden="true">→</span><span class="after">9 min</span></span>
+              </li>
+              <li>
+                <span class="k">What the PM actually reads</span>
+                <span class="v"><span class="before">187 pages</span><span class="arrow" aria-hidden="true">→</span><span class="after">2 pages</span></span>
+              </li>
+              <li>
+                <span class="k">Ongoing cost per month</span>
+                <span class="v"><span class="before">$1,600</span><span class="arrow" aria-hidden="true">→</span><span class="after">$0</span></span>
+              </li>
+            </ul>
+            <p class="proof-foot">$4,900 one-time build · 12 days to handover · break-even in 3 months · running 7 months unassisted</p>
+          </div>
+
+          <div class="proof reveal">
+            <span class="proof-tag">02 — Commercial GC · 4 mid-rise sites</span>
+            <h3>RFI &amp; Daily Log Stack</h3>
+            <p>80+ open RFIs lived in three separate spreadsheets; daily logs arrived as unsearchable email text from four supers.</p>
+            <ul class="ba">
+              <li>
+                <span class="k">Median RFI turnaround</span>
+                <span class="v"><span class="before">9.2 days</span><span class="arrow" aria-hidden="true">→</span><span class="after">5.4 days</span></span>
+              </li>
+              <li>
+                <span class="k">Daily-log compliance, OBC sites</span>
+                <span class="v"><span class="before">patchy</span><span class="arrow" aria-hidden="true">→</span><span class="after">100%</span></span>
+              </li>
+              <li>
+                <span class="k">PM hours lost per week</span>
+                <span class="v"><span class="before">10–12 hrs</span><span class="arrow" aria-hidden="true">→</span><span class="after">recovered</span></span>
+              </li>
+            </ul>
+            <p class="proof-foot">$6,800 one-time build · 14 days to deployment · break-even in 3 months · two recurring Monday meetings cancelled</p>
+          </div>
+
+          <div class="proof reveal">
+            <span class="proof-tag">03 — Design-build · 30–50 bids a year</span>
+            <h3>AI Takeoff + Costing</h3>
+            <p>Estimators were pricing off a supplier book four to six weeks stale, and the win rate had flatlined.</p>
+            <ul class="ba">
+              <li>
+                <span class="k">Time to produce an estimate</span>
+                <span class="v"><span class="before">6–10 hrs</span><span class="arrow" aria-hidden="true">→</span><span class="after">18 min</span></span>
+              </li>
+              <li>
+                <span class="k">Win rate on competitive bids</span>
+                <span class="v"><span class="before">flat</span><span class="arrow" aria-hidden="true">→</span><span class="after">+24%</span></span>
+              </li>
+              <li>
+                <span class="k">Price book freshness</span>
+                <span class="v"><span class="before">4–6 wks</span><span class="arrow" aria-hidden="true">→</span><span class="after">daily</span></span>
+              </li>
+            </ul>
+            <p class="proof-foot">$7,400 one-time build · 16 days to deployment · $71k margin protected in Q1 alone</p>
+          </div>
+        </div>
+
+        <div class="hero-ctas" style="margin-top:2.5rem">
+          <a href="/construction/work" class="btn btn-ghost">Read the full case studies <span aria-hidden="true">→</span></a>
+          <a href="/construction/roi-calculator" class="btn btn-ghost">Run the numbers on your own shop</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ HANDOVER — WHAT PHYSICALLY ARRIVES ══════════ -->
+    <section class="band alt">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="sec-label">Day one of ownership</span>
+          <h2 class="sec-title">What lands in your hands at handover.</h2>
+          <p class="sec-intro">
+            Not a login. Not a licence that expires. These four things transfer to your company,
+            and nothing about the system depends on Marapone existing next year.
+          </p>
+        </div>
+
+        <div class="handover">
+          <div class="ho reveal">
+            <span class="ho-ic" aria-hidden="true">&lt;/&gt;</span>
+            <b>The source code</b>
+            <span>Every line, in your own private repository, with commit history. Change it yourself or hire anyone else to.</span>
+            <code>git repo + full history</code>
+          </div>
+          <div class="ho reveal">
+            <span class="ho-ic" aria-hidden="true">◆</span>
+            <b>The model weights</b>
+            <span>The trained model itself, on disk. It was tuned on your drawings and it stays with your drawings.</span>
+            <code>weights + training config</code>
+          </div>
+          <div class="ho reveal">
+            <span class="ho-ic" aria-hidden="true">▤</span>
+            <b>The runbooks</b>
+            <span>Install, restore, retrain and troubleshoot — written for your IT person, not for us.</span>
+            <code>ops + architecture docs</code>
+          </div>
+          <div class="ho reveal">
+            <span class="ho-ic" aria-hidden="true">◑</span>
+            <b>The onboarding session</b>
+            <span>A live walkthrough with the people who will use it daily, recorded so new hires can watch it later.</span>
+            <code>live session + recording</code>
+          </div>
+        </div>
+
+        <div class="hero-ctas" style="margin-top:2.5rem">
+          <a href="/construction/resources/sample-handover-walkthrough" class="btn btn-ghost">See a real handover package <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
     <!-- ══════════ LOGISTICS — SECONDARY ══════════ -->
     <section class="logistics-band">
       <div class="wrap lb-grid">
@@ -741,6 +1077,22 @@
         <div class="hero-ctas">
           <a href="/construction/contact" class="btn btn-primary">Get your free AI assessment <span aria-hidden="true">→</span></a>
           <a href="/construction/discovery" class="btn btn-ghost">Book a 15-min call</a>
+        </div>
+
+        <!-- The no-phone-call path: an email address is the entire ask. -->
+        <div class="capture">
+          <p class="cap-lead">
+            Not ready to talk to anyone? Leave an email and we will send the assessment brief
+            and a set of real sample outputs — no call, no calendar link.
+          </p>
+          <form class="cap-form" id="capture-form" novalidate>
+            <label for="capture-email" class="sr-only">Your work email</label>
+            <input type="email" id="capture-email" name="email" placeholder="you@yourcompany.com"
+                   autocomplete="email" required />
+            <button type="submit">Send it to me</button>
+          </form>
+          <p class="cap-note">One email. No sequence, no sales cadence. Unsubscribe in one click.</p>
+          <p class="cap-msg" id="capture-msg" role="status" aria-live="polite"></p>
         </div>
       </div>
     </section>
@@ -841,6 +1193,45 @@
           document.head.appendChild(link);
         }, { once: true });
       });
+
+      // ── Closer email capture ──
+      // source 'sample_home' matters: the API only attaches the sample files
+      // for sources beginning with "sample".
+      var capForm = document.getElementById('capture-form');
+      if (capForm) {
+        var capMsg = document.getElementById('capture-msg');
+        var capBtn = capForm.querySelector('button');
+        capForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = capForm.email.value.trim();
+          capMsg.className = 'cap-msg';
+          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+            capMsg.textContent = 'That email address does not look right.';
+            capMsg.classList.add('err');
+            return;
+          }
+          capBtn.disabled = true;
+          capBtn.textContent = 'Sending…';
+          fetch('/api/newsletter-signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, source: 'sample_home', vertical: 'construction' })
+          })
+            .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+            .then(function (res) {
+              if (!res.ok) throw new Error(res.d && res.d.error);
+              capForm.style.display = 'none';
+              capMsg.textContent = 'Sent — check your inbox for the brief and the samples.';
+              capMsg.classList.add('ok');
+            })
+            .catch(function (err) {
+              capBtn.disabled = false;
+              capBtn.textContent = 'Send it to me';
+              capMsg.textContent = (err && err.message) || 'Something went wrong — email general@marapone.com.';
+              capMsg.classList.add('err');
+            });
+        });
+      }
     })();
   </script>
 

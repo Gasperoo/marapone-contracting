@@ -147,85 +147,20 @@
     } catch (e) { }
   }
 
-  /* ---------- auto count-up on display-font stat numbers ----------
+  /* ---------- auto count-up on display-font stat numbers — REMOVED ----------
 
-     These elements are prices. The animation blanks them to "$0" until they
-     scroll into view, so anything that stops the animation from finishing
-     leaves a real price reading $0 on screen — much worse than no animation.
-     Every path below therefore ends by snapping to the true figure.          */
-  function initAutoCount() {
-    try {
-      if (!('IntersectionObserver' in window)) return;
-      var re = /^(\D{0,3})(\d[\d,]*)(\D{0,4})$/;
-      var pending = [];
+     This used to scan every .font-display leaf, blank it to zero, and count it
+     back up on scroll. It was guessing which numbers were prices, so it also
+     rewrote marketing figures: "97%" rendered as "0%" and "−65%" as "−0%".
+     Restoring the real value depended on IntersectionObserver AND rAF both
+     firing, so any crawler, text extract, prerender, or throttled background
+     tab captured the zeros — headline accuracy claims reading 0%.
 
-      // Snap to the real number. Idempotent — safe to call from any path.
-      function finish(el) {
-        el.textContent = (el.getAttribute('data-pre') || '')
-          + parseInt(el.getAttribute('data-target'), 10).toLocaleString()
-          + (el.getAttribute('data-suf') || '');
-        el.removeAttribute('data-counting');
-        var i = pending.indexOf(el);
-        if (i > -1) pending.splice(i, 1);
-      }
-
-      function run(el) {
-        var target = parseInt(el.getAttribute('data-target'), 10),
-            pre = el.getAttribute('data-pre') || '',
-            suf = el.getAttribute('data-suf') || '';
-        el.setAttribute('data-counting', '1');
-        // rAF does not run in a background tab and can be throttled. If the
-        // frames never arrive, land the real figure anyway.
-        var guard = setTimeout(function () { finish(el); }, 2500);
-        var t0 = null, dur = 1200;
-        requestAnimationFrame(function step(ts) {
-          if (!el.hasAttribute('data-counting')) return;   // guard already landed it
-          if (!t0) t0 = ts;
-          var p = Math.min((ts - t0) / dur, 1);
-          var e = 1 - Math.pow(1 - p, 3);
-          el.textContent = pre + Math.round(target * e).toLocaleString() + suf;
-          if (p < 1) { requestAnimationFrame(step); return; }
-          clearTimeout(guard);
-          finish(el);
-        });
-      }
-
-      var io = new IntersectionObserver(function (en, o) { en.forEach(function (e) { if (e.isIntersecting) { o.unobserve(e.target); run(e.target); } }); }, { threshold: 0.5 });
-      [].slice.call(document.querySelectorAll('.font-display')).forEach(function (el) {
-        if (el.closest('nav,header,footer')) return;
-        var tn = el.tagName; if (tn === 'H1' || tn === 'H2' || tn === 'H3') return;
-        if (el.querySelector('*')) return;                       // leaf text only
-        if (el.closest('.pnl-stat') || el.hasAttribute('data-count')) return;
-        var t = el.textContent.trim(); if (t.length > 12) return;
-        var m = t.match(re); if (!m) return;
-        var val = parseInt(m[2].replace(/,/g, ''), 10);
-        if (isNaN(val) || val < 5) return;
-        if (val >= 1990 && val <= 2099) return;                  // skip likely years
-        el.setAttribute('data-pre', m[1]); el.setAttribute('data-suf', m[3]); el.setAttribute('data-target', String(val));
-        if (reduce) return;
-        el.textContent = m[1] + '0' + m[3];
-        pending.push(el);
-        io.observe(el);
-      });
-
-      // Last resort: repair anything the visitor can actually see that is still
-      // blanked — an observer that never delivers, a renderer without live
-      // IntersectionObserver, a script error upstream. Only touches elements
-      // inside the viewport, so off-screen figures keep their animation.
-      if (pending.length) {
-        var sweeps = 0;
-        var timer = setInterval(function () {
-          pending.slice().forEach(function (el) {
-            if (el.hasAttribute('data-counting')) return;
-            var r = el.getBoundingClientRect();
-            var onScreen = r.bottom > 0 && r.top < (window.innerHeight || 0) && r.width > 0;
-            if (onScreen) finish(el);
-          });
-          if (++sweeps >= 8 || !pending.length) clearInterval(timer);
-        }, 1200);
-      }
-    } catch (e) { }
-  }
+     A cosmetic count-up is not worth a page that can state the wrong number.
+     Stats that want the animation opt in with data-count (see initStats), where
+     the true figure stays in the markup as the fallback. Do not reintroduce a
+     scanner that mutates text it did not author.                              */
+  function initAutoCount() { /* intentionally a no-op — see note above */ }
 
   /* ---------- tag primary accent CTAs for hover shine ---------- */
   function initCta() {
@@ -284,11 +219,19 @@
         var target = parseFloat(el.getAttribute('data-count')) || 0;
         var dec = parseInt(el.getAttribute('data-dec') || '0', 10);
         if (reduce) { el.textContent = fmt(target, dec); return; }
+        // rAF is throttled to nothing in a background tab. Without this guard the
+        // stat can sit at its mid-animation value indefinitely, so land the real
+        // figure regardless of whether the frames ever arrive.
+        var done = false;
+        function land() { if (!done) { done = true; el.textContent = fmt(target, dec); } }
+        var guard = setTimeout(land, 2500);
         var t0 = null, dur = 1200;
         requestAnimationFrame(function step(ts) {
+          if (done) return;
           if (!t0) t0 = ts; var p = Math.min((ts - t0) / dur, 1); var e = 1 - Math.pow(1 - p, 3);
-          el.textContent = fmt(target * e, dec);
-          if (p < 1) requestAnimationFrame(step);
+          if (p < 1) { el.textContent = fmt(target * e, dec); requestAnimationFrame(step); return; }
+          clearTimeout(guard);
+          land();
         });
       }
       var io = new IntersectionObserver(function (en, o) { en.forEach(function (e) { if (e.isIntersecting) { run(e.target); o.unobserve(e.target); } }); }, { threshold: 0.4 });
@@ -368,5 +311,62 @@
     });
   }
 
-  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initInview(); initParallax(); initWords(); initCta(); initProgress(); initMagnetic(); initAutoCount(); initDraw(); initLinkUl(); });
+  /* ---------- collapse secondary sections on phones ----------
+
+     Opt in with data-collapse-mobile="Label" on a <section>. Below 768px the
+     section body is clamped and a toggle is added; above it, everything is
+     shown as authored. The content is never removed from the DOM — only
+     clipped — so crawlers, find-in-page and deep links still see all of it.  */
+  function initMobileCollapse() {
+    try {
+      var secs = [].slice.call(document.querySelectorAll('[data-collapse-mobile]'));
+      if (!secs.length || !window.matchMedia) return;
+      var mq = window.matchMedia('(max-width: 767px)');
+
+      var built = secs.map(function (sec) {
+        var body = sec.firstElementChild;
+        if (!body) return null;
+
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pnl-collapse-btn';
+        btn.setAttribute('aria-expanded', 'false');
+
+        var label = sec.getAttribute('data-collapse-mobile') || 'this section';
+        function paint(open) {
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.innerHTML = (open ? 'Show less' : 'Show ' + label)
+            + ' <span class="pnl-collapse-ic" aria-hidden="true">' + (open ? '▲' : '▼') + '</span>';
+        }
+
+        btn.addEventListener('click', function () {
+          var open = sec.classList.toggle('pnl-open');
+          paint(open);
+          if (!open) {
+            // Collapsing from below the fold would otherwise leave the visitor
+            // stranded mid-page; put the section header back under their eyes.
+            var top = sec.getBoundingClientRect().top + window.pageYOffset - 70;
+            window.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
+          }
+        });
+
+        sec.appendChild(btn);
+        paint(false);
+        return { sec: sec, body: body, btn: btn };
+      }).filter(Boolean);
+
+      function apply() {
+        var on = mq.matches;
+        built.forEach(function (it) {
+          it.sec.classList.toggle('pnl-collapsible', on);
+          if (!on) it.sec.classList.remove('pnl-open');
+        });
+      }
+      apply();
+      if (mq.addEventListener) mq.addEventListener('change', apply);
+      else if (mq.addListener) mq.addListener(apply);
+    } catch (e) { }
+  }
+
+  ready(function () { initReveals(); initLifts(); initTerminals(); initSteppers(); initStats(); initInview(); initParallax(); initWords(); initCta(); initProgress(); initMagnetic(); initAutoCount(); initDraw(); initLinkUl(); initMobileCollapse(); });
 })();

@@ -83,10 +83,6 @@
       background-size: 28px 28px;
     }
 
-    .noise-bg {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    }
-
     /* ── scroll-reveal (matches the rest of the site) ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -292,7 +288,6 @@
   <!-- ══════════ HERO ══════════ -->
   <section id="main-content" class="relative overflow-hidden border-b border-plate">
     <div class="absolute inset-0 grid-dot opacity-40" aria-hidden="true"></div>
-    <div class="absolute inset-0 noise-bg pointer-events-none" aria-hidden="true"></div>
     <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block" aria-hidden="true"></div>
 
     <div class="relative max-w-6xl mx-auto px-4 py-16 lg:py-24">

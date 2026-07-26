@@ -298,7 +298,7 @@
 
         <div class="app-glow reveal reveal-d1">
           <figure class="app-window">
-            <video id="tour" width="1920" height="1080" muted loop playsinline autoplay preload="none"
+            <video id="tour" width="1920" height="1080" muted loop playsinline autoplay preload="metadata"
               poster="/estimator/ai-estimator-tour-poster.jpg"
               aria-label="A screen recording of the AI Estimator pricing a 38-unit Toronto residential infill — dashboard, estimate, risk register, bid strategy, scenarios, soft costs, documents and job history.">
               <source src="/estimator/ai-estimator-tour.mp4" type="video/mp4" />
@@ -436,7 +436,7 @@
         </div>
         <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
           <figure class="app-window">
-            <video muted loop playsinline autoplay preload="none" width="1280" height="720"
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
               poster="/estimator/clip-risk-poster.jpg" aria-label="The risk register listing 15 identified risks and a recommended contingency of 9 percent against the 5 percent being carried.">
               <source src="/estimator/clip-risk.mp4" type="video/mp4" />
             </video>
@@ -448,7 +448,7 @@
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
         <div class="reveal app-glow">
           <figure class="app-window">
-            <video muted loop playsinline autoplay preload="none" width="1280" height="720"
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
               poster="/estimator/clip-strategy-poster.jpg" aria-label="The margin ladder with win probability and expected value at every margin rung, and the recommended bid highlighted.">
               <source src="/estimator/clip-strategy.mp4" type="video/mp4" />
             </video>
@@ -497,7 +497,7 @@
         </div>
         <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
           <figure class="app-window">
-            <video muted loop playsinline autoplay preload="none" width="1280" height="720"
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
               poster="/estimator/clip-softcosts-poster.jpg" aria-label="The municipal cost stack itemising Toronto permits, surcharges and development charges per unit type.">
               <source src="/estimator/clip-softcosts.mp4" type="video/mp4" />
             </video>
@@ -509,7 +509,7 @@
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
         <div class="reveal app-glow">
           <figure class="app-window">
-            <video muted loop playsinline autoplay preload="none" width="1280" height="720"
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
               poster="/estimator/clip-documents-poster.jpg" aria-label="Requirements extracted from the specification and instructions to bidders, each with its source excerpt and an action.">
               <source src="/estimator/clip-documents.mp4" type="video/mp4" />
             </video>
@@ -554,7 +554,7 @@
         </div>
         <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
           <figure class="app-window">
-            <video muted loop playsinline autoplay preload="none" width="1280" height="720"
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
               poster="/estimator/clip-history-poster.jpg" aria-label="Learned productivity factors by assembly, trade and division, derived from eight completed jobs.">
               <source src="/estimator/clip-history.mp4" type="video/mp4" />
             </video>
@@ -567,7 +567,7 @@
         <div class="reveal">
           <div class="app-glow">
             <figure class="app-window">
-              <video muted loop playsinline autoplay preload="none" width="1280" height="720"
+              <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
               poster="/estimator/clip-scenarios-poster.jpg" aria-label="Preset stress tests plus Monte Carlo and sensitivity analysis running against a copy of the estimate.">
               <source src="/estimator/clip-scenarios.mp4" type="video/mp4" />
             </video>
@@ -585,7 +585,7 @@
         <div class="reveal reveal-d1">
           <div class="app-glow">
             <figure class="app-window">
-              <video muted loop playsinline autoplay preload="none" width="1280" height="720"
+              <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
               poster="/estimator/clip-estimate-poster.jpg" aria-label="Assemblies grouped by CSI division with quantities, unit rates, direct cost and crew hours.">
               <source src="/estimator/clip-estimate.mp4" type="video/mp4" />
             </video>
@@ -971,21 +971,18 @@
         }, { passive: true });
       }
 
-      // Videos carry autoplay + preload="none", so the browser handles lazy
-      // loading and playback natively. All we add is pausing what is offscreen
-      // and honouring a reduced-motion or save-data preference.
+      // Muted autoplay needs no gesture and the browser already defers loading
+      // until a video is near the viewport, so playback is left entirely to it.
+      // Do not add an observer that pauses below a visibility threshold — that
+      // cancels the autoplay and the clips only start once the user moves.
       var vids = [].slice.call(document.querySelectorAll('video'));
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduce || (navigator.connection || {}).saveData) {
         vids.forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
-      } else if ('IntersectionObserver' in window) {
-        var vio = new IntersectionObserver(function (en) {
-          en.forEach(function (e) {
-            if (e.isIntersecting) e.target.play().catch(function () {});
-            else e.target.pause();
-          });
-        }, { threshold: 0.2 });
-        vids.forEach(function (v) { vio.observe(v); });
+      } else {
+        vids.forEach(function (v) {
+          v.play().catch(function () {});          // nudge Safari, which can be shy
+        });
       }
 
       if ('IntersectionObserver' in window) {

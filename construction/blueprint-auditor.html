@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#111111" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blueprint Auditor – Audit any blueprint instantly | Marapone</title>
@@ -81,11 +86,13 @@
     }
 
     /* ── Blueprint-Auditor landing kit ───────────────────────── */
+    /* The brand display face, matching every other page. Bebas is uppercase-only,
+       so headline copy on this page is written in caps. */
     .ba-display {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', Inter, 'DM Sans', sans-serif;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.02;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 0.94;
     }
 
     .ba-grad-text {
@@ -333,6 +340,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
   <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
   <script defer src="/checkout.js"></script>
   <style>
     /* Products nav menu — CSS-driven so the links work with JS disabled.
@@ -341,13 +349,16 @@
        the padding box, so any margin there would push the menu down and reopen a
        dead strip the pointer falls through. Hiding is also delayed briefly so a
        fast diagonal move into the menu still lands. */
-    [data-mp-products] { padding-bottom: .55rem; margin-bottom: -.55rem; }
-    [data-mp-products] .mp-products-menu {
+    [data-mp-products], [data-mp-more] { padding-bottom: .55rem; margin-bottom: -.55rem; }
+    [data-mp-products] .mp-products-menu,
+    [data-mp-more] .mp-products-menu {
       visibility: hidden; opacity: 0;
       transition: opacity .14s ease, visibility 0s linear .22s;
     }
     [data-mp-products]:hover .mp-products-menu,
-    [data-mp-products]:focus-within .mp-products-menu {
+    [data-mp-products]:focus-within .mp-products-menu,
+    [data-mp-more]:hover .mp-products-menu,
+    [data-mp-more]:focus-within .mp-products-menu {
       visibility: visible; opacity: 1;
       transition: opacity .14s ease, visibility 0s;
     }
@@ -355,7 +366,11 @@
       content: ""; position: absolute; left: 0; right: 0; top: -.75rem; height: .75rem;
     }
     [data-mp-products]:hover .mp-chev,
-    [data-mp-products]:focus-within .mp-chev { transform: rotate(180deg); }
+    [data-mp-products]:focus-within .mp-chev,
+    [data-mp-more]:hover .mp-chev,
+    [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    .mp-mi { transition: background-color .15s ease, color .15s ease; }
+    .mp-mi:hover { background: #232323; color: #f97316; }
     .mp-pi { transition: background-color .15s ease; }
     .mp-pi:hover { background: #232323; }
     .mp-pi:hover .text-chalk { color: #f97316; }
@@ -398,6 +413,20 @@
         </div>
         <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
         <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <div class="relative" data-mp-more>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">More<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute right-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:190px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/work" class="mp-mi block px-4 py-2 text-sm text-fog">Our Work</a>
+            <a href="/construction/sample-assessment" class="mp-mi block px-4 py-2 text-sm text-fog">Samples</a>
+            <a href="/construction/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
+            <a href="/construction/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
+            <a href="/construction/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/construction/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
+            <a href="/construction/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
+            <a href="/construction/vs/procore" class="mp-mi block px-4 py-2 text-sm text-fog">vs Procore</a>
+            <a href="/shop" class="mp-mi block px-4 py-2 text-sm text-fog">Shop</a>
+          </div>
+        </div>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
         <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
@@ -416,6 +445,16 @@
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
+      <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
+      <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
+      <a href="/construction/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
+      <a href="/construction/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/construction/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
+      <a href="/construction/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
+      <a href="/construction/vs/procore" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Procore</a>
+      <a href="/shop" class="text-fog hover:text-chalk" style="padding-left:.75rem">Shop</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
@@ -431,7 +470,7 @@
         <div class="reveal">
           <span class="ba-eyebrow">Blueprint Intelligence</span>
           <h1 class="ba-display text-5xl sm:text-6xl lg:text-7xl text-chalk mb-6">
-            Audit any blueprint.<br /><span class="ba-grad-text">Instantly.</span>
+            AUDIT ANY BLUEPRINT.<br /><span class="ba-grad-text">INSTANTLY.</span>
           </h1>
           <p class="text-fog text-lg leading-relaxed max-w-xl mb-8">
             Drop in a drawing set and the engine reads it <strong class="text-chalk">live</strong> — a real quantity
@@ -453,6 +492,12 @@
             Reads text/vector PDFs (Revit, AutoCAD, Bluebeam exports) · scanned sets are OCR'd in your private build.
             Processed in memory, never stored. <span id="quota-note"></span>
           </p>
+          <div class="mt-3">
+            <a href="/samples/Marapone-Blueprint-Auditor-One-Pager.pdf" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
+              Or download the one-page spec &amp; price sheet (PDF) &darr;
+            </a>
+          </div>
         </div>
 
         <!-- upload card — the live demo runs right here -->
@@ -533,32 +578,32 @@
   <section class="py-16 lg:py-24 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
       <span class="ba-eyebrow reveal">From drawing to done</span>
-      <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4 reveal">Four steps. <span class="ba-grad-text">No
-          spreadsheets.</span></h2>
+      <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4 reveal">FOUR STEPS. <span class="ba-grad-text">NO
+          SPREADSHEETS.</span></h2>
       <p class="text-fog text-lg leading-relaxed max-w-2xl mb-12 reveal">Drop a file and the pipeline handles ingestion,
         extraction, code audit and reporting — review the output and ship it.</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="reveal">
           <div class="ba-step-badge">01</div>
-          <h3 class="ba-display text-xl text-chalk mb-2">Drop a drawing</h3>
+          <h3 class="ba-display text-xl text-chalk mb-2">DROP A DRAWING</h3>
           <p class="text-fog text-sm leading-relaxed">PDF, DWG/DXF, IFC, image, or schedule. Scanned sheets are OCR'd
             automatically.</p>
         </div>
         <div class="reveal reveal-d1">
           <div class="ba-step-badge">02</div>
-          <h3 class="ba-display text-xl text-chalk mb-2">Extract</h3>
+          <h3 class="ba-display text-xl text-chalk mb-2">EXTRACT</h3>
           <p class="text-fog text-sm leading-relaxed">Rooms, areas, openings and quantities are read off the geometry
             and schedules.</p>
         </div>
         <div class="reveal reveal-d2">
           <div class="ba-step-badge">03</div>
-          <h3 class="ba-display text-xl text-chalk mb-2">Audit</h3>
+          <h3 class="ba-display text-xl text-chalk mb-2">AUDIT</h3>
           <p class="text-fog text-sm leading-relaxed">Every sheet is checked against OBC, AODA, fire, zoning and
             green-standard rules.</p>
         </div>
         <div class="reveal reveal-d3">
           <div class="ba-step-badge">04</div>
-          <h3 class="ba-display text-xl text-chalk mb-2">Report</h3>
+          <h3 class="ba-display text-xl text-chalk mb-2">REPORT</h3>
           <p class="text-fog text-sm leading-relaxed">Takeoff, costed estimate and a client-ready Excel/PDF audit —
             generated for you.</p>
         </div>
@@ -570,7 +615,7 @@
   <section id="capabilities" class="py-16 lg:py-24 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
       <span class="ba-eyebrow reveal">Everything in one place</span>
-      <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4 reveal">Built for real construction work.</h2>
+      <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4 reveal">BUILT FOR REAL CONSTRUCTION WORK.</h2>
       <p class="text-fog text-lg leading-relaxed max-w-2xl mb-12 reveal">A full preconstruction and project suite.</p>
       <div class="grid md:grid-cols-2 gap-5">
         <!-- Code compliance audit → Blueprint Review -->
@@ -679,7 +724,7 @@
       <div class="ba-cta-band px-6 py-14 lg:py-20 text-center reveal">
         <div class="relative">
           <span class="ba-eyebrow" style="justify-content:center;">Ready when you are</span>
-          <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4">Drop a blueprint to begin.</h2>
+          <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4">DROP A BLUEPRINT TO BEGIN.</h2>
           <p class="text-fog text-lg leading-relaxed max-w-xl mx-auto mb-8">No setup — pick a file and watch the audit
             run.</p>
           <div class="flex flex-wrap gap-3 justify-center">
@@ -693,7 +738,7 @@
             <a href="/construction/pricing#products" class="ba-btn-ghost" data-checkout="product" data-product="blueprint-auditor">Buy it — $990 one time</a>
             <a href="/construction/contact" class="ba-btn-ghost">Book a demo</a>
           </div>
-          <p class="font-mono text-xs text-plate mt-5">One time · +HST · full source code · Secured by Stripe</p>
+          <p class="font-mono text-xs text-plate mt-5">One time · +HST · 30-day refund · source code on day 31 · Secured by Stripe</p>
         </div>
       </div>
     </div>

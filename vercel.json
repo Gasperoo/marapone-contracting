@@ -115,12 +115,12 @@
       "destination": "/shop.html"
     },
     {
-      "source": "/construction/gasperai",
-      "destination": "/construction/gasperai.html"
+      "source": "/construction/maraponeai",
+      "destination": "/construction/maraponeai.html"
     },
     {
-      "source": "/logistics/gasperai",
-      "destination": "/logistics/gasperai.html"
+      "source": "/logistics/maraponeai",
+      "destination": "/logistics/maraponeai.html"
     },
     {
       "source": "/construction",
@@ -400,6 +400,16 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/logistics/gasperai",
+      "destination": "/logistics/maraponeai",
+      "permanent": true
+    },
+    {
+      "source": "/construction/gasperai",
+      "destination": "/construction/maraponeai",
+      "permanent": true
+    },
     {
       "source": "/construction/demo",
       "destination": "/construction/blueprint-auditor",

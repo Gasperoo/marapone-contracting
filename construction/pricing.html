@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="/MARACON-WHITE.png" type="image/png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#111111" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
       <title>Construction Pricing – Marapone | One-Time Price, No Subscriptions | Private AI for GCs &amp; Builders</title>
@@ -175,13 +180,16 @@
        the padding box, so any margin there would push the menu down and reopen a
        dead strip the pointer falls through. Hiding is also delayed briefly so a
        fast diagonal move into the menu still lands. */
-    [data-mp-products] { padding-bottom: .55rem; margin-bottom: -.55rem; }
-    [data-mp-products] .mp-products-menu {
+    [data-mp-products], [data-mp-more] { padding-bottom: .55rem; margin-bottom: -.55rem; }
+    [data-mp-products] .mp-products-menu,
+    [data-mp-more] .mp-products-menu {
       visibility: hidden; opacity: 0;
       transition: opacity .14s ease, visibility 0s linear .22s;
     }
     [data-mp-products]:hover .mp-products-menu,
-    [data-mp-products]:focus-within .mp-products-menu {
+    [data-mp-products]:focus-within .mp-products-menu,
+    [data-mp-more]:hover .mp-products-menu,
+    [data-mp-more]:focus-within .mp-products-menu {
       visibility: visible; opacity: 1;
       transition: opacity .14s ease, visibility 0s;
     }
@@ -189,7 +197,11 @@
       content: ""; position: absolute; left: 0; right: 0; top: -.75rem; height: .75rem;
     }
     [data-mp-products]:hover .mp-chev,
-    [data-mp-products]:focus-within .mp-chev { transform: rotate(180deg); }
+    [data-mp-products]:focus-within .mp-chev,
+    [data-mp-more]:hover .mp-chev,
+    [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    .mp-mi { transition: background-color .15s ease, color .15s ease; }
+    .mp-mi:hover { background: #232323; color: #f97316; }
     .mp-pi { transition: background-color .15s ease; }
     .mp-pi:hover { background: #232323; }
     .mp-pi:hover .text-chalk { color: #f97316; }
@@ -229,6 +241,20 @@
         </div>
         <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
         <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <div class="relative" data-mp-more>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">More<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute right-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:190px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/work" class="mp-mi block px-4 py-2 text-sm text-fog">Our Work</a>
+            <a href="/construction/sample-assessment" class="mp-mi block px-4 py-2 text-sm text-fog">Samples</a>
+            <a href="/construction/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
+            <a href="/construction/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
+            <a href="/construction/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/construction/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
+            <a href="/construction/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
+            <a href="/construction/vs/procore" class="mp-mi block px-4 py-2 text-sm text-fog">vs Procore</a>
+            <a href="/shop" class="mp-mi block px-4 py-2 text-sm text-fog">Shop</a>
+          </div>
+        </div>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
         <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
@@ -247,6 +273,16 @@
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
+      <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
+      <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
+      <a href="/construction/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
+      <a href="/construction/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/construction/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
+      <a href="/construction/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
+      <a href="/construction/vs/procore" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Procore</a>
+      <a href="/shop" class="text-fog hover:text-chalk" style="padding-left:.75rem">Shop</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
@@ -309,9 +345,10 @@
         <h2 class="font-display text-4xl lg:text-5xl text-chalk">BUY THE TOOL. <span class="text-hiviz">OWN IT OUTRIGHT.</span></h2>
         <p class="text-fog text-sm mt-3 leading-relaxed max-w-3xl">
           Two products are already built. No discovery call, no scoping, no waiting — you buy the
-          application, install it on your own machine, and it is yours permanently. Same terms as
-          everything else we sell: one payment, full source code, no subscription, and it keeps
-          working whether or not we are still here.
+          application, install it on your own machine, and it is yours permanently. One payment, no
+          subscription, and it keeps working whether or not we are still here. The full source code
+          follows on day 31, once the 30-day refund window closes —
+          <a href="#guarantee" class="text-hiviz hover:underline">here is why</a>.
         </p>
       </div>
 
@@ -339,7 +376,7 @@
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Ontario Building Code compliance checks</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Tender risk scan across the bid documents</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">RFI, deficiency and change-order lists generated for you</span></li>
-              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>Full source code</strong> — modify it, or hire anyone to</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>Full source code</strong> on day 31 — modify it, or hire anyone to</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Unlimited drawings. No per-sheet or per-project fees</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Windows &amp; macOS &mdash; mobile versions coming soon</span></li>
             </ul>
@@ -375,7 +412,7 @@
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Monte Carlo, tornado sensitivity and eight what-if presets</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Margin ladder with win probability from <strong>your</strong> recorded bids</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Proposal PDF, internal review PDF, Excel, and Procore / Sage / QuickBooks / Bluebeam exports</span></li>
-              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>Full source code</strong> + every fee schedule editable in-app</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>Full source code</strong> on day 31 + every fee schedule editable in-app</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Windows &amp; macOS &mdash; mobile versions coming soon</span></li>
             </ul>
           </div>
@@ -406,6 +443,7 @@
             <p class="font-mono text-xs text-fog uppercase mb-3">What you get</p>
             <ul class="space-y-2.5 text-xs">
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Everything in both products above</span></li>
+              <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Both apps on day 1, both source repositories on day 31</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk"><strong>Direct handoff</strong> — the auditor's takeoff imports into the estimator with one click</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">One setup call covering both, end to end on a real job of yours</span></li>
               <li class="flex items-start gap-2"><span class="text-hiviz mt-0.5">✓</span><span class="text-chalk">Your rate sheet imported and validated against GTA benchmarks</span></li>
@@ -419,6 +457,20 @@
         </div>
       </div>
 
+      <div class="mt-6 border border-plate rounded-lg bg-steel p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+        <div class="flex-1">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1">// For the partner who wasn't on the call</p>
+          <p class="text-chalk text-sm font-semibold">One-page spec &amp; price sheet</p>
+          <p class="text-fog text-xs mt-1 leading-relaxed">Everything on this page &mdash; what it does, what it costs,
+            and how delivery works &mdash; on a single sheet you can forward or print.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 sm:flex-shrink-0">
+          <a href="/samples/Marapone-AI-Estimator-One-Pager.pdf" target="_blank" rel="noopener"
+            class="border border-hiviz text-hiviz font-semibold text-xs px-3 py-2 rounded hover:bg-hiviz hover:text-white transition-colors">AI Estimator PDF &darr;</a>
+          <a href="/samples/Marapone-Blueprint-Auditor-One-Pager.pdf" target="_blank" rel="noopener"
+            class="border border-plate text-chalk font-semibold text-xs px-3 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Blueprint Auditor PDF &darr;</a>
+        </div>
+      </div>
       <div class="mt-6 border border-plate rounded-lg p-5 bg-steel reveal">
         <p class="font-mono text-hiviz text-xs uppercase mb-2">Products vs. custom builds — which one</p>
         <p class="text-fog text-sm leading-relaxed">
@@ -774,6 +826,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="border border-plate rounded-lg bg-charcoal p-5">
             <p class="font-mono text-hiviz text-xs uppercase mb-2">01 — The software</p>
+            <p class="text-plate text-[0.68rem] font-mono mb-2">App on day 1 · source on day 31</p>
             <ul class="space-y-2 text-xs text-fog">
               <li class="flex gap-2"><span class="text-hiviz">▸</span> Complete source repository, commit history intact</li>
               <li class="flex gap-2"><span class="text-hiviz">▸</span> Fine-tuned model weights, on disk</li>
@@ -802,8 +855,8 @@
           <div class="border border-plate rounded-lg bg-charcoal p-5">
             <p class="font-mono text-hiviz text-xs uppercase mb-2">04 — The safety net</p>
             <ul class="space-y-2 text-xs text-fog">
-              <li class="flex gap-2"><span class="text-hiviz">▸</span> 30-day full refund on custom builds, no questions asked</li>
-              <li class="flex gap-2"><span class="text-hiviz">▸</span> Software products: 30-day refund on written confirmation the copy and source have been deleted</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> 30-day full refund, no questions asked</li>
+              <li class="flex gap-2"><span class="text-hiviz">▸</span> Source code lands on day 31, once that window closes — which is what makes the refund real</li>
               <li class="flex gap-2"><span class="text-hiviz">▸</span> If it breaks and it is our error, we fix it free</li>
               <li class="flex gap-2"><span class="text-hiviz">▸</span> Included support window on every tier</li>
               <li class="flex gap-2"><span class="text-hiviz">▸</span> Ongoing support is optional, never required to keep running</li>
@@ -1207,11 +1260,40 @@
       <div class="relative rounded-xl border-2 border-hiviz bg-gunmetal overflow-hidden p-8 lg:p-10 text-center">
         <div class="absolute top-0 left-0 w-full h-1 bg-hiviz"></div>
         <div class="text-4xl mb-4">🛡️</div>
-        <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-4">THE 30-DAY GUARANTEE</h2>
+        <h2 id="guarantee" class="font-display text-3xl lg:text-4xl text-chalk mb-4" style="scroll-margin-top:80px">THE 30-DAY GUARANTEE</h2>
         <p class="text-fog max-w-xl mx-auto leading-relaxed mb-6">
-          If the tool doesn't save you at least <strong class="text-chalk">10 hours in the first 30 days of
+          If it doesn't save you at least <strong class="text-chalk">10 hours in the first 30 days of
             use</strong>, we'll refund you in full. No questions asked. No awkward conversation. Just send us an email.
         </p>
+
+        <div class="max-w-2xl mx-auto text-left border border-plate rounded-lg bg-gunmetal p-6 mb-6">
+          <p class="font-mono text-hiviz text-xs uppercase tracking-wider mb-3">// How a real refund and real ownership coexist</p>
+          <p class="text-fog text-sm leading-relaxed mb-4">
+            Source code cannot be handed back. So we simply don't hand it over until the refund
+            window has closed — which lets us offer both without a licence key, an activation
+            server, or a kill switch anywhere in the product.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="border-l-2 border-hiviz pl-4">
+              <p class="font-mono text-xs text-hiviz uppercase tracking-wider mb-1">Day one</p>
+              <p class="text-chalk text-sm font-semibold mb-1">The working application</p>
+              <p class="text-fog text-xs leading-relaxed">Installed and running on your own machines, fully featured, no
+                restrictions and no expiry. Use it on live bids from the first day.</p>
+            </div>
+            <div class="border-l-2 border-plate pl-4">
+              <p class="font-mono text-xs text-fog uppercase tracking-wider mb-1">Day 31</p>
+              <p class="text-chalk text-sm font-semibold mb-1">The full source code</p>
+              <p class="text-fog text-xs leading-relaxed">The complete repository and model weights, once the refund
+                window closes. Nothing about the app changes on day 31 — you just also own how it was built.</p>
+            </div>
+          </div>
+          <p class="text-fog text-xs leading-relaxed mt-4">
+            Ask for a refund inside the window and you return the application and never received the
+            source. Nothing to audit, nothing to take on trust, and no way for us to reach into a
+            delivered copy — because there is no mechanism to reach in with.
+          </p>
+        </div>
+
         <div class="tape-line text-left max-w-md mx-auto">
           <p class="text-sm font-mono text-fog">We are a boutique team. We don't have a legal team or a T&C designed to
             make refunds hard. If it doesn't work for you, you shouldn't pay for it.</p>

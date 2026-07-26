@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>MaraponeAI for Logistics – The Private AI Engine Inside Your Build | Marapone</title>
-  <link rel="canonical" href="https://marapone.com/logistics/gasperai" />
+  <link rel="canonical" href="https://marapone.com/logistics/maraponeai" />
   <meta name="description"
     content="MaraponeAI is Marapone's own AI engine, purpose-built for logistics — BOL and packing-list checks, invoice and freight-bill audits, customs and HS codes, carrier scorecards. It powers every private system we build, deployed on your infrastructure. You own it." />
   <meta name="keywords"
@@ -17,7 +17,7 @@
   <meta property="og:title" content="MaraponeAI for Logistics – The Private AI Engine Inside Your Build" />
   <meta property="og:description"
     content="MaraponeAI is Marapone's own AI engine, purpose-built for logistics. It powers every private system we build — deployed on your infrastructure, owned by you." />
-  <meta property="og:url" content="https://marapone.com/logistics/gasperai" />
+  <meta property="og:url" content="https://marapone.com/logistics/maraponeai" />
   <meta property="og:image" content="https://marapone.com/GN.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MaraponeAI for Logistics – The Private AI Engine Inside Your Build" />
@@ -177,13 +177,16 @@
        the padding box, so any margin there would push the menu down and reopen a
        dead strip the pointer falls through. Hiding is also delayed briefly so a
        fast diagonal move into the menu still lands. */
-    [data-mp-products] { padding-bottom: .55rem; margin-bottom: -.55rem; }
-    [data-mp-products] .mp-products-menu {
+    [data-mp-products], [data-mp-more] { padding-bottom: .55rem; margin-bottom: -.55rem; }
+    [data-mp-products] .mp-products-menu,
+    [data-mp-more] .mp-products-menu {
       visibility: hidden; opacity: 0;
       transition: opacity .14s ease, visibility 0s linear .22s;
     }
     [data-mp-products]:hover .mp-products-menu,
-    [data-mp-products]:focus-within .mp-products-menu {
+    [data-mp-products]:focus-within .mp-products-menu,
+    [data-mp-more]:hover .mp-products-menu,
+    [data-mp-more]:focus-within .mp-products-menu {
       visibility: visible; opacity: 1;
       transition: opacity .14s ease, visibility 0s;
     }
@@ -191,7 +194,11 @@
       content: ""; position: absolute; left: 0; right: 0; top: -.75rem; height: .75rem;
     }
     [data-mp-products]:hover .mp-chev,
-    [data-mp-products]:focus-within .mp-chev { transform: rotate(180deg); }
+    [data-mp-products]:focus-within .mp-chev,
+    [data-mp-more]:hover .mp-chev,
+    [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    .mp-mi { transition: background-color .15s ease, color .15s ease; }
+    .mp-mi:hover { background: #232323; color: #52b788; }
     .mp-pi { transition: background-color .15s ease; }
     .mp-pi:hover { background: #232323; }
     .mp-pi:hover .text-chalk { color: #52b788; }
@@ -233,6 +240,20 @@
         </div>
         <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
         <a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <div class="relative" data-mp-more>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">More<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute right-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:190px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/logistics/work" class="mp-mi block px-4 py-2 text-sm text-fog">Our Work</a>
+            <a href="/logistics/sample-assessment" class="mp-mi block px-4 py-2 text-sm text-fog">Samples</a>
+            <a href="/logistics/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
+            <a href="/logistics/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
+            <a href="/logistics/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/logistics/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
+            <a href="/logistics/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
+            <a href="/logistics/vs/project44" class="mp-mi block px-4 py-2 text-sm text-fog">vs Project44</a>
+            <a href="/shop" class="mp-mi block px-4 py-2 text-sm text-fog">Shop</a>
+          </div>
+        </div>
         <a href="/logistics/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
         <a href="/logistics/contact" class="bg-marine text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
@@ -251,6 +272,16 @@
       <a href="/logistics/how-it-works" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/logistics/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/logistics/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <a href="/logistics/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
+      <a href="/logistics/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
+      <a href="/logistics/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
+      <a href="/logistics/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
+      <a href="/logistics/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/logistics/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
+      <a href="/logistics/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
+      <a href="/logistics/vs/project44" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Project44</a>
+      <a href="/shop" class="text-fog hover:text-chalk" style="padding-left:.75rem">Shop</a>
       <a href="/logistics/about" class="text-fog hover:text-chalk">About</a>
       <a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/logistics/contact" class="bg-marine text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
@@ -437,7 +468,7 @@
             logs, and deficiency lists.</p>
           <p class="text-fog text-sm leading-relaxed">If your business spans both worlds, the same model and the same
             approach carry across — fine-tuned to each.</p>
-          <a href="/construction/gasperai"
+          <a href="/construction/maraponeai"
             class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-hiviz2 transition-colors mt-6">See
             MaraponeAI for Construction &rarr;</a>
         </div>
@@ -523,7 +554,7 @@
         <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
           <a href="/logistics/" class="hover:text-chalk">Home</a>
           <a href="/logistics/how-it-works" class="hover:text-chalk">How It Works</a>
-          <a href="/logistics/gasperai" style="color:#52b788">MaraponeAI</a>
+          <a href="/logistics/maraponeai" style="color:#52b788">MaraponeAI</a>
           <a href="/logistics/services" class="hover:text-chalk">Services</a>
           <a href="/logistics/pricing" class="hover:text-chalk">Pricing</a>
           <a href="/logistics/about" class="hover:text-chalk">About</a>

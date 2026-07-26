@@ -20,6 +20,28 @@ cheque / bank wire.
 Prices and math live in [lib/pricing.js](lib/pricing.js) (single source of truth,
 shared by the API and the front-end widget).
 
+## Delivering a product purchase (staged delivery)
+
+Source code cannot be handed back, so it is not handed over until the refund
+window has closed. That is what lets us offer a genuine 30-day refund *and* a
+genuine ownership promise, with no licence key, activation server or kill switch
+anywhere in the product.
+
+| When | What the buyer gets |
+|------|---------------------|
+| On payment | The working application — fully featured, no time limit, no licence check |
+| Day 31 | The complete source repository and any bundled model weights |
+| Refund inside 30 days | Licence terminates, app removed, source was never delivered |
+
+Operationally that means two sends per product order, so the webhook's "paid"
+email is the trigger for the first one and the day-31 send has to be diarised.
+Nothing in the app enforces any of this — deliberately. The enforcement is
+simply that the second file has not been sent yet.
+
+The wording lives in three places and must stay in step: the guarantee section
+on `/construction/pricing`, the licence and refund clauses in `terms.html`, and
+the shipped-products section of `security.html`.
+
 ## Finished products vs. custom builds
 
 The two shipped applications are paid **in full** at checkout — there is nothing

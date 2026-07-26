@@ -835,13 +835,11 @@
   <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-5">
-        <a href="/"
-          class="hidden md:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap"
-          aria-label="Back to industry selection">&larr; All Industries</a>
-        <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span
+        <a href="/" class="hidden lg:inline font-mono text-xs text-plate hover:text-fog transition-colors whitespace-nowrap" aria-label="Back to ConstructionAI">&larr; ConstructionAI</a>
+        <a href="/logistics" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span
             style="color:#52b788">PONE</span></a>
       </div>
-      <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
+      <div class="hidden lg:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
         <div class="relative" data-mp-products>
           <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Solutions<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
           <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
@@ -879,7 +877,7 @@
         <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
         <a href="/logistics/contact" class="bg-marine text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
       </div>
-      <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
+      <button class="lg:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
         aria-label="Toggle navigation"
         onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -887,8 +885,8 @@
         </svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
-      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; ConstructionAI</a>
       <p class="font-mono text-xs text-plate pt-1">// Solutions</p>
       <a href="/logistics/demo" class="text-fog hover:text-chalk" style="padding-left:.75rem">Invoice Auditor &middot; live demo</a>
       <a href="/logistics/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">All logistics systems</a>
@@ -2191,7 +2189,7 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <div class="flex flex-col items-center md:items-start gap-1">
-          <a href="/logistics/" class="font-display text-xl tracking-wider text-chalk">MARA<span
+          <a href="/logistics" class="font-display text-xl tracking-wider text-chalk">MARA<span
               style="color:#52b788">PONE</span></a>
           <div class="flex gap-2 mt-1">
             <span
@@ -2221,7 +2219,7 @@
         </div>
         <div class="flex flex-col gap-2">
           <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
-            <a href="/logistics/" class="hover:text-chalk">Home</a>
+            <a href="/logistics" class="hover:text-chalk">Home</a>
             <a href="/logistics/how-it-works" class="hover:text-chalk">How It Works</a>
         <a href="/logistics/demo" class="hover:text-chalk">Live Demo</a>
             <a href="/logistics/services" class="hover:text-chalk">Services</a>
@@ -2354,7 +2352,7 @@
 
   <!-- Sticky mobile CTA -->
   <a href="/logistics/contact"
-    class="md:hidden fixed bottom-0 inset-x-0 z-50 text-white font-semibold text-center py-3.5 shadow-[0_-4px_16px_rgba(0,0,0,0.4)]"
+    class="lg:hidden fixed bottom-0 inset-x-0 z-50 text-white font-semibold text-center py-3.5 shadow-[0_-4px_16px_rgba(0,0,0,0.4)]"
     style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%);padding-bottom:calc(0.875rem + env(safe-area-inset-bottom))">
     Get Your Free AI Assessment →
   </a>

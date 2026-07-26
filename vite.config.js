@@ -33,6 +33,24 @@ export default defineConfig({
       },
     },
     {
+      // The construction homepage is the site root. Emit it at dist/index.html
+      // rather than relying on a host rewrite: GitHub Pages is configured for
+      // marapone.com as a standby and cannot read vercel.json, so a rewrite-only
+      // root would 404 there. Every asset reference in the built file is
+      // absolute, so the same bytes work at / and at /construction/.
+      name: 'construction-index-at-root',
+      apply: 'build',
+      closeBundle() {
+        const from = path.resolve(__dirname, 'dist/construction/index.html');
+        const to = path.resolve(__dirname, 'dist/index.html');
+        if (!fs.existsSync(from)) {
+          this.error('construction/index.html missing from the build — the site root would 404');
+        }
+        fs.copyFileSync(from, to);
+        console.log('[construction-index-at-root] wrote dist/index.html');
+      },
+    },
+    {
       name: 'html-rewrite',
       configureServer(server) {
         const rewrites = {
@@ -52,8 +70,8 @@ export default defineConfig({
           '/shop': '/shop.html',
           '/construction/maraponeai': '/construction/maraponeai.html',
           '/logistics/maraponeai': '/logistics/maraponeai.html',
-          // construction subdirectory
-          '/construction': '/construction/index.html',
+          // construction subdirectory — its index now lives at the site root
+          '/': '/construction/index.html',
           '/construction/how-it-works': '/construction/how-it-works.html',
           '/construction/services': '/construction/services.html',
           '/construction/work': '/construction/work.html',
@@ -121,6 +139,15 @@ export default defineConfig({
         };
         server.middlewares.use((req, res, next) => {
           const url = req.url?.split('?')[0];
+          // The landing/chooser page is gone and the construction homepage is
+          // now the site root, so the old /construction URL folds into `/`.
+          // Mirrors the permanent redirects in vercel.json so dev matches prod.
+          if (url === '/construction' || url === '/construction/' || url === '/index.html') {
+            res.statusCode = 308;
+            res.setHeader('Location', '/');
+            res.end();
+            return;
+          }
           if (rewrites[url]) {
             const filePath = path.resolve(__dirname, rewrites[url].slice(1));
             if (fs.existsSync(filePath)) {
@@ -151,8 +178,9 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       input: {
-        // Root pages (index.html is the landing/chooser page)
-        main: path.resolve(__dirname, 'index.html'),
+        // Root pages. There is no index.html source file: the landing / chooser
+        // page is gone, and dist/index.html is emitted by the
+        // construction-index-at-root plugin above.
         about: path.resolve(__dirname, 'about.html'),
         'how-it-works': path.resolve(__dirname, 'how-it-works.html'),
         pricing: path.resolve(__dirname, 'pricing.html'),

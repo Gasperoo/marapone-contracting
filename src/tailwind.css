@@ -63,6 +63,28 @@
 }
 
 /* ============================================================
+   Mobile nav drawer — the nav is position:sticky, so once the
+   open menu is taller than the viewport its bottom entries can
+   never be scrolled to. Cap it and let it scroll internally.
+   ============================================================ */
+@media (max-width: 1023px) {
+  #mobile-menu {
+    max-height: calc(100vh - 4.5rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* The sticky bottom CTA is fixed and would sit on top of the drawer's last
+     entries. Hide it while the drawer is open — it duplicates the CTA that is
+     already the drawer's final item. Browsers without :has() keep the old
+     behaviour, which is merely cosmetic. */
+  body:has(#mobile-menu:not(.hidden)) a.fixed.bottom-0.inset-x-0 {
+    display: none;
+  }
+}
+
+/* ============================================================
    Wide horizontal strips (marquees, audience chips) — contain
    any overflow so they never push the viewport on mobile
    ============================================================ */

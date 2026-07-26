@@ -2,7 +2,7 @@
   "name": "Marapone — Private AI for Construction",
   "short_name": "Marapone",
   "description": "Private AI systems for construction companies — blueprint takeoff, estimating, tender risk and document intelligence. Bought once, owned outright.",
-  "start_url": "/construction/",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#111111",

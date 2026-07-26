@@ -14,7 +14,7 @@
   <meta property="og:description"
     content="The one-page security overview, data-flow diagram, and data-handling summary your IT team will ask for." />
   <meta property="og:url" content="https://marapone.com/logistics/hardware" />
-  <meta property="og:image" content="https://marapone.com/MARACON-WHITE.png" />
+  <meta property="og:image" content="https://marapone.com/og/og-logistics.jpg" />
   <link rel="canonical" href="https://marapone.com/logistics/hardware" />
   <link rel="stylesheet" href="../src/tailwind.css" />
   <link
@@ -78,6 +78,16 @@
   <link rel="stylesheet" href="/panel-polish.css" />
   <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
   <script defer src="/panel-polish.js"></script>
+  <style>
+    /* Solutions nav menu — CSS-driven so the links work with JS disabled. */
+    [data-mp-products] .mp-products-menu { display: none; }
+    [data-mp-products]:hover .mp-products-menu,
+    [data-mp-products]:focus-within .mp-products-menu { display: block; }
+    [data-mp-products]:hover .mp-chev { transform: rotate(180deg); }
+    .mp-pi { transition: background-color .15s ease; }
+    .mp-pi:hover { background: #232323; }
+    .mp-pi:hover .text-chalk { color: #52b788; }
+  </style>
 </head>
 <body class="antialiased">
 
@@ -91,15 +101,28 @@
         <a href="/logistics/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span style="color:#52b788">PONE</span></a>
       </div>
       <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
-        <a href="/logistics/" class="hover:text-chalk transition-colors">Home</a>
+        <div class="relative" data-mp-products>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Solutions<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;margin-top:.5rem;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/logistics/demo" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Invoice Auditor <span class="font-mono text-[10px] text-marine align-middle">LIVE DEMO</span></span>
+              <span class="block text-xs text-fog mt-0.5">Audit a freight invoice line by line, free</span>
+            </a>
+            <a href="/logistics/services" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">All logistics systems</span>
+              <span class="block text-xs text-fog mt-0.5">Trade docs, compliance, rates, carriers, supplier intel</span>
+            </a>
+            <a href="/logistics/how-it-works" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Custom AI Builds</span>
+              <span class="block text-xs text-fog mt-0.5">Built around your own workflow</span>
+            </a>
+          </div>
+        </div>
         <a href="/logistics/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
-        <a href="/logistics/demo" class="hover:text-chalk transition-colors">Live Demo</a>
-        <a href="/logistics/services" class="hover:text-chalk transition-colors">Services</a>
         <a href="/logistics/pricing" class="hover:text-chalk transition-colors">Pricing</a>
-        <a href="/logistics/work" class="hover:text-chalk transition-colors">Work</a>
         <a href="/logistics/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/logistics/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+        <a href="/logistics/contact" class="bg-marine text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
       </div>
       <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,15 +132,15 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
       <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
-      <a href="/logistics/" class="text-fog hover:text-chalk">Home</a>
-      <a href="/logistics/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
-      <a href="/logistics/demo" class="text-fog hover:text-chalk">Live Demo</a>
-      <a href="/logistics/services" class="text-fog hover:text-chalk">Services</a>
+      <p class="font-mono text-xs text-plate pt-1">// Solutions</p>
+      <a href="/logistics/demo" class="text-fog hover:text-chalk" style="padding-left:.75rem">Invoice Auditor &middot; live demo</a>
+      <a href="/logistics/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">All logistics systems</a>
+      <a href="/logistics/how-it-works" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
+      <a href="/logistics/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/logistics/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <a href="/logistics/work" class="text-fog hover:text-chalk">Work</a>
       <a href="/logistics/about" class="text-fog hover:text-chalk">About</a>
       <a href="/logistics/contact" class="text-fog hover:text-chalk">Contact</a>
-      <a href="/logistics/contact" style="background:linear-gradient(135deg,#52b788 0%,#2d6a4f 100%)" class="text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+      <a href="/logistics/contact" class="bg-marine text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
     </div>
   </nav>
 

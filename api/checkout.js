@@ -5,7 +5,7 @@
  *   { kind, tier|plan, vertical?, addOn?, email?, code? }
  *
  * kinds:
- *   - "product"   Blueprint Auditor / AI Estimator / the pair → finished
+ *   - "product"   Blueprint Auditor / AI Estimator / ScopeGuard / the suite → finished
  *                 software, paid in FULL now + 13% HST. No deposit, because
  *                 there is nothing to scope and delivery is immediate.
  *   - "build"     Starter/Pilot → charges a DEPOSIT now (25% / 35%), balance

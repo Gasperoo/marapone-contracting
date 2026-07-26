@@ -163,6 +163,10 @@
       "destination": "/construction/ai-estimator.html"
     },
     {
+      "source": "/construction/scopeguard",
+      "destination": "/construction/scopeguard.html"
+    },
+    {
       "source": "/logistics",
       "destination": "/logistics/index.html"
     },

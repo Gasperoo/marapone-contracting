@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScopeGuard – Buy out the job without giving the margin back | Marapone</title>
+  <link rel="canonical" href="https://marapone.com/construction/scopeguard" />
+  <meta name="description"
+    content="Marapone ScopeGuard reads your tender package and every subcontractor proposal, then reports what nobody priced, what two trades are both carrying, and which wording will not survive a dispute — with a citation on both sides and a costed exposure range. Runs on your own machine. Bought once." />
+  <meta name="keywords"
+    content="subcontractor scope review, buyout software, scope gap analysis, construction scope exclusions, subcontractor comparison, clarification letters, Toronto buyout, private AI construction" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="ScopeGuard – Buy out the job without giving the margin back | Marapone" />
+  <meta property="og:description"
+    content="Fifteen subs, fifteen sets of exclusions. ScopeGuard reads all of them against the master documents and prices what is missing, doubled, or written to be argued about later." />
+  <meta property="og:url" content="https://marapone.com/construction/scopeguard" />
+  <meta property="og:image" content="https://marapone.com/scopeguard/og-scopeguard.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ScopeGuard – Buy out the job without giving the margin back | Marapone" />
+  <meta name="twitter:description"
+    content="The most expensive item on a buyout is the one no letter mentions. ScopeGuard reports absence as loudly as a bad clause." />
+  <meta name="twitter:image" content="https://marapone.com/scopeguard/og-scopeguard.jpg" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="preload" as="image" href="/scopeguard/scopeguard-tour-poster.jpg" fetchpriority="high" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Marapone ScopeGuard",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "macOS 12+, Windows 10, Windows 11",
+    "url": "https://marapone.com/construction/scopeguard",
+    "description": "Subcontractor scope and buyout intelligence for Toronto and the GTA. Reads the tender package and every subcontractor proposal, then reports missing scope, exclusions of required work, double coverage, ambiguous language, interface gaps, pricing gaps and superseded addenda — each with a citation on both sides and a costed exposure range. Runs entirely on the contractor's own machine.",
+    "featureList": [
+      "20 trade packages with 239 master scope requirements mapped to CSI MasterFormat",
+      "Eight finding types, each cited to the master clause and the page and line in the sub's letter",
+      "Costed exposure range from a Toronto 2026 subcontract rate table",
+      "22 interface conditions and 18 documented GTA dispute hotspots",
+      "One-click clarification letters with the clause and the question to put to the sub",
+      "Side-by-side comparison of every master requirement against the sub's own words",
+      "Learns from your verdicts and your own change-order history"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "990",
+      "priceCurrency": "CAD",
+      "url": "https://marapone.com/construction/pricing#products"
+    },
+    "publisher": { "@type": "Organization", "name": "Marapone", "url": "https://marapone.com/" }
+  }
+  </script>
+
+  <style>
+    html { overflow-x: hidden; overscroll-behavior-x: none; max-width: 100%; }
+
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      max-width: 100%;
+    }
+
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+
+    #nav-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: #f97316; z-index: 9999; pointer-events: none;
+      transition: width .08s linear;
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* ── scroll-reveal (matches the rest of the site) ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ── eyebrow ── */
+    .sg-eyebrow {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-family: 'DM Mono', monospace; font-size: .7rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase; color: #f97316;
+    }
+    .sg-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: #f97316; display: inline-block; }
+    .sg-eyebrow.muted { color: #6e6e6e; }
+    .sg-eyebrow.muted::before { background: #6e6e6e; }
+
+    /* ── hero headline sheen (site-wide treatment) ── */
+    .sg-shine {
+      background: linear-gradient(100deg, #ffffff 0%, #e8e8e8 38%, #f97316 50%, #e8e8e8 62%, #ffffff 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 0 24px rgba(249, 115, 22, .30));
+      animation: sgSheen 6s ease-in-out infinite;
+    }
+    @keyframes sgSheen { 0%, 100% { background-position: 8% 0; } 50% { background-position: 92% 0; } }
+    @media (prefers-reduced-motion: reduce) { .sg-shine { animation: none; background-position: 30% 0; } }
+
+    /* ── app window chrome ── */
+    .app-window {
+      border-radius: 10px;
+      border: 1px solid #3a3a3a;
+      background: #101012;
+      overflow: hidden;
+      box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .02);
+    }
+    .app-window img, .app-window video { display: block; width: 100%; height: auto; }
+    /* The hero tour carries the page, so give it a heavier frame and glow. */
+    .app-window-hero {
+      border-color: #454545;
+      box-shadow: 0 50px 110px -35px rgba(0, 0, 0, .95), 0 0 0 1px rgba(249, 115, 22, .10);
+    }
+
+    .app-glow { position: relative; }
+    .app-glow::before {
+      content: ""; position: absolute; inset: -8% -4% -12%;
+      background: radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, .18), transparent 65%);
+      pointer-events: none; z-index: -1;
+    }
+
+    /* ── stat rail ── */
+    .stat-card {
+      border: 1px solid #3a3a3a; border-radius: 8px; background: #232323;
+      padding: 1.1rem 1.15rem;
+    }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; letter-spacing: .02em; }
+
+    /* ── feature row media ── */
+    .feature-row { align-items: center; }
+
+    /* ── finding-type table ── */
+    .find-row { display: grid; grid-template-columns: 260px 1fr auto; gap: 1.25rem; padding: .95rem 0; border-bottom: 1px solid #2e2e2e; align-items: baseline; }
+    @media (max-width: 767px) { .find-row { grid-template-columns: 1fr; gap: .3rem; } .find-row .find-count { justify-self: start; } }
+
+    /* ── spec table ── */
+    .spec-row { display: grid; grid-template-columns: 190px 1fr; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid #2e2e2e; }
+    @media (max-width: 640px) { .spec-row { grid-template-columns: 1fr; gap: .35rem; } }
+
+    /* ── the letter excerpt, set like the app sets it ── */
+    .letter-quote {
+      font-family: 'DM Mono', monospace; font-size: .78rem; line-height: 1.7;
+      background: #141414; border: 1px solid #2e2e2e; border-left: 2px solid #f97316;
+      border-radius: 6px; padding: .85rem 1rem; color: #a0a0a0;
+    }
+
+    .cta-band { position: relative; overflow: hidden; }
+    .cta-band::before {
+      content: ""; position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 120%;
+      background: radial-gradient(ellipse at center, rgba(249, 115, 22, .22), transparent 60%);
+      pointer-events: none;
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
+  <script defer src="/checkout.js"></script>
+  <style>
+    /* Products nav menu — CSS-driven so the links work with JS disabled.
+       The visual gap under the trigger is the wrapper's own padding, NOT a margin
+       on the menu — the menu is positioned with top:100%, which resolves against
+       the padding box, so any margin there would push the menu down and reopen a
+       dead strip the pointer falls through. Hiding is also delayed briefly so a
+       fast diagonal move into the menu still lands. */
+    [data-mp-products], [data-mp-more] { padding-bottom: .55rem; margin-bottom: -.55rem; }
+    [data-mp-products] .mp-products-menu,
+    [data-mp-more] .mp-products-menu {
+      visibility: hidden; opacity: 0;
+      transition: opacity .14s ease, visibility 0s linear .22s;
+    }
+    [data-mp-products]:hover .mp-products-menu,
+    [data-mp-products]:focus-within .mp-products-menu,
+    [data-mp-more]:hover .mp-products-menu,
+    [data-mp-more]:focus-within .mp-products-menu {
+      visibility: visible; opacity: 1;
+      transition: opacity .14s ease, visibility 0s;
+    }
+    .mp-products-menu::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -.75rem; height: .75rem;
+    }
+    [data-mp-products]:hover .mp-chev,
+    [data-mp-products]:focus-within .mp-chev,
+    [data-mp-more]:hover .mp-chev,
+    [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    /* Comfortable touch targets in the mobile menu — the rows were ~24px tall,
+       which is tight for the primary navigation on a phone. */
+    #mobile-menu a { padding-top: .45rem; padding-bottom: .45rem; }
+    #mobile-menu a.bg-hiviz, #mobile-menu a.bg-marine { padding-top: .6rem; padding-bottom: .6rem; }
+    .mp-mi { transition: background-color .15s ease, color .15s ease; }
+    .mp-mi:hover { background: #232323; color: #f97316; }
+    .mp-pi { transition: background-color .15s ease; }
+    .mp-pi:hover { background: #232323; }
+    .mp-pi:hover .text-chalk { color: #f97316; }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <div id="nav-progress" aria-hidden="true"></div>
+
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip
+    to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden lg:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
+        <div class="relative" data-mp-products>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
+              <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
+            </a>
+            <a href="/construction/scopeguard" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">ScopeGuard <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Subcontractor scope &amp; buyout review</span>
+            </a>
+            <a href="/construction/services" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Custom AI Builds</span>
+              <span class="block text-xs text-fog mt-0.5">Built around your own workflow</span>
+            </a>
+          </div>
+        </div>
+        <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <div class="relative" data-mp-more>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">More<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute right-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:190px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/work" class="mp-mi block px-4 py-2 text-sm text-fog">Our Work</a>
+            <a href="/construction/sample-assessment" class="mp-mi block px-4 py-2 text-sm text-fog">Samples</a>
+            <a href="/construction/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
+            <a href="/construction/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
+            <a href="/construction/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/construction/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
+            <a href="/construction/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
+            <a href="/construction/vs/procore" class="mp-mi block px-4 py-2 text-sm text-fog">vs Procore</a>
+            <a href="/shop" class="mp-mi block px-4 py-2 text-sm text-fog">Shop</a>
+          </div>
+        </div>
+        <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics" class="text-marine hover:text-marine-light transition-colors whitespace-nowrap inline-flex items-center gap-1.5" aria-label="LogisticsAI — private AI for freight, customs and trade compliance"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="lg:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/scopeguard" class="text-fog hover:text-chalk" style="padding-left:.75rem">ScopeGuard</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
+      <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
+      <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
+      <a href="/construction/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
+      <a href="/construction/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/construction/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
+      <a href="/construction/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
+      <a href="/construction/vs/procore" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Procore</a>
+      <a href="/shop" class="text-fog hover:text-chalk" style="padding-left:.75rem">Shop</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/logistics" class="text-marine hover:text-marine-light inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="main-content" class="relative overflow-hidden border-b border-plate">
+    <div class="absolute inset-0 grid-dot opacity-40" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block" aria-hidden="true"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 py-16 lg:py-24">
+      <div>
+
+        <div class="max-w-3xl">
+          <div class="flex flex-wrap items-center gap-3 mb-5">
+            <span class="sg-eyebrow">Marapone ScopeGuard</span>
+            <span class="inline-flex items-center gap-1.5 font-mono text-[0.62rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiviz" aria-hidden="true"></span> New
+            </span>
+          </div>
+
+          <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.92] text-chalk">
+            You won the job.<br /><span class="sg-shine">Now don't give it back.</span>
+          </h1>
+
+          <p class="font-body text-lg text-fog max-w-2xl mt-6 leading-relaxed">
+            Twenty trades quote your job and twenty estimators write their own exclusions.
+            Somewhere in that pile is work the specification requires that
+            <em class="not-italic text-chalk font-medium">nobody</em> priced, work two trades are
+            both carrying, and wording that will be read against you in an adjudication.
+            ScopeGuard reads all of it against the master documents and puts a number on
+            every gap — before you award, not after. Runs entirely on your own machine. Bought once.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mt-8">
+            <a href="/construction/pricing#products" data-checkout="product" data-product="scopeguard"
+              class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">
+              Buy it — $990 one time →
+            </a>
+            <a href="#inside"
+              class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">
+              See every screen
+            </a>
+          </div>
+          <div class="mt-3 flex flex-col items-start gap-1.5">
+            <a href="/construction/contact?product=scopeguard"
+              class="inline-flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
+              Or send us one real buyout and we'll run it for you first →
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 mt-6 font-mono text-xs text-fog">
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Works with the wifi off</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Every finding cited on both sides</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> PDF, Word, Excel, CSV or a saved email</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> macOS &amp; Windows</span>
+          </div>
+        </div>
+
+        <div class="app-glow reveal reveal-d1 mt-12 lg:mt-16">
+          <figure class="app-window app-window-hero">
+            <video id="tour" width="1920" height="1080" muted loop playsinline autoplay preload="metadata"
+              poster="/scopeguard/scopeguard-tour-poster.jpg"
+              aria-label="A screen recording of ScopeGuard reviewing the buyout on a 38-unit Toronto residential infill — dashboard, trade packages, findings, side-by-side comparison, extracted scope items, clarification letters, documents and dispute intelligence.">
+              <source src="/scopeguard/scopeguard-tour.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figcaption class="text-center font-mono text-xs text-plate mt-3">
+            The real app, recorded · sixteen real documents, fourteen subcontractor proposals, one $14.25M buyout
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ STAT RAIL ══════════ -->
+  <section class="bg-steel border-b border-plate py-6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="stat-card">
+          <p class="stat-num text-hiviz">239</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Master scope requirements</p>
+          <p class="text-xs text-plate mt-0.5">Across 20 trade packages, mapped to CSI</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">22</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Interface conditions</p>
+          <p class="text-xs text-plate mt-0.5">The grey zones between two trades</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">18</p>
+          <p class="font-mono text-xs text-fog mt-1.5">GTA dispute hotspots</p>
+          <p class="text-xs text-plate mt-0.5">Frequency, exposure and prevention</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">8</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Finding types</p>
+          <p class="text-xs text-plate mt-0.5">Each with a citation on both sides</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE PROBLEM ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div class="reveal">
+          <span class="sg-eyebrow">What buyout actually is</span>
+          <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+            Fifteen letters. One afternoon. Days before award.
+          </h2>
+          <p class="text-fog mt-5 leading-relaxed">
+            What comes back from the trades is prose — inclusions, exclusions and
+            qualifications written by fifteen different estimators, each protecting their own
+            number. Most GCs review it by hand, with a checklist, under time pressure.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            The failure is never dramatic. It is one sentence in the concrete letter
+            that puts winter heating on somebody else, on a job whose structure runs November
+            to March. Nobody notices until the first cold morning, and by then the price is a
+            change order rather than a negotiation.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            <span class="text-chalk font-medium">Silence is the expensive part.</span>
+            The most costly item on a buyout is the one no letter mentions at all — so
+            ScopeGuard reports absence as loudly as it reports a bad clause.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1">
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-3">From the concrete proposal, as read</p>
+          <div class="letter-quote">
+            &ldquo;Cold weather concreting including accelerator, insulated blankets,
+            hoarding and supplementary heat &mdash; by others&rdquo;
+          </div>
+          <div class="border border-hiviz/45 rounded-lg bg-gunmetal p-5 mt-4 relative">
+            <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">High</span>
+              <span class="font-mono text-[0.6rem] tracking-widest uppercase text-fog border border-plate rounded px-2 py-0.5">Required scope excluded</span>
+              <span class="font-mono text-[0.6rem] tracking-widest uppercase text-fog border border-plate rounded px-2 py-0.5">Concrete</span>
+              <span class="font-mono text-xs text-hiviz ml-auto">$118,320 – $201,840</span>
+            </div>
+            <p class="text-sm text-chalk font-medium leading-snug">Winter concreting — heating, hoarding, curing blankets, accelerator — excluded</p>
+            <p class="text-sm text-fog leading-relaxed mt-2">
+              Concrete Ltd. has explicitly excluded work that Section 03 30 00 — Cast-in-Place
+              Concrete requires. Unless another trade has carried it, this work has no price
+              behind it. Read from your specification at page 2.
+            </p>
+            <p class="font-mono text-[0.68rem] text-plate leading-relaxed mt-3">
+              Master: Section 03 30 00 — Cast-in-Place Concrete · CSA A23.1 cold weather requirements; GTA Dec–Mar<br />
+              Proposal: 04-CONC_Vaughan_Forming_scope.pdf p.&nbsp;1 — Exclusion<br />
+              Confidence 95% · Basis: 1,450 m³ × $96.00 — cold-weather premium (Toronto 2026 rate table)
+            </p>
+          </div>
+          <p class="font-mono text-xs text-plate mt-3">
+            One finding out of 120 on the demo buyout. Nothing here is written by a model.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE PIPELINE ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">Three tools, one job</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+          Measure it. Price it. Then buy it out.
+        </h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          These are three products because they are three different problems, and most
+          contractors only have one of them. Buy the one you're missing — or run all three and
+          the same job carries straight through from the drawing set to the awarded subcontract.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 mt-10">
+        <div class="reveal border border-plate rounded-lg bg-charcoal p-6 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 1</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">Blueprint Auditor</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">Reads the drawing set and answers <em class="text-chalk not-italic font-medium">how much is there</em> — quantities, scope gaps, code and tender risk.</p>
+          <a href="/construction/blueprint-auditor" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See the auditor →</a>
+        </div>
+
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-charcoal p-6 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 2</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">AI Estimator</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">Takes those quantities and answers <em class="text-chalk not-italic font-medium">what should we bid</em> — assemblies, contingency, Toronto soft costs, margin.</p>
+          <a href="/construction/ai-estimator" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See the estimator →</a>
+        </div>
+
+        <div class="reveal reveal-d2 border border-hiviz/45 rounded-lg bg-charcoal p-6 flex flex-col relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">Stage 3</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">ScopeGuard</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">Takes the awarded job and answers <em class="text-chalk not-italic font-medium">did anyone actually price it</em> — every sub's letter against your own documents.</p>
+          <span class="inline-flex items-center gap-1.5 font-mono text-xs text-plate mt-5">You are here</span>
+        </div>
+      </div>
+
+      <p class="reveal text-sm text-fog mt-8 max-w-3xl leading-relaxed">
+        <span class="text-chalk font-medium">ScopeGuard stands alone.</span>
+        It needs your tender package and the letters that came back — nothing else. If you do
+        run the estimator, its division rollup drops in as the budget each trade is measured
+        against, and the demo on this page is the same Toronto job the estimator prices, carried
+        one stage further.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ THE EIGHT FINDINGS ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">What it looks for</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Eight ways a buyout leaks.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Every finding carries a plain-language explanation, a citation on both sides — the
+          clause in your master documents and the page and line in the sub's letter — a
+          confidence score, and a cost exposure range with its stated basis. The counts below
+          are what the demo buyout actually produced.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal">
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Required scope excluded</span>
+          <p class="text-sm text-fog leading-relaxed">Required by the master documents, and the sub explicitly took it out. The fire pump, the winter heating, the fire alarm verification written as "by others".</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">44 &middot; $2,048,687</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Ambiguous language</span>
+          <p class="text-sm text-fog leading-relaxed">Wording that will not survive a dispute — "as required", "standard", "allowance", "to suit". Twenty patterns that reliably become an argument.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">42 &middot; $446,278</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Overlap / double coverage</span>
+          <p class="text-sm text-fog leading-relaxed">Two or more trades carrying the same work. You pay for it twice, or you negotiate one of them down and give the other a reason to claim.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">13 &middot; $303,214</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Interface / grey zone</span>
+          <p class="text-sm text-fog leading-relaxed">Work in the gap between two trades. Carpentry says blocking is drywall's; drywall says it is carpentry's. Twenty-two of these recur on GTA jobs.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">12 &middot; $300,658</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Addendum not carried</span>
+          <p class="text-sm text-fog leading-relaxed">Priced against a superseded document. Four proposals on the demo job never acknowledged Addendum 3.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">4 &middot; $95,076</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Pricing gap</span>
+          <p class="text-sm text-fog leading-relaxed">A missing or unusable rate, or a price with a validity window that closes before your award date.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">5 &middot; $45,830</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Missing scope</span>
+          <p class="text-sm text-fog leading-relaxed">Required by the master documents and simply absent from the letter — not excluded, not mentioned. The one nobody catches by reading.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this job</span>
+        </div>
+        <div class="find-row" style="border-bottom:none">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">House rule not met</span>
+          <p class="text-sm text-fog leading-relaxed">Falls short of your own buyout standard — your blocking rule, your access-panel rule, your hoisting rule. You write these; they are checked on every letter after that.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this job</span>
+        </div>
+      </div>
+
+      <p class="reveal font-mono text-xs text-plate mt-6 max-w-3xl leading-relaxed">
+        120 open findings, 75 of them high severity, $3,239,743 of mid-case exposure against a
+        $14,250,000 contract — 22.7%. Sixteen documents, one afternoon of review compressed into
+        the time it takes to make coffee.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ THE SCREENS ══════════ -->
+  <section id="inside" class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-14">
+        <span class="sg-eyebrow">Inside the app</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Every screen, no mock-ups.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Everything below is the shipping application running one real buyout: <em class="not-italic text-chalk">Lakeshore Yards</em>,
+          a 38-unit residential infill at 118 Jefferson Avenue in Toronto — $14.25M, twenty trade
+          packages, fourteen proposals received, a full project manual and three addenda.
+          Nothing is canned. The reader, the extractor and the cross-reference engine are the
+          ones your own documents go through.
+        </p>
+      </div>
+
+      <!-- 01 · DASHBOARD -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">01 — Buyout dashboard</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">Where the money is leaking, ranked.</h3>
+          <p class="text-fog leading-relaxed">
+            One screen answers the question you actually have: which trades to worry about, and
+            how much. Exposure is shown per trade as a share of that trade's own quoted price —
+            fire protection at <span class="text-hiviz font-medium">130%</span> of its own quote
+            is not a rounding error, it is a bid that priced a different job.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>A single buyout risk score with the reasoning behind it, not a colour-coded dot</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Trades still outstanding are listed separately and kept <em class="not-italic text-chalk">out</em> of the exposure figure — an unreviewed trade is unmeasured risk, not zero risk</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>"Fix before you award" pulls the highest-exposure findings to the top of the page</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/scopeguard/clip-dashboard-poster.jpg" aria-label="The ScopeGuard dashboard showing a buyout risk of 73 out of 100, $3.24 million of scope exposure, 14 of 20 scopes received, and exposure ranked by trade.">
+              <source src="/scopeguard/clip-dashboard.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 02 · FINDINGS -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/scopeguard/clip-findings-poster.jpg" aria-label="The findings register, each finding showing the excluded work, the master clause it comes from, the quoted line from the proposal, a confidence score and a costed exposure range.">
+              <source src="/scopeguard/clip-findings.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">02 — The findings register</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">Cited on both sides, or it isn't a finding.</h3>
+          <p class="text-fog leading-relaxed">
+            Every entry names the clause in your master documents that requires the work
+            <em class="not-italic text-chalk">and</em> the page and line in the sub's letter that
+            deals with it. Below that: what to do about it, in a sentence you could paste into a
+            letter. Ranked by severity, then by exposure.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every dollar figure states its basis — quantity, rate, and the share of that rate the requirement represents</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>The range is an argument, not a hedge: the low end is buying it cooperatively now, the high end is buying it as a change order after mobilisation</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Mark any finding <span class="font-mono text-xs">real</span> or <span class="font-mono text-xs">noise</span> — that verdict persists and sharpens the next project</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Filter by trade, severity or category; export the whole register to CSV</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 03 · COMPARE -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">03 — Requirement vs. proposal</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">Your spec on the left, their words on the right.</h3>
+          <p class="text-fog leading-relaxed">
+            The review a good estimator does in their head, written down. Every master
+            requirement for the trade, its treatment in the letter — included, excluded,
+            qualified or never addressed — and where a treatment costs money, the sub's own
+            sentence quoted verbatim beside it.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Nothing paraphrased. The words you negotiate against are the words they wrote</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Requirements with no finding are shown as carried, so the clean part of a letter is visible too</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Exports as a per-trade scope report, or as revised scope language ready for the subcontract</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/scopeguard/clip-compare-poster.jpg" aria-label="Eleven master concrete requirements listed against their treatment in the subcontractor's proposal, with excluded items quoted verbatim and priced.">
+              <source src="/scopeguard/clip-compare.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 04 · SCOPE ITEMS -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/scopeguard/clip-scopes-poster.jpg" aria-label="A fire protection proposal broken into structured inclusions, exclusions, qualifications and unit rates, each with the page it came from and an extraction confidence.">
+              <source src="/scopeguard/clip-scopes.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">04 — Prose into structure</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">A scope letter is not a data format. It becomes one.</h3>
+          <p class="text-fog leading-relaxed">
+            Drag the proposals onto the window — PDF, Word, Excel, CSV or a saved email. Each is
+            read, classified by trade and split into inclusions, exclusions, qualifications,
+            unit rates and alternates, with the page and an extraction confidence on every line.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Addenda acknowledged is tracked per letter — 3 of 3, or the gap that is about to cost you</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Revisions stack: import Rev 2 and the register updates rather than starting over</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every extracted line is editable. The engine reads; you rule</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 05 · CLARIFICATIONS -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">05 — Clarification letters</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">One click turns findings into the letter you'd have written.</h3>
+          <p class="text-fog leading-relaxed">
+            Every open finding on a trade, numbered, each with the clause that requires the work
+            and the exact question to put to the sub. Paste their reply back in and ScopeGuard
+            reads what it actually did — which items were withdrawn, which were priced, and
+            which were answered with more prose.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Draft for one trade, or for every trade with open findings at once</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Your standard scope language — blocking, firestopping, hoisting, winter, access panels, cutting and patching — is a library you edit once and it is used from then on</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Export the letters as PDF, and the final accepted scopes for the project file</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/scopeguard/clip-clarifications-poster.jpg" aria-label="Drafted clarification letters for concrete and fire protection, plus the editable library of standard scope language for blocking, firestopping, hoisting and winter conditions.">
+              <source src="/scopeguard/clip-clarifications.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 06 · INTELLIGENCE + DOCUMENTS, side by side -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="reveal">
+          <div class="app-glow">
+            <figure class="app-window">
+              <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+                poster="/scopeguard/clip-intelligence-poster.jpg" aria-label="The intelligence view showing recurring gaps from past projects, GTA market pressure by division, and documented Toronto dispute hotspots.">
+                <source src="/scopeguard/clip-intelligence.mp4" type="video/mp4" />
+              </video>
+            </figure>
+          </div>
+          <h3 class="font-display text-xl text-chalk mt-5 mb-2">06 — It learns your losses</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Load your change-order history and the failures that actually cost you money get
+            checked against every future letter. Alongside it: eighteen documented GTA dispute
+            hotspots, and Ontario price movement by division — because a 30-day price on
+            plumbing running 11.9% year-over-year is a buyout risk, not a formality.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1">
+          <div class="app-glow">
+            <figure class="app-window">
+              <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+                poster="/scopeguard/clip-documents-poster.jpg" aria-label="The document register listing the project manual, three addenda and fourteen subcontractor proposals with page and word counts.">
+                <source src="/scopeguard/clip-documents.mp4" type="video/mp4" />
+              </video>
+            </figure>
+          </div>
+          <h3 class="font-display text-xl text-chalk mt-5 mb-2">07 — The evidence stays with the job</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Every imported document is copied into the project's own folder. A finding that
+            cites page 4 of a proposal is worth nothing once that proposal has moved off
+            somebody's desktop — so it doesn't. Master package, addenda and every proposal, kept
+            where the citations still resolve.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TRUSTWORTHY NUMBERS ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-10">
+        <span class="sg-eyebrow">Why the numbers hold up</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">A range you can't audit is a range you won't use.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">Nothing is invented</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Exposure comes from a Toronto subcontract rate table applied to your project's own
+            quantities. Severity comes from requirement criticality and your own dispute record.
+            Confidence comes from the match score. MaraponeAI explains, prioritises and drafts —
+            it never decides a number.
+          </p>
+        </div>
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">Every figure states its basis</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Each finding prints the quantity, the rate, the share of that rate the requirement
+            represents, and the stage multiplier behind its number. You can check the arithmetic
+            in front of the sub, which is the only reason a number is any use in a negotiation.
+          </p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">Silence is a finding</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            The most expensive item on a buyout is the one no letter mentions. Absence is
+            reported as loudly as a bad clause — and trades that have sent nothing at all are
+            listed by name, with their budget, so the hole is visible rather than implied.
+          </p>
+        </div>
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">You overrule the engine</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Every finding can be dismissed, every extracted line edited, every rate overridden.
+            Dismissals and overrides persist and compound: the second project is measurably
+            quieter than the first because you taught it what noise looks like on your jobs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TORONTO INTELLIGENCE ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">Built for one jurisdiction, properly</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Toronto, not "North America".</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Scope disputes are local. The grey zones, the standard exclusions, the wording that
+          gets used because it has worked on GTA jobs before — all of it is jurisdiction
+          specific. This ships knowing ours, and every file below is plain JSON you own and edit
+          after handover.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal">
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Trade packages</span>
+          <p class="text-sm text-fog leading-relaxed">20 packages with 239 master scope requirements mapped to CSI MasterFormat, each with its typical share of contract value and a Toronto-specific note on where that trade normally leaks.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Interfaces</span>
+          <p class="text-sm text-fog leading-relaxed">22 interface conditions — blocking, access panels, firestopping, backing, hoisting, cutting and patching, and the rest of the grey zones between two trades that recur on GTA jobs.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Language</span>
+          <p class="text-sm text-fog leading-relaxed">20 language patterns that detect qualifications which will not hold up, plus the inclusion, exclusion and qualification cues that make extraction reliable on letters nobody formatted for a machine.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Dispute record</span>
+          <p class="text-sm text-fog leading-relaxed">18 documented GTA dispute hotspots with frequency, typical exposure and the wording that prevents each one — checked against every scope you import.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Statute &amp; contract</span>
+          <p class="text-sm text-fog leading-relaxed">Construction Act (Ontario) holdback, prompt payment and adjudication; CCDC&nbsp;2 with CCA&nbsp;1 subcontract; 2024 Ontario Building Code.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Municipal</span>
+          <p class="text-sm text-fog leading-relaxed">Toronto Green Standard v4, Green Roof By-law Ch.&nbsp;492, Noise By-law Ch.&nbsp;591, Sewer Use Ch.&nbsp;681, Backflow Ch.&nbsp;851, Tree By-law Ch.&nbsp;813, O.&nbsp;Reg.&nbsp;406/19 excess soil, O.&nbsp;Reg.&nbsp;278/05 asbestos, and the ESA, TSSA and AODA gates.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Rates</span>
+          <p class="text-sm text-fog leading-relaxed">Toronto 2026 subcontract rate table, revision 2026.1, in CAD excluding HST — the basis every exposure figure is calculated from, and editable line by line.</p>
+        </div>
+        <div class="spec-row" style="border-bottom:none">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Market</span>
+          <p class="text-sm text-fog leading-relaxed">Q4 2025 Ontario non-residential price movement by division, so a firm price shorter than the gap to your award date is flagged for what it is rather than assumed to hold.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW A PROJECT RUNS ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-12">
+        <span class="sg-eyebrow">From award to signed subcontract</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Six steps, and the fifth one is the product.</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">01</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Create the project</h3>
+          <p class="text-sm text-fog leading-relaxed">Name, contract value, stage, award date. Every trade package is added with its budget apportioned from the contract value — or imported from the estimator's division rollup.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">02</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Import the master package</h3>
+          <p class="text-sm text-fog leading-relaxed">Specifications, drawing list, addenda. Spec sections are matched to trade requirements so every finding cites <em class="not-italic text-chalk">your</em> documents, not a generic checklist.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">03</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Drop in the scope letters</h3>
+          <p class="text-sm text-fog leading-relaxed">Drag them onto the window. Each is read, structured and classified by trade automatically — no template, no naming convention, no data entry.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">04</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Review the findings</h3>
+          <p class="text-sm text-fog leading-relaxed">Ranked by severity then exposure. Mark each one real or noise; that verdict trains the engine for the next project.</p>
+        </div>
+        <div class="reveal border border-hiviz/45 rounded-lg bg-gunmetal p-5 relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-display text-3xl text-hiviz">05</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Send the clarifications</h3>
+          <p class="text-sm text-fog leading-relaxed">This is the step that saves the money. Every open finding becomes a numbered question with the clause behind it — asked while the sub still wants the job.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">06</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Export and award</h3>
+          <p class="text-sm text-fog leading-relaxed">Buyout risk summary (PDF), a living register (Excel, seven sheets), a scope report per trade, the clarification letters, and the final accepted scopes for the project file.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE AI POSITION ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div class="reveal">
+          <span class="sg-eyebrow">MaraponeAI</span>
+          <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+            The model never decides a finding.
+          </h2>
+          <p class="text-fog mt-5 leading-relaxed">
+            A tool that hands you 120 findings has to be right about them, because the first
+            hallucinated exclusion you take to a subcontractor is the last time anyone in your
+            office opens the app. So the cross-reference engine is deterministic: requirement
+            matching, treatment classification, overlap and interface detection, exposure and
+            severity all run on rules and your own data.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            MaraponeAI explains, prioritises and drafts. Every figure it quotes traces back to a
+            clause, a page and a rate. Ask it <span class="font-mono text-xs text-chalk bg-charcoal border border-plate rounded px-1.5 py-0.5">show me everything over $50k on mechanical</span>
+            and the instruction is parsed by rule and previewed before it changes anything on screen.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            It runs as a deterministic reasoning engine out of the box. Drop a model file into
+            the app's own folder and it adds free-form narrative — still entirely on-device,
+            still with the wifi off.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1 space-y-4">
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">100% local, no exceptions</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              No network calls. It works with the wifi off. Your subcontractors' pricing is the
+              most commercially sensitive data in your office and it never leaves the machine —
+              no account, no cloud, no telemetry, no per-seat licence phoning home.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Fully functional without a model</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Every finding, explanation and clarification is available from the deterministic
+              engine alone. Without a model you lose free-form narrative — you do not lose a
+              single finding or a single dollar figure.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Your data outlives the software</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Documents, findings, clarifications, your language library and your dispute history
+              live in your own Application Support folder in open SQLite. An app update never
+              touches them, and you can read them without us.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">The knowledge base is yours</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Trade scopes, the interface matrix, the language patterns, the Ontario intelligence
+              and the rate table are plain JSON in the app's resources folder. Edit them, extend
+              them, keep them. Full source code is handed over on Day 31.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW TO BUY ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-10">
+        <span class="sg-eyebrow">Separately, or together</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Buy the piece you're missing.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          One-time purchase, source code included, no seats, no renewals, no metering. Full
+          pricing lives on the pricing page — this is where ScopeGuard fits against the rest.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Before the bid</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">Blueprint Auditor</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">
+            Quantities off the sheets, scope gaps and tender risk. Answers how much is there and
+            what the drawings are hiding.
+          </p>
+          <a href="/construction/blueprint-auditor" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See the auditor →</a>
+        </div>
+
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">At the bid</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">AI Estimator</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">
+            Assemblies, risk, contingency, Toronto soft costs and the margin call. Answers what
+            you should bid and what the walk-away number is.
+          </p>
+          <a href="/construction/ai-estimator" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See the estimator →</a>
+        </div>
+
+        <div class="reveal reveal-d2 border border-hiviz/45 rounded-lg bg-gunmetal p-6 flex flex-col relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">After you win</span>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">ScopeGuard</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">
+            Every sub's letter against your own documents. Answers whether the margin you bid is
+            the margin you will keep — which is the only stage where you can still do something
+            about it.
+          </p>
+          <p class="font-mono text-xs text-hiviz mt-5">You are here · $990 one time</p>
+        </div>
+      </div>
+
+      <div class="reveal flex flex-col sm:flex-row gap-3 mt-8">
+        <a href="/construction/pricing" class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">See pricing →</a>
+        <a href="/construction/contact?product=scopeguard" class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">Book a walkthrough on your own buyout</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA ══════════ -->
+  <section class="cta-band py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-4 text-center relative reveal">
+      <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">Run it on the job you're buying out now.</h2>
+      <p class="text-fog mt-5 leading-relaxed max-w-xl mx-auto">
+        Send us the tender package and the letters that came back. We will run them through
+        ScopeGuard and walk you through what it found — finding by finding, with the clause and
+        the page behind each one — before you spend anything.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+        <a href="/construction/pricing#products" data-checkout="product" data-product="scopeguard"
+          class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-center hover:opacity-90 transition-opacity">
+          Buy ScopeGuard — $990 →
+        </a>
+        <a href="/construction/contact?product=scopeguard"
+          class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
+          Book a walkthrough first
+        </a>
+      </div>
+      <p class="font-mono text-xs text-plate mt-6">One time · +HST · Secured by Stripe · 30-day refund · source code on day 31</p>
+      <p class="font-mono text-xs text-plate mt-3 max-w-xl mx-auto leading-relaxed">
+        Statutory and code references are costing inputs, not legal advice. Exposure figures are
+        indicative ranges — confirm against live pricing before relying on them.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Rome</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B 6K5<br />Canada</p>
+            </address>
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
+            </address>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/" class="hover:text-chalk">Home</a>
+          <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
+          <a href="/construction/scopeguard" class="hover:text-chalk">ScopeGuard</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('nav-progress');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var d = document.documentElement;
+          var h = d.scrollHeight - d.clientHeight;
+          if (h > 0) bar.style.width = ((d.scrollTop || window.scrollY) / h * 100) + '%';
+        }, { passive: true });
+      }
+
+      // Muted autoplay needs no gesture and the browser already defers loading
+      // until a video is near the viewport, so playback is left entirely to it.
+      // Do not add an observer that pauses below a visibility threshold — that
+      // cancels the autoplay and the clips only start once the user moves.
+      var vids = [].slice.call(document.querySelectorAll('video'));
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || (navigator.connection || {}).saveData) {
+        vids.forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
+      } else {
+        vids.forEach(function (v) {
+          v.play().catch(function () {});          // nudge Safari, which can be shy
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+
+</html>

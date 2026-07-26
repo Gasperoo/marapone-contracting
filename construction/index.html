@@ -844,12 +844,16 @@
           <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
           <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
             <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
-              <span class="block text-sm text-chalk font-semibold">AI Estimator <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
               <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
             </a>
             <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
               <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
               <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
+            </a>
+            <a href="/construction/scopeguard" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">ScopeGuard <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Subcontractor scope &amp; buyout review</span>
             </a>
             <a href="/construction/services" class="mp-pi block px-4 py-2.5">
               <span class="block text-sm text-chalk font-semibold">Custom AI Builds</span>
@@ -890,6 +894,7 @@
       <p class="font-mono text-xs text-plate pt-1">// Products</p>
       <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
       <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/scopeguard" class="text-fog hover:text-chalk" style="padding-left:.75rem">ScopeGuard</a>
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
@@ -1054,7 +1059,7 @@
 
       <div class="mb-12 reveal">
         <p class="font-mono text-hiviz text-sm mb-2">// What we build</p>
-        <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">TWO TOOLS, READY NOW.<br /><span class="text-hiviz">ONE BUILT AROUND YOU.</span></h2>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">THREE TOOLS, READY NOW.<br /><span class="text-hiviz">ONE BUILT AROUND YOU.</span></h2>
         <p class="text-fog max-w-2xl mt-5 leading-relaxed">
           Buy a finished product and run it this week, or commission a system shaped around how your
           company actually works. Every one of them is bought once, runs on your own hardware, and
@@ -1062,13 +1067,44 @@
         </p>
       </div>
 
-      <!-- 01 · AI ESTIMATOR — the newest, so it leads -->
+      <!-- 01 · SCOPEGUARD — the newest, so it leads -->
+      <a href="/construction/scopeguard" class="prod-row group block reveal">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="prod-shot">
+            <video autoplay muted loop playsinline preload="none" width="1280" height="720"
+              poster="/scopeguard/clip-dashboard-poster.jpg" aria-label="The ScopeGuard buyout dashboard ranking scope exposure by trade across a $14.25 million Toronto project">
+              <source src="/scopeguard/clip-dashboard.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2.5 mb-4">
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 01</span>
+              <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">New</span>
+              <span class="font-mono text-[0.62rem] text-fog">$990 &middot; one time</span>
+            </div>
+            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">SCOPEGUARD</h3>
+            <p class="text-fog leading-relaxed mb-5">
+              You won the job. Now twenty subcontractors send you their own exclusions. ScopeGuard reads
+              every letter against your tender documents and puts a number on what nobody priced, what
+              two trades are both carrying, and what will be argued about later.
+            </p>
+            <ul class="space-y-2 text-sm text-fog mb-6">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>239 master scope requirements across 20 trade packages</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every finding cited to your clause and their page</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Costed exposure ranges from a Toronto 2026 rate table</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Clarification letters drafted in one click</span></li>
+            </ul>
+            <span class="prod-cta inline-flex items-center gap-2 font-semibold text-hiviz">See every screen <span class="prod-arrow">&rarr;</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 02 · AI ESTIMATOR -->
       <a href="/construction/ai-estimator" class="prod-row group block reveal">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div class="order-2 lg:order-1">
             <div class="flex flex-wrap items-center gap-2.5 mb-4">
-              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 01</span>
-              <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">New</span>
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 02</span>
               <span class="font-mono text-[0.62rem] text-fog">$990 &middot; one time</span>
             </div>
             <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">AI ESTIMATOR</h3>
@@ -1092,7 +1128,7 @@
         </div>
       </a>
 
-      <!-- 02 · BLUEPRINT AUDITOR -->
+      <!-- 03 · BLUEPRINT AUDITOR -->
       <a href="/construction/blueprint-auditor" class="prod-row group block reveal">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div class="prod-shot">
@@ -1103,7 +1139,7 @@
           </div>
           <div>
             <div class="flex flex-wrap items-center gap-2.5 mb-4">
-              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 02</span>
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 03</span>
               <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">Live demo</span>
               <span class="font-mono text-[0.62rem] text-fog">$990 &middot; one time</span>
             </div>
@@ -1124,12 +1160,12 @@
         </div>
       </a>
 
-      <!-- 03 · CUSTOM BUILDS -->
+      <!-- 04 · CUSTOM BUILDS -->
       <a href="/construction/services" class="prod-row group block reveal">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div class="order-2 lg:order-1">
             <div class="flex flex-wrap items-center gap-2.5 mb-4">
-              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 03</span>
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 04</span>
               <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-fog border border-plate rounded px-2 py-0.5">Bespoke</span>
               <span class="font-mono text-[0.62rem] text-fog">From $1,500</span>
             </div>
@@ -1155,7 +1191,7 @@
       </a>
 
       <div class="mt-14 flex flex-col sm:flex-row gap-3 reveal">
-        <a href="/construction/pricing" class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">Compare all three &amp; pricing &rarr;</a>
+        <a href="/construction/pricing" class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">Compare them all &amp; pricing &rarr;</a>
         <a href="/construction/contact" class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">Not sure which? Get a free assessment</a>
       </div>
     </div>
@@ -2036,6 +2072,7 @@
             <a href="/" class="hover:text-chalk">Home</a>
             <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
           <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
+          <a href="/construction/scopeguard" class="hover:text-chalk">ScopeGuard</a>
             <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
         
             <a href="/construction/services" class="hover:text-chalk">Services</a>

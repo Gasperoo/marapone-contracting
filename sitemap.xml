@@ -74,6 +74,7 @@
   <!-- Product / corporate -->
   <url><loc>https://marapone.com/construction/blueprint-auditor</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/ai-estimator</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/scopeguard</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/logistics/demo</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/pricing</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/about</loc><priority>0.6</priority><changefreq>yearly</changefreq></url>

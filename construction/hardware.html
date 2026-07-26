@@ -39,11 +39,27 @@
   <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
   <script defer src="/panel-polish.js"></script>
   <style>
-    /* Products nav menu — CSS-driven so the links work with JS disabled. */
-    [data-mp-products] .mp-products-menu { display: none; }
+    /* Products nav menu — CSS-driven so the links work with JS disabled.
+       The visual gap under the trigger is the wrapper's own padding, NOT a margin
+       on the menu — the menu is positioned with top:100%, which resolves against
+       the padding box, so any margin there would push the menu down and reopen a
+       dead strip the pointer falls through. Hiding is also delayed briefly so a
+       fast diagonal move into the menu still lands. */
+    [data-mp-products] { padding-bottom: .55rem; margin-bottom: -.55rem; }
+    [data-mp-products] .mp-products-menu {
+      visibility: hidden; opacity: 0;
+      transition: opacity .14s ease, visibility 0s linear .22s;
+    }
     [data-mp-products]:hover .mp-products-menu,
-    [data-mp-products]:focus-within .mp-products-menu { display: block; }
-    [data-mp-products]:hover .mp-chev { transform: rotate(180deg); }
+    [data-mp-products]:focus-within .mp-products-menu {
+      visibility: visible; opacity: 1;
+      transition: opacity .14s ease, visibility 0s;
+    }
+    .mp-products-menu::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -.75rem; height: .75rem;
+    }
+    [data-mp-products]:hover .mp-chev,
+    [data-mp-products]:focus-within .mp-chev { transform: rotate(180deg); }
     .mp-pi { transition: background-color .15s ease; }
     .mp-pi:hover { background: #232323; }
     .mp-pi:hover .text-chalk { color: #f97316; }
@@ -63,7 +79,7 @@
       <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
         <div class="relative" data-mp-products>
           <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
-          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;margin-top:.5rem;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
             <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
               <span class="block text-sm text-chalk font-semibold">AI Estimator <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
               <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>

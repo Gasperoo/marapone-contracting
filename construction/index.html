@@ -103,6 +103,23 @@
       opacity: 0;
     }
 
+    /* ── three-product showcase ── */
+    .prod-row { padding: 2.75rem 0; border-top: 1px solid #2e2e2e; }
+    .prod-row:first-of-type { border-top: 0; padding-top: 0; }
+    .prod-shot {
+      border: 1px solid #3a3a3a; border-radius: 10px; overflow: hidden; background: #101012;
+      box-shadow: 0 30px 70px -30px rgba(0, 0, 0, .85);
+      transition: border-color .3s ease, transform .3s ease;
+    }
+    .prod-shot img, .prod-shot video { display: block; width: 100%; height: auto; }
+    .prod-row:hover .prod-shot { border-color: rgba(249, 115, 22, .5); transform: translateY(-4px); }
+    .prod-arrow { transition: transform .25s ease; display: inline-block; }
+    .prod-row:hover .prod-arrow { transform: translateX(5px); }
+    @media (prefers-reduced-motion: reduce) {
+      .prod-row:hover .prod-shot { transform: none; }
+      .prod-row:hover .prod-arrow { transform: none; }
+    }
+
     /* ── HERO HEADLINE TREATMENT (rented = hollow, owned = solid+sheen) ── */
     .hero-rent {
       color: transparent;
@@ -763,6 +780,16 @@
     }
   }
   </script>
+  <style>
+    /* Products nav menu — CSS-driven so the links work with JS disabled. */
+    [data-mp-products] .mp-products-menu { display: none; }
+    [data-mp-products]:hover .mp-products-menu,
+    [data-mp-products]:focus-within .mp-products-menu { display: block; }
+    [data-mp-products]:hover .mp-chev { transform: rotate(180deg); }
+    .mp-pi { transition: background-color .15s ease; }
+    .mp-pi:hover { background: #232323; }
+    .mp-pi:hover .text-chalk { color: #f97316; }
+  </style>
 </head>
 
 <body class="antialiased">
@@ -784,17 +811,28 @@
             class="text-hiviz">PONE</span></a>
       </div>
       <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
-        <a href="/construction/" class="text-chalk">Home</a>
+        <div class="relative" data-mp-products>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;margin-top:.5rem;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
+              <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
+            </a>
+            <a href="/construction/services" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Custom AI Builds</span>
+              <span class="block text-xs text-fog mt-0.5">Built around your own workflow</span>
+            </a>
+          </div>
+        </div>
         <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
-        <a href="/construction/demo" class="hover:text-chalk transition-colors">Live Demo</a>
-        <a href="/construction/services" class="hover:text-chalk transition-colors">Services</a>
         <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
-        <a href="/construction/work" class="hover:text-chalk transition-colors">Work</a>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/construction/contact"
-          class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get
-          Free Assessment &rarr;</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
       </div>
       <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu"
         aria-label="Toggle navigation"
@@ -806,16 +844,15 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
       <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
-      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
-      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
-        <a href="/construction/demo" class="text-fog hover:text-chalk">Live Demo</a>
-      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
-      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free
-        Assessment &rarr;</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
     </div>
   </nav>
 
@@ -867,26 +904,8 @@
               Or book a 15-min discovery call →
             </a>
           </div>
-          <div class="fade-up delay-2 mt-2">
-            <a href="/construction/blueprint-auditor"
-              class="inline-flex items-center gap-2 text-sm text-fog hover:text-chalk transition-colors font-mono">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 13h6m-6 4h6m2 4H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Try the Blueprint Auditor — drop a drawing →
-            </a>
-          </div>
-          <div class="fade-up delay-2 mt-2">
-            <a href="/construction/ai-estimator"
-              class="inline-flex items-center gap-2 text-sm text-fog hover:text-chalk transition-colors font-mono">
-              <svg class="w-4 h-4 text-hiviz flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 7h6m-6 4h6m-6 4h2m-5 6h12a2 2 0 002-2V5a2 2 0 00-2-2H6a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              New — the AI Estimator: takeoff to priced bid →
-            </a>
-          </div>
+          
+          
           <div class="fade-up delay-3 mt-6 flex items-center gap-3">
             <span
               class="inline-flex items-center gap-1.5 bg-steel border border-plate rounded-full px-3 py-1.5 text-xs font-mono text-fog">
@@ -971,6 +990,119 @@
           <span class="font-mono text-sm text-chalk leading-tight">Subcontractors</span>
           <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE THREE PRODUCTS ============ -->
+  <section id="products" class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+
+      <div class="mb-12 reveal">
+        <p class="font-mono text-hiviz text-sm mb-2">// What we build</p>
+        <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">TWO TOOLS, READY NOW.<br /><span class="text-hiviz">ONE BUILT AROUND YOU.</span></h2>
+        <p class="text-fog max-w-2xl mt-5 leading-relaxed">
+          Buy a finished product and run it this week, or commission a system shaped around how your
+          company actually works. Every one of them is bought once, runs on your own hardware, and
+          ships with the source code.
+        </p>
+      </div>
+
+      <!-- 01 · AI ESTIMATOR — the newest, so it leads -->
+      <a href="/construction/ai-estimator" class="prod-row group block reveal">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="order-2 lg:order-1">
+            <div class="flex flex-wrap items-center gap-2.5 mb-4">
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 01</span>
+              <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">New</span>
+              <span class="font-mono text-[0.62rem] text-fog">$990 &middot; one time</span>
+            </div>
+            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">AI ESTIMATOR</h3>
+            <p class="text-fog leading-relaxed mb-5">
+              Takeoff tells you there are 24,000 square feet of partition. This turns that into studs,
+              board, waste and crew-hours — then adds the risk, the contingency, the Toronto soft costs
+              and the margin you can actually win at.
+            </p>
+            <ul class="space-y-2 text-sm text-fog mb-6">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>57 assemblies across 20 CSI divisions</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>27 risk rules &rarr; a contingency with a written reason</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Toronto permits, development charges, HST and rebates</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Margin ladder with win probability from your own bids</span></li>
+            </ul>
+            <span class="prod-cta inline-flex items-center gap-2 font-semibold text-hiviz">See every screen <span class="prod-arrow">&rarr;</span></span>
+          </div>
+          <div class="order-1 lg:order-2 prod-shot">
+            <img src="/estimator/dashboard.webp" width="1920" height="1200" loading="lazy" decoding="async"
+              alt="The AI Estimator dashboard pricing a 42,000 square foot Toronto residential project at $11,773,510, showing the full cost build-up and a breakdown by CSI division." />
+          </div>
+        </div>
+      </a>
+
+      <!-- 02 · BLUEPRINT AUDITOR -->
+      <a href="/construction/blueprint-auditor" class="prod-row group block reveal">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="prod-shot">
+            <video autoplay muted loop playsinline preload="none" width="1920" height="1080"
+              poster="/blueprint-auditor-takeoff-poster.jpg" aria-label="Automated quantity takeoff running on a drawing set">
+              <source src="/blueprint-auditor-takeoff.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2.5 mb-4">
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 02</span>
+              <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">Live demo</span>
+              <span class="font-mono text-[0.62rem] text-fog">$990 &middot; one time</span>
+            </div>
+            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">BLUEPRINT AUDITOR</h3>
+            <p class="text-fog leading-relaxed mb-5">
+              Drop in a drawing set. It reads the sheets, measures the quantities, and flags what the
+              drawings contradict — before it becomes a change order. You can run it on your own
+              drawings right now, free.
+            </p>
+            <ul class="space-y-2 text-sm text-fog mb-6">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Quantity takeoff read straight off the PDF</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Scope-gap and coordination-conflict detection</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Ontario Building Code compliance checks</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>RFI, deficiency and change-order lists generated for you</span></li>
+            </ul>
+            <span class="prod-cta inline-flex items-center gap-2 font-semibold text-hiviz">Run it on your drawings <span class="prod-arrow">&rarr;</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 03 · CUSTOM BUILDS -->
+      <a href="/construction/services" class="prod-row group block reveal">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="order-2 lg:order-1">
+            <div class="flex flex-wrap items-center gap-2.5 mb-4">
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 03</span>
+              <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-fog border border-plate rounded px-2 py-0.5">Bespoke</span>
+              <span class="font-mono text-[0.62rem] text-fog">From $1,500</span>
+            </div>
+            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">CUSTOM AI BUILDS</h3>
+            <p class="text-fog leading-relaxed mb-5">
+              The workflow that only your company runs — RFI backlogs, daily logs, tender risk, change
+              orders, deficiency lists. Scoped in a free assessment, trained on your own documents, and
+              handed over with the source code and the keys.
+            </p>
+            <ul class="space-y-2 text-sm text-fog mb-6">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Trained on your drawings, specs and contracts</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Runs on your servers or your own hardware</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Integrates with Procore, Sage and Bluebeam</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>You own the model, the weights and the code</span></li>
+            </ul>
+            <span class="prod-cta inline-flex items-center gap-2 font-semibold text-hiviz">Explore custom builds <span class="prod-arrow">&rarr;</span></span>
+          </div>
+          <div class="order-1 lg:order-2 prod-shot">
+            <img src="/images/03_scope_gap_finder.jpg" width="1600" height="1000" loading="lazy" decoding="async"
+              alt="A custom scope-gap finder built for a general contractor, listing detected gaps against the drawing set." />
+          </div>
+        </div>
+      </a>
+
+      <div class="mt-14 flex flex-col sm:flex-row gap-3 reveal">
+        <a href="/construction/pricing" class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">Compare all three &amp; pricing &rarr;</a>
+        <a href="/construction/contact" class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">Not sure which? Get a free assessment</a>
       </div>
     </div>
   </section>
@@ -1252,151 +1384,6 @@
   </section>
 
 
-  <!-- CONSTRUCTION AI SERVICES -->
-  <section class="py-16 lg:py-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-10 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// Construction AI solutions</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">SIX AI SYSTEMS.<br /><span class="text-hiviz">ONE
-            APPROACH.</span></h2>
-        <p class="text-fog max-w-xl mx-auto mt-4 text-sm leading-relaxed">Every system is built around your specific
-          documents — your blueprints, your RFIs, your project records. Not a generic platform. Not a dashboard you
-          rent. A private AI that belongs to you.</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-        <!-- Blueprint Auditor -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Blueprint &amp; Spec Review</p>
-          <h3 class="font-display text-xl text-chalk mb-3">BLUEPRINT AUDITOR</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">AI reviews your full spec set for scope gaps, ambiguities,
-            and coordination conflicts — before you mobilize. Turns a 4-hour manual review into 8 minutes.</p>
-          <ul class="space-y-1.5 text-xs text-fog">
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Scope gap detection</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Coordination conflict flags</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Spec ambiguity identification</li>
-          </ul>
-        </div>
-
-        <!-- RFI Intelligence -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-            </svg>
-          </div>
-          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">RFI Tracking &amp; Management</p>
-          <h3 class="font-display text-xl text-chalk mb-3">RFI INTELLIGENCE</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Tracks every open RFI against your drawings and critical
-            path. Automatically surfaces blockers before they stop your project cold.</p>
-          <ul class="space-y-1.5 text-xs text-fog">
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Critical path impact analysis</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Blocker prioritization</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Cross-reference against drawings</li>
-          </ul>
-        </div>
-
-        <!-- Daily Log Synthesis -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="16" y1="13" x2="8" y2="13" />
-              <line x1="16" y1="17" x2="8" y2="17" />
-            </svg>
-          </div>
-          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Site Documentation</p>
-          <h3 class="font-display text-xl text-chalk mb-3">LOG SYNTHESIZER</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Processes daily site logs and field reports — extracts
-            delays, resource issues, and key events. Generates dispute-ready documentation automatically.</p>
-          <ul class="space-y-1.5 text-xs text-fog">
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Delay detection and dating</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Resource conflict flagging</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Dispute-ready record generation</li>
-          </ul>
-        </div>
-
-        <!-- Risk & Delay Signals -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d1">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
-              <line x1="12" y1="9" x2="12" y2="13" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-          </div>
-          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Risk Management</p>
-          <h3 class="font-display text-xl text-chalk mb-3">RISK SIGNALS</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Pattern recognition across your project documents surfaces
-            cash-flow risks, delay indicators, and scope creep before they become disputes.</p>
-          <ul class="space-y-1.5 text-xs text-fog">
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Cash-flow risk patterns</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Delay trend detection</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Scope creep indicators</li>
-          </ul>
-        </div>
-
-        <!-- Change Order AI -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d2">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
-          </div>
-          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Change Management</p>
-          <h3 class="font-display text-xl text-chalk mb-3">CHANGE ORDER AI</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Tracks all change orders against original scope, flags
-            pricing gaps, and ensures every variation is documented and approved before execution.</p>
-          <ul class="space-y-1.5 text-xs text-fog">
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Scope vs. change order comparison</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Pricing gap identification</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Approval status tracking</li>
-          </ul>
-        </div>
-
-        <!-- Scope Gap Finder -->
-        <div class="service-card bg-gunmetal border border-plate rounded-xl p-6 transition-colors reveal reveal-d3">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 hiviz-gradient">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </div>
-          <p class="font-mono text-xs uppercase tracking-wider mb-2 text-hiviz">Pre-Tender Analysis</p>
-          <h3 class="font-display text-xl text-chalk mb-3">SCOPE GAP FINDER</h3>
-          <p class="text-fog text-sm leading-relaxed mb-4">Scans tender documents, specifications, and drawings for gaps
-            that will cost you at execution. Find the holes before you price them into a losing bid.</p>
-          <ul class="space-y-1.5 text-xs text-fog">
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Pre-tender spec review</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Cost exposure identification</li>
-            <li class="flex items-center gap-2"><span class="text-hiviz">✓</span>Ambiguity flagging</li>
-          </ul>
-        </div>
-
-      </div>
-      <div class="text-center mt-10">
-        <a href="/construction/services"
-          class="inline-flex items-center gap-2 font-mono text-hiviz text-sm hover:underline">See all construction AI
-          tools →</a>
-      </div>
-    </div>
-  </section>
-
   <!-- THE MARAPONE DIFFERENCE -->
   <section class="py-16 lg:py-24 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
@@ -1557,19 +1544,19 @@
   <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
     <div class="max-w-6xl mx-auto px-4">
       <p class="font-mono text-hiviz text-sm mb-3">// Inside the app</p>
-      <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none mb-4">A LOOK INSIDE YOUR<br/><span class="text-hiviz">BLUEPRINT AUDITOR.</span></h2>
-      <p class="text-fog text-lg max-w-2xl mb-10 leading-relaxed">Real screens from a live Marapone build — automated takeoff, coordination audits, scope-gap detection, tender-risk scanning and cost intelligence, all running on your own drawings and hardware.</p>
+      <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none mb-4">A LOOK INSIDE<br/><span class="text-hiviz">THE REAL THING.</span></h2>
+      <p class="text-fog text-lg max-w-2xl mb-10 leading-relaxed">Real screens, no mock-ups — takeoff and coordination audits from the Blueprint Auditor, risk and bid strategy from the AI Estimator, and custom modules from live client builds. All of it running on your own drawings and hardware.</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
         <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/images/10_takeoff.jpg" alt="Automated AI takeoff" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Automated Takeoff</span> — quantities from your drawings</figcaption></figure>
         <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/images/09_audit.jpg" alt="Blueprint coordination audit" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Blueprint Audit</span> — 100+ coordination checks</figcaption></figure>
         <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/images/03_scope_gap_finder.jpg" alt="Scope gap finder" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Scope-Gap Finder</span> — spec vs. drawings</figcaption></figure>
         <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/images/04_tender_risk_scanner.jpg" alt="Tender risk scanner" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Tender Risk Scanner</span> — onerous clauses</figcaption></figure>
         <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/images/05_change_order_risk_tracker.jpg" alt="Change order risk tracker" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Change-Order Risk</span> — exposure tracking</figcaption></figure>
-        <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/images/11_costs.jpg" alt="Cost intelligence" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Cost Intelligence</span> — priced takeoff</figcaption></figure>
+        <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/estimator/strategy.webp" width="1920" height="1200" alt="The AI Estimator margin ladder with win probability and expected value at each margin rung." loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Bid Strategy</span> &mdash; AI Estimator &middot; win probability</figcaption></figure>
         <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/images/01_rfi_backlog.jpg" alt="RFI backlog" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">RFI Backlog</span> — cross-referenced to drawings</figcaption></figure>
-        <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/images/06_meeting_minutes_tracker.jpg" alt="Meeting minutes tracker" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Minutes Tracker</span> — actions &amp; commitments</figcaption></figure>
+        <figure class="group relative rounded-xl overflow-hidden border border-plate bg-charcoal"><div class="aspect-[16/10] overflow-hidden"><img src="/estimator/risk.webp" width="1920" height="1200" alt="The AI Estimator risk register showing 15 identified risks and a recommended contingency of 9 percent against 5 percent carried." loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div><figcaption class="px-4 py-3 text-xs font-mono text-fog border-t border-plate"><span class="text-chalk">Risk &amp; Contingency</span> &mdash; AI Estimator &middot; 27 rules</figcaption></figure>
       </div>
-      <div class="mt-8"><a href="/construction/demo" class="inline-flex items-center gap-2 font-semibold text-sm text-hiviz hover:text-hiviz2">Try it live on your own drawings &rarr;</a></div>
+      <div class="mt-8"><a href="/construction/blueprint-auditor" class="inline-flex items-center gap-2 font-semibold text-sm text-hiviz hover:text-hiviz2">Try it live on your own drawings &rarr;</a></div>
     </div>
   </section>
 
@@ -1878,105 +1865,6 @@
     </div>
   </section>
 
-  <!-- INTEGRATIONS / STACK CAROUSEL -->
-  <section class="py-14 lg:py-20 bg-charcoal border-t border-b border-plate overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 mb-10 text-center reveal">
-      <p class="font-mono text-hiviz text-sm mb-2">// Works with your stack</p>
-      <h2 class="font-display text-3xl lg:text-5xl text-chalk">INTEGRATES WITH <span class="text-hiviz">WHAT YOU ALREADY
-          USE</span></h2>
-      <p class="text-fog text-sm mt-3 max-w-xl mx-auto leading-relaxed">We build around your existing infrastructure —
-        cloud, on-prem, or hybrid. No rip-and-replace. No new vendor lock-in.</p>
-    </div>
-
-    <!-- Row 1 — scrolls left (AI / ML / Frameworks) -->
-    <div class="stack-marquee-outer mb-3">
-      <div class="stack-track">
-        <!-- set 1 -->
-        <span class="stack-chip"><span class="stack-chip-dot"></span>OpenAI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Anthropic Claude</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Mistral AI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Llama 3</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Ollama</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LangChain</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LlamaIndex</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Hugging Face</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LangGraph</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft Azure</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Google Cloud</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Docker</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Kubernetes</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Python</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>FastAPI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Node.js</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>REST API</span>
-        <!-- set 2 — exact duplicate for seamless loop -->
-        <span class="stack-chip"><span class="stack-chip-dot"></span>OpenAI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Anthropic Claude</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Mistral AI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Llama 3</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Ollama</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LangChain</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LlamaIndex</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Hugging Face</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>LangGraph</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft Azure</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Google Cloud</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Docker</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Kubernetes</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Python</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>FastAPI</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Node.js</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>REST API</span>
-      </div>
-    </div>
-
-    <!-- Row 2 — scrolls right (Data / Business / Domain tools) -->
-    <div class="stack-marquee-outer">
-      <div class="stack-track-r">
-        <!-- set 1 -->
-        <span class="stack-chip"><span class="stack-chip-dot"></span>PostgreSQL</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>MongoDB</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Redis</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>SQLite</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Pinecone</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Weaviate</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>ChromaDB</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Qdrant</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS Textract</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Tesseract OCR</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Procore</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Bluebeam</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Buildertrend</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft 365</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>SharePoint</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>QuickBooks</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Sage</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Linux</span>
-        <!-- set 2 — exact duplicate for seamless loop -->
-        <span class="stack-chip"><span class="stack-chip-dot"></span>PostgreSQL</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>MongoDB</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Redis</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>SQLite</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Pinecone</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Weaviate</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>ChromaDB</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Qdrant</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>AWS Textract</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Tesseract OCR</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Procore</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Bluebeam</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Buildertrend</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Microsoft 365</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>SharePoint</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>QuickBooks</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Sage</span>
-        <span class="stack-chip"><span class="stack-chip-dot"></span>Linux</span>
-      </div>
-    </div>
-  </section>
-
   <!-- PRICING HOOK -->
   <section class="py-16 lg:py-20 bg-gunmetal border-b border-plate">
     <div class="max-w-4xl mx-auto px-4 text-center">
@@ -1993,140 +1881,6 @@
           class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-chalk transition-colors">See
           full pricing breakdown &rarr;</a>
       </div>
-    </div>
-  </section>
-
-  <!-- MOBILE APP / GASPERAI -->
-  <section class="relative py-16 lg:py-24 border-t border-plate bg-gunmetal overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none"
-      style="background:radial-gradient(ellipse at 50% 0%, rgba(249,115,22,0.08) 0%, transparent 60%)"></div>
-    <div class="absolute inset-0 grid-dot opacity-20 pointer-events-none"></div>
-    <div class="max-w-5xl mx-auto px-4 relative z-10">
-      <div class="text-center mb-9 reveal">
-        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-3">// On the roadmap &mdash; 2026</p>
-        <h2 class="font-display text-4xl lg:text-6xl text-chalk mb-5 leading-none">MARAPONE IS<br /><span
-            class="text-hiviz shine-accent">GOING MOBILE</span></h2>
-        <p class="text-fog max-w-2xl mx-auto leading-relaxed text-sm lg:text-base">The tools you run at the desk are
-          coming to your pocket. We're building a native iOS and Android app &mdash; launching in 2026 &mdash; that puts
-          your full document intelligence suite on-site: in the trailer, in the cab, on the scaffold. Make a call in the
-          field and every change syncs live to your desktop, so the office sees exactly where the job stands the moment
-          it happens.</p>
-        <p class="text-fog max-w-2xl mx-auto leading-relaxed text-sm mt-4">
-          <span class="text-chalk font-semibold">It's a companion app, not a standalone download.</span> The app is
-          available on <span class="text-hiviz font-semibold">Starter plans and up</span> and connects to the private
-          system we build and deploy for you &mdash; it only works alongside your Marapone infrastructure, not on its
-          own.</p>
-      </div>
-
-      <!-- TODO: mobile app preview / device mockup to be redone here -->
-
-      <!-- platform badges -->
-      <div class="flex items-center justify-center gap-3 mb-12 reveal reveal-d1">
-        <span class="inline-flex items-center gap-2 bg-steel border border-plate rounded-full px-4 py-2">
-          <svg class="w-4 h-4 text-hiviz" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-          </svg>
-          <span class="font-mono text-xs text-chalk uppercase tracking-wide">iOS</span>
-        </span>
-        <span class="inline-flex items-center gap-2 bg-steel border border-plate rounded-full px-4 py-2">
-          <svg class="w-4 h-4 text-hiviz" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.43 11.43 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.81 10.81 0 001 18h22c0-3.5-2.08-6.54-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z" />
-          </svg>
-          <span class="font-mono text-xs text-chalk uppercase tracking-wide">Android</span>
-        </span>
-      </div>
-
-      <!-- launch waitlist -->
-      <div class="max-w-md mx-auto mb-12 reveal reveal-d2">
-        <form class="mp-nl-form" id="mp-app-waitlist" novalidate
-          style="flex-direction:column;align-items:stretch;max-width:340px;margin:0 auto">
-          <input type="email" name="email" placeholder="you@yourcompany.com" required autocomplete="email"
-            style="width:100%;text-align:center" />
-          <button type="submit" style="width:100%">Notify me at launch &rarr;</button>
-        </form>
-        <p class="mp-nl-msg" id="mp-app-waitlist-msg" style="text-align:center">Be first in line when the app drops &mdash;
-          one email when it's live, nothing else.</p>
-      </div>
-      <script>
-        (function () {
-          var f = document.getElementById('mp-app-waitlist'), msg = document.getElementById('mp-app-waitlist-msg');
-          if (!f) return;
-          f.addEventListener('submit', function (e) {
-            e.preventDefault();
-            var btn = f.querySelector('button'), email = f.email.value.trim();
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a valid email.'; return; }
-            btn.disabled = true; btn.textContent = 'Sending…';
-            fetch('/api/newsletter-signup', {
-              method: 'POST', headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email: email, source: 'mobile_app_waitlist', vertical: 'construction' })
-            }).then(function (r) { if (!r.ok) throw new Error('failed'); return r.json().catch(function () { return {}; }); })
-              .then(function () { f.style.display = 'none'; msg.className = 'mp-nl-msg ok'; msg.textContent = '✓ You’re on the list. We’ll email you the moment it launches.'; })
-              .catch(function () { btn.disabled = false; btn.textContent = 'Try again →'; msg.textContent = 'Something went wrong. Try again or email general@marapone.com.'; });
-          });
-        })();
-      </script>
-
-      <!-- three beats -->
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="bg-steel border border-plate rounded-xl p-6 reveal reveal-d1">
-          <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Take it anywhere</p>
-          <h3 class="font-display text-xl text-chalk mb-2">FIELD-READY</h3>
-          <p class="text-fog text-sm leading-relaxed">Run your document tools from the yard, the road, or the site
-            office. Everything you have on desktop &mdash; now in your hand.</p>
-        </div>
-        <div class="bg-steel border border-plate rounded-xl p-6 reveal reveal-d2">
-          <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Always in sync</p>
-          <h3 class="font-display text-xl text-chalk mb-2">ONE LIVE RECORD</h3>
-          <p class="text-fog text-sm leading-relaxed">Edits on your phone land on your laptop instantly, and the other
-            way around. One source of truth, updating in real time.</p>
-        </div>
-        <div class="bg-steel border border-plate rounded-xl p-6 reveal reveal-d3">
-          <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Stay in the loop</p>
-          <h3 class="font-display text-xl text-chalk mb-2">NO DESK REQUIRED</h3>
-          <p class="text-fog text-sm leading-relaxed">Know exactly what's happening on every job without being chained
-            to a screen to find out. The job moves; so does the record.</p>
-        </div>
-      </div>
-
-      <p class="text-center text-fog text-sm leading-relaxed max-w-2xl mx-auto mt-10 reveal reveal-d2">All of it driven
-        by <a href="/construction/gasperai" class="text-hiviz font-semibold hover:text-hiviz2 transition-colors underline decoration-hiviz/40 underline-offset-2">MaraponeAI</a> &mdash; our own private AI engine, fine-tuned on open-weight foundation models and built from the ground up for construction and logistics.
-        <a href="/construction/gasperai" class="text-hiviz hover:text-hiviz2 transition-colors whitespace-nowrap">Meet MaraponeAI &rarr;</a></p>
-    </div>
-  </section>
-
-  <!-- WHO THIS ISN'T FOR -->
-  <section class="py-16 lg:py-24 border-t border-plate bg-gunmetal">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-10 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// Radical transparency</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">WHO THIS <span class="text-hiviz">ISN'T</span> FOR</h2>
-        <p class="text-fog max-w-xl mx-auto mt-4 text-sm leading-relaxed">We tell you what we can't do before you pay.
-          If any of these are you, we're the wrong fit — and we'll say so on the call.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-steel border border-plate rounded-xl p-6">
-          <p class="font-display text-lg text-chalk mb-2">You want a monthly SaaS dashboard</p>
-          <p class="text-fog text-sm leading-relaxed">We build private systems you own and run — not another
-            subscription seat for your team to log into. If you want Procore, buy Procore. It's a good product.</p>
-        </div>
-        <div class="bg-steel border border-plate rounded-xl p-6">
-          <p class="font-display text-lg text-chalk mb-2">You need live 3D BIM / clash detection</p>
-          <p class="text-fog text-sm leading-relaxed">We work on your documents — drawings, specs, RFIs, change orders,
-            daily logs — not real-time model geometry. For 3D coordination, use Revit/Navisworks.</p>
-        </div>
-        <div class="bg-steel border border-plate rounded-xl p-6">
-          <p class="font-display text-lg text-chalk mb-2">You have no digital document trail</p>
-          <p class="text-fog text-sm leading-relaxed">If your project records live only on paper or in people's heads,
-            there's nothing for the AI to read yet. Get the docs digital first — then talk to us.</p>
-        </div>
-        <div class="bg-steel border border-plate rounded-xl p-6">
-          <p class="font-display text-lg text-chalk mb-2">You want it live next week, hands-off</p>
-          <p class="text-fog text-sm leading-relaxed">A build that's actually useful needs a few hours of your real
-            documents and context over 2–3 weeks. If you can't give it that, it won't fit your work.</p>
-        </div>
-      </div>
-      <p class="text-center text-fog text-sm mt-8 reveal">Still here? Then we should talk. →
-        <a href="/construction/contact" class="text-hiviz font-semibold hover:text-hiviz2 transition-colors">Start the free assessment</a></p>
     </div>
   </section>
 
@@ -2150,152 +1904,6 @@
         </a>
         <p class="text-xs font-mono text-fog mt-5">Or email us directly: <span
             class="text-hiviz">general@marapone.com</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEE IT FOR YOURSELF -->
-  <section class="py-16 lg:py-20 border-t border-plate bg-gunmetal">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Proof, not promises</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">SEE IT FOR YOURSELF<br/><span class="text-hiviz">BEFORE YOU TALK TO US</span></h2>
-        <p class="text-fog max-w-xl mx-auto mt-4 text-sm leading-relaxed">No form-wall. Look at exactly what the free assessment returns, and run the numbers on what the manual work is costing you — right now, in your browser.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-5">
-        <a href="/construction/sample-assessment" class="group bg-steel border border-plate rounded-xl p-7 hover:border-hiviz transition-colors block">
-          <div class="flex items-center justify-between mb-4">
-            <svg class="w-8 h-8 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-            <span class="font-mono text-xs text-plate group-hover:text-hiviz transition-colors">Sample deliverable &rarr;</span>
-          </div>
-          <h3 class="font-display text-2xl text-chalk mb-2">SEE A SAMPLE ASSESSMENT</h3>
-          <p class="text-fog text-sm leading-relaxed">The real format of the report we send back on your drawings and RFIs — findings, severity, drawing citations. Redacted sample, printable to PDF.</p>
-        </a>
-        <a href="/construction/roi-calculator" class="group bg-steel border border-plate rounded-xl p-7 hover:border-hiviz transition-colors block">
-          <div class="flex items-center justify-between mb-4">
-            <svg class="w-8 h-8 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-3 4h3M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/>
-            </svg>
-            <span class="font-mono text-xs text-plate group-hover:text-hiviz transition-colors">Interactive &rarr;</span>
-          </div>
-          <h3 class="font-display text-2xl text-chalk mb-2">CALCULATE YOUR ROI</h3>
-          <p class="text-fog text-sm leading-relaxed">A build is a one-time price, not a subscription — so how fast does it pay for itself? Put in your volume and time-per-task and see hours, dollars, and payback period.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPLORE FURTHER -->
-  <section class="py-16 lg:py-20 border-t border-plate">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
-        <div>
-          <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Go deeper</p>
-          <h2 class="font-display text-4xl lg:text-5xl text-chalk">EXPLORE THE BUILD,<br /><span class="text-hiviz">NOT
-              JUST THE PITCH</span></h2>
-        </div>
-        <a href="/construction/resources" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">All
-          resources &rarr;</a>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="/construction/resources"
-          class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
-          <div class="flex items-center justify-between mb-3">
-            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M4 5a2 2 0 012-2h8.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 11h8M8 15h5" />
-            </svg>
-            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor"
-              stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-          <p class="font-mono text-hiviz text-xs uppercase mb-1">Resources</p>
-          <h3 class="font-display text-xl text-chalk mb-2">PILLAR ARTICLES</h3>
-          <p class="text-fog text-xs leading-relaxed">5 long-reads on owning vs renting AI, scoping a build, what a
-            private LLM stack costs, and what handover day looks like.</p>
-        </a>
-
-        <a href="/construction/architecture"
-          class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
-          <div class="flex items-center justify-between mb-3">
-            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h10" />
-              <circle cx="6" cy="6" r="1.5" fill="currentColor" />
-              <circle cx="6" cy="12" r="1.5" fill="currentColor" />
-              <circle cx="6" cy="18" r="1.5" fill="currentColor" />
-            </svg>
-            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor"
-              stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-          <p class="font-mono text-hiviz text-xs uppercase mb-1">Architecture</p>
-          <h3 class="font-display text-xl text-chalk mb-2">UNDER THE HOOD</h3>
-          <p class="text-fog text-xs leading-relaxed">The exact stack inside a build: models, vector store, API, UI,
-            infra. Sample handover folder tree. Three deployment options.</p>
-        </a>
-
-        <a href="/construction/integrations"
-          class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
-          <div class="flex items-center justify-between mb-3">
-            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <rect x="3" y="3" width="7" height="7" rx="1" />
-              <rect x="14" y="3" width="7" height="7" rx="1" />
-              <rect x="3" y="14" width="7" height="7" rx="1" />
-              <rect x="14" y="14" width="7" height="7" rx="1" />
-            </svg>
-            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor"
-              stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-          <p class="font-mono text-hiviz text-xs uppercase mb-1">Integrations</p>
-          <h3 class="font-display text-xl text-chalk mb-2">WHAT WE PLUG INTO</h3>
-          <p class="text-fog text-xs leading-relaxed">Procore, Autodesk, Bluebeam, SharePoint, Outlook, and more — with
-            built / custom-build / roadmap status per tool.</p>
-        </a>
-
-        <a href="/construction/trust"
-          class="group bg-steel border border-plate rounded-lg p-6 hover:border-hiviz transition-colors block">
-          <div class="flex items-center justify-between mb-3">
-            <svg class="w-6 h-6 text-hiviz" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
-            </svg>
-            <svg class="w-4 h-4 text-plate group-hover:text-hiviz transition-colors" fill="none" stroke="currentColor"
-              stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-          <p class="font-mono text-hiviz text-xs uppercase mb-1">Trust</p>
-          <h3 class="font-display text-xl text-chalk mb-2">DATA &amp; SECURITY</h3>
-          <p class="text-fog text-xs leading-relaxed">How your drawings and project data stay private. Data residency,
-            NDAs, deployment security defaults, and customer responsibilities.</p>
-        </a>
-      </div>
-
-      <!-- Compare strip -->
-      <div class="mt-10 pt-8 border-t border-plate">
-        <div class="flex flex-wrap items-center gap-3">
-          <p class="font-mono text-fog text-xs uppercase tracking-widest">// Compare honestly:</p>
-          <a href="/construction/vs/procore" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs
-            Procore</a>
-          <span class="text-plate">·</span>
-          <a href="/construction/vs/autodesk" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs
-            Autodesk</a>
-          <span class="text-plate">·</span>
-          <a href="/construction/vs/document-crunch"
-            class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs Document Crunch</a>
-          <span class="text-plate">·</span>
-          <a href="/construction/vs/chatgpt" class="font-mono text-sm text-chalk hover:text-hiviz transition-colors">vs
-            ChatGPT Enterprise</a>
-        </div>
       </div>
     </div>
   </section>
@@ -2350,7 +1958,7 @@
             <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
           <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
             <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
-        <a href="/construction/demo" class="hover:text-chalk">Live Demo</a>
+        
             <a href="/construction/services" class="hover:text-chalk">Services</a>
             <a href="/construction/work" class="hover:text-chalk">Work</a>
             <a href="/construction/faq" class="hover:text-chalk">FAQ</a>

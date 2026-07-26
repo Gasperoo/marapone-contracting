@@ -111,6 +111,7 @@
     if (path.indexOf('/' + v) !== 0) return;
 
     var items = [
+      { label: 'Our Work',       href: '/' + v + '/work' },
       { label: 'Samples',        href: '/' + v + '/sample-assessment' },
       { label: 'ROI Calculator', href: '/' + v + '/roi-calculator' },
       { label: 'Resources',      href: '/' + v + '/resources' },

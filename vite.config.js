@@ -239,8 +239,7 @@ export default defineConfig({
         'l-sample-assessment':         path.resolve(__dirname, 'logistics/sample-assessment.html'),
         'l-roi-calculator':            path.resolve(__dirname, 'logistics/roi-calculator.html'),
         'l-security-pack':             path.resolve(__dirname, 'logistics/security-pack.html'),
-        // Live demo pages
-        'c-demo':                      path.resolve(__dirname, 'construction/demo.html'),
+        // Live demo pages — construction's runs inline on the Blueprint Auditor.
         'l-demo':                      path.resolve(__dirname, 'logistics/demo.html'),
         // Hardware requirements
         'c-hardware':                  path.resolve(__dirname, 'construction/hardware.html'),

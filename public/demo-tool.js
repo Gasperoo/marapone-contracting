@@ -1,4 +1,5 @@
-/* Shared live-demo controller for both /construction/demo and /logistics/demo.
+/* Shared live-demo controller. Construction runs it inline on
+ * /construction/blueprint-auditor; logistics still has its own /logistics/demo.
  *
  * Flow:
  *   1. Upload (≤5 MB) -> POST tier-0 (no email) -> server returns a counts/risk

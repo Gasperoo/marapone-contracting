@@ -45,6 +45,16 @@
   <link rel="stylesheet" href="/panel-polish.css" />
   <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
   <script defer src="/panel-polish.js"></script>
+  <style>
+    /* Products nav menu — CSS-driven so the links work with JS disabled. */
+    [data-mp-products] .mp-products-menu { display: none; }
+    [data-mp-products]:hover .mp-products-menu,
+    [data-mp-products]:focus-within .mp-products-menu { display: block; }
+    [data-mp-products]:hover .mp-chev { transform: rotate(180deg); }
+    .mp-pi { transition: background-color .15s ease; }
+    .mp-pi:hover { background: #232323; }
+    .mp-pi:hover .text-chalk { color: #f97316; }
+  </style>
 </head>
 <body class="antialiased">
   <div id="nav-progress" aria-hidden="true"></div>
@@ -58,15 +68,28 @@
         <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span class="text-hiviz">PONE</span></a>
       </div>
       <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
-        <a href="/construction/" class="hover:text-chalk transition-colors">Home</a>
-        <a href="/construction/how-it-works" class="text-chalk">How It Works</a>
-        <a href="/construction/demo" class="hover:text-chalk transition-colors">Live Demo</a>
-        <a href="/construction/services" class="hover:text-chalk transition-colors">Services</a>
+        <div class="relative" data-mp-products>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;margin-top:.5rem;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
+              <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
+            </a>
+            <a href="/construction/services" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Custom AI Builds</span>
+              <span class="block text-xs text-fog mt-0.5">Built around your own workflow</span>
+            </a>
+          </div>
+        </div>
+        <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
         <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
-        <a href="/construction/work" class="hover:text-chalk transition-colors">Work</a>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
       </div>
       <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,12 +99,12 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
       <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
-      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
-      <a href="/construction/how-it-works" class="text-chalk">How It Works</a>
-      <a href="/construction/demo" class="text-fog hover:text-chalk">Live Demo</a>
-      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
@@ -192,7 +215,7 @@
             <p class="text-fog leading-relaxed text-sm">No pitch. No obligation. Just a demonstration on your actual data so you can make an informed decision before committing to anything.</p>
           </div>
           <div class="bg-gunmetal border border-plate rounded-xl p-6" style="border-color:rgba(249,115,22,0.15)">
-            <a href="/construction/demo" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/blueprint-auditor-assess-poster.jpg" aria-label="Upload a blueprint and get a 24-hour assessment summary"><source src="/blueprint-auditor-assess.mp4" type="video/mp4" /></video></span></a>
+            <a href="/construction/blueprint-auditor" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/blueprint-auditor-assess-poster.jpg" aria-label="Upload a blueprint and get a 24-hour assessment summary"><source src="/blueprint-auditor-assess.mp4" type="video/mp4" /></video></span></a>
             <p class="font-mono text-xs mb-4" style="color:#f97316">// What to send us</p>
             <ul class="space-y-2 text-sm text-fog">
               <li class="flex items-start gap-2"><span style="color:#f97316" class="mt-0.5">✓</span>Blueprints and project drawings (any phase)</li>
@@ -218,7 +241,7 @@
             <p class="text-fog leading-relaxed text-sm">From that session we produce a written scope and fixed price. You know the full cost before signing anything. No surprises mid-build.</p>
           </div>
           <div class="space-y-3">
-            <a href="/construction/demo" class="block"><img src="/images/14_integrations.jpg" alt="Workflow mapped into the tools you already run" loading="lazy" decoding="async" class="w-full h-auto rounded-lg border border-plate" /></a>
+            <a href="/construction/blueprint-auditor" class="block"><img src="/images/14_integrations.jpg" alt="Workflow mapped into the tools you already run" loading="lazy" decoding="async" class="w-full h-auto rounded-lg border border-plate" /></a>
             <div class="bg-steel border border-plate rounded-lg p-4 reveal reveal-d1">
               <p class="font-mono text-xs mb-1" style="color:#f97316">Project type &amp; document volume</p>
               <p class="text-fog text-sm">Residential GC, industrial contractor, and commercial developer builds are different. Your project types and document volumes drive the architecture — we build for your actual workflow, not a generic assumption.</p>
@@ -246,7 +269,7 @@
             <p class="text-fog leading-relaxed text-sm">All fine-tuning happens in our secure build environment. Your documents are deleted from our systems after the build is complete and verified. Nothing is retained.</p>
           </div>
           <div class="bg-gunmetal border border-plate rounded-xl p-6" style="border-color:rgba(249,115,22,0.15)">
-            <a href="/construction/demo" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/blueprint-auditor-takeoff-poster.jpg" aria-label="Automated takeoff module tuned on your own drawings"><source src="/blueprint-auditor-takeoff.mp4" type="video/mp4" /></video></span></a>
+            <a href="/construction/blueprint-auditor" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/blueprint-auditor-takeoff-poster.jpg" aria-label="Automated takeoff module tuned on your own drawings"><source src="/blueprint-auditor-takeoff.mp4" type="video/mp4" /></video></span></a>
             <p class="font-mono text-xs mb-4" style="color:#f97316">// What gets built</p>
             <div class="space-y-3 text-sm text-fog">
               <div class="flex items-start gap-3">
@@ -281,7 +304,7 @@
             <p class="text-fog leading-relaxed text-sm">After handover, the system is yours outright. You can modify it, extend it, or have another developer work on it. There are no usage restrictions, no subscription renewals, and no dependency on Marapone's servers continuing to exist.</p>
           </div>
           <div class="tape-line bg-steel border border-plate rounded-r-xl p-5">
-            <a href="/construction/demo" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/blueprint-auditor-pricing-poster.jpg" aria-label="Live labour, subcontractor and material rate benchmarks in your delivered build"><source src="/blueprint-auditor-pricing.mp4" type="video/mp4" /></video></span></a>
+            <a href="/construction/blueprint-auditor" class="block mb-5"><span class="media-frame"><video class="demo-video" autoplay muted loop playsinline preload="none" poster="/blueprint-auditor-pricing-poster.jpg" aria-label="Live labour, subcontractor and material rate benchmarks in your delivered build"><source src="/blueprint-auditor-pricing.mp4" type="video/mp4" /></video></span></a>
             <p class="text-sm font-mono text-fog leading-relaxed">"We don't take on many projects at once. When we're building your construction AI, you have our direct attention — not a shared project manager. Most builds ship in 2–3 weeks from scoping to handover."</p>
           </div>
         </div>
@@ -448,7 +471,7 @@
           <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
           <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
           <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
-        <a href="/construction/demo" class="hover:text-chalk">Live Demo</a>
+        
           <a href="/construction/services" class="hover:text-chalk">Services</a>
           <a href="/construction/work" class="hover:text-chalk">Work</a>
           <a href="/construction/faq" class="hover:text-chalk">FAQ</a>

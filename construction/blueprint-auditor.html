@@ -191,11 +191,27 @@
       outline: none;
     }
 
-    .ba-dropzone.dragover {
+    .ba-dropzone.dragover,
+    .ba-dropzone.drag {
       border-color: #f97316;
       border-style: solid;
       background: rgba(249, 115, 22, .07);
     }
+
+    /* ── live-demo result kit (shared with the demo controller) ── */
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    .locked-blur { filter: blur(6px); user-select: none; pointer-events: none; }
+    .lock-wrap { position: relative; }
+    .lock-veil {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: .5rem; background: rgba(26, 26, 26, .35); border-radius: .5rem;
+    }
+    .sev-high { color: #f87171; }
+    .sev-medium { color: #fbbf24; }
+    .sev-low { color: #9ca3af; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .spin { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .ba-doc-icon {
       width: 52px;
@@ -318,6 +334,16 @@
   <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/checkout.js"></script>
+  <style>
+    /* Products nav menu — CSS-driven so the links work with JS disabled. */
+    [data-mp-products] .mp-products-menu { display: none; }
+    [data-mp-products]:hover .mp-products-menu,
+    [data-mp-products]:focus-within .mp-products-menu { display: block; }
+    [data-mp-products]:hover .mp-chev { transform: rotate(180deg); }
+    .mp-pi { transition: background-color .15s ease; }
+    .mp-pi:hover { background: #232323; }
+    .mp-pi:hover .text-chalk { color: #f97316; }
+  </style>
 </head>
 
 <body class="antialiased">
@@ -337,15 +363,28 @@
         <a href="/construction/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span class="text-hiviz">PONE</span></a>
       </div>
       <div class="hidden md:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
-        <a href="/construction/" class="hover:text-chalk transition-colors">Home</a>
+        <div class="relative" data-mp-products>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;margin-top:.5rem;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
+              <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
+            </a>
+            <a href="/construction/services" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Custom AI Builds</span>
+              <span class="block text-xs text-fog mt-0.5">Built around your own workflow</span>
+            </a>
+          </div>
+        </div>
         <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
-        <a href="/construction/demo" class="hover:text-chalk transition-colors">Live Demo</a>
-        <a href="/construction/services" class="hover:text-chalk transition-colors">Services</a>
         <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
-        <a href="/construction/work" class="hover:text-chalk transition-colors">Work</a>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
         <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
-        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Get Free Assessment &rarr;</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
       </div>
       <button class="md:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -355,12 +394,12 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
       <a href="/" class="font-mono text-xs text-plate hover:text-fog pt-3">&larr; All Industries</a>
-      <a href="/construction/" class="text-fog hover:text-chalk">Home</a>
-      <a href="/construction/how-it-works" class="text-fog hover:text-chalk">How It Works</a>
-      <a href="/construction/demo" class="text-fog hover:text-chalk">Live Demo</a>
-      <a href="/construction/services" class="text-fog hover:text-chalk">Services</a>
+      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <a href="/construction/work" class="text-fog hover:text-chalk">Work</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
@@ -379,8 +418,10 @@
             Audit any blueprint.<br /><span class="ba-grad-text">Instantly.</span>
           </h1>
           <p class="text-fog text-lg leading-relaxed max-w-xl mb-8">
-            Drop a drawing and get Ontario Building Code compliance, a full material takeoff, and a costed estimate in
-            seconds — not days of manual review.
+            Drop in a drawing set and the engine reads it <strong class="text-chalk">live</strong> — a real quantity
+            takeoff (room areas, door, window and fixture counts), plus sheets, disciplines, completeness gaps and
+            code risk, computed from <em>your</em> file. First results are free; the full coordinated audit runs in
+            your private build.
           </p>
           <div class="flex flex-wrap gap-3">
             <button type="button" class="ba-btn-primary" data-upload-trigger>
@@ -388,19 +429,22 @@
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 5v14M5 12h14" />
               </svg>
-              Upload a blueprint
+              Run it on your drawings
             </button>
             <a href="#capabilities" class="ba-btn-ghost">Explore solutions</a>
           </div>
-          <p class="font-mono text-xs text-plate mt-5">PDF · DWG · DXF · IFC · images · XLSX — processed locally.</p>
+          <p class="font-mono text-xs text-plate mt-5">
+            Reads text/vector PDFs (Revit, AutoCAD, Bluebeam exports) · scanned sets are OCR'd in your private build.
+            Processed in memory, never stored. <span id="quota-note"></span>
+          </p>
         </div>
 
-        <!-- upload card -->
+        <!-- upload card — the live demo runs right here -->
         <div class="reveal reveal-d1">
           <div class="ba-upload-shell">
             <div class="ba-upload-card">
-              <div class="ba-dropzone" id="ba-dropzone" role="button" tabindex="0"
-                aria-label="Drop a blueprint here or press Enter to browse files">
+              <div class="ba-dropzone dz" id="dz" role="button" tabindex="0"
+                aria-label="Drop a drawing set here or press Enter to browse files">
                 <div class="ba-doc-icon" aria-hidden="true">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -408,20 +452,39 @@
                     <path d="M14 2v6h6M8 13h8M8 17h8M8 9h2" />
                   </svg>
                 </div>
-                <p class="text-chalk font-semibold">Drop blueprint here</p>
+                <p class="text-chalk font-semibold">Drop a drawing set here</p>
                 <div class="ba-or">or</div>
                 <button type="button" class="ba-btn-ghost mx-auto" data-upload-trigger>Browse Files</button>
-                <p class="font-mono text-[0.62rem] text-plate mt-5 tracking-wide">pdf · dwg · dxf · ifc · png · jpg ·
-                  tiff · xlsx · csv</p>
-                <!-- Visual-only file input. TODO: wire onBlueprintUpload() to a real endpoint when available. -->
-                <input type="file" id="ba-file-input" class="sr-only"
-                  accept=".pdf,.dwg,.dxf,.ifc,.png,.jpg,.jpeg,.tiff,.xlsx,.csv"
-                  aria-label="Blueprint file (preview only)" />
+                <p class="font-mono text-[0.62rem] text-plate mt-5 tracking-wide">Vector / text PDF works best · up to
+                  5&nbsp;MB</p>
+                <input type="file" id="file" class="sr-only" accept=".pdf,.csv,.tsv,.txt,.json"
+                  aria-label="Drawing set to analyse" />
+              </div>
+
+              <div class="mt-5">
+                <span class="text-plate text-xs block mb-2">No file handy? Run a sample and compare:</span>
+                <div class="flex flex-wrap items-center gap-2">
+                  <button data-sample="/samples/sample-residential-plan-set.pdf"
+                    data-name="sample-residential-plan-set.pdf"
+                    class="border border-plate text-chalk text-xs font-semibold px-3 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Sample
+                    · <span class="text-green-400">low risk</span></button>
+                  <button data-sample="/samples/sample-medium-risk-plan-set.pdf"
+                    data-name="sample-medium-risk-plan-set.pdf"
+                    class="border border-plate text-chalk text-xs font-semibold px-3 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Sample
+                    · <span class="text-amber-400">medium risk</span></button>
+                  <button data-sample="/samples/sample-high-risk-plan-set.pdf"
+                    data-name="sample-high-risk-plan-set.pdf"
+                    class="border border-plate text-chalk text-xs font-semibold px-3 py-2 rounded hover:border-hiviz hover:text-hiviz transition-colors">Sample
+                    · <span class="text-red-400">high risk</span></button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Live results land here -->
+      <div id="results" class="mt-10 hidden"></div>
     </div>
   </section>
 
@@ -710,58 +773,83 @@
         document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
       }
 
-      // ── Blueprint upload (VISUAL ONLY — no backend wired) ──
-      var fileInput = document.getElementById('ba-file-input');
-      var dropzone = document.getElementById('ba-dropzone');
-
-      // TODO: replace this stub with a real handler (POST to the audit API,
-      // redirect into the app, or open sign-up) once the endpoint is known.
-      function onBlueprintUpload(file) {
-        if (!file) return;
-        /* intentionally a no-op for the marketing landing */
-        console.info('[blueprint-auditor] file selected (preview only):', file.name);
-      }
-
-      function openPicker() { if (fileInput) fileInput.click(); }
-
+      // The upload card is the live demo. MaraDemo (public/demo-tool.js) owns
+      // #dz / #file / #results and the whole analyse → email-unlock flow; this
+      // page only needs to route the "Run it" buttons into the same picker and
+      // supply the blueprint-specific result renderer below.
+      var picker = document.getElementById('file');
       document.querySelectorAll('[data-upload-trigger]').forEach(function (btn) {
-        btn.addEventListener('click', function (e) { e.preventDefault(); openPicker(); });
+        btn.addEventListener('click', function (e) { e.preventDefault(); if (picker) picker.click(); });
       });
-
-      if (dropzone) {
-        dropzone.addEventListener('click', function (e) {
-          // avoid double-trigger when the inner Browse button is clicked
-          if (e.target.closest('[data-upload-trigger]')) return;
-          openPicker();
-        });
-        dropzone.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPicker(); }
-        });
-        ['dragenter', 'dragover'].forEach(function (evt) {
-          dropzone.addEventListener(evt, function (e) {
-            e.preventDefault(); e.stopPropagation();
-            dropzone.classList.add('dragover');
-          });
-        });
-        ['dragleave', 'drop'].forEach(function (evt) {
-          dropzone.addEventListener(evt, function (e) {
-            e.preventDefault(); e.stopPropagation();
-            dropzone.classList.remove('dragover');
-          });
-        });
-        dropzone.addEventListener('drop', function (e) {
-          var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-          onBlueprintUpload(f);
-        });
-      }
-
-      if (fileInput) {
-        fileInput.addEventListener('change', function () {
-          onBlueprintUpload(fileInput.files && fileInput.files[0]);
-          fileInput.value = '';
+      var dz = document.getElementById('dz');
+      if (dz) {
+        dz.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (picker) picker.click(); }
         });
       }
     })();
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="/demo-tool.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      // Cloudflare Turnstile site key (public — safe to expose). Hostname: marapone.com
+      var SITEKEY = '0x4AAAAAADqW_FGnkSV2BbD4';
+      function renderResult(results, j, h) {
+        var esc = h.esc, riskColor = h.riskColor, ACCENT = h.accent;
+        var f = j.fields || {};
+        function statCard(label, value) { return '<div class="bg-steel border border-plate rounded-lg p-4"><p class="text-fog text-[10px] font-mono uppercase mb-1">' + label + '</p><p class="font-display text-3xl text-chalk leading-none">' + value + '</p></div>'; }
+        function findingRow(fd) { return '<div class="flex items-start gap-3 py-2 border-b border-plate/50"><span class="dot mt-1.5 sev-' + fd.severity + '" style="background:currentColor"></span><span class="text-sm"><span class="font-mono text-[10px] uppercase sev-' + fd.severity + '">' + fd.severity + '</span><br/>' + esc(fd.message) + '</span></div>'; }
+        var stats = [
+          statCard('Pages parsed', f.pages || '—'),
+          statCard('Sheets detected', f.sheets_detected || 0),
+          statCard('Disciplines', (f.disciplines || []).length),
+          statCard('Floor area', f.gross_area_sf ? f.gross_area_sf.toLocaleString() + ' sf' : '—'),
+        ].join('');
+        // ── Quantity takeoff (extracted live from the schedules) ──
+        var tk = j.takeoff || {};
+        var tkStats = [
+          statCard('Rooms', tk.room_count != null ? tk.room_count : (f.rooms_detected || 0)),
+          statCard('Doors', tk.doors != null ? tk.doors : (f.doors || 0)),
+          statCard('Windows', tk.windows != null ? tk.windows : (f.windows || 0)),
+          statCard('Fixtures', tk.fixtures != null ? tk.fixtures : (f.fixtures || 0)),
+        ].join('');
+        var tkRows = (tk.items || []).map(function (it) {
+          return '<div class="flex items-center justify-between gap-3 py-2 border-b border-plate/50"><span class="text-sm text-chalk">' + esc(it.description) + ' <span class="font-mono text-[10px] uppercase text-fog ml-1">' + esc(it.category) + '</span></span><span class="font-mono text-sm text-chalk whitespace-nowrap">' + Number(it.qty).toLocaleString() + ' ' + esc(it.unit) + '</span></div>';
+        }).join('');
+        var tkLock = tk.items_hidden ? '<div class="lock-wrap mt-1"><div class="locked-blur">' + Array(Math.min(tk.items_hidden, 6)).fill('<div class="flex items-center justify-between py-2"><span class="text-sm text-chalk">XXXXXXXXXXXXXX</span><span class="font-mono text-sm text-fog">XXX SF</span></div>').join('') + '</div><div class="lock-veil"><svg class="w-6 h-6 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">+' + tk.items_hidden + ' more takeoff line item' + (tk.items_hidden > 1 ? 's' : '') + ' — in the full audit</p></div></div>' : '';
+        var sheets = (j.sheets || []).map(function (s) { return '<span class="inline-block font-mono text-xs text-chalk bg-steel border border-plate rounded px-2 py-1 m-0.5">' + esc(s) + '</span>'; }).join('');
+        var disc = (f.disciplines || []).map(function (d) { return '<span class="inline-block text-xs text-fog border border-plate rounded-full px-2.5 py-0.5 m-0.5">' + esc(d) + '</span>'; }).join('');
+        var sheetLock = j.sheets_hidden ? '<div class="lock-wrap mt-2"><div class="locked-blur">' + Array(j.sheets_hidden).fill('<span class="inline-block font-mono text-xs text-chalk bg-steel border border-plate rounded px-2 py-1 m-0.5">X-000</span>').join('') + '</div><div class="lock-veil"><p class="text-chalk text-sm font-semibold">+' + j.sheets_hidden + ' more sheets + room schedule</p></div></div>' : '';
+        var unlocked = (j.findings || []).map(findingRow).join('');
+        var lf = j.locked_findings || [];
+        var lockedFind = '';
+        if (lf.length) {
+          var bars = '';
+          for (var i = 0; i < lf.length; i++) bars += '<div class="flex items-center gap-3 py-2 border-b border-plate/40"><span class="dot bg-plate"></span><span class="locked-blur text-sm text-fog">XXXXXXXXXX XXXXX XXXXXXX XXXX XXXXXX</span></div>';
+          lockedFind = '<div class="lock-wrap"><div>' + bars + '</div><div class="lock-veil"><svg class="w-6 h-6 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + lf.length + ' more finding' + (lf.length > 1 ? 's' : '') + ' — in the full audit</p></div></div>';
+        }
+        var premium = (j.premium || []).map(function (p) { return '<div class="lock-wrap bg-steel border border-plate rounded-lg p-4"><div class="flex items-center gap-2 mb-2"><svg class="w-4 h-4 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + esc(p.label) + '</p></div><div class="locked-blur space-y-1"><div class="h-2 bg-plate rounded w-5/6"></div><div class="h-2 bg-plate rounded w-2/3"></div><div class="h-2 bg-plate rounded w-3/4"></div></div></div>'; }).join('');
+        results.innerHTML =
+          '<div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8">' +
+            '<div class="flex flex-wrap items-center gap-3 mb-6"><span class="font-mono text-xs text-plate">' + esc(j.filename) + '</span><span class="ml-auto inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full border" style="color:' + riskColor(j.risk) + ';border-color:' + riskColor(j.risk) + '55">' + j.risk + ' COMPLETENESS RISK</span></div>' +
+            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Extracted live from your file</p>' +
+            '<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">' + stats + '</div>' +
+            (disc ? '<div class="mb-4"><p class="text-fog text-xs font-mono uppercase mb-2">Disciplines identified</p>' + disc + '</div>' : '') +
+            (sheets ? '<div class="mb-5"><p class="text-fog text-xs font-mono uppercase mb-2">Sheet references (sample)</p>' + sheets + sheetLock + '</div>' : '') +
+            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-7">// Quantity takeoff — extracted live</p>' +
+            '<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">' + tkStats + '</div>' +
+            (tkRows ? '<div class="bg-steel/40 border border-plate rounded-lg px-4 py-1 mb-1">' + tkRows + '</div>' + tkLock
+                    : '<p class="text-fog text-sm mb-2">No room/door/window schedules detected in this set.</p>') +
+            '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-7">// Findings</p><div class="mb-2">' + unlocked + '</div>' + lockedFind +
+            '<div class="mt-8 pt-6 border-t border-plate"><p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// In your full private build</p><div class="grid sm:grid-cols-2 gap-3">' + premium + '</div></div>' +
+            '<div class="hiviz-gradient rounded-lg p-6 mt-8 flex flex-col sm:flex-row items-center gap-4"><div><p class="text-white font-display text-2xl leading-none mb-1">SEE THE FULL AUDIT</p><p class="text-white/90 text-sm">The complete build runs the full coordination + code audit and quantity takeoff on your real set — and the report is yours to keep.</p></div><a href="/construction/contact" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 sm:ml-auto">Get a Free Assessment &rarr;</a></div>' +
+            (typeof j.remaining_today === 'number' ? '<p class="text-plate text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo unlock' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
+          '</div>';
+        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      MaraDemo.init({ mode: 'blueprint', sample: '/samples/sample-residential-plan-set.pdf', sampleName: 'sample-residential-plan-set.pdf', accent: '#f97316', gradientClass: 'hiviz-gradient', contactUrl: '/construction/contact', sitekey: SITEKEY, renderResult: renderResult });
+    });
   </script>
 </body>
 

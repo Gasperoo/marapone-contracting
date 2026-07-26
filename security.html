@@ -184,25 +184,54 @@
       <!-- SECTION 4 -->
       <div class="policy-section">
         <p class="section-num">04</p>
-        <h2 class="font-display text-3xl text-chalk mb-4">RETAINER SUPPORT</h2>
-        <p class="text-fog leading-relaxed mb-4">If you engage the optional retainer support after handover, any access to your system is scoped explicitly to the work agreed upon. We will clearly define what access is needed, for how long, and for what purpose — in writing — before any support work begins.</p>
-        <p class="text-fog leading-relaxed">You can revoke access at any time. No persistent access is maintained between retainer engagements.</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">THE SHIPPED PRODUCTS</h2>
+        <p class="text-fog leading-relaxed mb-4">The <a href="/construction/ai-estimator" class="text-hiviz hover:underline">AI Estimator</a> and the <a href="/construction/blueprint-auditor" class="text-hiviz hover:underline">Blueprint Auditor</a> are bought off the shelf rather than scoped as a build, but they are held to exactly the same standard: they are applications that run on your machine, not services you log into.</p>
+        <ul class="space-y-3 text-fog leading-relaxed text-sm">
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">No account, no login, no cloud.</strong> There is no Marapone account to create and no server to authenticate against. Install the app and it works, including with the network switched off entirely.</span>
+          </li>
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">Your project data stays in your own folder.</strong> Estimates, rate sheets, job history, fee-schedule edits and exports are written to your own Application Support directory in open SQLite. Nothing is synced anywhere, and an app update never touches them.</span>
+          </li>
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">No telemetry and no licence check.</strong> The app does not phone home to validate a licence, count seats, or report usage. There is no kill switch, so it cannot be disabled remotely.</span>
+          </li>
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">The AI runs locally too.</strong> Where a language model is used it is an embedded model inside the app bundle. Drawings, specifications and cost data are never sent to Marapone or to any third-party AI service.</span>
+          </li>
+          <li class="check-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong class="text-chalk">Full source code.</strong> You receive the complete source, so none of the above has to be taken on trust — your own people, or anyone you hire, can verify it.</span>
+          </li>
+        </ul>
       </div>
 
       <!-- SECTION 5 -->
       <div class="policy-section">
         <p class="section-num">05</p>
+        <h2 class="font-display text-3xl text-chalk mb-4">RETAINER SUPPORT</h2>
+        <p class="text-fog leading-relaxed mb-4">If you engage the optional retainer support after handover, any access to your system is scoped explicitly to the work agreed upon. We will clearly define what access is needed, for how long, and for what purpose — in writing — before any support work begins.</p>
+        <p class="text-fog leading-relaxed">You can revoke access at any time. No persistent access is maintained between retainer engagements.</p>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="policy-section">
+        <p class="section-num">06</p>
         <h2 class="font-display text-3xl text-chalk mb-4">THIS WEBSITE</h2>
         <p class="text-fog leading-relaxed mb-4">This website (marapone.com) collects minimal data. We use session cookies required for the site to function, Vercel's anonymous web analytics, and Google Analytics (GA4) to measure aggregate page traffic. Google Analytics does not identify visitors personally and is not used for advertising or behavioural profiling. We do not use advertising cookies, third-party tracking pixels, or behavioural surveillance tools.</p>
         <p class="text-fog leading-relaxed mb-4">Form submissions (assessment requests) collect only what you provide — name, email, company, industry, and an optional file. This is used solely to process your request. Our demo and forms are protected against bots and abuse by Cloudflare Turnstile, a privacy-focused CAPTCHA alternative that uses no tracking cookies. See our <a href="/privacy" class="text-hiviz hover:underline">Privacy Policy</a> for full details.</p>
         <p class="text-fog leading-relaxed">See our <a href="/cookies" class="text-hiviz hover:underline">Cookie Policy</a> for a complete breakdown of the cookies we set and why.</p>
       </div>
 
-      <!-- SECTION 6 -->
+      <!-- SECTION 7 -->
       <div class="policy-section">
-        <p class="section-num">06</p>
+        <p class="section-num">07</p>
         <h2 class="font-display text-3xl text-chalk mb-4">THE LIVE DEMO</h2>
-        <p class="text-fog leading-relaxed mb-4">The website's live demo lets you upload a sample document and see the engine analyse it in real time. It is the one place on our site where a file you upload is processed on cloud infrastructure rather than locally — so we built it to hold onto as little as possible:</p>
+        <p class="text-fog leading-relaxed mb-4">The live demo on the <a href="/construction/blueprint-auditor" class="text-hiviz hover:underline">Blueprint Auditor</a> page lets you upload a drawing set and see the engine analyse it in real time. It is the one place on our site where a file you upload is processed on cloud infrastructure rather than locally — so we built it to hold onto as little as possible:</p>
         <ul class="space-y-3 text-fog leading-relaxed text-sm">
           <li class="tape-line"><strong class="text-chalk">In-memory only.</strong> Your file is analysed by a serverless function and discarded the moment the request finishes. It is not stored, not logged, and never sent to any external or third-party AI service.</li>
           <li class="tape-line"><strong class="text-chalk">Strict limits.</strong> Uploads are transmitted over HTTPS, capped at 5&nbsp;MB, and restricted to a file-type allowlist (PDF, CSV, TXT, JSON).</li>
@@ -212,9 +241,9 @@
         </ul>
       </div>
 
-      <!-- SECTION 7 -->
+      <!-- SECTION 8 -->
       <div class="policy-section">
-        <p class="section-num">07</p>
+        <p class="section-num">08</p>
         <h2 class="font-display text-3xl text-chalk mb-4">QUESTIONS OR CONCERNS</h2>
         <p class="text-fog leading-relaxed mb-4">If you have specific security requirements — compliance documentation, NDA before assessment, custom data handling agreements, or air-gapped deployment requirements — reach out before submitting your assessment. We deal with these regularly.</p>
         <p class="text-fog leading-relaxed">Contact: <a href="mailto:general@marapone.com" class="text-hiviz hover:underline">general@marapone.com</a></p>

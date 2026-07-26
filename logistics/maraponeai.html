@@ -197,6 +197,10 @@
     [data-mp-products]:focus-within .mp-chev,
     [data-mp-more]:hover .mp-chev,
     [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    /* Comfortable touch targets in the mobile menu — the rows were ~24px tall,
+       which is tight for the primary navigation on a phone. */
+    #mobile-menu a { padding-top: .45rem; padding-bottom: .45rem; }
+    #mobile-menu a.bg-hiviz, #mobile-menu a.bg-marine { padding-top: .6rem; padding-bottom: .6rem; }
     .mp-mi { transition: background-color .15s ease, color .15s ease; }
     .mp-mi:hover { background: #232323; color: #52b788; }
     .mp-pi { transition: background-color .15s ease; }

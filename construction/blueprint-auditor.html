@@ -252,6 +252,19 @@
       background: #2c2c32;
     }
 
+
+    /* ── in-app feature rows ── */
+    .ba-shot {
+      border: 1px solid #3a3a3a; border-radius: 10px; overflow: hidden; background: #0d0d0e;
+      box-shadow: 0 30px 70px -30px rgba(0, 0, 0, .85);
+      transition: border-color .3s ease, transform .3s ease;
+    }
+    .ba-shot video, .ba-shot img { display: block; width: 100%; height: auto; }
+    .ba-feature:hover .ba-shot { border-color: rgba(249, 115, 22, .5); transform: translateY(-4px); }
+    .ba-feature { padding: 2.5rem 0; border-top: 1px solid #2e2e2e; }
+    .ba-feature:first-of-type { border-top: 0; padding-top: 0; }
+    @media (prefers-reduced-motion: reduce) { .ba-feature:hover .ba-shot { transform: none; } }
+
     /* stat band */
     .ba-stat {
       border-left: 2px solid transparent;
@@ -369,6 +382,10 @@
     [data-mp-products]:focus-within .mp-chev,
     [data-mp-more]:hover .mp-chev,
     [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    /* Comfortable touch targets in the mobile menu — the rows were ~24px tall,
+       which is tight for the primary navigation on a phone. */
+    #mobile-menu a { padding-top: .45rem; padding-bottom: .45rem; }
+    #mobile-menu a.bg-hiviz, #mobile-menu a.bg-marine { padding-top: .6rem; padding-bottom: .6rem; }
     .mp-mi { transition: background-color .15s ease, color .15s ease; }
     .mp-mi:hover { background: #232323; color: #f97316; }
     .mp-pi { transition: background-color .15s ease; }
@@ -607,6 +624,113 @@
           <p class="text-fog text-sm leading-relaxed">Takeoff, costed estimate and a client-ready Excel/PDF audit —
             generated for you.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIDE THE APP -->
+  <section id="inside" class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal mb-12">
+        <span class="ba-eyebrow">Inside the app</span>
+        <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4">WHAT IT LOOKS LIKE RUNNING.</h2>
+        <p class="text-fog text-lg leading-relaxed max-w-2xl">
+          Real screens from a live build, recorded on an actual drawing set — not mock-ups. Every one
+          of these runs on your own hardware, on your own drawings, with nothing leaving the network.
+        </p>
+      </div>
+
+      <div class="ba-feature reveal">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="order-2 lg:order-1"><div>
+            <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">01 — Quantity takeoff</span>
+            <h3 class="ba-display text-2xl lg:text-3xl text-chalk mt-3 mb-4">MEASURED OFF THE SHEETS.</h3>
+            <p class="text-fog leading-relaxed mb-5">Rooms, areas, doors, windows and fixtures pulled straight out of the drawing set and the schedules — with every line traceable back to the sheet it came from.</p>
+            <ul class="space-y-2 text-sm text-fog">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Room-by-room areas with a live total</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Door, window and fixture counts off the schedules</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Metric and imperial handled automatically</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Exports as JSON straight into the AI Estimator</span></li>
+            </ul>
+          </div></div>
+          <div class="order-1 lg:order-2"><div class="ba-shot">
+            <video muted loop playsinline autoplay preload="metadata" width="1920" height="1080"
+              poster="/blueprint-auditor-takeoff-poster.jpg" aria-label="The Blueprint Auditor performing a quantity takeoff, listing rooms with areas and a running total.">
+              <source src="/blueprint-auditor-takeoff.mp4" type="video/mp4" />
+            </video>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="ba-feature reveal">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="order-1"><div class="ba-shot">
+            <video muted loop playsinline autoplay preload="metadata" width="1920" height="1080"
+              poster="/blueprint-auditor-review-poster.jpg" aria-label="The Blueprint Auditor code review listing compliance findings with clause references and severity.">
+              <source src="/blueprint-auditor-review.mp4" type="video/mp4" />
+            </video>
+          </div></div>
+          <div class="order-2"><div>
+            <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">02 — Code &amp; coordination audit</span>
+            <h3 class="ba-display text-2xl lg:text-3xl text-chalk mt-3 mb-4">WHAT THE DRAWINGS CONTRADICT.</h3>
+            <p class="text-fog leading-relaxed mb-5">The full set checked against the 2024 Ontario Building Code and against itself — clause references included, so a finding can be taken to the consultant rather than argued about.</p>
+            <ul class="space-y-2 text-sm text-fog">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>OBC, AODA, fire and zoning checks with clause references</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Cross-discipline coordination conflicts</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Scope gaps between the specification and the drawings</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Severity-ranked so you read the expensive ones first</span></li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="ba-feature reveal">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="order-2 lg:order-1"><div>
+            <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">03 — Tender risk</span>
+            <h3 class="ba-display text-2xl lg:text-3xl text-chalk mt-3 mb-4">THE CLAUSES THAT COST MONEY.</h3>
+            <p class="text-fog leading-relaxed mb-5">The bid documents read for the terms that carry real exposure — bonding, liquidated damages, fair wage, restricted hours, sole-source products — before you commit to a number.</p>
+            <ul class="space-y-2 text-sm text-fog">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Onerous clause detection across the tender package</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Bonding and insurance requirements surfaced</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Liquidated damages and schedule exposure flagged</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Each finding quoted with its source excerpt</span></li>
+            </ul>
+          </div></div>
+          <div class="order-1 lg:order-2"><div class="ba-shot">
+            <video muted loop playsinline autoplay preload="metadata" width="1920" height="1080"
+              poster="/blueprint-auditor-tender-risk-poster.jpg" aria-label="The tender risk scanner listing onerous clauses found in the bid documents with severity ratings.">
+              <source src="/blueprint-auditor-tender-risk.mp4" type="video/mp4" />
+            </video>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="ba-feature reveal">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div class="order-1"><div class="ba-shot">
+            <video muted loop playsinline autoplay preload="metadata" width="1920" height="1080"
+              poster="/blueprint-auditor-change-order-poster.jpg" aria-label="The change-order risk tracker comparing drawing revisions and listing exposure against the original scope.">
+              <source src="/blueprint-auditor-change-order.mp4" type="video/mp4" />
+            </video>
+          </div></div>
+          <div class="order-2"><div>
+            <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">04 — Change orders &amp; deficiencies</span>
+            <h3 class="ba-display text-2xl lg:text-3xl text-chalk mt-3 mb-4">AFTER AWARD, IT KEEPS WORKING.</h3>
+            <p class="text-fog leading-relaxed mb-5">The same engine tracks revision-to-revision drift and builds the deficiency list, so the exposure you priced at tender is the exposure you can still see at closeout.</p>
+            <ul class="space-y-2 text-sm text-fog">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Revision compare — what changed between issues</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Change-order risk tracked against the original scope</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Deficiency lists generated and cross-referenced</span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>RFI backlog checked against the current drawings</span></li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-3 reveal">
+        <button type="button" class="ba-btn-primary" data-upload-trigger>Run it on your own drawings</button>
+        <a href="/construction/ai-estimator" class="ba-btn-ghost">See the AI Estimator &rarr;</a>
       </div>
     </div>
   </section>

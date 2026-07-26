@@ -126,6 +126,11 @@
       box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .02);
     }
     .app-window img, .app-window video { display: block; width: 100%; height: auto; }
+    /* The hero tour carries the page, so give it a heavier frame and glow. */
+    .app-window-hero {
+      border-color: #454545;
+      box-shadow: 0 50px 110px -35px rgba(0, 0, 0, .95), 0 0 0 1px rgba(249, 115, 22, .10);
+    }
 
     .app-glow { position: relative; }
     .app-glow::before {
@@ -189,6 +194,10 @@
     [data-mp-products]:focus-within .mp-chev,
     [data-mp-more]:hover .mp-chev,
     [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    /* Comfortable touch targets in the mobile menu — the rows were ~24px tall,
+       which is tight for the primary navigation on a phone. */
+    #mobile-menu a { padding-top: .45rem; padding-bottom: .45rem; }
+    #mobile-menu a.bg-hiviz, #mobile-menu a.bg-marine { padding-top: .6rem; padding-bottom: .6rem; }
     .mp-mi { transition: background-color .15s ease, color .15s ease; }
     .mp-mi:hover { background: #232323; color: #f97316; }
     .mp-pi { transition: background-color .15s ease; }
@@ -287,9 +296,9 @@
     <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block" aria-hidden="true"></div>
 
     <div class="relative max-w-6xl mx-auto px-4 py-16 lg:py-24">
-      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
+      <div>
 
-        <div>
+        <div class="max-w-3xl">
           <div class="flex flex-wrap items-center gap-3 mb-5">
             <span class="est-eyebrow">Marapone AI Estimator</span>
             <span class="inline-flex items-center gap-1.5 font-mono text-[0.62rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-1">
@@ -301,7 +310,7 @@
             Takeoff measures.<br /><span class="est-shine">This prices.</span>
           </h1>
 
-          <p class="font-body text-lg text-fog max-w-xl mt-6 leading-relaxed">
+          <p class="font-body text-lg text-fog max-w-2xl mt-6 leading-relaxed">
             The Blueprint Auditor tells you there are 24,000 square feet of partition.
             The AI&nbsp;Estimator turns that into studs, board, tape, fasteners, waste and
             crew-hours — then adds the risk, the contingency, the Toronto soft costs and the
@@ -318,7 +327,7 @@
               See every screen
             </a>
           </div>
-          <div class="mt-3">
+          <div class="mt-3 flex flex-col items-start gap-1.5">
             <a href="/construction/contact?product=ai-estimator"
               class="inline-flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
               Or book a walkthrough on one of your own jobs first →
@@ -337,8 +346,8 @@
           </div>
         </div>
 
-        <div class="app-glow reveal reveal-d1">
-          <figure class="app-window">
+        <div class="app-glow reveal reveal-d1 mt-12 lg:mt-16">
+          <figure class="app-window app-window-hero">
             <video id="tour" width="1920" height="1080" muted loop playsinline autoplay preload="metadata"
               poster="/estimator/ai-estimator-tour-poster.jpg"
               aria-label="A screen recording of the AI Estimator pricing a 38-unit Toronto residential infill — dashboard, estimate, risk register, bid strategy, scenarios, soft costs, documents and job history.">

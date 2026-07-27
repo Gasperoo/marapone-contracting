@@ -248,10 +248,10 @@
             <a href="/construction/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
             <a href="/construction/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
             <a href="/construction/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/construction/regions" class="mp-mi block px-4 py-2 text-sm text-fog">Regions &amp; Rate Packs</a>
             <a href="/construction/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
             <a href="/construction/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
             <a href="/construction/vs/procore" class="mp-mi block px-4 py-2 text-sm text-fog">vs Procore</a>
-            <a href="/shop" class="mp-mi block px-4 py-2 text-sm text-fog">Shop</a>
           </div>
         </div>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
@@ -279,10 +279,10 @@
       <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
       <a href="/construction/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
       <a href="/construction/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/construction/regions" class="text-fog hover:text-chalk" style="padding-left:.75rem">Regions &amp; Rate Packs</a>
       <a href="/construction/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
       <a href="/construction/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
       <a href="/construction/vs/procore" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Procore</a>
-      <a href="/shop" class="text-fog hover:text-chalk" style="padding-left:.75rem">Shop</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/logistics" class="text-marine hover:text-marine-light inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
@@ -661,8 +661,13 @@
         <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Toronto, not "North America".</h2>
         <p class="text-fog mt-4 leading-relaxed">
           Generic estimating software is accurate everywhere and therefore precise nowhere.
-          This one is locked to the City of Toronto and Ontario by default — because that is
-          where the money actually leaks.
+          This one ships tuned to the City of Toronto and Ontario — because that is
+          where the money actually leaks, and because a finished pack is the only honest way
+          to show the depth is real.
+        </p>
+        <p class="text-fog mt-3 leading-relaxed">
+          Every number below lives in a JSON file you own, with its citation attached.
+          It is the <em>default</em> pack, not the only one.
         </p>
       </div>
 
@@ -699,6 +704,17 @@
           <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Labour</span>
           <p class="text-sm text-fog leading-relaxed">GTA labour benchmarks and market conditions as at mid-2026, used to validate imported rates and drive escalation — flagged for a second look, never silently corrected.</p>
         </div>
+      </div>
+
+      <div class="reveal mt-8 bg-gunmetal border-l-2 border-hiviz rounded-r-xl p-6 lg:p-7 max-w-3xl">
+        <p class="text-chalk font-semibold mb-2">Building somewhere else?</p>
+        <p class="text-fog text-sm leading-relaxed mb-3">
+          None of the above is compiled into the engine. Tax, holdback, permit fees, code
+          references and winter productivity are sections of a jurisdiction file; the 95-item
+          material catalogue, 24 crew compositions and the city cost index are separate files
+          again. Swapping market is a data edit, and after handover you can make it yourself.
+        </p>
+        <a href="/construction/regions" class="text-hiviz font-semibold text-sm hover:opacity-80 transition-opacity">How regions &amp; rate packs work &rarr;</a>
       </div>
     </div>
   </section>
@@ -1029,6 +1045,54 @@
         </a>
       </div>
       <p class="font-mono text-xs text-plate mt-6">One time · +HST · Secured by Stripe · 30-day refund · source code on day 31</p>
+    </div>
+  </section>
+
+  <!-- TECHNICAL DETAIL STRIP -->
+  <section class="border-t border-plate bg-gunmetal py-12 lg:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// For the person who has to sign off on it</p>
+      <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-3">The technical detail, before you ask for it.</h2>
+      <p class="text-fog leading-relaxed max-w-2xl mb-9">Every claim on this page has a page behind it. No form, no call &mdash; read it now.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="/construction/architecture" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Architecture</p>
+          <p class="text-fog text-sm leading-relaxed">Five layers, every component named, three deployment options, and what the handover repo contains.</p>
+        </a>
+        <a href="/construction/trust" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Trust &amp; security</p>
+          <p class="text-fog text-sm leading-relaxed">Where the data sits, what leaves the machine (nothing), retention, deletion and the security pack for your IT review.</p>
+        </a>
+        <a href="/construction/integrations" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Integrations</p>
+          <p class="text-fog text-sm leading-relaxed">What it reads and writes, and how it sits beside Procore, Autodesk, Sage or a shared drive without replacing them.</p>
+        </a>
+        <a href="/construction/regions" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Regions &amp; rate packs</p>
+          <p class="text-fog text-sm leading-relaxed">Why jurisdiction is data you own and edit, what the Toronto pack contains, and what changes outside Ontario.</p>
+        </a>
+        <a href="/construction/hardware" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Hardware</p>
+          <p class="text-fog text-sm leading-relaxed">Minimum and recommended specs, supported operating systems, and why a GPU is optional rather than required.</p>
+        </a>
+        <a href="/construction/faq" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">FAQ</p>
+          <p class="text-fog text-sm leading-relaxed">Support after handover, changing it later, update path, data deletion, and what happens if we disappear.</p>
+        </a>
+      </div>
+
+      <div class="mt-5 grid sm:grid-cols-2 gap-4">
+        <a href="/construction/work" class="block bg-charcoal border border-hiviz/40 rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1.5">Real jobs, real numbers</p>
+          <p class="font-display text-xl text-chalk mb-1.5">Three documented builds</p>
+          <p class="text-fog text-sm leading-relaxed">6&ndash;12h/week recovered, RFI turnaround 9.2&rarr;5.4 days, +24% win rate in 60 days &mdash; each with the build cost, the break-even and the quote it came from.</p>
+        </a>
+        <a href="/construction/roi-calculator" class="block bg-charcoal border border-hiviz/40 rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1.5">Your numbers, not ours</p>
+          <p class="font-display text-xl text-chalk mb-1.5">ROI calculator</p>
+          <p class="text-fog text-sm leading-relaxed">Put in your seat count, hourly rate and document volume. It will also tell you when a subscription is the better buy.</p>
+        </a>
+      </div>
     </div>
   </section>
 

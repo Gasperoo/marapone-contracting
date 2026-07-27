@@ -114,6 +114,7 @@ export default defineConfig({
           '/logistics/trust': '/logistics/trust.html',
           // Hardware requirements
           '/construction/hardware': '/construction/hardware.html',
+          '/construction/regions': '/construction/regions.html',
           '/logistics/hardware': '/logistics/hardware.html',
           // Comparison pages
           '/construction/vs/procore': '/construction/vs/procore.html',
@@ -128,6 +129,9 @@ export default defineConfig({
           '/construction/resources': '/construction/resources/index.html',
           '/construction/resources/rfi-ai-vs-procore-ai': '/construction/resources/rfi-ai-vs-procore-ai.html',
           '/construction/resources/scope-a-blueprint-auditor': '/construction/resources/scope-a-blueprint-auditor.html',
+          '/construction/resources/common-scope-gaps': '/construction/resources/common-scope-gaps.html',
+          '/construction/resources/what-owning-source-means': '/construction/resources/what-owning-source-means.html',
+          '/construction/resources/hardware-cost-reality': '/construction/resources/hardware-cost-reality.html',
           '/construction/resources/own-vs-rent-ai-for-gcs': '/construction/resources/own-vs-rent-ai-for-gcs.html',
           '/construction/resources/cost-of-private-llm-stack-2026': '/construction/resources/cost-of-private-llm-stack-2026.html',
           '/construction/resources/sample-handover-walkthrough': '/construction/resources/sample-handover-walkthrough.html',
@@ -253,6 +257,9 @@ export default defineConfig({
         'c-res':                       path.resolve(__dirname, 'construction/resources/index.html'),
         'c-res-1':                     path.resolve(__dirname, 'construction/resources/rfi-ai-vs-procore-ai.html'),
         'c-res-2':                     path.resolve(__dirname, 'construction/resources/scope-a-blueprint-auditor.html'),
+        'c-res-common-scope-gaps': path.resolve(__dirname, 'construction/resources/common-scope-gaps.html'),
+        'c-res-what-owning-source-means': path.resolve(__dirname, 'construction/resources/what-owning-source-means.html'),
+        'c-res-hardware-cost-reality': path.resolve(__dirname, 'construction/resources/hardware-cost-reality.html'),
         'c-res-3':                     path.resolve(__dirname, 'construction/resources/own-vs-rent-ai-for-gcs.html'),
         'c-res-4':                     path.resolve(__dirname, 'construction/resources/cost-of-private-llm-stack-2026.html'),
         'c-res-5':                     path.resolve(__dirname, 'construction/resources/sample-handover-walkthrough.html'),
@@ -273,6 +280,7 @@ export default defineConfig({
         'l-demo':                      path.resolve(__dirname, 'logistics/demo.html'),
         // Hardware requirements
         'c-hardware':                  path.resolve(__dirname, 'construction/hardware.html'),
+        'c-regions':                   path.resolve(__dirname, 'construction/regions.html'),
         'l-hardware':                  path.resolve(__dirname, 'logistics/hardware.html'),
       },
     },

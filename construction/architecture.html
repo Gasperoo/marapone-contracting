@@ -116,10 +116,10 @@
             <a href="/construction/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
             <a href="/construction/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
             <a href="/construction/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/construction/regions" class="mp-mi block px-4 py-2 text-sm text-fog">Regions &amp; Rate Packs</a>
             <a href="/construction/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
             <a href="/construction/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
             <a href="/construction/vs/procore" class="mp-mi block px-4 py-2 text-sm text-fog">vs Procore</a>
-            <a href="/shop" class="mp-mi block px-4 py-2 text-sm text-fog">Shop</a>
           </div>
         </div>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
@@ -147,10 +147,10 @@
       <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
       <a href="/construction/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
       <a href="/construction/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/construction/regions" class="text-fog hover:text-chalk" style="padding-left:.75rem">Regions &amp; Rate Packs</a>
       <a href="/construction/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
       <a href="/construction/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
       <a href="/construction/vs/procore" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Procore</a>
-      <a href="/shop" class="text-fog hover:text-chalk" style="padding-left:.75rem">Shop</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/logistics" class="text-marine hover:text-marine-light inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
@@ -341,6 +341,37 @@
           <p class="text-fog text-sm leading-relaxed mb-3">Your AWS / Azure / GCP tenant, your VPC, your IAM. We deploy via Terraform. Documents never leave your cloud account.</p>
           <p class="font-mono text-xs text-plate">Hourly GPU billing · Multi-site · Your existing cloud governance applies.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- JURISDICTION DATA LAYER -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Local knowledge is data, not code</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE JURISDICTION LAYER.</h2>
+      <p class="text-fog leading-relaxed max-w-3xl mb-10">Rates, tax percentages, statutory holdback, permit fees, code citations and trade knowledge are never compiled into the engine. They load at runtime from JSON files that ship in your repo — which is why retargeting a market is an edit rather than a rebuild, and why you can do it yourself after handover.</p>
+
+      <div class="grid md:grid-cols-3 gap-5 mb-8">
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">Jurisdiction pack</p>
+          <p class="text-fog text-sm leading-relaxed mb-3">Tax, labour burden, lien &amp; holdback rules, permit fees, code references, winter productivity, bonding thresholds, local by-laws. Every number carries a citation string that prints beside it in the output.</p>
+          <p class="font-mono text-xs text-plate">1 file · 14 sections · marked verify_before_bid</p>
+        </article>
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">Price catalogues</p>
+          <p class="text-fog text-sm leading-relaxed mb-3">Materials and crew compositions in separate files, with a city cost index applied on top — material, labour, equipment and subcontract factored independently rather than by one blended multiplier.</p>
+          <p class="font-mono text-xs text-plate">95 material items · 24 crews · 24-city index</p>
+        </article>
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">Override layer</p>
+          <p class="text-fog text-sm leading-relaxed mb-3">Your own rates and an optional supplier feed layer on top of the baseline at resolution time. Your real buyout numbers win without anyone editing the shipped catalogue.</p>
+          <p class="font-mono text-xs text-plate">Overrides &gt; supplier feed &gt; baseline</p>
+        </article>
+      </div>
+
+      <div class="bg-steel border-l-2 border-hiviz rounded-r-lg p-6">
+        <p class="text-fog text-sm leading-relaxed">The scope knowledge base is indexed by CSI MasterFormat, so the taxonomy is portable by construction. Toronto/Ontario ships as the default pack because a finished one is the only honest demonstration of depth. <a href="/construction/regions" class="text-hiviz font-semibold hover:opacity-80 transition-opacity">See how regions &amp; rate packs work &rarr;</a></p>
       </div>
     </div>
   </section>

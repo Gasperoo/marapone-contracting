@@ -263,6 +263,10 @@
       "destination": "/construction/hardware.html"
     },
     {
+      "source": "/construction/regions",
+      "destination": "/construction/regions.html"
+    },
+    {
       "source": "/logistics/sample-assessment",
       "destination": "/logistics/sample-assessment.html"
     },
@@ -345,6 +349,18 @@
     {
       "source": "/construction/resources/scope-a-blueprint-auditor",
       "destination": "/construction/resources/scope-a-blueprint-auditor.html"
+    },
+    {
+      "source": "/construction/resources/common-scope-gaps",
+      "destination": "/construction/resources/common-scope-gaps.html"
+    },
+    {
+      "source": "/construction/resources/what-owning-source-means",
+      "destination": "/construction/resources/what-owning-source-means.html"
+    },
+    {
+      "source": "/construction/resources/hardware-cost-reality",
+      "destination": "/construction/resources/hardware-cost-reality.html"
     },
     {
       "source": "/construction/resources/own-vs-rent-ai-for-gcs",

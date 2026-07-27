@@ -27,6 +27,7 @@
   <url><loc>https://marapone.com/construction/roi-calculator</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/security-pack</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/hardware</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/regions</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/procore</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/autodesk</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/document-crunch</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
@@ -34,6 +35,9 @@
   <url><loc>https://marapone.com/construction/resources</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/resources/rfi-ai-vs-procore-ai</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/resources/scope-a-blueprint-auditor</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources/common-scope-gaps</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources/what-owning-source-means</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/construction/resources/hardware-cost-reality</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/resources/own-vs-rent-ai-for-gcs</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/resources/cost-of-private-llm-stack-2026</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/resources/sample-handover-walkthrough</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
@@ -78,7 +82,6 @@
   <url><loc>https://marapone.com/logistics/demo</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/pricing</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/about</loc><priority>0.6</priority><changefreq>yearly</changefreq></url>
-  <url><loc>https://marapone.com/shop</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
 
   <!-- Legal / misc -->
   <url><loc>https://marapone.com/terms</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>

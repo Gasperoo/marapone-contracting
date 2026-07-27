@@ -167,6 +167,30 @@
       },
       {
         "@type": "Question",
+        "name": "What's the update path? Will this still run in three years?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no licence check, activation server or external API that can be deprecated, so an install that works today works in three years on the same machine even with no network. What ages is content rather than code: fee schedules, rate tables and statutory numbers live in JSON data packs, so updating them means editing a file with no rebuild and no vendor involvement. Model weights are yours on disk and keep working without refresh. Operating-system upgrades are the one real maintenance item; pinned dependencies and a documented environment ship with the repo so a rebuild is reproducible by you, by any developer you hire, or by us."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What support do I get after handover, and what does it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every build includes a warranty period where anything not working as specified is fixed at no charge — defect correction, not a support subscription. After that you can run it yourself, which most clients do; hire any competent developer, since you hold readable source and documentation with nothing proprietary to license; or put us on a retainer for changes, retraining or new modules. Retainers are priced per engagement rather than as a published tier. Support is never the mechanism that keeps the software working."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I delete project data out of the system once a job closes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Everything runs on your machine, so deletion is a filesystem operation rather than a support request. Each project's documents, extracted data and generated reports live under a project directory you control; removing the project removes the data, and your normal backup and retention policy applies. Nothing was uploaded, so there is no vendor-side copy to request deletion of and no retention window to wait out. If your document-retention policy requires an auditable purge procedure, we write it against your actual install during handover."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "What does it not do?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -358,10 +382,10 @@
             <a href="/construction/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
             <a href="/construction/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
             <a href="/construction/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/construction/regions" class="mp-mi block px-4 py-2 text-sm text-fog">Regions &amp; Rate Packs</a>
             <a href="/construction/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
             <a href="/construction/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
             <a href="/construction/vs/procore" class="mp-mi block px-4 py-2 text-sm text-fog">vs Procore</a>
-            <a href="/shop" class="mp-mi block px-4 py-2 text-sm text-fog">Shop</a>
           </div>
         </div>
         <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
@@ -389,10 +413,10 @@
       <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
       <a href="/construction/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
       <a href="/construction/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/construction/regions" class="text-fog hover:text-chalk" style="padding-left:.75rem">Regions &amp; Rate Packs</a>
       <a href="/construction/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
       <a href="/construction/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
       <a href="/construction/vs/procore" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Procore</a>
-      <a href="/shop" class="text-fog hover:text-chalk" style="padding-left:.75rem">Shop</a>
       <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
       <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
       <a href="/logistics" class="text-marine hover:text-marine-light inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
@@ -628,6 +652,25 @@
               still produce meaningful results from a partially redacted document in most cases.</p>
           </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">How do I delete project data out of the system once a job closes?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>Because everything runs on your machine, deletion is a filesystem operation rather than a support
+              ticket. Each project's documents, extracted data and generated reports live under a project directory
+              you control; removing the project removes the data, and your normal backup and retention policy applies
+              to it exactly as it would to any other folder on that machine.</p>
+            <p>There is no copy anywhere else. Nothing was uploaded, so there is no vendor-side record to request the
+              deletion of, no retention window to wait out, and no export step needed before you delete. If your
+              document-retention policy requires an auditable purge procedure, we'll write it against your actual
+              install during handover and include it in the documentation.</p>
+          </div>
+        </div>
       </div>
 
       <!-- GROUP 4: Common Objections -->
@@ -654,7 +697,7 @@
             </svg>
           </button>
           <div class="faq-body">
-            <p>No system catches everything — and we won't claim otherwise. What the system does is dramatically reduce what slips through compared to manual review, and do it consistently, without getting tired or distracted. The system is built as a first-pass intelligence layer, not a replacement for human judgment. Your team still reviews the output and makes the final call. The goal is that by the time something reaches your desk, the AI has already eliminated 90%+ of the noise and surfaced what actually needs attention. The free assessment lets you evaluate the accuracy directly on your own documents before committing to anything.</p>
+            <p>No system catches everything — and we won't claim otherwise. What the system does is dramatically reduce what slips through compared to manual review, and do it consistently, without getting tired or distracted. The system is built as a first-pass intelligence layer, not a replacement for human judgment. Your team still reviews the output and makes the final call. The goal is that by the time something reaches your desk, the obvious noise is already gone and what's left is what actually needs a decision. We deliberately don't publish a headline accuracy percentage, because the honest number depends entirely on your document set — the free assessment measures it on your own documents, before you commit to anything.</p>
           </div>
         </div>
 
@@ -735,6 +778,49 @@
               clients are running independently within the first day.</p>
           </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What's the update path? Will this still run in three years?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>It keeps running because nothing about it expires. There's no licence check, no activation server and no
+              external API that can be deprecated out from under you — an install that works today works in three years
+              on the same machine, untouched, even with the network unplugged.</p>
+            <p>What does age is content rather than code: fee schedules change, rate tables drift, and tax and statutory
+              numbers get amended. Those live in the JSON data packs, so updating them is editing a file — no rebuild,
+              no vendor involvement. Model weights are yours on disk and don't need refreshing to keep working, though
+              they can be retrained on newer documents if you want.</p>
+            <p>Operating-system upgrades are the one real maintenance item, the same as for any other application you
+              run. Pinned dependencies and a documented environment ship with the repo so a rebuild is reproducible.
+              You can do that work yourself, hire anyone to do it, or bring us back — the point is that none of those
+              three options is blocked.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question">What support do I get after handover, and what does it cost?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <div class="faq-body">
+            <p>Every build includes a warranty period after handover where anything that doesn't work as specified gets
+              fixed at no charge — that's defect correction, not a support subscription, and it isn't something you
+              renew.</p>
+            <p>After that there are three honest options, and we'd rather you know all of them. You can run it yourself,
+              which most clients do, because it's a desktop application with no moving infrastructure. You can hire any
+              competent developer, since you hold readable source code and documentation and there's nothing
+              proprietary to license. Or you can put us on a retainer for changes, retraining or new modules.</p>
+            <p>We price retainers per engagement rather than publishing a tier, because the useful version depends
+              entirely on what you want changed. What we won't do is make support the mechanism that keeps the software
+              working — if paying us were the only way to keep it running, you wouldn't really own it.</p>
+          </div>
+        </div>
       </div>
 
       <!-- GROUP 7: Getting Started -->
@@ -766,9 +852,14 @@
           </button>
           <div class="faq-body">
             <p>We're based in Canada and Italy, and most of our clients are in those markets — but the work is not
-              geographically restricted. We've scoped builds remotely and can ship hardware internationally when needed.
-              If you're outside our primary markets, reach out and we'll assess fit directly. The free assessment works
-              regardless of location.</p>
+              geographically restricted. We've scoped builds remotely and can ship hardware internationally when needed.</p>
+            <p>The more useful answer is about the software rather than us. Rates, tax, statutory holdback, permit fees
+              and code references aren't compiled into the products — they load from JSON data packs that ship in your
+              source repo, and the scope knowledge base is indexed by CSI MasterFormat rather than anything
+              Ontario-specific. Toronto ships as the finished default pack; your market's pack is built during your
+              build, and you can edit it yourself afterwards. What we don't have is a shelf of pre-built international
+              packs ready to license — <a href="/construction/regions" class="text-hiviz hover:underline">the regions page
+              is explicit about where each market stands</a>.</p>
           </div>
         </div>
 

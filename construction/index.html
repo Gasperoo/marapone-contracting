@@ -125,6 +125,29 @@
       .prod-row:hover .prod-arrow { transform: none; }
     }
 
+    /* the screenshot links to the product page too; the CTAs below carry the labels */
+    .prod-row { position: relative; }
+    .prod-shot-link { display: block; }
+    .prod-price {
+      font-family: 'Bebas Neue', Arial, sans-serif; font-size: 1.75rem; line-height: 1;
+      color: #e8e8e8; letter-spacing: .5px;
+    }
+
+    /* secondary tier — custom builds, deliberately quieter than the three products */
+    .prod-aside { border-top: 1px solid #2e2e2e; }
+
+    /* proof bar under the hero */
+    .proof-quote { border-left: 2px solid #f97316; }
+
+    /* how the three fit together */
+    .flow-step { position: relative; }
+    @media (min-width: 768px) {
+      .flow-step:not(:last-child)::after {
+        content: ""; position: absolute; top: 2.15rem; right: -1.15rem; width: 1.1rem; height: 1px;
+        background: linear-gradient(90deg, rgba(249,115,22,.7), rgba(249,115,22,.15));
+      }
+    }
+
     /* ── HERO HEADLINE TREATMENT (rented = hollow, owned = solid+sheen) ── */
     .hero-rent {
       color: transparent;
@@ -608,6 +631,7 @@
     }
   </style>
   <script defer src="/widgets.js"></script>
+  <script defer src="/checkout.js"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -992,63 +1016,76 @@
     </div>
   </section>
 
-  <!-- TRUST STRIP -->
-  <section class="bg-steel border-t border-b border-plate py-5">
+  <!-- PROOF BAR — one real result, and the numbers behind it, before anything else is claimed -->
+  <section class="bg-steel border-t border-b border-plate py-8 lg:py-10">
     <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-5 gap-8 lg:gap-10 items-center">
+        <blockquote class="proof-quote pl-5 lg:col-span-3">
+          <p class="text-chalk text-base lg:text-lg leading-relaxed">&ldquo;I was spending <span
+              class="text-hiviz font-semibold">4&ndash;6 hours</span> reviewing blueprints before every subcontractor
+            meeting. This cut it to <span class="text-hiviz font-semibold">under an hour</span> — and it runs on my
+            laptop, and it&rsquo;s mine.&rdquo;</p>
+          <footer class="font-mono text-xs text-fog mt-3">GC Owner &middot; mid-size residential / ICI, two active
+            projects &mdash; <a href="/construction/work" class="text-hiviz hover:text-chalk transition-colors">see the
+              case studies &rarr;</a></footer>
+        </blockquote>
+        <dl class="lg:col-span-2 grid grid-cols-3 gap-px bg-plate rounded overflow-hidden">
+          <div class="bg-steel px-3 py-4 text-center">
+            <dt class="sr-only">Staff hours recovered</dt>
+            <dd><span class="font-display text-3xl lg:text-4xl text-hiviz block leading-none">6–8h</span><span
+                class="font-mono text-[0.65rem] text-fog block mt-2 leading-snug">recovered per<br />week, per
+                project</span></dd>
+          </div>
+          <div class="bg-steel px-3 py-4 text-center">
+            <dt class="sr-only">Document extraction accuracy</dt>
+            <dd><span class="font-display text-3xl lg:text-4xl text-chalk block leading-none">97%</span><span
+                class="font-mono text-[0.65rem] text-fog block mt-2 leading-snug">extraction accuracy<br />vs.
+                manual</span></dd>
+          </div>
+          <div class="bg-steel px-3 py-4 text-center">
+            <dt class="sr-only">RFI response time reduction</dt>
+            <dd><span class="font-display text-3xl lg:text-4xl text-chalk block leading-none">−65%</span><span
+                class="font-mono text-[0.65rem] text-fog block mt-2 leading-snug">RFI response<br />time</span></dd>
+          </div>
+        </dl>
+      </div>
       <div
-        class="trust-strip-row flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-3 gap-y-2 text-xs font-mono text-fog">
+        class="trust-strip-row flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs font-mono text-fog mt-7 pt-6 border-t border-plate">
         <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> One-time
           price</span>
         <span class="text-plate hidden lg:inline">|</span>
         <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Full
           source code</span>
         <span class="text-plate hidden lg:inline">|</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Your
-          infrastructure</span>
-        <span class="text-plate hidden lg:inline">|</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Canada
-          &amp; Italy</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Runs on
+          your own machine</span>
         <span class="text-plate hidden lg:inline">|</span>
         <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Your data
           stays private</span>
         <span class="text-plate hidden lg:inline">|</span>
-        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Phone,
-          tablet &amp; desktop</span>
+        <span class="flex items-center gap-1.5 whitespace-nowrap"><span class="text-hiviz text-base">✓</span> Canada
+          &amp; Italy</span>
       </div>
     </div>
   </section>
 
-  <!-- INDUSTRY STRIP -->
-  <section class="bg-charcoal border-b border-plate py-10">
+  <!-- INDUSTRY STRIP — one line, chips, no ceremony -->
+  <section class="bg-charcoal border-b border-plate py-5">
     <div class="max-w-6xl mx-auto px-4">
-      <p class="font-mono text-hiviz text-xs uppercase tracking-wider text-center mb-1">// Built for your role</p>
-      <p class="text-fog text-sm text-center mb-6">Pick your role to see exactly how it works for you</p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+        <span class="font-mono text-hiviz text-xs uppercase tracking-wider">// Built for your role:</span>
         <a href="/construction/for/general-contractors"
-          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
-          <span class="font-mono text-sm text-chalk leading-tight">General Contractors</span>
-          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
-        </a>
+          class="role-card font-mono text-xs text-chalk bg-gunmetal border rounded-full px-3.5 py-1.5">General
+          Contractors</a>
         <a href="/construction/for/ici"
-          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
-          <span class="font-mono text-sm text-chalk leading-tight">ICI Builders</span>
-          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
-        </a>
+          class="role-card font-mono text-xs text-chalk bg-gunmetal border rounded-full px-3.5 py-1.5">ICI Builders</a>
         <a href="/construction/for/estimators"
-          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
-          <span class="font-mono text-sm text-chalk leading-tight">Estimators</span>
-          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
-        </a>
+          class="role-card font-mono text-xs text-chalk bg-gunmetal border rounded-full px-3.5 py-1.5">Estimators</a>
         <a href="/construction/for/owners-reps"
-          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
-          <span class="font-mono text-sm text-chalk leading-tight">Owners&rsquo; Reps</span>
-          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
-        </a>
+          class="role-card font-mono text-xs text-chalk bg-gunmetal border rounded-full px-3.5 py-1.5">Owners&rsquo;
+          Reps</a>
         <a href="/construction/for/subcontractors"
-          class="role-card group bg-gunmetal border border-plate rounded-lg px-4 py-4 flex items-center justify-between gap-2 transition-colors">
-          <span class="font-mono text-sm text-chalk leading-tight">Subcontractors</span>
-          <span class="text-plate group-hover:text-hiviz transition-colors text-lg leading-none">&rarr;</span>
-        </a>
+          class="role-card font-mono text-xs text-chalk bg-gunmetal border rounded-full px-3.5 py-1.5">Subcontractors</a>
       </div>
     </div>
   </section>
@@ -1057,7 +1094,7 @@
   <section id="products" class="py-16 lg:py-24 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
 
-      <div class="mb-12 reveal">
+      <div class="mb-10 reveal">
         <p class="font-mono text-hiviz text-sm mb-2">// What we build</p>
         <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">THREE TOOLS, READY NOW.<br /><span class="text-hiviz">ONE BUILT AROUND YOU.</span></h2>
         <p class="text-fog max-w-2xl mt-5 leading-relaxed">
@@ -1067,128 +1104,162 @@
         </p>
       </div>
 
-      <!-- 01 · SCOPEGUARD — the newest, so it leads -->
-      <a href="/construction/scopeguard" class="prod-row group block reveal">
+      <!-- HOW THE THREE FIT TOGETHER — each stands alone; together they run one job end to end -->
+      <div class="reveal border border-plate rounded-xl bg-gunmetal p-6 lg:p-8 mb-14">
+        <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-6">// One job, three stages — buy one, or all three</p>
+        <div class="grid md:grid-cols-3 gap-6 md:gap-10">
+          <div class="flow-step">
+            <p class="font-mono text-[0.62rem] tracking-widest uppercase text-plate mb-2">Before the bid</p>
+            <h3 class="font-display text-2xl text-chalk leading-none">BLUEPRINT AUDITOR</h3>
+            <p class="text-sm text-fog leading-relaxed mt-2">How much is there, and what are the drawings hiding?</p>
+          </div>
+          <div class="flow-step">
+            <p class="font-mono text-[0.62rem] tracking-widest uppercase text-plate mb-2">At the bid</p>
+            <h3 class="font-display text-2xl text-chalk leading-none">AI ESTIMATOR</h3>
+            <p class="text-sm text-fog leading-relaxed mt-2">What should you bid, and where is the walk-away number?</p>
+          </div>
+          <div class="flow-step">
+            <p class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz mb-2">After you win</p>
+            <h3 class="font-display text-2xl text-chalk leading-none">SCOPEGUARD</h3>
+            <p class="text-sm text-fog leading-relaxed mt-2">Is the margin you bid still the margin you keep?</p>
+          </div>
+        </div>
+        <p class="text-sm text-fog leading-relaxed mt-7 pt-6 border-t border-plate">
+          Each one is a finished application that works on its own &mdash; <span class="text-chalk font-medium">$990 each, one time</span>.
+          Bought together the takeoff feeds the estimate and the estimate becomes ScopeGuard&rsquo;s budget, so a job
+          runs from the drawing set to the awarded subcontract with nothing retyped &mdash;
+          <a href="/construction/pricing#products" class="text-hiviz hover:text-chalk transition-colors font-medium">all three for $2,490 &rarr;</a>
+        </p>
+      </div>
+
+      <!-- SCOPEGUARD — the newest, so it leads -->
+      <article class="prod-row reveal">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div class="prod-shot">
+          <a href="/construction/scopeguard" class="prod-shot-link prod-shot" tabindex="-1">
             <video autoplay muted loop playsinline preload="none" width="1280" height="720"
               poster="/scopeguard/clip-dashboard-poster.jpg" aria-label="The ScopeGuard buyout dashboard ranking scope exposure by trade across a $14.25 million Toronto project">
               <source src="/scopeguard/clip-dashboard.mp4" type="video/mp4" />
             </video>
-          </div>
+          </a>
           <div>
-            <div class="flex flex-wrap items-center gap-2.5 mb-4">
-              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 01</span>
+            <div class="flex flex-wrap items-center gap-2.5 mb-3">
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">After you win</span>
               <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">New</span>
-              <span class="font-mono text-[0.62rem] text-fog">$990 &middot; one time</span>
             </div>
-            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">SCOPEGUARD</h3>
+            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-3 leading-none">SCOPEGUARD</h3>
+            <p class="flex items-baseline gap-2 mb-4"><span class="prod-price">$990</span><span class="font-mono text-xs text-fog">one time &middot; source code included</span></p>
             <p class="text-fog leading-relaxed mb-5">
               You won the job. Now twenty subcontractors send you their own exclusions. ScopeGuard reads
               every letter against your tender documents and puts a number on what nobody priced, what
               two trades are both carrying, and what will be argued about later.
             </p>
-            <ul class="space-y-2 text-sm text-fog mb-6">
+            <ul class="space-y-2 text-sm text-fog mb-7">
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>239 master scope requirements across 20 trade packages</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every finding cited to your clause and their page</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Costed exposure ranges from a Toronto 2026 rate table</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Clarification letters drafted in one click</span></li>
             </ul>
-            <span class="prod-cta inline-flex items-center gap-2 font-semibold text-hiviz">See every screen <span class="prod-arrow">&rarr;</span></span>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="/construction/scopeguard" class="hiviz-gradient text-white font-semibold px-6 py-3.5 rounded inline-flex items-center gap-2 hover:opacity-90 transition-opacity">See every screen <span class="prod-arrow">&rarr;</span></a>
+              <a href="/construction/pricing#products" data-checkout="product" data-product="scopeguard"
+                class="relative z-10 border border-plate text-chalk font-mono text-xs px-5 py-3.5 rounded hover:border-hiviz hover:text-hiviz transition-colors">Buy it &mdash; $990</a>
+            </div>
           </div>
         </div>
-      </a>
+      </article>
 
-      <!-- 02 · AI ESTIMATOR -->
-      <a href="/construction/ai-estimator" class="prod-row group block reveal">
+      <!-- AI ESTIMATOR -->
+      <article class="prod-row reveal">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div class="order-2 lg:order-1">
-            <div class="flex flex-wrap items-center gap-2.5 mb-4">
-              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 02</span>
-              <span class="font-mono text-[0.62rem] text-fog">$990 &middot; one time</span>
+            <div class="flex flex-wrap items-center gap-2.5 mb-3">
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">At the bid</span>
             </div>
-            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">AI ESTIMATOR</h3>
+            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-3 leading-none">AI ESTIMATOR</h3>
+            <p class="flex items-baseline gap-2 mb-4"><span class="prod-price">$990</span><span class="font-mono text-xs text-fog">one time &middot; source code included</span></p>
             <p class="text-fog leading-relaxed mb-5">
               Takeoff tells you there are 24,000 square feet of partition. This turns that into studs,
               board, waste and crew-hours — then adds the risk, the contingency, the Toronto soft costs
               and the margin you can actually win at.
             </p>
-            <ul class="space-y-2 text-sm text-fog mb-6">
+            <ul class="space-y-2 text-sm text-fog mb-7">
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>57 assemblies across 20 CSI divisions</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>27 risk rules &rarr; a contingency with a written reason</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Toronto permits, development charges, HST and rebates</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Margin ladder with win probability from your own bids</span></li>
             </ul>
-            <span class="prod-cta inline-flex items-center gap-2 font-semibold text-hiviz">See every screen <span class="prod-arrow">&rarr;</span></span>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="/construction/ai-estimator" class="hiviz-gradient text-white font-semibold px-6 py-3.5 rounded inline-flex items-center gap-2 hover:opacity-90 transition-opacity">See every screen <span class="prod-arrow">&rarr;</span></a>
+              <a href="/construction/pricing#products" data-checkout="product" data-product="ai-estimator"
+                class="relative z-10 border border-plate text-chalk font-mono text-xs px-5 py-3.5 rounded hover:border-hiviz hover:text-hiviz transition-colors">Buy it &mdash; $990</a>
+            </div>
           </div>
-          <div class="order-1 lg:order-2 prod-shot">
+          <a href="/construction/ai-estimator" class="order-1 lg:order-2 prod-shot prod-shot-link" tabindex="-1">
             <img src="/estimator/dashboard.webp" width="1920" height="1200" loading="lazy" decoding="async"
               alt="The AI Estimator dashboard pricing a 42,000 square foot Toronto residential project at $11,773,510, showing the full cost build-up and a breakdown by CSI division." />
-          </div>
+          </a>
         </div>
-      </a>
+      </article>
 
-      <!-- 03 · BLUEPRINT AUDITOR -->
-      <a href="/construction/blueprint-auditor" class="prod-row group block reveal">
+      <!-- BLUEPRINT AUDITOR -->
+      <article class="prod-row reveal">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div class="prod-shot">
+          <a href="/construction/blueprint-auditor" class="prod-shot-link prod-shot" tabindex="-1">
             <video autoplay muted loop playsinline preload="none" width="1920" height="1080"
               poster="/blueprint-auditor-takeoff-poster.jpg" aria-label="Automated quantity takeoff running on a drawing set">
               <source src="/blueprint-auditor-takeoff.mp4" type="video/mp4" />
             </video>
-          </div>
+          </a>
           <div>
-            <div class="flex flex-wrap items-center gap-2.5 mb-4">
-              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 03</span>
-              <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">Live demo</span>
-              <span class="font-mono text-[0.62rem] text-fog">$990 &middot; one time</span>
+            <div class="flex flex-wrap items-center gap-2.5 mb-3">
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">Before the bid</span>
+              <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">Free live demo</span>
             </div>
-            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">BLUEPRINT AUDITOR</h3>
+            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-3 leading-none">BLUEPRINT AUDITOR</h3>
+            <p class="flex items-baseline gap-2 mb-4"><span class="prod-price">$990</span><span class="font-mono text-xs text-fog">one time &middot; source code included</span></p>
             <p class="text-fog leading-relaxed mb-5">
               Drop in a drawing set. It reads the sheets, measures the quantities, and flags what the
               drawings contradict — before it becomes a change order. You can run it on your own
               drawings right now, free.
             </p>
-            <ul class="space-y-2 text-sm text-fog mb-6">
+            <ul class="space-y-2 text-sm text-fog mb-7">
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Quantity takeoff read straight off the PDF</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Scope-gap and coordination-conflict detection</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Ontario Building Code compliance checks</span></li>
               <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>RFI, deficiency and change-order lists generated for you</span></li>
             </ul>
-            <span class="prod-cta inline-flex items-center gap-2 font-semibold text-hiviz">Run it on your drawings <span class="prod-arrow">&rarr;</span></span>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="/construction/blueprint-auditor" class="hiviz-gradient text-white font-semibold px-6 py-3.5 rounded inline-flex items-center gap-2 hover:opacity-90 transition-opacity">Run it on your drawings <span class="prod-arrow">&rarr;</span></a>
+              <a href="/construction/pricing#products" data-checkout="product" data-product="blueprint-auditor"
+                class="relative z-10 border border-plate text-chalk font-mono text-xs px-5 py-3.5 rounded hover:border-hiviz hover:text-hiviz transition-colors">Buy it &mdash; $990</a>
+            </div>
           </div>
         </div>
-      </a>
+      </article>
 
-      <!-- 04 · CUSTOM BUILDS -->
-      <a href="/construction/services" class="prod-row group block reveal">
-        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="flex flex-wrap items-center gap-2.5 mb-4">
-              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Product 04</span>
-              <span class="inline-flex items-center gap-1.5 font-mono text-[0.6rem] tracking-widest uppercase text-fog border border-plate rounded px-2 py-0.5">Bespoke</span>
+      <!-- CUSTOM BUILDS — the other door, deliberately lighter than the three products -->
+      <div class="prod-aside mt-12 pt-10 reveal">
+        <div class="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-center">
+          <div>
+            <div class="flex flex-wrap items-center gap-2.5 mb-3">
+              <span class="font-mono text-[0.62rem] tracking-widest uppercase text-plate">Or, bespoke</span>
               <span class="font-mono text-[0.62rem] text-fog">From $1,500</span>
             </div>
-            <h3 class="font-display text-3xl lg:text-4xl text-chalk mb-4 leading-none">CUSTOM AI BUILDS</h3>
-            <p class="text-fog leading-relaxed mb-5">
-              The workflow that only your company runs — RFI backlogs, daily logs, tender risk, change
-              orders, deficiency lists. Scoped in a free assessment, trained on your own documents, and
-              handed over with the source code and the keys.
+            <h3 class="font-display text-2xl lg:text-3xl text-chalk mb-3 leading-none">CUSTOM AI BUILDS</h3>
+            <p class="text-fog text-sm leading-relaxed mb-4 max-w-2xl">
+              When the workflow is one only your company runs — RFI backlogs, daily logs, tender risk,
+              change orders, deficiency lists. Scoped in a free assessment, trained on your own documents,
+              wired into Procore, Sage or Bluebeam, and handed over with the source code and the keys.
             </p>
-            <ul class="space-y-2 text-sm text-fog mb-6">
-              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Trained on your drawings, specs and contracts</span></li>
-              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Runs on your servers or your own hardware</span></li>
-              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Integrates with Procore, Sage and Bluebeam</span></li>
-              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>You own the model, the weights and the code</span></li>
-            </ul>
-            <span class="prod-cta inline-flex items-center gap-2 font-semibold text-hiviz">Explore custom builds <span class="prod-arrow">&rarr;</span></span>
+            <a href="/construction/services" class="inline-flex items-center gap-2 font-mono text-sm text-hiviz hover:text-chalk transition-colors">Explore custom builds &rarr;</a>
           </div>
-          <div class="order-1 lg:order-2 prod-shot">
+          <div class="rounded-lg overflow-hidden border border-plate hidden lg:block">
             <img src="/images/03_scope_gap_finder.jpg" width="1600" height="1000" loading="lazy" decoding="async"
+              class="w-full h-auto opacity-70"
               alt="A custom scope-gap finder built for a general contractor, listing detected gaps against the drawing set." />
           </div>
         </div>
-      </a>
+      </div>
 
       <div class="mt-14 flex flex-col sm:flex-row gap-3 reveal">
         <a href="/construction/pricing" class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">Compare them all &amp; pricing &rarr;</a>
@@ -1262,7 +1333,7 @@
   <!-- panel marquee (kit) -->
   <section class="bg-charcoal border-b border-plate py-5" aria-hidden="true">
     <div class="pnl-marquee">
-      <div class="pnl-marquee-track"><div class="pnl-mq">Blueprint Auditor</div><div class="pnl-mq">RFI Intelligence</div><div class="pnl-mq">Tender Risk Scanner</div><div class="pnl-mq">Daily Log Synthesizer</div><div class="pnl-mq">Scope Gap Finder</div><div class="pnl-mq">Change-Order Tracker</div><div class="pnl-mq">Deficiency Lists</div><div class="pnl-mq">Automated Takeoffs</div><div class="pnl-mq">Code Review</div><div class="pnl-mq">Field App</div><div class="pnl-mq">Blueprint Auditor</div><div class="pnl-mq">RFI Intelligence</div><div class="pnl-mq">Tender Risk Scanner</div><div class="pnl-mq">Daily Log Synthesizer</div><div class="pnl-mq">Scope Gap Finder</div><div class="pnl-mq">Change-Order Tracker</div><div class="pnl-mq">Deficiency Lists</div><div class="pnl-mq">Automated Takeoffs</div><div class="pnl-mq">Code Review</div><div class="pnl-mq">Field App</div></div>
+      <div class="pnl-marquee-track"><div class="pnl-mq">Automated Takeoffs</div><div class="pnl-mq">Code Review</div><div class="pnl-mq">Tender Risk</div><div class="pnl-mq">Scope Gaps</div><div class="pnl-mq">RFI Intelligence</div><div class="pnl-mq">Change Orders</div><div class="pnl-mq">Automated Takeoffs</div><div class="pnl-mq">Code Review</div><div class="pnl-mq">Tender Risk</div><div class="pnl-mq">Scope Gaps</div><div class="pnl-mq">RFI Intelligence</div><div class="pnl-mq">Change Orders</div></div>
     </div>
   </section>
 
@@ -1477,17 +1548,17 @@
   <!-- THE MARAPONE DIFFERENCE -->
   <section class="py-16 lg:py-24 border-b border-plate" data-collapse-mobile="the full comparison">
     <div class="max-w-6xl mx-auto px-4">
-      <!-- Heading row -->
-      <div class="mb-8 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// Why not just use ChatGPT or another SaaS?</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">THE PROBLEM WITH<br /><span
-            class="text-hiviz">RENTED AI</span></h2>
-        <p class="text-fog leading-relaxed max-w-xl">SaaS AI charges monthly, keeps your data on their servers, and
-          disappears when the funding dries up. That's a liability, not a tool.</p>
-      </div>
-      <!-- Table + stat cards side by side, top-aligned -->
-      <div class="grid lg:grid-cols-2 gap-8 items-start">
-        <div class="overflow-x-auto rounded-lg border border-plate">
+      <!-- Heading beside the table — the table already carries the numbers, so nothing repeats them -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="reveal">
+          <p class="font-mono text-hiviz text-sm mb-2">// Why not just use ChatGPT or another SaaS?</p>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">THE PROBLEM WITH<br /><span
+              class="text-hiviz">RENTED AI</span></h2>
+          <p class="text-fog leading-relaxed max-w-xl">SaaS AI charges monthly, keeps your data on their servers, and
+            disappears when the funding dries up. That's a liability, not a tool. You buy once, it runs on your
+            hardware, and it keeps working whether or not we are still here.</p>
+        </div>
+        <div class="overflow-x-auto rounded-lg border border-plate reveal reveal-d1">
           <table class="w-full text-sm font-mono min-w-[280px]">
             <thead>
               <tr class="bg-charcoal border-b border-plate">
@@ -1530,24 +1601,6 @@
             </tbody>
           </table>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-gunmetal border border-plate rounded-lg p-5 text-center">
-            <p class="font-display text-4xl text-hiviz mb-1">$0</p>
-            <p class="font-mono text-xs text-fog">Monthly fees after delivery</p>
-          </div>
-          <div class="bg-gunmetal border border-plate rounded-lg p-5 text-center">
-            <p class="font-display text-4xl text-hiviz mb-1">100%</p>
-            <p class="font-mono text-xs text-fog">Source code ownership</p>
-          </div>
-          <div class="bg-gunmetal border border-plate rounded-lg p-5 text-center">
-            <p class="font-display text-4xl text-hiviz mb-1">0</p>
-            <p class="font-mono text-xs text-fog">Data sent to external servers</p>
-          </div>
-          <div class="bg-gunmetal border border-plate rounded-lg p-5 text-center">
-            <p class="font-display text-4xl text-hiviz mb-1">∞</p>
-            <p class="font-mono text-xs text-fog">Useful life — runs forever</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1577,8 +1630,8 @@
             02</div>
           <h3 class="font-display text-xl text-chalk mb-2">CUSTOM BUILD</h3>
           <p class="text-fog text-sm leading-relaxed">We design and build a private AI system around your specific
-            project workflows, document formats, and compliance requirements. Your data never leaves your network during
-            training or deployment.</p>
+            project workflows, document formats, and compliance requirements &mdash; typically 2&ndash;3 weeks from
+            scoping to handover. Your data never leaves your network during training or deployment.</p>
         </div>
         <div class="text-center reveal reveal-d3">
           <div
@@ -1593,39 +1646,6 @@
       <div class="text-center mt-10">
         <a href="/construction/how-it-works"
           class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">Full technical breakdown &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- OUTCOMES STRIP -->
-  <section class="py-16 lg:py-20 border-b border-plate">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="text-center mb-10 reveal">
-        <p class="font-mono text-xs uppercase tracking-wider text-hiviz mb-2">// Based on live client deployments</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">REAL RESULTS.<br /><span class="text-hiviz">REAL
-            PROJECTS.</span></h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-plate rounded overflow-hidden">
-        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d1">
-          <p class="font-display text-5xl text-hiviz shine-accent">6–8h</p>
-          <p class="font-mono text-fog text-xs mt-2 leading-snug">staff hours recovered<br />per week, per project</p>
-        </div>
-        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d2">
-          <p class="font-display text-5xl text-chalk">97%</p>
-          <p class="font-mono text-fog text-xs mt-2 leading-snug">document extraction<br />accuracy vs. manual</p>
-        </div>
-        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d3">
-          <p class="font-display text-5xl text-chalk">−65%</p>
-          <p class="font-mono text-fog text-xs mt-2 leading-snug">RFI response time<br />reduction on average</p>
-        </div>
-        <div class="bg-charcoal px-6 py-6 text-center reveal reveal-d4">
-          <p class="font-display text-5xl text-chalk">2–3wk</p>
-          <p class="font-mono text-fog text-xs mt-2 leading-snug">average build time<br />scoping to handover</p>
-        </div>
-      </div>
-      <div class="text-center mt-8">
-        <a href="/construction/work" class="font-mono text-sm text-hiviz hover:text-chalk transition-colors">See the
-          case studies &rarr;</a>
       </div>
     </div>
   </section>
@@ -1955,45 +1975,34 @@
   </section>
 
   <!-- LOGISTICS — SECONDARY PRACTICE (the only door to the logistics side, besides the nav) -->
-  <section class="py-16 lg:py-24 bg-charcoal border-b border-plate" style="border-top:1px solid rgba(82,183,136,0.28)">
+  <section class="py-10 lg:py-12 bg-charcoal border-b border-plate" style="border-top:1px solid rgba(82,183,136,0.28)">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-        <div class="reveal">
-          <p class="inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-widest text-marine mb-4">
+      <div class="reveal flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+        <div class="lg:flex-1">
+          <p class="inline-flex items-center gap-2.5 font-mono text-[0.65rem] uppercase tracking-widest text-marine mb-2">
             <span class="inline-block w-5 h-px bg-marine" aria-hidden="true"></span>Secondary practice
           </p>
-          <h2 class="font-display text-3xl lg:text-5xl text-chalk mb-4 leading-none">ALSO SERVING SELECT<br /><span
+          <h2 class="font-display text-2xl lg:text-3xl text-chalk mb-2 leading-none">ALSO SERVING SELECT <span
               class="text-marine">LOGISTICS TEAMS</span></h2>
-          <p class="text-fog leading-relaxed text-sm mb-6 max-w-xl">Construction is where most of our work goes. But the
-            same private-AI stack runs freight and trade: invoice auditing, customs document processing, quote
-            intelligence and compliance checks — for a limited number of forwarders, brokers and 3PLs.</p>
-          <ul class="flex flex-wrap gap-2 mb-8">
-            <li><a href="/logistics/for/freight-brokers"
-                class="inline-block font-mono text-xs text-fog border border-plate rounded-full px-3 py-1 hover:text-marine-light hover:border-marine transition-colors">Freight
-                brokers</a></li>
-            <li><a href="/logistics/for/customs-brokers"
-                class="inline-block font-mono text-xs text-fog border border-plate rounded-full px-3 py-1 hover:text-marine-light hover:border-marine transition-colors">Customs
-                brokers</a></li>
-            <li><a href="/logistics/for/3pls"
-                class="inline-block font-mono text-xs text-fog border border-plate rounded-full px-3 py-1 hover:text-marine-light hover:border-marine transition-colors">3PLs</a>
-            </li>
-            <li><a href="/logistics/for/forwarders"
-                class="inline-block font-mono text-xs text-fog border border-plate rounded-full px-3 py-1 hover:text-marine-light hover:border-marine transition-colors">Forwarders</a>
-            </li>
-            <li><a href="/logistics/for/importers"
-                class="inline-block font-mono text-xs text-fog border border-plate rounded-full px-3 py-1 hover:text-marine-light hover:border-marine transition-colors">Importers</a>
-            </li>
+          <p class="text-fog leading-relaxed text-sm max-w-2xl">Construction is where most of our work goes. The same
+            private-AI stack runs freight and trade &mdash; invoice auditing, customs documents, quote intelligence and
+            compliance &mdash; for a limited number of forwarders, brokers and 3PLs.</p>
+          <ul class="flex flex-wrap items-center gap-x-2 gap-y-1 mt-3 font-mono text-[0.68rem] text-plate">
+            <li><a href="/logistics/for/freight-brokers" class="hover:text-marine-light transition-colors">Freight brokers</a></li>
+            <li aria-hidden="true">&middot;</li>
+            <li><a href="/logistics/for/customs-brokers" class="hover:text-marine-light transition-colors">Customs brokers</a></li>
+            <li aria-hidden="true">&middot;</li>
+            <li><a href="/logistics/for/3pls" class="hover:text-marine-light transition-colors">3PLs</a></li>
+            <li aria-hidden="true">&middot;</li>
+            <li><a href="/logistics/for/forwarders" class="hover:text-marine-light transition-colors">Forwarders</a></li>
+            <li aria-hidden="true">&middot;</li>
+            <li><a href="/logistics/for/importers" class="hover:text-marine-light transition-colors">Importers</a></li>
           </ul>
-          <a href="/logistics"
-            class="inline-flex items-center gap-2 border border-marine text-marine-light hover:bg-marine/10 hover:text-white rounded px-5 py-3 font-mono text-sm transition-colors">Enter
-            LogisticsAI <span aria-hidden="true">&rarr;</span></a>
         </div>
-        <div class="reveal reveal-d1 relative rounded-lg overflow-hidden border border-plate hidden lg:block"
-          aria-hidden="true">
-          <img src="/logistics-hero-poster.jpg" alt="" width="960" height="600" loading="lazy"
-            class="w-full h-full object-cover opacity-60" />
-          <div class="absolute inset-0 pointer-events-none"
-            style="background:linear-gradient(135deg, rgba(26,26,26,0.65) 0%, rgba(45,106,79,0.28) 100%)"></div>
+        <div class="lg:flex-shrink-0">
+          <a href="/logistics"
+            class="inline-flex items-center gap-2 border border-marine/60 text-marine-light hover:bg-marine/10 hover:text-white rounded px-5 py-2.5 font-mono text-xs transition-colors">Enter
+            LogisticsAI <span aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </div>

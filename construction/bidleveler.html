@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bid Leveler – The cheapest number is not the cheapest bid | Marapone</title>
+  <link rel="canonical" href="https://marapone.com/construction/bidleveler" />
+  <meta name="description"
+    content="Marapone Bid Leveler reads a dozen subcontractor quotes in a dozen formats, normalises them to the same scope, and tells you what each bid would actually cost. Every adjustment shows where its number came from. Runs on your own machine. Bought once." />
+  <meta name="keywords"
+    content="bid leveling software, subcontractor quote comparison, bid tabulation, scope gap analysis, tender analysis, award recommendation, Toronto trade bids, private AI construction" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="Bid Leveler – The cheapest number is not the cheapest bid | Marapone" />
+  <meta property="og:description"
+    content="A dozen quotes in a dozen formats, levelled to one scope. The bid set prices its own gaps — so every adjustment comes from a real market number, not a percentage." />
+  <meta property="og:url" content="https://marapone.com/construction/bidleveler" />
+  <meta property="og:image" content="https://marapone.com/bidleveler/bidleveler-tour-poster.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bid Leveler – The cheapest number is not the cheapest bid | Marapone" />
+  <meta name="twitter:description"
+    content="The difference between the low bid and the low cost is what somebody left out. Bid Leveler prices it, from the other bids in the package." />
+  <meta name="twitter:image" content="https://marapone.com/bidleveler/bidleveler-tour-poster.jpg" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="preload" as="image" href="/bidleveler/bidleveler-tour-poster.jpg" fetchpriority="high" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Marapone Bid Leveler",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows 10, Windows 11, macOS 12+, Linux",
+    "url": "https://marapone.com/construction/bidleveler",
+    "description": "Subcontractor quote leveling that runs entirely on the contractor's own machine. Reads quotes in any format, normalises them to the same scope, and reports what each bid would actually cost — with every adjustment showing whether it came from a competing bidder's price, the bidder's own alternate, your award history or the bundled Toronto rate table.",
+    "featureList": [
+      "15 trade packages with 155 scope elements mapped to CSI MasterFormat",
+      "Nine finding types — scope gaps, universal gaps, commercial mismatches, allowances, qualifications, addenda, outliers",
+      "Six valuation bases, shown on every adjustment, ranked from competitor price to estimator's figure",
+      "Leveling matrix to Excel with live SUM formulas",
+      "Award recommendation PDF and per-bidder clarification letters",
+      "Subcontract scope paragraphs written from the levelled position",
+      "Handoffs to the AI Estimator, ScopeGuard and a Procore-shaped bid tab"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "990",
+      "priceCurrency": "CAD",
+      "url": "https://marapone.com/construction/pricing#products"
+    },
+    "publisher": { "@type": "Organization", "name": "Marapone", "url": "https://marapone.com/" }
+  }
+  </script>
+
+  <style>
+    html { overflow-x: hidden; overscroll-behavior-x: none; max-width: 100%; }
+
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      max-width: 100%;
+    }
+
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+
+    #nav-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: #f97316; z-index: 9999; pointer-events: none;
+      transition: width .08s linear;
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* ── scroll-reveal (matches the rest of the site) ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ── eyebrow ── */
+    .sg-eyebrow {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-family: 'DM Mono', monospace; font-size: .7rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase; color: #f97316;
+    }
+    .sg-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: #f97316; display: inline-block; }
+    .sg-eyebrow.muted { color: #6e6e6e; }
+    .sg-eyebrow.muted::before { background: #6e6e6e; }
+
+    /* ── hero headline sheen (site-wide treatment) ── */
+    .sg-shine {
+      background: linear-gradient(100deg, #ffffff 0%, #e8e8e8 38%, #f97316 50%, #e8e8e8 62%, #ffffff 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 0 24px rgba(249, 115, 22, .30));
+      animation: sgSheen 6s ease-in-out infinite;
+    }
+    @keyframes sgSheen { 0%, 100% { background-position: 8% 0; } 50% { background-position: 92% 0; } }
+    @media (prefers-reduced-motion: reduce) { .sg-shine { animation: none; background-position: 30% 0; } }
+
+    /* ── app window chrome ── */
+    .app-window {
+      border-radius: 10px;
+      border: 1px solid #3a3a3a;
+      background: #101012;
+      overflow: hidden;
+      box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .02);
+    }
+    .app-window img, .app-window video { display: block; width: 100%; height: auto; }
+    /* The hero tour carries the page, so give it a heavier frame and glow. */
+    .app-window-hero {
+      border-color: #454545;
+      box-shadow: 0 50px 110px -35px rgba(0, 0, 0, .95), 0 0 0 1px rgba(249, 115, 22, .10);
+    }
+
+    .app-glow { position: relative; }
+    .app-glow::before {
+      content: ""; position: absolute; inset: -8% -4% -12%;
+      background: radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, .18), transparent 65%);
+      pointer-events: none; z-index: -1;
+    }
+
+    /* ── stat rail ── */
+    .stat-card {
+      border: 1px solid #3a3a3a; border-radius: 8px; background: #232323;
+      padding: 1.1rem 1.15rem;
+    }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; letter-spacing: .02em; }
+
+    /* ── feature row media ── */
+    .feature-row { align-items: center; }
+
+    /* ── finding-type table ── */
+    .find-row { display: grid; grid-template-columns: 260px 1fr auto; gap: 1.25rem; padding: .95rem 0; border-bottom: 1px solid #2e2e2e; align-items: baseline; }
+    @media (max-width: 767px) { .find-row { grid-template-columns: 1fr; gap: .3rem; } .find-row .find-count { justify-self: start; } }
+
+    /* ── spec table ── */
+    .spec-row { display: grid; grid-template-columns: 190px 1fr; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid #2e2e2e; }
+    @media (max-width: 640px) { .spec-row { grid-template-columns: 1fr; gap: .35rem; } }
+
+    /* ── quoted lines, set like the app sets them ── */
+    .letter-quote {
+      font-family: 'DM Mono', monospace; font-size: .78rem; line-height: 1.7;
+      background: #141414; border: 1px solid #2e2e2e; border-left: 2px solid #f97316;
+      border-radius: 6px; padding: .85rem 1rem; color: #a0a0a0;
+    }
+
+    /* ── the bid-vs-levelled bar, the one figure that carries the page ── */
+    .bl-bar { display: grid; grid-template-columns: 150px 1fr 110px; gap: .75rem; align-items: center; padding: .4rem 0; }
+    .bl-track { position: relative; height: 14px; border-radius: 3px; background: #202021; overflow: hidden; }
+    .bl-bid { position: absolute; top: 0; bottom: 0; left: 0; background: #3f3f42; }
+    .bl-add { position: absolute; top: 0; bottom: 0; background: linear-gradient(90deg, #f97316, #ea580c); }
+    @media (max-width: 640px) { .bl-bar { grid-template-columns: 1fr; gap: .15rem; } }
+
+    .cta-band { position: relative; overflow: hidden; }
+    .cta-band::before {
+      content: ""; position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 120%;
+      background: radial-gradient(ellipse at center, rgba(249, 115, 22, .22), transparent 60%);
+      pointer-events: none;
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
+  <script defer src="/checkout.js"></script>
+  <style>
+    /* Products nav menu — CSS-driven so the links work with JS disabled.
+       The visual gap under the trigger is the wrapper's own padding, NOT a margin
+       on the menu — the menu is positioned with top:100%, which resolves against
+       the padding box, so any margin there would push the menu down and reopen a
+       dead strip the pointer falls through. Hiding is also delayed briefly so a
+       fast diagonal move into the menu still lands. */
+    [data-mp-products], [data-mp-more] { padding-bottom: .55rem; margin-bottom: -.55rem; }
+    [data-mp-products] .mp-products-menu,
+    [data-mp-more] .mp-products-menu {
+      visibility: hidden; opacity: 0;
+      transition: opacity .14s ease, visibility 0s linear .22s;
+    }
+    [data-mp-products]:hover .mp-products-menu,
+    [data-mp-products]:focus-within .mp-products-menu,
+    [data-mp-more]:hover .mp-products-menu,
+    [data-mp-more]:focus-within .mp-products-menu {
+      visibility: visible; opacity: 1;
+      transition: opacity .14s ease, visibility 0s;
+    }
+    .mp-products-menu::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -.75rem; height: .75rem;
+    }
+    [data-mp-products]:hover .mp-chev,
+    [data-mp-products]:focus-within .mp-chev,
+    [data-mp-more]:hover .mp-chev,
+    [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    /* Comfortable touch targets in the mobile menu — the rows were ~24px tall,
+       which is tight for the primary navigation on a phone. */
+    #mobile-menu a { padding-top: .45rem; padding-bottom: .45rem; }
+    #mobile-menu a.bg-hiviz, #mobile-menu a.bg-marine { padding-top: .6rem; padding-bottom: .6rem; }
+    .mp-mi { transition: background-color .15s ease, color .15s ease; }
+    .mp-mi:hover { background: #232323; color: #f97316; }
+    .mp-pi { transition: background-color .15s ease; }
+    .mp-pi:hover { background: #232323; }
+    .mp-pi:hover .text-chalk { color: #f97316; }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <div id="nav-progress" aria-hidden="true"></div>
+
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip
+    to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden lg:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
+        <div class="relative" data-mp-products>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
+              <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
+            </a>
+            <a href="/construction/specchecker" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">SpecChecker <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Spec book vs. drawings, before you order</span>
+            </a>
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/bidleveler" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Bid Leveler <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">A dozen sub quotes, levelled to one scope</span>
+            </a>
+            <a href="/construction/scopeguard" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">ScopeGuard</span>
+              <span class="block text-xs text-fog mt-0.5">Subcontractor scope &amp; buyout review</span>
+            </a>
+            <a href="/construction/services" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Custom AI Builds</span>
+              <span class="block text-xs text-fog mt-0.5">Built around your own workflow</span>
+            </a>
+          </div>
+        </div>
+        <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <div class="relative" data-mp-more>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">More<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute right-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:190px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/work" class="mp-mi block px-4 py-2 text-sm text-fog">Our Work</a>
+            <a href="/construction/sample-assessment" class="mp-mi block px-4 py-2 text-sm text-fog">Samples</a>
+            <a href="/construction/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
+            <a href="/construction/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
+            <a href="/construction/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/construction/regions" class="mp-mi block px-4 py-2 text-sm text-fog">Regions &amp; Rate Packs</a>
+            <a href="/construction/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
+            <a href="/construction/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
+            <a href="/construction/vs/procore" class="mp-mi block px-4 py-2 text-sm text-fog">vs Procore</a>
+          </div>
+        </div>
+        <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics" class="text-marine hover:text-marine-light transition-colors whitespace-nowrap inline-flex items-center gap-1.5" aria-label="LogisticsAI — private AI for freight, customs and trade compliance"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="lg:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/bidleveler" class="text-fog hover:text-chalk" style="padding-left:.75rem">Bid Leveler</a>
+      <a href="/construction/scopeguard" class="text-fog hover:text-chalk" style="padding-left:.75rem">ScopeGuard</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
+      <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
+      <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
+      <a href="/construction/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
+      <a href="/construction/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/construction/regions" class="text-fog hover:text-chalk" style="padding-left:.75rem">Regions &amp; Rate Packs</a>
+      <a href="/construction/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
+      <a href="/construction/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
+      <a href="/construction/vs/procore" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Procore</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/logistics" class="text-marine hover:text-marine-light inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="main-content" class="relative overflow-hidden border-b border-plate">
+    <div class="absolute inset-0 grid-dot opacity-40" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block" aria-hidden="true"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 py-16 lg:py-24">
+      <div>
+
+        <div class="max-w-3xl">
+          <div class="flex flex-wrap items-center gap-3 mb-5">
+            <span class="sg-eyebrow">Marapone Bid Leveler</span>
+            <span class="inline-flex items-center gap-1.5 font-mono text-[0.62rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiviz" aria-hidden="true"></span> New
+            </span>
+          </div>
+
+          <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.92] text-chalk">
+            The lowest number<br /><span class="sg-shine">is not the lowest bid.</span>
+          </h1>
+
+          <p class="font-body text-lg text-fog max-w-2xl mt-6 leading-relaxed">
+            Tender a trade and a dozen quotes come back in a dozen formats — a formal letter with
+            an exclusions schedule, a wall of prose with the carve-outs buried mid-sentence, a
+            spreadsheet, a four-line email, a photograph of a fax. Levelling them by hand is a day
+            in Excel, and the day usually ends with an estimator hoping they didn't miss anything.
+            Bid Leveler reads all of them, normalises them to the same scope, and tells you what
+            each bid would <em class="not-italic text-chalk font-medium">actually</em> cost. Runs
+            entirely on your own machine. Bought once.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mt-8">
+            <a href="/construction/pricing#products" data-checkout="product" data-product="bidleveler"
+              class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">
+              Buy it — $990 one time →
+            </a>
+            <a href="#inside"
+              class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">
+              See every screen
+            </a>
+          </div>
+          <div class="mt-3 flex flex-col items-start gap-1.5">
+            <a href="/construction/contact?product=bidleveler"
+              class="inline-flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
+              Or send us one real bid package and we'll level it for you first →
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 mt-6 font-mono text-xs text-fog">
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Works with the wifi off</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Every adjustment states its basis</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> PDF, Word, Excel, email or a scan</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Windows, macOS &amp; Linux &middot; mobile Q4 2026</span>
+          </div>
+        </div>
+
+        <div class="app-glow reveal reveal-d1 mt-12 lg:mt-16">
+          <figure class="app-window app-window-hero">
+            <video id="tour" width="1920" height="1080" muted loop playsinline autoplay preload="metadata"
+              poster="/bidleveler/bidleveler-tour-poster.jpg"
+              aria-label="A screen recording of Bid Leveler working five HVAC quotes on a Toronto office fit-out — dashboard, leveling matrix, findings, the quotes as read, the scope checklist, the award recommendation and intelligence.">
+              <source src="/bidleveler/bidleveler-tour.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figcaption class="text-center font-mono text-xs text-plate mt-3">
+            The real app, recorded · five quotes, five formats, one $1.3M mechanical package
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ STAT RAIL ══════════ -->
+  <section class="bg-steel border-b border-plate py-6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="stat-card">
+          <p class="stat-num text-hiviz">155</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Scope elements</p>
+          <p class="text-xs text-plate mt-0.5">Across 15 trade packages, mapped to CSI</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">6</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Valuation bases</p>
+          <p class="text-xs text-plate mt-0.5">Shown on every adjustment, ranked by strength</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">9</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Finding types</p>
+          <p class="text-xs text-plate mt-0.5">From scope gaps to bids that don't fit the market</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">123</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Toronto rates</p>
+          <p class="text-xs text-plate mt-0.5">The fallback only, and always labelled as one</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE PROBLEM ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div class="reveal">
+          <span class="sg-eyebrow">What leveling actually is</span>
+          <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+            A day in Excel, and it ends in a hope.
+          </h2>
+          <p class="text-fog mt-5 leading-relaxed">
+            Five bidders quote the same package and none of them quote the same scope. One carries
+            crane hoisting; one excludes it; two never mention it; the fifth prices it as an
+            alternate. Put those five numbers in a column and the column is meaningless.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            On the demo package the low bid was
+            <span class="text-chalk font-medium">$1,142,000</span>. Levelled, that bidder is not
+            the cheapest — awarding on the bid form alone would have cost
+            <span class="text-hiviz font-medium">$84,986</span>, and $226,160 of scope sits outside
+            the bid numbers entirely whoever you award to.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            <span class="text-chalk font-medium">Silence is the expensive part.</span>
+            An exclusion is on the record and can be priced. Silence is what reaches site
+            unresolved — so the two are levelled the same way and flagged differently.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1">
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-3">Bid form vs. levelled cost — the demo package</p>
+          <div class="border border-plate rounded-lg bg-gunmetal p-5">
+            <p class="text-xs text-fog leading-relaxed mb-4">The grey bar is what they bid. The orange is what leveling added. Read the right-hand column, not the bid form.</p>
+
+            <div class="bl-bar">
+              <span class="text-sm text-green-400 font-medium">Steelcore</span>
+              <div class="bl-track"><span class="bl-bid" style="width:81.32%"></span><span class="bl-add" style="left:81.32%;right:5.49%"></span></div>
+              <span class="font-mono text-xs text-chalk text-right">$1,621,160</span>
+            </div>
+            <div class="bl-bar">
+              <span class="text-sm text-fog">Northgate</span>
+              <div class="bl-track"><span class="bl-bid" style="width:68.79%"></span><span class="bl-add" style="left:68.79%;right:4.96%"></span></div>
+              <span class="font-mono text-xs text-chalk text-right">$1,630,298</span>
+            </div>
+            <div class="bl-bar">
+              <span class="text-sm text-fog">Apex Air</span>
+              <div class="bl-track"><span class="bl-bid" style="width:76.37%"></span><span class="bl-add" style="left:76.37%;right:3.84%"></span></div>
+              <span class="font-mono text-xs text-chalk text-right">$1,649,600</span>
+            </div>
+            <div class="bl-bar">
+              <span class="text-sm text-fog">Delta HVAC <span class="font-mono text-[0.6rem] text-hiviz">LOW BID</span></span>
+              <div class="bl-track"><span class="bl-bid" style="width:66.57%"></span><span class="bl-add" style="left:66.57%;right:0.54%"></span></div>
+              <span class="font-mono text-xs text-chalk text-right">$1,706,146</span>
+            </div>
+            <div class="bl-bar">
+              <span class="text-sm text-fog">Bercon</span>
+              <div class="bl-track"><span class="bl-bid" style="width:73.93%"></span><span class="bl-add" style="left:73.93%;right:0.00%"></span></div>
+              <span class="font-mono text-xs text-chalk text-right">$1,715,393</span>
+            </div>
+
+            <p class="font-mono text-[0.68rem] text-plate leading-relaxed mt-4 pt-4 border-t border-plate">
+              Delta submitted the lowest number at $1,142,000. Levelled, they land fourth.<br />
+              The ranking changed — which is the only reason any of this is worth doing.
+            </p>
+          </div>
+          <p class="font-mono text-xs text-plate mt-3">
+            Five real quotes in five formats, read by the same extractor as anything you import.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE IDEA ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">The idea</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+          The bid set prices its own gaps.
+        </h2>
+        <p class="text-fog mt-5 leading-relaxed">
+          The interesting move is not "read a PDF". It is this: when Sub&nbsp;A excludes crane
+          hoisting and Sub&nbsp;B carries it as a $15,000 alternate, Sub&nbsp;A's gap is worth
+          $15,000. That is a real market price — for this project, this schedule, this site, from a
+          contractor who wants the work. Not a number from a book. Not a percentage.
+        </p>
+        <p class="text-fog mt-4 leading-relaxed">
+          So the leveling pass looks for competitor evidence first and only falls back to the
+          bundled Toronto rate table for elements nobody priced. Every adjustment shows which it
+          used, because an estimator who cannot say where a number came from cannot use it in a
+          negotiation.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal">
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Competing bidder</span>
+          <p class="text-sm text-fog leading-relaxed">Another bid in this package quoted this work. The strongest evidence there is — a live price for exactly this job.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Their own alternate</span>
+          <p class="text-sm text-fog leading-relaxed">They told you what they want for it. Hard to argue with in the negotiation, because they wrote it.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Your award history</span>
+          <p class="text-sm text-fog leading-relaxed">What you paid last time, from the award corpus this app builds on your own machine as you record what you bought.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Toronto rate table</span>
+          <p class="text-sm text-fog leading-relaxed">123 subcontract-level rates, revision 2026.1 — an estimate, bundled, overridable, and labelled as such on screen. Used only when nobody in the package priced the item.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Percent of trade</span>
+          <p class="text-sm text-fog leading-relaxed">The weakest basis in the product, and it says so. Replace it before you argue it.</p>
+        </div>
+        <div class="spec-row" style="border-bottom:none">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Estimator's figure</span>
+          <p class="text-sm text-fog leading-relaxed">You typed it. It is marked as yours and it survives every re-run — the engine never quietly overwrites a call you made.</p>
+        </div>
+      </div>
+
+      <div class="reveal mt-8 bg-charcoal border-l-2 border-hiviz rounded-r-xl p-6 lg:p-7 max-w-3xl">
+        <p class="text-chalk font-semibold mb-2">Two rules keep the matrix honest, and both are enforced by tests</p>
+        <p class="text-fog text-sm leading-relaxed">
+          <span class="text-chalk">Silence on core trade scope is not a gap.</span> A sub quoting
+          "the HVAC work" for a lump sum is carrying the ductwork whether or not their letter
+          enumerates it. Silence only counts where it means something — the universal items like
+          crane and cleanup, and anything a competing bidder took a position on.
+        </p>
+        <p class="text-fog text-sm leading-relaxed mt-3">
+          <span class="text-chalk">Hidden cost is the cost of the award, not the field.</span>
+          Summing every bidder's adjustments produces a figure several times larger than any cost
+          anyone will incur. You award one subcontract, so the headline figure is the exposure on
+          the bid you would actually award.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE NINE FINDINGS ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">What it finds</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Nine ways a bid set fails to be comparable.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Every finding names the bidders on each side, quotes the line it came from, states what
+          it is worth and on what basis, and says what to ask. The counts below are what the demo
+          package actually produced from five PDFs.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal">
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Scope gap</span>
+          <p class="text-sm text-fog leading-relaxed">One bidder carries the work; another excluded it or never mentioned it. Both get levelled — flagged differently, because an exclusion is on the record and silence is not.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">14 &middot; $352,938</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Nobody carried it</span>
+          <p class="text-sm text-fog leading-relaxed">Scope every bidder left out. It doesn't change who is cheapest; it changes what the trade costs you, and it is yours by default.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">10 &middot; $155,250</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Price-moving qualification</span>
+          <p class="text-sm text-fog leading-relaxed">"If required", "one mobilization", "continuous access", "subject to change" — quoted back at you with the reason each one matters.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">8 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Commercial mismatch</span>
+          <p class="text-sm text-fog leading-relaxed">HST in or out, bonding, escalation clauses, overtime assumptions, and a validity window that expires before you can award.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">6 &middot; $90,233</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Addendum not carried</span>
+          <p class="text-sm text-fog leading-relaxed">A bid priced against a superseded document is a bid for a different project.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">1 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Allowance, not a price</span>
+          <p class="text-sm text-fog leading-relaxed">A placeholder wearing a price tag. It converts to a real number after award, when you have no competitive tension left.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">1 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Bid outlier</span>
+          <p class="text-sm text-fog leading-relaxed">A bid still well below the field <em class="not-italic text-chalk">after</em> leveling. In this market that is rarely a bargain.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this package</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Quantity mismatch</span>
+          <p class="text-sm text-fog leading-relaxed">Priced against a different quantity than the one in the tender documents — the same rate against a different job.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this package</span>
+        </div>
+        <div class="find-row" style="border-bottom:none">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Unit rate issue</span>
+          <p class="text-sm text-fog leading-relaxed">A rate is present but the extension is missing or wrong. Quiet, and it survives a read-through.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this package</span>
+        </div>
+      </div>
+
+      <p class="reveal font-mono text-xs text-plate mt-6 max-w-3xl leading-relaxed">
+        40 findings, 14 of them high severity, across 36 scope elements and 5 bidders — 26 rows
+        where the bidders disagree and 10 carried by nobody. $226,160 of adjustment sits on the
+        bid you would award; $84,986 is what awarding on the bid form alone would have cost.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ THE SCREENS ══════════ -->
+  <section id="inside" class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-14">
+        <span class="sg-eyebrow">Inside the app</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Every screen, no mock-ups.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Everything below is the shipping application working one real package:
+          <em class="not-italic text-chalk">240 Front Street West</em>, an office fit-out and base
+          building upgrade in Toronto — the mechanical trade, a $1.32M carry, five bidders, five
+          deliberately different formats. Nothing is pre-structured. The extractor and the leveling
+          engine are the ones your own quotes go through.
+        </p>
+      </div>
+
+      <!-- 01 · DASHBOARD -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">01 — Dashboard</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">One number: the cost of not levelling.</h3>
+          <p class="text-fog leading-relaxed">
+            The headline is what awarding on the bid form alone would have cost you. Under it, the
+            bid-versus-levelled bar for every bidder, ranked, with the position each one moved.
+            Then a written review that says who to award to and what is still open against them.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>"Where the hidden money is" totals each scope element across every live bid — the field's exposure, not a cost on any one award</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Levelled award against your carry, with the variance stated as a percentage you can take to a meeting</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Ask it <span class="font-mono text-xs">who should I award to?</span> or <span class="font-mono text-xs">what did nobody price?</span> — parsed by rule, previewed before it changes anything</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/bidleveler/clip-dashboard-poster.jpg" aria-label="The Bid Leveler dashboard showing $84,986 as the cost of not levelling, five bidders ranked by levelled cost, and where the hidden money sits by scope element.">
+              <source src="/bidleveler/clip-dashboard.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 02 · MATRIX -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/bidleveler/clip-matrix-poster.jpg" aria-label="The leveling matrix — scope elements down the side, bidders across the top, each cell showing whether the work is included, excluded, never addressed, an alternate, an allowance or by others, with the adjustment underneath.">
+              <source src="/bidleveler/clip-matrix.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">02 — The leveling matrix</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">Scope down the side, bidders across the top.</h3>
+          <p class="text-fog leading-relaxed">
+            The day in Excel you were about to spend. Every cell says what that bidder did with
+            that scope element — <span class="font-mono text-xs">IN</span>,
+            <span class="font-mono text-xs">EX</span>, <span class="font-mono text-xs">—</span>,
+            <span class="font-mono text-xs">ALT</span>, <span class="font-mono text-xs">ALLOW</span>,
+            <span class="font-mono text-xs">OTH</span> or <span class="font-mono text-xs">COND</span>
+            — with the adjustment underneath it.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Filter to only the rows where the bidders disagree, which is where the argument is</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Click any cell to change that bidder's position or override the adjustment — a call you make by hand is marked and survives every re-run</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Exports to Excel as five sheets with live SUM formulas, so your overrides move the totals in the file too</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 03 · QUOTES -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">03 — Prose into structure</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">A quote letter is not a data format. It becomes one.</h3>
+          <p class="text-fog leading-relaxed">
+            Drag the quotes onto the window — PDF, Word, Excel, a saved email or a scan. Each is
+            read and split into base price, inclusions, exclusions, qualifications, alternates,
+            allowances, unit rates and commercial terms, with the page it came from and an
+            extraction confidence on every line.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Addenda acknowledged is tracked per bidder — 3 of 3, or the gap that is about to cost you</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Scanned quotes are recognised on the machine and flagged, not silently trusted</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>A bidder who never sent anything can be entered by hand; every extracted line is editable</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/bidleveler/clip-quotes-poster.jpg" aria-label="The quotes view, each bidder broken into base price, inclusions, exclusions, qualifications, alternates and commercial terms, with the page each line came from.">
+              <source src="/bidleveler/clip-quotes.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 04 · SCOPE CHECKLIST -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/bidleveler/clip-scope-poster.jpg" aria-label="The scope checklist — the trade and universal elements every bid is compared against, each with its CSI section, whether it is critical, and the rate key it is valued from.">
+              <source src="/bidleveler/clip-scope.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">04 — The scope checklist</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">Decide what every bid is compared against.</h3>
+          <p class="text-fog leading-relaxed">
+            The checklist is the basis of the whole exercise, so it is visible and editable rather
+            than buried. 15 trade packages and 18 universal items ship with the app, seeded by
+            trade and then extended from the bids themselves — if a bidder priced something the
+            checklist didn't know about, it gets added.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Switch an element out of scope and it stops generating findings — for work genuinely not in this package, not to quieten a finding you would rather not deal with</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every element carries its CSI section, whether it is critical, its typical share of trade value, and the rate it is valued from</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Add your own elements — the ones your projects always argue about — and they persist</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 05 · AWARD -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">05 — Award</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">The answer, the arithmetic behind it, and the open items.</h3>
+          <p class="text-fog leading-relaxed">
+            A recommendation with a status — award, award subject to clarification, or don't award
+            yet — the levelled figure against your carry, and the high-severity items that are
+            still open against the recommended bidder. Four documents come out of this screen.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span><span class="text-chalk">Award recommendation (PDF)</span> — written to be read by a PM who was not in the meeting</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span><span class="text-chalk">Clarification letters</span> — one per bidder, every open item with the reason it is being asked. A vague letter gets a vague answer</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span><span class="text-chalk">Subcontract scope paragraphs</span> — written from the levelled position, so what leveling added back cannot be quietly re-excluded after signing</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span><span class="text-chalk">Handoffs</span> — JSON for the AI Estimator, CSV for ScopeGuard, a Procore-shaped bid tab, and raw JSON for your own tools</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/bidleveler/clip-award-poster.jpg" aria-label="The award view — award subject to clarification, the levelled figure against the budget, the open high-severity items, and the four documents this screen produces.">
+              <source src="/bidleveler/clip-award.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 06 · FINDINGS + INTELLIGENCE, side by side -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="reveal">
+          <div class="app-glow">
+            <figure class="app-window">
+              <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+                poster="/bidleveler/clip-findings-poster.jpg" aria-label="The findings register, each entry naming the bidders on each side, quoting the line from the quote it came from, with what it is worth and on what basis.">
+                <source src="/bidleveler/clip-findings.mp4" type="video/mp4" />
+              </video>
+            </figure>
+          </div>
+          <h3 class="font-display text-xl text-chalk mt-5 mb-2">06 — Every finding is quoted, not summarised</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            The words you negotiate against are the words they wrote. Each finding names who
+            carried the work and who didn't, quotes the evidence line from the document it came
+            from, states the value and its basis, and gives you the question to put. Mark any of
+            them real or noise; the verdict persists.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1">
+          <div class="app-glow">
+            <figure class="app-window">
+              <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+                poster="/bidleveler/clip-intelligence-poster.jpg" aria-label="The intelligence view, reporting how well the levelled figure predicted the final cost against how well the bid form did, computed from the user's own award history.">
+                <source src="/bidleveler/clip-intelligence.mp4" type="video/mp4" />
+              </video>
+            </figure>
+          </div>
+          <h3 class="font-display text-xl text-chalk mt-5 mb-2">07 — It grades its own work</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Record what you awarded and what it finally cost, and the app reports how well the
+            levelled figure predicted the outcome against how well the bid form did. That number is
+            the honest measure of whether this tool is earning its place — computed from your own
+            history, on your own machine, and it is allowed to be unflattering.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TRUSTWORTHY NUMBERS ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-10">
+        <span class="sg-eyebrow">Why the numbers hold up</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">The failure mode is not a crash. It is a plausible matrix that is wrong.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          A levelled number an estimator cannot defend is worse than no number at all, because it
+          is the one they will act on. Four things keep this honest.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">Nothing is invented</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Adjustments come from the bids first and the rate table second, and every one shows
+            which. MaraponeAI explains, prioritises and drafts — it never decides a number, and it
+            never finds a gap.
+          </p>
+        </div>
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">Every figure states its basis</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Competitor price, their own alternate, your award history, the rate table, a percentage
+            of trade value, or your own figure — ranked from strongest to weakest and printed on
+            the adjustment. You can check the arithmetic in front of the sub.
+          </p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">Silence and exclusion are not the same thing</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Both get levelled, because both cost money. They are flagged differently, because an
+            exclusion is on the record and silence is what reaches site unresolved — and because
+            silence on core trade scope is not a gap at all.
+          </p>
+        </div>
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">You overrule the engine</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Change any coverage call, override any adjustment, edit any extracted line, take any
+            element out of scope. Your calls are marked as yours and survive every re-run — the
+            engine reads; you rule.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE PIPELINE ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">Five tools, one job</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+          Measure it. Check it. Price it. Level it. Buy it out.
+        </h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          These are five products because they are five different problems, and most contractors
+          only have one or two of them. Buy the one you're missing — or run all five and the same
+          job carries straight through from the drawing set to the awarded subcontract.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-10">
+        <div class="reveal border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 1</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">Blueprint Auditor</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">How much is there</em> — quantities, scope gaps, code and tender risk off the drawing set.</p>
+          <a href="/construction/blueprint-auditor" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it →</a>
+        </div>
+
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 2</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">SpecChecker</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">Do the documents agree</em> — the manual against the drawings, before anything is ordered.</p>
+          <a href="/construction/specchecker" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it →</a>
+        </div>
+
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 3</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">AI Estimator</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">What should we bid</em> — assemblies, contingency, Toronto soft costs, margin.</p>
+          <a href="/construction/ai-estimator" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it →</a>
+        </div>
+
+        <div class="reveal reveal-d2 border border-hiviz/45 rounded-lg bg-charcoal p-5 flex flex-col relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">Stage 4</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">Bid Leveler</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">Whose quote is actually cheapest</em> — a dozen formats normalised to one scope.</p>
+          <span class="inline-flex items-center gap-1.5 font-mono text-xs text-plate mt-5">You are here</span>
+        </div>
+
+        <div class="reveal reveal-d2 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 5</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">ScopeGuard</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">Did anyone actually price it</em> — every sub's letter against your own documents.</p>
+          <a href="/construction/scopeguard" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it →</a>
+        </div>
+      </div>
+
+      <p class="reveal text-sm text-fog mt-8 max-w-3xl leading-relaxed">
+        <span class="text-chalk font-medium">Bid Leveler stands alone.</span>
+        It needs the quotes that came back and nothing else. If you do run the others, it writes
+        JSON straight into the AI Estimator, CSV into ScopeGuard, and a Procore-shaped bid tab for
+        whatever you already use — so the levelled position carries into buyout instead of being
+        retyped.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ THE AI POSITION ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div class="reveal">
+          <span class="sg-eyebrow">MaraponeAI</span>
+          <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+            The model never decides a number.
+          </h2>
+          <p class="text-fog mt-5 leading-relaxed">
+            A tool that hands you a levelled award has to be right about it, because the first
+            invented adjustment you take to a subcontractor is the last time anyone in your office
+            opens the app. So the leveling engine is deterministic: coverage classification, gap
+            detection, valuation, commercial normalisation and severity all run on rules, the other
+            bids, and your own data.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            MaraponeAI explains, prioritises and drafts. Every figure it quotes traces back to a
+            line in a document or a row in the rate table. Type
+            <span class="font-mono text-xs text-chalk bg-charcoal border border-plate rounded px-1.5 py-0.5">set crane to 18,000 on Northgate</span>
+            and the instruction is parsed by rule and previewed before it changes anything.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            It runs as a deterministic reasoning engine out of the box. Drop a model file into the
+            app's own folder and it adds free-form narrative — still entirely on-device, still with
+            the wifi off.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1 space-y-4">
+          <div class="border border-plate rounded-lg bg-gunmetal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">100% local, no exceptions</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              No network calls. It works with the wifi off. Your subcontractors' pricing is the
+              most commercially sensitive data in your office and it never leaves the machine — no
+              account, no cloud, no telemetry, no per-seat licence phoning home.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-gunmetal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Fully functional without a model</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Every finding, adjustment and recommendation is available from the deterministic
+              engine alone. Without a model you lose free-form narrative — you do not lose a single
+              finding or a single dollar figure.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-gunmetal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Your data outlives the software</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Packages, quotes, overrides, your award corpus and a version snapshot from every
+              leveling run live in your own Application Support folder in open SQLite.
+              Uninstalling the app does not remove them, on purpose.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-gunmetal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">The knowledge base is yours</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Trade scope checklists, the quote-language patterns and the Toronto rate table are
+              plain JSON in the app's resources folder. Edit them, extend them, keep them. Full
+              source code is handed over on Day 31.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW TO BUY ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-10">
+        <span class="sg-eyebrow">What $990 actually buys</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">A finished application, not a licence.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          One payment. No seats, no renewals, no metering, no expiry. The working app on day one,
+          the full source code on day 31 — and a refund in between if it doesn't earn its keep.
+        </p>
+      </div>
+
+      <div class="reveal border border-hiviz/45 rounded-lg bg-gunmetal p-6 lg:p-8 mb-8 relative">
+        <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+        <p class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz mb-3">The arithmetic</p>
+        <p class="text-chalk text-lg leading-relaxed">
+          On one mechanical package, awarding on the bid form alone would have cost
+          <span class="text-hiviz font-semibold">$84,986</span> — because the low number was not
+          the low cost. That is one trade, on one job.
+        </p>
+        <p class="text-fog text-sm leading-relaxed mt-3">
+          The software costs $990, once, and runs on every package after that one. That is the
+          whole value argument: you are not buying software hours, you are buying back the day in
+          Excel and the difference between the cheapest number and the cheapest bid.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz mb-4">Included in the $990</p>
+          <ul class="space-y-2.5 text-sm">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">The complete application on day one — installed on your own machines, no licence key, no activation server, no expiry</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">Unlimited packages, bidders, quotes and machines in your company. No per-seat or per-project fee, ever</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">15 trade packages, 155 scope elements, 9 finding types and the Toronto 2026 leveling rate table</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">Excel matrix with live formulas, award recommendation PDF, clarification letters and subcontract scope paragraphs</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">Full source code on day 31, once the refund window closes</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">Windows, macOS and Linux. Mobile app Q4 2026, included</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">30-day refund in full if it doesn't save you 10 hours — <a href="/construction/pricing#guarantee" class="text-hiviz hover:underline">how that works</a></span></li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-1">Not included — that&rsquo;s a customised setup</p>
+          <p class="font-mono text-xs text-fog mb-4">From $4,900</p>
+          <ul class="space-y-2.5 text-sm">
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Your historical awards loaded in bulk, so the engine starts with what <em class="not-italic text-chalk">you</em> have actually paid</span></li>
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">A rate table rebuilt for a market outside the GTA, or checklists for trades you self-perform</span></li>
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Wiring into Procore, Sage, Bluebeam or your own bid-tab database</span></li>
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Workflows the product doesn&rsquo;t cover — vendor prequalification, bid solicitation, purchase orders</span></li>
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Ongoing development after handover (optional support plans, never required)</span></li>
+          </ul>
+          <p class="text-xs text-fog leading-relaxed mt-5 pt-4 border-t border-plate">
+            Buying the product first doesn&rsquo;t lock you out of a customised setup later — most
+            teams start here, then commission the parts that are specific to them.
+            <a href="/construction/pricing" class="text-hiviz hover:underline">See all three levels &rarr;</a>
+          </p>
+        </div>
+      </div>
+
+      <p class="reveal text-sm text-fog mt-6 max-w-3xl leading-relaxed">
+        <span class="text-chalk font-medium">Or all five together: $3,950</span> — the Blueprint
+        Auditor, SpecChecker, the AI Estimator, the Bid Leveler and ScopeGuard, $1,000 less than
+        buying them separately, plus one setup call that runs a real job of yours from the drawing
+        set to the awarded subcontract.
+      </p>
+
+      <div class="reveal flex flex-col sm:flex-row gap-3 mt-8">
+        <a href="/construction/pricing#products" data-checkout="product" data-product="bidleveler" class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">Buy the Bid Leveler — $990 →</a>
+        <a href="/construction/contact?product=bidleveler" class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">Book a walkthrough on your own bid package</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA ══════════ -->
+  <section class="cta-band py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-4 text-center relative reveal">
+      <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">Run it on the trade you're awarding this week.</h2>
+      <p class="text-fog mt-5 leading-relaxed max-w-xl mx-auto">
+        Send us the quotes that came back. We will level them and walk you through what it found —
+        gap by gap, with the line from the letter and the basis for every number — before you spend
+        anything.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+        <a href="/construction/pricing#products" data-checkout="product" data-product="bidleveler"
+          class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-center hover:opacity-90 transition-opacity">
+          Buy the Bid Leveler — $990 →
+        </a>
+        <a href="/construction/contact?product=bidleveler"
+          class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
+          Book a walkthrough first
+        </a>
+      </div>
+      <p class="font-mono text-xs text-plate mt-6">One time · +HST · Secured by Stripe · 30-day refund · source code on day 31</p>
+      <p class="font-mono text-xs text-plate mt-3 max-w-xl mx-auto leading-relaxed">
+        Levelled figures are indicative and rate-table valuations are estimates by design — confirm
+        against live pricing before relying on them. Bid Leveler informs an award decision; it does
+        not make one.
+      </p>
+    </div>
+  </section>
+
+  <!-- TECHNICAL DETAIL STRIP -->
+  <section class="border-t border-plate bg-gunmetal py-12 lg:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// For the person who has to sign off on it</p>
+      <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-3">The technical detail, before you ask for it.</h2>
+      <p class="text-fog leading-relaxed max-w-2xl mb-9">Every claim on this page has a page behind it. No form, no call &mdash; read it now.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="/construction/architecture" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Architecture</p>
+          <p class="text-fog text-sm leading-relaxed">Five layers, every component named, three deployment options, and what the handover repo contains.</p>
+        </a>
+        <a href="/construction/trust" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Trust &amp; security</p>
+          <p class="text-fog text-sm leading-relaxed">Where the data sits, what leaves the machine (nothing), retention, deletion and the security pack for your IT review.</p>
+        </a>
+        <a href="/construction/integrations" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Integrations</p>
+          <p class="text-fog text-sm leading-relaxed">What it reads and writes, and how it sits beside Procore, Autodesk, Sage or a shared drive without replacing them.</p>
+        </a>
+        <a href="/construction/regions" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Regions &amp; rate packs</p>
+          <p class="text-fog text-sm leading-relaxed">Why jurisdiction is data you own and edit, what the Toronto pack contains, and what changes outside Ontario.</p>
+        </a>
+        <a href="/construction/hardware" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Hardware</p>
+          <p class="text-fog text-sm leading-relaxed">Minimum and recommended specs, supported operating systems, and why a GPU is optional rather than required.</p>
+        </a>
+        <a href="/construction/faq" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">FAQ</p>
+          <p class="text-fog text-sm leading-relaxed">Support after handover, changing it later, update path, data deletion, and what happens if we disappear.</p>
+        </a>
+      </div>
+
+      <div class="mt-5 grid sm:grid-cols-2 gap-4">
+        <a href="/construction/work" class="block bg-charcoal border border-hiviz/40 rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1.5">Real jobs, real numbers</p>
+          <p class="font-display text-xl text-chalk mb-1.5">Three documented builds</p>
+          <p class="text-fog text-sm leading-relaxed">6&ndash;12h/week recovered, RFI turnaround 9.2&rarr;5.4 days, +24% win rate in 60 days &mdash; each with the build cost, the break-even and the quote it came from.</p>
+        </a>
+        <a href="/construction/roi-calculator" class="block bg-charcoal border border-hiviz/40 rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1.5">Your numbers, not ours</p>
+          <p class="font-display text-xl text-chalk mb-1.5">ROI calculator</p>
+          <p class="text-fog text-sm leading-relaxed">Put in your seat count, hourly rate and document volume. It will also tell you when a subscription is the better buy.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Rome</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B 6K5<br />Canada</p>
+            </address>
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
+            </address>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/" class="hover:text-chalk">Home</a>
+          <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/specchecker" class="hover:text-chalk">SpecChecker</a>
+          <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
+          <a href="/construction/bidleveler" class="hover:text-chalk">Bid Leveler</a>
+          <a href="/construction/scopeguard" class="hover:text-chalk">ScopeGuard</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('nav-progress');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var d = document.documentElement;
+          var h = d.scrollHeight - d.clientHeight;
+          if (h > 0) bar.style.width = ((d.scrollTop || window.scrollY) / h * 100) + '%';
+        }, { passive: true });
+      }
+
+      // Muted autoplay needs no gesture and the browser already defers loading
+      // until a video is near the viewport, so playback is left entirely to it.
+      // Do not add an observer that pauses below a visibility threshold — that
+      // cancels the autoplay and the clips only start once the user moves.
+      var vids = [].slice.call(document.querySelectorAll('video'));
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || (navigator.connection || {}).saveData) {
+        vids.forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
+      } else {
+        vids.forEach(function (v) {
+          v.play().catch(function () {});          // nudge Safari, which can be shy
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+
+</html>

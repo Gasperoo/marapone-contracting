@@ -5,7 +5,8 @@
    add-on and (optionally) apply a welcome code, then pay the deposit. Marketing
    packages and support plans go straight to Stripe.
 
-   Finished products (Blueprint Auditor / AI Estimator / ScopeGuard / the suite) are paid in
+   Finished products (Blueprint Auditor / SpecChecker / AI Estimator / Bid Leveler /
+   ScopeGuard / the suite) are paid in
    full, so they skip the modal entirely and go straight to Stripe.
 
    Markup:

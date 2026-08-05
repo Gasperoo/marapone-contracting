@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpecChecker – Find the contradiction before the material is ordered | Marapone</title>
+  <link rel="canonical" href="https://marapone.com/construction/specchecker" />
+  <meta name="description"
+    content="Marapone SpecChecker reads the project manual against the drawing set and reports every place the two contract documents disagree — with both statements, both references and the wording each one used. Runs on your own machine. Bought once." />
+  <meta name="keywords"
+    content="specification vs drawings, spec coordination check, construction document conflict, RFI software, project manual review, drawing schedule check, CSI MasterFormat, private AI construction" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marapone" />
+  <meta property="og:title" content="SpecChecker – Find the contradiction before the material is ordered | Marapone" />
+  <meta property="og:description"
+    content="The drawing says 1/2-inch drywall. Section 09 29 00 requires 5/8-inch Type X. One of those is what the inspector reads and the other is what arrives on the truck." />
+  <meta property="og:url" content="https://marapone.com/construction/specchecker" />
+  <meta property="og:image" content="https://marapone.com/specchecker/specchecker-tour-poster.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SpecChecker – Find the contradiction before the material is ordered | Marapone" />
+  <meta name="twitter:description"
+    content="Two contract documents, both binding, both saying something different. SpecChecker finds the disagreement while it is still a question rather than a wall that has to come down." />
+  <meta name="twitter:image" content="https://marapone.com/specchecker/specchecker-tour-poster.jpg" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="preload" as="image" href="/specchecker/specchecker-tour-poster.jpg" fetchpriority="high" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Marapone SpecChecker",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows 10, Windows 11, macOS 12+, Linux",
+    "url": "https://marapone.com/construction/specchecker",
+    "description": "Reads the project manual against the architectural and engineering drawings and reports every place the two contract documents disagree about a measurable property — fire ratings, gypsum thickness, concrete strength, U-values, airflow, interrupting ratings — with both statements, both references and the wording each document used. Drafts the RFI. Runs entirely on the contractor's own machine.",
+    "featureList": [
+      "27 measurable properties compared across 39 named assemblies",
+      "11 conflict types, each cited to the spec section and the drawing sheet",
+      "Addenda that were never carried through into either document",
+      "Documents that contradict themselves — two sheets, or a manual written by three people",
+      "A coverage view that shows where the drawings were silent, so a low finding count cannot be mistaken for a clean set",
+      "One-click RFI drafting, per section, quoting both documents",
+      "Runs with the wifi off — nothing leaves the machine"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "990",
+      "priceCurrency": "CAD",
+      "url": "https://marapone.com/construction/pricing#products"
+    },
+    "publisher": { "@type": "Organization", "name": "Marapone", "url": "https://marapone.com/" }
+  }
+  </script>
+
+  <style>
+    html { overflow-x: hidden; overscroll-behavior-x: none; max-width: 100%; }
+
+    body {
+      background-color: #1a1a1a;
+      color: #e8e8e8;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      max-width: 100%;
+    }
+
+    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+
+    #nav-progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: #f97316; z-index: 9999; pointer-events: none;
+      transition: width .08s linear;
+    }
+
+    .grid-dot {
+      background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* ── scroll-reveal (matches the rest of the site) ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+    @media (prefers-reduced-motion:reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ── eyebrow ── */
+    .sg-eyebrow {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-family: 'DM Mono', monospace; font-size: .7rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase; color: #f97316;
+    }
+    .sg-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: #f97316; display: inline-block; }
+    .sg-eyebrow.muted { color: #6e6e6e; }
+    .sg-eyebrow.muted::before { background: #6e6e6e; }
+
+    /* ── hero headline sheen (site-wide treatment) ── */
+    .sg-shine {
+      background: linear-gradient(100deg, #ffffff 0%, #e8e8e8 38%, #f97316 50%, #e8e8e8 62%, #ffffff 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      filter: drop-shadow(0 0 24px rgba(249, 115, 22, .30));
+      animation: sgSheen 6s ease-in-out infinite;
+    }
+    @keyframes sgSheen { 0%, 100% { background-position: 8% 0; } 50% { background-position: 92% 0; } }
+    @media (prefers-reduced-motion: reduce) { .sg-shine { animation: none; background-position: 30% 0; } }
+
+    /* ── app window chrome ── */
+    .app-window {
+      border-radius: 10px;
+      border: 1px solid #3a3a3a;
+      background: #101012;
+      overflow: hidden;
+      box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .02);
+    }
+    .app-window img, .app-window video { display: block; width: 100%; height: auto; }
+    /* The hero tour carries the page, so give it a heavier frame and glow. */
+    .app-window-hero {
+      border-color: #454545;
+      box-shadow: 0 50px 110px -35px rgba(0, 0, 0, .95), 0 0 0 1px rgba(249, 115, 22, .10);
+    }
+
+    .app-glow { position: relative; }
+    .app-glow::before {
+      content: ""; position: absolute; inset: -8% -4% -12%;
+      background: radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, .18), transparent 65%);
+      pointer-events: none; z-index: -1;
+    }
+
+    /* ── stat rail ── */
+    .stat-card {
+      border: 1px solid #3a3a3a; border-radius: 8px; background: #232323;
+      padding: 1.1rem 1.15rem;
+    }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; letter-spacing: .02em; }
+
+    /* ── feature row media ── */
+    .feature-row { align-items: center; }
+
+    /* ── finding-type table ── */
+    .find-row { display: grid; grid-template-columns: 260px 1fr auto; gap: 1.25rem; padding: .95rem 0; border-bottom: 1px solid #2e2e2e; align-items: baseline; }
+    @media (max-width: 767px) { .find-row { grid-template-columns: 1fr; gap: .3rem; } .find-row .find-count { justify-self: start; } }
+
+    /* ── spec table ── */
+    .spec-row { display: grid; grid-template-columns: 190px 1fr; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid #2e2e2e; }
+    @media (max-width: 640px) { .spec-row { grid-template-columns: 1fr; gap: .35rem; } }
+
+    /* ── the two documents, set side by side the way the app sets them ── */
+    .doc-quote {
+      font-family: 'DM Mono', monospace; font-size: .78rem; line-height: 1.7;
+      background: #141414; border: 1px solid #2e2e2e;
+      border-radius: 6px; padding: .85rem 1rem; color: #a0a0a0;
+    }
+    .doc-quote.spec { border-left: 2px solid #f97316; }
+    .doc-quote.drawing { border-left: 2px solid #3b82f6; }
+
+    .cta-band { position: relative; overflow: hidden; }
+    .cta-band::before {
+      content: ""; position: absolute; top: -40%; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 120%;
+      background: radial-gradient(ellipse at center, rgba(249, 115, 22, .22), transparent 60%);
+      pointer-events: none;
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/widgets.js"></script>
+  <script defer src="/checkout.js"></script>
+  <style>
+    /* Products nav menu — CSS-driven so the links work with JS disabled.
+       The visual gap under the trigger is the wrapper's own padding, NOT a margin
+       on the menu — the menu is positioned with top:100%, which resolves against
+       the padding box, so any margin there would push the menu down and reopen a
+       dead strip the pointer falls through. Hiding is also delayed briefly so a
+       fast diagonal move into the menu still lands. */
+    [data-mp-products], [data-mp-more] { padding-bottom: .55rem; margin-bottom: -.55rem; }
+    [data-mp-products] .mp-products-menu,
+    [data-mp-more] .mp-products-menu {
+      visibility: hidden; opacity: 0;
+      transition: opacity .14s ease, visibility 0s linear .22s;
+    }
+    [data-mp-products]:hover .mp-products-menu,
+    [data-mp-products]:focus-within .mp-products-menu,
+    [data-mp-more]:hover .mp-products-menu,
+    [data-mp-more]:focus-within .mp-products-menu {
+      visibility: visible; opacity: 1;
+      transition: opacity .14s ease, visibility 0s;
+    }
+    .mp-products-menu::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -.75rem; height: .75rem;
+    }
+    [data-mp-products]:hover .mp-chev,
+    [data-mp-products]:focus-within .mp-chev,
+    [data-mp-more]:hover .mp-chev,
+    [data-mp-more]:focus-within .mp-chev { transform: rotate(180deg); }
+    /* Comfortable touch targets in the mobile menu — the rows were ~24px tall,
+       which is tight for the primary navigation on a phone. */
+    #mobile-menu a { padding-top: .45rem; padding-bottom: .45rem; }
+    #mobile-menu a.bg-hiviz, #mobile-menu a.bg-marine { padding-top: .6rem; padding-bottom: .6rem; }
+    .mp-mi { transition: background-color .15s ease, color .15s ease; }
+    .mp-mi:hover { background: #232323; color: #f97316; }
+    .mp-pi { transition: background-color .15s ease; }
+    .mp-pi:hover { background: #232323; }
+    .mp-pi:hover .text-chalk { color: #f97316; }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <div id="nav-progress" aria-hidden="true"></div>
+
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip
+    to content</a>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-5">
+        <a href="/" class="font-display text-2xl tracking-wider text-chalk md:mr-5 lg:mr-8">MARA<span class="text-hiviz">PONE</span></a>
+      </div>
+      <div class="hidden lg:flex items-center gap-4 lg:gap-5 font-body text-sm font-medium text-fog whitespace-nowrap">
+        <div class="relative" data-mp-products>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
+              <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
+            </a>
+            <a href="/construction/specchecker" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">SpecChecker <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Spec book vs. drawings, before you order</span>
+            </a>
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/bidleveler" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Bid Leveler <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">A dozen sub quotes, levelled to one scope</span>
+            </a>
+            <a href="/construction/scopeguard" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">ScopeGuard</span>
+              <span class="block text-xs text-fog mt-0.5">Subcontractor scope &amp; buyout review</span>
+            </a>
+            <a href="/construction/services" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Custom AI Builds</span>
+              <span class="block text-xs text-fog mt-0.5">Built around your own workflow</span>
+            </a>
+          </div>
+        </div>
+        <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
+        <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <div class="relative" data-mp-more>
+          <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">More<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="mp-products-menu absolute right-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:190px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
+            <a href="/construction/work" class="mp-mi block px-4 py-2 text-sm text-fog">Our Work</a>
+            <a href="/construction/sample-assessment" class="mp-mi block px-4 py-2 text-sm text-fog">Samples</a>
+            <a href="/construction/roi-calculator" class="mp-mi block px-4 py-2 text-sm text-fog">ROI Calculator</a>
+            <a href="/construction/resources" class="mp-mi block px-4 py-2 text-sm text-fog">Resources</a>
+            <a href="/construction/architecture" class="mp-mi block px-4 py-2 text-sm text-fog">Architecture</a>
+            <a href="/construction/regions" class="mp-mi block px-4 py-2 text-sm text-fog">Regions &amp; Rate Packs</a>
+            <a href="/construction/integrations" class="mp-mi block px-4 py-2 text-sm text-fog">Integrations</a>
+            <a href="/construction/trust" class="mp-mi block px-4 py-2 text-sm text-fog">Trust</a>
+            <a href="/construction/vs/procore" class="mp-mi block px-4 py-2 text-sm text-fog">vs Procore</a>
+          </div>
+        </div>
+        <a href="/construction/about" class="hover:text-chalk transition-colors">About</a>
+        <a href="/construction/contact" class="hover:text-chalk transition-colors">Contact</a>
+        <a href="/logistics" class="text-marine hover:text-marine-light transition-colors whitespace-nowrap inline-flex items-center gap-1.5" aria-label="LogisticsAI — private AI for freight, customs and trade compliance"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
+        <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold hover:bg-hiviz2 transition-colors whitespace-nowrap">Get Free Assessment &rarr;</a>
+      </div>
+      <button class="lg:hidden text-fog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation" onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); m.classList.toggle('flex'); this.setAttribute('aria-expanded', !m.classList.contains('hidden'))">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
+      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/bidleveler" class="text-fog hover:text-chalk" style="padding-left:.75rem">Bid Leveler</a>
+      <a href="/construction/scopeguard" class="text-fog hover:text-chalk" style="padding-left:.75rem">ScopeGuard</a>
+      <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
+      <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
+      <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
+      <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
+      <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
+      <a href="/construction/resources" class="text-fog hover:text-chalk" style="padding-left:.75rem">Resources</a>
+      <a href="/construction/architecture" class="text-fog hover:text-chalk" style="padding-left:.75rem">Architecture</a>
+      <a href="/construction/regions" class="text-fog hover:text-chalk" style="padding-left:.75rem">Regions &amp; Rate Packs</a>
+      <a href="/construction/integrations" class="text-fog hover:text-chalk" style="padding-left:.75rem">Integrations</a>
+      <a href="/construction/trust" class="text-fog hover:text-chalk" style="padding-left:.75rem">Trust</a>
+      <a href="/construction/vs/procore" class="text-fog hover:text-chalk" style="padding-left:.75rem">vs Procore</a>
+      <a href="/construction/about" class="text-fog hover:text-chalk">About</a>
+      <a href="/construction/contact" class="text-fog hover:text-chalk">Contact</a>
+      <a href="/logistics" class="text-marine hover:text-marine-light inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-marine" aria-hidden="true"></span>LogisticsAI</a>
+      <a href="/construction/contact" class="bg-hiviz text-white px-4 py-2 rounded font-semibold text-center">Get Free Assessment &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="main-content" class="relative overflow-hidden border-b border-plate">
+    <div class="absolute inset-0 grid-dot opacity-40" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-1 h-full bg-hiviz hidden lg:block" aria-hidden="true"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 py-16 lg:py-24">
+      <div>
+
+        <div class="max-w-3xl">
+          <div class="flex flex-wrap items-center gap-3 mb-5">
+            <span class="sg-eyebrow">Marapone SpecChecker</span>
+            <span class="inline-flex items-center gap-1.5 font-mono text-[0.62rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-hiviz" aria-hidden="true"></span> New
+            </span>
+          </div>
+
+          <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.92] text-chalk">
+            Two contract documents.<br /><span class="sg-shine">One of them is wrong.</span>
+          </h1>
+
+          <p class="font-body text-lg text-fog max-w-2xl mt-6 leading-relaxed">
+            The drawing says 1/2-inch drywall. Section 09 29 00 requires 5/8-inch Type X. One of
+            those is what the inspector reads and the other is what arrives on the truck, and
+            nobody finds out which until the wall is closed in. SpecChecker reads the project
+            manual against the drawing set and reports every place they disagree —
+            <em class="not-italic text-chalk font-medium">before</em> the material is ordered.
+            Runs entirely on your own machine. Bought once.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mt-8">
+            <a href="/construction/pricing#products" data-checkout="product" data-product="specchecker"
+              class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">
+              Buy it — $990 one time →
+            </a>
+            <a href="#inside"
+              class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">
+              See every screen
+            </a>
+          </div>
+          <div class="mt-3 flex flex-col items-start gap-1.5">
+            <a href="/construction/contact?product=specchecker"
+              class="inline-flex items-center gap-2 font-mono text-xs text-fog hover:text-chalk transition-colors">
+              Or send us one real manual and drawing set and we'll run it for you first →
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 mt-6 font-mono text-xs text-fog">
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Works with the wifi off</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Both documents quoted, both cited</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> PDF, Word, Excel or a scan</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Windows, macOS &amp; Linux &middot; mobile Q4 2026</span>
+          </div>
+        </div>
+
+        <div class="app-glow reveal reveal-d1 mt-12 lg:mt-16">
+          <figure class="app-window app-window-hero">
+            <video id="tour" width="1920" height="1080" muted loop playsinline autoplay preload="metadata"
+              poster="/specchecker/specchecker-tour-poster.jpg"
+              aria-label="A screen recording of SpecChecker auditing the Northgate Community Centre documents — dashboard, conflict matrix, findings, coverage, drafted RFIs, the document register and intelligence.">
+              <source src="/specchecker/specchecker-tour.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figcaption class="text-center font-mono text-xs text-plate mt-3">
+            The real app, recorded · one project manual, two drawing sets, one addendum, 21 conflicts
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ STAT RAIL ══════════ -->
+  <section class="bg-steel border-b border-plate py-6">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="stat-card">
+          <p class="stat-num text-hiviz">27</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Measurable properties</p>
+          <p class="text-xs text-plate mt-0.5">Ratings, thicknesses, strengths, grades</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">39</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Named assemblies</p>
+          <p class="text-xs text-plate mt-0.5">Doors, AHUs, panelboards, slabs, partitions</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">11</p>
+          <p class="font-mono text-xs text-fog mt-1.5">Conflict types</p>
+          <p class="text-xs text-plate mt-0.5">Including the two a document has with itself</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-num text-chalk">25</p>
+          <p class="font-mono text-xs text-fog mt-1.5">CSI divisions</p>
+          <p class="text-xs text-plate mt-0.5">MasterFormat spine, 47 sections mapped</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE PROBLEM ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div class="reveal">
+          <span class="sg-eyebrow">What coordination actually costs</span>
+          <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+            Nobody reads 400 pages against 90 sheets.
+          </h2>
+          <p class="text-fog mt-5 leading-relaxed">
+            The project manual and the drawing set are both contract documents. They are written
+            by different people, revised on different cycles, and issued together as though they
+            agree. Checking one against the other is a job nobody has time for, so it is done in
+            fragments — by the PM who happens to notice, or by the supplier who calls to ask
+            which one to price.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            The failure is never dramatic. It is a door schedule that shows an unrated leaf where
+            the manual requires 90 minutes. The rating is stamped on a label at the factory, so
+            an unrated door cannot be upgraded on site — it is replaced, and the lead time is
+            measured in months.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            <span class="text-chalk font-medium">The window closes at the purchase order.</span>
+            Until the material is ordered, a contradiction is a question. After it, it is a
+            change order, a delay claim, or a wall that has to come back down.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1">
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-3">One finding, as the app reports it</p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div>
+              <p class="font-mono text-[0.6rem] tracking-widest uppercase text-hiviz mb-1.5">Specification — 90 minutes</p>
+              <div class="doc-quote spec">
+                &ldquo;C. Door D-1 at the main exit stair shall have a 90 minute fire rating&rdquo;
+                <br /><span class="text-plate">Section 08 11 00 — METAL DOORS AND FRAMES</span>
+              </div>
+            </div>
+            <div>
+              <p class="font-mono text-[0.6rem] tracking-widest uppercase text-blue-400 mb-1.5">Drawing — 0 minutes</p>
+              <div class="doc-quote drawing">
+                &ldquo;D-1 915 x 2135 F HOLLOW METAL HM 0 GRADE 2 MAIN EXIT STAIR&rdquo;
+                <br /><span class="text-plate">Sheet A-601 — Door Schedule</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border border-hiviz/45 rounded-lg bg-gunmetal p-5 mt-4 relative">
+            <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="font-mono text-[0.6rem] tracking-widest uppercase text-hiviz border border-hiviz/40 bg-hiviz/10 rounded px-2 py-0.5">Critical</span>
+              <span class="font-mono text-[0.6rem] tracking-widest uppercase text-fog border border-plate rounded px-2 py-0.5">Below specified minimum</span>
+              <span class="font-mono text-[0.6rem] tracking-widest uppercase text-fog border border-plate rounded px-2 py-0.5">Div 08 · Doors</span>
+              <span class="font-mono text-xs text-hiviz ml-auto">Hold the order</span>
+            </div>
+            <p class="text-sm text-chalk font-medium leading-snug">Doors D-1 — fire-resistance rating: 90 minutes required, 0 minutes shown</p>
+            <p class="text-sm text-fog leading-relaxed mt-2">
+              A rating short of the spec is caught at the fire inspection, after the assembly is
+              closed in. Doors and frames are worse again: the rating is stamped on a label at the
+              factory, so an unrated leaf cannot be upgraded on site — it is replaced, and the
+              lead time is measured in months.
+            </p>
+            <p class="font-mono text-[0.68rem] text-plate leading-relaxed mt-3">
+              Confidence: High · Action: hold the material order until it is answered<br />
+              RFI-001 drafted, citing both documents and quoting the wording of each
+            </p>
+          </div>
+          <p class="font-mono text-xs text-plate mt-3">
+            One of 21 findings on the demo project. Nothing here is written by a model.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE PIPELINE ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">Five tools, one job</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+          Measure it. Check it. Price it. Level it. Buy it out.
+        </h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          These are five products because they are five different problems, and most contractors
+          only have one or two of them. Buy the one you're missing — or run all five and the same
+          job carries straight through from the drawing set to the awarded subcontract.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-10">
+        <div class="reveal border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 1</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">Blueprint Auditor</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">How much is there</em> — quantities, scope gaps, code and tender risk off the drawing set.</p>
+          <a href="/construction/blueprint-auditor" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it →</a>
+        </div>
+
+        <div class="reveal reveal-d1 border border-hiviz/45 rounded-lg bg-charcoal p-5 flex flex-col relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">Stage 2</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">SpecChecker</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">Do the documents agree</em> — the manual against the drawings, before anything is ordered.</p>
+          <span class="inline-flex items-center gap-1.5 font-mono text-xs text-plate mt-5">You are here</span>
+        </div>
+
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 3</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">AI Estimator</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">What should we bid</em> — assemblies, contingency, Toronto soft costs, margin.</p>
+          <a href="/construction/ai-estimator" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it →</a>
+        </div>
+
+        <div class="reveal reveal-d2 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 4</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">Bid Leveler</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">Whose quote is actually cheapest</em> — a dozen formats normalised to one scope.</p>
+          <a href="/construction/bidleveler" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it →</a>
+        </div>
+
+        <div class="reveal reveal-d2 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 5</span>
+          <h3 class="font-display text-xl text-chalk mt-2 mb-3">ScopeGuard</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1"><em class="text-chalk not-italic font-medium">Did anyone actually price it</em> — every sub's letter against your own documents.</p>
+          <a href="/construction/scopeguard" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it →</a>
+        </div>
+      </div>
+
+      <p class="reveal text-sm text-fog mt-8 max-w-3xl leading-relaxed">
+        <span class="text-chalk font-medium">SpecChecker stands alone.</span>
+        It needs the project manual and the drawing set — nothing else, and no other product in
+        the range. It is the cheapest of the five to justify, because the question it answers
+        arrives on every job whether or not you bid it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ THE ELEVEN CONFLICTS ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">What it looks for</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Eleven ways two documents disagree.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Every finding carries both statements, both references, the words each document used, a
+          confidence score, and one sentence on what it costs to get wrong. The counts below are
+          what the demo project actually produced from four PDFs.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal">
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Below specified minimum</span>
+          <p class="text-sm text-fog leading-relaxed">The drawing is under the floor the manual sets. A 45-minute door where the spec says 90; a 22 kA panelboard where the spec says 42 kA.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">9 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Shown, not specified</span>
+          <p class="text-sm text-fog leading-relaxed">The drawings call for something the manual never covers. Nobody wrote the performance requirement, so nobody can reject the submittal.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">5 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Lesser product on drawing</span>
+          <p class="text-sm text-fog leading-relaxed">A downgrade — annealed glass where the spec requires safety glass, standard-grade hardware where the spec requires heavy duty.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">2 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Values disagree</span>
+          <p class="text-sm text-fog leading-relaxed">Both documents state a number for the same property of the same assembly, and the numbers are different. The plainest kind, and still routinely missed.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">2 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Above specified maximum</span>
+          <p class="text-sm text-fog leading-relaxed">Over the ceiling the manual sets — a 2.2 W/m²·K window where the spec caps U-value at 1.60.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">1 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Addendum not carried</span>
+          <p class="text-sm text-fog leading-relaxed">A two-page PDF that arrived by email during tender and changed one number, while the manual and the drawings both keep saying the old thing.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">1 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Specified, not shown</span>
+          <p class="text-sm text-fog leading-relaxed">The manual requires it and no callout anywhere in the drawing set deals with it. Silence on a binding requirement is not agreement.</p>
+          <span class="find-count font-mono text-xs text-chalk whitespace-nowrap">1 found</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Unit ambiguity</span>
+          <p class="text-sm text-fog leading-relaxed">The same number in two different units — R-value against RSI, imperial against metric — which reads as agreement and is not.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this job</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Stale cross-reference</span>
+          <p class="text-sm text-fog leading-relaxed">A clause pointing at a section that was cut, or a note pointing at a sheet that was never issued.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this job</span>
+        </div>
+        <div class="find-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Manual vs. itself</span>
+          <p class="text-sm text-fog leading-relaxed">A manual written by three people over two years. There is no precedence rule to fall back on inside a single document, so this one has to be asked.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this job</span>
+        </div>
+        <div class="find-row" style="border-bottom:none">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Drawings vs. themselves</span>
+          <p class="text-sm text-fog leading-relaxed">An old general note on one sheet and the revised one on another. Same problem, and the same answer: put it in writing to the consultant.</p>
+          <span class="find-count font-mono text-xs text-plate whitespace-nowrap">none on this job</span>
+        </div>
+      </div>
+
+      <p class="reveal font-mono text-xs text-plate mt-6 max-w-3xl leading-relaxed">
+        21 open findings — 7 critical, 7 high, 6 medium, 1 low — of which 13 should stop a
+        material order today. Read from 25 pages across four PDFs: 39 requirements out of the
+        manual, 63 callouts off the sheets, and 7 RFIs drafted and waiting to go out.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ THE SCREENS ══════════ -->
+  <section id="inside" class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-14">
+        <span class="sg-eyebrow">Inside the app</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Every screen, no mock-ups.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Everything below is the shipping application running one real audit:
+          <em class="not-italic text-chalk">Northgate Community Centre</em>, a City of Toronto
+          facility at 4120 Northgate Boulevard — one project manual, an architectural set, a
+          structural/mechanical/electrical set and Addendum 02, all issued for construction.
+          Nothing is canned. The reader, the parsers and the cross-check engine are the ones your
+          own documents go through.
+        </p>
+      </div>
+
+      <!-- 01 · DASHBOARD -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">01 — Dashboard</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">Orders to hold, not findings to admire.</h3>
+          <p class="text-fog leading-relaxed">
+            The headline number is not the finding count. It is
+            <span class="text-hiviz font-medium">how many material orders should not be released
+            today</span> — because that is the only version of this question a project manager can
+            act on before lunch.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>A written review that names the worst conflict, the divisions it concentrates in, and how many RFIs would clear it</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>"Deal with these first" pulls the blocking findings to the top with both documents quoted inline</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every finding carries what it costs to get wrong and one sentence on what to do about it</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/specchecker/clip-dashboard-poster.jpg" aria-label="The SpecChecker dashboard showing 13 orders to hold, 21 open findings, 4 documents read and 7 drafted RFIs, with the worst conflict expanded.">
+              <source src="/specchecker/clip-dashboard.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 02 · MATRIX -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/specchecker/clip-matrix-poster.jpg" aria-label="The conflict matrix — one row per conflict with the specification value, the spec reference, the drawing value, the drawing reference, severity, confidence and the recommended action.">
+              <source src="/specchecker/clip-matrix.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">02 — The conflict matrix</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">The table that goes to the consultant.</h3>
+          <p class="text-fog leading-relaxed">
+            One row per conflict: division, section, item, property, what the specification says,
+            the clause it came from, what the drawing says, the sheet it came from, the kind of
+            conflict, severity, confidence and the action. It exports to Excel unchanged, which is
+            the form this argument is usually had in.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Filter to blocking only, or include what you have already resolved</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Every row cites the section number and the sheet number — no row without both</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>A version snapshot is written on every cross-check, so what the documents said at tender stays recoverable</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 03 · COVERAGE -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal order-2 lg:order-1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">03 — Coverage</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">On a findings list, silence looks exactly like agreement.</h3>
+          <p class="text-fog leading-relaxed">
+            This is the screen most products would not ship. An audit can only report a conflict
+            where <em class="not-italic text-chalk">both</em> documents say something about the same
+            property. Where the drawings are silent there is nothing to disagree with — so the app
+            tells you its own coverage before you treat a low finding count as good news. On the
+            demo: 26 properties specified, <span class="text-hiviz font-medium">62%</span> had a
+            drawing to compare against.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Clearance is shown by package, not by division — nobody releases "Division 08", they release the door package</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Each package is <span class="font-mono text-xs">HOLD</span> or <span class="font-mono text-xs">CLEAR</span>, with the properties behind the call</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>A setup checklist blocks the confident-looking empty result: an audit run against one document, or against drawings nobody told the app were drawings</span></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-d1 order-1 lg:order-2 app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/specchecker/clip-coverage-poster.jpg" aria-label="The coverage view — 12 spec sections, 8 drawing sheets, 26 properties specified, 62 percent coverage, and clearance to order shown per package as hold or clear.">
+              <source src="/specchecker/clip-coverage.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 04 · RFIs -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
+        <div class="reveal app-glow">
+          <figure class="app-window">
+            <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+              poster="/specchecker/clip-rfis-poster.jpg" aria-label="Drafted RFIs, one per specification section, each addressed to the consultant, quoting the specification clause and the drawing callout for every discrepancy.">
+              <source src="/specchecker/clip-rfis.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">04 — RFIs</span>
+          <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">One letter per section, quoting both documents.</h3>
+          <p class="text-fog leading-relaxed">
+            The app does not decide which document governs — that is a question for the consultant
+            of record, which is exactly why the recommended action is to ask them in writing. One
+            click drafts the letter per section, addressed to the consultant, citing both
+            documents and quoting the wording of each, with a response date.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm text-fog">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Draft for everything open, or only for what is blocking a material order</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Grouped by section so the consultant who owns it gets one letter, not eleven</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Editable before it goes out, and tracked from draft to issued to answered to closed</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span>Exports as an RFI package, a PDF audit report, or the whole conflict matrix as Excel</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 05 · DOCUMENTS + INTELLIGENCE, side by side -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="reveal">
+          <div class="app-glow">
+            <figure class="app-window">
+              <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+                poster="/specchecker/clip-documents-poster.jpg" aria-label="The document register showing the project manual, two drawing sets and an addendum, each classified by what it looks like, with page counts, sections, sheets and extracted fact counts.">
+                <source src="/specchecker/clip-documents.mp4" type="video/mp4" />
+              </video>
+            </figure>
+          </div>
+          <h3 class="font-display text-xl text-chalk mt-5 mb-2">05 — It works out what each file is</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Drop the files on the window — PDF, Word, Excel, or a scan. CSI section numbers and
+            PART blocks mean a manual; sheet numbers, title blocks and schedules mean drawings. The
+            guess is shown on screen and you can override it. Every document is copied into the
+            project's own folder, because a finding that cites page 4 is worth nothing once that
+            PDF has moved off somebody's desktop.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1">
+          <div class="app-glow">
+            <figure class="app-window">
+              <video muted loop playsinline autoplay preload="metadata" width="1280" height="720"
+                poster="/specchecker/clip-intelligence-poster.jpg" aria-label="The intelligence view showing which properties conflict most often, which divisions are worst, and the attributes that have been muted as noise.">
+                <source src="/specchecker/clip-intelligence.mp4" type="video/mp4" />
+              </video>
+            </figure>
+          </div>
+          <h3 class="font-display text-xl text-chalk mt-5 mb-2">06 — It learns what you call noise</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Mark any finding real or noise and the verdict persists. Mute a property outright and
+            it stops being compared. The pattern of what conflicts on your projects — which
+            divisions, which consultants, which properties — accumulates on your own machine and
+            makes the second audit measurably quieter than the first.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CONFIDENCE ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-10">
+        <span class="sg-eyebrow">Why the findings hold up</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">A misquoted clause in an RFI is not recoverable.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          Text recognition misreads exactly the characters that matter here: 5/8 as 5/B, 90 as 9O.
+          So every finding carries a confidence, and it is not decoration — it decides where the
+          finding sits on the list and whether it is marked "verify".
+        </p>
+      </div>
+
+      <div class="mt-2 reveal">
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Certain</span>
+          <p class="text-sm text-fog leading-relaxed">Clean text layer, a numbered spec section, a PART 2 product clause. The strongest thing a document can say.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">High</span>
+          <p class="text-sm text-fog leading-relaxed">Clean text, or a tagged schedule row under a header the app understood.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Moderate</span>
+          <p class="text-sm text-fog leading-relaxed">A general note — read correctly; its <em class="not-italic text-chalk">scope</em> is what is uncertain — or an inferred subject.</p>
+        </div>
+        <div class="spec-row" style="border-bottom:none">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Low</span>
+          <p class="text-sm text-fog leading-relaxed">Recognised by text recognition from a scanned page. Shown, sorted below the certain ones, and marked <span class="font-mono text-xs text-chalk">verify</span> — open the sheet before quoting it.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 mt-10">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">It does not decide who is right</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Which document governs is a question for the consultant of record, not for software.
+            SpecChecker's job is to find the disagreement, quote both sides accurately, and put
+            the question in writing to the person who can answer it.
+          </p>
+        </div>
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">It reads text, not geometry</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            It does not scale dimensions off a plan or read anything stated graphically. It reads
+            what the two documents <em class="not-italic text-chalk">say</em> — clauses, schedules,
+            general notes — and compares statements to statements.
+          </p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">A general clause applies broadly, on purpose</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            It cannot tell that door D-8 is an office door. A clause that names no tag applies to
+            the assembly, so a general 45-minute requirement is compared against every door in the
+            schedule. Some of those are worth confirming and some are not — the RFI asks the right
+            question either way.
+          </p>
+        </div>
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
+          <h3 class="font-display text-xl text-chalk mb-2">You overrule the engine</h3>
+          <p class="text-sm text-fog leading-relaxed">
+            Every finding can be resolved, dismissed or escalated; every property can be muted;
+            every extracted value edited. Those calls persist and compound across projects — and
+            they never leave your machine.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WHAT IT CHECKS ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl">
+        <span class="sg-eyebrow">The knowledge base</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Twenty-seven properties, and you can add the twenty-eighth.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          A spec clause and a drawing callout are only ever in conflict about a measurable property
+          of a named assembly — a thickness, a rating, a strength, a grade. Everything the engine
+          does reduces to pulling those out of both documents, putting them in the same units, and
+          seeing whether they agree.
+        </p>
+      </div>
+
+      <div class="mt-10 reveal">
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Fire &amp; life safety</span>
+          <p class="text-sm text-fog leading-relaxed">Fire-resistance ratings, sprinkler design density, hardware grade, and the exit-stair and corridor assemblies they attach to.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Envelope</span>
+          <p class="text-sm text-fog leading-relaxed">Thermal resistance and RSI, U-values, SHGC, glazing make-up, air and vapour barrier requirements.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Structure</span>
+          <p class="text-sm text-fog leading-relaxed">Concrete compressive strength, reinforcing steel grade, structural steel grade, compaction requirements.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Interiors</span>
+          <p class="text-sm text-fog leading-relaxed">Gypsum board thickness and core type, partition assemblies, door material and hardware grade.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Mechanical</span>
+          <p class="text-sm text-fog leading-relaxed">Airflow, external static pressure, filter efficiency (MERV), piping material, and the units they belong to.</p>
+        </div>
+        <div class="spec-row">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Electrical</span>
+          <p class="text-sm text-fog leading-relaxed">Short-circuit interrupting ratings, conductor and raceway material, panelboard and distribution equipment.</p>
+        </div>
+        <div class="spec-row" style="border-bottom:none">
+          <span class="font-mono text-xs text-hiviz tracking-wider uppercase">Commercial</span>
+          <p class="text-sm text-fog leading-relaxed">Warranty terms — the clause that costs nothing at tender and is worth arguing about five years later.</p>
+        </div>
+      </div>
+
+      <div class="reveal mt-8 bg-charcoal border-l-2 border-hiviz rounded-r-xl p-6 lg:p-7 max-w-3xl">
+        <p class="text-chalk font-semibold mb-2">Adding a property is data, not code</p>
+        <p class="text-fog text-sm leading-relaxed mb-3">
+          Every property is an entry in <span class="font-mono text-xs">attribute_rules.json</span>
+          — its unit table, the patterns that recognise it, whether more is better, how much
+          difference is a real difference, and one sentence on what it costs to get wrong. Add an
+          entry and the engine checks it on the next run. The CSI spine is MasterFormat, so the
+          taxonomy is the one your estimators already read; the Ontario layer is named fields you
+          can swap.
+        </p>
+        <a href="/construction/regions" class="text-hiviz font-semibold text-sm hover:opacity-80 transition-opacity">How regions &amp; rate packs work &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW A PROJECT RUNS ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-12">
+        <span class="sg-eyebrow">From document issue to answered RFI</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Five steps, and the last one is the point.</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">01</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Create the project</h3>
+          <p class="text-sm text-fog leading-relaxed">Name, number, client, consultant of record, and the issue status of each document set. The consultant is who the RFIs get addressed to.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">02</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Drop in the documents</h3>
+          <p class="text-sm text-fog leading-relaxed">Manual, drawing set, addenda, exported schedules. Each file is classified by what it looks like; the guess is shown and can be overridden.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">03</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Run the cross-check</h3>
+          <p class="text-sm text-fog leading-relaxed">Both sides are read into the same shape — one property, of one assembly, in one canonical unit, with the page or sheet it came from — and compared.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">04</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Work the findings</h3>
+          <p class="text-sm text-fog leading-relaxed">Sorted by what stops a material order, not by how many there are. Resolve, dismiss or escalate — and read the Coverage tab before calling it clean.</p>
+        </div>
+        <div class="reveal border border-hiviz/45 rounded-lg bg-gunmetal p-5 relative">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+          <span class="font-display text-3xl text-hiviz">05</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Send the RFIs</h3>
+          <p class="text-sm text-fog leading-relaxed">This is the step that saves the money. One letter per section, citing both documents, asking which governs — while the answer is still free.</p>
+        </div>
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-5">
+          <span class="font-display text-3xl text-hiviz/40">06</span>
+          <h3 class="font-semibold text-chalk mt-1 mb-1.5">Keep the record</h3>
+          <p class="text-sm text-fog leading-relaxed">A version snapshot from every cross-check. What the documents said at tender, before three addenda landed, stays recoverable — on a claim, that is the whole argument.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE AI POSITION ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+        <div class="reveal">
+          <span class="sg-eyebrow">MaraponeAI</span>
+          <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">
+            MaraponeAI never finds a conflict.
+          </h2>
+          <p class="text-fog mt-5 leading-relaxed">
+            Every finding comes from the parsers and the cross-check engine, out of text on a
+            numbered page of a real document, and every one cites where it came from. The model
+            explains, prioritises and drafts the letter.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            That line is drawn where it is because an RFI goes on the project record with your
+            name on it. A hallucinated requirement would make you look careless, in writing, on a
+            project you have to keep working on for two more years.
+          </p>
+          <p class="text-fog mt-4 leading-relaxed">
+            Ask it <span class="font-mono text-xs text-chalk bg-charcoal border border-plate rounded px-1.5 py-0.5">can I order the doors</span>
+            or <span class="font-mono text-xs text-chalk bg-charcoal border border-plate rounded px-1.5 py-0.5">show division 08</span>
+            and the instruction is parsed by rule and previewed before it changes anything on screen.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1 space-y-4">
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">100% local, no exceptions</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Nothing in this application opens a socket. A contractor's annotations on the
+              contract documents — which clauses they think are wrong, which ones they are
+              preparing to claim on — are privileged working product, and they never leave the
+              machine.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Fully functional without a model</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              With a model file staged in the app's own folder it adds free-form narrative;
+              without one it runs a deterministic reasoning engine. Either way you get every
+              finding, every explanation and every RFI draft.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">Your data outlives the software</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Projects, a copy of every document that was audited, RFI history, muted properties
+              and a snapshot from every cross-check live in your own Application Support folder in
+              open SQLite. An app update never touches them, and you can read them without us.
+            </p>
+          </div>
+          <div class="border border-plate rounded-lg bg-charcoal p-6">
+            <h3 class="font-display text-xl text-chalk mb-2">On-device text recognition</h3>
+            <p class="text-sm text-fog leading-relaxed">
+              Scanned sheets are read on the machine — Vision on macOS, a bundled recogniser on
+              Windows and Linux. No upload step, no third-party OCR service, and low-confidence
+              reads are labelled rather than smoothed over.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW TO BUY ══════════ -->
+  <section class="py-16 lg:py-24 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal max-w-3xl mb-10">
+        <span class="sg-eyebrow">What $990 actually buys</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">A finished application, not a licence.</h2>
+        <p class="text-fog mt-4 leading-relaxed">
+          One payment. No seats, no renewals, no metering, no expiry. The working app on day one,
+          the full source code on day 31 — and a refund in between if it doesn't earn its keep.
+        </p>
+      </div>
+
+      <div class="reveal border border-hiviz/45 rounded-lg bg-gunmetal p-6 lg:p-8 mb-8 relative">
+        <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
+        <p class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz mb-3">The arithmetic</p>
+        <p class="text-chalk text-lg leading-relaxed">
+          One finding on the demo project — a 90-minute exit-stair door shown unrated on the
+          schedule — is a door and frame package reordered after the opening is framed. The
+          rating is stamped at the factory, so the leaf is replaced rather than upgraded, and the
+          lead time is <span class="text-hiviz font-semibold">measured in months</span>.
+        </p>
+        <p class="text-fog text-sm leading-relaxed mt-3">
+          The software costs $990, once, and runs on every set of documents after that one. That
+          is the whole value argument: you are not buying software hours, you are buying the
+          question asked while the answer is still free.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="reveal border border-plate rounded-lg bg-gunmetal p-6">
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz mb-4">Included in the $990</p>
+          <ul class="space-y-2.5 text-sm">
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">The complete application on day one — installed on your own machines, no licence key, no activation server, no expiry</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">Unlimited projects, documents and machines in your company. No per-seat or per-project fee, ever</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">All 27 properties across 39 assemblies, 11 conflict types, and the CSI MasterFormat spine</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">The whole knowledge base as editable JSON — add a property without touching code</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">Full source code on day 31, once the refund window closes</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">Windows, macOS and Linux. Mobile app Q4 2026, included</span></li>
+            <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">✓</span><span class="text-chalk">30-day refund in full if it doesn't save you 10 hours — <a href="/construction/pricing#guarantee" class="text-hiviz hover:underline">how that works</a></span></li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-1">Not included — that&rsquo;s a customised setup</p>
+          <p class="font-mono text-xs text-fog mb-4">From $4,900</p>
+          <ul class="space-y-2.5 text-sm">
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Tuning on <em class="not-italic text-chalk">your</em> spec templates, your consultants' drafting conventions and your house standards</span></li>
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Properties and assemblies specific to what you build — a rule set outside the shipped 27</span></li>
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Wiring into Procore, Sage, Bluebeam or your own document management system</span></li>
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Workflows the product doesn&rsquo;t cover — RFI backlogs, submittal logs, deficiency lists</span></li>
+            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Ongoing development after handover (optional support plans, never required)</span></li>
+          </ul>
+          <p class="text-xs text-fog leading-relaxed mt-5 pt-4 border-t border-plate">
+            Buying the product first doesn&rsquo;t lock you out of a customised setup later — most
+            teams start here, then commission the parts that are specific to them.
+            <a href="/construction/pricing" class="text-hiviz hover:underline">See all three levels &rarr;</a>
+          </p>
+        </div>
+      </div>
+
+      <p class="reveal text-sm text-fog mt-6 max-w-3xl leading-relaxed">
+        <span class="text-chalk font-medium">Or all five together: $3,950</span> — the Blueprint
+        Auditor, SpecChecker, the AI Estimator, the Bid Leveler and ScopeGuard, $1,000 less than
+        buying them separately, plus one setup call that runs a real job of yours from the drawing
+        set to the awarded subcontract.
+      </p>
+
+      <div class="reveal flex flex-col sm:flex-row gap-3 mt-8">
+        <a href="/construction/pricing#products" data-checkout="product" data-product="specchecker" class="hiviz-gradient text-white font-semibold px-7 py-4 rounded text-center hover:opacity-90 transition-opacity">Buy SpecChecker — $990 →</a>
+        <a href="/construction/contact?product=specchecker" class="border border-plate text-chalk font-medium px-7 py-4 rounded text-center hover:bg-steel transition-colors">Book a walkthrough on your own documents</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA ══════════ -->
+  <section class="cta-band py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-4 text-center relative reveal">
+      <h2 class="font-display text-4xl lg:text-6xl text-chalk leading-none">Run it on the set you're about to order from.</h2>
+      <p class="text-fog mt-5 leading-relaxed max-w-xl mx-auto">
+        Send us the project manual and the drawing set. We will run them through SpecChecker and
+        walk you through what it found — conflict by conflict, with the clause and the sheet
+        behind each one — before you spend anything.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+        <a href="/construction/pricing#products" data-checkout="product" data-product="specchecker"
+          class="hiviz-gradient text-white font-semibold px-8 py-4 rounded text-center hover:opacity-90 transition-opacity">
+          Buy SpecChecker — $990 →
+        </a>
+        <a href="/construction/contact?product=specchecker"
+          class="border border-plate text-chalk font-medium px-8 py-4 rounded text-center hover:bg-steel transition-colors">
+          Book a walkthrough first
+        </a>
+      </div>
+      <p class="font-mono text-xs text-plate mt-6">One time · +HST · Secured by Stripe · 30-day refund · source code on day 31</p>
+      <p class="font-mono text-xs text-plate mt-3 max-w-xl mx-auto leading-relaxed">
+        SpecChecker reports where two contract documents disagree. It does not decide which one
+        governs, and it does not replace a design review, a code review or professional judgement.
+      </p>
+    </div>
+  </section>
+
+  <!-- TECHNICAL DETAIL STRIP -->
+  <section class="border-t border-plate bg-gunmetal py-12 lg:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// For the person who has to sign off on it</p>
+      <h2 class="font-display text-3xl lg:text-4xl text-chalk mb-3">The technical detail, before you ask for it.</h2>
+      <p class="text-fog leading-relaxed max-w-2xl mb-9">Every claim on this page has a page behind it. No form, no call &mdash; read it now.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="/construction/architecture" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Architecture</p>
+          <p class="text-fog text-sm leading-relaxed">Five layers, every component named, three deployment options, and what the handover repo contains.</p>
+        </a>
+        <a href="/construction/trust" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Trust &amp; security</p>
+          <p class="text-fog text-sm leading-relaxed">Where the data sits, what leaves the machine (nothing), retention, deletion and the security pack for your IT review.</p>
+        </a>
+        <a href="/construction/integrations" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Integrations</p>
+          <p class="text-fog text-sm leading-relaxed">What it reads and writes, and how it sits beside Procore, Autodesk, Sage or a shared drive without replacing them.</p>
+        </a>
+        <a href="/construction/regions" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Regions &amp; rate packs</p>
+          <p class="text-fog text-sm leading-relaxed">Why jurisdiction is data you own and edit, what the Toronto pack contains, and what changes outside Ontario.</p>
+        </a>
+        <a href="/construction/hardware" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">Hardware</p>
+          <p class="text-fog text-sm leading-relaxed">Minimum and recommended specs, supported operating systems, and why a GPU is optional rather than required.</p>
+        </a>
+        <a href="/construction/faq" class="block bg-charcoal border border-plate rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-display text-xl text-chalk mb-1.5">FAQ</p>
+          <p class="text-fog text-sm leading-relaxed">Support after handover, changing it later, update path, data deletion, and what happens if we disappear.</p>
+        </a>
+      </div>
+
+      <div class="mt-5 grid sm:grid-cols-2 gap-4">
+        <a href="/construction/work" class="block bg-charcoal border border-hiviz/40 rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1.5">Real jobs, real numbers</p>
+          <p class="font-display text-xl text-chalk mb-1.5">Three documented builds</p>
+          <p class="text-fog text-sm leading-relaxed">6&ndash;12h/week recovered, RFI turnaround 9.2&rarr;5.4 days, +24% win rate in 60 days &mdash; each with the build cost, the break-even and the quote it came from.</p>
+        </a>
+        <a href="/construction/roi-calculator" class="block bg-charcoal border border-hiviz/40 rounded-lg p-5 hover:border-hiviz transition-colors">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1.5">Your numbers, not ours</p>
+          <p class="font-display text-xl text-chalk mb-1.5">ROI calculator</p>
+          <p class="text-fog text-sm leading-relaxed">Put in your seat count, hourly rate and document volume. It will also tell you when a subscription is the better buy.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-charcoal border-t border-plate py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex flex-col items-center md:items-start gap-1">
+          <a href="/" class="font-display text-xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+          <div class="flex gap-2 mt-1">
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Toronto</span>
+            <span class="inline-flex items-center gap-1 font-mono text-xs text-fog border border-plate rounded-full px-2 py-0.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>Rome</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B 6K5<br />Canada</p>
+            </address>
+            <address class="not-italic">
+              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
+            </address>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
+          <a href="/" class="hover:text-chalk">Home</a>
+          <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/specchecker" class="hover:text-chalk">SpecChecker</a>
+          <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
+          <a href="/construction/bidleveler" class="hover:text-chalk">Bid Leveler</a>
+          <a href="/construction/scopeguard" class="hover:text-chalk">ScopeGuard</a>
+          <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
+          <a href="/construction/services" class="hover:text-chalk">Services</a>
+          <a href="/construction/work" class="hover:text-chalk">Work</a>
+          <a href="/construction/faq" class="hover:text-chalk">FAQ</a>
+          <a href="/construction/pricing" class="hover:text-chalk">Pricing</a>
+          <a href="/construction/about" class="hover:text-chalk">About</a>
+          <a href="/construction/contact" class="hover:text-chalk">Contact</a>
+        </div>
+        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
+      </div>
+      <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
+        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('nav-progress');
+      if (bar) {
+        window.addEventListener('scroll', function () {
+          var d = document.documentElement;
+          var h = d.scrollHeight - d.clientHeight;
+          if (h > 0) bar.style.width = ((d.scrollTop || window.scrollY) / h * 100) + '%';
+        }, { passive: true });
+      }
+
+      // Muted autoplay needs no gesture and the browser already defers loading
+      // until a video is near the viewport, so playback is left entirely to it.
+      // Do not add an observer that pauses below a visibility threshold — that
+      // cancels the autoplay and the clips only start once the user moves.
+      var vids = [].slice.call(document.querySelectorAll('video'));
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || (navigator.connection || {}).saveData) {
+        vids.forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
+      } else {
+        vids.forEach(function (v) {
+          v.play().catch(function () {});          // nudge Safari, which can be shy
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+
+</html>

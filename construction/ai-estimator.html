@@ -14,7 +14,7 @@
   <title>AI Estimator – Turn takeoff into a priced, defensible bid | Marapone</title>
   <link rel="canonical" href="https://marapone.com/construction/ai-estimator" />
   <meta name="description"
-    content="Marapone AI Estimator turns measured quantities into accurate, competitive, profitable bids. 57 assemblies, 27 risk rules, Toronto permits and development charges, Monte Carlo, and a margin ladder built from your own win history. Runs on Windows and macOS. Bought once." />
+    content="Marapone AI Estimator turns measured quantities into accurate, competitive, profitable bids. 57 assemblies, 27 risk rules, Toronto permits and development charges, Monte Carlo, and a margin ladder built from your own win history. Runs on Windows, macOS and Linux. Bought once." />
   <meta name="keywords"
     content="construction estimating software, AI estimator, Toronto development charges, construction contingency, Monte Carlo bid, margin ladder, CSI assemblies, private AI construction" />
   <meta property="og:type" content="website" />
@@ -42,7 +42,7 @@
     "@type": "SoftwareApplication",
     "name": "Marapone AI Estimator",
     "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Windows 10, Windows 11, macOS 12+",
+    "operatingSystem": "Windows 10, Windows 11, macOS 12+, Linux",
     "url": "https://marapone.com/construction/ai-estimator",
     "description": "Construction estimating for Toronto and the GTA. Turns measured quantities into priced, risk-adjusted, defensible bids — assemblies, contingency, municipal soft costs, scenario analysis and bid strategy — running entirely on the contractor's own machine.",
     "featureList": [
@@ -220,16 +220,24 @@
         <div class="relative" data-mp-products>
           <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
           <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
-            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
-              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
-              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
-            </a>
             <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
               <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
               <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
             </a>
+            <a href="/construction/specchecker" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">SpecChecker <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Spec book vs. drawings, before you order</span>
+            </a>
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/bidleveler" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Bid Leveler <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">A dozen sub quotes, levelled to one scope</span>
+            </a>
             <a href="/construction/scopeguard" class="mp-pi block px-4 py-2.5">
-              <span class="block text-sm text-chalk font-semibold">ScopeGuard <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-sm text-chalk font-semibold">ScopeGuard</span>
               <span class="block text-xs text-fog mt-0.5">Subcontractor scope &amp; buyout review</span>
             </a>
             <a href="/construction/services" class="mp-pi block px-4 py-2.5">
@@ -267,8 +275,10 @@
     </div>
     <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
       <p class="font-mono text-xs text-plate pt-1">// Products</p>
-      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
       <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/bidleveler" class="text-fog hover:text-chalk" style="padding-left:.75rem">Bid Leveler</a>
       <a href="/construction/scopeguard" class="text-fog hover:text-chalk" style="padding-left:.75rem">ScopeGuard</a>
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
@@ -342,7 +352,7 @@
             <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Runs offline</span>
             <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Your data never leaves</span>
             <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Stands alone or pairs with takeoff</span>
-            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Windows &amp; macOS &middot; mobile coming soon</span>
+            <span class="inline-flex items-center gap-1.5 border border-plate bg-steel/60 rounded-full px-3 py-1.5"><span class="text-hiviz">✓</span> Windows, macOS &amp; Linux &middot; mobile Q4 2026</span>
           </div>
         </div>
 
@@ -754,7 +764,7 @@
           <div class="border border-plate rounded-lg bg-charcoal p-6">
             <h3 class="font-display text-xl text-chalk mb-2">Runs entirely on your machine</h3>
             <p class="text-sm text-fog leading-relaxed">
-              A native desktop app for Windows and macOS, with mobile versions coming. Drop an
+              A native desktop app for Windows, macOS and Linux, with the mobile app arriving Q4 2026. Drop an
               embedded model into the app's own folder and nothing
               leaves the machine, ever. No account, no cloud, no telemetry, no per-seat licence
               phoning home.
@@ -950,8 +960,8 @@
         </div>
 
         <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
-          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-1">Not included — that&rsquo;s a custom build</p>
-          <p class="font-mono text-xs text-fog mb-4">From $1,500 &middot; most land $4,900&ndash;$9,500</p>
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-1">Not included — that&rsquo;s a customised setup</p>
+          <p class="font-mono text-xs text-fog mb-4">From $4,900</p>
           <ul class="space-y-2.5 text-sm">
             <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">An assembly catalogue rebuilt around how <em class="not-italic text-chalk">your</em> company builds, or divisions you self-perform and price your own way</span></li>
             <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">A soft-cost and by-law layer for a municipality outside Toronto and the GTA</span></li>
@@ -1008,13 +1018,15 @@
         <div class="reveal reveal-d2 border border-hiviz/45 rounded-lg bg-charcoal p-6 flex flex-col relative">
           <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
           <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">Option C — most teams</span>
-          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">All three, wired together</h3>
+          <h3 class="font-display text-2xl text-chalk mt-2 mb-3">All five, wired together</h3>
           <p class="text-sm text-fog leading-relaxed flex-1">
-            Quantities flow from the drawings into the priced bid, and the priced bid becomes the
-            budget ScopeGuard measures every subcontractor's letter against. The seams between
-            measuring, pricing and buying out are where errors get born — this removes them.
+            Quantities flow from the drawings into the priced bid, SpecChecker catches the
+            contradictions between the manual and the drawings before anything is ordered, the
+            Bid Leveler normalises what the subs quote back, and its levelled position becomes the
+            budget ScopeGuard measures every letter against. The seams between measuring, pricing
+            and buying out are where errors get born — this removes them.
           </p>
-          <p class="font-mono text-xs text-hiviz mt-4">$2,490 for the suite &middot; saves $480</p>
+          <p class="font-mono text-xs text-hiviz mt-4">$3,950 for all five &middot; saves $1,000</p>
         </div>
       </div>
 
@@ -1124,7 +1136,9 @@
         <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/specchecker" class="hover:text-chalk">SpecChecker</a>
           <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
+          <a href="/construction/bidleveler" class="hover:text-chalk">Bid Leveler</a>
           <a href="/construction/scopeguard" class="hover:text-chalk">ScopeGuard</a>
           <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
           <a href="/construction/services" class="hover:text-chalk">Services</a>

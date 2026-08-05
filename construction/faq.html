@@ -218,7 +218,7 @@
         "name": "What are the pricing tiers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Four tiers: Starter ($1,500 CAD), Pilot ($4,900 CAD), Full Build ($9,500 CAD), and Plus ($15,000 CAD). Starter covers one workflow module. Pilot covers two modules for operations with more document complexity. Full Build is the complete four-module suite. Plus adds server or air-gapped deployment, extended team onboarding, and priority support."
+          "text": "Three levels. $990 CAD buys a finished desktop app — any one of the five construction products — installed on your own machines and running this week, with the mobile app arriving Q4 2026 at no extra cost. $4,900 CAD and up is a setup customised to your specific company files: fine-tuned on your historical documents, your templates, your rate sheet and your house language. $15,000 CAD and up is full enterprise integration into the systems you already run — Procore, Sage, Autodesk or your own database — including server or air-gapped deployment and team training."
         }
       },
       {
@@ -250,7 +250,7 @@
         "name": "Do I need to have a server or special hardware already?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. If you don't have hardware capable of running a local AI system, we handle it. For Starter and Pilot builds, we can source, configure, and ship a dedicated machine pre-loaded with your build for a flat $1,000 CAD hardware add-on — the machine is yours to keep."
+          "text": "No. If you don't have hardware capable of running a local AI system, we handle it. Alongside a customised setup we can source, configure, and ship a dedicated machine pre-loaded with your build for a flat $1,000 CAD hardware add-on — the machine is yours to keep."
         }
       },
       {
@@ -258,7 +258,7 @@
         "name": "How long does the build take?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "One to three weeks from signed scope to system handover, depending on the tier and complexity. Starter builds typically run one week. Pilot builds run one to two weeks. Professional builds run two to three weeks."
+          "text": "The $990 apps are finished software — you install and run them the day you buy. For the levels above that, one to three weeks from signed scope to system handover, depending on complexity. A customised setup typically runs one to two weeks; an enterprise integration runs two to three, longer where a security review or an undocumented API is in the way."
         }
       },
       {
@@ -354,16 +354,24 @@
         <div class="relative" data-mp-products>
           <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
           <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
-            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
-              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
-              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
-            </a>
             <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
               <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
               <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
             </a>
+            <a href="/construction/specchecker" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">SpecChecker <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Spec book vs. drawings, before you order</span>
+            </a>
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/bidleveler" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Bid Leveler <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">A dozen sub quotes, levelled to one scope</span>
+            </a>
             <a href="/construction/scopeguard" class="mp-pi block px-4 py-2.5">
-              <span class="block text-sm text-chalk font-semibold">ScopeGuard <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-sm text-chalk font-semibold">ScopeGuard</span>
               <span class="block text-xs text-fog mt-0.5">Subcontractor scope &amp; buyout review</span>
             </a>
             <a href="/construction/services" class="mp-pi block px-4 py-2.5">
@@ -401,8 +409,10 @@
     </div>
     <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
       <p class="font-mono text-xs text-plate pt-1">// Products</p>
-      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
       <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/bidleveler" class="text-fog hover:text-chalk" style="padding-left:.75rem">Bid Leveler</a>
       <a href="/construction/scopeguard" class="text-fog hover:text-chalk" style="padding-left:.75rem">ScopeGuard</a>
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
@@ -578,7 +588,13 @@
             </svg>
           </button>
           <div class="faq-body">
-            <p>Four tiers: Starter ($1,500 CAD), Pilot ($4,900 CAD), Full Build ($9,500 CAD), and Plus ($15,000 CAD). Starter covers one workflow module. Pilot covers two modules for operations with more document complexity. Full Build is the complete four-module suite. Plus adds server or air-gapped deployment, extended team onboarding, and priority support. Full details, including what's included in each tier, are on the
+            <p>Three levels. <strong>$990 CAD</strong> buys a finished desktop app &mdash; any one of the five
+              construction products &mdash; installed on your own machines and running this week, with the mobile app
+              arriving Q4 2026 at no extra cost. <strong>$4,900 CAD and up</strong> is a setup customised to your
+              specific company files: fine-tuned on your historical documents, your templates, your rate sheet and your
+              house language. <strong>$15,000 CAD and up</strong> is full enterprise integration into the systems you
+              already run &mdash; Procore, Sage, Autodesk or your own database &mdash; including server or air-gapped
+              deployment and team training. Full details are on the
               <a href="/construction/pricing">Pricing page</a>.
             </p>
           </div>
@@ -738,9 +754,9 @@
             </svg>
           </button>
           <div class="faq-body">
-            <p>No. If you don't have hardware capable of running a local AI system, we handle it. For Starter and Pilot
-              builds, we can source, configure, and ship a dedicated machine pre-loaded with your build for a flat
-              $1,000 CAD hardware add-on — the machine is yours to keep. For Professional builds requiring multi-GPU
+            <p>No. If you don't have hardware capable of running a local AI system, we handle it. Alongside a
+              customised setup we can source, configure, and ship a dedicated machine pre-loaded with your build for a
+              flat $1,000 CAD hardware add-on — the machine is yours to keep. For enterprise builds requiring multi-GPU
               systems, we locate parts, assemble, and configure the rig — hardware cost is covered in the project
               deposit. We'll spec the hardware requirements after the free assessment so there are no surprises.
               See the full <a href="/construction/hardware" class="text-hiviz hover:text-hiviz2 underline decoration-hiviz/40 underline-offset-2">hardware requirements &amp; spec table</a>.</p>
@@ -755,9 +771,10 @@
             </svg>
           </button>
           <div class="faq-body">
-            <p>One to three weeks from signed scope to system handover, depending on the tier and complexity. Starter
-              builds typically run one week. Pilot builds run one to two weeks. Professional builds run two to three
-              weeks. The timeline starts after the scoping call and written specification are agreed on — the
+            <p>The $990 apps are finished software &mdash; you install and run them the day you buy. For the levels
+              above that, one to three weeks from signed scope to system handover, depending on complexity. A customised
+              setup typically runs one to two weeks; an enterprise integration runs two to three, longer where a
+              security review or an undocumented API is in the way. The timeline starts after the scoping call and written specification are agreed on — the
               assessment and scoping phase before that runs separately and typically takes three to five business days
               total.</p>
           </div>
@@ -941,7 +958,9 @@
         <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/specchecker" class="hover:text-chalk">SpecChecker</a>
           <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
+          <a href="/construction/bidleveler" class="hover:text-chalk">Bid Leveler</a>
           <a href="/construction/scopeguard" class="hover:text-chalk">ScopeGuard</a>
           <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
         

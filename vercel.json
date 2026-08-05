@@ -167,6 +167,14 @@
       "destination": "/construction/scopeguard.html"
     },
     {
+      "source": "/construction/specchecker",
+      "destination": "/construction/specchecker.html"
+    },
+    {
+      "source": "/construction/bidleveler",
+      "destination": "/construction/bidleveler.html"
+    },
+    {
       "source": "/logistics",
       "destination": "/logistics/index.html"
     },

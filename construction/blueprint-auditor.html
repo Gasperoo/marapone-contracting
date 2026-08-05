@@ -413,16 +413,24 @@
         <div class="relative" data-mp-products>
           <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">Products<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
           <div class="mp-products-menu absolute left-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:290px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
-            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
-              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
-              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
-            </a>
             <a href="/construction/blueprint-auditor" class="mp-pi block px-4 py-2.5">
               <span class="block text-sm text-chalk font-semibold">Blueprint Auditor</span>
               <span class="block text-xs text-fog mt-0.5">Takeoff, scope gaps &amp; tender risk &middot; live demo</span>
             </a>
+            <a href="/construction/specchecker" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">SpecChecker <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">Spec book vs. drawings, before you order</span>
+            </a>
+            <a href="/construction/ai-estimator" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">AI Estimator</span>
+              <span class="block text-xs text-fog mt-0.5">Quantities &rarr; a priced, defensible bid</span>
+            </a>
+            <a href="/construction/bidleveler" class="mp-pi block px-4 py-2.5">
+              <span class="block text-sm text-chalk font-semibold">Bid Leveler <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-xs text-fog mt-0.5">A dozen sub quotes, levelled to one scope</span>
+            </a>
             <a href="/construction/scopeguard" class="mp-pi block px-4 py-2.5">
-              <span class="block text-sm text-chalk font-semibold">ScopeGuard <span class="font-mono text-[10px] text-hiviz align-middle">NEW</span></span>
+              <span class="block text-sm text-chalk font-semibold">ScopeGuard</span>
               <span class="block text-xs text-fog mt-0.5">Subcontractor scope &amp; buyout review</span>
             </a>
             <a href="/construction/services" class="mp-pi block px-4 py-2.5">
@@ -460,8 +468,10 @@
     </div>
     <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
       <p class="font-mono text-xs text-plate pt-1">// Products</p>
-      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
       <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
+      <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
+      <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
+      <a href="/construction/bidleveler" class="text-fog hover:text-chalk" style="padding-left:.75rem">Bid Leveler</a>
       <a href="/construction/scopeguard" class="text-fog hover:text-chalk" style="padding-left:.75rem">ScopeGuard</a>
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
@@ -847,55 +857,60 @@
     </div>
   </section>
 
-  <!-- THREE TOOLS, ONE JOB -->
+  <!-- FIVE TOOLS, ONE JOB -->
   <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
     <div class="max-w-6xl mx-auto px-4">
       <div class="reveal max-w-3xl mb-10">
-        <span class="ba-eyebrow">Three tools, one job</span>
-        <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4">MEASURE IT. <span class="ba-grad-text">PRICE IT. THEN
+        <span class="ba-eyebrow">Five tools, one job</span>
+        <h2 class="ba-display text-4xl lg:text-5xl text-chalk mb-4">MEASURE IT. CHECK IT. <span class="ba-grad-text">PRICE IT. LEVEL IT.
             BUY IT OUT.</span></h2>
-        <p class="text-fog leading-relaxed">These are three products because they are three different problems, and most
-          contractors only have one of them. Buy the one you&rsquo;re missing — or run all three and the same job carries
+        <p class="text-fog leading-relaxed">These are five products because they are five different problems, and most
+          contractors only have one or two of them. Buy the one you&rsquo;re missing — or run all five and the same job carries
           straight through from the drawing set to the awarded subcontract.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="reveal border border-hiviz/45 rounded-lg bg-charcoal p-6 flex flex-col relative">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+
+        <div class="reveal border border-hiviz/45 rounded-lg bg-charcoal p-5 flex flex-col relative">
           <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-hiviz to-transparent" aria-hidden="true"></div>
           <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">Stage 1 — before the bid</span>
-          <h3 class="ba-display text-2xl text-chalk mt-2 mb-3">Blueprint Auditor</h3>
-          <p class="text-sm text-fog leading-relaxed flex-1">Reads the drawing set and answers <em
-              class="text-chalk not-italic font-medium">how much is there</em> — quantities, scope gaps, code and tender
-            risk.</p>
+          <h3 class="ba-display text-xl text-chalk mt-2 mb-3">Blueprint Auditor</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">Reads the drawing set and answers <em class="text-chalk not-italic font-medium">how much is there</em> — quantities, scope gaps, code and tender risk.</p>
           <span class="font-mono text-xs text-hiviz mt-5">You are here &middot; $990 one time</span>
         </div>
 
-        <div class="reveal reveal-d1 border border-plate rounded-lg bg-charcoal p-6 flex flex-col">
-          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 2 — at the bid</span>
-          <h3 class="ba-display text-2xl text-chalk mt-2 mb-3">AI Estimator</h3>
-          <p class="text-sm text-fog leading-relaxed flex-1">Takes those quantities and answers <em
-              class="text-chalk not-italic font-medium">what should we bid</em> — assemblies, contingency, Toronto soft
-            costs, margin.</p>
-          <a href="/construction/ai-estimator"
-            class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See
-            the estimator &rarr;</a>
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 2 — before you order</span>
+          <h3 class="ba-display text-xl text-chalk mt-2 mb-3">SpecChecker</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">Reads the manual against the drawings and answers <em class="text-chalk not-italic font-medium">do the documents agree</em> — before the material is ordered.</p>
+          <a href="/construction/specchecker" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it &rarr;</a>
         </div>
 
-        <div class="reveal reveal-d2 border border-plate rounded-lg bg-charcoal p-6 flex flex-col">
-          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 3 — after you win</span>
-          <h3 class="ba-display text-2xl text-chalk mt-2 mb-3">ScopeGuard</h3>
-          <p class="text-sm text-fog leading-relaxed flex-1">Takes the awarded job and answers <em
-              class="text-chalk not-italic font-medium">did anyone actually price it</em> — every sub&rsquo;s letter
-            against your own documents.</p>
-          <a href="/construction/scopeguard"
-            class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See
-            ScopeGuard &rarr;</a>
+        <div class="reveal reveal-d1 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 3 — at the bid</span>
+          <h3 class="ba-display text-xl text-chalk mt-2 mb-3">AI Estimator</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">Takes those quantities and answers <em class="text-chalk not-italic font-medium">what should we bid</em> — assemblies, contingency, Toronto soft costs, margin.</p>
+          <a href="/construction/ai-estimator" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it &rarr;</a>
+        </div>
+
+        <div class="reveal reveal-d2 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 4 — before you award</span>
+          <h3 class="ba-display text-xl text-chalk mt-2 mb-3">Bid Leveler</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">Reads the quotes that came back and answers <em class="text-chalk not-italic font-medium">whose bid is actually cheapest</em> — a dozen formats, one scope.</p>
+          <a href="/construction/bidleveler" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it &rarr;</a>
+        </div>
+
+        <div class="reveal reveal-d2 border border-plate rounded-lg bg-charcoal p-5 flex flex-col">
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-fog">Stage 5 — after you win</span>
+          <h3 class="ba-display text-xl text-chalk mt-2 mb-3">ScopeGuard</h3>
+          <p class="text-sm text-fog leading-relaxed flex-1">Takes the awarded job and answers <em class="text-chalk not-italic font-medium">did anyone actually price it</em> — every sub&rsquo;s letter against your own documents.</p>
+          <a href="/construction/scopeguard" class="inline-flex items-center gap-1.5 font-mono text-xs text-hiviz mt-5 hover:gap-2.5 transition-all">See it &rarr;</a>
         </div>
       </div>
 
       <p class="reveal text-sm text-fog mt-6 max-w-3xl leading-relaxed">
-        <span class="text-chalk font-medium">Each one works on its own — $990 each, one time.</span> All three together
-        is $2,490, $480 less than buying them separately, and the auditor&rsquo;s takeoff imports straight into the
+        <span class="text-chalk font-medium">Each one works on its own — $990 each, one time.</span> All five together
+        is $3,950, $1,000 less than buying them separately, and the auditor&rsquo;s takeoff imports straight into the
         estimator rather than being retyped.
       </p>
     </div>
@@ -941,8 +956,8 @@
         </div>
 
         <div class="reveal reveal-d1 border border-plate rounded-lg bg-gunmetal p-6">
-          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-1">Not included — that&rsquo;s a custom build</p>
-          <p class="font-mono text-xs text-fog mb-4">From $1,500 &middot; most land $4,900&ndash;$9,500</p>
+          <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-1">Not included — that&rsquo;s a customised setup</p>
+          <p class="font-mono text-xs text-fog mb-4">From $4,900</p>
           <ul class="space-y-2.5 text-sm">
             <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Fine-tuning on <em class="not-italic text-chalk">your</em> drawing conventions, title blocks, standard details and past project sets</span></li>
             <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Rule sets for a jurisdiction outside Ontario, or your own internal design standards</span></li>
@@ -1070,7 +1085,9 @@
         <div class="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-fog font-body">
           <a href="/" class="hover:text-chalk">Home</a>
           <a href="/construction/blueprint-auditor" class="hover:text-chalk">Blueprint Auditor</a>
+          <a href="/construction/specchecker" class="hover:text-chalk">SpecChecker</a>
           <a href="/construction/ai-estimator" class="hover:text-chalk">AI Estimator</a>
+          <a href="/construction/bidleveler" class="hover:text-chalk">Bid Leveler</a>
           <a href="/construction/scopeguard" class="hover:text-chalk">ScopeGuard</a>
           <a href="/construction/how-it-works" class="hover:text-chalk">How It Works</a>
           <a href="/construction/services" class="hover:text-chalk">Services</a>

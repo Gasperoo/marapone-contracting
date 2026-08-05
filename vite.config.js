@@ -83,6 +83,8 @@ export default defineConfig({
           '/construction/blueprint-auditor': '/construction/blueprint-auditor.html',
           '/construction/ai-estimator': '/construction/ai-estimator.html',
           '/construction/scopeguard': '/construction/scopeguard.html',
+          '/construction/specchecker': '/construction/specchecker.html',
+          '/construction/bidleveler': '/construction/bidleveler.html',
           // logistics subdirectory
           '/logistics': '/logistics/index.html',
           '/logistics/how-it-works': '/logistics/how-it-works.html',
@@ -215,6 +217,8 @@ export default defineConfig({
         'construction-blueprint-auditor': path.resolve(__dirname, 'construction/blueprint-auditor.html'),
         'construction-ai-estimator': path.resolve(__dirname, 'construction/ai-estimator.html'),
         'construction-scopeguard': path.resolve(__dirname, 'construction/scopeguard.html'),
+        'construction-specchecker': path.resolve(__dirname, 'construction/specchecker.html'),
+        'construction-bidleveler': path.resolve(__dirname, 'construction/bidleveler.html'),
         // Logistics subdirectory
         'logistics-index': path.resolve(__dirname, 'logistics/index.html'),
         'logistics-how-it-works': path.resolve(__dirname, 'logistics/how-it-works.html'),

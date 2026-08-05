@@ -133,7 +133,7 @@
       <p class="text-fog leading-relaxed max-w-xl">We built Marapone around the principle that your data belongs to you.
         This policy explains what we collect when you visit this website or engage us as a client, and — importantly —
         what we do not collect and why.</p>
-      <p class="font-mono text-xs text-plate mt-4">Effective date: January 1, 2026 &nbsp;·&nbsp; Last updated: June 2026 &nbsp;·&nbsp; Marapone Contracting Inc. (Canada)</p>
+      <p class="font-mono text-xs text-plate mt-4">Effective date: January 1, 2026 &nbsp;·&nbsp; Last updated: August 2026 &nbsp;·&nbsp; Marapone Contracting Inc. (Canada)</p>
     </div>
   </section>
 
@@ -142,7 +142,7 @@
     <div class="max-w-3xl mx-auto px-4">
       <div class="tape-line">
         <p class="text-chalk font-semibold leading-relaxed">The core of our privacy model: the AI systems we build for
-          clients run entirely on your own hardware. Software you buy from us (the AI Estimator, the Blueprint Auditor) runs entirely on your own machine and sends us nothing at all. The documents you hand us for a client build — blueprints, trade
+          clients run entirely on your own hardware. Software you buy from us — the Blueprint Auditor, SpecChecker, the AI Estimator, the Bid Leveler and ScopeGuard — runs entirely on your own machine and sends us nothing at all. The documents you hand us for a client build — blueprints, trade
           documents, freight invoices, daily logs — are processed locally on our build hardware, never passed through
           external AI APIs, and deleted on delivery. Private AI means private AI.</p>
         <p class="text-fog text-sm leading-relaxed mt-3">One exception to be transparent about: the optional tools on
@@ -311,6 +311,24 @@
           </ul>
           <p>If we engage an NDA prior to receiving your materials (which we recommend for sensitive projects), those
             obligations apply in addition to and independently of this Privacy Policy.</p>
+          <div class="tape-line">
+            <p class="text-chalk font-semibold">Software you buy off the shelf is different again: we never see your
+              data at all.</p>
+          </div>
+          <p>The Blueprint Auditor, SpecChecker, the AI Estimator, the Bid Leveler and ScopeGuard are desktop
+            applications for Windows, macOS and Linux. There is no Marapone account, no licence server and no
+            telemetry. Everything they read and everything they produce &mdash; project manuals, drawing sets,
+            subcontractor quotes, your award history, your rate tables and your own annotations &mdash; is written to a
+            folder on your machine that you control, in open SQLite, and stays there. They work with the network
+            switched off, and uninstalling one does not delete your data.</p>
+          <p>This matters most for the commercially sensitive material these products handle. Subcontractor pricing and
+            a contractor's working notes on the contract documents are among the most confidential records in a
+            construction office, and nothing in these applications opens a socket.</p>
+          <p>If you take a <strong class="text-chalk">customised setup</strong> or an <strong class="text-chalk">enterprise
+            integration</strong>, you are sending us historical documents so we can tune the system to them &mdash; past
+            estimates, awarded subcontracts, spec templates, quotes and change orders. Those are handled under exactly
+            the terms set out above in this section: processed locally on our build hardware, never passed through an
+            external AI API, and deleted on delivery.</p>
         </div>
       </div>
 
@@ -341,7 +359,7 @@
                 <tr><td class="px-3 py-2 border-b border-plate text-chalk">VirusTotal</td><td class="px-3 py-2 border-b border-plate">Malware scanning of uploaded files</td><td class="px-3 py-2 border-b border-plate">Uploaded file &amp; its hash</td></tr>
                 <tr><td class="px-3 py-2 border-b border-plate text-chalk">Akismet</td><td class="px-3 py-2 border-b border-plate">Spam filtering of form submissions</td><td class="px-3 py-2 border-b border-plate">Submitted text, email, IP</td></tr>
                 <tr><td class="px-3 py-2 border-b border-plate text-chalk">Cal.com</td><td class="px-3 py-2 border-b border-plate">Discovery-call scheduling (where offered)</td><td class="px-3 py-2 border-b border-plate">Name, email, booking details</td></tr>
-                <tr><td class="px-3 py-2 text-chalk">Payment processor</td><td class="px-3 py-2">Invoice payment (clients only)</td><td class="px-3 py-2">Handled by your bank/card network; we don't store card data</td></tr>
+                <tr><td class="px-3 py-2 text-chalk">Stripe</td><td class="px-3 py-2">Software product checkout and invoice payment</td><td class="px-3 py-2">Name, email and payment details, entered on Stripe's own page; we never see or store card data</td></tr>
               </tbody>
             </table>
           </div>

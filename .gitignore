@@ -74,3 +74,9 @@ emails/preview/
 
 # Headless Chrome profile used by tools/render-headings.js
 .chrome-render-profile/
+
+# Fonts pulled down by scripts/build-instagram.py — re-fetched on demand
+scripts/.font-cache/
+
+# Per-machine Claude Code settings (and the Finder duplicates of them)
+.claude/settings.local*.json

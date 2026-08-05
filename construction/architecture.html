@@ -10,12 +10,12 @@
   <meta name="theme-color" content="#111111" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Architecture – What You Actually Own | Marapone Construction</title>
-  <meta name="description" content="The exact stack inside a Marapone construction build. Open-source models, local vector store, your own API and UI. Deployed on a laptop, on-prem server, or your private cloud." />
+  <title>Architecture – Six Apps, One Stack | Marapone Construction</title>
+  <meta name="description" content="The exact stack inside the six Marapone construction apps. Python and PyQt6 desktop software, an embedded llama.cpp model, OCR that runs on your own machine, and a SQLite file you can copy. No server, no subscription, no outbound call." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Marapone" />
-  <meta property="og:title" content="Architecture – What You Actually Own | Marapone Construction" />
-  <meta property="og:description" content="The exact stack inside a Marapone construction build. You own every layer." />
+  <meta property="og:title" content="Architecture – Six Apps, One Stack | Marapone Construction" />
+  <meta property="og:description" content="The exact stack inside the six Marapone construction apps. The model never finds anything — the parsers do, and every finding cites a page." />
   <meta property="og:url" content="https://marapone.com/construction/architecture" />
   <meta property="og:image" content="https://marapone.com/og/og-construction.jpg" />
   <link rel="canonical" href="https://marapone.com/construction/architecture" />
@@ -183,61 +183,146 @@
     </div>
     <div class="max-w-5xl mx-auto px-4 relative z-10">
       <p class="font-mono text-hiviz text-sm mb-4">// Architecture</p>
-      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">UNDER THE HOOD —<br/><span class="text-hiviz">WHAT YOU ACTUALLY OWN.</span></h1>
-      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">Most "AI for construction" pages stop at the marketing layer. This one doesn't. Here is the exact stack we ship — the models, the vector store, the API, the UI, the infra. All of it open-source where it matters. All of it handed over on day 14 with the source code, weights, and runbooks.</p>
+      <h1 class="font-display text-5xl lg:text-7xl text-chalk leading-none mb-6">SIX APPS.<br/><span class="text-hiviz">ONE ARCHITECTURE.</span></h1>
+      <p class="text-fog text-lg max-w-2xl leading-relaxed mb-8">Most "AI for construction" pages stop at the marketing layer. This one doesn't. Below is what is actually inside the software: the parsers, the reasoning engine, the database file, the data packs, and the one design rule the whole thing is built around &mdash; <span class="text-chalk">the model is never allowed to find anything.</span> It runs on the laptop you already own. There is no server to rent and nothing to log into.</p>
       <div class="flex flex-wrap gap-3">
         <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Get the Stack Walkthrough &rarr;</a>
-        <a href="/construction/services" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">See What We Build</a>
+        <a href="/construction/pricing" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">See the Products</a>
       </div>
     </div>
   </section>
 
+  <!-- THE SIX APPS -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// What exists</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">FIVE DESKTOP APPS AND ONE PHONE.</h2>
+      <p class="text-fog leading-relaxed max-w-3xl mb-10">Five finished desktop applications, each one covering a single stage of the same job, and a sixth that puts the same interface in a site super's pocket. They share a codebase spine on purpose: a document read correctly in one app reads correctly in all of them, and the output of each stage is the input to the next without anything being retyped.</p>
 
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <article class="bg-gunmetal border border-plate rounded-lg p-5">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">APP 01 &middot; TAKEOFF</p>
+          <h3 class="font-display text-2xl text-chalk mb-2"><a href="/construction/blueprint-auditor" class="hover:text-hiviz transition-colors">Blueprint Auditor</a></h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">How much is there. The heaviest pipeline of the six: vector PDF, rasterised sheets, DWG/DXF and IFC all land in the same measured quantity model.</p>
+          <p class="font-mono text-xs text-plate">PyMuPDF &middot; ezdxf &middot; ifcopenshell &middot; OpenCV &middot; shapely</p>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg p-5">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">APP 02 &middot; DOCUMENT AUDIT</p>
+          <h3 class="font-display text-2xl text-chalk mb-2"><a href="/construction/specchecker" class="hover:text-hiviz transition-colors">SpecChecker</a></h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">Whether the manual and the drawings agree. A cross-check engine over measurable properties, indexed by CSI division, that reports both statements and both references.</p>
+          <p class="font-mono text-xs text-plate">crosscheck/ &middot; attribute_rules.json &middot; spec_patterns.json</p>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg p-5">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">APP 03 &middot; PRICING</p>
+          <h3 class="font-display text-2xl text-chalk mb-2"><a href="/construction/ai-estimator" class="hover:text-hiviz transition-colors">AI Estimator</a></h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">What it should be bid at. Assemblies resolve against the rate packs; risk runs as a Monte Carlo over the cost model rather than a flat percentage on the bottom line.</p>
+          <p class="font-mono text-xs text-plate">assemblies/ &middot; pricing/ &middot; risk/ &middot; scenarios/ &middot; numpy</p>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg p-5">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">APP 04 &middot; LEVELLING</p>
+          <h3 class="font-display text-2xl text-chalk mb-2"><a href="/construction/bidleveler" class="hover:text-hiviz transition-colors">Bid Leveler</a></h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">Whose quote is actually cheapest. Quotes arriving in a dozen formats are normalised to one scope, and every adjustment prints the basis it was made on.</p>
+          <p class="font-mono text-xs text-plate">extraction/ &middot; leveling/ &middot; knowledge/ &middot; openpyxl</p>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg p-5">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">APP 05 &middot; BUYOUT</p>
+          <h3 class="font-display text-2xl text-chalk mb-2"><a href="/construction/scopeguard" class="hover:text-hiviz transition-colors">ScopeGuard</a></h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">Whether anyone actually priced it. Cross-references the tender package against every proposal for gaps, overlaps and wording that will not survive a dispute.</p>
+          <p class="font-mono text-xs text-plate">crossref/ &middot; master/ &middot; clarify/ &middot; learning/</p>
+        </article>
+
+        <article class="bg-gunmetal border border-hiviz rounded-lg p-5">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">APP 06 &middot; Q4 2026</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">The mobile app</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">The same interface, in a native shell, on a phone. Included in the desktop purchase at no extra cost. How it reuses the desktop UI without a rewrite is <a href="#mobile" class="text-hiviz font-semibold hover:opacity-80 transition-opacity">below</a>.</p>
+          <p class="font-mono text-xs text-plate">Capacitor &middot; shared UI &middot; bridge shim</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- STACK DIAGRAM -->
-  <section class="py-16 lg:py-20 border-b border-plate">
+  <section class="py-16 lg:py-20 border-b border-plate bg-gunmetal">
     <div class="max-w-5xl mx-auto px-4">
-      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// The full pipeline</p>
-      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">FIVE LAYERS, NO BLACK BOXES.</h2>
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// The shared spine</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">SIX LAYERS, NO BLACK BOXES.</h2>
+      <p class="text-fog leading-relaxed max-w-3xl mb-10">Open any of the five desktop codebases and you find the same module layout. Only the domain layer differs &mdash; that is what makes it a suite rather than five products that happen to share a logo.</p>
 
       <div class="space-y-3">
         <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
           <div>
-            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 01 · INGEST</p>
-            <p class="text-chalk font-semibold">Document ingest</p>
-            <p class="text-fog text-sm">PDFs, drawings, RFIs, email, meeting minutes &rarr; OCR &rarr; chunked text + page-region metadata</p>
+            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 01 · INTAKE</p>
+            <p class="text-chalk font-semibold">Your documents, opened from disk</p>
+            <p class="text-fog text-sm">Project manuals, drawing sets, subcontractor quotes, scope letters, addenda &mdash; PDF, DWG/DXF, IFC, XLSX, DOCX. Dragged into the window; never uploaded anywhere.</p>
           </div>
           <span class="font-mono text-hiviz text-2xl hidden md:inline">&darr;</span>
         </div>
         <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
           <div>
-            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 02 · MODELS</p>
-            <p class="text-chalk font-semibold">Local LLM layer</p>
-            <p class="text-fog text-sm">Llama 3.1 70B (general), Qwen 2.5 14B (fast), domain fine-tunes (e.g. <code class="font-mono text-hiviz text-xs">rfi_classifier</code>)</p>
+            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 02 · EXTRACTION</p>
+            <p class="text-chalk font-semibold"><code class="font-mono text-hiviz text-xs">src/extraction/</code></p>
+            <p class="text-fog text-sm">Text layer first, OCR when there isn't one. Shared across the apps and version-pinned together, because a version skew shows up as a PDF that reads in one app and not another.</p>
           </div>
           <span class="font-mono text-hiviz text-2xl hidden md:inline">&darr;</span>
         </div>
         <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
           <div>
-            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 03 · MEMORY</p>
-            <p class="text-chalk font-semibold">Embeddings + vector store</p>
-            <p class="text-fog text-sm">BAAI/bge-m3 embeddings &rarr; ChromaDB or Qdrant &rarr; Postgres for structured project metadata</p>
+            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 03 · DOMAIN ENGINE</p>
+            <p class="text-chalk font-semibold"><code class="font-mono text-hiviz text-xs">crosscheck/ · leveling/ · crossref/ · pricing/ · engine/</code></p>
+            <p class="text-fog text-sm">Deterministic code. This is the layer that produces findings &mdash; every conflict, gap, overlap and dollar, each one traced to a numbered page of a real document.</p>
           </div>
           <span class="font-mono text-hiviz text-2xl hidden md:inline">&darr;</span>
         </div>
         <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
           <div>
-            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 04 · APP</p>
-            <p class="text-chalk font-semibold">Application layer</p>
-            <p class="text-fog text-sm">FastAPI services for RFI triage, daily log synth, change-order risk scoring, deficiency consolidation</p>
+            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 04 · REASONING</p>
+            <p class="text-chalk font-semibold"><code class="font-mono text-hiviz text-xs">src/ai/engine.py</code> &mdash; MaraponeAI</p>
+            <p class="text-fog text-sm">An embedded llama.cpp model, in-process, reading the structured result the layer above produced. It explains, prioritises and drafts the letter. It does not search the documents.</p>
+          </div>
+          <span class="font-mono text-hiviz text-2xl hidden md:inline">&darr;</span>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-5 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 05 · STORAGE</p>
+            <p class="text-chalk font-semibold"><code class="font-mono text-hiviz text-xs">src/storage/db.py</code></p>
+            <p class="text-fog text-sm">One SQLite file in your user profile. Every save writes a version row, so what the documents said at tender is recoverable later &mdash; which on a claim is the whole argument.</p>
           </div>
           <span class="font-mono text-hiviz text-2xl hidden md:inline">&darr;</span>
         </div>
         <div class="bg-steel border border-plate rounded-lg p-5">
-          <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 05 · UI</p>
-          <p class="text-chalk font-semibold">Web UI</p>
-          <p class="text-fog text-sm">Next.js + Tailwind. Hosted on your domain or behind your VPN. SSO via your existing identity provider.</p>
+          <p class="font-mono text-hiviz text-xs uppercase mb-1">LAYER 06 · INTERFACE &amp; OUTPUT</p>
+          <p class="text-chalk font-semibold"><code class="font-mono text-hiviz text-xs">src/ui/</code> + <code class="font-mono text-hiviz text-xs">src/report/</code></p>
+          <p class="text-fog text-sm">An HTML/JS interface rendered by PyQt6 WebEngine, talking to Python over Qt's WebChannel. Reports out as PDF and Excel, into the same folder as everything else on the job.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE DESIGN RULE -->
+  <section class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// The load-bearing decision</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE MODEL NEVER FINDS<br/><span class="text-hiviz">ANYTHING.</span></h2>
+      <p class="text-fog text-lg leading-relaxed max-w-3xl mb-6">Every finding comes out of the parsers and the deterministic engine, from text that exists on a numbered page of a document you supplied, and every one of them cites where it came from. MaraponeAI reads that finished result and writes about it. It is never asked to go looking.</p>
+      <p class="text-fog leading-relaxed max-w-3xl mb-10">That constraint is not a technical convenience &mdash; it is the reason the output is usable. An RFI goes on the project record with your name on it. If the architect answers <span class="text-chalk">"that clause does not say what you claim"</span>, you have to be able to point at the page. A model that invented a plausible requirement will have made you look careless, in writing, on a project you have to keep working on for two more years.</p>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <article class="bg-gunmetal border border-hiviz rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">MODE 01 · LOCAL</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">The embedded model</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">A llama.cpp GGUF loaded in-process from <code class="font-mono text-hiviz text-xs">resources/models/</code>. No Ollama server to start, no port to open, no key to paste. It is resolved from this app's bundle first, then a sibling Marapone install, so one model file serves the whole suite instead of six copies on your disk.</p>
+          <p class="font-mono text-xs text-plate">In-process &middot; CPU or GPU &middot; nothing leaves the machine</p>
+        </article>
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">MODE 02 · RULES</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">The deterministic fallback</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">When no model is staged, a deterministic narrative generator reads the same structured result and writes the same briefing without free-form language. <span class="text-chalk">The product is fully functional in either mode</span> &mdash; the findings, the citations and the numbers are identical, because they never came from the model in the first place.</p>
+          <p class="font-mono text-xs text-plate">Same findings &middot; same citations &middot; same exports</p>
+        </article>
       </div>
     </div>
   </section>
@@ -250,75 +335,76 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         <article class="bg-steel border border-plate rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">MODELS</p>
-          <h3 class="font-display text-2xl text-chalk mb-3">Open-weight LLMs</h3>
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">DOCUMENT EXTRACTION</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">Reading the set</h3>
           <ul class="text-fog text-sm space-y-1.5">
-            <li>&middot; Llama 3.1 70B Instruct</li>
-            <li>&middot; Qwen 2.5 14B Instruct (fast lane)</li>
-            <li>&middot; Mistral 7B (legacy support)</li>
-            <li>&middot; LoRA fine-tunes per workflow</li>
+            <li>&middot; pdfminer.six &mdash; the text layer</li>
+            <li>&middot; PyMuPDF &mdash; rendering and rasterising sheets</li>
+            <li>&middot; ezdxf &mdash; DWG / DXF</li>
+            <li>&middot; ifcopenshell &mdash; IFC / BIM</li>
+            <li>&middot; OpenCV + shapely &mdash; geometry off the page</li>
           </ul>
-          <p class="font-mono text-xs text-plate mt-4">Weights live on your hardware. Inference via vLLM or llama.cpp.</p>
+          <p class="font-mono text-xs text-plate mt-4">Pinned to one version across the suite. A skew would mean a PDF that reads in one app and not another.</p>
         </article>
 
         <article class="bg-steel border border-plate rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">VECTOR STORE</p>
-          <h3 class="font-display text-2xl text-chalk mb-3">Embeddings + retrieval</h3>
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">OCR</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">Scanned and plotted pages</h3>
           <ul class="text-fog text-sm space-y-1.5">
-            <li>&middot; ChromaDB (default) or Qdrant</li>
-            <li>&middot; BAAI/bge-m3 embeddings</li>
-            <li>&middot; Hybrid search (BM25 + dense)</li>
-            <li>&middot; Per-project namespace isolation</li>
+            <li>&middot; macOS &mdash; the Vision recogniser built into the OS</li>
+            <li>&middot; Windows and Linux &mdash; Tesseract, bundled</li>
+            <li>&middot; pypdfium2 rasterises pages for it</li>
+            <li>&middot; No OCR service, no API key, no upload</li>
           </ul>
-          <p class="font-mono text-xs text-plate mt-4">All vectors stay on your disk. No external embedding APIs.</p>
+          <p class="font-mono text-xs text-plate mt-4">A great many drawing sets are plot-to-PDF images with no text layer. A sheet the app cannot read is a sheet that does not get audited.</p>
         </article>
 
         <article class="bg-steel border border-plate rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">API LAYER</p>
-          <h3 class="font-display text-2xl text-chalk mb-3">FastAPI services</h3>
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">REASONING</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">MaraponeAI</h3>
           <ul class="text-fog text-sm space-y-1.5">
-            <li>&middot; FastAPI + Pydantic</li>
-            <li>&middot; Celery + Redis for async jobs</li>
-            <li>&middot; OAuth2 / SSO ready</li>
-            <li>&middot; OpenAPI spec generated</li>
+            <li>&middot; llama.cpp, loaded in-process</li>
+            <li>&middot; A GGUF you can swap for another</li>
+            <li>&middot; One model file shared by the suite</li>
+            <li>&middot; Deterministic RULES mode when absent</li>
           </ul>
-          <p class="font-mono text-xs text-plate mt-4">Stateless services. Easy to scale or replace one module without touching the others.</p>
+          <p class="font-mono text-xs text-plate mt-4">The system prompt forbids inventing a value, a section number or a sheet number. The architecture makes it structurally unable to anyway.</p>
         </article>
 
         <article class="bg-steel border border-plate rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">UI</p>
-          <h3 class="font-display text-2xl text-chalk mb-3">Web interface</h3>
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">STORAGE</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">A file you can copy</h3>
           <ul class="text-fog text-sm space-y-1.5">
-            <li>&middot; Next.js 14 (app router)</li>
-            <li>&middot; Tailwind CSS</li>
-            <li>&middot; React Query for state</li>
-            <li>&middot; Mobile-first for site supers</li>
+            <li>&middot; SQLite, document store + indexed columns</li>
+            <li>&middot; A version row on every save</li>
+            <li>&middot; RFI log and finding feedback kept locally</li>
+            <li>&middot; <code class="font-mono text-hiviz text-xs">LOCALAPPDATA</code>, never a roaming profile</li>
           </ul>
-          <p class="font-mono text-xs text-plate mt-4">Yours to brand. Yours to extend. Source ships in the handover.</p>
+          <p class="font-mono text-xs text-plate mt-4">Backup is copying one file. Your annotations on the contract documents are privileged working product and stay on your disk.</p>
         </article>
 
         <article class="bg-steel border border-plate rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">INFRA</p>
-          <h3 class="font-display text-2xl text-chalk mb-3">Runtime</h3>
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">INTERFACE</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">One UI, two shells</h3>
           <ul class="text-fog text-sm space-y-1.5">
-            <li>&middot; Docker Compose (single-host)</li>
-            <li>&middot; Postgres 16 for metadata</li>
-            <li>&middot; MinIO or local FS for blobs</li>
-            <li>&middot; Caddy or nginx as reverse proxy</li>
+            <li>&middot; PyQt6 + PyQt6-WebEngine</li>
+            <li>&middot; HTML / JS, no framework, no build step</li>
+            <li>&middot; Qt WebChannel bridge to Python</li>
+            <li>&middot; The same UI runs in the iOS shell</li>
           </ul>
-          <p class="font-mono text-xs text-plate mt-4">No Kubernetes unless you ask. Boring tech is the point.</p>
+          <p class="font-mono text-xs text-plate mt-4">The Blueprint Auditor interface is a single ~20,000-line document. The mobile app runs it unchanged.</p>
         </article>
 
         <article class="bg-steel border border-plate rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">OBSERVABILITY</p>
-          <h3 class="font-display text-2xl text-chalk mb-3">What broke and why</h3>
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">PACKAGING</p>
+          <h3 class="font-display text-2xl text-chalk mb-3">One thing to install</h3>
           <ul class="text-fog text-sm space-y-1.5">
-            <li>&middot; Structured logs (JSON)</li>
-            <li>&middot; Prometheus metrics</li>
-            <li>&middot; Grafana dashboards (optional)</li>
-            <li>&middot; Per-request audit trail</li>
+            <li>&middot; PyInstaller &mdash; Python is inside the bundle</li>
+            <li>&middot; Inno Setup installer on Windows</li>
+            <li>&middot; Signed <code class="font-mono text-hiviz text-xs">.app</code> on macOS</li>
+            <li>&middot; Windows, macOS and Linux</li>
           </ul>
-          <p class="font-mono text-xs text-plate mt-4">Your IT team can answer "what happened" without calling us.</p>
+          <p class="font-mono text-xs text-plate mt-4">No Python to install, no Docker, no runtime to keep patched. Your IT department is not being asked for a project.</p>
         </article>
       </div>
     </div>
@@ -328,52 +414,55 @@
   <section class="py-16 lg:py-20 border-b border-plate">
     <div class="max-w-6xl mx-auto px-4">
       <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Where it runs</p>
-      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-12">THREE DEPLOYMENT OPTIONS.</h2>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">ON THE LAPTOP YOU<br/>ALREADY HAVE.</h2>
+      <p class="text-fog leading-relaxed max-w-3xl mb-10">This used to be the section where a page like this quoted you a GPU server. It no longer applies, and saying so is more useful than pretending otherwise. The apps are ordinary desktop software: you download an installer, you open it, and the whole thing runs on the machine already sitting on the estimator's desk. Servers only enter the picture at the levels above, and only because you asked for them.</p>
 
       <div class="grid md:grid-cols-3 gap-5">
-        <article class="bg-gunmetal border border-plate rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">OPTION 01</p>
-          <h3 class="font-display text-2xl text-chalk mb-2">Workstation</h3>
-          <p class="text-fog text-sm leading-relaxed mb-3">A single MacBook Pro M3 Max or a workstation with a 24GB GPU. Good for one PE / PM running RFI triage and daily logs.</p>
-          <p class="font-mono text-xs text-plate">~$5k hardware · 1 user · No IT lift.</p>
-        </article>
-
         <article class="bg-gunmetal border border-hiviz rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">OPTION 02 · COMMON</p>
-          <h3 class="font-display text-2xl text-chalk mb-2">On-prem server</h3>
-          <p class="text-fog text-sm leading-relaxed mb-3">A single tower or 2U rack server in your office, dual-RTX or A6000-class GPU. Runs the full stack for a 10-50 person GC.</p>
-          <p class="font-mono text-xs text-plate">~$15-25k hardware · Whole office · One IT day to install.</p>
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">$990 &middot; THE PRODUCT</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Your own machine</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">Any current Windows, macOS or Linux machine. Nothing to provision, nothing to configure, no account to create. The reasoning layer runs faster with a GPU and works without one.</p>
+          <p class="font-mono text-xs text-plate">$0 hardware &middot; installed this week &middot; no IT lift</p>
         </article>
 
         <article class="bg-gunmetal border border-plate rounded-lg p-6">
-          <p class="font-mono text-hiviz text-xs uppercase mb-2">OPTION 03</p>
-          <h3 class="font-display text-2xl text-chalk mb-2">Your private cloud</h3>
-          <p class="text-fog text-sm leading-relaxed mb-3">Your AWS / Azure / GCP tenant, your VPC, your IAM. We deploy via Terraform. Documents never leave your cloud account.</p>
-          <p class="font-mono text-xs text-plate">Hourly GPU billing · Multi-site · Your existing cloud governance applies.</p>
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">$4,900+ &middot; CUSTOMISED SETUP</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Your own files</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">Same architecture, tuned to your company: your historical documents, your templates, your rate sheet, your house language in the drafted letters. Still runs on your own machines.</p>
+          <p class="font-mono text-xs text-plate">Engineering work &middot; your data packs &middot; same app</p>
+        </article>
+
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">$15,000+ &middot; ENTERPRISE</p>
+          <h3 class="font-display text-2xl text-chalk mb-2">Your own systems</h3>
+          <p class="text-fog text-sm leading-relaxed mb-3">Integration into what you already run &mdash; Procore, Sage, Autodesk or your own database &mdash; plus shared server or air-gapped deployment where a whole team needs one copy of the truth.</p>
+          <p class="font-mono text-xs text-plate">Server or air-gapped &middot; your governance applies</p>
         </article>
       </div>
+
+      <p class="text-fog text-sm mt-8"><a href="/construction/pricing" class="text-hiviz font-semibold hover:opacity-80 transition-opacity">The three levels in full &rarr;</a></p>
     </div>
   </section>
 
   <!-- JURISDICTION DATA LAYER -->
-  <section class="py-16 lg:py-20 border-b border-plate">
+  <section class="py-16 lg:py-20 border-b border-plate bg-gunmetal">
     <div class="max-w-6xl mx-auto px-4">
       <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Local knowledge is data, not code</p>
       <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE JURISDICTION LAYER.</h2>
-      <p class="text-fog leading-relaxed max-w-3xl mb-10">Rates, tax percentages, statutory holdback, permit fees, code citations and trade knowledge are never compiled into the engine. They load at runtime from JSON files that ship in your repo — which is why retargeting a market is an edit rather than a rebuild, and why you can do it yourself after handover.</p>
+      <p class="text-fog leading-relaxed max-w-3xl mb-10">Rates, tax percentages, statutory holdback, permit fees, code citations and trade knowledge are never compiled into the engine. They load at runtime from JSON files that ship inside the app and stay readable — which is why retargeting a market is an edit rather than a rebuild, and why you can do it yourself.</p>
 
       <div class="grid md:grid-cols-3 gap-5 mb-8">
-        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+        <article class="bg-steel border border-plate rounded-lg p-6">
           <p class="font-mono text-hiviz text-xs uppercase mb-2">Jurisdiction pack</p>
           <p class="text-fog text-sm leading-relaxed mb-3">Tax, labour burden, lien &amp; holdback rules, permit fees, code references, winter productivity, bonding thresholds, local by-laws. Every number carries a citation string that prints beside it in the output.</p>
           <p class="font-mono text-xs text-plate">1 file · 14 sections · marked verify_before_bid</p>
         </article>
-        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+        <article class="bg-steel border border-plate rounded-lg p-6">
           <p class="font-mono text-hiviz text-xs uppercase mb-2">Price catalogues</p>
           <p class="text-fog text-sm leading-relaxed mb-3">Materials and crew compositions in separate files, with a city cost index applied on top — material, labour, equipment and subcontract factored independently rather than by one blended multiplier.</p>
           <p class="font-mono text-xs text-plate">95 material items · 24 crews · 24-city index</p>
         </article>
-        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+        <article class="bg-steel border border-plate rounded-lg p-6">
           <p class="font-mono text-hiviz text-xs uppercase mb-2">Override layer</p>
           <p class="text-fog text-sm leading-relaxed mb-3">Your own rates and an optional supplier feed layer on top of the baseline at resolution time. Your real buyout numbers win without anyone editing the shipped catalogue.</p>
           <p class="font-mono text-xs text-plate">Overrides &gt; supplier feed &gt; baseline</p>
@@ -386,56 +475,84 @@
     </div>
   </section>
 
-  <!-- HANDOVER FOLDER -->
+  <!-- THE SIXTH APP -->
+  <section id="mobile" class="py-16 lg:py-20 border-b border-plate">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// The sixth app &middot; Q4 2026</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE SAME APP,<br/><span class="text-hiviz">ON THE PHONE.</span></h2>
+      <p class="text-fog leading-relaxed max-w-3xl mb-6">The honest constraint first: the analysis pipeline &mdash; OpenCV, OCR, PyMuPDF, ezdxf, shapely &mdash; cannot run on a phone, and any vendor claiming otherwise is running it on their server and calling it mobile. So the mobile app is built the other way round. The interface is native and local; the heavy work is done by a machine you control.</p>
+      <p class="text-fog leading-relaxed max-w-3xl mb-10">The desktop UI is an HTML/JS document that talks to Python through Qt's WebChannel as <code class="font-mono text-hiviz text-xs">window.bridge</code>. On iOS there is no Qt, so a shim provides a drop-in <code class="font-mono text-hiviz text-xs">window.bridge</code> exposing the same methods and the same signals. The interface runs unchanged. There is no second UI codebase to keep in step, which is the reason mobile is a date on the roadmap rather than a second product with its own price.</p>
+
+      <div class="grid md:grid-cols-3 gap-5 mb-8">
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">The shell</p>
+          <p class="text-fog text-sm leading-relaxed mb-3">A native iOS app built with Capacitor, with real camera, filesystem and share access. Photograph a page on site and it enters the same pipeline as a scanned PDF.</p>
+          <p class="font-mono text-xs text-plate">Capacitor &middot; Xcode project &middot; native APIs</p>
+        </article>
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">Offline mode</p>
+          <p class="text-fog text-sm leading-relaxed mb-3">Projects, cost book, templates and change orders live on the device and work with no connection at all &mdash; which matters, because a basement in February does not have signal.</p>
+          <p class="font-mono text-xs text-plate">On-device storage &middot; no account &middot; no connection</p>
+        </article>
+        <article class="bg-gunmetal border border-plate rounded-lg p-6">
+          <p class="font-mono text-hiviz text-xs uppercase mb-2">Live mode</p>
+          <p class="text-fog text-sm leading-relaxed mb-3">For a full analysis, the phone calls the desktop pipeline over your own network &mdash; a small local API in front of the exact same code. Your documents reach your machine and stop there.</p>
+          <p class="font-mono text-xs text-plate">Your network &middot; your machine &middot; same pipeline</p>
+        </article>
+      </div>
+
+      <div class="bg-steel border-l-2 border-hiviz rounded-r-lg p-6">
+        <p class="text-fog text-sm leading-relaxed">The mobile app is included in the $990 desktop purchase at no extra cost. Buying a product today is buying the phone version when it lands. <a href="/construction/pricing" class="text-hiviz font-semibold hover:opacity-80 transition-opacity">See what $990 covers &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT SHIPS -->
   <section class="py-16 lg:py-20 border-b border-plate bg-gunmetal">
     <div class="max-w-5xl mx-auto px-4">
-      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// What you get on day 14</p>
-      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE HANDOVER FOLDER.</h2>
-      <p class="text-fog max-w-2xl mb-8">A real, opinionated folder structure ships with every build. Everything is versioned, documented, and reproducible. Here's what lands in your repo:</p>
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// What you actually own</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-6">THE SOURCE TREE.</h2>
+      <p class="text-fog max-w-2xl mb-8">Every product is a one-time purchase with full source code and no subscription. This is the real layout of one of them &mdash; SpecChecker &mdash; and the other four differ only in the domain module:</p>
 
-<pre class="codebox">your-marapone-build/
+<pre class="codebox">specchecker/
 ├── README.md
-├── LICENSE
-├── docker-compose.yml
-├── .env.example
-├── models/
-│   ├── llama-3.1-70b-instruct.gguf
-│   ├── qwen2.5-14b-instruct.gguf
-│   └── lora/
-│       ├── rfi_classifier/
-│       └── change_order_risk/
-├── data/
-│   ├── ingested/
-│   │   ├── drawings/
-│   │   └── rfis/
-│   ├── embeddings/
-│   │   └── blueprint_pages.parquet
-│   └── chroma/
+├── requirements.txt              # ~10 packages, all pinned
+├── SpecChecker.spec              # PyInstaller bundle definition
+├── build.sh / build.ps1          # macOS &amp; Linux / Windows build
+├── installer.iss                 # Inno Setup, the Windows installer
 ├── src/
-│   ├── api/
-│   │   ├── main.py
-│   │   ├── routers/
-│   │   │   ├── rfi.py
-│   │   │   ├── daily_log.py
-│   │   │   └── change_order.py
-│   │   └── services/
-│   ├── ingest/
-│   │   ├── ocr_pipeline.py
-│   │   └── chunkers/
-│   └── ui/                      # Next.js app
-├── runbooks/
-│   ├── 01_install.md
-│   ├── 02_ingest_new_project.md
-│   ├── 03_retrain_classifier.md
-│   ├── 04_backup_restore.md
-│   └── 05_incident_playbook.md
-├── tests/
-└── infra/
-    ├── terraform/               # if cloud deploy
-    └── scripts/
+│   ├── main.py
+│   ├── paths.py                  # same resolution frozen or from source
+│   ├── platform_support.py       # every per-OS difference, in one file
+│   ├── extraction/               # PDF text, OCR, tables
+│   ├── model/                    # the project data model
+│   ├── crosscheck/               # ← the domain engine. FINDINGS COME FROM HERE
+│   ├── knowledge/                # CSI spine, spec patterns, attribute rules
+│   ├── ai/
+│   │   ├── engine.py             # MaraponeAI: LOCAL and RULES modes
+│   │   └── commands.py
+│   ├── report/                   # the audit PDF, the conflict matrix
+│   ├── storage/
+│   │   └── db.py                 # SQLite + a version row on every save
+│   └── ui/
+│       ├── app.py                # the PyQt6 window
+│       ├── bridge.py             # the WebChannel surface the UI calls
+│       ├── worker.py             # analysis off the UI thread
+│       └── session.py
+├── resources/
+│   ├── ui/                       # the HTML/JS interface
+│   ├── knowledge/
+│   │   ├── attribute_rules.json
+│   │   ├── csi_divisions.json
+│   │   └── spec_patterns.json
+│   ├── reference/                # code minimums, standard designations
+│   └── models/                   # the GGUF lives here
+├── demo_package/                 # a real spec book and drawing set
+├── scripts/
+└── tests/
 </pre>
 
-      <p class="text-fog text-sm mt-6 max-w-2xl">Every file is yours under your license. Want to change the model? Edit one config. Want to fork the UI? It's already a clean Next.js app. Want to swap ChromaDB for Qdrant? One docker-compose line.</p>
+      <p class="text-fog text-sm mt-6 max-w-2xl">Nothing is obfuscated and nothing is a service call. Want a different model? Drop another GGUF in <code class="font-mono text-hiviz text-xs">resources/models/</code>. Want your own rates? They are JSON. Want your developer to add a report? It's plain Python and one HTML file.</p>
     </div>
   </section>
 
@@ -447,20 +564,20 @@
 
       <div class="grid md:grid-cols-2 gap-5">
         <div class="tape-line">
-          <p class="text-chalk font-semibold mb-1">Self-serve by default</p>
-          <p class="text-fog text-sm leading-relaxed">Every runbook is in plain Markdown. Backups, model updates, retraining the RFI classifier on new project data — all documented step by step. A competent IT generalist can run it.</p>
+          <p class="text-chalk font-semibold mb-1">Backup is copying a file</p>
+          <p class="text-fog text-sm leading-relaxed">All of your work lives in one SQLite database in your user profile. Copy it and you have a backup; copy it back and you have your projects. There is no export routine to learn and no vendor to ask for your own data.</p>
         </div>
         <div class="tape-line">
-          <p class="text-chalk font-semibold mb-1">Optional retainer</p>
-          <p class="text-fog text-sm leading-relaxed">If you want us on call, we offer a flat monthly retainer for upgrades, model swaps as new open-weight releases drop, and incident support. No required subscription.</p>
+          <p class="text-chalk font-semibold mb-1">Swap the model yourself</p>
+          <p class="text-fog text-sm leading-relaxed">The reasoning layer loads whatever GGUF is in <code class="font-mono text-hiviz text-xs">resources/models/</code>. When a better open-weight model ships, replace the file. Nothing above it is tied to a particular model, because nothing above it depends on the model for a finding.</p>
         </div>
         <div class="tape-line">
-          <p class="text-chalk font-semibold mb-1">Open-weight upgrades</p>
-          <p class="text-fog text-sm leading-relaxed">When Llama 4 or the next Qwen ships and outperforms what you have, you can swap it. Your fine-tunes and pipelines are model-agnostic on purpose.</p>
+          <p class="text-chalk font-semibold mb-1">It gets quieter with use</p>
+          <p class="text-fog text-sm leading-relaxed">The apps keep your own record of what you asked, what the answer was, and which findings you judged to be noise. That corpus makes the next project quieter &mdash; and it is your corpus, on your disk, never pooled with anyone else's.</p>
         </div>
         <div class="tape-line">
           <p class="text-chalk font-semibold mb-1">No phone-home</p>
-          <p class="text-fog text-sm leading-relaxed">The system never calls back to us. No telemetry, no usage pings. If your network is air-gapped, the system runs anyway.</p>
+          <p class="text-fog text-sm leading-relaxed">The apps never call back to us. No telemetry, no usage pings, no licence check that fails when your connection does. Pull the network cable and everything on this page still works.</p>
         </div>
       </div>
     </div>
@@ -469,25 +586,26 @@
   <!-- SECURITY DEFAULTS -->
   <section class="py-12 border-b border-plate bg-gunmetal">
     <div class="max-w-6xl mx-auto px-4">
-      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-6">// Security defaults shipped on day one</p>
+      <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-6">// The security posture is mostly a consequence of the architecture</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <div class="bg-steel border border-plate rounded-lg p-4">
-          <p class="font-mono text-hiviz text-xs uppercase mb-1">ENCRYPTION</p>
-          <p class="text-chalk text-sm">At-rest (LUKS/AES-256), in-transit (TLS 1.3)</p>
-        </div>
-        <div class="bg-steel border border-plate rounded-lg p-4">
-          <p class="font-mono text-hiviz text-xs uppercase mb-1">AUTH</p>
-          <p class="text-chalk text-sm">SSO-ready, role-based access, audit log</p>
-        </div>
-        <div class="bg-steel border border-plate rounded-lg p-4">
-          <p class="font-mono text-hiviz text-xs uppercase mb-1">NETWORK</p>
-          <p class="text-chalk text-sm">Bind-localhost default, VPN/private subnet for remote</p>
-        </div>
-        <div class="bg-steel border border-plate rounded-lg p-4">
           <p class="font-mono text-hiviz text-xs uppercase mb-1">EGRESS</p>
-          <p class="text-chalk text-sm">No outbound API calls. Air-gap supported.</p>
+          <p class="text-chalk text-sm">No outbound call. The storage layer never opens a socket.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1">DATA AT REST</p>
+          <p class="text-chalk text-sm">Your user profile, on local disk. Inherits your full-disk encryption.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1">TENANCY</p>
+          <p class="text-chalk text-sm">None. There is no account, no cloud, no other tenant.</p>
+        </div>
+        <div class="bg-steel border border-plate rounded-lg p-4">
+          <p class="font-mono text-hiviz text-xs uppercase mb-1">AIR GAP</p>
+          <p class="text-chalk text-sm">Supported by default. Nothing is degraded offline.</p>
         </div>
       </div>
+      <p class="text-fog text-sm mt-6"><a href="/construction/trust" class="text-hiviz font-semibold hover:opacity-80 transition-opacity">The full security posture, including what we can and cannot see &rarr;</a></p>
     </div>
   </section>
 
@@ -495,11 +613,11 @@
   <section class="py-16 lg:py-24 grid-dot">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Want to read the actual code?</p>
-      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">WE'LL WALK YOU THROUGH<br/><span class="text-hiviz">A REAL HANDOVER REPO.</span></h2>
-      <p class="text-fog max-w-xl mx-auto mb-8">Book a 30-minute call and we'll screen-share an anonymized client repo: the API, the runbooks, the model configs. No NDA needed for the walkthrough.</p>
+      <h2 class="font-display text-4xl lg:text-5xl text-chalk mb-4">WE'LL OPEN THE REPO<br/><span class="text-hiviz">ON A CALL.</span></h2>
+      <p class="text-fog max-w-xl mx-auto mb-8">Thirty minutes, screen shared: the cross-check engine, the reasoning layer, the database schema, one of your own documents run end to end. If your IT lead wants to be the one asking, bring them.</p>
       <div class="flex flex-wrap gap-3 justify-center">
         <a href="/construction/contact" class="hiviz-gradient text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity">Request the Walkthrough &rarr;</a>
-        <a href="/construction/trust" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">See Security Posture</a>
+        <a href="/construction/blueprint-auditor" class="border border-plate text-chalk font-semibold px-6 py-3 rounded hover:border-hiviz hover:text-hiviz transition-colors">Or Try the Live Demo</a>
       </div>
     </div>
   </section>

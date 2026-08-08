@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
-    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .hiviz-gradient { background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%); }
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
     .roi-input { background-color: #1a1a1a; border: 1px solid #3a3a3a; color: #e8e8e8; }
     .roi-input:focus { outline: none; border-color: #f97316; }
@@ -144,7 +144,7 @@
       </button>
     </div>
     <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
-      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <p class="font-mono text-xs text-ash pt-1">// Products</p>
       <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
       <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
       <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
@@ -153,7 +153,7 @@
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <p class="font-mono text-xs text-ash pt-1" data-mp-more-mobile>// More</p>
       <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
       <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
       <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
@@ -221,13 +221,13 @@
             <div class="roi-field mb-5">
               <label for="reduction" class="text-chalk font-semibold text-sm mb-2">Time the AI takes off that task: <span id="reductionVal" class="text-hiviz font-mono">75%</span></label>
               <input id="reduction" type="range" min="30" max="95" step="5" value="75" class="w-full" />
-              <p class="text-plate text-xs mt-1 font-mono">Conservative 30% · typical 70–80% · high 95%</p>
+              <p class="text-ash text-xs mt-1 font-mono">Conservative 30% · typical 70–80% · high 95%</p>
             </div>
 
             <div class="roi-field">
               <label for="price" class="text-chalk font-semibold text-sm mb-2">One-time build price ($)</label>
               <input id="price" type="number" min="0" step="100" value="6000" class="roi-input w-full rounded px-3 py-2.5 text-sm" />
-              <p class="text-plate text-xs mt-1 font-mono">The finished apps are $990. Work on your own workflow starts at $1,500 and enterprise integration at $15,000 — use a real quote if you have one.</p>
+              <p class="text-ash text-xs mt-1 font-mono">The finished apps are $990. Work on your own workflow starts at $1,500 and enterprise integration at $15,000 — use a real quote if you have one.</p>
             </div>
           </div>
         </div>
@@ -266,16 +266,16 @@
               <div class="border border-plate rounded-lg p-5">
                 <p class="text-fog text-xs font-mono uppercase mb-1">Net value, 3 years</p>
                 <p id="net3" class="font-display text-3xl text-chalk">—</p>
-                <p class="text-plate text-xs mt-1">Savings minus the one-time price.</p>
+                <p class="text-ash text-xs mt-1">Savings minus the one-time price.</p>
               </div>
               <div class="border border-plate rounded-lg p-5">
                 <p class="text-fog text-xs font-mono uppercase mb-1">Return on the build</p>
                 <p id="roi3" class="font-display text-3xl text-chalk">—</p>
-                <p class="text-plate text-xs mt-1">3-year return on the one-time cost.</p>
+                <p class="text-ash text-xs mt-1">3-year return on the one-time cost.</p>
               </div>
             </div>
 
-            <p class="text-plate text-xs mt-6 leading-relaxed">These are planning estimates from the inputs above, not a quote or a guarantee. They count only the labour on the one task you selected — they don't include the cost of errors a manual process misses, which is usually where the real money is. Your free assessment runs the AI on your actual documents so the numbers come from your data, not a slider.</p>
+            <p class="text-ash text-xs mt-6 leading-relaxed">These are planning estimates from the inputs above, not a quote or a guarantee. They count only the labour on the one task you selected — they don't include the cost of errors a manual process misses, which is usually where the real money is. Your free assessment runs the AI on your actual documents so the numbers come from your data, not a slider.</p>
 
             <!-- Take the sheet with you. The numbers above are the ones that go in the PDF. -->
             <div class="mt-6 pt-6 border-t border-plate" id="roi-report">
@@ -330,14 +330,14 @@
           <a href="/construction/about" class="hover:text-chalk">About</a>
           <a href="/construction/contact" class="hover:text-chalk">Contact</a>
         </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
+        <p class="text-xs font-mono text-ash text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
       </div>
       <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
-        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
-        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
-        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
-        <a href="/construction/trust" class="text-xs font-mono text-plate hover:text-fog transition-colors">Trust Center</a>
-        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+        <a href="/terms?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/construction/trust" class="text-xs font-mono text-ash hover:text-fog transition-colors">Trust Center</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Security</a>
       </div>
     </div>
   </footer>

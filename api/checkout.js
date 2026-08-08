@@ -63,6 +63,20 @@ export default async function handler(req, res) {
 
   if (email && !isEmail(email)) return res.status(400).json({ error: 'Please enter a valid email.' });
 
+  // Abandoned-checkout recovery. A $990 impulse buy loses people to a phone
+  // call halfway through Stripe's form; this lets Stripe email them a link back
+  // to the same session after it expires (24h by default) rather than losing the
+  // sale silently. allow_promotion_codes lets that second visit take an
+  // incentive code if we choose to send one.
+  //
+  // Stripe will not send anything until recovery emails are also switched on in
+  // the Dashboard (Settings → Checkout and Payment Links → "Manage recovery
+  // emails"). This flag is the API half; the toggle is the account half.
+  //
+  // Not applied to subscriptions: `after_expiration` is invalid in mode:
+  // 'subscription', so the support plans below intentionally skip it.
+  const recovery = { after_expiration: { recovery: { enabled: true, allow_promotion_codes: true } } };
+
   const base = {
     currency: CURRENCY,
     success_url: `${SITE_URL}/pricing?checkout=success`,
@@ -79,9 +93,12 @@ export default async function handler(req, res) {
       const hst = await ensureHstTaxRate(sk);
       const session = await sk.checkout.sessions.create({
         ...base,
-        // Products are bought from the construction pricing page — send the
-        // buyer back there rather than to the shared /pricing index.
-        success_url: `${SITE_URL}/construction/pricing?checkout=success&product=${product}`,
+        ...recovery,
+        // A finished product is delivered, not scheduled, so the buyer lands on
+        // a page that does the delivering — install steps, what to run first,
+        // and the guarantee restated before they have to go looking for it.
+        // Cancelling still returns them to the pricing page they came from.
+        success_url: `${SITE_URL}/construction/purchase-complete?product=${product}`,
         cancel_url: `${SITE_URL}/construction/pricing?checkout=cancelled`,
         mode: 'payment',
         line_items: [{
@@ -151,6 +168,7 @@ export default async function handler(req, res) {
 
       const session = await sk.checkout.sessions.create({
         ...base,
+        ...recovery,
         mode: 'payment',
         line_items,
         payment_intent_data: {
@@ -172,6 +190,7 @@ export default async function handler(req, res) {
       const hst = await ensureHstTaxRate(sk);
       const session = await sk.checkout.sessions.create({
         ...base,
+        ...recovery,
         mode: 'payment',
         line_items: [{
           quantity: 1,

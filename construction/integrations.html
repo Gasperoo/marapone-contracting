@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
-    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .hiviz-gradient { background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%); }
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
     .badge-built { color:#22c55e; }
     .badge-custom { color:#f97316; }
@@ -143,7 +143,7 @@
       </button>
     </div>
     <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
-      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <p class="font-mono text-xs text-ash pt-1">// Products</p>
       <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
       <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
       <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
@@ -152,7 +152,7 @@
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <p class="font-mono text-xs text-ash pt-1" data-mp-more-mobile>// More</p>
       <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
       <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
       <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
@@ -217,7 +217,7 @@
             <h3 class="font-display text-xl text-chalk">Procore</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="font-mono text-xs text-ash mb-2">Bi-directional</p>
           <p class="text-fog text-sm">Read RFIs, drawings, daily logs. Write back AI drafts as RFI responses or comments.</p>
         </article>
 
@@ -226,7 +226,7 @@
             <h3 class="font-display text-xl text-chalk">Autodesk Construction Cloud</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="font-mono text-xs text-ash mb-2">Bi-directional</p>
           <p class="text-fog text-sm">Reads RFIs, sheets, issues. Writes responses and issue notes back via the BIM 360 API.</p>
         </article>
 
@@ -235,7 +235,7 @@
             <h3 class="font-display text-xl text-chalk">Buildertrend</h3>
             <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only / Write</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only / Write</p>
           <p class="text-fog text-sm">Daily log + change order ingest. Write-back via webhook scoped per project.</p>
         </article>
 
@@ -244,7 +244,7 @@
             <h3 class="font-display text-xl text-chalk">Newforma</h3>
             <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">Email + transmittal ingest. We pull the project mailbox, classify, and surface inside our UI.</p>
         </article>
 
@@ -253,7 +253,7 @@
             <h3 class="font-display text-xl text-chalk">CMiC</h3>
             <span class="font-mono text-sm"><span class="badge-roadmap">&#9675;</span> Roadmap</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">N/A</p>
+          <p class="font-mono text-xs text-ash mb-2">N/A</p>
           <p class="text-fog text-sm">DB-direct ingest possible on request. Two clients have asked.</p>
         </article>
 
@@ -262,7 +262,7 @@
             <h3 class="font-display text-xl text-chalk">Sage 300 CRE</h3>
             <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">Cost code + commitment data ingest. We've done it twice; sized per install.</p>
         </article>
       </div>
@@ -281,7 +281,7 @@
             <h3 class="font-display text-xl text-chalk">Revit</h3>
             <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">Model + sheet metadata extraction via Forge / Revit API. We surface element data, not the model itself.</p>
         </article>
 
@@ -290,7 +290,7 @@
             <h3 class="font-display text-xl text-chalk">Bluebeam Revu</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">Reads PDF markup + measurement data. Pulls drawing references for RFIs and deficiencies.</p>
         </article>
 
@@ -299,7 +299,7 @@
             <h3 class="font-display text-xl text-chalk">AutoCAD</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">DWG ingest via ODA File Converter. Sheet/layer extraction for blueprint Q&amp;A.</p>
         </article>
       </div>
@@ -318,7 +318,7 @@
             <h3 class="font-display text-xl text-chalk">Outlook / M365</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="font-mono text-xs text-ash mb-2">Bi-directional</p>
           <p class="text-fog text-sm">Project mailbox ingest via Graph API. Drafts replies in your sent folder.</p>
         </article>
 
@@ -327,7 +327,7 @@
             <h3 class="font-display text-xl text-chalk">Gmail / Workspace</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="font-mono text-xs text-ash mb-2">Bi-directional</p>
           <p class="text-fog text-sm">Service account or OAuth ingest. Same write-back pattern as Outlook.</p>
         </article>
 
@@ -336,7 +336,7 @@
             <h3 class="font-display text-xl text-chalk">Slack</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="font-mono text-xs text-ash mb-2">Bi-directional</p>
           <p class="text-fog text-sm">Channel ingest, slash-command interface for super log uploads.</p>
         </article>
 
@@ -345,7 +345,7 @@
             <h3 class="font-display text-xl text-chalk">MS Teams</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="font-mono text-xs text-ash mb-2">Bi-directional</p>
           <p class="text-fog text-sm">Channel + meeting transcript ingest. Bot for in-Teams Q&amp;A.</p>
         </article>
       </div>
@@ -364,7 +364,7 @@
             <h3 class="font-display text-xl text-chalk">SharePoint</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">Sites, libraries, document sets. Respects existing permissions.</p>
         </article>
 
@@ -373,7 +373,7 @@
             <h3 class="font-display text-xl text-chalk">Google Drive</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">Shared drive ingest. Honors Drive ACLs at retrieval time.</p>
         </article>
 
@@ -382,7 +382,7 @@
             <h3 class="font-display text-xl text-chalk">Dropbox</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">Team folder ingest with delta sync.</p>
         </article>
 
@@ -391,7 +391,7 @@
             <h3 class="font-display text-xl text-chalk">Box</h3>
             <span class="font-mono text-sm"><span class="badge-custom">&#9680;</span> Custom</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Read-only</p>
+          <p class="font-mono text-xs text-ash mb-2">Read-only</p>
           <p class="text-fog text-sm">Enterprise tenant ingest. Sized per scope, fast install.</p>
         </article>
       </div>
@@ -410,7 +410,7 @@
             <h3 class="font-display text-xl text-chalk">Excel</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="font-mono text-xs text-ash mb-2">Bi-directional</p>
           <p class="text-fog text-sm">Reads schedules, takeoffs, cost reports. Writes structured exports back as .xlsx.</p>
         </article>
 
@@ -419,7 +419,7 @@
             <h3 class="font-display text-xl text-chalk">Word</h3>
             <span class="font-mono text-sm"><span class="badge-built">&#9679;</span> Built</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">Bi-directional</p>
+          <p class="font-mono text-xs text-ash mb-2">Bi-directional</p>
           <p class="text-fog text-sm">Spec book ingest. Generates change-order narratives and meeting minutes.</p>
         </article>
 
@@ -428,7 +428,7 @@
             <h3 class="font-display text-xl text-chalk">Smartsheet</h3>
             <span class="font-mono text-sm"><span class="badge-roadmap">&#9675;</span> Roadmap</span>
           </div>
-          <p class="font-mono text-xs text-plate mb-2">N/A</p>
+          <p class="font-mono text-xs text-ash mb-2">N/A</p>
           <p class="text-fog text-sm">Sheet/grid ingest planned. Talk to us if you need it scoped.</p>
         </article>
       </div>
@@ -485,13 +485,13 @@
           <a href="/construction/about" class="hover:text-chalk">About</a>
           <a href="/construction/contact" class="hover:text-chalk">Contact</a>
         </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
+        <p class="text-xs font-mono text-ash text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
       </div>
       <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
-        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
-        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
-        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
-        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+        <a href="/terms?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Security</a>
       </div>
     </div>
   </footer>

@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
-    .hiviz-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .hiviz-gradient { background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%); }
     .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
     .sev-high { background:#7f1d1d; color:#fecaca; }
     .sev-med { background:#78350f; color:#fed7aa; }
@@ -34,7 +34,7 @@
       body { background: #fff !important; color: #111 !important; }
       .report-doc { box-shadow: none !important; border: none !important; background: #fff !important; }
       .report-doc * { color: #111 !important; }
-      .report-doc .text-fog, .report-doc .text-plate { color: #444 !important; }
+      .report-doc .text-fog, .report-doc .text-ash { color: #444 !important; }
       .sev-high { background:#fee2e2 !important; color:#991b1b !important; }
       .sev-med { background:#ffedd5 !important; color:#9a3412 !important; }
       .sev-low { background:#dbeafe !important; color:#1e40af !important; }
@@ -157,7 +157,7 @@
       </button>
     </div>
     <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
-      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <p class="font-mono text-xs text-ash pt-1">// Products</p>
       <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
       <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
       <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
@@ -166,7 +166,7 @@
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <p class="font-mono text-xs text-ash pt-1" data-mp-more-mobile>// More</p>
       <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
       <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
       <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
@@ -210,10 +210,10 @@
             <p class="font-mono text-xs text-fog mt-1">AI Document Assessment — Construction</p>
           </div>
           <div class="text-sm sm:text-right">
-            <p class="text-fog"><span class="text-plate font-mono text-xs">CLIENT:</span> <span class="redact">Northside GC Group</span></p>
-            <p class="text-fog"><span class="text-plate font-mono text-xs">PROJECT:</span> <span class="redact">K-12 Build, Ph 2</span></p>
-            <p class="text-fog"><span class="text-plate font-mono text-xs">PREPARED:</span> Sample — your date here</p>
-            <p class="text-fog"><span class="text-plate font-mono text-xs">REF:</span> ASMT-SAMPLE-001</p>
+            <p class="text-fog"><span class="text-ash font-mono text-xs">CLIENT:</span> <span class="redact">Northside GC Group</span></p>
+            <p class="text-fog"><span class="text-ash font-mono text-xs">PROJECT:</span> <span class="redact">K-12 Build, Ph 2</span></p>
+            <p class="text-fog"><span class="text-ash font-mono text-xs">PREPARED:</span> Sample — your date here</p>
+            <p class="text-fog"><span class="text-ash font-mono text-xs">REF:</span> ASMT-SAMPLE-001</p>
           </div>
         </header>
 
@@ -255,7 +255,7 @@
                 <span class="sev-high text-xs font-mono uppercase px-2 py-1 rounded whitespace-nowrap">High</span>
               </div>
               <p class="text-fog text-sm leading-relaxed mb-3">Duct routing on <span class="font-mono text-chalk">M-401</span> passes through a beam web shown on <span class="font-mono text-chalk">S-210</span> with no penetration detail. RFI <span class="font-mono text-chalk">#0042</span> asks about ceiling heights in the same zone but doesn't reference the conflict. Likely a coordination miss.</p>
-              <p class="text-plate text-xs"><span class="font-mono uppercase">Cited:</span> M-401, S-210, RFI #0042 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> route to structural before next mechanical pull.</p>
+              <p class="text-ash text-xs"><span class="font-mono uppercase">Cited:</span> M-401, S-210, RFI #0042 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> route to structural before next mechanical pull.</p>
             </div>
             <!-- Finding 2 -->
             <div class="bg-steel border border-plate rounded-lg p-5">
@@ -264,7 +264,7 @@
                 <span class="sev-high text-xs font-mono uppercase px-2 py-1 rounded whitespace-nowrap">High</span>
               </div>
               <p class="text-fog text-sm leading-relaxed mb-3">RFI <span class="font-mono text-chalk">#0051</span> (electrical panel location) is unanswered and gates the <span class="redact">rough-in start</span> per the supplied look-ahead. It is not flagged as critical in the RFI log.</p>
-              <p class="text-plate text-xs"><span class="font-mono uppercase">Cited:</span> RFI #0051, E-301 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> escalate; tie to schedule activity.</p>
+              <p class="text-ash text-xs"><span class="font-mono uppercase">Cited:</span> RFI #0051, E-301 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> escalate; tie to schedule activity.</p>
             </div>
             <!-- Finding 3 -->
             <div class="bg-steel border border-plate rounded-lg p-5">
@@ -273,7 +273,7 @@
                 <span class="sev-med text-xs font-mono uppercase px-2 py-1 rounded whitespace-nowrap">Medium</span>
               </div>
               <p class="text-fog text-sm leading-relaxed mb-3">RFI <span class="font-mono text-chalk">#0033</span> and <span class="font-mono text-chalk">#0047</span> both ask for the same door hardware clarification on <span class="font-mono text-chalk">A-602</span>. One was answered; the other is still open, risking a contradictory response.</p>
-              <p class="text-plate text-xs"><span class="font-mono uppercase">Cited:</span> RFI #0033, #0047, A-602 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> close #0047 as duplicate.</p>
+              <p class="text-ash text-xs"><span class="font-mono uppercase">Cited:</span> RFI #0033, #0047, A-602 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> close #0047 as duplicate.</p>
             </div>
             <!-- Finding 4 -->
             <div class="bg-steel border border-plate rounded-lg p-5">
@@ -282,11 +282,11 @@
                 <span class="sev-med text-xs font-mono uppercase px-2 py-1 rounded whitespace-nowrap">Medium</span>
               </div>
               <p class="text-fog text-sm leading-relaxed mb-3">Lighting schedule on <span class="font-mono text-chalk">E-601</span> calls a fixture type that doesn't appear in spec <span class="font-mono text-chalk">26 51 00</span>. Either a substitution wasn't logged or the schedule is stale.</p>
-              <p class="text-plate text-xs"><span class="font-mono uppercase">Cited:</span> E-601, Spec 26 51 00 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> confirm fixture with EE.</p>
+              <p class="text-ash text-xs"><span class="font-mono uppercase">Cited:</span> E-601, Spec 26 51 00 &nbsp;·&nbsp; <span class="font-mono uppercase">Suggested action:</span> confirm fixture with EE.</p>
             </div>
           </div>
 
-          <p class="text-plate text-xs mt-4 font-mono">+ 5 additional findings (F-05 … F-09) in the full sample. Redacted here for length.</p>
+          <p class="text-ash text-xs mt-4 font-mono">+ 5 additional findings (F-05 … F-09) in the full sample. Redacted here for length.</p>
         </div>
 
         <!-- What this would mean -->
@@ -345,7 +345,7 @@
           </a>
         </div>
 
-        <p class="font-mono text-xs text-plate mt-4">Product one-pagers:
+        <p class="font-mono text-xs text-ash mt-4">Product one-pagers:
           <a href="/samples/Marapone-Blueprint-Auditor-One-Pager.pdf" target="_blank" rel="noopener" class="text-hiviz hover:text-chalk transition-colors">Blueprint Auditor</a> &middot;
           <a href="/samples/Marapone-AI-Estimator-One-Pager.pdf" target="_blank" rel="noopener" class="text-hiviz hover:text-chalk transition-colors">AI Estimator</a> &middot;
           <a href="/samples/Marapone-ScopeGuard-One-Pager.pdf" target="_blank" rel="noopener" class="text-hiviz hover:text-chalk transition-colors">ScopeGuard</a>
@@ -392,14 +392,14 @@
           <a href="/construction/about" class="hover:text-chalk">About</a>
           <a href="/construction/contact" class="hover:text-chalk">Contact</a>
         </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
+        <p class="text-xs font-mono text-ash text-center md:text-right">&copy; 2026 Marapone. All Rights Reserved.</p>
       </div>
       <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
-        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms of Service</a>
-        <a href="/privacy?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
-        <a href="/cookies?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
-        <a href="/construction/trust" class="text-xs font-mono text-plate hover:text-fog transition-colors">Trust Center</a>
-        <a href="/security?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+        <a href="/terms?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Terms of Service</a>
+        <a href="/privacy?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Privacy Policy</a>
+        <a href="/cookies?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Cookie Policy</a>
+        <a href="/construction/trust" class="text-xs font-mono text-ash hover:text-fog transition-colors">Trust Center</a>
+        <a href="/security?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Security</a>
       </div>
     </div>
   </footer>

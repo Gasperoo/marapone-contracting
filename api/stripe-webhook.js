@@ -1,6 +1,6 @@
 /**
  * Stripe webhook — redeems the welcome code once a build deposit is actually
- * paid, and notifies Marapone of new checkouts.
+ * paid, starts the buyer's onboarding sequence, and notifies Marapone.
  *
  * Set up: Stripe Dashboard → Developers → Webhooks → add endpoint
  *   https://marapone.com/api/stripe-webhook   (event: checkout.session.completed)
@@ -13,6 +13,56 @@
 import { getStripe } from '../lib/stripe.js';
 import { deactivateCode } from '../lib/stripe-promo.js';
 import { Resend } from 'resend';
+import {
+  handoffEmail, checkInEmail, ascensionEmail, fulfilmentFor,
+  CHECK_IN_DAYS, ASCENSION_DAYS, FULFILMENT_HOURS,
+} from '../lib/fulfillment.js';
+
+const inDays = (n) => new Date(Date.now() + n * 864e5).toISOString();
+
+/**
+ * Buyer onboarding for a finished-product purchase. The handoff goes out now;
+ * the day-2 check-in and day-7 next-step are handed to Resend's scheduler so
+ * there is no cron to own and nothing to keep running.
+ *
+ * Every send is individually guarded. The handoff is the one that matters, and a
+ * scheduler rejection must not cost the buyer their first email.
+ */
+async function startOnboarding(resend, { email, name, product, amount }) {
+  const seq = [
+    { at: null, mk: handoffEmail, tag: 'handoff' },
+    { at: inDays(CHECK_IN_DAYS), mk: checkInEmail, tag: 'check-in' },
+    { at: inDays(ASCENSION_DAYS), mk: ascensionEmail, tag: 'next-step' },
+  ];
+
+  for (const step of seq) {
+    let msg;
+    try {
+      msg = step.mk({ name, email, product, amount });
+    } catch (err) {
+      console.error(`Onboarding ${step.tag} render failed:`, err?.message || err);
+      continue;
+    }
+    if (!msg) continue;                       // e.g. no next step for suite buyers
+    try {
+      const sent = await resend.emails.send({
+        from: 'Marapone <info@marapone.com>',
+        to: [email],
+        reply_to: 'general@marapone.com',
+        subject: msg.subject,
+        html: msg.html,
+        text: msg.text,
+        ...(step.at ? { scheduledAt: step.at } : {}),
+      });
+      // The SDK resolves with { data, error } rather than throwing on an API
+      // rejection, so this has to be inspected or a silent drop looks like a send.
+      if (sent?.error) throw new Error(sent.error.message || 'Resend rejected the send');
+      console.log(`Onboarding ${step.tag} ${step.at ? 'scheduled for ' + step.at : 'sent'} → ${email}`);
+    } catch (err) {
+      console.error(`Onboarding ${step.tag} send failed:`, err?.message || err);
+    }
+  }
+}
 
 export const config = { api: { bodyParser: false } };
 
@@ -57,12 +107,25 @@ export default async function handler(req, res) {
 
     // Best-effort internal notification.
     if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const buyer = s.customer_details?.email || s.customer_email || '';
+
+      // Buyer onboarding, products only. Build deposits are a scoping
+      // conversation rather than a delivery, so they are not put on this track.
+      if (buyer && m.kind === 'product' && fulfilmentFor(m.product)) {
+        await startOnboarding(resend, {
+          email: buyer,
+          name: s.customer_details?.name || '',
+          product: m.product,
+          amount: `$${(s.amount_total / 100).toLocaleString('en-CA')}`,
+        });
+      }
+
       try {
-        const resend = new Resend(process.env.RESEND_API_KEY);
-        const who = s.customer_details?.email || s.customer_email || 'unknown';
+        const who = buyer || 'unknown';
         const summary = m.kind === 'build'
           ? `${m.tier} build deposit${m.vertical ? ' (' + m.vertical + ')' : ''}${m.addOn === 'true' ? ' + local machine' : ''} · paid ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()}${m.code ? ` · code ${m.code}` : ''} · project total $${m.buildTotal} · balance $${m.balanceLater}`
-          : m.kind === 'product' ? `Product ${m.product} · paid in full ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()} — send the download + licence`
+          : m.kind === 'product' ? `Product ${m.product} · paid in full ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()} — SEND THE DOWNLOAD + LICENCE. The buyer has been told it arrives within ${FULFILMENT_HOURS}h, so that is a clock, not a queue.`
           : m.kind === 'marketing' ? `Marketing ${m.tier} · paid ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()}`
           : m.kind === 'support' ? `Support ${m.plan} subscription started`
           : `Checkout completed (${JSON.stringify(m)})`;

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment successful – the engine is yours | Marapone Construction</title>
+  <meta name="description" content="Your Marapone purchase is complete. Here is how to install it, what to run first, and when your source code arrives." />
+  <!-- A post-purchase page has nothing to offer search, and indexing it would put
+       a "payment successful" page in results for people who have not paid. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://marapone.com/construction/purchase-complete" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+    /* The step numbers read as a checklist rather than prose. */
+    .pc-step { counter-increment: pc; position: relative; padding-left: 3rem; }
+    .pc-step::before {
+      content: counter(pc, decimal-leading-zero);
+      position: absolute; left: 0; top: -0.15rem;
+      font-family: 'Bebas Neue', Arial, sans-serif; font-size: 1.5rem; line-height: 1;
+      color: #f97316; letter-spacing: 1px;
+    }
+    .pc-steps { counter-reset: pc; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- Deliberately minimal chrome. Nothing on this page should compete with the
+       one action the buyer is here to take. -->
+  <nav class="border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <a href="/construction/contact" class="font-mono text-xs text-fog hover:text-chalk transition-colors">Need a hand? &rarr;</a>
+    </div>
+  </nav>
+
+  <section id="main-content" class="grid-dot py-14 lg:py-20 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4 flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        Payment successful
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-chalk leading-none mb-5">
+        THE ENGINE IS <span class="text-hiviz">YOURS.</span>
+      </h1>
+      <p class="text-fog text-lg leading-relaxed max-w-2xl" id="pc-lede">
+        You bought <span class="text-chalk font-semibold" id="pc-product">your Marapone software</span>.
+        It runs on your own machine, there is no monthly fee, and none of your drawings or
+        pricing will ever touch our servers.
+      </p>
+
+      <!-- Delivery. Swaps to a download button the moment DOWNLOAD_URL exists in
+           lib/fulfillment.js; until then it states the truth rather than
+           offering a link that would 404 on somebody who has just paid. -->
+      <div id="pc-deliver-download" class="hidden mt-9">
+        <a id="pc-download" href="#"
+          class="hiviz-gradient text-white font-semibold text-lg px-8 py-5 rounded inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>
+          Download your software package
+        </a>
+        <p class="font-mono text-xs text-fog mt-3">Your licence key is in the confirmation email, on its way now.</p>
+      </div>
+
+      <div id="pc-deliver-pending" class="mt-9 border-l-2 border-hiviz bg-gunmetal rounded-r-xl p-6 max-w-2xl">
+        <p class="text-chalk font-semibold mb-2">Your package and licence key are on their way &mdash; within <span id="pc-hours">24</span> hours.</p>
+        <p class="text-fog text-sm leading-relaxed">
+          They are sent by hand, to the email you just paid with, and usually arrive a lot sooner
+          than that. Nothing is needed from you in the meantime &mdash; and if the window passes
+          without anything landing,
+          <a href="/construction/contact" class="text-hiviz hover:text-chalk transition-colors font-medium">tell us and we will chase it down</a>.
+        </p>
+        <p class="text-ash text-xs font-mono mt-3">Check your spam folder before you worry &mdash; it is usually there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section class="py-14 lg:py-20 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14">
+        <div>
+          <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Setup, start to finish</p>
+          <h2 class="font-display text-3xl text-chalk mb-6 leading-none">FIVE MINUTES, NOT AN IT PROJECT.</h2>
+          <ol class="pc-steps space-y-6">
+            <li class="pc-step">
+              <p class="text-chalk font-semibold text-sm mb-1">Extract the folder</p>
+              <p class="text-fog text-sm leading-relaxed">One folder, one installer inside it.</p>
+            </li>
+            <li class="pc-step">
+              <p class="text-chalk font-semibold text-sm mb-1">Run the installer</p>
+              <p class="text-fog text-sm leading-relaxed">About thirty seconds. No Python to install, no Docker,
+                no server to stand up, nothing to configure. Windows, macOS or Linux.</p>
+            </li>
+            <li class="pc-step">
+              <p class="text-chalk font-semibold text-sm mb-1" id="pc-firstrun">Run your first real document</p>
+              <p class="text-fog text-sm leading-relaxed" id="pc-advice">Use a job you already know well &mdash; that
+                way you can check its output against your own numbers immediately.</p>
+            </li>
+          </ol>
+
+          <div class="mt-8 border border-plate rounded-xl bg-gunmetal p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">You own the engine, not a seat</p>
+            <p class="text-fog text-xs leading-relaxed">
+              This runs on standard, deliberately boring parts &mdash; Python, a local model file and one
+              SQLite database in your own user profile. You do not need an IT team to run it, and you
+              never need us to keep it running.
+            </p>
+            <p class="text-fog text-xs leading-relaxed mt-2.5">
+              <span class="text-chalk font-medium">Your source code arrives on day 31</span>, once your
+              30-day refund window closes &mdash; that order is what makes the guarantee real rather
+              than decorative. The application itself is complete from the first run.
+              <a href="/construction/resources/what-owning-source-means" class="text-hiviz hover:text-chalk transition-colors">What ownership does and doesn't cover &rarr;</a>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Watch this while it downloads</p>
+
+          <!-- A real install walkthrough goes in SETUP_VIDEO_URL. Until there is
+               one, this is the product running — labelled as that, not as a
+               setup guide it isn't. -->
+          <div id="pc-setup-video" class="hidden rounded-xl overflow-hidden border border-plate mb-4" style="aspect-ratio:16/9">
+            <iframe id="pc-setup-frame" src="" title="Setting up your Marapone software"
+              class="w-full h-full" style="border:0" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+
+          <div id="pc-demo-video" class="rounded-xl overflow-hidden border border-plate">
+            <video id="pc-demo" autoplay muted loop playsinline preload="metadata" width="1920" height="1080"
+              class="w-full h-auto block"
+              poster="/blueprint-auditor-takeoff-poster.jpg"
+              aria-label="The software running an automated quantity takeoff on a drawing set">
+              <source id="pc-demo-src" src="/blueprint-auditor-takeoff.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="font-mono text-xs text-ash mt-3" id="pc-demo-caption">
+            What the first run looks like. Your copy does this on your own drawings, offline.
+          </p>
+
+          <div class="mt-8 border-l-2 border-hiviz bg-gunmetal rounded-r-xl p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">Thirty days, no questions asked</p>
+            <p class="text-fog text-xs leading-relaxed">
+              Run it on live work this week. If it does not save you hours, say so and the money goes
+              back &mdash; there is no case to make and no form to fill in.
+              <a href="/construction/pricing#guarantee" class="text-hiviz hover:text-chalk transition-colors">The guarantee in full &rarr;</a>
+            </p>
+          </div>
+
+          <div class="mt-5 border border-plate rounded-xl p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">Stuck on anything?</p>
+            <p class="text-fog text-xs leading-relaxed">
+              Reply to your confirmation email &mdash; it comes to a person, not a queue. Or
+              <a href="/construction/contact" class="text-hiviz hover:text-chalk transition-colors">get in touch here</a>.
+              A setup snag is a five-minute problem; please don't let it become a refund.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-mono text-xs text-ash">&copy; 2026 Marapone. Receipt and licence key by email.</p>
+      <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs font-mono text-ash">
+        <a href="/construction/hardware" class="hover:text-fog transition-colors">Hardware</a>
+        <a href="/construction/architecture" class="hover:text-fog transition-colors">Architecture</a>
+        <a href="/construction/faq" class="hover:text-fog transition-colors">FAQ</a>
+        <a href="/construction/contact" class="hover:text-fog transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Kept in step with lib/fulfillment.js. When a package exists, set
+      // DOWNLOAD_URL in both places and this page becomes instant delivery.
+      var DOWNLOAD_URL = '';
+      var SETUP_VIDEO_URL = '';
+      var FULFILMENT_HOURS = 24;
+
+      // Per-product copy and the matching clip already on the site.
+      var P = {
+        'blueprint-auditor': {
+          label: 'Blueprint Auditor',
+          firstRun: 'Drag a drawing set onto the dashboard',
+          advice: 'Start with a drawing set you already know well — that way you can check its takeoff against your own numbers straight away.',
+          poster: '/blueprint-auditor-takeoff-poster.jpg', src: '/blueprint-auditor-takeoff.mp4'
+        },
+        'specchecker': {
+          label: 'SpecChecker',
+          firstRun: 'Load a project manual and the matching drawing set',
+          advice: 'Run a job where you already know one conflict exists. Watching it find that one tells you what to trust it on.',
+          poster: '/specchecker/clip-dashboard-poster.jpg', src: '/specchecker/clip-dashboard.mp4'
+        },
+        'ai-estimator': {
+          label: 'AI Estimator',
+          firstRun: 'Open a project and bring in your quantities',
+          advice: 'Price a bid you have already submitted. Comparing its number against the one you actually sent is the fastest way to calibrate it.',
+          poster: '', src: ''
+        },
+        'bidleveler': {
+          label: 'Bid Leveler',
+          firstRun: 'Drop in the quotes from one trade package',
+          advice: 'Use a package you have already awarded. If it flags something you argued about later, you know what it is worth.',
+          poster: '/bidleveler/clip-matrix-poster.jpg', src: '/bidleveler/clip-matrix.mp4'
+        },
+        'scopeguard': {
+          label: 'ScopeGuard',
+          firstRun: 'Load your tender package, then the subcontractor proposals',
+          advice: 'Run a job that is mid-buyout — the findings are actionable while the subcontracts are still being written.',
+          poster: '/scopeguard/clip-dashboard-poster.jpg', src: '/scopeguard/clip-dashboard.mp4'
+        },
+        'suite': {
+          label: 'the full suite — all five apps',
+          firstRun: 'Start with Blueprint Auditor and a drawing set you know',
+          advice: 'Run one real project end to end rather than sampling each app. The handoffs between them are the part you paid for.',
+          poster: '/blueprint-auditor-takeoff-poster.jpg', src: '/blueprint-auditor-takeoff.mp4'
+        }
+      };
+
+      var q = new URLSearchParams(location.search);
+      var key = (q.get('product') || '').toLowerCase();
+      var p = Object.prototype.hasOwnProperty.call(P, key) ? P[key] : null;
+
+      if (p) {
+        document.getElementById('pc-product').textContent = p.label;
+        document.getElementById('pc-firstrun').textContent = p.firstRun;
+        document.getElementById('pc-advice').textContent = p.advice;
+        if (p.src) {
+          var v = document.getElementById('pc-demo');
+          document.getElementById('pc-demo-src').src = p.src;
+          v.setAttribute('poster', p.poster);
+          v.load();
+        } else {
+          // No clip for this one — a broken player is worse than no player.
+          document.getElementById('pc-demo-video').classList.add('hidden');
+          document.getElementById('pc-demo-caption').classList.add('hidden');
+        }
+      }
+
+      document.getElementById('pc-hours').textContent = String(FULFILMENT_HOURS);
+
+      if (DOWNLOAD_URL) {
+        var dl = document.getElementById('pc-download');
+        dl.href = DOWNLOAD_URL;
+        document.getElementById('pc-deliver-download').classList.remove('hidden');
+        document.getElementById('pc-deliver-pending').classList.add('hidden');
+        dl.addEventListener('click', function () {
+          if (window.gtag) gtag('event', 'package_download', { product: key || 'unknown' });
+        });
+      }
+
+      if (SETUP_VIDEO_URL) {
+        document.getElementById('pc-setup-frame').src = SETUP_VIDEO_URL;
+        document.getElementById('pc-setup-video').classList.remove('hidden');
+      }
+
+      // Purchase conversion, closing the funnel that starts at the sandbox.
+      if (window.gtag) {
+        gtag('event', 'purchase_complete', {
+          product: key || 'unknown',
+          vertical: 'construction'
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

@@ -238,3 +238,39 @@
   }
   .pnl-collapsible > .pnl-collapse-btn { display: block; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   OUTDOOR LEGIBILITY — CTA contrast
+   ═══════════════════════════════════════════════════════════════════════════
+   This site is read on a phone on a job site, in daylight. White text on the
+   brand orange #f97316 measures 2.80:1, well under the 4.5:1 WCAG AA floor for
+   normal text — the first thing to disappear under glare is the button telling
+   somebody how to buy.
+
+   Deepening the CTA fill to #c2410c → #9a3412 takes white text to 5.18:1 at the
+   lightest point while keeping the orange unmistakably the same colour. The
+   accent orange itself is untouched: #f97316 as *text* on our dark surfaces is
+   already 6.21:1, so headings, eyebrows and links keep the brighter tone and
+   only filled buttons change.
+
+   Loaded after each page's inline <style>, so this overrides the local
+   .hiviz-gradient definitions without editing 40 files. */
+.hiviz-gradient,
+[class*="hiviz-gradient"] {
+  background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%) !important;
+}
+
+/* Solid-orange filled controls carrying white text — same problem, same fix. */
+a.bg-hiviz, button.bg-hiviz, .bg-hiviz.text-white {
+  background-color: #c2410c !important;
+}
+a.bg-hiviz:hover, button.bg-hiviz:hover { background-color: #9a3412 !important; }
+
+/* The little ribbon badges ("Start here", "Most popular", "New") are ~9.6px, so
+   they need the most headroom of anything on the page. Near-black on the bright
+   orange gives 6.21:1 and reads better in glare than any white-on-orange can. */
+.bg-hiviz.text-white.font-mono,
+span.bg-hiviz.text-white {
+  background-color: #f97316 !important;
+  color: #140c06 !important;
+}

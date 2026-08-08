@@ -63,7 +63,14 @@
     var orig = el.textContent;
     el.style.pointerEvents = 'none'; el.dataset.busy = '1'; el.textContent = 'Loading…';
     post(payload).then(function (res) {
-      if (res.ok && res.j.url) { window.location.href = res.j.url; return; }
+      if (res.ok && res.j.url) {
+        // Reached Stripe. The gap between this and begin_checkout is the
+        // API-failure rate; the gap between this and purchase_complete on the
+        // success page is genuine abandonment inside Stripe's own form.
+        if (window.MaraTrack) window.MaraTrack('checkout_redirect', el);
+        window.location.href = res.j.url;
+        return;
+      }
       alert((res.j && res.j.error) || 'Could not start checkout. Email general@marapone.com.');
       el.style.pointerEvents = ''; el.textContent = orig; delete el.dataset.busy;
     }).catch(function () {
@@ -138,11 +145,36 @@
     });
   }
 
+  /* Analytics. Fired here rather than per page so every buy button on the site
+     is measured the same way, whatever markup it sits in. `data-track-src` lets
+     a caller record where the intent came from — the value of the whole funnel
+     question is knowing that a sandbox run turned into this click. */
+  function track(name, el, extra) {
+    try {
+      var payload = {
+        product: (el && (el.getAttribute('data-product') || el.getAttribute('data-tier') || el.getAttribute('data-plan'))) || 'unknown',
+        kind: (el && el.getAttribute('data-checkout')) || 'unknown',
+        source: (el && el.getAttribute('data-track-src')) || 'page',
+        vertical: location.pathname.indexOf('/logistics') === 0 ? 'logistics' : 'construction'
+      };
+      for (var k in (extra || {})) payload[k] = extra[k];
+      if (window.gtag) window.gtag('event', name, payload);
+      if (window.va) window.va('event', { name: name, data: payload });
+    } catch (e) { }
+  }
+  // Exposed so pages with their own funnel steps (the sandbox) report through
+  // the same pipe instead of inventing a second event vocabulary.
+  window.MaraTrack = track;
+
   function onClick(e) {
-    var el = e.currentTarget;
+    // Delegated, so buttons rendered after load — the CTA at the end of the
+    // Blueprint Auditor demo, for one — are live without re-attaching.
+    var el = e.target.closest ? e.target.closest('[data-checkout]') : null;
+    if (!el) return;
     if (el.dataset.busy) return;
     e.preventDefault();
     var kind = el.getAttribute('data-checkout');
+    track('begin_checkout', el);
     if (kind === 'product') {
       quickCheckout(el, { kind: 'product', product: el.getAttribute('data-product') });
     } else if (kind === 'build') {
@@ -155,10 +187,7 @@
   }
 
   function attach() {
-    document.querySelectorAll('[data-checkout]').forEach(function (el) {
-      if (el.dataset.coWired) return; el.dataset.coWired = '1';
-      el.addEventListener('click', onClick);
-    });
+    document.addEventListener('click', onClick);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { var o = document.querySelector('.mp-co-ovl'); if (o) close(o); }
     });

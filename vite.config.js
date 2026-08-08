@@ -80,6 +80,7 @@ export default defineConfig({
           '/construction/discovery': '/construction/discovery.html',
           '/construction/about': '/construction/about.html',
           '/construction/pricing': '/construction/pricing.html',
+          '/construction/purchase-complete': '/construction/purchase-complete.html',
           '/construction/blueprint-auditor': '/construction/blueprint-auditor.html',
           '/construction/ai-estimator': '/construction/ai-estimator.html',
           '/construction/scopeguard': '/construction/scopeguard.html',
@@ -276,6 +277,7 @@ export default defineConfig({
         // Tier 1/2: Proof tools + security pack
         'c-sample-assessment':         path.resolve(__dirname, 'construction/sample-assessment.html'),
         'c-roi-calculator':            path.resolve(__dirname, 'construction/roi-calculator.html'),
+        'c-purchase-complete':         path.resolve(__dirname, 'construction/purchase-complete.html'),
         'c-security-pack':             path.resolve(__dirname, 'construction/security-pack.html'),
         'l-sample-assessment':         path.resolve(__dirname, 'logistics/sample-assessment.html'),
         'l-roi-calculator':            path.resolve(__dirname, 'logistics/roi-calculator.html'),

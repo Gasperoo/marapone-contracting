@@ -11,10 +11,10 @@
   <meta name="theme-color" content="#111111" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blueprint Auditor – Audit any blueprint instantly | Marapone</title>
+  <title>Construction Quantity Takeoff &amp; Blueprint Review Software | Marapone</title>
   <link rel="canonical" href="https://marapone.com/construction/blueprint-auditor" />
   <meta name="description"
-    content="Drop a drawing and get Ontario Building Code compliance, a full material takeoff, and a costed estimate in seconds — not days of manual review. AI blueprint auditing & takeoff for construction." />
+    content="Quantity takeoff and blueprint review software that reads a drawing set, measures the quantities and flags coordination conflicts and Ontario Building Code issues before they become change orders. Free live demo on your own drawings. One-time $990, runs locally, full source code." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Marapone" />
   <meta property="og:title" content="Blueprint Auditor – Audit any blueprint instantly | Marapone" />
@@ -49,7 +49,7 @@
     }
 
     .hiviz-gradient {
-      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
     }
 
     #nav-progress {
@@ -236,7 +236,7 @@
       display: flex;
       align-items: center;
       gap: .75rem;
-      color: #6e6e6e;
+      color: #9a9a9a;
       font-family: 'DM Mono', monospace;
       font-size: .7rem;
       letter-spacing: .12em;
@@ -467,7 +467,7 @@
       </button>
     </div>
     <div id="mobile-menu" class="hidden lg:hidden border-t border-plate px-4 pb-4 flex-col gap-3 text-sm font-medium">
-      <p class="font-mono text-xs text-plate pt-1">// Products</p>
+      <p class="font-mono text-xs text-ash pt-1">// Products</p>
       <a href="/construction/blueprint-auditor" class="text-fog hover:text-chalk" style="padding-left:.75rem">Blueprint Auditor &middot; live demo</a>
       <a href="/construction/specchecker" class="text-fog hover:text-chalk" style="padding-left:.75rem">SpecChecker</a>
       <a href="/construction/ai-estimator" class="text-fog hover:text-chalk" style="padding-left:.75rem">AI Estimator</a>
@@ -476,7 +476,7 @@
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
-      <p class="font-mono text-xs text-plate pt-1" data-mp-more-mobile>// More</p>
+      <p class="font-mono text-xs text-ash pt-1" data-mp-more-mobile>// More</p>
       <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
       <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
       <a href="/construction/roi-calculator" class="text-fog hover:text-chalk" style="padding-left:.75rem">ROI Calculator</a>
@@ -503,6 +503,7 @@
           <span class="ba-eyebrow">Blueprint Intelligence</span>
           <h1 class="ba-display text-5xl sm:text-6xl lg:text-7xl text-chalk mb-6">
             AUDIT ANY BLUEPRINT.<br /><span class="ba-grad-text">INSTANTLY.</span>
+            <span class="block font-body font-normal normal-case tracking-normal text-base sm:text-lg text-fog mt-5 leading-snug" data-mara-subhead>Blueprint Auditor &mdash; construction quantity takeoff and drawing review software</span>
           </h1>
           <p class="text-fog text-lg leading-relaxed max-w-xl mb-8">
             Drop in a drawing set and the engine reads it <strong class="text-chalk">live</strong> — a real quantity
@@ -520,7 +521,7 @@
             </button>
             <a href="#capabilities" class="ba-btn-ghost">Explore solutions</a>
           </div>
-          <p class="font-mono text-xs text-plate mt-5">
+          <p class="font-mono text-xs text-ash mt-5">
             Reads text/vector PDFs (Revit, AutoCAD, Bluebeam exports) · scanned sets are OCR'd in your private build.
             Processed in memory, never stored. <span id="quota-note"></span>
           </p>
@@ -548,14 +549,14 @@
                 <p class="text-chalk font-semibold">Drop a drawing set here</p>
                 <div class="ba-or">or</div>
                 <button type="button" class="ba-btn-ghost mx-auto" data-upload-trigger>Browse Files</button>
-                <p class="font-mono text-[0.62rem] text-plate mt-5 tracking-wide">Vector / text PDF works best · up to
+                <p class="font-mono text-[0.62rem] text-ash mt-5 tracking-wide">Vector / text PDF works best · up to
                   5&nbsp;MB</p>
                 <input type="file" id="file" class="sr-only" accept=".pdf,.csv,.tsv,.txt,.json"
                   aria-label="Drawing set to analyse" />
               </div>
 
               <div class="mt-5">
-                <span class="text-plate text-xs block mb-2">No file handy? Run a sample and compare:</span>
+                <span class="text-ash text-xs block mb-2">No file handy? Run a sample and compare:</span>
                 <div class="flex flex-wrap items-center gap-2">
                   <button data-sample="/samples/sample-residential-plan-set.pdf"
                     data-name="sample-residential-plan-set.pdf"
@@ -959,11 +960,11 @@
           <p class="font-mono text-[0.62rem] tracking-widest uppercase text-fog mb-1">Not included — that&rsquo;s a customised setup</p>
           <p class="font-mono text-xs text-fog mb-4">From $1,500</p>
           <ul class="space-y-2.5 text-sm">
-            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Fine-tuning on <em class="not-italic text-chalk">your</em> drawing conventions, title blocks, standard details and past project sets</span></li>
-            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Rule sets for a jurisdiction outside Ontario, or your own internal design standards</span></li>
-            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Wiring into Procore, Sage, Bluebeam or your own document management system</span></li>
-            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Workflows the product doesn&rsquo;t cover — RFI backlogs, daily logs, meeting minutes, change-order tracking</span></li>
-            <li class="flex gap-2.5"><span class="text-plate flex-shrink-0">✗</span><span class="text-fog">Ongoing development after handover (optional support plans, never required)</span></li>
+            <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">Fine-tuning on <em class="not-italic text-chalk">your</em> drawing conventions, title blocks, standard details and past project sets</span></li>
+            <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">Rule sets for a jurisdiction outside Ontario, or your own internal design standards</span></li>
+            <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">Wiring into Procore, Sage, Bluebeam or your own document management system</span></li>
+            <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">Workflows the product doesn&rsquo;t cover — RFI backlogs, daily logs, meeting minutes, change-order tracking</span></li>
+            <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">Ongoing development after handover (optional support plans, never required)</span></li>
           </ul>
           <p class="text-xs text-fog leading-relaxed mt-5 pt-4 border-t border-plate">
             Buying the product first doesn&rsquo;t lock you out of a build later — most teams start here,
@@ -995,7 +996,7 @@
             <a href="/construction/pricing#products" class="ba-btn-ghost" data-checkout="product" data-product="blueprint-auditor">Buy it — $990 one time</a>
             <a href="/construction/contact" class="ba-btn-ghost">Book a demo</a>
           </div>
-          <p class="font-mono text-xs text-plate mt-5">One time · +HST · 30-day refund · source code on day 31 · Secured by Stripe</p>
+          <p class="font-mono text-xs text-ash mt-5">One time · +HST · 30-day refund · source code on day 31 · Secured by Stripe</p>
         </div>
       </div>
     </div>
@@ -1074,11 +1075,11 @@
           </div>
           <div class="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-3">
             <address class="not-italic">
-              <p class="font-mono text-xs text-plate leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B
+              <p class="font-mono text-xs text-ash leading-relaxed">5343 Dundas St W<br />Etobicoke, ON M9B
                 6K5<br />Canada</p>
             </address>
             <address class="not-italic">
-              <p class="font-mono text-xs text-plate leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
+              <p class="font-mono text-xs text-ash leading-relaxed">Via Boezio 6<br />Rome, 00193<br />Italy</p>
             </address>
           </div>
         </div>
@@ -1097,18 +1098,18 @@
           <a href="/construction/about" class="hover:text-chalk">About</a>
           <a href="/construction/contact" class="hover:text-chalk">Contact</a>
         </div>
-        <p class="text-xs font-mono text-plate text-center md:text-right">&copy; 2026 Marapone. All
+        <p class="text-xs font-mono text-ash text-center md:text-right">&copy; 2026 Marapone. All
           Rights Reserved.</p>
       </div>
       <div class="border-t border-plate mt-6 pt-5 flex flex-wrap justify-center gap-6">
-        <a href="/terms?from=construction" class="text-xs font-mono text-plate hover:text-fog transition-colors">Terms
+        <a href="/terms?from=construction" class="text-xs font-mono text-ash hover:text-fog transition-colors">Terms
           of Service</a>
         <a href="/privacy?from=construction"
-          class="text-xs font-mono text-plate hover:text-fog transition-colors">Privacy Policy</a>
+          class="text-xs font-mono text-ash hover:text-fog transition-colors">Privacy Policy</a>
         <a href="/cookies?from=construction"
-          class="text-xs font-mono text-plate hover:text-fog transition-colors">Cookie Policy</a>
+          class="text-xs font-mono text-ash hover:text-fog transition-colors">Cookie Policy</a>
         <a href="/security?from=construction"
-          class="text-xs font-mono text-plate hover:text-fog transition-colors">Security</a>
+          class="text-xs font-mono text-ash hover:text-fog transition-colors">Security</a>
       </div>
     </div>
   </footer>
@@ -1150,6 +1151,29 @@
       document.querySelectorAll('[data-upload-trigger]').forEach(function (btn) {
         btn.addEventListener('click', function (e) { e.preventDefault(); if (picker) picker.click(); });
       });
+
+      // Funnel step 1: a run was started, and whether it used our sample drawing
+      // or the visitor's own file — the two convert very differently and there is
+      // currently no way to tell them apart.
+      document.querySelectorAll('[data-sample]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (window.MaraTrack) {
+            window.MaraTrack('sandbox_run', null, {
+              product: 'blueprint-auditor', source: 'sandbox',
+              input: 'sample', sample: btn.getAttribute('data-name') || ''
+            });
+          }
+        });
+      });
+      if (picker) {
+        picker.addEventListener('change', function () {
+          if (picker.files && picker.files[0] && window.MaraTrack) {
+            window.MaraTrack('sandbox_run', null, {
+              product: 'blueprint-auditor', source: 'sandbox', input: 'own_file'
+            });
+          }
+        });
+      }
       var dz = document.getElementById('dz');
       if (dz) {
         dz.addEventListener('keydown', function (e) {
@@ -1201,7 +1225,7 @@
         var premium = (j.premium || []).map(function (p) { return '<div class="lock-wrap bg-steel border border-plate rounded-lg p-4"><div class="flex items-center gap-2 mb-2"><svg class="w-4 h-4 text-hiviz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><p class="text-chalk text-sm font-semibold">' + esc(p.label) + '</p></div><div class="locked-blur space-y-1"><div class="h-2 bg-plate rounded w-5/6"></div><div class="h-2 bg-plate rounded w-2/3"></div><div class="h-2 bg-plate rounded w-3/4"></div></div></div>'; }).join('');
         results.innerHTML =
           '<div class="bg-gunmetal border border-plate rounded-xl p-6 lg:p-8">' +
-            '<div class="flex flex-wrap items-center gap-3 mb-6"><span class="font-mono text-xs text-plate">' + esc(j.filename) + '</span><span class="ml-auto inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full border" style="color:' + riskColor(j.risk) + ';border-color:' + riskColor(j.risk) + '55">' + j.risk + ' COMPLETENESS RISK</span></div>' +
+            '<div class="flex flex-wrap items-center gap-3 mb-6"><span class="font-mono text-xs text-ash">' + esc(j.filename) + '</span><span class="ml-auto inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full border" style="color:' + riskColor(j.risk) + ';border-color:' + riskColor(j.risk) + '55">' + j.risk + ' COMPLETENESS RISK</span></div>' +
             '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// Extracted live from your file</p>' +
             '<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">' + stats + '</div>' +
             (disc ? '<div class="mb-4"><p class="text-fog text-xs font-mono uppercase mb-2">Disciplines identified</p>' + disc + '</div>' : '') +
@@ -1212,10 +1236,33 @@
                     : '<p class="text-fog text-sm mb-2">No room/door/window schedules detected in this set.</p>') +
             '<p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2 mt-7">// Findings</p><div class="mb-2">' + unlocked + '</div>' + lockedFind +
             '<div class="mt-8 pt-6 border-t border-plate"><p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">// In your full private build</p><div class="grid sm:grid-cols-2 gap-3">' + premium + '</div></div>' +
-            '<div class="hiviz-gradient rounded-lg p-6 mt-8 flex flex-col sm:flex-row items-center gap-4"><div><p class="text-white font-display text-2xl leading-none mb-1">SEE THE FULL AUDIT</p><p class="text-white/90 text-sm">The complete build runs the full coordination + code audit and quantity takeoff on your real set — and the report is yours to keep.</p></div><a href="/construction/contact" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 sm:ml-auto">Get a Free Assessment &rarr;</a></div>' +
-            (typeof j.remaining_today === 'number' ? '<p class="text-plate text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo unlock' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
+            // The end of the simulation is the moment of maximum conviction, so
+            // buying is the primary action here. It used to offer only a free
+            // assessment, which sent the most convinced visitors into a form.
+            '<div class="hiviz-gradient rounded-lg p-6 mt-8">' +
+              '<p class="text-white font-display text-2xl leading-none mb-1">THAT WAS THE FREE VERSION.</p>' +
+              '<p class="text-white/90 text-sm mb-1">You just watched it read a set it had never seen. The full build runs the complete coordination and code audit, keeps every project, and the report is yours to keep — on your own machine, offline.</p>' +
+              '<p class="text-white/80 text-xs mb-5">$990 one time · full source code · 30-day money back</p>' +
+              '<div class="flex flex-col sm:flex-row gap-3">' +
+                '<a href="/construction/pricing#products" data-checkout="product" data-product="blueprint-auditor" data-track-src="sandbox_result" class="whitespace-nowrap bg-white text-charcoal font-semibold px-5 py-3 rounded hover:opacity-90 text-center">Buy it now — $990 &rarr;</a>' +
+                '<a href="/construction/contact" class="whitespace-nowrap border border-white/60 text-white font-semibold px-5 py-3 rounded hover:bg-white/10 transition-colors text-center">Or get a free assessment first</a>' +
+              '</div>' +
+            '</div>' +
+            (typeof j.remaining_today === 'number' ? '<p class="text-ash text-xs font-mono mt-4 text-center">' + j.remaining_today + ' free demo unlock' + (j.remaining_today === 1 ? '' : 's') + ' left today.</p>' : '') +
           '</div>';
         results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Funnel step 2: the visitor has seen real output. Comparing this count
+        // against begin_checkout[source=sandbox_result] is the sandbox's actual
+        // conversion rate; against sandbox_run it is the completion rate.
+        if (window.MaraTrack) {
+          window.MaraTrack('sandbox_result', null, {
+            product: 'blueprint-auditor',
+            source: 'sandbox',
+            risk: j.risk || 'unknown',
+            findings: (j.findings || []).length
+          });
+        }
       }
       MaraDemo.init({ mode: 'blueprint', sample: '/samples/sample-residential-plan-set.pdf', sampleName: 'sample-residential-plan-set.pdf', accent: '#f97316', gradientClass: 'hiviz-gradient', contactUrl: '/construction/contact', sitekey: SITEKEY, renderResult: renderResult });
     });

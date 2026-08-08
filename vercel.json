@@ -266,6 +266,10 @@
       "destination": "/construction/roi-calculator.html"
     },
     {
+      "source": "/construction/purchase-complete",
+      "destination": "/construction/purchase-complete.html"
+    },
+    {
       "source": "/construction/security-pack",
       "destination": "/construction/security-pack.html"
     },

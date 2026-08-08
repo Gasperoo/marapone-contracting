@@ -80,3 +80,6 @@ scripts/.font-cache/
 
 # Per-machine Claude Code settings (and the Finder duplicates of them)
 .claude/settings.local*.json
+
+# Built data packs — paid files. Never commit or serve from public/.
+packs-dist/

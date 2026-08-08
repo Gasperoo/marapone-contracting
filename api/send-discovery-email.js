@@ -178,7 +178,7 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'Marapone Contact Form <info@marapone.com>',
       to: ['general@marapone.com'],
-      reply_to: rawEmail,
+      replyTo: rawEmail,
       subject: `Discovery Call Request from ${name}`,
       html: `
         <!DOCTYPE html>

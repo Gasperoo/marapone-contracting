@@ -102,7 +102,7 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'Marapone <info@marapone.com>',
       to: [email],
-      reply_to: 'general@marapone.com',
+      replyTo: 'general@marapone.com',
       subject: welcome.subject,
       html: welcome.html,
       ...(attachments.length ? { attachments } : {}),
@@ -130,7 +130,7 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'Marapone Signups <info@marapone.com>',
       to: ['general@marapone.com'],
-      reply_to: email,
+      replyTo: email,
       subject: `New subscriber (${s}${v ? ' / ' + v : ''}): ${e}`,
       html: `<p><strong>${e}</strong> joined the mailing list${includeSamples ? ' and was sent the sample files' : ''}.</p><p>Welcome code: <strong>${escapeHtml(promo.code)}</strong> (${promo.unique ? 'unique Stripe code' : 'static fallback'})<br/>Source: ${s}<br/>Vertical: ${v || '—'}<br/>IP: ${escapeHtml(ip)}<br/>Submitted: ${new Date().toLocaleString('en-US', { timeZoneName: 'short' })}</p>`,
     });

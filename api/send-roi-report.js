@@ -357,7 +357,7 @@ export default async function handler(req, res) {
     const sent = await resend.emails.send({
       from: 'Marapone <info@marapone.com>',
       to: [email],
-      reply_to: 'general@marapone.com',
+      replyTo: 'general@marapone.com',
       subject: `Your ROI projection — ${money(r.moneyYear)} a year, ${r.payback || 'n/a'} payback`,
       html,
       attachments: [{ filename: 'Marapone-ROI-Projection.pdf', content: pdf.toString('base64') }],
@@ -380,7 +380,7 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'Marapone Signups <info@marapone.com>',
       to: ['general@marapone.com'],
-      reply_to: email,
+      replyTo: email,
       subject: `ROI report sent (${escapeHtml(source)}): ${escapeHtml(email)}`,
       html: `<p><strong>${escapeHtml(email)}</strong> generated an ROI projection (${escapeHtml(r.mode)} model).</p>`
         + `<p>Subject: ${escapeHtml(taskLabel)}<br/>`

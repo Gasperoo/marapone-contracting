@@ -49,7 +49,7 @@ async function startOnboarding(resend, { email, name, product, amount, sessionId
       const sent = await resend.emails.send({
         from: 'Marapone <info@marapone.com>',
         to: [email],
-        reply_to: 'general@marapone.com',
+        replyTo: 'general@marapone.com',
         subject: msg.subject,
         html: msg.html,
         text: msg.text,
@@ -140,7 +140,7 @@ export default async function handler(req, res) {
         await resend.emails.send({
           from: 'Marapone Checkout <info@marapone.com>',
           to: ['general@marapone.com'],
-          reply_to: who !== 'unknown' ? who : undefined,
+          replyTo: who !== 'unknown' ? who : undefined,
           subject: `💳 Paid: ${summary.slice(0, 80)}`,
           html: `<p><strong>${who}</strong> completed a Stripe checkout.</p><p>${summary}</p><p>Session: ${s.id}</p>`,
         });

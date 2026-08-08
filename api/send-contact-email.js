@@ -485,7 +485,7 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'Marapone Contact Form <info@marapone.com>',
       to: ['general@marapone.com'],
-      reply_to: rawEmail,
+      replyTo: rawEmail,
       subject: `New Assessment Request from ${name}${company ? ' at ' + company : ''}`,
       html: `
         <!DOCTYPE html>

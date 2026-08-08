@@ -49,6 +49,9 @@
     "api/newsletter-signup.js": {
       "maxDuration": 10
     },
+    "api/send-roi-report.js": {
+      "maxDuration": 15
+    },
     "api/demo-analyze.py": {
       "maxDuration": 30
     }
@@ -409,6 +412,10 @@
     {
       "source": "/api/newsletter-signup",
       "destination": "/api/newsletter-signup"
+    },
+    {
+      "source": "/api/send-roi-report",
+      "destination": "/api/send-roi-report"
     },
     {
       "source": "/api/demo-analyze",

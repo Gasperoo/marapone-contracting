@@ -227,7 +227,7 @@
             <div class="roi-field">
               <label for="price" class="text-chalk font-semibold text-sm mb-2">One-time build price ($)</label>
               <input id="price" type="number" min="0" step="100" value="6000" class="roi-input w-full rounded px-3 py-2.5 text-sm" />
-              <p class="text-plate text-xs mt-1 font-mono">The finished apps are $990. A customised setup starts at $4,900 and enterprise integration at $15,000 — use a real quote if you have one.</p>
+              <p class="text-plate text-xs mt-1 font-mono">The finished apps are $990. Work on your own workflow starts at $1,500 and enterprise integration at $15,000 — use a real quote if you have one.</p>
             </div>
           </div>
         </div>
@@ -276,6 +276,21 @@
             </div>
 
             <p class="text-plate text-xs mt-6 leading-relaxed">These are planning estimates from the inputs above, not a quote or a guarantee. They count only the labour on the one task you selected — they don't include the cost of errors a manual process misses, which is usually where the real money is. Your free assessment runs the AI on your actual documents so the numbers come from your data, not a slider.</p>
+
+            <!-- Take the sheet with you. The numbers above are the ones that go in the PDF. -->
+            <div class="mt-6 pt-6 border-t border-plate" id="roi-report">
+              <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-2">// Take this to whoever signs off</p>
+              <p class="text-fog text-sm mb-3">We'll email this projection as a one-page PDF &mdash; your inputs, the payback period and the three-year position, ready to forward to your team.</p>
+              <form id="roi-report-form" class="flex flex-wrap gap-2 max-w-md" novalidate>
+                <label for="roi-report-email" class="sr-only">Your email address</label>
+                <input id="roi-report-email" type="email" name="email" required placeholder="you@yourcompany.com"
+                  autocomplete="email"
+                  class="flex-1 min-w-[210px] bg-steel border border-plate rounded text-chalk px-3 py-2.5 text-sm outline-none focus:border-hiviz transition-colors" />
+                <button type="submit"
+                  class="hiviz-gradient text-white font-semibold px-4 py-2.5 rounded text-sm hover:opacity-90 transition-opacity whitespace-nowrap">Email me this ROI report as a PDF &rarr;</button>
+              </form>
+              <p id="roi-report-msg" class="font-mono text-xs text-fog mt-2">One email with the PDF attached. Unsubscribe with a click.</p>
+            </div>
           </div>
 
           <div class="flex flex-wrap gap-3 mt-6">
@@ -382,6 +397,51 @@
         el[id].addEventListener('change', calc);
       });
       calc();
+
+      // Email the sheet as a PDF. Only the raw inputs are posted — the server
+      // re-runs this same arithmetic so the attached report can never disagree
+      // with what the visitor is looking at, whatever the page state.
+      var repForm = document.getElementById('roi-report-form');
+      var repMsg = document.getElementById('roi-report-msg');
+      if (repForm && repMsg) {
+        repForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = (repForm.email.value || '').trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            repMsg.style.color = ''; repMsg.textContent = 'Please enter a valid email address.'; return;
+          }
+          var btn = repForm.querySelector('button');
+          var orig = btn.innerHTML;
+          btn.disabled = true; btn.textContent = 'Building your PDF…';
+          repMsg.style.color = ''; repMsg.textContent = 'Rendering the report…';
+          fetch('/api/send-roi-report', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: email,
+              source: 'roi_calculator',
+              vertical: 'construction',
+              task: el.task.value,
+              volume: el.volume.value,
+              minutes: el.minutes.value,
+              rate: el.rate.value,
+              reduction: el.reduction.value,
+              price: el.price.value
+            })
+          }).then(function (r) {
+            return r.json().catch(function () { return {}; }).then(function (j) {
+              if (!r.ok) throw new Error(j.error || 'Request failed');
+              return j;
+            });
+          }).then(function () {
+            repForm.style.display = 'none';
+            repMsg.style.color = '#f97316';
+            repMsg.textContent = '✓ Sent. The PDF is attached — check your inbox.';
+          }).catch(function (err) {
+            btn.disabled = false; btn.innerHTML = orig;
+            repMsg.textContent = (err && err.message) || 'Something went wrong. Email general@marapone.com.';
+          });
+        });
+      }
     })();
   </script>
 

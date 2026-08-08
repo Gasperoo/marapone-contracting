@@ -414,16 +414,17 @@
         </a>
 
         <a href="#customised" class="lvl-card block bg-charcoal border border-plate rounded-xl p-6">
-          <p class="font-mono text-hiviz text-xs mb-2">LEVEL 02 · YOUR FILES</p>
+          <p class="font-mono text-hiviz text-xs mb-2">LEVEL 02 · YOUR WORKFLOW</p>
           <p class="flex items-end gap-2 mb-3">
-            <span class="font-display text-5xl text-chalk" data-price-cad="4900">$4,900</span><span class="font-display text-5xl text-hiviz" aria-label="or more">+</span>
+            <span class="font-display text-5xl text-chalk" data-price-cad="1500">$1,500</span><span class="font-display text-5xl text-hiviz" aria-label="or more">+</span>
             <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
           </p>
-          <p class="text-chalk font-semibold text-sm mb-2">Customised to your company</p>
+          <p class="text-chalk font-semibold text-sm mb-2">Built around how you work</p>
           <p class="text-fog text-xs leading-relaxed">
-            The same engine, tuned on your historical documents, your templates, your rate sheet and
-            your house standards — so the first run already knows how your company writes, prices
-            and argues.
+            From <span class="text-chalk">$1,500</span> for one focused workflow built and proved out.
+            From <span class="text-chalk" data-price-cad="4900">$4,900</span> the engine is tuned on
+            your historical documents, templates and rate sheet, so the first run already reads like
+            your office wrote it.
           </p>
           <p class="font-mono text-xs text-hiviz mt-4">What that covers &darr;</p>
         </a>
@@ -636,8 +637,10 @@
           </div>
         </div>
 
-        <!-- Bundle — all five -->
-        <div class="bg-steel border border-hiviz/50 rounded-xl p-6 flex flex-col reveal reveal-d2 md:col-span-2">
+        <!-- Bundle — all five. Badged as the most-taken option, which it is:
+             it is the only card that removes the retyping between stages. -->
+        <div class="bg-steel border-2 border-hiviz rounded-xl p-6 flex flex-col reveal reveal-d2 md:col-span-2 relative">
+          <span class="absolute -top-3 left-6 bg-hiviz text-white font-mono text-[0.6rem] tracking-widest uppercase px-3 py-1 rounded whitespace-nowrap">Most popular</span>
           <div class="mb-5">
             <p class="font-mono text-hiviz text-xs mb-2">ALL FIVE · DRAWINGS &rarr; AWARDED SUBCONTRACT</p>
             <h3 class="font-display text-3xl text-chalk mb-1">THE SUITE</h3>
@@ -668,6 +671,47 @@
             <p class="flex items-center justify-center gap-1.5 mt-2.5 font-mono text-xs text-fog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secured by Stripe</p>
           </div>
         </div>
+      </div>
+
+      <!-- Sits directly under every buy button on the page. Each claim here is
+           one the architecture actually supports — see /construction/architecture
+           and /construction/trust; nothing aspirational goes in this strip. -->
+      <div class="mt-8 border border-plate rounded-lg bg-charcoal p-5">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="flex items-start gap-2.5">
+            <svg class="text-hiviz flex-shrink-0 mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <div>
+              <p class="text-chalk text-xs font-semibold">Air-gapped capable</p>
+              <p class="text-plate text-[0.68rem] leading-relaxed mt-0.5">No internet needed at runtime. Works with the wifi off.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <svg class="text-hiviz flex-shrink-0 mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><path d="M2 2l20 20"/></svg>
+            <div>
+              <p class="text-chalk text-xs font-semibold">Never used for model training</p>
+              <p class="text-plate text-[0.68rem] leading-relaxed mt-0.5">Your drawings and pricing train nothing. No telemetry on your documents.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <svg class="text-hiviz flex-shrink-0 mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+            <div>
+              <p class="text-chalk text-xs font-semibold">Local SQLite database</p>
+              <p class="text-plate text-[0.68rem] leading-relaxed mt-0.5">One open file in your own user profile. Copy it and you have a backup.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <svg class="text-hiviz flex-shrink-0 mt-0.5" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <div>
+              <p class="text-chalk text-xs font-semibold">Stripe checkout &middot; 30-day guarantee</p>
+              <p class="text-plate text-[0.68rem] leading-relaxed mt-0.5">Card details never touch our servers. <a href="#guarantee" class="text-hiviz hover:text-chalk transition-colors">Money back within 30 days</a>.</p>
+            </div>
+          </div>
+        </div>
+        <p class="text-plate text-[0.68rem] mt-4 pt-4 border-t border-plate">
+          Every claim above is architectural, not a policy we could change later &mdash; see the
+          <a href="/construction/architecture" class="text-hiviz hover:text-chalk transition-colors">full stack</a> and the
+          <a href="/construction/trust" class="text-hiviz hover:text-chalk transition-colors">trust centre</a>.
+        </p>
       </div>
 
       <div class="mt-6 border border-plate rounded-lg bg-steel p-5 flex flex-col sm:flex-row sm:items-center gap-4">
@@ -709,14 +753,22 @@
     <div class="max-w-6xl mx-auto px-4">
 
       <div class="mb-10 reveal">
-        <p class="font-mono text-hiviz text-sm mb-2">// Level 02 · your files</p>
-        <h2 class="font-display text-4xl lg:text-5xl text-chalk">FROM <span class="text-hiviz" data-price-cad="4900">$4,900</span></h2>
-        <p class="text-chalk text-lg mt-2">Customised setup on your specific company files.</p>
+        <p class="font-mono text-hiviz text-sm mb-2">// Level 02 · your workflow</p>
+        <h2 class="font-display text-4xl lg:text-5xl text-chalk">FROM <span class="text-hiviz" data-price-cad="1500">$1,500</span></h2>
+        <p class="text-chalk text-lg mt-2">Engineering work on your own workflow and your own files.</p>
         <p class="text-fog text-sm mt-3 leading-relaxed max-w-3xl">
           The shipped products know the trade. They do not know <em class="not-italic text-chalk">you</em>
           — your spec templates, your subcontract language, your rate sheet, the six things your
           projects always argue about. This level is the engineering work that closes that gap, done
           against your own documents, so the first run already reads like your office wrote it.
+        </p>
+        <p class="text-fog text-sm mt-3 leading-relaxed max-w-3xl">
+          It has two entry points. <span class="text-chalk font-semibold">Starter, from
+          <span data-price-cad="1500">$1,500</span></span> — one workflow, scoped tightly and built to
+          prove the approach on your documents before you commit further.
+          <span class="text-chalk font-semibold">Customised, from
+          <span data-price-cad="4900">$4,900</span></span> — the full engagement below, across your
+          historical documents, your knowledge base and your house language.
         </p>
       </div>
 
@@ -744,16 +796,27 @@
           <div class="bg-charcoal border border-hiviz/45 rounded-xl p-6 reveal reveal-d1">
             <p class="font-mono text-hiviz text-xs uppercase mb-3">How it is priced</p>
             <p class="text-fog text-sm leading-relaxed">
-              $4,900 is the floor, not an average. What moves it is the volume of historical
+              Both figures are floors, not averages. What moves them is the volume of historical
               documents, how many workflows are in scope, and whether the rules can be data or have
               to be code. You get a fixed price in writing after the scoping session, and it does
               not move afterwards.
             </p>
             <p class="text-fog text-sm leading-relaxed mt-3">
-              Reserve with a 35% deposit; the balance is invoiced on delivery.
+              Either can be reserved online against a deposit; the balance is invoiced on delivery.
             </p>
-            <a href="/construction/contact" class="mt-5 block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors" data-checkout="build" data-tier="pilot" data-vertical="construction">Reserve &middot; pay deposit &rarr;</a>
-            <p class="flex items-center justify-center gap-1.5 mt-2.5 font-mono text-xs text-fog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secured by Stripe</p>
+
+            <div class="mt-5 space-y-3">
+              <div>
+                <a href="/construction/contact" class="block border border-plate text-chalk font-semibold py-2.5 rounded text-center text-sm hover:border-hiviz hover:text-hiviz transition-colors" data-checkout="build" data-tier="starter" data-vertical="construction">Starter &middot; <span data-price-cad="1500">$1,500</span> &mdash; 25% deposit &rarr;</a>
+                <p class="text-plate text-xs mt-1.5 text-center">One workflow, proved out on your files.</p>
+              </div>
+              <div>
+                <a href="/construction/contact" class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors" data-checkout="build" data-tier="pilot" data-vertical="construction">Customised &middot; <span data-price-cad="4900">$4,900</span> &mdash; 35% deposit &rarr;</a>
+                <p class="text-plate text-xs mt-1.5 text-center">The full engagement listed here.</p>
+              </div>
+            </div>
+
+            <p class="flex items-center justify-center gap-1.5 mt-4 font-mono text-xs text-fog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secured by Stripe</p>
             <a href="/construction/contact" class="block text-center font-mono text-xs text-fog hover:text-chalk mt-2 transition-colors">Or book the scoping session first &rarr;</a>
           </div>
 
@@ -989,6 +1052,79 @@
     </div>
   </section>
 
+  <!-- ═══════ "SO WHO MAINTAINS IT?" ═══════
+       The objection that kills the ownership pitch: buyers hear "you get the
+       source code" and price in a full-time engineer. These are the actual
+       stack facts from /construction/architecture, stated as an answer. -->
+  <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 items-start">
+        <div class="reveal">
+          <p class="font-mono text-hiviz text-sm mb-2">// The question everybody asks second</p>
+          <h2 class="font-display text-4xl lg:text-5xl text-chalk leading-none">YOU DON'T NEED TO<br /><span class="text-hiviz">HIRE AN ENGINEER.</span></h2>
+          <p class="text-fog text-sm mt-5 leading-relaxed">
+            "We get the source code" usually lands as a liability &mdash; as if owning it means
+            budgeting for a developer at six figures just to keep the thing alive. It doesn't,
+            because of what is actually inside the bundle.
+          </p>
+          <p class="text-fog text-sm mt-4 leading-relaxed">
+            It ships as a normal installer. There is no Python to install, no Docker, no runtime for
+            your IT department to keep patched, and no server to administer. On day one nobody needs
+            to open the code at all &mdash; and the things you are most likely to want changed aren't
+            code in the first place.
+          </p>
+          <p class="text-fog text-sm mt-4 leading-relaxed">
+            When you do want a change that is real development &mdash; a new report, an extra rule,
+            a different export layout &mdash; it is ordinary Python and one HTML file. Any competent
+            contract developer can read it. Nothing is obfuscated, nothing is a proprietary
+            framework, and no licence forbids somebody else from touching it.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-7">
+            <a href="/construction/architecture" class="border border-hiviz text-hiviz font-semibold px-5 py-2.5 rounded text-sm hover:bg-hiviz hover:text-white transition-colors">See the exact stack &rarr;</a>
+            <a href="/construction/resources/what-owning-source-means" class="border border-plate text-chalk font-semibold px-5 py-2.5 rounded text-sm hover:border-hiviz hover:text-hiviz transition-colors">What ownership does and doesn't cover</a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-d1 space-y-4">
+          <div class="border border-plate rounded-xl bg-charcoal p-5">
+            <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-3">No engineer needed for any of this</p>
+            <ul class="space-y-2.5 text-sm">
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span class="text-chalk">Rates, fees and tax tables &mdash; <span class="text-fog">JSON files, edited in the app</span></span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span class="text-chalk">Scope checklists and house clauses &mdash; <span class="text-fog">data, not code</span></span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span class="text-chalk">Swapping to a different market &mdash; <span class="text-fog">a data edit</span></span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span class="text-chalk">Backup and restore &mdash; <span class="text-fog">copy one SQLite file</span></span></li>
+              <li class="flex gap-2.5"><span class="text-hiviz flex-shrink-0">▸</span><span class="text-chalk">Installing it &mdash; <span class="text-fog">a normal installer, on a normal laptop</span></span></li>
+            </ul>
+          </div>
+          <div class="border border-plate rounded-xl bg-charcoal p-5">
+            <p class="font-mono text-fog text-xs uppercase tracking-widest mb-3">Standard parts, on purpose</p>
+            <ul class="space-y-2 text-xs text-fog font-mono">
+              <li>&middot; Python &mdash; the most widely known language there is</li>
+              <li>&middot; PyQt6 for the window; HTML/JS for the interface, no build step</li>
+              <li>&middot; SQLite for storage &mdash; one open file, readable by anything</li>
+              <li>&middot; A local GGUF model file you can swap for another</li>
+              <li>&middot; PyInstaller bundles it, so Python is inside the app</li>
+            </ul>
+            <p class="text-plate text-xs mt-4 leading-relaxed">
+              Deliberately boring choices. The point of owning something is being able to hire
+              anyone to work on it &mdash; which only holds if it is built out of parts people
+              already know.
+            </p>
+          </div>
+          <div class="border-l-2 border-hiviz bg-charcoal rounded-r-lg p-5">
+            <p class="text-chalk text-sm font-semibold mb-1.5">The honest limit</p>
+            <p class="text-fog text-xs leading-relaxed">
+              Owning the source doesn't make the software maintain itself. Operating systems move
+              on, and in three or five years somebody will need to spend a day on dependencies and
+              a rebuild. Ownership means that day is scheduled by you and can be done by anyone
+              &mdash; not that it never comes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ROI SCENARIO CALCULATOR -->
   <section class="py-16 lg:py-24 border-b border-plate">
     <div class="max-w-4xl mx-auto px-4">
@@ -1140,6 +1276,9 @@
 
     var roiTier = 4900;
     var roiScenarioIdx = 0;
+    // Stated in the footnote under the projection, and used by the emailed PDF —
+    // one constant so the sheet and the screen can't drift apart.
+    var ROI_INCIDENTS_PER_YEAR = 3;
 
     function setScenario(idx, btn) {
       roiScenarioIdx = idx;
@@ -1179,7 +1318,7 @@
       var roiRatio = (s.avgCost / roiTier).toFixed(1);
       document.getElementById('roi-ratio').textContent = '→ $' + s.avgCost.toLocaleString() + ' saved on a $' + roiTier.toLocaleString() + ' purchase = ' + roiRatio + '× ROI';
 
-      var perYr = 3;
+      var perYr = ROI_INCIDENTS_PER_YEAR;
       var yr1Net = (s.avgCost * perYr) - roiTier;
       var yr3Net = (s.avgCost * perYr * 3) - roiTier;
       var roiMultiple = ((s.avgCost * perYr * 3) / roiTier).toFixed(1);
@@ -1720,18 +1859,36 @@
           if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { roiMsg.textContent = 'Please enter a valid email.'; return; }
           var btn = roiForm.querySelector('button');
           btn.disabled = true; btn.textContent = 'Sending…';
-          var roiTierEl = document.getElementById('roi-build-display');
-          var scenarioTag = document.getElementById('roi-tag') ? document.getElementById('roi-tag').textContent : '';
-          fetch('/api/newsletter-signup', {
+          // Posts to send-roi-report, which renders and attaches the actual PDF.
+          // This block used to hit newsletter-signup, which sends the generic
+          // welcome email and attaches nothing — the "worksheet (PDF)" above was
+          // a promise the endpoint never kept.
+          fetch('/api/send-roi-report', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, source: 'roi_calc:' + scenarioTag, vertical: 'construction' })
-          }).then(function(r){ return r.json().catch(function(){return {};}); }).then(function(){
+            body: JSON.stringify({
+              email: email,
+              source: 'pricing_roi',
+              vertical: 'construction',
+              // This block models loss avoided per caught incident, not hours
+              // saved, so it asks for the incident variant of the report.
+              mode: 'incident',
+              scenario: roiScenarios[roiScenarioIdx].title,
+              avgCost: roiScenarios[roiScenarioIdx].avgCost,
+              perYr: ROI_INCIDENTS_PER_YEAR,
+              price: roiTier
+            })
+          }).then(function(r){
+            return r.json().catch(function(){return {};}).then(function(j){
+              if (!r.ok) throw new Error(j.error || 'Request failed');
+              return j;
+            });
+          }).then(function(){
             roiForm.style.display = 'none';
             roiMsg.style.color = '#f97316';
-            roiMsg.textContent = '✓ Sent. Check your inbox shortly.';
-          }).catch(function(){
+            roiMsg.textContent = '✓ Sent. The PDF is attached — check your inbox.';
+          }).catch(function(err){
             btn.disabled = false; btn.textContent = 'Try again →';
-            roiMsg.textContent = 'Something went wrong. Email general@marapone.com.';
+            roiMsg.textContent = (err && err.message) || 'Something went wrong. Email general@marapone.com.';
           });
         });
       }

@@ -1,5 +1,5 @@
 import { Resend } from 'resend';
-import { createClient } from '@supabase/supabase-js';
+import { put } from '@vercel/blob';
 import crypto from 'crypto';
 
 // Increase Vercel body size limit to handle base64-encoded file attachments
@@ -12,6 +12,14 @@ export const config = {
 };
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+/**
+ * How long the attachment scan is allowed to run, measured from the moment the
+ * handler starts. vercel.json gives this route a 30s maxDuration; the balance is
+ * reserved for the upload and the Resend call, so a slow scan can never be the
+ * reason a lead fails to arrive.
+ */
+const SCAN_BUDGET_MS = 15000;
 
 // --- Rate limiting (in-memory, resets on cold start) ---
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
@@ -72,38 +80,55 @@ const LIMITS = {
   budget: 50, timeline: 50, source: 80,
 };
 
-// --- Step 1: Supabase Storage quarantine ---
+/**
+ * Quarantine an attachment in Vercel Blob and return a link to it.
+ *
+ * The file is never attached to the notification email — the recipient gets a
+ * URL they choose to open, after reading the scan verdict next to it.
+ *
+ * The pathname carries a random suffix, so the URL cannot be guessed or walked
+ * even though the store is public. That is the same practical property the old
+ * Supabase signed URL had; what it does not have is an expiry, so
+ * `quarantine/` needs periodic sweeping (see the note in the caller).
+ *
+ * Throws on any failure. The caller must treat that as non-fatal — see the
+ * comment at the call site. Losing the file is an inconvenience; losing the
+ * lead attached to it is not.
+ */
 async function quarantineFile(fileBuffer, safeFilename, ext) {
-  const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  );
+  const token = process.env.BLOB_READ_WRITE_TOKEN;
+  if (!token) throw new Error('BLOB_READ_WRITE_TOKEN is not configured');
 
   const uid = crypto.randomBytes(8).toString('hex');
-  const storagePath = `submissions/${Date.now()}-${uid}/${safeFilename}`;
+  const day = new Date().toISOString().slice(0, 10);
 
-  const { error: uploadError } = await supabase.storage
-    .from('contact-quarantine')
-    .upload(storagePath, fileBuffer, {
+  const { url } = await put(
+    `quarantine/${day}/${uid}/${safeFilename}`,
+    fileBuffer,
+    {
+      access: 'public',
+      addRandomSuffix: true,
       contentType: MIME_TYPES[ext] || 'application/octet-stream',
-      upsert: false,
-    });
+      cacheControlMaxAge: 0, // never let a CDN hold an untrusted upload
+      token,
+    }
+  );
 
-  if (uploadError) throw new Error(`Supabase upload failed: ${uploadError.message}`);
-
-  const { data: signedUrlData, error: urlError } = await supabase.storage
-    .from('contact-quarantine')
-    .createSignedUrl(storagePath, 60 * 60 * 24 * 7); // 7-day expiry
-
-  if (urlError) throw new Error(`Signed URL generation failed: ${urlError.message}`);
-
-  return signedUrlData.signedUrl;
+  return url;
 }
 
 // --- Step 2: VirusTotal scanning ---
-async function scanWithVirusTotal(fileBuffer, safeFilename) {
+/**
+ * `deadline` is an epoch-ms budget for the whole scan. The function runs under
+ * a 30s maxDuration and a cold start can eat a real slice of it, so scanning is
+ * allowed to give up and report `pending` rather than run the invocation out of
+ * time — a timeout here would take the whole submission down with it, which is
+ * the one outcome worse than an unscanned file.
+ */
+async function scanWithVirusTotal(fileBuffer, safeFilename, deadline = Infinity) {
   const apiKey = process.env.VIRUSTOTAL_API_KEY;
   if (!apiKey) return { status: 'skipped' };
+  const timeLeft = () => deadline - Date.now();
 
   const hash = crypto.createHash('sha256').update(fileBuffer).digest('hex');
 
@@ -124,7 +149,10 @@ async function scanWithVirusTotal(fileBuffer, safeFilename) {
     // Hash lookup failed — fall through to upload
   }
 
-  // File not in VT database — submit for a fresh scan
+  // File not in VT database — submit for a fresh scan, if there is time to.
+  // An upload we cannot wait on tells us nothing, so skip straight to pending.
+  if (timeLeft() < 6000) return { status: 'pending' };
+
   let analysisId;
   try {
     const formData = new FormData();
@@ -145,8 +173,9 @@ async function scanWithVirusTotal(fileBuffer, safeFilename) {
 
   if (!analysisId) return { status: 'pending' };
 
-  // Poll for results — max 5 attempts × 3s = 15s
+  // Poll for results — up to 5 attempts × 3s, but never past the deadline
   for (let i = 0; i < 5; i++) {
+    if (timeLeft() < 3500) break;
     await new Promise(r => setTimeout(r, 3000));
     try {
       const analysisRes = await fetch(`https://www.virustotal.com/api/v3/analyses/${analysisId}`, {
@@ -197,6 +226,7 @@ async function checkAkismet(ip, name, email, message) {
 }
 
 export default async function handler(req, res) {
+  const startedAt = Date.now();
   const allowedOrigin = 'https://marapone.com';
   res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -218,24 +248,28 @@ export default async function handler(req, res) {
   }
 
   // Server-side honeypot check
-  const honeypot = req.body.website;
+  // A malformed or empty body must not throw: an unhandled TypeError here is a
+  // 500 with no email, i.e. a silently lost enquiry.
+  const body = req.body && typeof req.body === 'object' ? req.body : {};
+
+  const honeypot = body.website;
   if (honeypot && String(honeypot).trim() !== '') {
     console.warn(`Honeypot triggered from IP: ${ip}`);
     return res.status(200).json({ success: true });
   }
 
   // Extract and enforce length limits
-  const rawName     = req.body.name?.trim();
-  const rawEmail    = req.body.email?.trim();
-  const rawCompany  = req.body.company?.trim();
-  const rawPhone    = req.body.phone?.trim();
-  const rawIndustry = req.body.industry?.trim();
-  const rawDocType  = req.body.doc_type?.trim();
-  const rawMessage  = req.body.message?.trim();
-  const rawBudget   = req.body.budget?.trim();
-  const rawTimeline = req.body.timeline?.trim();
-  const rawSource   = req.body.source?.trim();
-  const rawRegion   = req.body.region?.trim();
+  const rawName     = body.name?.trim();
+  const rawEmail    = body.email?.trim();
+  const rawCompany  = body.company?.trim();
+  const rawPhone    = body.phone?.trim();
+  const rawIndustry = body.industry?.trim();
+  const rawDocType  = body.doc_type?.trim();
+  const rawMessage  = body.message?.trim();
+  const rawBudget   = body.budget?.trim();
+  const rawTimeline = body.timeline?.trim();
+  const rawSource   = body.source?.trim();
+  const rawRegion   = body.region?.trim();
 
   if (!rawName || !rawEmail) {
     return res.status(400).json({ error: 'Missing required fields (name and email are required)' });
@@ -335,11 +369,23 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true });
   }
 
-  // --- Steps 1 & 2: Quarantine attachment + VirusTotal scan ---
+  // --- Steps 1 & 2: Scan attachment, then quarantine it ---
+  //
+  // Ordering note: the scan runs BEFORE the upload, so a file already known to
+  // be malicious is never written to storage at all.
+  //
+  // Failure policy: nothing in this block may return early on the unhappy path
+  // except a malicious verdict. An attachment is a supporting detail; the lead
+  // is the thing that matters. This previously returned 500 when storage was
+  // unavailable, which threw away the name, email, phone and message along with
+  // the file — the sender saw "please try again", and we never learned they
+  // existed.
   let attachmentSignedUrl = null;
   let vtResult = null;
+  let attachmentMeta = null;   // filename/size/sha256, for when storage fails
+  let attachmentError = null;
 
-  const rawAttachment = req.body.attachment;
+  const rawAttachment = body.attachment;
   if (rawAttachment) {
     const attachName = rawAttachment.name;
     const rawBase64  = rawAttachment.base64;
@@ -370,28 +416,55 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Attachment content does not match its file type.' });
     }
 
-    // Step 1 — quarantine in Supabase Storage (file never attached to email)
-    try {
-      attachmentSignedUrl = await quarantineFile(fileBuffer, safeFilename, ext);
-    } catch (err) {
-      console.error('Supabase quarantine error:', err.message);
-      return res.status(500).json({ error: 'Could not process attachment. Please try again.' });
-    }
+    attachmentMeta = {
+      name: safeFilename,
+      sizeKb: Math.max(1, Math.round(fileBuffer.length / 1024)),
+      sha256: crypto.createHash('sha256').update(fileBuffer).digest('hex'),
+    };
 
-    // Step 2 — VirusTotal scan
-    vtResult = await scanWithVirusTotal(fileBuffer, safeFilename);
+    // Step 2 — scan first. Leave a margin under maxDuration so that however
+    // long this takes, there is still room to send the email afterwards.
+    vtResult = await scanWithVirusTotal(fileBuffer, safeFilename, startedAt + SCAN_BUDGET_MS);
 
     if (vtResult.status === 'malicious') {
       console.warn(`Malicious attachment blocked and discarded from IP ${ip}: ${safeFilename}`);
       return res.status(200).json({ success: true }); // Silent discard
     }
+
+    // Step 1 — quarantine (file never attached to email). Non-fatal by design:
+    // if storage is down the email still goes out, carrying the file's name,
+    // size and hash so the enquiry can be answered and the file re-requested.
+    try {
+      attachmentSignedUrl = await quarantineFile(fileBuffer, safeFilename, ext);
+    } catch (err) {
+      attachmentError = err.message;
+      console.error(
+        `Attachment quarantine failed (lead still delivered) for ${safeFilename} from IP ${ip}:`,
+        err.message
+      );
+    }
   }
 
   // --- Step 4: Build and send email (clean submissions only) ---
 
-  // Attachment section: signed URL with scan badge (never a direct attachment)
+  // Attachment section: a link with a scan badge (never a direct attachment).
+  // If storage failed, say so loudly and print enough about the file that the
+  // enquiry is still answerable — a silent omission would read as "they didn't
+  // send one", which is how a real attachment turns into a missed reply.
   let attachmentSection = '';
-  if (attachmentSignedUrl) {
+  if (!attachmentSignedUrl && attachmentMeta) {
+    attachmentSection = `
+      <div style="margin-top:20px;padding:16px 20px;background:#fffbeb;border:1px solid #d97706;border-radius:6px;">
+        <p style="margin:0 0 10px;font-weight:bold;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#b45309;">Attachment received but NOT stored</p>
+        <p style="margin:0 0 8px;font-size:14px;color:#374151;">
+          They attached <strong>${escapeHtml(attachmentMeta.name)}</strong> (${attachmentMeta.sizeKb} KB), but it could not be saved to storage, so there is no link to it. <strong>Reply and ask them to resend it directly</strong> — the enquiry itself is intact.
+        </p>
+        <p style="margin:0;font-size:11px;color:#6b7280;font-family:monospace;">
+          SHA-256 ${attachmentMeta.sha256}<br/>
+          Scan: ${escapeHtml(vtResult?.status || 'not run')} &middot; Reason: ${escapeHtml(attachmentError || 'unknown')}
+        </p>
+      </div>`;
+  } else if (attachmentSignedUrl) {
     const badge = vtResult?.status === 'clean'
       ? `<span style="display:inline-block;background:#16a34a;color:white;padding:2px 10px;border-radius:4px;font-size:11px;font-family:monospace;letter-spacing:0.05em;">✓ VIRUSTOTAL CLEAN</span>`
       : `<span style="display:inline-block;background:#d97706;color:white;padding:2px 10px;border-radius:4px;font-size:11px;font-family:monospace;letter-spacing:0.05em;">⚠ SCAN PENDING — verify before opening</span>`;
@@ -400,10 +473,11 @@ export default async function handler(req, res) {
       <div style="margin-top:20px;padding:16px 20px;background:#1c1c1c;border:1px solid #f97316;border-radius:6px;">
         <p style="margin:0 0 10px;font-weight:bold;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#f97316;">Attachment</p>
         <p style="margin:0 0 10px;">${badge}</p>
-        <p style="margin:0;font-size:14px;">
+        <p style="margin:0 0 8px;font-size:14px;">
           <a href="${attachmentSignedUrl}" style="color:#f97316;font-weight:bold;" target="_blank">View secure attachment ↗</a>
-          &nbsp;&nbsp;<span style="color:#6b7280;font-size:12px;">Expires in 7 days · stored in quarantine</span>
+          &nbsp;&nbsp;<span style="color:#6b7280;font-size:12px;">${escapeHtml(attachmentMeta?.name || '')} · ${attachmentMeta?.sizeKb || '?'} KB · held in quarantine</span>
         </p>
+        <p style="margin:0;font-size:11px;color:#6b7280;font-family:monospace;">SHA-256 ${attachmentMeta?.sha256 || 'n/a'}</p>
       </div>`;
   }
 
@@ -494,7 +568,27 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true });
   } catch (error) {
+    // Last resort. If the mail provider is down there is nowhere left to put
+    // this, so write the whole enquiry to the log as one line: a lead sitting
+    // in Vercel's log drain is recoverable, a lead that only existed in a
+    // failed HTTP request is not. Searchable by the LEAD_RECOVERY tag.
     console.error('Email send error:', error);
+    console.error('LEAD_RECOVERY ' + JSON.stringify({
+      at: new Date().toISOString(),
+      name: rawName,
+      email: rawEmail,
+      company: rawCompany || null,
+      phone: rawPhone || null,
+      industry: rawIndustry || null,
+      doc_type: rawDocType || null,
+      message: rawMessage || null,
+      budget: rawBudget || null,
+      timeline: rawTimeline || null,
+      source: rawSource || null,
+      region: rawRegion || null,
+      attachment: attachmentMeta ? { ...attachmentMeta, url: attachmentSignedUrl } : null,
+      ip,
+    }));
     return res.status(500).json({
       error: 'Failed to send email. Please contact us directly at general@marapone.com',
     });

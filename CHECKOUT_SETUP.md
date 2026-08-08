@@ -5,17 +5,42 @@ cheque / bank wire.
 
 ## What's purchasable online
 
-| Thing | Mode | Charge |
+| Thing | Mode | Charge (all figures **pre-tax**) |
 |-------|------|--------|
-| **Blueprint Auditor** | one-time | full **$990** + 13% HST |
-| **AI Estimator** | one-time | full **$990** + 13% HST |
-| **The pair** (both) | one-time | full **$1,690** + 13% HST |
-| **Starter build** | one-time | **25% deposit** of the discounted, taxed total (balance invoiced later) |
-| **Pilot build** | one-time | **35% deposit** of the discounted, taxed total (balance invoiced later) |
-| **Local-machine add-on** | one-time | full **$1,000, no tax** (added to a Starter/Pilot deposit checkout) |
-| **Marketing** Starter/Growth/Pro | one-time | full price + 13% HST |
-| **Support** Flex/Annual | subscription | $499/mo or $3,500/yr + 13% HST |
+| **Each of the five apps** | one-time | full **$990** |
+| **The suite** (all five) | one-time | full **$3,950** |
+| **Data packs** | one-time | **$59–$99** each, **$349** for the bundle |
+| **Starter build** | one-time | **25% deposit** of the discounted total (balance invoiced later) |
+| **Pilot build** | one-time | **35% deposit** of the discounted total (balance invoiced later) |
+| **Local-machine add-on** | one-time | full **$1,000** (added to a Starter/Pilot deposit checkout) |
+| **Marketing** Starter/Growth/Pro | one-time | full price |
+| **Support** Flex/Annual | subscription | $249/mo or $1,750/yr |
 | **Full Build / Plus** | — | **manual** (still "Get Started" → contact) |
+
+## Tax
+
+Nothing above includes tax, and nothing in this repo decides a tax rate. Stripe
+Tax computes it from the buyer's billing address at checkout — HST for an
+Ontario buyer, GST+PST in BC, the right state rate in the US, the right VAT rate
+in the EU, and **zero** anywhere we hold no registration.
+
+That last part is deliberate and is the setting most likely to surprise: Stripe
+only charges tax in jurisdictions you have registered in, under
+**Tax → Registrations** in the Dashboard. Until an EU/OSS or US state
+registration is added there, those sales come through untaxed. That is correct
+behaviour — the previous flat 13% HST rate charged *Ontario* tax to buyers in
+Texas and Germany, which was not.
+
+Set up per mode (test and live are configured separately):
+
+1. **Tax → Settings** — origin address, default tax code, and Tax switched on.
+2. **Tax → Registrations** — one per jurisdiction you must collect in.
+
+Everything else is in code: `TAX_SPREAD` in [lib/stripe.js](lib/stripe.js) turns
+on `automatic_tax`, requires a billing address (automatic tax cannot compute a
+rate without one) and enables `tax_id_collection` so an EU/UK business can enter
+its VAT number and get the reverse charge instead of VAT it would have to
+reclaim.
 
 Prices and math live in [lib/pricing.js](lib/pricing.js) (single source of truth,
 shared by the API and the front-end widget).
@@ -103,3 +128,27 @@ single-use across the deposit + later balance.
 | `STRIPE_SECRET_KEY` | Creating checkout sessions (test or live) |
 | `STRIPE_WEBHOOK_SECRET` | Verifying webhook events (code redemption) |
 | `RESEND_API_KEY` | "Paid" notification email to general@marapone.com |
+| `PACK_URL_CODE_LIBRARY` | Private storage URL for that pack's ZIP |
+| `PACK_URL_ASSEMBLY_SCHEMA` | ” |
+| `PACK_URL_RATE_2026` | ” |
+| `PACK_URL_BID_LEVELING` | ” |
+| `PACK_URL_SCOPE_CHECKLIST` | ” |
+| `PACK_URL_BUNDLE` | ” |
+
+## Data-pack delivery
+
+Packs deliver themselves. [api/download.js](api/download.js) takes the Stripe
+session id, asks Stripe whether it was actually paid, checks the purchase was a
+data pack and is younger than `PACK_LINK_DAYS`, then 302s to that pack's private
+storage URL. The buyer gets `/api/download?session_id=…` on the success page and
+in their receipt email; they never see the storage URL, so it cannot be
+forwarded or guessed.
+
+**A pack with no `PACK_URL_*` set is not broken** — every surface degrades to the
+honest "emailed within 12 hours" wording, and the internal notification says to
+send it. Set that one variable and that one pack becomes an instant download,
+with no other change anywhere. The packs are independent, so they can go live one
+at a time.
+
+Do not put pack files in `public/` — that directory is served to anyone who
+guesses a filename. They belong in private object storage.

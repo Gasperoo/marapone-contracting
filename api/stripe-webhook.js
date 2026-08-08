@@ -33,11 +33,13 @@ const inDays = (n) => new Date(Date.now() + n * 864e5).toISOString();
  * Every send is individually guarded. The handoff is the one that matters, and a
  * scheduler rejection must not cost the buyer their first email.
  */
-async function startOnboarding(resend, { email, name, product, amount }) {
+async function startOnboarding(resend, { email, name, product, amount, sessionId }) {
   for (const step of onboardingSequence(product).map((s) => ({ ...s, at: s.at == null ? null : inDays(s.at) }))) {
     let msg;
     try {
-      msg = step.mk({ name, email, product, amount });
+      // sessionId is the buyer's proof of purchase — the pack handoff email
+      // turns it into a verified download link so nobody has to send the file.
+      msg = step.mk({ name, email, product, amount, sessionId });
     } catch (err) {
       console.error(`Onboarding ${step.tag} render failed:`, err?.message || err);
       continue;
@@ -117,6 +119,7 @@ export default async function handler(req, res) {
           name: s.customer_details?.name || '',
           product: m.product,
           amount: `$${(s.amount_total / 100).toLocaleString('en-CA')}`,
+          sessionId: s.id,
         });
       }
 

@@ -180,6 +180,7 @@
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/widgets.js"></script>
   <script defer src="/checkout.js"></script>
+  <script defer src="/currency.js"></script>
   <style>
     /* Products nav menu — CSS-driven so the links work with JS disabled.
        The visual gap under the trigger is the wrapper's own padding, NOT a margin
@@ -853,12 +854,21 @@
   <section class="py-16 lg:py-24 border-b border-plate bg-gunmetal">
     <div class="max-w-6xl mx-auto px-4">
       <div class="reveal max-w-3xl">
-        <span class="sg-eyebrow">Built for one jurisdiction, properly</span>
-        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">Toronto, not "North America".</h2>
+        <span class="sg-eyebrow">One jurisdiction at a time, properly</span>
+        <h2 class="font-display text-3xl lg:text-5xl text-chalk mt-4 leading-none">A named city, not a continent.</h2>
         <p class="text-fog mt-4 leading-relaxed">
           Scope disputes are local. The grey zones, the standard exclusions, the wording that
           gets used because it has worked on GTA jobs before — all of it is jurisdiction
-          specific. This ships knowing ours, and every file below is plain JSON you own and edit
+          specific, which is why a tool sold as covering "North America" and nothing more
+          precise is telling you it knows none of it.
+        </p>
+        <p class="text-fog mt-4 leading-relaxed">
+          ScopeGuard runs anywhere in North America or Europe, because the scope taxonomy is
+          CSI MasterFormat and the engine reads whichever jurisdiction pack you point it at. The
+          numbers below are the <span class="text-chalk font-semibold">Toronto pack</span>, which
+          is the deepest one and the standard the others are built to — see
+          <a href="/construction/regions" class="text-hiviz font-semibold hover:opacity-80 transition-opacity">where each market actually stands</a>
+          before you buy on the strength of your own. Every file is plain JSON you own and edit
           after handover.
         </p>
       </div>
@@ -1114,7 +1124,7 @@
           Book a walkthrough first
         </a>
       </div>
-      <p class="font-mono text-xs text-ash mt-6">One time · +HST · Secured by Stripe · 30-day refund · source code on day 31</p>
+      <p class="font-mono text-xs text-ash mt-6">One time · tax at checkout · Secured by Stripe · 30-day refund · source code on day 31</p>
       <p class="font-mono text-xs text-ash mt-3 max-w-xl mx-auto leading-relaxed">
         Statutory and code references are costing inputs, not legal advice. Exposure figures are
         indicative ranges — confirm against live pricing before relying on them.

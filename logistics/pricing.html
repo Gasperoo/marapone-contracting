@@ -108,6 +108,7 @@
   </style>
   <script defer src="/widgets.js"></script>
   <script defer src="/checkout.js"></script>
+  <script defer src="/currency.js"></script>
   <!-- panel-polish kit -->
   <link rel="stylesheet" href="/panel-polish.css" />
   <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
@@ -334,7 +335,7 @@
               <h2 class="font-display text-2xl text-chalk mb-1">STARTER</h2>
               <div class="flex items-end gap-2 mt-3">
                 <span class="font-display text-4xl text-chalk" data-price-cad="1500">$1,500</span>
-                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · +HST</span>
+                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · tax at checkout</span>
               </div>
               <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you want a working AI tool built around a single
                 trade workflow — fine-tuned on your shipment documents and ready to run from day one.</p>
@@ -382,7 +383,7 @@
               <h2 class="font-display text-2xl text-chalk mb-1">PILOT</h2>
               <div class="flex items-end gap-2 mt-3">
                 <span class="font-display text-4xl text-chalk" data-price-cad="4900">$4,900</span>
-                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · +HST</span>
+                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · tax at checkout</span>
               </div>
               <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you want a deeply customised AI system for 1–2
                 trade workflows before committing to the full suite.</p>
@@ -436,7 +437,7 @@
               <h2 class="font-display text-2xl text-chalk mb-1">FULL BUILD</h2>
               <div class="flex items-end gap-2 mt-3">
                 <span class="font-display text-4xl text-chalk" data-price-cad="9500">$9,500</span>
-                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · +HST</span>
+                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · tax at checkout</span>
               </div>
               <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you need the complete trade intelligence suite
                 running on your
@@ -489,7 +490,7 @@
               <h2 class="font-display text-2xl text-chalk mb-1">PLUS</h2>
               <div class="flex items-end gap-2 mt-3">
                 <span class="font-display text-4xl text-chalk" data-price-cad="15000">$15,000</span>
-                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · +HST</span>
+                <span class="text-fog font-mono text-xs mb-1.5" data-curr-suffix>CAD · one time · tax at checkout</span>
               </div>
               <p class="text-fog text-xs mt-3 leading-relaxed">Best if: you need the full trade intelligence suite on
                 your own server
@@ -541,7 +542,7 @@
             <div class="flex-1">
               <p class="font-mono text-hiviz text-xs uppercase mb-1">Optional Add-On · Starter &amp; Pilot Only</p>
               <p class="text-chalk font-semibold text-sm">Dedicated Local Machine — <span
-                  class="text-hiviz font-mono">+$1,000 CAD · no tax · setup included</span></p>
+                  class="text-hiviz font-mono">+$1,000 CAD · setup included</span></p>
               <p class="text-fog text-xs mt-2 leading-relaxed">If your organisation does not have hardware capable of
                 running a local AI system, we can source, configure, and deliver a dedicated machine — pre-loaded with
                 your build and ready to deploy on arrival. Configuration and initial setup are included in the flat
@@ -860,7 +861,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">FLEX</h3>
             <div class="flex items-end gap-2 mt-4">
               <span class="font-display text-5xl text-chalk" data-price-cad="249">$249</span>
-              <span class="text-fog font-mono text-sm mb-2" data-curr-period="month">CAD / month · +HST</span>
+              <span class="text-fog font-mono text-sm mb-2" data-curr-period="month">CAD / month · tax at checkout</span>
             </div>
             <p class="text-fog text-sm mt-3">Cancel any month. No minimum commitment.</p>
           </div>
@@ -894,7 +895,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">ANNUAL</h3>
             <div class="flex items-end gap-2 mt-4">
               <span class="font-display text-5xl text-chalk" data-price-cad="1750">$1,750</span>
-              <span class="text-fog font-mono text-sm mb-2" data-curr-period="year">CAD / year · +HST</span>
+              <span class="text-fog font-mono text-sm mb-2" data-curr-period="year">CAD / year · tax at checkout</span>
             </div>
             <p class="text-fog text-sm mt-3">Equivalent to <span data-price-cad="146">$146</span>/month. Billed once per year. Best for companies running
               active projects year-round.</p>
@@ -1188,37 +1189,9 @@
   <!-- Currency toggle + ROI email gate -->
   <script>
     (function(){
-      var RATES = { CAD: 1, USD: 0.73, EUR: 0.68 };
-      var SYMBOL = { CAD: '$', USD: '$', EUR: '€' };
-      var SUFFIX = { CAD: 'CAD · one time · +HST', USD: 'USD · one time', EUR: 'EUR · one time · approx' };
-      var ACCENT = '#52b788';
-      var PSUFFIX = {
-        month: { CAD: 'CAD / month · +HST', USD: 'USD / month', EUR: 'EUR / month · approx' },
-        year:  { CAD: 'CAD / year · +HST',  USD: 'USD / year',  EUR: 'EUR / year · approx' }
-      };
-      function setCurrency(c) {
-        if (!RATES[c]) c = 'CAD';
-        document.querySelectorAll('[data-price-cad]').forEach(function(el){
-          var cad = parseInt(el.getAttribute('data-price-cad'), 10);
-          var v = Math.round(cad * RATES[c]);
-          el.textContent = SYMBOL[c] + v.toLocaleString();
-        });
-        document.querySelectorAll('[data-curr-suffix]').forEach(function(el){ el.textContent = SUFFIX[c]; });
-        document.querySelectorAll('[data-curr-period]').forEach(function(el){ var p = el.getAttribute('data-curr-period'); if (PSUFFIX[p]) el.textContent = PSUFFIX[p][c]; });
-        document.querySelectorAll('.curr-btn').forEach(function(b){
-          var active = b.getAttribute('data-curr') === c;
-          b.setAttribute('aria-pressed', active);
-          if (active) { b.style.color = ACCENT; b.style.borderColor = ACCENT; b.style.background = 'rgba(82,183,136,0.1)'; b.classList.remove('border-plate', 'text-fog'); }
-          else { b.style.color = ''; b.style.borderColor = ''; b.style.background = ''; b.classList.add('border-plate', 'text-fog'); }
-        });
-        try { localStorage.setItem('mp_currency', c); } catch(_) {}
-      }
-      document.querySelectorAll('.curr-btn').forEach(function(b){
-        b.addEventListener('click', function(){ setCurrency(this.getAttribute('data-curr')); });
-      });
-      var saved = null;
-      try { saved = localStorage.getItem('mp_currency'); } catch(_) {}
-      if (saved && saved !== 'CAD') setCurrency(saved);
+      // The currency toggle now lives in /currency.js, shared with the
+      // construction pages so both brands convert prices and disclose the
+      // billing currency the same way.
 
       var roiForm = document.getElementById('roi-gate-form');
       var roiMsg = document.getElementById('roi-gate-msg');

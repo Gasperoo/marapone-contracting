@@ -104,6 +104,7 @@
   </style>
   <script defer src="/widgets.js"></script>
   <script defer src="/checkout.js"></script>
+  <script defer src="/currency.js"></script>
   <!-- panel-polish kit -->
   <link rel="stylesheet" href="/panel-polish.css" />
   <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
@@ -404,7 +405,7 @@
           <p class="font-mono text-hiviz text-xs mb-2">LEVEL 01 · READY TO RUN</p>
           <p class="flex items-end gap-2 mb-3">
             <span class="font-display text-5xl text-chalk" data-price-cad="990">$990</span>
-            <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+            <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · tax at checkout</span>
           </p>
           <p class="text-chalk font-semibold text-sm mb-2">The desktop app, finished</p>
           <p class="text-fog text-xs leading-relaxed">
@@ -419,7 +420,7 @@
           <p class="font-mono text-hiviz text-xs mb-2">LEVEL 02 · YOUR WORKFLOW</p>
           <p class="flex items-end gap-2 mb-3">
             <span class="font-display text-5xl text-chalk" data-price-cad="1500">$1,500</span><span class="font-display text-5xl text-hiviz" aria-label="or more">+</span>
-            <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+            <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · tax at checkout</span>
           </p>
           <p class="text-chalk font-semibold text-sm mb-2">Built around how you work</p>
           <p class="text-fog text-xs leading-relaxed">
@@ -435,7 +436,7 @@
           <p class="font-mono text-hiviz text-xs mb-2">LEVEL 03 · YOUR SYSTEMS</p>
           <p class="flex items-end gap-2 mb-3">
             <span class="font-display text-5xl text-chalk" data-price-cad="15000">$15,000</span><span class="font-display text-5xl text-hiviz" aria-label="or more">+</span>
-            <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+            <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · tax at checkout</span>
           </p>
           <p class="text-chalk font-semibold text-sm mb-2">Full enterprise integration</p>
           <p class="text-fog text-xs leading-relaxed">
@@ -473,7 +474,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">BLUEPRINT AUDITOR</h3>
             <div class="flex items-end gap-2 mt-3">
               <span class="font-display text-5xl text-chalk" data-price-cad="990">$990</span>
-              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · tax at checkout</span>
             </div>
             <p class="text-fog text-xs mt-3 leading-relaxed">
               Best if: drawing review and takeoff is the bottleneck. Drop in a drawing set and get
@@ -508,7 +509,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">SPECCHECKER</h3>
             <div class="flex items-end gap-2 mt-3">
               <span class="font-display text-5xl text-chalk" data-price-cad="990">$990</span>
-              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD &middot; one time &middot; +HST</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD &middot; one time &middot; tax at checkout</span>
             </div>
             <p class="text-fog text-xs mt-3 leading-relaxed">
               Best if: the project manual and the drawings are both binding and nobody has time to
@@ -542,7 +543,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">AI ESTIMATOR</h3>
             <div class="flex items-end gap-2 mt-3">
               <span class="font-display text-5xl text-chalk" data-price-cad="990">$990</span>
-              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · tax at checkout</span>
             </div>
             <p class="text-fog text-xs mt-3 leading-relaxed">
               Best if: you can measure fine, but pricing, contingency and the margin call are done on
@@ -577,7 +578,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">BID LEVELER</h3>
             <div class="flex items-end gap-2 mt-3">
               <span class="font-display text-5xl text-chalk" data-price-cad="990">$990</span>
-              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD &middot; one time &middot; +HST</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD &middot; one time &middot; tax at checkout</span>
             </div>
             <p class="text-fog text-xs mt-3 leading-relaxed">
               Best if: levelling a trade takes a day in Excel and the day ends with a hope. Reads
@@ -611,7 +612,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">SCOPEGUARD</h3>
             <div class="flex items-end gap-2 mt-3">
               <span class="font-display text-5xl text-chalk" data-price-cad="990">$990</span>
-              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · tax at checkout</span>
             </div>
             <p class="text-fog text-xs mt-3 leading-relaxed">
               Best if: you've won the job and now fifteen subcontractors' exclusions stand between you
@@ -648,7 +649,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">THE SUITE</h3>
             <div class="flex items-end gap-2 mt-3">
               <span class="font-display text-5xl text-chalk" data-price-cad="3950">$3,950</span>
-              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · +HST</span>
+              <span class="text-fog font-mono text-xs mb-2" data-curr-suffix>CAD · one time · tax at checkout</span>
             </div>
             <p class="font-mono text-xs text-hiviz mt-2">Save <span data-price-cad="1000">$1,000</span> versus buying separately</p>
             <p class="text-fog text-xs mt-3 leading-relaxed">
@@ -831,7 +832,7 @@
 
           <div class="bg-charcoal border border-plate rounded-xl p-6 reveal reveal-d2">
             <p class="font-mono text-hiviz text-xs uppercase mb-2">Optional add-on</p>
-            <p class="text-chalk font-semibold text-sm">Dedicated local machine &mdash; <span class="text-hiviz font-mono">+<span data-price-cad="1000">$1,000</span> &middot; no tax &middot; setup included</span></p>
+            <p class="text-chalk font-semibold text-sm">Dedicated local machine &mdash; <span class="text-hiviz font-mono">+<span data-price-cad="1000">$1,000</span> &middot; setup included</span></p>
             <p class="text-fog text-xs mt-2 leading-relaxed">
               If your organisation has no hardware capable of running a local AI system, we source,
               configure and deliver a dedicated machine — pre-loaded with your build and ready on
@@ -986,7 +987,7 @@
           <p class="font-mono text-xs text-hiviz uppercase tracking-wider mb-2">Option 3 — Own it</p>
           <h3 class="font-display text-2xl text-chalk mb-1">Customised setup, once</h3>
           <p class="font-display text-4xl text-hiviz mt-3" data-price-cad="4900">$4,900</p>
-          <p class="font-mono text-xs text-fog mt-1">One invoice · unlimited users · +HST</p>
+          <p class="font-mono text-xs text-fog mt-1">One invoice · unlimited users · tax at checkout</p>
           <ul class="space-y-2 text-xs text-chalk mt-5 flex-1">
             <li class="flex gap-2"><span class="text-hiviz">✓</span> Unlimited seats — hire twenty more people, the price does not move</li>
             <li class="flex gap-2"><span class="text-hiviz">✓</span> Runs inside your network; nothing leaves it</li>
@@ -1415,7 +1416,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">FLEX</h3>
             <div class="flex items-end gap-2 mt-4">
               <span class="font-display text-5xl text-chalk" data-price-cad="249">$249</span>
-              <span class="text-fog font-mono text-sm mb-2" data-curr-period="month">CAD / month · +HST</span>
+              <span class="text-fog font-mono text-sm mb-2" data-curr-period="month">CAD / month · tax at checkout</span>
             </div>
             <p class="text-fog text-sm mt-3">Cancel any month. No minimum commitment.</p>
           </div>
@@ -1449,7 +1450,7 @@
             <h3 class="font-display text-3xl text-chalk mb-1">ANNUAL</h3>
             <div class="flex items-end gap-2 mt-4">
               <span class="font-display text-5xl text-chalk" data-price-cad="1750">$1,750</span>
-              <span class="text-fog font-mono text-sm mb-2" data-curr-period="year">CAD / year · +HST</span>
+              <span class="text-fog font-mono text-sm mb-2" data-curr-period="year">CAD / year · tax at checkout</span>
             </div>
             <p class="text-fog text-sm mt-3">Equivalent to <span data-price-cad="146">$146</span>/month. Billed once per year. Best for companies running
               active projects year-round.</p>
@@ -1836,37 +1837,9 @@
   <!-- Currency toggle + ROI email gate -->
   <script>
     (function(){
-      // Approximate rates — refreshed annually
-      var RATES = { CAD: 1, USD: 0.73, EUR: 0.68 };
-      var SYMBOL = { CAD: '$', USD: '$', EUR: '€' };
-      var SUFFIX = { CAD: 'CAD · one time · +HST', USD: 'USD · one time', EUR: 'EUR · one time · approx' };
-      var PSUFFIX = {
-        month: { CAD: 'CAD / month · +HST', USD: 'USD / month', EUR: 'EUR / month · approx' },
-        year:  { CAD: 'CAD / year · +HST',  USD: 'USD / year',  EUR: 'EUR / year · approx' }
-      };
-      function setCurrency(c) {
-        if (!RATES[c]) c = 'CAD';
-        document.querySelectorAll('[data-price-cad]').forEach(function(el){
-          var cad = parseInt(el.getAttribute('data-price-cad'), 10);
-          var v = Math.round(cad * RATES[c]);
-          el.textContent = SYMBOL[c] + v.toLocaleString();
-        });
-        document.querySelectorAll('[data-curr-suffix]').forEach(function(el){ el.textContent = SUFFIX[c]; });
-        document.querySelectorAll('[data-curr-period]').forEach(function(el){ var p = el.getAttribute('data-curr-period'); if (PSUFFIX[p]) el.textContent = PSUFFIX[p][c]; });
-        document.querySelectorAll('.curr-btn').forEach(function(b){
-          var active = b.getAttribute('data-curr') === c;
-          b.setAttribute('aria-pressed', active);
-          if (active) { b.classList.remove('border-plate', 'text-fog'); b.classList.add('border-hiviz', 'text-hiviz', 'bg-hiviz/10'); }
-          else { b.classList.remove('border-hiviz', 'text-hiviz', 'bg-hiviz/10'); b.classList.add('border-plate', 'text-fog'); }
-        });
-        try { localStorage.setItem('mp_currency', c); } catch(_) {}
-      }
-      document.querySelectorAll('.curr-btn').forEach(function(b){
-        b.addEventListener('click', function(){ setCurrency(this.getAttribute('data-curr')); });
-      });
-      var saved = null;
-      try { saved = localStorage.getItem('mp_currency'); } catch(_) {}
-      if (saved && saved !== 'CAD') setCurrency(saved);
+      // The currency toggle itself now lives in /currency.js, shared with every
+      // other page that shows a price. It used to be defined here and nowhere
+      // else, which is why the product pages had no toggle at all.
 
       // ROI email gate
       var roiForm = document.getElementById('roi-gate-form');

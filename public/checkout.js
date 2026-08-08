@@ -17,7 +17,7 @@
 */
 (function () {
   'use strict';
-  var HST = 0.13, ADDON = 1000;
+  var ADDON = 1000;
   var BUILDS = { starter: { label: 'Starter', price: 1500, dep: 0.25 }, pilot: { label: 'Pilot', price: 4900, dep: 0.35 } };
   var fmt = function (n) { return '$' + n.toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
 
@@ -90,12 +90,12 @@
       '<div class="sub">' + (vertical ? vertical + ' · ' : '') + 'deposit to reserve</div>' +
       '<h3>' + b.label + ' build</h3>' +
       '<div class="bd"></div>' +
-      '<label class="chk"><input type="checkbox" class="addon"><span>Add a <b>dedicated local machine</b> — +' + fmt(ADDON) + ', no tax, yours to keep</span></label>' +
+      '<label class="chk"><input type="checkbox" class="addon"><span>Add a <b>dedicated local machine</b> — +' + fmt(ADDON) + ', yours to keep</span></label>' +
       '<input type="email" class="email" placeholder="Email for your receipt" autocomplete="email" required>' +
       '<input type="text" class="code" placeholder="Welcome code (optional)">' +
       '<p class="err"></p>' +
       '<button class="go">Continue to payment &rarr;</button>' +
-      '<p class="fine">Secure checkout by Stripe. The balance is invoiced on completion. A valid welcome code (10% off, tied to your email) is applied at the payment step.</p>' +
+      '<p class="fine">Secure checkout by Stripe. Tax for your region is calculated at the payment step. The balance is invoiced on completion. A valid welcome code (10% off, tied to your email) is applied at the payment step.</p>' +
       '</div>';
     document.body.appendChild(ovl);
     requestAnimationFrame(function () { ovl.classList.add('on'); });
@@ -107,19 +107,22 @@
     var err = ovl.querySelector('.err');
     var go = ovl.querySelector('.go');
 
+    // Every figure here is pre-tax, matching quoteBuild() on the server. The
+    // deposit used to be shown as a slice of an HST-inclusive total, which only
+    // ever told the truth to an Ontario buyer; tax is now worked out by Stripe
+    // from the billing address on the next screen, so this stops guessing at it.
     function render() {
-      var taxed = b.price * (1 + HST);
-      var deposit = taxed * b.dep;
+      var deposit = b.price * b.dep;
       var addon = addonEl.checked ? ADDON : 0;
       var due = deposit + addon;
-      var balance = taxed - deposit;
+      var balance = b.price - deposit;
       bd.innerHTML =
         '<div class="row"><span>' + b.label + ' build</span><span>' + fmt(b.price) + '</span></div>' +
-        '<div class="row"><span>HST (13%)</span><span>' + fmt(taxed - b.price) + '</span></div>' +
-        '<div class="row"><span>Project total</span><b>' + fmt(taxed) + '</b></div>' +
-        (addon ? '<div class="row"><span>Local machine (no tax)</span><span>' + fmt(addon) + '</span></div>' : '') +
+        '<div class="row"><span>Project total (before tax)</span><b>' + fmt(b.price) + '</b></div>' +
+        (addon ? '<div class="row"><span>Local machine</span><span>' + fmt(addon) + '</span></div>' : '') +
         '<div class="row due"><span>Deposit due now (' + Math.round(b.dep * 100) + '%' + (addon ? ' + machine' : '') + ')</span><b>' + fmt(due) + '</b></div>' +
-        '<div class="row" style="font-size:12.5px"><span>Balance on completion</span><span>' + fmt(balance) + '</span></div>';
+        '<div class="row" style="font-size:12.5px"><span>Balance on completion</span><span>' + fmt(balance) + '</span></div>' +
+        '<div class="row" style="font-size:12.5px"><span>Tax</span><span>calculated at the next step</span></div>';
     }
     render();
     addonEl.addEventListener('change', render);

@@ -35,6 +35,7 @@
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/widgets.js"></script>
   <script defer src="/checkout.js"></script>
+  <script defer src="/currency.js"></script>
   <!-- panel-polish kit -->
   <link rel="stylesheet" href="/panel-polish.css" />
   <script>(function(){var m=location.pathname.indexOf("/logistics/")>-1;var r=document.documentElement;r.style.setProperty("--pnl",m?"#52b788":"#f97316");r.style.setProperty("--pnl-2",m?"#2d6a4f":"#c2410c");r.classList.add("pnl-on");})();</script>
@@ -169,7 +170,7 @@
   <section id="main-content" class="grid-dot border-b border-plate py-14 lg:py-20">
     <div class="max-w-5xl mx-auto px-4">
       <p class="font-mono text-hiviz text-sm mb-4">// New &mdash; self-serve reference library</p>
-      <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-none mb-6">THE DATA BEHIND THE TOOLS.<br/>EVERY REGION. <span class="text-hiviz">YOURS INSTANTLY.</span></h1>
+      <h1 class="font-display text-4xl lg:text-6xl text-chalk leading-none mb-6">THE DATA BEHIND THE TOOLS.<br/>PRICED PER REGION. <span class="text-hiviz">YOURS TO KEEP.</span></h1>
       <p class="text-fog text-lg max-w-3xl leading-relaxed mb-7">
         Our AI tools run on structured libraries &mdash; code clauses, spec properties, trade scope
         requirements and jurisdiction-by-jurisdiction rate tables covering all of Canada, all 50 US
@@ -192,9 +193,9 @@
         <li class="text-plate" aria-hidden="true">&middot;</li>
         <li>Covers Canada, the US and the EU/UK</li>
         <li class="text-plate" aria-hidden="true">&middot;</li>
-        <li>Stripe checkout, in CAD</li>
+        <li>Stripe checkout &middot; tax for your region</li>
         <li class="text-plate" aria-hidden="true">&middot;</li>
-        <li>Emailed within 12 hours</li>
+        <li>Download on confirmation</li>
         <li class="text-plate" aria-hidden="true">&middot;</li>
         <li>14-day refund, no questions asked</li>
       </ul>
@@ -258,8 +259,12 @@
             &mdash; the tool applies these checks to your actual drawings and cites every finding to the sheet.
           </p>
           <div class="pack-buy">
-            <a href="/construction/contact?pack=code-library" data-checkout="product" data-product="pack-code-library"
-              class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $89</a>
+            <form method="POST" action="/api/checkout">
+              <input type="hidden" name="kind" value="product" />
+              <input type="hidden" name="product" value="pack-code-library" />
+              <button type="submit" data-checkout="product" data-product="pack-code-library"
+                class="w-full block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $89</button>
+            </form>
           </div>
         </article>
 
@@ -287,8 +292,12 @@
             &mdash; the tool does the document-to-document comparison and clause citation; this pack is the raw taxonomy.
           </p>
           <div class="pack-buy">
-            <a href="/construction/contact?pack=assembly-schema" data-checkout="product" data-product="pack-assembly-schema"
-              class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $89</a>
+            <form method="POST" action="/api/checkout">
+              <input type="hidden" name="kind" value="product" />
+              <input type="hidden" name="product" value="pack-assembly-schema" />
+              <button type="submit" data-checkout="product" data-product="pack-assembly-schema"
+                class="w-full block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $89</button>
+            </form>
           </div>
         </article>
 
@@ -315,8 +324,12 @@
             &mdash; the tool turns your raw quantities into priced line items, with contingency and rationale attached.
           </p>
           <div class="pack-buy">
-            <a href="/construction/contact?pack=rate-2026" data-checkout="product" data-product="pack-rate-2026"
-              class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $99</a>
+            <form method="POST" action="/api/checkout">
+              <input type="hidden" name="kind" value="product" />
+              <input type="hidden" name="product" value="pack-rate-2026" />
+              <button type="submit" data-checkout="product" data-product="pack-rate-2026"
+                class="w-full block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $99</button>
+            </form>
           </div>
         </article>
 
@@ -338,8 +351,12 @@
             &mdash; the tool normalises a dozen quotes to one scope and prints the basis of every adjustment.
           </p>
           <div class="pack-buy">
-            <a href="/construction/contact?pack=bid-leveling" data-checkout="product" data-product="pack-bid-leveling"
-              class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $59</a>
+            <form method="POST" action="/api/checkout">
+              <input type="hidden" name="kind" value="product" />
+              <input type="hidden" name="product" value="pack-bid-leveling" />
+              <button type="submit" data-checkout="product" data-product="pack-bid-leveling"
+                class="w-full block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $59</button>
+            </form>
           </div>
         </article>
 
@@ -361,8 +378,12 @@
             &mdash; the tool reads the proposals themselves and reports what nobody priced.
           </p>
           <div class="pack-buy">
-            <a href="/construction/contact?pack=scope-checklist" data-checkout="product" data-product="pack-scope-checklist"
-              class="block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $59</a>
+            <form method="POST" action="/api/checkout">
+              <input type="hidden" name="kind" value="product" />
+              <input type="hidden" name="product" value="pack-scope-checklist" />
+              <button type="submit" data-checkout="product" data-product="pack-scope-checklist"
+                class="w-full block border border-hiviz text-hiviz font-semibold py-2.5 rounded text-center text-sm hover:bg-hiviz hover:text-white transition-colors">Buy now &mdash; $59</button>
+            </form>
           </div>
         </article>
 
@@ -388,16 +409,22 @@
             if you upgrade within 60 days.
           </p>
           <div class="pack-buy">
-            <a href="/construction/contact?pack=bundle" data-checkout="product" data-product="pack-bundle"
-              class="hiviz-gradient block text-white font-semibold py-2.5 rounded text-center text-sm hover:opacity-90 transition-opacity">Buy now &mdash; $349</a>
+            <form method="POST" action="/api/checkout">
+              <input type="hidden" name="kind" value="product" />
+              <input type="hidden" name="product" value="pack-bundle" />
+              <button type="submit" data-checkout="product" data-product="pack-bundle"
+                class="w-full hiviz-gradient block text-white font-semibold py-2.5 rounded text-center text-sm hover:opacity-90 transition-opacity">Buy now &mdash; $349</button>
+            </form>
           </div>
         </article>
 
       </div>
 
-      <p class="font-mono text-xs text-ash mt-7">
-        Prices in CAD, 13% HST added at checkout &middot; card details never touch our servers &middot;
-        14-day refund on every pack
+      <p class="font-mono text-xs text-ash mt-7" data-curr-note>
+        Prices in Canadian dollars. Tax is calculated for your region at checkout.
+      </p>
+      <p class="font-mono text-xs text-ash mt-2">
+        Card details never touch our servers &middot; 14-day refund on every pack
       </p>
     </div>
   </section>
@@ -516,10 +543,12 @@
         <div class="bg-gunmetal border border-plate rounded-xl p-6">
           <p class="text-chalk font-semibold mb-2">How do I receive it?</p>
           <p class="text-fog text-sm leading-relaxed">
-            Checkout is handled by Stripe, in Canadian dollars with 13% HST added at checkout. Once
-            payment clears you get a confirmation immediately, and your download link is sent by hand
-            within 12 hours &mdash; usually much sooner. We would rather tell you that than promise a
-            link that isn't ready.
+            Checkout is handled by Stripe, in Canadian dollars, with tax calculated for your region
+            at checkout. Packs that are finished download straight from the confirmation page and
+            from the link in your receipt &mdash; no waiting and nobody in the loop. For any pack
+            still being finished, the confirmation page says so plainly and it is emailed within 12
+            hours. We would rather tell you which one you are getting than promise a link that isn't
+            ready.
           </p>
         </div>
 
@@ -597,7 +626,7 @@
       {"@type":"Question","name":"What is the difference between a Data Pack and the AI tool it came from?","acceptedAnswer":{"@type":"Answer","text":"The Data Pack is the reference library — a checklist, schema or rate table. You apply it to your own documents by hand. The AI tool reads your actual drawings, specs or bids and produces cited findings and draft letters in minutes."}},
       {"@type":"Question","name":"Why is the Rate Pack dated 2026 Edition but the others are not?","acceptedAnswer":{"@type":"Answer","text":"Permit fees, development charges and VAT rates change every year; code and scope checklists do not. A new Rate Pack edition is released annually, and buying one edition does not include the next — so you always know how current your numbers are."}},
       {"@type":"Question","name":"Can I upgrade to the AI tool later?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any Data Pack purchase counts toward the price of its matching AI tool if you upgrade within 60 days of buying the pack."}},
-      {"@type":"Question","name":"How do I receive a Data Pack?","acceptedAnswer":{"@type":"Answer","text":"Checkout is handled by Stripe in Canadian dollars with 13% HST added at checkout. Confirmation is immediate and the download link is sent within 12 hours."}}
+      {"@type":"Question","name":"How do I receive a Data Pack?","acceptedAnswer":{"@type":"Answer","text":"Checkout is handled by Stripe in Canadian dollars, with tax calculated for your region at checkout. Finished packs download straight from the confirmation page and from the link in your receipt. Any pack still being finished is emailed within 12 hours, and the confirmation page tells you which one you are getting."}}
     ]
   }
   </script>

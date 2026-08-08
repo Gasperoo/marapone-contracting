@@ -173,16 +173,12 @@
 
   <script>
     (function () {
-      // Kept in step with lib/fulfillment.js. Fill a pack's URL in both places
-      // and that pack becomes instant delivery here, with no other change.
-      var PACK_DOWNLOAD_URLS = {
-        'pack-code-library': '',
-        'pack-assembly-schema': '',
-        'pack-rate-2026': '',
-        'pack-bid-leveling': '',
-        'pack-scope-checklist': '',
-        'pack-bundle': ''
-      };
+      // Whether a pack can be downloaded now is a server-side fact (it depends
+      // on that pack's storage URL being configured), so this page no longer
+      // keeps its own copy of the answer — it asks /api/download, which also
+      // checks the purchase was really paid before agreeing to hand anything
+      // over. Keeping a duplicate list here meant two places to update and a
+      // button that could promise a file the server would refuse.
       var PACK_FULFILMENT_HOURS = 12;
 
       // Per-pack copy, mirroring PACK_FULFILMENT in lib/fulfillment.js.
@@ -238,15 +234,26 @@
 
       document.getElementById('dp-hours').textContent = String(PACK_FULFILMENT_HOURS);
 
-      var url = PACK_DOWNLOAD_URLS[key] || '';
-      if (url) {
-        var dl = document.getElementById('dp-download');
-        dl.href = url;
-        document.getElementById('dp-deliver-download').classList.remove('hidden');
-        document.getElementById('dp-deliver-pending').classList.add('hidden');
-        dl.addEventListener('click', function () {
-          if (window.gtag) gtag('event', 'package_download', { product: key || 'unknown' });
-        });
+      // The page loads showing the hand-delivery message, and swaps in the
+      // download button only once the server confirms there is a file and this
+      // buyer paid for it. That way a failed or slow check degrades to the
+      // truthful state rather than a dead button.
+      var sessionId = q.get('session_id') || '';
+      if (sessionId) {
+        var link = '/api/download?session_id=' + encodeURIComponent(sessionId);
+        fetch(link + '&check=1')
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (j) {
+            if (!j || !j.ready) return;
+            var dl = document.getElementById('dp-download');
+            dl.href = link;
+            document.getElementById('dp-deliver-download').classList.remove('hidden');
+            document.getElementById('dp-deliver-pending').classList.add('hidden');
+            dl.addEventListener('click', function () {
+              if (window.gtag) gtag('event', 'package_download', { product: key || 'unknown' });
+            });
+          })
+          .catch(function () { /* leave the hand-delivery message showing */ });
       }
 
       if (window.gtag) {

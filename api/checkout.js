@@ -23,7 +23,7 @@
 
 import { getStripe, ensureHstTaxRate, isLiveKey } from '../lib/stripe.js';
 import { validateCode } from '../lib/stripe-promo.js';
-import { BUILDS, MARKETING, SUPPORT, PRODUCTS, ADDON, CURRENCY, quoteBuild, quoteMarketing, quoteSupport, quoteProduct } from '../lib/pricing.js';
+import { BUILDS, MARKETING, SUPPORT, PRODUCTS, ADDON, CURRENCY, isDataPack, quoteBuild, quoteMarketing, quoteSupport, quoteProduct } from '../lib/pricing.js';
 
 const SITE_URL = 'https://marapone.com';
 const cents = (dollars) => Math.round(dollars * 100);
@@ -97,9 +97,15 @@ export default async function handler(req, res) {
         // A finished product is delivered, not scheduled, so the buyer lands on
         // a page that does the delivering — install steps, what to run first,
         // and the guarantee restated before they have to go looking for it.
-        // Cancelling still returns them to the pricing page they came from.
-        success_url: `${SITE_URL}/construction/purchase-complete?product=${product}`,
-        cancel_url: `${SITE_URL}/construction/pricing?checkout=cancelled`,
+        // A data pack has no install and a different refund window, so it gets
+        // its own landing page rather than one describing somebody else's
+        // purchase. Cancelling returns them to the page they came from.
+        success_url: isDataPack(product)
+          ? `${SITE_URL}/construction/data-pack-complete?product=${product}`
+          : `${SITE_URL}/construction/purchase-complete?product=${product}`,
+        cancel_url: isDataPack(product)
+          ? `${SITE_URL}/data-packs?checkout=cancelled`
+          : `${SITE_URL}/construction/pricing?checkout=cancelled`,
         mode: 'payment',
         line_items: [{
           quantity: 1,

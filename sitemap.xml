@@ -28,6 +28,7 @@
   <url><loc>https://marapone.com/construction/security-pack</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/hardware</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/regions</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://marapone.com/data-packs</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/procore</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/autodesk</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://marapone.com/construction/vs/document-crunch</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>

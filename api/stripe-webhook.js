@@ -14,28 +14,27 @@ import { getStripe } from '../lib/stripe.js';
 import { deactivateCode } from '../lib/stripe-promo.js';
 import { Resend } from 'resend';
 import {
-  handoffEmail, checkInEmail, ascensionEmail, fulfilmentFor,
-  CHECK_IN_DAYS, ASCENSION_DAYS, FULFILMENT_HOURS,
+  onboardingSequence, fulfilmentFor, packFulfilmentFor,
+  FULFILMENT_HOURS, PACK_FULFILMENT_HOURS, hasPackDownload,
 } from '../lib/fulfillment.js';
+import { isDataPack } from '../lib/pricing.js';
 
 const inDays = (n) => new Date(Date.now() + n * 864e5).toISOString();
 
 /**
- * Buyer onboarding for a finished-product purchase. The handoff goes out now;
- * the day-2 check-in and day-7 next-step are handed to Resend's scheduler so
- * there is no cron to own and nothing to keep running.
+ * Buyer onboarding for a finished-product or data-pack purchase. The handoff
+ * goes out now; the later steps are handed to Resend's scheduler so there is no
+ * cron to own and nothing to keep running.
+ *
+ * Which steps those are is decided in lib/fulfillment.js — an application gets
+ * the three-email sequence, a data pack gets its own two. This function only
+ * walks whatever it is given.
  *
  * Every send is individually guarded. The handoff is the one that matters, and a
  * scheduler rejection must not cost the buyer their first email.
  */
 async function startOnboarding(resend, { email, name, product, amount }) {
-  const seq = [
-    { at: null, mk: handoffEmail, tag: 'handoff' },
-    { at: inDays(CHECK_IN_DAYS), mk: checkInEmail, tag: 'check-in' },
-    { at: inDays(ASCENSION_DAYS), mk: ascensionEmail, tag: 'next-step' },
-  ];
-
-  for (const step of seq) {
+  for (const step of onboardingSequence(product).map((s) => ({ ...s, at: s.at == null ? null : inDays(s.at) }))) {
     let msg;
     try {
       msg = step.mk({ name, email, product, amount });
@@ -112,7 +111,7 @@ export default async function handler(req, res) {
 
       // Buyer onboarding, products only. Build deposits are a scoping
       // conversation rather than a delivery, so they are not put on this track.
-      if (buyer && m.kind === 'product' && fulfilmentFor(m.product)) {
+      if (buyer && m.kind === 'product' && (fulfilmentFor(m.product) || packFulfilmentFor(m.product))) {
         await startOnboarding(resend, {
           email: buyer,
           name: s.customer_details?.name || '',
@@ -125,6 +124,12 @@ export default async function handler(req, res) {
         const who = buyer || 'unknown';
         const summary = m.kind === 'build'
           ? `${m.tier} build deposit${m.vertical ? ' (' + m.vertical + ')' : ''}${m.addOn === 'true' ? ' + local machine' : ''} · paid ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()}${m.code ? ` · code ${m.code}` : ''} · project total $${m.buildTotal} · balance $${m.balanceLater}`
+          : m.kind === 'product' && isDataPack(m.product)
+            // A pack with its URL filled in has already delivered itself, so
+            // flagging it for manual send would be a false alarm.
+            ? `Data pack ${m.product} · paid ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()} — ${hasPackDownload(m.product)
+              ? 'delivered automatically, nothing to do.'
+              : `SEND THE PACK. The buyer has been told it arrives within ${PACK_FULFILMENT_HOURS}h, so that is a clock, not a queue.`}`
           : m.kind === 'product' ? `Product ${m.product} · paid in full ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()} — SEND THE DOWNLOAD + LICENCE. The buyer has been told it arrives within ${FULFILMENT_HOURS}h, so that is a clock, not a queue.`
           : m.kind === 'marketing' ? `Marketing ${m.tier} · paid ${(s.amount_total / 100).toFixed(2)} ${(s.currency || 'cad').toUpperCase()}`
           : m.kind === 'support' ? `Support ${m.plan} subscription started`

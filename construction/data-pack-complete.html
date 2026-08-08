@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment successful – your data pack | Marapone</title>
+  <meta name="description" content="Your Marapone data pack purchase is complete. Here is what arrives, how to open it, and what the upgrade credit covers." />
+  <!-- A post-purchase page has nothing to offer search, and indexing it would put
+       a "payment successful" page in results for people who have not paid. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://marapone.com/construction/data-pack-complete" />
+  <link rel="stylesheet" href="../src/tailwind.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #1a1a1a; color: #e8e8e8; font-family: 'DM Sans', sans-serif; }
+    .hiviz-gradient { background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%); }
+    .grid-dot { background-image: radial-gradient(circle, #3a3a3a 1px, transparent 1px); background-size: 28px 28px; }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J31Z05DB01"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J31Z05DB01');</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-hiviz focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-semibold">Skip to content</a>
+
+  <!-- Deliberately minimal chrome, same as the software success page: nothing
+       here should compete with the one thing the buyer came for. -->
+  <nav class="border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-display text-2xl tracking-wider text-chalk">MARA<span class="text-hiviz">PONE</span></a>
+      <a href="/construction/contact" class="font-mono text-xs text-fog hover:text-chalk transition-colors">Need a hand? &rarr;</a>
+    </div>
+  </nav>
+
+  <section id="main-content" class="grid-dot py-14 lg:py-20 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="font-mono text-hiviz text-sm mb-4 flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        Payment successful
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-chalk leading-none mb-5">
+        THE LIBRARY IS <span class="text-hiviz">YOURS.</span>
+      </h1>
+      <p class="text-fog text-lg leading-relaxed max-w-2xl">
+        You bought <span class="text-chalk font-semibold" id="dp-product">a Marapone data pack</span>.
+        It is a set of files &mdash; nothing to install, no licence key, nothing to keep running.
+      </p>
+
+      <!-- Delivery. Swaps to a download button the moment this pack's key is
+           filled in inside lib/fulfillment.js; until then it states the truth
+           rather than offering a link that would 404 on somebody who just paid. -->
+      <div id="dp-deliver-download" class="hidden mt-9">
+        <a id="dp-download" href="#"
+          class="hiviz-gradient text-white font-semibold text-lg px-8 py-5 rounded inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>
+          Download your pack
+        </a>
+        <p class="font-mono text-xs text-fog mt-3">A copy of this link is in the confirmation email, on its way now.</p>
+      </div>
+
+      <div id="dp-deliver-pending" class="mt-9 border-l-2 border-hiviz bg-gunmetal rounded-r-xl p-6 max-w-2xl">
+        <p class="text-chalk font-semibold mb-2">Your download link is on its way &mdash; within <span id="dp-hours">12</span> hours.</p>
+        <p class="text-fog text-sm leading-relaxed">
+          It is sent by hand, to the email you just paid with, and usually arrives a lot sooner than
+          that. Nothing is needed from you in the meantime &mdash; and if the window passes without
+          anything landing,
+          <a href="/construction/contact" class="text-hiviz hover:text-chalk transition-colors font-medium">tell us and we will chase it down</a>.
+        </p>
+        <p class="text-ash text-xs font-mono mt-3">Check your spam folder before you worry &mdash; it is usually there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO DO WITH IT -->
+  <section class="py-14 lg:py-20 border-b border-plate">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14">
+        <div>
+          <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Where to start</p>
+          <h2 class="font-display text-3xl text-chalk mb-6 leading-none">OPEN IT, DON'T INSTALL IT.</h2>
+          <p class="text-fog text-sm leading-relaxed mb-3" id="dp-opens">
+            Open the folder for the jurisdiction or trade package you are working in.
+          </p>
+          <p class="text-fog text-sm leading-relaxed" id="dp-use">
+            Everything is in plain formats &mdash; PDF, CSV and JSON &mdash; so it drops straight into a
+            spreadsheet or a script of your own.
+          </p>
+
+          <div class="mt-8 border border-plate rounded-xl bg-gunmetal p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">What you can do with the files</p>
+            <p class="text-fog text-xs leading-relaxed">
+              Use them on your own and your clients' work, and copy them into your own spreadsheets and
+              scripts, for as long as you like. There is no seat count and no licence server. What you
+              can't do is resell them or republish them as your own product.
+            </p>
+          </div>
+
+          <div class="mt-5 border border-plate rounded-xl bg-gunmetal p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">On the rate figures</p>
+            <p class="text-fog text-xs leading-relaxed">
+              Every statutory number carries its source citation in the row beside it. These are costing
+              inputs to check against the current schedule before you rely on them &mdash; not legal or
+              tax advice.
+              <a href="/construction/regions" class="text-hiviz hover:text-chalk transition-colors">How the jurisdiction data is structured &rarr;</a>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-mono text-hiviz text-xs uppercase tracking-widest mb-4">// Worth knowing now</p>
+
+          <div class="border-l-2 border-hiviz bg-gunmetal rounded-r-xl p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">Your upgrade credit is open for 60 days</p>
+            <p class="text-fog text-xs leading-relaxed">
+              What you just paid comes off the price of
+              <span id="dp-parent" class="text-chalk font-medium">its matching AI tool</span>
+              if you upgrade within 60 days. No code to enter &mdash; reply to your receipt and we apply it.
+              <a href="/construction/pricing#products" class="text-hiviz hover:text-chalk transition-colors">See the tools &rarr;</a>
+            </p>
+          </div>
+
+          <div class="mt-5 border-l-2 border-hiviz bg-gunmetal rounded-r-xl p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">Fourteen days, no questions asked</p>
+            <p class="text-fog text-xs leading-relaxed">
+              Packs carry a 14-day refund rather than the 30 days on the applications &mdash; a file
+              can't be trialled on live work for a month the way software can. If it isn't what you
+              expected, say so and the money goes back. No case to make, no form to fill in.
+            </p>
+          </div>
+
+          <div class="mt-5 border border-plate rounded-xl p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">Something missing or unclear?</p>
+            <p class="text-fog text-xs leading-relaxed">
+              Reply to your confirmation email &mdash; it comes to a person, not a queue. If a
+              jurisdiction you needed isn't in there, tell us: that is the feedback that decides what
+              goes into the next edition.
+              <a href="/construction/contact" class="text-hiviz hover:text-chalk transition-colors">Or get in touch here</a>.
+            </p>
+          </div>
+
+          <div class="mt-5 border border-plate rounded-xl p-5">
+            <p class="text-chalk font-semibold text-sm mb-1.5">The rest of the shelf</p>
+            <p class="text-fog text-xs leading-relaxed">
+              Four other libraries sit alongside this one, and they share a spine &mdash; indexed by CSI
+              code in North America, by EN reference in Europe.
+              <a href="/data-packs" class="text-hiviz hover:text-chalk transition-colors">See all five &rarr;</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-mono text-xs text-ash">&copy; 2026 Marapone. Receipt and download link by email.</p>
+      <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs font-mono text-ash">
+        <a href="/data-packs" class="hover:text-fog transition-colors">Data Packs</a>
+        <a href="/construction/regions" class="hover:text-fog transition-colors">Regions</a>
+        <a href="/construction/faq" class="hover:text-fog transition-colors">FAQ</a>
+        <a href="/construction/contact" class="hover:text-fog transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Kept in step with lib/fulfillment.js. Fill a pack's URL in both places
+      // and that pack becomes instant delivery here, with no other change.
+      var PACK_DOWNLOAD_URLS = {
+        'pack-code-library': '',
+        'pack-assembly-schema': '',
+        'pack-rate-2026': '',
+        'pack-bid-leveling': '',
+        'pack-scope-checklist': '',
+        'pack-bundle': ''
+      };
+      var PACK_FULFILMENT_HOURS = 12;
+
+      // Per-pack copy, mirroring PACK_FULFILMENT in lib/fulfillment.js.
+      var P = {
+        'pack-code-library': {
+          label: 'the Building Code Compliance Library',
+          parent: 'Blueprint Auditor',
+          opens: 'Open the folder for the jurisdiction you are working in — each one holds the same PDF and CSV pair.',
+          use: 'The CSV is the one to start with. It drops straight into a spreadsheet, and every check carries a plain-language note about what it is actually looking for.'
+        },
+        'pack-assembly-schema': {
+          label: 'the Assembly Property Schema',
+          parent: 'SpecChecker',
+          opens: 'Open either the north-america or the europe folder — CSI MasterFormat in one, EN/Eurocode in the other.',
+          use: 'They are deliberately not merged. Pick the standard your documents are written to rather than trying to reconcile the two.'
+        },
+        'pack-rate-2026': {
+          label: 'the Estimating Rate Pack (2026 Edition)',
+          parent: 'the AI Estimator',
+          opens: 'Open the rate table for your jurisdiction, then the contingency framework alongside it.',
+          use: 'Every statutory number carries its citation in the row beside it. Check the ones that will move your bid before you rely on them.'
+        },
+        'pack-bid-leveling': {
+          label: 'the Bid-Leveling Template',
+          parent: 'the Bid Leveler',
+          opens: 'Open the blank comparison matrix and the scope-element checklist behind it.',
+          use: 'Read the region-notes tab first if you tender on both sides of the Atlantic — bonding and retainage conventions are where the two diverge.'
+        },
+        'pack-scope-checklist': {
+          label: 'the Master Scope Requirement Checklist',
+          parent: 'ScopeGuard',
+          opens: 'Open the checklist and filter it to the trade packages on your job.',
+          use: 'Every requirement carries its CSI code, so it sorts into the same order as your tender package.'
+        },
+        'pack-bundle': {
+          label: 'the full Data Pack Bundle — all five libraries',
+          parent: 'the full five-app suite',
+          opens: 'Five folders, one per library. Start with whichever matches the job on your desk.',
+          use: 'They share a spine: everything is indexed by CSI code in North America and by EN reference in Europe, so a requirement, its assembly and its rate line up across the packs.'
+        }
+      };
+
+      var q = new URLSearchParams(location.search);
+      var key = (q.get('product') || '').toLowerCase();
+      var p = Object.prototype.hasOwnProperty.call(P, key) ? P[key] : null;
+
+      if (p) {
+        document.getElementById('dp-product').textContent = p.label;
+        document.getElementById('dp-opens').textContent = p.opens;
+        document.getElementById('dp-use').textContent = p.use;
+        document.getElementById('dp-parent').textContent = p.parent;
+      }
+
+      document.getElementById('dp-hours').textContent = String(PACK_FULFILMENT_HOURS);
+
+      var url = PACK_DOWNLOAD_URLS[key] || '';
+      if (url) {
+        var dl = document.getElementById('dp-download');
+        dl.href = url;
+        document.getElementById('dp-deliver-download').classList.remove('hidden');
+        document.getElementById('dp-deliver-pending').classList.add('hidden');
+        dl.addEventListener('click', function () {
+          if (window.gtag) gtag('event', 'package_download', { product: key || 'unknown' });
+        });
+      }
+
+      if (window.gtag) {
+        gtag('event', 'purchase_complete', {
+          product: key || 'unknown',
+          vertical: 'construction',
+          item_category: 'data-pack'
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

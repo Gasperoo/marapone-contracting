@@ -14,14 +14,14 @@
   <title>AI Construction Cost Estimating Software | AI Estimator by Marapone</title>
   <link rel="canonical" href="https://marapone.com/construction/ai-estimator" />
   <meta name="description"
-    content="Construction cost estimating software that turns measured quantities into a priced, risk-adjusted bid — 57 assemblies across 20 CSI divisions, contingency with a written reason, Toronto permits, development charges and HST. One-time $990, runs on your own machine, full source code." />
+    content="Construction cost estimating software that turns measured quantities into a priced, risk-adjusted bid — 57 assemblies across 20 CSI divisions, contingency with a written reason, plus permits, development charges and sales tax for your jurisdiction. One-time $990, runs on your own machine, full source code." />
   <meta name="keywords"
     content="construction estimating software, AI estimator, Toronto development charges, construction contingency, Monte Carlo bid, margin ladder, CSI assemblies, private AI construction" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Marapone" />
   <meta property="og:title" content="AI Estimator – Turn takeoff into a priced, defensible bid | Marapone" />
   <meta property="og:description"
-    content="Takeoff measures the drawings. The AI Estimator prices them — assemblies, risk, contingency, Toronto soft costs, and a bid strategy built on your own win history." />
+    content="Takeoff measures the drawings. The AI Estimator prices them — assemblies, risk, contingency, municipal soft costs, and a bid strategy built on your own win history." />
   <meta property="og:url" content="https://marapone.com/construction/ai-estimator" />
   <meta property="og:image" content="https://marapone.com/estimator/og-ai-estimator.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -44,11 +44,11 @@
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Windows 10, Windows 11, macOS 12+, Linux",
     "url": "https://marapone.com/construction/ai-estimator",
-    "description": "Construction estimating for Toronto and the GTA. Turns measured quantities into priced, risk-adjusted, defensible bids — assemblies, contingency, municipal soft costs, scenario analysis and bid strategy — running entirely on the contractor's own machine.",
+    "description": "Construction estimating with jurisdiction packs covering Canada, the US and the EU/UK. Turns measured quantities into priced, risk-adjusted, defensible bids — assemblies, contingency, municipal soft costs, scenario analysis and bid strategy — running entirely on the contractor's own machine.",
     "featureList": [
       "57 parametric assemblies across 20 CSI divisions",
       "27 risk rules with recommended contingency and mitigations",
-      "Toronto permits, development charges, parkland, CBC and HST",
+      "Permits, development charges, parkland, CBC and sales tax by jurisdiction",
       "Monte Carlo cost distribution and tornado sensitivity",
       "Margin ladder with win probability from recorded bid outcomes",
       "Specification, RFP and addenda document intelligence",
@@ -248,6 +248,7 @@
         </div>
         <a href="/construction/how-it-works" class="hover:text-chalk transition-colors">How It Works</a>
         <a href="/construction/pricing" class="hover:text-chalk transition-colors">Pricing</a>
+        <a href="/data-packs" class="hover:text-chalk transition-colors">Data Packs</a>
         <div class="relative" data-mp-more>
           <button type="button" class="hover:text-chalk transition-colors flex items-center gap-1 font-body text-sm font-medium" aria-haspopup="true" aria-expanded="false">More<svg class="mp-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .15s ease;margin-left:2px"><path d="M19 9l-7 7-7-7" /></svg></button>
           <div class="mp-products-menu absolute right-0 border border-plate rounded-md py-2 z-50" style="top:100%;min-width:190px;background:#1a1a1a;box-shadow:0 12px 32px rgba(0,0,0,.55)">
@@ -283,6 +284,7 @@
       <a href="/construction/services" class="text-fog hover:text-chalk" style="padding-left:.75rem">Custom AI Builds</a>
       <a href="/construction/how-it-works" class="text-fog hover:text-chalk pt-1">How It Works</a>
       <a href="/construction/pricing" class="text-fog hover:text-chalk">Pricing</a>
+      <a href="/data-packs" class="text-fog hover:text-chalk">Data Packs</a>
       <p class="font-mono text-xs text-ash pt-1" data-mp-more-mobile>// More</p>
       <a href="/construction/work" class="text-fog hover:text-chalk" style="padding-left:.75rem">Our Work</a>
       <a href="/construction/sample-assessment" class="text-fog hover:text-chalk" style="padding-left:.75rem">Samples</a>
@@ -324,7 +326,7 @@
           <p class="font-body text-lg text-fog max-w-2xl mt-6 leading-relaxed">
             The Blueprint Auditor tells you there are 24,000 square feet of partition.
             The AI&nbsp;Estimator turns that into studs, board, tape, fasteners, waste and
-            crew-hours — then adds the risk, the contingency, the Toronto soft costs and the
+            crew-hours — then adds the risk, the contingency, the municipal soft costs and the
             margin you can actually win at. Runs entirely on your own machine — Windows or Mac. Bought once.
           </p>
 
@@ -536,7 +538,7 @@
       <!-- 03 · SOFT COSTS -->
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 feature-row mb-20">
         <div class="reveal order-2 lg:order-1">
-          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">03 — Toronto soft costs</span>
+          <span class="font-mono text-[0.62rem] tracking-widest uppercase text-hiviz">03 — Municipal soft costs</span>
           <h3 class="font-display text-2xl lg:text-3xl text-chalk mt-3 mb-4 leading-tight">The line item that dwarfs the finishes.</h3>
           <p class="text-fog leading-relaxed">
             On this project the development charges alone are
@@ -678,7 +680,8 @@
         </p>
         <p class="text-fog mt-3 leading-relaxed">
           Every number below lives in a JSON file you own, with its citation attached.
-          It is the <em>default</em> pack, not the only one.
+          Toronto is shown as the worked example; packs ship for every Canadian province and
+          territory, all 50 US states, and the EU plus UK/Ireland.
         </p>
       </div>
 
@@ -965,7 +968,7 @@
           <p class="font-mono text-xs text-fog mb-4">From $1,500</p>
           <ul class="space-y-2.5 text-sm">
             <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">An assembly catalogue rebuilt around how <em class="not-italic text-chalk">your</em> company builds, or divisions you self-perform and price your own way</span></li>
-            <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">A soft-cost and by-law layer for a municipality outside Toronto and the GTA</span></li>
+            <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">A soft-cost and by-law layer rebuilt to one municipality’s own schedule, beyond the jurisdiction pack</span></li>
             <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">A live link into Procore, Sage, your ERP or your own cost database (the exports are files, not integrations)</span></li>
             <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">Workflows the product doesn&rsquo;t cover — RFI backlogs, daily logs, deficiency lists, change-order tracking</span></li>
             <li class="flex gap-2.5"><span class="text-ash flex-shrink-0">✗</span><span class="text-fog">Ongoing development after handover (optional support plans, never required)</span></li>
